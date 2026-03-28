@@ -28,23 +28,27 @@ void Input::tick(LocalPlayer* player) {
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
     int iPad = player->GetXboxPad();
+    // 4jcraft: don't move if the menu is shown.
+    if (!InputManager.GetMenuDisplayed(iPad)) {
+        if (pMinecraft->localgameModes[iPad]->isInputAllowed(
+                MINECRAFT_ACTION_LEFT) ||
+            pMinecraft->localgameModes[iPad]->isInputAllowed(
+                MINECRAFT_ACTION_RIGHT))
+            xa = -InputManager.GetJoypadStick_LX(iPad);
+        else
+            xa = 0.0f;
 
-    // 4J-PB minecraft movement seems to be the wrong way round, so invert x!
-    if (pMinecraft->localgameModes[iPad]->isInputAllowed(
-            MINECRAFT_ACTION_LEFT) ||
-        pMinecraft->localgameModes[iPad]->isInputAllowed(
-            MINECRAFT_ACTION_RIGHT))
-        xa = -InputManager.GetJoypadStick_LX(iPad);
-    else
+        if (pMinecraft->localgameModes[iPad]->isInputAllowed(
+                MINECRAFT_ACTION_FORWARD) ||
+            pMinecraft->localgameModes[iPad]->isInputAllowed(
+                MINECRAFT_ACTION_BACKWARD))
+            ya = InputManager.GetJoypadStick_LY(iPad);
+        else
+            ya = 0.0f;
+    } else {
         xa = 0.0f;
-
-    if (pMinecraft->localgameModes[iPad]->isInputAllowed(
-            MINECRAFT_ACTION_FORWARD) ||
-        pMinecraft->localgameModes[iPad]->isInputAllowed(
-            MINECRAFT_ACTION_BACKWARD))
-        ya = InputManager.GetJoypadStick_LY(iPad);
-    else
         ya = 0.0f;
+    }
 
 #ifndef _CONTENT_PACKAGE
     if (app.GetFreezePlayers()) {
@@ -115,11 +119,15 @@ void Input::tick(LocalPlayer* player) {
 
     // jumping = controller.isButtonPressed(0);
 
-    sprintKey = InputManager.GetValue(iPad, MINECRAFT_ACTION_SPRINT) &&
+    bool menuOpen = InputManager.GetMenuDisplayed(iPad);
+
+    sprintKey = !menuOpen &&
+                InputManager.GetValue(iPad, MINECRAFT_ACTION_SPRINT) &&
                 pMinecraft->localgameModes[iPad]->isInputAllowed(
                     MINECRAFT_ACTION_SPRINT);
+
     jumping =
-        InputManager.GetValue(iPad, MINECRAFT_ACTION_JUMP) &&
+        !menuOpen && InputManager.GetValue(iPad, MINECRAFT_ACTION_JUMP) &&
         pMinecraft->localgameModes[iPad]->isInputAllowed(MINECRAFT_ACTION_JUMP);
 
 #ifndef _CONTENT_PACKAGE
