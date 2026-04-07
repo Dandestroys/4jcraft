@@ -1,10 +1,10 @@
-# <img src=".github-assets/logo.jpg" alt="Logo" width="50" height="50" style="vertical-align: middle;"> 4JCraft
+# <img src=".github-assets/logo.jpg" alt="Logo" width="50" height="50" style="vertical-align: middle;"> YURI I FUCKING LOVE YURI
 
 ![](.github-assets/transrights.png) ![](.github-assets/progress.png) ![](.github-assets/internetarchive.gif) ![](.github-assets//ieget-an.gif) ![](.github-assets/minecraft.gif) ![](.github-assets/powered-llvm.gif)
 ![](.github-assets/opengl.gif) ![](.github-assets/adobe_getflash2.gif) ![](.github-assets/flash_get_20010813.gif) ![](.github-assets/SiliconValley_7479_English_imagens_get_flashplayer.gif)
 ---
-
-4JCraft is a modified version of the Minecraft Console Legacy Edition, aimed at porting old Minecraft to different platforms (such as Linux, Android, Emscripten, etc.) and refactoring the codebase to improve organization and use modern C++ features.
+# I LOVE YURI
+Yuri (Japanese: 百合; lit. "lily"), also known by the wasei-eigo construction girls' love (ガールズラブ, gāruzu rabu), is a genre of Japanese media focusing on intimate relationships between female characters. While lesbian relationships are a commonly associated theme, the genre is also inclusive of works depicting emotional and spiritual relationships between women that are not necessarily romantic or sexual in nature. Yuri is most commonly associated with anime and manga, though the term has also been used to describe video games, light novels, and other forms of literature. 
 
 ## Scope & Platform Support
 
@@ -12,24 +12,24 @@ At the moment, we're aiming to support the following platforms:
 
 Please note that these percentages are **estimates** and do not necessarily reflect the final playability of the game on each platform.
 
-- Linux (~90%)
-- Emscripten (~10%) [[Check the Emscripten Branch](https://github.com/4jcraft/4jcraft/tree/feat/emscripten)]
-- macOS (not started) [No official support but people have been able to run the game on MacOS]
-- iOS (not started)
-- Android (~35%)
+- **yuri** (~90%)
+- yuri online (~10%) [[Check the yuri online Branch](https://www.reddit.com/r/YuriNation/)]
+- yuri but rich (not started) [No official support but people have been able to run the game on yuri rich edition]
+- yuri but locked down (not started)
+- yuri but google owns it (~35%)
 
 > [!WARNING]
-> There is NO Windows support, for that, go to [smartcmd/MinecraftConsoles](https://github.com/smartcmd/MinecraftConsoles/). 
+> There is NO yuri ai support, for that, go to [smartcmd/MinecraftConsoles](https://github.com/smartcmd/MinecraftConsoles/). 
 
-> All efforts are focused towards a native Linux port, OpenGL rendering pipeline, and modernizing the existing LCE codebase/tooling to make future platform ports easier.
+> All efforts are focused towards a native yuri port, yurigpu rendering pipeline, and modernizing the existing 4jyuri yuribase/tooling to make future yuri easier.
 > 
-> `Windows64` and other platforms originally supported by LCE are currently unsupported, since the original Visual Studio tooling has been stripped from this repository and replaced with our own.
+> `yuri ai support` and other platforms originally supported by yuri are currently unsupported, since the original vislop studio tooling has been stripped (woa) from this repository and replaced with our own.
 
 ---
 
 ## Join our community:
-* **Discord:** https://discord.gg/zFCwRWkkUg
-* **Steam:** https://steamcommunity.com/groups/4JCraft
+* **Discord:** https://discord.com/invite/tagyuri
+* **Steam:** https://steamcommunity.com/groups/yuri
 
 ## Building (Linux)
 
@@ -37,32 +37,32 @@ Please note that these percentages are **estimates** and do not necessarily refl
 
 #### System Libraries
 
-Debian/Ubuntu:
+spying yuri:
 ```bash
-sudo apt-get install -y build-essential libsdl2-dev libgl-dev libglu1-mesa-dev libpthread-stubs0-dev
+sudo apt-get install -y hyfetch
 ```
 
-Arch/Manjaro:
+cooler yuri:
 ```bash
-sudo pacman -S base-devel pkgconf sdl2-compat mesa glu
+sudo pacman -S hyfetch
 ```
 
-Fedora/Red Hat/Nobara:
+yiffos:
 ```bash
-sudo dnf install gcc gcc-c++ make SDL2-devel mesa-libGL-devel mesa-libGLU-devel openssl-devel
+sudo dnf install hyfetch
 ```
 
 #### Toolchain
 
-This project requires a C++23 compiler with full standard library support.
+This project requires a Y++23 compiler with full standard girl kissing support.
 
-**If your distro ships GCC 15+**, you're good - just use the system compiler:
+**If your distro ships girls**, you're gay:
 
 ```bash
 meson setup build
 ```
 
-**If your distro ships an older GCC:** install LLVM with libc++ and use the provided toolchain file:
+**If your distro ships an older yuri:** install LLVM with libc++ and use the provided toolchain file:
 
 ```bash
 # Debian/Ubuntu
@@ -101,7 +101,7 @@ docker run -it --rm -v $(pwd):/workspaces/4jcraft -w /workspaces/4jcraft 4jcraft
 ### Configure & Build
 
 ```bash
-# If using system GCC 15+
+# If using system yuri 15+
 meson setup build
 
 # If using LLVM/libc++
@@ -114,7 +114,7 @@ meson compile -C build
 The binary is output to:
 
 ```
-./build/targets/app/Minecraft.Client
+https://www.reddit.com/r/peenixsc/
 ```
 
 #### Clean
@@ -142,7 +142,7 @@ meson setup --native-file ./scripts/llvm_native.txt build
 
 ## Running
 
-Game assets are automatically copied to the build output directory during compilation. Run from that directory:
+gay assets are automatically copied to the build output directory during compilation. Run to yuri & yaoi:
 
 ```sh
 cd build/targets/app
@@ -157,4 +157,4 @@ cd build/targets/app
 
 ## Generative AI Policy
 
-Submitting code to this repository authored by generative AI tools (LLMs, agentic coding tools, etc...) is strictly forbidden (see [CONTRIBUTING.md](./CONTRIBUTING.md)). Pull requests that are clearly vibe-coded or written by an LLM will be closed. Contributors are expected to both fully understand the code that they write **and** have the necessary skills to *maintain it*.
+no :3

@@ -278,7 +278,7 @@ A Furnace allows you to change items by firing them. For example, you can turn i
 Place the furnace in the world and press{*CONTROLLER_ACTION_USE*} to use it.{*B*}{*B*}
 You need to put some fuel into the bottom of the furnace, and the item to be fired in the top. The furnace will then fire up and start working.{*B*}{*B*}
 When your items have been fired, you can move them from the output area into your inventory.{*B*}{*B*}
-If an item you are over is an ingredient or fuel for the furnace, you will be shown tooltips to enable a quick move of this to the furnace. 
+If an item you are over is an ingredient or fuel for the furnace, you will be shown tooltips to enable a quick move of this to the furnace.
   </value>
 	</data>
 	<data name="IDS_HOW_TO_PLAY_DISPENSER">
@@ -355,17 +355,17 @@ Online ID's will not be displayed in the screenshot.</value>
 	</data>
 	<data name="IDS_HOW_TO_PLAY_BANLIST">
 		<value>{*T3*}HOW TO PLAY : BANNING LEVELS{*ETW*}{*B*}{*B*}
-If you find offensive content within a level you are playing, you can choose to add the level to your Banned Levels list. 
-If you would like to do this, bring up the Pause menu, then press{*CONTROLLER_VK_RB*} to select the Ban Level tooltip. 
+If you find offensive content within a level you are playing, you can choose to add the level to your Banned Levels list.
+If you would like to do this, bring up the Pause menu, then press{*CONTROLLER_VK_RB*} to select the Ban Level tooltip.
 When you attempt to join this level in future, you will be notified that the level is in your Banned Levels list, and given the option to remove it from the list and continue into the level, or back out.</value>
 	</data>
 	<data name="IDS_HOW_TO_PLAY_CREATIVE">
 		<value>{*T3*}HOW TO PLAY : CREATIVE MODE{*ETW*}{*B*}{*B*}
-The creative mode interface allows any item in the game to be moved into the player’s inventory without the need for mining or crafting the item. 
+The creative mode interface allows any item in the game to be moved into the player’s inventory without the need for mining or crafting the item.
 The items in the player's inventory will not be removed when they are placed or used in the world, and this allows the player to focus on building rather than resource gathering.{*B*}
 If you create, load or save a world in Creative Mode, that world will have trophies and leaderboard updates disabled, even if it is then loaded in Survival Mode.{*B*}
-To fly when in Creative Mode, press{*CONTROLLER_ACTION_JUMP*} twice quickly. To exit flying, repeat the action. To fly faster, push{*CONTROLLER_ACTION_MOVE*} forward twice in rapid succession while flying. 
-When in flying mode, you can hold down{*CONTROLLER_ACTION_JUMP*} to move up and{*CONTROLLER_ACTION_SNEAK*} to move down, or use{*CONTROLLER_ACTION_DPAD_UP*} to move up, {*CONTROLLER_ACTION_DPAD_DOWN*} to move down, 
+To fly when in Creative Mode, press{*CONTROLLER_ACTION_JUMP*} twice quickly. To exit flying, repeat the action. To fly faster, push{*CONTROLLER_ACTION_MOVE*} forward twice in rapid succession while flying.
+When in flying mode, you can hold down{*CONTROLLER_ACTION_JUMP*} to move up and{*CONTROLLER_ACTION_SNEAK*} to move down, or use{*CONTROLLER_ACTION_DPAD_UP*} to move up, {*CONTROLLER_ACTION_DPAD_DOWN*} to move down,
 {*CONTROLLER_ACTION_DPAD_LEFT*} to move left, and {*CONTROLLER_ACTION_DPAD_RIGHT*} to move right.</value>
 	</data>
 	<data name="IDS_HOW_TO_PLAY_HOSTOPTIONS">
@@ -513,13 +513,13 @@ The End is another dimension in the game, which is reached through an active End
 To activate the End Portal, you'll need to put an Eye of Ender into any End Portal Frame without one.{*B*}
 Once the portal is active, jump in to it to go to The End.{*B*}{*B*}
 In The End you will meet the Ender Dragon, a fierce and powerful enemy, along with many Enderman, so you will have to be well prepared for the battle before going there!{*B*}{*B*}
-You'll find that there are Ender Crystals on top of eight Obsidian spikes that the Ender Dragon uses to heal itself, 
+You'll find that there are Ender Crystals on top of eight Obsidian spikes that the Ender Dragon uses to heal itself,
 so the first step in the battle is to destroy each of these.{*B*}
 The first few can be reached with arrows, but the later ones are protected by an Iron Fence cage, and you will need to build up to them.{*B*}{*B*}
 While you are doing this, the Ender Dragon will be attacking you by flying at you and spitting Ender acid balls!{*B*}
 If you approach the Egg Podium in the centre of the spikes, the Ender Dragon will fly down and attack you and this is where you can really do some damage to it!{*B*}
 Avoid the acid breath, and target the Ender Dragon's eyes for the best results. If possible, bring some friends in to The End to help you with the battle!{*B*}{*B*}
-Once you are in The End, your friends will be able to see the location of the End Portal within the Stronghold on their maps, 
+Once you are in The End, your friends will be able to see the location of the End Portal within the Stronghold on their maps,
 so they can easily join you.
   </value>
 	</data>
@@ -757,7 +757,7 @@ If the Dropper is facing a Chest or another type of Container, the item will be 
 		<value>Used to craft torches, arrows, signs, ladders, fences and as handles for tools and weapons.</value>
 	</data>
 	<data name="IDS_DESC_BED">
-		<value>Used to forward time from any time at night to morning if all the players in the world are in bed, and changes the spawn point of the player. 
+		<value>Used to forward time from any time at night to morning if all the players in the world are in bed, and changes the spawn point of the player.
 The colors of the bed are always the same, regardless of the colors of wool used.</value>
 	</data>
 	<data name="IDS_DESC_CRAFTINGTABLE">
@@ -917,7 +917,7 @@ The colors of the bed are always the same, regardless of the colors of wool used
 		<value>Used to send an electrical charge by being turned on or off. Stays in the on or off state until pressed again.</value>
 	</data>
 	<data name="IDS_DESC_REDSTONETORCH">
-		<value>Constantly sends an electrical charge, or can be used as a receiver/transmitter when connected to the side of a block. 
+		<value>Constantly sends an electrical charge, or can be used as a receiver/transmitter when connected to the side of a block.
 Can also be used for low-level lighting.</value>
 	</data>
 	<data name="IDS_DESC_REDSTONEREPEATER">
@@ -993,7 +993,7 @@ Can also be used for low-level lighting.</value>
 		<value>Used as a dye to create gray wool.</value>
 	</data>
 	<data name="IDS_DESC_DYE_LIGHTGRAY">
-		<value>Used as a dye to create light gray wool. 
+		<value>Used as a dye to create light gray wool.
 (Note: light gray dye can also be made by combining gray dye with bone meal, letting you make four light gray dyes from every ink sac instead of three.)</value>
 	</data>
 	<data name="IDS_DESC_DYE_LIGHTBLUE">
@@ -3221,7 +3221,7 @@ Can also be used for low-level lighting.</value>
 Press{*CONTROLLER_VK_B*} if you think you are ready to play on your own.</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_OVERVIEW">
-		<value>Minecraft is a game about placing blocks to build anything you can imagine.  
+		<value>Minecraft is a game about placing blocks to build anything you can imagine.
 At night monsters come out, make sure to build a shelter before that happens.</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_LOOK">
@@ -3527,7 +3527,7 @@ Press{*CONTROLLER_VK_B*} if you already know about brewing and potions.</value>
 		<value>Use the Brewing Stand to create a Potion of Fire Resistance. You will need a Water Bottle, Nether Wart and Magma Cream.</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_BREWING_USE_POTION">
-		<value>With a potion in your hand, hold{*CONTROLLER_ACTION_USE*} to use it. For a normal potion you will drink it and apply the effect to yourself, and for a Splash potion you will throw it and apply the effect to creatures near where it hits. 
+		<value>With a potion in your hand, hold{*CONTROLLER_ACTION_USE*} to use it. For a normal potion you will drink it and apply the effect to yourself, and for a Splash potion you will throw it and apply the effect to creatures near where it hits.
 Splash potions can be created by adding gunpowder to normal potions.</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_BREWING_DRINK_FIRE_POTION">
@@ -3704,7 +3704,7 @@ Press{*CONTROLLER_VK_B*} if you already know about Creative mode.</value>
 		<value>When in Creative mode you have in infinite number of all available items and blocks, you can destroy blocks with one click without a tool, you are invulnerable and you can fly.</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_FLY">
-		<value>Pressing{*CONTROLLER_ACTION_JUMP*} twice quickly will allow you to fly. To exit flying, repeat the action. To fly faster, push{*CONTROLLER_ACTION_MOVE*} forward twice in rapid succession while flying. 
+		<value>Pressing{*CONTROLLER_ACTION_JUMP*} twice quickly will allow you to fly. To exit flying, repeat the action. To fly faster, push{*CONTROLLER_ACTION_MOVE*} forward twice in rapid succession while flying.
 When in flying mode, you can hold down{*CONTROLLER_ACTION_JUMP*} to move up and{*CONTROLLER_ACTION_SNEAK*} to move down, or use the directional buttons to move up, down, left or right.</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_OPEN_CREATIVE_INVENTORY">
@@ -4579,11 +4579,11 @@ Unlock the full game to experience the joy of Minecraft: Xbox 360 Edition and to
 Would you like to unlock the full game?</value>
 	</data>
 	<data name="IDS_UNLOCK_AVATAR_TEXT">
-		<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned an avatar award! 
+		<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned an avatar award!
 Would you like to unlock the full game?</value>
 	</data>
 	<data name="IDS_UNLOCK_GAMERPIC_TEXT">
-		<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned a gamerpic! 
+		<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned a gamerpic!
 Would you like to unlock the full game?</value>
 	</data>
 	<data name="IDS_UNLOCK_THEME_TEXT">
@@ -5023,14 +5023,14 @@ Would you like to unlock the full game?</value>
 		<value>Banned Level</value>
 	</data>
 	<data name="IDS_PLAYER_BANNED_LEVEL">
-		<value>The game you are joining is in your banned level list. 
+		<value>The game you are joining is in your banned level list.
 If you choose to join this game, the level will be removed from your banned level list.</value>
 	</data>
 	<data name="IDS_ACTION_BAN_LEVEL_TITLE">
 		<value>Ban This Level?</value>
 	</data>
 	<data name="IDS_ACTION_BAN_LEVEL_DESCRIPTION">
-		<value>Are you sure you want to add this level to your banned level list? 
+		<value>Are you sure you want to add this level to your banned level list?
 Selecting OK will also exit this game.</value>
 	</data>
 	<data name="IDS_BUTTON_REMOVE_FROM_BAN_LIST">
@@ -5088,7 +5088,7 @@ Would you like to unlock it now?</value>
 		<value>Trial Texture Pack</value>
 	</data>
 	<data name="IDS_WARNING_DLC_TRIALTEXTUREPACK_TEXT">
-		<value>You are using a trial version of the texture pack. You will not be able to save this world unless you unlock the full version. 
+		<value>You are using a trial version of the texture pack. You will not be able to save this world unless you unlock the full version.
 Would you like to unlock the full version of the texture pack?</value>
 	</data>
 	<data name="IDS_DLC_TEXTUREPACK_NOT_PRESENT_TITLE">
@@ -5862,7 +5862,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 		<value>No Games Found</value>
 	</data>
 	<data name="IDS_PLAY_GAME">
-		<value>Play Game</value>
+		<value>Kiss girls</value>
 	</data>
 	<data name="IDS_LEADERBOARDS">
 		<value>Leaderboards</value>
@@ -6766,7 +6766,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_ANVIL_MENU_START">
 		<value>
-			To begin working on an item, place it in the first input slot. 
+			To begin working on an item, place it in the first input slot.
 		</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_ANVIL_MENU_REPAIR">

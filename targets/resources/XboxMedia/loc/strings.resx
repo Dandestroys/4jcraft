@@ -3,10 +3,10 @@
 ﻿
    <data name="IDS_TIPS_GAMETIP_NEWDLC">
     <value>New Downloadable Content is available! Access it from the Minecraft Store button on the Main Menu.</value>
- </data> 
+ </data>
     <data name="IDS_TIPS_GAMETIP_SKINPACKS">
     <value>You can change the look of your character with a Skin Pack from the Minecraft Store. Select 'Minecraft Store' on the Main Menu to see what's available.</value>
- </data> 
+ </data>
 
  <data name="IDS_TIPS_GAMETIP_0">
     <value>If you play this game in High Definition mode, you can have up to four players in split-screen on the same console!</value>
@@ -283,7 +283,7 @@ A Furnace allows you to change items by firing them. For example, you can turn i
 Place the furnace in the world and press{*CONTROLLER_ACTION_USE*} to use it.{*B*}{*B*}
 You need to put some fuel into the bottom of the furnace, and the item to be fired in the top. The furnace will then fire up and start working.{*B*}{*B*}
 When your items have been fired, you can move them from the output area into your inventory.{*B*}{*B*}
-If an item you are over is an ingredient or fuel for the furnace, you will be shown tooltips to enable a quick move of this to the furnace. 
+If an item you are over is an ingredient or fuel for the furnace, you will be shown tooltips to enable a quick move of this to the furnace.
   </value>
   </data>
   <data name="IDS_HOW_TO_PLAY_DISPENSER">
@@ -374,17 +374,17 @@ Gamertags will not be displayed in the screenshot.
 
 <data name="IDS_HOW_TO_PLAY_BANLIST">
     <value>{*T3*}HOW TO PLAY : BANNING LEVELS{*ETW*}{*B*}{*B*}
-If you find offensive content within a level you are playing, you can choose to add the level to your Banned Levels list. 
-If you would like to do this, bring up the Pause menu, then press{*CONTROLLER_VK_RB*} to select the Ban Level tooltip. 
+If you find offensive content within a level you are playing, you can choose to add the level to your Banned Levels list.
+If you would like to do this, bring up the Pause menu, then press{*CONTROLLER_VK_RB*} to select the Ban Level tooltip.
 When you attempt to join this level in future, you will be notified that the level is in your Banned Levels list, and given the option to remove it from the list and continue into the level, or back out.</value>
 </data>
 <data name="IDS_HOW_TO_PLAY_CREATIVE">
     <value>{*T3*}HOW TO PLAY : CREATIVE MODE{*ETW*}{*B*}{*B*}
-The creative mode interface allows any item in the game to be moved into the player’s inventory without the need for mining or crafting the item. 
+The creative mode interface allows any item in the game to be moved into the player’s inventory without the need for mining or crafting the item.
 The items in the player's inventory will not be removed when they are placed or used in the world, and this allows the player to focus on building rather than resource gathering.{*B*}
 If you create, load or save a world in Creative Mode, that world will have achievements and leaderboard updates disabled, even if it is then loaded in Survival Mode.{*B*}
-To fly when in Creative Mode, press{*CONTROLLER_ACTION_JUMP*} twice quickly. To exit flying, repeat the action. To fly faster, push{*CONTROLLER_ACTION_MOVE*} forward twice in rapid succession while flying. 
-When in flying mode, you can hold down{*CONTROLLER_ACTION_JUMP*} to move up and{*CONTROLLER_ACTION_SNEAK*} to move down, or use{*CONTROLLER_ACTION_DPAD_UP*} to move up, {*CONTROLLER_ACTION_DPAD_DOWN*} to move down, 
+To fly when in Creative Mode, press{*CONTROLLER_ACTION_JUMP*} twice quickly. To exit flying, repeat the action. To fly faster, push{*CONTROLLER_ACTION_MOVE*} forward twice in rapid succession while flying.
+When in flying mode, you can hold down{*CONTROLLER_ACTION_JUMP*} to move up and{*CONTROLLER_ACTION_SNEAK*} to move down, or use{*CONTROLLER_ACTION_DPAD_UP*} to move up, {*CONTROLLER_ACTION_DPAD_DOWN*} to move down,
 {*CONTROLLER_ACTION_DPAD_LEFT*} to move left, and {*CONTROLLER_ACTION_DPAD_RIGHT*} to move right.</value>
 </data>
 <data name="IDS_HOW_TO_PLAY_HOSTOPTIONS">
@@ -395,16 +395,16 @@ When loading or creating a world, you can press the "More Options" button to ent
 
 	{*T2*}Player vs Player{*ETW*}{*B*}
 	When enabled, players can inflict damage on other players. This option only affects Survival mode.{*B*}{*B*}
-	
+
 	{*T2*}Trust Players{*ETW*}{*B*}
 	When disabled, players joining the game are restricted in what they can do. They are not able to mine or use items, place blocks, use doors and switches, use containers, attack players or attack animals. You can change these options for a specific player using the in-game menu.{*B*}{*B*}
-	
+
 	{*T2*}Fire Spreads{*ETW*}{*B*}
 	When enabled, fire may spread to nearby flammable blocks. This option can also be changed from within the game.{*B*}{*B*}
-	
+
 	{*T2*}TNT Explodes{*ETW*}{*B*}
 	When enabled, TNT will explode when detonated. This option can also be changed from within the game.{*B*}{*B*}
-	
+
 	{*T2*}Host Privileges{*ETW*}{*B*}
 	When enabled, the host can toggle their ability to fly, disable exhaustion, and make themselves invisible from the in-game menu. {*DISABLES_ACHIEVEMENTS*}{*B*}{*B*}
 
@@ -434,19 +434,19 @@ When creating a new world there are some additional options.{*B*}{*B*}
 
 	{*T2*}Generate Structures{*ETW*}{*B*}
 	When enabled, structures such as Villages and Strongholds will generate in the world.{*B*}{*B*}
-	
+
 	{*T2*}Superflat World{*ETW*}{*B*}
 	When enabled, a completely flat world will be generated in the Overworld and in the Nether.{*B*}{*B*}
-	
+
 	{*T2*}Bonus Chest{*ETW*}{*B*}
 	When enabled, a chest containing some useful items will be created near the player spawn point.{*B*}{*B*}
-	
+
 	{*T2*}Reset Nether{*ETW*}{*B*}
 	When enabled, the Nether will be re-generated. This is useful if you have an older save where Nether Fortresses were not present.{*B*}{*B*}
 
 	{*T1*}In-Game Options{*ETW*}{*B*}
 	While in the game a number of options can be accessed by pressing {*BACK_BUTTON*} to bring up the in-game menu.{*B*}{*B*}
-	
+
 	{*T2*}Host Options{*ETW*}{*B*}
 	The host player, and any players set as moderators can access the "Host Option" menu. In this menu they can enable and disable fire spreading and TNT exploding.{*B*}{*B*}
 
@@ -455,22 +455,22 @@ To modify the privileges for a player, select their name and press{*CONTROLLER_V
 
 	{*T2*}Can Build And Mine{*ETW*}{*B*}
 	This option is only available when "Trust Players" is turned off. When this option is enabled, the player is able to interact with the world as normal. When disabled the player will not be able to place or destroy blocks, or interact with many items and blocks.{*B*}{*B*}
-	
+
 	{*T2*}Can Use Doors and Switches{*ETW*}{*B*}
 	This option is only available when "Trust Players" is turned off. When this option is disabled, the player will not be able to use doors and switches.{*B*}{*B*}
-	
+
 	{*T2*}Can Open Containers{*ETW*}{*B*}
 	This option is only available when "Trust Players" is turned off. When this option is disabled, the player will not be able to open containers, such as chests.{*B*}{*B*}
-	
+
 	{*T2*}Can Attack Players{*ETW*}{*B*}
 	This option is only available when "Trust Players" is turned off. When this option is disabled the player will not be able to cause damage to other players.{*B*}{*B*}
-	
+
 	{*T2*}Can Attack Animals{*ETW*}{*B*}
 	This option is only available when "Trust Players" is turned off. When this option is disabled the player will not be able to cause damage to animals.{*B*}{*B*}
-	
+
 	{*T2*}Moderator{*ETW*}{*B*}
 	When this option is enabled, the player is able to change privileges for other players (except the host) if "Trust Players" is turned off, kick players and they can enable and disable fire spreading and TNT exploding.{*B*}{*B*}
-	
+
 	{*T2*}Kick Player{*ETW*}{*B*}
 	{*KICK_PLAYER_DESCRIPTION*}{*B*}{*B*}
 
@@ -522,7 +522,7 @@ If "Host Privileges" is enabled the host player can modify some privileges for t
       <data name="IDS_HOW_TO_PLAY_MENU_DISPENSER">
     <value>Dispenser</value>
 	  </data>
-	  
+
 <data name="IDS_HOW_TO_PLAY_MENU_FARMANIMALS">
     <value>Farming Animals</value>
 </data>
@@ -535,7 +535,7 @@ If "Host Privileges" is enabled the host player can modify some privileges for t
 <data name="IDS_HOW_TO_PLAY_MENU_ENCHANTMENT">
     <value>Enchantment</value>
 </data>
-  
+
       <data name="IDS_HOW_TO_PLAY_MENU_NETHERPORTAL">
     <value>Nether Portal</value>
   </data>
@@ -572,13 +572,13 @@ The End is another dimension in the game, which is reached through an active End
 To activate the End Portal, you'll need to put an Eye of Ender into any End Portal Frame without one.{*B*}
 Once the portal is active, jump in to it to go to The End.{*B*}{*B*}
 In The End you will meet the Ender Dragon, a fierce and powerful enemy, along with many Enderman, so you will have to be well prepared for the battle before going there!{*B*}{*B*}
-You'll find that there are Ender Crystals on top of eight Obsidian spikes that the Ender Dragon uses to heal itself, 
+You'll find that there are Ender Crystals on top of eight Obsidian spikes that the Ender Dragon uses to heal itself,
 so the first step in the battle is to destroy each of these.{*B*}
 The first few can be reached with arrows, but the later ones are protected by an Iron Fence cage, and you will need to build up to them.{*B*}{*B*}
 While you are doing this, the Ender Dragon will be attacking you by flying at you and spitting Ender acid balls!{*B*}
 If you approach the Egg Podium in the centre of the spikes, the Ender Dragon will fly down and attack you and this is where you can really do some damage to it!{*B*}
 Avoid the acid breath, and target the Ender Dragon's eyes for the best results. If possible, bring some friends in to The End to help you with the battle!{*B*}{*B*}
-Once you are in The End, your friends will be able to see the location of the End Portal within the Stronghold on their maps, 
+Once you are in The End, your friends will be able to see the location of the End Portal within the Stronghold on their maps,
 so they can easily join you.
   </value>
   </data>
@@ -673,7 +673,7 @@ Firework Stars can be crafted by placing Gunpowder and Dye into the crafting gri
  - A trail or a twinkle can be added using Diamonds or Glowstone Dust.{*B*}{*B*}
 After a Firework Star has been crafted, you can set the fade color of the Firework Star by crafting it with Dye.
 	</value>
-	</data>	
+	</data>
 
 <data name="IDS_HOW_TO_PLAY_MENU_HOPPERS">
 	<value>Hoppers</value>
@@ -697,7 +697,7 @@ If the Dropper is facing a Chest or another type of Container, the item will be 
 	</value>
 </data>
 
-		
+
 
 ﻿
 <data name="IDS_DESC_SWORD">
@@ -737,15 +737,15 @@ If the Dropper is facing a Chest or another type of Container, the item will be 
 
 	<data name="IDS_DESC_HELMET_LEATHER">
 		<value>Gives the user 1 Armor when worn.</value>
-	</data>	
+	</data>
 
 	<data name="IDS_DESC_CHESTPLATE_LEATHER">
 		<value>Gives the user 3 Armor when worn.</value>
-	</data>	
+	</data>
 
 	<data name="IDS_DESC_LEGGINGS_LEATHER">
 		<value>Gives the user 2 Armor when worn.</value>
-	</data>	
+	</data>
 
 	<data name="IDS_DESC_BOOTS_LEATHER">
 		<value>Gives the user 1 Armor when worn.</value>
@@ -849,7 +849,7 @@ If the Dropper is facing a Chest or another type of Container, the item will be 
 	<value>Used to craft torches, arrows, signs, ladders, fences and as handles for tools and weapons.</value>
   </data>
 <data name="IDS_DESC_BED">
-	<value>Used to forward time from any time at night to morning if all the players in the world are in bed, and changes the spawn point of the player. 
+	<value>Used to forward time from any time at night to morning if all the players in the world are in bed, and changes the spawn point of the player.
 The colors of the bed are always the same, regardless of the colors of wool used.</value>
   </data>
 <data name="IDS_DESC_CRAFTINGTABLE">
@@ -921,7 +921,7 @@ The colors of the bed are always the same, regardless of the colors of wool used
 <data name="IDS_DESC_ARROW">
 	<value>Used as ammunition for bows.</value>
   </data>
-  
+
 <data name="IDS_DESC_NETHER_STAR">
 	<value>Dropped by the Wither, used in crafting Beacons.</value>
 </data>
@@ -939,7 +939,7 @@ The colors of the bed are always the same, regardless of the colors of wool used
 </data>
 <data name="IDS_DESC_DAYLIGHT_DETECTOR">
 	<value>Is a block that outputs a Redstone signal based on sunlight (or lack of sunlight).</value>
-</data>		
+</data>
 <data name="IDS_DESC_MINECART_HOPPER">
 	<value>Is a special type of Minecart that functions similarly to a Hopper. It will collect items lying on tracks and from containers above it.</value>
 </data>
@@ -1016,7 +1016,7 @@ The colors of the bed are always the same, regardless of the colors of wool used
 	<value>Used to send an electrical charge by being turned on or off. Stays in the on or off state until pressed again.</value>
   </data>
 <data name="IDS_DESC_REDSTONETORCH">
-	<value>Constantly sends an electrical charge, or can be used as a receiver/transmitter when connected to the side of a block. 
+	<value>Constantly sends an electrical charge, or can be used as a receiver/transmitter when connected to the side of a block.
 Can also be used for low-level lighting.</value>
   </data>
 <data name="IDS_DESC_REDSTONEREPEATER">
@@ -1094,7 +1094,7 @@ Can also be used for low-level lighting.</value>
 	<value>Used as a dye to create gray wool.</value>
   </data>
 <data name="IDS_DESC_DYE_LIGHTGRAY">
-	<value>Used as a dye to create light gray wool. 
+	<value>Used as a dye to create light gray wool.
 (Note: light gray dye can also be made by combining gray dye with bone meal, letting you make four light gray dyes from every ink sac instead of three.)</value>
   </data>
 <data name="IDS_DESC_DYE_LIGHTBLUE">
@@ -1496,7 +1496,7 @@ Can also be used for low-level lighting.</value>
 	<data name="IDS_DESC_COAL_BLOCK">
 	  <value>A compact way of storing Coal. Can be used as fuel in a Furnace.</value>
 	 </data>
-	
+
 	<data name="IDS_SQUID">
 		<value>Squid</value>
 	</data>
@@ -1737,7 +1737,7 @@ Can also be used for low-level lighting.</value>
   </data>
   <data name="IDS_CREDITS_ARTDEVELOPER">
     <value>Art Developer</value>
-  </data>  
+  </data>
   <data name="IDS_CREDITS_GAMECRAFTER">
     <value>Game Crafter</value>
   </data>
@@ -2618,7 +2618,7 @@ Can also be used for low-level lighting.</value>
   </data>
       <data name="IDS_TILE_STONESLAB_JUNGLE">
     <value>Jungle Wood Slab</value>
-  </data>      
+  </data>
   <data name="IDS_TILE_STONESLAB_NETHERBRICK">
     <value>Nether Brick Slab</value>
   </data>
@@ -2932,7 +2932,7 @@ Can also be used for low-level lighting.</value>
     <value>Skull</value>
   </data>
 
-  
+
   <data name="IDS_TILE_COMMAND_BLOCK">
     <value>Command Block</value>
   </data>
@@ -2978,7 +2978,7 @@ Can also be used for low-level lighting.</value>
   <data name="IDS_TILE_COAL">
     <value>Block of Coal</value>
   </data>
-  
+
   <data name="IDS_TILE_STAINED_CLAY_BLACK">
     <value>Black Stained Clay</value>
   </data>
@@ -3027,7 +3027,7 @@ Can also be used for low-level lighting.</value>
   <data name="IDS_TILE_STAINED_CLAY_WHITE">
     <value>White Stained Clay</value>
   </data>
-  
+
   <data name="IDS_TILE_STAINED_GLASS">
     <value>Stained Glass</value>
   </data>
@@ -3079,7 +3079,7 @@ Can also be used for low-level lighting.</value>
   <data name="IDS_TILE_STAINED_GLASS_WHITE">
     <value>White Stained Glass</value>
   </data>
-  
+
   <data name="IDS_TILE_STAINED_GLASS_PANE">
     <value>Stained Glass Pane</value>
   </data>
@@ -3132,7 +3132,7 @@ Can also be used for low-level lighting.</value>
     <value>White Stained Glass Pane</value>
   </data>
 
-  
+
   <data name="IDS_FIREWORKS_CHARGE_TYPE_0">
     <value>Small Ball</value>
   </data>
@@ -3151,7 +3151,7 @@ Can also be used for low-level lighting.</value>
   <data name="IDS_FIREWORKS_CHARGE_TYPE">
     <value>Unknown Shape</value>
   </data>
-  
+
   <data name="IDS_FIREWORKS_CHARGE_BLACK">
     <value>Black</value>
   </data>
@@ -3203,7 +3203,7 @@ Can also be used for low-level lighting.</value>
   <data name="IDS_FIREWORKS_CHARGE_CUSTOM">
     <value>Custom</value>
   </data>
-  
+
   <data name="IDS_FIREWORKS_CHARGE_FADE_TO">
     <value>Fade to</value>
   </data>
@@ -3341,7 +3341,7 @@ Can also be used for low-level lighting.</value>
     <value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\Icon_Shank.png" align="middle" height="22" width="22"/><img src="{*IMAGEROOT*}Graphics\Icon_Shank.png" align="middle" height="22" width="22"/><img src="{*IMAGEROOT*}Graphics\Icon_Shank.png" align="middle" height="22" width="22"/>]]></value>
 </data>
 
-﻿ 
+﻿
  <data name="IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE">
     <value>{*B*}Press{*CONTROLLER_VK_A*} to continue.</value>
   </data>
@@ -3349,9 +3349,9 @@ Can also be used for low-level lighting.</value>
     <value>{*B*}Press{*CONTROLLER_VK_A*} to start the tutorial.{*B*}
 Press{*CONTROLLER_VK_B*} if you think you are ready to play on your own.</value>
   </data>
-  
+
  <data name="IDS_TUTORIAL_TASK_OVERVIEW">
-    <value>Minecraft is a game about placing blocks to build anything you can imagine.  
+    <value>Minecraft is a game about placing blocks to build anything you can imagine.
 At night monsters come out, make sure to build a shelter before that happens.</value>
   </data>
   <data name="IDS_TUTORIAL_TASK_LOOK">
@@ -3491,7 +3491,7 @@ With multiple items on the pointer, use{*CONTROLLER_VK_A*} to place them all, or
     <value>Press{*CONTROLLER_VK_B*} now to exit the inventory.</value>
   </data>
 
-  
+
 
   <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_OVERVIEW">
     <value>This is the creative mode inventory. It shows items available for use in your hand, and all the other items that you can choose from.</value>
@@ -3520,7 +3520,7 @@ When on the item list, use{*CONTROLLER_VK_A*} to pick an item under the pointer,
   <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_EXIT">
     <value>Press{*CONTROLLER_VK_B*} now to exit the creative mode inventory.</value>
   </data>
-      
+
   <data name="IDS_TUTORIAL_TASK_CRAFT_OVERVIEW">
     <value>This is the crafting interface. This interface allows you to combine the items you've collected to make new items.</value>
   </data>
@@ -3588,7 +3588,7 @@ Press{*CONTROLLER_VK_B*} now to exit the crafting interface.</value>
     <value>Place the furnace you have crafted in the world. You will want to put this inside your shelter.{*B*}
 Press{*CONTROLLER_VK_B*} now to exit the crafting interface.</value>
   </data>
-  
+
   <data name="IDS_TUTORIAL_TASK_FURNACE_OVERVIEW">
     <value>This is the furnace interface. A furnace allows you to change items by firing them. For example, you can turn iron ore into iron ingots in the furnace.</value>
   </data>
@@ -3615,7 +3615,7 @@ Press{*CONTROLLER_VK_B*} if you already know how to use a furnace.</value>
   <data name="IDS_TUTORIAL_TASK_FURNACE_CREATE_GLASS">
     <value>Placing sand in the ingredient slot allows you to make glass. Create some glass blocks to use as windows in your shelter.</value>
   </data>
-  
+
   <data name="IDS_TUTORIAL_TASK_BREWING_MENU_OVERVIEW">
     <value>This is the brewing interface. You can use this to create potions that have a variety of different effects.</value>
   </data>
@@ -3642,7 +3642,7 @@ Press{*CONTROLLER_VK_B*} if you already know how to use the brewing stand.</valu
   <data name="IDS_TUTORIAL_TASK_BREWING_MENU_EXIT">
     <value>Press{*CONTROLLER_VK_B*} now to exit the brewing interface.</value>
   </data>
-  
+
   <data name="IDS_TUTORIAL_TASK_BREWING_OVERVIEW">
     <value>In this area there is a Brewing Stand, a Cauldron and a chest full of items for brewing.</value>
   </data>
@@ -3664,7 +3664,7 @@ Press{*CONTROLLER_VK_B*} if you already know about brewing and potions.</value>
     <value>Use the Brewing Stand to create a Potion of Fire Resistance. You will need a Water Bottle, Nether Wart and Magma Cream.</value>
   </data>
   <data name="IDS_TUTORIAL_TASK_BREWING_USE_POTION">
-    <value>With a potion in your hand, hold{*CONTROLLER_ACTION_USE*} to use it. For a normal potion you will drink it and apply the effect to yourself, and for a Splash potion you will throw it and apply the effect to creatures near where it hits. 
+    <value>With a potion in your hand, hold{*CONTROLLER_ACTION_USE*} to use it. For a normal potion you will drink it and apply the effect to yourself, and for a Splash potion you will throw it and apply the effect to creatures near where it hits.
 Splash potions can be created by adding gunpowder to normal potions.</value>
   </data>
   <data name="IDS_TUTORIAL_TASK_BREWING_DRINK_FIRE_POTION">
@@ -3673,7 +3673,7 @@ Splash potions can be created by adding gunpowder to normal potions.</value>
   <data name="IDS_TUTORIAL_TASK_BREWING_USE_EFFECTS">
     <value>Now that you are resistant to fire and lava, you should see if there are places you can get to that you couldn't before.</value>
   </data>
-  
+
   <data name="IDS_TUTORIAL_TASK_ENCHANTING_MENU_OVERVIEW">
     <value>This is the enchanting interface which you can use to add enchantments to weapons, armor and some tools.</value>
   </data>
@@ -3697,7 +3697,7 @@ Press{*CONTROLLER_VK_B*} if you already know about the enchanting interface.</va
   <data name="IDS_TUTORIAL_TASK_ENCHANTING_MENU_BETTER_ENCHANTMENTS">
     <value>Although the enchantments are all random, some of the better enchantments are only available when you have a high experience level and have lots of bookcases around the Enchantment Table to increase its power.</value>
   </data>
-  
+
   <data name="IDS_TUTORIAL_TASK_ENCHANTING_OVERVIEW">
     <value>In this area there is an Enchantment Table and some other items to help you learn about enchanting.</value>
   </data>
@@ -3852,7 +3852,7 @@ Press{*CONTROLLER_VK_B*} if you already know about Creative mode.</value>
     <value>When in Creative mode you have in infinite number of all available items and blocks, you can destroy blocks with one click without a tool, you are invulnerable and you can fly.</value>
   </data>
   <data name="IDS_TUTORIAL_TASK_FLY">
-    <value>Pressing{*CONTROLLER_ACTION_JUMP*} twice quickly will allow you to fly. To exit flying, repeat the action. To fly faster, push{*CONTROLLER_ACTION_MOVE*} forward twice in rapid succession while flying. 
+    <value>Pressing{*CONTROLLER_ACTION_JUMP*} twice quickly will allow you to fly. To exit flying, repeat the action. To fly faster, push{*CONTROLLER_ACTION_MOVE*} forward twice in rapid succession while flying.
 When in flying mode, you can hold down{*CONTROLLER_ACTION_JUMP*} to move up and{*CONTROLLER_ACTION_SNEAK*} to move down, or use the D-pad to move up, down, left or right.</value>
   </data>
   <data name="IDS_TUTORIAL_TASK_OPEN_CREATIVE_INVENTORY">
@@ -3924,7 +3924,7 @@ Press{*CONTROLLER_VK_B*} if you already know about animals and breeding.</value>
   <data name="IDS_TUTORIAL_TASK_BREEDING_FOLLOW">
     <value>Some animals will follow you if you are holding their food in your hand. This makes it easier to group animals together to breed them.{*ICON*}296{*/ICON*}</value>
   </data>
- 
+
   <data name="IDS_TUTORIAL_TASK_BREEDING_WOLF_TAMING">
     <value>Wild wolves can be tamed by giving them bones. Once tamed Love Hearts will appear around them. Tamed wolves will follow the player and defend them if they haven't been commanded to sit.</value>
   </data>
@@ -3999,7 +3999,7 @@ Press{*CONTROLLER_VK_B*} if you already know about Golems.</value>
   <data name="IDS_TUTORIAL_HINT_CRAFT_NO_INGREDIENTS">
     <value>You do not have all the ingredients required to make this item. The box on the bottom left shows the ingredients required to craft this.</value>
   </data>
-  
+
   <data name="IDS_TUTORIAL_COMPLETED">
     <value>Congratulations, you have completed the tutorial. Time in the game is now passing normally, and you don't have long until night time and the monsters come out! Finish your shelter!</value>
   </data>
@@ -4013,8 +4013,8 @@ Press{*CONTROLLER_VK_B*} if you already know about Golems.</value>
     <data name="IDS_TUTORIAL_HTML_EXIT_PICTURE">
     <value><![CDATA[<div align="center"><img src="Graphics\TutorialExitScreenshot.png"/></div>]]></value>
   </data>
-  
- 
+
+
  <data name="IDS_TUTORIAL_NEW_FEATURES_CHOICE">
     <value>New features have been added to the game in the latest version, including new areas in the tutorial world.</value>
   </data>
@@ -4028,7 +4028,7 @@ Press{*CONTROLLER_VK_B*} to skip the main tutorial.</value>
   <data name="IDS_TUTORIAL_FEATURES_OUTSIDE_THIS_AREA">
     <value>Outside of this area you will find examples of buildings, farming, minecarts and tracks, enchanting, brewing, trading, smithing and more!</value>
   </data>
-  
+
   <data name="IDS_TUTORIAL_TASK_FOOD_BAR_OVERVIEW">
     <value>Your food bar has depleted to a level where you will no longer heal.</value>
   </data>
@@ -4062,7 +4062,7 @@ Press{*CONTROLLER_VK_B*} if you already know about the food bar and eating food.
 	</data>
 	<data name="IDS_TUTORIAL_TASK_MULE_OVERVIEW">
 		<value>You have found a Mule.</value>
-	</data>	
+	</data>
 	<data name="IDS_TUTORIAL_PROMPT_HORSE_OVERVIEW">
 		<value>{*B*}Press{*CONTROLLER_VK_A*} to learn more about Horses, Donkeys and Mules.
 {*B*}Press{*CONTROLLER_VK_B*} if you already know about Horses, Donkeys and Mules.</value>
@@ -4250,7 +4250,7 @@ Press{*CONTROLLER_VK_B*} if you already know about Fireworks.</value>
   </data>
   <data name="IDS_TOOLTIPS_SHOW_INGREDIENTS">
     <value>Show Ingredients</value>
-  </data>  
+  </data>
   <data name="IDS_TOOLTIPS_CRAFTING">
     <value>Crafting</value>
   </data>
@@ -4541,7 +4541,7 @@ Press{*CONTROLLER_VK_B*} if you already know about Fireworks.</value>
   <data name="IDS_TOOLTIPS_SAVETRANSFER_UPLOAD">
     <value>Upload Save for Xbox One</value>
   </data>
-  
+
 <data name="IDS_TOOLTIPS_MOUNT">
 	<value>Mount</value>
 </data>
@@ -4583,21 +4583,21 @@ Press{*CONTROLLER_VK_B*} if you already know about Fireworks.</value>
   <data name="IDS_EXIT_GAME">
 	<value>Exit Game</value>
   </data>
- 
+
   <data name="IDS_TITLE_SAVE_GAME">
 	<value>Save Game</value>
   </data>
 	<data name="IDS_TITLE_DECLINE_SAVE_GAME">
 	<value>Exit Without Saving</value>
   </data>
- 
+
 	<data name="IDS_CONFIRM_SAVE_GAME">
 	<value>Are you sure you want to overwrite any previous save for this world with the current version of this world?</value>
   </data>
 	 <data name="IDS_CONFIRM_DECLINE_SAVE_GAME">
 	<value>Are you sure you want to exit without saving? You will lose all progress in this world!</value>
   </data>
-  
+
   <data name="IDS_TITLE_START_GAME">
 	<value>Start Game</value>
   </data>
@@ -4609,7 +4609,7 @@ Press{*CONTROLLER_VK_B*} if you already know about Fireworks.</value>
   </data>
    <data name="IDS_CONFIRM_START_SAVEDINCREATIVE_CONTINUE">
 	<value>This world has previously been saved in Creative Mode, and it will have achievements and leaderboard updates disabled.</value>
-  </data> 
+  </data>
   <data name="IDS_CONFIRM_START_HOST_PRIVILEGES">
 	<value>If you create, load or save a world with Host Privileges enabled, that world will have achievements and leaderboard updates disabled, even if it is then loaded with those options off. Are you sure you want to continue?</value>
   </data>
@@ -4689,7 +4689,7 @@ Press{*CONTROLLER_VK_B*} if you already know about Fireworks.</value>
   <data name="IDS_CONNECTION_LOST_LIVE_NO_EXIT">
 	<value>Connection to Xbox Live was lost.</value>
   </data>
-  
+
   <data name="IDS_DISCONNECTED">
 	<value>Disconnected by the server</value>
   </data>
@@ -4759,23 +4759,23 @@ Go to the dashboard to select this theme.</value>
 Would you like to unlock the full game now?</value>
   </data>
  <data name="IDS_UNLOCK_ACHIEVEMENT_TEXT">
-	<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned an achievement! 
+	<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned an achievement!
 Would you like to unlock the full game?</value>
   </data>
  <data name="IDS_UNLOCK_AVATAR_TEXT">
-	<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned an avatar award! 
+	<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned an avatar award!
 Would you like to unlock the full game?</value>
   </data>
  <data name="IDS_UNLOCK_GAMERPIC_TEXT">
-	<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned a gamerpic! 
+	<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned a gamerpic!
 Would you like to unlock the full game?</value>
   </data>
  <data name="IDS_UNLOCK_THEME_TEXT">
-	<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned a theme! 
+	<value>This is the Minecraft: Xbox 360 Edition trial game. If you had the full game, you would just have earned a theme!
 Would you like to unlock the full game?</value>
   </data>
    <data name="IDS_UNLOCK_ACCEPT_INVITE">
-	<value>This is the Minecraft: Xbox 360 Edition trial game. You need the full game to be able to accept this invite. 
+	<value>This is the Minecraft: Xbox 360 Edition trial game. You need the full game to be able to accept this invite.
 Would you like to unlock the full game?</value>
   </data>
  <data name="IDS_UNLOCK_GUEST_TEXT">
@@ -4889,11 +4889,11 @@ Would you like to unlock the full game?</value>
   <data name="IDS_TILE_BED_NOTSAFE">
 	<value>You may not rest now, there are monsters nearby</value>
   </data>
-  
+
  <data name="IDS_TILE_BED_MESLEEP">
 	<value>You are sleeping in a bed. To skip to dawn, all players need to sleep in beds at the same time.</value>
   </data>
- 
+
    <data name="IDS_GROUPNAME_TOOLS">
 	<value>Tools and Weapons</value>
   </data>
@@ -4940,7 +4940,7 @@ Would you like to unlock the full game?</value>
  <data name="IDS_GROUPNAME_MATERIALS">
 	<value>Materials</value>
   </data>
- 
+
 <data name="IDS_RETURNEDTOMENU_TITLE">
 	<value>Signed out</value>
   </data>
@@ -4954,7 +4954,7 @@ Would you like to unlock the full game?</value>
    <data name="IDS_SLIDER_MUSIC">
 	<value>Music</value>
 	</data>
-	   <data name="IDS_SLIDER_SOUND"> 
+	   <data name="IDS_SLIDER_SOUND">
 	<value>Sound</value>
 	</data>
 	   <data name="IDS_SLIDER_GAMMA">
@@ -5159,10 +5159,10 @@ Would you like to unlock the full game?</value>
   </data>
   <data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_REMOTE">
   <value>You are not allowed to join this game session because a player in the session has a Member Content privilege setting of Friends Only, and you are not on their Friends List.</value>
-  </data>  
+  </data>
   <data name="IDS_FAILED_TO_CREATE_GAME_TITLE">
   <value>Failed to create game</value>
-  </data>  
+  </data>
   <data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE">
   <value>You are not allowed to create this game session because one of your local players has a Member Content privilege setting that is too restrictive. Uncheck the "Online Game" box to start an offline game, or change this setting in the Privacy and Online Settings portion of the Xbox dashboard.</value>
   </data>
@@ -5181,9 +5181,9 @@ Would you like to unlock the full game?</value>
 <data name="IDS_BANNED_LEVEL_TITLE">
    <value>Banned Level</value>
 </data>
-  
+
 <data name="IDS_PLAYER_BANNED_LEVEL">
-   <value>The game you are joining is in your banned level list. 
+   <value>The game you are joining is in your banned level list.
 If you choose to join this game, the level will be removed from your banned level list.</value>
 </data>
 
@@ -5192,7 +5192,7 @@ If you choose to join this game, the level will be removed from your banned leve
 </data>
 
 <data name="IDS_ACTION_BAN_LEVEL_DESCRIPTION">
-   <value>Are you sure you want to add this level to your banned level list? 
+   <value>Are you sure you want to add this level to your banned level list?
 Selecting OK will also exit this game.</value>
 </data>
 
@@ -5200,29 +5200,29 @@ Selecting OK will also exit this game.</value>
    <value>Remove from Banned List</value>
 </data>
 
-<data name="IDS_SLIDER_AUTOSAVE"> 
+<data name="IDS_SLIDER_AUTOSAVE">
   <value>Autosave Interval</value>
 </data>
 
-<data name="IDS_SLIDER_AUTOSAVE_OFF"> 
+<data name="IDS_SLIDER_AUTOSAVE_OFF">
   <value>Autosave Interval: OFF</value>
 </data>
-<data name="IDS_MINUTES"> 
+<data name="IDS_MINUTES">
   <value>Mins</value>
 </data>
-<data name="IDS_CANT_PLACE_NEAR_SPAWN_TITLE"> 
+<data name="IDS_CANT_PLACE_NEAR_SPAWN_TITLE">
   <value>Can't Place Here!</value>
 </data>
-<data name="IDS_CANT_PLACE_NEAR_SPAWN_TEXT"> 
+<data name="IDS_CANT_PLACE_NEAR_SPAWN_TEXT">
   <value>Placing lava close to the level spawn point is not allowed due to the possibility of instant death for spawning players.</value>
 </data>
 
-<data name="IDS_SAVE_ICON_MESSAGE"> 
+<data name="IDS_SAVE_ICON_MESSAGE">
   <value>This game has a level autosave feature. When you see the icon above displayed, the game is saving your data.
 Please do not turn off your Xbox 360 console while this icon is on-screen.</value>
 </data>
 
-<data name="IDS_SLIDER_INTERFACEOPACITY"> 
+<data name="IDS_SLIDER_INTERFACEOPACITY">
   <value>Interface Opacity</value>
 </data>
 
@@ -5230,10 +5230,10 @@ Please do not turn off your Xbox 360 console while this icon is on-screen.</valu
 	<value>Preparing to Autosave Level</value>
   </data>
 
-  <data name="IDS_SLIDER_UISIZE"> 
+  <data name="IDS_SLIDER_UISIZE">
   <value>HUD Size</value>
 </data>
-<data name="IDS_SLIDER_UISIZESPLITSCREEN"> 
+<data name="IDS_SLIDER_UISIZESPLITSCREEN">
   <value>HUD Size (Splitscreen)</value>
 </data>
 
@@ -5259,7 +5259,7 @@ Would you like to unlock it now?</value>
 	<value>Trial Texture Pack</value>
   </data>
 <data name="IDS_WARNING_DLC_TRIALTEXTUREPACK_TEXT">
-	<value>You are using a trial version of the texture pack. You will not be able to save this world unless you unlock the full version. 
+	<value>You are using a trial version of the texture pack. You will not be able to save this world unless you unlock the full version.
 Would you like to unlock the full version of the texture pack?</value>
   </data>
 
@@ -5943,7 +5943,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	<data name="IDS_GAME_OPTIONS">
 		<value>Game Options</value>
 	</data>
-	
+
 	<data name="IDS_MOB_GRIEFING">
 		<value>Mob Griefing</value>
 	</data>
@@ -5965,7 +5965,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	<data name="IDS_DAYLIGHT_CYCLE">
 		<value>Daylight Cycle</value>
 	</data>
-  
+
   <data name="IDS_CAN_BUILD_AND_MINE">
 	<value>Can Build and Mine</value>
   </data>
@@ -6002,7 +6002,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	<data name="IDS_PLAYERS_INVITE">
 	<value>Players/Invite</value>
   </data>
-  
+
 	<data name="IDS_ONLINE_GAME">
 	<value>Online Game</value>
   </data>
@@ -6041,7 +6041,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
   </data>
 
 	<data name="IDS_PLAY_GAME">
-	<value>Play Game</value>
+	<value>Kiss girls</value>
   </data>
 	<data name="IDS_LEADERBOARDS">
 	<value>Leaderboards</value>
@@ -6089,8 +6089,8 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	<data name="IDS_LABEL_FIRE_SPREADS">
 	<value>Fire Spreads:</value>
   </data>
- 
-  
+
+
 	<data name="IDS_REINSTALL_THEME">
 	<value>Reinstall Theme</value>
   </data>
@@ -6109,7 +6109,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	<data name="IDS_REINSTALL_AVATAR_ITEM_3">
 	<value>Reinstall Avatar Item 3</value>
   </data>
-  
+
 	<data name="IDS_OPTIONS">
 	<value>Options</value>
   </data>
@@ -6128,7 +6128,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	<data name="IDS_RESET_TO_DEFAULTS">
 	<value>Reset to Defaults</value>
   </data>
-  
+
 	<data name="IDS_VIEW_BOBBING">
 	<value>View Bobbing</value>
   </data>
@@ -6144,14 +6144,14 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	<data name="IDS_CHECKBOX_VERTICAL_SPLIT_SCREEN">
 	<value>2 Player Split-screen Vertical</value>
   </data>
-  
+
 	<data name="IDS_DONE">
 	<value>Done</value>
   </data>
 	<data name="IDS_EDIT_SIGN_MESSAGE">
 	<value>Edit sign message:</value>
   </data>
-  
+
 	<data name="IDS_SOCIAL_TEXT">
 	<value>Fill in the details to accompany your screenshot</value>
   </data>
@@ -6168,7 +6168,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	<value>Look what I made in Minecraft: Xbox 360 Edition!</value>
   </data>
 
-  
+
 	<data name="IDS_DEFAULT_TEXTUREPACK">
 	<value>The classic Minecraft textures, icons and user interface!</value>
   </data>
@@ -6270,7 +6270,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
   <data name="IDS_POTION_SATURATION">
     <value>Saturation</value>
   </data>
-  
+
   <data name="IDS_POTION_MOVESPEED_POSTFIX">
     <value>of Swiftness</value>
   </data>
@@ -6354,7 +6354,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
     <value>IV</value>
   </data>
 
-  
+
   <data name="IDS_POTION_PREFIX_GRENADE">
     <value>Splash </value>
   </data>
@@ -6454,7 +6454,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
   <data name="IDS_POTION_PREFIX_STINKY">
     <value>Stinky </value>
   </data>
-  
+
   <data name="IDS_POTION_DESC_WATER_BOTTLE">
     <value>Used as the base of all potions. Use in a brewing stand to create potions.</value>
   </data>
@@ -6514,7 +6514,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
   <data name="IDS_ATTRIBUTE_NAME_GENERIC_ATTACKDAMAGE">
     <value>Attack Damage</value>
   </data>
-  
+
   <data name="IDS_ENCHANTMENT_DAMAGE_ALL">
     <value>Sharpness</value>
   </data>
@@ -6578,7 +6578,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
   <data name="IDS_ENCHANTMENT_ARROW_INFINITE">
     <value>Infinity</value>
   </data>
-  
+
   <data name="IDS_ENCHANTMENT_LEVEL_1">
     <value>I</value>
   </data>
@@ -6901,7 +6901,7 @@ Would you like to install the mash-up pack or texture pack now?</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_ANVIL_MENU_START">
 		<value>
-			To begin working on an item, place it in the first input slot. 
+			To begin working on an item, place it in the first input slot.
 		</value>
 	</data>
 	<data name="IDS_TUTORIAL_TASK_ANVIL_MENU_REPAIR">
@@ -7242,7 +7242,7 @@ All Ender Chests in a world are linked. Items placed into an Ender Chest are acc
     <value>Only one Xbox 360 console save can be stored in the save transfer area at a time. Please ensure you have downloaded the save on your Xbox One console before uploading another Xbox 360 console save.</value>
   </data>
 
-  
+
     <data name="IDS_SAVE_TRANSFER_UPLOADING">
     <value>Uploading...</value>
   </data>
