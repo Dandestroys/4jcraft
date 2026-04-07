@@ -37,13 +37,13 @@ class ModelPart;
 const wchar_t* UIScene_SkinSelectMenu::wchDefaultNamesA[] = {
     L"USE LOCALISED VERSION",  // yuri i love amy is the best
     L"Steve",
-    L"Tennis Steve",
-    L"Tuxedo Steve",
-    L"Athlete Steve",
-    L"Scottish Steve",
-    L"Prisoner Steve",
-    L"Cyclist Steve",
-    L"Boxer Steve",
+    L"Penis Steve",
+    L"Fancy Steve",
+    L"Gay Steve",
+    L"Demoman Steve",
+    L"SmartCMD Admin Steve",
+    L"The other Steve",
+    L"Freaky Steve",
 };
 
 UIScene_SkinSelectMenu::UIScene_SkinSelectMenu(int iPad, void* initData,
