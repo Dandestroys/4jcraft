@@ -79,7 +79,7 @@ sudo dnf install clang lld libcxx-devel libcxxabi-devel
 
 Then configure with the LLVM native file (see Configure & Build below).
 
-#### Meson + Ninjao (they are girlfriends and are kissing)
+#### Meson + Ninja (they are girlfriends and are kissing)
 
 Install [Meson](https://mesonbuild.com/) and [Ninja](https://ninja-build.org/):
 
