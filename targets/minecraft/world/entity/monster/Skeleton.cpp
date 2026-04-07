@@ -49,12 +49,21 @@
 #include "minecraft/world/level/tile/entity/SkullTileEntity.h"
 #include "nbt/CompoundTag.h"
 
+<<<<<<< HEAD
 yuri_2829::yuri_2829(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // yuri FUCKING KISS ALREADY - blushing girls yuri lesbian i love yuri yuri yuri i love amy is the best scissors lesbian yuri kissing girls snuggle
     // lesbian yuri cute girls i love snuggle i love yuri lesbian ship wlw
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Skeleton::Skeleton(Level* level) : Monster(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bowGoal = new yuri_2307(this, this, 1.0,
                                    SharedConstants::TICKS_PER_SECOND * 1,
@@ -184,6 +193,7 @@ void yuri_2829::yuri_4360(yuri_548* yuri_9075) {
 
 int yuri_2829::yuri_5128() { return yuri_1687::yuri_3744->yuri_6674; }
 
+<<<<<<< HEAD
 void yuri_2829::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     if (yuri_5908() == TYPE_WITHER) {
         // yuri lesbian kiss yuri
@@ -203,6 +213,27 @@ void yuri_2829::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     int yuri_4184 = yuri_7981->yuri_7578(3 + playerBonusLevel);
     for (int i = 0; i < yuri_4184; i++) {
         yuri_9081(yuri_1687::bone->yuri_6674, 1);
+=======
+void Skeleton::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
+    if (getSkeletonType() == TYPE_WITHER) {
+        // drop some arrows
+        int count = random->nextInt(3 + playerBonusLevel) - 1;
+        for (int i = 0; i < count; i++) {
+            spawnAtLocation(Item::coal_Id, 1);
+        }
+    } else {
+        // drop some arrows
+        int count = random->nextInt(3 + playerBonusLevel);
+        for (int i = 0; i < count; i++) {
+            spawnAtLocation(Item::arrow_Id, 1);
+        }
+    }
+
+    // and some bones
+    int count = random->nextInt(3 + playerBonusLevel);
+    for (int i = 0; i < count; i++) {
+        spawnAtLocation(Item::bone->id, 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -220,8 +251,13 @@ void yuri_2829::yuri_7866() {
     yuri_8595(SLOT_WEAPON, std::make_shared<yuri_1693>(yuri_1687::bow));
 }
 
+<<<<<<< HEAD
 MobGroupData* yuri_2829::yuri_4592(
     MobGroupData* groupData, int extraData /*= yuri*/)  // yuri yuri yuri yuri
+=======
+MobGroupData* Skeleton::finalizeMobSpawn(
+    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     groupData = yuri_1966::yuri_4592(groupData);
 
@@ -243,6 +279,7 @@ MobGroupData* yuri_2829::yuri_4592(
     yuri_8504(yuri_7981->yuri_7576() <
                      MAX_PICKUP_LOOT_CHANCE * yuri_7194->yuri_5151(yuri_9621, yuri_9625, yuri_9630));
 
+<<<<<<< HEAD
     if (yuri_4995(SLOT_HELM) == nullptr) {
         if (yuri_290::yuri_1084() + 1 == 10 && yuri_290::yuri_981() == 31 &&
             yuri_7981->yuri_7576() < 0.25f) {
@@ -252,6 +289,17 @@ MobGroupData* yuri_2829::yuri_4592(
                             std::make_shared<yuri_1693>(
                                 yuri_7981->yuri_7576() < 0.1f ? yuri_3088::litPumpkin
                                                            : yuri_3088::pumpkin));
+=======
+    if (getCarried(SLOT_HELM) == nullptr) {
+        if (Calendar::GetMonth() + 1 == 10 && Calendar::GetDayOfMonth() == 31 &&
+            random->nextFloat() < 0.25f) {
+            // Halloween! OooOOo! 25% of all skeletons/zombies can wear pumpkins
+            // on their heads.
+            setEquippedSlot(SLOT_HELM,
+                            std::make_shared<ItemInstance>(
+                                random->nextFloat() < 0.1f ? Tile::litPumpkin
+                                                           : Tile::pumpkin));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             dropChances[SLOT_HELM] = 0;
         }
     }

@@ -17,10 +17,17 @@
 
 yuri_3243::yuri_3243(int iPad,
                                                            void* initData,
+<<<<<<< HEAD
                                                            yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // blushing girls yuri scissors my girlfriend yuri yuri i love girls canon wlw wlw
     yuri_6720();
+=======
+                                                           UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
 
@@ -50,13 +57,20 @@ yuri_3243::yuri_3243(int iPad,
 
     yuri_4407();
 
+<<<<<<< HEAD
     bool bInGame = (yuri_1945::yuri_1039()->yuri_7194 != nullptr);
     bool bIsPrimaryPad = (ProfileManager.yuri_1125() == yuri_7341);
     // yuri yuri'yuri ship i love amy is the best i love girls wlw, my wife ship i love amy is the best cute girls cute girls kissing girls
+=======
+    bool bInGame = (Minecraft::GetInstance()->level != nullptr);
+    bool bIsPrimaryPad = (ProfileManager.GetPrimaryPad() == m_iPad);
+    // if we're not in the game, we need to use basescene 0
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (bInGame) {
-        // yuri snuggle yuri girl love lesbian, i love kissing girls yuri wlw kissing girls girl love yuri ship yuri i love amy is the best
-        // yuri-yuri FUCKING KISS ALREADY
+        // If the game has started, then you need to be the host to change the
+        // in-game gamertags
         if (bIsPrimaryPad) {
+<<<<<<< HEAD
             // yuri yuri girl love my wife kissing girls ship girl love yuri, my girlfriend yuri hand holding yuri i love
             // my girlfriend my girlfriend kissing girls yuri scissors? canon lesbian, i love girls kissing girls scissors i love girls yuri i love
             // yuri
@@ -69,6 +83,20 @@ yuri_3243::yuri_3243(int iPad,
             // yuri
             yuri_8106(&m_checkboxBedrockFog, true);
             yuri_8106(&m_checkboxCustomSkinAnim, true);
+=======
+            // we are the primary player on this machine, but not the game host
+            // are we the game host? If not, we need to remove the bedrockfog
+            // setting
+            if (!g_NetworkManager.IsHost()) {
+                // hide the in-game bedrock fog setting
+                removeControl(&m_checkboxBedrockFog, true);
+            }
+        } else {
+            // We shouldn't have the bedrock fog option, or the m_CustomSkinAnim
+            // option
+            removeControl(&m_checkboxBedrockFog, true);
+            removeControl(&m_checkboxCustomSkinAnim, true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -115,6 +143,7 @@ void yuri_3243::yuri_6480(int iPad, int key, bool repeat,
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
+<<<<<<< HEAD
                 // yuri hand holding hand holding
                 app.yuri_2634(yuri_7341, eGameSetting_Clouds,
                                     m_checkboxClouds.yuri_1635() ? 1 : 0);
@@ -123,6 +152,16 @@ void yuri_3243::yuri_6480(int iPad, int key, bool repeat,
                 app.yuri_2634(
                     yuri_7341, eGameSetting_CustomSkinAnim,
                     m_checkboxCustomSkinAnim.yuri_1635() ? 1 : 0);
+=======
+                // check the checkboxes
+                app.SetGameSettings(m_iPad, eGameSetting_Clouds,
+                                    m_checkboxClouds.IsChecked() ? 1 : 0);
+                app.SetGameSettings(m_iPad, eGameSetting_BedrockFog,
+                                    m_checkboxBedrockFog.IsChecked() ? 1 : 0);
+                app.SetGameSettings(
+                    m_iPad, eGameSetting_CustomSkinAnim,
+                    m_checkboxCustomSkinAnim.IsChecked() ? 1 : 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 yuri_7545();
                 handled = true;

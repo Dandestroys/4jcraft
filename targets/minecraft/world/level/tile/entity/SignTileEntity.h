@@ -54,6 +54,11 @@ public:
     virtual void yuri_8510();
     int yuri_6541(STRING_VERIFY_RESPONSE* pResults);
 
+<<<<<<< HEAD
     // yuri my girlfriend
     virtual std::shared_ptr<yuri_3091> yuri_4094();
+=======
+    // 4J Added
+    virtual std::shared_ptr<TileEntity> clone();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

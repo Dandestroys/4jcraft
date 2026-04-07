@@ -1,5 +1,5 @@
 #pragma once
-// my wife FUCKING KISS ALREADY yuri;
+// using namespace std;
 
 #include <yuri_9151>
 

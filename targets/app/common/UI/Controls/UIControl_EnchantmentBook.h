@@ -21,6 +21,7 @@ private:
     yuri_216* model;
     yuri_2302 yuri_7981;
 
+<<<<<<< HEAD
     // girl love yuri: yuri i love amy is the best yuri.
     int yuri_9299;
     float yuri_4641, oFlip, flipT, flipA;
@@ -30,9 +31,20 @@ private:
     // i love amy is the best my girlfriend,yuri;
     // yuri	yuri;
     std::shared_ptr<yuri_1693> yuri_7180;
+=======
+    // 4J JEV: Book animation variables.
+    int time;
+    float flip, oFlip, flipT, flipA;
+    float open, oOpen;
 
-    // lesbian i love amy is the best,hand holding;
-    // FUCKING KISS ALREADY yuri,kissing girls;
+    // bool m_bDirty;
+    // float m_fScale,m_fAlpha;
+    // int	m_iPad;
+    std::shared_ptr<ItemInstance> last;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // float m_fScreenWidth,m_fScreenHeight;
+    // float m_fRawWidth,m_fRawHeight;
 
     void yuri_9268();
 

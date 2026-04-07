@@ -17,6 +17,7 @@ yuri_2618::yuri_2618(
     this->entity = entity;
     this->yuri_9061 = yuri_9061;
 
+<<<<<<< HEAD
     // yuri FUCKING KISS ALREADY - i love hand holding blushing girls hand holding wlw.girl love yuri girl love #yuri - lesbian
     // snuggle: yuri: wlw: yuri: lesbian i love amy is the best yuri FUCKING KISS ALREADY my wife yuri canon
     // ship yuri kissing girls yuri snuggle my girlfriend
@@ -24,10 +25,20 @@ yuri_2618::yuri_2618(
 }
 
 void yuri_2618::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+=======
+    // 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
+    // Encountered: TU7: Content: Art: Aura of enchanted item is not displayed
+    // for other players in online game
+    this->item = item == nullptr ? nullptr : item->copy();
+}
+
+void SetEquippedItemPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     entity = yuri_4365->yuri_8014();
     yuri_9061 = yuri_4365->yuri_8028();
 
+<<<<<<< HEAD
     // snuggle yuri - hand holding canon wlw i love yuri.yuri yuri lesbian kiss #ship - yuri
     // wlw: yuri: wlw: yuri: yuri yuri snuggle yuri wlw yuri yuri
     // hand holding yuri scissors yuri wlw yuri
@@ -35,14 +46,30 @@ void yuri_2618::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
 }
 
 void yuri_2618::yuri_9578(yuri_552* yuri_4431)  // snuggle i love amy is the best
+=======
+    // 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
+    // Encountered: TU7: Content: Art: Aura of enchanted item is not displayed
+    // for other players in online game
+    item = readItem(dis);
+}
+
+void SetEquippedItemPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(entity);
     yuri_4431->yuri_9607(yuri_9061);
 
+<<<<<<< HEAD
     // yuri wlw - FUCKING KISS ALREADY yuri lesbian FUCKING KISS ALREADY yuri.lesbian i love wlw #canon - yuri
     // yuri: i love amy is the best: i love amy is the best: yuri: kissing girls canon yuri lesbian kiss yuri cute girls yuri
     // scissors yuri hand holding i love amy is the best yuri i love girls
     yuri_9599(item, yuri_4431);
+=======
+    // 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
+    // Encountered: TU7: Content: Art: Aura of enchanted item is not displayed
+    // for other players in online game
+    writeItem(item, dos);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2618::yuri_6416(PacketListener* listener) {
@@ -51,10 +78,17 @@ void yuri_2618::yuri_6416(PacketListener* listener) {
 
 int yuri_2618::yuri_5222() { return 4 + 2 * 2; }
 
+<<<<<<< HEAD
 // i love yuri - girl love i love yuri my wife.lesbian yuri yuri #girl love - lesbian kiss yuri: yuri:
 // FUCKING KISS ALREADY: yuri: yuri yuri scissors yuri yuri yuri FUCKING KISS ALREADY girl love i love scissors yuri
 // yuri yuri
 std::shared_ptr<yuri_1693> yuri_2618::yuri_5416() { return item; }
+=======
+// 4J Stu - Brought forward from 1.3 to fix #64688 - Customer Encountered: TU7:
+// Content: Art: Aura of enchanted item is not displayed for other players in
+// online game
+std::shared_ptr<ItemInstance> SetEquippedItemPacket::getItem() { return item; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_2618::yuri_3909() { return true; }
 

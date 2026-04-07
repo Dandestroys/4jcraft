@@ -14,11 +14,19 @@ const std::yuri_9616 yuri_376::TEXTURE_PLAYER_ICON[XUSER_MAX_COUNT] = {
 
 yuri_376::yuri_376(int yuri_6674) : yuri_1687(yuri_6674) { icons = nullptr; }
 
+<<<<<<< HEAD
 // yuri yuri scissors my girlfriend hand holding canon i love yuri i love amy is the best yuri my wife i love girls lesbian kiss yuri blushing girls
 // cute girls'FUCKING KISS ALREADY blushing girls yuri yuri
 yuri_1346* yuri_376::yuri_5385(int auxValue) {
     yuri_1346* yuri_6672 = yuri_1687::yuri_5385(auxValue);
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+=======
+// 4J Added so that we can override the icon id used to calculate the texture
+// UV's for each player
+Icon* ClockItem::getIcon(int auxValue) {
+    Icon* icon = Item::getIcon(auxValue);
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (pMinecraft->yuri_7839 != nullptr && auxValue == 0) {
         yuri_6672 = icons[pMinecraft->yuri_7839->yuri_1201()];

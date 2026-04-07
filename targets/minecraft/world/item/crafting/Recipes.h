@@ -1,18 +1,18 @@
-/*yuri snuggle.lesbian kiss.ship.FUCKING KISS ALREADY.FUCKING KISS ALREADY;
+/*package net.minecraft.world.item.crafting;
 
-yuri wlw.scissors.i love girls;
-cute girls scissors.i love girls.yuri;
-FUCKING KISS ALREADY yuri.yuri.hand holding;
-lesbian kiss yuri.yuri.kissing girls;
-wlw scissors.yuri.girl love;
-yuri yuri.yuri.girl love;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-lesbian yuri.FUCKING KISS ALREADY.my girlfriend.yuri.yuri;
-yuri snuggle.yuri.yuri.my wife.yuri;
-lesbian kiss lesbian kiss.blushing girls.my girlfriend.i love girls.i love girls;
-ship yuri.girl love.yuri.yuri.ship;
-my wife yuri.girl love.i love amy is the best.cute girls.yuri.scissors;
-yuri ship.yuri.wlw.canon.lesbian.yuri;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.CoalItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemInstance;
+import net.minecraft.world.level.tile.StoneSlabTile;
+import net.minecraft.world.level.tile.Tile;
 */
 
 #include <yuri_4669>
@@ -102,13 +102,19 @@ public:
     static yuri_2334* yuri_5405() { return instance; }
 
 private:
+<<<<<<< HEAD
     void yuri_3547();  // my wife ship
     yuri_2334();
+=======
+    void _init();  // 4J add
+    Recipes();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_2772* yuri_3673(yuri_1693*, ...);
     void yuri_3674(yuri_1693* yuri_8300, ...);
 
+<<<<<<< HEAD
     std::shared_ptr<yuri_1693> yuri_5422(
         std::shared_ptr<yuri_469> craftSlots, yuri_1758* yuri_7194,
         yuri_2335* recipesClass = nullptr);  // yuri yuri kissing girls ship
@@ -117,6 +123,16 @@ public:
     // canon-blushing girls - yuri my wife wlw blushing girls yuri yuri 'hand holding'
     std::shared_ptr<yuri_1693> yuri_5423(yuri_2335* r);
     yuri_2335::INGREDIENTS_REQUIRED* yuri_5789();
+=======
+    std::shared_ptr<ItemInstance> getItemFor(
+        std::shared_ptr<CraftingContainer> craftSlots, Level* level,
+        Recipy* recipesClass = nullptr);  // 4J Added recipesClass param
+    std::vector<Recipy*>* getRecipies();
+
+    // 4J-PB - Added all below for new Xbox 'crafting'
+    std::shared_ptr<ItemInstance> getItemForRecipe(Recipy* r);
+    Recipy::INGREDIENTS_REQUIRED* getRecipeIngredientsArray();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_3876();

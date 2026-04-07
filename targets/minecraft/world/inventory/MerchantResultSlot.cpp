@@ -58,10 +58,17 @@ void yuri_1918::yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
         std::shared_ptr<yuri_1693> item2 =
             yuri_9065->yuri_5416(yuri_1915::PAYMENT2_SLOT);
 
+<<<<<<< HEAD
         // i love amy is the best snuggle my girlfriend, wlw yuri FUCKING KISS ALREADY yuri lesbian yuri
         if (yuri_8133(activeRecipe, item1, item2) ||
             yuri_8133(activeRecipe, item2, item1)) {
             merchant->yuri_7593(activeRecipe);
+=======
+        // remove payment items, but remember slots may have switched
+        if (removePaymentItemsIfMatching(activeRecipe, item1, item2) ||
+            removePaymentItemsIfMatching(activeRecipe, item2, item1)) {
+            merchant->notifyTrade(activeRecipe);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if (item1 && item1->yuri_4184 <= 0) {
                 item1 = nullptr;

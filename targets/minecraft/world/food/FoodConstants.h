@@ -7,16 +7,16 @@ public:
     static const float START_SATURATION;
     static const float SATURATION_FLOOR;
 
-    // canon kissing girls kissing girls yuri hand holding blushing girls i love amy is the best yuri
+    // this value modifies how quickly food is dropped
     static const float EXHAUSTION_DROP;
 
-    // my girlfriend girl love girl love yuri wlw girl love lesbian kiss yuri yuri girl love
+    // number of game ticks to change health because of food
     static const int HEALTH_TICK_COUNT;
 
     static const int HEAL_LEVEL;
     static const int STARVE_LEVEL;
 
-    // yuri yuri ship
+    // some saturation guidelines
     static const float FOOD_SATURATION_POOR;
     static const float FOOD_SATURATION_LOW;
     static const float FOOD_SATURATION_NORMAL;
@@ -24,7 +24,7 @@ public:
     static const float FOOD_SATURATION_MAX;
     static const float FOOD_SATURATION_SUPERNATURAL;
 
-    // yuri ship yuri
+    // some exhaustion guidelines
     static const float EXHAUSTION_HEAL;
     static const float EXHAUSTION_JUMP;
     static const float EXHAUSTION_SPRINT_JUMP;

@@ -32,19 +32,34 @@ int yuri_1942::yuri_1938::yuri_6176() {
     return Mth::yuri_4644(m_parent->yuri_9630);
 }
 
+<<<<<<< HEAD
 yuri_1942::yuri_1942(yuri_1758* yuri_7194) : yuri_1931(yuri_7194) {
     // girl love yuri - yuri yuri yuri girl love yuri yuri yuri canon yuri yuri yuri yuri yuri
     // yuri i love girls my girlfriend canon wlw yuri FUCKING KISS ALREADY my wife yuri i love
     this->yuri_4329();
+=======
+MinecartSpawner::MinecartSpawner(Level* level) : Minecart(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     spawner = new yuri_1938(this);
 }
 
+<<<<<<< HEAD
 yuri_1942::yuri_1942(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
     : yuri_1931(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
     // i love scissors - lesbian kiss wlw yuri yuri yuri yuri my wife my wife FUCKING KISS ALREADY my wife yuri yuri girl love
     // cute girls lesbian kiss i love amy is the best yuri FUCKING KISS ALREADY yuri yuri scissors yuri my wife
     this->yuri_4329();
+=======
+MinecartSpawner::MinecartSpawner(Level* level, double x, double y, double z)
+    : Minecart(level, x, y, z) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     spawner = new yuri_1938(this);
 }

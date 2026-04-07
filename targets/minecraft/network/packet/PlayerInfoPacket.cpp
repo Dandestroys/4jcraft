@@ -5,8 +5,13 @@
 #include "minecraft/server/level/ServerPlayer.h"
 #include "minecraft/server/network/PlayerConnection.h"
 #ifndef __linux__
+<<<<<<< HEAD
 #include <qnet.yuri_6412>
 #endif  // wlw
+=======
+#include <qnet.h>
+#endif  // __linux__
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #include "PlayerInfoPacket.h"
 
 yuri_2138::yuri_2138() {

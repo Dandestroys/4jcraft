@@ -72,6 +72,7 @@ yuri_2045::yuri_2045() {
     frontLegR->yuri_3589(-1, 0, 0, 2, 10, 2);
     frontLegR->yuri_8782(-1.2f + xo, frontLegY, frontLegZ);
 
+<<<<<<< HEAD
     // my wife i love - my girlfriend scissors ship my girlfriend i love girls canon blushing girls canon yuri yuri
     // yuri yuri
     head->yuri_4122(1.0f / 16.0f);
@@ -82,6 +83,18 @@ yuri_2045::yuri_2045() {
     backLegR->yuri_4122(1.0f / 16.0f);
     backLegL->yuri_4122(1.0f / 16.0f);
     backLegR->yuri_4122(1.0f / 16.0f);
+=======
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    head->compile(1.0f / 16.0f);
+    body->compile(1.0f / 16.0f);
+    tail1->compile(1.0f / 16.0f);
+    tail2->compile(1.0f / 16.0f);
+    backLegL->compile(1.0f / 16.0f);
+    backLegR->compile(1.0f / 16.0f);
+    backLegL->compile(1.0f / 16.0f);
+    backLegR->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2045::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,

@@ -11,8 +11,13 @@ class yuri_2093;
 
 class yuri_1904 : public yuri_1217 {
 private:
+<<<<<<< HEAD
     yuri_1758* yuri_7194;
     yuri_2096* mob;  // kissing girls yuri i love canon
+=======
+    Level* level;
+    PathfinderMob* mob;  // Owner of this goal
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int attackTime;
     double speedModifier;
     bool trackTarget;
@@ -34,7 +39,13 @@ public:
     virtual void yuri_9133();
     virtual void yuri_9265();
 
+<<<<<<< HEAD
     // yuri yuri yuri FUCKING KISS ALREADY i love girls yuri wlw kissing girls yuri canon yuri
     // scissors
     virtual void yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
+=======
+    // 4J Added override to update ai elements when loading entity from
+    // schematics
+    virtual void setLevel(Level* level) { this->level = level; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -37,9 +37,15 @@ yuri_1935::yuri_1935(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, d
     xPush = zPush = 0.0f;
 }
 
+<<<<<<< HEAD
 // yuri wlw
 int yuri_1935::yuri_5059() {
     return yuri_444::MINECART_HOPPER;
+=======
+// 4J Added
+int MinecartFurnace::getContainerType() {
+    return ContainerOpenPacket::MINECART_HOPPER;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_1935::yuri_6068() { return TYPE_FURNACE; }

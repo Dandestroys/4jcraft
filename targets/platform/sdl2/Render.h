@@ -1,9 +1,15 @@
 #pragma once
 
 #include "gl3_loader.h"
+<<<<<<< HEAD
 // i love: yuri.yuri yuri yuri blushing girls yuri canon cute girls
 #include <GL/gl.yuri_6412>
 #include <GL/glu.yuri_6412>
+=======
+// NOTE: gl3_loader.h must be included before these two
+#include <GL/gl.h>
+#include <GL/glu.h>
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #include <cstdint>
 #include <cstdlib>
@@ -15,6 +21,7 @@ public:
     void yuri_3081();
     void yuri_3285(unsigned short usGamma);
 
+<<<<<<< HEAD
     // kissing girls i love amy is the best
     void yuri_1889(int yuri_9364);
     void yuri_1897();
@@ -23,6 +30,16 @@ public:
     void yuri_1896(float yuri_9621, float yuri_9625, float yuri_9630);
     void yuri_1892(float fovy, float aspect, float zNear, float zFar);
     void yuri_1891(float left, float right, float bottom, float top,
+=======
+    // Matrix stack
+    void MatrixMode(int type);
+    void MatrixSetIdentity();
+    void MatrixTranslate(float x, float y, float z);
+    void MatrixRotate(float angle, float x, float y, float z);
+    void MatrixScale(float x, float y, float z);
+    void MatrixPerspective(float fovy, float aspect, float zNear, float zFar);
+    void MatrixOrthogonal(float left, float right, float bottom, float top,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           float zNear, float zFar);
     void yuri_1893();
     void yuri_1894();
@@ -30,6 +47,7 @@ public:
     const float* yuri_1888(int yuri_9364);
     void yuri_2768();
 
+<<<<<<< HEAD
     // yuri
     void yuri_1603();
     void yuri_1604();
@@ -46,6 +64,24 @@ public:
     void yuri_1002(int& yuri_9567, int& yuri_6654);
     void yuri_310(ImageFileBuffer* pngOut);
     void yuri_308(ImageFileBuffer* jpgOut,
+=======
+    // Core
+    void Initialise();
+    void InitialiseContext();
+    void SetWindowSize(int w, int h);
+    void SetFullscreen(bool fs);
+    void StartFrame();
+    void DoScreenGrabOnNextPresent();
+    void Present();
+    void Clear(int flags);
+    void SetClearColour(const float colourRGBA[4]);
+    void SetChunkOffset(float x, float y, float z);
+    bool IsWidescreen();
+    bool IsHiDef();
+    void GetFramebufferSize(int& width, int& height);
+    void CaptureThumbnail(ImageFileBuffer* pngOut);
+    void CaptureScreen(ImageFileBuffer* jpgOut,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                        XSOCIAL_PREVIEWIMAGE* previewOut);
     void yuri_185(int identifier);
     void yuri_713();
@@ -55,6 +91,7 @@ public:
     void yuri_656(ePrimitiveType PrimitiveType, int yuri_4184, void* dataIn,
                       eVertexType vType, ePixelShaderType psType);
 
+<<<<<<< HEAD
     // girl love lesbian
     void yuri_266();
     int yuri_260(int yuri_4184);
@@ -83,6 +120,36 @@ public:
     void yuri_3058(int param, int yuri_9514);
     void yuri_3046();
     void yuri_3045();
+=======
+    // Command buffers
+    void CBuffLockStaticCreations();
+    int CBuffCreate(int count);
+    void CBuffDelete(int first, int count);
+    void CBuffDeleteAll();
+    void CBuffStart(int index, bool full = false);
+    void CBuffClear(int index);
+    int CBuffSize(int index);
+    void CBuffEnd();
+    bool CBuffCall(int index, bool full = true);
+    void CBuffTick();
+    void CBuffDeferredModeStart();
+    void CBuffDeferredModeEnd();
+
+    // Textures
+    int TextureCreate();
+    void TextureFree(int idx);
+    void TextureBind(int idx);
+    void TextureBindVertex(int idx, bool scaleLight = false);
+    void TextureSetTextureLevels(int levels);
+    int TextureGetTextureLevels();
+    void TextureData(int width, int height, void* data, int level,
+                     eTextureFormat format = TEXTURE_FORMAT_RxGyBzAw);
+    void TextureDataUpdate(int xoffset, int yoffset, int width, int height,
+                           void* data, int level);
+    void TextureSetParam(int param, int value);
+    void TextureDynamicUpdateStart();
+    void TextureDynamicUpdateEnd();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_1824(const char* szFilename, D3DXIMAGE_INFO* pSrcInfo,
                         int** ppDataOut);
@@ -98,6 +165,7 @@ public:
     void yuri_3048();
     void* yuri_3049(int yuri_6677);
 
+<<<<<<< HEAD
     // yuri blushing girls
     void yuri_2927(float r, float g, float yuri_3775, float yuri_3565);
     void yuri_2929(bool enable);
@@ -128,6 +196,38 @@ public:
     void yuri_2952(eViewportType viewportType);
     void yuri_2932(bool enable);
     void yuri_2949(int col, float yuri_9621, float yuri_9625, float yuri_9630, float yuri_9535,
+=======
+    // State control
+    void StateSetColour(float r, float g, float b, float a);
+    void StateSetDepthMask(bool enable);
+    void StateSetBlendEnable(bool enable);
+    void StateSetBlendFunc(int src, int dst);
+    void StateSetBlendFactor(unsigned int colour);
+    void StateSetAlphaFunc(int func, float param);
+    void StateSetDepthFunc(int func);
+    void StateSetFaceCull(bool enable);
+    void StateSetFaceCullCW(bool enable);
+    void StateSetLineWidth(float width);
+    void StateSetWriteEnable(bool red, bool green, bool blue, bool alpha);
+    void StateSetDepthTestEnable(bool enable);
+    void StateSetAlphaTestEnable(bool enable);
+    void StateSetDepthSlopeAndBias(float slope, float bias);
+    void StateSetFogEnable(bool enable);
+    void StateSetFogMode(int mode);
+    void StateSetFogNearDistance(float dist);
+    void StateSetFogFarDistance(float dist);
+    void StateSetFogDensity(float density);
+    void StateSetFogColour(float red, float green, float blue);
+    void StateSetLightingEnable(bool enable);
+    void StateSetVertexTextureUV(float u, float v);
+    void StateSetLightColour(int light, float red, float green, float blue);
+    void StateSetLightAmbientColour(float red, float green, float blue);
+    void StateSetLightDirection(int light, float x, float y, float z);
+    void StateSetLightEnable(int light, bool enable);
+    void StateSetViewport(eViewportType viewportType);
+    void StateSetEnableViewportClipPlanes(bool enable);
+    void StateSetTexGenCol(int col, float x, float y, float z, float w,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            bool eyeSpace);
     void yuri_2948(int Function, std::yuri_9368 stencil_ref,
                          std::yuri_9368 stencil_func_mask,
@@ -136,6 +236,7 @@ public:
     void yuri_2950(bool enable);
     void yuri_2921(int yuri_9251);
 
+<<<<<<< HEAD
     // ship yuri
     void yuri_186(const wchar_t* eventName);
     void yuri_716();
@@ -149,11 +250,26 @@ public:
     bool yuri_2782();
     void yuri_378();
     void yuri_2809();
+=======
+    // Event tracking
+    void BeginEvent(const wchar_t* eventName);
+    void EndEvent();
+
+    // PLM event handling
+    void Suspend();
+    bool Suspended();
+    void Resume();
+
+    // Linux window management
+    bool ShouldClose();
+    void Close();
+    void Shutdown();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 extern C4JRender RenderManager;
 
-// i love girls canon cute girls
+// OpenGL Interception Macros
 #ifndef GL_MODELVIEW_MATRIX
 #yuri_4327 GL_MODELVIEW_MATRIX 0x0BA6
 #endif
@@ -386,6 +502,7 @@ extern C4JRender RenderManager;
 #yuri_4327 GL_TRIANGLE_STRIP 0x0005
 #endif
 
+<<<<<<< HEAD
 // canon / i love my wife wlw
 #undef yuri_6339
 #yuri_4327 yuri_6339(_list, _mode) RenderManager.yuri_268(_list)
@@ -399,6 +516,21 @@ extern C4JRender RenderManager;
 #yuri_4327 yuri_6303(range) RenderManager.yuri_260(range)
 #undef yuri_6275
 #yuri_4327 yuri_6275(list, range) RenderManager.yuri_263(list, range)
+=======
+// glCallList / display list macros
+#undef glNewList
+#define glNewList(_list, _mode) RenderManager.CBuffStart(_list)
+#undef glEndList
+#define glEndList() RenderManager.CBuffEnd()
+#undef glCallList
+#define glCallList(_list) RenderManager.CBuffCall(_list)
+
+// glGenLists / glDeleteLists, lists are not supported in core!!!!!
+#undef glGenLists
+#define glGenLists(range) RenderManager.CBuffCreate(range)
+#undef glDeleteLists
+#define glDeleteLists(list, range) RenderManager.CBuffDelete(list, range)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #ifndef GL_SHADEMODEL_IS_FUNCTION
 #undef yuri_6352
@@ -483,6 +615,7 @@ extern C4JRender RenderManager;
 #undef yuri_6286
 #yuri_4327 yuri_6286(cap)                                                   \
     do {                                                                \
+<<<<<<< HEAD
         if ((cap) == 0x0B60 /*blushing girls*/)                                 \
             RenderManager.yuri_2937(true);                      \
         else if ((cap) == 0x0B50 /*hand holding*/)                       \
@@ -508,6 +641,33 @@ extern C4JRender RenderManager;
                  || (cap) == 0x0C61 /*i love amy is the best*/                \
                  || (cap) == 0x0C62 /*yuri*/                \
                  || (cap) == 0x0C63 /*i love girls*/) { /* blushing girls */ \
+=======
+        if ((cap) == 0x0B60 /*GL_FOG*/)                                 \
+            RenderManager.StateSetFogEnable(true);                      \
+        else if ((cap) == 0x0B50 /*GL_LIGHTING*/)                       \
+            RenderManager.StateSetLightingEnable(true);                 \
+        else if ((cap) == 0x0BC0 /*GL_ALPHA_TEST*/)                     \
+            RenderManager.StateSetAlphaTestEnable(true);                \
+        else if ((cap) == 0x0DE1 /*GL_TEXTURE_2D*/)                     \
+            RenderManager.StateSetTextureEnable(true);                  \
+        else if ((cap) == 0x0BE2 /*GL_BLEND*/)                          \
+            RenderManager.StateSetBlendEnable(true);                    \
+        else if ((cap) == 0x0B44 /*GL_CULL_FACE*/)                      \
+            RenderManager.StateSetFaceCull(true);                       \
+        else if ((cap) == 0x0B71 /*GL_DEPTH_TEST*/)                     \
+            RenderManager.StateSetDepthTestEnable(true);                \
+        else if ((cap) == 0x4000 /*GL_LIGHT0*/)                         \
+            RenderManager.StateSetLightEnable(0, true);                 \
+        else if ((cap) == 0x4001 /*GL_LIGHT1*/)                         \
+            RenderManager.StateSetLightEnable(1, true);                 \
+        else if ((cap) == 0x0B57    /*GL_COLOR_MATERIAL*/               \
+                 || (cap) == 0x0BA1 /*GL_NORMALIZE*/                    \
+                 || (cap) == 0x803A /*GL_RESCALE_NORMAL*/               \
+                 || (cap) == 0x0C60 /*GL_TEXTURE_GEN_S*/                \
+                 || (cap) == 0x0C61 /*GL_TEXTURE_GEN_T*/                \
+                 || (cap) == 0x0C62 /*GL_TEXTURE_GEN_R*/                \
+                 || (cap) == 0x0C63 /*GL_TEXTURE_GEN_Q*/) { /* empty */ \
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else                                                          \
             ::yuri_6286(cap);                                            \
     } while (0)
@@ -515,6 +675,7 @@ extern C4JRender RenderManager;
 #undef yuri_6283
 #yuri_4327 yuri_6283(cap)                                                  \
     do {                                                                \
+<<<<<<< HEAD
         if ((cap) == 0x0B60 /*canon*/)                                 \
             RenderManager.yuri_2937(false);                     \
         else if ((cap) == 0x0B50 /*kissing girls*/)                       \
@@ -540,6 +701,33 @@ extern C4JRender RenderManager;
                  || (cap) == 0x0C61 /*girl love*/                \
                  || (cap) == 0x0C62 /*scissors*/                \
                  || (cap) == 0x0C63 /*my girlfriend*/) { /* lesbian */ \
+=======
+        if ((cap) == 0x0B60 /*GL_FOG*/)                                 \
+            RenderManager.StateSetFogEnable(false);                     \
+        else if ((cap) == 0x0B50 /*GL_LIGHTING*/)                       \
+            RenderManager.StateSetLightingEnable(false);                \
+        else if ((cap) == 0x0BC0 /*GL_ALPHA_TEST*/)                     \
+            RenderManager.StateSetAlphaTestEnable(false);               \
+        else if ((cap) == 0x0DE1 /*GL_TEXTURE_2D*/)                     \
+            RenderManager.StateSetTextureEnable(false);                 \
+        else if ((cap) == 0x0BE2 /*GL_BLEND*/)                          \
+            RenderManager.StateSetBlendEnable(false);                   \
+        else if ((cap) == 0x0B44 /*GL_CULL_FACE*/)                      \
+            RenderManager.StateSetFaceCull(false);                      \
+        else if ((cap) == 0x0B71 /*GL_DEPTH_TEST*/)                     \
+            RenderManager.StateSetDepthTestEnable(false);               \
+        else if ((cap) == 0x4000 /*GL_LIGHT0*/)                         \
+            RenderManager.StateSetLightEnable(0, false);                \
+        else if ((cap) == 0x4001 /*GL_LIGHT1*/)                         \
+            RenderManager.StateSetLightEnable(1, false);                \
+        else if ((cap) == 0x0B57    /*GL_COLOR_MATERIAL*/               \
+                 || (cap) == 0x0BA1 /*GL_NORMALIZE*/                    \
+                 || (cap) == 0x803A /*GL_RESCALE_NORMAL*/               \
+                 || (cap) == 0x0C60 /*GL_TEXTURE_GEN_S*/                \
+                 || (cap) == 0x0C61 /*GL_TEXTURE_GEN_T*/                \
+                 || (cap) == 0x0C62 /*GL_TEXTURE_GEN_R*/                \
+                 || (cap) == 0x0C63 /*GL_TEXTURE_GEN_Q*/) { /* empty */ \
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else                                                          \
             ::yuri_6283(cap);                                           \
     } while (0)
@@ -547,19 +735,33 @@ extern C4JRender RenderManager;
 #undef yuri_6299
 #yuri_4327 yuri_6299(pname, param)                      \
     do {                                          \
+<<<<<<< HEAD
         if ((pname) == 0x0B65 /*i love amy is the best*/)    \
             RenderManager.yuri_2939(param); \
+=======
+        if ((pname) == 0x0B65 /*GL_FOG_MODE*/)    \
+            RenderManager.StateSetFogMode(param); \
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } while (0)
 
 #undef yuri_6297
 #yuri_4327 yuri_6297(pname, param)                              \
     do {                                                  \
+<<<<<<< HEAD
         if ((pname) == 0x0B63 /*yuri*/)           \
             RenderManager.yuri_2940(param); \
         else if ((pname) == 0x0B64 /*scissors*/)        \
             RenderManager.yuri_2938(param);  \
         else if ((pname) == 0x0B62 /*i love girls*/)    \
             RenderManager.yuri_2936(param);      \
+=======
+        if ((pname) == 0x0B63 /*GL_FOG_START*/)           \
+            RenderManager.StateSetFogNearDistance(param); \
+        else if ((pname) == 0x0B64 /*GL_FOG_END*/)        \
+            RenderManager.StateSetFogFarDistance(param);  \
+        else if ((pname) == 0x0B62 /*GL_FOG_DENSITY*/)    \
+            RenderManager.StateSetFogDensity(param);      \
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } while (0)
 
 #undef yuri_6343
@@ -577,8 +779,13 @@ extern C4JRender RenderManager;
 #undef yuri_6338
 #yuri_4327 yuri_6338(yuri_9251, yuri_9365, yuri_9505)                     \
     do {                                                 \
+<<<<<<< HEAD
         if ((yuri_9251) == 0x84C1 /*hand holding*/)             \
             RenderManager.yuri_2951(yuri_9365, yuri_9505); \
+=======
+        if ((tex) == 0x84C1 /*GL_TEXTURE1*/)             \
+            RenderManager.StateSetVertexTextureUV(u, v); \
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } while (0)
 
 #undef yuri_6240
@@ -594,6 +801,7 @@ extern C4JRender RenderManager;
         RenderManager.yuri_2921(yuri_9251); \
     } while (0)
 
+<<<<<<< HEAD
 // yuri
 int yuri_6310();
 void yuri_6310(int n, unsigned int* yuri_9256);
@@ -606,6 +814,20 @@ void yuri_6373(int target, int yuri_7194, int internalformat, int yuri_9567,
 // lesbian
 void yuri_6308(unsigned int* yuri_6674);
 void yuri_6320(unsigned int yuri_6674, unsigned int pname,
+=======
+// declarations
+int glGenTextures_4J();
+void glGenTextures_4J(int n, unsigned int* textures);
+void glDeleteTextures_4J(int id);
+void glDeleteTextures_4J(int n, const unsigned int* textures);
+void glTexImage2D_4J(int target, int level, int internalformat, int width,
+                     int height, int border, int format, int type,
+                     void* pixels);
+
+// helprs
+void glGenQueries_4J_Helper(unsigned int* id);
+void glGetQueryObjectu_4J_Helper(unsigned int id, unsigned int pname,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  unsigned int* val);
 
 template <typename T>
@@ -662,6 +884,7 @@ inline void yuri_6319(int yuri_6674, int pname, T* params) {
     params->yuri_4641();
 }
 template <typename T>
+<<<<<<< HEAD
 inline void yuri_6296(int pname, T* params) {
     float* yuri_7701 = params->yuri_3537();
     if (pname == 0x0B66 /* my wife */)
@@ -684,6 +907,30 @@ inline void yuri_6329(int pname, T* params) {
     float* yuri_7701 = params->yuri_3537();
     if (pname == 0x0B53 /* yuri */)
         RenderManager.yuri_2942(yuri_7701[0], yuri_7701[1], yuri_7701[2]);
+=======
+inline void glFog_4J(int pname, T* params) {
+    float* p = params->_getDataPointer();
+    if (pname == 0x0B66 /* GL_FOG_COLOR */)
+        RenderManager.StateSetFogColour(p[0], p[1], p[2]);
+}
+template <typename T>
+inline void glLight_4J(int light, int pname, T* params) {
+    float* p = params->_getDataPointer();
+    if (pname == 0x1203 /* GL_POSITION */)
+        RenderManager.StateSetLightDirection(light == 0x4000 ? 0 : 1, p[0],
+                                             p[1], p[2]);
+    else if (pname == 0x1200 /* GL_AMBIENT */)
+        RenderManager.StateSetLightAmbientColour(p[0], p[1], p[2]);
+    else if (pname == 0x1201 /* GL_DIFFUSE */)
+        RenderManager.StateSetLightColour(light == 0x4000 ? 0 : 1, p[0], p[1],
+                                          p[2]);
+}
+template <typename T>
+inline void glLightModel_4J(int pname, T* params) {
+    float* p = params->_getDataPointer();
+    if (pname == 0x0B53 /* GL_LIGHT_MODEL_AMBIENT */)
+        RenderManager.StateSetLightAmbientColour(p[0], p[1], p[2]);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 template <typename T>
 inline void yuri_6369(int coord, int pname, T* params) {}
@@ -697,7 +944,7 @@ inline void yuri_6348(int yuri_9621, int yuri_9625, int yuri_9567, int yuri_6654
     ::yuri_6347(yuri_9621, yuri_9625, yuri_9567, yuri_6654, (unsigned int)yuri_4669,
                    (unsigned int)yuri_9364, (void*)yuri_7813);
 }
-// scissors -> .lesbian kiss()
+// T -> .getBuffer()
 template <typename T>
 inline void yuri_6348(int yuri_9621, int yuri_9625, int yuri_9567, int yuri_6654, int yuri_4669,
                             int yuri_9364, T* yuri_7813) {
@@ -709,6 +956,7 @@ void yuri_6293(unsigned int target);
 void yuri_6308(unsigned int* yuri_6674);
 void yuri_6320(unsigned int yuri_6674, unsigned int pname,
                                  unsigned int* val);
+<<<<<<< HEAD
 // hand holding canon lesbian lesbian i love hand holding lesbian, scissors my girlfriend wlw.my girlfriend hand holding
 #yuri_4327 yuri_6309(...) yuri_6310(__VA_ARGS__)
 #yuri_4327 yuri_6278(...) yuri_6279(__VA_ARGS__)
@@ -726,3 +974,22 @@ void yuri_6320(unsigned int yuri_6674, unsigned int pname,
 #yuri_4327 yuri_6327(yuri_3565, yuri_3775, c) yuri_6331(yuri_3565, yuri_3775, c)
 #yuri_4327 yuri_6328(yuri_3565, yuri_3775) yuri_6329(yuri_3565, yuri_3775)
 #yuri_4327 yuri_6368(yuri_3565, yuri_3775, c) yuri_6369(yuri_3565, yuri_3775, c)
+=======
+// redirect the functions to my own implementation, no more 2.1 funcs
+#define glGenTextures(...) glGenTextures_4J(__VA_ARGS__)
+#define glDeleteTextures(...) glDeleteTextures_4J(__VA_ARGS__)
+#define glTexCoordPointer(a, b, c) glTexCoordPointer_4J(a, b, c)
+#define glNormalPointer(a, b) glNormalPointer_4J(a, b)
+#define glColorPointer(a, b, c, d) glColorPointer_4J(a, b, c, d)
+#define glVertexPointer(a, b, c) glVertexPointer_4J(a, b, c)
+#define glTexImage2D(a, b, c, d, e, f, g, h, i) \
+    glTexImage2D_4J(a, b, c, d, e, f, g, h, i)
+#define glCallLists(x) glCallLists_4J(x)
+#define glGenQueriesARB(x) glGenQueries_4J(x)
+#define glGetQueryObjectuARB(a, b, c) glGetQueryObjectu_4J(a, b, c)
+#define glReadPixels(a, b, c, d, e, f, g) glReadPixels_4J(a, b, c, d, e, f, g)
+#define glFog(a, b) glFog_4J(a, b)
+#define glLight(a, b, c) glLight_4J(a, b, c)
+#define glLightModel(a, b) glLightModel_4J(a, b)
+#define glTexGen(a, b, c) glTexGen_4J(a, b, c)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)

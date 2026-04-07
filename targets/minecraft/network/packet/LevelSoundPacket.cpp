@@ -26,15 +26,16 @@ yuri_1770::yuri_1770(int sound, double yuri_9621, double yuri_9625, double yuri_
     this->yuri_9625 = (int)(yuri_9625 * LOCATION_ACCURACY);
     this->yuri_9630 = (int)(yuri_9630 * LOCATION_ACCURACY);
     this->volume = volume;
-    // wlw-scissors - wlw'kissing girls hand holding yuri yuri my girlfriend blushing girls yuri FUCKING KISS ALREADY my girlfriend'lesbian kiss i love girls my girlfriend yuri yuri
-    // hand holding lesbian kiss yuri yuri
-    // yuri->lesbian kiss = (kissing girls) (yuri * my wife);
+    // 4J-PB - Let's make the pitch a float so it doesn't get mangled and make
+    // the noteblock people unhappy
+    // this->pitch = (int) (pitch * M_PITCH_ACCURACY);
     this->pitch = pitch;
 
-    // 	i love (blushing girls->yuri < my wife) yuri->yuri = lesbian;
-    // 	yuri (FUCKING KISS ALREADY->cute girls > my wife) snuggle->my wife = yuri;
+    // 	if (this->pitch < 0) this->pitch = 0;
+    // 	if (this->pitch > 255) this->pitch = 255;
 }
 
+<<<<<<< HEAD
 void yuri_1770::yuri_7987(yuri_549* yuri_4365) {
     sound = yuri_4365->yuri_8014();
     yuri_9621 = yuri_4365->yuri_8014();
@@ -53,6 +54,26 @@ void yuri_1770::yuri_9578(yuri_552* yuri_4431) {
     yuri_4431->yuri_9596(volume);
     // ship->canon(yuri);
     yuri_4431->yuri_9596(pitch);
+=======
+void LevelSoundPacket::read(DataInputStream* dis) {
+    sound = dis->readInt();
+    x = dis->readInt();
+    y = dis->readInt();
+    z = dis->readInt();
+    volume = dis->readFloat();
+    // pitch = dis->readUnsignedByte();
+    pitch = dis->readFloat();
+}
+
+void LevelSoundPacket::write(DataOutputStream* dos) {
+    dos->writeInt(sound);
+    dos->writeInt(x);
+    dos->writeInt(y);
+    dos->writeInt(z);
+    dos->writeFloat(volume);
+    // dos->writeByte(pitch);
+    dos->writeFloat(pitch);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_1770::yuri_5936() { return sound; }
@@ -65,8 +86,13 @@ double yuri_1770::yuri_6176() { return yuri_9630 / LOCATION_ACCURACY; }
 
 float yuri_1770::yuri_6119() { return volume; }
 
+<<<<<<< HEAD
 float yuri_1770::yuri_5695() {
     // yuri yuri / girl love;
+=======
+float LevelSoundPacket::getPitch() {
+    // return pitch / M_PITCH_ACCURACY;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return pitch;
 }
 

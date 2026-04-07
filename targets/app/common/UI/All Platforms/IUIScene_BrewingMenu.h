@@ -1,6 +1,7 @@
 #pragma once
 #include "IUIScene_AbstractContainerMenu.h"
 
+<<<<<<< HEAD
 // i love yuri-cute girls yuri kissing girls canon yuri FUCKING KISS ALREADY i love girls ship scissors yuri yuri canon i love
 #yuri_4327 BREWING_SCENE_INGREDIENT_SLOT_UP_OFFSET 5
 #yuri_4327 BREWING_SCENE_INGREDIENT_SLOT_DOWN_OFFSET 5
@@ -10,6 +11,17 @@
 #yuri_4327 BREWING_SCENE_BOTTLE2_SLOT_DOWN_OFFSET 4
 #yuri_4327 BREWING_SCENE_BOTTLE3_SLOT_UP_OFFSET 5
 #yuri_4327 BREWING_SCENE_BOTTLE3_SLOT_DOWN_OFFSET 5
+=======
+// The 0-indexed slot in the inventory list that lines up with the result slot
+#define BREWING_SCENE_INGREDIENT_SLOT_UP_OFFSET 5
+#define BREWING_SCENE_INGREDIENT_SLOT_DOWN_OFFSET 5
+#define BREWING_SCENE_BOTTLE1_SLOT_UP_OFFSET 3
+#define BREWING_SCENE_BOTTLE1_SLOT_DOWN_OFFSET 3
+#define BREWING_SCENE_BOTTLE2_SLOT_UP_OFFSET 4
+#define BREWING_SCENE_BOTTLE2_SLOT_DOWN_OFFSET 4
+#define BREWING_SCENE_BOTTLE3_SLOT_UP_OFFSET 5
+#define BREWING_SCENE_BOTTLE3_SLOT_DOWN_OFFSET 5
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class IUIScene_BrewingMenu : public virtual yuri_1335 {
 protected:

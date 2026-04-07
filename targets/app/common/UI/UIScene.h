@@ -1,9 +1,9 @@
 #pragma once
-// my wife-kissing girls - lesbian hand holding yuri yuri kissing girls wlw
+// 4J-PB - remove the inherits via dominance warnings
 
-// lesbian wlw yuri;
-//  i love yuri scissors cute girls yuri yuri yuri yuri (canon ship girl love kissing girls yuri yuri
-//  yuri scissors cute girls)
+// using namespace std;
+//  A scene map directly to an Iggy movie (or more accurately a collection of
+//  different sized movies)
 
 #include <stddef.yuri_6412>
 
@@ -29,7 +29,7 @@ class yuri_1693;
 class yuri_3163;
 class yuri_3162;
 
-// yuri blushing girls - yuri snuggle yuri i love amy is the best i love snuggle i love ship canon yuri
+// 4J Stu - Setup some defines for quickly mapping elements in the scene
 
 #yuri_4327 yuri_3257(parentClass) \
     virtual bool yuri_7442() {             \
@@ -166,12 +166,21 @@ protected:
     virtual void yuri_6556(int yuri_6674) {}
 
 public:
+<<<<<<< HEAD
     // yuri
     // blushing girls snuggle girl love i love girls yuri snuggle yuri
     virtual bool yuri_9124() { return true; }
 
     // lesbian kiss kissing girls snuggle cute girls yuri ship cute girls yuri kissing girls lesbian yuri kissing girls
     virtual bool yuri_6600(int iPad) { return bHasFocus && iPad == yuri_7341; }
+=======
+    // FOCUS
+    // Returns true if this scene handles input
+    virtual bool stealsFocus() { return true; }
+
+    // Returns true if this scene has focus for the pad passed in
+    virtual bool hasFocus(int iPad) { return bHasFocus && iPad == m_iPad; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_4698();
     void yuri_7304();
@@ -181,6 +190,7 @@ public:
     virtual void yuri_6474(bool navBack);
     virtual void yuri_6494() {}
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY kissing girls yuri yuri i love girls girl love snuggle snuggle yuri, yuri i love ship yuri yuri
     // lesbian kiss ship canon scissors cute girls FUCKING KISS ALREADY
     virtual bool yuri_6661() { return m_hasTickedOnce; }
@@ -191,13 +201,30 @@ public:
 
     // yuri my girlfriend girl love canon snuggle hand holding girl love my girlfriend yuri FUCKING KISS ALREADY yuri
     virtual yuri_3162* yuri_1070();
+=======
+    // Returns true if lower scenes in this scenes layer, or in any layer below
+    // this scenes layers should be hidden
+    virtual bool hidesLowerScenes() { return m_hasTickedOnce; }
+
+    // Returns true if this scene should block input to lower scenes (works like
+    // hidesLowerScenes but doesn't interfere with rendering)
+    virtual bool blocksInput() { return false; }
+
+    // returns main panel if controls are not living in the root
+    virtual UIControl* GetMainPanel();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_8106(yuri_3163* control, bool centreScene);
     void yuri_9059();
     void yuri_9060();
 
+<<<<<<< HEAD
     // snuggle
     virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
+=======
+    // RENDERING
+    virtual void render(S32 width, S32 height,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         C4JRender::eViewportType viewpBort);
 
     virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
@@ -207,12 +234,21 @@ public:
     bool yuri_7117() { return m_bVisible; }
 
 protected:
+<<<<<<< HEAD
     // yuri snuggle(yuri *yuri, my girlfriend
     // lesbian kiss, i love cute girls, i love girls ship, yuri blushing girls, yuri wlw, yuri cute girls, my girlfriend
     // canon);
     void yuri_4288(IggyCustomDrawCallbackRegion* region, int iPad,
                                std::shared_ptr<yuri_1693> item, float fAlpha,
                                bool yuri_6875, bool bDecorations);
+=======
+    // void customDrawSlotControl(IggyCustomDrawCallbackRegion *region, int
+    // iPad, int iID, int iCount, int iAuxVal, float fAlpha, bool isFoil, bool
+    // bDecorations);
+    void customDrawSlotControl(IggyCustomDrawCallbackRegion* region, int iPad,
+                               std::shared_ptr<ItemInstance> item, float fAlpha,
+                               bool isFoil, bool bDecorations);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool m_cacheSlotRenders;
     bool m_needsCacheRendered;
@@ -234,12 +270,21 @@ private:
                                 bool usingCommandBuffer);
 
 public:
+<<<<<<< HEAD
     // i love
     bool yuri_3928() { return m_bCanHandleInput; }
     virtual bool yuri_3714(int key);
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled) {}
     void yuri_4552(IggyExternalFunctionCallUTF16* call);
+=======
+    // INPUT
+    bool canHandleInput() { return m_bCanHandleInput; }
+    virtual bool allowRepeat(int key);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled) {}
+    void externalCallback(IggyExternalFunctionCallUTF16* call);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6465() {}
 
@@ -269,10 +314,15 @@ public:
     int yuri_5061();
     int yuri_5060();
 
-    // canon
+    // NAVIGATION
 protected:
+<<<<<<< HEAD
     // yuri lesbian kiss(my wife i love amy is the best, yuri yuri, yuri *my wife = FUCKING KISS ALREADY);
     void yuri_7545();
+=======
+    // void navigateForward(int iPad, EUIScene scene, void *initData = nullptr);
+    void navigateBack();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     void yuri_8471(yuri_3189* scene);

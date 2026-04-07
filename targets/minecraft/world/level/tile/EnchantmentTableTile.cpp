@@ -27,9 +27,15 @@ yuri_711::yuri_711(int yuri_6674)
     iconBottom = nullptr;
 }
 
+<<<<<<< HEAD
 // FUCKING KISS ALREADY girl love yuri
 void yuri_711::yuri_9402() {
     yuri_8855(0, 0, 0, 1, 12 / 16.0f, 1);
+=======
+// 4J Added override
+void EnchantmentTableTile::updateDefaultShape() {
+    setShape(0, 0, 0, 1, 12 / 16.0f, 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_711::yuri_6827() { return false; }
@@ -76,7 +82,7 @@ std::shared_ptr<yuri_3091> yuri_711::yuri_7569(yuri_1758* yuri_7194) {
 bool yuri_711::yuri_9484(
     yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
     int clickedFace, float clickX, float clickY, float clickZ,
-    bool soundOnly /*=ship*/)  // ship snuggle blushing girls lesbian kiss
+    bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) return false;
 

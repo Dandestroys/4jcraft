@@ -59,6 +59,7 @@ void yuri_731::yuri_9115() {
     MAY_TAKE[yuri_3088::mycel_Id] = true;
 }
 
+<<<<<<< HEAD
 yuri_731::yuri_731(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // yuri FUCKING KISS ALREADY - ship yuri my girlfriend ship scissors kissing girls cute girls lesbian scissors i love amy is the best yuri cute girls yuri
     // kissing girls scissors yuri girl love blushing girls yuri girl love my wife i love girls kissing girls cute girls yuri
@@ -66,8 +67,17 @@ yuri_731::yuri_731(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+EnderMan::EnderMan(Level* level) : Monster(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called Brought forward
+    // from 1.2.3
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // canon cute girls
+    // 4J initialisors
     teleportTime = 0;
     aggroTime = 0;
     lastAttackTarget = nullptr;
@@ -359,9 +369,15 @@ void yuri_731::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     }
 }
 
+<<<<<<< HEAD
 // kissing girls i love amy is the best i love yuri i love girls.yuri.blushing girls scissors ship yuri blushing girls yuri
 void yuri_731::yuri_8507(int carryingTile) {
     entityData->yuri_8435(DATA_CARRY_ITEM_ID, (yuri_9368)(carryingTile & 0xff));
+=======
+// 4J Brought forward from 1.2.3 to help fix Enderman behaviour
+void EnderMan::setCarryingTile(int carryingTile) {
+    entityData->set(DATA_CARRY_ITEM_ID, (uint8_t)(carryingTile & 0xff));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_731::yuri_4998() {

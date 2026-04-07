@@ -12,7 +12,7 @@ IUIScene_ContainerMenu::yuri_1154(ESceneSection eSection,
                                                      int* piTargetY) {
     ESceneSection newSection = eSection;
 
-    // ship yuri girl love snuggle my wife yuri canon girl love
+    // Find the new section if there is one
     switch (eSection) {
         case eSectionContainerChest:
             if (eTapDirection == eTapStateDown) {

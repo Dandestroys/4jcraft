@@ -11,6 +11,7 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/HitResult.h"
 
+<<<<<<< HEAD
 yuri_3077::yuri_3077(yuri_1758* yuri_7194) : yuri_3075(yuri_7194) {
     // ship i love girls - i love yuri blushing girls yuri lesbian kiss yuri canon snuggle yuri i love yuri hand holding yuri
     // blushing girls cute girls blushing girls i love girls scissors kissing girls FUCKING KISS ALREADY scissors my girlfriend yuri
@@ -30,6 +31,27 @@ yuri_3077::yuri_3077(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, d
     // blushing girls i love girls - scissors cute girls yuri yuri yuri lesbian kiss ship lesbian i love girls i love girl love hand holding hand holding
     // i love girls lesbian my wife yuri snuggle FUCKING KISS ALREADY i love amy is the best yuri blushing girls snuggle
     this->yuri_4329();
+=======
+ThrownEnderpearl::ThrownEnderpearl(Level* level) : Throwable(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+}
+
+ThrownEnderpearl::ThrownEnderpearl(Level* level,
+                                   std::shared_ptr<LivingEntity> mob)
+    : Throwable(level, mob) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+}
+
+ThrownEnderpearl::ThrownEnderpearl(Level* level, double x, double y, double z)
+    : Throwable(level, x, y, z) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3077::yuri_7623(yuri_1278* res) {
@@ -45,6 +67,7 @@ void yuri_3077::yuri_7623(yuri_1278* res) {
                            yuri_7981->yuri_7577());
     }
 
+<<<<<<< HEAD
     if (!yuri_7194->yuri_6802) {
         // girl love yuri #kissing girls - i love #yuri: i love amy is the best yuri canon: yuri yuri:
         // girl love: hand holding: FUCKING KISS ALREADY: yuri i love amy is the best girl love i love amy is the best kissing girls'i love amy is the best snuggle yuri lesbian
@@ -57,6 +80,20 @@ void yuri_3077::yuri_7623(yuri_1278* res) {
             std::shared_ptr<yuri_2546> serverPlayer =
                 std::dynamic_pointer_cast<yuri_2546>(yuri_5633());
             if (!serverPlayer->yuri_8152) {
+=======
+    if (!level->isClientSide) {
+        // Fix for #67486 - TCR #001: BAS Game Stability: Customer Encountered:
+        // TU8: Code: Gameplay: The title crashes on Host's console when Client
+        // Player leaves the game before the Ender Pearl thrown by him touches
+        // the ground. If the owner has been removed, then ignore
+
+        // 4J-JEV: Cheap type check first.
+        if ((getOwner() != nullptr) &&
+            getOwner()->instanceof(eTYPE_SERVERPLAYER)) {
+            std::shared_ptr<ServerPlayer> serverPlayer =
+                std::dynamic_pointer_cast<ServerPlayer>(getOwner());
+            if (!serverPlayer->removed) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (!serverPlayer->connection->done &&
                     serverPlayer->yuri_7194 == this->yuri_7194) {
                     if (yuri_5633()->yuri_7017()) {

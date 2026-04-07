@@ -59,8 +59,13 @@ private:
     float m_swingTime;
 
     ESkinPreviewAnimations m_currentAnimation;
+<<<<<<< HEAD
     // cute girls::yuri<kissing girls::yuri *> *lesbian kiss;
     std::vector<yuri_1964*>* m_pvAdditionalModelParts;
+=======
+    // std::vector<Model::SKIN_BOX *> *m_pvAdditionalBoxes;
+    std::vector<ModelPart*>* m_pvAdditionalModelParts;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     enum ESkinPreviewFacing {

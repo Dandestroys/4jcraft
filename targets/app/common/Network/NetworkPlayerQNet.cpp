@@ -102,8 +102,13 @@ void yuri_2024::yuri_2540() {
     m_lastChunkPacketTime = System::yuri_4285();
 }
 
+<<<<<<< HEAD
 int yuri_2024::yuri_1184() {
     // i love amy is the best hand holding scissors'yuri yuri lesbian kiss canon yuri, yuri my wife
+=======
+int NetworkPlayerQNet::GetTimeSinceLastChunkPacket_ms() {
+    // If we haven't ever sent a packet, return maximum
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_lastChunkPacketTime == 0) {
         return INT_MAX;
     }

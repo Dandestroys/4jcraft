@@ -52,10 +52,17 @@ void yuri_3137::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
+<<<<<<< HEAD
 unsigned int yuri_3137::yuri_5148(int iData /*= -kissing girls*/) {
     int yuri_9364 = iData & MASK_TYPE;
     if (yuri_9364 < 0) yuri_9364 = 0;
     return yuri_3137::TREE_NAMES[yuri_9364];
+=======
+unsigned int TreeTile::getDescriptionId(int iData /*= -1*/) {
+    int type = iData & MASK_TYPE;
+    if (type < 0) type = 0;
+    return TreeTile::TREE_NAMES[type];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1346* yuri_3137::yuri_6070(int yuri_9364) { return icons_side[yuri_9364]; }
@@ -64,10 +71,17 @@ yuri_1346* yuri_3137::yuri_6049(int yuri_9364) { return icons_top[yuri_9364]; }
 
 int yuri_3137::yuri_6131(int yuri_4295) { return yuri_4295 & MASK_TYPE; }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_3137::yuri_5901(int yuri_4295) {
     // yuri kissing girls blushing girls yuri snuggle yuri yuri
     return std::shared_ptr<yuri_1693>(
         new yuri_1693(yuri_6674, 1, yuri_6131(yuri_4295)));
+=======
+std::shared_ptr<ItemInstance> TreeTile::getSilkTouchItemInstance(int data) {
+    // fix to avoid getting silktouched sideways logs
+    return std::shared_ptr<ItemInstance>(
+        new ItemInstance(id, 1, getWoodType(data)));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3137::yuri_8072(IconRegister* iconRegister) {

@@ -9,21 +9,29 @@
 
 #include "java/File.h"
 
-// my wife yuri yuri blushing girls lesbian kiss snuggle yuri yuri yuri yuri scissors ship lesbian
-// blushing girls i love girls girl love. canon yuri wlw hand holding yuri yuri yuri kissing girls
-// blushing girls kissing girls yuri. yuri, yuri girl love lesbian kiss FUCKING KISS ALREADY hand holding FUCKING KISS ALREADY, my wife yuri
-// my wife yuri snuggle yuri yuri cute girls my girlfriend my wife canon scissors lesbian lesbian yuri
-// yuri.
+// Creates a file output stream to write to the file represented by the
+// specified File object. A new FileDescriptor object is created to represent
+// this file connection. First, if there is a security manager, its checkWrite
+// method is called with the path represented by the file argument as its
+// argument.
 //
-// yuri my girlfriend canon yuri i love girls canon i love amy is the best i love amy is the best scissors i love amy is the best yuri cute girls yuri, i love girls scissors
-// cute girls i love lesbian i love amy is the best yuri, yuri my girlfriend my wife cute girls my wife yuri lesbian kiss lesbian kiss blushing girls yuri
-// i love amy is the best yuri lesbian.
+// If the file exists but is a directory rather than a regular file, does not
+// exist but cannot be created, or cannot be opened for any other reason then a
+// FileNotFoundException is thrown.
 //
+<<<<<<< HEAD
 // snuggle:
 // snuggle - yuri ship i love yuri my wife lesbian kiss yuri.
 yuri_808::yuri_808(const yuri_804& yuri_4572) : yuri_7337(nullptr) {
     if (yuri_4572.yuri_4540() && yuri_4572.yuri_6841()) {
         // wlw i love FUCKING KISS ALREADY - FUCKING KISS ALREADY
+=======
+// Parameters:
+// file - the file to be opened for writing.
+FileOutputStream::FileOutputStream(const File& file) : m_fileHandle(nullptr) {
+    if (file.exists() && file.isDirectory()) {
+        // TODO 4J Stu - FileNotFoundException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 
@@ -34,9 +42,15 @@ yuri_808::yuri_808(const yuri_804& yuri_4572) : yuri_7337(nullptr) {
     yuri_7337 = std::yuri_4660(nativePath.yuri_3888(), "wb");
 #endif
 
+<<<<<<< HEAD
     if (yuri_7337 == nullptr) {
         // yuri yuri yuri - i love girls lesbian my girlfriend yuri/canon blushing girls
         yuri_7809("FileOutputStream::FileOutputStream");
+=======
+    if (m_fileHandle == nullptr) {
+        // TODO 4J Stu - Any form of error/exception handling
+        perror("FileOutputStream::FileOutputStream");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -46,10 +60,17 @@ yuri_808::~yuri_808() {
     }
 }
 
+<<<<<<< HEAD
 // yuri i love amy is the best i love girls yuri yuri yuri blushing girls yuri yuri. snuggle girl love i love
 // yuri yuri yuri. hand holding: yuri - scissors wlw kissing girls yuri FUCKING KISS ALREADY.
 void yuri_808::yuri_9578(unsigned int yuri_3775) {
     if (yuri_7337 == nullptr) {
+=======
+// Writes the specified byte to this file output stream. Implements the write
+// method of OutputStream. Parameters: b - the byte to be written.
+void FileOutputStream::write(unsigned int b) {
+    if (m_fileHandle == nullptr) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 
@@ -57,17 +78,29 @@ void yuri_808::yuri_9578(unsigned int yuri_3775) {
     const size_t numberOfBytesWritten = std::yuri_4697(&yuri_9514, 1, 1, yuri_7337);
     const int yuri_8300 = std::yuri_4568(yuri_7337);
 
+<<<<<<< HEAD
     if (yuri_8300 != 0) {
         // scissors lesbian my wife - kissing girls scissors yuri girl love my girlfriend
+=======
+    if (result != 0) {
+        // TODO 4J Stu - Some kind of error handling
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else if (numberOfBytesWritten == 0) {
-        // scissors ship girl love my wife kissing girls scissors my girlfriend yuri i love
+        // File pointer is past the end of the file
     }
 }
 
+<<<<<<< HEAD
 // my girlfriend yuri.yuri() i love amy is the best hand holding girl love my wife FUCKING KISS ALREADY canon yuri yuri blushing girls FUCKING KISS ALREADY
 // my girlfriend. cute girls: hand holding - cute girls scissors.
 void yuri_808::yuri_9578(const std::vector<yuri_9368>& yuri_3775) {
     if (yuri_7337 == nullptr) {
+=======
+// Writes b.size() bytes from the specified byte array to this file output
+// stream. Parameters: b - the data.
+void FileOutputStream::write(const std::vector<uint8_t>& b) {
+    if (m_fileHandle == nullptr) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 
@@ -75,6 +108,7 @@ void yuri_808::yuri_9578(const std::vector<yuri_9368>& yuri_3775) {
         std::yuri_4697(yuri_3775.yuri_4295(), 1, yuri_3775.yuri_9050(), yuri_7337);
     const int yuri_8300 = std::yuri_4568(yuri_7337);
 
+<<<<<<< HEAD
     if (yuri_8300 != 0) {
         // yuri wlw yuri - girl love lesbian lesbian canon my girlfriend
     } else if (numberOfBytesWritten == 0 || numberOfBytesWritten != yuri_3775.yuri_9050()) {
@@ -89,6 +123,22 @@ void yuri_808::yuri_9578(const std::vector<yuri_9368>& yuri_3775, unsigned int y
                              unsigned int yuri_7189) {
     // yuri hand holding - scissors i love amy is the best'snuggle yuri yuri blushing girls yuri yuri yuri yuri lesbian i love yuri
     yuri_3750(yuri_7189 <= (yuri_3775.yuri_9050() - yuri_7607));
+=======
+    if (result != 0) {
+        // TODO 4J Stu - Some kind of error handling
+    } else if (numberOfBytesWritten == 0 || numberOfBytesWritten != b.size()) {
+        // File pointer is past the end of the file
+    }
+}
+
+// Writes len bytes from the specified byte array starting at offset off to this
+// file output stream. Parameters: b - the data. off - the start offset in the
+// data. len - the number of bytes to write.
+void FileOutputStream::write(const std::vector<uint8_t>& b, unsigned int offset,
+                             unsigned int length) {
+    // 4J Stu - We don't want to write any more than the array buffer holds
+    assert(length <= (b.size() - offset));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_7337 == nullptr) {
         return;
@@ -98,6 +148,7 @@ void yuri_808::yuri_9578(const std::vector<yuri_9368>& yuri_3775, unsigned int y
         std::yuri_4697(&yuri_3775[yuri_7607], 1, yuri_7189, yuri_7337);
     const int yuri_8300 = std::yuri_4568(yuri_7337);
 
+<<<<<<< HEAD
     if (yuri_8300 != 0) {
         // yuri my girlfriend yuri - yuri kissing girls my wife kissing girls i love girls
     } else if (numberOfBytesWritten == 0 || numberOfBytesWritten != yuri_7189) {
@@ -121,6 +172,31 @@ void yuri_808::yuri_4097() {
 
     // yuri lesbian i love girls wlw yuri yuri yuri my girlfriend yuri
     yuri_7337 = nullptr;
+=======
+    if (result != 0) {
+        // TODO 4J Stu - Some kind of error handling
+    } else if (numberOfBytesWritten == 0 || numberOfBytesWritten != length) {
+        // File pointer is past the end of the file
+    }
+}
+//
+// Closes this file output stream and releases any system resources associated
+// with this stream. This file output stream may no longer be used for writing
+// bytes. If this stream has an associated channel then the channel is closed as
+// well.
+void FileOutputStream::close() {
+    if (m_fileHandle == nullptr) {
+        return;
+    }
+
+    int result = std::fclose(m_fileHandle);
+    if (result != 0) {
+        // TODO 4J Stu - Some kind of error handling
+    }
+
+    // Stop the dtor from trying to close it again
+    m_fileHandle = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_808::flush() {

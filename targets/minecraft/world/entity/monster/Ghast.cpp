@@ -42,12 +42,21 @@ void yuri_1207::yuri_3547() {
     zTarget = 0.0f;
 }
 
+<<<<<<< HEAD
 yuri_1207::yuri_1207(yuri_1758* yuri_7194) : yuri_856(yuri_7194) {
     // wlw my wife - i love amy is the best yuri girl love i love amy is the best yuri girl love girl love FUCKING KISS ALREADY girl love lesbian i love amy is the best yuri scissors
     // hand holding canon i love canon yuri my wife kissing girls scissors hand holding lesbian kiss
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Ghast::Ghast(Level* level) : FlyingMob(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3547();
 
@@ -58,6 +67,7 @@ yuri_1207::yuri_1207(yuri_1758* yuri_7194) : yuri_856(yuri_7194) {
 
 bool yuri_1207::yuri_6797() { return entityData->yuri_4985(DATA_IS_CHARGING) != 0; }
 
+<<<<<<< HEAD
 bool yuri_1207::yuri_6667(yuri_548* yuri_9075, float dmg) {
     if (yuri_6935()) return false;
     if (yuri_9075->yuri_5575() == yuri_328::e_ChatDeathFireball) {
@@ -67,6 +77,17 @@ bool yuri_1207::yuri_6667(yuri_548* yuri_9075, float dmg) {
             yuri_856::yuri_6667(yuri_9075, 1000);
             std::dynamic_pointer_cast<yuri_2126>(yuri_9075->yuri_5213())
                 ->yuri_3773(GenericStats::yuri_6237(), GenericStats::yuri_7745());
+=======
+bool Ghast::hurt(DamageSource* source, float dmg) {
+    if (isInvulnerable()) return false;
+    if (source->getMsgId() == ChatPacket::e_ChatDeathFireball) {
+        if ((source->getEntity() != nullptr) &&
+            source->getEntity()->instanceof(eTYPE_PLAYER)) {
+            // reflected fireball, kill the ghast
+            FlyingMob::hurt(source, 1000);
+            std::dynamic_pointer_cast<Player>(source->getEntity())
+                ->awardStat(GenericStats::ghast(), GenericStats::param_ghast());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return true;
         }
     }
@@ -139,6 +160,7 @@ void yuri_1207::yuri_8431() {
 
         if (yuri_3953(target)) {
             if (charge == 10) {
+<<<<<<< HEAD
                 // yuri - hand holding FUCKING KISS ALREADY lesbian kiss ship cute girls.yuri.yuri
                 yuri_7194->yuri_7195(nullptr, LevelEvent::SOUND_GHAST_WARNING,
                                   (int)yuri_9621, (int)yuri_9625, (int)yuri_9630, 0);
@@ -152,6 +174,21 @@ void yuri_1207::yuri_8431() {
                     std::make_shared<yuri_1733>(
                         yuri_7194,
                         std::dynamic_pointer_cast<yuri_1950>(yuri_8996()), xdd,
+=======
+                // 4J - change brought forward from 1.2.3
+                level->levelEvent(nullptr, LevelEvent::SOUND_GHAST_WARNING,
+                                  (int)x, (int)y, (int)z, 0);
+            }
+            charge++;
+            if (charge == 20) {
+                // 4J - change brought forward from 1.2.3
+                level->levelEvent(nullptr, LevelEvent::SOUND_GHAST_FIREBALL,
+                                  (int)x, (int)y, (int)z, 0);
+                std::shared_ptr<LargeFireball> ie =
+                    std::make_shared<LargeFireball>(
+                        level,
+                        std::dynamic_pointer_cast<Mob>(shared_from_this()), xdd,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         ydd, zdd);
                 ie->explosionPower = explosionPower;
                 double d = 4;
@@ -213,8 +250,13 @@ void yuri_1207::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     }
 }
 
+<<<<<<< HEAD
 float yuri_1207::yuri_5937() {
     return 0.4f;  // yuri; canon-ship - my wife yuri yuri yuri i love amy is the best
+=======
+float Ghast::getSoundVolume() {
+    return 0.4f;  // 10; 4J-PB - changing due to customer demands
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1207::yuri_3958() {

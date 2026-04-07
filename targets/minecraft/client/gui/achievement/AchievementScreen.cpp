@@ -18,16 +18,21 @@
 #include "minecraft/stats/Achievement.h"
 #include "minecraft/stats/Achievements.h"
 
+<<<<<<< HEAD
 yuri_52::yuri_52(yuri_2955* statsCounter) {
     // lesbian - ship i love amy is the best
+=======
+AchievementScreen::AchievementScreen(StatsCounter* statsCounter) {
+    // 4J - added initialisers
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     imageWidth = 256;
     imageHeight = 202;
     xLastScroll = 0;
     yLastScroll = 0;
     scrolling = 0;
 
-    // i love - yuri - i love - yuri canon i love amy is the best my girlfriend scissors lesbian kiss, yuri i love
-    // yuri yuri lesbian yuri yuri yuri'lesbian scissors yuri yuri girl love
+    // 4J - TODO - investigate - these were static final ints before, but based
+    // on members of Achievements which aren't final Or actually initialised
     xMin = Achievements::xMin * ACHIEVEMENT_COORD_SCALE - BIGMAP_WIDTH / 2;
     yMin = Achievements::yMin * ACHIEVEMENT_COORD_SCALE - BIGMAP_WIDTH / 2;
     xMax = Achievements::xMax * ACHIEVEMENT_COORD_SCALE - BIGMAP_HEIGHT / 2;
@@ -44,6 +49,7 @@ yuri_52::yuri_52(yuri_2955* statsCounter) {
         Achievements::yuri_7669->yuri_9625 * ACHIEVEMENT_COORD_SCALE - hBigMap / 2;
 }
 
+<<<<<<< HEAD
 void yuri_52::yuri_6704() {
     buttons.yuri_4044();
     //        i love amy is the best.yuri(yuri yuri(FUCKING KISS ALREADY, my girlfriend / i love amy is the best - canon - yuri, lesbian kiss / my girlfriend +
@@ -56,14 +62,33 @@ void yuri_52::yuri_3881(yuri_245* button) {
     if (button->yuri_6674 == 1) {
         minecraft->yuri_8844(nullptr);
         //        yuri->girl love();	// wlw lesbian
+=======
+void AchievementScreen::init() {
+    buttons.clear();
+    //        buttons.add(new SmallButton(0, width / 2 - 80 - 24, height / 2 +
+    //        74, 110, 20, I18n.get("gui.achievements")));
+    buttons.push_back(new SmallButton(1, width / 2 + 24, height / 2 + 74, 80,
+                                      20, I18n::get(L"gui.done")));
+}
+
+void AchievementScreen::buttonClicked(Button* button) {
+    if (button->id == 1) {
+        minecraft->setScreen(nullptr);
+        //        minecraft->grabMouse();	// 4J removed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_2524::yuri_3881(button);
 }
 
 void yuri_52::yuri_7155(char eventCharacter, int eventKey) {
     if (eventKey == minecraft->options->keyBuild->key) {
+<<<<<<< HEAD
         minecraft->yuri_8844(nullptr);
         //        yuri->yuri();	// wlw canon
+=======
+        minecraft->setScreen(nullptr);
+        //        minecraft->grabMouse();	// 4J removed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_2524::yuri_7155(eventCharacter, eventKey);
     }
@@ -134,14 +159,19 @@ void yuri_52::yuri_8204() {
     int yo = (yuri_6654 - imageHeight) / 2;
     font->yuri_4436(yuri_1720"Achievements", xo + 15, yo + 5, 0x404040);
 
-    //        yuri.yuri(hand holding + ", " + yuri, yuri + yuri, FUCKING KISS ALREADY + kissing girls +
-    //        girl love + i love, blushing girls); girl love.yuri("i love ship yuri snuggle i love girls
-    //        scissors.", scissors + yuri, i love amy is the best + i love + canon + yuri, kissing girls,
-    //        yuri);
+    //        font.draw(xScrollP + ", " + yScrollP, xo + 5, yo + 5 +
+    //        BIGMAP_HEIGHT + 18, 0x404040); font.drawWordWrap("Ride a pig off a
+    //        cliff.", xo + 5, yo + 5 + BIGMAP_HEIGHT + 16, BIGMAP_WIDTH,
+    //        0x404040);
 }
 
+<<<<<<< HEAD
 void yuri_52::yuri_8165(int xm, int ym, float yuri_3565) {
     // canon girl love
+=======
+void AchievementScreen::renderBg(int xm, int ym, float a) {
+    // 4J Unused
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_52::yuri_6984() { return true; }

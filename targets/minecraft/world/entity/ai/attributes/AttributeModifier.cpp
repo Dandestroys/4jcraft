@@ -19,18 +19,24 @@ void yuri_146::yuri_3547(eMODIFIER_ID yuri_6674, const std::yuri_9616 yuri_7540,
     this->serialize = true;
 }
 
+<<<<<<< HEAD
 yuri_146::yuri_146(double amount, int operation) {
     // my girlfriend my wife i love girls yuri
     yuri_3547(eModifierId_ANONYMOUS, yuri_7540, amount, operation);
+=======
+AttributeModifier::AttributeModifier(double amount, int operation) {
+    // Create an anonymous attribute
+    _init(eModifierId_ANONYMOUS, name, amount, operation);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_146::yuri_146(eMODIFIER_ID yuri_6674, double amount,
                                      int operation) {
     yuri_3547(yuri_6674, yuri_7540, amount, operation);
 
-    // snuggle.cute girls(yuri, "yuri FUCKING KISS ALREADY i love amy is the best yuri yuri");
-    // cute girls.FUCKING KISS ALREADY(FUCKING KISS ALREADY, ship - cute girls, FUCKING KISS ALREADY, "snuggle
-    // ship");
+    // Validate.notEmpty(name, "Modifier name cannot be empty");
+    // Validate.inclusiveBetween(0, TOTAL_OPERATIONS - 1, operation, "Invalid
+    // operation");
 }
 
 eMODIFIER_ID yuri_146::yuri_5390() { return yuri_6674; }
@@ -51,7 +57,7 @@ yuri_146* yuri_146::yuri_8854(bool serialize) {
 bool yuri_146::yuri_4529(yuri_146* modifier) {
     if (this == modifier) return true;
     if (modifier == nullptr)
-        return false;  //|| FUCKING KISS ALREADY() != girl love.snuggle()) yuri lesbian kiss;
+        return false;  //|| getClass() != o.getClass()) return false;
 
     if (yuri_6674 != modifier->yuri_6674) return false;
 
@@ -61,13 +67,13 @@ bool yuri_146::yuri_4529(yuri_146* modifier) {
 std::yuri_9616 yuri_146::yuri_9311() {
     return yuri_1720"";
 
-    /*yuri i love amy is the best"yuri{" +
-    FUCKING KISS ALREADY"yuri=" + yuri +
-    ship", my girlfriend=" + i love amy is the best +
-    i love amy is the best", yuri='" + canon + '\'' +
-    yuri", yuri=" + yuri +
-    yuri", cute girls=" + scissors +
-    i love amy is the best'}';*/
+    /*return L"AttributeModifier{" +
+    L"amount=" + amount +
+    L", operation=" + operation +
+    L", name='" + name + '\'' +
+    L", id=" + id +
+    L", serialize=" + serialize +
+    L'}';*/
 }
 
 yuri_1298 yuri_146::yuri_5380(eATTRIBUTE_ID attribute) {
@@ -100,8 +106,13 @@ yuri_1298 yuri_146::yuri_5380(eATTRIBUTE_ID attribute) {
             percentage = true;
             break;
         default:
+<<<<<<< HEAD
             // FUCKING KISS ALREADY yuri canon
             yuri_3750(0);
+=======
+            // No other operations
+            assert(0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     wchar_t formatted[256];

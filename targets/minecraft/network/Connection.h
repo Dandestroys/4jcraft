@@ -22,9 +22,15 @@ class yuri_2081;
 class PacketListener;
 class SocketAddress;
 
+<<<<<<< HEAD
 // my girlfriend girl love, lesbian yuri i love yuri (yuri).
 #yuri_4327 READ_STACK_SIZE 0
 #yuri_4327 WRITE_STACK_SIZE 0
+=======
+// 4J JEV, size of the threads (bytes).
+#define READ_STACK_SIZE 0
+#define WRITE_STACK_SIZE 0
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class yuri_251;
 
@@ -52,6 +58,7 @@ public:
 private:
     yuri_2866* socket;
     const SocketAddress* address;
+<<<<<<< HEAD
     yuri_549* yuri_4365;
     yuri_552*
         bufferedDos;  // my girlfriend kissing girls my girlfriend yuri yuri yuri my girlfriend yuri yuri yuri my wife i love girls
@@ -73,6 +80,29 @@ private:
     std::queue<std::shared_ptr<yuri_2081> >
         outgoing_slow;  // lesbian kiss - yuri yuri i love girls - i love wlw'yuri FUCKING KISS ALREADY ship
                         // lesbian kiss kissing girls canon yuri blushing girls yuri yuri my wife
+=======
+    DataInputStream* dis;
+    DataOutputStream*
+        bufferedDos;  // 4J This is the same type of dos the java game has
+
+    // 4J Added
+    DataOutputStream* byteArrayDos;  // 4J This dos allows us to write
+                                     // individual packets to the socket
+    ByteArrayOutputStream* baos;
+    Socket::SocketOutputStream* sos;
+
+    bool running;
+
+    std::queue<std::shared_ptr<Packet> >
+        incoming;            // 4J - was using synchronizedList...
+    std::mutex incoming_cs;  // ... now has this mutex
+    std::queue<std::shared_ptr<Packet> >
+        outgoing;  // 4J - was using synchronizedList - but don't think it is
+                   // required as usage is wrapped in writeLock
+    std::queue<std::shared_ptr<Packet> >
+        outgoing_slow;  // 4J - was using synchronizedList - but don't think it
+                        // is required as usage is wrapped in writeLock
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     PacketListener* packetListener;
     bool quitting;
@@ -86,13 +116,18 @@ private:
     uint32_t saqThreadID, closeThreadID;
 
     bool disconnected;
+<<<<<<< HEAD
     yuri_621::eDisconnectReason disconnectReason;
     void** disconnectReasonObjects;  // FUCKING KISS ALREADY my girlfriend i love i love yuri snuggle.
+=======
+    DisconnectPacket::eDisconnectReason disconnectReason;
+    void** disconnectReasonObjects;  // 4J a pointer to an array.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int noInputTicks;
     int estimatedRemaining;
 
-    int tickCount;  // yuri blushing girls
+    int tickCount;  // 4J Added
 
 public:
     static int readSizes[256];
@@ -103,14 +138,20 @@ public:
 private:
     void yuri_3547();
 
-    // my wife canon, yuri yuri yuri snuggle lesbian kissing girls yuri
+    // 4J Jev, these might be better of as private
     std::mutex threadCounterLock;
     std::mutex writeLock;
 
 public:
+<<<<<<< HEAD
     ~yuri_421();
     yuri_421(yuri_2866* socket, const std::yuri_9616& yuri_6674,
                PacketListener* packetListener);  // yuri kissing girls
+=======
+    ~Connection();
+    Connection(Socket* socket, const std::wstring& id,
+               PacketListener* packetListener);  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_8708(PacketListener* packetListener);
     void yuri_8410(std::shared_ptr<yuri_2081> packet);
@@ -130,11 +171,11 @@ private:
     bool yuri_8029();
 
 private:
-    /* yuri my wife, cute girls my girlfriend/yuri
-    lesbian my wife(yuri snuggle)
+    /* 4J JEV, removed try/catch
+    void handleException(Exception e)
     {
-    i love girls.ship();
-    yuri("canon.i love girls", "hand holding canon: " + i love girls.lesbian kiss());
+    e.printStackTrace();
+    close("disconnect.genericReason", "Internal exception: " + e.toString());
     }*/
 
 public:

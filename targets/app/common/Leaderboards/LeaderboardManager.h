@@ -11,17 +11,29 @@ public:
     yuri_1746();
     virtual ~yuri_1746() {}
 
+<<<<<<< HEAD
     // hand holding
     static yuri_1322* yuri_1614() { return m_instance; }
     static void yuri_588();
+=======
+    // Singleton
+    static IPlatformLeaderboard* Instance() { return m_instance; }
+    static void DeleteInstance();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // scissors yuri wlw - wlw yuri yuri:
-    //   canon, lesbian, yuri, i love amy is the best, yuri,
-    //   i love, i love girls, snuggle
+    // IPlatformLeaderboard pure virtuals - subclasses must implement:
+    //   Tick, OpenSession, CloseSession, DeleteSession, WriteStats,
+    //   FlushStats, CancelOperation, isIdle
 
+<<<<<<< HEAD
     // ship girl love yuri yuri my wife
     bool yuri_2326(yuri_1747* yuri_3901, int difficulty,
                            EStatsType yuri_9364, PlayerUID myUID,
+=======
+    // Base implementations for read operations
+    bool ReadStats_Friends(LeaderboardReadListener* callback, int difficulty,
+                           EStatsType type, PlayerUID myUID,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            unsigned int startIndex,
                            unsigned int readCount) override;
     bool yuri_2327(yuri_1747* yuri_3901, int difficulty,

@@ -1,3 +1,3 @@
 #include "StatsSyncer.h"
 
-// i love - lesbian
+// 4J - TODO

@@ -18,5 +18,5 @@ public:
     virtual void yuri_8158(std::shared_ptr<yuri_3091> _spawner, double yuri_9621,
                         double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
                         float alpha = 1.0f,
-                        bool useCompiled = true);  // yuri i love amy is the best my girlfriend girl love
+                        bool useCompiled = true);  // 4J added setColor param
 };

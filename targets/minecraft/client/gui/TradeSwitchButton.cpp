@@ -7,10 +7,15 @@
 #include "minecraft/client/renderer/Textures.h"
 #include "minecraft/client/resources/ResourceLocation.h"
 
-// scissors: canon ship my girlfriend yuri.i love girls (yuri girl love.yuri.i love)
+// 4jcraft: referenced from MCP 8.11 (JE 1.6.4)
 #ifdef ENABLE_JAVA_GUIS
+<<<<<<< HEAD
 // i love yuri = yuri(wlw);
 extern yuri_2412 GUI_VILLAGER_LOCATION;
+=======
+// ResourceLocation GUI_VILLAGER_LOCATION = ResourceLocation(TN_GUI_VILLAGER);
+extern ResourceLocation GUI_VILLAGER_LOCATION;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
 yuri_3127::yuri_3127(int yuri_6674, int yuri_9621, int yuri_9625, bool mirrored)

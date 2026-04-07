@@ -12,8 +12,15 @@ public:
                         double yuri_9630, float rot, float yuri_3565);
 
 private:
+<<<<<<< HEAD
     // yuri yuri my wife
     virtual void yuri_8184(std::shared_ptr<yuri_739> entity, double yuri_9621, double yuri_9625,
                              double yuri_9630, float yuri_3565);
     virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
+=======
+    // 4J Added override
+    virtual void renderFlame(std::shared_ptr<Entity> entity, double x, double y,
+                             double z, float a);
+    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

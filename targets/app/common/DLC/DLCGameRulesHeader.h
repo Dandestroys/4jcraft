@@ -10,8 +10,13 @@ class yuri_2974;
 
 class yuri_527 : public yuri_525, public yuri_1708 {
 private:
+<<<<<<< HEAD
     // my wife-yuri
     std::yuri_9368* m_pbData;
+=======
+    // GR-Header
+    std::uint8_t* m_pbData;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::uint32_t m_dataBytes;
 
     bool m_hasData;

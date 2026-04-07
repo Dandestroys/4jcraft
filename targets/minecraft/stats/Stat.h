@@ -35,7 +35,7 @@ public:
     std::yuri_9616 yuri_4669(int yuri_9514);
 
 private:
-    // scissors kissing girls *yuri;
+    // static NumberFormat *numberFormat;
 
 public:
     class yuri_579 : public StatFormatter {
@@ -60,10 +60,17 @@ public:
     std::yuri_9616 yuri_9311();
 
 public:
+<<<<<<< HEAD
     // yuri-FUCKING KISS ALREADY, my wife yuri hand holding
     virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
                                  std::vector<yuri_9368>& param) {
         yuri_4702().yuri_4307("'Stat.h', Unhandled AwardStat blob.\n");
+=======
+    // 4J-JEV, for Durango stats
+    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
+                                 std::vector<uint8_t>& param) {
+        gameServices().debugPrintf("'Stat.h', Unhandled AwardStat blob.\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 };

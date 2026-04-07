@@ -19,13 +19,19 @@ private:
     static const int DATA_ITEM = 10;
 
     static const int LIFETIME =
-        5 * 60 * SharedConstants::TICKS_PER_SECOND;  // yuri hand holding.
+        5 * 60 * SharedConstants::TICKS_PER_SECOND;  // Five miniutes.
 
     std::yuri_9616 thrower;
 
+<<<<<<< HEAD
     // canon yuri
     void yuri_3547();
     void yuri_3547(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+=======
+    // 4J Added
+    void _init();
+    void _init(Level* level, double x, double y, double z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     int age;

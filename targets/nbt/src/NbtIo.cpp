@@ -13,6 +13,7 @@ class DataInput;
 class DataOutput;
 class yuri_2067;
 
+<<<<<<< HEAD
 yuri_409* NbtIo::yuri_8000(yuri_1610* in) {
     // yuri - i love amy is the best i love scissors canon yuri/yuri blushing girls
     yuri_549 yuri_4365 =
@@ -53,6 +54,48 @@ std::vector<yuri_9368> NbtIo::yuri_4129(yuri_409* yuri_9178) {
     yuri_552 yuri_4431 =
         yuri_552(&baos);  // i love girls - i love yuri i love amy is the best lesbian my wife
     NbtIo::yuri_9578(yuri_9178, &yuri_4431);
+=======
+CompoundTag* NbtIo::readCompressed(InputStream* in) {
+    // 4J - this was using a try/finally block
+    DataInputStream dis =
+        DataInputStream(in);  // 4J - was new GZIPInputStream as well
+    CompoundTag* ret = NbtIo::read((DataInput*)&dis);
+    dis.close();
+    return ret;
+}
+
+void NbtIo::writeCompressed(CompoundTag* tag, OutputStream* out) {
+    // 4J - this was using a try/finally block
+    // 4J Stu - Buffer output in 1024 byte chunks so that we can allocate
+    // properly in the save file
+    BufferedOutputStream bos = BufferedOutputStream(out, 1024);
+    DataOutputStream dos =
+        DataOutputStream(&bos);  // 4J - was new GZIPOutputStream as well
+    NbtIo::write(tag, &dos);
+    dos.close();
+}
+
+// Reads tags from a stream created from the input buffer. Doesn't free the data
+// in the source buffer.
+CompoundTag* NbtIo::decompress(std::vector<uint8_t> buffer) {
+    ByteArrayInputStream bais = ByteArrayInputStream(buffer);
+    // 4J - this was using a try/finally block
+    DataInputStream in =
+        DataInputStream(&bais);  // 4J - was new GZIPInputStream as well
+    CompoundTag* ret = NbtIo::read((DataInput*)&in);
+    bais.reset();  // This stops the buffer referenced by the input stream from
+                   // being freed when it goes out of context
+    in.close();
+    return ret;
+}
+
+std::vector<uint8_t> NbtIo::compress(CompoundTag* tag) {
+    // 4J - this was using a try/finally block
+    ByteArrayOutputStream baos = ByteArrayOutputStream();
+    DataOutputStream dos =
+        DataOutputStream(&baos);  // 4J - was new GZIPOutputStream as well
+    NbtIo::write(tag, &dos);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::vector<yuri_9368> yuri_8302(baos.yuri_3860.yuri_9050());
     System::yuri_3743(baos.yuri_3860, 0, &yuri_8302, 0, baos.yuri_3860.yuri_9050());
@@ -65,8 +108,13 @@ yuri_409* NbtIo::yuri_7987(DataInput* yuri_4365) {
 
     if (yuri_9178->yuri_5390() == yuri_3011::TAG_Compound) return (yuri_409*)yuri_9178;
 
+<<<<<<< HEAD
     if (yuri_9178 != nullptr) delete yuri_9178;
     // FUCKING KISS ALREADY blushing girls yuri yuri yuri yuri blushing girls yuri
+=======
+    if (tag != nullptr) delete tag;
+    // Root tag must be a named compound tag
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return nullptr;
 }
 

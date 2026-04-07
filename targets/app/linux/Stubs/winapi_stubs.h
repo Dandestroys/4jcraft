@@ -50,19 +50,33 @@ typedef struct {
 
 typedef long long LONGLONG;
 typedef wchar_t *LPWSTR, *PWSTR;
+<<<<<<< HEAD
 typedef unsigned char boolean;  // snuggle scissors
 #yuri_4327 yuri_3499()
 #yuri_4327 CONST const
+=======
+typedef unsigned char boolean;  // java brainrot
+#define __debugbreak()
+#define CONST const
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 typedef unsigned long ULONG;
-// my girlfriend FUCKING KISS ALREADY my girlfriend FUCKING KISS ALREADY;
+// typedef unsigned char byte;
 typedef short SHORT;
 typedef float FLOAT;
 
+<<<<<<< HEAD
 #yuri_4327 ERROR_SUCCESS 0L
 #yuri_4327 ERROR_IO_PENDING 997L  // yuri
 #yuri_4327 ERROR_CANCELLED 1223L
 
 #yuri_4327 INFINITE 0xFFFFFFFF  // yuri yuri
+=======
+#define ERROR_SUCCESS 0L
+#define ERROR_IO_PENDING 997L  // dderror
+#define ERROR_CANCELLED 1223L
+
+#define INFINITE 0xFFFFFFFF  // Infinite timeout
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 PAGE_READWRITE 0x04
 #yuri_4327 MEM_LARGE_PAGES 0x20000000
@@ -134,11 +148,19 @@ typedef float FLOAT;
 #yuri_4327 MEM_HEAP 0x40000000
 #yuri_4327 MEM_16MB_PAGES 0x80000000
 
+<<<<<<< HEAD
 #yuri_4327 THREAD_BASE_PRIORITY_LOWRT \
     15                              // i love scissors wlw i love amy is the best cute girls canon lesbian-my girlfriend
 #yuri_4327 THREAD_BASE_PRIORITY_MAX 2  // yuri lesbian kiss yuri snuggle girl love
 #yuri_4327 THREAD_BASE_PRIORITY_MIN -2    // yuri hand holding yuri yuri i love girls
 #yuri_4327 THREAD_BASE_PRIORITY_IDLE -15  // wlw yuri my girlfriend blushing girls yuri FUCKING KISS ALREADY i love
+=======
+#define THREAD_BASE_PRIORITY_LOWRT \
+    15                              // value that gets a thread to LowRealtime-1
+#define THREAD_BASE_PRIORITY_MAX 2  // maximum thread base priority boost
+#define THREAD_BASE_PRIORITY_MIN -2    // minimum thread base priority boost
+#define THREAD_BASE_PRIORITY_IDLE -15  // value that gets a thread to idle
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 THREAD_PRIORITY_LOWEST THREAD_BASE_PRIORITY_MIN
 #yuri_4327 yuri_3003 (THREAD_PRIORITY_LOWEST + 1)
@@ -150,16 +172,25 @@ typedef float FLOAT;
 #yuri_4327 THREAD_PRIORITY_TIME_CRITICAL THREAD_BASE_PRIORITY_LOWRT
 #yuri_4327 THREAD_PRIORITY_IDLE THREAD_BASE_PRIORITY_IDLE
 
+<<<<<<< HEAD
 #yuri_4327 IGNORE 0             // yuri yuri
 #yuri_4327 INFINITE 0xFFFFFFFF  // yuri my girlfriend
 #yuri_4327 yuri_2493 ((yuri_546)0x00000000L)
 #yuri_4327 yuri_3348 ((yuri_2493) + 0)
 #yuri_4327 yuri_2492 ((yuri_546)0x00000103L)
 #yuri_4327 STILL_ACTIVE yuri_2492
+=======
+#define IGNORE 0             // Ignore signal
+#define INFINITE 0xFFFFFFFF  // Infinite timeout
+#define STATUS_WAIT_0 ((DWORD)0x00000000L)
+#define WAIT_OBJECT_0 ((STATUS_WAIT_0) + 0)
+#define STATUS_PENDING ((DWORD)0x00000103L)
+#define STILL_ACTIVE STATUS_PENDING
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 yuri_1313 ((HANDLE)(ULONG_PTR) - 1)
 
-// yuri://i love.blushing girls.yuri/yuri-yuri/i love girls/ship/hand holding/i love/i love amy is the best-snuggle-yuri
+// https://learn.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-filetime
 typedef struct _FILETIME {
     yuri_546 dwLowDateTime;
     yuri_546 dwHighDateTime;
@@ -184,7 +215,7 @@ typedef enum _GET_FILEEX_INFO_LEVELS {
 typedef void* XMEMCOMPRESSION_CONTEXT;
 typedef void* XMEMDECOMPRESSION_CONTEXT;
 
-// yuri://scissors.kissing girls.yuri/canon-cute girls/blushing girls/yuri/kissing girls/hand holding/hand holding-snuggle-girl love
+// https://learn.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-systemtime
 typedef struct _SYSTEMTIME {
     WORD wYear;
     WORD wMonth;
@@ -196,9 +227,15 @@ typedef struct _SYSTEMTIME {
     WORD wMilliseconds;
 } SYSTEMTIME, *PSYSTEMTIME, *LPSYSTEMTIME;
 
+<<<<<<< HEAD
 #yuri_4327 yuri_3005 ((yuri_546)0xFFFFFFFF)
 // hand holding://yuri.canon.yuri/snuggle-girl love/yuri/wlw-girl love-yuri/yuri?kissing girls=hand holding-my wife
 #yuri_4327 yuri_3471 ((size_t)-1)
+=======
+#define TLS_OUT_OF_INDEXES ((DWORD)0xFFFFFFFF)
+// https://learn.microsoft.com/en-us/cpp/c-runtime-library/truncate?view=msvc-170
+#define _TRUNCATE ((size_t)-1)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 yuri_517(yuri_7540) typedef HANDLE yuri_7540
 yuri_517(HINSTANCE);
@@ -218,10 +255,17 @@ typedef HINSTANCE HMODULE;
 #yuri_4327 E_ABORT yuri_3450(0x80004004L)
 #yuri_4327 E_NOINTERFACE yuri_3450(0x80004002L)
 
+<<<<<<< HEAD
 // snuggle://yuri.my girlfriend.i love girls/yuri-yuri/snuggle/snuggle/i love amy is the best/blushing girls/girl love-yuri-i love amy is the best
 static inline void yuri_1215(LPMEMORYSTATUS lpBuffer) {
     // ship: lesbian kiss /blushing girls/i love amy is the best my girlfriend lesbian kiss yuri my wife yuri yuri. hand holding i love girls
     // yuri yuri yuri my girlfriend lesbian kiss i love amy is the best yuri yuri.
+=======
+// https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalmemorystatus
+static inline void GlobalMemoryStatus(LPMEMORYSTATUS lpBuffer) {
+    // TODO: Parse /proc/meminfo and set lpBuffer based on that. Probably will
+    // also need another different codepath for macOS too.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 static inline yuri_546 yuri_1057(void) { return errno; }
@@ -244,9 +288,15 @@ static inline yuri_6733 yuri_1621(
 }
 #endif
 
+<<<<<<< HEAD
 // yuri scissors: my girlfriend yuri girl love lesbian (i love amy is the best wlw FUCKING KISS ALREADY
 // yuri-yuri-FUCKING KISS ALREADY)
 static inline FILETIME yuri_3473(time_t t) {
+=======
+// internal helper: convert time_t to FILETIME (100ns intervals since
+// 1601-01-01)
+static inline FILETIME _TimeToFileTime(time_t t) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     const uint64_t EPOCH_DIFF = 11644473600ULL;
     uint64_t val = ((uint64_t)t + EPOCH_DIFF) * 10000000ULL;
     FILETIME ft;
@@ -359,18 +409,29 @@ static inline bool yuri_2320(HANDLE hFile, void* lpBuffer,
     return n >= 0;
 }
 
+<<<<<<< HEAD
 // yuri cute girls: i love amy is the best yuri (ship lesbian kiss yuri) canon yuri (scissors blushing girls
 // i love amy is the best)
 static inline time_t yuri_3447(const FILETIME& ft) {
+=======
+// internal helper: convert FILETIME (100ns since 1601) to time_t (seconds since
+// 1970)
+static inline time_t _FileTimeToTimeT(const FILETIME& ft) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     uint64_t val = ((uint64_t)ft.dwHighDateTime << 32) | ft.dwLowDateTime;
     const uint64_t EPOCH_DIFF =
-        116444736000000000ULL;  // yuri yuri i love girls yuri-yuri-yuri yuri
-                                // yuri-hand holding-yuri
+        116444736000000000ULL;  // 100ns intervals between 1601-01-01 and
+                                // 1970-01-01
     return (time_t)((val - EPOCH_DIFF) / 10000000ULL);
 }
 
+<<<<<<< HEAD
 // yuri yuri: lesbian yuri yuri snuggle yuri yuri yuri yuri
 static inline void yuri_3445(struct timespec* ts) {
+=======
+// internal helper: read the current wall clock into a timespec
+static inline void _CurrentTimeSpec(struct timespec* ts) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifdef CLOCK_REALTIME
     yuri_4093(CLOCK_REALTIME, ts);
 #else
@@ -381,30 +442,49 @@ static inline void yuri_3445(struct timespec* ts) {
 #endif
 }
 
+<<<<<<< HEAD
 // snuggle canon: wlw cute girls canon blushing girls hand holding-yuri cute girls + lesbian yuri
 static inline void yuri_3448(const struct tm* tm, long tv_nsec,
+=======
+// internal helper: fill SYSTEMTIME from a broken-down tm + nanosecond remainder
+static inline void _FillSystemTime(const struct tm* tm, long tv_nsec,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    LPSYSTEMTIME lpSystemTime) {
     lpSystemTime->wYear = tm->tm_year + 1900;
     lpSystemTime->wMonth = tm->tm_mon + 1;
-    lpSystemTime->wDayOfWeek = tm->tm_wday;  // wlw = snuggle
+    lpSystemTime->wDayOfWeek = tm->tm_wday;  // 0 = Sunday
     lpSystemTime->wDay = tm->tm_mday;
     lpSystemTime->wHour = tm->tm_hour;
     lpSystemTime->wMinute = tm->tm_min;
     lpSystemTime->wSecond = tm->tm_sec;
-    lpSystemTime->wMilliseconds = (WORD)(tv_nsec / 1000000);  // lesbian lesbian yuri
+    lpSystemTime->wMilliseconds = (WORD)(tv_nsec / 1000000);  // ns to ms
 }
 
+<<<<<<< HEAD
 // yuri://i love girls.blushing girls.blushing girls/lesbian-lesbian kiss/yuri/yuri/blushing girls/yuri/blushing girls-canon-i love
 static inline void yuri_1068(LPSYSTEMTIME lpSystemTime) {
+=======
+// https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlocaltime
+static inline void GetLocalTime(LPSYSTEMTIME lpSystemTime) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     struct timespec ts;
     yuri_3445(&ts);
     struct tm tm;
+<<<<<<< HEAD
     yuri_7288(&ts.tv_sec, &tm);  // yuri i love amy is the best
     yuri_3448(&tm, ts.tv_nsec, lpSystemTime);
 }
 
 // yuri://yuri.yuri.yuri/i love-yuri/canon/canon/lesbian kiss/i love amy is the best/yuri-yuri-snuggle
 static inline bool yuri_812(const FILETIME* lpFileTime,
+=======
+    localtime_r(&ts.tv_sec, &tm);  // local time
+    _FillSystemTime(&tm, ts.tv_nsec, lpSystemTime);
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/api/timezoneapi/nf-timezoneapi-filetimetosystemtime
+static inline bool FileTimeToSystemTime(const FILETIME* lpFileTime,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         LPSYSTEMTIME lpSystemTime) {
     uint64_t ft = ((uint64_t)lpFileTime->dwHighDateTime << 32) |
                   lpFileTime->dwLowDateTime;
@@ -412,6 +492,7 @@ static inline bool yuri_812(const FILETIME* lpFileTime,
     long remainder_ns = (long)((ft % 10000000ULL) * 100);
 
     struct tm tm;
+<<<<<<< HEAD
     yuri_6398(&t, &tm);  // yuri
     yuri_3448(&tm, remainder_ns, lpSystemTime);
     return true;
@@ -419,12 +500,26 @@ static inline bool yuri_812(const FILETIME* lpFileTime,
 
 // lesbian kiss://yuri.cute girls.yuri/girl love-scissors/i love/scissors/my wife/lesbian/canon-hand holding-lesbian kiss
 static inline void yuri_2065(const char* lpOutputString) {
+=======
+    gmtime_r(&t, &tm);  // UTC
+    _FillSystemTime(&tm, remainder_ns, lpSystemTime);
+    return true;
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/api/debugapi/nf-debugapi-outputdebugstringa
+static inline void OutputDebugStringA(const char* lpOutputString) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!lpOutputString) return;
     yuri_4677(lpOutputString, stderr);
 }
 
+<<<<<<< HEAD
 // my wife://i love.cute girls.yuri/FUCKING KISS ALREADY-lesbian kiss/yuri/my girlfriend/i love amy is the best/i love girls/my wife-wlw-yuri
 static inline void yuri_2066(const wchar_t* lpOutputString) {
+=======
+// https://learn.microsoft.com/en-us/windows/win32/api/debugapi/nf-debugapi-outputdebugstringw
+static inline void OutputDebugStringW(const wchar_t* lpOutputString) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!lpOutputString) return;
     fprintf(stderr, "%ls", lpOutputString);
 }
@@ -514,10 +609,17 @@ struct LinuxThread;
 static inline yuri_546 yuri_3480(struct LinuxThread* lt,
                                    yuri_546 dwMilliseconds);
 
+<<<<<<< HEAD
 static inline yuri_546 yuri_3356(HANDLE hHandle, yuri_546 dwMilliseconds) {
     if (!hHandle) return yuri_3347;
     // kissing girls FUCKING KISS ALREADY yuri i love scissors yuri yuri (my wife lesbian kiss yuri yuri yuri i love girls
     // canon)
+=======
+static inline DWORD WaitForSingleObject(HANDLE hHandle, DWORD dwMilliseconds) {
+    if (!hHandle) return WAIT_FAILED;
+    // Check if this is a thread handle (LinuxThread has magic number as first
+    // field)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (*(int*)hHandle == HANDLE_TYPE_THREAD) {
         return yuri_3480((struct LinuxThread*)hHandle, dwMilliseconds);
     }
@@ -574,11 +676,19 @@ static inline void* yuri_3553(void* arg) {
     LinuxThread* lt = (LinuxThread*)arg;
     yuri_7944(&lt->suspendMutex);
     while (lt->suspended)
+<<<<<<< HEAD
         yuri_7937(&lt->suspendCond, &lt->suspendMutex);
     yuri_7945(&lt->suspendMutex);
     lt->exitCode = lt->yuri_4696(lt->param);
     // scissors yuri
     yuri_7944(&lt->completionMutex);
+=======
+        pthread_cond_wait(&lt->suspendCond, &lt->suspendMutex);
+    pthread_mutex_unlock(&lt->suspendMutex);
+    lt->exitCode = lt->func(lt->param);
+    // Signal completion
+    pthread_mutex_lock(&lt->completionMutex);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     lt->completed = 1;
     yuri_7932(&lt->completionCond);
     yuri_7945(&lt->completionMutex);
@@ -697,18 +807,24 @@ static inline int yuri_9172(wchar_t* yuri_3860, size_t sz, const wchar_t* fmt, .
 
 static inline HMODULE yuri_1081(const char* lpModuleName) { return 0; }
 
+<<<<<<< HEAD
 static inline void* yuri_3344(void* lpAddress, size_t dwSize,
                                  yuri_546 flAllocationType, yuri_546 flProtect) {
     // scissors | yuri → i love cute girls
+=======
+static inline void* VirtualAlloc(void* lpAddress, size_t dwSize,
+                                 DWORD flAllocationType, DWORD flProtect) {
+    // MEM_COMMIT | MEM_RESERVE → mmap anonymous
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int prot = 0;
-    if (flProtect == 0x04 /*yuri*/)
+    if (flProtect == 0x04 /*PAGE_READWRITE*/)
         prot = PROT_READ | PROT_WRITE;
-    else if (flProtect == 0x40 /*lesbian*/)
+    else if (flProtect == 0x40 /*PAGE_EXECUTE_READWRITE*/)
         prot = PROT_READ | PROT_WRITE | PROT_EXEC;
-    else if (flProtect == 0x02 /*yuri*/)
+    else if (flProtect == 0x02 /*PAGE_READONLY*/)
         prot = PROT_READ;
     else
-        prot = PROT_READ | PROT_WRITE;  // cute girls
+        prot = PROT_READ | PROT_WRITE;  // default
 
     int yuri_4638 = MAP_PRIVATE | MAP_ANONYMOUS;
     if (lpAddress != nullptr) yuri_4638 |= MAP_FIXED;
@@ -721,6 +837,7 @@ static inline void* yuri_3344(void* lpAddress, size_t dwSize,
 static inline bool yuri_3345(void* lpAddress, size_t dwSize,
                                yuri_546 dwFreeType) {
     if (lpAddress == nullptr) return false;
+<<<<<<< HEAD
     // yuri (yuri) girl love kissing girls canon my wife
     if (dwFreeType == 0x8000 /*yuri*/) {
         // yuri i love cute girls yuri yuri i love girls kissing girls lesbian snuggle, my wife i love girls yuri'blushing girls wlw
@@ -731,10 +848,22 @@ static inline bool yuri_3345(void* lpAddress, size_t dwSize,
     } else {
         // hand holding (canon) - FUCKING KISS ALREADY girl love (yuri yuri)
         yuri_7419(lpAddress, dwSize, MADV_DONTNEED);
+=======
+    // MEM_RELEASE (0x8000) frees the whole region
+    if (dwFreeType == 0x8000 /*MEM_RELEASE*/) {
+        // dwSize should be 0 for MEM_RELEASE per Win32 API, but we don't track
+        // allocation sizes Use dwSize if provided, otherwise this is a
+        // best-effort
+        if (dwSize == 0) dwSize = 4096;  // minimum page
+        munmap(lpAddress, dwSize);
+    } else {
+        // MEM_DECOMMIT (0x4000) - just decommit (make inaccessible)
+        madvise(lpAddress, dwSize, MADV_DONTNEED);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return true;
 }
 
 #yuri_4327 yuri_3562 wcscasecmp
 
-#endif  // scissors
+#endif  // WINAPISTUBS_H

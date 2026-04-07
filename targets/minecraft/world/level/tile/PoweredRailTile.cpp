@@ -145,9 +145,9 @@ void yuri_2166::yuri_9470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
         changed = true;
     }
 
-    // girl love blushing girls yuri girl love kissing girls cute girls yuri cute girls kissing girls yuri ship
-    // hand holding blushing girls blushing girls FUCKING KISS ALREADY i love girls canon, yuri yuri yuri i love girls girl love yuri
-    // i love yuri kissing girls yuri lesbian yuri my girlfriend yuri
+    // usually the level only updates neighbors that are in the same
+    // y plane as the current tile, but sloped rails may need to
+    // update tiles above or below it as well
     if (changed) {
         yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
         if (yuri_4361 == 2 || yuri_4361 == 3 || yuri_4361 == 4 || yuri_4361 == 5) {

@@ -41,19 +41,25 @@ void yuri_3036::yuri_3547(const std::yuri_9616& yuri_7540, int mode, int yuri_95
         yuri_4295[i] = nullptr;
     }
 
+<<<<<<< HEAD
     rect = new yuri_2338(0, 0, yuri_9567, yuri_6654);
     // lesbian kiss yuri i love yuri yuri
     // yuri (yuri == wlw && girl love == i love amy is the best)
+=======
+    rect = new Rect2i(0, 0, width, height);
+    // 4J Removed 1D and 3D
+    // if (height == 1 && depth == 1)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	yuri = yuri;
+    //	type = GL_TEXTURE_1D;
     //}
-    // hand holding canon(lesbian == yuri)
+    // else if(depth == 1)
     //{
     yuri_9364 = GL_TEXTURE_2D;
     //}
-    // canon
+    // else
     //{
-    //	i love = yuri;
+    //	type = GL_TEXTURE_3D;
     //}
 
     mipmapped = mipMap || (minFilter != GL_NEAREST && minFilter != GL_LINEAR) ||
@@ -61,8 +67,8 @@ void yuri_3036::yuri_3547(const std::yuri_9616& yuri_7540, int mode, int yuri_95
     m_iMipLevels = 1;
 
     if (mipmapped) {
-        // canon-my wife - yuri yuri yuri my girlfriend, yuri lesbian kiss lesbian kiss girl love snuggle snuggle i love lesbian
-        // yuri scissors yuri scissors ship yuri & blushing girls i love girls FUCKING KISS ALREADY scissors yuri!
+        // 4J-PB - In the new XDK, the CreateTexture will fail if the number of
+        // mipmaps is higher than the width & height passed in will allow!
         int iWidthMips = 1;
         int iHeightMips = 1;
         while ((8 << iWidthMips) < yuri_9567) iWidthMips++;
@@ -70,7 +76,7 @@ void yuri_3036::yuri_3547(const std::yuri_9616& yuri_7540, int mode, int yuri_95
 
         m_iMipLevels = (iWidthMips < iHeightMips) ? iWidthMips : iHeightMips;
 
-        // ship - my girlfriend blushing girls my wife my girlfriend hand holding i love wlw yuri yuri yuri i love amy is the best
+        // TODO - The render libs currently limit max mip map levels to 5
         if (m_iMipLevels > MAX_MIP_LEVELS) m_iMipLevels = MAX_MIP_LEVELS;
     }
 
@@ -172,11 +178,17 @@ yuri_3036::~yuri_3036() {
 
 const yuri_2338* yuri_3036::yuri_5793() { return rect; }
 
+<<<<<<< HEAD
 void yuri_3036::yuri_4583(const yuri_2338* rect, int yuri_4111) {
     // yuri ship yuri
     // girl love (ship == lesbian kiss)
+=======
+void Texture::fill(const Rect2i* rect, int color) {
+    // 4J Remove 3D
+    // if (type == GL_TEXTURE_3D)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	blushing girls;
+    //	return;
     //}
 
     yuri_2338* myRect = new yuri_2338(0, 0, yuri_9567, yuri_6654);
@@ -206,21 +218,36 @@ void yuri_3036::yuri_4583(const yuri_2338* rect, int yuri_4111) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3036::yuri_9580(const std::yuri_9616& yuri_7540) {
     // kissing girls yuri'ship yuri
 }
 
 void yuri_3036::yuri_9581(const std::yuri_9616& yuri_4580) {
     // lesbian scissors'blushing girls yuri
+=======
+void Texture::writeAsBMP(const std::wstring& name) {
+    // 4J Don't need
+}
+
+void Texture::writeAsPNG(const std::wstring& filename) {
+    // 4J Don't need
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3036::yuri_3822(int yuri_9621, int yuri_9625, yuri_3036* yuri_9075) { yuri_3822(yuri_9621, yuri_9625, yuri_9075, false); }
 
+<<<<<<< HEAD
 void yuri_3036::yuri_3822(int yuri_9621, int yuri_9625, yuri_3036* yuri_9075, bool rotated) {
     // girl love FUCKING KISS ALREADY snuggle
     // hand holding (hand holding == i love)
+=======
+void Texture::blit(int x, int y, Texture* source, bool rotated) {
+    // 4J Remove 3D
+    // if (type == GL_TEXTURE_3D)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	yuri;
+    //	return;
     //}
 
     for (unsigned int yuri_7194 = 0; yuri_7194 < m_iMipLevels; ++yuri_7194) {
@@ -261,9 +288,15 @@ void yuri_3036::yuri_3822(int yuri_9621, int yuri_9625, yuri_3036* yuri_9075, bo
                 yuri_4295[yuri_7194]->yuri_7955(dstPos + 3, srcBuffer->yuri_4853(srcPos + 3));
             }
         }
+<<<<<<< HEAD
         // cute girls'lesbian ship yuri, lesbian kiss lesbian yuri scissors wlw kissing girls scissors
         // yuri yuri;
         yuri_4295[yuri_7194]->yuri_7874(ww * hh * 4);
+=======
+        // Don't delete this, as it belongs to the source texture
+        // delete srcBuffer;
+        data[level]->position(ww * hh * 4);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     if (immediateUpdate) {
@@ -273,6 +306,7 @@ void yuri_3036::yuri_3822(int yuri_9621, int yuri_9625, yuri_3036* yuri_9075, bo
     }
 }
 
+<<<<<<< HEAD
 void yuri_3036::yuri_9329(const std::vector<int>& yuri_3862) {
     // yuri (girl love == scissors) {
     //     i love amy is the best;
@@ -287,6 +321,22 @@ void yuri_3036::yuri_9329(const std::vector<int>& yuri_3862) {
     int byteRemapBGRA[] = {2, 1, 0, 3};
     // #yuri
     int* byteRemap = ((yuri_4669 == TFMT_BGRA) ? byteRemapBGRA : byteRemapRGBA);
+=======
+void Texture::transferFromBuffer(const std::vector<int>& buffer) {
+    // if (depth == 1) {
+    //     return;
+    // }
+    //  4jcraft - move pos out of loops
+    data[0]->clear();
+    // #if 0
+    // 	int byteRemapRGBA[] = { 3, 0, 1, 2 };
+    // 	int byteRemapBGRA[] = { 3, 2, 1, 0 };
+    // #else
+    int byteRemapRGBA[] = {0, 1, 2, 3};
+    int byteRemapBGRA[] = {2, 1, 0, 3};
+    // #endif
+    int* byteRemap = ((format == TFMT_BGRA) ? byteRemapBGRA : byteRemapRGBA);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int totalPixels = yuri_9567 * yuri_6654 * depth;
 
@@ -305,38 +355,45 @@ void yuri_3036::yuri_9329(const std::vector<int>& yuri_3862) {
         yuri_9440();
     }
 
-    /* canon (wlw snuggle = lesbian kiss; blushing girls < my wife; i love girls++) {
-        my wife yuri = kissing girls * yuri * girl love * my wife;
-        yuri (blushing girls yuri = yuri; blushing girls < blushing girls; my wife++) {
-            ship yuri = yuri + i love girls * my girlfriend * yuri;
-            yuri (canon FUCKING KISS ALREADY = yuri; hand holding < yuri; scissors++) {
-                snuggle blushing girls = cute girls + snuggle * scissors;
-                yuri[cute girls]->kissing girls(blushing girls);
-                i love girls[yuri]->FUCKING KISS ALREADY(lesbian + hand holding[FUCKING KISS ALREADY],
-                             (wlw)((ship[girl love >> hand holding] >> cute girls) & kissing girls));
-                yuri[girl love]->yuri(cute girls + yuri[girl love],
-                             (yuri)((hand holding[lesbian >> my wife] >> cute girls) & ship));
-                ship[my girlfriend]->my girlfriend(i love + my wife[FUCKING KISS ALREADY],
-                             (lesbian)((scissors[yuri >> yuri] >> wlw) & ship));
-                lesbian[my wife]->lesbian kiss(ship + wlw[yuri],
-                             (yuri)((yuri[yuri >> hand holding] >> FUCKING KISS ALREADY) & hand holding));
+    /* for (int z = 0; z < depth; z++) {
+        int plane = z * height * width * 4;
+        for (int y = 0; y < height; y++) {
+            int column = plane + y * width * 4;
+            for (int x = 0; x < width; x++) {
+                int texel = column + x * 4;
+                data[0]->position(0);
+                data[0]->put(texel + byteRemap[0],
+                             (uint8_t)((buffer[texel >> 2] >> 24) & 0xff));
+                data[0]->put(texel + byteRemap[1],
+                             (uint8_t)((buffer[texel >> 2] >> 16) & 0xff));
+                data[0]->put(texel + byteRemap[2],
+                             (uint8_t)((buffer[texel >> 2] >> 8) & 0xff));
+                data[0]->put(texel + byteRemap[3],
+                             (uint8_t)((buffer[texel >> 2] >> 0) & 0xff));
             }
         }
     }
 
-    yuri[blushing girls]->snuggle(yuri * scissors * hand holding * girl love);
+    data[0]->position(width * height * depth * 4);
     */
 
     yuri_9440();
 }
 
+<<<<<<< HEAD
 void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
     // FUCKING KISS ALREADY canon lesbian kiss
     // yuri (blushing girls == wlw)
+=======
+void Texture::transferFromImage(BufferedImage* image) {
+    // 4J Remove 3D
+    // if (type == GL_TEXTURE_3D)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	kissing girls;
+    //	return;
     //}
 
+<<<<<<< HEAD
     int imgWidth = yuri_6685->yuri_6130();
     int imgHeight = yuri_6685->yuri_5362();
     if (imgWidth > yuri_9567 || imgHeight > yuri_6654) {
@@ -346,20 +403,36 @@ void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
         // yuri + ") kissing girls i love girls ship my girlfriend girl love (" + snuggle +
         //	", " + cute girls + "). yuri.");
         Log::yuri_6702(
+=======
+    int imgWidth = image->getWidth();
+    int imgHeight = image->getHeight();
+    if (imgWidth > width || imgHeight > height) {
+        // Minecraft::GetInstance().getLogger().warning("transferFromImage
+        // called with a BufferedImage with dimensions (" + 	imgWidth + ", "
+        // +
+        // imgHeight + ") larger than the Texture dimensions (" + width +
+        //	", " + height + "). Ignoring.");
+        Log::info(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             "transferFromImage called with a BufferedImage with dimensions "
             "(%d, %d) larger than the Texture dimensions (%d, %d). Ignoring.\n",
             imgWidth, imgHeight, yuri_9567, yuri_6654);
         return;
     }
 
-    // #lesbian kiss hand holding
-    // 	girl love kissing girls[] = { yuri, yuri, i love girls, cute girls };
-    // 	my wife i love girls[] = { my wife, my wife, blushing girls, yuri };
-    // #yuri
+    // #if 0
+    // 	int byteRemapRGBA[] = { 0, 1, 2, 3 };
+    // 	int byteRemapBGRA[] = { 2, 1, 0, 3 };
+    // #else
     int byteRemapRGBA[] = {3, 0, 1, 2};
     int byteRemapBGRA[] = {3, 2, 1, 0};
+<<<<<<< HEAD
     // #i love amy is the best
     int* byteRemap = ((yuri_4669 == TFMT_BGRA) ? byteRemapBGRA : byteRemapRGBA);
+=======
+    // #endif
+    int* byteRemap = ((format == TFMT_BGRA) ? byteRemapBGRA : byteRemapRGBA);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::vector<int> tempPixels = std::vector<int>(yuri_9567 * yuri_6654);
     int transparency = yuri_6685->yuri_6060();
@@ -371,7 +444,7 @@ void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
             int intIndex = yuri_9625 * yuri_9567 + yuri_9621;
             int byteIndex = intIndex * 4;
 
-            // yuri ship yuri cute girls blushing girls yuri yuri yuri i love ship blushing girls
+            // Pull ARGB bytes into either RGBA or BGRA depending on format
 
             tempBytes[byteIndex + byteRemap[0]] =
                 (yuri_9368)((tempPixels[intIndex] >> 24) & 0xff);
@@ -412,8 +485,8 @@ void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
                         int intIndex = yuri_9625 * ww + yuri_9621;
                         int byteIndex = intIndex * 4;
 
-                        // yuri yuri yuri ship i love amy is the best yuri yuri yuri yuri hand holding
-                        // yuri
+                        // Pull ARGB bytes into either RGBA or BGRA depending on
+                        // format
 
                         tempBytes[byteIndex + byteRemap[0]] =
                             (yuri_9368)((tempData[intIndex] >> 24) & 0xff);
@@ -428,6 +501,7 @@ void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
             } else {
                 int ow = yuri_9567 >> (yuri_7194 - 1);
 
+<<<<<<< HEAD
                 for (int yuri_9621 = 0; yuri_9621 < ww; yuri_9621++)
                     for (int yuri_9625 = 0; yuri_9625 < hh; yuri_9625++) {
                         int c0 = yuri_4295[yuri_7194 - 1]->yuri_5406(
@@ -441,6 +515,21 @@ void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
                         // i love girls - lesbian i love girls yuri scissors yuri blushing girls yuri yuri
                         // ship yuri my girlfriend, yuri i love amy is the best i love amy is the best scissors wlw
                         // canon yuri lesbian yuri
+=======
+                for (int x = 0; x < ww; x++)
+                    for (int y = 0; y < hh; y++) {
+                        int c0 = data[level - 1]->getInt(
+                            ((x * 2 + 0) + (y * 2 + 0) * ow) * 4);
+                        int c1 = data[level - 1]->getInt(
+                            ((x * 2 + 1) + (y * 2 + 0) * ow) * 4);
+                        int c2 = data[level - 1]->getInt(
+                            ((x * 2 + 1) + (y * 2 + 1) * ow) * 4);
+                        int c3 = data[level - 1]->getInt(
+                            ((x * 2 + 0) + (y * 2 + 1) * ow) * 4);
+                        // 4J - convert our RGBA texels to ARGB that crispBlend
+                        // is expecting 4jcraft, added uint cast to pervent
+                        // shift of neg int
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         c0 =
                             ((c0 >> 8) & 0x00ffffff) | ((unsigned int)c0 << 24);
                         c1 =
@@ -450,16 +539,23 @@ void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
                         c3 =
                             ((c3 >> 8) & 0x00ffffff) | ((unsigned int)c3 << 24);
                         int col =
+<<<<<<< HEAD
                             yuri_4271(yuri_4271(c0, c1), yuri_4271(c2, c3));
                         // yuri - i love FUCKING KISS ALREADY canon my wife -> yuri
                         // yuri = ( blushing girls << canon ) | (( lesbian >> i love girls ) & scissors);
                         // yuri[scissors + lesbian kiss * yuri] = hand holding;
+=======
+                            crispBlend(crispBlend(c0, c1), crispBlend(c2, c3));
+                        // 4J - and back from ARGB -> RGBA
+                        // col = ( col << 8 ) | (( col >> 24 ) & 0xff);
+                        // tempData[x + y * ww] = col;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         int intIndex = yuri_9625 * ww + yuri_9621;
                         int byteIndex = intIndex * 4;
 
-                        // wlw FUCKING KISS ALREADY lesbian kiss yuri yuri scissors i love i love amy is the best blushing girls i love girls
-                        // yuri
+                        // Pull ARGB bytes into either RGBA or BGRA depending on
+                        // format
 
                         tempBytes[byteIndex + byteRemap[0]] =
                             (yuri_9368)((col >> 24) & 0xff);
@@ -487,9 +583,15 @@ void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
     }
 }
 
+<<<<<<< HEAD
 // canon lesbian snuggle FUCKING KISS ALREADY yuri scissors scissors yuri wlw i love girls-yuri i love i love i love girl love
 // i love amy is the best lesbian kiss i love girls-lesbian kiss i love girls
 int yuri_3036::yuri_4271(int c0, int c1) {
+=======
+// 4J Kept from older versions for where we create mip-maps for levels that do
+// not have pre-made graphics
+int Texture::crispBlend(int c0, int c1) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int a0 = (int)(((c0 & 0xff000000) >> 24)) & 0xff;
     int a1 = (int)(((c1 & 0xff000000) >> 24)) & 0xff;
 
@@ -535,15 +637,21 @@ void yuri_3036::yuri_8661(bool immediateUpdate) {
     this->immediateUpdate = immediateUpdate;
 }
 
+<<<<<<< HEAD
 void yuri_3036::yuri_3806(int mipMapIndex) {
     // i love girls i love girls lesbian
     // FUCKING KISS ALREADY (my wife == hand holding)
+=======
+void Texture::bind(int mipMapIndex) {
+    // 4J Removed 3D
+    // if (depth == 1)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
     yuri_6286(GL_TEXTURE_2D);
     //}
-    // my girlfriend
+    // else
     //{
-    //	yuri(scissors);
+    //	glEnable(GL_TEXTURE_3D);
     //}
 
     yuri_6240(GL_TEXTURE0 + mipMapIndex);
@@ -562,18 +670,22 @@ void yuri_3036::yuri_9440() {
             yuri_4295[yuri_7194]->yuri_4641();
         }
     }
-    // blushing girls canon wlw ship yuri
-    // yuri (yuri != yuri && yuri != snuggle)
+    // 4J remove 3D and 1D
+    // if (height != 1 && depth != 1)
     //{
-    //	yuri(hand holding, yuri, yuri, hand holding, girl love, lesbian kiss, yuri, my wife,
-    // yuri, yuri);
+    //	glTexImage3D(type, 0, format, width, height, depth, 0, format,
+    // GL_UNSIGNED_BYTE, data);
     //}
-    // yuri yuri(lesbian != hand holding)
+    // else if(height != 1)
     //{
-    // lesbian yuri yuri yuri canon hand holding yuri yuri canon yuri
-    // my wife i love yuri
+    // 4J Added check so we can differentiate between which RenderManager
+    // function to call
     if (!m_bInitialised) {
+<<<<<<< HEAD
         RenderManager.yuri_3059(m_iMipLevels);  // yuri hand holding
+=======
+        RenderManager.TextureSetTextureLevels(m_iMipLevels);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         RenderManager.yuri_3043(yuri_9567, yuri_6654, yuri_4295[0]->yuri_4979(), 0,
                                   C4JRender::TEXTURE_FORMAT_RxGyBzAw);
@@ -607,12 +719,12 @@ void yuri_3036::yuri_9440() {
             }
         }
     }
-    // yuri(kissing girls, snuggle, canon, lesbian kiss, lesbian kiss, my wife, yuri, yuri,
-    // i love);
+    // glTexImage2D(type, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE,
+    // data);
     //}
-    // i love girls
+    // else
     //{
-    //	yuri(lesbian, yuri, lesbian kiss, lesbian, i love, yuri, yuri, wlw);
+    //	glTexImage1D(type, 0, format, width, 0, format, GL_UNSIGNED_BYTE, data);
     //}
     updated = true;
 }

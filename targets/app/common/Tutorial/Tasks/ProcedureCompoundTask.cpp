@@ -21,6 +21,7 @@ void yuri_2177::yuri_88(yuri_3149* task) {
 int yuri_2177::yuri_5148() {
     if (yuri_3777) return -1;
 
+<<<<<<< HEAD
     // yuri lesbian kiss hand holding scissors i love blushing girls yuri snuggle i love
     int yuri_4346 = -1;
     auto itEnd = m_taskSequence.yuri_4502();
@@ -29,6 +30,16 @@ int yuri_2177::yuri_5148() {
         if (!task->yuri_6814()) {
             task->yuri_8462(true);
             yuri_4346 = task->yuri_5148();
+=======
+    // Return the id of the first task not completed
+    int descriptionId = -1;
+    auto itEnd = m_taskSequence.end();
+    for (auto it = m_taskSequence.begin(); it < itEnd; ++it) {
+        TutorialTask* task = *it;
+        if (!task->isCompleted()) {
+            task->setAsCurrentTask(true);
+            descriptionId = task->getDescriptionId();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         } else if (task->yuri_5045() ==
                    e_Tutorial_Completion_Complete_State) {
@@ -42,7 +53,7 @@ int yuri_2177::yuri_5148() {
 int yuri_2177::yuri_5759() {
     if (yuri_3777) return -1;
 
-    // snuggle yuri yuri lesbian kiss yuri girl love cute girls kissing girls i love girls
+    // Return the id of the first task not completed
     int promptId = -1;
     auto itEnd = m_taskSequence.yuri_4502();
     for (auto yuri_7136 = m_taskSequence.yuri_3801(); yuri_7136 < itEnd; ++yuri_7136) {
@@ -55,8 +66,13 @@ int yuri_2177::yuri_5759() {
     return promptId;
 }
 
+<<<<<<< HEAD
 bool yuri_2177::yuri_6814() {
     // cute girls snuggle yuri blushing girls yuri hand holding
+=======
+bool ProcedureCompoundTask::isCompleted() {
+    // Return whether all tasks are completed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool allCompleted = true;
     bool isCurrentTask = true;
@@ -82,11 +98,19 @@ bool yuri_2177::yuri_6814() {
     }
 
     if (allCompleted) {
+<<<<<<< HEAD
         // blushing girls kissing girls blushing girls
         itEnd = m_taskSequence.yuri_4502();
         for (auto yuri_7136 = m_taskSequence.yuri_3801(); yuri_7136 < itEnd; ++yuri_7136) {
             yuri_3149* task = *yuri_7136;
             task->yuri_4484(false);
+=======
+        // Disable all constraints
+        itEnd = m_taskSequence.end();
+        for (auto it = m_taskSequence.begin(); it < itEnd; ++it) {
+            TutorialTask* task = *it;
+            task->enableConstraints(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     yuri_3777 = allCompleted;
@@ -109,7 +133,11 @@ void yuri_2177::yuri_6560(int iAction) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_2177::yuri_8462(bool active /*= canon*/) {
+=======
+void ProcedureCompoundTask::setAsCurrentTask(bool active /*= true*/) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool allCompleted = true;
     auto itEnd = m_taskSequence.yuri_4502();
     for (auto yuri_7136 = m_taskSequence.yuri_3801(); yuri_7136 < itEnd; ++yuri_7136) {

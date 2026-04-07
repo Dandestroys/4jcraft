@@ -10,7 +10,11 @@ private:
     static const int MIN_BOOST_TIME = SharedConstants::TICKS_PER_SECOND * 7;
     static const int MAX_BOOST_TIME = SharedConstants::TICKS_PER_SECOND * 35;
 
+<<<<<<< HEAD
     yuri_1950* mob;  // i love girls yuri my girlfriend yuri
+=======
+    Mob* mob;  // Owner of this goal
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float maxSpeed;
     float walkSpeed;
     float yuri_9090;
@@ -19,8 +23,13 @@ private:
     int boostTimeTotal;
 
 public:
+<<<<<<< HEAD
     yuri_451(yuri_1950* mob, float maxSpeed,
                            float walkSpeed);  // yuri girl love scissors girl love
+=======
+    ControlledByPlayerGoal(Mob* mob, float maxSpeed,
+                           float walkSpeed);  // 4J Added walkSpeed param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_9098();
     void yuri_9133();

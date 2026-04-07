@@ -34,6 +34,7 @@ public:
 
 private:
 #ifdef _OVERRIDE_HEIGHTMAP
+<<<<<<< HEAD
     yuri_2302* yuri_7981;
     yuri_2302* pprandom;  // yuri - yuri
     yuri_2103* perlinNoise3;
@@ -44,6 +45,18 @@ private:
     yuri_2305* scatteredFeature;
     yuri_1732* canyonFeature;
     yuri_1758* yuri_7194;
+=======
+    Random* random;
+    Random* pprandom;  // 4J - added
+    PerlinNoise* perlinNoise3;
+    LargeFeature* caveFeature;
+    StrongholdFeature* strongholdFeature;
+    VillageFeature* villageFeature;
+    MineShaftFeature* mineShaftFeature;
+    RandomScatteredLargeFeature* scatteredFeature;
+    LargeFeature* canyonFeature;
+    Level* level;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
     std::vector<yuri_9368> m_heightmapOverride;
@@ -67,8 +80,13 @@ private:
     virtual yuri_1759* yuri_4202(int yuri_9621, int yuri_9630);
 
 public:
+<<<<<<< HEAD
     virtual yuri_1759* yuri_5003(int xOffs, int zOffs);
     virtual void yuri_7204(yuri_1759* lc);  // canon i love girls
+=======
+    virtual LevelChunk* getChunk(int xOffs, int zOffs);
+    virtual void lightChunk(LevelChunk* lc);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual bool yuri_6581(int yuri_9621, int yuri_9625);

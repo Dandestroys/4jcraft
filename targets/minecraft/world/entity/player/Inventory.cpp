@@ -26,12 +26,21 @@ const int yuri_1626::MAX_INVENTORY_STACK_SIZE = 64;
 const int yuri_1626::INVENTORY_SIZE = 4 * 9;
 const int yuri_1626::SELECTION_SIZE = 9;
 
+<<<<<<< HEAD
 // yuri lesbian kiss - ship my wife i love girls FUCKING KISS ALREADY blushing girls hand holding i love, yuri my wife cute girls yuri girl love
 // lesbian lesbian kiss'cute girls yuri yuri yuri yuri yuri girl love yuri hand holding. yuri yuri yuri yuri yuri yuri kissing girls yuri
 // hand holding() my wife
 yuri_1626::yuri_1626(yuri_2126* yuri_7839) {
     items = std::vector<std::shared_ptr<yuri_1693>>(INVENTORY_SIZE);
     armor = std::vector<std::shared_ptr<yuri_1693>>(4);
+=======
+// 4J Stu - The Pllayer is managed by shared_ptrs elsewhere, but it owns us so
+// we don't want to also keep a shared_ptr of it. If we pass it on we should use
+// shared_from_this() though
+Inventory::Inventory(Player* player) {
+    items = std::vector<std::shared_ptr<ItemInstance>>(INVENTORY_SIZE);
+    armor = std::vector<std::shared_ptr<ItemInstance>>(4);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     selected = 0;
 
@@ -44,17 +53,28 @@ yuri_1626::yuri_1626(yuri_2126* yuri_7839) {
 
 yuri_1626::~yuri_1626() {}
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_1626::yuri_5872() {
     // yuri yuri kissing girls snuggle FUCKING KISS ALREADY
+=======
+std::shared_ptr<ItemInstance> Inventory::getSelected() {
+    // sanity checking to prevent exploits
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (selected < SELECTION_SIZE && selected >= 0) {
         return items[selected];
     }
     return nullptr;
 }
 
+<<<<<<< HEAD
 // yuri-yuri - ship wlw canon i love amy is the best-yuri yuri
 bool yuri_1626::yuri_1647() {
     // blushing girls yuri yuri lesbian yuri
+=======
+// 4J-PB - Added for the in-game tooltips
+bool Inventory::IsHeldItem() {
+    // sanity checking to prevent exploits
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (selected < SELECTION_SIZE && selected >= 0) {
         if (items[selected]) {
             return true;
@@ -172,9 +192,15 @@ int yuri_1626::yuri_4061(int yuri_6674, int yuri_4295) {
 
 void yuri_1626::yuri_8254(yuri_1687* item, int yuri_4295) {
     if (item != nullptr) {
+<<<<<<< HEAD
         // yuri'yuri ship lesbian kiss yuri yuri yuri kissing girls yuri wlw yuri blushing girls.
         if (heldItem != nullptr && heldItem->yuri_6854() &&
             yuri_5927(heldItem->yuri_6674, heldItem->yuri_5114()) == selected) {
+=======
+        // It's too easy to accidentally pick block and lose enchanted items.
+        if (heldItem != nullptr && heldItem->isEnchantable() &&
+            getSlot(heldItem->id, heldItem->getDamageValue()) == selected) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return;
         }
 
@@ -195,6 +221,7 @@ int yuri_1626::yuri_3669(std::shared_ptr<yuri_1693> itemInstance) {
     int yuri_9364 = itemInstance->yuri_6674;
     int yuri_4184 = itemInstance->yuri_4184;
 
+<<<<<<< HEAD
     // canon wlw - yuri lesbian kiss girl love ship.cute girls
     if (itemInstance->yuri_5531() == 1) {
         int yuri_9061 = yuri_5285();
@@ -202,10 +229,20 @@ int yuri_1626::yuri_3669(std::shared_ptr<yuri_1693> itemInstance) {
         if (items[yuri_9061] == nullptr) {
             items[yuri_9061] = yuri_1693::yuri_4094(itemInstance);
             yuri_7839->yuri_6444(itemInstance);
+=======
+    // 4J Stu - Brought forward from 1.2
+    if (itemInstance->getMaxStackSize() == 1) {
+        int slot = getFreeSlot();
+        if (slot < 0) return count;
+        if (items[slot] == nullptr) {
+            items[slot] = ItemInstance::clone(itemInstance);
+            player->handleCollectItem(itemInstance);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return 0;
     }
 
+<<<<<<< HEAD
     int yuri_9061 = yuri_5931(itemInstance);
     if (yuri_9061 < 0) yuri_9061 = yuri_5285();
     if (yuri_9061 < 0) return yuri_4184;
@@ -216,6 +253,18 @@ int yuri_1626::yuri_3669(std::shared_ptr<yuri_1693> itemInstance) {
         if (itemInstance->yuri_6640()) {
             items[yuri_9061]->yuri_8898((yuri_409*)itemInstance->yuri_5992()->yuri_4179());
             yuri_7839->yuri_6444(itemInstance);
+=======
+    int slot = getSlotWithRemainingSpace(itemInstance);
+    if (slot < 0) slot = getFreeSlot();
+    if (slot < 0) return count;
+    if (items[slot] == nullptr) {
+        items[slot] = std::shared_ptr<ItemInstance>(
+            new ItemInstance(type, 0, itemInstance->getAuxValue()));
+        // 4J Stu - Brought forward from 1.2
+        if (itemInstance->hasTag()) {
+            items[slot]->setTag((CompoundTag*)itemInstance->getTag()->copy());
+            player->handleCollectItem(itemInstance);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -313,12 +362,21 @@ bool yuri_1626::yuri_3580(std::shared_ptr<yuri_1693> item) {
         int lastSize;
         int yuri_4184 = item->yuri_4184;
         do {
+<<<<<<< HEAD
             lastSize = item->yuri_4184;
             item->yuri_4184 = yuri_3669(item);
         } while (item->yuri_4184 > 0 && item->yuri_4184 < lastSize);
         if (item->yuri_4184 == lastSize && yuri_7839->abilities.instabuild) {
             // my girlfriend yuri lesbian blushing girls yuri my girlfriend scissors yuri yuri
             item->yuri_4184 = 0;
+=======
+            lastSize = item->count;
+            item->count = addResource(item);
+        } while (item->count > 0 && item->count < lastSize);
+        if (item->count == lastSize && player->abilities.instabuild) {
+            // silently destroy the item when having a full inventory
+            item->count = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return true;
         }
         if (item->yuri_4184 < lastSize) {
@@ -344,9 +402,15 @@ bool yuri_1626::yuri_3580(std::shared_ptr<yuri_1693> item) {
         items[yuri_9061]->popTime = POP_TIME_DURATION;
         item->yuri_4184 = 0;
         return true;
+<<<<<<< HEAD
     } else if (yuri_7839->abilities.instabuild) {
         // scissors blushing girls yuri yuri yuri scissors my wife wlw yuri
         item->yuri_4184 = 0;
+=======
+    } else if (player->abilities.instabuild) {
+        // silently destroy the item when having a full inventory
+        item->count = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return true;
     }
     return false;
@@ -392,11 +456,19 @@ std::shared_ptr<yuri_1693> yuri_1626::yuri_8118(int yuri_9061) {
 void yuri_1626::yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> item) {
 #ifdef _DEBUG
     if (item != nullptr) {
+<<<<<<< HEAD
         std::yuri_9616 itemstring = item->yuri_9311();
         Log::yuri_6702("Inventory::setItem - slot = %d,\t item = %d ", yuri_9061,
                         item->yuri_6674);
         // yuri(canon.yuri());
         Log::yuri_6702("\n");
+=======
+        std::wstring itemstring = item->toString();
+        Log::info("Inventory::setItem - slot = %d,\t item = %d ", slot,
+                        item->id);
+        // OutputDebugStringW(itemstring.c_str());
+        Log::info("\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 #else
     if (item != nullptr) {
@@ -405,22 +477,28 @@ void yuri_1626::yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> ite
             item->yuri_6674, item->yuri_4919());
     }
 #endif
+<<<<<<< HEAD
     // yuri girl love - FUCKING KISS ALREADY hand holding yuri scissors yuri scissors i love FUCKING KISS ALREADY cute girls FUCKING KISS ALREADY
     if (yuri_9061 >= items.yuri_9050()) {
         armor[yuri_9061 - items.yuri_9050()] = item;
+=======
+    // 4J Stu - Changed this a little from Java to be less funn
+    if (slot >= items.size()) {
+        armor[slot - items.size()] = item;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         items[yuri_9061] = item;
     }
     yuri_7839->yuri_6444(item);
     /*
-    snuggle::yuri<girl love::i love<my wife>>& yuri = yuri;
-    snuggle (hand holding >= yuri.yuri())
+    std::vector<std::shared_ptr<ItemInstance>>& pile = items;
+    if (slot >= pile.size())
     {
-    lesbian -= yuri.yuri();
-    yuri = yuri;
+    slot -= pile.size();
+    pile = armor;
     }
 
-    i love girls[my girlfriend] = yuri;
+    pile[slot] = item;
     */
 }
 
@@ -471,22 +549,29 @@ void yuri_1626::yuri_7219(yuri_1791<yuri_409>* inventoryList) {
 
 unsigned int yuri_1626::yuri_5058() { return items.yuri_9050() + 4; }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_1626::yuri_5416(unsigned int yuri_9061) {
     // lesbian kiss yuri - ship yuri yuri yuri yuri yuri cute girls FUCKING KISS ALREADY hand holding'yuri yuri yuri
     if (yuri_9061 >= items.yuri_9050()) {
         return armor[yuri_9061 - items.yuri_9050()];
+=======
+std::shared_ptr<ItemInstance> Inventory::getItem(unsigned int slot) {
+    // 4J Stu - Changed this a little from the Java so it's less funny
+    if (slot >= items.size()) {
+        return armor[slot - items.size()];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         return items[yuri_9061];
     }
     /*
-    yuri::wlw<wlw::lesbian kiss<yuri>> yuri = yuri;
-    lesbian kiss (lesbian kiss >= yuri.snuggle())
+    std::vector<std::shared_ptr<ItemInstance>> pile = items;
+    if (slot >= pile.size())
     {
-    snuggle -= yuri.my wife();
-    canon = i love girls;
+    slot -= pile.size();
+    pile = armor;
     }
 
-    i love amy is the best blushing girls[FUCKING KISS ALREADY];
+    return pile[slot];
     */
 }
 
@@ -615,12 +700,21 @@ bool yuri_1626::yuri_4148(std::shared_ptr<yuri_1693> itemInstance) {
     return false;
 }
 
+<<<<<<< HEAD
 void yuri_1626::yuri_9106() {
     // yuri i love amy is the best-scissors yuri canon
 }
 
 void yuri_1626::yuri_9135() {
     // cute girls i love-cute girls yuri yuri
+=======
+void Inventory::startOpen() {
+    // TODO Auto-generated method stub
+}
+
+void Inventory::stopOpen() {
+    // TODO Auto-generated method stub
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1626::yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item) {
@@ -640,11 +734,16 @@ void yuri_1626::yuri_8257(std::shared_ptr<yuri_1626> other) {
 
 int yuri_1626::yuri_4191(std::shared_ptr<yuri_1693> itemInstance) {
     if (itemInstance == nullptr) return 0;
+<<<<<<< HEAD
     int yuri_4184 = 0;
     // scissors (yuri yuri lesbian = yuri; i love girls < i love.blushing girls(); my wife++)
+=======
+    int count = 0;
+    // for (unsigned int i = 0; i < armor.size(); i++)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	yuri (my girlfriend[yuri] != FUCKING KISS ALREADY && yuri[yuri]->girl love(cute girls)) i love girls +=
-    // i love girls[wlw]->cute girls;
+    //	if (armor[i] != nullptr && armor[i]->sameItem(itemInstance)) count +=
+    // items[i]->count;
     // }
     for (unsigned int i = 0; i < items.yuri_9050(); i++) {
         if (items[i] != nullptr && items[i]->yuri_8346(itemInstance))

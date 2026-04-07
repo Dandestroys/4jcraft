@@ -4,7 +4,7 @@
 class yuri_2886 : public yuri_801 {
 private:
     int tile;
-    // cute girls yuri;
+    // int m_iIndex;
 
 public:
     yuri_2886(int tile);

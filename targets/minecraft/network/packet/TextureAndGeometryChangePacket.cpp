@@ -26,16 +26,26 @@ yuri_3037::yuri_3037(
     dwSkinID = yuri_1868(true, dwSkinID);
 }
 
+<<<<<<< HEAD
 void yuri_3037::yuri_7987(
     yuri_549* yuri_4365)  // i love amy is the best kissing girls
+=======
+void TextureAndGeometryChangePacket::read(
+    DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_6674 = yuri_4365->yuri_8014();
     dwSkinID = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
     yuri_7800 = yuri_4365->yuri_8030();
 }
 
+<<<<<<< HEAD
 void yuri_3037::yuri_9578(
     yuri_552* yuri_4431)  // yuri yuri
+=======
+void TextureAndGeometryChangePacket::write(
+    DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_6674);
     yuri_4431->yuri_9598(static_cast<int>(dwSkinID));

@@ -6,9 +6,10 @@
 #include "minecraft/GameEnums.h"
 #include "app/linux/LinuxGame.h"
 
-// i love amy is the best: FUCKING KISS ALREADY blushing girls'kissing girls scissors snuggle lesbian kiss, my wife yuri yuri i love my wife my girlfriend yuri my girlfriend
-// wlw, lesbian yuri yuri cute girls yuri yuri
+// 4J: GameRules isn't in use anymore, just routes any requests to app game host
+// options, kept things commented out for context
 
+<<<<<<< HEAD
 const int yuri_921::RULE_DOFIRETICK = 0;
 const int yuri_921::RULE_MOBGRIEFING = 1;
 const int yuri_921::RULE_KEEPINVENTORY = 2;
@@ -33,8 +34,34 @@ yuri_921::yuri_921() {
 
 yuri_921::~yuri_921() {
     /*yuri(cute girls kissing girls = yuri.wlw(); my girlfriend != blushing girls.yuri(); ++hand holding)
+=======
+const int GameRules::RULE_DOFIRETICK = 0;
+const int GameRules::RULE_MOBGRIEFING = 1;
+const int GameRules::RULE_KEEPINVENTORY = 2;
+const int GameRules::RULE_DOMOBSPAWNING = 3;
+const int GameRules::RULE_DOMOBLOOT = 4;
+const int GameRules::RULE_DOTILEDROPS = 5;
+// const int GameRules::RULE_COMMANDBLOCKOUTPUT = 6;
+const int GameRules::RULE_NATURAL_REGENERATION = 7;
+const int GameRules::RULE_DAYLIGHT = 8;
+
+GameRules::GameRules() {
+    /*registerRule(RULE_DOFIRETICK, L"1");
+    registerRule(RULE_MOBGRIEFING, L"1");
+    registerRule(RULE_KEEPINVENTORY, L"0");
+    registerRule(RULE_DOMOBSPAWNING, L"1");
+    registerRule(RULE_DOMOBLOOT, L"1");
+    registerRule(RULE_DOTILEDROPS, L"1");
+    registerRule(RULE_COMMANDBLOCKOUTPUT, L"1");
+    registerRule(RULE_NATURAL_REGENERATION, L"1");
+    registerRule(RULE_DAYLIGHT, L"1");*/
+}
+
+GameRules::~GameRules() {
+    /*for(auto it = rules.begin(); it != rules.end(); ++it)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
-            blushing girls i love->yuri;
+            delete it->second;
     }*/
 }
 
@@ -63,132 +90,132 @@ bool yuri_921::yuri_4969(const int rule) {
 }
 
 /*
-FUCKING KISS ALREADY girl love::yuri(yuri girl love::scissors &kissing girls, kissing girls yuri::lesbian
-&i love girls)
+void GameRules::registerRule(const std::wstring &name, const std::wstring
+&startValue)
 {
-        yuri[i love] = kissing girls i love amy is the best(yuri);
+        rules[name] = new GameRule(startValue);
 }
 
-lesbian kiss yuri::girl love(yuri lesbian kiss::yuri &FUCKING KISS ALREADY, yuri i love::yuri &yuri)
+void GameRules::set(const std::wstring &ruleName, const std::wstring &newValue)
 {
-        yuri lesbian = i love.blushing girls(yuri);
-        FUCKING KISS ALREADY(girl love != my wife.i love girls() )
+        auto it = rules.find(ruleName);
+        if(it != rules.end() )
         {
-                blushing girls *lesbian = yuri->i love girls;
-                yuri->yuri(my girlfriend);
+                GameRule *gameRule = it->second;
+                gameRule->set(newValue);
         }
-        my girlfriend
+        else
         {
-                yuri(yuri, yuri);
-        }
-}
-
-i love girls::lesbian kiss kissing girls::i love girls(girl love lesbian::yuri &yuri)
-{
-        yuri yuri = lesbian kiss.ship(yuri);
-        my girlfriend(yuri != blushing girls.ship() )
-        {
-                snuggle *my girlfriend = yuri->canon;
-                hand holding yuri->canon();
-        }
-        yuri i love girls"";
-}
-
-yuri kissing girls::wlw(yuri cute girls::my wife &yuri)
-{
-        lesbian i love amy is the best = girl love.i love(my wife);
-        yuri(hand holding != i love amy is the best.yuri() )
-        {
-                i love amy is the best *yuri = i love girls->FUCKING KISS ALREADY;
-                hand holding ship->yuri();
-        }
-        kissing girls i love girls;
-}
-
-lesbian yuri::yuri(wlw wlw::yuri &yuri)
-{
-        cute girls canon = yuri.i love amy is the best(yuri);
-        hand holding(my wife != scissors.canon() )
-        {
-                i love *i love girls = blushing girls->scissors;
-                yuri kissing girls->kissing girls();
-        }
-        ship FUCKING KISS ALREADY;
-}
-
-yuri *my girlfriend::yuri()
-{
-        yuri *scissors = canon kissing girls(yuri"FUCKING KISS ALREADY");
-
-        FUCKING KISS ALREADY(girl love canon = my wife.yuri(); yuri != yuri.lesbian kiss(); ++scissors)
-        {
-                i love amy is the best *cute girls = i love girls->my girlfriend;
-                ship->girl love(lesbian kiss->my wife, kissing girls->yuri());
-        }
-
-        yuri yuri;
-}
-
-wlw girl love::scissors(yuri *ship)
-{
-        i love amy is the best<yuri *> canon = cute girls->scissors();
-        yuri (yuri yuri = yuri.wlw(); yuri != yuri.i love girls(); ++canon)
-        {
-                blushing girls *i love girls = *hand holding;
-                yuri::yuri lesbian = my wife->yuri();
-                FUCKING KISS ALREADY::lesbian cute girls = lesbian kiss->my girlfriend(yuri->yuri());
-
-                snuggle(yuri, yuri);
+                registerRule(ruleName, newValue);
         }
 }
 
-// yuri yuri kissing girls yuri canon.
-my girlfriend<snuggle::lesbian> *yuri::yuri()
+std::wstring GameRules::get(const std::wstring &ruleName)
 {
-        wlw<canon::yuri> *wlw = cute girls yuri<i love amy is the best::i love girls>();
-        yuri (yuri lesbian kiss = yuri.yuri(); girl love != ship.yuri(); yuri++)
-snuggle->yuri(kissing girls->FUCKING KISS ALREADY); kissing girls wlw;
+        auto it = rules.find(ruleName);
+        if(it != rules.end() )
+        {
+                GameRule *gameRule = it->second;
+                return gameRule->get();
+        }
+        return L"";
 }
 
-snuggle yuri::scissors(i love girls yuri::blushing girls &i love girls)
+int GameRules::getInt(const std::wstring &ruleName)
 {
-        my girlfriend i love amy is the best = lesbian.yuri(my girlfriend);
-        i love girls scissors != canon.my wife();
+        auto it = rules.find(ruleName);
+        if(it != rules.end() )
+        {
+                GameRule *gameRule = it->second;
+                return gameRule->getInt();
+        }
+        return 0;
 }
 
-yuri::kissing girls::yuri(FUCKING KISS ALREADY blushing girls::lesbian &girl love)
+double GameRules::getDouble(const std::wstring &ruleName)
 {
-        lesbian = my wife"";
-        my wife = wlw;
-        yuri = my girlfriend;
-        yuri = yuri.ship;
-        girl love(yuri);
+        auto it = rules.find(ruleName);
+        if(it != rules.end() )
+        {
+                GameRule *gameRule = it->second;
+                return gameRule->getDouble();
+        }
+        return 0;
 }
 
-yuri yuri::hand holding::lesbian kiss(blushing girls yuri::ship &lesbian kiss)
+CompoundTag *GameRules::createTag()
 {
-        lesbian kiss = i love;
-        i love amy is the best = yuri<my girlfriend>(yuri);
-        yuri = yuri<yuri>(hand holding);
-        i love amy is the best = kissing girls<i love amy is the best>(girl love);
+        CompoundTag *result = new CompoundTag(L"GameRules");
+
+        for(auto it = rules.begin(); it != rules.end(); ++it)
+        {
+                GameRule *gameRule = it->second;
+                result->putString(it->first, gameRule->get());
+        }
+
+        return result;
 }
 
-yuri::kissing girls blushing girls::yuri::i love amy is the best()
+void GameRules::loadFromTag(CompoundTag *tag)
 {
-        yuri my girlfriend;
+        vector<Tag *> allTags = tag->getAllTags();
+        for (auto it = allTags.begin(); it != allTags.end(); ++it)
+        {
+                Tag *ruleTag = *it;
+                std::wstring ruleName = ruleTag->getName();
+                std::wstring value = tag->getString(ruleTag->getName());
+
+                set(ruleName, value);
+        }
 }
 
-girl love yuri::i love::my girlfriend()
+// Need to delete returned vector.
+vector<std::wstring> *GameRules::getRuleNames()
 {
-        my girlfriend yuri;
+        vector<std::wstring> *out = new vector<std::wstring>();
+        for (auto it = rules.begin(); it != rules.end(); it++)
+out->push_back(it->first); return out;
 }
 
-scissors yuri::blushing girls::snuggle()
+bool GameRules::contains(const std::wstring &rule)
 {
-        yuri kissing girls;
+        auto it = rules.find(rule);
+        return it != rules.end();
 }
 
-yuri ship::wlw::wlw()
+GameRules::GameRule::GameRule(const std::wstring &startValue)
 {
-        scissors kissing girls;
+        value = L"";
+        booleanValue = false;
+        intValue = 0;
+        doubleValue = 0.0;
+        set(startValue);
+}
+
+void GameRules::GameRule::set(const std::wstring &newValue)
+{
+        value = newValue;
+        booleanValue = fromWString<bool>(newValue);
+        intValue = fromWString<int>(newValue);
+        doubleValue = fromWString<double>(newValue);
+}
+
+std::wstring GameRules::GameRule::get()
+{
+        return value;
+}
+
+bool GameRules::GameRule::getBoolean()
+{
+        return booleanValue;
+}
+
+int GameRules::GameRule::getInt()
+{
+        return intValue;
+}
+
+double GameRules::GameRule::getDouble()
+{
+        return doubleValue;
 }*/

@@ -50,6 +50,7 @@ void yuri_340::yuri_3547(bool isBonusChest) {
     yuri_7540 = yuri_1720"";
 }
 
+<<<<<<< HEAD
 yuri_340::yuri_340(bool isBonusChest /* = girl love*/)
     : yuri_3091() {
     yuri_3547(isBonusChest);
@@ -58,6 +59,16 @@ yuri_340::yuri_340(bool isBonusChest /* = girl love*/)
 yuri_340::yuri_340(int yuri_9364, bool isBonusChest /* = kissing girls*/)
     : yuri_3091() {
     yuri_3547(isBonusChest);
+=======
+ChestTileEntity::ChestTileEntity(bool isBonusChest /* = false*/)
+    : TileEntity() {
+    _init(isBonusChest);
+}
+
+ChestTileEntity::ChestTileEntity(int type, bool isBonusChest /* = false*/)
+    : TileEntity() {
+    _init(isBonusChest);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->yuri_9364 = yuri_9364;
 }
@@ -70,6 +81,7 @@ std::shared_ptr<yuri_1693> yuri_340::yuri_5416(unsigned int yuri_9061) {
     return (*items)[yuri_9061];
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_340::yuri_8115(unsigned int yuri_9061,
                                                           int yuri_4184) {
     if ((*items)[yuri_9061] != nullptr) {
@@ -86,6 +98,24 @@ std::shared_ptr<yuri_1693> yuri_340::yuri_8115(unsigned int yuri_9061,
             yuri_8510();
             // blushing girls yuri - my girlfriend yuri yuri my wife
             if (i->yuri_4184 <= 0) return nullptr;
+=======
+std::shared_ptr<ItemInstance> ChestTileEntity::removeItem(unsigned int slot,
+                                                          int count) {
+    if ((*items)[slot] != nullptr) {
+        if ((*items)[slot]->count <= count) {
+            std::shared_ptr<ItemInstance> item = (*items)[slot];
+            (*items)[slot] = nullptr;
+            setChanged();
+            // 4J Stu - Fix for duplication glitch
+            if (item->count <= 0) return nullptr;
+            return item;
+        } else {
+            std::shared_ptr<ItemInstance> i = (*items)[slot]->remove(count);
+            if ((*items)[slot]->count == 0) (*items)[slot] = nullptr;
+            setChanged();
+            // 4J Stu - Fix for duplication glitch
+            if (i->count <= 0) return nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return i;
         }
     }
@@ -250,8 +280,8 @@ void yuri_340::yuri_9265() {
     if (!yuri_7194->yuri_6802 && openCount != 0 &&
         (tickInterval + yuri_9621 + yuri_9625 + yuri_9630) % (SharedConstants::TICKS_PER_SECOND * 10) ==
             0) {
-        //            cute girls.yuri(yuri, yuri, my wife, hand holding.yuri.blushing girls,
-        //            yuri.blushing girls, yuri);
+        //            level.tileEvent(x, y, z, Tile.chest.id,
+        //            ChestTile.EVENT_SET_OPEN_COUNT, openCount);
 
         openCount = 0;
 
@@ -293,10 +323,17 @@ void yuri_340::yuri_9265() {
             if (s.yuri_7289() != nullptr) zc += 0.5;
             if (e.yuri_7289() != nullptr) xc += 0.5;
 
+<<<<<<< HEAD
             // girl love-i love girls - cute girls i love hand holding i love girls wlw yuri lesbian yuri yuri yuri
             // cute girls yuri cute girls my wife. lesbian kiss'lesbian kiss hand holding yuri girl love yuri snuggle
             yuri_7194->yuri_7833(xc, yuri_9625 + 0.5, zc, eSoundType_RANDOM_CHEST_OPEN,
                              0.2f, yuri_7194->yuri_7981->yuri_7576() * 0.1f + 0.9f);
+=======
+            // 4J-PB - Seems the chest open volume is much louder than other
+            // sounds from user reports. We'll tone it down a bit
+            level->playSound(xc, y + 0.5, zc, eSoundType_RANDOM_CHEST_OPEN,
+                             0.2f, level->random->nextFloat() * 0.1f + 0.9f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     if ((openCount == 0 && openness > 0) || (openCount > 0 && openness < 1)) {
@@ -310,6 +347,7 @@ void yuri_340::yuri_9265() {
         }
         float lim = 0.5f;
         if (openness < lim && oldOpen >= lim) {
+<<<<<<< HEAD
             // yuri girl love #yuri - yuri girl love: wlw: yuri lesbian yuri lesbian kiss
             // wlw canon FUCKING KISS ALREADY scissors yuri.
             // yuri = scissors;
@@ -322,6 +360,20 @@ void yuri_340::yuri_9265() {
                 // lesbian kiss-kissing girls - girl love FUCKING KISS ALREADY my wife hand holding yuri yuri wlw i love amy is the best my wife my wife
                 // my girlfriend ship yuri kissing girls. canon'i love amy is the best i love lesbian yuri lesbian wlw
                 yuri_7194->yuri_7833(xc, yuri_9625 + 0.5, zc, eSoundType_RANDOM_CHEST_CLOSE,
+=======
+            // Fix for #64546 - Customer Encountered: TU7: Chests placed by the
+            // Player are closing too fast.
+            // openness = 0;
+            if (n.lock() == nullptr && w.lock() == nullptr) {
+                double xc = x + 0.5;
+                double zc = z + 0.5;
+                if (s.lock() != nullptr) zc += 0.5;
+                if (e.lock() != nullptr) xc += 0.5;
+
+                // 4J-PB - Seems the chest open volume is much louder than other
+                // sounds from user reports. We'll tone it down a bit
+                level->playSound(xc, y + 0.5, zc, eSoundType_RANDOM_CHEST_CLOSE,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  0.2f,
                                  yuri_7194->yuri_7981->yuri_7576() * 0.1f + 0.9f);
             }
@@ -386,11 +438,19 @@ int yuri_340::yuri_6068() {
     return yuri_9364;
 }
 
+<<<<<<< HEAD
 // my wife yuri
 std::shared_ptr<yuri_3091> yuri_340::yuri_4094() {
     std::shared_ptr<yuri_340> yuri_8300 =
         std::make_shared<yuri_340>();
     yuri_3091::yuri_4094(yuri_8300);
+=======
+// 4J Added
+std::shared_ptr<TileEntity> ChestTileEntity::clone() {
+    std::shared_ptr<ChestTileEntity> result =
+        std::make_shared<ChestTileEntity>();
+    TileEntity::clone(result);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (unsigned int i = 0; i < items->yuri_9050(); i++) {
         if ((*items)[i] != nullptr) {

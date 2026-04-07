@@ -176,11 +176,19 @@ int yuri_3088::lightBlock[TILE_NUM_COUNT];
 bool yuri_3088::transculent[TILE_NUM_COUNT];
 int yuri_3088::lightEmission[TILE_NUM_COUNT];
 unsigned char
+<<<<<<< HEAD
     yuri_3088::_sendTileData[TILE_NUM_COUNT];  // cute girls hand holding - i love amy is the best yuri, i love girls i love amy is the best
                                           // yuri yuri i love yuri kissing girls
                                           // FUCKING KISS ALREADY my wife yuri i love girls
 bool yuri_3088::mipmapEnable[TILE_NUM_COUNT];
 bool yuri_3088::propagate[TILE_NUM_COUNT];
+=======
+    Tile::_sendTileData[TILE_NUM_COUNT];  // 4J changed - was bool, now bitfield
+                                          // to indicate which bits are
+                                          // important to be sent
+bool Tile::mipmapEnable[TILE_NUM_COUNT];
+bool Tile::propagate[TILE_NUM_COUNT];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_3088** yuri_3088::tiles = nullptr;
 
@@ -311,6 +319,7 @@ yuri_3088* yuri_3088::dragonEgg = nullptr;
 yuri_3088* yuri_3088::redstoneLight = nullptr;
 yuri_3088* yuri_3088::redstoneLight_lit = nullptr;
 
+<<<<<<< HEAD
 // yuri
 yuri_3088* yuri_3088::stairs_sandstone = nullptr;
 yuri_3088* yuri_3088::woodStairsDark = nullptr;
@@ -321,6 +330,18 @@ yuri_179* yuri_3088::beacon = nullptr;
 yuri_3088* yuri_3088::button_wood = nullptr;
 yuri_1235* yuri_3088::woodSlab = nullptr;
 yuri_1235* yuri_3088::woodSlabHalf = nullptr;
+=======
+// TU9
+Tile* Tile::stairs_sandstone = nullptr;
+Tile* Tile::woodStairsDark = nullptr;
+Tile* Tile::woodStairsBirch = nullptr;
+Tile* Tile::woodStairsJungle = nullptr;
+Tile* Tile::commandBlock = nullptr;
+BeaconTile* Tile::beacon = nullptr;
+Tile* Tile::button_wood = nullptr;
+HalfSlabTile* Tile::woodSlab = nullptr;
+HalfSlabTile* Tile::woodSlabHalf = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_3088* yuri_3088::emeraldOre = nullptr;
 yuri_3088* yuri_3088::enderChest = nullptr;
@@ -474,6 +495,7 @@ void yuri_3088::yuri_9115() {
                      ->yuri_8426()
                      ->yuri_8941(IDS_DESC_LAVA);
 
+<<<<<<< HEAD
     yuri_3088::yuri_3902 = (new yuri_1790(11, yuri_1886::lava))
                          ->yuri_8568(100.0f)
                          ->yuri_8707(1.0f)
@@ -545,6 +567,79 @@ void yuri_3088::yuri_9115() {
                       ->yuri_8658(yuri_1720"glass")
                       ->yuri_8564(IDS_TILE_GLASS)
                       ->yuri_8941(IDS_DESC_GLASS);
+=======
+    Tile::calmLava = (new LiquidTileStatic(11, Material::lava))
+                         ->setDestroyTime(100.0f)
+                         ->setLightEmission(1.0f)
+                         ->setLightBlock(255)
+                         ->setIconName(L"lava_still")
+                         ->setDescriptionId(IDS_TILE_LAVA)
+                         ->setNotCollectStatistics()
+                         ->sendTileData()
+                         ->setUseDescriptionId(IDS_DESC_LAVA);
+    Tile::sand = (new HeavyTile(12))
+                     ->setDestroyTime(0.5f)
+                     ->setSoundType(Tile::SOUND_SAND)
+                     ->setIconName(L"sand")
+                     ->setDescriptionId(IDS_TILE_SAND)
+                     ->setUseDescriptionId(IDS_DESC_SAND);
+    Tile::gravel = (new GravelTile(13))
+                       ->setDestroyTime(0.6f)
+                       ->setSoundType(Tile::SOUND_GRAVEL)
+                       ->setIconName(L"gravel")
+                       ->setDescriptionId(IDS_TILE_GRAVEL)
+                       ->setUseDescriptionId(IDS_DESC_GRAVEL);
+    Tile::goldOre = (new OreTile(14))
+                        ->setDestroyTime(3.0f)
+                        ->setExplodeable(5)
+                        ->setSoundType(Tile::SOUND_STONE)
+                        ->setIconName(L"gold_ore")
+                        ->setDescriptionId(IDS_TILE_ORE_GOLD)
+                        ->setUseDescriptionId(IDS_DESC_ORE_GOLD);
+    Tile::ironOre = (new OreTile(15))
+                        ->setDestroyTime(3.0f)
+                        ->setExplodeable(5)
+                        ->setSoundType(Tile::SOUND_STONE)
+                        ->setIconName(L"iron_ore")
+                        ->setDescriptionId(IDS_TILE_ORE_IRON)
+                        ->setUseDescriptionId(IDS_DESC_ORE_IRON);
+    Tile::coalOre = (new OreTile(16))
+                        ->setDestroyTime(3.0f)
+                        ->setExplodeable(5)
+                        ->setSoundType(Tile::SOUND_STONE)
+                        ->setIconName(L"coal_ore")
+                        ->setDescriptionId(IDS_TILE_ORE_COAL)
+                        ->setUseDescriptionId(IDS_DESC_ORE_COAL);
+    Tile::treeTrunk = (new TreeTile(17))
+                          ->setDestroyTime(2.0f)
+                          ->setSoundType(Tile::SOUND_WOOD)
+                          ->setIconName(L"log")
+                          ->setDescriptionId(IDS_TILE_LOG)
+                          ->sendTileData()
+                          ->setUseDescriptionId(IDS_DESC_LOG);
+    // 4J - for leaves, have specified that only the data bits that encode the
+    // type of leaf are important to be sent
+    Tile::leaves = (LeafTile*)(new LeafTile(18))
+                       ->setDestroyTime(0.2f)
+                       ->setLightBlock(1)
+                       ->setSoundType(Tile::SOUND_GRASS)
+                       ->setIconName(L"leaves")
+                       ->setDescriptionId(IDS_TILE_LEAVES)
+                       ->sendTileData(LeafTile::LEAF_TYPE_MASK)
+                       ->setUseDescriptionId(IDS_DESC_LEAVES);
+    Tile::sponge = (new Sponge(19))
+                       ->setDestroyTime(0.6f)
+                       ->setSoundType(Tile::SOUND_GRASS)
+                       ->setIconName(L"sponge")
+                       ->setDescriptionId(IDS_TILE_SPONGE)
+                       ->setUseDescriptionId(IDS_DESC_SPONGE);
+    Tile::glass = (new GlassTile(20, Material::glass, false))
+                      ->setDestroyTime(0.3f)
+                      ->setSoundType(Tile::SOUND_GLASS)
+                      ->setIconName(L"glass")
+                      ->setDescriptionId(IDS_TILE_GLASS)
+                      ->setUseDescriptionId(IDS_DESC_GLASS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3088::lapisOre = (new yuri_2063(21))
                          ->yuri_8568(3.0f)
@@ -1711,6 +1806,7 @@ void yuri_3088::yuri_9115() {
                           ->yuri_8564(IDS_TILE_COAL)
                           ->yuri_8941(IDS_DESC_COAL_BLOCK);
 
+<<<<<<< HEAD
     // my girlfriend canon ship yuri yuri cute girls yuri i love amy is the best canon yuri blushing girls
     yuri_1687::items[wool_Id] = (new yuri_3395(yuri_3088::wool_Id - 256))
                                ->yuri_8658(yuri_1720"cloth")
@@ -1813,6 +1909,110 @@ void yuri_3088::yuri_9115() {
     yuri_1687::items[vine_Id] = (new yuri_390(yuri_3088::vine_Id - 256, false))
                                ->yuri_8564(IDS_TILE_VINE)
                                ->yuri_8941(IDS_DESC_VINE);
+=======
+    // Special cases for certain items since they can have different icons
+    Item::items[wool_Id] = (new WoolTileItem(Tile::wool_Id - 256))
+                               ->setIconName(L"cloth")
+                               ->setDescriptionId(IDS_TILE_CLOTH)
+                               ->setUseDescriptionId(IDS_DESC_WOOL);
+    Item::items[clayHardened_colored_Id] =
+        (new WoolTileItem(Tile::clayHardened_colored_Id - 256))
+            ->setIconName(L"clayHardenedStained")
+            ->setDescriptionId(IDS_TILE_STAINED_CLAY)
+            ->setUseDescriptionId(IDS_DESC_STAINED_CLAY);
+    Item::items[stained_glass_Id] =
+        (new WoolTileItem(Tile::stained_glass_Id - 256))
+            ->setIconName(L"stainedGlass")
+            ->setDescriptionId(IDS_TILE_STAINED_GLASS)
+            ->setUseDescriptionId(IDS_DESC_STAINED_GLASS);
+    Item::items[stained_glass_pane_Id] =
+        (new WoolTileItem(Tile::stained_glass_pane_Id - 256))
+            ->setIconName(L"stainedGlassPane")
+            ->setDescriptionId(IDS_TILE_STAINED_GLASS_PANE)
+            ->setUseDescriptionId(IDS_DESC_STAINED_GLASS_PANE);
+    Item::items[woolCarpet_Id] = (new WoolTileItem(Tile::woolCarpet_Id - 256))
+                                     ->setIconName(L"woolCarpet")
+                                     ->setDescriptionId(IDS_TILE_CARPET)
+                                     ->setUseDescriptionId(IDS_DESC_CARPET);
+    Item::items[treeTrunk_Id] =
+        (new MultiTextureTileItem(Tile::treeTrunk_Id - 256, treeTrunk,
+                                  (int*)TreeTile::TREE_NAMES, 4))
+            ->setIconName(L"log")
+            ->setDescriptionId(IDS_TILE_LOG)
+            ->setUseDescriptionId(IDS_DESC_LOG);
+    Item::items[wood_Id] = (new MultiTextureTileItem(
+                                Tile::wood_Id - 256, Tile::wood,
+                                (int*)WoodTile::WOOD_NAMES, 4, IDS_TILE_PLANKS))
+                               ->setIconName(L"wood")
+                               ->setDescriptionId(IDS_TILE_OAKWOOD_PLANKS)
+                               ->setUseDescriptionId(IDS_DESC_LOG);  //  <- TODO
+    Item::items[monsterStoneEgg_Id] =
+        (new MultiTextureTileItem(
+             Tile::monsterStoneEgg_Id - 256, monsterStoneEgg,
+             (int*)StoneMonsterTile::STONE_MONSTER_NAMES, 3))
+            ->setIconName(L"monsterStoneEgg")
+            ->setDescriptionId(IDS_TILE_STONE_SILVERFISH)
+            ->setUseDescriptionId(
+                IDS_DESC_STONE_SILVERFISH);  // 4J - Brought forward from
+                                             // post-1.2 to fix stacking problem
+    Item::items[stoneBrick_Id] =
+        (new MultiTextureTileItem(
+             Tile::stoneBrick_Id - 256, stoneBrick,
+             (int*)SmoothStoneBrickTile::SMOOTH_STONE_BRICK_NAMES, 4))
+            ->setIconName(L"stonebricksmooth")
+            ->setDescriptionId(IDS_TILE_STONE_BRICK_SMOOTH);
+    Item::items[sandStone_Id] =
+        (new MultiTextureTileItem(sandStone_Id - 256, sandStone,
+                                  SandStoneTile::SANDSTONE_NAMES,
+                                  SandStoneTile::SANDSTONE_BLOCK_NAMES))
+            ->setIconName(L"sandStone")
+            ->setDescriptionId(IDS_TILE_SANDSTONE)
+            ->setUseDescriptionId(IDS_DESC_SANDSTONE);
+    Item::items[quartzBlock_Id] =
+        (new MultiTextureTileItem(quartzBlock_Id - 256, quartzBlock,
+                                  QuartzBlockTile::BLOCK_NAMES,
+                                  QuartzBlockTile::QUARTZ_BLOCK_NAMES))
+            ->setIconName(L"quartzBlock")
+            ->setDescriptionId(IDS_TILE_QUARTZ_BLOCK)
+            ->setUseDescriptionId(IDS_DESC_QUARTZ_BLOCK);
+    Item::items[stoneSlabHalf_Id] =
+        (new StoneSlabTileItem(Tile::stoneSlabHalf_Id - 256,
+                               Tile::stoneSlabHalf, Tile::stoneSlab, false))
+            ->setIconName(L"stoneSlab")
+            ->setDescriptionId(IDS_TILE_STONESLAB)
+            ->setUseDescriptionId(IDS_DESC_HALFSLAB);
+    Item::items[stoneSlab_Id] =
+        (new StoneSlabTileItem(Tile::stoneSlab_Id - 256, Tile::stoneSlabHalf,
+                               Tile::stoneSlab, true))
+            ->setIconName(L"stoneSlab")
+            ->setDescriptionId(IDS_DESC_STONESLAB)
+            ->setUseDescriptionId(IDS_DESC_SLAB);
+    Item::items[woodSlabHalf_Id] =
+        (new StoneSlabTileItem(Tile::woodSlabHalf_Id - 256, Tile::woodSlabHalf,
+                               Tile::woodSlab, false))
+            ->setIconName(L"woodSlab")
+            ->setDescriptionId(IDS_DESC_WOODSLAB)
+            ->setUseDescriptionId(IDS_DESC_WOODSLAB);
+    Item::items[woodSlab_Id] =
+        (new StoneSlabTileItem(Tile::woodSlab_Id - 256, Tile::woodSlabHalf,
+                               Tile::woodSlab, true))
+            ->setIconName(L"woodSlab")
+            ->setDescriptionId(IDS_DESC_WOODSLAB)
+            ->setUseDescriptionId(IDS_DESC_WOODSLAB);
+    Item::items[sapling_Id] =
+        (new MultiTextureTileItem(Tile::sapling_Id - 256, Tile::sapling,
+                                  Sapling::SAPLING_NAMES, 4))
+            ->setIconName(L"sapling")
+            ->setDescriptionId(IDS_TILE_SAPLING)
+            ->setUseDescriptionId(IDS_DESC_SAPLING);
+    Item::items[leaves_Id] = (new LeafTileItem(Tile::leaves_Id - 256))
+                                 ->setIconName(L"leaves")
+                                 ->setDescriptionId(IDS_TILE_LEAVES)
+                                 ->setUseDescriptionId(IDS_DESC_LEAVES);
+    Item::items[vine_Id] = (new ColoredTileItem(Tile::vine_Id - 256, false))
+                               ->setDescriptionId(IDS_TILE_VINE)
+                               ->setUseDescriptionId(IDS_DESC_VINE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int idsData[3] = {IDS_TILE_SHRUB, IDS_TILE_TALL_GRASS, IDS_TILE_FERN};
     std::vector<int> yuri_6676 = std::vector<int>(idsData, idsData + 3);
     yuri_1687::items[tallgrass_Id] =
@@ -1869,15 +2069,20 @@ void yuri_3088::yuri_9115() {
     // */
 }
 
+<<<<<<< HEAD
 // kissing girls - yuri i love amy is the best lesbian kiss yuri cute girls
 void yuri_3088::yuri_3547(int yuri_6674, yuri_1886* material, bool yuri_7058) {
+=======
+// 4J - added for common ctor code
+void Tile::_init(int id, Material* material, bool isSolidRender) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     destroySpeed = 0.0f;
     explosionResistance = 0.0f;
     isInventoryItem = true;
     collectStatistics = true;
 
-    // girl love scissors - yuri yuri i love snuggle lesbian yuri yuri
-    // blushing girls = yuri = i love girls = blushing girls = my girlfriend = yuri = my wife;
+    // 4J Stu - Removed these in favour of TLS versions
+    // xx0 = yy0 = zz0 = xx1 = yy1 = zz1 = 0;
 
     soundType = yuri_3088::SOUND_NORMAL;
     gravity = 1.0f;
@@ -1885,14 +2090,15 @@ void yuri_3088::yuri_3547(int yuri_6674, yuri_1886* material, bool yuri_7058) {
     _isTicking = false;
     _isEntityTile = false;
 
-    /*	blushing girls - kissing girls
-    blushing girls (kissing girls.canon[cute girls] != snuggle)
+    /*	4J - TODO
+    if (Tile.tiles[id] != null)
     {
-    girl love my wife yuri("yuri " + wlw + " ship lesbian yuri my wife "
-    + lesbian.i love girls[i love] + " wlw scissors " + cute girls);
+    throw new IllegalArgumentException("Slot " + id + " is already occupied by "
+    + Tile.tiles[id] + " when adding " + this);
     }
     */
     this->material = material;
+<<<<<<< HEAD
     yuri_3088::tiles[yuri_6674] = this;
     this->yuri_6674 = yuri_6674;
     yuri_9402();
@@ -1904,6 +2110,19 @@ void yuri_3088::yuri_3547(int yuri_6674, yuri_1886* material, bool yuri_7058) {
     transculent[yuri_6674] = !material->yuri_3828();
     mipmapEnable[yuri_6674] = true;  // i love girls kissing girls
     iconName = yuri_1720"";
+=======
+    Tile::tiles[id] = this;
+    this->id = id;
+    updateDefaultShape();
+    // 4J - note these used to call isSolidRender(), but that always calls
+    // Tile::isSolidRender in C++ so have added as a parameter that can be
+    // varied from derived ctors
+    solid[id] = isSolidRender;
+    lightBlock[id] = isSolidRender ? 255 : 0;
+    transculent[id] = !material->blocksLight();
+    mipmapEnable[id] = true;  // 4J added
+    iconName = L"";
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_3088::yuri_3088(int yuri_6674, yuri_1886* material, bool yuri_7058) {
@@ -1913,19 +2132,33 @@ yuri_3088::yuri_3088(int yuri_6674, yuri_1886* material, bool yuri_7058) {
     yuri_6672 = nullptr;
 }
 
+<<<<<<< HEAD
 yuri_3088* yuri_3088::yuri_8426(unsigned char importantMask /*=kissing girls*/) {
     yuri_3088::_sendTileData[yuri_6674] =
         importantMask;  // yuri - wlw i love amy is the best i love amy is the best, cute girls blushing girls yuri yuri yuri
                         // i love amy is the best yuri canon yuri kissing girls i love. my girlfriend yuri canon
                         // yuri scissors scissors my girlfriend blushing girls lesbian kiss
+=======
+Tile* Tile::sendTileData(unsigned char importantMask /*=15*/) {
+    Tile::_sendTileData[id] =
+        importantMask;  // 4J - changed was bool, now bitfield to indicate which
+                        // bits are important to be sent. Default behaviour with
+                        // this method is all 4 bits
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return this;
 }
 
 void yuri_3088::yuri_6704() {}
 
+<<<<<<< HEAD
 // blushing girls-FUCKING KISS ALREADY - yuri snuggle yuri cute girls i love girls FUCKING KISS ALREADY snuggle my wife snuggle yuri wlw my girlfriend
 // i love girls scissors girl love yuri yuri cute girls wlw blushing girls wlw yuri
 yuri_3088* yuri_3088::yuri_8475(int iType, int iMaterial) {
+=======
+// 4J-PB - adding so we can class different items together for the new crafting
+// menu so pickaxe_stone would get tagged with pickaxe and stone
+Tile* Tile::setBaseItemTypeAndMaterial(int iType, int iMaterial) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->m_iBaseItemType = iType;
     this->m_iMaterial = iMaterial;
     return this;
@@ -2011,14 +2244,15 @@ void yuri_3088::yuri_8855(float yuri_9622, float yuri_9626, float yuri_9631, flo
     tls->zz1 = yuri_9632;
     tls->yuri_9294 = this->yuri_6674;
 
-    // yuri->yuri = yuri;
-    // snuggle->FUCKING KISS ALREADY = FUCKING KISS ALREADY;
-    // scissors->girl love = girl love;
-    // yuri->FUCKING KISS ALREADY = cute girls;
-    // yuri->cute girls = yuri;
-    // FUCKING KISS ALREADY->kissing girls = my girlfriend;
+    // this->xx0 = x0;
+    // this->yy0 = y0;
+    // this->zz0 = z0;
+    // this->xx1 = x1;
+    // this->yy1 = y1;
+    // this->zz1 = z1;
 }
 
+<<<<<<< HEAD
 float yuri_3088::yuri_4976(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     // canon i love girls yuri hand holding yuri ~ship.canon yuri - cute girls yuri i love my girlfriend
     // blushing girls yuri yuri yuri yuri my wife yuri my girlfriend FUCKING KISS ALREADY girl love yuri scissors
@@ -2036,6 +2270,25 @@ int yuri_3088::yuri_5484(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
     if (yuri_9294 == -1) {
         return yuri_7194->yuri_5484(yuri_9621, yuri_9625, yuri_9630,
                                     lightEmission[yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)], -1);
+=======
+float Tile::getBrightness(LevelSource* level, int x, int y, int z) {
+    // Lighting fix brought forward from ~1.5 here - used to use the
+    // lightEmission level for this tile rather than getting the for the passed
+    // in x/y/z coords
+    return level->getBrightness(x, y, z,
+                                lightEmission[level->getTile(x, y, z)]);
+}
+
+// 4J - brought forward from 1.8.2
+int Tile::getLightColor(LevelSource* level, int x, int y, int z,
+                        int tileId /*=-1*/) {
+    // Lighting fix brought forward from ~1.5 here - used to use the
+    // lightEmission level for this tile rather than getting the for the passed
+    // in x/y/z coords
+    if (tileId == -1) {
+        return level->getLightColor(x, y, z,
+                                    lightEmission[level->getTile(x, y, z)], -1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         return yuri_7194->yuri_5484(yuri_9621, yuri_9625, yuri_9630, lightEmission[yuri_9294], yuri_9294);
     }
@@ -2051,10 +2304,17 @@ bool yuri_3088::yuri_6861(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     return !yuri_7194->yuri_7059(yuri_9621, yuri_9625, yuri_9630);
 }
 
+<<<<<<< HEAD
 bool yuri_3088::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
     yuri_3074* tls = m_tlsShape;
     // yuri canon - blushing girls canon yuri cute girls snuggle my wife hand holding my wife yuri blushing girls yuri yuri
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+=======
+bool Tile::shouldRenderFace(LevelSource* level, int x, int y, int z, int face) {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (face == 0 && tls->yy0 > 0) return true;
     if (face == 1 && tls->yy1 < 1) return true;
     if (face == 2 && tls->zz0 > 0) return true;
@@ -2064,6 +2324,7 @@ bool yuri_3088::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
     return (!yuri_7194->yuri_7059(yuri_9621, yuri_9625, yuri_9630));
 }
 
+<<<<<<< HEAD
 // girl love - yuri i love girls yuri my wife snuggle FUCKING KISS ALREADY yuri my wife yuri scissors blushing girls wlw yuri my wife
 // girl love yuri yuri
 int yuri_3088::yuri_5235(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
@@ -2072,6 +2333,16 @@ int yuri_3088::yuri_5235(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
     yuri_3074* tls = m_tlsShape;
     // i love yuri - scissors hand holding i love girls yuri yuri yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY my girlfriend lesbian girl love
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+=======
+// AP - added this function so we can generate the faceFlags for a block in a
+// single fast function
+int Tile::getFaceFlags(LevelSource* level, int x, int y, int z) {
+    int faceFlags = 0;
+
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (tls->yy0 > 0 || (!yuri_7194->yuri_7059(yuri_9621, yuri_9625 - 1, yuri_9630)))
         faceFlags |= 0x01;
@@ -2093,6 +2364,7 @@ bool yuri_3088::yuri_7057(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
     return (yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630)->yuri_7052());
 }
 
+<<<<<<< HEAD
 yuri_1346* yuri_3088::yuri_6007(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
     // yuri - lesbian snuggle my girlfriend FUCKING KISS ALREADY lesbian yuri canon my wife i love amy is the best yuri girl love.
     // FUCKING KISS ALREADY yuri i love kissing girls i love yuri kissing girls, yuri i love my girlfriend blushing girls
@@ -2106,6 +2378,21 @@ yuri_1346* yuri_3088::yuri_6007(yuri_1771* yuri_7194, int yuri_9621, int yuri_96
     // yuri FUCKING KISS ALREADY-FUCKING KISS ALREADY my girlfriend yuri i love girls i love amy is the best i love yuri canon yuri hand holding
     // snuggle kissing girls yuri i love girls, i love girls yuri yuri i love amy is the best ship - girl love i love girls'ship lesbian kiss ship'yuri
     // i love lesbian kiss yuri ship yuri ship lesbian blushing girls yuri
+=======
+Icon* Tile::getTexture(LevelSource* level, int x, int y, int z, int face) {
+    // 4J - addition here to make rendering big blocks of leaves more efficient.
+    // Normally leaves never consider themselves as solid, so blocks of leaves
+    // will have all sides of each block completely visible. Changing to
+    // consider as solid if this block is surrounded by other leaves (or solid
+    // things). This is paired with another change in
+    // Level::isSolidRenderTile/Region::isSolidRenderTile which makes things
+    // solid code-wise (ie for determining visible sides of neighbouring
+    // blocks). This change just makes the texture a solid one (tex + 1) which
+    // we already have in the texture map for doing non-fancy graphics. Note:
+    // this tile-specific code is here rather than making some new virtual
+    // method in the tiles, for the sake of efficiency - I don't imagine we'll
+    // be doing much more of this sort of thing
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_9294 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
     int tileData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
@@ -2141,12 +2428,21 @@ yuri_1346* yuri_3088::yuri_6007(int face, int yuri_4295) { return yuri_6672; }
 
 yuri_1346* yuri_3088::yuri_6007(int face) { return yuri_6007(face, 0); }
 
+<<<<<<< HEAD
 yuri_0 yuri_3088::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3074* tls = m_tlsShape;
     // yuri yuri - yuri ship yuri i love girls my wife kissing girls ship lesbian kiss snuggle FUCKING KISS ALREADY yuri yuri
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
     return yuri_0(yuri_9621 + tls->xx0, yuri_9625 + tls->yy0, yuri_9630 + tls->zz0, yuri_9621 + tls->xx1,
                 yuri_9625 + tls->yy1, yuri_9630 + tls->zz1);
+=======
+AABB Tile::getTileAABB(Level* level, int x, int y, int z) {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return AABB(x + tls->xx0, y + tls->yy0, z + tls->zz0, x + tls->xx1,
+                y + tls->yy1, z + tls->zz1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3088::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
@@ -2155,12 +2451,21 @@ void yuri_3088::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     if (aabb.yuri_6646() && yuri_3843->yuri_6741(*aabb)) boxes->yuri_7954(*aabb);
 }
 
+<<<<<<< HEAD
 std::optional<yuri_0> yuri_3088::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3074* tls = m_tlsShape;
     // cute girls wlw - yuri yuri yuri blushing girls my wife scissors lesbian kiss scissors blushing girls yuri FUCKING KISS ALREADY ship
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
     return yuri_0{yuri_9621 + tls->xx0, yuri_9625 + tls->yy0, yuri_9630 + tls->zz0,
                 yuri_9621 + tls->xx1, yuri_9625 + tls->yy1, yuri_9630 + tls->zz1};
+=======
+std::optional<AABB> Tile::getAABB(Level* level, int x, int y, int z) {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return AABB{x + tls->xx0, y + tls->yy0, z + tls->zz0,
+                x + tls->xx1, y + tls->yy1, z + tls->zz1};
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3088::yuri_7058(bool isServerLevel) { return true; }
@@ -2237,9 +2542,15 @@ void yuri_3088::yuri_7862(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     yuri_7194->yuri_3611(item);
 }
 
+<<<<<<< HEAD
 // yuri yuri yuri i love amy is the best
 void yuri_3088::yuri_7861(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int amount) {
     if (!yuri_7194->yuri_6802) {
+=======
+// Brought forward for TU7
+void Tile::popExperience(Level* level, int x, int y, int z, int amount) {
+    if (!level->isClientSide) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         while (amount > 0) {
             int newCount = yuri_778::yuri_5228(amount);
             amount -= newCount;
@@ -2275,8 +2586,8 @@ yuri_1278* yuri_3088::yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yu
 
     std::optional<yuri_3322> closest = std::nullopt;
 
-    // lesbian i love girls: i love amy is the best hand holding lesbian i love amy is the best snuggle i love girls my wife lesbian kiss scissors FUCKING KISS ALREADY
-    // i love girl love hand holding blushing girls lesbian kiss.
+    // 4jcraft NOTE: containsX does a nullopt check and will short circuit so
+    // dereffing in distanceToSqr is fine.
 
     if (yuri_4159(xh0) && (!closest.yuri_6646() ||
                            yuri_3565.yuri_4387(*xh0) < yuri_3565.yuri_4387(*closest)))
@@ -2319,31 +2630,55 @@ yuri_1278* yuri_3088::yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yu
 bool yuri_3088::yuri_4159(const std::optional<yuri_3322>& yuri_9505) {
     if (!yuri_9505.yuri_6646()) return false;
 
+<<<<<<< HEAD
     yuri_3074* tls = m_tlsShape;
     // FUCKING KISS ALREADY yuri - blushing girls kissing girls i love girls kissing girls cute girls hand holding wlw yuri lesbian yuri yuri snuggle
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
     return yuri_9505->yuri_9625 >= tls->yy0 && yuri_9505->yuri_9625 <= tls->yy1 && yuri_9505->yuri_9630 >= tls->zz0 &&
            yuri_9505->yuri_9630 <= tls->zz1;
+=======
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return v->y >= tls->yy0 && v->y <= tls->yy1 && v->z >= tls->zz0 &&
+           v->z <= tls->zz1;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3088::yuri_4160(const std::optional<yuri_3322>& yuri_9505) {
     if (!yuri_9505.yuri_6646()) return false;
 
+<<<<<<< HEAD
     yuri_3074* tls = m_tlsShape;
     // kissing girls my girlfriend - my girlfriend yuri yuri cute girls lesbian kiss girl love yuri FUCKING KISS ALREADY my wife yuri scissors yuri
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
     return yuri_9505->yuri_9621 >= tls->xx0 && yuri_9505->yuri_9621 <= tls->xx1 && yuri_9505->yuri_9630 >= tls->zz0 &&
            yuri_9505->yuri_9630 <= tls->zz1;
+=======
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return v->x >= tls->xx0 && v->x <= tls->xx1 && v->z >= tls->zz0 &&
+           v->z <= tls->zz1;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3088::yuri_4161(const std::optional<yuri_3322>& yuri_9505) {
     if (!yuri_9505.yuri_6646()) return false;
 
+<<<<<<< HEAD
     yuri_3074* tls = m_tlsShape;
     // yuri i love girls - snuggle scissors FUCKING KISS ALREADY yuri yuri kissing girls yuri yuri yuri i love lesbian kiss FUCKING KISS ALREADY
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
     return yuri_9505->yuri_9621 >= tls->xx0 && yuri_9505->yuri_9621 <= tls->xx1 && yuri_9505->yuri_9625 >= tls->yy0 &&
            yuri_9505->yuri_9625 <= tls->yy1;
+=======
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return v->x >= tls->xx0 && v->x <= tls->xx1 && v->y >= tls->yy0 &&
+           v->y <= tls->yy1;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3088::yuri_9554(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
@@ -2365,8 +2700,13 @@ bool yuri_3088::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     return t == 0 || yuri_3088::tiles[t]->material->yuri_7011();
 }
 
+<<<<<<< HEAD
 // ship-my wife - blushing girls lesbian hand holding wlw canon lesbian
 bool yuri_3088::yuri_3033() { return false; }
+=======
+// 4J-PB - Adding a TestUse for tooltip display
+bool Tile::TestUse() { return false; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_3088::yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                    std::shared_ptr<yuri_2126> yuri_7839) {
@@ -2376,7 +2716,7 @@ bool yuri_3088::yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 bool yuri_3088::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                std::shared_ptr<yuri_2126> yuri_7839, int clickedFace, float clickX,
                float clickY, float clickZ,
-               bool soundOnly /*=ship*/)  // yuri yuri FUCKING KISS ALREADY wlw
+               bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     return false;
 }
@@ -2398,6 +2738,7 @@ void yuri_3088::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 void yuri_3088::yuri_6470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                               std::shared_ptr<yuri_739> e, yuri_3322* yuri_4282) {}
 
+<<<<<<< HEAD
 void yuri_3088::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
@@ -2447,6 +2788,57 @@ double yuri_3088::yuri_5891() {
     yuri_3074* tls = m_tlsShape;
     // yuri yuri - girl love snuggle yuri yuri yuri yuri wlw scissors yuri blushing girls lesbian kiss my girlfriend
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+=======
+void Tile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+{
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+}
+
+double Tile::getShapeX0() {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return tls->xx0;
+}
+
+double Tile::getShapeX1() {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return tls->xx1;
+}
+
+double Tile::getShapeY0() {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return tls->yy0;
+}
+
+double Tile::getShapeY1() {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return tls->yy1;
+}
+
+double Tile::getShapeZ0() {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return tls->zz0;
+}
+
+double Tile::getShapeZ1() {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return tls->zz1;
 }
 
@@ -2475,6 +2867,7 @@ int yuri_3088::yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
 
 void yuri_3088::yuri_9402() { yuri_8855(0, 0, 0, 1, 1, 1); }
 
+<<<<<<< HEAD
 void yuri_3088::yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839, int yuri_9621,
                          int yuri_9625, int yuri_9630, int yuri_4295) {
     // snuggle snuggle - kissing girls wlw - my wife yuri cute girls my wife FUCKING KISS ALREADY my girlfriend kissing girls i love amy is the best ship
@@ -2490,14 +2883,38 @@ void yuri_3088::yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_
         if (yuri_3088::potatoes->yuri_5817(yuri_4295, nullptr, 0) > 0)
             yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
                               GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
+=======
+void Tile::playerDestroy(Level* level, std::shared_ptr<Player> player, int x,
+                         int y, int z, int data) {
+    // 4J Stu - Special case - only record a crop destroy if is fully grown
+    if (id == Tile::wheat_Id) {
+        if (Tile::wheat->getResource(data, nullptr, 0) > 0)
+            player->awardStat(GenericStats::blocksMined(id),
+                              GenericStats::param_blocksMined(id, data, 1));
+    } else if (id == Tile::potatoes_Id) {
+        if (Tile::potatoes->getResource(data, nullptr, 0) > 0)
+            player->awardStat(GenericStats::blocksMined(id),
+                              GenericStats::param_blocksMined(id, data, 1));
+    } else if (id == Tile::carrots_Id) {
+        if (Tile::potatoes->getResource(data, nullptr, 0) > 0)
+            player->awardStat(GenericStats::blocksMined(id),
+                              GenericStats::param_blocksMined(id, data, 1));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
                           GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
     }
+<<<<<<< HEAD
     yuri_7839->yuri_3773(
         GenericStats::yuri_9323(),
         GenericStats::yuri_7766());  // i love girls : ship : yuri scissors yuri ship.
     yuri_7839->yuri_3981(FoodConstants::EXHAUSTION_MINE);
+=======
+    player->awardStat(
+        GenericStats::totalBlocksMined(),
+        GenericStats::param_noArgs());  // 4J : WESTY : Added for other award.
+    player->causeFoodExhaustion(FoodConstants::EXHAUSTION_MINE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_6674 == yuri_3088::treeTrunk_Id)
         yuri_7839->yuri_3773(GenericStats::yuri_7495(),
@@ -2542,12 +2959,21 @@ yuri_3088* yuri_3088::yuri_8564(unsigned int yuri_6674) {
     return this;
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_3088::yuri_5578() {
     return yuri_1720"";  // yuri::scissors(yuri() + wlw".yuri");
 }
 
 unsigned int yuri_3088::yuri_5148(int iData /*= -yuri*/) {
     return yuri_4346;
+=======
+std::wstring Tile::getName() {
+    return L"";  // I18n::get(getDescriptionId() + L".name");
+}
+
+unsigned int Tile::getDescriptionId(int iData /*= -1*/) {
+    return descriptionId;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_3088* yuri_3088::yuri_8941(unsigned int yuri_6674) {
@@ -2570,9 +2996,15 @@ yuri_3088* yuri_3088::yuri_8742() {
 
 int yuri_3088::yuri_5694() { return material->yuri_5762(); }
 
+<<<<<<< HEAD
 // girl love - yuri cute girls ship yuri.yuri.hand holding
 float yuri_3088::yuri_5884(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     return yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630) ? 0.2f : 1.0f;
+=======
+// 4J - brought forward from 1.8.2
+float Tile::getShadeBrightness(LevelSource* level, int x, int y, int z) {
+    return level->isSolidBlockingTile(x, y, z) ? 0.2f : 1.0f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3088::yuri_4559(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
@@ -2677,7 +3109,7 @@ yuri_3088::yuri_2874::yuri_2874(eMATERIALSOUND_TYPE eMaterialSound, float volume
                 this->iBreakSound = -1;
                 break;
         }
-        // FUCKING KISS ALREADY->yuri = ship"yuri." + yuri->canon;
+        // this->breakSound = L"step." + this->name;
     }
 
     if (iPlaceSound > -1) {
@@ -2721,11 +3153,12 @@ yuri_3088::yuri_2874::yuri_2874(eMATERIALSOUND_TYPE eMaterialSound, float volume
             break;
     }
 
-    // cute girls->yuri = yuri"my wife." + wlw->yuri;
+    // this->stepSound = L"step." + this->name;
     this->volume = volume;
     this->pitch = pitch;
 }
 
+<<<<<<< HEAD
 float yuri_3088::yuri_2874::yuri_6119() const { return volume; }
 float yuri_3088::yuri_2874::yuri_5695() const { return pitch; }
 // yuri kissing girls() yuri { yuri kissing girls; }
@@ -2733,11 +3166,21 @@ float yuri_3088::yuri_2874::yuri_5695() const { return pitch; }
 int yuri_3088::yuri_2874::yuri_4972() const { return iBreakSound; }
 int yuri_3088::yuri_2874::yuri_5963() const { return iStepSound; }
 int yuri_3088::yuri_2874::yuri_5696() const { return iPlaceSound; }
+=======
+float Tile::SoundType::getVolume() const { return volume; }
+float Tile::SoundType::getPitch() const { return pitch; }
+// wstring getBreakSound() const { return breakSound; }
+// wstring getStepSound()	const { return stepSound; }
+int Tile::SoundType::getBreakSound() const { return iBreakSound; }
+int Tile::SoundType::getStepSound() const { return iStepSound; }
+int Tile::SoundType::getPlaceSound() const { return iPlaceSound; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 /*
-yuri: ship yuri yuri blushing girls i love amy is the best yuri.
-(yuri yuri my girlfriend wlw).
+4J: These are necessary on the PS3.
+(and 4 and Vita).
 */
+<<<<<<< HEAD
 #if (0 || 0 || 0 || yuri_4330 __linux__)
 const int yuri_3088::stone_Id;
 const int yuri_3088::grass_Id;
@@ -2886,4 +3329,154 @@ const int yuri_3088::netherQuartz_Id;
 const int yuri_3088::quartzBlock_Id;
 const int yuri_3088::stairs_quartz_Id;
 const int yuri_3088::woolCarpet_Id;
+=======
+#if (0 || 0 || 0 || defined __linux__)
+const int Tile::stone_Id;
+const int Tile::grass_Id;
+const int Tile::dirt_Id;
+//				4
+const int Tile::wood_Id;
+const int Tile::sapling_Id;
+const int Tile::unbreakable_Id;
+const int Tile::water_Id;
+const int Tile::calmWater_Id;
+const int Tile::lava_Id;
+const int Tile::calmLava_Id;
+const int Tile::sand_Id;
+const int Tile::gravel_Id;
+const int Tile::goldOre_Id;
+const int Tile::ironOre_Id;
+const int Tile::coalOre_Id;
+const int Tile::treeTrunk_Id;
+const int Tile::leaves_Id;
+const int Tile::sponge_Id;
+const int Tile::glass_Id;
+const int Tile::lapisOre_Id;
+const int Tile::lapisBlock_Id;
+const int Tile::dispenser_Id;
+const int Tile::sandStone_Id;
+//				25
+const int Tile::bed_Id;
+const int Tile::goldenRail_Id;
+const int Tile::detectorRail_Id;
+const int Tile::pistonStickyBase_Id;
+const int Tile::web_Id;
+const int Tile::tallgrass_Id;
+const int Tile::deadBush_Id;
+const int Tile::pistonBase_Id;
+const int Tile::pistonExtensionPiece_Id;
+const int Tile::wool_Id;
+const int Tile::pistonMovingPiece_Id;
+const int Tile::flower_Id;
+const int Tile::rose_Id;
+const int Tile::mushroom_brown_Id;
+const int Tile::mushroom_red_Id;
+const int Tile::goldBlock_Id;
+const int Tile::ironBlock_Id;
+const int Tile::stoneSlab_Id;
+const int Tile::stoneSlabHalf_Id;
+const int Tile::redBrick_Id;
+const int Tile::tnt_Id;
+const int Tile::bookshelf_Id;
+const int Tile::mossyCobblestone_Id;
+const int Tile::obsidian_Id;
+const int Tile::torch_Id;
+const int Tile::fire_Id;
+const int Tile::mobSpawner_Id;
+const int Tile::stairs_wood_Id;
+const int Tile::chest_Id;
+const int Tile::redStoneDust_Id;
+const int Tile::diamondOre_Id;
+const int Tile::diamondBlock_Id;
+const int Tile::workBench_Id;
+const int Tile::wheat_Id;
+const int Tile::farmland_Id;
+const int Tile::furnace_Id;
+const int Tile::furnace_lit_Id;
+const int Tile::sign_Id;
+const int Tile::door_wood_Id;
+const int Tile::ladder_Id;
+const int Tile::rail_Id;
+const int Tile::stairs_stone_Id;
+const int Tile::wallSign_Id;
+const int Tile::lever_Id;
+const int Tile::pressurePlate_stone_Id;
+const int Tile::door_iron_Id;
+const int Tile::pressurePlate_wood_Id;
+const int Tile::redStoneOre_Id;
+const int Tile::redStoneOre_lit_Id;
+const int Tile::redstoneTorch_off_Id;
+const int Tile::redstoneTorch_on_Id;
+const int Tile::button_stone_Id;
+const int Tile::topSnow_Id;
+const int Tile::ice_Id;
+const int Tile::snow_Id;
+const int Tile::cactus_Id;
+const int Tile::clay_Id;
+const int Tile::reeds_Id;
+const int Tile::jukebox_Id;
+const int Tile::fence_Id;
+const int Tile::pumpkin_Id;
+const int Tile::netherRack_Id;
+const int Tile::soulsand_Id;
+const int Tile::glowstone_Id;
+const int Tile::portalTile_Id;
+const int Tile::litPumpkin_Id;
+const int Tile::cake_Id;
+const int Tile::diode_off_Id;
+const int Tile::diode_on_Id;
+const int Tile::stained_glass_Id;
+const int Tile::trapdoor_Id;
+const int Tile::monsterStoneEgg_Id;
+const int Tile::stoneBrick_Id;
+const int Tile::hugeMushroom_brown_Id;
+const int Tile::hugeMushroom_red_Id;
+const int Tile::ironFence_Id;
+const int Tile::thinGlass_Id;
+const int Tile::melon_Id;
+const int Tile::pumpkinStem_Id;
+const int Tile::melonStem_Id;
+const int Tile::vine_Id;
+const int Tile::fenceGate_Id;
+const int Tile::stairs_bricks_Id;
+const int Tile::stairs_stoneBrick_Id;
+const int Tile::mycel_Id;
+const int Tile::waterLily_Id;
+const int Tile::netherBrick_Id;
+const int Tile::netherFence_Id;
+const int Tile::stairs_netherBricks_Id;
+const int Tile::netherStalk_Id;
+const int Tile::enchantTable_Id;
+const int Tile::brewingStand_Id;
+const int Tile::cauldron_Id;
+const int Tile::endPortalTile_Id;
+const int Tile::endPortalFrameTile_Id;
+const int Tile::endStone_Id;
+const int Tile::dragonEgg_Id;
+const int Tile::redstoneLight_Id;
+const int Tile::redstoneLight_lit_Id;
+const int Tile::woodSlab_Id;
+const int Tile::woodSlabHalf_Id;
+const int Tile::cocoa_Id;
+const int Tile::stairs_sandstone_Id;
+const int Tile::stairs_sprucewood_Id;
+const int Tile::stairs_birchwood_Id;
+const int Tile::stairs_junglewood_Id;
+const int Tile::emeraldOre_Id;
+const int Tile::enderChest_Id;
+const int Tile::tripWireSource_Id;
+const int Tile::tripWire_Id;
+const int Tile::emeraldBlock_Id;
+const int Tile::cobbleWall_Id;
+const int Tile::flowerPot_Id;
+const int Tile::carrots_Id;
+const int Tile::potatoes_Id;
+const int Tile::anvil_Id;
+const int Tile::button_wood_Id;
+const int Tile::skull_Id;
+const int Tile::netherQuartz_Id;
+const int Tile::quartzBlock_Id;
+const int Tile::stairs_quartz_Id;
+const int Tile::woolCarpet_Id;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif

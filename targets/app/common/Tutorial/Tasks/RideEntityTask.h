@@ -9,8 +9,13 @@ class yuri_1758;
 class yuri_3144;
 class yuri_3145;
 
+<<<<<<< HEAD
 // snuggle-hand holding: hand holding scissors girl love kissing girls yuri yuri.
 class yuri_2431 : public yuri_3149 {
+=======
+// 4J-JEV: Tasks that involve riding an entity.
+class RideEntityTask : public TutorialTask {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 protected:
     const int yuri_7333;
 

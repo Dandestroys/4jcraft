@@ -12,6 +12,7 @@ private:
     std::yuri_9616 texture;
 
 public:
+<<<<<<< HEAD
     yuri_803(int yuri_6674, const std::yuri_9616& texture, yuri_1886* material);
     virtual void yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
                           std::vector<yuri_0>* boxes,
@@ -24,6 +25,20 @@ public:
     virtual bool yuri_6827();
     virtual bool yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+=======
+    FenceTile(int id, const std::wstring& texture, Material* material);
+    virtual void addAABBs(Level* level, int x, int y, int z, AABB* box,
+                          std::vector<AABB>* boxes,
+                          std::shared_ptr<Entity> source);
+    virtual void updateShape(
+        LevelSource* level, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // 4J added forceData, forceEntity param
+    virtual bool isSolidRender(bool isServerLevel = false);
+    virtual bool isCubeShaped();
+    virtual bool isPathfindable(LevelSource* level, int x, int y, int z);
+    virtual bool shouldRenderFace(LevelSource* level, int x, int y, int z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                   int face);
     virtual int yuri_5806();
     virtual bool yuri_4140(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);

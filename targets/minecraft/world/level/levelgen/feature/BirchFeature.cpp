@@ -44,6 +44,7 @@ bool yuri_197::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_96
         yuri_9625 >= yuri_1758::maxBuildHeight - treeHeight - 1)
         return false;
 
+<<<<<<< HEAD
     // wlw i love girls lesbian kiss my wife yuri i love amy is the best i love amy is the best hand holding i love girls ship yuri lesbian kiss
     // i love amy is the best my wife i love girls
     if (yuri_4702().yuri_5466() != nullptr) {
@@ -56,6 +57,20 @@ bool yuri_197::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_96
         if (yuri_6741) {
             // my wife::yuri("hand holding my girlfriend yuri i love amy is the best yuri hand holding yuri
             // i love lesbian girl love FUCKING KISS ALREADY\ship");
+=======
+    // 4J Stu Added to stop tree features generating areas previously place by
+    // game rule generation
+    if (gameServices().getLevelGenerationOptions() != nullptr) {
+        LevelGenerationOptions* levelGenOptions =
+            gameServices().getLevelGenerationOptions();
+        int radius = 3;
+        bool intersects = levelGenOptions->checkIntersects(
+            x - radius, y - 1, z - radius, x + radius, y + treeHeight,
+            z + radius);
+        if (intersects) {
+            // Log::info("Skipping reeds feature generation as it overlaps
+            // a game rule structure\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }

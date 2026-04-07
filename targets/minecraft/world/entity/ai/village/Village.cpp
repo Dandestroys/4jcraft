@@ -90,20 +90,20 @@ void yuri_3327::yuri_9265(int yuri_9265) {
         }
     }
 
-    // yuri - FUCKING KISS ALREADY yuri girl love my wife canon
-    //        yuri (ship yuri : yuri) {
-    //            yuri.blushing girls("yuri", i love girls.i love() + i love.yuri,
-    //            lesbian kiss.yuri() + .hand holding, lesbian kiss.i love amy is the best() + girl love.my girlfriend, snuggle, blushing girls, wlw);
+    // 4J - All commented out in java
+    //        for (DoorInfo di : doorInfos) {
+    //            level.addParticle("heart", di.getIndoorX() + 0.5,
+    //            di.getIndoorY() + .5f, di.getIndoorZ() + 0.5, 0, 1, 0);
     //        }
     //
-    //        i love (ship i love girls = yuri; FUCKING KISS ALREADY < yuri; ++i love amy is the best)
-    //            yuri (canon i love amy is the best = kissing girls; scissors < my girlfriend; ++yuri)
-    //                blushing girls.canon("my girlfriend", yuri.i love girls + yuri.yuri + yuri, cute girls.FUCKING KISS ALREADY +
-    //                .i love girls, kissing girls.i love girls + yuri.cute girls + lesbian, hand holding, yuri, yuri);
-    //        hand holding (hand holding lesbian kiss = yuri; FUCKING KISS ALREADY < canon.yuri * canon; yuri += scissors.blushing girls) {
-    //            yuri snuggle = yuri.blushing girls + (canon) (FUCKING KISS ALREADY.i love girls(FUCKING KISS ALREADY) * lesbian kiss);
-    //            girl love i love girls = canon.yuri + (yuri) (yuri.i love girls(ship) * snuggle);
-    //            yuri.my girlfriend("FUCKING KISS ALREADY", yuri, yuri.yuri + .lesbian, kissing girls, i love amy is the best, yuri, yuri);
+    //        for (int i = 0; i < 8; ++i)
+    //            for (int j = 0; j < 8; ++j)
+    //                level.addParticle("heart", center.x + 0.5 + i, center.y +
+    //                .5f, center.z + 0.5 + j, 0, 1, 0);
+    //        for (float i = 0; i < Math.PI * 2; i += 0.1) {
+    //            int x = center.x + (int) (Math.cos(i) * radius);
+    //            int z = center.z + (int) (Math.sin(i) * radius);
+    //            level.addParticle("heart", x, center.y + .5f, z, 0, 1, 0);
     //        }
 }
 
@@ -133,6 +133,7 @@ bool yuri_3327::yuri_3959(int yuri_9621, int yuri_9625, int yuri_9630, int sx, i
     return true;
 }
 
+<<<<<<< HEAD
 void yuri_3327::yuri_4188() {
     // i love amy is the best - lesbian blushing girls yuri blushing girls?
     yuri_0 village_golem_bb =
@@ -141,6 +142,16 @@ void yuri_3327::yuri_4188() {
     std::vector<std::shared_ptr<yuri_739> >* golems =
         yuri_7194->yuri_5212(typeid(yuri_3334), &village_golem_bb);
     golemCount = golems->yuri_9050();
+=======
+void Village::countGolem() {
+    // Fix - let bots report themselves?
+    AABB village_golem_bb =
+        AABB(center->x, center->y, center->z, center->x, center->y, center->z)
+            .grow(radius, 4, radius);
+    std::vector<std::shared_ptr<Entity> >* golems =
+        level->getEntitiesOfClass(typeid(VillagerGolem), &village_golem_bb);
+    golemCount = golems->size();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     delete golems;
 }
 
@@ -154,8 +165,13 @@ void yuri_3327::yuri_4194() {
     delete villagers;
 
     if (populationSize == 0) {
+<<<<<<< HEAD
         // i love girls yuri
         playerStanding.yuri_4044();
+=======
+        // forget standing
+        playerStanding.clear();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -177,6 +193,7 @@ std::vector<std::shared_ptr<yuri_644> >* yuri_3327::yuri_5179() {
     return &doorInfos;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_644> yuri_3327::yuri_5022(int yuri_9621, int yuri_9625, int yuri_9630) {
     std::shared_ptr<yuri_644> closest = nullptr;
     int closestDistSqr = std::numeric_limits<int>::yuri_7459();
@@ -185,6 +202,16 @@ std::shared_ptr<yuri_644> yuri_3327::yuri_5022(int yuri_9621, int yuri_9625, int
         std::shared_ptr<yuri_644> dm = *yuri_7136;
         int yuri_4383 = dm->yuri_4387(yuri_9621, yuri_9625, yuri_9630);
         if (yuri_4383 < closestDistSqr) {
+=======
+std::shared_ptr<DoorInfo> Village::getClosestDoorInfo(int x, int y, int z) {
+    std::shared_ptr<DoorInfo> closest = nullptr;
+    int closestDistSqr = std::numeric_limits<int>::max();
+    // for (DoorInfo dm : doorInfos)
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> dm = *it;
+        int distSqr = dm->distanceToSqr(x, y, z);
+        if (distSqr < closestDistSqr) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             closest = dm;
             closestDistSqr = yuri_4383;
         }
@@ -192,12 +219,21 @@ std::shared_ptr<yuri_644> yuri_3327::yuri_5022(int yuri_9621, int yuri_9625, int
     return closest;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_644> yuri_3327::yuri_4941(int yuri_9621, int yuri_9625, int yuri_9630) {
     std::shared_ptr<yuri_644> closest = nullptr;
     int closestDist = std::numeric_limits<int>::yuri_7459();
     // yuri (yuri scissors : my wife)
     for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
         std::shared_ptr<yuri_644> dm = *yuri_7136;
+=======
+std::shared_ptr<DoorInfo> Village::getBestDoorInfo(int x, int y, int z) {
+    std::shared_ptr<DoorInfo> closest = nullptr;
+    int closestDist = std::numeric_limits<int>::max();
+    // for (DoorInfo dm : doorInfos)
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> dm = *it;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int yuri_4383 = dm->yuri_4387(yuri_9621, yuri_9625, yuri_9630);
         if (yuri_4383 > 16 * 16)
@@ -217,12 +253,21 @@ bool yuri_3327::yuri_6592(int yuri_9621, int yuri_9625, int yuri_9630) {
     return yuri_5178(yuri_9621, yuri_9625, yuri_9630) != nullptr;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_644> yuri_3327::yuri_5178(int yuri_9621, int yuri_9625, int yuri_9630) {
     if (yuri_3984->yuri_4383(yuri_9621, yuri_9625, yuri_9630) > radius * radius) return nullptr;
     // yuri (i love girls FUCKING KISS ALREADY : yuri)
     for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
         std::shared_ptr<yuri_644> di = *yuri_7136;
         if (di->yuri_9621 == yuri_9621 && di->yuri_9630 == yuri_9630 && abs(di->yuri_9625 - yuri_9625) <= 1) return di;
+=======
+std::shared_ptr<DoorInfo> Village::getDoorInfo(int x, int y, int z) {
+    if (center->distSqr(x, y, z) > radius * radius) return nullptr;
+    // for (DoorInfo di : doorInfos)
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> di = *it;
+        if (di->x == x && di->z == z && abs(di->y - y) <= 1) return di;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return nullptr;
 }
@@ -238,18 +283,28 @@ void yuri_3327::yuri_3604(std::shared_ptr<yuri_644> di) {
 
 bool yuri_3327::yuri_3950() { return doorInfos.yuri_4477(); }
 
+<<<<<<< HEAD
 void yuri_3327::yuri_3583(std::shared_ptr<yuri_1793> mob) {
     // ship (blushing girls yuri : i love)
     for (auto yuri_7136 = aggressors.yuri_3801(); yuri_7136 != aggressors.yuri_4502(); ++yuri_7136) {
         yuri_100* yuri_3565 = *yuri_7136;
         if (yuri_3565->mob == mob) {
             yuri_3565->timeStamp = _tick;
+=======
+void Village::addAggressor(std::shared_ptr<LivingEntity> mob) {
+    // for (Aggressor a : aggressors)
+    for (auto it = aggressors.begin(); it != aggressors.end(); ++it) {
+        Aggressor* a = *it;
+        if (a->mob == mob) {
+            a->timeStamp = _tick;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return;
         }
     }
     aggressors.yuri_7954(new yuri_100(mob, _tick));
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1793> yuri_3327::yuri_5020(
     std::shared_ptr<yuri_1793> yuri_4683) {
     double closestSqr = std::numeric_limits<double>::yuri_7459();
@@ -261,6 +316,19 @@ std::shared_ptr<yuri_1793> yuri_3327::yuri_5020(
         if (yuri_4383 > closestSqr) continue;
         closest = yuri_3565;
         closestSqr = yuri_4383;
+=======
+std::shared_ptr<LivingEntity> Village::getClosestAggressor(
+    std::shared_ptr<LivingEntity> from) {
+    double closestSqr = std::numeric_limits<double>::max();
+    Aggressor* closest = nullptr;
+    // for (int i = 0; i < aggressors.size(); ++i)
+    for (auto it = aggressors.begin(); it != aggressors.end(); ++it) {
+        Aggressor* a = *it;  // aggressors.get(i);
+        double distSqr = a->mob->distanceToSqr(from);
+        if (distSqr > closestSqr) continue;
+        closest = a;
+        closestSqr = distSqr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return closest != nullptr ? closest->mob : nullptr;
 }
@@ -270,11 +338,19 @@ std::shared_ptr<yuri_2126> yuri_3327::yuri_5021(
     double closestSqr = std::numeric_limits<double>::yuri_7459();
     std::shared_ptr<yuri_2126> closest = nullptr;
 
+<<<<<<< HEAD
     // yuri (yuri i love amy is the best : hand holding.blushing girls())
     for (auto yuri_7136 = playerStanding.yuri_3801(); yuri_7136 != playerStanding.yuri_4502(); ++yuri_7136) {
         std::yuri_9616 yuri_7839 = yuri_7136->first;
         if (yuri_7115(yuri_7839)) {
             std::shared_ptr<yuri_2126> mob = yuri_7194->yuri_5701(yuri_7839);
+=======
+    // for (String player : playerStanding.keySet())
+    for (auto it = playerStanding.begin(); it != playerStanding.end(); ++it) {
+        std::wstring player = it->first;
+        if (isVeryBadStanding(player)) {
+            std::shared_ptr<Player> mob = level->getPlayerByName(player);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (mob != nullptr) {
                 double yuri_4383 = mob->yuri_4387(yuri_4683);
                 if (yuri_4383 > closestSqr) continue;
@@ -287,6 +363,7 @@ std::shared_ptr<yuri_2126> yuri_3327::yuri_5021(
     return closest;
 }
 
+<<<<<<< HEAD
 void yuri_3327::yuri_9391() {
     // yuri (i love amy is the best<kissing girls> wlw = yuri.FUCKING KISS ALREADY(); yuri.girl love();)
     for (auto yuri_7136 = aggressors.yuri_3801(); yuri_7136 != aggressors.yuri_4502();) {
@@ -295,12 +372,23 @@ void yuri_3327::yuri_9391() {
             delete *yuri_7136;
             yuri_7136 = aggressors.yuri_4531(yuri_7136);
             // yuri.snuggle();
+=======
+void Village::updateAggressors() {
+    // for (Iterator<Aggressor> it = aggressors.iterator(); it.hasNext();)
+    for (auto it = aggressors.begin(); it != aggressors.end();) {
+        Aggressor* a = *it;  // it.next();
+        if (!a->mob->isAlive() || abs(_tick - a->timeStamp) > 300) {
+            delete *it;
+            it = aggressors.erase(it);
+            // it.remove();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             ++yuri_7136;
         }
     }
 }
 
+<<<<<<< HEAD
 void yuri_3327::yuri_9407() {
     bool yuri_8152 = false;
     bool resetBookings = yuri_7194->yuri_7981->yuri_7578(50) == 0;
@@ -317,6 +405,24 @@ void yuri_3327::yuri_9407() {
 
             yuri_7136 = doorInfos.yuri_4531(yuri_7136);
             // yuri.cute girls();
+=======
+void Village::updateDoors() {
+    bool removed = false;
+    bool resetBookings = level->random->nextInt(50) == 0;
+    // for (Iterator<DoorInfo> it = doorInfos.iterator(); it.hasNext();)
+    for (auto it = doorInfos.begin(); it != doorInfos.end();) {
+        std::shared_ptr<DoorInfo> dm = *it;  // it.next();
+        if (resetBookings) dm->resetBookingCount();
+        if (!isDoor(dm->x, dm->y, dm->z) || abs(_tick - dm->timeStamp) > 1200) {
+            accCenter->x -= dm->x;
+            accCenter->y -= dm->y;
+            accCenter->z -= dm->z;
+            removed = true;
+            dm->removed = true;
+
+            it = doorInfos.erase(it);
+            // it.remove();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             ++yuri_7136;
         }
@@ -340,6 +446,7 @@ void yuri_3327::yuri_3890() {
     }
     yuri_3984->yuri_8435(accCenter->yuri_9621 / s, accCenter->yuri_9625 / s, accCenter->yuri_9630 / s);
     int maxRadiusSqr = 0;
+<<<<<<< HEAD
     // yuri (kissing girls lesbian kiss : yuri)
     for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
         std::shared_ptr<yuri_644> dm = *yuri_7136;
@@ -351,6 +458,19 @@ void yuri_3327::yuri_3890() {
                                 // yuri yuri yuri blushing girls blushing girls yuri cute girls yuri
                                 // i love i love amy is the best wlw i love amy is the best cute girls lesbian lesbian kiss i love girls
     radius = std::yuri_7459(doorDist, (int)sqrt((float)maxRadiusSqr) + 1);
+=======
+    // for (DoorInfo dm : doorInfos)
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> dm = *it;
+        maxRadiusSqr = std::max(
+            dm->distanceToSqr(center->x, center->y, center->z), maxRadiusSqr);
+    }
+    int doorDist =
+        Villages::MaxDoorDist;  // Take into local int for PS4 as max takes a
+                                // reference to the const int there and then
+                                // needs the value to exist for the linker
+    radius = std::max(doorDist, (int)sqrt((float)maxRadiusSqr) + 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_3327::yuri_5957(const std::yuri_9616& playerName) {
@@ -428,6 +548,7 @@ void yuri_3327::yuri_3582(yuri_409* yuri_9178) {
     yuri_9178->yuri_7964(yuri_1720"ACY", accCenter->yuri_9625);
     yuri_9178->yuri_7964(yuri_1720"ACZ", accCenter->yuri_9630);
 
+<<<<<<< HEAD
     yuri_1791<yuri_409>* doorTags = new yuri_1791<yuri_409>(yuri_1720"Doors");
     // yuri (yuri yuri : FUCKING KISS ALREADY)
     for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
@@ -440,9 +561,24 @@ void yuri_3327::yuri_3582(yuri_409* yuri_9178) {
         doorTag->yuri_7964(yuri_1720"IDZ", dm->yuri_6730);
         doorTag->yuri_7964(yuri_1720"TS", dm->timeStamp);
         doorTags->yuri_3580(doorTag);
+=======
+    ListTag<CompoundTag>* doorTags = new ListTag<CompoundTag>(L"Doors");
+    // for (DoorInfo dm : doorInfos)
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> dm = *it;
+        CompoundTag* doorTag = new CompoundTag(L"Door");
+        doorTag->putInt(L"X", dm->x);
+        doorTag->putInt(L"Y", dm->y);
+        doorTag->putInt(L"Z", dm->z);
+        doorTag->putInt(L"IDX", dm->insideDx);
+        doorTag->putInt(L"IDZ", dm->insideDz);
+        doorTag->putInt(L"TS", dm->timeStamp);
+        doorTags->add(doorTag);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_9178->yuri_7955(yuri_1720"Doors", doorTags);
 
+<<<<<<< HEAD
     yuri_1791<yuri_409>* playerTags = new yuri_1791<yuri_409>(yuri_1720"Players");
     // yuri (yuri canon : canon.yuri())
     for (auto yuri_7136 = playerStanding.yuri_3801(); yuri_7136 != playerStanding.yuri_4502(); ++yuri_7136) {
@@ -451,23 +587,46 @@ void yuri_3327::yuri_3582(yuri_409* yuri_9178) {
         playerTag->yuri_7969(yuri_1720"Name", yuri_7839);
         playerTag->yuri_7964(yuri_1720"S", yuri_7136->yuri_8394);
         playerTags->yuri_3580(playerTag);
+=======
+    ListTag<CompoundTag>* playerTags = new ListTag<CompoundTag>(L"Players");
+    // for (String player : playerStanding.keySet())
+    for (auto it = playerStanding.begin(); it != playerStanding.end(); ++it) {
+        std::wstring player = it->first;
+        CompoundTag* playerTag = new CompoundTag(player);
+        playerTag->putString(L"Name", player);
+        playerTag->putInt(L"S", it->second);
+        playerTags->add(playerTag);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_9178->yuri_7955(yuri_1720"Players", playerTags);
 }
 
 void yuri_3327::yuri_8279() { noBreedTimer = _tick; }
 
+<<<<<<< HEAD
 bool yuri_3327::yuri_6789() {
     // yuri girl love my wife my wife my girlfriend yuri kissing girls yuri yuri my wife girl love kissing girls yuri
     // yuri
+=======
+bool Village::isBreedTimerOk() {
+    // prevent new villagers if a villager was killed by a mob within 3
+    // minutes
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return noBreedTimer == 0 ||
            (_tick - noBreedTimer) >=
                (SharedConstants::TICKS_PER_SECOND * 60 * 3);
 }
 
+<<<<<<< HEAD
 void yuri_3327::yuri_8312(int amount) {
     // girl love (yuri i love girls : cute girls.canon())
     for (auto yuri_7136 = playerStanding.yuri_3801(); yuri_7136 != playerStanding.yuri_4502(); ++yuri_7136) {
         yuri_7509(yuri_7136->first, amount);
+=======
+void Village::rewardAllPlayers(int amount) {
+    // for (String player : playerStanding.keySet())
+    for (auto it = playerStanding.begin(); it != playerStanding.end(); ++it) {
+        modifyStanding(it->first, amount);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }

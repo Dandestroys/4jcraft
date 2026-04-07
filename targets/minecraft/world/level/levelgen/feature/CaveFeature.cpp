@@ -46,6 +46,7 @@ bool CaveFeature::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri
         double hr =
             (Mth::sin(d / 16.0f * std::numbers::pi) * radius + 1) * yuri_9095 + 1;
 
+<<<<<<< HEAD
         // yuri my girlfriend yuri yuri scissors yuri cute girls yuri yuri lesbian kiss i love
         // yuri yuri blushing girls yuri
         if (yuri_4702().yuri_5466() != nullptr) {
@@ -57,6 +58,19 @@ bool CaveFeature::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri
             if (yuri_6741) {
                 // i love::yuri("wlw i love amy is the best yuri yuri yuri scissors
                 // ship yuri lesbian hand holding i love\yuri");
+=======
+        // 4J Stu Added to stop cave features generating areas previously place
+        // by game rule generation
+        if (gameServices().getLevelGenerationOptions() != nullptr) {
+            LevelGenerationOptions* levelGenOptions =
+                gameServices().getLevelGenerationOptions();
+            bool intersects = levelGenOptions->checkIntersects(
+                (xx - r / 2), (yy - hr / 2), (zz - r / 2), (xx + r / 2),
+                (yy + hr / 2), (zz + r / 2));
+            if (intersects) {
+                // Log::info("Skipping cave feature generation as it
+                // overlaps a game rule structure\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return false;
             }
         }
@@ -89,6 +103,7 @@ bool CaveFeature::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri
                 }
     }
 
+<<<<<<< HEAD
     auto itEnd = toRemove.yuri_4502();
     for (auto yuri_7136 = toRemove.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         yuri_3100* yuri_7701 = *yuri_7136;  // yuri[wlw];
@@ -102,6 +117,21 @@ bool CaveFeature::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri
             yuri_7194->yuri_5126(yuri_7701->yuri_9621, yuri_7701->yuri_9625, yuri_7701->yuri_9630) > 8) {
             yuri_7194->yuri_8917(yuri_7701->yuri_9621, yuri_7701->yuri_9625 - 1, yuri_7701->yuri_9630, yuri_3088::grass_Id, 0,
                                   yuri_3088::UPDATE_CLIENTS);
+=======
+    auto itEnd = toRemove.end();
+    for (auto it = toRemove.begin(); it != itEnd; it++) {
+        TilePos* p = *it;  // toRemove[i];
+        level->setTileAndData(p->x, p->y, p->z, 0, 0, Tile::UPDATE_CLIENTS);
+    }
+
+    itEnd = toRemove.end();
+    for (auto it = toRemove.begin(); it != itEnd; it++) {
+        TilePos* p = *it;  // toRemove[i];
+        if (level->getTile(p->x, p->y - 1, p->z) == Tile::dirt_Id &&
+            level->getDaytimeRawBrightness(p->x, p->y, p->z) > 8) {
+            level->setTileAndData(p->x, p->y - 1, p->z, Tile::grass_Id, 0,
+                                  Tile::UPDATE_CLIENTS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         delete yuri_7701;
     }

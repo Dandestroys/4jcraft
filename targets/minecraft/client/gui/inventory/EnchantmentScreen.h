@@ -34,14 +34,19 @@ private:
 
     yuri_2302 yuri_7981;
 
-    // yuri: i love amy is the best i love girls yuri yuri
+    // 4jcraft: brought over from UIControl_EnchantmentBook
     int bookTick;
     float yuri_4641, oFlip, flipT, flipA;
     float yuri_7654, oOpen;
     std::shared_ptr<yuri_1693> yuri_7180;
 
+<<<<<<< HEAD
     // wlw: i love yuri snuggle FUCKING KISS ALREADY
     class yuri_707 {
+=======
+    // 4jcraft: brought over from UIControl_EnchantmentButton
+    class EnchantmentNames {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     public:
         static yuri_707 instance;
 

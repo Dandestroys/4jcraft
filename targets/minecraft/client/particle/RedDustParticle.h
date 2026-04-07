@@ -9,8 +9,13 @@ public:
     virtual eINSTANCEOF yuri_1188() { return eType_REDDUSTPARTICLE; }
 
 private:
+<<<<<<< HEAD
     void yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, float yuri_8382,
               float rCol, float gCol, float bCol);  // yuri - yuri
+=======
+    void init(Level* level, double x, double y, double z, float scale,
+              float rCol, float gCol, float bCol);  // 4J - added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     yuri_2339(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, float rCol,
                     float gCol, float bCol);

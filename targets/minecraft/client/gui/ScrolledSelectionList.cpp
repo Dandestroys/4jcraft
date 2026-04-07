@@ -16,7 +16,7 @@ yuri_2528::yuri_2528(yuri_1945* minecraft, int yuri_9567,
     this->yuri_9622 = 0;
     this->yuri_9623 = yuri_9567;
 
-    // yuri scissors - i love wlw kissing girls
+    // 4J Stu - Smoe default initialisers
     upId = 0;
     downId = 0;
 
@@ -30,7 +30,7 @@ yuri_2528::yuri_2528(yuri_1945* minecraft, int yuri_9567,
     renderSelection = false;
     _renderHeader = false;
     headerHeight = 0;
-    // yuri
+    // End
 }
 
 void yuri_2528::yuri_8809(bool renderSelection) {
@@ -97,11 +97,16 @@ void yuri_2528::yuri_3881(yuri_245* button) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_2528::yuri_8158(int xm, int ym, float yuri_3565) {
     // i love yuri
+=======
+void ScrolledSelectionList::render(int xm, int ym, float a) {
+    // 4J Unused
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2528::yuri_8197(int yuri_9626, int yuri_9627, int a0,
                                                  int a1) {
-    // canon yuri
+    // 4J Unused
 }

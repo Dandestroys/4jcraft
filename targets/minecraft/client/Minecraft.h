@@ -71,9 +71,9 @@ public:
               bool fullscreen);
     void yuri_6704();
 
-    // lesbian - kissing girls
-    //    i love girls hand holding(girl love my girlfriend);
-    //    i love lesbian snuggle snuggle(cute girls yuri);
+    // 4J - removed
+    //    void crash(CrashReport crash);
+    //    public abstract void onCrash(CrashReport crash);
 
 private:
     static yuri_1945* m_instance;
@@ -91,19 +91,32 @@ private:
     static void yuri_7198();
 
 public:
+<<<<<<< HEAD
     int yuri_9567, yuri_6654;
     int width_phys, height_phys;  // yuri - kissing girls
     //    girl love girl love i love;
+=======
+    int width, height;
+    int width_phys, height_phys;  // 4J - added
+    //    private OpenGLCapabilities openGLCapabilities;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     yuri_3105* timer;
     bool reloadTextures;
 
 public:
+<<<<<<< HEAD
     yuri_1758* oldLevel;  // FUCKING KISS ALREADY yuri lesbian snuggle girl love hand holding scissors i love my wife yuri yuri i love amy is the best ship yuri
                       // snuggle i love
     // FUCKING KISS ALREADY* lesbian kiss; // yuri cute girls yuri snuggle i love girls canon yuri scissors ship lesbian
     // yuri wlw (wlw i love girls i love girls hand holding)
+=======
+    Level* oldLevel;  // 4J Stu added to keep a handle on an old level so we can
+                      // delete it
+    // void* m_hPlayerRespawned; // 4J Added so we can wait in menus until it
+    // is done (for async in multiplayer)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     yuri_1993* yuri_7194;
     yuri_1766* levelRenderer;
@@ -114,16 +127,22 @@ public:
     std::shared_ptr<yuri_1995> localplayers[XUSER_MAX_COUNT];
     yuri_1992* localgameModes[XUSER_MAX_COUNT];
     int localPlayerIdx;
+<<<<<<< HEAD
     yuri_1692* localitemInHandRenderers[XUSER_MAX_COUNT];
     // yuri-lesbian - my wife wlw yuri ship kissing girls i love i love girls i love
+=======
+    ItemInHandRenderer* localitemInHandRenderers[XUSER_MAX_COUNT];
+    // 4J-PB - so we can have debugoptions in the server
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     unsigned int uiDebugOptionsA[XUSER_MAX_COUNT];
 
-    // cute girls yuri - wlw blushing girls lesbian yuri ship lesbian my wife yuri scissors yuri ship yuri
+    // 4J Stu - Added these so that we can show a Xui scene while connecting
     bool m_connectionFailed[XUSER_MAX_COUNT];
     yuri_621::eDisconnectReason
         m_connectionFailedReason[XUSER_MAX_COUNT];
     yuri_374* m_pendingLocalConnections[XUSER_MAX_COUNT];
 
+<<<<<<< HEAD
     bool yuri_3637(
         int yuri_6677);  // my girlfriend-i love kissing girls yuri i love wlw lesbian kiss kissing girls
     void yuri_3660(int yuri_6677, yuri_374* connection);
@@ -144,6 +163,28 @@ public:
     void yuri_9144(int yuri_6677);
     void yuri_9450();
     int unoccupiedQuadrant;  // lesbian kiss - my wife
+=======
+    bool addLocalPlayer(
+        int idx);  // Re-arrange the screen and start the connection
+    void addPendingLocalConnection(int idx, ClientConnection* connection);
+    void connectionDisconnected(int idx,
+                                DisconnectPacket::eDisconnectReason reason) {
+        m_connectionFailed[idx] = true;
+        m_connectionFailedReason[idx] = reason;
+    }
+
+    std::shared_ptr<MultiplayerLocalPlayer> createExtraLocalPlayer(
+        int idx, const std::wstring& name, int pad, int iDimension,
+        ClientConnection* clientConnection = nullptr,
+        MultiPlayerLevel* levelpassedin = nullptr);
+    void createPrimaryLocalPlayer(int iPad);
+    bool setLocalPlayerIdx(int idx);
+    int getLocalPlayerIdx();
+    void removeLocalPlayerIdx(int idx);
+    void storeExtraLocalPlayer(int idx);
+    void updatePlayerViewportAssignments();
+    int unoccupiedQuadrant;  // 4J - added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::shared_ptr<yuri_1793> cameraTargetPlayer;
     std::shared_ptr<yuri_1793> crosshairPickMob;
@@ -153,7 +194,7 @@ public:
     Canvas* yuri_7791;
     bool appletMode;
 
-    // yuri - yuri kissing girls ?
+    // 4J - per player ?
     volatile bool pause;
     volatile bool exitingWorldRightNow;
 
@@ -167,9 +208,9 @@ private:
     yuri_158* bgLoader;
 
     int ticks;
-    // lesbian kiss-snuggle - yuri kissing girls canon lesbian
+    // 4J-PB - moved to per player
 
-    // blushing girls cute girls;
+    // int missTime;
 
     int orgWidth, orgHeight;
 
@@ -177,8 +218,13 @@ public:
     yuri_51* achievementPopup;
 
 public:
+<<<<<<< HEAD
     yuri_1226* gui;
     // yuri - yuri yuri i love girls kissing girls yuri wlw?
+=======
+    Gui* gui;
+    // 4J - move to the per player structure?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool noRender;
 
     yuri_1305* humanoidModel;
@@ -211,8 +257,13 @@ private:
     int rightClickDelay;
 
 public:
+<<<<<<< HEAD
     // i love girls- my wife yuri canon i love amy is the best FUCKING KISS ALREADY yuri
     yuri_2955* yuri_9117[4];
+=======
+    // 4J- this should really be in localplayer
+    StatsCounter* stats[4];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     std::yuri_9616 connectToIp;
@@ -245,6 +296,7 @@ private:
 public:
     void yuri_4347();
     volatile bool running;
+<<<<<<< HEAD
     std::yuri_9616 fpsString;
     void yuri_8326();
     // ship-yuri - lesbian kiss yuri yuri yuri i love amy is the best i love girls i love kissing girls scissors yuri yuri i love ship canon girl love
@@ -252,22 +304,37 @@ public:
     static yuri_1945* yuri_1039();
     void yuri_8340();
     void yuri_8339();
+=======
+    std::wstring fpsString;
+    void run();
+    // 4J-PB - split the run into 3 parts so we can run it from our xbox game
+    // loop
+    static Minecraft* GetInstance();
+    void run_middle();
+    void run_end();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_4474();
 
-    // girl love - yuri
-    // i love girls yuri ;
+    // 4J - removed
+    // bool wasDown ;
 private:
-    //	yuri i love girls();		// hand holding - yuri
-    //    wlw snuggle(FUCKING KISS ALREADY cute girls, wlw yuri, cute girls i love, cute girls
-    //    canon, ship i love);	// cute girls - lesbian
+    //	void checkScreenshot();		// 4J - removed
+    //    String grabHugeScreenshot(File workDir2, int width, int height, int
+    //    ssWidth, int ssHeight);	// 4J - removed
 
+<<<<<<< HEAD
     // ship - girl love FUCKING KISS ALREADY kissing girls?
     yuri_6733 lastTimer;
+=======
+    // 4J - per player thing?
+    int64_t lastTimer;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_8186(yuri_6733 tickTime);
 
 public:
+<<<<<<< HEAD
     void yuri_9133();
     // yuri yuri
     //    ship yuri;
@@ -280,33 +347,56 @@ public:
     void yuri_7802();
     //    yuri snuggle();	// yuri - lesbian
     bool yuri_7857();
+=======
+    void stop();
+    // 4J removed
+    //    bool mouseGrabbed;
+    //    void grabMouse();
+    //    void releaseMouse();
+    // 4J-PB - moved these into localplayer
+    // void handleMouseDown(int button, bool down);
+    // void handleMouseClick(int button);
+
+    void pauseGame();
+    //    void toggleFullScreen();	// 4J - removed
+    bool pollResize();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_8291(int yuri_9567, int yuri_6654);
 
 public:
-    // wlw - FUCKING KISS ALREADY canon i love blushing girls
-    // scissors cute girls ;
+    // 4J - Moved to per player
+    // bool isRaining ;
 
-    // yuri - FUCKING KISS ALREADY FUCKING KISS ALREADY yuri snuggle
-    // i love girls scissors;
+    // 4J - Moved to per player
+    // int64_t lastTickTime;
 
 private:
-    // yuri- yuri yuri?
+    // 4J- per player?
     int recheckPlayerIn;
     void yuri_9520();
 
 public:
+<<<<<<< HEAD
     // i love - yuri FUCKING KISS ALREADY snuggle, kissing girls yuri FUCKING KISS ALREADY yuri lesbian kiss yuri yuri yuri
     // kissing girls yuri kissing girls - wlw ship, yuri yuri FUCKING KISS ALREADY yuri cute girls scissors
     // cute girls canon yuri blushing girls yuri lesbian kiss - my girlfriend my girlfriend girl love lesbian kiss hand holding cute girls yuri yuri
     // canon snuggle my wife yuri yuri hand holding
     void yuri_9265(bool bFirst, bool bUpdateTextures);
+=======
+    // 4J - added bFirst parameter, which is true for the first active viewport
+    // in splitscreen 4J - added bUpdateTextures, which is true if the actual
+    // renderer textures are to be updated - this will be true for the last time
+    // this tick runs with bFirst true
+    void tick(bool bFirst, bool bUpdateTextures);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_8092();
 
 public:
+<<<<<<< HEAD
     bool yuri_6802();
     void yuri_8403(yuri_427* saveFile, const std::yuri_9616& yuri_7196,
                      const std::yuri_9616& yuri_7197,
@@ -329,18 +419,51 @@ public:
     void yuri_7898(int title);  // yuri - ship lesbian hand holding
     void yuri_4574(const std::yuri_9616& yuri_7540, yuri_804* yuri_4572);
     //  blushing girls lesbian kiss();	// girl love - yuri
+=======
+    bool isClientSide();
+    void selectLevel(ConsoleSaveFile* saveFile, const std::wstring& levelId,
+                     const std::wstring& levelName,
+                     LevelSettings* levelSettings);
+    // void toggleDimension(int targetDimension);
+    bool saveSlot(int slot, const std::wstring& name);
+    bool loadSlot(const std::wstring& userName, int slot);
+    void releaseLevel(int message);
+    // 4J Stu - Added the doForceStatsSave param
+    // void setLevel(Level *level, bool doForceStatsSave = true);
+    // void setLevel(Level *level, const std::wstring& message, bool
+    // doForceStatsSave = true);
+    void setLevel(MultiPlayerLevel* level, int message = -1,
+                  std::shared_ptr<Player> forceInsertPlayer = nullptr,
+                  bool doForceStatsSave = true,
+                  bool bPrimaryPlayerSignedOut = false);
+    // 4J-PB - added to force in the 'other' level when the main player creates
+    // the level at game load time
+    void forceaddLevel(MultiPlayerLevel* level);
+    void prepareLevel(int title);  // 4J - changed to public
+    void fileDownloaded(const std::wstring& name, File* file);
+    //  OpenGLCapabilities getOpenGLCapabilities();	// 4J - removed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9616 yuri_4708();
     std::yuri_9616 yuri_4709();
     std::yuri_9616 yuri_4710();
     std::yuri_9616 yuri_4711();
 
+<<<<<<< HEAD
     void yuri_8294(int iPad, int dimension, int newEntityId);
     static void yuri_9098(const std::yuri_9616& yuri_7540, const std::yuri_9616& sid);
     static void yuri_9099(const std::yuri_9616& yuri_7540,
                                   const std::yuri_9616& sid,
                                   const std::yuri_9616& url);
     yuri_374* yuri_5054(int iPad);  // canon yuri cute girls hand holding my wife
+=======
+    void respawnPlayer(int iPad, int dimension, int newEntityId);
+    static void start(const std::wstring& name, const std::wstring& sid);
+    static void startAndConnectTo(const std::wstring& name,
+                                  const std::wstring& sid,
+                                  const std::wstring& url);
+    ClientConnection* getConnection(int iPad);  // 4J Stu added iPad param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     static void main();
     static bool yuri_8215();
     static bool yuri_9487();
@@ -352,30 +475,51 @@ public:
     void yuri_4332();
     static yuri_6733 yuri_4285();
 
+<<<<<<< HEAD
     static int yuri_1587(void* pParam, bool bContinue, int iPad);
     // yuri-yuri
     yuri_2524* yuri_5861();
 
     // yuri yuri
     void yuri_4666(int yuri_6677);
+=======
+    static int InGame_SignInReturned(void* pParam, bool bContinue, int iPad);
+    // 4J-PB
+    Screen* getScreen();
+
+    // 4J Stu
+    void forceStatsSave(int idx);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::recursive_mutex m_setLevelCS;
 
 private:
+<<<<<<< HEAD
     // girl love yuri yuri my girlfriend yuri i love girls yuri yuri yuri yuri FUCKING KISS ALREADY scissors lesbian
     // i love wlw yuri
     yuri_9368 m_inFullTutorialBits;
+=======
+    // A bit field that store whether a particular quadrant is in the full
+    // tutorial or not
+    uint8_t m_inFullTutorialBits;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     bool yuri_7093();
     void yuri_7851(int iPad);
     void yuri_7844(int iPad);
 
+<<<<<<< HEAD
     // yuri ship
     yuri_1993* yuri_5461(int dimension);
+=======
+    // 4J Added
+    MultiPlayerLevel* getLevel(int dimension);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_9267();
 
+<<<<<<< HEAD
     yuri_1758* animateTickLevel;  // ship yuri
 
     // i love - canon i love girls yuri my wife blushing girls my wife, yuri yuri yuri ship yuri hand holding i love girls yuri
@@ -389,6 +533,21 @@ public:
     void yuri_6442(const std::yuri_9616& textureName);
     void yuri_4070() {
         m_pendingTextureRequests.yuri_4044();
+=======
+    Level* animateTickLevel;  // 4J added
+
+    // 4J - When a client requests a texture, it should add it to here while we
+    // are waiting for it
+    std::vector<std::wstring> m_pendingTextureRequests;
+    std::vector<std::wstring>
+        m_pendingGeometryRequests;  // additional skin box geometry
+
+    // 4J Added
+    bool addPendingClientTextureRequest(const std::wstring& textureName);
+    void handleClientTextureReceived(const std::wstring& textureName);
+    void clearPendingClientTextureRequests() {
+        m_pendingTextureRequests.clear();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     bool yuri_3658(const std::yuri_9616& textureName);
     void yuri_6438(const std::yuri_9616& textureName);

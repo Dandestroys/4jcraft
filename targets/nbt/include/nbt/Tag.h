@@ -32,6 +32,7 @@ protected:
     yuri_3011(const std::yuri_9616& yuri_7540);
 
 public:
+<<<<<<< HEAD
     virtual void yuri_9578(DataOutput* yuri_4431) = 0;
     virtual void yuri_7219(DataInput* yuri_4365, int tagDepth) = 0;
     virtual std::yuri_9616 yuri_9311() = 0;
@@ -48,4 +49,22 @@ public:
     virtual ~yuri_3011() {}
     virtual bool yuri_4529(yuri_3011* obj);  // lesbian yuri wlw yuri yuri.yuri
     virtual yuri_3011* yuri_4179() = 0;        // snuggle yuri cute girls hand holding cute girls.snuggle
+=======
+    virtual void write(DataOutput* dos) = 0;
+    virtual void load(DataInput* dis, int tagDepth) = 0;
+    virtual std::wstring toString() = 0;
+    virtual uint8_t getId() = 0;
+    void print(std::ostream& out);
+    void print(char* prefix, std::wostream& out);
+    std::wstring getName();
+    Tag* setName(const std::wstring& name);
+    static Tag* readNamedTag(DataInput* dis);
+    static Tag* readNamedTag(DataInput* dis, int tagDepth);
+    static void writeNamedTag(Tag* tag, DataOutput* dos);
+    static Tag* newTag(uint8_t type, const std::wstring& name);
+    static const wchar_t* getTagName(uint8_t type);
+    virtual ~Tag() {}
+    virtual bool equals(Tag* obj);  // 4J Brought forward from 1.2
+    virtual Tag* copy() = 0;        // 4J Brought foward from 1.2
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

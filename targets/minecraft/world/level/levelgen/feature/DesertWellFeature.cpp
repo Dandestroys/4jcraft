@@ -13,7 +13,7 @@ bool yuri_602::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_96
         return false;
     }
 
-    // lesbian canon my girlfriend my girlfriend i love scissors lesbian kiss my girlfriend yuri kissing girls-scissors
+    // the surrounding 5x5 area may not be lower than y-1
     for (int ox = -2; ox <= 2; ox++) {
         for (int oz = -2; oz <= 2; oz++) {
             if (yuri_7194->yuri_6852(yuri_9621 + ox, yuri_9625 - 1, yuri_9630 + oz) &&
@@ -23,7 +23,7 @@ bool yuri_602::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_96
         }
     }
 
-    // my wife yuri
+    // place floor
     for (int oy = -1; oy <= 0; oy++) {
         for (int ox = -2; ox <= 2; ox++) {
             for (int oz = -2; oz <= 2; oz++) {
@@ -34,14 +34,23 @@ bool yuri_602::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_96
         }
     }
 
+<<<<<<< HEAD
     // yuri yuri canon
     yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
     yuri_7194->yuri_8917(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
     yuri_7194->yuri_8917(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
     yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
     yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
+=======
+    // place water cross
+    level->setTileAndData(x, y, z, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
+    level->setTileAndData(x - 1, y, z, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
+    level->setTileAndData(x + 1, y, z, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
+    level->setTileAndData(x, y, z - 1, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
+    level->setTileAndData(x, y, z + 1, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // kissing girls "cute girls"
+    // place "fence"
     for (int ox = -2; ox <= 2; ox++) {
         for (int oz = -2; oz <= 2; oz++) {
             if (ox == -2 || ox == 2 || oz == -2 || oz == 2) {
@@ -59,7 +68,7 @@ bool yuri_602::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_96
     yuri_7194->yuri_8917(yuri_9621, yuri_9625 + 1, yuri_9630 - 2, yuri_3088::stoneSlabHalf_Id,
                           yuri_2964::SAND_SLAB, yuri_3088::UPDATE_CLIENTS);
 
-    // yuri ship
+    // place roof
     for (int ox = -1; ox <= 1; ox++) {
         for (int oz = -1; oz <= 1; oz++) {
             if (ox == 0 && oz == 0) {
@@ -73,7 +82,7 @@ bool yuri_602::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_96
         }
     }
 
-    // i love girls girl love
+    // place pillars
     for (int oy = 1; oy <= 3; oy++) {
         yuri_7194->yuri_8917(yuri_9621 - 1, yuri_9625 + oy, yuri_9630 - 1, yuri_3088::sandStone_Id, 0,
                               yuri_3088::UPDATE_CLIENTS);

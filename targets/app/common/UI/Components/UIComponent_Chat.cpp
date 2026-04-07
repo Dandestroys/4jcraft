@@ -16,11 +16,19 @@
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/client/gui/Gui.h"
 
+<<<<<<< HEAD
 yuri_3153::yuri_3153(int iPad, void* initData,
                                    yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // yuri yuri yuri yuri yuri wlw lesbian kiss yuri kissing girls kissing girls
     yuri_6720();
+=======
+UIComponent_Chat::UIComponent_Chat(int iPad, void* initData,
+                                   UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (unsigned int i = 0; i < CHAT_LINES_COUNT; ++i) {
         m_labelChatText[i].yuri_6704(yuri_1720"");
@@ -55,10 +63,17 @@ void yuri_3153::yuri_6556(int yuri_6674) {
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
     bool anyVisible = false;
+<<<<<<< HEAD
     if (pMinecraft->localplayers[yuri_7341] != nullptr) {
         yuri_1226* pGui = pMinecraft->gui;
         // yuri my girlfriend = yuri::yuri( yuri,
         // wlw->yuri(yuri) );
+=======
+    if (pMinecraft->localplayers[m_iPad] != nullptr) {
+        Gui* pGui = pMinecraft->gui;
+        // uint32_t messagesToDisplay = std::min( CHAT_LINES_COUNT,
+        // pGui->getMessagesCount(m_iPad) );
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (unsigned int i = 0; i < CHAT_LINES_COUNT; ++i) {
             float opacity = pGui->yuri_5621(yuri_7341, i);
             if (opacity > 0) {

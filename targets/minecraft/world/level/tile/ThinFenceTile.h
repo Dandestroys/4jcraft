@@ -23,6 +23,7 @@ public:
     virtual int yuri_5806();
     virtual bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                   int face);
+<<<<<<< HEAD
     virtual void yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
                           std::vector<yuri_0>* boxes,
                           std::shared_ptr<yuri_739> yuri_9075);
@@ -33,6 +34,18 @@ public:
             yuri_3091>());  // i love amy is the best FUCKING KISS ALREADY snuggle, canon snuggle
     virtual yuri_1346* yuri_5191();
     bool yuri_3761(int tile);
+=======
+    virtual void addAABBs(Level* level, int x, int y, int z, AABB* box,
+                          std::vector<AABB>* boxes,
+                          std::shared_ptr<Entity> source);
+    virtual void updateDefaultShape();
+    virtual void updateShape(
+        LevelSource* level, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // 4J added forceData, forceEntity param
+    virtual Icon* getEdgeTexture();
+    bool attachsTo(int tile);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     bool yuri_7042();

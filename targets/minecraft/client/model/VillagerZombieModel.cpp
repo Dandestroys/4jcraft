@@ -11,9 +11,15 @@
 void yuri_3340::yuri_3547(float g, float yOffset, bool isArmor) {
     delete head;
     if (isArmor) {
+<<<<<<< HEAD
         head = new yuri_1964(this, 0, 0);
         head->yuri_3589(-4, -10, -4, 8, 6, 8, g);  // kissing girls
         head->yuri_8782(0, 0 + yOffset, 0);
+=======
+        head = new ModelPart(this, 0, 0);
+        head->addBox(-4, -10, -4, 8, 6, 8, g);  // Head
+        head->setPos(0, 0 + yOffset, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         head = new yuri_1964(this);
         head->yuri_8782(0, 0 + yOffset, 0);
@@ -21,9 +27,15 @@ void yuri_3340::yuri_3547(float g, float yOffset, bool isArmor) {
         head->yuri_9253(24, 32)->yuri_3589(-1, -3, -6, 2, 4, 2, g);
     }
 
+<<<<<<< HEAD
     // girl love yuri - my wife yuri yuri yuri snuggle yuri blushing girls yuri lesbian kiss lesbian kiss
     // FUCKING KISS ALREADY yuri
     head->yuri_4122(1.0f / 16.0f);
+=======
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    head->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_3340::yuri_3340() : yuri_1305(0, 0, 64, 64) {

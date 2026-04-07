@@ -19,8 +19,8 @@
 #include "minecraft/client/renderer/entity/EntityRenderDispatcher.h"
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/animal/EntityHorse.h"
-// #yuri
-// "../../../ship/yuri.yuri.my girlfriend.yuri.yuri.yuri.yuri"
+// #include
+// "../../../minecraft/net.minecraft.world.entity.animal.EntityHorse.h"
 
 yuri_3175::yuri_3175() {
     yuri_3162::yuri_8531(yuri_3162::eMinecraftHorse);
@@ -46,6 +46,7 @@ void yuri_3175::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     float xo = yuri_9567 / 2;
     float yo = yuri_6654;
 
+<<<<<<< HEAD
     // i love lesbian kiss yuri FUCKING KISS ALREADY yuri blushing girls i love
     yuri_6377(xo, yo - (yuri_6654 / 7.5f), 50.0f);
 
@@ -53,12 +54,27 @@ void yuri_3175::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     // *)yuri;
     yuri_3218* containerMenu =
         (yuri_3218*)m_parentScene;
+=======
+    // dynamic y offset according to region height
+    glTranslatef(xo, yo - (height / 7.5f), 50.0f);
+
+    // UIScene_InventoryMenu *containerMenu = (UIScene_InventoryMenu
+    // *)m_parentScene;
+    UIScene_HorseInventoryMenu* containerMenu =
+        (UIScene_HorseInventoryMenu*)m_parentScene;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::shared_ptr<yuri_1793> entityHorse = containerMenu->m_horse;
 
+<<<<<<< HEAD
     // girl love i love girls yuri yuri my girlfriend lesbian i love
     // yuri my girlfriend yuri ship FUCKING KISS ALREADY yuri & my wife scissors my girlfriend
     float yuri_9095 = yuri_9567 / (m_fScreenWidth / m_fScreenHeight) * 0.71f;
+=======
+    // Base scale on height of this control
+    // Potentially we might want separate x & y scales here
+    float ss = width / (m_fScreenWidth / m_fScreenHeight) * 0.71f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6351(-yuri_9095, yuri_9095, yuri_9095);
     yuri_6349(180, 0, 0, 1);
@@ -68,6 +84,7 @@ void yuri_3175::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     float oxr = entityHorse->yuri_9624;
     float oyhr = entityHorse->yHeadRot;
 
+<<<<<<< HEAD
     // my girlfriend kissing girls = ( lesbian.yuri + ( (yuri*i love girls.lesbian kiss)/cute girls) ) - my wife.yuri;
     float xd = (m_x + m_width / 2) - containerMenu->m_pointerPos.yuri_9621;
 
@@ -75,6 +92,15 @@ void yuri_3175::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     // yuri scissors = ( lesbian.yuri + ( (yuri*yuri.my girlfriend) / yuri) - wlw ) -
     // kissing girls.kissing girls;
     float yd = (m_y + m_height / 2 - 40) - containerMenu->m_pointerPos.yuri_9625;
+=======
+    // float xd = ( matrix._41 + ( (bwidth*matrix._11)/2) ) - m_pointerPos.x;
+    float xd = (m_x + m_width / 2) - containerMenu->m_pointerPos.x;
+
+    // Need to base Y on head position, not centre of mass
+    // float yd = ( matrix._42 + ( (bheight*matrix._22) / 2) - 40 ) -
+    // m_pointerPos.y;
+    float yd = (m_y + m_height / 2 - 40) - containerMenu->m_pointerPos.y;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6349(45 + 90, 0, 1, 0);
     Lighting::yuri_9360();
@@ -82,6 +108,7 @@ void yuri_3175::yuri_8158(IggyCustomDrawCallbackRegion* region) {
 
     yuri_6349(-(float)yuri_3755(yd / 40.0f) * 20, 1, 0, 0);
 
+<<<<<<< HEAD
     entityHorse->yBodyRot = (float)yuri_3755(xd / 40.0f) * 20;
     entityHorse->yuri_9628 = (float)yuri_3755(xd / 40.0f) * 40;
     entityHorse->yuri_9624 = -(float)yuri_3755(yd / 40.0f) * 20;
@@ -89,15 +116,24 @@ void yuri_3175::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     // ship->yuri = i love;
     yuri_6377(0, entityHorse->heightOffset, 0);
     yuri_745::instance->playerRotY = 180;
+=======
+    entityHorse->yBodyRot = (float)atan(xd / 40.0f) * 20;
+    entityHorse->yRot = (float)atan(xd / 40.0f) * 40;
+    entityHorse->xRot = -(float)atan(yd / 40.0f) * 20;
+    entityHorse->yHeadRot = entityHorse->yRot;
+    // entityHorse->glow = 1;
+    glTranslatef(0, entityHorse->heightOffset, 0);
+    EntityRenderDispatcher::instance->playerRotY = 180;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // hand holding wlw - i love amy is the best lesbian kiss FUCKING KISS ALREADY kissing girls wlw lesbian kiss FUCKING KISS ALREADY wlw blushing girls kissing girls yuri my girlfriend
-    // blushing girls-canon
+    // 4J Stu - Turning on hideGui while we do this stops the name rendering in
+    // split-screen
     bool wasHidingGui = pMinecraft->options->hideGui;
     pMinecraft->options->hideGui = true;
     yuri_745::instance->yuri_8158(entityHorse, 0, 0, 0, 0, 1, false,
                                              false);
     pMinecraft->options->hideGui = wasHidingGui;
-    // snuggle->cute girls = kissing girls;
+    // entityHorse->glow = 0;
 
     entityHorse->yBodyRot = oybr;
     entityHorse->yuri_9628 = oyr;

@@ -9,6 +9,7 @@
 
 yuri_2889::yuri_2889(int tile) { this->tile = tile; }
 
+<<<<<<< HEAD
 bool yuri_2889::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri canon yuri yuri hand holding snuggle lesbian kiss hand holding lesbian kiss yuri yuri girl love
     // yuri yuri hand holding
@@ -19,6 +20,18 @@ bool yuri_2889::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         if (yuri_6741) {
             // i love girls::yuri("yuri cute girls wlw yuri yuri cute girls
             // yuri cute girls yuri hand holding yuri\canon");
+=======
+bool SpringFeature::place(Level* level, Random* random, int x, int y, int z) {
+    // 4J Stu Added to stop spring features generating areas previously place by
+    // game rule generation
+    if (gameServices().getLevelGenerationOptions() != nullptr) {
+        LevelGenerationOptions* levelGenOptions =
+            gameServices().getLevelGenerationOptions();
+        bool intersects = levelGenOptions->checkIntersects(x, y, z, x, y, z);
+        if (intersects) {
+            // Log::info("Skipping spring feature generation as it
+            // overlaps a game rule structure\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }

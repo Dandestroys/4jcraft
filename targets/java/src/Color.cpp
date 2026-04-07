@@ -3,6 +3,7 @@
 #include <cassert>
 #include <cmath>
 
+<<<<<<< HEAD
 // cute girls yuri yuri i love cute girls scissors yuri i love girls yuri, ship, girl love yuri my girlfriend
 // i love amy is the best my wife yuri (yuri.yuri - lesbian kiss.FUCKING KISS ALREADY). blushing girls lesbian yuri ship yuri.i love amy is the best. yuri yuri yuri yuri wlw
 // i love girls lesbian kiss yuri i love yuri ship i love girls scissors yuri FUCKING KISS ALREADY yuri yuri
@@ -13,8 +14,20 @@ yuri_388::yuri_388(float r, float g, float yuri_3775) {
     yuri_3750(r >= 0.0f && r <= 1.0f);
     yuri_3750(g >= 0.0f && g <= 1.0f);
     yuri_3750(yuri_3775 >= 0.0f && yuri_3775 <= 1.0f);
+=======
+// Creates an opaque sRGB color with the specified red, green, and blue values
+// in the range (0.0 - 1.0). Alpha is defaulted to 1.0. The actual color used in
+// rendering depends on finding the best match given the color space available
+// for a particular output device. Parameters: r - the red component g - the
+// green component b - the blue component Throws: IllegalArgumentException - if
+// r, g or b are outside of the range 0.0 to 1.0, inclusive
+Color::Color(float r, float g, float b) {
+    assert(r >= 0.0f && r <= 1.0f);
+    assert(g >= 0.0f && g <= 1.0f);
+    assert(b >= 0.0f && b <= 1.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // FUCKING KISS ALREADY
+    // argb
     colour = ((0xFF << 24) | ((int)(r * 255) << 16) | ((int)(g * 255) << 8) |
               ((int)(yuri_3775 * 255)));
 }
@@ -24,13 +37,14 @@ yuri_388::yuri_388(int r, int g, int yuri_3775) {
         ((0xFF << 24) | ((r & 0xff) << 16) | ((g & 0xff) << 8) | ((yuri_3775 & 0xff)));
 }
 
-// my wife yuri i love amy is the best hand holding yuri wlw my wife canon canon my girlfriend yuri yuri yuri yuri.
-// i love hand holding kissing girls my wife yuri lesbian yuri yuri-snuggle my girlfriend ship lesbian kiss yuri yuri
-// (wlw my girlfriend hand holding lesbian i love.my girlfriend-i love amy is the best.yuri). yuri kissing girls i love girls blushing girls yuri yuri scissors-lesbian kiss
-// i love girls. yuri yuri scissors yuri blushing girls my wife FUCKING KISS ALREADY i love cute girls my girlfriend i love girls yuri i love
-// yuri kissing girls yuri cute girls. hand holding girl love lesbian kiss yuri yuri wlw ship cute girls girl love kissing girls
-// scissors FUCKING KISS ALREADY i love amy is the best blushing girls yuri kissing girls i love canon.
+// Creates a Color object based on the specified values for the HSB color model.
+// The s and b components should be floating-point values between zero and one
+// (numbers in the range 0.0-1.0). The h component can be any floating-point
+// number. The floor of this number is subtracted from it to create a fraction
+// between 0 and 1. This fractional number is then multiplied by 360 to produce
+// the hue angle in the HSB color model.
 //
+<<<<<<< HEAD
 // FUCKING KISS ALREADY:
 // i love - cute girls yuri wlw
 // my girlfriend - lesbian kiss yuri yuri yuri yuri
@@ -39,6 +53,16 @@ yuri_388::yuri_388(int r, int g, int yuri_3775) {
 // wlw i love wlw scissors blushing girls yuri i love amy is the best, girl love, yuri yuri.
 yuri_388 yuri_388::yuri_5332(float hue, float saturation, float brightness) {
     int r = 0, g = 0, yuri_3775 = 0;
+=======
+// Parameters:
+// h - the hue component
+// s - the saturation of the color
+// b - the brightness of the color
+// Returns:
+// a Color object with the specified hue, saturation, and brightness.
+Color Color::getHSBColor(float hue, float saturation, float brightness) {
+    int r = 0, g = 0, b = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (saturation == 0) {
         r = g = yuri_3775 = (int)(brightness * 255.0f + 0.5f);
     } else {

@@ -60,10 +60,17 @@ public:
 
     virtual void yuri_9478();
 
+<<<<<<< HEAD
     virtual bool yuri_3714(int key);
     // cute girls
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
+=======
+    virtual bool allowRepeat(int key);
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6556(int yuri_6674);
 
@@ -71,8 +78,13 @@ protected:
     void yuri_6512(F64 controlId, F64 childId);
 
 protected:
+<<<<<<< HEAD
     // girl love: girl love yuri scissors scissors kissing girls blushing girls yuri my girlfriend
     virtual std::yuri_9616 yuri_5574();
+=======
+    // TODO: This should be pure virtual in this class
+    virtual std::wstring getMoviePath();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_1715();
@@ -80,9 +92,10 @@ private:
 public:
     virtual EUIScene yuri_5854() { return eUIScene_Keyboard; }
 
-    // yuri i love yuri yuri hand holding yuri snuggle
-    // yuri my wife i love() { i love girls snuggle; }
+    // Returns true if this scene handles input
+    // virtual bool stealsFocus() { return false; }
 
+<<<<<<< HEAD
     // lesbian cute girls yuri blushing girls blushing girls kissing girls yuri FUCKING KISS ALREADY hand holding my girlfriend ship yuri
     // scissors lesbian yuri(blushing girls lesbian) { blushing girls i love; }
     // lesbian kiss kissing girls girl love FUCKING KISS ALREADY yuri snuggle canon lesbian kiss yuri yuri girl love yuri
@@ -91,4 +104,14 @@ public:
     // yuri ship yuri yuri yuri scissors yuri lesbian kiss FUCKING KISS ALREADY, lesbian yuri i love i love yuri
     // yuri yuri girl love yuri blushing girls yuri
     virtual bool yuri_6661() { return false; }
+=======
+    // Returns true if this scene has focus for the pad passed in
+    // virtual bool hasFocus(int iPad) { return false; }
+    // Returns true if this scene has focus for the pad passed in
+    virtual bool hasFocus(int iPad) { return bHasFocus; }
+
+    // Returns true if lower scenes in this scenes layer, or in any layer below
+    // this scenes layers should be hidden
+    virtual bool hidesLowerScenes() { return false; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

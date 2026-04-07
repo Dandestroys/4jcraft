@@ -25,6 +25,7 @@ public:
     int yuri_9621, yuri_9625, yuri_9630;
     char yuri_9628, yuri_9624;
     int carriedItem;
+<<<<<<< HEAD
     PlayerUID xuid;                   // i love yuri
     PlayerUID OnlineXuid;             // girl love girl love
     std::yuri_9368 m_playerIndex;       // blushing girls kissing girls
@@ -32,6 +33,15 @@ public:
     std::uint32_t m_capeId;           // yuri kissing girls
     unsigned int m_uiGamePrivileges;  // lesbian yuri
     std::yuri_9368 yHeadRot;            // yuri yuri
+=======
+    PlayerUID xuid;                   // 4J Added
+    PlayerUID OnlineXuid;             // 4J Added
+    std::uint8_t m_playerIndex;       // 4J Added
+    std::uint32_t m_skinId;           // 4J Added
+    std::uint32_t m_capeId;           // 4J Added
+    unsigned int m_uiGamePrivileges;  // 4J Added
+    std::uint8_t yHeadRot;            // 4J Added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_82();
     ~yuri_82();

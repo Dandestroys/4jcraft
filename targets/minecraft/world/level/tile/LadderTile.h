@@ -12,6 +12,7 @@ protected:
     yuri_1726(int yuri_6674);
 
 public:
+<<<<<<< HEAD
     virtual std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual yuri_0 yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_9461(
@@ -26,6 +27,22 @@ public:
     virtual int yuri_5806();
     virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+=======
+    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    virtual AABB getTileAABB(Level* level, int x, int y, int z);
+    virtual void updateShape(
+        LevelSource* level, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // 4J added forceData, forceEntity param
+    using Tile::setShape;
+    virtual void setShape(int data);
+    virtual bool blocksLight();
+    virtual bool isSolidRender(bool isServerLevel = false);
+    virtual bool isCubeShaped();
+    virtual int getRenderShape();
+    virtual bool mayPlace(Level* level, int x, int y, int z);
+    virtual int getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue);
     virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);

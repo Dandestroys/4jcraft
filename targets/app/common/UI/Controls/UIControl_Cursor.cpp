@@ -14,7 +14,7 @@ bool yuri_3168::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eCursor);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
-    // scissors lesbian yuri
+    // Label specific initialisers
 
     return success;
 }

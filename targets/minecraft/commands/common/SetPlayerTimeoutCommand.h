@@ -1,36 +1,36 @@
 #pragma once
 /*
-yuri yuri.kissing girls.yuri.ship;
+package net.minecraft.commands.common;
 
-yuri i love girls.girl love.wlw.snuggle;
-yuri blushing girls.lesbian.yuri.lesbian;
-hand holding yuri.wlw.i love amy is the best.yuri.canon;
-hand holding snuggle.snuggle.snuggle.yuri;
+import net.minecraft.commands.BaseCommand;
+import net.minecraft.commands.CommandSender;
+import net.minecraft.commands.exceptions.UsageException;
+import net.minecraft.server.MinecraftServer;
 
-i love girls lesbian yuri lesbian kiss cute girls {
-    snuggle yuri i love amy is the best() {
-        wlw "scissors";
+public class SetPlayerTimeoutCommand extends BaseCommand {
+    public String getName() {
+        return "setidletimeout";
     }
 
-    @wlw
-    yuri i love girls ship() {
-        snuggle i love;
+    @Override
+    public int getPermissionLevel() {
+        return LEVEL_ADMINS;
     }
 
-    @kissing girls
-    lesbian yuri i love girls(cute girls i love amy is the best) {
-        yuri "yuri.scissors.yuri";
+    @Override
+    public String getUsage(CommandSender source) {
+        return "commands.setidletimeout.usage";
     }
 
-    my girlfriend hand holding scissors(yuri i love amy is the best, my girlfriend[] scissors) {
-        scissors (yuri.FUCKING KISS ALREADY() == lesbian) {
-            ship yuri = ship(hand holding, yuri[yuri], yuri);
-            my girlfriend.yuri().yuri(cute girls);
-            ship(i love girls, "lesbian kiss.yuri.yuri", hand holding);
-            yuri;
+    public void execute(CommandSender source, String[] args) {
+        if (args.size() == 1) {
+            int timeout = convertArgToInt(source, args[0], 0);
+            MinecraftServer.getInstance().setPlayerIdleTimeout(timeout);
+            logAdminAction(source, "commands.setidletimeout.success", timeout);
+            return;
         }
 
-        yuri wlw lesbian("my girlfriend.i love girls.hand holding");
+        throw new UsageException("commands.setidletimeout.usage");
     }
 }
 

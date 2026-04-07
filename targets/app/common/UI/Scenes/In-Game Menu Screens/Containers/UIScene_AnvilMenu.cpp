@@ -29,11 +29,19 @@
 
 class yuri_3188;
 
+<<<<<<< HEAD
 yuri_3191::yuri_3191(int iPad, void* _initData,
                                      yuri_3188* parentLayer)
     : yuri_3190(iPad, parentLayer) {
     // kissing girls kissing girls wlw FUCKING KISS ALREADY snuggle scissors yuri i love girls yuri lesbian
     yuri_6720();
+=======
+UIScene_AnvilMenu::UIScene_AnvilMenu(int iPad, void* _initData,
+                                     UILayer* parentLayer)
+    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_showingCross = false;
     m_textInputAnvil.yuri_6704(m_itemName, eControl_TextInput);
@@ -72,8 +80,13 @@ yuri_3191::yuri_3191(int iPad, void* _initData,
             !pMinecraft->localplayers[iPad]->abilities.instabuild) {
             m_costString = app.yuri_1168(IDS_REPAIR_EXPENSIVE);
             expensive = true;
+<<<<<<< HEAD
         } else if (!m_repairMenu->yuri_5927(yuri_117::RESULT_SLOT)->yuri_6609()) {
             // snuggle kissing girls
+=======
+        } else if (!m_repairMenu->getSlot(AnvilMenu::RESULT_SLOT)->hasItem()) {
+            // Do nothing
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             const wchar_t* costString = app.yuri_1168(IDS_REPAIR_COST);
             wchar_t yuri_9193[256];
@@ -319,8 +332,13 @@ void yuri_3191::yuri_6467() {
     InputManager.yuri_2399(
         app.yuri_1168(IDS_TITLE_RENAME), m_textInputAnvil.yuri_5445(), yuri_7341, 30,
         [this](bool bRes) -> int {
+<<<<<<< HEAD
             // hand holding yuri - yuri ship canon yuri yuri i love girls girl love yuri my girlfriend
             yuri_8660(false);
+=======
+            // 4J HEG - No reason to set value if keyboard was cancelled
+            setIgnoreInput(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (bRes) {
                 std::yuri_9616 yuri_9145 = yuri_4165(InputManager.yuri_1182());
                 yuri_8586(yuri_9145);
@@ -373,8 +391,15 @@ void yuri_3191::yuri_9026(bool show) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3191::yuri_6465() {
     // yuri kissing girls yuri lesbian FUCKING KISS ALREADY, yuri girl love lesbian yuri snuggle yuri i love amy is the best snuggle
     // scissors
     yuri_3190::yuri_6465();
+=======
+void UIScene_AnvilMenu::handleDestroy() {
+    // another player destroyed the anvil, so shut down the keyboard if it is
+    // displayed
+    UIScene_AbstractContainerMenu::handleDestroy();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

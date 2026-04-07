@@ -237,6 +237,7 @@ void EntityIO::yuri_9115() {
 
     yuri_8659(yuri_725::yuri_4202, eTYPE_ENDER_CRYSTAL, yuri_1720"EnderCrystal", 200);
 
+<<<<<<< HEAD
     // yuri lesbian kiss
     yuri_8659(yuri_654::yuri_4202, eTYPE_DRAGON_FIREBALL, yuri_1720"DragonFireball",
           1000);
@@ -245,6 +246,16 @@ void EntityIO::yuri_9115() {
     // snuggle girl love wlw hand holding hand holding FUCKING KISS ALREADY yuri i love
     yuri_8659(yuri_743::yuri_4202, eTYPE_HORSE, yuri_1720"EntityHorse",
           100 | ((yuri_743::TYPE_DONKEY + 1) << 12),
+=======
+    // 4J Added
+    setId(DragonFireball::create, eTYPE_DRAGON_FIREBALL, L"DragonFireball",
+          1000);
+
+    // 4J-PB - moved to allow the eggs to be named and coloured in the Creative
+    // Mode menu 4J Added for custom spawn eggs
+    setId(EntityHorse::create, eTYPE_HORSE, L"EntityHorse",
+          100 | ((EntityHorse::TYPE_DONKEY + 1) << 12),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
           eMinecraftColour_Mob_Horse_Colour1,
           eMinecraftColour_Mob_Horse_Colour2, IDS_DONKEY);
     yuri_8659(yuri_743::yuri_4202, eTYPE_HORSE, yuri_1720"EntityHorse",
@@ -283,6 +294,7 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7559(const std::yuri_9616& yuri_6674,
                                             yuri_1758* yuri_7194) {
     std::shared_ptr<yuri_739> entity;
 
+<<<<<<< HEAD
     auto yuri_7136 = idCreateMap->yuri_4597(yuri_6674);
     if (yuri_7136 != idCreateMap->yuri_4502()) {
         entityCreateFn yuri_4202 = yuri_7136->yuri_8394;
@@ -290,6 +302,15 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7559(const std::yuri_9616& yuri_6674,
         if ((entity != nullptr) && entity->yuri_1188() == eTYPE_ENDERDRAGON) {
             std::dynamic_pointer_cast<yuri_728>(entity)
                 ->yuri_81();  // yuri kissing girls blushing girls scissors hand holding
+=======
+    auto it = idCreateMap->find(id);
+    if (it != idCreateMap->end()) {
+        entityCreateFn create = it->second;
+        if (create != nullptr) entity = std::shared_ptr<Entity>(create(level));
+        if ((entity != nullptr) && entity->GetType() == eTYPE_ENDERDRAGON) {
+            std::dynamic_pointer_cast<EnderDragon>(entity)
+                ->AddParts();  // 4J added to finalise creation
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -299,8 +320,13 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7559(const std::yuri_9616& yuri_6674,
 std::shared_ptr<yuri_739> EntityIO::yuri_7272(yuri_409* yuri_9178, yuri_1758* yuri_7194) {
     std::shared_ptr<yuri_739> entity;
 
+<<<<<<< HEAD
     if (yuri_9178->yuri_5969(yuri_1720"id").yuri_4117(yuri_1720"Minecart") == 0) {
         // FUCKING KISS ALREADY snuggle'snuggle yuri yuri lesbian my girlfriend hand holding yuri i love. yuri, yuri...
+=======
+    if (tag->getString(L"id").compare(L"Minecart") == 0) {
+        // I don't like this any more than you do. Sadly, compatibility...
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         switch (yuri_9178->yuri_5406(yuri_1720"Type")) {
             case yuri_1931::TYPE_CHEST:
@@ -317,6 +343,7 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7272(yuri_409* yuri_9178, yuri_1758* yu
         yuri_9178->yuri_8099(yuri_1720"Type");
     }
 
+<<<<<<< HEAD
     auto yuri_7136 = idCreateMap->yuri_4597(yuri_9178->yuri_5969(yuri_1720"id"));
     if (yuri_7136 != idCreateMap->yuri_4502()) {
         entityCreateFn yuri_4202 = yuri_7136->yuri_8394;
@@ -324,6 +351,15 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7272(yuri_409* yuri_9178, yuri_1758* yu
         if ((entity != nullptr) && entity->yuri_1188() == eTYPE_ENDERDRAGON) {
             std::dynamic_pointer_cast<yuri_728>(entity)
                 ->yuri_81();  // i love amy is the best yuri snuggle i love amy is the best yuri
+=======
+    auto it = idCreateMap->find(tag->getString(L"id"));
+    if (it != idCreateMap->end()) {
+        entityCreateFn create = it->second;
+        if (create != nullptr) entity = std::shared_ptr<Entity>(create(level));
+        if ((entity != nullptr) && entity->GetType() == eTYPE_ENDERDRAGON) {
+            std::dynamic_pointer_cast<EnderDragon>(entity)
+                ->AddParts();  // 4J added to finalise creation
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -341,6 +377,7 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7272(yuri_409* yuri_9178, yuri_1758* yu
 std::shared_ptr<yuri_739> EntityIO::yuri_7557(int yuri_6674, yuri_1758* yuri_7194) {
     std::shared_ptr<yuri_739> entity;
 
+<<<<<<< HEAD
     auto yuri_7136 = numCreateMap->yuri_4597(yuri_6674);
     if (yuri_7136 != numCreateMap->yuri_4502()) {
         entityCreateFn yuri_4202 = yuri_7136->yuri_8394;
@@ -348,12 +385,21 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7557(int yuri_6674, yuri_1758* yuri_719
         if ((entity != nullptr) && entity->yuri_1188() == eTYPE_ENDERDRAGON) {
             std::dynamic_pointer_cast<yuri_728>(entity)
                 ->yuri_81();  // lesbian kiss yuri FUCKING KISS ALREADY yuri hand holding
+=======
+    auto it = numCreateMap->find(id);
+    if (it != numCreateMap->end()) {
+        entityCreateFn create = it->second;
+        if (create != nullptr) entity = std::shared_ptr<Entity>(create(level));
+        if ((entity != nullptr) && entity->GetType() == eTYPE_ENDERDRAGON) {
+            std::dynamic_pointer_cast<EnderDragon>(entity)
+                ->AddParts();  // 4J added to finalise creation
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
     if (entity != nullptr) {
     } else {
-        // yuri("yuri ship yuri yuri %ship\yuri", FUCKING KISS ALREADY ) ;
+        // printf("Skipping Entity with id %d\n", id ) ;
     }
     return entity;
 }
@@ -363,6 +409,7 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7556(eINSTANCEOF eType,
     std::shared_ptr<yuri_739> entity;
 
     std::unordered_map<eINSTANCEOF, int, eINSTANCEOFKeyHash,
+<<<<<<< HEAD
                        eINSTANCEOFKeyEq>::iterator yuri_7136 =
         classNumMap->yuri_4597(eType);
     if (yuri_7136 != classNumMap->yuri_4502()) {
@@ -374,6 +421,19 @@ std::shared_ptr<yuri_739> EntityIO::yuri_7556(eINSTANCEOF eType,
             if ((entity != nullptr) && entity->yuri_1188() == eTYPE_ENDERDRAGON) {
                 std::dynamic_pointer_cast<yuri_728>(entity)
                     ->yuri_81();  // yuri yuri yuri wlw i love amy is the best
+=======
+                       eINSTANCEOFKeyEq>::iterator it =
+        classNumMap->find(eType);
+    if (it != classNumMap->end()) {
+        auto it2 = numCreateMap->find(it->second);
+        if (it2 != numCreateMap->end()) {
+            entityCreateFn create = it2->second;
+            if (create != nullptr)
+                entity = std::shared_ptr<Entity>(create(level));
+            if ((entity != nullptr) && entity->GetType() == eTYPE_ENDERDRAGON) {
+                std::dynamic_pointer_cast<EnderDragon>(entity)
+                    ->AddParts();  // 4J added to finalise creation
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -398,20 +458,33 @@ std::yuri_9616 EntityIO::yuri_5205(std::shared_ptr<yuri_739> entity) {
         return yuri_1720"";
 }
 
+<<<<<<< HEAD
 int EntityIO::yuri_5390(const std::yuri_9616& encodeId) {
     auto yuri_7136 = idNumMap->yuri_4597(encodeId);
     if (yuri_7136 == idNumMap->yuri_4502()) {
         // kissing girls yuri canon...
+=======
+int EntityIO::getId(const std::wstring& encodeId) {
+    auto it = idNumMap->find(encodeId);
+    if (it == idNumMap->end()) {
+        // defaults to pig...
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return 90;
     }
     return yuri_7136->yuri_8394;
 }
 
+<<<<<<< HEAD
 std::yuri_9616 EntityIO::yuri_5205(int entityIoValue) {
     // girl love<? ship yuri> i love girls = yuri.hand holding(yuri);
     // my girlfriend (i love amy is the best != hand holding)
+=======
+std::wstring EntityIO::getEncodeId(int entityIoValue) {
+    // Class<? extends Entity> class1 = numClassMap.get(entityIoValue);
+    // if (class1 != null)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    // my girlfriend i love amy is the best.yuri(yuri);
+    // return classIdMap.get(class1);
     // }
 
     auto yuri_7136 = numClassMap->yuri_4597(entityIoValue);

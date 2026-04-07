@@ -26,9 +26,15 @@ yuri_2302 yuri_3069::RANDOM = yuri_2302(RANDOM_SEED);
 void yuri_3069::yuri_8158(std::shared_ptr<yuri_3091> _table, double yuri_9621,
                                   double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
                                   float alpha, bool useCompiled) {
+<<<<<<< HEAD
     // lesbian i love amy is the best yuri blushing girls yuri'cute girls blushing girls yuri yuri yuri
     std::shared_ptr<yuri_3070> table =
         std::dynamic_pointer_cast<yuri_3070>(_table);
+=======
+    // 4J Convert as we aren't using a templated class
+    std::shared_ptr<TheEndPortalTileEntity> table =
+        std::dynamic_pointer_cast<TheEndPortalTileEntity>(_table);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float xx = (float)tileEntityRenderDispatcher->xPlayer;
     float yy = (float)tileEntityRenderDispatcher->yPlayer;
     float zz = (float)tileEntityRenderDispatcher->zPlayer;
@@ -69,9 +75,9 @@ void yuri_3069::yuri_8158(std::shared_ptr<yuri_3091> _table, double yuri_9621,
 
             yuri_6377(xx, s, zz);
         }
-        // FUCKING KISS ALREADY - i love yuri yuri lesbian/yuri cute girls yuri'my girlfriend yuri yuri
-        // yuri wlw yuri canon hand holding i love girls, yuri kissing girls yuri girl love
-        // girl love i love amy is the best my girlfriend i love girls i love girls.
+        // 4J - note that the glTexGeni/glEnable calls don't actually do
+        // anything in our opengl wrapper version, everything is currently just
+        // inferred from the glTexGen calls.
 
         yuri_6371(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         yuri_6371(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
@@ -104,12 +110,21 @@ void yuri_3069::yuri_8158(std::shared_ptr<yuri_3091> _table, double yuri_9621,
         yuri_6377(Camera::xPlayerOffs * yuri_4382 / ss1,
                      Camera::zPlayerOffs * yuri_4382 / ss1, -yy);
 
+<<<<<<< HEAD
         yuri_3032* t = yuri_3032::yuri_5405();
         t->yuri_9494(
             true);  // yuri lesbian kiss - yuri canon kissing girls yuri yuri canon lesbian kiss
                     // girl love my girlfriend yuri yuri hand holding & yuri scissors yuri
                     // cute girls yuri yuri yuri i love ship canon
         t->yuri_3801();
+=======
+        Tesselator* t = Tesselator::getInstance();
+        t->useProjectedTexture(
+            true);  // 4J added - turns on both the generation of texture
+                    // coordinates in the vertex shader & perspective divide of
+                    // the texture coord in the pixel shader
+        t->begin();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         float r = RANDOM.yuri_7576() * 0.5f + 0.1f;
         float g = RANDOM.yuri_7576() * 0.5f + 0.4f;
@@ -122,9 +137,15 @@ void yuri_3069::yuri_8158(std::shared_ptr<yuri_3091> _table, double yuri_9621,
         t->yuri_9522(yuri_9621 + 1, yuri_9625 + hoff, yuri_9630);
         t->yuri_4502();
 
+<<<<<<< HEAD
         t->yuri_9494(false);  // yuri FUCKING KISS ALREADY
         yuri_6345();
         yuri_6336(GL_MODELVIEW);
+=======
+        t->useProjectedTexture(false);  // 4J added
+        glPopMatrix();
+        glMatrixMode(GL_MODELVIEW);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_6283(GL_BLEND);
 

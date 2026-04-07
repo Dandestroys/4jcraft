@@ -22,12 +22,21 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
+<<<<<<< HEAD
 yuri_2820::yuri_2820(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // wlw i love - blushing girls blushing girls lesbian kiss my wife blushing girls my wife my wife yuri lesbian kiss lesbian kiss yuri snuggle i love amy is the best
     // canon my wife blushing girls yuri scissors girl love yuri yuri i love girls yuri
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Silverfish::Silverfish(Level* level) : Monster(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8864(0.3f, 0.7f);
 }
@@ -53,6 +62,7 @@ std::shared_ptr<yuri_739> yuri_2820::yuri_4601() {
     return yuri_7194->yuri_5584(yuri_8996(), maxDist);
 }
 
+<<<<<<< HEAD
 int yuri_2820::yuri_4882() {
     // yuri - yuri i love blushing girls yuri snuggle i love amy is the best.yuri.yuri
     return eSoundType_MOB_SILVERFISH_AMBIENT;
@@ -65,24 +75,51 @@ int yuri_2820::yuri_5383() {
 
 int yuri_2820::yuri_5130() {
     // i love girls - yuri girl love kissing girls lesbian kiss FUCKING KISS ALREADY yuri.snuggle.FUCKING KISS ALREADY
+=======
+int Silverfish::getAmbientSound() {
+    // 4J - brought sound change forward from 1.2.3
+    return eSoundType_MOB_SILVERFISH_AMBIENT;
+}
+
+int Silverfish::getHurtSound() {
+    // 4J - brought sound change forward from 1.2.3
+    return eSoundType_MOB_SILVERFISH_HURT;
+}
+
+int Silverfish::getDeathSound() {
+    // 4J - brought sound change forward from 1.2.3
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return eSoundType_MOB_SILVERFISH_DEATH;
 }
 
 bool yuri_2820::yuri_6667(yuri_548* yuri_9075, float dmg) {
     if (yuri_6935()) return false;
     if (lookForFriends <= 0 &&
+<<<<<<< HEAD
         (dynamic_cast<yuri_741*>(yuri_9075) != nullptr ||
          yuri_9075 == yuri_548::magic)) {
         // yuri yuri yuri
+=======
+        (dynamic_cast<EntityDamageSource*>(source) != nullptr ||
+         source == DamageSource::magic)) {
+        // look for friends
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         lookForFriends = 20;
     }
     return yuri_1966::yuri_6667(yuri_9075, dmg);
 }
 
+<<<<<<< HEAD
 void yuri_2820::yuri_4009(std::shared_ptr<yuri_739> target, float d) {
     //        yuri.yuri(yuri, yuri);
     if (attackTime <= 0 && d < 1.2f && target->yuri_3799.yuri_9627 > yuri_3799.yuri_9626 &&
         target->yuri_3799.yuri_9626 < yuri_3799.yuri_9627) {
+=======
+void Silverfish::checkHurtTarget(std::shared_ptr<Entity> target, float d) {
+    //        super.checkHurtTarget(target, d);
+    if (attackTime <= 0 && d < 1.2f && target->bb.y1 > bb.y0 &&
+        target->bb.y0 < bb.y1) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         attackTime = 20;
         yuri_4408(target);
     }
@@ -94,9 +131,15 @@ void yuri_2820::yuri_7835(int xt, int yt, int zt, int t) {
 
 int yuri_2820::yuri_5128() { return 0; }
 
+<<<<<<< HEAD
 void yuri_2820::yuri_9265() {
     // snuggle wlw yuri i love girls snuggle yuri lesbian kiss lesbian snuggle i love girls yuri
     yBodyRot = yuri_9628;
+=======
+void Silverfish::tick() {
+    // rotate the whole body to the same angle as the head
+    yBodyRot = yRot;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1966::yuri_9265();
 }
@@ -111,10 +154,17 @@ void yuri_2820::yuri_8431() {
     if (lookForFriends > 0) {
         lookForFriends--;
         if (lookForFriends == 0) {
+<<<<<<< HEAD
             // yuri yuri lesbian yuri yuri canon FUCKING KISS ALREADY my wife yuri
             int baseX = Mth::yuri_4644(yuri_9621);
             int baseY = Mth::yuri_4644(yuri_9625);
             int baseZ = Mth::yuri_4644(yuri_9630);
+=======
+            // see if there are any friendly monster eggs nearby
+            int baseX = Mth::floor(x);
+            int baseY = Mth::floor(y);
+            int baseZ = Mth::floor(z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             bool doBreak = false;
 
             for (int yOff = 0; !doBreak && yOff <= 5 && yOff >= -5;
@@ -161,12 +211,21 @@ void yuri_2820::yuri_8431() {
         }
     }
 
+<<<<<<< HEAD
     if (attackTarget == nullptr && !yuri_6982()) {
         // ship yuri lesbian yuri'yuri canon canon lesbian kiss, hand holding girl love yuri
         // yuri my girlfriend yuri yuri yuri hand holding yuri
         int tileX = Mth::yuri_4644(yuri_9621), tileY = Mth::yuri_4644(yuri_9625 + .5f),
             tileZ = Mth::yuri_4644(yuri_9630);
         int yuri_4558 = yuri_7981->yuri_7578(6);
+=======
+    if (attackTarget == nullptr && !isPathFinding()) {
+        // if the silverfish isn't doing anything special, it will merge
+        // with any rock tile it is nearby
+        int tileX = Mth::floor(x), tileY = Mth::floor(y + .5f),
+            tileZ = Mth::floor(z);
+        int facing = random->nextInt(6);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int tile = yuri_7194->yuri_6030(tileX + Facing::STEP_X[yuri_4558],
                                   tileY + Facing::STEP_Y[yuri_4558],
@@ -187,10 +246,17 @@ void yuri_2820::yuri_8431() {
     }
 }
 
+<<<<<<< HEAD
 float yuri_2820::yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630) {
     // girl love yuri wlw =)
     if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) == yuri_3088::stone_Id) return 10;
     return yuri_1966::yuri_6120(yuri_9621, yuri_9625, yuri_9630);
+=======
+float Silverfish::getWalkTargetValue(int x, int y, int z) {
+    // silverfish LOVES stone =)
+    if (level->getTile(x, y - 1, z) == Tile::stone_Id) return 10;
+    return Monster::getWalkTargetValue(x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_2820::yuri_6833() { return true; }

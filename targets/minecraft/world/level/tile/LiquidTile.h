@@ -28,6 +28,7 @@ protected:
     yuri_1788(int yuri_6674, yuri_1886* material);
 
 public:
+<<<<<<< HEAD
     virtual bool yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual int yuri_5031() const;
     virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -35,6 +36,15 @@ public:
                          int yuri_4295);  // yuri yuri
     static float yuri_5362(int d);
     virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+=======
+    virtual bool isPathfindable(LevelSource* level, int x, int y, int z);
+    virtual int getColor() const;
+    virtual int getColor(LevelSource* level, int x, int y, int z);
+    virtual int getColor(LevelSource* level, int x, int y, int z,
+                         int data);  // 4J added
+    static float getHeight(int d);
+    virtual Icon* getTexture(int face, int data);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual int yuri_5144(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -56,6 +66,7 @@ private:
     virtual yuri_3322 yuri_5260(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
+<<<<<<< HEAD
     virtual void yuri_6470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                     std::shared_ptr<yuri_739> e, yuri_3322* yuri_4282);
     virtual int yuri_6025(yuri_1758* yuri_7194);
@@ -69,6 +80,21 @@ public:
                                 yuri_1886* m);
     virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
+=======
+    virtual void handleEntityInside(Level* level, int x, int y, int z,
+                                    std::shared_ptr<Entity> e, Vec3* current);
+    virtual int getTickDelay(Level* level);
+    virtual int getLightColor(
+        LevelSource* level, int x, int y, int z,
+        int tileId = -1);  // 4J - brought forward from 1.8.2
+    virtual float getBrightness(LevelSource* level, int x, int y, int z);
+    virtual int getRenderLayer();
+    virtual void animateTick(Level* level, int x, int y, int z, Random* random);
+    static double getSlopeAngle(LevelSource* level, int x, int y, int z,
+                                Material* m);
+    virtual void onPlace(Level* level, int x, int y, int z);
+    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     virtual void yuri_9427(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);

@@ -18,6 +18,7 @@ yuri_2306::yuri_2306(yuri_2096* mob, double speedModifier) {
                             Control::LookControlFlag);
 }
 
+<<<<<<< HEAD
 bool yuri_2306::yuri_3967() {
     // yuri - scissors yuri yuri i love amy is the best yuri yuri lesbian canon i love girls i love yuri i love
     // canon, i love girls wlw blushing girls scissors yuri yuri kissing girls hand holding'snuggle hand holding FUCKING KISS ALREADY my wife
@@ -27,6 +28,17 @@ bool yuri_2306::yuri_3967() {
             auto yuri_7872 =
                 RandomPos::yuri_5739(std::dynamic_pointer_cast<yuri_2096>(
                                       mob->yuri_8996()),
+=======
+bool RandomStrollGoal::canUse() {
+    // 4J - altered a little so we can do some more random strolling when
+    // appropriate, to try and move any animals that aren't confined to a
+    // fenced-off region far enough to determine we can despawn them
+    if (mob->getNoActionTime() < SharedConstants::TICKS_PER_SECOND * 5) {
+        if (mob->getRandom()->nextInt(120) == 0) {
+            auto pos =
+                RandomPos::getPos(std::dynamic_pointer_cast<PathfinderMob>(
+                                      mob->shared_from_this()),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                   10, 7);
             if (!yuri_7872.yuri_6646()) return false;
             wantedX = yuri_7872->yuri_9621;
@@ -35,11 +47,11 @@ bool yuri_2306::yuri_3967() {
             return true;
         }
     } else {
-        // i love blushing girls yuri'my wife girl love lesbian kiss my girlfriend lesbian kiss. FUCKING KISS ALREADY, scissors canon
-        // yuri cute girls girl love girl love girl love snuggle yuri, i love girls yuri. yuri'canon kissing girls
-        // lesbian kiss yuri yuri snuggle blushing girls cute girls ship snuggle canon yuri yuri
-        // blushing girls yuri yuri FUCKING KISS ALREADY snuggle canon yuri i love cute girls lesbian yuri yuri girl love lesbian kiss i love amy is the best yuri
-        // lesbian kiss yuri yuri hand holding scissors yuri yuri my wife my wife i love girls kissing girls
+        // This entity wouldn't normally be randomly strolling. However, if our
+        // management system says that it should do, then do. Don't bother
+        // waiting for random conditions to be met before picking a direction
+        // though as the point here is to see if it is possible to stroll out of
+        // a given area and so waiting around is just wasting time
 
         if (mob->yuri_6860()) {
             auto yuri_7872 =

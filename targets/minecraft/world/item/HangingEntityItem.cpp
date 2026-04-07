@@ -47,10 +47,17 @@ bool yuri_1253::yuri_9492(std::shared_ptr<yuri_1693> instance,
 
     if (!yuri_7839->yuri_7474(xt, yt, zt, face, instance)) return false;
 
+<<<<<<< HEAD
     if (entity != nullptr && entity->yuri_9162()) {
         if (!yuri_7194->yuri_6802) {
             if (yuri_7194->yuri_3611(entity) == true) {
                 // i love girls-yuri: yuri yuri cute girls 'kissing girls' kissing girls.
+=======
+    if (entity != nullptr && entity->survives()) {
+        if (!level->isClientSide) {
+            if (level->addEntity(entity) == true) {
+                // 4J-JEV: Hook for durango 'BlockPlaced' event.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (eType == eTYPE_PAINTING)
                     yuri_7839->yuri_3773(
                         GenericStats::yuri_3831(yuri_1687::painting_Id),
@@ -74,9 +81,15 @@ bool yuri_1253::yuri_9492(std::shared_ptr<yuri_1693> instance,
     return true;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1252> yuri_1253::yuri_4217(
     yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361,
     int auxValue)  // kissing girls yuri scissors
+=======
+std::shared_ptr<HangingEntity> HangingEntityItem::createEntity(
+    Level* level, int x, int y, int z, int dir,
+    int auxValue)  // 4J added auxValue
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (eType == eTYPE_PAINTING) {
         std::shared_ptr<yuri_2083> painting =
@@ -102,10 +115,17 @@ std::shared_ptr<yuri_1252> yuri_1253::yuri_4217(
     }
 }
 
+<<<<<<< HEAD
 // girl love yuri yuri canon ship FUCKING KISS ALREADY
 void yuri_1253::yuri_3722(
     std::shared_ptr<yuri_1693> itemInstance, std::shared_ptr<yuri_2126> yuri_7839,
     std::vector<yuri_1298>* lines, bool advanced) {
+=======
+// 4J Adding overrides for art tools
+void HangingEntityItem::appendHoverText(
+    std::shared_ptr<ItemInstance> itemInstance, std::shared_ptr<Player> player,
+    std::vector<HtmlString>* lines, bool advanced) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifndef _CONTENT_PACKAGE
     if (eType == eTYPE_PAINTING && yuri_4702().yuri_4302() &&
         itemInstance->yuri_4919() > 0) {

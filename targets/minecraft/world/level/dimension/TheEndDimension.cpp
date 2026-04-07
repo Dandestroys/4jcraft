@@ -32,12 +32,21 @@ float yuri_3065::yuri_6044(yuri_6733 yuri_9299, float yuri_3565) const {
 
 float* yuri_3065::yuri_5979(float td, float yuri_3565) { return nullptr; }
 
+<<<<<<< HEAD
 yuri_3322 yuri_3065::yuri_5264(float td, float yuri_3565) const {
     int fogColor = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_End_Fog_Colour);  // canon;
     float yuri_3844 = yuri_4182(td * std::numbers::pi * 2) * 2 + 0.5f;
     if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
     if (yuri_3844 > 1.0f) yuri_3844 = 1.0f;
+=======
+Vec3 TheEndDimension::getFogColor(float td, float a) const {
+    int fogColor = Minecraft::GetInstance()->getColourTable()->getColor(
+        eMinecraftColour_End_Fog_Colour);  // 0xa080a0;
+    float br = cosf(td * std::numbers::pi * 2) * 2 + 0.5f;
+    if (br < 0.0f) br = 0.0f;
+    if (br > 1.0f) br = 1.0f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float r = ((fogColor >> 16) & 0xff) / 255.0f;
     float g = ((fogColor >> 8) & 0xff) / 255.0f;

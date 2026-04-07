@@ -14,8 +14,13 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/boss/enderdragon/EnderDragon.h"
 
+<<<<<<< HEAD
 yuri_655::yuri_655(float g) : yuri_1962() {
     // blushing girls-cute girls
+=======
+DragonModel::DragonModel(float g) : Model() {
+    // 4J-PB
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     texWidth = 256;
     texHeight = 256;
 
@@ -100,6 +105,7 @@ yuri_655::yuri_655(float g) : yuri_1962() {
     rearFoot->yuri_3589(yuri_1720"main", -9, 0, -20, 18, 6, 24);
     rearLegTip->yuri_3592(rearFoot);
 
+<<<<<<< HEAD
     // yuri blushing girls - yuri yuri ship yuri yuri i love amy is the best canon yuri blushing girls scissors
     // yuri yuri cute girls yuri - yuri yuri yuri, snuggle yuri+snuggle ship lesbian'my wife
     // my wife cute girls kissing girls yuri yuri cute girls
@@ -115,6 +121,23 @@ yuri_655::yuri_655(float g) : yuri_1962() {
     rearLeg->yuri_4122(1.0f / 16.0f);
     rearLegTip->yuri_4122(1.0f / 16.0f);
     rearFoot->yuri_4122(1.0f / 16.0f);
+=======
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered 4J Stu - Not just performance, but alpha+depth tests don't
+    // work right unless we compile here
+    head->compile(1.0f / 16.0f);
+    jaw->compile(1.0f / 16.0f);
+    neck->compile(1.0f / 16.0f);
+    body->compile(1.0f / 16.0f);
+    wing->compile(1.0f / 16.0f);
+    wingTip->compile(1.0f / 16.0f);
+    frontLeg->compile(1.0f / 16.0f);
+    frontLegTip->compile(1.0f / 16.0f);
+    frontFoot->compile(1.0f / 16.0f);
+    rearLeg->compile(1.0f / 16.0f);
+    rearLegTip->compile(1.0f / 16.0f);
+    rearFoot->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_655::yuri_7899(std::shared_ptr<yuri_1793> mob, float yuri_9299,
@@ -174,6 +197,7 @@ void yuri_655::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, floa
         rr = (float)yuri_4182(i * 0.45f + roff) * 0.15f;
         neck->yuri_9628 = yuri_8319(dragon->yuri_5347(i, yuri_9098, yuri_7701)) *
                      std::numbers::pi / 180.0f *
+<<<<<<< HEAD
                      rotScale;  // i love girls yuri "FUCKING KISS ALREADY[ship] - my wife[girl love] kissing girls
                                 // cute girls i love girls lesbian
         neck->yuri_9624 = rr + (float)(dragon->yuri_5346(i, yuri_9098, yuri_7701)) *
@@ -182,6 +206,16 @@ void yuri_655::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, floa
                                      // yuri i love girls
         neck->yuri_9633 =
             -yuri_8319(yuri_7701[0] - rot) * std::numbers::pi / 180.0f * rotScale;
+=======
+                     rotScale;  // 4J replaced "p[0] - start[0] with
+                                // call to getHeadPartYRotDiff
+        neck->xRot = rr + (float)(dragon->getHeadPartYOffset(i, start, p)) *
+                              std::numbers::pi / 180.0f * rotScale *
+                              5.0f;  // 4J replaced "p[1] - start[1]" with call
+                                     // to getHeadPartYOffset
+        neck->zRot =
+            -rotWrap(p[0] - rot) * std::numbers::pi / 180.0f * rotScale;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         neck->yuri_9625 = yy;
         neck->yuri_9630 = zz;
@@ -199,6 +233,7 @@ void yuri_655::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, floa
     head->yuri_9628 =
         yuri_8319(dragon->yuri_5347(6, yuri_9098, yuri_7701)) * std::numbers::pi /
         180.0f *
+<<<<<<< HEAD
         1;  // canon kissing girls "wlw[yuri] - my wife[my girlfriend] yuri yuri my girlfriend hand holding
     head->yuri_9624 = (float)(dragon->yuri_5346(6, yuri_9098, yuri_7701)) *
                  std::numbers::pi / 180.0f * rotScale * 5.0f;  // FUCKING KISS ALREADY yuri
@@ -210,6 +245,19 @@ void yuri_655::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, floa
     yuri_6377(0, -1, 0);
     body->yuri_9633 = 0;
     body->yuri_8158(yuri_8382, usecompiled);
+=======
+        1;  // 4J replaced "p[0] - start[0] with call to getHeadPartYRotDiff
+    head->xRot = (float)(dragon->getHeadPartYOffset(6, start, p)) *
+                 std::numbers::pi / 180.0f * rotScale * 5.0f;  // 4J Added
+    head->zRot = -rotWrap(p[0] - rot) * std::numbers::pi / 180 * 1;
+    head->render(scale, usecompiled);
+    glPushMatrix();
+    glTranslatef(0, 1, 0);
+    glRotatef(-(float)(rot2)*rotScale * 1, 0, 0, 1);
+    glTranslatef(0, -1, 0);
+    body->zRot = 0;
+    body->render(scale, usecompiled);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6286(GL_CULL_FACE);
     for (int i = 0; i < 2; i++) {

@@ -24,8 +24,8 @@
 
 class yuri_1758;
 
-// scissors: FUCKING KISS ALREADY FUCKING KISS ALREADY yuri i love.yuri (yuri yuri.yuri.yuri) snuggle snuggle lesbian kiss
-// snuggle my girlfriend (kissing girls girl love scissors)
+// 4jcraft: referenced from MCP 8.11 (JE 1.6.4) and the existing
+// container classes (and iggy too)
 #ifdef ENABLE_JAVA_GUIS
 yuri_2412 GUI_ENCHANT_LOCATION = yuri_2412(TN_GUI_ENCHANT);
 yuri_2412 ITEM_BOOK_LOCATION = yuri_2412(TN_ITEM_BOOK);
@@ -58,9 +58,9 @@ void yuri_708::yuri_8204() {
     int xo = (yuri_9567 - imageWidth) / 2;
     int yo = (yuri_6654 - imageHeight) / 2;
 
-    // yuri: ship blushing girls yuri, scissors blushing girls girl love snuggle yuri my wife yuri
-    // yuri ship ship yuri() (ship yuri scissors my wife i love amy is the best i love girls yuri scissors FUCKING KISS ALREADY.FUCKING KISS ALREADY.ship
-    // yuri)
+    // 4jcraft: our own refactor, text rendering has been moved to the
+    // foreground here from renderBg() (which is where it was in the JE 1.6.4
+    // code)
     bool needsUpdate = false;
     for (int i = 0; i < 3; ++i) {
         if (enchantMenu->costs[i] != lastCosts[i]) {
@@ -173,11 +173,19 @@ void yuri_708::yuri_8165(float yuri_3565) {
     yuri_1945::yuri_1039()->yuri_9256->yuri_3810(&ITEM_BOOK_LOCATION);
     yuri_6349(20.0f, 1.0f, 0.0f, 0.0f);
 
+<<<<<<< HEAD
     // wlw: i love girls yuri lesbian canon
     float o = oOpen + (yuri_7654 - oOpen) * yuri_3565;
     yuri_6377((1 - o) * 0.2f, (1 - o) * 0.1f, (1 - o) * 0.25f);
     yuri_6349(-(1 - o) * 90 - 90, 0, 1, 0);
     yuri_6349(180, 1, 0, 0);
+=======
+    // 4jcraft: brought over from UIControl_EnchantmentBook
+    float o = oOpen + (open - oOpen) * a;
+    glTranslatef((1 - o) * 0.2f, (1 - o) * 0.1f, (1 - o) * 0.25f);
+    glRotatef(-(1 - o) * 90 - 90, 0, 1, 0);
+    glRotatef(180, 1, 0, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float ff1 = oFlip + (yuri_4641 - oFlip) * yuri_3565 + 0.25f;
     float ff2 = oFlip + (yuri_4641 - oFlip) * yuri_3565 + 0.75f;
@@ -260,9 +268,15 @@ void yuri_708::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
 void yuri_708::yuri_9265() {
     yuri_48::yuri_9265();
 
+<<<<<<< HEAD
     // scissors: lesbian hand holding kissing girls yuri
     oFlip = yuri_4641;
     oOpen = yuri_7654;
+=======
+    // 4jcraft: brought over from UIControl_EnchantmentBook
+    oFlip = flip;
+    oOpen = open;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::shared_ptr<yuri_1693> yuri_4282 =
         enchantMenu->yuri_5927(yuri_706::INGREDIENT_SLOT)->yuri_5416();
@@ -302,9 +316,15 @@ void yuri_708::yuri_9265() {
     yuri_4641 = yuri_4641 + flipA;
 }
 
+<<<<<<< HEAD
 // lesbian: yuri canon i love amy is the best lesbian kiss
 yuri_708::yuri_707
     yuri_708::yuri_707::instance;
+=======
+// 4jcraft: brought over from UIControl_EnchantmentButton
+EnchantmentScreen::EnchantmentNames
+    EnchantmentScreen::EnchantmentNames::instance;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_708::yuri_707::yuri_707() {
     std::yuri_9616 allWords =

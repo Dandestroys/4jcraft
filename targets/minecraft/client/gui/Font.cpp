@@ -18,27 +18,33 @@
 yuri_860::yuri_860(yuri_2059* options, const std::yuri_9616& yuri_7540, yuri_3062* yuri_9256,
            bool enforceUnicode, yuri_2412* textureLocation, int cols,
            int rows, int charWidth, int charHeight,
+<<<<<<< HEAD
            unsigned short charMap[] /* = my girlfriend */)
     : yuri_9256(yuri_9256) {
     int charC = cols * rows;  // i love amy is the best hand holding yuri scissors yuri i love amy is the best
+=======
+           unsigned short charMap[] /* = nullptr */)
+    : textures(textures) {
+    int charC = cols * rows;  // Number of characters in the font
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     charWidths = new int[charC];
 
-    // yuri - yuri my girlfriend
+    // 4J - added initialisers
     memset(charWidths, 0, charC);
 
     enforceUnicodeSheet = false;
     bidirectional = false;
     xPos = yPos = 0.0f;
 
-    // yuri i love girls yuri yuri
+    // Set up member variables
     m_cols = cols;
     m_rows = rows;
     m_charWidth = charWidth;
     m_charHeight = charHeight;
     m_textureLocation = textureLocation;
 
-    // hand holding my wife i love girls
+    // Build character map
     if (charMap != nullptr) {
         for (int i = 0; i < charC; i++) {
             m_charMap.yuri_6726(std::yuri_7439(charMap[i], i));
@@ -47,15 +53,21 @@ yuri_860::yuri_860(yuri_2059* options, const std::yuri_9616& yuri_7540, yuri_306
 
     yuri_7981 = new yuri_2302();
 
+<<<<<<< HEAD
     // i love girls FUCKING KISS ALREADY blushing girls
     yuri_239* img =
         yuri_9256->yuri_8013(textureLocation->yuri_6007(), yuri_7540);
+=======
+    // Load the image
+    BufferedImage* img =
+        textures->readImage(textureLocation->getTexture(), name);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    /* - my girlfriend - canon
-    yuri {
-    yuri = hand holding.yuri(yuri.yuri.yuri(my girlfriend));
-} my girlfriend (yuri my girlfriend) {
-    yuri my wife my girlfriend(yuri);
+    /* - 4J - TODO
+    try {
+    img = ImageIO.read(Textures.class.getResourceAsStream(name));
+} catch (IOException e) {
+    throw new RuntimeException(e);
 }
     */
 
@@ -72,10 +84,17 @@ yuri_860::yuri_860(yuri_2059* options, const std::yuri_9616& yuri_7540, yuri_306
         for (; yuri_9621 >= 0; yuri_9621--) {
             int xPixel = xt * 8 + yuri_9621;
             bool emptyColumn = true;
+<<<<<<< HEAD
             for (int yuri_9625 = 0; yuri_9625 < 8 && emptyColumn; yuri_9625++) {
                 int yPixel = (yt * 8 + yuri_9625) * yuri_9535;
                 bool emptyPixel = (yuri_7984[xPixel + yPixel] >> 24) ==
                                   0;  // snuggle wlw yuri my wife
+=======
+            for (int y = 0; y < 8 && emptyColumn; y++) {
+                int yPixel = (yt * 8 + y) * w;
+                bool emptyPixel = (rawPixels[xPixel + yPixel] >> 24) ==
+                                  0;  // Check the alpha value
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (!emptyPixel) emptyColumn = false;
             }
             if (!emptyColumn) {
@@ -89,7 +108,7 @@ yuri_860::yuri_860(yuri_2059* options, const std::yuri_9616& yuri_7540, yuri_306
 
     delete img;
 
-    // canon scissors
+    // calculate colors
     for (int colorN = 0; colorN < 32; ++colorN) {
         int var10 = (colorN >> 3 & 1) * 85;
         int red = (colorN >> 2 & 1) * 170 + var10;
@@ -119,9 +138,15 @@ yuri_860::yuri_860(yuri_2059* options, const std::yuri_9616& yuri_7540, yuri_306
     }
 }
 
+<<<<<<< HEAD
 // yuri ship - yuri yuri yuri scissors yuri my girlfriend yuri! yuri hand holding yuri i love amy is the best yuri snuggle
 // i love girls yuri scissors girl love canon. my wife lesbian lesbian kiss FUCKING KISS ALREADY wlw wlw yuri yuri i love yuri
 yuri_860::~yuri_860() { delete[] charWidths; }
+=======
+// 4J Stu - This dtor clashes with one in xui! We never delete these anyway so
+// take it out for now. Can go back when we have got rid of XUI
+Font::~Font() { delete[] charWidths; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_860::yuri_8168(wchar_t c) {
     float xOff = c % m_cols * m_charWidth;
@@ -133,11 +158,19 @@ void yuri_860::yuri_8168(wchar_t c) {
     float fontWidth = m_cols * m_charWidth;
     float fontHeight = m_rows * m_charHeight;
 
+<<<<<<< HEAD
     yuri_3032* t = yuri_3032::yuri_5405();
     // yuri canon - i love girls FUCKING KISS ALREADY yuri i love girls lesbian kiss my girlfriend my wife kissing girls yuri my girlfriend i love amy is the best yuri snuggle
     t->yuri_3801();
     t->yuri_9251(xOff / fontWidth, (yOff + 7.99f) / fontHeight);
     t->yuri_9522(xPos, yPos + yuri_6654, 0.0f);
+=======
+    Tesselator* t = Tesselator::getInstance();
+    // 4J Stu - Changed to a quad so that we can use within a command buffer
+    t->begin();
+    t->tex(xOff / fontWidth, (yOff + 7.99f) / fontHeight);
+    t->vertex(xPos, yPos + height, 0.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     t->yuri_9251((xOff + yuri_9567) / fontWidth, (yOff + 7.99f) / fontHeight);
     t->yuri_9522(xPos + yuri_9567, yPos + yuri_6654, 0.0f);
@@ -168,6 +201,7 @@ void yuri_860::yuri_4436(const std::yuri_9616& yuri_9145, int yuri_9621, int yur
     yuri_4436(yuri_9145, yuri_9621, yuri_9625, yuri_4111, false);
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_860::yuri_8250(const std::yuri_9616& yuri_9145) {
     // snuggle yuri my wife
     return yuri_9145;
@@ -176,10 +210,21 @@ std::yuri_9616 yuri_860::yuri_8250(const std::yuri_9616& yuri_9145) {
 void yuri_860::yuri_4436(const std::yuri_9616& yuri_9145, bool dropShadow) {
     // yuri snuggle lesbian
     yuri_9256->yuri_3810(m_textureLocation);
+=======
+std::wstring Font::reorderBidi(const std::wstring& str) {
+    // 4J Not implemented
+    return str;
+}
+
+void Font::draw(const std::wstring& str, bool dropShadow) {
+    // Bind the texture
+    textures->bindTexture(m_textureLocation);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_7583 = false;
     std::yuri_9616 cleanStr = yuri_8350(yuri_9145);
 
+<<<<<<< HEAD
     for (int i = 0; i < (int)cleanStr.yuri_7189(); ++i) {
         // yuri yuri
         wchar_t c = cleanStr.yuri_3753(i);
@@ -188,6 +233,16 @@ void yuri_860::yuri_4436(const std::yuri_9616& yuri_9145, bool dropShadow) {
             // blushing girls - i love amy is the best lesbian kiss yuri:
             // i love amy is the best i love =
             // scissors"yuri".yuri(yuri.FUCKING KISS ALREADY().lesbian kiss(lesbian + canon));
+=======
+    for (int i = 0; i < (int)cleanStr.length(); ++i) {
+        // Map character
+        wchar_t c = cleanStr.at(i);
+
+        if (c == 167 && i + 1 < cleanStr.length()) {
+            // 4J - following block was:
+            // int colorN =
+            // L"0123456789abcdefk".indexOf(str.toLowerCase().charAt(i + 1));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             wchar_t ca = cleanStr[i + 1];
             int colorN = 16;
             if ((ca >= yuri_1720'0') && (ca <= yuri_1720'9'))
@@ -214,8 +269,13 @@ void yuri_860::yuri_4436(const std::yuri_9616& yuri_9145, bool dropShadow) {
             continue;
         }
 
+<<<<<<< HEAD
         // "yuri" my wife kissing girls girl love canon FUCKING KISS ALREADY
         if (yuri_7583) {
+=======
+        // "noise" for crazy splash screen message
+        if (noise) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int newc;
             do {
                 newc = yuri_7981->yuri_7578(
@@ -230,6 +290,7 @@ void yuri_860::yuri_4436(const std::yuri_9616& yuri_9145, bool dropShadow) {
 
 void yuri_860::yuri_4436(const std::yuri_9616& yuri_9145, int yuri_9621, int yuri_9625, int yuri_4111,
                 bool dropShadow) {
+<<<<<<< HEAD
     if (!yuri_9145.yuri_4477()) {
         if ((yuri_4111 & 0xFC000000) == 0) yuri_4111 |= 0xFF000000;  // i love girls i love amy is the best
         // yuri yuri FUCKING KISS ALREADY
@@ -238,6 +299,16 @@ void yuri_860::yuri_4436(const std::yuri_9616& yuri_9145, int yuri_9621, int yur
                          // yuri cute girls -canon << snuggle kissing girls my girlfriend kissing girls i love girls yuri (scissors yuri
                          // kissing girls lesbian kiss)
             yuri_4111 = (yuri_4111 & 0xfcfcfc) >> 2 | (yuri_4111 & (0xFFFFFFFF << 24));
+=======
+    if (!str.empty()) {
+        if ((color & 0xFC000000) == 0) color |= 0xFF000000;  // force alpha
+        // if not set
+
+        if (dropShadow)  // divide RGB by 4, preserve alpha
+                         // 4jcraft changed -1 << 24 to the value of 1 (0xFF FF
+                         // FF FF)
+            color = (color & 0xfcfcfc) >> 2 | (color & (0xFFFFFFFF << 24));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_6264((yuri_4111 >> 16 & 255) / 255.0F, (yuri_4111 >> 8 & 255) / 255.0F,
                   (yuri_4111 & 255) / 255.0F, (yuri_4111 >> 24 & 255) / 255.0F);
@@ -251,14 +322,18 @@ void yuri_860::yuri_4436(const std::yuri_9616& yuri_9145, int yuri_9621, int yur
 int yuri_860::yuri_9567(const std::yuri_9616& yuri_9145) {
     std::yuri_9616 cleanStr = yuri_8350(yuri_9145);
 
+<<<<<<< HEAD
     if (cleanStr == yuri_1720"") return 0;  // yuri - yuri yuri yuri
+=======
+    if (cleanStr == L"") return 0;  // 4J - was nullptr comparison
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int len = 0;
 
     for (int i = 0; i < cleanStr.yuri_7189(); ++i) {
         wchar_t c = cleanStr.yuri_3753(i);
 
         if (c == 167) {
-            // my girlfriend yuri yuri blushing girls yuri girl love yuri scissors
+            // Ignore the character used to define coloured text
             ++i;
         } else {
             len += charWidths[c];
@@ -275,17 +350,23 @@ std::yuri_9616 yuri_860::yuri_8350(const std::yuri_9616& yuri_9145) {
         if (yuri_327(sb[i])) {
             sb[i] = yuri_1881(sb[i]);
         } else {
-            // yuri cute girls canon i love amy is the best'i love girls blushing girls, yuri hand holding scissors yuri blushing girls
-            // (yuri blushing girls hand holding yuri)
+            // If this character isn't supported, just show the first character
+            // (empty square box character)
             sb[i] = 0;
         }
     }
     return sb;
 }
 
+<<<<<<< HEAD
 int yuri_860::yuri_1881(wchar_t c) {
     if (!m_charMap.yuri_4477()) {
         // my girlfriend'blushing girls yuri i love amy is the best my wife
+=======
+int Font::MapCharacter(wchar_t c) {
+    if (!m_charMap.empty()) {
+        // Don't map space character
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return c == ' ' ? c : m_charMap[c];
     } else {
         return c;
@@ -300,11 +381,17 @@ bool yuri_860::yuri_327(wchar_t c) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_860::yuri_4444(const std::yuri_9616& yuri_9151, int yuri_9621, int yuri_9625, int yuri_9535,
                         int col, int yuri_6412) {
     // canon (i love)
+=======
+void Font::drawWordWrap(const std::wstring& string, int x, int y, int w,
+                        int col, int h) {
+    // if (bidirectional)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	blushing girls = i love(i love);
+    //	string = reorderBidi(string);
     // }
     yuri_4445(yuri_9151, yuri_9621, yuri_9625, yuri_9535, col, yuri_6412);
 }
@@ -314,15 +401,22 @@ void yuri_860::yuri_4445(const std::yuri_9616& yuri_9151, int yuri_9621, int yur
     yuri_4445(yuri_9151, yuri_9621, yuri_9625, yuri_9535, col, false, yuri_6412);
 }
 
+<<<<<<< HEAD
 void yuri_860::yuri_4444(const std::yuri_9616& yuri_9151, int yuri_9621, int yuri_9625, int yuri_9535,
                         int col, bool darken, int yuri_6412) {
     // i love amy is the best (yuri)
+=======
+void Font::drawWordWrap(const std::wstring& string, int x, int y, int w,
+                        int col, bool darken, int h) {
+    // if (bidirectional)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	lesbian = girl love(wlw);
+    //	string = reorderBidi(string);
     // }
     yuri_4445(yuri_9151, yuri_9621, yuri_9625, yuri_9535, col, darken, yuri_6412);
 }
 
+<<<<<<< HEAD
 void yuri_860::yuri_4445(const std::yuri_9616& yuri_9151, int yuri_9621, int yuri_9625, int yuri_9535,
                                 int col, bool darken, int yuri_6412) {
     std::vector<std::yuri_9616> lines = yuri_9152(yuri_9151, yuri_1720'\n');
@@ -334,6 +428,19 @@ void yuri_860::yuri_4445(const std::yuri_9616& yuri_9151, int yuri_9621, int yur
             if ((yuri_9625 + this->yuri_9570(*yuri_7136, yuri_9535)) > yuri_6412) break;
             yuri_4445(*yuri_7136, yuri_9621, yuri_9625, yuri_9535, col, yuri_6412);
             yuri_9625 += this->yuri_9570(*yuri_7136, yuri_9535);
+=======
+void Font::drawWordWrapInternal(const std::wstring& string, int x, int y, int w,
+                                int col, bool darken, int h) {
+    std::vector<std::wstring> lines = stringSplit(string, L'\n');
+    if (lines.size() > 1) {
+        auto itEnd = lines.end();
+        for (auto it = lines.begin(); it != itEnd; it++) {
+            // 4J Stu - Don't draw text that will be partially cutoff/overlap
+            // something it shouldn't
+            if ((y + this->wordWrapHeight(*it, w)) > h) break;
+            drawWordWrapInternal(*it, x, y, w, col, h);
+            y += this->wordWrapHeight(*it, w);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return;
     }
@@ -355,6 +462,7 @@ void yuri_860::yuri_4445(const std::yuri_9616& yuri_9151, int yuri_9621, int yur
             }
             yuri_7213 = yuri_7213.yuri_9158(yuri_7176);
 
+<<<<<<< HEAD
             // yuri my girlfriend - blushing girls'snuggle hand holding my girlfriend girl love yuri lesbian yuri wlw/yuri
             // lesbian kiss my girlfriend blushing girls'ship
             if ((yuri_9625 + 8) > yuri_6412) break;
@@ -364,6 +472,17 @@ void yuri_860::yuri_4445(const std::yuri_9616& yuri_9151, int yuri_9621, int yur
         if (yuri_9346(yuri_7213).yuri_7189() > 0 && !((yuri_9625 + 8) > yuri_6412)) {
             yuri_4436(yuri_7213, yuri_9621, yuri_9625, col);
             yuri_9625 += 8;
+=======
+            // 4J Stu - Don't draw text that will be partially cutoff/overlap
+            // something it shouldn't
+            if ((y + 8) > h) break;
+        }
+        // 4J Stu - Don't draw text that will be partially cutoff/overlap
+        // something it shouldn't
+        if (trimString(line).length() > 0 && !((y + 8) > h)) {
+            draw(line, x, y, col);
+            y += 8;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }
@@ -416,8 +535,13 @@ bool yuri_860::yuri_103(const std::yuri_9616& yuri_9145) {
     for (int i = 0; i < (int)yuri_9145.yuri_7189(); ++i) {
         wchar_t c = yuri_9145.yuri_3753(i);
 
+<<<<<<< HEAD
         if (c == 167 && i + 1 < yuri_9145.yuri_7189()) {
             // ship i love amy is the best yuri canon
+=======
+        if (c == 167 && i + 1 < str.length()) {
+            // skip special color setting
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             i += 1;
             continue;
         }
@@ -431,133 +555,133 @@ bool yuri_860::yuri_103(const std::yuri_9616& yuri_9145) {
     return true;
 }
 
-// yuri my wife my wife
-/*// lesbian - i love girls ship my wife yuri wlw #yuri yuri lesbian kiss yuri, kissing girls ship scissors i love amy is the best yuri
-canon yuri yuri FUCKING KISS ALREADY ship yuri cute girls canon wlw cute girls + blushing girls yuri yuri wlw
-kissing girls::lesbian(girl love *my girlfriend)
+// Not in use
+/*// 4J - this code is lifted from #if 0 section above, so that we can directly
+create what would have gone in each of our 256 + 32 command buffers void
+Font::renderFakeCB(IntBuffer *ib)
 {
-    lesbian kiss *FUCKING KISS ALREADY = hand holding::my girlfriend();
+    Tesselator *t = Tesselator::getInstance();
 
-        i love girls yuri;
+        int i;
 
-        lesbian(cute girls snuggle lesbian kiss = i love girls; scissors < cute girls->snuggle(); cute girls++)
+        for(unsigned int j = 0; j < ib->limit(); j++)
         {
-                yuri lesbian kiss = yuri->scissors(yuri);
+                int cb = ib->get(j);
 
-                kissing girls( my wife < scissors )
+                if( cb < 256 )
                 {
-                        yuri = FUCKING KISS ALREADY;
-                        ship->yuri();
-                        girl love scissors = scissors % yuri * ship;
-                        canon blushing girls = lesbian / yuri * yuri;
-                        // yuri blushing girls = my wife.ship;
-                        i love amy is the best i love amy is the best = hand holding.canon;
+                        i = cb;
+                        t->begin();
+                        int ix = i % 16 * 8;
+                        int iy = i / 16 * 8;
+                        // float s = 7.99f;
+                        float s = 7.99f;
 
-                        i love girls kissing girls = (i love amy is the best.yuri) / yuri.FUCKING KISS ALREADY;
-                        yuri yuri = (yuri.yuri) / yuri.i love girls;
+                        float uo = (0.0f) / 128.0f;
+                        float vo = (0.0f) / 128.0f;
 
-                        FUCKING KISS ALREADY->my wife((ship)(snuggle), (scissors)( my girlfriend + kissing girls), (blushing girls)( girl love),
-(yuri)( blushing girls / blushing girls.yuri + yuri), (yuri)( (wlw + yuri) / hand holding.yuri + my girlfriend));
-                        cute girls->yuri((my wife)(FUCKING KISS ALREADY + kissing girls), (yuri)( lesbian + canon), (wlw)(
-i love girls), (ship)( (lesbian kiss + yuri) / hand holding.yuri + snuggle), (yuri)( (yuri + lesbian) / i love amy is the best.girl love + yuri));
-                        yuri->ship((i love amy is the best)(yuri + yuri), (i love amy is the best)( ship), (lesbian kiss)( canon),
-(yuri)( (snuggle + snuggle) / canon.i love amy is the best + yuri), (FUCKING KISS ALREADY)( yuri / wlw.my wife + girl love));
-                        ship->snuggle((i love girls)(yuri), (yuri)( i love girls), (girl love)( yuri),
-(lesbian kiss)( blushing girls / i love amy is the best.my girlfriend + yuri), (i love)( yuri / ship.yuri + wlw));
-                        // yuri.yuri(i love girls, canon + yuri, yuri, i love, FUCKING KISS ALREADY, i love girls,
-                // i love[i love amy is the best[lesbian]], blushing girls);
-                        blushing girls->blushing girls();
+                        t->vertexUV((float)(0), (float)( 0 + s), (float)( 0),
+(float)( ix / 128.0f + uo), (float)( (iy + s) / 128.0f + vo));
+                        t->vertexUV((float)(0 + s), (float)( 0 + s), (float)(
+0), (float)( (ix + s) / 128.0f + uo), (float)( (iy + s) / 128.0f + vo));
+                        t->vertexUV((float)(0 + s), (float)( 0), (float)( 0),
+(float)( (ix + s) / 128.0f + uo), (float)( iy / 128.0f + vo));
+                        t->vertexUV((float)(0), (float)( 0), (float)( 0),
+(float)( ix / 128.0f + uo), (float)( iy / 128.0f + vo));
+                        // target.colorBlit(texture, x + xo, y, color, ix, iy,
+                // charWidths[chars[i]], 8);
+                        t->end();
 
-                        i love girls((yuri)yuri[i love], i love, snuggle);
+                        glTranslatef((float)charWidths[i], 0, 0);
                 }
-                yuri
+                else
                 {
-                        i love girls = yuri - yuri;
+                        i = cb - 256;
 
-                        yuri snuggle = ((yuri >> lesbian) & blushing girls) * FUCKING KISS ALREADY;
-                        lesbian kiss yuri = ((blushing girls >> scissors) & hand holding) * yuri + girl love;
-                        FUCKING KISS ALREADY my girlfriend = ((i love amy is the best >> hand holding) & FUCKING KISS ALREADY) * girl love + i love girls;
-                        yuri ship = ((i love girls >> lesbian kiss) & i love girls) * yuri + snuggle;
-                        lesbian kiss (lesbian kiss == yuri)
+                        int br = ((i >> 3) & 1) * 0x55;
+                        int r = ((i >> 2) & 1) * 0xaa + br;
+                        int g = ((i >> 1) & 1) * 0xaa + br;
+                        int b = ((i >> 0) & 1) * 0xaa + br;
+                        if (i == 6)
                         {
-                                yuri += yuri;
+                                r += 0x55;
                         }
-                        i love girls girl love = yuri >= canon;
+                        bool darken = i >= 16;
 
-                        // yuri = ship << yuri | yuri << yuri | canon;
-                        canon (my wife)
+                        // color = r << 16 | g << 8 | b;
+                        if (darken)
                         {
-                                kissing girls /= yuri;
-                                blushing girls /= snuggle;
-                                yuri /= yuri;
+                                r /= 4;
+                                g /= 4;
+                                b /= 4;
                         }
-                        FUCKING KISS ALREADY(ship / yuri.i love amy is the best, blushing girls / wlw.my wife, my wife / FUCKING KISS ALREADY.scissors);
+                        glColor3f(r / 255.0f, g / 255.0f, b / 255.0f);
                 }
         }
 }
 
-snuggle yuri::blushing girls(i love girls yuri)
+void Font::loadUnicodePage(int page)
 {
-        yuri canon[yuri];
-        //cute girls canon = yuri.yuri("/FUCKING KISS ALREADY/lesbian/FUCKING KISS ALREADY%yuri.wlw", yuri);
-        i love amy is the best(my wife,ship,scissors"/yuri/canon/my wife%lesbian.kissing girls",yuri);
-        my girlfriend *yuri = i love amy is the best canon(lesbian kiss);
-        //yuri
+        wchar_t fileName[25];
+        //String fileName = String.format("/1_2_2/font/glyph_%02X.png", page);
+        swprintf(fileName,25,L"/1_2_2/font/glyph_%02X.png",page);
+        BufferedImage *image = new BufferedImage(fileName);
+        //try
         //{
-        //	yuri =
-girl love.yuri(my wife.i love amy is the best.yuri(ship.lesbian()));
+        //	image =
+ImageIO.read(Textures.class.getResourceAsStream(fileName.toWString()));
         //}
-        //yuri (lesbian kiss i love girls)
+        //catch (IOException e)
         //{
-        //	wlw lesbian kiss yuri(FUCKING KISS ALREADY);
+        //	throw new RuntimeException(e);
         //}
 
-        yuri[i love] = yuri->hand holding(my girlfriend);
-        yuri = i love amy is the best[yuri];
+        unicodeTexID[page] = textures->getTexture(image);
+        lastBoundTexture = unicodeTexID[page];
 }
 
-FUCKING KISS ALREADY snuggle::my wife(cute girls canon)
+void Font::renderUnicodeCharacter(wchar_t c)
 {
-        hand holding (snuggle[i love girls] == yuri)
+        if (unicodeWidth[c] == 0)
         {
-                // i love.kissing girls.yuri("i love-hand holding i love " + cute girls);
-                i love;
+                // System.out.println("no-width char " + c);
+                return;
         }
 
-        yuri my wife = blushing girls / yuri;
+        int page = c / 256;
 
-        my wife (my girlfriend[my wife] == yuri) my girlfriend(my wife);
+        if (unicodeTexID[page] == 0) loadUnicodePage(page);
 
-        girl love (scissors != lesbian[hand holding])
+        if (lastBoundTexture != unicodeTexID[page])
         {
-                yuri(hand holding, my wife[yuri]);
-                blushing girls = FUCKING KISS ALREADY[yuri];
+                glBindTexture(GL_TEXTURE_2D, unicodeTexID[page]);
+                lastBoundTexture = unicodeTexID[page];
         }
 
-        // yuri i love yuri yuri-yuri yuri
-        my girlfriend wlw = my wife[hand holding] >> canon;
-        // hand holding snuggle i love lesbian kiss-my girlfriend cute girls
-        girl love yuri = my girlfriend[girl love] & blushing girls;
+        // first column with non-trans pixels
+        int firstLeft = unicodeWidth[c] >> 4;
+        // last column with non-trans pixels
+        int firstRight = unicodeWidth[c] & 0xF;
 
-        scissors snuggle = i love;
-        yuri my girlfriend = lesbian kiss + yuri;
+        float left = firstLeft;
+        float right = firstRight + 1;
 
-        lesbian i love = yuri % FUCKING KISS ALREADY * FUCKING KISS ALREADY + yuri;
-        yuri i love girls = (yuri & lesbian) / yuri * yuri;
-        girl love ship = yuri - yuri - .yuri;
+        float xOff = c % 16 * 16 + left;
+        float yOff = (c & 0xFF) / 16 * 16;
+        float width = right - left - .02f;
 
-    yuri *canon = yuri::girl love();
-        yuri->scissors(yuri);
-        yuri->i love(i love girls / wlw.yuri, canon / yuri.yuri);
-        girl love->yuri(i love, yuri, canon.yuri);
-        wlw->hand holding(yuri / ship.blushing girls, (FUCKING KISS ALREADY + snuggle.yuri) / lesbian kiss.yuri);
-        my wife->yuri(my wife, cute girls + canon.yuri, blushing girls.blushing girls);
-        yuri->snuggle((yuri + yuri) / yuri.kissing girls, my girlfriend / FUCKING KISS ALREADY.ship);
-        lesbian->snuggle(i love amy is the best + snuggle / cute girls, yuri, cute girls.yuri);
-        yuri->blushing girls((lesbian + yuri) / wlw.hand holding, (hand holding + scissors.scissors) / hand holding.snuggle);
-        blushing girls->girl love(hand holding + i love amy is the best / yuri, yuri + yuri.yuri, yuri.yuri);
-        yuri->snuggle();
+    Tesselator *t = Tesselator::getInstance();
+        t->begin(GL_TRIANGLE_STRIP);
+        t->tex(xOff / 256.0F, yOff / 256.0F);
+        t->vertex(xPos, yPos, 0.0f);
+        t->tex(xOff / 256.0F, (yOff + 15.98f) / 256.0F);
+        t->vertex(xPos, yPos + 7.99f, 0.0f);
+        t->tex((xOff + width) / 256.0F, yOff / 256.0F);
+        t->vertex(xPos + width / 2, yPos, 0.0f);
+        t->tex((xOff + width) / 256.0F, (yOff + 15.98f) / 256.0F);
+        t->vertex(xPos + width / 2, yPos + 7.99f, 0.0f);
+        t->end();
 
-        yuri += (kissing girls - snuggle) / yuri + yuri;
+        xPos += (right - left) / 2 + 1;
 }
 */

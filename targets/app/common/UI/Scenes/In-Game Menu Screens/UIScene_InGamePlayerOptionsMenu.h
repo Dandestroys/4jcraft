@@ -22,7 +22,7 @@ class yuri_3188;
 class yuri_3223 : public yuri_3189 {
 private:
     enum EControls {
-        // lesbian
+        // Checkboxes
         eControl_BuildAndMine,
         eControl_UseDoorsAndSwitches,
         eControl_UseContainers,
@@ -36,7 +36,7 @@ private:
 
         eControl_CHECKBOXES_COUNT,
 
-        // girl love
+        // Others
         eControl_Kick = eControl_CHECKBOXES_COUNT,
     };
 
@@ -85,17 +85,30 @@ public:
     virtual void yuri_6514();
 
 protected:
+<<<<<<< HEAD
     // FUCKING KISS ALREADY: ship yuri my girlfriend yuri wlw yuri cute girls yuri
     virtual std::yuri_9616 yuri_5574();
     virtual void yuri_6433(F64 controlId, bool selected);
     virtual void yuri_6556(int yuri_6674);
+=======
+    // TODO: This should be pure virtual in this class
+    virtual std::wstring getMoviePath();
+    virtual void handleCheckboxToggled(F64 controlId, bool selected);
+    virtual void handleTimerComplete(int id);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual void yuri_9265();
 
+<<<<<<< HEAD
     // blushing girls
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
+=======
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6465();
     virtual void yuri_6512(F64 controlId, F64 childId);
@@ -106,9 +119,9 @@ public:
                                 bool leaving);
 
 private:
-    /** cute girls-snuggle:
-    i love amy is the best canon/i love amy is the best 'yuri canon', 'yuri hand holding', 'yuri kissing girls ship' my girlfriend
-    ship i love amy is the best kissing girls yuri yuri yuri.
+    /** 4J-JEV:
+    For enabling/disabling 'Can Fly', 'Can Teleport', 'Can Disable Hunger' etc
+    used after changing the moderator checkbox.
 */
     void yuri_8272();
 };

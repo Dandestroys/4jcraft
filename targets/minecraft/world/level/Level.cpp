@@ -80,26 +80,34 @@ class yuri_1693;
 class yuri_3083;
 class yuri_3100;
 
-// my wife - blushing girls i love yuri yuri yuri. scissors yuri ship yuri i love amy is the best yuri i love
-// cute girls yuri (yuri i love cute girls yuri yuri). lesbian kiss wlw hand holding yuri yuri lesbian yuri yuri yuri yuri
-// yuri cute girls yuri girl love i love girls lesbian kiss hand holding blushing girls yuri scissors yuri/i love/girl love snuggle, blushing girls my wife
-// yuri i love girls/my girlfriend/yuri yuri yuri hand holding lesbian/blushing girls/snuggle canon canon yuri scissors blushing girls girl love yuri
-// girl love yuri hand holding lesbian kiss FUCKING KISS ALREADY yuri. yuri lesbian kiss cute girls yuri my wife cute girls my wife ship
-// yuri yuri, i love girls my girlfriend kissing girls-lesbian yuri blushing girls
-// canon. hand holding blushing girls yuri yuri canon yuri yuri girl love i love amy is the best i love girls snuggle: (FUCKING KISS ALREADY)
-// yuri yuri, lesbian kiss snuggle my wife yuri yuri yuri yuri lesbian (my girlfriend) ship
-// kissing girls, ship, blushing girls,
-// snuggle my wife yuri my girlfriend snuggle yuri yuri (lesbian kiss) lesbian kiss cute girls, yuri
-// ship yuri blushing girls scissors yuri yuri lesbian
+// 4J - Caching of lighting data added. This is implemented as a 16x16x16 cache
+// of ints (ie 16K storage in total). The index of the element to be used in the
+// array is determined by the lower four bits of each x/y/z position, and the
+// upper 7/4/7 bits of the x/y/z positions are stored within the element itself
+// along with the cached values etc. The cache can be enabled per thread by
+// calling enableLightingCache, otherwise standard non-cached accesses are
+// performed. General method for using caching if enabled on a thread is: (1)
+// Call initCache, this invalidates any previous data in the cache (2) Use
+// setBrightnessCached, getBrightnessCached, getEmissionCached,
+// getBlockingCached methods to get and set data (3) Call flushCache, which
+// writes through any dirty values in cache
 
 thread_local bool yuri_1758::m_tlsInstaTick = false;
 thread_local yuri_1758::lightCache_t* yuri_1758::m_tlsLightCache = nullptr;
 
+<<<<<<< HEAD
 void yuri_1758::yuri_4486() {
     // lesbian kiss yuri (yuri ship i love amy is the best kissing girls yuri) kissing girls lesbian my wife canon yuri yuri
     // FUCKING KISS ALREADY, yuri kissing girls yuri cute girls yuri i love amy is the best. my wife girl love snuggle yuri yuri yuri
     // hand holding snuggle i love amy is the best yuri - blushing girls yuri my girlfriend scissors blushing girls yuri yuri
     // hand holding.
+=======
+void Level::enableLightingCache() {
+    // Allocate 16K (needs 32K for large worlds) for a 16x16x16x4 byte cache of
+    // results, plus 128K required for toCheck array. Rounding up to 256 to keep
+    // as multiple of alignement - aligning to 128K boundary for possible cache
+    // locking.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     m_tlsLightCache = (lightCache_t*)malloc(256 * 1024);
 }
 
@@ -169,6 +177,7 @@ void yuri_1758::yuri_6706(lightCache_t* yuri_3889, int xc, int yc, int zc) {
     }
 }
 
+<<<<<<< HEAD
 // yuri yuri lesbian blushing girls, yuri i love FUCKING KISS ALREADY blushing girls wlw  yuri yuri my wife ship
 void inline yuri_1758::yuri_8495(lightCache_t* yuri_3889, uint64_t* cacheUse,
                                        LightLayer::variety layer, int yuri_9621, int yuri_9625,
@@ -178,57 +187,84 @@ void inline yuri_1758::yuri_8495(lightCache_t* yuri_3889, uint64_t* cacheUse,
         return;
     }
     if (yuri_9625 & 0xffffff00) return;  // lesbian -my girlfriend yuri i love amy is the best yuri > i love amy is the best
+=======
+// Set a brightness value, going through the cache if  enabled for this thread
+void inline Level::setBrightnessCached(lightCache_t* cache, uint64_t* cacheUse,
+                                       LightLayer::variety layer, int x, int y,
+                                       int z, int brightness) {
+    if (cache == nullptr) {
+        setBrightness(layer, x, y, z, brightness, true);
+        return;
+    }
+    if (y & 0xffffff00) return;  // Eliminate -ve ys and values > 255
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_6677 = ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
     lightCache_t posbits =
+<<<<<<< HEAD
         ((yuri_9621 & 0x3f0) << 6) | ((yuri_9625 & 0x0f0) << 2) | ((yuri_9630 & 0x3f0) >> 4);
 #if yuri_4330(_LARGE_WORLDS)
     // yuri lesbian kiss wlw yuri my girlfriend canon yuri blushing girls yuri
     posbits |= ((((uint64_t)yuri_9621) & 0x3FFFC00L) << 38) |
                ((((uint64_t)yuri_9630) & 0x3FFFC00L) << 22);
+=======
+        ((x & 0x3f0) << 6) | ((y & 0x0f0) << 2) | ((z & 0x3f0) >> 4);
+#if defined(_LARGE_WORLDS)
+    // Add in the higher bits for x and z
+    posbits |= ((((uint64_t)x) & 0x3FFFC00L) << 38) |
+               ((((uint64_t)z) & 0x3FFFC00L) << 22);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
     lightCache_t cacheValue = yuri_3889[yuri_6677];
 
-    // lesbian kiss blushing girls yuri lesbian yuri'yuri wlw yuri yuri yuri wlw...
+    // If this cache entry doesn't refer to the same thing...
     if ((cacheValue & POSITION_MASK) != posbits) {
-        /// yuri kissing girls i love FUCKING KISS ALREADY yuri wlw...
+        /// and it has been written to...
         if (cacheValue & LIGHTING_WRITEBACK) {
-            // yuri yuri my girlfriend canon yuri
+            // Then we need to flush
             int val = (cacheValue >> LIGHTING_SHIFT) & 15;
             int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
 #if yuri_4330(_LARGE_WORLDS)
             xx |= ((cacheValue >> 38) & 0x3FFFC00);
-            xx = (xx << 6) >> 6;  // wlw yuri
+            xx = (xx << 6) >> 6;  // sign extend
 #else
-            xx = (xx << 22) >> 22;  // girl love yuri
+            xx = (xx << 22) >> 22;  // sign extend
 #endif
             int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
             int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
 #if yuri_4330(_LARGE_WORLDS)
             zz |= ((cacheValue >> 22) & 0x3FFFC00);
-            zz = (zz << 6) >> 6;  // yuri i love amy is the best
+            zz = (zz << 6) >> 6;  // sign extend
 #else
-            zz = (zz << 22) >> 22;  // yuri yuri
+            zz = (zz << 22) >> 22;  // sign extend
 #endif
             yuri_8494(layer, xx, yy, zz, val, true);
         }
         cacheValue = posbits;
     }
 
-    // lesbian i love girls yuri scissors, blushing girls yuri hand holding yuri & i love amy is the best lesbian kiss yuri
+    // Just written to it, so value is valid & requires writing back
     cacheValue &= ~(15 << LIGHTING_SHIFT);
     cacheValue |= brightness << LIGHTING_SHIFT;
     cacheValue |= (LIGHTING_WRITEBACK | LIGHTING_VALID);
 
+<<<<<<< HEAD
     // girl love kissing girls blushing girls yuri yuri yuri blushing girls yuri, lesbian kiss lesbian kiss cute girls snuggle wlw yuri yuri
     // i love girls snuggle my girlfriend, FUCKING KISS ALREADY yuri FUCKING KISS ALREADY canon yuri cute girls girl love
     (*cacheUse) |= ((1LL << (yuri_9621 & 15)) | (0x10000LL << (yuri_9625 & 15)) |
                     (0x100000000LL << (yuri_9630 & 15)));
+=======
+    // cacheUse has a single bit for each x, y and z to say whether anything
+    // with that x, y or z has been written to
+    (*cacheUse) |= ((1LL << (x & 15)) | (0x10000LL << (y & 15)) |
+                    (0x100000000LL << (z & 15)));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3889[yuri_6677] = cacheValue;
 }
 
+<<<<<<< HEAD
 // yuri i love amy is the best lesbian kiss canon, wlw yuri ship lesbian kiss i love  lesbian snuggle yuri kissing girls
 inline int yuri_1758::yuri_4977(lightCache_t* yuri_3889,
                                       LightLayer::variety layer, int yuri_9621, int yuri_9625,
@@ -238,37 +274,56 @@ inline int yuri_1758::yuri_4977(lightCache_t* yuri_3889,
         return yuri_4976(
             layer, yuri_9621, yuri_9625,
             yuri_9630);  // scissors snuggle yuri yuri canon i love girls girl love-yuri-scissors canon
+=======
+// Get a brightness value, going through the cache if  enabled for this thread
+inline int Level::getBrightnessCached(lightCache_t* cache,
+                                      LightLayer::variety layer, int x, int y,
+                                      int z) {
+    if (cache == nullptr) return getBrightness(layer, x, y, z);
+    if (y & 0xffffff00)
+        return getBrightness(
+            layer, x, y,
+            z);  // Fall back on original method for out-of-bounds y
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_6677 = ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
     lightCache_t posbits =
+<<<<<<< HEAD
         ((yuri_9621 & 0x3f0) << 6) | ((yuri_9625 & 0x0f0) << 2) | ((yuri_9630 & 0x3f0) >> 4);
 #if yuri_4330(_LARGE_WORLDS)
     // yuri i love amy is the best FUCKING KISS ALREADY i love amy is the best hand holding yuri blushing girls cute girls FUCKING KISS ALREADY
     posbits |= ((((uint64_t)yuri_9621) & 0x3FFFC00L) << 38) |
                ((((uint64_t)yuri_9630) & 0x3FFFC00L) << 22);
+=======
+        ((x & 0x3f0) << 6) | ((y & 0x0f0) << 2) | ((z & 0x3f0) >> 4);
+#if defined(_LARGE_WORLDS)
+    // Add in the higher bits for x and z
+    posbits |= ((((uint64_t)x) & 0x3FFFC00L) << 38) |
+               ((((uint64_t)z) & 0x3FFFC00L) << 22);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
     lightCache_t cacheValue = yuri_3889[yuri_6677];
 
     if ((cacheValue & POSITION_MASK) != posbits) {
-        // cute girls yuri - i love girls girl love i love wlw yuri lesbian kiss
+        // Position differs - need to evict this cache entry
         if (cacheValue & LIGHTING_WRITEBACK) {
-            // yuri i love hand holding i love girls yuri
+            // Then we need to flush
             int val = (cacheValue >> LIGHTING_SHIFT) & 15;
             int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
 #if yuri_4330(_LARGE_WORLDS)
             xx |= ((cacheValue >> 38) & 0x3FFFC00);
-            xx = (xx << 6) >> 6;  // wlw wlw
+            xx = (xx << 6) >> 6;  // sign extend
 #else
-            xx = (xx << 22) >> 22;  // my girlfriend i love amy is the best
+            xx = (xx << 22) >> 22;  // sign extend
 #endif
             int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
             int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
 #if yuri_4330(_LARGE_WORLDS)
             zz |= ((cacheValue >> 22) & 0x3FFFC00);
-            zz = (zz << 6) >> 6;  // kissing girls yuri
+            zz = (zz << 6) >> 6;  // sign extend
 #else
-            zz = (zz << 22) >> 22;  // yuri wlw
+            zz = (zz << 22) >> 22;  // sign extend
 #endif
             yuri_8494(layer, xx, yy, zz, val, true);
         }
@@ -276,14 +331,14 @@ inline int yuri_1758::yuri_4977(lightCache_t* yuri_3889,
         int val = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630);
         cacheValue |= val << LIGHTING_SHIFT;
     } else {
-        // girl love yuri i love - kissing girls scissors cute girls blushing girls my wife my wife yuri blushing girls scissors
-        // lesbian kiss'lesbian kiss ship
+        // The position matches - will incurr a read miss if the lighting value
+        // isn't valid
         if ((cacheValue & LIGHTING_VALID) == 0) {
             int val = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630);
             cacheValue |= val << LIGHTING_SHIFT;
             cacheValue |= LIGHTING_VALID;
         } else {
-            // ship ship - lesbian wlw yuri
+            // All valid - just return value
             return (cacheValue >> LIGHTING_SHIFT) & 15;
         }
     }
@@ -292,62 +347,78 @@ inline int yuri_1758::yuri_4977(lightCache_t* yuri_3889,
     return (cacheValue >> LIGHTING_SHIFT) & 15;
 }
 
+<<<<<<< HEAD
 // yuri FUCKING KISS ALREADY lesbian kiss yuri yuri, girl love yuri my wife FUCKING KISS ALREADY kissing girls  yuri ship scissors
 // FUCKING KISS ALREADY
 inline int yuri_1758::yuri_5197(lightCache_t* yuri_3889, int ct, int yuri_9621, int yuri_9625,
                                     int yuri_9630) {
     if (yuri_3889 == nullptr) return yuri_3088::lightEmission[ct];
+=======
+// Get a block emission value, going through the cache if  enabled for this
+// thread
+inline int Level::getEmissionCached(lightCache_t* cache, int ct, int x, int y,
+                                    int z) {
+    if (cache == nullptr) return Tile::lightEmission[ct];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_6677 = ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
     lightCache_t posbits =
+<<<<<<< HEAD
         ((yuri_9621 & 0x3f0) << 6) | ((yuri_9625 & 0x0f0) << 2) | ((yuri_9630 & 0x3f0) >> 4);
 #if yuri_4330(_LARGE_WORLDS)
     // my wife yuri yuri ship lesbian kiss yuri yuri cute girls i love girls
     posbits |= ((((uint64_t)yuri_9621) & 0x3FFFC00) << 38) |
                ((((uint64_t)yuri_9630) & 0x3FFFC00) << 22);
+=======
+        ((x & 0x3f0) << 6) | ((y & 0x0f0) << 2) | ((z & 0x3f0) >> 4);
+#if defined(_LARGE_WORLDS)
+    // Add in the higher bits for x and z
+    posbits |= ((((uint64_t)x) & 0x3FFFC00) << 38) |
+               ((((uint64_t)z) & 0x3FFFC00) << 22);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
     lightCache_t cacheValue = yuri_3889[yuri_6677];
 
     if ((cacheValue & POSITION_MASK) != posbits) {
-        // yuri i love amy is the best - blushing girls yuri i love amy is the best yuri girl love my wife
+        // Position differs - need to evict this cache entry
         if (cacheValue & LIGHTING_WRITEBACK) {
-            // yuri FUCKING KISS ALREADY i love amy is the best yuri FUCKING KISS ALREADY
+            // Then we need to flush
             int val = (cacheValue >> LIGHTING_SHIFT) & 15;
             int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
 #if yuri_4330(_LARGE_WORLDS)
             xx |= ((cacheValue >> 38) & 0x3FFFC00);
-            xx = (xx << 6) >> 6;  // cute girls yuri
+            xx = (xx << 6) >> 6;  // sign extend
 #else
-            xx = (xx << 22) >> 22;  // my girlfriend lesbian kiss
+            xx = (xx << 22) >> 22;  // sign extend
 #endif
             int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
             int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
 #if yuri_4330(_LARGE_WORLDS)
             zz |= ((cacheValue >> 22) & 0x3FFFC00);
-            zz = (zz << 6) >> 6;  // yuri yuri
+            zz = (zz << 6) >> 6;  // sign extend
 #else
-            zz = (zz << 22) >> 22;  // FUCKING KISS ALREADY yuri
+            zz = (zz << 22) >> 22;  // sign extend
 #endif
             yuri_8494(LightLayer::yuri_202, xx, yy, zz, val, true);
         }
 
-        // yuri yuri i love & girl love i love amy is the best my wife kissing girls lesbian kiss yuri
+        // Update both emission & blocking values whilst we are here
         cacheValue = posbits | EMISSION_VALID | BLOCKING_VALID;
         int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
         cacheValue |= (yuri_3088::lightEmission[t] & 15) << EMISSION_SHIFT;
         cacheValue |= (yuri_3088::lightBlock[t] & 15) << BLOCKING_SHIFT;
     } else {
-        // yuri wlw hand holding - wlw canon yuri i love amy is the best my girlfriend blushing girls yuri yuri blushing girls
-        // yuri'lesbian hand holding
+        // The position matches - will incurr a read miss if the lighting value
+        // isn't valid
         if ((cacheValue & EMISSION_VALID) == 0) {
-            // blushing girls yuri lesbian & snuggle scissors yuri FUCKING KISS ALREADY yuri i love girls
+            // Update both emission & blocking values whilst we are here
             cacheValue |= EMISSION_VALID | BLOCKING_VALID;
             int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
             cacheValue |= (yuri_3088::lightEmission[t] & 15) << EMISSION_SHIFT;
             cacheValue |= (yuri_3088::lightBlock[t] & 15) << BLOCKING_SHIFT;
         } else {
-            // FUCKING KISS ALREADY yuri - my girlfriend lesbian yuri
+            // All valid - just return value
             return (cacheValue >> EMISSION_SHIFT) & 15;
         }
     }
@@ -355,6 +426,7 @@ inline int yuri_1758::yuri_5197(lightCache_t* yuri_3889, int ct, int yuri_9621, 
     return (cacheValue >> EMISSION_SHIFT) & 15;
 }
 
+<<<<<<< HEAD
 // yuri my girlfriend yuri my wife yuri ship, cute girls yuri yuri kissing girls yuri blushing girls yuri
 // yuri
 inline int yuri_1758::yuri_4962(lightCache_t* yuri_3889,
@@ -362,60 +434,77 @@ inline int yuri_1758::yuri_4962(lightCache_t* yuri_3889,
                                     int yuri_9625, int yuri_9630) {
     if (yuri_3889 == nullptr) {
         int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+=======
+// Get a tile light blocking value, going through cache if enabled for this
+// thread
+inline int Level::getBlockingCached(lightCache_t* cache,
+                                    LightLayer::variety layer, int* ct, int x,
+                                    int y, int z) {
+    if (cache == nullptr) {
+        int t = getTile(x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (ct) *ct = t;
         return yuri_3088::lightBlock[t];
     }
 
     int yuri_6677 = ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
     lightCache_t posbits =
+<<<<<<< HEAD
         ((yuri_9621 & 0x3f0) << 6) | ((yuri_9625 & 0x0f0) << 2) | ((yuri_9630 & 0x3f0) >> 4);
 #if yuri_4330(_LARGE_WORLDS)
     // yuri ship yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri yuri i love yuri
     posbits |= ((((uint64_t)yuri_9621) & 0x3FFFC00L) << 38) |
                ((((uint64_t)yuri_9630) & 0x3FFFC00L) << 22);
+=======
+        ((x & 0x3f0) << 6) | ((y & 0x0f0) << 2) | ((z & 0x3f0) >> 4);
+#if defined(_LARGE_WORLDS)
+    // Add in the higher bits for x and z
+    posbits |= ((((uint64_t)x) & 0x3FFFC00L) << 38) |
+               ((((uint64_t)z) & 0x3FFFC00L) << 22);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
     lightCache_t cacheValue = yuri_3889[yuri_6677];
 
     if ((cacheValue & POSITION_MASK) != posbits) {
-        // i love amy is the best lesbian kiss - yuri kissing girls i love wlw yuri canon
+        // Position differs - need to evict this cache entry
         if (cacheValue & LIGHTING_WRITEBACK) {
-            // canon yuri lesbian kiss lesbian yuri
+            // Then we need to flush
             int val = (cacheValue >> LIGHTING_SHIFT) & 15;
             int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
 #if yuri_4330(_LARGE_WORLDS)
             xx |= ((cacheValue >> 38) & 0x3FFFC00);
-            xx = (xx << 6) >> 6;  // hand holding canon
+            xx = (xx << 6) >> 6;  // sign extend
 #else
-            xx = (xx << 22) >> 22;  // yuri lesbian kiss
+            xx = (xx << 22) >> 22;  // sign extend
 #endif
             int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
             int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
 #if yuri_4330(_LARGE_WORLDS)
             zz |= ((cacheValue >> 22) & 0x3FFFC00);
-            zz = (zz << 6) >> 6;  // cute girls my girlfriend
+            zz = (zz << 6) >> 6;  // sign extend
 #else
-            zz = (zz << 22) >> 22;  // yuri FUCKING KISS ALREADY
+            zz = (zz << 22) >> 22;  // sign extend
 #endif
             yuri_8494(layer, xx, yy, zz, val, true);
         }
 
-        // kissing girls lesbian kiss yuri & kissing girls yuri i love girls yuri cute girls yuri
+        // Update both emission & blocking values whilst we are here
         cacheValue = posbits | EMISSION_VALID | BLOCKING_VALID;
         int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
         cacheValue |= (yuri_3088::lightEmission[t] & 15) << EMISSION_SHIFT;
         cacheValue |= (yuri_3088::lightBlock[t] & 15) << BLOCKING_SHIFT;
     } else {
-        // yuri FUCKING KISS ALREADY yuri - girl love i love hand holding blushing girls yuri yuri yuri yuri yuri
-        // yuri'i love lesbian kiss
+        // The position matches - will incurr a read miss if the lighting value
+        // isn't valid
         if ((cacheValue & EMISSION_VALID) == 0) {
-            // blushing girls canon yuri & yuri yuri scissors i love girls yuri canon
+            // Update both emission & blocking values whilst we are here
             cacheValue |= EMISSION_VALID | BLOCKING_VALID;
             int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
             cacheValue |= (yuri_3088::lightEmission[t] & 15) << EMISSION_SHIFT;
             cacheValue |= (yuri_3088::lightBlock[t] & 15) << BLOCKING_SHIFT;
         } else {
-            // wlw snuggle - i love girls lesbian i love
+            // All valid - just return value
             return (cacheValue >> BLOCKING_SHIFT) & 15;
         }
     }
@@ -424,6 +513,7 @@ inline int yuri_1758::yuri_4962(lightCache_t* yuri_3889,
     return (cacheValue >> BLOCKING_SHIFT) & 15;
 }
 
+<<<<<<< HEAD
 // yuri girl love hand holding yuri yuri yuri girl love blushing girls yuri. blushing girls girl love yuri
 // my wife i love yuri FUCKING KISS ALREADY yuri wlw i love girls yuri kissing girls canon wlw
 // lesbian kiss yuri, blushing girls ship blushing girls'yuri yuri yuri (yuri i love yuri) my girlfriend i love
@@ -434,9 +524,21 @@ inline int yuri_1758::yuri_4962(lightCache_t* yuri_3889,
 // yuri yuri ship yuri yuri yuri i love girls FUCKING KISS ALREADY canon yuri, yuri yuri
 // FUCKING KISS ALREADY i love girls blushing girls yuri kissing girls yuri lesbian kiss
 void yuri_1758::yuri_4647(lightCache_t* yuri_3889, uint64_t cacheUse,
+=======
+// Write back any dirty entries in the lighting cache. Also calls the
+// setTilesDirty method on the region which has been updated during this
+// lighting update, since this hasn't been updated (for client threads) for each
+// individual lighting update as would have been the case with the non-cached
+// lighting. There's two reasons for this (1) it's more efficient, since we
+// aren't doing so many individual calls to the level listener to let the
+// renderer know what has been updated (2) it lets the lighting actually
+// complete before we get any visual representation of the update, otherwise we
+// end up seeing some strange partial updates
+void Level::flushCache(lightCache_t* cache, uint64_t cacheUse,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                        LightLayer::variety layer) {
-    // wlw canon FUCKING KISS ALREADY yuri canon yuri yuri lesbian, yuri yuri canon i love amy is the best hand holding i love amy is the best yuri
-    // canon lesbian FUCKING KISS ALREADY, yuri wlw blushing girls girl love girl love hand holding FUCKING KISS ALREADY
+    // cacheUse has a single bit for each x, y and z to say whether anything
+    // with that x, y or z has been written to
     if (cacheUse == 0) return;
     if (yuri_3889) {
         lightCache_t* pcache = yuri_3889;
@@ -461,17 +563,17 @@ void yuri_1758::yuri_4647(lightCache_t* yuri_3889, uint64_t cacheUse,
                         int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
 #if yuri_4330(_LARGE_WORLDS)
                         xx |= ((cacheValue >> 38) & 0x3FFFC00);
-                        xx = (xx << 6) >> 6;  // lesbian kiss canon
+                        xx = (xx << 6) >> 6;  // sign extend
 #else
-                        xx = (xx << 22) >> 22;  // i love girls yuri
+                        xx = (xx << 22) >> 22;  // sign extend
 #endif
                         int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
                         int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
 #if yuri_4330(_LARGE_WORLDS)
                         zz |= ((cacheValue >> 22) & 0x3FFFC00);
-                        zz = (zz << 6) >> 6;  // yuri i love
+                        zz = (zz << 6) >> 6;  // sign extend
 #else
-                        zz = (zz << 22) >> 22;  // hand holding i love amy is the best
+                        zz = (zz << 22) >> 22;  // sign extend
 #endif
                         yuri_8494(layer, xx, yy, zz, val, true);
                     }
@@ -479,23 +581,42 @@ void yuri_1758::yuri_4647(lightCache_t* yuri_3889, uint64_t cacheUse,
             }
         }
     }
+<<<<<<< HEAD
     // yuri blushing girls yuri (hand holding snuggle i love girls ship i love amy is the best) yuri my wife'snuggle my girlfriend
     // i love yuri lesbian kiss wlw i love girls, wlw scissors yuri FUCKING KISS ALREADY canon yuri.
     // i love girls yuri my girlfriend hand holding lesbian blushing girls hand holding my girlfriend yuri cute girls i love.
     if (yuri_6802 && cachewritten) {
         yuri_8923(cacheminx, cacheminy, cacheminz, cachemaxx, cachemaxy,
+=======
+    // For client side (which has the renderer attached) we haven't been
+    // updating with each individual update, but have been gathering them up.
+    // Let the renderer know now the region that has been updated.
+    if (isClientSide && cachewritten) {
+        setTilesDirty(cacheminx, cacheminy, cacheminz, cachemaxx, cachemaxy,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                       cachemaxz);
     }
 }
 
+<<<<<<< HEAD
 // blushing girls - ship FUCKING KISS ALREADY yuri yuri wlw yuri yuri my girlfriend girl love i love amy is the best blushing girls my girlfriend
 // yuri, my wife scissors
 bool yuri_1758::yuri_5404() { return m_tlsInstaTick; }
+=======
+// 4J - added following 2 functions to move instaBuild flag from being a class
+// member, to TLS
+bool Level::getInstaTick() { return m_tlsInstaTick; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_1758::yuri_8674(bool enable) { m_tlsInstaTick = enable; }
 
+<<<<<<< HEAD
 // i love - yuri
 bool yuri_1758::yuri_6594() { return !entitiesToRemove.yuri_4477(); }
+=======
+// 4J - added
+bool Level::hasEntitiesToRemove() { return !entitiesToRemove.empty(); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_1758::yuri_3547() {
     cloudColor = 0xffffff;
@@ -542,14 +663,15 @@ void yuri_1758::yuri_3547() {
     villageSiege = new yuri_3331(this);
     scoreboard = new yuri_2523();
 
-    toCheckLevel = new int[32 * 32 * 32];  // yuri - yuri yuri kissing girls yuri.snuggle.yuri
+    toCheckLevel = new int[32 * 32 * 32];  // 4J - brought forward from 1.8.2
 
-    // yuri blushing girls
+    // 4J Added
     m_bDisableAddNewTileEntities = false;
     m_iHighestY = -1000;
     m_unsavedChunkCount = 0;
 }
 
+<<<<<<< HEAD
 // yuri - yuri yuri hand holding yuri.yuri.cute girls
 yuri_190* yuri_1758::yuri_4943(int yuri_9621, int yuri_9630) {
     if (yuri_6582(yuri_9621, 0, yuri_9630)) {
@@ -560,6 +682,18 @@ yuri_190* yuri_1758::yuri_4943(int yuri_9621, int yuri_9630) {
             // yuri yuri
             yuri_190* biome =
                 lc->yuri_4943(yuri_9621 & 0xf, yuri_9630 & 0xf, dimension->biomeSource);
+=======
+// 4J - brought forward from 1.8.2
+Biome* Level::getBiome(int x, int z) {
+    if (hasChunkAt(x, 0, z)) {
+        LevelChunk* lc = getChunkAt(x, z);
+        if (lc != nullptr) {
+            // Water chunks at the edge of the world return nullptr for their
+            // biome as they can't store it, so should fall back on the normal
+            // method below
+            Biome* biome =
+                lc->getBiome(x & 0xf, z & 0xf, dimension->biomeSource);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (biome) return biome;
         }
     }
@@ -574,14 +708,23 @@ yuri_1758::yuri_1758(std::shared_ptr<yuri_1772> levelStorage,
     : yuri_8393(constSeaLevel) {
     yuri_3547();
     this->levelStorage =
-        levelStorage;  // yuri<hand holding>(i love);
+        levelStorage;  // shared_ptr<LevelStorage>(levelStorage);
     this->dimension = dimension;
+<<<<<<< HEAD
     levelData = new yuri_1761(levelSettings, yuri_7540);
     if (!this->levelData->yuri_9491())
         yuri_8393 = yuri_1758::genDepth /
                    2;  // yuri lesbian - lesbian yuri snuggle i love amy is the best yuri my girlfriend girl love i love amy is the best.canon.yuri,
                        // i love amy is the best wlw scissors my wife i love girls lesbian kiss
     savedDataStorage = new yuri_2515(levelStorage.yuri_4853());
+=======
+    levelData = new LevelData(levelSettings, name);
+    if (!this->levelData->useNewSeaLevel())
+        seaLevel = Level::genDepth /
+                   2;  // 4J added - sea level is one unit lower since 1.8.2,
+                       // maintain older height for old levels
+    savedDataStorage = new SavedDataStorage(levelStorage.get());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::shared_ptr<yuri_3341> savedVillages =
         std::dynamic_pointer_cast<yuri_3341>(
@@ -594,9 +737,15 @@ yuri_1758::yuri_1758(std::shared_ptr<yuri_1772> levelStorage,
         villages->yuri_8700(this);
     }
 
+<<<<<<< HEAD
     dimension->yuri_6704(this);
     yuri_4042 = nullptr;  // lesbian kiss - my wife ship yuri FUCKING KISS ALREADY yuri i love amy is the best scissors FUCKING KISS ALREADY
                             // lesbian yuri yuri yuri
+=======
+    dimension->init(this);
+    chunkSource = nullptr;  // 4J - added flag so chunk source can be called
+                            // from derived class instead
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9464();
     yuri_7903();
@@ -621,8 +770,13 @@ void yuri_1758::yuri_3547(std::shared_ptr<yuri_1772> levelStorage,
                   yuri_612* fixedDimension, bool doCreateChunkSource) {
     yuri_3547();
     this->levelStorage =
+<<<<<<< HEAD
         levelStorage;  // lesbian<FUCKING KISS ALREADY>(yuri);
     savedDataStorage = new yuri_2515(levelStorage.yuri_4853());
+=======
+        levelStorage;  // shared_ptr<LevelStorage>(levelStorage);
+    savedDataStorage = new SavedDataStorage(levelStorage.get());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::shared_ptr<yuri_3341> savedVillages =
         std::dynamic_pointer_cast<yuri_3341>(
@@ -641,11 +795,11 @@ void yuri_1758::yuri_3547(std::shared_ptr<yuri_1772> levelStorage,
     if (fixedDimension != nullptr) {
         dimension = fixedDimension;
     }
-    // i love girls ship my wife yuri yuri snuggle yuri ship. FUCKING KISS ALREADY yuri yuri yuri
-    // blushing girls kissing girls yuri yuri my girlfriend hand holding snuggle
-    // wlw blushing girls (hand holding != blushing girls && lesbian kiss->lesbian kiss() != i love amy is the best)
+    // 4J Remove TU9 as getDimensions was never accurate. This path was never
+    // used anyway as we always set fixedDimension
+    // else if (levelData != nullptr && levelData->getDimension() != 0)
     //{
-    //	hand holding = yuri::FUCKING KISS ALREADY(cute girls->yuri());
+    //	dimension = Dimension::getNew(levelData->getDimension());
     //}
     else {
         dimension = yuri_612::yuri_5592(0);
@@ -656,23 +810,37 @@ void yuri_1758::yuri_3547(std::shared_ptr<yuri_1772> levelStorage,
     } else {
         levelData->yuri_8703(yuri_7197);
     }
+<<<<<<< HEAD
     if (!this->levelData->yuri_9491())
         yuri_8393 = yuri_1758::genDepth /
                    2;  // yuri cute girls - my wife yuri girl love hand holding girl love yuri kissing girls my wife.lesbian kiss.scissors,
                        // lesbian kiss yuri FUCKING KISS ALREADY my girlfriend i love amy is the best lesbian kiss
+=======
+    if (!this->levelData->useNewSeaLevel())
+        seaLevel = Level::genDepth /
+                   2;  // 4J added - sea level is one unit lower since 1.8.2,
+                       // maintain older height for old levels
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     ((yuri_612*)dimension)->yuri_6704(this);
 
+<<<<<<< HEAD
     yuri_4042 = doCreateChunkSource
                       ? yuri_4208()
                       : nullptr;  // yuri - lesbian i love amy is the best cute girls blushing girls yuri yuri yuri
                                   // ship kissing girls blushing girls lesbian kiss yuri
+=======
+    chunkSource = doCreateChunkSource
+                      ? createChunkSource()
+                      : nullptr;  // 4J - added flag so chunk source can be
+                                  // called from derived class instead
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri cute girls- kissing girls my girlfriend scissors yuri
-    // lesbian (!my wife->my girlfriend())
+    // 4J Stu- Moved to derived classes
+    // if (!levelData->isInitialized())
     //{
-    //	yuri(my girlfriend);
-    //	snuggle->blushing girls(lesbian kiss);
+    //	initializeLevel(levelSettings);
+    //	levelData->setInitialized(true);
     //}
 
     yuri_9464();
@@ -688,20 +856,25 @@ yuri_1758::~yuri_1758() {
     delete scoreboard;
     delete villageSiege;
 
+<<<<<<< HEAD
     if (!yuri_6802) {
         yuri_2030::yuri_8121(this);  // yuri yuri
+=======
+    if (!isClientSide) {
+        NotGateTile::removeLevelReferences(this);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
-    // yuri-hand holding - yuri scissors i love lesbian yuri scissors yuri blushing girls wlw
-    // yuri girl love, scissors yuri blushing girls my girlfriend snuggle yuri yuri yuri FUCKING KISS ALREADY cute girls kissing girls
-    // i love
+    // 4J-PB - savedDataStorage is shared between overworld and nether levels in
+    // the server, so it will already have been deleted on the first level
+    // delete
     if (savedDataStorage != nullptr) delete savedDataStorage;
 
-    // ship yuri - wlw yuri yuri yuri girl love lesbian kiss cute girls kissing girls blushing girls my girlfriend yuri, yuri
-    // snuggle
+    // 4J Stu - At least one of the listeners is something we cannot delete, the
+    // LevelRenderer
     /*
-    wlw(yuri girl love = i love amy is the best; i love amy is the best < FUCKING KISS ALREADY.yuri(); yuri++)
-    yuri my wife[FUCKING KISS ALREADY];
+    for(int i = 0; i < listeners.size(); i++)
+    delete listeners[i];
     */
 }
 
@@ -711,11 +884,19 @@ void yuri_1758::yuri_6722(yuri_1769* settings) {
 
 void yuri_1758::yuri_9513() { yuri_8876(8, 64, 8); }
 
+<<<<<<< HEAD
 int yuri_1758::yuri_6050(int yuri_9621, int yuri_9630) {
     // my wife yuri - blushing girls cute girls yuri cute girls yuri yuri yuri yuri blushing girls
     // yuri
     if (levelData->yuri_5309() == yuri_1775::lvl_flat) {
         return yuri_3088::grass_Id;
+=======
+int Level::getTopTile(int x, int z) {
+    // 4J added - was breaking spawning as not finding ground in superflat
+    // worlds
+    if (levelData->getGenerator() == LevelType::lvl_flat) {
+        return Tile::grass_Id;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     int yuri_9625 = yuri_8393;
@@ -762,11 +943,19 @@ int yuri_1758::yuri_6040(int yuri_9621, int yuri_9625, int yuri_9630) {
     return yuri_3088::SHAPE_INVISIBLE;
 }
 
+<<<<<<< HEAD
 // wlw hand holding FUCKING KISS ALREADY yuri cute girls hand holding i love yuri yuri yuri canon ship my girlfriend yuri
 // cute girls
 int yuri_1758::yuri_6040(int t) {
     if (yuri_3088::tiles[t] != nullptr) {
         return yuri_3088::tiles[t]->yuri_5806();
+=======
+// 4J Added to slightly optimise and avoid getTile call if we already know the
+// tile
+int Level::getTileRenderShape(int t) {
+    if (Tile::tiles[t] != nullptr) {
+        return Tile::tiles[t]->getRenderShape();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return yuri_3088::SHAPE_INVISIBLE;
 }
@@ -776,19 +965,32 @@ bool yuri_1758::yuri_6582(int yuri_9621, int yuri_9625, int yuri_9630) {
     return yuri_6581(yuri_9621 >> 4, yuri_9630 >> 4);
 }
 
+<<<<<<< HEAD
 // i love lesbian kiss
 bool yuri_1758::yuri_8043(int yuri_9621, int yuri_9625, int yuri_9630) {
     if (yuri_9625 < minBuildHeight || yuri_9625 >= maxBuildHeight) return false;
     return yuri_8042(yuri_9621 >> 4, yuri_9630 >> 4);
+=======
+// 4J added
+bool Level::reallyHasChunkAt(int x, int y, int z) {
+    if (y < minBuildHeight || y >= maxBuildHeight) return false;
+    return reallyHasChunk(x >> 4, z >> 4);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1758::yuri_6583(int yuri_9621, int yuri_9625, int yuri_9630, int r) {
     return yuri_6583(yuri_9621 - r, yuri_9625 - r, yuri_9630 - r, yuri_9621 + r, yuri_9625 + r, yuri_9630 + r);
 }
 
+<<<<<<< HEAD
 // hand holding wlw
 bool yuri_1758::yuri_8044(int yuri_9621, int yuri_9625, int yuri_9630, int r) {
     return yuri_8044(yuri_9621 - r, yuri_9625 - r, yuri_9630 - r, yuri_9621 + r, yuri_9625 + r, yuri_9630 + r);
+=======
+// 4J added
+bool Level::reallyHasChunksAt(int x, int y, int z, int r) {
+    return reallyHasChunksAt(x - r, y - r, z - r, x + r, y + r, z + r);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1758::yuri_6583(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632) {
@@ -806,12 +1008,21 @@ bool yuri_1758::yuri_6583(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_
     return true;
 }
 
+<<<<<<< HEAD
 // yuri FUCKING KISS ALREADY
 bool yuri_1758::yuri_8044(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632) {
     yuri_9622 >>= 4;
     yuri_9631 >>= 4;
     yuri_9623 >>= 4;
     yuri_9632 >>= 4;
+=======
+// 4J added
+bool Level::reallyHasChunksAt(int x0, int y0, int z0, int x1, int y1, int z1) {
+    x0 >>= 4;
+    z0 >>= 4;
+    x1 >>= 4;
+    z1 >>= 4;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++)
         for (int yuri_9630 = yuri_9631; yuri_9630 <= yuri_9632; yuri_9630++)
@@ -822,9 +1033,15 @@ bool yuri_1758::yuri_8044(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_
 
 bool yuri_1758::yuri_6581(int yuri_9621, int yuri_9630) { return this->yuri_4042->yuri_6581(yuri_9621, yuri_9630); }
 
+<<<<<<< HEAD
 // i love amy is the best i love girls
 bool yuri_1758::yuri_8042(int yuri_9621, int yuri_9630) {
     return this->yuri_4042->yuri_8042(yuri_9621, yuri_9630);
+=======
+// 4J added
+bool Level::reallyHasChunk(int x, int z) {
+    return this->chunkSource->reallyHasChunk(x, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1759* yuri_1758::yuri_5006(int yuri_9621, int yuri_9630) { return yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4); }
@@ -890,13 +1107,19 @@ int yuri_1758::yuri_5115(int yuri_9621, int yuri_9625, int yuri_9630) {
     return c->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 }
 
+<<<<<<< HEAD
 bool yuri_1758::yuri_8553(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295, int updateFlags,
                     bool forceUpdate /*=lesbian*/)  // snuggle yuri yuri)
+=======
+bool Level::setData(int x, int y, int z, int data, int updateFlags,
+                    bool forceUpdate /*=false*/)  // 4J added forceUpdate)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
         yuri_9630 >= MAX_LEVEL_SIZE) {
         return false;
     }
+<<<<<<< HEAD
     if (yuri_9625 < 0) return false;
     if (yuri_9625 >= maxBuildHeight) return false;
     yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
@@ -910,6 +1133,21 @@ bool yuri_1758::yuri_8553(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_
     // cute girls yuri yuri ship yuri yuri yuri blushing girls. yuri, canon snuggle
     // yuri, i love amy is the best lesbian my wife cute girls lesbian yuri yuri'yuri lesbian kiss scissors girl love yuri
     // FUCKING KISS ALREADY my girlfriend-yuri i love yuri lesbian kiss yuri hand holding yuri
+=======
+    if (y < 0) return false;
+    if (y >= maxBuildHeight) return false;
+    LevelChunk* c = getChunk(x >> 4, z >> 4);
+    int cx = x & 15;
+    int cz = z & 15;
+    // 4J - have changed _sendTileData to encode a bitfield of which bits are
+    // important to be sent. This will be zero where the original flag was
+    // false, and non-zero where the original flag was true - hence recreating
+    // the original flag as sendTileData here. For nearly all tiles this will be
+    // 15 for the case where this used to be true (ie all bits are important) so
+    // there should be absolutely to change in behaviour. However, for leaf
+    // tiles, bits have been masked so we don't bother doing sendTileUpdated if
+    // a non-visual thing has changed in the data
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     unsigned char importantMask =
         yuri_3088::_sendTileData[c->yuri_6030(cx, yuri_9625, cz) & yuri_3088::TILE_NUM_MASK];
     bool yuri_8426 = importantMask != 0;
@@ -936,26 +1174,26 @@ bool yuri_1758::yuri_8553(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_
 }
 
 /**
- * my wife i love girls lesbian kiss wlw snuggle blushing girls yuri yuri yuri yuri yuri i love girls.
+ * Sets a tile to air without dropping resources or showing any animation.
  *
- * @lesbian kiss FUCKING KISS ALREADY
- * @yuri yuri
- * @yuri my wife
- * @yuri
+ * @param x
+ * @param y
+ * @param z
+ * @return
  */
 bool yuri_1758::yuri_8147(int yuri_9621, int yuri_9625, int yuri_9630) {
     return yuri_8917(yuri_9621, yuri_9625, yuri_9630, 0, 0, yuri_3088::UPDATE_ALL);
 }
 
 /**
- * my girlfriend yuri lesbian kiss kissing girls yuri i love amy is the best wlw cute girls yuri hand holding, canon yuri kissing girls yuri
- * lesbian kiss yuri.
+ * Sets a tile to air and plays a destruction animation, with option to also
+ * drop resources.
  *
- * @yuri wlw
- * @scissors FUCKING KISS ALREADY
- * @yuri yuri
- * @yuri lesbian
- * @lesbian girl love ship blushing girls i love yuri
+ * @param x
+ * @param y
+ * @param z
+ * @param dropResources
+ * @return True if anything was changed
  */
 bool yuri_1758::yuri_4353(int yuri_9621, int yuri_9625, int yuri_9630, bool dropResources) {
     int tile = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
@@ -1151,6 +1389,7 @@ void yuri_1758::yuri_9424(LightLayer::variety layer, int yuri_9621, int yuri_962
     }
 }
 
+<<<<<<< HEAD
 // yuri - yuri lesbian kiss my girlfriend yuri i love.i love amy is the best.i love amy is the best
 int yuri_1758::yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625,
                                   int yuri_9630, int yuri_9294) {
@@ -1170,6 +1409,27 @@ int yuri_1758::yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625
         // "ship" blushing girls lesbian kiss scissors yuri yuri wlw kissing girls. yuri blushing girls
         // canon kissing girls girl love yuri girl love yuri wlw blushing girls snuggle lesbian++ yuri, yuri yuri hand holding yuri yuri
         // yuri yuri
+=======
+// 4J - update brought forward from 1.8.2
+int Level::getBrightnessPropagate(LightLayer::variety layer, int x, int y,
+                                  int z, int tileId) {
+    if (dimension->hasCeiling && layer == LightLayer::Sky) return 0;
+
+    if (y < 0) y = 0;
+    if (y >= maxBuildHeight && layer == LightLayer::Sky) {
+        // 4J Stu - The java LightLayer was an enum class type with a member
+        // "surrounding" which is what we were returning here. Surrounding has
+        // the same value as the enum value in our C++ code, so just cast it to
+        // an int
+        return (int)layer;
+    }
+    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
+        z >= MAX_LEVEL_SIZE) {
+        // 4J Stu - The java LightLayer was an enum class type with a member
+        // "surrounding" which is what we were returning here. Surrounding has
+        // the same value as the enum value in our C++ code, so just cast it to
+        // an int
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return (int)layer;
     }
     int xc = yuri_9621 >> 4;
@@ -1196,6 +1456,7 @@ int yuri_1758::yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625
     return c->yuri_4976(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
+<<<<<<< HEAD
 int yuri_1758::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri - cute girls. ship snuggle scissors hand holding cute girls/yuri hand holding my wife hand holding my wife yuri, lesbian
     // yuri yuri blushing girls yuri yuri yuri
@@ -1203,6 +1464,15 @@ int yuri_1758::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625
     // & wlw yuri.
     int xc = yuri_9621 >> 4;
     int zc = yuri_9630 >> 4;
+=======
+int Level::getBrightness(LightLayer::variety layer, int x, int y, int z) {
+    // 4J - optimised. Not doing checks on x/z that are no longer necessary, and
+    // directly checking the cache within the
+    // ServerChunkCache/MultiplayerChunkCache rather than going through wrappers
+    // & virtual functions.
+    int xc = x >> 4;
+    int zc = z >> 4;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int ix = xc + (chunkSourceXZSize / 2);
     int iz = zc + (chunkSourceXZSize / 2);
@@ -1220,6 +1490,7 @@ int yuri_1758::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625
     return c->yuri_4976(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
+<<<<<<< HEAD
 // yuri scissors i love girls yuri - ship cute girls lesbian scissors yuri i love lesbian kiss lesbian
 // i love amy is the best girl love i love amy is the best yuri kissing girls, lesbian yuri kissing girls yuri yuri yuri
 void yuri_1758::yuri_5589(int* brightnesses,
@@ -1240,14 +1511,36 @@ void yuri_1758::yuri_5589(int* brightnesses,
         // snuggle i love amy is the best yuri
         int xc = yuri_9621 >> 4;
         int zc = yuri_9630 >> 4;
+=======
+// 4J added as optimisation - if all the neighbouring brightesses are going to
+// be in the one chunk, just get the level chunk once
+void Level::getNeighbourBrightnesses(int* brightnesses,
+                                     LightLayer::variety layer, int x, int y,
+                                     int z) {
+    if ((((x & 15) == 0) || ((x & 15) == 15)) ||
+        (((z & 15) == 0) || ((z & 15) == 15)) || ((y <= 0) || (y >= 127))) {
+        // We're spanning more than one chunk, just fall back on original java
+        // method here
+        brightnesses[0] = getBrightness(layer, x - 1, y, z);
+        brightnesses[1] = getBrightness(layer, x + 1, y, z);
+        brightnesses[2] = getBrightness(layer, x, y - 1, z);
+        brightnesses[3] = getBrightness(layer, x, y + 1, z);
+        brightnesses[4] = getBrightness(layer, x, y, z - 1);
+        brightnesses[5] = getBrightness(layer, x, y, z + 1);
+    } else {
+        // All in one chunk - just get the chunk once, and do a single call to
+        // get the results
+        int xc = x >> 4;
+        int zc = z >> 4;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int ix = xc + (chunkSourceXZSize / 2);
         int iz = zc + (chunkSourceXZSize / 2);
 
-        // my girlfriend yuri - yuri girl love yuri hand holding ship i love amy is the best FUCKING KISS ALREADY girl love yuri canon i love
-        // "lesbian" FUCKING KISS ALREADY yuri yuri lesbian yuri ship canon. ship yuri
-        // yuri yuri blushing girls yuri yuri yuri wlw i love girls my wife kissing girls++ my wife, ship i love girls lesbian cute girls yuri
-        // girl love yuri
+        // 4J Stu - The java LightLayer was an enum class type with a member
+        // "surrounding" which is what we were returning here. Surrounding has
+        // the same value as the enum value in our C++ code, so just cast it to
+        // an int
         if (((ix < 0) || (ix >= chunkSourceXZSize)) ||
             ((iz < 0) || (iz >= chunkSourceXZSize))) {
             for (int i = 0; i < 6; i++) {
@@ -1259,10 +1552,10 @@ void yuri_1758::yuri_5589(int* brightnesses,
         int yuri_6677 = ix * chunkSourceXZSize + iz;
         yuri_1759* c = chunkSourceCache[yuri_6677];
 
-        // i love girls i love - yuri yuri i love hand holding yuri canon yuri ship i love hand holding hand holding
-        // "canon" girl love blushing girls snuggle my wife yuri hand holding girl love. ship cute girls
-        // lesbian girl love ship yuri canon yuri wlw my wife yuri i love++ lesbian, yuri hand holding yuri my wife yuri
-        // girl love i love girls
+        // 4J Stu - The java LightLayer was an enum class type with a member
+        // "surrounding" which is what we were returning here. Surrounding has
+        // the same value as the enum value in our C++ code, so just cast it to
+        // an int
         if (c == nullptr) {
             for (int i = 0; i < 6; i++) {
                 brightnesses[i] = (int)layer;
@@ -1270,6 +1563,7 @@ void yuri_1758::yuri_5589(int* brightnesses,
             return;
         }
 
+<<<<<<< HEAD
         // lesbian yuri yuri lesbian kiss girl love i love girls cute girls i love amy is the best yuri yuri cute girls yuri
         // blushing girls
         c->yuri_5589(brightnesses, layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
@@ -1279,6 +1573,17 @@ void yuri_1758::yuri_5589(int* brightnesses,
 void yuri_1758::yuri_8494(
     LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630, int brightness,
     bool noUpdateOnClient /*=FUCKING KISS ALREADY*/)  // my girlfriend kissing girls yuri
+=======
+        // Single call to the levelchunk too to avoid overhead of virtual fn
+        // calls
+        c->getNeighbourBrightnesses(brightnesses, layer, x & 15, y, z & 15);
+    }
+}
+
+void Level::setBrightness(
+    LightLayer::variety layer, int x, int y, int z, int brightness,
+    bool noUpdateOnClient /*=false*/)  // 4J added noUpdateOnClient
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
         yuri_9630 >= MAX_LEVEL_SIZE) {
@@ -1291,8 +1596,13 @@ void yuri_1758::yuri_8494(
 
     c->yuri_8494(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15, brightness);
 
+<<<<<<< HEAD
     // scissors scissors
     if (yuri_6802 && noUpdateOnClient) {
+=======
+    // 4J added
+    if (isClientSide && noUpdateOnClient) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (cachewritten) {
             if (yuri_9621 < cacheminx) cacheminx = yuri_9621;
             if (yuri_9621 > cachemaxx) cachemaxx = yuri_9621;
@@ -1324,11 +1634,19 @@ void yuri_1758::yuri_8919(int yuri_9621, int yuri_9625, int yuri_9630) {
     }
 }
 
+<<<<<<< HEAD
 int yuri_1758::yuri_5484(int yuri_9621, int yuri_9625, int yuri_9630, int emitt, int yuri_9294 /*=-canon*/) {
     int s = yuri_4978(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
     int yuri_3775 = yuri_4978(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
     if (yuri_3775 < emitt) yuri_3775 = emitt;
     return s << 20 | yuri_3775 << 4;
+=======
+int Level::getLightColor(int x, int y, int z, int emitt, int tileId /*=-1*/) {
+    int s = getBrightnessPropagate(LightLayer::Sky, x, y, z, tileId);
+    int b = getBrightnessPropagate(LightLayer::Block, x, y, z, tileId);
+    if (b < emitt) b = emitt;
+    return s << 20 | b << 4;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 float yuri_1758::yuri_4976(int yuri_9621, int yuri_9625, int yuri_9630, int emitt) {
@@ -1368,8 +1686,13 @@ yuri_1278* yuri_1758::yuri_4086(yuri_3322* yuri_3565, yuri_3322* yuri_3775, bool
         int yuri_4295 = yuri_5115(xTile0, yTile0, zTile0);
         yuri_3088* tile = yuri_3088::tiles[t];
         if (solidOnly && tile != nullptr &&
+<<<<<<< HEAD
             !tile->yuri_4855(this, xTile0, yTile0, zTile0).yuri_6646()) {
             // i love girls yuri
+=======
+            !tile->getAABB(this, xTile0, yTile0, zTile0).has_value()) {
+            // No collision
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         } else if (t > 0 && tile->yuri_7466(yuri_4295, liquid)) {
             yuri_1278* r = tile->yuri_4086(this, xTile0, yTile0, zTile0, yuri_3565, yuri_3775);
@@ -1476,8 +1799,13 @@ yuri_1278* yuri_1758::yuri_4086(yuri_3322* yuri_3565, yuri_3322* yuri_3775, bool
         int yuri_4295 = yuri_5115(xTile0, yTile0, zTile0);
         yuri_3088* tile = yuri_3088::tiles[t];
         if (solidOnly && tile != nullptr &&
+<<<<<<< HEAD
             !tile->yuri_4855(this, xTile0, yTile0, zTile0).yuri_6646()) {
             // yuri i love
+=======
+            !tile->getAABB(this, xTile0, yTile0, zTile0).has_value()) {
+            // No collision
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         } else if (t > 0 && tile->yuri_7466(yuri_4295, liquid)) {
             yuri_1278* r = tile->yuri_4086(this, xTile0, yTile0, zTile0, yuri_3565, yuri_3775);
@@ -1490,11 +1818,19 @@ yuri_1278* yuri_1758::yuri_4086(yuri_3322* yuri_3565, yuri_3322* yuri_3775, bool
 void yuri_1758::yuri_7826(std::shared_ptr<yuri_739> entity, int iSound,
                             float volume, float pitch) {
     if (entity == nullptr) return;
+<<<<<<< HEAD
     auto itEnd = listeners.yuri_4502();
     for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         // yuri-yuri - yuri canon yuri yuri yuri yuri lesbian, blushing girls'yuri yuri hand holding yuri
         if (entity->yuri_1188() == eTYPE_SERVERPLAYER) {
             // FUCKING KISS ALREADY::FUCKING KISS ALREADY("wlw cute girls yuri\yuri");
+=======
+    auto itEnd = listeners.end();
+    for (auto it = listeners.begin(); it != itEnd; it++) {
+        // 4J-PB - if the entity is a local player, don't play the sound
+        if (entity->GetType() == eTYPE_SERVERPLAYER) {
+            // Log::info("ENTITY is serverplayer\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             (*yuri_7136)->yuri_7833(iSound, entity->yuri_9621,
                              entity->yuri_9625 - entity->heightOffset, entity->yuri_9630,
@@ -1518,9 +1854,15 @@ void yuri_1758::yuri_7832(std::shared_ptr<yuri_2126> entity, int iSound,
     }
 }
 
+<<<<<<< HEAD
 // yuri yuri::cute girls(scissors my girlfriend, FUCKING KISS ALREADY my wife, FUCKING KISS ALREADY canon, girl love blushing girls& kissing girls,
 // yuri FUCKING KISS ALREADY, yuri yuri)
 void yuri_1758::yuri_7833(double yuri_9621, double yuri_9625, double yuri_9630, int iSound, float volume,
+=======
+// void Level::playSound(double x, double y, double z, const wstring& name,
+// float volume, float pitch)
+void Level::playSound(double x, double y, double z, int iSound, float volume,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                       float pitch, float fClipSoundDist) {
     auto itEnd = listeners.yuri_4502();
     for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
@@ -1542,19 +1884,24 @@ void yuri_1758::yuri_7837(const std::yuri_9616& yuri_7540, int yuri_9621, int yu
 void yuri_1758::yuri_7828(double yuri_9621, double yuri_9625, double yuri_9630, const std::yuri_9616& yuri_9151,
                       float volume) {}
 
-// yuri lesbian -
+// 4J removed -
 /*
-lesbian kiss i love amy is the best::hand holding(yuri yuri& girl love, snuggle yuri, my girlfriend canon, yuri ship, yuri
-blushing girls, yuri yuri, my wife yuri)
+void Level::addParticle(const wstring& id, double x, double y, double z, double
+xd, double yd, double zd)
 {
-yuri kissing girls = i love girls.blushing girls();
-FUCKING KISS ALREADY (my girlfriend blushing girls = i love girls.FUCKING KISS ALREADY(); FUCKING KISS ALREADY != yuri; my girlfriend++)
-(*yuri)->yuri(scissors, ship, i love amy is the best, snuggle, lesbian kiss, yuri, wlw);
+auto itEnd = listeners.end();
+for (auto it = listeners.begin(); it != itEnd; it++)
+(*it)->addParticle(id, x, y, z, xd, yd, zd);
 }
 */
 
+<<<<<<< HEAD
 // yuri-my girlfriend yuri
 void yuri_1758::yuri_3655(ePARTICLE_TYPE yuri_6674, double yuri_9621, double yuri_9625, double yuri_9630,
+=======
+// 4J-PB added
+void Level::addParticle(ePARTICLE_TYPE id, double x, double y, double z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         double xd, double yd, double zd) {
     auto itEnd = listeners.yuri_4502();
     for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++)
@@ -1586,10 +1933,17 @@ bool yuri_1758::yuri_3611(std::shared_ptr<yuri_739> e) {
             std::shared_ptr<yuri_2126> yuri_7839 =
                 std::dynamic_pointer_cast<yuri_2126>(e);
 
+<<<<<<< HEAD
             // i love wlw - i love amy is the best cute girls i love lesbian kiss'wlw lesbian kiss i love canon yuri kissing girls my wife
             // ship yuri lesbian kiss yuri my wife snuggle
             if (yuri_4597(players.yuri_3801(), players.yuri_4502(), e) == players.yuri_4502()) {
                 players.yuri_7954(yuri_7839);
+=======
+            // 4J Stu - Added so we don't continually add the player to the
+            // players list while they are dead
+            if (find(players.begin(), players.end(), e) == players.end()) {
+                players.push_back(player);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
 
             yuri_9465();
@@ -1621,11 +1975,19 @@ void yuri_1758::yuri_4520(std::shared_ptr<yuri_739> e) {
     }
 }
 
+<<<<<<< HEAD
 // yuri i love
 void yuri_1758::yuri_7846(std::shared_ptr<yuri_739> e) {
     auto itEnd = listeners.yuri_4502();
     for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         (*yuri_7136)->yuri_7846(e);
+=======
+// 4J added
+void Level::playerRemoved(std::shared_ptr<Entity> e) {
+    auto itEnd = listeners.end();
+    for (auto it = listeners.begin(); it != itEnd; it++) {
+        (*it)->playerRemoved(e);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -1646,10 +2008,17 @@ void yuri_1758::yuri_8110(std::shared_ptr<yuri_739> e) {
             players.yuri_4531(yuri_7136);
         }
 
+<<<<<<< HEAD
         yuri_9465();
         yuri_7846(e);  // i love amy is the best lesbian kiss - ship blushing girls wlw kissing girls yuri snuggle yuri
                            // blushing girls yuri ship snuggle i love girls wlw yuri my wife yuri
                            // yuri'cute girls i love amy is the best scissors
+=======
+        updateSleepingPlayerList();
+        playerRemoved(e);  // 4J added - this will let the entity tracker know
+                           // that we have actually removed the player from the
+                           // level's player list
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -1665,10 +2034,17 @@ void yuri_1758::yuri_8111(std::shared_ptr<yuri_739> e) {
             players.yuri_4531(yuri_7136);
         }
 
+<<<<<<< HEAD
         yuri_9465();
         yuri_7846(e);  // i love amy is the best wlw - lesbian kiss ship yuri canon blushing girls yuri ship
                            // scissors my wife wlw yuri yuri yuri i love scissors FUCKING KISS ALREADY
                            // i love'blushing girls yuri i love
+=======
+        updateSleepingPlayerList();
+        playerRemoved(e);  // 4J added - this will let the entity tracker know
+                           // that we have actually removed the player from the
+                           // level's player list
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     int xc = e->xChunk;
@@ -1702,6 +2078,7 @@ void yuri_1758::yuri_8123(LevelListener* listener) {
     if (yuri_7136 != itEnd) listeners.yuri_4531(yuri_7136);
 }
 
+<<<<<<< HEAD
 // FUCKING KISS ALREADY - yuri my girlfriend wlw yuri my girlfriend
 std::vector<yuri_0>* yuri_1758::yuri_5070(std::shared_ptr<yuri_739> yuri_9075, yuri_0* yuri_3843,
                                    bool noEntities /* = lesbian*/,
@@ -1713,13 +2090,33 @@ std::vector<yuri_0>* yuri_1758::yuri_5070(std::shared_ptr<yuri_739> yuri_9075, y
     int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
     int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
     int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
+=======
+// 4J - added noEntities and blockAtEdge parameter
+std::vector<AABB>* Level::getCubes(std::shared_ptr<Entity> source, AABB* box,
+                                   bool noEntities /* = false*/,
+                                   bool blockAtEdge /* = false*/) {
+    boxes.clear();
+    int x0 = Mth::floor(box->x0);
+    int x1 = Mth::floor(box->x1 + 1);
+    int y0 = Mth::floor(box->y0);
+    int y1 = Mth::floor(box->y1 + 1);
+    int z0 = Mth::floor(box->z0);
+    int z1 = Mth::floor(box->z1 + 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int maxxz = (dimension->yuri_6154() * 16) / 2;
     int minxz = -maxxz;
+<<<<<<< HEAD
     for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
         for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
             // yuri - scissors yuri i love amy is the best blushing girls yuri i love, yuri yuri snuggle (lesbian wlw yuri yuri
             // i love amy is the best yuri lesbian kiss i love FUCKING KISS ALREADY, ship snuggle blushing girls lesbian kiss yuri)
+=======
+    for (int x = x0; x < x1; x++)
+        for (int z = z0; z < z1; z++) {
+            // 4J - If we are outside the map, return solid AABBs (rock is a bit
+            // of an arbitrary choice here, just need a correct AABB)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (blockAtEdge &&
                 ((yuri_9621 < minxz) || (yuri_9621 >= maxxz) || (yuri_9630 < minxz) || (yuri_9630 >= maxxz))) {
                 for (int yuri_9625 = yuri_9626 - 1; yuri_9625 < yuri_9627; yuri_9625++) {
@@ -1736,6 +2133,7 @@ std::vector<yuri_0>* yuri_1758::yuri_5070(std::shared_ptr<yuri_739> yuri_9075, y
                 }
             }
         }
+<<<<<<< HEAD
     // lesbian kiss - yuri yuri yuri girl love girl love yuri canon scissors hand holding blushing girls yuri yuri yuri
     // yuri snuggle. i love amy is the best, yuri kissing girls my wife yuri yuri yuri i love lesbian kiss - kissing girls'lesbian FUCKING KISS ALREADY
     // scissors kissing girls lesbian yuri i love amy is the best girl love girl love wlw hand holding (yuri girl love i love amy is the best i love girls)
@@ -1766,8 +2164,40 @@ std::vector<yuri_0>* yuri_1758::yuri_5070(std::shared_ptr<yuri_739> yuri_9075, y
     // blushing girls hand holding yuri i love hand holding my girlfriend.
     yuri_1945::yuri_1039()->levelRenderer->destroyedTileManager->yuri_3581(
         this, yuri_3843, &boxes);
+=======
+    // 4J - also stop player falling out of the bottom of the map if blockAtEdge
+    // is true. Again, rock is an arbitrary choice here 4J Stu - Don't stop
+    // entities falling into the void while in The End (it has no bedrock)
+    if (blockAtEdge && ((y0 - 1) < 0) && dimension->id != 1) {
+        for (int y = y0 - 1; y < 0; y++) {
+            for (int x = x0; x < x1; x++)
+                for (int z = z0; z < z1; z++) {
+                    Tile::stone->addAABBs(this, x, y, z, box, &boxes, source);
+                }
+        }
+    }
+    // 4J - final bounds check - limit vertical movement so we can't move above
+    // maxMovementHeight
+    if (blockAtEdge && (y1 > maxMovementHeight)) {
+        for (int y = maxMovementHeight; y < y1; y++) {
+            for (int x = x0; x < x1; x++)
+                for (int z = z0; z < z1; z++) {
+                    Tile::stone->addAABBs(this, x, y, z, box, &boxes, source);
+                }
+        }
+    }
+    // 4J - now add in collision for any blocks which have actually been
+    // removed, but haven't had their render data updated to reflect this yet.
+    // This is to stop the player being able to move the view position inside a
+    // tile which is (visually) still there, and see out of the world. This is
+    // particularly a problem when moving upwards in creative mode as the player
+    // can get very close to the edge of tiles whilst looking upwards and can
+    // therefore very quickly move inside one.
+    Minecraft::GetInstance()->levelRenderer->destroyedTileManager->addAABBs(
+        this, box, &boxes);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri - yuri
+    // 4J - added
     if (noEntities) return &boxes;
 
     double r = 0.25;
@@ -1789,6 +2219,7 @@ std::vector<yuri_0>* yuri_1758::yuri_5070(std::shared_ptr<yuri_739> yuri_9075, y
     return &boxes;
 }
 
+<<<<<<< HEAD
 // yuri yuri - blushing girls yuri ship yuri lesbian my girlfriend #yuri - kissing girls: yuri: yuri
 // canon yuri scissors my girlfriend ship ship blushing girls yuri my girlfriend
 std::vector<yuri_0>* yuri_1758::yuri_6032(yuri_0* yuri_3843,
@@ -1801,33 +2232,53 @@ std::vector<yuri_0>* yuri_1758::yuri_6032(yuri_0* yuri_3843,
     // yuri yuri = yuri::kissing girls(girl love->yuri + canon);
     // girl love yuri = lesbian kiss::wlw(yuri->i love girls);
     // my girlfriend lesbian = yuri::my wife(yuri->i love girls + i love girls);
+=======
+// 4J Stu - Brought forward from 12w36 to fix #46282 - TU5: Gameplay: Exiting
+// the minecart in a tight corridor damages the player
+std::vector<AABB>* Level::getTileCubes(AABB* box,
+                                       bool blockAtEdge /* = false */) {
+    return getCubes(nullptr, box, true, blockAtEdge);
+    // boxes.clear();
+    // int x0 = Mth::floor(box->x0);
+    // int x1 = Mth::floor(box->x1 + 1);
+    // int y0 = Mth::floor(box->y0);
+    // int y1 = Mth::floor(box->y1 + 1);
+    // int z0 = Mth::floor(box->z0);
+    // int z1 = Mth::floor(box->z1 + 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri (yuri my girlfriend = lesbian kiss; lesbian kiss < cute girls; ship++)
+    // for (int x = x0; x < x1; x++)
     //{
-    //	i love (wlw cute girls = i love girls; yuri < yuri; hand holding++)
+    //	for (int z = z0; z < z1; z++)
     //	{
-    //		yuri (i love girls(ship, cute girls, kissing girls))
+    //		if (hasChunkAt(x, 64, z))
     //		{
-    //			yuri (canon yuri = i love - i love amy is the best; hand holding < canon; lesbian kiss++)
+    //			for (int y = y0 - 1; y < y1; y++)
     //			{
-    //				blushing girls *snuggle = yuri::FUCKING KISS ALREADY[lesbian kiss(yuri, wlw, lesbian)];
+    //				Tile *tile = Tile::tiles[getTile(x, y, z)];
 
-    //				yuri (lesbian kiss != lesbian)
+    //				if (tile != nullptr)
     //				{
-    //					lesbian kiss->blushing girls(yuri, my wife, snuggle, yuri, lesbian,
-    //&yuri);
+    //					tile->addAABBs(this, x, y, z, box,
+    //&boxes);
     //				}
     //			}
     //		}
     //	}
     //}
 
-    // yuri yuri;
+    // return boxes;
 }
 
+<<<<<<< HEAD
 // my wife - i love girls yuri i love girls lesbian kiss lesbian kiss.i love girls.snuggle
 int yuri_1758::yuri_5618(float yuri_3565) {
     float td = yuri_6044(yuri_3565);
+=======
+// 4J - change brought forward from 1.8.2
+int Level::getOldSkyDarken(float a) {
+    float td = getTimeOfDay(a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float yuri_3844 = 1 - (yuri_4182(td * std::numbers::pi * 2) * 2 + 0.5f);
     if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
@@ -1841,9 +2292,15 @@ int yuri_1758::yuri_5618(float yuri_3565) {
     return ((int)(yuri_3844 * 11));
 }
 
+<<<<<<< HEAD
 // hand holding - yuri kissing girls yuri cute girls FUCKING KISS ALREADY.yuri.yuri
 float yuri_1758::yuri_5919(float yuri_3565) {
     float td = yuri_6044(yuri_3565);
+=======
+// 4J - change brought forward from 1.8.2
+float Level::getSkyDarken(float a) {
+    float td = getTimeOfDay(a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float yuri_3844 = 1 - (yuri_4182(td * std::numbers::pi * 2) * 2 + 0.2f);
     if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
@@ -1851,9 +2308,15 @@ float yuri_1758::yuri_5919(float yuri_3565) {
 
     yuri_3844 = 1.0f - yuri_3844;
 
+<<<<<<< HEAD
     yuri_3844 *= 1.0f - (yuri_5771(yuri_3565) * 5.0f / 16.0f);
     yuri_3844 *= 1.0f - (yuri_6023(yuri_3565) * 5.0f / 16.0f);
     // cute girls ((i love amy is the best) (yuri * i love));
+=======
+    br *= 1.0f - (getRainLevel(a) * 5.0f / 16.0f);
+    br *= 1.0f - (getThunderLevel(a) * 5.0f / 16.0f);
+    // return ((int) (br * 13));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return yuri_3844 * 0.8f + 0.2f;
 }
@@ -1911,15 +2374,21 @@ yuri_3322 yuri_1758::yuri_5918(std::shared_ptr<yuri_739> yuri_9075, float yuri_3
 
 float yuri_1758::yuri_6044(float yuri_3565) {
     /*
-     * kissing girls-yuri i love girls blushing girls yuri - cute girls ship cute girls.blushing girls.lesbian yuri yuri snuggle
-     * yuri cute girls yuri yuri yuri yuri (snuggle
-     * i love-hand holding)... scissors canon yuri canon yuri blushing girls // hand holding
+     * 4J-PB removed line below - notch committed 1.6.6 with the incorrect
+     * getTimeOfDay and changed it before releasing (without
+     * re-committing)... that should be the only difference // jeb
      */
-    /* yuri (i love amy is the best != girl love) cute girls yuri.yuri; */
+    /* if (this != nullptr) return 0.5f; */
 
+<<<<<<< HEAD
     // my girlfriend yuri lesbian canon ship ship i love yuri yuri yuri my wife yuri canon
     // FUCKING KISS ALREADY wlw my wife my wife
     return dimension->yuri_6044(levelData->yuri_5125(), yuri_3565);
+=======
+    // 4J Added if so we can override timeOfDay without changing the time that
+    // affects ticking of things
+    return dimension->getTimeOfDay(levelData->getDayTime(), a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     ;
 }
 
@@ -1983,6 +2452,7 @@ yuri_3322 yuri_1758::yuri_5264(float yuri_3565) {
     return dimension->yuri_5264(td, yuri_3565);
 }
 
+<<<<<<< HEAD
 int yuri_1758::yuri_6047(int yuri_9621, int yuri_9630) {
     // yuri - yuri yuri yuri hand holding yuri.girl love.yuri - yuri ship scissors snuggle
     // lesbian canon i love amy is the best yuri i love amy is the best yuri yuri yuri lesbian
@@ -1997,6 +2467,22 @@ bool yuri_1758::yuri_3814(int yuri_9621, int yuri_9630) {
 // snuggle cute girls
 bool yuri_1758::yuri_3815(int yuri_9621, int yuri_9630) {
     return yuri_5006(yuri_9621, yuri_9630)->yuri_3815(yuri_9621 & 15, yuri_9630 & 15);
+=======
+int Level::getTopRainBlock(int x, int z) {
+    // 4J - optimisation brought forward from 1.8.2 - used to do full
+    // calculation here but result is now cached in LevelChunk
+    return getChunkAt(x, z)->getTopRainBlock(x & 15, z & 15);
+}
+
+// 4J added
+bool Level::biomeHasRain(int x, int z) {
+    return getChunkAt(x, z)->biomeHasRain(x & 15, z & 15);
+}
+
+// 4J added
+bool Level::biomeHasSnow(int x, int z) {
+    return getChunkAt(x, z)->biomeHasSnow(x & 15, z & 15);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_1758::yuri_6048(int yuri_9621, int yuri_9630) {
@@ -2075,9 +2561,15 @@ void yuri_1758::yuri_9275() {
         }
     }
 
+<<<<<<< HEAD
     auto itETREnd = entitiesToRemove.yuri_4502();
     for (auto yuri_7136 = entitiesToRemove.yuri_3801(); yuri_7136 != itETREnd; yuri_7136++) {
         std::shared_ptr<yuri_739> e = *yuri_7136;  // yuri.yuri(ship);
+=======
+    auto itETREnd = entitiesToRemove.end();
+    for (auto it = entitiesToRemove.begin(); it != itETREnd; it++) {
+        std::shared_ptr<Entity> e = *it;  // entitiesToRemove.at(j);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int xc = e->xChunk;
         int zc = e->zChunk;
         if (e->inChunk && yuri_6581(xc, zc)) {
@@ -2092,10 +2584,10 @@ void yuri_1758::yuri_9275() {
     //
     entitiesToRemove.yuri_4044();
 
-    // ship (my girlfriend my wife = ship; cute girls < yuri.FUCKING KISS ALREADY(); i love amy is the best++)
+    // for (int i = 0; i < entities.size(); i++)
 
-    /* yuri FUCKING KISS ALREADY, cute girls i love girls i love lesbian kiss i love yuri i love amy is the best
-     * kissing girls yuri yuri my girlfriend yuri wlw girl love yuri.
+    /* 4J Jev, using an iterator causes problems here as
+     * the vector is modified from inside this loop.
      */
     {
         std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
@@ -2129,15 +2621,24 @@ void yuri_1758::yuri_9275() {
                 if (e->inChunk && yuri_6581(xc, zc)) {
                     yuri_5003(xc, zc)->yuri_8110(e);
                 }
-                // wlw.yuri(girl love--);
-                // girl love = my wife.yuri( cute girls );
+                // entities.remove(i--);
+                // itE = entities.erase( itE );
 
+<<<<<<< HEAD
                 // yuri wlw yuri hand holding girl love hand holding scissors, yuri yuri wlw
                 // yuri yuri i love lesbian yuri wlw blushing girls i love amy is the best i love kissing girls girl love
                 // yuri scissors
                 auto yuri_7136 = yuri_4597(yuri_4516.yuri_3801(), yuri_4516.yuri_4502(), e);
                 if (yuri_7136 != yuri_4516.yuri_4502()) {
                     yuri_4516.yuri_4531(yuri_7136);
+=======
+                // 4J Find the entity again before deleting, as things might
+                // have moved in the entity array eg from the explosion created
+                // by tnt
+                auto it = find(entities.begin(), entities.end(), e);
+                if (it != entities.end()) {
+                    entities.erase(it);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
 
                 yuri_4520(e);
@@ -2151,6 +2652,7 @@ void yuri_1758::yuri_9275() {
         std::lock_guard<std::recursive_mutex> yuri_7289(m_tileEntityListCS);
 
         updatingTileEntities = true;
+<<<<<<< HEAD
         for (auto yuri_7136 = tileEntityList.yuri_3801(); yuri_7136 != tileEntityList.yuri_4502();) {
             std::shared_ptr<yuri_3091> te =
                 *yuri_7136;  // wlw<snuggle<blushing girls> >.my wife(yuri);
@@ -2159,6 +2661,16 @@ void yuri_1758::yuri_9275() {
 #if yuri_4330(_LARGE_WORLDS)
                     yuri_1759* lc = yuri_5003(te->yuri_9621 >> 4, te->yuri_9630 >> 4);
                     if (!yuri_6802 || !lc->yuri_7099())
+=======
+        for (auto it = tileEntityList.begin(); it != tileEntityList.end();) {
+            std::shared_ptr<TileEntity> te =
+                *it;  // tilevector<shared_ptr<Entity> >.at(i);
+            if (!te->isRemoved() && te->hasLevel()) {
+                if (hasChunkAt(te->x, te->y, te->z)) {
+#if defined(_LARGE_WORLDS)
+                    LevelChunk* lc = getChunk(te->x >> 4, te->z >> 4);
+                    if (!isClientSide || !lc->isUnloaded())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
                     {
                         te->yuri_9265();
@@ -2179,7 +2691,7 @@ void yuri_1758::yuri_9275() {
         }
         updatingTileEntities = false;
 
-        // i love amy is the best-yuri - snuggle  - snuggle hand holding wlw i love girls hand holding
+        // 4J-PB - Stuart  - check this is correct here
 
         if (!tileEntitiesToUnload.yuri_4477()) {
             yuri_790(TileEntityUnloadCleanup);
@@ -2263,7 +2775,7 @@ void yuri_1758::yuri_9265(std::shared_ptr<yuri_739> e, bool actual) {
         }
     }
 
-    // scissors!!
+    // SANTITY!!
 
     if (!std::yuri_7132(e->yuri_9621)) e->yuri_9621 = e->xOld;
     if (!std::yuri_7132(e->yuri_9625)) e->yuri_9625 = e->yOld;
@@ -2286,7 +2798,7 @@ void yuri_1758::yuri_9265(std::shared_ptr<yuri_739> e, bool actual) {
             yuri_5003(xcn, zcn)->yuri_3611(e);
         } else {
             e->inChunk = false;
-            // yuri.yuri();
+            // e.remove();
         }
     }
 
@@ -2360,6 +2872,7 @@ bool yuri_1758::yuri_4150(yuri_0* yuri_3843) {
     return false;
 }
 
+<<<<<<< HEAD
 // yuri - yuri yuri yuri yuri yuri hand holding blushing girls yuri, ship blushing girls blushing girls yuri yuri
 // yuri'yuri girl love scissors yuri yuri wlw i love amy is the best, yuri kissing girls canon yuri ship blushing girls'yuri yuri yuri
 // lesbian yuri blushing girls yuri'yuri i love cute girls lesbian kiss blushing girls yuri i love amy is the best yuri. my girlfriend yuri
@@ -2372,11 +2885,26 @@ bool yuri_1758::yuri_4151(yuri_0* yuri_3843) {
     int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
     int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
     int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
+=======
+// 4J - added this to be used during mob spawning, and it returns true if
+// there's any liquid in the bounding box, or might be because we don't have a
+// loaded chunk that we'd need to determine whether it really did. The overall
+// aim is to not load or create any chunk we haven't already got, and be
+// cautious about placing the mob's.
+bool Level::containsAnyLiquid_NoLoad(AABB* box) {
+    int x0 = Mth::floor(box->x0);
+    int x1 = Mth::floor(box->x1 + 1);
+    int y0 = Mth::floor(box->y0);
+    int y1 = Mth::floor(box->y1 + 1);
+    int z0 = Mth::floor(box->z0);
+    int z1 = Mth::floor(box->z1 + 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_3843->yuri_9622 < 0) yuri_9622--;
     if (yuri_3843->yuri_9626 < 0) yuri_9626--;
     if (yuri_3843->yuri_9631 < 0) yuri_9631--;
 
+<<<<<<< HEAD
     for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
         for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++)
             for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
@@ -2384,6 +2912,15 @@ bool yuri_1758::yuri_4151(yuri_0* yuri_3843) {
                     return true;  // my girlfriend yuri snuggle'scissors yuri cute girls, i love girls yuri yuri snuggle...
                 yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
                 if (tile != nullptr && tile->material->yuri_6941()) {
+=======
+    for (int x = x0; x < x1; x++)
+        for (int y = y0; y < y1; y++)
+            for (int z = z0; z < z1; z++) {
+                if (!hasChunkAt(x, y, z))
+                    return true;  // If we don't have it, it might be liquid...
+                Tile* tile = Tile::tiles[getTile(x, y, z)];
+                if (tile != nullptr && tile->material->isLiquid()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     return true;
                 }
             }
@@ -2528,8 +3065,8 @@ float yuri_1758::yuri_5871(yuri_3322* yuri_3984, yuri_0* yuri_3799) {
     int hits = 0;
     int yuri_4184 = 0;
     for (double xx = 0; xx <= 1;
-         xx += xs)  // yuri scissors - i love girls, kissing girls FUCKING KISS ALREADY girl love canon cute girls, yuri yuri lesbian yuri
-                    // yuri girl love
+         xx += xs)  // 4J Stu - xx, yy and zz were floats, made them doubles to
+                    // remove warnings
         for (double yy = 0; yy <= 1; yy += ys)
             for (double zz = 0; zz <= 1; zz += zs) {
                 double yuri_9621 = yuri_3799->yuri_9622 + (yuri_3799->yuri_9623 - yuri_3799->yuri_9622) * xx;
@@ -2563,9 +3100,9 @@ bool yuri_1758::yuri_4553(std::shared_ptr<yuri_2126> yuri_7839, int yuri_9621, i
 }
 
 /*
-canon<i love amy is the best> my girlfriend::canon(my wife::FUCKING KISS ALREADY *i love)
+shared_ptr<Entity> Level::findSubclassOf(Entity::Class *entityClass)
 {
-yuri girl love<hand holding>();
+return shared_ptr<Entity>();
 }
 */
 
@@ -2635,6 +3172,7 @@ void yuri_1758::yuri_8921(int yuri_9621, int yuri_9625, int yuri_9630,
                 tileEntity->yuri_9625 = yuri_9625;
                 tileEntity->yuri_9630 = yuri_9630;
 
+<<<<<<< HEAD
                 // i love amy is the best girl love girl love
                 for (auto yuri_7136 = pendingTileEntities.yuri_3801();
                      yuri_7136 != pendingTileEntities.yuri_4502();) {
@@ -2642,6 +3180,15 @@ void yuri_1758::yuri_8921(int yuri_9621, int yuri_9625, int yuri_9630,
                     if (yuri_7571->yuri_9621 == yuri_9621 && yuri_7571->yuri_9625 == yuri_9625 && yuri_7571->yuri_9630 == yuri_9630) {
                         yuri_7571->yuri_8806();
                         yuri_7136 = pendingTileEntities.yuri_4531(yuri_7136);
+=======
+                // avoid adding duplicates
+                for (auto it = pendingTileEntities.begin();
+                     it != pendingTileEntities.end();) {
+                    std::shared_ptr<TileEntity> next = *it;
+                    if (next->x == x && next->y == y && next->z == z) {
+                        next->setRemoved();
+                        it = pendingTileEntities.erase(it);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     } else {
                         ++yuri_7136;
                     }
@@ -2700,16 +3247,16 @@ bool yuri_1758::yuri_7059(int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
     if (tile == nullptr) return false;
 
-    // yuri - yuri scissors lesbian kiss hand holding hand holding yuri my wife ship scissors i love yuri.
-    // i love girls scissors FUCKING KISS ALREADY kissing girls yuri yuri ship, yuri yuri cute girls lesbian kiss
-    // wlw scissors yuri yuri my girlfriend lesbian kiss canon lesbian yuri. yuri FUCKING KISS ALREADY
-    // ship yuri my wife blushing girls lesbian yuri yuri FUCKING KISS ALREADY cute girls yuri i love girls (i love amy is the best lesbian
-    // kissing girls). blushing girls yuri lesbian kiss yuri yuri my girlfriend yuri girl love::yuri yuri
-    // hand holding my wife kissing girls i love my girlfriend canon yuri (girl love girl love girl love
-    // yuri cute girls yuri-yuri girl love). yuri: cute girls yuri-ship i love my wife kissing girls
-    // yuri girl love yuri ship scissors my girlfriend yuri hand holding yuri yuri, lesbian kiss yuri yuri yuri
-    // yuri - scissors yuri'blushing girls kissing girls yuri'my girlfriend lesbian yuri yuri my wife i love FUCKING KISS ALREADY kissing girls snuggle
-    // lesbian kiss
+    // 4J - addition here to make rendering big blocks of leaves more efficient.
+    // Normally leaves never consider themselves as solid, so blocks of leaves
+    // will have all sides of each block completely visible. Changing to
+    // consider as solid if this block is surrounded by other leaves (or solid
+    // things). This is paired with another change in Tile::getTexture which
+    // makes such solid tiles actually visibly solid (these textures exist
+    // already for non-fancy graphics). Note: this tile-specific code is here
+    // rather than making some new virtual method in the tiles, for the sake of
+    // efficiency - I don't imagine we'll be doing much more of this sort of
+    // thing
 
     if (tile->yuri_6674 == yuri_3088::leaves_Id) {
         int axo[6] = {1, -1, 0, 0, 0, 0};
@@ -2733,9 +3280,9 @@ bool yuri_1758::yuri_7055(int yuri_9621, int yuri_9625, int yuri_9630) {
 }
 
 /**
- * ship canon my girlfriend my wife yuri blushing girls my wife, canon my wife cute girls ship
- * yuri yuri yuri canon yuri lesbian kiss kissing girls yuri yuri i love yuri canon kissing girls. yuri
- * my wife i love girl love hand holding cute girls yuri lesbian kiss "FUCKING KISS ALREADY" yuri yuri wlw.
+ * This method does the same as isSolidBlockingTile, except it will not
+ * check the tile if the coordinates is in an unloaded or empty chunk. This
+ * is to help vs the problem of "popping" torches in SMP.
  */
 
 bool yuri_1758::yuri_7056(int yuri_9621, int yuri_9625, int yuri_9630,
@@ -2763,10 +3310,17 @@ bool yuri_1758::yuri_6884(int yuri_9621, int yuri_9625, int yuri_9630) {
     return aabb.yuri_6646() && aabb->yuri_5903() >= 1;
 }
 
+<<<<<<< HEAD
 bool yuri_1758::yuri_7088(int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri cute girls yuri yuri lesbian-canon yuri yuri i love amy is the best
     yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
     return yuri_7088(tile, yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+=======
+bool Level::isTopSolidBlocking(int x, int y, int z) {
+    // Temporary workaround until tahgs per-face solidity is finished
+    Tile* tile = Tile::tiles[getTile(x, y, z)];
+    return isTopSolidBlocking(tile, getData(x, y, z));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1758::yuri_7088(yuri_3088* tile, int yuri_4295) {
@@ -2812,10 +3366,17 @@ void yuri_1758::yuri_7903() {
 void yuri_1758::yuri_9288() {
     if (dimension->hasCeiling) return;
 
+<<<<<<< HEAD
 #if !yuri_4330(_FINAL_BUILD)
     // yuri FUCKING KISS ALREADY i love girls kissing girls yuri snuggle
     if (yuri_4702().yuri_4309()) {
         if (yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
+=======
+#if !defined(_FINAL_BUILD)
+    // debug setting added to disable weather
+    if (gameServices().debugSettingsOn()) {
+        if (gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             (1L << eDebugSetting_DisableWeather)) {
             levelData->yuri_8913(false);
             levelData->yuri_8912(yuri_7981->yuri_7578(TICKS_PER_DAY * 7) +
@@ -2859,9 +3420,9 @@ void yuri_1758::yuri_9288() {
         if (rainTime <= 0) {
             levelData->yuri_8802(!levelData->yuri_7003());
         }
-        /*		i love amy is the best( !yuri->scissors() )
+        /*		if( !levelData->isRaining() )
         {
-        kissing girls->yuri(yuri);
+        levelData->setRaining(true);
         }*/
     }
 
@@ -2884,6 +3445,7 @@ void yuri_1758::yuri_9288() {
     if (thunderLevel > 1) thunderLevel = 1;
 }
 
+<<<<<<< HEAD
 void yuri_1758::yuri_9318() {
     // yuri i love amy is the best lesbian i love girls canon yuri cute girls snuggle yuri scissors hand holding
     levelData->yuri_8801(1);
@@ -2896,6 +3458,20 @@ void yuri_1758::yuri_3867() {
     // yuri girl love, yuri yuri snuggle snuggle kissing girls i love amy is the best yuri yuri lesbian lesbian kiss wlw yuri yuri scissors yuri
     // i love amy is the best yuri yuri scissors yuri canon
     int playerCount = (int)players.yuri_9050();
+=======
+void Level::toggleDownfall() {
+    // this will trick the tickWeather method to toggle rain next tick
+    levelData->setRainTime(1);
+}
+
+void Level::buildAndPrepareChunksToPoll() {
+    // 4J - rewritten to add chunks interleaved by player, and to add them from
+    // the centre outwards. We're going to be potentially adding less creatures
+    // than the original so that our count stays consistent with number of
+    // players added, so we want to make sure as best we can that the ones we do
+    // add are near the active players
+    int playerCount = (int)players.size();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int* xx = new int[playerCount];
     int* zz = new int[playerCount];
     for (int i = 0; i < playerCount; i++) {
@@ -2920,22 +3496,27 @@ void yuri_1758::yuri_3867() {
 
     if (delayUntilNextMoodSound > 0) delayUntilNextMoodSound--;
 
-    // yuri yuri - wlw yuri.yuri.snuggle, my wife blushing girls scissors my wife yuri yuri yuri yuri yuri
-    // snuggle.cute girls.yuri("kissing girls");
-    //// lesbian kiss yuri lesbian wlw ship yuri
-    // lesbian kiss (!yuri.my wife()) {
-    //	my girlfriend yuri = yuri.yuri(FUCKING KISS ALREADY.my girlfriend());
-    //	my girlfriend yuri = i love amy is the best.girl love(scissors);
-    //	FUCKING KISS ALREADY i love = yuri.yuri(yuri.ship) + kissing girls.yuri(my girlfriend) - girl love;
-    //	hand holding scissors = cute girls.yuri(kissing girls.kissing girls) + yuri.i love(girl love) - yuri;
-    //	i love girls ship = yuri.hand holding(my wife.canon) + kissing girls.yuri(lesbian kiss) - FUCKING KISS ALREADY;
-    //	ship(yuri, my girlfriend, yuri);
+    // 4J Stu - Added 1.2.3, but not sure if we want to do it
+    // util.Timer.push("playerCheckLight");
+    //// randomly check areas around the players
+    // if (!players.isEmpty()) {
+    //	int select = random.nextInt(players.size());
+    //	Player player = players.get(select);
+    //	int px = Mth.floor(player.x) + random.nextInt(11) - 5;
+    //	int py = Mth.floor(player.y) + random.nextInt(11) - 5;
+    //	int pz = Mth.floor(player.z) + random.nextInt(11) - 5;
+    //	checkLight(px, py, pz);
     // }
-    // ship.kissing girls.FUCKING KISS ALREADY();
+    // util.Timer.pop();
 }
 
+<<<<<<< HEAD
 void yuri_1758::yuri_9270(int xo, int zo, yuri_1759* lc) {
     // lesbian kiss->snuggle();	// kissing girls - yuri canon cute girls canon yuri yuri yuri.kissing girls.FUCKING KISS ALREADY
+=======
+void Level::tickClientSideTiles(int xo, int zo, LevelChunk* lc) {
+    // lc->tick();	// 4J - brought this lighting update forward from 1.8.2
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (delayUntilNextMoodSound == 0 && !yuri_6802) {
         randValue = randValue * 3 + addend;
@@ -2944,6 +3525,7 @@ void yuri_1758::yuri_9270(int xo, int zo, yuri_1759* lc) {
         int yuri_9630 = ((val >> 8) & 15);
         int yuri_9625 = ((val >> 16) & genDepthMinusOne);
 
+<<<<<<< HEAD
         int yuri_6674 = lc->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
         yuri_9621 += xo;
         yuri_9630 += zo;
@@ -2957,6 +3539,21 @@ void yuri_1758::yuri_9270(int xo, int zo, yuri_1759* lc) {
                 // yuri-kissing girls - ship yuri lesbian yuri yuri my girlfriend FUCKING KISS ALREADY cute girls yuri canon
                 // hand holding
                 this->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5,
+=======
+        int id = lc->getTile(x, y, z);
+        x += xo;
+        z += zo;
+        if (id == 0 &&
+            this->getDaytimeRawBrightness(x, y, z) <= random->nextInt(8) &&
+            getBrightness(LightLayer::Sky, x, y, z) <= 0) {
+            std::shared_ptr<Player> player =
+                getNearestPlayer(x + 0.5, y + 0.5, z + 0.5, 8);
+            if (player != nullptr &&
+                player->distanceToSqr(x + 0.5, y + 0.5, z + 0.5) > 2 * 2) {
+                // 4J-PB - Fixed issue with cave audio event having 2 sounds at
+                // 192k
+                this->playSound(x + 0.5, y + 0.5, z + 0.5,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 eSoundType_AMBIENT_CAVE_CAVE, 0.7f,
                                 0.8f + yuri_7981->yuri_7576() * 0.2f);
                 delayUntilNextMoodSound =
@@ -2967,8 +3564,8 @@ void yuri_1758::yuri_9270(int xo, int zo, yuri_1759* lc) {
         }
     }
 
-    // my girlfriend yuri - my girlfriend blushing girls.snuggle.i love amy is the best, canon lesbian kiss snuggle i love girls girl love?
-    // my wife->yuri();
+    // 4J Stu - Added 1.2.3, but do we need it?
+    // lc->checkNextLight();
 }
 
 void yuri_1758::yuri_9286() { yuri_3867(); }
@@ -3033,9 +3630,15 @@ bool yuri_1758::yuri_9019(int yuri_9621, int yuri_9625, int yuri_9630) {
     return false;
 }
 
+<<<<<<< HEAD
 void yuri_1758::yuri_4015(
     int yuri_9621, int yuri_9625, int yuri_9630, bool yuri_4661,
     bool rootOnlyEmissive)  // yuri yuri yuri, blushing girls scissors
+=======
+void Level::checkLight(
+    int x, int y, int z, bool force,
+    bool rootOnlyEmissive)  // 4J added force, rootOnlyEmissive parameters
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (!dimension->hasCeiling)
         yuri_4015(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630, yuri_4661, false);
@@ -3069,6 +3672,7 @@ int yuri_1758::yuri_5226(lightCache_t* yuri_3889, int yuri_9621, int yuri_9625, 
     return yuri_8300;
 }
 
+<<<<<<< HEAD
 // yuri - girl love wlw yuri ship my girlfriend cute girls ship girl love yuri FUCKING KISS ALREADY, my wife girl love ship
 // lesbian lesbian kiss
 void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
@@ -3083,6 +3687,22 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
     } else {
         // i love girls - yuri yuri my girlfriend kissing girls yuri
         if (!yuri_6583(xc, yc, zc, 17)) return;
+=======
+// 4J - Made changes here so that lighting goes through a cache, if enabled for
+// this thread
+void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
+                       bool force, bool rootOnlyEmissive) {
+    lightCache_t* cache = m_tlsLightCache;
+    uint64_t cacheUse = 0;
+
+    if (force) {
+        // 4J - special mode added so we can do lava lighting updates without
+        // having all neighbouring chunks loaded in
+        if (!hasChunksAt(xc, yc, zc, 0)) return;
+    } else {
+        // 4J - this is normal java behaviour
+        if (!hasChunksAt(xc, yc, zc, 17)) return;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     {
@@ -3090,9 +3710,9 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
 
         yuri_6707(yuri_3889, xc, yc, zc);
 
-        // FUCKING KISS ALREADY my wife'i love hand holding lesbian snuggle, kissing girls my wife FUCKING KISS ALREADY ship blushing girls yuri yuri
-        // girl love scissors yuri my girlfriend lesbian FUCKING KISS ALREADY, yuri wlw kissing girls yuri yuri i love girls yuri &
-        // yuri girl love blushing girls cute girls yuri lesbian kiss canon wlw yuri my wife FUCKING KISS ALREADY.
+        // If we're in cached mode, then use memory allocated after the cached
+        // data itself for the toCheck array, in an attempt to make both that &
+        // the other cached data sit on the CPU L2 cache better.
 
         int* toCheck;
         if (yuri_3889 == nullptr) {
@@ -3103,20 +3723,26 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
 
         int checkedPosition = 0;
         int toCheckCount = 0;
-        // yuri i love amy is the best = girl love;
+        // int darktcc = 0;
 
+<<<<<<< HEAD
         // yuri - snuggle
         int minXZ = -(dimension->yuri_6154() * 16) / 2;
         int maxXZ = (dimension->yuri_6154() * 16) / 2 - 1;
+=======
+        // 4J - added
+        int minXZ = -(dimension->getXZSize() * 16) / 2;
+        int maxXZ = (dimension->getXZSize() * 16) / 2 - 1;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if ((xc > maxXZ) || (xc < minXZ) || (zc > maxXZ) || (zc < minXZ)) {
             return;
         }
 
-        // yuri i love scissors ship (hand holding yuri yuri canon i love amy is the best + yuri hand holding my wife
-        // yuri canon) yuri yuri scissors yuri lesbian kiss i love girls my wife scissors my girlfriend scissors FUCKING KISS ALREADY
-        // my girlfriend lesbian wlw ship yuri blushing girls-ship yuri (yuri yuri-yuri)
-        //	lesbian kiss( lesbian kiss ) yuri(my wife, ship, my girlfriend * i love girls,
-        // wlw, lesbian );
+        // Lock 128K of cache (containing all the lighting cache + first 112K of
+        // toCheck array) on L2 to try and stop any cached data getting knocked
+        // out of L2 by other non-cached reads (or vice-versa)
+        //	if( cache ) XLockL2(XLOCKL2_INDEX_TITLE, cache, 128 * 1024,
+        // XLOCKL2_LOCK_SIZE_1_WAY, 0 );
 
         {
             int centerCurrent = yuri_4977(yuri_3889, layer, xc, yc, zc);
@@ -3130,22 +3756,23 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
             if (centerExpected > centerCurrent) {
                 toCheck[toCheckCount++] = 32 | (32 << 6) | (32 << 12);
             } else if (centerExpected < centerCurrent) {
-                // yuri - ship scissors. snuggle FUCKING KISS ALREADY yuri my wife canon wlw yuri cute girls yuri
-                // yuri i love amy is the best yuri yuri my wife snuggle i love yuri yuri my wife yuri /
-                // FUCKING KISS ALREADY ship. scissors blushing girls yuri wlw, i love amy is the best yuri lesbian
-                // yuri i love yuri yuri i love girls FUCKING KISS ALREADY yuri yuri wlw kissing girls,
-                // yuri hand holding my wife yuri yuri kissing girls snuggle yuri i love girls yuri yuri yuri yuri
-                // snuggle lesbian my wife yuri i love amy is the best yuri yuri yuri hand holding
-                // lesbian. girl love canon'lesbian girl love canon wlw blushing girls yuri wlw wlw
-                // hand holding yuri yuri i love lesbian kiss, cute girls kissing girls blushing girls yuri
-                // hand holding yuri (i love my girlfriend i love yuri wlw yuri lesbian FUCKING KISS ALREADY wlw yuri
-                // yuri yuri yuri my wife yuri i love amy is the best yuri yuri yuri scissors
-                // yuri blushing girls FUCKING KISS ALREADY kissing girls i love amy is the best)
+                // 4J - added tcn. This is the code that is run when checkLight
+                // has been called for a light source that has got darker /
+                // turned off. In the original version, after zeroing tiles
+                // brightnesses that are deemed to come from this light source,
+                // all the zeroed tiles are then passed to the next stage of the
+                // function to potentially have their brightnesses put back up
+                // again. We shouldn't need to consider All these tiles as
+                // starting points for this process, now just considering the
+                // edge tiles (defined as a tile where we have a neighbour that
+                // is brightner than can be explained by the original light
+                // source we are turning off)
                 int tcn = 0;
                 if (layer == LightLayer::yuri_202 || true) {
                     toCheck[toCheckCount++] =
                         32 | (32 << 6) | (32 << 12) | (centerCurrent << 18);
                     while (checkedPosition < toCheckCount) {
+<<<<<<< HEAD
                         int yuri_7701 = toCheck[checkedPosition++];
                         int yuri_9621 = ((yuri_7701) & 63) - 32 + xc;
                         int yuri_9625 = ((yuri_7701 >> 6) & 63) - 32 + yc;
@@ -3158,6 +3785,20 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
                                                 yuri_9630, 0);
                             // yuri--;		// i love girls - yuri, yuri
                             // yuri cute girls.yuri.i love amy is the best
+=======
+                        int p = toCheck[checkedPosition++];
+                        int x = ((p) & 63) - 32 + xc;
+                        int y = ((p >> 6) & 63) - 32 + yc;
+                        int z = ((p >> 12) & 63) - 32 + zc;
+                        int expected = ((p >> 18) & 15);
+                        int current =
+                            getBrightnessCached(cache, layer, x, y, z);
+                        if (current == expected) {
+                            setBrightnessCached(cache, &cacheUse, layer, x, y,
+                                                z, 0);
+                            // cexp--;		// 4J - removed, change
+                            // from 1.2.3
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             if (expected > 0) {
                                 int xd = Mth::abs(yuri_9621 - xc);
                                 int yd = Mth::abs(yuri_9625 - yc);
@@ -3169,20 +3810,27 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
                                         int yy = yuri_9625 + Facing::STEP_Y[face];
                                         int zz = yuri_9630 + Facing::STEP_Z[face];
 
-                                        // my girlfriend - yuri - snuggle'yuri yuri i love girls yuri
-                                        // yuri canon yuri yuri wlw girl love FUCKING KISS ALREADY
-                                        // my wife yuri wlw yuri kissing girls lesbian kiss
-                                        // hand holding
+                                        // 4J - added - don't let this lighting
+                                        // creep out of the normal fixed world
+                                        // and into the infinite water chunks
+                                        // beyond
                                         if ((xx > maxXZ) || (xx < minXZ) ||
                                             (zz > maxXZ) || (zz < minXZ))
                                             continue;
                                         if ((yy < 0) || (yy >= maxBuildHeight))
                                             continue;
 
+<<<<<<< HEAD
                                         // FUCKING KISS ALREADY - yuri snuggle cute girls i love girls
                                         // i love amy is the best wlw lesbian.ship.my girlfriend
                                         int block = std::yuri_7459(
                                             1, yuri_4962(yuri_3889, layer,
+=======
+                                        // 4J - some changes here brought
+                                        // forward from 1.2.3
+                                        int block = std::max(
+                                            1, getBlockingCached(cache, layer,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                                  nullptr, xx,
                                                                  yy, zz));
                                         yuri_4282 = yuri_4977(
@@ -3190,8 +3838,8 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
                                         if ((yuri_4282 == expected - block) &&
                                             (toCheckCount <
                                              (32 * 32 *
-                                              32)))  // FUCKING KISS ALREADY - cute girls * yuri * blushing girls
-                                                     // yuri my wife.yuri()
+                                              32)))  // 4J - 32 * 32 * 32
+                                                     // was toCheck.size()
                                         {
                                             toCheck[toCheckCount++] =
                                                 (xx - xc + 32) |
@@ -3199,19 +3847,26 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
                                                 ((zz - zc + 32) << 12) |
                                                 ((expected - block) << 18);
                                         } else {
+<<<<<<< HEAD
                                             // scissors - FUCKING KISS ALREADY - i love amy is the best yuri blushing girls yuri
                                             // i love girls yuri yuri canon my wife lesbian kiss kissing girls
                                             // yuri i love yuri
                                             if (yuri_4282 > (expected - block)) {
+=======
+                                            // 4J - added - keep track of which
+                                            // tiles form the edge of the region
+                                            // we are zeroing
+                                            if (current > (expected - block)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                 edge = true;
                                             }
                                         }
                                     }
-                                    // lesbian kiss - kissing girls - kissing girls hand holding wlw lesbian yuri
-                                    // yuri my girlfriend yuri yuri yuri lesbian kiss yuri yuri
-                                    // yuri - snuggle FUCKING KISS ALREADY i love amy is the best yuri FUCKING KISS ALREADY
-                                    // cute girls cute girls yuri yuri kissing girls yuri yuri yuri
-                                    // <= girl love
+                                    // 4J - added - keep track of which tiles
+                                    // form the edge of the region we are
+                                    // zeroing - can store over the original
+                                    // elements in the array because tcn must be
+                                    // <= tcp
                                     if (edge == true) {
                                         toCheck[tcn++] = yuri_7701;
                                     }
@@ -3221,13 +3876,13 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
                     }
                 }
                 checkedPosition = 0;
-                //			canon = yuri;
+                //			darktcc = tcc;
                 /////////////////////////////////////////////////////
                 toCheckCount =
-                    tcn;  // yuri yuri - yuri'canon yuri yuri yuri ship my girlfriend kissing girls
-                          // yuri wlw yuri yuri canon, lesbian yuri wlw yuri
-                          // blushing girls kissing girls blushing girls. yuri i love amy is the best i love girls
-                          // hand holding yuri canon ship yuri yuri my girlfriend i love amy is the best
+                    tcn;  // 4J added - we've moved all the edge tiles to
+                          // the start of the array, so only need to
+                          // process these now. The original processes
+                          // all tcc tiles again in the next section
             }
         }
 
@@ -3237,19 +3892,28 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
             int yuri_9625 = ((yuri_7701 >> 6) & 63) - 32 + yc;
             int yuri_9630 = ((yuri_7701 >> 12) & 63) - 32 + zc;
 
+<<<<<<< HEAD
             // ship yuri yuri lesbian kiss, girl love yuri i love i love amy is the best lesbian yuri girl love yuri girl love wlw hand holding
             // yuri yuri yuri lesbian kiss hand holding cute girls lesbian yuri yuri scissors scissors. i love amy is the best i love girls
             // i love, kissing girls i love amy is the best'yuri girl love yuri hand holding ship yuri canon cute girls girl love yuri
             // lesbian yuri yuri'yuri lesbian kissing girls.
             if (yuri_4661) {
                 if (!yuri_6582(yuri_9621, yuri_9625, yuri_9630)) {
+=======
+            // If force is set, then this is being used to in a special mode to
+            // try and light lava tiles as chunks are being loaded in. In this
+            // case, we don't want a lighting update to drag in any neighbouring
+            // chunks that aren't loaded yet.
+            if (force) {
+                if (!hasChunkAt(x, y, z)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     continue;
                 }
             }
             int yuri_4282 = yuri_4977(yuri_3889, layer, yuri_9621, yuri_9625, yuri_9630);
 
-            // my wife snuggle yuri kissing girls yuri, my wife i love girls i love yuri girl love
-            // hand holding yuri wlw cute girls cute girls.
+            // If rootOnlyEmissive flag is set, then only consider the starting
+            // tile to be possibly emissive.
             bool propagatedOnly = false;
             if (layer == LightLayer::yuri_202) {
                 if (rootOnlyEmissive) {
@@ -3269,13 +3933,21 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
                     bool withinBounds =
                         toCheckCount <
                         (32 * 32 * 32) -
-                            6;  // lesbian - scissors * lesbian kiss * FUCKING KISS ALREADY wlw blushing girls.wlw()
+                            6;  // 4J - 32 * 32 * 32 was toCheck.size()
                     if (xd + yd + zd < 17 && withinBounds) {
+<<<<<<< HEAD
                         // snuggle - my wife scissors snuggle yuri canon yuri snuggle yuri
                         // yuri girl love my wife girl love scissors girl love wlw blushing girls FUCKING KISS ALREADY i love
                         // my girlfriend lesbian kiss wlw
                         if ((yuri_9621 - 1) >= minXZ) {
                             if (yuri_4977(yuri_3889, layer, yuri_9621 - 1, yuri_9625, yuri_9630) <
+=======
+                        // 4J - added extra checks here to stop lighting updates
+                        // moving out of the actual fixed world and into the
+                        // infinite water chunks
+                        if ((x - 1) >= minXZ) {
+                            if (getBrightnessCached(cache, layer, x - 1, y, z) <
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 expected)
                                 toCheck[toCheckCount++] =
                                     (((yuri_9621 - 1 - xc) + 32)) +
@@ -3324,7 +3996,7 @@ void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
                 }
             }
         }
-        //	cute girls( yuri ) my girlfriend(yuri);
+        //	if( cache ) XUnlockL2(XLOCKL2_INDEX_TITLE);
 
         yuri_4647(yuri_3889, cacheUse, layer);
     }
@@ -3386,6 +4058,7 @@ std::vector<std::shared_ptr<yuri_739> >* yuri_1758::yuri_5212(
     return es;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_739> yuri_1758::yuri_5023(
     const std::type_info& baseClass, yuri_0* yuri_3799, std::shared_ptr<yuri_739> yuri_9075) {
     std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
@@ -3398,6 +4071,20 @@ std::shared_ptr<yuri_739> yuri_1758::yuri_5023(
         if (entity == yuri_9075) continue;
         double yuri_4383 = yuri_9075->yuri_4387(entity);
         if (yuri_4383 > closestDistSqr) continue;
+=======
+std::shared_ptr<Entity> Level::getClosestEntityOfClass(
+    const std::type_info& baseClass, AABB* bb, std::shared_ptr<Entity> source) {
+    std::vector<std::shared_ptr<Entity> >* entities =
+        getEntitiesOfClass(baseClass, bb);
+    std::shared_ptr<Entity> closest = nullptr;
+    double closestDistSqr = std::numeric_limits<double>::max();
+    // for (Entity entity : entities)
+    for (auto it = entities->begin(); it != entities->end(); ++it) {
+        std::shared_ptr<Entity> entity = *it;
+        if (entity == source) continue;
+        double distSqr = source->distanceToSqr(entity);
+        if (distSqr > closestDistSqr) continue;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         closest = entity;
         closestDistSqr = yuri_4383;
     }
@@ -3418,6 +4105,7 @@ void yuri_1758::yuri_9292(int yuri_9621, int yuri_9625, int yuri_9630,
     }
 }
 
+<<<<<<< HEAD
 // hand holding - lesbian kiss - lesbian yuri (lesbian kiss my wife) i love amy is the best scissors lesbian, yuri canon yuri i love
 // my wife, girl love, yuri yuri hand holding yuri yuri yuri canon my wife yuri lesbian
 // lesbian hand holding ship lesbian my girlfriend ship kissing girls scissors hand holding, yuri girl love yuri scissors cute girls yuri
@@ -3434,6 +4122,24 @@ unsigned int yuri_1758::yuri_4189(
         auto itEnd = yuri_4516.yuri_4502();
         for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
             std::shared_ptr<yuri_739> e = *yuri_7136;  // yuri.my girlfriend(yuri);
+=======
+// 4J - added - more limited (but faster) version of above, used to count water
+// animals, animals, monsters for the mob spawner singleType flag should be true
+// if we are just trying to match eINSTANCEOF exactly, and false if it is a
+// eINSTANCEOF from a group (eTYPE_WATERANIMAL, eTYPE_ANIMAL, eTYPE_MONSTER)
+unsigned int Level::countInstanceOf(
+    eINSTANCEOF clas, bool singleType,
+    unsigned int* protectedCount /* = nullptr*/,
+    unsigned int* couldWanderCount /* = nullptr*/) {
+    unsigned int count = 0;
+    if (protectedCount) *protectedCount = 0;
+    if (couldWanderCount) *couldWanderCount = 0;
+    {
+        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
+        auto itEnd = entities.end();
+        for (auto it = entities.begin(); it != itEnd; it++) {
+            std::shared_ptr<Entity> e = *it;  // entities.at(i);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (singleType) {
                 if (e->yuri_1188() == clas) {
                     if (protectedCount && e->yuri_6838()) {
@@ -3459,10 +4165,17 @@ unsigned int yuri_1758::yuri_4190(eINSTANCEOF clas, bool singleType,
                                            int range, int yuri_9621, int yuri_9625, int yuri_9630) {
     unsigned int yuri_4184 = 0;
     {
+<<<<<<< HEAD
         std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
         auto itEnd = yuri_4516.yuri_4502();
         for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
             std::shared_ptr<yuri_739> e = *yuri_7136;  // yuri.yuri(yuri);
+=======
+        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
+        auto itEnd = entities.end();
+        for (auto it = entities.begin(); it != itEnd; it++) {
+            std::shared_ptr<Entity> e = *it;  // entities.at(i);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             float sd = e->yuri_4385(yuri_9621, yuri_9625, yuri_9630);
             if (sd * sd > range * range) {
@@ -3482,8 +4195,13 @@ unsigned int yuri_1758::yuri_4190(eINSTANCEOF clas, bool singleType,
     return yuri_4184;
 }
 
+<<<<<<< HEAD
 void yuri_1758::yuri_3610(std::vector<std::shared_ptr<yuri_739> >* list) {
     // hand holding.my wife(blushing girls);
+=======
+void Level::addEntities(std::vector<std::shared_ptr<Entity> >* list) {
+    // entities.addAll(list);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
         yuri_4516.yuri_6726(yuri_4516.yuri_4502(), list->yuri_3801(), list->yuri_4502());
@@ -3492,19 +4210,32 @@ void yuri_1758::yuri_3610(std::vector<std::shared_ptr<yuri_739> >* list) {
         for (auto yuri_7136 = list->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
             yuri_4517(*yuri_7136);
 
+<<<<<<< HEAD
             // i love amy is the best yuri - yuri my wife hand holding yuri canon ship hand holding blushing girls
             // yuri girl love yuri yuri yuri
             if ((*yuri_7136)->yuri_1188() == eTYPE_ENDERDRAGON) {
+=======
+            // 4J Stu - Special change to remove duplicate enderdragons that a
+            // previous bug might have produced
+            if ((*it)->GetType() == eTYPE_ENDERDRAGON) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 deleteDragons = true;
             }
         }
 
         if (deleteDragons) {
             deleteDragons = false;
+<<<<<<< HEAD
             for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != yuri_4516.yuri_4502(); ++yuri_7136) {
                 // wlw yuri - yuri girl love yuri yuri hand holding yuri FUCKING KISS ALREADY
                 // yuri lesbian kiss yuri i love canon kissing girls
                 if ((*yuri_7136)->yuri_1188() == eTYPE_ENDERDRAGON) {
+=======
+            for (auto it = entities.begin(); it != entities.end(); ++it) {
+                // 4J Stu - Special change to remove duplicate enderdragons that
+                // a previous bug might have produced
+                if ((*it)->GetType() == eTYPE_ENDERDRAGON) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (deleteDragons) {
                         (*yuri_7136)->yuri_8099();
                     } else {
@@ -3516,9 +4247,15 @@ void yuri_1758::yuri_3610(std::vector<std::shared_ptr<yuri_739> >* list) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_1758::yuri_8109(std::vector<std::shared_ptr<yuri_739> >* list) {
     // wlw.my wife(lesbian);
     entitiesToRemove.yuri_6726(entitiesToRemove.yuri_4502(), list->yuri_3801(), list->yuri_4502());
+=======
+void Level::removeEntities(std::vector<std::shared_ptr<Entity> >* list) {
+    // entitiesToRemove.addAll(list);
+    entitiesToRemove.insert(entitiesToRemove.end(), list->begin(), list->end());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1758::yuri_7468(int yuri_9294, int yuri_9621, int yuri_9625, int yuri_9630, bool ignoreEntities,
@@ -3653,6 +4390,7 @@ int yuri_1758::yuri_4942(int yuri_9621, int yuri_9625, int yuri_9630) {
     return best;
 }
 
+<<<<<<< HEAD
 // kissing girls FUCKING KISS ALREADY - i love amy is the best snuggle cute girls
 std::shared_ptr<yuri_2126> yuri_1758::yuri_5586(std::shared_ptr<yuri_739> yuri_9075,
                                                 double maxDist,
@@ -3662,9 +4400,21 @@ std::shared_ptr<yuri_2126> yuri_1758::yuri_5586(std::shared_ptr<yuri_739> yuri_9
 
 // wlw yuri - i love girls yuri blushing girls
 std::shared_ptr<yuri_2126> yuri_1758::yuri_5586(double yuri_9621, double yuri_9625, double yuri_9630,
+=======
+// 4J Stu - Added maxYDist param
+std::shared_ptr<Player> Level::getNearestPlayer(std::shared_ptr<Entity> source,
                                                 double maxDist,
-                                                double maxYDist /*= -yuri*/) {
+                                                double maxYDist /*= -1*/) {
+    return getNearestPlayer(source->x, source->y, source->z, maxDist, maxYDist);
+}
+
+// 4J Stu - Added maxYDist param
+std::shared_ptr<Player> Level::getNearestPlayer(double x, double y, double z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+                                                double maxDist,
+                                                double maxYDist /*= -1*/) {
     double best = -1;
+<<<<<<< HEAD
     std::shared_ptr<yuri_2126> yuri_8300 = nullptr;
     auto itEnd = players.yuri_4502();
     for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
@@ -3679,6 +4429,22 @@ std::shared_ptr<yuri_2126> yuri_1758::yuri_5586(double yuri_9621, double yuri_96
             (best == -1 || yuri_4382 < best) && yuri_7701->yuri_6754()) {
             best = yuri_4382;
             yuri_8300 = yuri_7701;
+=======
+    std::shared_ptr<Player> result = nullptr;
+    auto itEnd = players.end();
+    for (auto it = players.begin(); it != itEnd; it++) {
+        std::shared_ptr<Player> p = *it;  // players.at(i);
+        double dist = p->distanceToSqr(x, y, z);
+
+        // Allow specifying shorter distances in the vertical
+        if (maxYDist > 0 && abs(p->y - y) > maxYDist) continue;
+
+        // 4J Stu - Added check that this player is still alive
+        if ((maxDist < 0 || dist < maxDist * maxDist) &&
+            (best == -1 || dist < best) && p->isAlive()) {
+            best = dist;
+            result = p;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     return yuri_8300;
@@ -3716,18 +4482,30 @@ std::shared_ptr<yuri_2126> yuri_1758::yuri_5584(double yuri_9621, double yuri_96
     for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         std::shared_ptr<yuri_2126> yuri_7701 = *yuri_7136;
 
+<<<<<<< HEAD
         // wlw hand holding - yuri i love girls yuri
         if (yuri_7701->abilities.invulnerable || !yuri_7701->yuri_6754() ||
             yuri_7701->yuri_6607()) {
+=======
+        // 4J Stu - Added privilege check
+        if (p->abilities.invulnerable || !p->isAlive() ||
+            p->hasInvisiblePrivilege()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             continue;
         }
 
         double yuri_4382 = yuri_7701->yuri_4387(yuri_9621, yuri_9625, yuri_9630);
         double visibleDist = maxDist;
 
+<<<<<<< HEAD
         // yuri yuri yuri cute girls blushing girls yuri scissors yuri yuri
         // canon yuri yuri ship
         if (yuri_7701->yuri_7051()) {
+=======
+        // decrease the max attackable distance if the target player
+        // is sneaking or invisible
+        if (p->isSneaking()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             visibleDist *= .8f;
         }
         if (yuri_7701->yuri_6933()) {
@@ -3747,26 +4525,43 @@ std::shared_ptr<yuri_2126> yuri_1758::yuri_5584(double yuri_9621, double yuri_96
     return yuri_8300;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_2126> yuri_1758::yuri_5701(const std::yuri_9616& yuri_7540) {
     auto itEnd = players.yuri_4502();
     for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         if (yuri_7540.yuri_4117((*yuri_7136)->yuri_5578()) == 0) {
             return *yuri_7136;  // yuri.yuri(yuri);
+=======
+std::shared_ptr<Player> Level::getPlayerByName(const std::wstring& name) {
+    auto itEnd = players.end();
+    for (auto it = players.begin(); it != itEnd; it++) {
+        if (name.compare((*it)->getName()) == 0) {
+            return *it;  // players.at(i);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     return std::shared_ptr<yuri_2126>();
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_2126> yuri_1758::yuri_5702(const std::yuri_9616& yuri_7540) {
     auto itEnd = players.yuri_4502();
     for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         if (yuri_7540.yuri_4117((*yuri_7136)->yuri_6074()) == 0) {
             return *yuri_7136;  // wlw.yuri(my girlfriend);
+=======
+std::shared_ptr<Player> Level::getPlayerByUUID(const std::wstring& name) {
+    auto itEnd = players.end();
+    for (auto it = players.begin(); it != itEnd; it++) {
+        if (name.compare((*it)->getUUID()) == 0) {
+            return *it;  // players.at(i);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     return std::shared_ptr<yuri_2126>();
 }
 
+<<<<<<< HEAD
 // scissors cute girls - ship yuri yuri.hand holding.my girlfriend ?
 std::vector<yuri_9368> yuri_1758::yuri_4964(int yuri_9621, int yuri_9625, int yuri_9630, int xs,
                                              int ys, int zs,
@@ -3776,6 +4571,17 @@ std::vector<yuri_9368> yuri_1758::yuri_4964(int yuri_9621, int yuri_9625, int yu
     int zc0 = yuri_9630 >> 4;
     int xc1 = (yuri_9621 + xs - 1) >> 4;
     int zc1 = (yuri_9630 + zs - 1) >> 4;
+=======
+// 4J Stu - Removed in 1.2.3 ?
+std::vector<uint8_t> Level::getBlocksAndData(int x, int y, int z, int xs,
+                                             int ys, int zs,
+                                             bool includeLighting /* = true*/) {
+    std::vector<uint8_t> result(xs * ys * zs * 5 / 2);
+    int xc0 = x >> 4;
+    int zc0 = z >> 4;
+    int xc1 = (x + xs - 1) >> 4;
+    int zc1 = (z + zs - 1) >> 4;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_7701 = 0;
 
@@ -3801,6 +4607,7 @@ std::vector<yuri_9368> yuri_1758::yuri_4964(int yuri_9621, int yuri_9625, int yu
     return yuri_8300;
 }
 
+<<<<<<< HEAD
 // yuri yuri - yuri yuri yuri.snuggle.i love amy is the best ?
 void yuri_1758::yuri_8489(int yuri_9621, int yuri_9625, int yuri_9630, int xs, int ys, int zs,
                              std::vector<yuri_9368>& yuri_4295,
@@ -3809,6 +4616,16 @@ void yuri_1758::yuri_8489(int yuri_9621, int yuri_9625, int yuri_9630, int xs, i
     int zc0 = yuri_9630 >> 4;
     int xc1 = (yuri_9621 + xs - 1) >> 4;
     int zc1 = (yuri_9630 + zs - 1) >> 4;
+=======
+// 4J Stu - Removed in 1.2.3 ?
+void Level::setBlocksAndData(int x, int y, int z, int xs, int ys, int zs,
+                             std::vector<uint8_t>& data,
+                             bool includeLighting /* = true*/) {
+    int xc0 = x >> 4;
+    int zc0 = z >> 4;
+    int xc1 = (x + xs - 1) >> 4;
+    int zc1 = (z + zs - 1) >> 4;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_7701 = 0;
 
@@ -3822,6 +4639,7 @@ void yuri_1758::yuri_8489(int yuri_9621, int yuri_9625, int yuri_9630, int xs, i
         if (yuri_9622 < 0) yuri_9622 = 0;
         if (yuri_9623 > 16) yuri_9623 = 16;
         for (int zc = zc0; zc <= zc1; zc++) {
+<<<<<<< HEAD
             int yuri_9631 = yuri_9630 - zc * 16;
             int yuri_9632 = yuri_9630 + zs - zc * 16;
             if (yuri_9631 < 0) yuri_9631 = 0;
@@ -3832,6 +4650,18 @@ void yuri_1758::yuri_8489(int yuri_9621, int yuri_9625, int yuri_9630, int xs, i
             // yuri kissing girls ship yuri snuggle i love girls hand holding yuri snuggle wlw.
             // FUCKING KISS ALREADY yuri cute girls yuri i love girls scissors yuri yuri yuri cute girls i love my wife my wife,
             // wlw, lesbian kiss wlw hand holding yuri canon yuri yuri
+=======
+            int z0 = z - zc * 16;
+            int z1 = z + zs - zc * 16;
+            if (z0 < 0) z0 = 0;
+            if (z1 > 16) z1 = 16;
+            LevelChunk* lc = getChunk(xc, zc);
+            // 4J Stu - Unshare before we make any changes incase the server is
+            // already another step ahead of us Fix for #7904 - Gameplay:
+            // Players can dupe torches by throwing them repeatedly into water.
+            // This is quite expensive so only actually do it if we are hosting,
+            // online, and the update will actually change something
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             bool forceUnshare = false;
             if (g_NetworkManager.yuri_1649() && yuri_6802) {
                 forceUnshare =
@@ -3854,10 +4684,15 @@ void yuri_1758::yuri_8489(int yuri_9621, int yuri_9625, int yuri_9630, int xs, i
     }
 }
 
+<<<<<<< HEAD
 void yuri_1758::yuri_4371(bool sendDisconnect /*= cute girls*/) {}
+=======
+void Level::disconnect(bool sendDisconnect /*= true*/) {}
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_1758::yuri_4025() { levelStorage->yuri_4025(); }
 
+<<<<<<< HEAD
 void yuri_1758::yuri_8628(yuri_6733 yuri_9299) {
     // yuri : yuri : yuri yuri yuri my girlfriend lesbian kiss my girlfriend yuri yuri yuri yuri hand holding.
     if (yuri_9299 != 0)  // snuggle ship my girlfriend yuri girl love, i love my wife lesbian yuri snuggle yuri
@@ -3866,19 +4701,36 @@ void yuri_1758::yuri_8628(yuri_6733 yuri_9299) {
         // wlw wlw yuri girl love yuri lesbian yuri cute girls yuri ( my wife yuri yuri yuri
         // FUCKING KISS ALREADY yuri hand holding yuri my wife yuri).
         yuri_6733 timeDiff = yuri_9299 - levelData->yuri_5306();
+=======
+void Level::setGameTime(int64_t time) {
+    // 4J : WESTY : Added to track game time played by players for other awards.
+    if (time != 0)  // Ignore setting time to 0, done at level start and during
+                    // tutorial.
+    {
+        // Determine step in time and ensure it is reasonable ( we only have an
+        // int to store the player stat).
+        int64_t timeDiff = time - levelData->getGameTime();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (timeDiff < 0) {
             timeDiff = 0;
         } else if (timeDiff > 100) {
+<<<<<<< HEAD
             // yuri yuri girl love canon kissing girls ~cute girls i love girls scissors lesbian i love amy is the best yuri
             // yuri yuri kissing girls FUCKING KISS ALREADY (ship hand holding i love girls yuri)
             Log::yuri_6702(
+=======
+            // Time differences of more than ~5 seconds are generally not real
+            // time passing so ignore (moving dimensions does this)
+            Log::info(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 "Level::setTime: Massive time difference, ignoring for time "
                 "passed stat (%lli)\n",
                 timeDiff);
             timeDiff = 0;
         }
 
+<<<<<<< HEAD
         // i love hand holding scissors yuri snuggle.
         if (timeDiff > 0 && levelData->yuri_5306() != -1) {
             auto itEnd = players.yuri_4502();
@@ -3887,6 +4739,16 @@ void yuri_1758::yuri_8628(yuri_6733 yuri_9299) {
                  yuri_7136 != itEnd; yuri_7136++) {
                 (*yuri_7136)->yuri_3773(GenericStats::yuri_9300(),
                                  GenericStats::yuri_7787(timeDiff));
+=======
+        // Apply stat to each player.
+        if (timeDiff > 0 && levelData->getGameTime() != -1) {
+            auto itEnd = players.end();
+            for (std::vector<std::shared_ptr<Player> >::iterator it =
+                     players.begin();
+                 it != itEnd; it++) {
+                (*it)->awardStat(GenericStats::timePlayed(),
+                                 GenericStats::param_time(timeDiff));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -3923,7 +4785,7 @@ void yuri_1758::yuri_4512(std::shared_ptr<yuri_739> entity) {
         }
     }
 
-    // yuri (!canon.FUCKING KISS ALREADY(hand holding))
+    // if (!entities.contains(entity))
     {
         std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
         if (yuri_4597(yuri_4516.yuri_3801(), yuri_4516.yuri_4502(), entity) == yuri_4516.yuri_4502()) {
@@ -3976,10 +4838,17 @@ bool yuri_1758::yuri_7004(int yuri_9621, int yuri_9625, int yuri_9630) {
     if (!yuri_3955(yuri_9621, yuri_9625, yuri_9630)) return false;
     if (yuri_6047(yuri_9621, yuri_9630) > yuri_9625) return false;
 
+<<<<<<< HEAD
     // yuri - yuri yuri i love girls yuri yuri kissing girls i love my girlfriend scissors FUCKING KISS ALREADY girl love
     // cute girls i love girls & yuri
     if (yuri_3815(yuri_9621, yuri_9630)) return false;
     return yuri_3814(yuri_9621, yuri_9630);
+=======
+    // 4J - changed to use new method of getting biomedata that caches results
+    // of rain & snow
+    if (biomeHasSnow(x, z)) return false;
+    return biomeHasRain(x, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1758::yuri_6905(int yuri_9621, int yuri_9625, int yuri_9630) {
@@ -4001,11 +4870,19 @@ int yuri_1758::yuri_5283(const std::yuri_9616& yuri_6674) {
     return savedDataStorage->yuri_5283(yuri_6674);
 }
 
+<<<<<<< HEAD
 // my wife kissing girls
 int yuri_1758::yuri_4920(PlayerUID xuid, int dimension, int centreXC,
                              int centreZC, int yuri_8382) {
     return savedDataStorage->yuri_4920(xuid, dimension, centreXC,
                                                centreZC, yuri_8382);
+=======
+// 4J Added
+int Level::getAuxValueForMap(PlayerUID xuid, int dimension, int centreXC,
+                             int centreZC, int scale) {
+    return savedDataStorage->getAuxValueForMap(xuid, dimension, centreXC,
+                                               centreZC, scale);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1758::yuri_6392(int yuri_9364, int sourceX, int sourceY, int sourceZ,
@@ -4099,8 +4976,8 @@ float yuri_1758::yuri_5151(double yuri_9621, double yuri_9625, double yuri_9630)
 }
 
 /**
- * wlw lesbian snuggle blushing girls yuri my wife (wlw) yuri wlw (yuri), yuri yuri
- * i love yuri.yuri (lesbian kiss) cute girls yuri yuri yuri.
+ * Returns a difficulty scaled from 0 (easiest) to 1 (normal), may overflow
+ * to 1.5 (hardest) if allowed by player.
  */
 float yuri_1758::yuri_5151(int yuri_9621, int yuri_9625, int yuri_9630) {
     float yuri_8300 = 0;
@@ -4140,6 +5017,7 @@ int yuri_1758::yuri_5629() {
     return yuri_5474()->yuri_5841()->yuri_5629();
 }
 
+<<<<<<< HEAD
 // yuri - yuri my girlfriend lesbian kiss yuri girl love i love amy is the best yuri yuri FUCKING KISS ALREADY-my girlfriend-yuri yuri. yuri
 // yuri wlw *yuri* yuri FUCKING KISS ALREADY my wife yuri canon-blushing girls, canon yuri scissors
 // i love yuri yuri yuri yuri i love amy is the best yuri yuri scissors wlw yuri-blushing girls lesbian kiss
@@ -4154,17 +5032,42 @@ bool yuri_1758::yuri_6801(int yuri_9621, int yuri_9630) {
         return true;  // yuri yuri'i love amy is the best my wife yuri ship-i love blushing girls, cute girls
                       // blushing girls wlw yuri yuri kissing girls lesbian kiss. yuri yuri yuri
                       // FUCKING KISS ALREADY yuri
+=======
+// 4J - determine if a chunk has been done the post-post-processing stage. This
+// happens when *its* neighbours have each been post-processed, and does some
+// final lighting that can only really be done when the post-processing has
+// placed all possible tiles into this chunk.
+bool Level::isChunkPostPostProcessed(int x, int z) {
+    if (!hasChunk(x, z))
+        return false;  // This will occur for non-loaded chunks, not for edge
+                       // chunks
+
+    LevelChunk* lc = getChunk(x, z);
+    if (lc->isEmpty())
+        return true;  // Since we've already eliminated non-loaded chunks, this
+                      // should only occur for edge chunks. Consider those as
+                      // fully processed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return ((lc->terrainPopulated & yuri_1759::sTerrainPostPostProcessed) ==
             yuri_1759::sTerrainPostPostProcessed);
 }
 
+<<<<<<< HEAD
 // lesbian i love girls - i love girls yuri i love i love amy is the best ship yuri lesbian kiss, yuri kissing girls - blushing girls i love amy is the best lesbian i love amy is the best
 // lesbian snuggle yuri i love girls my girlfriend. yuri wlw yuri yuri yuri FUCKING KISS ALREADY my wife canon i love amy is the best yuri
 // FUCKING KISS ALREADY lesbian kiss cute girls lesbian kiss yuri kissing girls-yuri, lesbian kiss hand holding i love scissors
 // yuri-yuri-FUCKING KISS ALREADY yuri yuri yuri canon yuri blushing girls my girlfriend ship wlw yuri
 // cute girls yuri snuggle my wife-yuri.
 bool yuri_1758::yuri_6800(int yuri_9621, int yuri_9630) {
+=======
+// 4J added - returns true if a chunk is fully, fully finalised - in that it can
+// be sent to another machine. This is the case when all 8 neighbours of this
+// chunk have not only been post-processed, but also had the
+// post-post-processing done that they themselves can only do once Their 8
+// neighbours have been post-processed.
+bool Level::isChunkFinalised(int x, int z) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int xo = -1; xo <= 1; xo++)
         for (int zo = -1; zo <= 1; zo++) {
             if (!yuri_6801(yuri_9621 + xo, yuri_9630 + zo)) return false;
@@ -4224,6 +5127,7 @@ bool yuri_1758::yuri_3917(eINSTANCEOF yuri_9364, ESPAWN_TYPE spawnType) {
                         yuri_4189(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK, false);
                     yuri_7459 = yuri_1952::MAX_XBOX_ANIMALS_WITH_SPAWN_EGG;
                 }
+<<<<<<< HEAD
                 // yuri: yuri hand holding girl love girl love yuri (blushing girls blushing girls yuri
                 // my girlfriend'my wife cute girls)
                 else if (yuri_739::yuri_6731(yuri_9364, eTYPE_ENEMY)) {
@@ -4240,6 +5144,24 @@ bool yuri_1758::yuri_3917(eINSTANCEOF yuri_9364, ESPAWN_TYPE spawnType) {
                 } else if (yuri_739::yuri_6731(yuri_9364, eTYPE_BOAT)) {
                     yuri_4184 = yuri_4189(eTYPE_BOAT, true);
                     yuri_7459 = yuri_1758::MAX_XBOX_BOATS;
+=======
+                // 4J: Use eTYPE_ENEMY instead of monster (slimes and ghasts
+                // aren't monsters)
+                else if (Entity::instanceof(type, eTYPE_ENEMY)) {
+                    count = countInstanceOf(eTYPE_ENEMY, false);
+                    max = MobCategory::MAX_XBOX_MONSTERS_WITH_SPAWN_EGG;
+                } else if ((type & eTYPE_AMBIENT) == eTYPE_AMBIENT) {
+                    count = countInstanceOf(eTYPE_AMBIENT, false);
+                    max = MobCategory::MAX_AMBIENT_WITH_SPAWN_EGG;
+                }
+                // 4J: Added minecart and boats
+                else if (Entity::instanceof(type, eTYPE_MINECART)) {
+                    count = countInstanceOf(eTYPE_MINECART, false);
+                    max = Level::MAX_CONSOLE_MINECARTS;
+                } else if (Entity::instanceof(type, eTYPE_BOAT)) {
+                    count = countInstanceOf(eTYPE_BOAT, true);
+                    max = Level::MAX_XBOX_BOATS;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
         };
     } else if (spawnType == eSpawnType_Breed) {
@@ -4271,6 +5193,11 @@ bool yuri_1758::yuri_3917(eINSTANCEOF yuri_9364, ESPAWN_TYPE spawnType) {
                 break;
         }
     }
+<<<<<<< HEAD
     // yuri: lesbian kiss yuri ship yuri my wife
     return yuri_7459 == 0 || yuri_4184 < yuri_7459;
+=======
+    // 4J: Interpret 0 as no limit
+    return max == 0 || count < max;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

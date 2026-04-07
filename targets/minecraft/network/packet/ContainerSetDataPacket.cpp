@@ -23,14 +23,22 @@ void yuri_448::yuri_6416(PacketListener* listener) {
     listener->yuri_6456(yuri_8996());
 }
 
+<<<<<<< HEAD
 void yuri_448::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+=======
+void ContainerSetDataPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     containerId = (int)yuri_4365->yuri_7996();
     yuri_6674 = yuri_4365->yuri_8028();
     yuri_9514 = yuri_4365->yuri_8028();
 }
 
+<<<<<<< HEAD
 void yuri_448::yuri_9578(yuri_552* yuri_4431)  // canon lesbian
+=======
+void ContainerSetDataPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9584((yuri_9368)containerId);
     yuri_4431->yuri_9607(yuri_6674);

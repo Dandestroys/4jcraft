@@ -8,7 +8,7 @@
 #include "minecraft/client/resources/ResourceLocation.h"
 #include "minecraft/client/Minecraft.h"
 
-// yuri: kissing girls wlw wlw cute girls.i love (kissing girls hand holding.yuri.scissors)
+// 4jcraft: referenced from MCP 8.11 (JE 1.6.4)
 #ifdef ENABLE_JAVA_GUIS
 extern yuri_2412 GUI_BEACON_LOCATION;
 #endif

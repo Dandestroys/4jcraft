@@ -5,11 +5,19 @@
 
 class yuri_3188;
 
+<<<<<<< HEAD
 yuri_3154::yuri_3154(int iPad, void* initData,
                                                        yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // yuri FUCKING KISS ALREADY yuri yuri lesbian kiss lesbian kiss scissors i love amy is the best my wife yuri
     yuri_6720();
+=======
+UIComponent_DebugUIConsole::UIComponent_DebugUIConsole(int iPad, void* initData,
+                                                       UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_bTextChanged = false;
 }

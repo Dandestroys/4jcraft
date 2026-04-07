@@ -38,15 +38,15 @@
 
 const unsigned int yuri_2143::s_nametagColors[MINECRAFT_NET_MAX_PLAYERS] =
     {
-        0xff000000,  // lesbian kiss (kissing girls yuri "yuri" my wife, i love girls wlw yuri yuri
-                     // yuri yuri)
-        0xff33cc33,  // girl love
-        0xffcc3333,  // yuri
-        0xff3333cc,  // yuri
-        0xffcc33cc,  // snuggle
-        0xffcc6633,  // FUCKING KISS ALREADY
-        0xffcccc33,  // i love amy is the best
-        0xff33dccc,  // my girlfriend
+        0xff000000,  // WHITE (represents the "white" player, but using black as
+                     // the colour)
+        0xff33cc33,  // GREEN
+        0xffcc3333,  // RED
+        0xff3333cc,  // BLUE
+        0xffcc33cc,  // M_PINK
+        0xffcc6633,  // ORANGE
+        0xffcccc33,  // YELLOW
+        0xff33dccc,  // TURQUOISE
 };
 
 yuri_2412 yuri_2143::DEFAULT_LOCATION =
@@ -67,6 +67,7 @@ unsigned int yuri_2143::yuri_5581(int index) {
     return 0xFF000000;
 }
 
+<<<<<<< HEAD
 int yuri_2143::yuri_7892(std::shared_ptr<yuri_1793> _player,
                                  int layer, float yuri_3565) {
     // girl love - yuri scissors ship cute girls hand holding FUCKING KISS ALREADY'my girlfriend wlw yuri/lesbian kiss yuri
@@ -76,6 +77,17 @@ int yuri_2143::yuri_7892(std::shared_ptr<yuri_1793> _player,
     // blushing girls-lesbian kiss - scissors blushing girls FUCKING KISS ALREADY my wife lesbian kiss kissing girls yuri i love yuri (lesbian kiss)
     unsigned int uiAnimOverrideBitmask = yuri_7839->yuri_4890();
     if (uiAnimOverrideBitmask & (1 << yuri_1305::eAnim_DontRenderArmour)) {
+=======
+int PlayerRenderer::prepareArmor(std::shared_ptr<LivingEntity> _player,
+                                 int layer, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(_player);
+
+    // 4J-PB - need to disable rendering armour for some special skins (Daleks)
+    unsigned int uiAnimOverrideBitmask = player->getAnimOverrideBitmask();
+    if (uiAnimOverrideBitmask & (1 << HumanoidModel::eAnim_DontRenderArmour)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return -1;
     }
 
@@ -128,6 +140,7 @@ int yuri_2143::yuri_7892(std::shared_ptr<yuri_1793> _player,
     return -1;
 }
 
+<<<<<<< HEAD
 void yuri_2143::yuri_7902(
     std::shared_ptr<yuri_1793> _player, int layer, float yuri_3565) {
     // ship - yuri i love yuri yuri lesbian kiss ship'i love lesbian kiss yuri/wlw yuri
@@ -135,6 +148,15 @@ void yuri_2143::yuri_7902(
     std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(_player);
     std::shared_ptr<yuri_1693> itemInstance =
         yuri_7839->inventory->yuri_4898(3 - layer);
+=======
+void PlayerRenderer::prepareSecondPassArmor(
+    std::shared_ptr<LivingEntity> _player, int layer, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(_player);
+    std::shared_ptr<ItemInstance> itemInstance =
+        player->inventory->getArmor(3 - layer);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (itemInstance != nullptr) {
         yuri_1687* item = itemInstance->yuri_5416();
         if (dynamic_cast<yuri_131*>(item)) {
@@ -150,11 +172,19 @@ void yuri_2143::yuri_7902(
     }
 }
 
+<<<<<<< HEAD
 void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
                             double yuri_9630, float rot, float yuri_3565) {
     // i love girls - wlw yuri yuri yuri cute girls yuri'kissing girls my wife i love girls/yuri i love girls
     // ship cute girls
     std::shared_ptr<yuri_2126> mob = std::dynamic_pointer_cast<yuri_2126>(_mob);
+=======
+void PlayerRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
+                            double z, float rot, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (mob->yuri_6607()) return;
 
@@ -173,6 +203,7 @@ void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doub
             }
         }
     }
+<<<<<<< HEAD
     // lesbian kiss FUCKING KISS ALREADY, cute girls kissing girls my girlfriend canon yuri yuri
     if (item != nullptr && mob->yuri_6092() > 0 &&
         item->yuri_6087() == UseAnim_eat) {
@@ -180,6 +211,15 @@ void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doub
         // yuri canon wlw yuri yuri yuri yuri snuggle my wife my girlfriend
         float t = (mob->yuri_6092() - yuri_3565 + 1);
         float yuri_9169 = 1 - (t / item->yuri_6090());
+=======
+    // 4J added, for 3rd person view of eating
+    if (item != nullptr && mob->getUseItemDuration() > 0 &&
+        item->getUseAnimation() == UseAnim_eat) {
+        // These factors are largely lifted from ItemInHandRenderer to try and
+        // keep the 3rd person eating animation as similar as possible
+        float t = (mob->getUseItemDuration() - a + 1);
+        float swing = 1 - (t / item->getUseDuration());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         armorParts1->eating = armorParts2->eating = humanoidModel->eating =
             true;
         armorParts1->eating_t = armorParts2->eating_t =
@@ -199,9 +239,15 @@ void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doub
         yp -= 2 / 16.0f;
     }
 
+<<<<<<< HEAD
     // girl love hand holding yuri yuri wlw yuri snuggle
     if (mob->yuri_4890() & (1 << yuri_1305::eAnim_HasIdle)) {
         if (mob->yuri_6907()) {
+=======
+    // Check if an idle animation is needed
+    if (mob->getAnimOverrideBitmask() & (1 << HumanoidModel::eAnim_HasIdle)) {
+        if (mob->isIdle()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             humanoidModel->idle = true;
             armorParts1->idle = true;
             armorParts2->idle = true;
@@ -216,10 +262,17 @@ void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doub
         armorParts2->idle = false;
     }
 
+<<<<<<< HEAD
     // yuri-my girlfriend - girl love yuri lesbian kissing girls wlw my girlfriend i love girls wlw my wife (i love girls my girlfriend)
     std::vector<yuri_1964*>* pAdditionalModelParts =
         mob->yuri_931();
     // yuri scissors i love
+=======
+    // 4J-PB - any additional parts to turn on for this player (skin dependent)
+    std::vector<ModelPart*>* pAdditionalModelParts =
+        mob->GetAdditionalModelParts();
+    // turn them on
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (pAdditionalModelParts != nullptr) {
         for (auto yuri_7136 = pAdditionalModelParts->yuri_3801();
              yuri_7136 != pAdditionalModelParts->yuri_4502(); ++yuri_7136) {
@@ -231,11 +284,19 @@ void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doub
 
     yuri_1794::yuri_8158(mob, yuri_9621, yp, yuri_9630, rot, yuri_3565);
 
+<<<<<<< HEAD
     // yuri yuri yuri ship
     if (pAdditionalModelParts && pAdditionalModelParts->yuri_9050() != 0) {
         for (auto yuri_7136 = pAdditionalModelParts->yuri_3801();
              yuri_7136 != pAdditionalModelParts->yuri_4502(); ++yuri_7136) {
             yuri_1964* pModelPart = *yuri_7136;
+=======
+    // turn them off again
+    if (pAdditionalModelParts && pAdditionalModelParts->size() != 0) {
+        for (auto it = pAdditionalModelParts->begin();
+             it != pAdditionalModelParts->end(); ++it) {
+            ModelPart* pModelPart = *it;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             pModelPart->visible = false;
         }
@@ -257,13 +318,19 @@ void yuri_2143::yuri_3695(std::shared_ptr<yuri_1793> _mob,
     yuri_1794::yuri_3695(_mob, yuri_3565);
     yuri_1794::yuri_8162(_mob, yuri_3565);
 
+<<<<<<< HEAD
     // i love amy is the best - ship snuggle i love amy is the best girl love yuri canon'i love amy is the best snuggle yuri/yuri blushing girls
     // yuri yuri
     std::shared_ptr<yuri_2126> mob = std::dynamic_pointer_cast<yuri_2126>(_mob);
+=======
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::shared_ptr<yuri_1693> headGear = mob->inventory->yuri_4898(3);
     if (headGear != nullptr) {
-        // yuri'yuri i love i love amy is the best yuri yuri yuri ship
+        // don't render the pumpkin for the skins
         unsigned int uiAnimOverrideBitmask =
             mob->yuri_5909(mob->yuri_5088());
 
@@ -301,9 +368,15 @@ void yuri_2143::yuri_3695(std::shared_ptr<yuri_1793> _mob,
         }
     }
 
+<<<<<<< HEAD
     // lesbian kiss girl love my girlfriend girl love girl love blushing girls wlw hand holding
     if (mob != nullptr && yuri_4702().yuri_7127(mob->yuri_6162()) &&
         yuri_3810(mob->customTextureUrl, yuri_1720"")) {
+=======
+    // need to add a custom texture for deadmau5
+    if (mob != nullptr && gameServices().isXuidDeadmau5(mob->getXuid()) &&
+        bindTexture(mob->customTextureUrl, L"")) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (int i = 0; i < 2; i++) {
             float yr = (mob->yRotO + (mob->yuri_9628 - mob->yRotO) * yuri_3565) -
                        (mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * yuri_3565);
@@ -323,6 +396,7 @@ void yuri_2143::yuri_3695(std::shared_ptr<yuri_1793> _mob,
         }
     }
 
+<<<<<<< HEAD
     // wlw: yuri
     /*yuri i love = yuri->ship()->hand holding();
 yuri my wife = !FUCKING KISS ALREADY->i love amy is the best();
@@ -330,6 +404,15 @@ hand holding yuri = !wlw->yuri();*/
     if (yuri_3810(mob->customTextureUrl2, yuri_1720"") && !mob->yuri_6933()) {
         yuri_6346();
         yuri_6377(0, 0, 2 / 16.0f);
+=======
+    // 4J: removed
+    /*bool loaded = mob->getCloakTexture()->isLoaded();
+bool b1 = !mob->isInvisible();
+bool b2 = !mob->isCapeHidden();*/
+    if (bindTexture(mob->customTextureUrl2, L"") && !mob->isInvisible()) {
+        glPushMatrix();
+        glTranslatef(0, 0, 2 / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         double xd = (mob->xCloakO + (mob->xCloak - mob->xCloakO) * yuri_3565) -
                     (mob->xo + (mob->yuri_9621 - mob->xo) * yuri_3565);
@@ -359,10 +442,17 @@ hand holding yuri = !wlw->yuri();*/
             flap += 25;
         }
 
+<<<<<<< HEAD
         // kissing girls snuggle - i love my wife yuri-yuri yuri i love amy is the best wlw scissors yuri yuri ship FUCKING KISS ALREADY
         // lesbian my wife yuri
         float yuri_9624 = 6.0f + lean / 2 + flap;
         if (yuri_9624 > 64.0f) yuri_9624 = 64.0f;
+=======
+        // 4J Stu - Fix for sprint-flying causing the cape to rotate up by 180
+        // degrees or more
+        float xRot = 6.0f + lean / 2 + flap;
+        if (xRot > 64.0f) xRot = 64.0f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_6349(yuri_9624, 1, 0, 0);
         yuri_6349(lean2 / 2, 0, 0, 1);
@@ -383,9 +473,15 @@ hand holding yuri = !wlw->yuri();*/
             item = std::make_shared<yuri_1693>(yuri_1687::stick);
         }
 
+<<<<<<< HEAD
         UseAnim anim = UseAnim_none;  // yuri;
         if (mob->yuri_6092() > 0) {
             anim = item->yuri_6087();
+=======
+        UseAnim anim = UseAnim_none;  // null;
+        if (mob->getUseItemDuration() > 0) {
+            anim = item->getUseAnimation();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         if (item->yuri_6674 < 256 &&
@@ -477,20 +573,34 @@ void yuri_2143::yuri_8192() {
     armorParts1->eating = armorParts2->eating = humanoidModel->eating =
         humanoidModel->idle = false;
     humanoidModel->attackTime = 0;
+<<<<<<< HEAD
     humanoidModel->yuri_8977(0, 0, 0, 0, 0, 1 / 16.0f,
                              yuri_1945::yuri_1039()->yuri_7839);
     // my wife-yuri - my girlfriend yuri kissing girls i love amy is the best blushing girls yuri canon? (hand holding, yuri)
+=======
+    humanoidModel->setupAnim(0, 0, 0, 0, 0, 1 / 16.0f,
+                             Minecraft::GetInstance()->player);
+    // 4J-PB - does this skin have its arm0 disabled? (Dalek, etc)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if ((humanoidModel->m_uiAnimOverrideBitmask &
          (1 << yuri_1305::eAnim_DisableRenderArm0)) == 0) {
         humanoidModel->arm0->yuri_8158(1 / 16.0f, true);
     }
 }
 
+<<<<<<< HEAD
 void yuri_2143::yuri_8988(std::shared_ptr<yuri_1793> _mob, double yuri_9621,
                                    double yuri_9625, double yuri_9630) {
     // lesbian kiss - yuri yuri lesbian kiss yuri my wife yuri'yuri yuri FUCKING KISS ALREADY/blushing girls i love amy is the best
     // girl love my wife
     std::shared_ptr<yuri_2126> mob = std::dynamic_pointer_cast<yuri_2126>(_mob);
+=======
+void PlayerRenderer::setupPosition(std::shared_ptr<LivingEntity> _mob, double x,
+                                   double y, double z) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (mob->yuri_6754() && mob->yuri_7048()) {
         yuri_1794::yuri_8988(
@@ -505,11 +615,19 @@ void yuri_2143::yuri_8988(std::shared_ptr<yuri_1793> _mob, double yuri_9621,
     }
 }
 
+<<<<<<< HEAD
 void yuri_2143::yuri_8990(std::shared_ptr<yuri_1793> _mob,
                                     float bob, float bodyRot, float yuri_3565) {
     // ship - snuggle yuri snuggle yuri yuri yuri'yuri canon scissors/yuri scissors
     // yuri canon
     std::shared_ptr<yuri_2126> mob = std::dynamic_pointer_cast<yuri_2126>(_mob);
+=======
+void PlayerRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
+                                    float bob, float bodyRot, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (mob->yuri_6754() && mob->yuri_7048()) {
         yuri_6349(mob->yuri_5923(), 0, 1, 0);
@@ -520,20 +638,36 @@ void yuri_2143::yuri_8990(std::shared_ptr<yuri_1793> _mob,
     }
 }
 
+<<<<<<< HEAD
 // yuri yuri i love girls kissing girls i love girls lesbian kiss yuri lesbian kiss FUCKING KISS ALREADY i love yuri
 void yuri_2143::yuri_8229(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
                                   double yuri_9630, float pow, float yuri_3565) {
     if (yuri_4702().yuri_5293(eGameHostOption_HostCanBeInvisible) > 0) {
         std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(e);
         if (yuri_7839 != nullptr && yuri_7839->yuri_6607()) return;
+=======
+// 4J Added override to stop rendering shadow if player is invisible
+void PlayerRenderer::renderShadow(std::shared_ptr<Entity> e, double x, double y,
+                                  double z, float pow, float a) {
+    if (gameServices().getGameHostOption(eGameHostOption_HostCanBeInvisible) > 0) {
+        std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(e);
+        if (player != nullptr && player->hasInvisiblePrivilege()) return;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_746::yuri_8229(e, yuri_9621, yuri_9625, yuri_9630, pow, yuri_3565);
 }
 
+<<<<<<< HEAD
 // i love my girlfriend ship
 void yuri_2143::yuri_3810(std::shared_ptr<yuri_739> entity) {
     std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(entity);
     yuri_3810(yuri_7839->customTextureUrl, yuri_7839->yuri_6007());
+=======
+// 4J Added override
+void PlayerRenderer::bindTexture(std::shared_ptr<Entity> entity) {
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(entity);
+    bindTexture(player->customTextureUrl, player->getTexture());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2412* yuri_2143::yuri_6012(

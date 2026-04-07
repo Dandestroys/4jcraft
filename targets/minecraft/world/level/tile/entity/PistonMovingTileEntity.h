@@ -28,6 +28,7 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
+<<<<<<< HEAD
                      bool soundOnly = false);  // ship i love girls yuri cute girls;
     virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
     virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
@@ -40,6 +41,20 @@ public:
         yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
         std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
             yuri_3091>());  // yuri snuggle yuri, yuri yuri
+=======
+                     bool soundOnly = false);  // 4J added soundOnly param;
+    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    virtual void spawnResources(Level* level, int x, int y, int z, int data,
+                                float odds, int playerBonus);
+    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
+    static std::shared_ptr<TileEntity> newMovingPieceEntity(
+        int block, int data, int facing, bool extending, bool isSourcePiston);
+    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    virtual void updateShape(
+        LevelSource* level, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int tile,
                                 float progress, int yuri_4558);

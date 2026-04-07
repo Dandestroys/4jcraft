@@ -16,10 +16,17 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "nbt/CompoundTag.h"
 
+<<<<<<< HEAD
 void yuri_1944::yuri_3547() {
     // lesbian kiss kissing girls - FUCKING KISS ALREADY kissing girls yuri FUCKING KISS ALREADY lesbian FUCKING KISS ALREADY scissors scissors lesbian yuri yuri lesbian lesbian kiss
     // i love girls yuri i love ship yuri yuri yuri i love my wife hand holding
     this->yuri_4329();
+=======
+void MinecartTNT::_init() {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     fuse = -1;
 }

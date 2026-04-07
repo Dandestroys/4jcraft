@@ -36,10 +36,17 @@ public:
     virtual void yuri_3585(const std::yuri_9616& attributeName,
                               const std::yuri_9616& attributeValue);
 
+<<<<<<< HEAD
     // yuri
     virtual yuri_220* yuri_4971();
     virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
                              yuri_220* chunkBB);
+=======
+    // StructurePiece
+    virtual BoundingBox* getBoundingBox();
+    virtual bool postProcess(Level* level, Random* random,
+                             BoundingBox* chunkBB);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_4211(yuri_3418* action,
                          yuri_1758* yuri_7194, yuri_220* chunkBB);

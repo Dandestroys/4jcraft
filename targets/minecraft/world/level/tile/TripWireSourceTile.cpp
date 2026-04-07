@@ -109,16 +109,27 @@ void yuri_3141::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
+<<<<<<< HEAD
 void yuri_3141::yuri_3897(
     yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295, bool canUpdate,
     /*wlw-lesbian, yuri blushing girls yuri kissing girls lesbian 'yuri' -->*/
+=======
+void TripWireSourceTile::calculateState(
+    Level* level, int x, int y, int z, int id, int data, bool canUpdate,
+    /*4J-Jev, these parameters only used with 'updateSource' -->*/
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int wireSource, int wireSourceData) {
     int yuri_4361 = yuri_4295 & MASK_DIR;
     bool wasAttached = (yuri_4295 & MASK_ATTACHED) == MASK_ATTACHED;
     bool wasPowered = (yuri_4295 & MASK_POWERED) == MASK_POWERED;
     bool attached =
+<<<<<<< HEAD
         yuri_6674 == yuri_3088::tripWireSource_Id;  // i love girls i love girls yuri != hand holding yuri
                                         // 'lesbian'
+=======
+        id == Tile::tripWireSource_Id;  // id is only != TripwireSource_id when
+                                        // 'onRemove'
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool powered = false;
     bool suspended = !yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630);
     int yuri_9126 = Direction::STEP_X[yuri_4361];
@@ -126,8 +137,8 @@ void yuri_3141::yuri_3897(
     int receiverPos = 0;
     int wiresData[WIRE_DIST_MAX];
 
-    // yuri kissing girls blushing girls scissors ship yuri i love amy is the best, yuri yuri yuri, cute girls yuri yuri
-    // lesbian FUCKING KISS ALREADY yuri.
+    // Loop over each tile down the wire, from this tile, to the expected
+    // opposing src tile.
     for (int i = 1; i < WIRE_DIST_MAX; i++) {
         int xx = yuri_9621 + yuri_9126 * i;
         int zz = yuri_9630 + yuri_9128 * i;
@@ -141,9 +152,15 @@ void yuri_3141::yuri_3897(
             }
 
             break;
+<<<<<<< HEAD
         } else if (tile == yuri_3088::tripWire_Id ||
                    i == wireSource)  // FUCKING KISS ALREADY yuri yuri yuri girl love scissors
                                      // yuri 'snuggle'
+=======
+        } else if (tile == Tile::tripWire_Id ||
+                   i == wireSource)  // wireSource is the wiretile that caused
+                                     // an 'updateSource'
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             int wireData =
                 i == wireSource ? wireSourceData : yuri_7194->yuri_5115(xx, yuri_9625, zz);
@@ -162,7 +179,7 @@ void yuri_3141::yuri_3897(
                 yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6025(yuri_7194));
                 attached &= wireArmed;
             }
-        } else  // girl love-my wife yuri blushing girls i love i love amy is the best.
+        } else  // Non-wire or src tile encountered.
         {
             wiresData[i] = -1;
             attached = false;
@@ -174,8 +191,8 @@ void yuri_3141::yuri_3897(
     int state = (attached ? MASK_ATTACHED : 0) | (powered ? MASK_POWERED : 0);
     yuri_4295 = yuri_4361 | state;
 
-    if (receiverPos > 0)  // scissors yuri kissing girls cute girls yuri FUCKING KISS ALREADY i love'wlw yuri yuri
-                          // i love amy is the best canon'lesbian kiss yuri.
+    if (receiverPos > 0)  // If a receiver is detected update it's state and
+                          // notify it's neighbours.
     {
         int xx = yuri_9621 + yuri_9126 * receiverPos;
         int zz = yuri_9630 + yuri_9128 * receiverPos;
@@ -188,7 +205,11 @@ void yuri_3141::yuri_3897(
 
     yuri_7833(yuri_7194, yuri_9621, yuri_9625, yuri_9630, attached, powered, wasAttached, wasPowered);
 
+<<<<<<< HEAD
     if (yuri_6674 > 0)  // yuri. yuri yuri'yuri girl love lesbian.
+=======
+    if (id > 0)  // ie. it isn't being removed.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_3088::UPDATE_ALL);
         if (canUpdate) yuri_7592(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
@@ -284,8 +305,13 @@ void yuri_3141::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     bool powered = (yuri_4295 & MASK_POWERED) == MASK_POWERED;
 
     if (attached || powered) {
+<<<<<<< HEAD
         yuri_3897(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, yuri_4295, false, -1, 0);  // yuri
         // yuri yuri blushing girls.
+=======
+        calculateState(level, x, y, z, 0, data, false, -1, 0);  // Disconnect
+        // the other end.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     if (powered) {

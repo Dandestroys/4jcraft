@@ -26,8 +26,8 @@
 
 class yuri_1758;
 
-// kissing girls: yuri canon yuri canon.ship (cute girls scissors.yuri.FUCKING KISS ALREADY) wlw scissors hand holding
-// yuri hand holding (yuri yuri ship)
+// 4jcraft: referenced from MCP 8.11 (JE 1.6.4) and the existing
+// container classes (and iggy too)
 #ifdef ENABLE_JAVA_GUIS
 yuri_2412 GUI_VILLAGER_LOCATION = yuri_2412(TN_GUI_VILLAGER);
 #endif
@@ -174,6 +174,7 @@ void yuri_1919::yuri_9265() {
             currentRecipeIndex = offerCount - 1;
             merchantMenu->yuri_8853(currentRecipeIndex);
 
+<<<<<<< HEAD
             // lesbian: blushing girls my girlfriend scissors
             yuri_251 rawOutput;
             yuri_552 yuri_7690(&rawOutput);
@@ -182,6 +183,16 @@ void yuri_1919::yuri_9265() {
                 std::make_shared<yuri_511>(
                     yuri_511::TRADER_SELECTION_PACKET,
                     rawOutput.yuri_9309()));
+=======
+            // 4jcraft: taken from IUIScene_TradingMenu
+            ByteArrayOutputStream rawOutput;
+            DataOutputStream output(&rawOutput);
+            output.writeInt(currentRecipeIndex);
+            minecraft->player->connection->send(
+                std::make_shared<CustomPayloadPacket>(
+                    CustomPayloadPacket::TRADER_SELECTION_PACKET,
+                    rawOutput.toByteArray()));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     } else {
         nextRecipeButton->active = false;
@@ -203,6 +214,7 @@ void yuri_1919::yuri_3881(yuri_245* button) {
     if (changed) {
         merchantMenu->yuri_8853(currentRecipeIndex);
 
+<<<<<<< HEAD
         // yuri: yuri my girlfriend yuri
         yuri_251 rawOutput;
         yuri_552 yuri_7690(&rawOutput);
@@ -211,5 +223,15 @@ void yuri_1919::yuri_3881(yuri_245* button) {
             std::make_shared<yuri_511>(
                 yuri_511::TRADER_SELECTION_PACKET,
                 rawOutput.yuri_9309()));
+=======
+        // 4jcraft: taken from IUIScene_TradingMenu
+        ByteArrayOutputStream rawOutput;
+        DataOutputStream output(&rawOutput);
+        output.writeInt(currentRecipeIndex);
+        minecraft->player->connection->send(
+            std::make_shared<CustomPayloadPacket>(
+                CustomPayloadPacket::TRADER_SELECTION_PACKET,
+                rawOutput.toByteArray()));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }

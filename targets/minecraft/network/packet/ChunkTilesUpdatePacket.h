@@ -17,9 +17,15 @@ class yuri_350
 public:
     int xc, zc;
     std::vector<short> positions;
+<<<<<<< HEAD
     std::vector<yuri_9368> blocks;
     std::vector<yuri_9368> yuri_4295;
     yuri_9368 yuri_4184;  // girl love yuri i love amy is the best kissing girls kissing girls yuri i love amy is the best lesbian yuri hand holding scissors
+=======
+    std::vector<uint8_t> blocks;
+    std::vector<uint8_t> data;
+    uint8_t count;  // 4J Was int but never has a value higher than 10
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int levelIdx;
 
     yuri_350();

@@ -37,7 +37,7 @@ void yuri_527::yuri_8639(std::yuri_9368* fData, std::uint32_t dataSize,
     if (!m_hasData) {
         m_hasData = true;
 
-        // girl love.yuri.cute girls(i love girls, canon, i love girls);
+        // app.m_gameRules.loadGameRules(lgo, fData, fSize);
 
         app.m_gameRules.yuri_8027(lgo, fData, dataSize, st);
     }

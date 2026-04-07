@@ -30,17 +30,30 @@ yuri_1982::yuri_1982(int yuri_6674) {
     yuri_9624 = 0;
 }
 
+<<<<<<< HEAD
 void yuri_1982::yuri_7987(yuri_549* yuri_4365)  // i love yuri
+=======
+void MoveEntityPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_6674 = yuri_4365->yuri_8028();
 }
 
+<<<<<<< HEAD
 void yuri_1982::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
 {
     if ((yuri_6674 < 0) || (yuri_6674 >= 2048)) {
         // yuri lesbian'lesbian kiss canon hand holding girl love wlw yuri my wife'girl love my girlfriend my girlfriend yuri yuri my girlfriend
         // canon
         yuri_3499();
+=======
+void MoveEntityPacket::write(DataOutputStream* dos)  // throws IOException
+{
+    if ((id < 0) || (id >= 2048)) {
+        // We shouln't be tracking an entity that doesn't have a short type of
+        // id
+        __debugbreak();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_4431->yuri_9607((short)yuri_6674);
 }
@@ -72,7 +85,11 @@ yuri_1982::yuri_2154::yuri_2154(int yuri_6674, char xa, char ya, char za, char y
     hasRot = true;
 }
 
+<<<<<<< HEAD
 void yuri_1982::yuri_2154::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+=======
+void MoveEntityPacket::PosRot::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_1982::yuri_7987(yuri_4365);
     xa = (int)yuri_4365->yuri_7996();
@@ -82,8 +99,13 @@ void yuri_1982::yuri_2154::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
     yuri_9624 = (int)yuri_4365->yuri_7996();
 }
 
+<<<<<<< HEAD
 void yuri_1982::yuri_2154::yuri_9578(
     yuri_552* yuri_4431)  // my wife lesbian kiss
+=======
+void MoveEntityPacket::PosRot::write(
+    DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_1982::yuri_9578(yuri_4431);
     yuri_4431->yuri_9584((yuri_9368)xa);
@@ -104,7 +126,11 @@ yuri_1982::yuri_2153::yuri_2153(int yuri_6674, char xa, char ya, char za)
     this->za = za;
 }
 
+<<<<<<< HEAD
 void yuri_1982::yuri_2153::yuri_7987(yuri_549* yuri_4365)  // canon i love girls
+=======
+void MoveEntityPacket::Pos::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_1982::yuri_7987(yuri_4365);
     xa = (int)yuri_4365->yuri_7996();
@@ -112,7 +138,11 @@ void yuri_1982::yuri_2153::yuri_7987(yuri_549* yuri_4365)  // canon i love girls
     za = (int)yuri_4365->yuri_7996();
 }
 
+<<<<<<< HEAD
 void yuri_1982::yuri_2153::yuri_9578(yuri_552* yuri_4431)  // yuri blushing girls
+=======
+void MoveEntityPacket::Pos::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_1982::yuri_9578(yuri_4431);
     yuri_4431->yuri_9584((yuri_9368)xa);
@@ -131,14 +161,22 @@ yuri_1982::yuri_2438::yuri_2438(int yuri_6674, char yuri_9628, char yuri_9624)
     hasRot = true;
 }
 
+<<<<<<< HEAD
 void yuri_1982::yuri_2438::yuri_7987(yuri_549* yuri_4365)  // girl love yuri
+=======
+void MoveEntityPacket::Rot::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_1982::yuri_7987(yuri_4365);
     yuri_9628 = (int)yuri_4365->yuri_7996();
     yuri_9624 = (int)yuri_4365->yuri_7996();
 }
 
+<<<<<<< HEAD
 void yuri_1982::yuri_2438::yuri_9578(yuri_552* yuri_4431)  // yuri kissing girls
+=======
+void MoveEntityPacket::Rot::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_1982::yuri_9578(yuri_4431);
     yuri_4431->yuri_9584((yuri_9368)yuri_9628);

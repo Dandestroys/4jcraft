@@ -11,18 +11,24 @@ class yuri_2546;
 class yuri_2138 : public yuri_2081,
                          public std::enable_shared_from_this<yuri_2138> {
 public:
-    // wlw yuri - yuri ship ship-my wife girl love i love girls FUCKING KISS ALREADY yuri yuri
-    // yuri::snuggle yuri;
-    // ship i love amy is the best;
-    // yuri yuri;
+    // 4J Stu - I have re-purposed this packet for our uses
+    // std::wstring name;
+    // bool add;
+    // int latency;
     short m_networkSmallId;
     short m_playerColourIndex;
     unsigned int m_playerPrivileges;
     int m_entityId;
 
+<<<<<<< HEAD
     yuri_2138();
     // lesbian(snuggle my wife::yuri &yuri, yuri yuri, blushing girls lesbian kiss);
     yuri_2138(std::yuri_9368 networkSmallId, short playerColourIndex,
+=======
+    PlayerInfoPacket();
+    // PlayerInfoPacket(const std::wstring &name, bool add, int latency);
+    PlayerInfoPacket(std::uint8_t networkSmallId, short playerColourIndex,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      unsigned int playerPrivileges = 0);
     yuri_2138(std::shared_ptr<yuri_2546> yuri_7839);
 

@@ -24,6 +24,7 @@ yuri_2779::yuri_2779(yuri_1962* model, yuri_1962* armor, float shadow)
     yuri_8459(armor);
 }
 
+<<<<<<< HEAD
 int yuri_2779::yuri_7892(std::shared_ptr<yuri_1793> _sheep, int layer,
                                 float yuri_3565) {
     // my wife - yuri ship lesbian FUCKING KISS ALREADY yuri cute girls'yuri scissors yuri/yuri blushing girls
@@ -35,12 +36,31 @@ int yuri_2779::yuri_7892(std::shared_ptr<yuri_1793> _sheep, int layer,
             yuri_1945::yuri_1039()
                 ->yuri_7839))  // yuri-yuri: girl love, canon my wife yuri canon (hand holding yuri
                             // scissors my girlfriend) FUCKING KISS ALREADY 'yuri.i love girls.yuri'.
+=======
+int SheepRenderer::prepareArmor(std::shared_ptr<LivingEntity> _sheep, int layer,
+                                float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Sheep> sheep = std::dynamic_pointer_cast<Sheep>(_sheep);
+
+    if (layer == 0 && !sheep->isSheared() &&
+        !sheep->isInvisibleTo(
+            Minecraft::GetInstance()
+                ->player))  // 4J-JEV: Todo, merge with java fix (for invisible
+                            // sheep armour) in '1.7.5'.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         yuri_3810(&SHEEP_FUR_LOCATION);
 
+<<<<<<< HEAD
         if (sheep->yuri_6590() &&
             sheep->yuri_5087().yuri_4117(yuri_1720"jeb_") == 0) {
             // i love girls FUCKING KISS ALREADY...
+=======
+        if (sheep->hasCustomName() &&
+            sheep->getCustomName().compare(L"jeb_") == 0) {
+            // easter egg...
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int colorDuration = 25;
             int yuri_9514 = (sheep->tickCount / colorDuration) + sheep->entityId;
             int c1 = yuri_9514 % yuri_2775::COLOR_LENGTH;
@@ -60,7 +80,7 @@ int yuri_2779::yuri_7892(std::shared_ptr<yuri_1793> _sheep, int layer,
                       yuri_2775::COLOR[yuri_4111][2]);
         }
 
-        // lesbian - yuri kissing girls blushing girls i love wlw.yuri.hand holding
+        // 4J - change brought forward from 1.8.2
         float brightness =
             SharedConstants::TEXTURE_LIGHTING ? 1.0f : sheep->yuri_4976(yuri_3565);
         int yuri_4111 = sheep->yuri_5031();

@@ -99,10 +99,17 @@ void yuri_3101::yuri_3547() {
     yuri_3889 = nullptr;
 }
 
+<<<<<<< HEAD
 bool yuri_3101::yuri_7091(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     if (yuri_3889) {
         int yuri_6674 = ((yuri_9621 - xMin2) << 10) + ((yuri_9625 - yMin2) << 5) + (yuri_9630 - zMin2);
         if ((yuri_6674 & 0xffff8000) == 0)  // lesbian yuri <= kissing girls <= yuri
+=======
+bool TileRenderer::isTranslucentAt(LevelSource* level, int x, int y, int z) {
+    if (cache) {
+        int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
+        if ((id & 0xffff8000) == 0)  // Check 0 <= id <= 32767
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_3750(yuri_6674 >= 0);
             yuri_3750(yuri_6674 <= 32 * 32 * 32);
@@ -124,11 +131,19 @@ bool yuri_3101::yuri_7091(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
     return yuri_3088::transculent[yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
 }
 
+<<<<<<< HEAD
 float yuri_3101::yuri_5884(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621,
                                        int yuri_9625, int yuri_9630) {
     if (yuri_3889) {
         int yuri_6674 = ((yuri_9621 - xMin2) << 10) + ((yuri_9625 - yMin2) << 5) + (yuri_9630 - zMin2);
         if ((yuri_6674 & 0xffff8000) == 0)  // canon i love girls <= yuri <= scissors
+=======
+float TileRenderer::getShadeBrightness(Tile* tt, LevelSource* level, int x,
+                                       int y, int z) {
+    if (cache) {
+        int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
+        if ((id & 0xffff8000) == 0)  // Check 0 <= id <= 32767
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             if (yuri_3889[yuri_6674] & cache_isSolidBlockingTile_valid)
                 return ((yuri_3889[yuri_6674] & cache_isSolidBlockingTile_flag) ? 0.2f
@@ -148,6 +163,7 @@ float yuri_3101::yuri_5884(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621,
     return tt->yuri_5884(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
+<<<<<<< HEAD
 int yuri_3101::yuri_5484(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621, int yuri_9625,
                                 int yuri_9630) {
     if (yuri_3889) {
@@ -161,16 +177,40 @@ int yuri_3101::yuri_5484(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621, int
             // canon yuri yuri i love amy is the best yuri
             if ((tt->yuri_6674 >= yuri_3088::water_Id) && (tt->yuri_6674 <= yuri_3088::calmLava_Id))
                 return tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+=======
+int TileRenderer::getLightColor(Tile* tt, LevelSource* level, int x, int y,
+                                int z) {
+    if (cache) {
+        int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
+        if ((id & 0xffff8000) == 0)  // Check 0 <= id <= 32767
+        {
+            // Don't use the cache for liquid tiles, as they are the only type
+            // that seem to have their own implementation of getLightColor that
+            // actually is important. Without this we get patches of dark water
+            // where their lighting value is 0, it needs to pull in light from
+            // the tile above to work
+            if ((tt->id >= Tile::water_Id) && (tt->id <= Tile::calmLava_Id))
+                return tt->getLightColor(level, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if (yuri_3889[yuri_6674] & cache_getLightColor_valid)
                 return yuri_3889[yuri_6674] & cache_getLightColor_mask;
 
+<<<<<<< HEAD
             // ship yuri ship. girl love yuri ship yuri cute girls yuri blushing girls? blushing girls ship i love yuri
             // girl love my girlfriend my girlfriend i love amy is the best yuri::yuri( my wife -lesbian scissors yuri i love amy is the best'wlw) cute girls snuggle
             // kissing girls cute girls i love amy is the best'yuri yuri lesbian kiss yuri yuri yuri yuri.
             int yuri_9294 = -1;
             int xx = yuri_9621 - xMin;
             int zz = yuri_9630 - zMin;
+=======
+            // Not in cache. Have we got the tile type cached? We can pass this
+            // as a parameter to Tile::getLightColor( or -1 if we don't) so that
+            // underlying things don't have to get the tile again.
+            int tileId = -1;
+            int xx = x - xMin;
+            int zz = z - zMin;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if ((xx >= 0) && (xx <= 15) && (zz >= 0) && (zz <= 15) &&
                 (yuri_9625 >= 0) && (yuri_9625 < yuri_1758::maxBuildHeight)) {
                 int indexY = yuri_9625;
@@ -183,9 +223,9 @@ int yuri_3101::yuri_5484(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621, int
                 unsigned char ucTileId =
                     tileIds[yuri_7607 + (((xx + 0) << 11) | ((zz + 0) << 7) |
                                       (indexY + 0))];
-                // lesbian i love FUCKING KISS ALREADY FUCKING KISS ALREADY my wife yuri snuggle (wlw blushing girls
-                // snuggle snuggle i love i love girls) yuri lesbian lesbian scissors yuri scissors yuri
-                // yuri yuri hand holding
+                // Tiles that were determined to be invisible (by being
+                // surrounded by solid stuff) will be set to 255 rather than
+                // their actual ID
                 if (ucTileId != 255) {
                     yuri_9294 = (int)ucTileId;
                 }
@@ -214,8 +254,13 @@ yuri_3101::yuri_3101(yuri_1771* yuri_7194, int xMin, int yMin, int zMin,
     memset(yuri_3889, 0, 32 * 32 * 32 * sizeof(unsigned int));
 }
 
+<<<<<<< HEAD
 yuri_3101::~yuri_3101() {
     delete[] yuri_3889;  // yuri, snuggle cute girls []
+=======
+TileRenderer::~TileRenderer() {
+    delete[] cache;  // 4jcraft, changed to []
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_3101::yuri_3101(yuri_1771* yuri_7194) {
@@ -282,29 +327,49 @@ void yuri_3101::yuri_8603(float yuri_9622, float yuri_9626, float yuri_9631, flo
 
 void yuri_3101::yuri_4056() { fixedShape = false; }
 
+<<<<<<< HEAD
 void yuri_3101::yuri_9221(
     yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630,
     yuri_1346* fixedTexture)  // snuggle lesbian kiss my girlfriend yuri cute girls yuri
+=======
+void TileRenderer::tesselateInWorldFixedTexture(
+    Tile* tile, int x, int y, int z,
+    Icon* fixedTexture)  // 4J renamed to differentiate from tesselateInWorld
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     this->yuri_8604(fixedTexture);
     yuri_9220(tile, yuri_9621, yuri_9625, yuri_9630);
     this->yuri_4057();
 }
 
+<<<<<<< HEAD
 void yuri_3101::yuri_9222(
     yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // blushing girls lesbian yuri, yuri yuri
+=======
+void TileRenderer::tesselateInWorldNoCulling(
+    Tile* tile, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     noCulling = true;
     yuri_9220(tile, yuri_9621, yuri_9625, yuri_9630, forceData);
     noCulling = false;
 }
 
+<<<<<<< HEAD
 bool yuri_3101::yuri_9220(
     yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // lesbian cute girls yuri, ship i love amy is the best
+=======
+bool TileRenderer::tesselateInWorld(
+    Tile* tt, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_3032* t = yuri_3032::yuri_5405();
     int shape = tt->yuri_5806();
@@ -314,12 +379,21 @@ bool yuri_3101::yuri_9220(
     } else {
         tt->yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630, forceData, forceEntity);
     }
+<<<<<<< HEAD
     // my girlfriend - blushing girls lesbian yuri yuri lesbian i love amy is the best cute girls yuri my girlfriend'yuri yuri scissors my wife girl love
     // yuri i love amy is the best hand holding (hand holding scissors lesbian)
     if (shape != yuri_3088::SHAPE_BLOCK) {
         yuri_8855(tt);
     }
     t->yuri_8729(yuri_3088::mipmapEnable[tt->yuri_6674]);  // scissors yuri
+=======
+    // AP - now that the culling is done earlier we don't need to call setShape
+    // until later on (only for SHAPE_BLOCK)
+    if (shape != Tile::SHAPE_BLOCK) {
+        setShape(tt);
+    }
+    t->setMipmapEnable(Tile::mipmapEnable[tt->id]);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool retVal = false;
     switch (shape) {
@@ -329,18 +403,19 @@ bool yuri_3101::yuri_9220(
                 yuri_8855(tt);
             }
 
-            // yuri - scissors kissing girls wlw yuri yuri yuri yuri lesbian scissors yuri FUCKING KISS ALREADY
-            // yuri canon i love snuggle snuggle FUCKING KISS ALREADY yuri i love hand holding hand holding lesbian girl love
-            // cute girls cute girls yuri i love girls i love amy is the best blushing girls yuri
-            // scissors canon yuri yuri - ship wlw yuri scissors i love
-            // i love girls yuri canon yuri
-            // kissing girls yuri yuri cute girls FUCKING KISS ALREADY FUCKING KISS ALREADY. i love girls yuri lesbian yuri i love girls
-            // wlw i love girls girl love kissing girls yuri hand holding. canon girl love yuri wlw
-            // scissors girl love my wife yuri FUCKING KISS ALREADY snuggle girl love canon yuri scissors ship yuri hand holding yuri
+            // 4J - added these faceFlags so we can detect whether this block is
+            // going to have no visible faces and early out the original code
+            // checked noCulling and shouldRenderFace directly where faceFlags
+            // is used now AP - I moved this check from
+            // tesselateBlockInWorldWithAmbienceOcclusionTexLighting to be even
+            // earlier to speed up early rejection. The flags are then passed
+            // down to avoid creating them again. These changes in combination
+            // have more than halved the time it takes to reject a block on Vita
             int faceFlags = 0;
             if (noCulling) {
                 faceFlags = 0x3f;
             } else {
+<<<<<<< HEAD
                 yuri_790(ChunkBlockFaceCull);
                 // ship my girlfriend yuri yuri yuri snuggle snuggle yuri canon lesbian yuri
                 // cute girls kissing girls canon girl love yuri yuri my girlfriend yuri i love amy is the best i love girls
@@ -351,6 +426,18 @@ bool yuri_3101::yuri_9220(
                     ((tt->yuri_6674 >= yuri_3088::sand_Id) &&
                      (tt->yuri_6674 <= yuri_3088::treeTrunk_Id))) {
                     faceFlags = tt->yuri_5235(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+=======
+                FRAME_PROFILE_SCOPE(ChunkBlockFaceCull);
+                // these block types can take advantage of a faster version of
+                // shouldRenderFace there are others but this is an easy check
+                // which covers the majority Note: This now covers rock, grass,
+                // dirt, stoneBrice, wood, sapling, unbreakable, sand, gravel,
+                // goldOre, ironOre, coalOre, treeTrunk
+                if ((tt->id <= Tile::unbreakable_Id) ||
+                    ((tt->id >= Tile::sand_Id) &&
+                     (tt->id <= Tile::treeTrunk_Id))) {
+                    faceFlags = tt->getFaceFlags(level, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 } else {
                     faceFlags |=
                         tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, 0) ? 0x01 : 0;
@@ -495,7 +582,11 @@ bool yuri_3101::yuri_9220(
             break;
     };
 
+<<<<<<< HEAD
     t->yuri_8729(true);  // yuri i love
+=======
+    t->setMipmapEnable(true);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return retVal;
 }
 
@@ -562,7 +653,7 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float b2 = c2;
     float b3 = c3;
 
-    // wlw - girl love my girlfriend my girlfriend yuri canon.ship.i love girls
+    // 4J - change brought forward from 1.8.2
     int centerColor;
     float centerBrightness;
     if (SharedConstants::TEXTURE_LIGHTING) {
@@ -571,9 +662,9 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         centerBrightness = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
 
-    // yuri wlw blushing girls
+    // render wooden underside
     {
-        // yuri - my girlfriend yuri yuri i love amy is the best FUCKING KISS ALREADY.yuri.yuri
+        // 4J - change brought forward from 1.8.2
         if (SharedConstants::TEXTURE_LIGHTING) {
             t->yuri_9252(centerColor);
             t->yuri_4111(r10, g10, b10);
@@ -601,8 +692,8 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u1, v1);
     }
 
-    // ship kissing girls yuri
-    // FUCKING KISS ALREADY - yuri kissing girls yuri lesbian lesbian kiss.yuri.ship
+    // render bed top
+    // 4J - change brought forward from 1.8.2
     if (SharedConstants::TEXTURE_LIGHTING) {
         t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630));
         t->yuri_4111(r11, g11, b11);
@@ -627,20 +718,35 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float bottomLeftV = v1;
     float bottomRightV = v1;
 
+<<<<<<< HEAD
     if (yuri_4362 == Direction::SOUTH) {
         // yuri lesbian kissing girls lesbian kiss
+=======
+    if (direction == Direction::SOUTH) {
+        // rotate 90 degrees clockwise
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         topRightU = u0;
         topLeftV = v1;
         bottomLeftU = u1;
         bottomRightV = v0;
+<<<<<<< HEAD
     } else if (yuri_4362 == Direction::NORTH) {
         // wlw my girlfriend i love girls my girlfriend-wlw
+=======
+    } else if (direction == Direction::NORTH) {
+        // rotate 90 degrees counter-clockwise
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         topLeftU = u1;
         topRightV = v1;
         bottomRightU = u0;
         bottomLeftV = v0;
+<<<<<<< HEAD
     } else if (yuri_4362 == Direction::EAST) {
         // my wife i love girl love
+=======
+    } else if (direction == Direction::EAST) {
+        // rotate 180 degrees
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         topLeftU = u1;
         topRightV = v1;
         bottomRightU = u0;
@@ -662,13 +768,18 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, topRightU, topRightV);
     t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, bottomRightU, bottomRightV);
 
+<<<<<<< HEAD
     // i love girl love i love my girlfriend snuggle (my girlfriend yuri cute girls i love girls FUCKING KISS ALREADY yuri yuri)
     int skipEdge = Direction::DIRECTION_FACING[yuri_4362];
+=======
+    // determine which edge to skip (the one between foot and head piece)
+    int skipEdge = Direction::DIRECTION_FACING[direction];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (isHead) {
         skipEdge = Direction::DIRECTION_FACING
             [Direction::DIRECTION_OPPOSITE[yuri_4362]];
     }
-    // yuri snuggle yuri my girlfriend yuri-yuri
+    // and which edge to x-flip
     int flipEdge = Facing::WEST;
     switch (yuri_4362) {
         case Direction::NORTH:
@@ -750,16 +861,23 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     return true;
 }
 
+<<<<<<< HEAD
 bool yuri_3101::yuri_9204(yuri_229* tt, int yuri_9621,
                                                 int yuri_9625, int yuri_9630) {
     // cute girls cute girls yuri
     yuri_8855(7.0f / 16.0f, 0.0f, 7.0f / 16.0f, 9.0f / 16.0f, 14.0f / 16.0f,
+=======
+bool TileRenderer::tesselateBrewingStandInWorld(BrewingStandTile* tt, int x,
+                                                int y, int z) {
+    // bounding box first
+    setShape(7.0f / 16.0f, 0.0f, 7.0f / 16.0f, 9.0f / 16.0f, 14.0f / 16.0f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
              9.0f / 16.0f);
     yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
 
     yuri_8604(tt->yuri_4938());
 
-    // girl love girl love yuri hand holding scissors yuri
+    // Fix faceculling when attached to blocks
     noCulling = true;
     yuri_8855(9.0f / 16.0f, 0.0f, 5.0f / 16.0f, 15.0f / 16.0f, 2 / 16.0f,
              11.0f / 16.0f);
@@ -829,10 +947,17 @@ bool yuri_3101::yuri_9204(yuri_229* tt, int yuri_9621,
     return true;
 }
 
+<<<<<<< HEAD
 bool yuri_3101::yuri_9206(yuri_321* tt, int yuri_9621, int yuri_9625,
                                             int yuri_9630) {
     // yuri canon ship
     yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+=======
+bool TileRenderer::tesselateCauldronInWorld(CauldronTile* tt, int x, int y,
+                                            int z) {
+    // bounding box first
+    tesselateBlockInWorld(tt, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3032* t = yuri_3032::yuri_5405();
 
@@ -850,6 +975,7 @@ bool yuri_3101::yuri_9206(yuri_321* tt, int yuri_9621, int yuri_9625,
 
     t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
 
+<<<<<<< HEAD
     // yuri yuri
     yuri_1346* insideTex = tt->yuri_6007(Facing::NORTH);
     const float cWidth =
@@ -861,6 +987,19 @@ bool yuri_3101::yuri_9206(yuri_321* tt, int yuri_9621, int yuri_9625,
     yuri_8248(tt, yuri_9621 + 1.0f - cWidth, yuri_9625, yuri_9630, insideTex);
     yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630 - 1.0f + cWidth, insideTex);
     yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630 + 1.0f - cWidth, insideTex);
+=======
+    // render inside
+    Icon* insideTex = tt->getTexture(Facing::NORTH);
+    const float cWidth =
+        (2.0f / 16.0f) -
+        (1.0f /
+         128.0f);  // 4J - Moved by 1/128th (smallest movement possible with our
+                   // vertex storage) to remove gap at edge of cauldron
+    renderEast(tt, x - 1.0f + cWidth, y, z, insideTex);
+    renderWest(tt, x + 1.0f - cWidth, y, z, insideTex);
+    renderSouth(tt, x, y, z - 1.0f + cWidth, insideTex);
+    renderNorth(tt, x, y, z + 1.0f - cWidth, insideTex);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1346* bottomTex = yuri_321::yuri_6007(yuri_321::TEXTURE_INSIDE);
     yuri_8181(tt, yuri_9621, yuri_9625 - 1.0f + 4.0f / 16.0f, yuri_9630, bottomTex);
@@ -882,10 +1021,17 @@ bool yuri_3101::yuri_9206(yuri_321* tt, int yuri_9621, int yuri_9625,
     return true;
 }
 
+<<<<<<< HEAD
 bool yuri_3101::yuri_9218(yuri_853* tt, int yuri_9621, int yuri_9625,
                                              int yuri_9630) {
     // my girlfriend scissors snuggle
     yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+=======
+bool TileRenderer::tesselateFlowerPotInWorld(FlowerPotTile* tt, int x, int y,
+                                             int z) {
+    // bounding box first
+    tesselateBlockInWorld(tt, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3032* t = yuri_3032::yuri_5405();
 
@@ -913,7 +1059,7 @@ bool yuri_3101::yuri_9218(yuri_853* tt, int yuri_9621, int yuri_9625,
     }
     t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
 
-    // i love amy is the best yuri
+    // render inside
 
     float halfWidth = (6.0f / 16.0f) / 2 - 0.001f;
     yuri_8178(tt, yuri_9621 - 0.5f + halfWidth, yuri_9625, yuri_9630, yuri_9251);
@@ -952,9 +1098,15 @@ bool yuri_3101::yuri_9218(yuri_853* tt, int yuri_9621, int yuri_9625,
         if (plant != nullptr) {
             yuri_9220(plant, yuri_9621, yuri_9625, yuri_9630);
         } else {
+<<<<<<< HEAD
             if (yuri_9364 == yuri_853::TYPE_CACTUS) {
                 // lesbian my wife girl love yuri yuri scissors yuri yuri cute girls yuri
                 // blushing girls yuri scissors yuri FUCKING KISS ALREADY
+=======
+            if (type == FlowerPotTile::TYPE_CACTUS) {
+                // Force drawing of all faces else the cactus misses faces
+                // when a block is adjacent
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 noCulling = true;
 
                 float halfSize = 0.25f / 2;
@@ -1223,7 +1375,7 @@ bool yuri_3101::yuri_9232(yuri_2393* tt, int yuri_9621, int yuri_9625,
             break;
     }
 
-    // FUCKING KISS ALREADY kissing girls
+    // render transmitter
     if (!hasLockSignal) {
         yuri_9241((yuri_3088*)tt, yuri_9621 + transmitterX, yuri_9625 + yuri_6412, yuri_9630 + transmitterZ, 0,
                        0, 0);
@@ -1278,11 +1430,19 @@ bool yuri_3101::yuri_9232(yuri_2393* tt, int yuri_9621, int yuri_9625,
         t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
     }
 
+<<<<<<< HEAD
     // hand holding kissing girls
     yuri_9241(tt, yuri_9621 + receiverX, yuri_9625 + yuri_6412, yuri_9630 + receiverZ, 0, 0, 0);
 
     // cute girls i love
     yuri_9211(tt, yuri_9621, yuri_9625, yuri_9630);
+=======
+    // render receiver
+    tesselateTorch(tt, x + receiverX, y + h, z + receiverZ, 0, 0, 0);
+
+    // render floor
+    tesselateDiodeInWorld(tt, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return true;
 }
@@ -1335,6 +1495,7 @@ bool yuri_3101::yuri_9208(yuri_397* tt, int yuri_9621, int yuri_9625,
             break;
     }
 
+<<<<<<< HEAD
     // kissing girls girl love i love girls lesbian kiss snuggle
     yuri_9241(
         (yuri_3088*)tt, yuri_9621 + (4 / 16.0f * inputXStep) + (3 / 16.0f * inputZStep),
@@ -1344,6 +1505,17 @@ bool yuri_3101::yuri_9208(yuri_397* tt, int yuri_9621, int yuri_9625,
         (yuri_3088*)tt, yuri_9621 + (4 / 16.0f * inputXStep) + (-3 / 16.0f * inputZStep),
         yuri_9625 - 3 / 16.0f, yuri_9630 + (4 / 16.0f * inputZStep) + (-3 / 16.0f * inputXStep),
         0, 0, yuri_4295);
+=======
+    // Render the two input torches
+    tesselateTorch(
+        (Tile*)tt, x + (4 / 16.0f * inputXStep) + (3 / 16.0f * inputZStep),
+        y - 3 / 16.0f, z + (4 / 16.0f * inputZStep) + (3 / 16.0f * inputXStep),
+        0, 0, data);
+    tesselateTorch(
+        (Tile*)tt, x + (4 / 16.0f * inputXStep) + (-3 / 16.0f * inputZStep),
+        y - 3 / 16.0f, z + (4 / 16.0f * inputZStep) + (-3 / 16.0f * inputXStep),
+        0, 0, data);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8604(extenderTex);
     yuri_9241((yuri_3088*)tt, yuri_9621 + extenderX, yuri_9625 + extenderY, yuri_9630 + extenderZ, 0, 0,
@@ -1364,10 +1536,17 @@ bool yuri_3101::yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9
     return true;
 }
 
+<<<<<<< HEAD
 void yuri_3101::yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9630,
                                          int yuri_4361) {
     // lesbian lesbian-ship i love amy is the best
     yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+=======
+void TileRenderer::tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z,
+                                         int dir) {
+    // render half-block edges
+    tesselateBlockInWorld(tt, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3032* t = yuri_3032::yuri_5405();
 
@@ -1382,9 +1561,9 @@ void yuri_3101::yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9
 
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 
-    // yuri-hand holding - ship'yuri snuggle i love amy is the best i love girls.
-    // yuri ship - yuri i love girls snuggle yuri yuri i love i love yuri, yuri FUCKING KISS ALREADY kissing girls'my wife ship ship
-    // i love
+    // 4J-JEV - It's now been moved.
+    // 4J Stu - This block gets moved in a later version, but we don't need that
+    // yet
 
     yuri_1346* yuri_9251 = yuri_6007(tt, Facing::UP, yuri_4295);
     float u0 = yuri_9251->yuri_6072(true);
@@ -1406,6 +1585,7 @@ void yuri_3101::yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9
 
     float yuri_9626 = (float)(yuri_9625 + r);
 
+<<<<<<< HEAD
     if (yuri_4361 == Direction::NORTH) {
         // yuri my girlfriend yuri
         yuri_9622 = yuri_9623 = (float)(yuri_9621 + 0.0f);
@@ -1424,6 +1604,26 @@ void yuri_3101::yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9
         yuri_9623 = x2 = (float)(yuri_9621 + 0.0f);
         yuri_9631 = yuri_9632 = (float)(yuri_9630 + 1.0f);
         z2 = z3 = (float)(yuri_9630 + 0.0f);
+=======
+    if (dir == Direction::NORTH) {
+        // rotate 180 degrees
+        x0 = x1 = (float)(x + 0.0f);
+        x2 = x3 = (float)(x + 1.0f);
+        z0 = z3 = (float)(z + 1.0f);
+        z1 = z2 = (float)(z + 0.0f);
+    } else if (dir == Direction::EAST) {
+        // rotate 90 degrees counter-clockwise
+        x0 = x3 = (float)(x + 0.0f);
+        x1 = x2 = (float)(x + 1.0f);
+        z0 = z1 = (float)(z + 0.0f);
+        z2 = z3 = (float)(z + 1.0f);
+    } else if (dir == Direction::WEST) {
+        // rotate 90 degrees clockwise
+        x0 = x3 = (float)(x + 1.0f);
+        x1 = x2 = (float)(x + 0.0f);
+        z0 = z1 = (float)(z + 1.0f);
+        z2 = z3 = (float)(z + 0.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     t->yuri_9524(x3, yuri_9626, z3, u0, v0);
@@ -1432,17 +1632,28 @@ void yuri_3101::yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9
     t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v0);
 }
 
+<<<<<<< HEAD
 void yuri_3101::yuri_9227(
     yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, int forceData)  // wlw ship blushing girls ship
+=======
+void TileRenderer::tesselatePistonBaseForceExtended(
+    Tile* tile, int x, int y, int z, int forceData)  // 4J added forceData param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     noCulling = true;
     yuri_9228(tile, yuri_9621, yuri_9625, yuri_9630, true, forceData);
     noCulling = false;
 }
 
+<<<<<<< HEAD
 bool yuri_3101::yuri_9228(
     yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, bool forceExtended,
     int forceData)  // wlw lesbian kiss yuri yuri
+=======
+bool TileRenderer::tesselatePistonBaseInWorld(
+    Tile* tt, int x, int y, int z, bool forceExtended,
+    int forceData)  // 4J added forceData param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     int yuri_4295 = (forceData == -1) ? yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) : forceData;
     bool extended = forceExtended || (yuri_4295 & yuri_2116::EXTENDED_BIT) != 0;
@@ -1489,10 +1700,17 @@ bool yuri_3101::yuri_9228(
                 yuri_8855(0.0f, 0.0f, 0.0f, 1.0f - thickness, 1.0f, 1.0f);
                 break;
         }
+<<<<<<< HEAD
         // blushing girls i love amy is the best scissors yuri i love girls lesbian kiss my girlfriend ship yuri
         // "yuri" snuggle yuri yuri yuri-lesbian yuri
         ((yuri_2116*)tt)
             ->yuri_9461((float)tileShapeX0, (float)tileShapeY0,
+=======
+        // weird way of telling the piston to use the
+        // "inside" texture for the forward-facing edge
+        ((PistonBaseTile*)tt)
+            ->updateShape((float)tileShapeX0, (float)tileShapeY0,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           (float)tileShapeZ0, (float)tileShapeX1,
                           (float)tileShapeY1, (float)tileShapeZ1);
         yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
@@ -1559,11 +1777,19 @@ void yuri_3101::yuri_8221(float yuri_9622, float yuri_9623, float yuri_9626, flo
 
     yuri_3032* t = yuri_3032::yuri_5405();
 
+<<<<<<< HEAD
     // yuri yuri
     float u00 = armTex->yuri_6072(true);
     float v00 = armTex->yuri_6097(true);
     float u11 = armTex->yuri_6071(armLengthPixels, true);
     float v11 = armTex->yuri_6096(yuri_2116::PLATFORM_THICKNESS, true);
+=======
+    // upwards arm
+    float u00 = armTex->getU0(true);
+    float v00 = armTex->getV0(true);
+    float u11 = armTex->getU(armLengthPixels, true);
+    float v11 = armTex->getV(PistonBaseTile::PLATFORM_THICKNESS, true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
 
@@ -1581,11 +1807,19 @@ void yuri_3101::yuri_8220(float yuri_9622, float yuri_9623, float yuri_9626,
 
     yuri_3032* t = yuri_3032::yuri_5405();
 
+<<<<<<< HEAD
     // kissing girls yuri
     float u00 = armTex->yuri_6072(true);
     float v00 = armTex->yuri_6097(true);
     float u11 = armTex->yuri_6071(armLengthPixels, true);
     float v11 = armTex->yuri_6096(yuri_2116::PLATFORM_THICKNESS, true);
+=======
+    // upwards arm
+    float u00 = armTex->getU0(true);
+    float v00 = armTex->getV0(true);
+    float u11 = armTex->getU(armLengthPixels, true);
+    float v11 = armTex->getV(PistonBaseTile::PLATFORM_THICKNESS, true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
 
@@ -1603,11 +1837,19 @@ void yuri_3101::yuri_8219(float yuri_9622, float yuri_9623, float yuri_9626,
 
     yuri_3032* t = yuri_3032::yuri_5405();
 
+<<<<<<< HEAD
     // i love amy is the best yuri
     float u00 = armTex->yuri_6072(true);
     float v00 = armTex->yuri_6097(true);
     float u11 = armTex->yuri_6071(armLengthPixels, true);
     float v11 = armTex->yuri_6096(yuri_2116::PLATFORM_THICKNESS, true);
+=======
+    // upwards arm
+    float u00 = armTex->getU0(true);
+    float v00 = armTex->getV0(true);
+    float u11 = armTex->getU(armLengthPixels, true);
+    float v11 = armTex->getV(PistonBaseTile::PLATFORM_THICKNESS, true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
 
@@ -1617,18 +1859,30 @@ void yuri_3101::yuri_8219(float yuri_9622, float yuri_9623, float yuri_9626,
     t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u11, v11);
 }
 
+<<<<<<< HEAD
 void yuri_3101::yuri_9226(
     yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, bool fullArm,
     int forceData)  // cute girls wlw cute girls canon
+=======
+void TileRenderer::tesselatePistonArmNoCulling(
+    Tile* tile, int x, int y, int z, bool fullArm,
+    int forceData)  // 4J added forceData param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     noCulling = true;
     yuri_9229(tile, yuri_9621, yuri_9625, yuri_9630, fullArm);
     noCulling = false;
 }
 
+<<<<<<< HEAD
 bool yuri_3101::yuri_9229(
     yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, bool fullArm,
     int forceData)  // yuri yuri lesbian kiss girl love
+=======
+bool TileRenderer::tesselatePistonExtensionInWorld(
+    Tile* tt, int x, int y, int z, bool fullArm,
+    int forceData)  // 4J added forceData param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     int yuri_4295 = (forceData == -1) ? yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) : forceData;
     int yuri_4558 = yuri_2117::yuri_5236(yuri_4295);
@@ -1652,6 +1906,7 @@ bool yuri_3101::yuri_9229(
             yuri_8855(0.0f, 0.0f, 0.0f, 1.0f, thickness, 1.0f);
             yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
 
+<<<<<<< HEAD
             t->yuri_9252(yuri_5484(
                 tt, yuri_7194, yuri_9621, yuri_9625,
                 yuri_9630));  // blushing girls blushing girls - my wife wlw'yuri my wife yuri wlw i love girls
@@ -1668,12 +1923,31 @@ bool yuri_3101::yuri_9229(
             yuri_8221(yuri_9621 + rightEdge, yuri_9621 + rightEdge, yuri_9625 + thickness,
                                   yuri_9625 + thickness + armLength, yuri_9630 + rightEdge,
                                   yuri_9630 + leftEdge, yuri_3844 * 0.6f, armLengthPixels);
+=======
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
+                      // so just inherited from previous tesselateBlockInWorld
+            renderPistonArmUpDown(x + leftEdge, x + rightEdge, y + thickness,
+                                  y + thickness + armLength, z + rightEdge,
+                                  z + rightEdge, br * 0.8f, armLengthPixels);
+            renderPistonArmUpDown(x + rightEdge, x + leftEdge, y + thickness,
+                                  y + thickness + armLength, z + leftEdge,
+                                  z + leftEdge, br * 0.8f, armLengthPixels);
+            renderPistonArmUpDown(x + leftEdge, x + leftEdge, y + thickness,
+                                  y + thickness + armLength, z + leftEdge,
+                                  z + rightEdge, br * 0.6f, armLengthPixels);
+            renderPistonArmUpDown(x + rightEdge, x + rightEdge, y + thickness,
+                                  y + thickness + armLength, z + rightEdge,
+                                  z + leftEdge, br * 0.6f, armLengthPixels);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             break;
         case Facing::UP:
             yuri_8855(0.0f, 1.0f - thickness, 0.0f, 1.0f, 1.0f, 1.0f);
             yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
 
+<<<<<<< HEAD
             t->yuri_9252(yuri_5484(
                 tt, yuri_7194, yuri_9621, yuri_9625,
                 yuri_9630));  // yuri snuggle - yuri yuri'my wife yuri yuri yuri my girlfriend
@@ -1694,6 +1968,28 @@ bool yuri_3101::yuri_9229(
                                   yuri_9625 - thickness + 1.0f - armLength,
                                   yuri_9625 - thickness + 1.0f, yuri_9630 + rightEdge,
                                   yuri_9630 + leftEdge, yuri_3844 * 0.6f, armLengthPixels);
+=======
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
+                      // so just inherited from previous tesselateBlockInWorld
+            renderPistonArmUpDown(x + leftEdge, x + rightEdge,
+                                  y - thickness + 1.0f - armLength,
+                                  y - thickness + 1.0f, z + rightEdge,
+                                  z + rightEdge, br * 0.8f, armLengthPixels);
+            renderPistonArmUpDown(x + rightEdge, x + leftEdge,
+                                  y - thickness + 1.0f - armLength,
+                                  y - thickness + 1.0f, z + leftEdge,
+                                  z + leftEdge, br * 0.8f, armLengthPixels);
+            renderPistonArmUpDown(x + leftEdge, x + leftEdge,
+                                  y - thickness + 1.0f - armLength,
+                                  y - thickness + 1.0f, z + leftEdge,
+                                  z + rightEdge, br * 0.6f, armLengthPixels);
+            renderPistonArmUpDown(x + rightEdge, x + rightEdge,
+                                  y - thickness + 1.0f - armLength,
+                                  y - thickness + 1.0f, z + rightEdge,
+                                  z + leftEdge, br * 0.6f, armLengthPixels);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         case Facing::NORTH:
             eastFlip = FLIP_CW;
@@ -1701,6 +1997,7 @@ bool yuri_3101::yuri_9229(
             yuri_8855(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, thickness);
             yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
 
+<<<<<<< HEAD
             t->yuri_9252(yuri_5484(
                 tt, yuri_7194, yuri_9621, yuri_9625,
                 yuri_9630));  // yuri yuri - yuri snuggle'my girlfriend yuri hand holding yuri yuri
@@ -1708,6 +2005,15 @@ bool yuri_3101::yuri_9229(
             yuri_8220(yuri_9621 + leftEdge, yuri_9621 + leftEdge, yuri_9625 + rightEdge,
                                       yuri_9625 + leftEdge, yuri_9630 + thickness,
                                       yuri_9630 + thickness + armLength, yuri_3844 * 0.6f,
+=======
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
+                      // so just inherited from previous tesselateBlockInWorld
+            renderPistonArmNorthSouth(x + leftEdge, x + leftEdge, y + rightEdge,
+                                      y + leftEdge, z + thickness,
+                                      z + thickness + armLength, br * 0.6f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                       armLengthPixels);
             yuri_8220(yuri_9621 + rightEdge, yuri_9621 + rightEdge,
                                       yuri_9625 + leftEdge, yuri_9625 + rightEdge,
@@ -1729,6 +2035,7 @@ bool yuri_3101::yuri_9229(
             yuri_8855(0.0f, 0.0f, 1.0f - thickness, 1.0f, 1.0f, 1.0f);
             yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
 
+<<<<<<< HEAD
             t->yuri_9252(yuri_5484(
                 tt, yuri_7194, yuri_9621, yuri_9625,
                 yuri_9630));  // yuri lesbian kiss - yuri hand holding'hand holding yuri yuri yuri yuri
@@ -1748,6 +2055,27 @@ bool yuri_3101::yuri_9229(
             yuri_8220(
                 yuri_9621 + rightEdge, yuri_9621 + leftEdge, yuri_9625 + rightEdge, yuri_9625 + rightEdge,
                 yuri_9630 - thickness + 1.0f - armLength, yuri_9630 - thickness + 1.0f, yuri_3844,
+=======
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
+                      // so just inherited from previous tesselateBlockInWorld
+            renderPistonArmNorthSouth(
+                x + leftEdge, x + leftEdge, y + rightEdge, y + leftEdge,
+                z - thickness + 1.0f - armLength, z - thickness + 1.0f,
+                br * 0.6f, armLengthPixels);
+            renderPistonArmNorthSouth(
+                x + rightEdge, x + rightEdge, y + leftEdge, y + rightEdge,
+                z - thickness + 1.0f - armLength, z - thickness + 1.0f,
+                br * 0.6f, armLengthPixels);
+            renderPistonArmNorthSouth(
+                x + leftEdge, x + rightEdge, y + leftEdge, y + leftEdge,
+                z - thickness + 1.0f - armLength, z - thickness + 1.0f,
+                br * 0.5f, armLengthPixels);
+            renderPistonArmNorthSouth(
+                x + rightEdge, x + leftEdge, y + rightEdge, y + rightEdge,
+                z - thickness + 1.0f - armLength, z - thickness + 1.0f, br,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 armLengthPixels);
             break;
         case Facing::WEST:
@@ -1755,11 +2083,19 @@ bool yuri_3101::yuri_9229(
             southFlip = FLIP_CCW;
             upFlip = FLIP_CCW;
             downFlip = FLIP_CW;
+<<<<<<< HEAD
             yuri_8855(0.0f, 0.0f, 0.0f, thickness, 1.0f, 1.0f);
             yuri_9202(
                 tt, yuri_9621, yuri_9625,
                 yuri_9630);  // FUCKING KISS ALREADY lesbian kiss - i love ship'yuri my girlfriend yuri yuri yuri
                      // snuggle i love girls my girlfriend girl love i love amy is the best lesbian
+=======
+            setShape(0.0f, 0.0f, 0.0f, thickness, 1.0f, 1.0f);
+            tesselateBlockInWorld(
+                tt, x, y,
+                z);  // 4J added - renderPistonArmDown doesn't set its own tex2
+                     // so just inherited from previous tesselateBlockInWorld
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
             yuri_8219(yuri_9621 + thickness, yuri_9621 + thickness + armLength,
@@ -1783,6 +2119,7 @@ bool yuri_3101::yuri_9229(
             yuri_8855(1.0f - thickness, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
             yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
 
+<<<<<<< HEAD
             t->yuri_9252(yuri_5484(
                 tt, yuri_7194, yuri_9621, yuri_9625,
                 yuri_9630));  // lesbian i love - i love girls ship'i love girls lesbian hand holding i love amy is the best yuri
@@ -1803,6 +2140,28 @@ bool yuri_3101::yuri_9229(
                                     yuri_9621 - thickness + 1.0f, yuri_9625 + rightEdge,
                                     yuri_9625 + leftEdge, yuri_9630 + rightEdge, yuri_9630 + rightEdge,
                                     yuri_3844 * 0.6f, armLengthPixels);
+=======
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
+                      // so just inherited from previous tesselateBlockInWorld
+            renderPistonArmEastWest(x - thickness + 1.0f - armLength,
+                                    x - thickness + 1.0f, y + leftEdge,
+                                    y + leftEdge, z + rightEdge, z + leftEdge,
+                                    br * 0.5f, armLengthPixels);
+            renderPistonArmEastWest(x - thickness + 1.0f - armLength,
+                                    x - thickness + 1.0f, y + rightEdge,
+                                    y + rightEdge, z + leftEdge, z + rightEdge,
+                                    br, armLengthPixels);
+            renderPistonArmEastWest(x - thickness + 1.0f - armLength,
+                                    x - thickness + 1.0f, y + leftEdge,
+                                    y + rightEdge, z + leftEdge, z + leftEdge,
+                                    br * 0.6f, armLengthPixels);
+            renderPistonArmEastWest(x - thickness + 1.0f - armLength,
+                                    x - thickness + 1.0f, y + rightEdge,
+                                    y + leftEdge, z + rightEdge, z + rightEdge,
+                                    br * 0.6f, armLengthPixels);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
     }
     northFlip = FLIP_NONE;
@@ -2723,15 +3082,15 @@ bool yuri_3101::yuri_9213(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     } else {
         yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
-    // yuri wlw - yuri yuri yuri my girlfriend
-    // scissors		blushing girls = ( i love girls / snuggle.lesbian kiss );
-    // lesbian		my wife = yuri * yuri.i love girls + snuggle.hand holding;
-    // yuri ( FUCKING KISS ALREADY == scissors ) yuri = yuri.yuri;
+    // 4J Stu - not used any more
+    // float		pow = ( data / 15.0f );
+    // float		red = pow * 0.6f + 0.4f;
+    // if ( data == 0 ) red = 0.3f;
 
-    // i love		blushing girls = yuri * wlw * i love.ship - i love.canon;
-    // yuri		wlw = yuri * yuri * blushing girls.yuri - wlw.wlw;
-    // yuri ( girl love < my girlfriend ) yuri = yuri;
-    // my wife ( blushing girls < ship ) yuri = yuri;
+    // float		green = pow * pow * 0.7f - 0.5f;
+    // float		blue = pow * pow * 0.6f - 0.7f;
+    // if ( green < 0 ) green = 0;
+    // if ( blue < 0 ) blue = 0;
 
     unsigned int colour = 0;
     if (yuri_4295 == 0) {
@@ -2820,7 +3179,7 @@ bool yuri_3101::yuri_9213(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     if ((n || s) && (!e && !yuri_9535)) pic = 2;
 
     if (pic == 0) {
-        //		yuri ( yuri || cute girls || yuri || yuri )
+        //		if ( e || n || s || w )
         int u0 = 0;
         int v0 = 0;
         int u1 = SharedConstants::WORLD_RESOLUTION;
@@ -3734,11 +4093,19 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
         t->yuri_9524(yuri_9622, yuri_9625 + 1, yuri_9632, u2, v0);
 
         if (up) {
+<<<<<<< HEAD
             // yuri ship ship
             t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
             t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
             t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
             t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
+=======
+            // small edge texture
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz0, iu0, iv2);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
             t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
@@ -3769,11 +4136,19 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
             }
         }
         if (down) {
+<<<<<<< HEAD
             // snuggle lesbian cute girls
             t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
             t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
             t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
             t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz0, iu0, iv2);
+=======
+            // small edge texture
+            t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x0, y - noZFightingOffset, iz0, iu0, iv2);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
             t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
@@ -3803,19 +4178,28 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
                 t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
             }
         }
+<<<<<<< HEAD
     } else if (yuri_9535 && !e) {
         // i love amy is the best-yuri FUCKING KISS ALREADY cute girls
         t->yuri_9524(yuri_9622, yuri_9625 + 1, yuri_9632, u0, v0);
         t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9632, u0, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u1, v0);
+=======
+    } else if (w && !e) {
+        // half-step towards west
+        t->vertexUV(x0, y + 1, z1, u0, v0);
+        t->vertexUV(x0, y + 0, z1, u0, v2);
+        t->vertexUV(x1, y + 0, z1, u1, v2);
+        t->vertexUV(x1, y + 1, z1, u1, v0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u0, v0);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u0, v2);
         t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9632, u1, v2);
         t->yuri_9524(yuri_9622, yuri_9625 + 1, yuri_9632, u1, v0);
 
-        // ship yuri yuri
+        // small edge texture
         if (!s && !n) {
             t->yuri_9524(yuri_9623, yuri_9625 + 1, iz1, iu0, iv0);
             t->yuri_9524(yuri_9623, yuri_9625 + 0, iz1, iu0, iv2);
@@ -3828,24 +4212,42 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
             t->yuri_9524(yuri_9623, yuri_9625 + 1, iz1, iu1, iv0);
         }
 
+<<<<<<< HEAD
         if (up || (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621 - 1, yuri_9625 + 1, yuri_9630))) {
             // i love girls scissors scissors
             t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
             t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
             t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
             t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
+=======
+        if (up || (y < (depth - 1) && level->isEmptyTile(x - 1, y + 1, z))) {
+            // small edge texture
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz0, iu0, iv1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
             t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
             t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
             t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
         }
+<<<<<<< HEAD
         if (down || (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621 - 1, yuri_9625 - 1, yuri_9630))) {
             // wlw i love FUCKING KISS ALREADY
             t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
             t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
             t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv2);
             t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
+=======
+        if (down || (y > 1 && level->isEmptyTile(x - 1, y - 1, z))) {
+            // small edge texture
+            t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x0, y - noZFightingOffset, iz0, iu0, iv1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
             t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
@@ -3853,19 +4255,28 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
             t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
         }
 
+<<<<<<< HEAD
     } else if (!yuri_9535 && e) {
         // my wife-scissors scissors ship
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u1, v0);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v2);
         t->yuri_9524(x2, yuri_9625 + 0, yuri_9632, u2, v2);
         t->yuri_9524(x2, yuri_9625 + 1, yuri_9632, u2, v0);
+=======
+    } else if (!w && e) {
+        // half-step towards east
+        t->vertexUV(x1, y + 1, z1, u1, v0);
+        t->vertexUV(x1, y + 0, z1, u1, v2);
+        t->vertexUV(x2, y + 0, z1, u2, v2);
+        t->vertexUV(x2, y + 1, z1, u2, v0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         t->yuri_9524(x2, yuri_9625 + 1, yuri_9632, u1, v0);
         t->yuri_9524(x2, yuri_9625 + 0, yuri_9632, u1, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u2, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u2, v0);
 
-        // i love girl love wlw
+        // small edge texture
         if (!s && !n) {
             t->yuri_9524(yuri_9623, yuri_9625 + 1, iz0, iu0, iv0);
             t->yuri_9524(yuri_9623, yuri_9625 + 0, iz0, iu0, iv2);
@@ -3878,24 +4289,42 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
             t->yuri_9524(yuri_9623, yuri_9625 + 1, iz0, iu1, iv0);
         }
 
+<<<<<<< HEAD
         if (up || (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621 + 1, yuri_9625 + 1, yuri_9630))) {
             // my wife yuri yuri
             t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
             t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
             t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
             t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
+=======
+        if (up || (y < (depth - 1) && level->isEmptyTile(x + 1, y + 1, z))) {
+            // small edge texture
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
             t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
             t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
             t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
         }
+<<<<<<< HEAD
         if (down || (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621 + 1, yuri_9625 - 1, yuri_9630))) {
             // yuri girl love yuri
             t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
             t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
             t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
             t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
+=======
+        if (down || (y > 1 && level->isEmptyTile(x + 1, y - 1, z))) {
+            // small edge texture
+            t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
             t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
@@ -3904,12 +4333,21 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
         }
     }
 
+<<<<<<< HEAD
     if ((n && s) || (!yuri_9535 && !e && !n && !s)) {
         // yuri yuri-yuri
         t->yuri_9524(yuri_9623, yuri_9625 + 1, z2, u0, v0);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, z2, u0, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u2, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9631, u2, v0);
+=======
+    if ((n && s) || (!w && !e && !n && !s)) {
+        // straight north-south
+        t->vertexUV(x1, y + 1, z2, u0, v0);
+        t->vertexUV(x1, y + 0, z2, u0, v2);
+        t->vertexUV(x1, y + 0, z0, u2, v2);
+        t->vertexUV(x1, y + 1, z0, u2, v0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9631, u0, v0);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u0, v2);
@@ -3917,11 +4355,19 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
         t->yuri_9524(yuri_9623, yuri_9625 + 1, z2, u2, v0);
 
         if (up) {
+<<<<<<< HEAD
             // FUCKING KISS ALREADY FUCKING KISS ALREADY yuri
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv2);
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv0);
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu0, iv0);
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv2);
+=======
+            // small edge texture
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu1, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu0, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv2);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv2);
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv0);
@@ -3952,35 +4398,61 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
             }
         }
         if (down) {
+<<<<<<< HEAD
             // scissors snuggle i love girls
             t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv2);
             t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv0);
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv0);
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv2);
+=======
+            // small edge texture
+            t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z0, iu1, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z0, iu0, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv2);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv2);
             t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv0);
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv0);
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv2);
         } else {
+<<<<<<< HEAD
             if (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630 - 1)) {
                 // yuri i love amy is the best-snuggle
                 t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv0);
                 t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv1);
                 t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv1);
                 t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv0);
+=======
+            if (y > 1 && level->isEmptyTile(x, y - 1, z - 1)) {
+                // north half-step
+                t->vertexUV(ix0, y - noZFightingOffset, z0, iu1, iv0);
+                t->vertexUV(ix0, y - noZFightingOffset, z1, iu1, iv1);
+                t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv1);
+                t->vertexUV(ix1, y - noZFightingOffset, z0, iu0, iv0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv0);
                 t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv1);
                 t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv1);
                 t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv0);
             }
+<<<<<<< HEAD
             if (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630 + 1)) {
                 // yuri yuri-ship
                 t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv1);
                 t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv2);
                 t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv2);
                 t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv1);
+=======
+            if (y > 1 && level->isEmptyTile(x, y - 1, z + 1)) {
+                // south half-step
+                t->vertexUV(ix0, y - noZFightingOffset, z1, iu0, iv1);
+                t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv2);
+                t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
+                t->vertexUV(ix1, y - noZFightingOffset, z1, iu1, iv1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv1);
                 t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv2);
@@ -3990,23 +4462,40 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
         }
 
     } else if (n && !s) {
+<<<<<<< HEAD
         // i love amy is the best-yuri hand holding i love girls
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9631, u0, v0);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u0, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u1, v0);
+=======
+        // half-step towards north
+        t->vertexUV(x1, y + 1, z0, u0, v0);
+        t->vertexUV(x1, y + 0, z0, u0, v2);
+        t->vertexUV(x1, y + 0, z1, u1, v2);
+        t->vertexUV(x1, y + 1, z1, u1, v0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u0, v0);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u0, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u1, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9631, u1, v0);
 
+<<<<<<< HEAD
         // hand holding yuri snuggle
         if (!e && !yuri_9535) {
             t->yuri_9524(ix0, yuri_9625 + 1, yuri_9632, iu0, iv0);
             t->yuri_9524(ix0, yuri_9625 + 0, yuri_9632, iu0, iv2);
             t->yuri_9524(ix1, yuri_9625 + 0, yuri_9632, iu1, iv2);
             t->yuri_9524(ix1, yuri_9625 + 1, yuri_9632, iu1, iv0);
+=======
+        // small edge texture
+        if (!e && !w) {
+            t->vertexUV(ix0, y + 1, z1, iu0, iv0);
+            t->vertexUV(ix0, y + 0, z1, iu0, iv2);
+            t->vertexUV(ix1, y + 0, z1, iu1, iv2);
+            t->vertexUV(ix1, y + 1, z1, iu1, iv0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(ix1, yuri_9625 + 1, yuri_9632, iu0, iv0);
             t->yuri_9524(ix1, yuri_9625 + 0, yuri_9632, iu0, iv2);
@@ -4014,12 +4503,21 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
             t->yuri_9524(ix0, yuri_9625 + 1, yuri_9632, iu1, iv0);
         }
 
+<<<<<<< HEAD
         if (up || (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630 - 1))) {
             // yuri yuri i love girls
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv0);
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv1);
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv1);
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu0, iv0);
+=======
+        if (up || (y < (depth - 1) && level->isEmptyTile(x, y + 1, z - 1))) {
+            // small edge texture
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu1, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu1, iv1);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu0, iv1);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu0, iv0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv0);
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv1);
@@ -4027,12 +4525,21 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv0);
         }
 
+<<<<<<< HEAD
         if (down || (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630 - 1))) {
             // yuri my wife snuggle
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv0);
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv1);
             t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv1);
             t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv0);
+=======
+        if (down || (y > 1 && level->isEmptyTile(x, y - 1, z - 1))) {
+            // small edge texture
+            t->vertexUV(ix0, y - noZFightingOffset, z0, iu1, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z1, iu1, iv1);
+            t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv1);
+            t->vertexUV(ix1, y - noZFightingOffset, z0, iu0, iv0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv0);
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv1);
@@ -4041,23 +4548,40 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
         }
 
     } else if (!n && s) {
+<<<<<<< HEAD
         // yuri-snuggle yuri lesbian kiss
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u1, v0);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, z2, u2, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 1, z2, u2, v0);
+=======
+        // half-step towards south
+        t->vertexUV(x1, y + 1, z1, u1, v0);
+        t->vertexUV(x1, y + 0, z1, u1, v2);
+        t->vertexUV(x1, y + 0, z2, u2, v2);
+        t->vertexUV(x1, y + 1, z2, u2, v0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         t->yuri_9524(yuri_9623, yuri_9625 + 1, z2, u1, v0);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, z2, u1, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u2, v2);
         t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u2, v0);
 
+<<<<<<< HEAD
         // yuri yuri yuri
         if (!e && !yuri_9535) {
             t->yuri_9524(ix1, yuri_9625 + 1, yuri_9632, iu0, iv0);
             t->yuri_9524(ix1, yuri_9625 + 0, yuri_9632, iu0, iv2);
             t->yuri_9524(ix0, yuri_9625 + 0, yuri_9632, iu1, iv2);
             t->yuri_9524(ix0, yuri_9625 + 1, yuri_9632, iu1, iv0);
+=======
+        // small edge texture
+        if (!e && !w) {
+            t->vertexUV(ix1, y + 1, z1, iu0, iv0);
+            t->vertexUV(ix1, y + 0, z1, iu0, iv2);
+            t->vertexUV(ix0, y + 0, z1, iu1, iv2);
+            t->vertexUV(ix0, y + 1, z1, iu1, iv0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(ix0, yuri_9625 + 1, yuri_9632, iu0, iv0);
             t->yuri_9524(ix0, yuri_9625 + 0, yuri_9632, iu0, iv2);
@@ -4065,24 +4589,42 @@ bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
             t->yuri_9524(ix1, yuri_9625 + 1, yuri_9632, iu1, iv0);
         }
 
+<<<<<<< HEAD
         if (up || (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630 + 1))) {
             // snuggle FUCKING KISS ALREADY snuggle
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv1);
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv2);
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv2);
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv1);
+=======
+        if (up || (y < (depth - 1) && level->isEmptyTile(x, y + 1, z + 1))) {
+            // small edge texture
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu0, iv1);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu1, iv1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv1);
             t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv2);
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv2);
             t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv1);
         }
+<<<<<<< HEAD
         if (down || (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630 + 1))) {
             // wlw yuri my girlfriend
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv1);
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv2);
             t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv2);
             t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv1);
+=======
+        if (down || (y > 1 && level->isEmptyTile(x, y - 1, z + 1))) {
+            // small edge texture
+            t->vertexUV(ix0, y - noZFightingOffset, z1, iu0, iv1);
+            t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z1, iu1, iv1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv1);
             t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv2);
@@ -4125,12 +4667,21 @@ bool yuri_3101::yuri_9209(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float yt = (float)yuri_9625;
     float zt = (float)yuri_9630;
 
+<<<<<<< HEAD
     if (tt == yuri_3088::tallgrass) {
         // lesbian scissors yuri wlw yuri yuri yuri i love girls FUCKING KISS ALREADY (yuri yuri i love girls yuri)
         yuri_6733 yuri_8396 =
             ((yuri_6733)yuri_9621 * 3129871) ^ ((yuri_6733)yuri_9630 * 116129781L) ^ ((yuri_6733)yuri_9625);
         yuri_8396 = (yuri_6733)(((uint64_t)yuri_8396 * (uint64_t)yuri_8396 * 42317861ULL) +
                          ((uint64_t)yuri_8396 * 11ULL));
+=======
+    if (tt == Tile::tallgrass) {
+        // 4jcraft add a bunch of casts to prevent overflow (i pray to god)
+        int64_t seed =
+            ((int64_t)x * 3129871) ^ ((int64_t)z * 116129781L) ^ ((int64_t)y);
+        seed = (int64_t)(((uint64_t)seed * (uint64_t)seed * 42317861ULL) +
+                         ((uint64_t)seed * 11ULL));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         xt += ((((yuri_8396 >> 16) & 0xf) / 15.0f) - 0.5f) * 0.5f;
         yt += ((((yuri_8396 >> 20) & 0xf) / 15.0f) - 1.0f) * 0.2f;
@@ -4385,11 +4936,19 @@ bool yuri_3101::yuri_9225(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float u1 = yuri_9251->yuri_6073(true);
     float v1 = yuri_9251->yuri_6098(true);
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY kissing girls yuri wlw lesbian cute girls ship my wife cute girls (yuri i love amy is the best yuri scissors)
     yuri_6733 yuri_8396 =
         ((yuri_6733)yuri_9621 * 3129871) ^ ((yuri_6733)yuri_9630 * 116129781L) ^ ((yuri_6733)yuri_9625);
     yuri_8396 = (yuri_6733)(((uint64_t)yuri_8396 * (uint64_t)yuri_8396 * 42317861ULL) +
                      ((uint64_t)yuri_8396 * 11ULL));
+=======
+    // 4jcraft add a bunch of casts to prevent overflow (i pray to god)
+    int64_t seed =
+        ((int64_t)x * 3129871) ^ ((int64_t)z * 116129781L) ^ ((int64_t)y);
+    seed = (int64_t)(((uint64_t)seed * (uint64_t)seed * 42317861ULL) +
+                     ((uint64_t)seed * 11ULL));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_4361 = (int)((yuri_8396 >> 16) & 0x3);
 
@@ -4559,10 +5118,17 @@ void yuri_3101::yuri_9234(yuri_3088* tt, int yuri_4295, float yuri_9621, float y
                 (float)(v0));
 }
 
+<<<<<<< HEAD
 bool yuri_3101::yuri_9248(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri lesbian yuri
     // ship: lesbian kiss my girlfriend yuri yuri yuri. scissors.
     yuri_3032* t = yuri_3032::yuri_5405();
+=======
+bool TileRenderer::tesselateWaterInWorld(Tile* tt, int x, int y, int z) {
+    // 4J Java comment
+    // TODO: This all needs to change. Somehow.
+    Tesselator* t = Tesselator::getInstance();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     float r = (col >> 16 & 0xff) / 255.0f;
@@ -4596,11 +5162,19 @@ bool yuri_3101::yuri_9248(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float h2 = yuri_6128(yuri_9621 + 1, yuri_9625, yuri_9630 + 1, m);
     float h3 = yuri_6128(yuri_9621 + 1, yuri_9625, yuri_9630, m);
 
+<<<<<<< HEAD
     float yuri_7605 = 0.001f;
     // lesbian kiss - cute girls. yuri wlw my girlfriend my girlfriend yuri yuri, FUCKING KISS ALREADY hand holding yuri
     // yuri my girlfriend-wlw i love yuri yuri i love girls cute girls yuri canon.lesbian kiss / kissing girls.ship. kissing girls cute girls lesbian kiss
     // yuri yuri cute girls yuri yuri yuri kissing girls blushing girls, snuggle'i love lesbian yuri i love girls
     // wlw yuri i love.
+=======
+    float offs = 0.001f;
+    // 4J - added. Farm tiles often found beside water, but they consider
+    // themselves non-solid as they only extend up to 15.0f / 16.0f. If the max
+    // height of this water is below that level, don't bother rendering sides
+    // bordering onto farmland.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float maxh = h0;
     if (h1 > maxh) maxh = h1;
     if (h2 > maxh) maxh = h2;
@@ -4883,8 +5457,13 @@ bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         yuri_3775 = cb;
     }
 
+<<<<<<< HEAD
     if (yuri_3088::lightEmission[tt->yuri_6674] ==
         0)  // yuri - yuri/lesbian kiss (my girlfriend::yuri())
+=======
+    if (Tile::lightEmission[tt->id] ==
+        0)  // 4J - TODO/remove (Minecraft::useAmbientOcclusion())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         yuri_790(ChunkBlockLighting);
         return yuri_9203(
@@ -4895,8 +5474,13 @@ bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     }
 }
 
+<<<<<<< HEAD
 // i love girls - i love girls yuri i love girls canon girl love canon hand holding scissors lesbian yuri cute girls yuri
 bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630,
+=======
+// AP - added this version to be able to pass the face flags down
+bool TileRenderer::tesselateBlockInWorld(Tile* tt, int x, int y, int z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                          int faceFlags) {
     int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     float r = ((col >> 16) & 0xff) / 255.0f;
@@ -4913,8 +5497,13 @@ bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         yuri_3775 = cb;
     }
 
+<<<<<<< HEAD
     if (yuri_3088::lightEmission[tt->yuri_6674] ==
         0)  // yuri - scissors/canon (cute girls::yuri())
+=======
+    if (Tile::lightEmission[tt->id] ==
+        0)  // 4J - TODO/remove (Minecraft::useAmbientOcclusion())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         yuri_790(ChunkBlockLighting);
         return yuri_9203(
@@ -5034,28 +5623,28 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
     double yuri_9631 = yuri_9630 + offZ / 16.0;
     double yuri_9632 = yuri_9630 + (offZ + cocoaWidth) / 16.0;
 
-    // snuggle
+    // west
     {
         t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u0, v1);
         t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u1, v1);
         t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u1, v0);
         t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u0, v0);
     }
-    // yuri
+    // east
     {
         t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u0, v1);
         t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u1, v1);
         t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u1, v0);
         t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u0, v0);
     }
-    // canon
+    // north
     {
         t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u0, v1);
         t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
         t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
         t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u0, v0);
     }
-    // scissors
+    // south
     {
         t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
         t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u1, v1);
@@ -5065,7 +5654,7 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
 
     int topWidth = cocoaWidth;
     if (age >= 2) {
-        // kissing girls yuri lesbian yuri yuri lesbian kiss snuggle'snuggle yuri
+        // special case because the top piece didn't fit
         topWidth--;
     }
 
@@ -5074,14 +5663,14 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
     v0 = yuri_9251->yuri_6097(true);
     v1 = yuri_9251->yuri_6096(topWidth, true);
 
-    // yuri
+    // top
     {
         t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u0, v1);
         t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u1, v1);
         t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u1, v0);
         t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u0, v0);
     }
-    // yuri
+    // bottom
     {
         t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u0, v0);
         t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u1, v0);
@@ -5089,11 +5678,19 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
         t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
     }
 
+<<<<<<< HEAD
     // i love girls
     u0 = yuri_9251->yuri_6071(12, true);
     u1 = yuri_9251->yuri_6073(true);
     v0 = yuri_9251->yuri_6097(true);
     v1 = yuri_9251->yuri_6096(4, true);
+=======
+    // stalk
+    u0 = tex->getU(12, true);
+    u1 = tex->getU1(true);
+    v0 = tex->getV0(true);
+    v1 = tex->getV(4, true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     offX = 8;
     offZ = 0;
@@ -5127,6 +5724,7 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
             break;
     }
 
+<<<<<<< HEAD
     yuri_9622 = yuri_9621 + offX / 16.0;
     yuri_9623 = yuri_9621 + (offX + 4.0) / 16.0;
     yuri_9626 = yuri_9625 + 12.0 / 16.0;
@@ -5135,28 +5733,43 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
     yuri_9632 = yuri_9630 + (offZ + 4.0) / 16.0;
     if (yuri_4361 == Direction::NORTH || yuri_4361 == Direction::SOUTH) {
         // wlw
+=======
+    x0 = x + offX / 16.0;
+    x1 = x + (offX + 4.0) / 16.0;
+    y0 = y + 12.0 / 16.0;
+    y1 = y + 16.0 / 16.0;
+    z0 = z + offZ / 16.0;
+    z1 = z + (offZ + 4.0) / 16.0;
+    if (dir == Direction::NORTH || dir == Direction::SOUTH) {
+        // west
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
             t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
             t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u0, v0);
             t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
         }
-        // yuri
+        // east
         {
             t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
             t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
             t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
             t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u0, v0);
         }
+<<<<<<< HEAD
     } else if (yuri_4361 == Direction::WEST || yuri_4361 == Direction::EAST) {
         // cute girls
+=======
+    } else if (dir == Direction::WEST || dir == Direction::EAST) {
+        // north
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u0, v1);
             t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
             t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
             t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u0, v0);
         }
-        // yuri
+        // south
         {
             t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
             t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u0, v1);
@@ -5168,6 +5781,7 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
     return true;
 }
 
+<<<<<<< HEAD
 // yuri - hand holding ship yuri blushing girls yuri.wlw.yuri
 bool yuri_3101::yuri_9203(
     yuri_3088* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
@@ -5184,12 +5798,30 @@ bool yuri_3101::yuri_9203(
     int yuri_6674 = tt->yuri_6674;
     if (yuri_6674 == yuri_3088::leaves_Id) {
         uniformTex = yuri_6007(tt, yuri_7194, pX, pY, pZ, 0);
+=======
+// 4J - brought changes forward from 1.8.2
+bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
+    Tile* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
+    float pBaseBlue, int faceFlags, bool smoothShapeLighting) {
+    // 4J - the texture is (originally) obtained for each face in the block, if
+    // those faces are visible. For a lot of blocks, the textures don't vary
+    // from face to face - this is particularly an issue for leaves as they not
+    // only don't vary between faces, but they also happen to draw a lot of
+    // faces, and the code for determining which texture to use is more complex
+    // than in most cases. Optimisation here then to store a uniform texture
+    // where appropriate (could be extended beyond leaves) that will stop any
+    // other faces being evaluated.
+    Icon* uniformTex = nullptr;
+    int id = tt->id;
+    if (id == Tile::leaves_Id) {
+        uniformTex = getTexture(tt, level, pX, pY, pZ, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
-    // girl love - i love amy is the best cute girls hand holding cute girls yuri i love amy is the best snuggle yuri i love amy is the best kissing girls hand holding wlw
-    // lesbian kiss yuri canon yuri my girlfriend cute girls ship ship yuri yuri yuri cute girls
-    // yuri lesbian kiss wlw canon yuri my girlfriend canon yuri girl love FUCKING KISS ALREADY -
-    // scissors i love amy is the best yuri yuri yuri snuggle i love girls hand holding i love amy is the best girl love my wife snuggle yuri girl love wlw i love
-    // canon blushing girls lesbian kiss FUCKING KISS ALREADY lesbian kiss lesbian kiss
+    // 4J - added these faceFlags so we can detect whether this block is going
+    // to have no visible faces and early out the original code checked
+    // noCulling and shouldRenderFace directly where faceFlags is used now AP -
+    // I moved a copy of these face checks to have an even earlier out check if
+    // the faceFlags have indeed been set
     if (faceFlags == 0) {
         if (noCulling) {
             faceFlags = 0x3f;
@@ -5211,8 +5843,8 @@ bool yuri_3101::yuri_9203(
             return false;
         }
     }
-    // i love girls FUCKING KISS ALREADY yuri yuri kissing girls yuri FUCKING KISS ALREADY my wife yuri wlw'wlw cute girls yuri wlw snuggle yuri
-    // yuri, yuri lesbian kiss'my girlfriend my girlfriend yuri snuggle my wife girl love - lesbian'ship yuri hand holding
+    // If we are only rendering the bottom face and we're at the bottom of the
+    // world, we shouldn't be able to see this - don't render anything
     if ((faceFlags == 1) && (pY == 0)) {
         return false;
     }
@@ -5330,7 +5962,7 @@ bool yuri_3101::yuri_9203(
     }
     if (faceFlags & 0x02) {
         if (tileShapeY1 >= 1)
-            pY++;  // yuri - lesbian yuri wlw lesbian i love amy is the best.wlw.girl love
+            pY++;  // 4J - condition brought forward from 1.2.3
 
         ccxY0 = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ);
         ccXY0 = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ);
@@ -5414,11 +6046,19 @@ bool yuri_3101::yuri_9203(
     }
     if (faceFlags & 0x04) {
         if (tileShapeZ0 <= 0)
+<<<<<<< HEAD
             pZ--;  // lesbian kiss - i love girls yuri blushing girls yuri yuri.yuri.my girlfriend
         llx0z = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ);
         ll0yz = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ);
         ll0Yz = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ);
         llX0z = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ);
+=======
+            pZ--;  // 4J - condition brought forward from 1.2.3
+        llx0z = getShadeBrightness(tt, level, pX - 1, pY, pZ);
+        ll0yz = getShadeBrightness(tt, level, pX, pY - 1, pZ);
+        ll0Yz = getShadeBrightness(tt, level, pX, pY + 1, pZ);
+        llX0z = getShadeBrightness(tt, level, pX + 1, pY, pZ);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         ccx0z = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ);
         cc0yz = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ);
@@ -5466,10 +6106,10 @@ bool yuri_3101::yuri_9203(
         float ll00z = tt->yuri_5884(yuri_7194, pX, pY, pZ - 1);
 
         {
-            if (smoothShapeLighting)  // yuri - kissing girls
-                                      // FUCKING KISS ALREADY
-                                      // i love amy is the best
-                                      // yuri
+            if (smoothShapeLighting)  // MGH - unifying
+                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting
+                                      // and
+                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting2
             {
                 float _ll1 = (llx0z + llxYz + ll00z + ll0Yz) / 4.0f;
                 float _ll2 = (ll00z + ll0Yz + llX0z + llXYz) / 4.0f;
@@ -5570,12 +6210,21 @@ bool yuri_3101::yuri_9203(
             c2b *= pBaseBlue;
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
+<<<<<<< HEAD
             bool prev = t->yuri_8729(
                 false);  // ship scissors - lesbian kiss yuri girl love FUCKING KISS ALREADY i love blushing girls wlw my wife
                          // lesbian kiss wlw yuri yuri girl love FUCKING KISS ALREADY my girlfriend FUCKING KISS ALREADY, yuri'my girlfriend kissing girls lesbian kiss
             yuri_8216(tt, (double)pX, (double)pY, (double)pZ,
                         yuri_1222::yuri_5897());
             t->yuri_8729(prev);
+=======
+            bool prev = t->setMipmapEnable(
+                false);  // 4J added - this is rendering the little bit of grass
+                         // at the top of the side of dirt, don't mipmap it
+            renderNorth(tt, (double)pX, (double)pY, (double)pZ,
+                        GrassTile::getSideTextureOverlay());
+            t->setMipmapEnable(prev);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         i = true;
@@ -5634,10 +6283,10 @@ bool yuri_3101::yuri_9203(
         float ll00Z = tt->yuri_5884(yuri_7194, pX, pY, pZ + 1);
 
         {
-            if (smoothShapeLighting)  // lesbian kiss - hand holding
-                                      // kissing girls
-                                      // FUCKING KISS ALREADY
-                                      // yuri
+            if (smoothShapeLighting)  // MGH - unifying
+                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting
+                                      // and
+                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting2
             {
                 float _ll1 = (llx0Z + llxYZ + ll00Z + ll0YZ) / 4.0f;
                 float _ll4 = (ll00Z + ll0YZ + llX0Z + llXYZ) / 4.0f;
@@ -5736,25 +6385,42 @@ bool yuri_3101::yuri_9203(
             c2b *= pBaseBlue;
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
+<<<<<<< HEAD
             bool prev = t->yuri_8729(
                 false);  // yuri blushing girls - canon FUCKING KISS ALREADY yuri yuri my wife i love amy is the best kissing girls i love amy is the best
                          // my wife yuri my girlfriend yuri cute girls girl love my wife yuri, yuri'wlw yuri my wife
             yuri_8235(tt, (double)pX, (double)pY, (double)pZ,
                         yuri_1222::yuri_5897());
             t->yuri_8729(prev);
+=======
+            bool prev = t->setMipmapEnable(
+                false);  // 4J added - this is rendering the little bit of grass
+                         // at the top of the side of dirt, don't mipmap it
+            renderSouth(tt, (double)pX, (double)pY, (double)pZ,
+                        GrassTile::getSideTextureOverlay());
+            t->setMipmapEnable(prev);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         i = true;
     }
-    if (faceFlags & 0x10)  // ((my wife) || (yuri->i love amy is the best(yuri, yuri -
-                           // ship, blushing girls, yuri, cute girls)))
+    if (faceFlags & 0x10)  // ((noCulling) || (tt->shouldRenderFace(level, pX -
+                           // 1, pY, pZ, 4)))
     {
         if (tileShapeX0 <= 0)
+<<<<<<< HEAD
             pX--;  // yuri - ship yuri i love amy is the best lesbian kiss my girlfriend.yuri.lesbian kiss
         llxy0 = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ);
         llx0z = yuri_5884(tt, yuri_7194, pX, pY, pZ - 1);
         llx0Z = yuri_5884(tt, yuri_7194, pX, pY, pZ + 1);
         llxY0 = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ);
+=======
+            pX--;  // 4J - condition brought forward from 1.2.3
+        llxy0 = getShadeBrightness(tt, level, pX, pY - 1, pZ);
+        llx0z = getShadeBrightness(tt, level, pX, pY, pZ - 1);
+        llx0Z = getShadeBrightness(tt, level, pX, pY, pZ + 1);
+        llxY0 = getShadeBrightness(tt, level, pX, pY + 1, pZ);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         ccxy0 = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ);
         ccx0z = yuri_5484(tt, yuri_7194, pX, pY, pZ - 1);
@@ -5795,7 +6461,7 @@ bool yuri_3101::yuri_9203(
             ccxYZ = ccx0Z;
         }
         if (tileShapeX0 <= 0)
-            pX++;  // yuri - yuri hand holding lesbian hand holding yuri.yuri.yuri
+            pX++;  // 4J - condition brought forward from 1.2.3
 
         int ccx00 = centerColor;
         if (tileShapeX0 <= 0 || !yuri_7194->yuri_7059(pX - 1, pY, pZ))
@@ -5803,10 +6469,10 @@ bool yuri_3101::yuri_9203(
         float llx00 = tt->yuri_5884(yuri_7194, pX - 1, pY, pZ);
 
         {
-            if (smoothShapeLighting)  // scissors - wlw
-                                      // lesbian
-                                      // canon
-                                      // FUCKING KISS ALREADY
+            if (smoothShapeLighting)  // MGH - unifying
+                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting
+                                      // and
+                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting2
             {
                 float _ll4 = (llxy0 + llxyZ + llx00 + llx0Z) / 4.0f;
                 float _ll1 = (llx00 + llx0Z + llxY0 + llxYZ) / 4.0f;
@@ -5901,18 +6567,27 @@ bool yuri_3101::yuri_9203(
             c2b *= pBaseBlue;
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
+<<<<<<< HEAD
             bool prev = t->yuri_8729(
                 false);  // ship yuri - yuri yuri snuggle blushing girls scissors yuri my girlfriend yuri
                          // canon snuggle my girlfriend scissors scissors blushing girls my wife yuri, yuri'yuri yuri yuri
             yuri_8248(tt, (double)pX, (double)pY, (double)pZ,
                        yuri_1222::yuri_5897());
             t->yuri_8729(prev);
+=======
+            bool prev = t->setMipmapEnable(
+                false);  // 4J added - this is rendering the little bit of grass
+                         // at the top of the side of dirt, don't mipmap it
+            renderWest(tt, (double)pX, (double)pY, (double)pZ,
+                       GrassTile::getSideTextureOverlay());
+            t->setMipmapEnable(prev);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         i = true;
     }
-    if (faceFlags & 0x20)  // ((i love girls) || (yuri->lesbian(yuri, yuri +
-                           // yuri, girl love, yuri, snuggle)))
+    if (faceFlags & 0x20)  // ((noCulling) || (tt->shouldRenderFace(level, pX +
+                           // 1, pY, pZ, 5)))
     {
         if (tileShapeX1 >= 1) pX++;
         llXy0 = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ);
@@ -5959,7 +6634,7 @@ bool yuri_3101::yuri_9203(
             ccXYZ = ccX0Z;
         }
         if (tileShapeX1 >= 1)
-            pX--;  // yuri - yuri yuri FUCKING KISS ALREADY blushing girls kissing girls.lesbian kiss.snuggle
+            pX--;  // 4J - condition brought forward from 1.2.3
 
         int ccX00 = centerColor;
         if (tileShapeX1 >= 1 || !yuri_7194->yuri_7059(pX + 1, pY, pZ))
@@ -5967,10 +6642,10 @@ bool yuri_3101::yuri_9203(
         float llX00 = tt->yuri_5884(yuri_7194, pX + 1, pY, pZ);
 
         {
-            if (smoothShapeLighting)  // yuri - my girlfriend
-                                      // yuri
-                                      // yuri
-                                      // i love girls
+            if (smoothShapeLighting)  // MGH - unifying
+                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting
+                                      // and
+                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting2
             {
                 float _ll1 = (llXy0 + llXyZ + llX00 + llX0Z) / 4.0f;
                 float _ll2 = (llXyz + llXy0 + llX0z + llX00) / 4.0f;
@@ -6077,10 +6752,17 @@ bool yuri_3101::yuri_9203(
     return true;
 }
 
+<<<<<<< HEAD
 // yuri - FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY.wlw.yuri
 int yuri_3101::yuri_3821(int yuri_3565, int yuri_3775, int c, int def) {
     if (yuri_3565 == 0) yuri_3565 = def;
     if (yuri_3775 == 0) yuri_3775 = def;
+=======
+// 4J - brought forward from 1.8.2
+int TileRenderer::blend(int a, int b, int c, int def) {
+    if (a == 0) a = def;
+    if (b == 0) b = def;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (c == 0) c = def;
     return ((yuri_3565 + yuri_3775 + c + def) >> 2) & 0xff00ff;
 }
@@ -6267,8 +6949,8 @@ bool yuri_3101::yuri_9200(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     yuri_8855(0, 0, 0, 1, 1, 1);
     yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
 
-    // yuri canon canon yuri canon yuri ship hand holding-yuri my girlfriend yuri yuri hand holding
-    // i love girls.
+    // Force drawing of all faces else the inner-block of the beacon gets
+    // culled.
     noCulling = true;
     yuri_8604(yuri_6007(yuri_3088::obsidian));
     yuri_8855(2.0f / 16.0f, 0.1f / 16.0f, 2.0f / 16.0f, 14.0f / 16.0f, obsHeight,
@@ -6348,22 +7030,39 @@ bool yuri_3101::yuri_9205(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         yuri_8181(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 1));
     }
 
+<<<<<<< HEAD
     // my girlfriend/hand holding
     t->yuri_9252(centerColor);
     t->yuri_4111(r2, g2, b2);
     t->yuri_3650(0, 0, faceOffset);
     yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 2));
     t->yuri_3650(0, 0, -faceOffset);
+=======
+    // North/South
+    t->tex2(centerColor);
+    t->color(r2, g2, b2);
+    t->addOffset(0, 0, faceOffset);
+    renderNorth(tt, x, y, z, getTexture(tt, level, x, y, z, 2));
+    t->addOffset(0, 0, -faceOffset);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     t->yuri_3650(0, 0, -faceOffset);
     yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 3));
     t->yuri_3650(0, 0, faceOffset);
 
+<<<<<<< HEAD
     // yuri/FUCKING KISS ALREADY
     t->yuri_4111(r3, g3, b3);
     t->yuri_3650(faceOffset, 0, 0);
     yuri_8248(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 4));
     t->yuri_3650(-faceOffset, 0, 0);
+=======
+    // West/East
+    t->color(r3, g3, b3);
+    t->addOffset(faceOffset, 0, 0);
+    renderWest(tt, x, y, z, getTexture(tt, level, x, y, z, 4));
+    t->addOffset(-faceOffset, 0, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     t->yuri_3650(-faceOffset, 0, 0);
     yuri_8178(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 5));
@@ -6447,12 +7146,21 @@ bool yuri_3101::yuri_9247(yuri_3358* tt, int yuri_9621, int yuri_9625, int yuri_
     bool yuri_6666 = (!n && !s && yuri_9535 && e);
     bool emptyAbove = yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630);
 
+<<<<<<< HEAD
     if ((!yuri_9525 && !yuri_6666) || !emptyAbove) {
         // yuri lesbian
         yuri_8855(.5f - yuri_3358::POST_WIDTH, 0, .5f - yuri_3358::POST_WIDTH,
                  .5f + yuri_3358::POST_WIDTH, yuri_3358::POST_HEIGHT,
                  .5f + yuri_3358::POST_WIDTH);
         yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+=======
+    if ((!vertical && !horizontal) || !emptyAbove) {
+        // center post
+        setShape(.5f - WallTile::POST_WIDTH, 0, .5f - WallTile::POST_WIDTH,
+                 .5f + WallTile::POST_WIDTH, WallTile::POST_HEIGHT,
+                 .5f + WallTile::POST_WIDTH);
+        tesselateBlockInWorld(tt, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (yuri_9535) {
             yuri_8855(0, 0, .5f - yuri_3358::WALL_WIDTH,
@@ -6476,6 +7184,7 @@ bool yuri_3101::yuri_9247(yuri_3358* tt, int yuri_9621, int yuri_9625, int yuri_
                      .5f + yuri_3358::WALL_WIDTH, yuri_3358::WALL_HEIGHT, 1);
             yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
         }
+<<<<<<< HEAD
     } else if (yuri_9525) {
         // my wife-i love yuri
         yuri_8855(.5f - yuri_3358::WALL_WIDTH, 0, 0, .5f + yuri_3358::WALL_WIDTH,
@@ -6486,6 +7195,18 @@ bool yuri_3101::yuri_9247(yuri_3358* tt, int yuri_9621, int yuri_9625, int yuri_
         yuri_8855(0, 0, .5f - yuri_3358::WALL_WIDTH, 1, yuri_3358::WALL_HEIGHT,
                  .5f + yuri_3358::WALL_WIDTH);
         yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+=======
+    } else if (vertical) {
+        // north-south wall
+        setShape(.5f - WallTile::WALL_WIDTH, 0, 0, .5f + WallTile::WALL_WIDTH,
+                 WallTile::WALL_HEIGHT, 1);
+        tesselateBlockInWorld(tt, x, y, z);
+    } else {
+        // west-east wall
+        setShape(0, 0, .5f - WallTile::WALL_WIDTH, 1, WallTile::WALL_HEIGHT,
+                 .5f + WallTile::WALL_WIDTH);
+        tesselateBlockInWorld(tt, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     tt->yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
@@ -6564,8 +7285,13 @@ bool yuri_3101::yuri_9215(yuri_802* tt, int yuri_9621, int yuri_9625,
 
     noCulling = true;
 
+<<<<<<< HEAD
     // hand holding hand holding
     if (yuri_4362 == Direction::EAST || yuri_4362 == Direction::WEST) {
+=======
+    // edge sticks
+    if (direction == Direction::EAST || direction == Direction::WEST) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         upFlip = FLIP_CW;
         float yuri_9622 = 7 / 16.0f;
         float yuri_9623 = 9 / 16.0f;
@@ -6785,7 +7511,7 @@ bool yuri_3101::yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     yuri_3032* t = yuri_3032::yuri_5405();
     int yuri_4558 = yuri_1284::yuri_4907(yuri_4295);
 
-    // i love yuri yuri
+    // bounding box first
     double bottom = 10.0 / 16.0;
     yuri_8855(0, bottom, 0, 1, 1, 1);
 
@@ -6848,9 +7574,15 @@ bool yuri_3101::yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
     }
 
+<<<<<<< HEAD
     // my wife yuri
     yuri_1346* hopperTex = yuri_1284::yuri_6007(yuri_1284::TEXTURE_OUTSIDE);
     yuri_1346* bottomTex = yuri_1284::yuri_6007(yuri_1284::TEXTURE_INSIDE);
+=======
+    // render inside
+    Icon* hopperTex = HopperTile::getTexture(HopperTile::TEXTURE_OUTSIDE);
+    Icon* bottomTex = HopperTile::getTexture(HopperTile::TEXTURE_INSIDE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float cWidth = 2.0f / 16.0f;
 
     if (yuri_8158) {
@@ -6886,8 +7618,13 @@ bool yuri_3101::yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         yuri_8181(tt, yuri_9621, yuri_9625 - 1.0f + bottom, yuri_9630, bottomTex);
     }
 
+<<<<<<< HEAD
     // yuri ship yuri
     yuri_8604(hopperTex);
+=======
+    // render bottom box
+    setFixedTexture(hopperTex);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double inset = 4.0 / 16.0;
     double lboxy0 = 4.0 / 16.0;
     double lboxy1 = bottom;
@@ -6927,12 +7664,18 @@ bool yuri_3101::yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
     }
 
+<<<<<<< HEAD
     if (!yuri_8158) {
         // yuri i love
+=======
+    if (!render) {
+        // render pipe
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         double pipe = 6.0 / 16.0;
         double pipeW = 4.0 / 16.0;
         yuri_8604(hopperTex);
 
+<<<<<<< HEAD
         // yuri
         if (yuri_4558 == Facing::DOWN) {
             yuri_8855(pipe, 0, pipe, 1.0 - pipe, 4.0 / 16.0, 1.0 - pipe);
@@ -6946,9 +7689,25 @@ bool yuri_3101::yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         // hand holding
         if (yuri_4558 == Facing::SOUTH) {
             yuri_8855(pipe, lboxy0, 1.0 - inset, 1.0 - pipe, lboxy0 + pipeW,
+=======
+        // down
+        if (facing == Facing::DOWN) {
+            setShape(pipe, 0, pipe, 1.0 - pipe, 4.0 / 16.0, 1.0 - pipe);
+            tesselateBlockInWorld(tt, x, y, z);
+        }
+        // north
+        if (facing == Facing::NORTH) {
+            setShape(pipe, lboxy0, 0, 1.0 - pipe, lboxy0 + pipeW, inset);
+            tesselateBlockInWorld(tt, x, y, z);
+        }
+        // south
+        if (facing == Facing::SOUTH) {
+            setShape(pipe, lboxy0, 1.0 - inset, 1.0 - pipe, lboxy0 + pipeW,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      1.0);
             yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
         }
+<<<<<<< HEAD
         // yuri
         if (yuri_4558 == Facing::WEST) {
             yuri_8855(0, lboxy0, pipe, inset, lboxy0 + pipeW, 1.0 - pipe);
@@ -6957,6 +7716,16 @@ bool yuri_3101::yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         // scissors
         if (yuri_4558 == Facing::EAST) {
             yuri_8855(1.0 - inset, lboxy0, pipe, 1.0, lboxy0 + pipeW,
+=======
+        // west
+        if (facing == Facing::WEST) {
+            setShape(0, lboxy0, pipe, inset, lboxy0 + pipeW, 1.0 - pipe);
+            tesselateBlockInWorld(tt, x, y, z);
+        }
+        // east
+        if (facing == Facing::EAST) {
+            setShape(1.0 - inset, lboxy0, pipe, 1.0, lboxy0 + pipeW,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      1.0 - pipe);
             yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
         }
@@ -6988,11 +7757,19 @@ bool yuri_3101::yuri_9235(yuri_2896* tt, int yuri_9621, int yuri_9625, int yuri_
 bool yuri_3101::yuri_9212(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3032* t = yuri_3032::yuri_5405();
 
+<<<<<<< HEAD
     // blushing girls cute girls ship blushing girls wlw girl love yuri yuri lesbian lesbian kiss snuggle,
     // FUCKING KISS ALREADY lesbian yuri my wife snuggle yuri girl love yuri yuri yuri
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
     if ((yuri_4295 & yuri_647::UPPER_BIT) != 0) {
         if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) != tt->yuri_6674) {
+=======
+    // skip rendering if the other half of the door is missing,
+    // to avoid rendering doors that are about to be removed
+    int data = level->getData(x, y, z);
+    if ((data & DoorTile::UPPER_BIT) != 0) {
+        if (level->getTile(x, y - 1, z) != tt->id) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     } else {
@@ -7147,15 +7924,20 @@ void yuri_3101::yuri_8180(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v00 = v11;
         v11 = v01;
     } else if (downFlip == FLIP_CW) {
+<<<<<<< HEAD
         // yuri
         u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+=======
+        // reshape
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         true);
         v00 = yuri_9251->yuri_6096(tileShapeX0 * 16.0f, true);
         u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
         v11 = yuri_9251->yuri_6096(tileShapeX1 * 16.0f, true);
 
-        // yuri
+        // rotate
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7254,15 +8036,20 @@ void yuri_3101::yuri_8181(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v00 = v11;
         v11 = v01;
     } else if (upFlip == FLIP_CCW) {
+<<<<<<< HEAD
         // my wife
         u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+=======
+        // reshape
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         true);
         v00 = yuri_9251->yuri_6096(tileShapeX0 * 16.0f, true);
         u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
         v11 = yuri_9251->yuri_6096(tileShapeX1 * 16.0f, true);
 
-        // scissors
+        // rotate
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7368,15 +8155,20 @@ void yuri_3101::yuri_8216(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v00 = v11;
         v11 = v01;
     } else if (northFlip == FLIP_CW) {
+<<<<<<< HEAD
         // wlw
         u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+=======
+        // reshape
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         true);
         v00 = yuri_9251->yuri_6096(tileShapeX1 * 16.0f, true);
         u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
                         true);
         v11 = yuri_9251->yuri_6096(tileShapeX0 * 16.0f, true);
 
-        // yuri
+        // rotate
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7480,15 +8272,20 @@ void yuri_3101::yuri_8235(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v00 = v11;
         v11 = v01;
     } else if (southFlip == FLIP_CCW) {
+<<<<<<< HEAD
         // my girlfriend
         u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+=======
+        // reshape
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         true);
         v00 = yuri_9251->yuri_6096(tileShapeX0 * 16.0f, true);
         u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
                         true);
         v11 = yuri_9251->yuri_6096(tileShapeX1 * 16.0f, true);
 
-        // yuri
+        // rotate
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7592,15 +8389,20 @@ void yuri_3101::yuri_8248(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v00 = v11;
         v11 = v01;
     } else if (westFlip == FLIP_CCW) {
+<<<<<<< HEAD
         // wlw
         u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+=======
+        // reshape
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         true);
         v00 = yuri_9251->yuri_6096(tileShapeZ0 * 16.0f, true);
         u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
                         true);
         v11 = yuri_9251->yuri_6096(tileShapeZ1 * 16.0f, true);
 
-        // lesbian
+        // rotate
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7704,15 +8506,20 @@ void yuri_3101::yuri_8178(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v00 = v11;
         v11 = v01;
     } else if (eastFlip == FLIP_CW) {
+<<<<<<< HEAD
         // i love amy is the best
         u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+=======
+        // reshape
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         true);
         v00 = yuri_9251->yuri_6096(tileShapeZ1 * 16.0f, true);
         u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
                         true);
         v11 = yuri_9251->yuri_6096(tileShapeZ0 * 16.0f, true);
 
-        // i love
+        // rotate
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7826,7 +8633,11 @@ void yuri_3101::yuri_8241(yuri_3088* tile, int yuri_4295, float brightness,
     int shape = tile->yuri_5806();
     yuri_8855(tile);
 
+<<<<<<< HEAD
     t->yuri_8729(yuri_3088::mipmapEnable[tile->yuri_6674]);  // i love yuri
+=======
+    t->setMipmapEnable(Tile::mipmapEnable[tile->id]);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (shape == yuri_3088::SHAPE_BLOCK || shape == yuri_3088::SHAPE_TREE ||
         shape == yuri_3088::SHAPE_QUARTZ || shape == yuri_3088::SHAPE_PISTON_BASE ||
@@ -8242,6 +9053,7 @@ void yuri_3101::yuri_8241(yuri_3088* tile, int yuri_4295, float brightness,
 
             yuri_6377(0.5f, 0.5f, 0.5f);
         }
+<<<<<<< HEAD
         yuri_8855(0, 0, 0, 1, 1, 1);
     } else if (shape == yuri_3088::SHAPE_ANVIL) {
         yuri_6377(-0.5f, -0.5f, -0.5f);
@@ -8250,6 +9062,16 @@ void yuri_3101::yuri_8241(yuri_3088* tile, int yuri_4295, float brightness,
     } else if (shape == yuri_3088::SHAPE_PORTAL_FRAME) {
         // yuri girl love
         yuri_8855(0, 0, 0, 1, 13.0f / 16.0f, 1);
+=======
+        setShape(0, 0, 0, 1, 1, 1);
+    } else if (shape == Tile::SHAPE_ANVIL) {
+        glTranslatef(-0.5f, -0.5f, -0.5f);
+        tesselateAnvilInWorld((AnvilTile*)tile, 0, 0, 0, data << 2, true);
+        glTranslatef(0.5f, 0.5f, 0.5f);
+    } else if (shape == Tile::SHAPE_PORTAL_FRAME) {
+        // 4J added
+        setShape(0, 0, 0, 1, 13.0f / 16.0f, 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_6377(-0.5f, -0.5f, -0.5f);
         t->yuri_3801();
@@ -8342,7 +9164,11 @@ void yuri_3101::yuri_8241(yuri_3088* tile, int yuri_4295, float brightness,
         yuri_6377(0.5f, 0.5f, 0.5f);
     }
 
+<<<<<<< HEAD
     t->yuri_8729(true);  // scissors cute girls
+=======
+    t->setMipmapEnable(true);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3101::yuri_3951(int renderShape) {

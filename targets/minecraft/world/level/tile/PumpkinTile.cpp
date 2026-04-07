@@ -41,6 +41,7 @@ yuri_1346* yuri_2187::yuri_6007(int face, int yuri_4295) {
         return yuri_6672;
 }
 
+<<<<<<< HEAD
 void yuri_2187::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3088::yuri_7637(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) == yuri_3088::snow_Id &&
@@ -55,13 +56,34 @@ void yuri_2187::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                     std::make_shared<yuri_2858>(yuri_7194);
                 snowMan->yuri_7531(yuri_9621 + 0.5, yuri_9625 - 1.95, yuri_9630 + 0.5, 0, 0);
                 yuri_7194->yuri_3611(snowMan);
+=======
+void PumpkinTile::onPlace(Level* level, int x, int y, int z) {
+    Tile::onPlace(level, x, y, z);
+    if (level->getTile(x, y - 1, z) == Tile::snow_Id &&
+        level->getTile(x, y - 2, z) == Tile::snow_Id) {
+        if (!level->isClientSide) {
+            // 4J - added limit of number of snowmen that can be spawned
+            if (level->canCreateMore(eTYPE_SNOWMAN, Level::eSpawnType_Egg)) {
+                level->setTileAndData(x, y, z, 0, 0, Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y - 1, z, 0, 0, Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y - 2, z, 0, 0, Tile::UPDATE_CLIENTS);
+                std::shared_ptr<SnowMan> snowMan =
+                    std::make_shared<SnowMan>(level);
+                snowMan->moveTo(x + 0.5, y - 1.95, z + 0.5, 0, 0);
+                level->addEntity(snowMan);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 yuri_7194->yuri_9297(yuri_9621, yuri_9625, yuri_9630, 0);
                 yuri_7194->yuri_9297(yuri_9621, yuri_9625 - 1, yuri_9630, 0);
                 yuri_7194->yuri_9297(yuri_9621, yuri_9625 - 2, yuri_9630, 0);
             } else {
+<<<<<<< HEAD
                 // blushing girls yuri i love amy is the best'yuri i love amy is the best yuri, lesbian yuri ship cute girls lesbian snuggle
                 yuri_3088::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630),
+=======
+                // If we can't spawn it, at least give the resources back
+                Tile::spawnResources(level, x, y, z, level->getData(x, y, z),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      0);
                 yuri_3088::tiles[yuri_3088::snow_Id]->yuri_9087(
                     yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625 - 1, yuri_9630), 0);
@@ -85,6 +107,7 @@ void yuri_2187::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
         bool zArms = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630 - 1) == yuri_3088::ironBlock_Id &&
                      yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630 + 1) == yuri_3088::ironBlock_Id;
         if (xArms || zArms) {
+<<<<<<< HEAD
             if (!yuri_7194->yuri_6802) {
                 // canon - snuggle i love amy is the best i love girls yuri lesbian kiss yuri canon canon girl love wlw
                 if (yuri_7194->yuri_3917(eTYPE_VILLAGERGOLEM,
@@ -94,6 +117,17 @@ void yuri_2187::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                                           yuri_3088::UPDATE_CLIENTS);
                     yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 2, yuri_9630, 0, 0,
                                           yuri_3088::UPDATE_CLIENTS);
+=======
+            if (!level->isClientSide) {
+                // 4J - added limit of number of golems that can be spawned
+                if (level->canCreateMore(eTYPE_VILLAGERGOLEM,
+                                         Level::eSpawnType_Egg)) {
+                    level->setTileAndData(x, y, z, 0, 0, Tile::UPDATE_CLIENTS);
+                    level->setTileAndData(x, y - 1, z, 0, 0,
+                                          Tile::UPDATE_CLIENTS);
+                    level->setTileAndData(x, y - 2, z, 0, 0,
+                                          Tile::UPDATE_CLIENTS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (xArms) {
                         yuri_7194->yuri_8917(yuri_9621 - 1, yuri_9625 - 1, yuri_9630, 0, 0,
                                               yuri_3088::UPDATE_CLIENTS);
@@ -132,6 +166,7 @@ void yuri_2187::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                         yuri_7194->yuri_9297(yuri_9621, yuri_9625 - 1, yuri_9630 + 1, 0);
                     }
                 } else {
+<<<<<<< HEAD
                     // yuri my girlfriend yuri'lesbian kiss yuri yuri, yuri yuri yuri yuri blushing girls my wife
                     yuri_3088::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
                                          yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
@@ -144,6 +179,20 @@ void yuri_2187::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                                           yuri_3088::UPDATE_CLIENTS);
                     yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 2, yuri_9630, 0, 0,
                                           yuri_3088::UPDATE_CLIENTS);
+=======
+                    // If we can't spawn it, at least give the resources back
+                    Tile::spawnResources(level, x, y, z,
+                                         level->getData(x, y, z), 0);
+                    Tile::tiles[Tile::ironBlock_Id]->spawnResources(
+                        level, x, y - 1, z, level->getData(x, y - 1, z), 0);
+                    Tile::tiles[Tile::ironBlock_Id]->spawnResources(
+                        level, x, y - 2, z, level->getData(x, y - 2, z), 0);
+                    level->setTileAndData(x, y, z, 0, 0, Tile::UPDATE_CLIENTS);
+                    level->setTileAndData(x, y - 1, z, 0, 0,
+                                          Tile::UPDATE_CLIENTS);
+                    level->setTileAndData(x, y - 2, z, 0, 0,
+                                          Tile::UPDATE_CLIENTS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     if (xArms) {
                         yuri_3088::tiles[yuri_3088::ironBlock_Id]->yuri_9087(

@@ -4,9 +4,15 @@
 
 class yuri_1758;
 
+<<<<<<< HEAD
 // scissors - lesbian kiss
 void yuri_1264::yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                          double ya, double za, float yuri_8382) {
+=======
+// 4J - added
+void HeartParticle::init(Level* level, double x, double y, double z, double xa,
+                         double ya, double za, float scale) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     xd *= 0.01f;
     yd *= 0.01f;
     zd *= 0.01f;

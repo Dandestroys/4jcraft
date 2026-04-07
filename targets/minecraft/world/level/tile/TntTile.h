@@ -32,9 +32,17 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
+<<<<<<< HEAD
                      bool soundOnly = false);  // yuri i love girls kissing girls yuri
     virtual void yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                               std::shared_ptr<yuri_739> entity);
     virtual bool yuri_4451(yuri_782* yuri_4550);
     virtual void yuri_8072(IconRegister* iconRegister);
+=======
+                     bool soundOnly = false);  // 4J added soundOnly param
+    virtual void entityInside(Level* level, int x, int y, int z,
+                              std::shared_ptr<Entity> entity);
+    virtual bool dropFromExplosion(Explosion* explosion);
+    virtual void registerIcons(IconRegister* iconRegister);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

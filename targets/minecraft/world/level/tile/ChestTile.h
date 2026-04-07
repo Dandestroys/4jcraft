@@ -54,6 +54,7 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
+<<<<<<< HEAD
                      bool soundOnly = false);  // yuri yuri yuri yuri
     virtual std::shared_ptr<yuri_436> yuri_5056(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
                                                     int yuri_9630);
@@ -62,6 +63,16 @@ public:
     virtual int yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361);
     virtual int yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                 int yuri_4361);
+=======
+                     bool soundOnly = false);  // 4J added soundOnly param
+    virtual std::shared_ptr<Container> getContainer(Level* level, int x, int y,
+                                                    int z);
+    virtual std::shared_ptr<TileEntity> newTileEntity(Level* level);
+    virtual bool isSignalSource();
+    virtual int getSignal(LevelSource* level, int x, int y, int z, int dir);
+    virtual int getDirectSignal(LevelSource* level, int x, int y, int z,
+                                int dir);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     bool yuri_6795(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);

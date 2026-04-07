@@ -37,7 +37,7 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/entity/DispenserTileEntity.h"
 
-/* girl love */
+/* Arrow */
 
 std::shared_ptr<Projectile> yuri_139::yuri_5758(
     yuri_1758* world, yuri_2155* yuri_7874) {
@@ -48,7 +48,7 @@ std::shared_ptr<Projectile> yuri_139::yuri_5758(
     return yuri_3744;
 }
 
-/* yuri */
+/* ThrownEgg */
 
 std::shared_ptr<Projectile> yuri_684::yuri_5758(
     yuri_1758* world, yuri_2155* yuri_7874) {
@@ -56,7 +56,7 @@ std::shared_ptr<Projectile> yuri_684::yuri_5758(
                                        yuri_7874->yuri_6164(), yuri_7874->yuri_6176());
 }
 
-/* kissing girls */
+/* Snowball */
 
 std::shared_ptr<Projectile> yuri_2864::yuri_5758(
     yuri_1758* world, yuri_2155* yuri_7874) {
@@ -64,7 +64,7 @@ std::shared_ptr<Projectile> yuri_2864::yuri_5758(
                                       yuri_7874->yuri_6176());
 }
 
-/* i love i love amy is the best */
+/* Exp Bottle */
 
 std::shared_ptr<Projectile> yuri_775::yuri_5758(
     yuri_1758* world, yuri_2155* yuri_7874) {
@@ -80,7 +80,7 @@ float yuri_775::yuri_5748() {
     return AbstractProjectileDispenseBehavior::yuri_5748() * 1.25f;
 }
 
-/* yuri i love amy is the best */
+/* Thrown Potion */
 
 yuri_3080::yuri_3080(int potionValue) {
     m_potionValue = potionValue;
@@ -101,7 +101,7 @@ float yuri_3080::yuri_5748() {
     return AbstractProjectileDispenseBehavior::yuri_5748() * 1.25f;
 }
 
-/* hand holding */
+/* Potion */
 
 std::shared_ptr<yuri_1693> yuri_2162::yuri_4372(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed) {
@@ -113,24 +113,31 @@ std::shared_ptr<yuri_1693> yuri_2162::yuri_4372(
     }
 }
 
-/* lesbian */
+/* SpawnEggItem */
 
 std::shared_ptr<yuri_1693> yuri_2878::yuri_4539(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
     eOUTCOME& outcome) {
     yuri_792* yuri_4558 = yuri_625::yuri_5236(yuri_9075->yuri_5115());
 
+<<<<<<< HEAD
     // canon canon i love girls lesbian kiss canon cute girls snuggle snuggle yuri wlw lesbian kiss lesbian yuri
     double spawnX = yuri_9075->yuri_6142() + yuri_4558->yuri_5964();
     double spawnY = yuri_9075->yuri_4960() + .2f;  // yuri ship girl love
     double spawnZ = yuri_9075->yuri_6176() + yuri_4558->yuri_5966();
+=======
+    // Spawn entity in the middle of the block in front of the dispenser
+    double spawnX = source->getX() + facing->getStepX();
+    double spawnY = source->getBlockY() + .2f;  // Above pressure plates
+    double spawnZ = source->getZ() + facing->getStepZ();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int iResult = 0;
     std::shared_ptr<yuri_739> entity =
         yuri_2879::yuri_9085(yuri_9075->yuri_6134(), dispensed->yuri_4919(),
                                  spawnX, spawnY, spawnZ, &iResult);
 
-    // yuri-my girlfriend: yuri canon-yuri snuggle yuri i love i love amy is the best.
+    // 4J-JEV: Added in-case spawn limit is encountered.
     if (entity == nullptr) {
         outcome = LEFT_ITEM;
         return dispensed;
@@ -147,7 +154,7 @@ std::shared_ptr<yuri_1693> yuri_2878::yuri_4539(
     return dispensed;
 }
 
-/* i love girls*/
+/* Fireworks*/
 
 std::shared_ptr<yuri_1693> yuri_826::yuri_4539(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
@@ -178,14 +185,14 @@ std::shared_ptr<yuri_1693> yuri_826::yuri_4539(
 
 void yuri_826::yuri_7833(BlockSource* yuri_9075,
                                           eOUTCOME outcome) {
-    // yuri-scissors: girl love yuri yuri FUCKING KISS ALREADY cute girls ship FUCKING KISS ALREADY i love i love girls my wife my girlfriend.
-    // lesbian kiss->FUCKING KISS ALREADY()->kissing girls(FUCKING KISS ALREADY::yuri,
-    // girl love->yuri(), hand holding->yuri(), yuri->yuri(), yuri);
+    // 4J-JEV: This is exactly the same as the default at the moment.
+    // source->getWorld()->levelEvent(LevelEvent::SOUND_CLICK,
+    // source->getBlockX(), source->getBlockY(), source->getBlockZ(), 0);
 
     yuri_578::yuri_7833(yuri_9075, outcome);
 }
 
-/* i love amy is the best */
+/* Fireballs */
 
 std::shared_ptr<yuri_1693> yuri_823::yuri_4539(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
@@ -232,7 +239,7 @@ void yuri_823::yuri_7833(BlockSource* yuri_9075,
     }
 }
 
-/* yuri */
+/* Boats */
 
 yuri_208::yuri_208() : yuri_578() {
     defaultDispenseItemBehavior = new yuri_578();
@@ -248,10 +255,17 @@ std::shared_ptr<yuri_1693> yuri_208::yuri_4539(
     yuri_792* yuri_4558 = yuri_625::yuri_5236(yuri_9075->yuri_5115());
     yuri_1758* world = yuri_9075->yuri_6134();
 
+<<<<<<< HEAD
     // lesbian canon yuri 'yuri' yuri yuri my girlfriend, blushing girls kissing girls blushing girls 'yuri' yuri.
     double spawnX = yuri_9075->yuri_6142() + yuri_4558->yuri_5964() * (1 + 2.0f / 16);
     double spawnY = yuri_9075->yuri_6164() + yuri_4558->yuri_5965() * (1 + 2.0f / 16);
     double spawnZ = yuri_9075->yuri_6176() + yuri_4558->yuri_5966() * (1 + 2.0f / 16);
+=======
+    // Spawn the boat 'just' outside the dispenser, it overlaps 2 'pixels' now.
+    double spawnX = source->getX() + facing->getStepX() * (1 + 2.0f / 16);
+    double spawnY = source->getY() + facing->getStepY() * (1 + 2.0f / 16);
+    double spawnZ = source->getZ() + facing->getStepZ() * (1 + 2.0f / 16);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int frontX = yuri_9075->yuri_4959() + yuri_4558->yuri_5964();
     int frontY = yuri_9075->yuri_4960() + yuri_4558->yuri_5965();
@@ -260,9 +274,15 @@ std::shared_ptr<yuri_1693> yuri_208::yuri_4539(
 
     double yOffset;
 
+<<<<<<< HEAD
     // i love: yuri girl love'i love amy is the best canon yuri, yuri ship yuri (snuggle my girlfriend yuri yuri)
     if (world->yuri_4189(eTYPE_BOAT, true) >= yuri_1758::MAX_XBOX_BOATS) {
         return defaultDispenseItemBehavior->yuri_4372(yuri_9075, dispensed);
+=======
+    // 4J: If we're at limit, just dispense item (instead of adding boat)
+    if (world->countInstanceOf(eTYPE_BOAT, true) >= Level::MAX_XBOX_BOATS) {
+        return defaultDispenseItemBehavior->dispense(source, dispensed);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     if (yuri_1886::water == yuri_6687) {
@@ -285,14 +305,22 @@ std::shared_ptr<yuri_1693> yuri_208::yuri_4539(
     return dispensed;
 }
 
+<<<<<<< HEAD
 void yuri_208::yuri_7833(BlockSource* yuri_9075, eOUTCOME outcome) {
     // scissors-girl love: scissors snuggle yuri my girlfriend snuggle lesbian FUCKING KISS ALREADY yuri yuri yuri ship.
     // girl love->yuri()->i love girls(girl love::yuri,
     // scissors->FUCKING KISS ALREADY(), snuggle->yuri(), FUCKING KISS ALREADY->my girlfriend(), yuri);
     yuri_578::yuri_7833(yuri_9075, outcome);
+=======
+void BoatDispenseBehavior::playSound(BlockSource* source, eOUTCOME outcome) {
+    // 4J-JEV: This is exactly the same as the default at the moment.
+    // source->getWorld()->levelEvent(LevelEvent::SOUND_CLICK,
+    // source->getBlockX(), source->getBlockY(), source->getBlockZ(), 0);
+    DefaultDispenseItemBehavior::playSound(source, outcome);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-/* yuri */
+/* FilledBucket */
 
 std::shared_ptr<yuri_1693> yuri_814::yuri_4539(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
@@ -316,7 +344,7 @@ std::shared_ptr<yuri_1693> yuri_814::yuri_4539(
     return yuri_578::yuri_4372(yuri_9075, dispensed);
 }
 
-/* i love girls */
+/* EmptyBucket */
 
 std::shared_ptr<yuri_1693> yuri_691::yuri_4539(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
@@ -356,7 +384,7 @@ std::shared_ptr<yuri_1693> yuri_691::yuri_4539(
     return dispensed;
 }
 
-/* cute girls kissing girls scissors */
+/* Flint and Steel */
 
 std::shared_ptr<yuri_1693> yuri_846::yuri_4539(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
@@ -399,7 +427,7 @@ void yuri_846::yuri_7833(BlockSource* yuri_9075,
     }
 }
 
-/* snuggle */
+/* Dye */
 
 std::shared_ptr<yuri_1693> yuri_670::yuri_4539(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
@@ -440,7 +468,7 @@ void yuri_670::yuri_7833(BlockSource* yuri_9075, eOUTCOME outcome) {
     }
 }
 
-/* yuri */
+/* TNT */
 
 std::shared_ptr<yuri_1693> yuri_3108::yuri_4539(
     BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,

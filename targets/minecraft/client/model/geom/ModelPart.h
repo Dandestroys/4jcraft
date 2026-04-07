@@ -32,6 +32,7 @@ private:
     yuri_1962* model;
 
 public:
+<<<<<<< HEAD
     void yuri_3547();  // girl love yuri
     yuri_1964();
     yuri_1964(yuri_1962* model, const std::yuri_9616& yuri_6674);
@@ -61,6 +62,37 @@ public:
     void yuri_3683(float yuri_9622, float yuri_9626, float yuri_9631, int yuri_9535, int yuri_6412, int d, int yuri_9251);
     void yuri_8782(float yuri_9621, float yuri_9625, float yuri_9630);
     void yuri_8158(float yuri_8382, bool usecompiled,
+=======
+    void _init();  // 4J added
+    ModelPart();
+    ModelPart(Model* model, const std::wstring& id);
+    ModelPart(Model* model);
+    ModelPart(Model* model, int xTexOffs, int yTexOffs);
+
+    // MGH - had to add these for PS3, as calling constructors from others was
+    // only introduced in c++11 -
+    // https://en.wikipedia.org/wiki/C++11#Object_construction_improvement
+    void construct(Model* model, const std::wstring& id);
+    void construct(Model* model);
+    void construct(Model* model, int xTexOffs, int yTexOffs);
+
+    void addChild(ModelPart* child);
+    ModelPart* retrieveChild(SKIN_BOX* pBox);
+    ModelPart* mirror();
+    ModelPart* texOffs(int xTexOffs, int yTexOffs);
+    ModelPart* addBox(std::wstring id, float x0, float y0, float z0, int w,
+                      int h, int d);
+    ModelPart* addBox(float x0, float y0, float z0, int w, int h, int d);
+    ModelPart* addBoxWithMask(float x0, float y0, float z0, int w, int h, int d,
+                              int faceMask);  // 4J added
+    void addBox(float x0, float y0, float z0, int w, int h, int d, float g);
+    void addHumanoidBox(
+        float x0, float y0, float z0, int w, int h, int d,
+        float g);  // 4J - to flip the poly 3 uvs so the skin maps correctly
+    void addTexBox(float x0, float y0, float z0, int w, int h, int d, int tex);
+    void setPos(float x, float y, float z);
+    void render(float scale, bool usecompiled,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 bool bHideParentBodyPart = false);
     void yuri_8225(float yuri_8382, bool usecompiled);
     void yuri_9333(float yuri_8382);

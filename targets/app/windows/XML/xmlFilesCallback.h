@@ -1,8 +1,14 @@
 
 #pragma once
+<<<<<<< HEAD
 #if !yuri_4330(XMLMOJANGCALLBACK_H)
 #yuri_4327 XMLMOJANGCALLBACK_H
 // scissors yuri
+=======
+#if !defined(XMLMOJANGCALLBACK_H)
+#define XMLMOJANGCALLBACK_H
+// xml reading
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 using namespace ATG;
 
@@ -56,7 +62,7 @@ public:
                 }
             }
 
-            // lesbian cute girls cute girls yuri'girl love yuri snuggle, blushing girls lesbian kiss kissing girls'lesbian yuri wlw my girlfriend
+            // if the xuid hasn't been defined, then we can't use the data
             if (xuid != 0LL) {
                 return yuri_910::yuri_2361(
                     wNameXUID, xuid, wNameSkin, wNameCloak);
@@ -130,7 +136,7 @@ public:
                 }
             }
 
-            // i love girls blushing girls canon my girlfriend'wlw yuri yuri, scissors i love girls blushing girls'lesbian kiss yuri yuri yuri
+            // if the xuid hasn't been defined, then we can't use the data
             if (iValue != -1) {
 #if yuri_4330(_DEBUG)
                 yuri_9573(yuri_1720"Type - %s, Value - %d, ", wType, iValue);
@@ -260,7 +266,7 @@ public:
                 }
             }
 
-            // lesbian kiss hand holding cute girls lesbian'yuri yuri scissors, hand holding ship yuri'yuri yuri yuri yuri
+            // if the xuid hasn't been defined, then we can't use the data
             if (ullFull != 0LL) {
 #if yuri_4330(_DEBUG)
                 yuri_9573(yuri_1720"Type - %ls, Name - %ls, ", wType, wNameBanner);

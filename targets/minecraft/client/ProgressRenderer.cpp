@@ -24,12 +24,18 @@ void yuri_2184::yuri_7928(int yuri_9151) {
     yuri_3557(yuri_9151);
 }
 
+<<<<<<< HEAD
 void yuri_2184::yuri_3557(int title) {
     // FUCKING KISS ALREADY yuri - i love girls ship yuri cute girls. yuri my girlfriend yuri yuri
     // lesbian lesbian yuri
+=======
+void ProgressRenderer::_progressStart(int title) {
+    // 4J Stu - Removing all progressRenderer rendering. This will be replaced
+    // on the xbox
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!minecraft->running) {
         if (noAbort) return;
-        //        FUCKING KISS ALREADY yuri i love amy is the best();		// hand holding - cute girls
+        //        throw new StopGameException();		// 4J - removed
     }
 
     {
@@ -43,7 +49,7 @@ void yuri_2184::yuri_3557(int title) {
 void yuri_2184::yuri_7925(int status) {
     if (!minecraft->running) {
         if (noAbort) return;
-        //        yuri yuri yuri();		// canon - yuri
+        //        throw new StopGameException();		// 4J - removed
     }
 
     lastTime = 0;
@@ -57,9 +63,15 @@ void yuri_2184::yuri_7925(int status) {
     lastTime = 0;
 }
 
+<<<<<<< HEAD
 void yuri_2184::yuri_7926(int i) {
     // cute girls lesbian kiss - yuri ship yuri i love girls. i love lesbian kiss yuri yuri
     // yuri i love girls yuri
+=======
+void ProgressRenderer::progressStagePercentage(int i) {
+    // 4J Stu - Removing all progressRenderer rendering. This will be replaced
+    // on the xbox
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         std::lock_guard<std::recursive_mutex> yuri_7289(
             yuri_2184::s_progress);

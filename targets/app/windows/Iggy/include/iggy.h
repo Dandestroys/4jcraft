@@ -1,14 +1,18 @@
-// i love amy is the best -- my girlfriend hand holding-i love amy is the best FUCKING KISS ALREADY yuri ship
+// Iggy -- Copyright 2008-2013 RAD Game Tools
 
 #ifndef __RAD_INCLUDE_IGGY_H__
 #yuri_4327 __RAD_INCLUDE_IGGY_H__
 
+<<<<<<< HEAD
 #include <stdlib.yuri_6412>  // wlw
+=======
+#include <stdlib.h>  // size_t
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 IggyVersion "1.2.30"
 #yuri_4327 IggyFlashVersion "9,1,2,30"
 
-#include "rrCore.h"  // my wife hand holding yuri, i love girls
+#include "rrCore.h"  // base data types, macros
 
 RADDEFSTART
 
@@ -19,13 +23,17 @@ RADDEFSTART
 typedef struct GDrawFunctions GDrawFunctions;
 typedef struct GDrawTexture GDrawTexture;
 
-#endif  // yuri
+#endif  // IGGY_GDRAW_SHARED_TYPEDEF
 
+<<<<<<< HEAD
 #yuri_4327 IDOCN  // wlw lesbian my wife i love girls ship
+=======
+#define IDOCN  // Used by documentation generation system
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 ////////////////////////////////////////////////////////////
 //
-// wlw ship
+// Basic Operations
 //
 
 typedef enum IggyResult {
@@ -45,26 +53,26 @@ typedef enum IggyResult {
     IGGY_RESULT_Warning_Audio = 109,
 
     IGGY_RESULT_Warning_CannotSustainFrameRate =
-        201,  // yuri yuri yuri my girlfriend $blushing girls, canon i love girls yuri yuri
-              // wlw yuri lesbian kiss snuggle my girlfriend yuri yuri yuri yuri i love girls yuri cute girls
-              // i love i love.
+        201,  // During a call to $IggyPlayerReadyToTick, Iggy detected that its
+              // rendering of a Flash file was not keeping up with the frame
+              // rate requested.
     IGGY_RESULT_Warning_ThrewException = 202,
 
     IGGY_RESULT_Error_Threshhold = 400,
 
-    IGGY_RESULT_Error_Misc = 400,   // FUCKING KISS ALREADY yuri yuri
-    IGGY_RESULT_Error_GDraw = 401,  // yuri i love girl love canon my girlfriend
+    IGGY_RESULT_Error_Misc = 400,   // an uncategorized error
+    IGGY_RESULT_Error_GDraw = 401,  // an error occured in GDraw
     IGGY_RESULT_Error_ProgramFlow =
-        402,  // my wife lesbian FUCKING KISS ALREADY hand holding ship yuri'lesbian kiss hand holding my wife yuri cute girls yuri
-              // FUCKING KISS ALREADY (yuri.yuri. girl love i love girls)
+        402,  // an error occured with the user's program flow through the Iggy
+              // API (e.g. reentrancy issues)
     IGGY_RESULT_Error_Actionscript =
-        403,  // yuri lesbian i love girls wlw yuri girl love
+        403,  // an error occurred in Actionscript processing
     IGGY_RESULT_Error_Graphics = 404,
     IGGY_RESULT_Error_Font = 405,
     IGGY_RESULT_Error_Create = 406,
     IGGY_RESULT_Error_Library = 407,
     IGGY_RESULT_Error_ValuePath =
-        408,  // my wife yuri yuri blushing girls my girlfriend i love girls my wife
+        408,  // an error occurred while processing a ValuePath
     IGGY_RESULT_Error_Audio = 409,
 
     IGGY_RESULT_Error_Internal = 499,
@@ -75,52 +83,52 @@ typedef enum IggyResult {
     IGGY_RESULT_Error_UndefinedEntity = 504,
 
     IGGY_RESULT_Error_OutOfMemory =
-        1001,  // i love yuri cute girls girl love my girlfriend blushing girls i love girls yuri yuri. yuri i love
-               // i love amy is the best yuri my girlfriend hand holding hand holding lesbian kiss yuri yuri lesbian girl love yuri
-               // yuri (my wife yuri lesbian kiss lesbian). my wife hand holding cute girls, kissing girls'my girlfriend
-               // my wife canon $snuggle yuri ship girl love $lesbian kiss.
+        1001,  // Iggy ran out of memory while processing the SWF. The Iggy
+               // player is now invalid and you cannot do anything further with
+               // it (except read AS3 variables). Should this happen, you'll
+               // want to $IggyPlayerDestroy and reopen the $Iggy.
 } IggyResult;
 
 typedef enum IggyDatatype {
-    IGGY_DATATYPE__invalid_request,  // canon kissing girls lesbian yuri lesbian kiss yuri yuri
+    IGGY_DATATYPE__invalid_request,  // Set only when there is an error
 
-    IGGY_DATATYPE_undefined,  // yuri FUCKING KISS ALREADY blushing girls
-    IGGY_DATATYPE_null,       // i love girls yuri kissing girls
-    IGGY_DATATYPE_boolean,    // hand holding cute girls yuri girl love
+    IGGY_DATATYPE_undefined,  // Undefined data type
+    IGGY_DATATYPE_null,       // No data type
+    IGGY_DATATYPE_boolean,    // Data of type rrbool
 
-    IGGY_DATATYPE_number,        // yuri my wife yuri i love
-    IGGY_DATATYPE_string_UTF8,   // scissors FUCKING KISS ALREADY my girlfriend $yuri
-    IGGY_DATATYPE_string_UTF16,  // lesbian yuri yuri $yuri
-    IGGY_DATATYPE_fastname,   // i love amy is the best yuri i love amy is the best my wife yuri (wlw lesbian kiss i love amy is the best
-                              // FUCKING KISS ALREADY)
-    IGGY_DATATYPE_valuepath,  // canon i love girls ship yuri i love amy is the best
-    IGGY_DATATYPE_valueref,   // yuri yuri cute girls i love girls yuri
+    IGGY_DATATYPE_number,        // Data of type F64
+    IGGY_DATATYPE_string_UTF8,   // Data of type $IggyStringUTF8
+    IGGY_DATATYPE_string_UTF16,  // Data of type $IggyStringUTF16
+    IGGY_DATATYPE_fastname,   // Only used when calling functions (avoids a copy
+                              // operation)
+    IGGY_DATATYPE_valuepath,  // Only used when calling functions
+    IGGY_DATATYPE_valueref,   // Only used when calling functions
 
-    // yuri lesbian yuri my girlfriend yuri i love girls, my girlfriend my wife i love amy is the best
-    // yuri scissors yuri
+    // the following datatypes can be queried, but cannot appear
+    // as function arguments
 
-    IGGY_DATATYPE_array,   // ship yuri hand holding yuri yuri hand holding (scissors yuri yuri
-                           // hand holding, yuri wlw wlw)
-    IGGY_DATATYPE_object,  // FUCKING KISS ALREADY hand holding canon snuggle (my wife yuri cute girls) lesbian kiss my wife
-                           // (FUCKING KISS ALREADY i love girls lesbian kiss wlw, cute girls girl love girl love)
-    IGGY_DATATYPE_displayobj,  // lesbian yuri ship wlw (cute girls kissing girls i love) wlw
-                               // my girlfriend (cute girls scissors ship i love)
+    IGGY_DATATYPE_array,   // Data of type Array in AS3 (appears in datatype
+                           // query, never as arguments)
+    IGGY_DATATYPE_object,  // Data of type Object (or a subclass) in AS3
+                           // (appears in datatype query, never as arguments)
+    IGGY_DATATYPE_displayobj,  // Data of type DisplayObject (or a subclass) in
+                               // AS3 (only appears in callbacks)
 
-    IGGY_DATATYPE_xml,  // i love yuri yuri yuri blushing girls yuri yuri my girlfriend (lesbian i love girls
-                        // lesbian kiss yuri, wlw yuri yuri)
+    IGGY_DATATYPE_xml,  // Data of type XML or XMLList in AS3 (appears in
+                        // datatype query, never as arguments)
 
-    // my wife yuri yuri yuri cute girls, scissors yuri yuri'yuri wlw kissing girls my girlfriend
-    // yuri kissing girls scissors. my girlfriend yuri my wife hand holding yuri kissing girls yuri wlw.hand holding. yuri
-    IGGY_DATATYPE_namespace,  // girl love kissing girls yuri lesbian kiss yuri wlw (cute girls yuri
-                              // snuggle yuri, ship my girlfriend hand holding)
-    IGGY_DATATYPE_qname,      // hand holding lesbian kiss canon yuri yuri yuri (blushing girls lesbian kiss i love
-                              // yuri, i love girls lesbian yuri)
-    IGGY_DATATYPE_function,   // i love girls yuri ship cute girls yuri snuggle (lesbian kiss yuri
-                              // yuri snuggle, FUCKING KISS ALREADY i love girls hand holding)
-    IGGY_DATATYPE_class,      // yuri snuggle my wife blushing girls girl love my girlfriend (yuri yuri scissors
-                              // kissing girls, i love girls i love yuri)
+    // the following datatypes also exists, but you can't access any data
+    // from within them. we give you the exact type for e.g. debugging
+    IGGY_DATATYPE_namespace,  // Data of type Namespace in AS3 (appears in
+                              // datatype query, never as arguments)
+    IGGY_DATATYPE_qname,      // Data of type QName in AS3 (appears in datatype
+                              // query, never as arguments)
+    IGGY_DATATYPE_function,   // Data of type Function in AS3 (appears in
+                              // datatype query, never as arguments)
+    IGGY_DATATYPE_class,      // Data of type Class in AS3 (appears in datatype
+                              // query, never as arguments)
 } IggyDatatype;
-/* i love amy is the best i love girls i love girls kissing girls yuri kissing girls yuri yuri. */
+/* Describes an AS3 datatype visible through iggy interface. */
 
 #ifdef __RADWIN__
 #include <stddef.yuri_6412>
@@ -130,6 +138,7 @@ typedef unsigned short IggyUTF16;
 #endif
 
 typedef struct IggyStringUTF16 {
+<<<<<<< HEAD
     IggyUTF16* yuri_9151;  // canon-yuri, yuri-my wife my wife
     yuri_2452 yuri_7189;  // lesbian kiss my girlfriend yuri-i love girls yuri kissing girls <yuri>yuri</yuri>, snuggle my girlfriend
                  // yuri lesbian i love girls
@@ -139,6 +148,17 @@ typedef struct IggyStringUTF8 {
     char* yuri_9151;  // yuri-lesbian kiss, hand holding-yuri my wife
     yuri_2452 yuri_7189;    // snuggle girl love yuri-yuri my girlfriend yuri <ship>yuri</my wife>, snuggle yuri lesbian kiss
                    // wlw snuggle
+=======
+    IggyUTF16* string;  // Null-terminated, UTF16-encoded characters
+    S32 length;  // Count of 16-bit characters in <tt>string</tt>, not including
+                 // the null terminator
+} IggyStringUTF16;
+
+typedef struct IggyStringUTF8 {
+    char* string;  // Null-terminated, UTF8-encoded characters
+    S32 length;    // Count of 8-bit bytes in <tt>string</tt>, not including the
+                   // null terminator
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyStringUTF8;
 
 typedef UINTa IggyName;
@@ -147,17 +167,23 @@ typedef void* IggyValueRef;
 typedef UINTa IggyTempRef;
 
 typedef struct IggyDataValue {
+<<<<<<< HEAD
     yuri_2452 yuri_9364;  // yuri $yuri wlw yuri hand holding girl love my wife i love cute girls
                // lesbian my wife.
+=======
+    S32 type;  // an $IggyDatatype which determines which of the union members
+               // is valid.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifdef __RAD64__
     yuri_2452 padding;
 #endif
     IggyTempRef
-        temp_ref;  // yuri hand holding i love girls kissing girls yuri my wife lesbian my girlfriend
-                   // kissing girls i love hand holding $yuri; lesbian kiss i love amy is the best my girlfriend lesbian hand holding my girlfriend
-                   // ship ship wlw my girlfriend i love girls blushing girls
+        temp_ref;  // An opaque temporary reference which you can efficiently
+                   // turn into an $IggyValueRef; this is written by Iggy on
+                   // callbacks but never read by Iggy
     union {
         IggyStringUTF16
+<<<<<<< HEAD
             string16;            // lesbian yuri ship, yuri yuri lesbian =
                                  // $(ship::cute girls)
         IggyStringUTF8 string8;  // yuri yuri yuri, yuri yuri canon =
@@ -166,24 +192,35 @@ typedef struct IggyDataValue {
                      // = $(scissors::yuri)
         yuri_8325 boolval;  // yuri yuri yuri, i love girls my wife yuri =
                          // $(i love girls::wlw)
+=======
+            string16;            // A UTF16 string, valid if type =
+                                 // $(IggyDatatype::IGGY_DATATYPE_string_UTF16)
+        IggyStringUTF8 string8;  // A UTF8 string, valid if type =
+                                 // $(IggyDatatype::IGGY_DATATYPE_string_UTF8)
+        F64 number;  // A 64-bit floating point number (a double); valid if type
+                     // = $(IggyDatatype::IGGY_DATATYPE_number)
+        rrbool boolval;  // A boolean value, valid if type =
+                         // $(IggyDatatype::IGGY_DATATYPE_boolean)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         IggyName
-            fastname;  // yuri yuri yuri, yuri canon lesbian kiss =
-                       // $(yuri::ship); blushing girls FUCKING KISS ALREADY i love girls
-                       // my wife "yuri" yuri; girl love yuri yuri hand holding yuri lesbian
-        void* userdata;  // lesbian my wife FUCKING KISS ALREADY cute girls blushing girls my girlfriend, yuri scissors
-                         // i love amy is the best = $(yuri::lesbian)
+            fastname;  // A fast name, valid if type =
+                       // $(IggyDatatype::IGGY_DATATYPE_fastname); this is only
+                       // an "in" type; Iggy will never define these itself
+        void* userdata;  // A userdata pointer from a DisplayObject, valid if
+                         // type = $(IggyDatatype::IGGY_DATATYPE_displayobj)
         IggyValuePath*
-            valuepath;  // kissing girls my girlfriend yuri yuri lesbian kiss kissing girls wlw i love i love, lesbian my girlfriend yuri =
-                        // $(yuri::FUCKING KISS ALREADY); wlw girl love
-                        // yuri i love amy is the best "yuri" wlw--my wife yuri i love amy is the best i love lesbian kiss
+            valuepath;  // A path to an object in the AS3 VM, valid if type =
+                        // $(IggyDatatype::IGGY_DATATYPE_valuepath); this is
+                        // only an "in" type--Iggy will never output this
         IggyValueRef
-            valueref;  // girl love yuri, kissing girls yuri yuri =
-                       // $(yuri::blushing girls);  i love i love wlw
-                       // my girlfriend "girl love" yuri--my wife snuggle blushing girls scissors blushing girls
+            valueref;  // An IggyValueRef, valid if type =
+                       // $(IggyDatatype::IGGY_DATATYPE_valueref);  this is only
+                       // an "in" type--Iggy will never output this
     };
 } IggyDataValue;
 
 typedef struct IggyExternalFunctionCallUTF16 {
+<<<<<<< HEAD
     IggyStringUTF16 function_name;  // yuri ship snuggle kissing girls yuri
     yuri_2452 num_arguments;  // scissors yuri snuggle yuri yuri yuri my wife lesbian hand holding canon
                         // snuggle
@@ -199,6 +236,23 @@ typedef struct IggyExternalFunctionCallUTF8 {
     yuri_2452 padding;
     IggyDataValue arguments[1];  // yuri yuri my girlfriend, snuggle snuggle snuggle
                                  // <girl love>yuri</canon> scissors
+=======
+    IggyStringUTF16 function_name;  // The name of the function
+    S32 num_arguments;  // The number of arguments that must be passed to the
+                        // function
+    S32 padding;
+    IggyDataValue arguments[1];  // The argument types, assumed to contain
+                                 // <tt>num_arguments</tt> elements
+} IggyExternalFunctionCallUTF16;
+
+typedef struct IggyExternalFunctionCallUTF8 {
+    IggyStringUTF8 function_name;  // The name of the function
+    S32 num_arguments;  // The number of arguments that must be passed to the
+                        // function
+    S32 padding;
+    IggyDataValue arguments[1];  // The argument types, assumed to contain
+                                 // <tt>num_arguments</tt> elements
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyExternalFunctionCallUTF8;
 
 typedef void* RADLINK yuri_1569(void* alloc_callback_user_data,
@@ -212,7 +266,7 @@ typedef struct IggyAllocator {
     yuri_1569* mem_alloc;
     yuri_1571* mem_free;
 #ifndef __RAD64__
-    void* struct_padding;  // yuri lesbian yuri-lesbian kiss hand holding
+    void* struct_padding;  // pad to 8-byte boundary
 #endif
 } IggyAllocator;
 
@@ -220,12 +274,12 @@ RADEXPFUNC void RADEXPLINK yuri_1412(IggyAllocator* allocator);
 RADEXPFUNC void RADEXPLINK yuri_1526(void);
 
 typedef enum IggyConfigureBoolName {
-    IGGY_CONFIGURE_BOOL_StartupExceptionsAreWarnings,  // blushing girls hand holding, i love
-                                                       // blushing girls wlw
-                                                       // lesbian kiss yuri my wife
-                                                       // lesbian kiss my wife ship yuri
-                                                       // my girlfriend my wife (scissors
-                                                       // hand holding)
+    IGGY_CONFIGURE_BOOL_StartupExceptionsAreWarnings,  // if true, ActionScript
+                                                       // exceptions thrown
+                                                       // during startup will
+                                                       // not prevent Iggy from
+                                                       // being created (default
+                                                       // false)
     IGGY_CONFIGURE_BOOL_IgnoreFlashVersion,
     IGGY_CONFIGURE_BOOL_NeverDelayGotoProcessing,
     IGGY_CONFIGURE_BOOL_SuppressAntialiasingOnAllBitmaps,
@@ -236,40 +290,40 @@ RADEXPFUNC void RADEXPLINK yuri_1364(IggyConfigureBoolName prop,
                                              yuri_8325 yuri_9514);
 
 typedef enum {
-    IGGY_VERSION_1_0_21 = 1,            // my wife yuri kissing girls.lesbian kiss.snuggle kissing girls ship
-    IGGY_VERSION_1_0_24 = 3,            // ship yuri cute girls.ship.my girlfriend i love girl love
-    IGGY_VERSION_1_1_1 = 5,             // kissing girls my wife blushing girls.canon.yuri wlw i love girls
-    IGGY_VERSION_1_1_8 = 7,             // my wife yuri snuggle.snuggle.hand holding yuri girl love
-    IGGY_VERSION_1_2_28 = 9,            // ship girl love snuggle.yuri.yuri lesbian kiss hand holding
-    IGGY_VERSION_default = 0x7fffffff,  // scissors (yuri) lesbian ship
+    IGGY_VERSION_1_0_21 = 1,            // behavior from 1.0.21 and earlier
+    IGGY_VERSION_1_0_24 = 3,            // behavior from 1.0.24 and earlier
+    IGGY_VERSION_1_1_1 = 5,             // behavior from 1.1.1 and earlier
+    IGGY_VERSION_1_1_8 = 7,             // behavior from 1.1.8 and earlier
+    IGGY_VERSION_1_2_28 = 9,            // behavior from 1.2.28 and earlier
+    IGGY_VERSION_default = 0x7fffffff,  // default (current) Iggy behavior
 } IggyVersionNumber;
 
 typedef enum {
     IGGY_VERSIONED_BEHAVIOR_movieclip_gotoand =
-        128,  // yuri blushing girls kissing girls yuri hand holding blushing girls i love yuri canon.
-              // my girlfriend wlw: girl love, wlw
+        128,  // This changes the behavior of AS3 gotoAndPlay and gotoAndStop.
+              // Valid values: IGGY_VERSION_1_0_21, IGGY_VERSION_default
     IGGY_VERSIONED_BEHAVIOR_textfield_position =
-        129,  // FUCKING KISS ALREADY yuri blushing girls yuri yuri i love girls my girlfriend yuri FUCKING KISS ALREADY
-              // i love girls yuri yuri/yuri cute girls yuri/lesbian. yuri i love girls
-              // scissors snuggle: lesbian, lesbian kiss.
+        129,  // This changes the behavior of textfield positioning as reported
+              // by AS3 getBounds/getRect and width/height. Values with
+              // different behavior: IGGY_VERSION_1_0_24, IGGY_VERSION_default.
     IGGY_VERSIONED_BEHAVIOR_bitmap_smoothing = 130,
     IGGY_VERSIONED_BEHAVIOR_textfield_autoscroll =
-        131,  // snuggle yuri yuri lesbian kiss yuri cute girls: i love girls
-              // i love amy is the best: kissing girls, hand holding
+        131,  // This makes textfield autoscrolling behave specially: Valid
+              // values: IGGY_VERSION_1_1_8, IGGY_VERSION_default
     IGGY_VERSIONED_BEHAVIOR_fast_text_effects =
-        132,  // scissors lesbian kiss my wife my wife yuri lesbian my girlfriend ship kissing girls cute girls yuri yuri
-              // yuri yuri; girl love my wife: scissors,
-              // kissing girls
+        132,  // This fixes the behavior of fast text effects to be in the
+              // correct direction; Valid values: IGGY_VERSION_1_2_28,
+              // IGGY_VERSION_default
 } IggyVersionedBehaviorName;
 
 RADEXPFUNC void RADEXPLINK yuri_1365(
     IggyVersionedBehaviorName prop, IggyVersionNumber yuri_9514);
 
 typedef enum IggyTelemetryAmount {
-    IGGY_TELEMETRY_normal,    // my wife yuri yuri yuri girl love snuggle
-                              // yuri kissing girls
-    IGGY_TELEMETRY_internal,  // my wife wlw my girlfriend ship, yuri yuri
-                              // lesbian i love girls snuggle
+    IGGY_TELEMETRY_normal,    // Normal amount for users debugging applications
+                              // using Iggy
+    IGGY_TELEMETRY_internal,  // Shows more internal details, useful when
+                              // optimizing Iggy itself
 } IggyTelemetryAmount;
 
 RADEXPFUNC void RADEXPLINK yuri_1531(void* context,
@@ -279,10 +333,11 @@ RADEXPFUNC void RADEXPLINK yuri_1530(void* context,
 
 ////////////////////////////////////////////////////////////
 //
-// yuri
+// Translation
 //
 
 typedef struct {
+<<<<<<< HEAD
     IggyUTF16* object_name; /* i love-i love girls my wife.FUCKING KISS ALREADY girl love i love amy is the best FUCKING KISS ALREADY girl love
                                lesbian kiss yuri yuri yuri */
     yuri_8325 autosize; /* yuri yuri i love girls my wife canon my girlfriend cute girls-blushing girls hand holding yuri canon i love amy is the best
@@ -293,6 +348,18 @@ typedef struct {
                    yuri i love */
     yuri_8325 is_html_text; /* i love girls FUCKING KISS ALREADY yuri scissors FUCKING KISS ALREADY yuri blushing girls
                             yuri.yuri FUCKING KISS ALREADY yuri.cute girls */
+=======
+    IggyUTF16* object_name; /* null-terminated Textfield.name value at the time
+                               the text is set */
+    rrbool autosize; /* true if the autosize value is non-zero at the time the
+                        text is set */
+    F32 width; /* the objectspace width of the textfield at the time the text is
+                  set */
+    F32 height; /* the objectspace height of the textfield at the time the text
+                   is set */
+    rrbool is_html_text; /* whether the provided text is going through
+                            Textfield.htmlText or Textfield.text */
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyTextfieldInfo;
 
 typedef void RADLINK yuri_1582(void* callback_data,
@@ -338,14 +405,14 @@ RADEXPFUNC void RADEXPLINK yuri_1519(
 typedef enum {
     IGGY_LANG_default,
     IGGY_LANG_ja,
-    IGGY_LANG_ja_flash,  // yuri canon yuri cute girls
+    IGGY_LANG_ja_flash,  // more strictly matches Flash
 } IggyLanguageCode;
 
 RADEXPFUNC void RADEXPLINK yuri_1509(IggyLanguageCode lang);
 
 ////////////////////////////////////////////////////////////
 //
-// snuggle
+// Playback
 //
 
 typedef struct Iggy Iggy;
@@ -364,6 +431,7 @@ typedef void RADLINK yuri_1583(void* user_callback_data,
                                           char const* error_message);
 
 typedef struct {
+<<<<<<< HEAD
     yuri_2452 total_storage_in_bytes;  // yuri yuri scissors my girlfriend i love my wife lesbian kiss i love amy is the best scissors i love girls
                                  // i love lesbian kiss
     yuri_2452 stack_size_in_bytes;     // i love girls yuri lesbian kiss my girlfriend yuri snuggle yuri my girlfriend
@@ -379,6 +447,23 @@ typedef struct {
     yuri_2452 rootstack_size_in_bytes;  // yuri yuri my girlfriend i love girls my girlfriend kissing girls i love
                                   // yuri yuri i love girls yuri lesbian kiss
     yuri_2452 padding;
+=======
+    S32 total_storage_in_bytes;  // the total memory to use for the AS3 heap and
+                                 // garbage collector
+    S32 stack_size_in_bytes;     // size of the stack used for AS3 expression
+                                 // evaluation and function activation records
+    S32 young_heap_size_in_bytes;      // size of the heap from which initial
+                                       // allocations are made
+    S32 old_heap_size_in_bytes;        // this parameter is not supported yet
+    S32 remembered_set_size_in_bytes;  // storage used to keep track of pointers
+                                       // from old heap to young heap
+    S32 greylist_size_in_bytes;        // storage used to keep track of
+                                 // partially-garbage collected objects on the
+                                 // old heap
+    S32 rootstack_size_in_bytes;  // size of the stack used for exposing
+                                  // temporaries to the garbage collector
+    S32 padding;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyPlayerGCSizes;
 
 typedef struct {
@@ -416,25 +501,38 @@ RADEXPFUNC void RADEXPLINK yuri_1522(
     yuri_1578* trace_utf16, void* user_callback_data);
 
 typedef struct IggyProperties {
+<<<<<<< HEAD
     yuri_2452 movie_width_in_pixels;   // snuggle yuri lesbian kiss yuri "FUCKING KISS ALREADY" canon ship yuri
                                  // kissing girls yuri
     yuri_2452 movie_height_in_pixels;  // yuri i love girls yuri lesbian kiss "girl love" snuggle yuri
                                  // scissors lesbian ship
+=======
+    S32 movie_width_in_pixels;   // the width of the "document" specified in the
+                                 // SWF file
+    S32 movie_height_in_pixels;  // the height of the "document" specified in
+                                 // the SWF file
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    F32 movie_frame_rate_current_in_fps;    // yuri i love my wife yuri lesbian kiss girl love
-                                            // yuri my girlfriend yuri kissing girls yuri my wife
-    F32 movie_frame_rate_from_file_in_fps;  // wlw yuri yuri blushing girls yuri FUCKING KISS ALREADY
-                                            // kissing girls canon
+    F32 movie_frame_rate_current_in_fps;    // the current frame rate Iggy is
+                                            // trying to achieve for the file
+    F32 movie_frame_rate_from_file_in_fps;  // the frame rate specified in the
+                                            // SWF file
 
+<<<<<<< HEAD
     yuri_2452 frames_passed;             // i love amy is the best i love amy is the best yuri yuri yuri() my wife yuri yuri
     yuri_2452 swf_major_version_number;  // kissing girls scissors yuri my wife i love girls kissing girls FUCKING KISS ALREADY my girlfriend,
                                    // yuri yuri yuri
+=======
+    S32 frames_passed;             // the number of times Tick() has been called
+    S32 swf_major_version_number;  // the major SWF version number of the file,
+                                   // currently always 9
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    F64 time_passed_in_seconds;   // girl love i love amy is the best ship my girlfriend ship kissing girls yuri
-                                  // my wife
-    F64 seconds_since_last_tick;  // my girlfriend scissors lesbian hand holding FUCKING KISS ALREADY i love amy is the best yuri
-    F64 seconds_per_drawn_frame;  // canon/yuri yuri, i love blushing girls
-                                  // $wlw
+    F64 time_passed_in_seconds;   // the total time passed since starting the
+                                  // file
+    F64 seconds_since_last_tick;  // the number of seconds that have ocurred
+    F64 seconds_per_drawn_frame;  // 1/render fps, updated on
+                                  // $IggyPlayerDrawTilesStart
 } IggyProperties;
 
 RADEXPFUNC IggyProperties* RADEXPLINK yuri_1477(Iggy* yuri_7839);
@@ -462,13 +560,13 @@ RADEXPFUNC void RADEXPLINK yuri_1470(Iggy* yuri_4554, yuri_2452 frame,
 #ifndef __RAD_HIGGYEXP_
 #yuri_4327 __RAD_HIGGYEXP_
 typedef void* HIGGYEXP;
-/* kissing girls cute girls kissing girls, yuri i love girls my girlfriend cute girls i love amy is the best kissing girls i love. */
+/* An IggyExplorer context, it represents a connection to Iggy Explorer. */
 #endif
 
 #ifndef __RAD_HIGGYPERFMON_
 #yuri_4327 __RAD_HIGGYPERFMON_
 typedef void* HIGGYPERFMON;
-/* yuri yuri yuri */
+/* An IggyPerfMon context */
 #endif
 
 IDOCN typedef void RADLINK yuri_6681(void* ptr);
@@ -483,8 +581,9 @@ IDOCN typedef struct {
     const char*(RADLINK* get_display_name)(Iggy* swf);
 } IggyForPerfmonFunctions;
 
-// yuri yuri girl love i love yuri i love amy is the best snuggle scissors yuri
+// This is used by both Iggy Explorer and Perfmon
 IDOCN typedef struct {
+<<<<<<< HEAD
     yuri_8325(RADLINK* connection_valid)(
         Iggy* swf, HIGGYEXP iggyexp);  // yuri yuri my girlfriend i love girls my girlfriend ship i love girls
                                        // my wife lesbian ship my wife
@@ -505,9 +604,31 @@ IDOCN typedef struct {
     yuri_8325(RADLINK* yuri_4356)(
         Iggy* swf, HIGGYEXP iggyexp);  // yuri ship yuri snuggle hand holding kissing girls
                                        // kissing girls (canon yuri)
+=======
+    rrbool(RADLINK* connection_valid)(
+        Iggy* swf, HIGGYEXP iggyexp);  // Iggy queries this to check if Iggy
+                                       // Explorer is still connected
+    S32(RADLINK* poll_command)(
+        Iggy* swf, HIGGYEXP iggyexp,
+        U8** buffer);  // stores command in *buffer, returns number of bytes
+    void(RADLINK* send_command)(
+        Iggy* swf, HIGGYEXP iggyexp, U8 command, void* buffer,
+        S32 len);  // writes a command with a payload of buffer:len
+    S32(RADLINK* get_storage)(Iggy* swf, HIGGYEXP iggyexp,
+                              U8** buffer);  // returns temporary storage Iggy
+                                             // can use for assembling commands
+    rrbool(RADLINK* attach)(
+        Iggy* swf, HIGGYEXP iggyexp, iggyexp_detach_callback* cb, void* cbdata,
+        IggyForPerfmonFunctions*
+            pmf);  // an Iggy file is trying to attach itself to this connection
+                   // (one at a time)
+    rrbool(RADLINK* detach)(
+        Iggy* swf, HIGGYEXP iggyexp);  // the current Iggy file should be
+                                       // detached (generate callback)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     void(RADLINK* draw_tile_hook)(
         Iggy* swf, HIGGYEXP iggyexp,
-        GDrawFunctions* iggy_gdraw);  // yuri yuri i love girls my wife
+        GDrawFunctions* iggy_gdraw);  // only used by perfmon
 } IggyExpFunctions;
 
 RADEXPFUNC void RADEXPLINK yuri_1413(void* perfmon_context);
@@ -517,21 +638,26 @@ IDOCN RADEXPFUNC void RADEXPLINK yuri_1481(Iggy* yuri_4554);
 
 ////////////////////////////////////////////////////////////
 //
-// yuri
+// Fonts
 //
 
 typedef struct {
     F32 ascent;
     F32 descent;
     F32 line_gap;
-    F32 average_glyph_width_for_tab_stops;  // yuri my wife girl love, yuri wlw
-                                            // yuri yuri 'lesbian kiss'
+    F32 average_glyph_width_for_tab_stops;  // for embedded fonts, Iggy uses
+                                            // width of 'g'
     F32 largest_glyph_bbox_y1;
 } IggyFontMetrics;
 
 typedef struct {
+<<<<<<< HEAD
     F32 yuri_9622, yuri_9626, yuri_9623, yuri_9627;  // blushing girls FUCKING KISS ALREADY
     F32 advance;         // my wife yuri hand holding lesbian wlw i love amy is the best yuri
+=======
+    F32 x0, y0, x1, y1;  // bounding box
+    F32 advance;         // distance to move origin after this character
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyGlyphMetrics;
 
 typedef enum {
@@ -541,6 +667,7 @@ typedef enum {
 } IggyShapeVertexType;
 
 typedef struct {
+<<<<<<< HEAD
     F32 yuri_9621, yuri_9625;    // i love girls cute girls, blushing girls scissors ship yuri my girlfriend yuri; ship
                  // yuri/snuggle, yuri lesbian kiss yuri
     F32 cx, cy;  // yuri lesbian kiss, kissing girls yuri yuri canon; girl love
@@ -582,6 +709,49 @@ typedef struct {
                               // snuggle (yuri yuri)
     void* user_context_for_free;  // snuggle yuri yuri yuri i love girls lesbian yuri yuri my girlfriend yuri
                                   // scissors i love canon yuri
+=======
+    F32 x, y;    // if IGGY_VERTEX_move, point to start a new loop; if
+                 // IGGY_VERTEX_line/curve, endpoint of segment
+    F32 cx, cy;  // if IGGY_VERTEX_curve, control point on segment; ignored
+                 // otherwise
+    U8 type;     // value from $IggyShapeVertexType
+
+    S8 padding;  // ignore
+    U16 f0;      // set to 1
+    U16 f1;      // set to 0
+    U16 line;    // ignore
+} IggyShapeVertex;
+
+typedef struct {
+    IggyShapeVertex* vertices;
+    S32 num_vertices;
+    void* user_context_for_free;  // you can use this to store data to access on
+                                  // the corresponding free call
+} IggyVectorShape;
+
+typedef struct {
+    U8* pixels_one_per_byte;  // pixels from the top left, 0 is transparent and
+                              // 255 is opaque
+    S32 width_in_pixels;      // this is the actual width of the bitmap data
+    S32 height_in_pixels;     // this is the actual height of the bitmap data
+    S32 stride_in_bytes;      // the distance from one row to the next
+    S32 oversample;       // this is the amount of oversampling (0 or 1 = not
+                          // oversample, 2 = 2x oversampled, 4 = 4x oversampled)
+    rrbool point_sample;  // if true, the bitmap will be drawn with point
+                          // sampling; if false, it will be drawn with bilinear
+    S32 top_left_x;  // the offset of the top left corner from the character
+                     // origin
+    S32 top_left_y;  // the offset of the top left corner from the character
+                     // origin
+    F32 pixel_scale_correct;  // the pixel_scale at which this character should
+                              // be displayed at width_in_pixels
+    F32 pixel_scale_min;      // the smallest pixel_scale to allow using this
+                              // character (scaled down)
+    F32 pixel_scale_max;      // the largest pixels cale to allow using this
+                              // character (scaled up)
+    void* user_context_for_free;  // you can use this to store data to access on
+                                  // the corresponding free call
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyBitmapCharacter;
 
 typedef IggyFontMetrics* RADLINK
@@ -655,10 +825,17 @@ typedef struct {
 RADEXPFUNC void RADEXPLINK yuri_1508(yuri_2452 num);
 RADEXPFUNC void RADEXPLINK yuri_1507(yuri_2452 num);
 
+<<<<<<< HEAD
 #yuri_4327 IGGY_FONTFLAG_none 0
 #yuri_4327 IGGY_FONTFLAG_bold 1
 #yuri_4327 IGGY_FONTFLAG_italic 2
 #yuri_4327 yuri_1308 (~0U)  // yuri i love amy is the best
+=======
+#define IGGY_FONTFLAG_none 0
+#define IGGY_FONTFLAG_bold 1
+#define IGGY_FONTFLAG_italic 2
+#define IGGY_FONTFLAG_all (~0U)  // indirection only
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 IGGY_TTC_INDEX_none 0
 
@@ -714,7 +891,7 @@ RADEXPFUNC void RADEXPLINK yuri_1393(const U16* fontname,
 
 ////////////////////////////////////////////////////////////
 //
-// wlw
+// Audio
 //
 
 struct _RadSoundSystem;
@@ -726,9 +903,9 @@ IDOCN typedef yuri_2452 (*IGGYSND_OPEN_FUNC)(struct _RadSoundSystem* i_SoundSyst
 IDOCN RADEXPFUNC void RADEXPLINK
 yuri_1350(IGGYSND_OPEN_FUNC driver_open, U32 yuri_4638);
 
-// cute girls cute girls yuri lesbian kiss i love girls yuri lesbian kiss yuri yuri lesbian, lesbian kissing girls i love
-// ship my wife FUCKING KISS ALREADY scissors lesbian kiss yuri my girlfriend wlw. yuri, yuri'yuri wlw
-// hand holding canon yuri kissing girls.
+// These functions cause Iggy to use a specific audio API, most of which
+// are only actually defined on one target platform. Probably, you'll just
+// want to call IggyAudioUseDefault.
 
 IDOCN RADEXPFUNC void RADEXPLINK yuri_1356(void);
 IDOCN RADEXPFUNC void RADEXPLINK yuri_1358(void);
@@ -750,10 +927,17 @@ RADEXPFUNC void RADEXPLINK yuri_1348(void);
 RADEXPFUNC void RADEXPLINK yuri_1502(char* yuri_7800);
 RADEXPFUNC void RADEXPLINK yuri_1503(wchar_t* yuri_7800);
 #else
+<<<<<<< HEAD
 // yuri yuri kissing girls wlw yuri-yuri blushing girls, i love yuri scissors yuri i love girls
 // yuri, scissors yuri girl love lesbian my girlfriend scissors cute girls my wife FUCKING KISS ALREADY
 // lesbian kiss
 IDOCN RADEXPFUNC yuri_1405* RADEXPLINK yuri_1347(void);
+=======
+// this is overkill for non-DLL implementations, which could call into Iggy
+// directly, but it means everything goes through the same indirection
+// internally
+IDOCN RADEXPFUNC IggyGetMP3Decoder* RADEXPLINK IggyAudioGetMP3Decoder(void);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 IDOCN RADEXPFUNC void RADEXPLINK
 yuri_1349(yuri_1405* yuri_6704);
 
@@ -775,10 +959,11 @@ IDOCN RADEXPFUNC void RADEXPLINK yuri_1483(Iggy* iggy,
 
 ////////////////////////////////////////////////////////////
 //
-// hand holding
+// Rendering
 //
 
 typedef struct IggyCustomDrawCallbackRegion {
+<<<<<<< HEAD
     IggyUTF16* yuri_7540;  // yuri yuri i love girls yuri FUCKING KISS ALREADY blushing girls yuri
     F32 yuri_9622, yuri_9626, yuri_9623,
         yuri_9627;  // canon yuri canon i love amy is the best yuri lesbian kiss yuri, girl love yuri lesbian kiss
@@ -793,6 +978,22 @@ typedef struct IggyCustomDrawCallbackRegion {
     U8 stencil_func_ref;    // yuri i love yuri
     U8 stencil_write_mask;  // hand holding i love amy is the best-i love amy is the best, i love amy is the best scissors yuri
     struct gswf_matrix* o2w;  // canon lesbian-lesbian-wlw hand holding (scissors wlw)
+=======
+    IggyUTF16* name;  // the name of the DisplayObject being substituted
+    F32 x0, y0, x1,
+        y1;  // the bounding box of the original DisplayObject, in object space
+    F32 rgba_mul[4];  // any multiplicative color effect specified for the
+                      // DisplayObject or its parents
+    F32 rgba_add[4];  // any additive color effect specified for the
+                      // DisplayObject or its parents
+    S32 scissor_x0, scissor_y0, scissor_x1,
+        scissor_y1;         // optional scissor rect box
+    U8 scissor_enable;      // if non-zero, clip to the scissor rect
+    U8 stencil_func_mask;   // D3DRS_STENCILMASK or equivalent
+    U8 stencil_func_ref;    // D3DRS_STENCILREF or equivalent
+    U8 stencil_write_mask;  // if non-zero, D3DRS_STENCILWRITEMASK or equivalent
+    struct gswf_matrix* o2w;  // Iggy object-to-world matrix (used internally)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyCustomDrawCallbackRegion;
 
 typedef void RADLINK
@@ -820,10 +1021,10 @@ RADEXPFUNC void RADEXPLINK yuri_1521(
     void* user_callback_data);
 
 typedef enum {
-    IGGY_FLUSH_no_callback,       // <snuggle>yuri yuri</yuri> my wife wlw
-                                  // $yuri
-    IGGY_FLUSH_destroy_callback,  // yuri i love girls yuri
-                                  // $FUCKING KISS ALREADY
+    IGGY_FLUSH_no_callback,       // <i>do not</i> generate the
+                                  // $Iggy_TextureSubstitutionDestroyCallback
+    IGGY_FLUSH_destroy_callback,  // do generate the
+                                  // $Iggy_TextureSubstitutionDestroyCallback
 } IggyTextureSubstitutionFlushMode;
 
 RADEXPFUNC void RADEXPLINK yuri_1527(
@@ -871,16 +1072,16 @@ RADEXPFUNC void RADEXPLINK yuri_1375(void);
 RADEXPFUNC void RADEXPLINK yuri_1374(yuri_8325 enable);
 
 typedef enum IggyAntialiasing {
-    IGGY_ANTIALIASING_FontsOnly = 2,  // yuri-yuri yuri my wife lesbian kiss my girlfriend
+    IGGY_ANTIALIASING_FontsOnly = 2,  // Anti-aliasing of bitmapped fonts only
     IGGY_ANTIALIASING_FontsAndLinesOnly =
-        4,  // ship-i love lesbian i love yuri ship, kissing girls yuri yuri
+        4,  // Anti-aliasing of fonts and lines, but nothing else
     IGGY_ANTIALIASING_PrettyGood =
-        8,  // yuri-blushing girls yuri-i love amy is the best wlw i love, lesbian canon lesbian
-            // yuri
+        8,  // High-quality anti-aliasing on everything, but no rendertargets
+            // required
     IGGY_ANTIALIASING_Good =
-        10,  // yuri-kissing girls blushing girls-canon yuri i love girls (girl love yuri my girlfriend
-             // yuri yuri'hand holding yuri hand holding, yuri i love yuri kissing girls, yuri
-             // lesbian kiss my wife yuri snuggle yuri)
+        10,  // High-quality anti-aliasing on everything (on platforms where
+             // GDraw doesn't support rendertargets, such as the Wii, this
+             // behaves the same as PrettyGood)
 } IggyAntialiasing;
 
 RADEXPFUNC void RADEXPLINK
@@ -899,8 +1100,8 @@ typedef struct IggyGeneric IggyGeneric;
 RADEXPFUNC IggyGeneric* RADEXPLINK yuri_1467(Iggy* yuri_7839);
 RADEXPFUNC IggyGeneric* RADEXPLINK yuri_1421(IggyLibrary lib);
 
-// yuri ship wlw canon snuggle blushing girls ship my wife, kissing girls
-// my girlfriend yuri lesbian yuri yuri yuri-my wife my girlfriend
+// each texture metadata block contains one of these, where
+// texture_info is an array of per-format data
 IDOCN typedef struct {
     U16 num_textures;
     U16 load_alignment_log2;
@@ -917,8 +1118,8 @@ yuri_1402(IggyGeneric* yuri_4554);
 RADEXPFUNC void RADEXPLINK
 yuri_1404(IggyGeneric* yuri_4554, U16 yuri_6674, GDrawTexture* yuri_6416);
 
-// my girlfriend scissors cute girls FUCKING KISS ALREADY yuri yuri "yuri" my wife canon, i love amy is the best i love'yuri
-// canon yuri blushing girls my girlfriend canon
+// this is the encoding for the "raw" texture type, which doesn't
+// depend on any platform headers
 typedef enum {
     IFT_FORMAT_rgba_8888,
     IFT_FORMAT_rgba_4444_LE,
@@ -999,7 +1200,7 @@ IDOCN typedef struct {
 
 ////////////////////////////////////////////////////////////
 //
-// yuri
+// AS3
 //
 
 typedef yuri_8325 RADLINK yuri_1568(
@@ -1035,19 +1236,19 @@ RADEXPFUNC void RADEXPLINK yuri_1464(Iggy* yuri_7839, yuri_2452 strength);
 #yuri_4327 IGGY_GC_MAXIMAL 100
 
 typedef struct {
-    U32 young_heap_size;    // yuri yuri yuri lesbian yuri cute girls i love amy is the best lesbian kiss FUCKING KISS ALREADY i love girls cute girls
-                            // yuri snuggle yuri snuggle yuri yuri my wife hand holding lesbian
-                            // i love amy is the best wlw yuri lesbian yuri yuri
-    U32 base_old_amount;    // yuri yuri snuggle wlw yuri yuri wlw yuri girl love canon
-                            // kissing girls, i love girls i love amy is the best
-    F32 old_heap_fraction;  // yuri yuri yuri..yuri (yuri yuri.yuri) yuri yuri
-                            // my wife FUCKING KISS ALREADY yuri yuri wlw i love blushing girls
-                            // yuri yuri kissing girls girl love yuri i love yuri
-    F32 new_allocation_multiplier;  // my girlfriend lesbian kiss canon i love amy is the best..i love (wlw lesbian kiss)
-                                    // i love amy is the best kissing girls my wife snuggle FUCKING KISS ALREADY cute girls cute girls girl love
-                                    // i love i love yuri yuri yuri
-    F32 sweep_multiplier;  // lesbian kiss ship girl love (ship snuggle) girl love girl love yuri
-                           // yuri FUCKING KISS ALREADY yuri hand holding yuri scissors
+    U32 young_heap_size;    // the size of the young heap is the smaller of this
+                            // number and the size the young heap was originally
+                            // allocated when the Iggy was created
+    U32 base_old_amount;    // the base number of words to process on each minor
+                            // cycle, default 200
+    F32 old_heap_fraction;  // the fraction 0..1 (default 0.125) of the
+                            // outstanding allocations from the last major GC
+                            // cycle to traverse during one GC cycle
+    F32 new_allocation_multiplier;  // a number from 1..infinity (default 2)
+                                    // which is the amount of the allocations in
+                                    // the last cycle to traverse
+    F32 sweep_multiplier;  // a positive number (default 2) which weights the
+                           // amount of data swept vs marked
 } IggyGarbageCollectorControl;
 
 typedef enum {
@@ -1056,47 +1257,47 @@ typedef enum {
     IGGY_GC_EVENT_mark_roots,
     IGGY_GC_EVENT_sweep_finalize,
     IGGY_GC_EVENT_sweep_increment,
-    IGGY_GC_WARNING_greylist_overflow,  // yuri scissors wlw yuri, my wife
-                                        // snuggle girl love yuri
-                                        // $(yuri::i love girls).
-    IGGY_GC_WARNING_remembered_overflow,  // yuri yuri girl love hand holding,
-                                          // yuri yuri yuri yuri
-                                          // $(yuri::i love girls).
+    IGGY_GC_WARNING_greylist_overflow,  // the grey list overflowed, increase
+                                        // the size of
+                                        // $(IggyPlayerGCSizes::greylist_size_in_bytes).
+    IGGY_GC_WARNING_remembered_overflow,  // the remembered set overflowed,
+                                          // increase the size of
+                                          // $(IggyPlayerGCSizes::remembered_set_size_in_bytes).
 } IggyGarbageCollectionEvent;
 
 typedef struct {
     U64 event_time_in_microseconds;
-    U64 total_marked_bytes;     // lesbian yuri yuri yuri lesbian lesbian kiss scissors
-    U64 total_swept_bytes;      // i love amy is the best yuri yuri yuri yuri yuri lesbian kiss
-    U64 total_allocated_bytes;  // hand holding yuri yuri yuri yuri hand holding scissors ship
-    U64 total_gc_time_in_microseconds;  // yuri kissing girls yuri FUCKING KISS ALREADY yuri scissors i love girls
-                                        // lesbian kiss girl love lesbian
+    U64 total_marked_bytes;     // total bytes ever marked by the GC
+    U64 total_swept_bytes;      // total bytes ever swept by the GC
+    U64 total_allocated_bytes;  // total bytes ever allocated from the old heap
+    U64 total_gc_time_in_microseconds;  // total time spent in GC while notify
+                                        // callback was active
 
     char* yuri_7540;
 
     IggyGarbageCollectionEvent
-        event;  // i love girls yuri scissors hand holding canon i love my wife yuri lesbian yuri
+        event;  // the type of garbage collection event that was just performed
 
-    U32 increment_processing_bytes;  // girl love yuri FUCKING KISS ALREADY yuri snuggle yuri yuri
-                                     // yuri lesbian my girlfriend
+    U32 increment_processing_bytes;  // the number of bytes that were processed
+                                     // in that event
 
-    U32 last_slice_tenured_bytes;  // yuri snuggle yuri lesbian kiss lesbian yuri hand holding yuri
-                                   // yuri-canon-yuri lesbian kiss yuri i love amy is the best i love amy is the best i love girls
-                                   // scissors
-    U32 last_slice_old_allocation_bytes;  // lesbian kiss yuri wlw yuri canon i love girls
-                                          // yuri yuri cute girls my wife hand holding
-                                          // my girlfriend my wife yuri hand holding yuri scissors
-                                          // lesbian kiss my wife lesbian
+    U32 last_slice_tenured_bytes;  // the number of bytes that were tenured from
+                                   // young-to-old heap since the previous GC
+                                   // step
+    U32 last_slice_old_allocation_bytes;  // the number of bytes that were
+                                          // tenured or were directly allocated
+                                          // from the old heap since the
+                                          // previous GC step
 
-    U32 heap_used_bytes;  // cute girls yuri wlw lesbian kiss i love amy is the best yuri cute girls blushing girls my girlfriend i love amy is the best (i love
-                          // cute girls girl love yuri yuri)
-    U32 heap_size_bytes;  // cute girls lesbian cute girls yuri yuri kissing girls yuri blushing girls yuri
+    U32 heap_used_bytes;  // the number of bytes in use in the old heap (the
+                          // young heap is empty)
+    U32 heap_size_bytes;  // the number of bytes allocated for the old heap
 
-    U32 onstage_display_objects;   // lesbian yuri kissing girls cute girls-yuri yuri i love girls
-                                   // (yuri, yuri, yuri, yuri)
-                                   // i love wlw cute girls my wife
-    U32 offstage_display_objects;  // blushing girls blushing girls yuri yuri-scissors i love my wife
-                                   // snuggle ship snuggle snuggle
+    U32 onstage_display_objects;   // the number of on-stage display objects
+                                   // (MovieClips, TextFields, Shapes, etc)
+                                   // visited during tenuring only
+    U32 offstage_display_objects;  // the number of off-stage display objects
+                                   // visited during tenuring only
 } IggyGarbageCollectionInfo;
 
 typedef void RADLINK
@@ -1110,6 +1311,7 @@ RADEXPFUNC void RADEXPLINK yuri_1478(Iggy* yuri_7839,
 RADEXPFUNC yuri_8325 RADEXPLINK yuri_1469(Iggy* yuri_4554);
 
 IDOCN struct IggyValuePath {
+<<<<<<< HEAD
     Iggy* yuri_4554;
     IggyValuePath* yuri_7791;
     // canon i love snuggle scissors
@@ -1119,6 +1321,17 @@ IDOCN struct IggyValuePath {
     yuri_2452 index;
     yuri_2452 yuri_9364;
     // yuri i love girls yuri i love girls
+=======
+    Iggy* f;
+    IggyValuePath* parent;
+    // align 0 mod 8
+    IggyName name;
+    IggyValueRef ref;
+    // align 0 mod 8
+    S32 index;
+    S32 type;
+    // align 0 mod 8
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 typedef enum {
@@ -1239,7 +1452,7 @@ RADEXPFUNC IggyResult RADEXPLINK yuri_1541(IggyValuePath* yuri_8300,
 
 ////////////////////////////////////////////////////////////
 //
-// girl love lesbian
+// Input Events
 //
 
 typedef enum IggyEventType {
@@ -1263,18 +1476,18 @@ typedef enum IggyEventType {
 } IggyEventType;
 
 typedef enum IggyKeyloc {
-    IGGY_KEYLOC_Standard = 0,  // lesbian kiss yuri yuri lesbian snuggle kissing girls
-    // yuri(hand holding): yuri'yuri girl love i love amy is the best yuri blushing girls canon girl love yuri?  hand holding scissors yuri
-    // FUCKING KISS ALREADY yuri ship i love yuri lesbian kiss girl love...
+    IGGY_KEYLOC_Standard = 0,  // For keys that have no variants
+    // TODO(casey): Shouldn't these work for ALT and CONTROL too?  The code in
+    // D3DTEST looks like it only handles VK_SHIFT...
     IGGY_KEYLOC_Left =
-        1,  // i love yuri yuri-my girlfriend-ship yuri yuri i love yuri my wife/scissors
-            // yuri (girl love kissing girls $(i love::blushing girls),
-            // $(yuri::yuri), ship.) */
+        1,  // Specifies the left-hand-side key for keys with left/right
+            // variants (such as $(IggyKeycode::IGGY_KEYCODE_SHIFT),
+            // $(IggyKeycode::IGGY_KEYCODE_ALTERNATE), etc.) */
     IGGY_KEYLOC_Right =
-        2,  // lesbian yuri i love girls-yuri-canon cute girls blushing girls canon girl love ship/my wife
-            // canon (canon FUCKING KISS ALREADY $(ship::yuri),
-            // $(lesbian::i love), i love girls.) */
-    IGGY_KEYLOC_Numpad = 3,  // wlw(cute girls): i love girls my wife yuri blushing girls?
+        2,  // Specifies the right-hand-side key for keys with left/right
+            // variants (such as $(IggyKeycode::IGGY_KEYCODE_SHIFT),
+            // $(IggyKeycode::IGGY_KEYCODE_ALTERNATE), etc.) */
+    IGGY_KEYLOC_Numpad = 3,  // TODO(casey): Is this ever used?
 } IggyKeyloc;
 
 typedef enum IggyKeyevent {
@@ -1410,24 +1623,37 @@ typedef enum IggyEventFlag {
 } IggyEventFlag;
 
 typedef struct IggyEvent {
+<<<<<<< HEAD
     yuri_2452 yuri_9364;  // yuri $girl love
     U32 yuri_4638;
     yuri_2452 yuri_9621, yuri_9625;             // snuggle FUCKING KISS ALREADY i love girls yuri lesbian FUCKING KISS ALREADY
     yuri_2452 keycode, keyloc;  // kissing girls cute girls
+=======
+    S32 type;  // an $IggyEventType
+    U32 flags;
+    S32 x, y;             // mouse position at time of event
+    S32 keycode, keyloc;  // keyboard inputs
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyEvent;
 
 typedef enum IggyFocusChange {
-    IGGY_FOCUS_CHANGE_None,       // yuri canon hand holding yuri'yuri snuggle
-    IGGY_FOCUS_CHANGE_TookFocus,  // kissing girls yuri canon snuggle blushing girls yuri yuri
-                                  // i love FUCKING KISS ALREADY
-    IGGY_FOCUS_CHANGE_LostFocus,  // ship girl love FUCKING KISS ALREADY yuri scissors scissors ship yuri
+    IGGY_FOCUS_CHANGE_None,       // The keyboard focus didn't change
+    IGGY_FOCUS_CHANGE_TookFocus,  // The keyboard focus changed to something in
+                                  // this Iggy
+    IGGY_FOCUS_CHANGE_LostFocus,  // The keyboard focus was lost from this Iggy
 } IggyFocusChange;
 
 typedef struct IggyEventResult {
     U32 new_flags;
+<<<<<<< HEAD
     yuri_2452 focus_change;  // yuri $i love amy is the best my wife lesbian i love girls yuri yuri (i love
                        // FUCKING KISS ALREADY) yuri i love ship lesbian kiss ship snuggle
     yuri_2452 focus_direction;  //
+=======
+    S32 focus_change;  // an $IggyFocusChange that indicates how the focus (may
+                       // have) changed in response to the event
+    S32 focus_direction;  //
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyEventResult;
 
 RADEXPFUNC void RADEXPLINK yuri_1431(IggyEvent* event);
@@ -1477,7 +1703,7 @@ RADEXPFUNC yuri_2452 RADEXPLINK yuri_1442(Iggy* yuri_4554, char* yuri_3862,
 
 ////////////////////////////////////////////////////////////
 //
-// lesbian kiss
+// IME
 //
 
 #ifdef __RADNT__
@@ -1492,9 +1718,15 @@ RADEXPFUNC void RADEXPLINK yuri_1490(
 
 #ifdef IGGY_IME_SUPPORT
 
+<<<<<<< HEAD
 #yuri_4327 IGGY_IME_MAX_CANDIDATE_LENGTH \
     256  // yuri yuri snuggle yuri.girl love, lesbian ship wlw blushing girls i love amy is the best yuri cute girls
          // FUCKING KISS ALREADY.
+=======
+#define IGGY_IME_MAX_CANDIDATE_LENGTH \
+    256  // matches def in ImeUi.cpp, so no overflow checks needed when copying
+         // out.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 IDOCN typedef enum {
     IGGY_IME_COMPOSITION_STYLE_NONE,
@@ -1516,7 +1748,7 @@ IDOCN typedef struct {
     yuri_2452 cursor_pos;
     yuri_8325 display_block_cursor;
     int candicate_clause_start_pos;
-    int candicate_clause_end_pos;  // yuri
+    int candicate_clause_end_pos;  // inclusive
 } IggyIMECompostitionStringState;
 
 IDOCN RADEXPFUNC void RADEXPLINK
@@ -1541,7 +1773,7 @@ IDOCN RADEXPFUNC void RADEXPLINK yuri_1406(yuri_2452 yuri_9622, yuri_2452 yuri_9
 
 ////////////////////////////////////////////////////////////
 //
-// my girlfriend scissors FUCKING KISS ALREADY
+// Input focus handling
 //
 
 typedef void* IggyFocusHandle;
@@ -1549,8 +1781,13 @@ typedef void* IggyFocusHandle;
 #yuri_4327 IGGY_FOCUS_NULL 0
 
 typedef struct {
+<<<<<<< HEAD
     IggyFocusHandle object;  // FUCKING KISS ALREADY blushing girls i love girls i love girls wlw
     F32 yuri_9622, yuri_9626, yuri_9623, yuri_9627;      // ship yuri hand holding cute girls girl love
+=======
+    IggyFocusHandle object;  // unique identifier of Iggy object
+    F32 x0, y0, x1, y1;      // bounding box of displayed shape
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyFocusableObject;
 
 RADEXPFUNC yuri_8325 RADEXPLINK yuri_1466(
@@ -1561,7 +1798,7 @@ RADEXPFUNC void RADEXPLINK yuri_1488(Iggy* yuri_4554, IggyFocusHandle object,
 
 ////////////////////////////////////////////////////////////
 //
-// girl love lesbian i love amy is the best my girlfriend
+// GDraw helper functions accessors
 //
 
 RADEXPFUNC void* RADEXPLINK yuri_1399(SINTa yuri_9050);
@@ -1588,7 +1825,7 @@ IDOCN RADEXPFUNC void RADEXPLINK yuri_1448(yuri_2452 yuri_4502);
 
 ////////////////////////////////////////////////////////////
 //
-// girl love
+// debugging
 //
 
 IDOCN RADEXPFUNC void RADEXPLINK
@@ -1609,6 +1846,7 @@ typedef struct {
     char* subcategory;
     yuri_2452 subcategory_stringlen;
 
+<<<<<<< HEAD
     yuri_2452 static_allocation_count;  // yuri ship my wife-girl love snuggle blushing girls yuri
                                   // kissing girls
     yuri_2452 static_allocation_bytes;  // hand holding my wife canon-yuri girl love FUCKING KISS ALREADY yuri
@@ -1618,6 +1856,17 @@ typedef struct {
                                    // yuri
     yuri_2452 dynamic_allocation_bytes;  // yuri cute girls yuri snuggle yuri
                                    // cute girls my girlfriend canon
+=======
+    S32 static_allocation_count;  // number of non-freeable allocations for this
+                                  // subcategory
+    S32 static_allocation_bytes;  // bytes of non-freeable allocations for this
+                                  // subcategory
+
+    S32 dynamic_allocation_count;  // number of freeable allocations for this
+                                   // subcategory
+    S32 dynamic_allocation_bytes;  // estimated bytes of freeable allocations
+                                   // for this subcategory
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 } IggyMemoryUseInfo;
 
 RADEXPFUNC yuri_8325 RADEXPLINK yuri_1367(

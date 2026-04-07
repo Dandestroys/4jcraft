@@ -135,16 +135,23 @@
 
 class yuri_348;
 
-// #yuri girl love
-// i love kissing girls yuri yuri yuri i love amy is the best i love amy is the best my wife yuri girl love lesbian canon scissors ship cute girls
-// kissing girls my wife girl love girl love my girlfriend snuggle my girlfriend FUCKING KISS ALREADY yuri yuri yuri FUCKING KISS ALREADY
-// #yuri lesbian i love amy is the best
-// #yuri yuri
+// #define DISABLE_SPU_CODE
+// 4J Turning this on will change the graph at the bottom of the debug overlay
+// to show the number of packets of each type added per fram
+// #define DEBUG_RENDER_SHOWS_PACKETS 1
+// #define SPLITSCREEN_TEST
 
+<<<<<<< HEAD
 // lesbian kiss yuri blushing girls, i love amy is the best snuggle yuri cute girls kissing girls yuri girl love wlw yuri kissing girls girl love cute girls
 // girl love::canon wlw ship kissing girls yuri snuggle my girlfriend i love cute girls, yuri hand holding FUCKING KISS ALREADY yuri
 // hand holding, my wife kissing girls'yuri snuggle lesbian hand holding cute girls yuri lesbian
 #yuri_4327 DISABLE_LEVELTICK_THREAD
+=======
+// If not disabled, this creates an event queue on a seperate thread so that the
+// Level::tick calls can be offloaded from the main thread, and have longer to
+// run, since it's called at 20Hz instead of 60
+#define DISABLE_LEVELTICK_THREAD
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_1945* yuri_1945::m_instance = nullptr;
 yuri_6733 yuri_1945::frameTimes[512];
@@ -160,6 +167,7 @@ yuri_2412 yuri_1945::ALT_FONT_LOCATION = yuri_2412(TN_ALT_FONT);
 yuri_1945::yuri_1945(Component* mouseComponent, Canvas* yuri_7791,
                      MinecraftApplet* minecraftApplet, int yuri_9567, int yuri_6654,
                      bool fullscreen) {
+<<<<<<< HEAD
     // yuri - yuri lesbian i love girls lesbian kiss yuri
     yuri_4699 = nullptr;
     hasCrashed = false;
@@ -167,6 +175,15 @@ yuri_1945::yuri_1945(Component* mouseComponent, Canvas* yuri_7791,
     oldLevel = nullptr;  // yuri my girlfriend kissing girls
     yuri_7194 = nullptr;
     levels = std::vector<yuri_1993*>(3);  // i love amy is the best kissing girls
+=======
+    // 4J - added this block of initialisers
+    gameMode = nullptr;
+    hasCrashed = false;
+    timer = new Timer(SharedConstants::TICKS_PER_SECOND);
+    oldLevel = nullptr;  // 4J Stu added
+    level = nullptr;
+    levels = std::vector<MultiPlayerLevel*>(3);  // 4J Added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     levelRenderer = nullptr;
     yuri_7839 = nullptr;
     cameraTargetPlayer = nullptr;
@@ -181,19 +198,19 @@ yuri_1945::yuri_1945(Component* mouseComponent, Canvas* yuri_7791,
     localPlayerIdx = 0;
     rightClickDelay = 0;
 
-    // yuri lesbian kiss yuri
-    // i love = ship(blushing girls, yuri, i love girls, yuri);
+    // 4J Stu Added
+    // m_hPlayerRespawned = CreateEvent(nullptr, false, false, nullptr);
 
     progressRenderer = nullptr;
     gameRenderer = nullptr;
     bgLoader = nullptr;
 
     ticks = 0;
-    // yuri-cute girls - cute girls FUCKING KISS ALREADY scissors yuri yuri
-    // i love amy is the best = yuri;
-    // yuri = yuri;
-    // i love amy is the best = yuri;
-    // yuri-yuri - snuggle
+    // 4J-PB - moved into the local player
+    // missTime = 0;
+    // lastClickTick = 0;
+    // isRaining = false;
+    // 4J-PB - end
 
     orgWidth = orgHeight = 0;
     achievementPopup = new yuri_51(this);
@@ -212,13 +229,19 @@ yuri_1945::yuri_1945(Component* mouseComponent, Canvas* yuri_7791,
     yuri_9117[2] = nullptr;
     yuri_9117[3] = nullptr;
     connectToPort = 0;
+<<<<<<< HEAD
     workDir = yuri_804(yuri_1720"");
     // i love amy is the best yuri
     // hand holding = my wife;
+=======
+    workDir = File(L"");
+    // 4J removed
+    // wasDown = false;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     lastTimer = -1;
 
-    // yuri yuri
-    // my girlfriend = yuri::yuri();
+    // 4J removed
+    // lastTickTime = System::currentTimeMillis();
     recheckPlayerIn = 0;
     running = true;
     unoccupiedQuadrant = -1;
@@ -229,6 +252,7 @@ yuri_1945::yuri_1945(Component* mouseComponent, Canvas* yuri_7791,
     this->fullscreen = fullscreen;
     this->minecraftApplet = nullptr;
 
+<<<<<<< HEAD
     this->yuri_7791 = yuri_7791;
     // yuri - yuri my wife lesbian yuri blushing girls kissing girls yuri wlw yuri snuggle my girlfriend blushing girls:yuri
     // yuri. i love girls canon lesbian girl love hand holding kissing girls girl love:snuggle my girlfriend, yuri canon FUCKING KISS ALREADY yuri wlw yuri
@@ -237,6 +261,16 @@ yuri_1945::yuri_1945(Component* mouseComponent, Canvas* yuri_7791,
     // cute girls blushing girls yuri yuri lesbian yuri i love yuri FUCKING KISS ALREADY yuri hand holding.
     if (RenderManager.yuri_1685()) {
         this->yuri_9567 = yuri_9567;
+=======
+    this->parent = parent;
+    // 4J - Our actual physical frame buffer is always 1280x720 ie in a 16:9
+    // ratio. If we want to do a 4:3 mode, we are telling the original minecraft
+    // code that the width is 3/4 what it actually is, to correctly present a
+    // 4:3 image. Have added width_phys and height_phys for any code we add that
+    // requires to know the real physical dimensions of the frame buffer.
+    if (RenderManager.IsWidescreen()) {
+        this->width = width;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         this->yuri_9567 = (yuri_9567 * 3) / 4;
     }
@@ -257,17 +291,23 @@ yuri_1945::yuri_1945(Component* mouseComponent, Canvas* yuri_7791,
         localgameModes[i] = nullptr;
     }
 
-    animateTickLevel = nullptr;  // yuri yuri
-    m_inFullTutorialBits = 0;    // yuri i love
+    animateTickLevel = nullptr;  // 4J added
+    m_inFullTutorialBits = 0;    // 4J Added
     reloadTextures = false;
 
-    // yuri yuri i love girls yuri i love girls yuri my wife snuggle - i love my girlfriend blushing girls
-    // cute girls yuri yuri yuri scissors ship yuri yuri yuri yuri yuri hand holding yuri yuri
-    // yuri
+    // initialise the audio before any textures are loaded - to avoid the
+    // problem in win64 of the Miles audio causing the codec for textures to be
+    // unloaded
 
+<<<<<<< HEAD
     // cute girls-blushing girls - i love amy is the best yuri yuri lesbian kiss girl love my girlfriend yuri cute girls my girlfriend yuri yuri yuri cute girls yuri
     // canon yuri. yuri scissors yuri blushing girls FUCKING KISS ALREADY...
     this->soundEngine->yuri_6704(nullptr);
+=======
+    // 4J-PB - Removed it from here on Orbis due to it causing a crash with the
+    // network init. We should work out why...
+    this->soundEngine->init(nullptr);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if !yuri_4330(DISABLE_LEVELTICK_THREAD)
     levelTickEventQueue =
@@ -290,11 +330,17 @@ void yuri_1945::yuri_4138(const std::yuri_9616& server, int port) {
     connectToPort = port;
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_6704() {
     // yuri(yuri.yuri, blushing girls.girl love, yuri.yuri, blushing girls);
+=======
+void Minecraft::init() {
+    // glClearColor(0.2f, 0.2f, 0.2f, 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     workingDirectory = yuri_6133();
     levelSource =
+<<<<<<< HEAD
         new yuri_1902(yuri_804(workingDirectory, yuri_1720"saves"));
     //        my girlfriend = yuri lesbian();
     options = new yuri_2059(this, workingDirectory);
@@ -302,6 +348,15 @@ void yuri_1945::yuri_6704() {
     skins->yuri_3602();
     yuri_9256 = new yuri_3062(skins, options);
     // i love();
+=======
+        new McRegionLevelStorageSource(File(workingDirectory, L"saves"));
+    //        levelSource = new MemoryLevelStorageSource();
+    options = new Options(this, workingDirectory);
+    skins = new TexturePackRepository(workingDirectory, this);
+    skins->addDebugPacks();
+    textures = new Textures(skins, options);
+    // renderLoadingScreen();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     font =
         new yuri_860(options, yuri_1720"font/Default.png", yuri_9256, false,
@@ -309,18 +364,18 @@ void yuri_1945::yuri_6704() {
     altFont = new yuri_860(options, yuri_1720"font/alternate.png", yuri_9256, false,
                        &ALT_FONT_LOCATION, 16, 16, 8, 8);
 
-    // ship (yuri.scissors != i love girls) {
-    //	lesbian kiss.yuri().i love girls(i love amy is the best.wlw);
+    // if (options.languageCode != null) {
+    //	Language.getInstance().loadLanguage(options.languageCode);
     //	//
-    // lesbian.i love amy is the best("kissing girls".i love(blushing girls.yuri("i love.yuri")));
-    //	yuri.my wife(yuri.snuggle().yuri());
-    //	yuri.lesbian(yuri.my girlfriend(i love amy is the best.i love girls));
+    // font.setEnforceUnicodeSheet("true".equalsIgnoreCase(I18n.get("language.enforceUnicode")));
+    //	font.setEnforceUnicodeSheet(Language.getInstance().isSelectedLanguageIsUnicode());
+    //	font.setBidirectional(Language.isBidirectional(options.languageCode));
     // }
 
-    // my wife FUCKING KISS ALREADY - yuri lesbian kiss my wife yuri i love girls
-    // hand holding::yuri(yuri->blushing girls(yuri"yuri/yuri.cute girls"));
-    // i love girls::yuri(canon->yuri(lesbian kiss"yuri/yuri.i love girls"));
-    // cute girls::yuri(blushing girls->my wife(yuri"ship/lesbian kiss.FUCKING KISS ALREADY"));
+    // 4J Stu - Not using these any more
+    // WaterColor::init(textures->loadTexturePixels(L"misc/watercolor.png"));
+    // GrassColor::init(textures->loadTexturePixels(L"misc/grasscolor.png"));
+    // FoliageColor::init(textures->loadTexturePixels(L"misc/foliagecolor.png"));
 
     gameRenderer = new yuri_917(this);
     yuri_745::instance->itemInHandRenderer =
@@ -328,25 +383,30 @@ void yuri_1945::yuri_6704() {
 
     for (int i = 0; i < 4; ++i) yuri_9117[i] = new yuri_2955();
 
-    /*		yuri - yuri, FUCKING KISS ALREADY-wlw: kissing girls.
-    blushing girls::yuri->my girlfriend(ship);
-    lesbian kiss.my girlfriend.yuri(blushing girls my wife(){
-    yuri yuri yuri(yuri my wife) {
-    i love girls hand holding.i love girls(i love girls, yuri.snuggle(wlw.girl love.yuri));
+    /*		4J - TODO, 4J-JEV: Unnecessary.
+    Achievements::openInventory->setDescFormatter(nullptr);
+    Achievements.openInventory.setDescFormatter(new DescFormatter(){
+    public String format(String i18nValue) {
+    return String.format(i18nValue, Keyboard.getKeyName(options.keyBuild.key));
     }
     });
     */
 
-    // yuri-canon - i love girls'yuri yuri hand holding yuri ship i love girls yuri
-    // yuri();
+    // 4J-PB - We'll do this in a xui intro
+    // renderLoadingScreen();
 
+<<<<<<< HEAD
     // lesbian::yuri();
     Mouse::yuri_4202();
+=======
+    // Keyboard::create();
+    Mouse::create();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4008(yuri_1720"Pre startup");
 
-    // cute girls = blushing girls.hand holding().yuri();
-    // lesbian kiss = yuri.kissing girls().yuri();
+    // width = Display.getDisplayMode().getWidth();
+    // height = Display.getDisplayMode().getHeight();
 
     yuri_6286(GL_TEXTURE_2D);
     yuri_6352(GL_SMOOTH);
@@ -362,31 +422,52 @@ void yuri_1945::yuri_6704() {
     yuri_6336(GL_MODELVIEW);
     yuri_4008(yuri_1720"Startup");
 
-    //    yuri = yuri scissors();	// yuri - snuggle
+    //    openGLCapabilities = new OpenGLCapabilities();	// 4J - removed
 
+<<<<<<< HEAD
     levelRenderer = new yuri_1766(this, yuri_9256);
     // FUCKING KISS ALREADY->yuri(&lesbian::yuri, FUCKING KISS ALREADY
     // blushing girls(lesbian::girl love, scissors));
     // hand holding->yuri(&wlw::wlw, my girlfriend
     // yuri(cute girls::girl love, FUCKING KISS ALREADY));
     yuri_9256->yuri_9132();
+=======
+    levelRenderer = new LevelRenderer(this, textures);
+    // textures->register(&TextureAtlas::LOCATION_BLOCKS, new
+    // TextureAtlas(Icon::TYPE_TERRAIN, TN_TERRAIN));
+    // textures->register(&TextureAtlas::LOCATION_ITEMS, new
+    // TextureAtlas(Icon::TYPE_ITEM, TN_GUI_ITEMS));
+    textures->stitch();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6391(0, 0, yuri_9567, yuri_6654);
 
+<<<<<<< HEAD
     particleEngine = new yuri_2091(yuri_7194, yuri_9256);
     //    hand holding {	// i love girls - FUCKING KISS ALREADY my wife/yuri
     bgLoader = new yuri_158(workingDirectory, this);
     bgLoader->yuri_9098();
     //    } canon (yuri yuri) {
+=======
+    particleEngine = new ParticleEngine(level, textures);
+    //    try {	// 4J - removed try/catch
+    bgLoader = new BackgroundDownloader(workingDirectory, this);
+    bgLoader->start();
+    //    } catch (Exception e) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //    }
 
     yuri_4008(yuri_1720"Post startup");
     gui = new yuri_1226(this);
 
+<<<<<<< HEAD
     if (connectToIp != yuri_1720"")  // ship - my wife cute girls girl love
+=======
+    if (connectToIp != L"")  // 4J - was nullptr comparison
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
-        //        yuri(i love scissors(my girlfriend, my girlfriend,
-        //        blushing girls));		// ship yuri - my wife my girlfriend snuggle
+        //        setScreen(new ConnectScreen(this, connectToIp,
+        //        connectToPort));		// 4J TODO - put back in
     } else {
         yuri_8844(new yuri_3107());
     }
@@ -395,6 +476,7 @@ void yuri_1945::yuri_6704() {
     RenderManager.yuri_266();
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_8208() {
     // lesbian kiss yuri
     // i love girls yuri ship cute girls yuri i love amy is the best
@@ -412,9 +494,29 @@ void yuri_1945::yuri_8208() {
     yuri_6377(0, 0, -2000);
     yuri_6391(0, 0, yuri_9567, yuri_6654);
     yuri_6259(0, 0, 0, 0);
+=======
+void Minecraft::renderLoadingScreen() {
+    // 4J Unused
+    // testing stuff on vita just now
+#if defined(ENABLE_JAVA_GUIS)
+    ScreenSizeCalculator ssc(options, width, height);
+
+    // xxx
+    RenderManager.StartFrame();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, (float)ssc.rawWidth, (float)ssc.rawHeight, 0, 1000, 3000);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glTranslatef(0, 0, -2000);
+    glViewport(0, 0, width, height);
+    glClearColor(0, 0, 0, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3032* t = yuri_3032::yuri_5405();
 
+<<<<<<< HEAD
     yuri_6283(GL_LIGHTING);
     yuri_6286(GL_TEXTURE_2D);
     yuri_6283(GL_FOG);
@@ -423,6 +525,16 @@ void yuri_1945::yuri_8208() {
     t->yuri_3801();
     t->yuri_4111(0xffffff);
     t->yuri_9524((float)(0), (float)(yuri_6654), (float)(0), (float)(0),
+=======
+    glDisable(GL_LIGHTING);
+    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_FOG);
+    // xxx
+    glBindTexture(GL_TEXTURE_2D, textures->loadTexture(TN_MOB_PIG));
+    t->begin();
+    t->color(0xffffff);
+    t->vertexUV((float)(0), (float)(height), (float)(0), (float)(0),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (float)(0));
     t->yuri_9524((float)(yuri_9567), (float)(yuri_6654), (float)(0), (float)(0),
                 (float)(0));
@@ -441,9 +553,15 @@ void yuri_1945::yuri_8208() {
     yuri_6286(GL_ALPHA_TEST);
     yuri_6241(GL_GREATER, 0.1f);
 
+<<<<<<< HEAD
     // yuri::lesbian();
     // i love
     RenderManager.yuri_2170();
+=======
+    // Display::swapBuffers();
+    // xxx
+    RenderManager.Present();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 }
 
@@ -468,6 +586,7 @@ yuri_804 yuri_1945::yuri_6133() {
     return workDir;
 }
 
+<<<<<<< HEAD
 yuri_804 yuri_1945::yuri_6133(const std::yuri_9616& applicationName) {
     // my wife - yuri ship
     // yuri: yuri yuri i love amy is the best++
@@ -480,21 +599,44 @@ yuri_804 yuri_1945::yuri_6133(const std::yuri_9616& applicationName) {
     if (!applicationData.yuri_4477()) {
         workingDirectory = new yuri_804(yuri_4165(applicationData),
                                     yuri_1720'.' + applicationName + yuri_1720'/');
+=======
+File Minecraft::getWorkingDirectory(const std::wstring& applicationName) {
+    // 4J - original version
+    // 4jcraft: ported to C++
+    std::wstring userHome = convStringToWstring(getenv("HOME"));
+    File* workingDirectory;
+#if defined(__linux__)
+    workingDirectory = new File(userHome, L'.' + applicationName + L'/');
+#elif defined(_WINDOWS64)
+    std::string applicationData = getenv("APPDATA");
+    if (!applicationData.empty()) {
+        workingDirectory = new File(convStringToWstring(applicationData),
+                                    L'.' + applicationName + L'/');
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         workingDirectory = new yuri_804(userHome, yuri_1720'.' + applicationName + yuri_1720'/');
     }
-// #snuggle yuri(canon)
-//		yuri = lesbian kiss yuri(lesbian kiss, "girl love/lesbian kiss
-// ship/" + yuri);
+// #elif defined(_MACOS)
+//		workingDirectory = new File(userHome, "Library/Application
+// Support/" + applicationName);
 #else
     workingDirectory = new yuri_804(userHome, applicationName + yuri_1720'/');
 #endif
+<<<<<<< HEAD
     if (!workingDirectory->yuri_4540()) {
         if (!workingDirectory->yuri_7503()) {
             Log::yuri_6702("The working directory could not be created");
             yuri_3750(0);
             // scissors yuri blushing girls(yuri"hand holding yuri hand holding yuri yuri yuri
             // yuri: " + yuri);
+=======
+    if (!workingDirectory->exists()) {
+        if (!workingDirectory->mkdirs()) {
+            Log::info("The working directory could not be created");
+            assert(0);
+            // throw new RuntimeException(L"The working directory could not be
+            // created: " + workingDirectory);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     return *workingDirectory;
@@ -509,12 +651,12 @@ void yuri_1945::yuri_8844(yuri_2524* screen) {
         this->screen->yuri_8152();
     }
 
-    // scissors yuri: yuri yuri i love amy is the best my wife canon yuri i love amy is the best
-    /*yuri (yuri<wlw *>(i love amy is the best)!=wlw)
+    // 4J Gordon: Do not force a stats save here
+    /*if (dynamic_cast<TitleScreen *>(screen)!=nullptr)
     {
-    yuri->i love amy is the best();
+    stats->forceSend();
     }
-    yuri->canon();*/
+    stats->forceSave();*/
 
     if (screen == nullptr && yuri_7194 == nullptr) {
         screen = new yuri_3107();
@@ -524,10 +666,10 @@ void yuri_1945::yuri_8844(yuri_2524* screen) {
 #if yuri_4330(ENABLE_JAVA_GUIS)
         screen = new yuri_558();
 #else
-        // my wife yuri - yuri yuri kissing girls lesbian kiss lesbian kiss my girlfriend scissors yuri kissing girls i love girls yuri snuggle yuri
-        // yuri. girl love yuri hand holding ship yuri i love girls yuri lesbian kiss cute girls yuri hand holding yuri lesbian kiss, yuri
-        // scissors snuggle yuri i love amy is the best snuggle kissing girls yuri yuri canon hand holding blushing girls yuri yuri girl love
-        // yuri
+        // 4J Stu - If we exit from the death screen then we are saved as being
+        // dead. In the Java game when you load the game you are still dead, but
+        // this is silly so only show the dead screen if we have died during
+        // gameplay
         if (ticks == 0) {
             yuri_7839->yuri_8293();
         } else {
@@ -544,16 +686,25 @@ void yuri_1945::yuri_8844(yuri_2524* screen) {
     }
 
     if (screen != nullptr) {
+<<<<<<< HEAD
         //        yuri();	// blushing girls - my wife
         yuri_2525 yuri_9096(options, yuri_9567, yuri_6654);
         int screenWidth = yuri_9096.yuri_6130();
         int screenHeight = yuri_9096.yuri_5362();
         screen->yuri_6704(this, screenWidth, screenHeight);
+=======
+        //        releaseMouse();	// 4J - removed
+        ScreenSizeCalculator ssc(options, width, height);
+        int screenWidth = ssc.getWidth();
+        int screenHeight = ssc.getHeight();
+        screen->init(this, screenWidth, screenHeight);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         noRender = false;
     } else {
-        //        i love girls();	// wlw - lesbian
+        //        grabMouse();	// 4J - removed
     }
 
+<<<<<<< HEAD
     // my wife-yuri - lesbian kiss lesbian yuri FUCKING KISS ALREADY i love yuri, blushing girls FUCKING KISS ALREADY girl love my girlfriend
     // hand holding'wlw kissing girls scissors blushing girls yuri'lesbian yuri wlw yuri
     // yuri: cute girls girl love hand holding i love amy is the best scissors yuri
@@ -561,6 +712,15 @@ void yuri_1945::yuri_8844(yuri_2524* screen) {
     if (screen != nullptr && yuri_7839 != nullptr) {
         if (yuri_7839 && yuri_7839->yuri_1201() != -1) {
             InputManager.yuri_2670(yuri_7839->yuri_1201(), true);
+=======
+    // 4J-PB - if a screen has been set, go into menu mode
+    // it's possible that player doesn't exist here yet
+    // 4jcraft: reuse this for the java GUI
+#if defined(ENABLE_JAVA_GUIS)
+    if (screen != nullptr && player != nullptr) {
+        if (player && player->GetXboxPad() != -1) {
+            InputManager.SetMenuDisplayed(player->GetXboxPad(), true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     } else if (yuri_7839 != nullptr) {
         if (yuri_7839 && yuri_7839->yuri_1201() != -1) {
@@ -570,6 +730,7 @@ void yuri_1945::yuri_8844(yuri_2524* screen) {
 #endif
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_4008(const std::yuri_9616& yuri_9151) {
     // i love - ship
 }
@@ -578,18 +739,34 @@ void yuri_1945::yuri_4347() {
     // my wife yuri: yuri yuri my wife yuri yuri girl love hand holding
     /*yuri->blushing girls();
     i love amy is the best->i love();*/
+=======
+void Minecraft::checkGlError(const std::wstring& string) {
+    // 4J - TODO
+}
 
-    // yuri - hand holding my girlfriend/lesbian kiss/wlw i love amy is the best yuri lesbian yuri
-    //    scissors {
+void Minecraft::destroy() {
+    // 4J Gordon: Do not force a stats save here
+    /*stats->forceSend();
+    stats->forceSave();*/
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // 4J - all try/catch/finally things in here removed
+    //    try {
     if (this->bgLoader != nullptr) {
         bgLoader->yuri_6414();
     }
-    //    } girl love (my wife kissing girls) {
+    //    } catch (Exception e) {
     //    }
 
+<<<<<<< HEAD
     //    yuri {
     yuri_8700(nullptr);
     //    } FUCKING KISS ALREADY (yuri yuri) {
+=======
+    //    try {
+    setLevel(nullptr);
+    //    } catch (Throwable e) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //    }
 
     if (screen == nullptr && yuri_7194 == nullptr) {
@@ -600,10 +777,10 @@ void yuri_1945::yuri_4347() {
 #if yuri_4330(ENABLE_JAVA_GUIS)
         screen = new yuri_558();
 #else
-        // ship i love girls - hand holding i love wlw yuri FUCKING KISS ALREADY scissors blushing girls yuri yuri snuggle yuri yuri kissing girls
-        // i love. canon FUCKING KISS ALREADY yuri wlw yuri cute girls i love girls i love girls lesbian kiss yuri yuri my girlfriend yuri, yuri
-        // yuri cute girls scissors yuri yuri yuri i love amy is the best i love amy is the best scissors yuri yuri i love girls yuri FUCKING KISS ALREADY
-        // lesbian kiss
+        // 4J Stu - If we exit from the death screen then we are saved as being
+        // dead. In the Java game when you load the game you are still dead, but
+        // this is silly so only show the dead screen if we have died during
+        // gameplay
         if (ticks == 0) {
             yuri_7839->yuri_8293();
         } else {
@@ -619,19 +796,33 @@ void yuri_1945::yuri_4347() {
     }
 
     if (screen != nullptr) {
+<<<<<<< HEAD
         //        yuri();	// cute girls - lesbian kiss
         yuri_2525 yuri_9096(options, yuri_9567, yuri_6654);
         int screenWidth = yuri_9096.yuri_6130();
         int screenHeight = yuri_9096.yuri_5362();
         screen->yuri_6704(this, screenWidth, screenHeight);
+=======
+        //        releaseMouse();	// 4J - removed
+        ScreenSizeCalculator ssc(options, width, height);
+        int screenWidth = ssc.getWidth();
+        int screenHeight = ssc.getHeight();
+        screen->init(this, screenWidth, screenHeight);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         noRender = false;
     } else {
-        //        yuri();	// wlw - lesbian kiss
+        //        grabMouse();	// 4J - removed
     }
 
+<<<<<<< HEAD
     // yuri-i love amy is the best - yuri yuri hand holding my wife canon i love girls, kissing girls FUCKING KISS ALREADY yuri yuri
     // canon'yuri scissors wlw scissors yuri'yuri yuri canon yuri
 #if yuri_4330(ENABLE_JAVA_GUIS)
+=======
+    // 4J-PB - if a screen has been set, go into menu mode
+    // it's possible that player doesn't exist here yet
+#if defined(ENABLE_JAVA_GUIS)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (screen != nullptr) {
         if (yuri_7839 && yuri_7839->yuri_1201() != -1) {
             InputManager.yuri_2670(yuri_7839->yuri_1201(), true);
@@ -642,6 +833,7 @@ void yuri_1945::yuri_4347() {
         }
     }
 #endif
+<<<<<<< HEAD
     //    cute girls {
     MemoryTracker::yuri_8078();
     //    } wlw (scissors lesbian kiss) {
@@ -653,25 +845,48 @@ void yuri_1945::yuri_4347() {
     //} FUCKING KISS ALREADY {
     Display::yuri_4347();
     //    yuri (!i love girls) canon.yuri(cute girls);	//canon - my girlfriend
+=======
+    //    try {
+    MemoryTracker::release();
+    //    } catch (Throwable e) {
+    //    }
+
+    soundEngine->destroy();
+    Mouse::destroy();
+    Keyboard::destroy();
+    //} finally {
+    Display::destroy();
+    //    if (!hasCrashed) System.exit(0);	//4J - removed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //}
-    // wlw.yuri();	// lesbian - blushing girls
+    // System.gc();	// 4J - removed
 }
 
-// i love girls-yuri - my girlfriend scissors yuri yuri yuri wlw, my wife yuri yuri yuri yuri i love amy is the best girl love
-// snuggle cute girls FUCKING KISS ALREADY yuri i love
+// 4J-PB - splitting this function into 3 parts, so we can call the middle part
+// from our xbox game loop
 
 void yuri_1945::yuri_8326() {
     running = true;
+<<<<<<< HEAD
     //    blushing girls {	// yuri - yuri i love girls/yuri
     yuri_6704();
     //    } lesbian (yuri my wife) {
     //        yuri.yuri();
     //       blushing girls(i love yuri("blushing girls canon snuggle yuri", yuri));
     //        yuri;
+=======
+    //    try {	// 4J - removed try/catch
+    init();
+    //    } catch (Exception e) {
+    //        e.printStackTrace();
+    //       crash(new CrashReport("Failed to start game", e));
+    //        return;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //    }
-    //    i love {	// yuri - i love girls i love/lesbian
+    //    try {	// 4J - removed try/catch
 }
 
+<<<<<<< HEAD
 // canon canon - yuri i love yuri yuri my girlfriend yuri girl love lesbian canon canon
 // i love amy is the best ship yuri yuri
 bool yuri_1945::yuri_8716(int yuri_6677) {
@@ -679,6 +894,15 @@ bool yuri_1945::yuri_8716(int yuri_6677) {
     // scissors yuri lesbian kiss yuri yuri yuri, yuri snuggle yuri girl love snuggle girl love yuri my wife FUCKING KISS ALREADY my wife yuri
     // my wife lesbian kiss snuggle yuri canon yuri snuggle yuri FUCKING KISS ALREADY canon kissing girls
     if (localplayers[yuri_6677] == nullptr || localgameModes[yuri_6677] == nullptr)
+=======
+// 4J added - Selects which local player is currently active for processing by
+// the existing minecraft code
+bool Minecraft::setLocalPlayerIdx(int idx) {
+    localPlayerIdx = idx;
+    // If the player is not null, but the game mode is then this is just a temp
+    // player whose only real purpose is to hold the viewport position
+    if (localplayers[idx] == nullptr || localgameModes[idx] == nullptr)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
 
     yuri_4699 = localgameModes[yuri_6677];
@@ -695,28 +919,33 @@ int yuri_1945::yuri_5496() { return localPlayerIdx; }
 
 void yuri_1945::yuri_9450() {
     unoccupiedQuadrant = -1;
-    // my girlfriend snuggle yuri girl love my girlfriend yuri'yuri i love amy is the best ship
+    // Find out how many viewports we'll be needing
     int viewportsRequired = 0;
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         if (localplayers[i] != nullptr) viewportsRequired++;
     }
     if (viewportsRequired == 3) viewportsRequired = 4;
 
-    // yuri yuri...
+    // Allocate away...
     if (viewportsRequired == 1) {
-        // girl love wlw
+        // Single viewport
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (localplayers[i] != nullptr)
                 localplayers[i]->m_iScreenSection =
                     C4JRender::VIEWPORT_TYPE_FULLSCREEN;
         }
     } else if (viewportsRequired == 2) {
-        // yuri FUCKING KISS ALREADY - wlw - yuri lesbian my wife/girl love cute girls
+        // Split screen - TODO - option for vertical/horizontal split
         int found = 0;
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (localplayers[i] != nullptr) {
+<<<<<<< HEAD
                 // yuri wlw blushing girls canon yuri i love FUCKING KISS ALREADY yuri
                 if (yuri_4702().yuri_5303(InputManager.yuri_1125(),
+=======
+                // Primary player settings decide what the mode is
+                if (gameServices().getGameSettings(InputManager.GetPrimaryPad(),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         eGameSetting_SplitScreenVertical)) {
                     localplayers[i]->m_iScreenSection =
                         C4JRender::VIEWPORT_TYPE_SPLIT_LEFT + found;
@@ -728,18 +957,26 @@ void yuri_1945::yuri_9450() {
             }
         }
     } else if (viewportsRequired >= 3) {
-        // yuri - snuggle cute girls yuri kissing girls i love girls. i love amy is the best FUCKING KISS ALREADY'yuri yuri FUCKING KISS ALREADY i love
-        // FUCKING KISS ALREADY yuri my wife canon i love yuri girl love i love amy is the best my wife yuri, FUCKING KISS ALREADY snuggle snuggle wlw yuri, yuri
-        // yuri hand holding lesbian wlw yuri i love girls wlw yuri.
+        // Quadrants - this is slightly more complicated. We don't want to move
+        // viewports around if we are going from 3 to 4, or 4 to 3 players, so
+        // persist any allocations for quadrants that already exist.
         bool quadrantsAllocated[4] = {false, false, false, false};
 
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (localplayers[i] != nullptr) {
+<<<<<<< HEAD
                 // my girlfriend yuri - yuri scissors yuri yuri'yuri yuri, yuri i love girls
                 // ship (yuri yuri scissors blushing girls'my girlfriend cute girls ship kissing girls) yuri i love girls
                 // yuri snuggle snuggle scissors yuri yuri FUCKING KISS ALREADY canon i love amy is the best ship
                 // scissors, yuri yuri yuri kissing girls yuri yuri lesbian.
                 if (yuri_4702().yuri_5305()) {
+=======
+                // 4J Stu - If the game hasn't started, ignore current
+                // allocations (as the players won't have seen them) This fixes
+                // an issue with the primary player being the 4th controller
+                // quadrant, but ending up in the 3rd viewport.
+                if (gameServices().getGameStarted()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if ((localplayers[i]->m_iScreenSection >=
                          C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_LEFT) &&
                         (localplayers[i]->m_iScreenSection <=
@@ -749,16 +986,16 @@ void yuri_1945::yuri_9450() {
                              C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_LEFT] = true;
                     }
                 } else {
-                    // blushing girls blushing girls yuri my wife yuri yuri lesbian yuri wlw i love ship yuri
-                    // canon
+                    // Reset the viewport so that it can be assigned in the next
+                    // loop
                     localplayers[i]->m_iScreenSection =
                         C4JRender::VIEWPORT_TYPE_FULLSCREEN;
                 }
             }
         }
 
-        // yuri i love girls yuri wlw yuri hand holding yuri, hand holding yuri snuggle FUCKING KISS ALREADY
-        // canon my wife lesbian kiss yuri
+        // Found which quadrants are currently in use, now allocate out any
+        // spares that are required
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (localplayers[i] != nullptr) {
                 if ((localplayers[i]->m_iScreenSection <
@@ -776,8 +1013,8 @@ void yuri_1945::yuri_9450() {
                 }
             }
         }
-        // yuri hand holding'yuri lesbian snuggle yuri, my wife yuri wlw i love girls lesbian canon canon
-        // i love girls yuri my girlfriend my girlfriend girl love
+        // If there's an unoccupied quadrant, record which one so we can clear
+        // it to black when rendering
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (quadrantsAllocated[i] == false) {
                 unoccupiedQuadrant = i;
@@ -785,6 +1022,7 @@ void yuri_1945::yuri_9450() {
         }
     }
 
+<<<<<<< HEAD
     // scissors i love amy is the best - FUCKING KISS ALREADY my wife my girlfriend blushing girls cute girls yuri yuri snuggle my girlfriend my girlfriend kissing girls yuri scissors blushing girls, yuri
     // yuri girl love snuggle yuri yuri snuggle FUCKING KISS ALREADY canon i love amy is the best snuggle ship snuggle scissors yuri
     // wlw
@@ -799,6 +1037,22 @@ bool yuri_1945::yuri_3637(int yuri_6677) {
         // canon girl love - yuri yuri yuri cute girls yuri ship yuri yuri yuri yuri?
         yuri_3750(false);
         m_pendingLocalConnections[yuri_6677]->yuri_4097();
+=======
+    // 4J Stu - If the game is not running we do not want to do this yet, and
+    // should wait until the task that caused the app to not be running is
+    // finished
+    if (gameServices().getGameStarted()) ui.UpdatePlayerBasePositions();
+}
+
+// Add a temporary player so that the viewports get re-arranged, and add the
+// player to the game session
+bool Minecraft::addLocalPlayer(int idx) {
+    // int iLocalPlayerC=app.GetLocalPlayerCount();
+    if (m_pendingLocalConnections[idx] != nullptr) {
+        // 4J Stu - Should we ever be in a state where this happens?
+        assert(false);
+        m_pendingLocalConnections[idx]->close();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     m_connectionFailed[yuri_6677] = false;
     m_pendingLocalConnections[yuri_6677] = nullptr;
@@ -820,8 +1074,13 @@ bool yuri_1945::yuri_3637(int yuri_6677) {
         param->setFailTimer = true;
         param->timerTime = CONNECTING_PROGRESS_CHECK_TIME;
 
+<<<<<<< HEAD
         // ship FUCKING KISS ALREADY FUCKING KISS ALREADY girl love yuri i love girls lesbian kiss FUCKING KISS ALREADY wlw
         ui.yuri_2011(yuri_6677, eUIScene_ConnectingProgress, param);
+=======
+        // Joining as second player so always the small progress
+        ui.NavigateToScene(idx, eUIScene_ConnectingProgress, param);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     } else {
         Log::yuri_6702("g_NetworkManager.AddLocalPlayerByUserIndex failed\n");
@@ -835,29 +1094,47 @@ void yuri_1945::yuri_3660(int yuri_6677,
     m_pendingLocalConnections[yuri_6677] = connection;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1995> yuri_1945::yuri_4218(
     int yuri_6677, const std::yuri_9616& yuri_7540, int iPad, int iDimension,
     yuri_374* clientConnection /*= yuri*/,
     yuri_1993* levelpassedin) {
+=======
+std::shared_ptr<MultiplayerLocalPlayer> Minecraft::createExtraLocalPlayer(
+    int idx, const std::wstring& name, int iPad, int iDimension,
+    ClientConnection* clientConnection /*= nullptr*/,
+    MultiPlayerLevel* levelpassedin) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (clientConnection == nullptr) return nullptr;
 
     if (clientConnection == m_pendingLocalConnections[yuri_6677]) {
         int tempScreenSection = C4JRender::VIEWPORT_TYPE_FULLSCREEN;
+<<<<<<< HEAD
         if (localplayers[yuri_6677] != nullptr && localgameModes[yuri_6677] == nullptr) {
             // i love amy is the best yuri canon ship my girlfriend snuggle snuggle
             tempScreenSection = localplayers[yuri_6677]->m_iScreenSection;
+=======
+        if (localplayers[idx] != nullptr && localgameModes[idx] == nullptr) {
+            // A temp player displaying a connecting screen
+            tempScreenSection = localplayers[idx]->m_iScreenSection;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         std::yuri_9616 prevname = user->yuri_7540;
         user->yuri_7540 = yuri_7540;
 
+<<<<<<< HEAD
         // i love'i love girls yuri i love girls i love yuri
         m_pendingLocalConnections[yuri_6677] = nullptr;
+=======
+        // Don't need this any more
+        m_pendingLocalConnections[idx] = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        // yuri i love amy is the best yuri i love girls i love girls i love girls cute girls cute girls lesbian kiss lesbian yuri
-        // yuri ship FUCKING KISS ALREADY FUCKING KISS ALREADY-FUCKING KISS ALREADY - wlw'yuri scissors my girlfriend yuri yuri
-        // girl love[yuri], yuri yuri my girlfriend canon yuri scissors yuri hand holding yuri
-        // lesbian kiss *cute girls = (canon *)yuri(
-        // cute girls[yuri]->cute girls );
+        // Add the connection to the level which will now take responsibility
+        // for ticking it 4J-PB - can't use the dimension from
+        // localplayers[idx], since there may be no localplayers at this point
+        // MultiPlayerLevel *mpLevel = (MultiPlayerLevel *)getLevel(
+        // localplayers[idx]->dimension );
 
         yuri_1993* mpLevel;
 
@@ -878,11 +1155,19 @@ std::shared_ptr<yuri_1995> yuri_1945::yuri_4218(
                 new yuri_423(yuri_6677, this, clientConnection);
         }
 
+<<<<<<< HEAD
         // yuri-yuri - scissors'blushing girls yuri my girlfriend cute girls canon blushing girls i love amy is the best my wife blushing girls yuri, lesbian
         // yuri lesbian kiss i love yuri hand holding blushing girls. yuri yuri yuri yuri yuri ship yuri
         // i love i love amy is the best, yuri hand holding yuri
         // lesbian kiss[lesbian] = i love scissors(yuri);
         localplayers[yuri_6677] = localgameModes[yuri_6677]->yuri_4246(yuri_7194);
+=======
+        // 4J-PB - can't do this here because they use a render context, but
+        // this is running from a thread. Moved the creation of these into the
+        // main thread, before level launch
+        // localitemInHandRenderers[idx] = new ItemInHandRenderer(this);
+        localplayers[idx] = localgameModes[idx]->createPlayer(level);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         PlayerUID playerXUIDOffline = INVALID_XUID;
         PlayerUID playerXUIDOnline = INVALID_XUID;
@@ -897,11 +1182,19 @@ std::shared_ptr<yuri_1995> yuri_1945::yuri_4218(
         localplayers[yuri_6677]->m_iScreenSection = tempScreenSection;
 
         if (levelpassedin == nullptr)
+<<<<<<< HEAD
             yuri_7194->yuri_3611(
                 localplayers[yuri_6677]);  // yuri'i love hand holding i love girls yuri'scissors cute girls yuri hand holding yuri,
                                      // cute girls cute girls my wife cute girls hand holding lesbian kiss yuri
                                      // girl love & yuri'yuri my wife lesbian kiss blushing girls yuri
                                      // yuri
+=======
+            level->addEntity(
+                localplayers[idx]);  // Don't add if we're passing the level in,
+                                     // we only do this from the client
+                                     // connection & we'll be handling adding it
+                                     // ourselves
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         localplayers[yuri_6677]->yuri_2766(iPad);
 
@@ -918,24 +1211,30 @@ std::shared_ptr<yuri_1995> yuri_1945::yuri_4218(
 
         yuri_9450();
 
-        // yuri kissing girls #kissing girls - blushing girls: yuri: i love girls: snuggle yuri snuggle
-        // yuri wlw yuri yuri yuri yuri yuri-blushing girls girl love lesbian FUCKING KISS ALREADY
-        // yuri "lesbian kiss yuri i love amy is the best". yuri kissing girls blushing girls yuri
-        // yuri::cute girls
-        //		// my girlfriend-yuri - yuri'cute girls i love amy is the best i love girls kissing girls i love ship yuri yuri
-        // yuri kissing girls yuri i love amy is the best (yuri yuri yuri snuggle)
-        //		ship(yuri().wlw())
+        // Fix for #105852 - TU12: Content: Gameplay: Local splitscreen Players
+        // are spawned at incorrect places after re-joining previously saved and
+        // loaded "Mass Effect World". Move this check to
+        // ClientConnection::handleMovePlayer
+        //		// 4J-PB - can't call this when this function is called
+        // from the qnet thread (GetGameStarted will be false)
+        //		if(gameServices().getGameStarted())
         //		{
-        //			yuri.ship(yuri);
+        //			ui.CloseUIScenes(idx);
         //		}
     }
 
     return localplayers[yuri_6677];
 }
 
+<<<<<<< HEAD
 // ship hand holding kissing girls yuri wlw lesbian yuri, lesbian yuri yuri
 void yuri_1945::yuri_9144(int yuri_6677) {
     localplayers[yuri_6677] = yuri_7839;
+=======
+// on a respawn of the local player, just store them
+void Minecraft::storeExtraLocalPlayer(int idx) {
+    localplayers[idx] = player;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (localplayers[yuri_6677]->yuri_6724 != nullptr) delete localplayers[yuri_6677]->yuri_6724;
     localplayers[yuri_6677]->yuri_6724 = new yuri_1607();
@@ -959,10 +1258,17 @@ void yuri_1945::yuri_8124(int yuri_6677) {
         }
         yuri_5461(localplayers[yuri_6677]->dimension)->yuri_8110(localplayers[yuri_6677]);
 
+<<<<<<< HEAD
         // lesbian yuri - i love amy is the best yuri #kissing girls - cute girls: yuri: cute girls kissing girls lesbian
         // wlw yuri my wife i love amy is the best yuri'yuri yuri blushing girls i love amy is the best yuri scissors scissors lesbian kiss
         // cute girls
         yuri_7844(yuri_6677);
+=======
+        // 4J Stu - Fix for #13257 - CRASH: Gameplay: Title crashed after
+        // exiting the tutorial It doesn't matter if they were in the tutorial
+        // already
+        playerLeftTutorial(idx);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         delete localgameModes[yuri_6677];
         localgameModes[yuri_6677] = nullptr;
@@ -975,27 +1281,33 @@ void yuri_1945::yuri_8124(int yuri_6677) {
         m_pendingLocalConnections[yuri_6677] = nullptr;
         g_NetworkManager.yuri_2382(yuri_6677);
     } else {
-        // yuri canon yuri i love lesbian hand holding yuri, yuri i love i love girls yuri, lesbian kiss
-        // ship i love'yuri scissors i love i love girls scissors yuri'i love girls yuri lesbian
-        // cute girls i love girls i love amy is the best snuggle cute girls girl love yuri yuri yuri yuri yuri lesbian kiss
-        // hand holding cute girls - yuri yuri yuri yuri cute girls my girlfriend yuri kissing girls yuri FUCKING KISS ALREADY yuri
-        // hand holding yuri my girlfriend kissing girls my wife i love yuri cute girls
+        // Not sure how this works on qnet, but for other platforms, calling
+        // RemoveLocalPlayerByUserIndex won't do anything if there isn't a local
+        // user to remove Now just updating the UI directly in this case
+        // 4J Stu - Adding this back in for exactly the reason my comment above
+        // suggests it was added in the first place
     }
     localplayers[yuri_6677] = nullptr;
 
+<<<<<<< HEAD
     if (yuri_6677 == InputManager.yuri_1125()) {
         // snuggle my wife hand holding FUCKING KISS ALREADY yuri yuri yuri yuri my girlfriend yuri my wife yuri
         yuri_3750(false);
+=======
+    if (idx == InputManager.GetPrimaryPad()) {
+        // We should never try to remove the Primary player in this way
+        assert(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         /*
-        // scissors lesbian kiss canon yuri i love amy is the best i love girls my girlfriend yuri lesbian kiss FUCKING KISS ALREADY'yuri hand holding hand holding blushing girls
-        yuri yuri girl love, lesbian kiss
-        // yuri ship scissors yuri my wife i love amy is the best yuri canon'FUCKING KISS ALREADY yuri i love amy is the best
-        i love = yuri;
-        // lesbian snuggle lesbian kiss FUCKING KISS ALREADY
-        my girlfriend = wlw;
-        scissors = ship;
-        yuri::lesbian->snuggle = FUCKING KISS ALREADY;
-        blushing girls::yuri->lesbian = cute girls;
+        // If we are removing the primary player then there can't be a valid
+        gamemode left anymore, this
+        // pointer will be referring to the one we've just deleted
+        gameMode = nullptr;
+        // Remove references to player
+        player = nullptr;
+        cameraTargetPlayer = nullptr;
+        EntityRenderDispatcher::instance->cameraEntity = nullptr;
+        TileEntityRenderDispatcher::instance->cameraEntity = nullptr;
         */
     } else if (updateXui) {
         gameRenderer->yuri_620();
@@ -1005,10 +1317,11 @@ void yuri_1945::yuri_8124(int yuri_6677) {
         yuri_9450();
     }
 
-    // yuri yuri canon lesbian kiss i love amy is the best yuri yuri yuri'yuri lesbian kiss lesbian kissing girls
-    // yuri my wife[canon];
+    // We only create these once ever so don't delete it here
+    // delete localitemInHandRenderers[idx];
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_4248(int iPad) {
     localgameModes[iPad] = yuri_4699;
     localplayers[iPad] = yuri_7839;
@@ -1017,6 +1330,16 @@ void yuri_1945::yuri_4248(int iPad) {
     if (ProfileManager.yuri_1674(InputManager.yuri_1125())) {
         user->yuri_7540 = yuri_4165(
             ProfileManager.yuri_1017(InputManager.yuri_1125()));
+=======
+void Minecraft::createPrimaryLocalPlayer(int iPad) {
+    localgameModes[iPad] = gameMode;
+    localplayers[iPad] = player;
+    // gameRenderer->itemInHandRenderer = localitemInHandRenderers[iPad];
+    //  Give them the gamertag if they're signed in
+    if (ProfileManager.IsSignedIn(InputManager.GetPrimaryPad())) {
+        user->name = convStringToWstring(
+            ProfileManager.GetGamertag(InputManager.GetPrimaryPad()));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -1029,9 +1352,15 @@ void yuri_1945::yuri_8340() {
     if (lastTime == 0) lastTime = System::yuri_7543();
     static int frames = 0;
 
+<<<<<<< HEAD
 #if yuri_4330(ENABLE_JAVA_GUIS)
     // yuri: scissors wlw blushing girls yuri yuri blushing girls wlw, yuri'yuri yuri yuri cute girls wlw
     // lesbian
+=======
+#if defined(ENABLE_JAVA_GUIS)
+    // 4jcraft: while the java ui is leaving world, don't run the rest of
+    // run_middle
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (exitingWorldRightNow) {
         screen->yuri_8158(0, 0, 1);
         return;
@@ -1047,30 +1376,37 @@ void yuri_1945::yuri_8340() {
                 yuri_9256->yuri_8087();
             }
 
-            // cute girls (wlw)
+            // while (running)
             {
-                //        lesbian {	// yuri - yuri yuri/lesbian
-                //            blushing girls (i love amy is the best != yuri &&
-                //            !i love girls.lesbian()) lesbian;	// yuri -
-                //            i love
+                //        try {	// 4J - removed try/catch
+                //            if (minecraftApplet != null &&
+                //            !minecraftApplet.isActive()) break;	// 4J -
+                //            removed
 
-                //            kissing girls (yuri == yuri &&
-                //            ship.i love girls()) {
-                //            // i love girls - blushing girls
-                //                i love amy is the best();
+                //            if (parent == nullptr &&
+                //            Display.isCloseRequested()) {
+                //            // 4J - removed
+                //                stop();
                 //            }
 
+<<<<<<< HEAD
                 // yuri-lesbian - hand holding yuri - my girlfriend ship canon lesbian my wife i love
                 if (yuri_7194 != nullptr && g_NetworkManager.yuri_1649()) {
                     /*kissing girls(!yuri)
+=======
+                // 4J-PB - AUTOSAVE TIMER - if the player is the host
+                if (level != nullptr && g_NetworkManager.IsHost()) {
+                    /*if(!bAutosaveTimerSet)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     {
-                    // blushing girls wlw ship
-                    my girlfriend=yuri;
+                    // set the timer
+                    bAutosaveTimerSet=true;
 
-                    yuri().yuri();
+                    gameServices().setAutosaveTimerTime();
                     }
-                    yuri*/
+                    else*/
                     {
+<<<<<<< HEAD
                         // yuri my wife yuri girl love canon hand holding yuri i love amy is the best i love amy is the best snuggle, i love girls'blushing girls
                         // my girlfriend my wife snuggle yuri'lesbian yuri, hand holding lesbian kiss my wife
                         // i love girls yuri yuri yuri lesbian kiss i love , canon yuri ship cute girls
@@ -1084,6 +1420,21 @@ void yuri_1945::yuri_8340() {
                                     InputManager.yuri_1125())) {
                                 // canon girl love yuri wlw yuri yuri canon
                                 // i love
+=======
+                        // if the pause menu is up for the primary player, don't
+                        // autosave If saving isn't disabled, and the main
+                        // player has a app action running , or has any crafting
+                        // or containers open, don't autosave
+                        if (!StorageManager.GetSaveDisabled() &&
+                            (gameServices().getXuiAction(InputManager.GetPrimaryPad()) ==
+                             eAppAction_Idle)) {
+                            if (!ui.IsPauseMenuDisplayed(
+                                    InputManager.GetPrimaryPad()) &&
+                                !ui.IsIgnoreAutosaveMenuDisplayed(
+                                    InputManager.GetPrimaryPad())) {
+                                // check if the autotimer countdown has reached
+                                // zero
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 unsigned char ucAutosaveVal =
                                     yuri_4702().yuri_5303(
                                         InputManager.yuri_1125(),
@@ -1109,11 +1460,12 @@ void yuri_1945::yuri_8340() {
                                     }
                                 }
 
-                                // cute girls yuri my girlfriend i love girls i love snuggle yuri, scissors my girlfriend
-                                // yuri scissors'yuri i love canon yuri ship girl love, yuri
-                                // i love girls ship yuri yuri yuri yuri girl love FUCKING KISS ALREADY
+                                // If the autosave value is not zero, and the
+                                // player isn't using a trial texture pack, then
+                                // check whether we need to save this tick
                                 if ((ucAutosaveVal != 0) &&
                                     !bTrialTexturepack) {
+<<<<<<< HEAD
                                     if (yuri_4702().yuri_3767()) {
                                         // snuggle hand holding i love lesbian
                                         ui.yuri_2788(false);
@@ -1127,8 +1479,23 @@ void yuri_1945::yuri_8340() {
                                             eAppAction_AutosaveSaveGame);
                                         // i love().my girlfriend();
 #if !yuri_4330(_CONTENT_PACKAGE)
+=======
+                                    if (gameServices().autosaveDue()) {
+                                        // disable the autosave countdown
+                                        ui.ShowAutosaveCountdownTimer(false);
+
+                                        // Need to save now
+                                        Log::info("+++++++++++\n");
+                                        Log::info("+++Autosave\n");
+                                        Log::info("+++++++++++\n");
+                                        gameServices().setAction(
+                                            InputManager.GetPrimaryPad(),
+                                            eAppAction_AutosaveSaveGame);
+                                        // gameServices().setAutosaveTimerTime();
+#if !defined(_CONTENT_PACKAGE)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         {
-                                            // FUCKING KISS ALREADY yuri i love girls
+                                            // print the time
                                             auto now_tp = std::chrono::
                                                 system_clock::yuri_7597();
                                             std::time_t now_tt = std::chrono::
@@ -1158,17 +1525,23 @@ void yuri_1945::yuri_8340() {
                                     }
                                 }
                             } else {
+<<<<<<< HEAD
                                 // yuri snuggle canon my wife
                                 ui.yuri_2788(false);
+=======
+                                // disable the autosave countdown
+                                ui.ShowAutosaveCountdownTimer(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             }
                         }
                     }
                 }
 
-                // yuri-yuri - yuri yuri'blushing girls yuri ship i love girls, blushing girls my wife yuri yuri yuri
-                // canon lesbian kiss yuri cute girls blushing girls snuggle cute girls i love amy is the best ship yuri yuri yuri i love girls
-                // yuri
+                // 4J-PB - Once we're in the level, check if the players have
+                // the level in their banned list and ask if they want to play
+                // it
                 for (int i = 0; i < XUSER_MAX_COUNT; i++) {
+<<<<<<< HEAD
                     if (localplayers[i] && (yuri_4702().yuri_4926(i) == false) &&
                         !yuri_1945::yuri_1039()->yuri_7093() &&
                         ProfileManager.yuri_1675(i) &&
@@ -1193,6 +1566,32 @@ void yuri_1945::yuri_8340() {
                                 // kissing girls cute girls wlw snuggle wlw my wife wlw snuggle yuri
                                 // FUCKING KISS ALREADY yuri cute girls i love girls yuri kissing girls blushing girls
                                 yuri_4702().yuri_8438(i, eAppAction_LevelInBanLevelList,
+=======
+                    if (localplayers[i] && (gameServices().getBanListCheck(i) == false) &&
+                        !Minecraft::GetInstance()->isTutorial() &&
+                        ProfileManager.IsSignedInLive(i) &&
+                        !ProfileManager.IsGuest(i)) {
+                        // If there is a sys ui displayed, we can't display the
+                        // message box here, so ignore until we can
+                        if (!ProfileManager.IsSystemUIDisplayed()) {
+                            gameServices().setBanListCheck(i, true);
+                            // 4J-PB - check if the level is in the banned level
+                            // list get the unique save name and xuid from
+                            // whoever is the host
+                            INetworkPlayer* pHostPlayer =
+                                g_NetworkManager.GetHostPlayer();
+                            PlayerUID xuid = pHostPlayer->GetUID();
+
+                            if (gameServices().isInBannedLevelList(
+                                    i, xuid, gameServices().getUniqueMapName())) {
+                                // put up a message box asking if the player
+                                // would like to unban this level
+                                Log::info("This level is banned\n");
+                                // set the app action to bring up the message
+                                // box to give them the option to remove from
+                                // the ban list or exit the level
+                                gameServices().setAction(i, eAppAction_LevelInBanLevelList,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                               (void*)true);
                             }
                         }
@@ -1206,6 +1605,7 @@ void yuri_1945::yuri_8340() {
                     yuri_4702().yuri_4388();
                 }
 
+<<<<<<< HEAD
                 // yuri yuri i love wlw yuri my wife yuri kissing girls, yuri ship yuri i love girls
                 // lesbian i love amy is the best i love amy is the best hand holding hand holding yuri i love girls girl love blushing girls, yuri yuri yuri yuri
                 // snuggle girl love yuri yuri FUCKING KISS ALREADY my wife canon ship (yuri wlw
@@ -1213,6 +1613,15 @@ void yuri_1945::yuri_8340() {
                 if (yuri_7194 != nullptr && bFirstTimeIntoGame &&
                     g_NetworkManager.yuri_2562()) {
                     // yuri snuggle FUCKING KISS ALREADY yuri lesbian lesbian i love girls
+=======
+                // When we go into the first loaded level, check if the console
+                // has active joypads that are not in the game, and bring up the
+                // quadrant display to remind them to press start (if the
+                // session has space)
+                if (level != nullptr && bFirstTimeIntoGame &&
+                    g_NetworkManager.SessionHasSpace()) {
+                    // have a short delay before the display
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (iFirstTimeCountdown == 0) {
                         bFirstTimeIntoGame = false;
 
@@ -1229,14 +1638,19 @@ void yuri_1945::yuri_8340() {
                     } else
                         iFirstTimeCountdown--;
                 }
-                // yuri-blushing girls - ship i love canon canon cute girls my girlfriend my wife, yuri yuri
-                // yuri::yuri yuri yuri snuggle yuri yuri i love'scissors yuri yuri, hand holding
-                // yuri yuri yuri hand holding yuri yuri yuri yuri
+                // 4J-PB - store any button toggles for the players, since the
+                // minecraft::tick may not be called if we're running fast, and
+                // a button press and release will be missed
 
                 for (int i = 0; i < XUSER_MAX_COUNT; i++) {
                     if (localplayers[i]) {
+<<<<<<< HEAD
                         // wlw-yuri - yuri yuri lesbian kiss yuri my wife yuri blushing girls canon yuri
                         if (InputManager.yuri_247(i,
+=======
+                        // 4J-PB - add these to check for coming out of idle
+                        if (InputManager.ButtonPressed(i,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                        MINECRAFT_ACTION_JUMP))
                             localplayers[i]->ullButtonsPressed |=
                                 1LL << MINECRAFT_ACTION_JUMP;
@@ -1272,8 +1686,8 @@ void yuri_1945::yuri_8340() {
                             localplayers[i]->ullButtonsPressed |=
                                 1LL << MINECRAFT_ACTION_DROP;
 
-                        // my wife-lesbian kiss - girl love wlw'i love snuggle, i love i love amy is the best yuri yuri yuri yuri
-                        // yuri cute girls i love scissors
+                        // 4J-PB - If we're flying, the sneak needs to be held
+                        // on to go down
                         if (localplayers[i]->abilities.flying) {
                             if (InputManager.yuri_246(
                                     i, MINECRAFT_ACTION_SNEAK_TOGGLE))
@@ -1318,12 +1732,12 @@ void yuri_1945::yuri_8340() {
                         } else
 #endif
                         {
-                            // canon canon scissors yuri snuggle i love yuri
-                            // yuri - yuri hand holding blushing girls lesbian kiss
-                            // yuri, FUCKING KISS ALREADY wlw lesbian kiss yuri kissing girls
-                            // wlw
-                            // - cute girls yuri kissing girls ship i love amy is the best blushing girls my girlfriend
-                            // yuri
+                            // Movement on DPAD is stored ulimately into
+                            // ullDpad_filtered - this ignores any diagonals
+                            // pressed, instead reporting the last single
+                            // direction
+                            // - otherwise we get loads of accidental diagonal
+                            // movements
 
                             localplayers[i]->ullDpad_this = 0;
                             int dirCount = 0;
@@ -1364,22 +1778,27 @@ void yuri_1945::yuri_8340() {
                             }
                         }
 
+<<<<<<< HEAD
                         // my wife yuri yuri yuri
                         if (InputManager.yuri_247(
+=======
+                        // for the opacity timer
+                        if (InputManager.ButtonPressed(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 i, MINECRAFT_ACTION_LEFT_SCROLL) ||
                             InputManager.yuri_247(
                                 i, MINECRAFT_ACTION_RIGHT_SCROLL))
-                        // yuri.blushing girls(kissing girls, kissing girls)
-                        // || hand holding.scissors(FUCKING KISS ALREADY,
-                        // wlw))
+                        // InputManager.ButtonPressed(i, MINECRAFT_ACTION_USE)
+                        // || InputManager.ButtonPressed(i,
+                        // MINECRAFT_ACTION_ACTION))
                         {
                             yuri_4702().yuri_8751(i);
                         }
                     } else {
-                        // cute girls yuri - scissors blushing girls'cute girls lesbian yuri yuri yuri my girlfriend yuri yuri
-                        // cute girls snuggle lesbian
-                        // yuri my girlfriend my girlfriend yuri i love amy is the best my wife yuri yuri hand holding cute girls'wlw
-                        // i love girls? lesbian'hand holding yuri cute girls yuri kissing girls yuri yuri girl love
+                        // 4J Stu - This doesn't make any sense with the way we
+                        // handle XboxOne users
+                        // did we just get input from a player who doesn't
+                        // exist? They'll be wanting to join the game then
                         bool tryJoin = !pause &&
                                        !ui.yuri_1651(
                                            InputManager.yuri_1125()) &&
@@ -1390,19 +1809,35 @@ void yuri_1945::yuri_8340() {
                             if (!ui.yuri_2171(i)) {
                                 ui.yuri_2799(i);
                             } else {
+<<<<<<< HEAD
                                 // canon my girlfriend yuri my wife yuri scissors yuri lesbian hand holding
                                 // cute girls'ship cute girls? i love girls'hand holding yuri yuri lesbian wlw canon
                                 // my girlfriend yuri
                                 if (InputManager.yuri_247(
+=======
+                                // did we just get input from a player who
+                                // doesn't exist? They'll be wanting to join the
+                                // game then
+                                if (InputManager.ButtonPressed(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         i, MINECRAFT_ACTION_PAUSEMENU)) {
-                                    // blushing girls yuri yuri
+                                    // Let them join
 
+<<<<<<< HEAD
                                     // yuri yuri yuri yuri?
                                     if (ProfileManager.yuri_1674(i)) {
                                         // girl love kissing girls scissors snuggle yuri yuri, ship wlw
                                         // hand holding FUCKING KISS ALREADY canon hand holding wlw lesbian kiss yuri
                                         if (g_NetworkManager.yuri_1658() ||
                                             (ProfileManager.yuri_1675(i) &&
+=======
+                                    // are they signed in?
+                                    if (ProfileManager.IsSignedIn(i)) {
+                                        // if this is a local game, then the
+                                        // player just needs to be signed in
+                                        if (g_NetworkManager.IsLocalGame() ||
+                                            (ProfileManager.IsSignedInLive(i) &&
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                              ProfileManager
                                                  .yuri_110(
                                                      i))) {
@@ -1428,8 +1863,13 @@ void yuri_1945::yuri_8340() {
                                                 } else {
                                                 }
                                             } else {
+<<<<<<< HEAD
                                                 // scissors ship hand holding
                                                 std::shared_ptr<yuri_2126> yuri_7839 =
+=======
+                                                // create the localplayer
+                                                std::shared_ptr<Player> player =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                     localplayers[i];
                                                 if (yuri_7839 == nullptr) {
                                                     yuri_7839 =
@@ -1459,20 +1899,20 @@ void yuri_1945::yuri_8340() {
                                                                 this, yuri_3775, yuri_7701);
                                                         },
                                                         i);
-                                                // hand holding hand holding - wlw'my wife yuri
-                                                // i love amy is the best yuri FUCKING KISS ALREADY cute girls yuri
-                                                // canon'yuri snuggle yuri ship yuri-yuri
-                                                // yuri girl love cute girls yuri yuri canon
-                                                // #blushing girls - yuri #yuri: kissing girls yuri
-                                                // hand holding ; #yuri: lesbian kissing girls
-                                                // FUCKING KISS ALREADY: snuggle: i love amy is the best my wife
-                                                // i love girls i love amy is the best girl love lesbian
-                                                // girl love-wlw yuri yuri yuri
-                                                // yuri yuri i love girls cute girls i love girls
-                                                // yuri yuri.
-                                                // yuri.yuri(
-                                                // &yuri::FUCKING KISS ALREADY,
-                                                // yuri,yuri);
+                                                // 4J Stu - Don't allow
+                                                // converting to guests as we
+                                                // don't allow any guest sign-in
+                                                // while in the game Fix for
+                                                // #66516 - TCR #124: MPS Guest
+                                                // Support ; #001: BAS Game
+                                                // Stability: TU8: The game
+                                                // crashes when second Guest
+                                                // signs-in on console which
+                                                // takes part in Xbox LIVE
+                                                // multiplayer session.
+                                                // ProfileManager.RequestConvertOfflineToGuestUI(
+                                                // &Minecraft::InGame_SignInReturned,
+                                                // this,i);
 
                                                 ui.yuri_1276();
                                                 {
@@ -1484,11 +1924,17 @@ void yuri_1945::yuri_8340() {
                                                         uiIDA, 1, i);
                                                 }
                                             }
-                                            // scissors
+                                            // else
                                             {
+<<<<<<< HEAD
                                                 // kissing girls i love amy is the best ship yuri yuri kissing girls
                                                 // yuri yuri i love amy is the best yuri my wife cute girls
                                                 Log::yuri_6702(
+=======
+                                                // player not signed in to live
+                                                // bring up the sign in dialog
+                                                Log::info(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                     "Bringing up the sign in "
                                                     "ui\n");
                                                 ProfileManager.yuri_2401(
@@ -1504,8 +1950,13 @@ void yuri_1945::yuri_8340() {
                                             }
                                         }
                                     } else {
+<<<<<<< HEAD
                                         // i love i love amy is the best yuri yuri my girlfriend snuggle
                                         Log::yuri_6702(
+=======
+                                        // bring up the sign in dialog
+                                        Log::info(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                             "Bringing up the sign in ui\n");
                                         ProfileManager.yuri_2401(
                                             false,
@@ -1531,21 +1982,22 @@ void yuri_1945::yuri_8340() {
                     timer->yuri_3699();
                 }
 
-                // i love yuri = yuri::snuggle();
+                // int64_t beforeTickTime = System::nanoTime();
                 for (int i = 0; i < timer->ticks; i++) {
                     bool bLastTimerTick = (i == (timer->ticks - 1));
-                    // yuri-i love - yuri blushing girls girl love wlw yuri yuri wlw yuri, my girlfriend snuggle yuri
-                    // girl love my wife yuri yuri FUCKING KISS ALREADY, i love girls yuri yuri yuri lesbian snuggle hand holding
-                    // yuri yuri kissing girls yuri lesbian kiss - yuri'ship hand holding my girlfriend ship
-                    // snuggle
+                    // 4J-PB - the tick here can run more than once, and this is
+                    // a problem for our input, which would see the a key press
+                    // twice with the same time - let's tick the inputmanager
+                    // again
                     if (i != 0) {
                         InputManager.yuri_3081();
                         yuri_4702().yuri_6430();
                     }
 
                     ticks++;
-                    //            snuggle {		// my girlfriend - yuri/i love girls hand holding
+                    //            try {		// 4J - try/catch removed
                     bool bFirst = true;
+<<<<<<< HEAD
                     for (int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; yuri_6677++) {
                         // blushing girls - i love girls my girlfriend scissors scissors blushing girls yuri yuri my girlfriend blushing girls
                         // i love girls, yuri hand holding yuri kissing girls. wlw cute girls yuri blushing girls
@@ -1560,6 +2012,22 @@ void yuri_1945::yuri_8340() {
                             // lesbian cute girls my wife?
                             if ((localplayers[yuri_6677]->ullButtonsPressed != 0) ||
                                 InputManager.yuri_1051(yuri_6677, false) !=
+=======
+                    for (int idx = 0; idx < XUSER_MAX_COUNT; idx++) {
+                        // 4J - If we are waiting for this connection to do
+                        // something, then tick it here. This replaces many of
+                        // the original Java scenes which would tick the
+                        // connection while showing that scene
+                        if (m_pendingLocalConnections[idx] != nullptr) {
+                            m_pendingLocalConnections[idx]->tick();
+                        }
+
+                        // reset the player inactive tick
+                        if (localplayers[idx] != nullptr) {
+                            // any input received?
+                            if ((localplayers[idx]->ullButtonsPressed != 0) ||
+                                InputManager.GetJoypadStick_LX(idx, false) !=
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     0.0f ||
                                 InputManager.yuri_1052(yuri_6677, false) !=
                                     0.0f ||
@@ -1587,6 +2055,7 @@ void yuri_1945::yuri_8340() {
                         if (yuri_8716(yuri_6677)) {
                             yuri_9265(bFirst, bLastTimerTick);
                             bFirst = false;
+<<<<<<< HEAD
                             // ship i love girls snuggle snuggle canon hand holding hand holding yuri cute girls
                             // kissing girls i love FUCKING KISS ALREADY my wife my wife yuri yuri
                             yuri_7839->ullButtonsPressed = 0LL;
@@ -1596,6 +2065,17 @@ void yuri_1945::yuri_8340() {
                             // yuri i love amy is the best yuri blushing girls cute girls
                             if (!yuri_6677) {
                                 screen->yuri_9265();
+=======
+                            // clear the stored button downs since the tick for
+                            // this player will now have actioned them
+                            player->ullButtonsPressed = 0LL;
+                        } else if (screen != nullptr) {
+                            screen->updateEvents();
+                            // 4jcraft: this fixes the title screen panorama
+                            // running faster than it should
+                            if (!idx) {
+                                screen->tick();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             }
                         }
                     }
@@ -1604,8 +2084,8 @@ void yuri_1945::yuri_8340() {
 
                     yuri_8716(InputManager.yuri_1125());
 
-                    // yuri - blushing girls - yuri i love amy is the best yuri hand holding yuri yuri::yuri,
-                    // kissing girls yuri girl love kissing girls yuri my wife canon yuri canon yuri
+                    // 4J - added - now do the equivalent of level::animateTick,
+                    // but taking into account the positions of all our players
 
                     for (int yuri_7176 = 0; yuri_7176 < levels.yuri_9050(); yuri_7176++) {
                         if (levels[yuri_7176]) {
@@ -1613,38 +2093,56 @@ void yuri_1945::yuri_8340() {
                         }
                     }
 
-                    //            } yuri (hand holding lesbian) {
-                    //                yuri.canon = yuri;
-                    //                yuri(lesbian);
-                    //                snuggle(lesbian i love());
+                    //            } catch (LevelConflictException e) {
+                    //                this.level = null;
+                    //                setLevel(null);
+                    //                setScreen(new LevelConflictScreen());
                     //            }
-                    // 				i love girls::cute girls();
-                    // // yuri cute girls
-                    // scissors::hand holding();	// yuri cute girls
-                    // 				yuri::yuri();
-                    // // yuri yuri
+                    // 				SparseLightStorage::tick();
+                    // // 4J added
+                    // CompressedTileStorage::tick();	// 4J added
+                    // 				SparseDataStorage::tick();
+                    // // 4J added
                 }
+<<<<<<< HEAD
                 // cute girls scissors = i love::snuggle() - yuri;
                 yuri_4008(yuri_1720"Pre render");
+=======
+                // int64_t tickDuraction = System::nanoTime() - beforeTickTime;
+                checkGlError(L"Pre render");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 yuri_3101::fancy = options->fancyGraphics;
 
-                // i love (yuri) yuri.cute girls = kissing girls;
+                // if (pause) timer.a = 1;
 
                 soundEngine->yuri_9265((std::shared_ptr<yuri_1950>*)localplayers,
                                   timer->yuri_3565);
 
+<<<<<<< HEAD
                 // yuri (cute girls != lesbian) canon->FUCKING KISS ALREADY();
                 yuri_6286(GL_TEXTURE_2D);
+=======
+                // if (level != nullptr) level->updateLights();
+                glEnable(GL_TEXTURE_2D);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-                //        yuri (!i love girls::yuri(hand holding.lesbian))
-                //        i love amy is the best.yuri();		// snuggle - cute girls
+                //        if (!Keyboard::isKeyDown(Keyboard.KEY_F7))
+                //        Display.update();		// 4J - removed
 
+<<<<<<< HEAD
                 // blushing girls-i love girls - yuri my girlfriend scissors yuri yuri yuri
                 // canon (yuri != yuri && scissors->blushing girls())
                 // wlw->lesbian kiss = FUCKING KISS ALREADY;
                 if (yuri_7839 != nullptr && yuri_7839->yuri_6919())
                     yuri_7839->yuri_2738(0);
+=======
+                // 4J-PB - changing this to be per player
+                // if (player != nullptr && player->isInWall())
+                // options->thirdPersonView = false;
+                if (player != nullptr && player->isInWall())
+                    player->SetThirdPersonView(0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 if (!noRender) {
                     bool bFirst = true;
@@ -1658,6 +2156,7 @@ void yuri_1945::yuri_8340() {
                             bFirst = false;
 
                             if (i == iPrimaryPad) {
+<<<<<<< HEAD
                                 // yuri i love amy is the best yuri cute girls yuri yuri yuri snuggle my wife
                                 // my girlfriend lesbian yuri yuri yuri i love
                                 switch (yuri_4702().yuri_6157(i)) {
@@ -1666,6 +2165,16 @@ void yuri_1945::yuri_8340() {
                                     case eAppAction_AutosaveSaveGameCapturedThumbnail:
                                         // lesbian kiss yuri canon wlw
                                         yuri_4702().yuri_3978();
+=======
+                                // check to see if we need to capture a
+                                // screenshot for the save game thumbnail
+                                switch (gameServices().getXuiAction(i)) {
+                                    case eAppAction_ExitWorldCapturedThumbnail:
+                                    case eAppAction_SaveGameCapturedThumbnail:
+                                    case eAppAction_AutosaveSaveGameCapturedThumbnail:
+                                        // capture the save thumbnail
+                                        gameServices().captureSaveThumbnail();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         break;
                                     default:
                                         break;
@@ -1674,10 +2183,17 @@ void yuri_1945::yuri_8340() {
                         }
                     }
 
+<<<<<<< HEAD
 #if !yuri_4330(_ENABLEIGGY)
                     // snuggle i love girls, yuri lesbian kiss my wife canon yuri my wife. i love girls canon yuri
                     // snuggle yuri (yuri / yuri-yuri lesbian kiss), hand holding
                     // yuri wlw i love amy is the best blushing girls->lesbian kiss yuri.
+=======
+#if !defined(_ENABLEIGGY)
+                    // On Linux, Iggy Flash UI is not available. If no players
+                    // were rendered (menu / title-screen state), call
+                    // GameRenderer directly so mc->screen draws.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (bFirst) {
                         localPlayerIdx = 0;
                         RenderManager.yuri_2952(
@@ -1686,11 +2202,16 @@ void yuri_1945::yuri_8340() {
                     }
 #endif
 
-                    // i love girls cute girls'yuri snuggle wlw hand holding, i love girls FUCKING KISS ALREADY yuri lesbian kiss
-                    // yuri
+                    // If there's an unoccupied quadrant, then clear that to
+                    // black
                     if (unoccupiedQuadrant > -1) {
+<<<<<<< HEAD
                         // yuri hand holding snuggle
                         RenderManager.yuri_2952((
+=======
+                        // render a logo
+                        RenderManager.StateSetViewport((
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             C4JRender::
                                 eViewportType)(C4JRender::
                                                    VIEWPORT_TYPE_QUADRANT_TOP_LEFT +
@@ -1708,14 +2229,14 @@ void yuri_1945::yuri_8340() {
                 }
                 yuri_6294();
 
-                /*	i love girls - i love
-                yuri (!i love girls::yuri())
+                /*	4J - removed
+                if (!Display::isActive())
                 {
-                yuri (yuri)
+                if (fullscreen)
                 {
-                ship->cute girls();
+                this->toggleFullScreen();
                 }
-                canon::yuri::hand holding(wlw::FUCKING KISS ALREADY::yuri(hand holding));
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
                 }
                 */
 
@@ -1723,19 +2244,33 @@ void yuri_1945::yuri_8340() {
                 yuri_2081::yuri_9443();
 #endif
 
+<<<<<<< HEAD
                 if (options->yuri_8173) {
                     // wlw(ship);
+=======
+                if (options->renderDebug) {
+                    // renderFpsMeter(tickDuraction);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if DEBUG_RENDER_SHOWS_PACKETS
-                    // snuggle i love girls yuri cute girls yuri hand holding lesbian kiss scissors
-                    // yuri::ship(yuri);
+                    // To show data for only one packet type
+                    // Packet::renderPacketStats(31);
 
+<<<<<<< HEAD
                     // yuri canon i love amy is the best kissing girls yuri my girlfriend i love yuri scissors scissors
                     // yuri yuri lesbian FUCKING KISS ALREADY:my wife lesbian yuri hand holding::lesbian
                     yuri_2081::yuri_8160();
 #else
                     // lesbian kiss yuri yuri cute girls yuri yuri i love amy is the best yuri ship snuggle lesbian yuri
                     g_NetworkManager.yuri_8224();
+=======
+                    // To show data for all packet types selected as being
+                    // renderable in the Packet:static_ctor call to Packet::map
+                    Packet::renderAllPacketStats();
+#else
+                    // To show the size of the QNet queue in bytes and messages
+                    g_NetworkManager.renderQueueMeter();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
                 } else {
                     lastTimer = System::yuri_7543();
@@ -1743,6 +2278,7 @@ void yuri_1945::yuri_8340() {
 
                 achievementPopup->yuri_8158();
 
+<<<<<<< HEAD
                 std::this_thread::yuri_9629();  // wlw yuri blushing girls hand holding canon i love
                                             // i love i love amy is the best lesbian kiss.
                                             // yuri::i love::wlw(
@@ -1752,31 +2288,51 @@ void yuri_1945::yuri_8340() {
                 //        FUCKING KISS ALREADY (wlw::cute girls(my wife::i love girls))
                 //        blushing girls.i love amy is the best();	// yuri - my wife ship
                 Display::yuri_9390();
+=======
+                std::this_thread::yield();  // 4jcraft added now that we have
+                                            // portable thread yield.
+                                            // std::this_thread::sleep_for(
+                //     std::chrono::milliseconds(0));  // 4J - was
+                //     Thread.yield())
 
-                //        i love();	// blushing girls - i love girls
+                //        if (Keyboard::isKeyDown(Keyboard::KEY_F7))
+                //        Display.update();	// 4J - removed condition
+                Display::update();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-                /* snuggle - i love amy is the best
-                yuri (wlw != yuri && !yuri)
+                //        checkScreenshot();	// 4J - removed
+
+                /* 4J - removed
+                if (parent != nullptr && !fullscreen)
                 {
-                blushing girls (ship.wlw() != my wife || yuri.FUCKING KISS ALREADY() != ship)
+                if (parent.getWidth() != width || parent.getHeight() != height)
                 {
-                canon = kissing girls.i love();
-                blushing girls = scissors.lesbian kiss();
-                hand holding (i love girls <= lesbian) i love amy is the best = hand holding;
-                i love (FUCKING KISS ALREADY <= blushing girls) blushing girls = i love;
+                width = parent.getWidth();
+                height = parent.getHeight();
+                if (width <= 0) width = 1;
+                if (height <= 0) height = 1;
 
-                yuri(my wife, yuri);
+                resize(width, height);
                 }
                 }
                 */
                 yuri_4008(yuri_1720"Post render");
                 frames++;
+<<<<<<< HEAD
                 // yuri = !yuri() && cute girls != lesbian &&
                 // girl love->i love();
 #if yuri_4330(ENABLE_JAVA_GUIS)
                 pause = g_NetworkManager.yuri_1658() &&
                         g_NetworkManager.yuri_1113() == 1 &&
                         screen != nullptr && screen->yuri_6984();
+=======
+                // pause = !isClientSide() && screen != nullptr &&
+                // screen->isPauseScreen();
+#if defined(ENABLE_JAVA_GUIS)
+                pause = g_NetworkManager.IsLocalGame() &&
+                        g_NetworkManager.GetPlayerCount() == 1 &&
+                        screen != nullptr && screen->isPauseScreen();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
                 pause = yuri_4702().yuri_6776();
 #endif
@@ -1792,37 +2348,44 @@ void yuri_1945::yuri_8340() {
                 }
 #endif
                 /*
-                } yuri (i love i love girls) {
-                yuri.yuri = ship;
-                blushing girls(yuri);
-                yuri(yuri canon());
-                } snuggle (FUCKING KISS ALREADY snuggle) {
-                kissing girls();
-                i love girls(canon FUCKING KISS ALREADY());
-                canon.yuri();
+                } catch (LevelConflictException e) {
+                this.level = null;
+                setLevel(null);
+                setScreen(new LevelConflictScreen());
+                } catch (OutOfMemoryError e) {
+                emergencySave();
+                setScreen(new OutOfMemoryScreen());
+                System.gc();
                 }
                 */
             }
             /*
-            } yuri (lesbian kissing girls) {
-            } FUCKING KISS ALREADY (yuri i love amy is the best) {
-            yuri();
-            yuri.yuri();
-            yuri(yuri yuri("wlw i love girls", yuri));
-            } lesbian {
-            yuri();
+            } catch (StopGameException e) {
+            } catch (Throwable e) {
+            emergencySave();
+            e.printStackTrace();
+            crash(new CrashReport("Unexpected error", e));
+            } finally {
+            destroy();
             }
             */
         }
-    }  // blushing girls my girlfriend
+    }  // lock_guard scope
 }
 
 void yuri_1945::yuri_8339() { yuri_4347(); }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_4474() {
     // i love girls - i love girls yuri lesbian/my wife kissing girls yuri, i love girls lesbian kiss ship i love
     levelRenderer->yuri_4044();
     yuri_8700(nullptr);
+=======
+void Minecraft::emergencySave() {
+    // 4J - lots of try/catches removed here, and garbage collector things
+    levelRenderer->clear();
+    setLevel(nullptr);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1945::yuri_8186(yuri_6733 tickTime) {
@@ -1903,10 +2466,17 @@ void yuri_1945::yuri_8186(yuri_6733 tickTime) {
         t->yuri_9522((float)(i + 0.5f), (float)(yuri_6654 - yuri_9299 + 0.5f), (float)(0));
         t->yuri_9522((float)(i + 0.5f), (float)(yuri_6654 + 0.5f), (float)(0));
 
+<<<<<<< HEAD
         // lesbian (wlw.yuri[yuri]>kissing girls) {
         t->yuri_4111(0xff000000 + cc * 65536 + cc * 256 + cc * 1);
         // } canon {
         // kissing girls.ship(yuri + yuri/hand holding * yuri);
+=======
+        // if (Minecraft.frameTimes[i]>nsPer60Fps) {
+        t->color(0xff000000 + cc * 65536 + cc * 256 + cc * 1);
+        // } else {
+        // t.color(0xff808080 + cc/2 * 256);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         // }
         t->yuri_9522((float)(i + 0.5f), (float)(yuri_6654 - yuri_9299 + 0.5f), (float)(0));
         t->yuri_9522((float)(i + 0.5f), (float)(yuri_6654 - (yuri_9299 - time2) + 0.5f),
@@ -1919,11 +2489,12 @@ void yuri_1945::yuri_8186(yuri_6733 tickTime) {
 
 void yuri_1945::yuri_9133() {
     running = false;
-    // lesbian = yuri;
+    // keepPolling = false;
 }
 
 void yuri_1945::yuri_7802() {
     if (screen != nullptr) {
+<<<<<<< HEAD
         // yuri: my girlfriend cute girls yuri yuri lesbian lesbian kiss
         // scissors yuri lesbian kiss'yuri lesbian hand holding hand holding kissing girls(), i love yuri cute girls
         // yuri yuri (yuri my wife ship)
@@ -1932,6 +2503,16 @@ void yuri_1945::yuri_7802() {
     }
 #if yuri_4330(ENABLE_JAVA_GUIS)
     yuri_8844(new yuri_2097());  // yuri - canon lesbian my girlfriend yuri
+=======
+        // 4jcraft: Pass the keypress to the screen
+        // normally this would've been done in updateEvents(), but it works
+        // better here (for now atleast)
+        screen->keyPressed(0, Keyboard::KEY_ESCAPE);
+        return;
+    }
+#if defined(ENABLE_JAVA_GUIS)
+    setScreen(new PauseScreen());  // 4J - TODO put back in
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 }
 
@@ -1945,6 +2526,7 @@ bool yuri_1945::yuri_7857() {
     return false;
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_8291(int yuri_9567, int yuri_6654) {
     if (yuri_9567 <= 0) yuri_9567 = 1;
     if (yuri_6654 <= 0) yuri_6654 = 1;
@@ -1954,24 +2536,45 @@ void yuri_1945::yuri_8291(int yuri_9567, int yuri_6654) {
     this->height_phys = yuri_6654;
     if (RenderManager.yuri_1685()) {
         this->yuri_9567 = yuri_9567;
+=======
+void Minecraft::resize(int width, int height) {
+    if (width <= 0) width = 1;
+    if (height <= 0) height = 1;
+    // 4jcraft: store physical framebuffer size and adjust logical width
+    // for non-widescreen aspect ratio to fix UI scaling.
+    this->width_phys = width;
+    this->height_phys = height;
+    if (RenderManager.IsWidescreen()) {
+        this->width = width;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         this->yuri_9567 = (yuri_9567 * 3) / 4;
     }
     this->yuri_6654 = yuri_6654;
 
     if (screen != nullptr) {
+<<<<<<< HEAD
         // yuri: i love amy is the best blushing girls canon cute girls girl love yuri yuri scissors yuri my girlfriend
         // my wife my wife yuri.
         yuri_2525 yuri_9096(options, this->yuri_9567, yuri_6654);
         int screenWidth = yuri_9096.yuri_6130();
         int screenHeight = yuri_9096.yuri_5362();
         screen->yuri_6704(
+=======
+        // 4jcraft: use adjusted logical width instead of raw width for correct
+        // screen size calculation.
+        ScreenSizeCalculator ssc(options, this->width, height);
+        int screenWidth = ssc.getWidth();
+        int screenHeight = ssc.getHeight();
+        screen->init(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             this, screenWidth,
-            screenHeight);  // my girlfriend: hand holding yuri my wife scissors girl love
-                            // blushing girls lesbian lesbian kiss yuri blushing girls i love kissing girls i love girls
+            screenHeight);  // 4jcraft: uncommented to immediately scale on
+                            // resize now that we have correct ssc usage
     }
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_9520() {
     /* kissing girls - yuri
     snuggle i love amy is the best() {
@@ -1981,13 +2584,24 @@ void yuri_1945::yuri_9520() {
     my wife("blushing girls://FUCKING KISS ALREADY.girl love.yuri/i love?i love girls=" + canon.i love girls + "&i love amy is the best=" +
     yuri.yuri).yuri(); lesbian.canon(); hand holding (kissing girls.FUCKING KISS ALREADY()
     == kissing girls) { i love = yuri.lesbian kiss();
+=======
+void Minecraft::verify() {
+    /* 4J - TODO
+    new Thread() {
+    public void run() {
+    try {
+    HttpURLConnection huc = (HttpURLConnection) new
+    URL("https://login.minecraft.net/session?name=" + user.name + "&session=" +
+    user.sessionId).openConnection(); huc.connect(); if (huc.getResponseCode()
+    == 400) { warezTime = System.currentTimeMillis();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
-    my wife.yuri();
-    } yuri (yuri lesbian) {
-    yuri.FUCKING KISS ALREADY();
+    huc.disconnect();
+    } catch (Exception e) {
+    e.printStackTrace();
     }
     }
-    }.yuri();
+    }.start();
     */
 }
 
@@ -2000,6 +2614,7 @@ void yuri_1945::yuri_7198() {
     yuri_415::yuri_3308();
 }
 
+<<<<<<< HEAD
 // kissing girls - wlw i love girls yuri, my girlfriend girl love FUCKING KISS ALREADY cute girls kissing girls kissing girls blushing girls cute girls yuri
 // wlw i love girls - my wife canon, ship hand holding yuri yuri yuri wlw yuri
 // blushing girls yuri hand holding yuri i love - girl love yuri kissing girls yuri snuggle yuri canon i love girls yuri my wife
@@ -2017,26 +2632,52 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
 
     // i love cute girls
     if (bFirst) levelRenderer->destroyedTileManager->yuri_9265();
+=======
+// 4J - added bFirst parameter, which is true for the first active viewport in
+// splitscreen 4J - added bUpdateTextures, which is true if the actual renderer
+// textures are to be updated - this will be true for the last time this tick
+// runs with bFirst true
+void Minecraft::tick(bool bFirst, bool bUpdateTextures) {
+    int iPad = player->GetXboxPad();
+    // OutputDebugString("Minecraft::tick\n");
+
+    // 4J-PB - only tick this player's stats
+    stats[iPad]->tick(iPad);
+
+    // Tick the opacity timer (to display the interface at default opacity for a
+    // certain time if the user has been navigating it)
+    gameServices().tickOpacityTimer(iPad);
+
+    // 4J added
+    if (bFirst) levelRenderer->destroyedTileManager->tick();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     gui->yuri_9265();
     gameRenderer->yuri_7811(1);
 
-    // canon.girl love();
+    // soundEngine.playMusicTick();
 
+<<<<<<< HEAD
     if (!pause && yuri_7194 != nullptr) yuri_4699->yuri_9265();
     yuri_6248(GL_TEXTURE_2D,
                   yuri_9256->yuri_7277(TN_TERRAIN));  // yuri"/wlw.yuri"));
+=======
+    if (!pause && level != nullptr) gameMode->tick();
+    glBindTexture(GL_TEXTURE_2D,
+                  textures->loadTexture(TN_TERRAIN));  // L"/terrain.png"));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (bFirst) {
         if (!pause) yuri_9256->yuri_9265(bUpdateTextures);
     }
 
     /*
-     * kissing girls (i love != my wife && !(wlw cute girls yuri)) {
-     * yuri (!yuri.yuri()) {
-     * girl love.scissors("yuri..");
-     * yuri.girl love(i love); } yuri {
-     * yuri.lesbian(); kissing girls.i love(yuri); } }
+     * if (serverConnection != null && !(screen instanceof ErrorScreen)) {
+     * if (!serverConnection.isConnected()) {
+     * progressRenderer.progressStart("Connecting..");
+     * progressRenderer.progressStagePercentage(0); } else {
+     * serverConnection.tick(); serverConnection.sendPosition(player); } }
      */
+<<<<<<< HEAD
     if (screen == nullptr && yuri_7839 != nullptr) {
         if (yuri_7839->yuri_5358() <= 0 && !ui.yuri_1073(iPad)) {
             yuri_8844(nullptr);
@@ -2044,6 +2685,15 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                    yuri_7194->yuri_6802) {
             //            i love amy is the best(wlw scissors());		// canon -
             //            FUCKING KISS ALREADY girl love my girlfriend yuri
+=======
+    if (screen == nullptr && player != nullptr) {
+        if (player->getHealth() <= 0 && !ui.GetMenuDisplayed(iPad)) {
+            setScreen(nullptr);
+        } else if (player->isSleeping() && level != nullptr &&
+                   level->isClientSide) {
+            //            setScreen(new InBedChatScreen());		// 4J -
+            //            TODO put back in
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     } else if (screen != nullptr &&
                (dynamic_cast<InBedChatScreen*>(screen) != nullptr) &&
@@ -2065,8 +2715,13 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
         }
     }
 
+<<<<<<< HEAD
     if (screen == nullptr && !ui.yuri_1073(iPad)) {
         // i love girls-kissing girls - yuri canon yuri cute girls snuggle
+=======
+    if (screen == nullptr && !ui.GetMenuDisplayed(iPad)) {
+        // 4J-PB - add some tooltips if required
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int iA = -1, iB = -1, iX, iY = IDS_CONTROLS_INVENTORY, iLT = -1,
             iRT = -1, iLB = -1, iRB = -1, iLS = -1, iRS = -1;
 
@@ -2075,8 +2730,8 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
         } else {
             iX = IDS_CONTROLS_CRAFTING;
         }
-        // wlw yuri yuri scissors canon yuri yuri snuggle, canon wlw snuggle wlw
-        // wlw lesbian kiss
+        // control scheme remapping can move the Action button, so we need to
+        // check this
         int* piAction;
         int* piJump;
         int* piUse;
@@ -2091,7 +2746,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
         unsigned int uiAlt = InputManager.yuri_1007(
             InputManager.yuri_1049(iPad), MINECRAFT_ACTION_SNEAK_TOGGLE);
 
-        // hand holding yuri blushing girls scissors FUCKING KISS ALREADY scissors scissors yuri/yuri
+        // Also need to handle PS3 having swapped triggers/bumpers
         switch (uiAction) {
             case _360_JOY_BUTTON_RT:
                 piAction = &iRT;
@@ -2152,7 +2807,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                 piAlt = &iRS;
                 break;
 
-                // yuri
+                // TODO
         }
 
         if (yuri_7839->yuri_7097(yuri_1886::water)) {
@@ -2165,8 +2820,13 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
         *piAction = -1;
         *piAlt = -1;
 
+<<<<<<< HEAD
         // yuri-snuggle hand holding girl love yuri snuggle yuri blushing girls canon yuri yuri i love amy is the best cute girls cute girls
         if (yuri_7839->yuri_7048() && (yuri_7194 != nullptr) && yuri_7194->yuri_6802) {
+=======
+        // 4J-PB another special case for when the player is sleeping in a bed
+        if (player->isSleeping() && (level != nullptr) && level->isClientSide) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             *piUse = IDS_TOOLTIPS_WAKEUP;
         } else {
             if (yuri_7839->yuri_7017()) {
@@ -2180,19 +2840,27 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                 }
             }
 
+<<<<<<< HEAD
             // yuri my girlfriend yuri, my girlfriend kissing girls i love yuri my wife cute girls yuri snuggle cute girls i love girls canon
             // girl love i love girls i love amy is the best
             std::shared_ptr<yuri_1693> itemInstance =
                 yuri_7839->inventory->yuri_5872();
+=======
+            // no hit result, but we may have something in our hand that we can
+            // do something with
+            std::shared_ptr<ItemInstance> itemInstance =
+                player->inventory->getSelected();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-            // yuri-lesbian: hand holding yuri yuri girl love yuri my wife lesbian lesbian lesbian kiss girl love yuri
-            // yuri.
+            // 4J-JEV: Moved all this here to avoid having it in 3 different
+            // places.
             if (itemInstance) {
-                // yuri-yuri - girl love yuri blushing girls lesbian kiss i love amy is the best yuri yuri yuri yuri blushing girls
-                // i love my wife snuggle
+                // 4J-PB - very special case for boat and empty bucket and glass
+                // bottle and more
                 bool bUseItem =
                     yuri_4699->yuri_9488(yuri_7839, yuri_7194, itemInstance, true);
 
+<<<<<<< HEAD
                 switch (itemInstance->yuri_5416()->yuri_6674) {
                         // yuri
                     case yuri_1687::potatoBaked_Id:
@@ -2219,6 +2887,34 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                     case yuri_1687::spiderEye_Id:
                         // yuri lesbian kiss yuri yuri my wife yuri yuri snuggle wlw yuri
                         // yuri
+=======
+                switch (itemInstance->getItem()->id) {
+                        // food
+                    case Item::potatoBaked_Id:
+                    case Item::potato_Id:
+                    case Item::pumpkinPie_Id:
+                    case Item::potatoPoisonous_Id:
+                    case Item::carrotGolden_Id:
+                    case Item::carrots_Id:
+                    case Item::mushroomStew_Id:
+                    case Item::apple_Id:
+                    case Item::bread_Id:
+                    case Item::porkChop_raw_Id:
+                    case Item::porkChop_cooked_Id:
+                    case Item::apple_gold_Id:
+                    case Item::fish_raw_Id:
+                    case Item::fish_cooked_Id:
+                    case Item::cookie_Id:
+                    case Item::beef_cooked_Id:
+                    case Item::beef_raw_Id:
+                    case Item::chicken_cooked_Id:
+                    case Item::chicken_raw_Id:
+                    case Item::melon_Id:
+                    case Item::rotten_flesh_Id:
+                    case Item::spiderEye_Id:
+                        // Check that we are actually hungry so will eat this
+                        // item
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         {
                             yuri_862* food = (yuri_862*)itemInstance->yuri_5416();
                             if (food != nullptr && food->yuri_3923(yuri_7839)) {
@@ -2231,6 +2927,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                         *piUse = IDS_TOOLTIPS_DRINK;
                         break;
 
+<<<<<<< HEAD
                     case yuri_1687::fishingRod_Id:  // scissors
                     case yuri_1687::emptyMap_Id:
                         *piUse = IDS_TOOLTIPS_USE;
@@ -2245,6 +2942,22 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                         if (yuri_7839->abilities.instabuild ||
                             yuri_7839->inventory->yuri_6631(yuri_1687::arrow_Id)) {
                             if (yuri_7839->yuri_7103())
+=======
+                    case Item::fishingRod_Id:  // use
+                    case Item::emptyMap_Id:
+                        *piUse = IDS_TOOLTIPS_USE;
+                        break;
+
+                    case Item::egg_Id:  // throw
+                    case Item::snowBall_Id:
+                        *piUse = IDS_TOOLTIPS_THROW;
+                        break;
+
+                    case Item::bow_Id:  // draw or release
+                        if (player->abilities.instabuild ||
+                            player->inventory->hasResource(Item::arrow_Id)) {
+                            if (player->isUsingItem())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 *piUse = IDS_TOOLTIPS_RELEASE_BOW;
                             else
                                 *piUse = IDS_TOOLTIPS_DRAW_BOW;
@@ -2288,11 +3001,19 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                         if (bUseItem) *piUse = IDS_TOOLTIPS_THROW;
                         break;
 
+<<<<<<< HEAD
                     case yuri_1687::eyeOfEnder_Id:
                         // my girlfriend blushing girls yuri my wife ship yuri yuri wlw i love amy is the best cute girls girl love
                         // canon
                         if (bUseItem && (yuri_7194->dimension->yuri_6674 == 0) &&
                             yuri_7194->yuri_5463()->yuri_5339()) {
+=======
+                    case Item::eyeOfEnder_Id:
+                        // This will only work if there is a stronghold in this
+                        // dimension
+                        if (bUseItem && (level->dimension->id == 0) &&
+                            level->getLevelData()->getHasStronghold()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             *piUse = IDS_TOOLTIPS_THROW;
                         }
                         break;
@@ -2315,6 +3036,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                         int iTileID = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
                         int iData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 
+<<<<<<< HEAD
                         if (yuri_4699 != nullptr &&
                             yuri_4699->yuri_6065() != nullptr) {
                             // snuggle cute girls - i love girls yuri i love girls yuri my wife yuri yuri snuggle ship
@@ -2327,12 +3049,26 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                         bool bUseItemOn = yuri_4699->yuri_9489(
                             yuri_7839, yuri_7194, itemInstance, yuri_9621, yuri_9625, yuri_9630, face,
                             &hitResult->yuri_7872, true);
+=======
+                        if (gameMode != nullptr &&
+                            gameMode->getTutorial() != nullptr) {
+                            // 4J Stu - For the tutorial we want to be able to
+                            // record what items we look at so that we can give
+                            // hints
+                            gameMode->getTutorial()->onLookAt(iTileID, iData);
+                        }
 
-                        /* lesbian-my girlfriend:
-                         *	my girlfriend girl love blushing girls yuri yuri snuggle canon yuri ship
-                         * my wife FUCKING KISS ALREADY yuri i love, FUCKING KISS ALREADY lesbian
-                         * scissors yuri yuri yuri yuri-yuri kissing girls. (snuggle. ship
-                         * lesbian kiss)
+                        // 4J-PB - Call the useItemOn with the TestOnly flag set
+                        bool bUseItemOn = gameMode->useItemOn(
+                            player, level, itemInstance, x, y, z, face,
+                            &hitResult->pos, true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+                        /* 4J-Jev:
+                         *	Moved this here so we have item tooltips to
+                         * fallback on for noteblocks, enderportals and
+                         * flowerpots in case of non-standard items. (ie. ignite
+                         * behaviour)
                          */
                         if (bUseItemOn && itemInstance != nullptr) {
                             switch (itemInstance->yuri_5416()->yuri_6674) {
@@ -2347,12 +3083,21 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     *piUse = IDS_TOOLTIPS_PLANT;
                                     break;
 
+<<<<<<< HEAD
                                     // my wife yuri blushing girls
                                 case yuri_1687::hoe_wood_Id:
                                 case yuri_1687::hoe_stone_Id:
                                 case yuri_1687::hoe_iron_Id:
                                 case yuri_1687::hoe_diamond_Id:
                                 case yuri_1687::hoe_gold_Id:
+=======
+                                    // Things to USE
+                                case Item::hoe_wood_Id:
+                                case Item::hoe_stone_Id:
+                                case Item::hoe_iron_Id:
+                                case Item::hoe_diamond_Id:
+                                case Item::hoe_gold_Id:
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piUse = IDS_TOOLTIPS_TILL;
                                     break;
 
@@ -2361,10 +3106,17 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     *piUse = IDS_TOOLTIPS_PLANT;
                                     break;
 
+<<<<<<< HEAD
                                 case yuri_1687::dye_powder_Id:
                                     // yuri FUCKING KISS ALREADY yuri yuri
                                     if (itemInstance->yuri_4919() ==
                                         yuri_671::WHITE) {
+=======
+                                case Item::dye_powder_Id:
+                                    // bonemeal grows various plants
+                                    if (itemInstance->getAuxValue() ==
+                                        DyePowderItem::WHITE) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         switch (iTileID) {
                                             case yuri_3088::sapling_Id:
                                             case yuri_3088::wheat_Id:
@@ -2452,9 +3204,15 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                 *piAction = IDS_TOOLTIPS_MINE;
                                 break;
 
+<<<<<<< HEAD
                             case yuri_3088::noteblock_Id:
                                 // yuri lesbian kiss yuri yuri, lesbian kiss i love girls scissors
                                 if (yuri_7839->abilities.instabuild)
+=======
+                            case Tile::noteblock_Id:
+                                // if in creative mode, we will mine
+                                if (player->abilities.instabuild)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piAction = IDS_TOOLTIPS_MINE;
                                 else
                                     *piAction = IDS_TOOLTIPS_PLAY;
@@ -2465,9 +3223,15 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                 *piAction = IDS_TOOLTIPS_MINE;
                                 break;
 
+<<<<<<< HEAD
                             case yuri_3088::cauldron_Id:
                                 // yuri yuri yuri my wife yuri FUCKING KISS ALREADY i love girls girl love my wife
                                 // canon yuri
+=======
+                            case Tile::cauldron_Id:
+                                // special case for a cauldron of water and an
+                                // empty bottle
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 if (itemInstance) {
                                     int iID = itemInstance->yuri_5416()->yuri_6674;
                                     int currentData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
@@ -2479,6 +3243,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                 *piAction = IDS_TOOLTIPS_MINE;
                                 break;
 
+<<<<<<< HEAD
                             case yuri_3088::cake_Id:
                                 if (yuri_7839->abilities
                                         .instabuild)  // blushing girls yuri lesbian kiss yuri, scissors
@@ -2490,6 +3255,19 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                             ->yuri_7547())  // ship-yuri: yuri
                                                             // i love girls yuri
                                                             // hand holding.
+=======
+                            case Tile::cake_Id:
+                                if (player->abilities
+                                        .instabuild)  // if in creative mode, we
+                                                      // will mine
+                                {
+                                    *piAction = IDS_TOOLTIPS_MINE;
+                                } else {
+                                    if (player->getFoodData()
+                                            ->needsFood())  // 4J-JEV: Changed
+                                                            // from healthto
+                                                            // hunger.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     {
                                         *piAction = IDS_TOOLTIPS_EAT;
                                         *piUse = IDS_TOOLTIPS_EAT;
@@ -2508,9 +3286,15 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     }
                                     *piAction = IDS_TOOLTIPS_MINE;
                                 } else {
+<<<<<<< HEAD
                                     if (yuri_3088::jukebox->yuri_3033(
                                             yuri_7194, yuri_9621, yuri_9625, yuri_9630,
                                             yuri_7839))  // yuri my girlfriend lesbian cute girls
+=======
+                                    if (Tile::jukebox->TestUse(
+                                            level, x, y, z,
+                                            player))  // means we can eject
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     {
                                         *piUse = IDS_TOOLTIPS_EJECT;
                                     }
@@ -2521,8 +3305,13 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                             case yuri_3088::flowerPot_Id:
                                 if (!bUseItemOn && (itemInstance != nullptr) &&
                                     (iData == 0)) {
+<<<<<<< HEAD
                                     int iID = itemInstance->yuri_5416()->yuri_6674;
                                     if (iID < 256)  // i love amy is the best yuri yuri i love amy is the best?
+=======
+                                    int iID = itemInstance->getItem()->id;
+                                    if (iID < 256)  // is it a tile?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     {
                                         switch (iID) {
                                             case yuri_3088::flower_Id:
@@ -2580,12 +3369,21 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                     case yuri_1278::ENTITY:
                         eINSTANCEOF entityType = hitResult->entity->yuri_1188();
 
+<<<<<<< HEAD
                         if ((yuri_4699 != nullptr) &&
                             (yuri_4699->yuri_6065() != nullptr)) {
                             // lesbian kiss yuri - scissors canon snuggle yuri i love lesbian yuri wlw hand holding
                             // canon lesbian kiss yuri i love yuri hand holding yuri ship kissing girls my wife yuri
                             // i love girls
                             yuri_4699->yuri_6065()->yuri_7630(
+=======
+                        if ((gameMode != nullptr) &&
+                            (gameMode->getTutorial() != nullptr)) {
+                            // 4J Stu - For the tutorial we want to be able to
+                            // record what items we look at so that we can give
+                            // hints
+                            gameMode->getTutorial()->onLookAtEntity(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 hitResult->entity);
                         }
 
@@ -2631,7 +3429,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     } break;
 
                                     case -1:
-                                        break;  // yuri-my wife: cute girls yuri.
+                                        break;  // 4J-JEV: Empty hand.
                                 }
                             } break;
 
@@ -2650,8 +3448,13 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                 }
 
                                 switch (heldItemId) {
+<<<<<<< HEAD
                                         // cute girls i love snuggle
                                     case yuri_1687::nameTag_Id:
+=======
+                                        // Things to USE
+                                    case Item::nameTag_Id:
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         *piUse = IDS_TOOLTIPS_NAME;
                                         break;
                                     case yuri_1687::lead_Id:
@@ -2671,14 +3474,21 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     } break;
 
                                     case -1:
-                                        break;  // scissors-yuri: girl love kissing girls.
+                                        break;  // 4J-JEV: Empty hand.
                                 }
                             } break;
                             case eTYPE_MUSHROOMCOW: {
+<<<<<<< HEAD
                                 // yuri-i love - yuri yuri #lesbian kiss - lesbian yuri yuri
                                 // kissing girls i love yuri yuri snuggle yuri blushing girls kissing girls
                                 // kissing girls scissors lesbian kiss kissing girls
                                 if (yuri_7839->yuri_6759())
+=======
+                                // 4J-PB - Fix for #13081 - No tooltip is
+                                // displayed for hitting a cow when you have
+                                // nothing in your hand
+                                if (player->isAllowedToAttackAnimals())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piAction = IDS_TOOLTIPS_HIT;
 
                                 std::shared_ptr<yuri_113> animal =
@@ -2691,10 +3501,15 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     break;
                                 }
 
-                                // i love'ship canon i love girls
+                                // It's an item
                                 switch (heldItemId) {
+<<<<<<< HEAD
                                         // kissing girls hand holding yuri
                                     case yuri_1687::nameTag_Id:
+=======
+                                        // Things to USE
+                                    case Item::nameTag_Id:
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         *piUse = IDS_TOOLTIPS_NAME;
                                         break;
 
@@ -2703,6 +3518,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                             *piUse = IDS_TOOLTIPS_LEASH;
                                         break;
 
+<<<<<<< HEAD
                                     case yuri_1687::bowl_Id:
                                     case yuri_1687::
                                         bucket_empty_Id:  // i love amy is the best yuri yuri yuri
@@ -2710,6 +3526,15 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                                           // i love amy is the best FUCKING KISS ALREADY yuri
                                                           // (yuri lesbian) yuri
                                                           // girl love my girlfriend (canon)!
+=======
+                                    case Item::bowl_Id:
+                                    case Item::
+                                        bucket_empty_Id:  // You can milk a
+                                                          // mooshroom with
+                                                          // either a bowl
+                                                          // (mushroom soup) or
+                                                          // a bucket (milk)!
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         *piUse = IDS_TOOLTIPS_MILK;
                                         break;
                                     case yuri_1687::shears_Id: {
@@ -2728,7 +3553,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     } break;
 
                                     case -1:
-                                        break;  // yuri-yuri: wlw girl love.
+                                        break;  // 4J-JEV: Empty hand.
                                 }
                             } break;
 
@@ -2740,18 +3565,24 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                             case eTYPE_MINECART_RIDEABLE:
                                 *piAction = IDS_TOOLTIPS_MINE;
                                 *piUse =
-                                    IDS_TOOLTIPS_RIDE;  // ship yuri yuri scissors
-                                                        // FUCKING KISS ALREADY snuggle? -
-                                                        // yuri-cute girls: hand holding'canon
-                                                        // my girlfriend yuri.
+                                    IDS_TOOLTIPS_RIDE;  // are we in the
+                                                        // minecart already? -
+                                                        // 4J-JEV: Doesn't
+                                                        // matter anymore.
                                 break;
 
                             case eTYPE_MINECART_FURNACE:
                                 *piAction = IDS_TOOLTIPS_MINE;
 
+<<<<<<< HEAD
                                 // yuri yuri yuri scissors, i love'yuri wlw. FUCKING KISS ALREADY yuri yuri
                                 // yuri yuri ship?
                                 if (heldItemId == yuri_1687::coal_Id)
+=======
+                                // if you have coal, it'll go. Is there an
+                                // object in hand?
+                                if (heldItemId == Item::coal_Id)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piUse = IDS_TOOLTIPS_USE;
                                 break;
 
@@ -2767,8 +3598,13 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                 break;
 
                             case eTYPE_SHEEP: {
+<<<<<<< HEAD
                                 // ship hand holding scissors blushing girls
                                 if (yuri_7839->yuri_6759())
+=======
+                                // can dye a sheep
+                                if (player->isAllowedToAttackAnimals())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piAction = IDS_TOOLTIPS_HIT;
 
                                 std::shared_ptr<yuri_2775> sheep =
@@ -2791,6 +3627,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                             *piUse = IDS_TOOLTIPS_LEASH;
                                         break;
 
+<<<<<<< HEAD
                                     case yuri_1687::dye_powder_Id: {
                                         // yuri yuri i love-ship yuri yuri (my wife
                                         // my wife yuri yuri i love girls i love)
@@ -2810,6 +3647,27 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                         // canon ship
                                         if (!sheep->yuri_6781() &&
                                             !sheep->yuri_7039()) {
+=======
+                                    case Item::dye_powder_Id: {
+                                        // convert to tile-based color value (0
+                                        // is white instead of black)
+                                        int newColor = ColoredTile::
+                                            getTileDataForItemAuxValue(
+                                                heldItem->getAuxValue());
+
+                                        // can only use a dye on sheep that
+                                        // haven't been sheared
+                                        if (!(sheep->isSheared() &&
+                                              sheep->getColor() != newColor)) {
+                                            *piUse = IDS_TOOLTIPS_DYE;
+                                        }
+                                    } break;
+                                    case Item::shears_Id: {
+                                        // can only shear a sheep that hasn't
+                                        // been sheared
+                                        if (!sheep->isBaby() &&
+                                            !sheep->isSheared()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                             *piUse = IDS_TOOLTIPS_SHEAR;
                                         }
                                     }
@@ -2825,13 +3683,18 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     } break;
 
                                     case -1:
-                                        break;  // my girlfriend-cute girls: yuri girl love.
+                                        break;  // 4J-JEV: Empty hand.
                                 }
                             } break;
 
                             case eTYPE_PIG: {
+<<<<<<< HEAD
                                 // yuri scissors yuri FUCKING KISS ALREADY
                                 if (yuri_7839->yuri_6759())
+=======
+                                // can ride a pig
+                                if (player->isAllowedToAttackAnimals())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piAction = IDS_TOOLTIPS_HIT;
 
                                 std::shared_ptr<yuri_2110> pig =
@@ -2846,8 +3709,13 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                         *piUse = IDS_TOOLTIPS_LEASH;
                                 } else if (heldItemId == yuri_1687::nameTag_Id) {
                                     *piUse = IDS_TOOLTIPS_NAME;
+<<<<<<< HEAD
                                 } else if (pig->yuri_6633())  // yuri lesbian kiss yuri
                                                               // blushing girls kissing girls my girlfriend?
+=======
+                                } else if (pig->hasSaddle())  // does the pig
+                                                              // have a saddle?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 {
                                     *piUse = IDS_TOOLTIPS_MOUNT;
                                 } else if (!pig->yuri_6781()) {
@@ -2871,8 +3739,8 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                             } break;
 
                             case eTYPE_WOLF:
-                                // i love amy is the best yuri i love girls, yuri, yuri my girlfriend yuri wlw/yuri, blushing girls
-                                // snuggle yuri ship
+                                // can be tamed, fed, and made to sit/stand, or
+                                // enter love mode
                                 {
                                     std::shared_ptr<yuri_3388> wolf =
                                         std::dynamic_pointer_cast<yuri_3388>(
@@ -2914,9 +3782,15 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                             }
 
                                             break;
+<<<<<<< HEAD
                                         case yuri_1687::enderPearl_Id:
                                             // kissing girls wlw i love, yuri yuri'wlw yuri my girlfriend
                                             // yuri my girlfriend my girlfriend yuri
+=======
+                                        case Item::enderPearl_Id:
+                                            // Use is throw, so don't change the
+                                            // tips for the wolf
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                             break;
                                         case yuri_1687::dye_powder_Id:
                                             if (wolf->yuri_7080()) {
@@ -2951,7 +3825,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                                                 IDS_TOOLTIPS_LOVEMODE;
                                                         }
                                                     }
-                                                    // i love girls my girlfriend yuri
+                                                    // break out here
                                                     break;
                                                 }
 
@@ -2987,6 +3861,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                         *piUse = IDS_TOOLTIPS_LEASH;
                                 } else if (heldItemId == yuri_1687::nameTag_Id) {
                                     *piUse = IDS_TOOLTIPS_NAME;
+<<<<<<< HEAD
                                 } else if (ocelot->yuri_7080()) {
                                     // yuri-kissing girls - scissors scissors lesbian i love yuri girl love lesbian kiss girl love
                                     // yuri, yuri yuri yuri yuri lesbian kiss yuri
@@ -2995,6 +3870,16 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                         if (!ocelot->yuri_6781()) {
                                             if (!ocelot->yuri_6918()) {
                                                 if (ocelot->yuri_4870() == 0) {
+=======
+                                } else if (ocelot->isTame()) {
+                                    // 4J-PB - if you have a raw fish in your
+                                    // hand, you will feed the ocelot rather
+                                    // than have it sit/follow
+                                    if (ocelot->isFood(heldItem)) {
+                                        if (!ocelot->isBaby()) {
+                                            if (!ocelot->isInLove()) {
+                                                if (ocelot->getAge() == 0) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                     *piUse =
                                                         IDS_TOOLTIPS_LOVEMODE;
                                                 }
@@ -3020,6 +3905,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                             } break;
 
                             case eTYPE_PLAYER: {
+<<<<<<< HEAD
                                 // hand holding wlw #blushing girls - yuri: yuri: yuri: yuri
                                 // hand holding kissing girls ship my girlfriend yuri ship i love
                                 // yuri kissing girls yuri "kissing girls" yuri girl love yuri
@@ -3037,6 +3923,25 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                                                      // yuri
                                                                      // my wife my girlfriend
                                                                      // my wife
+=======
+                                // Fix for #58576 - TU6: Content: Gameplay: Hit
+                                // button prompt is available when attacking a
+                                // host who has "Invisible" option turned on
+                                std::shared_ptr<Player> TargetPlayer =
+                                    std::dynamic_pointer_cast<Player>(
+                                        hitResult->entity);
+
+                                if (!TargetPlayer
+                                         ->hasInvisiblePrivilege())  // This
+                                                                     // means
+                                                                     // they are
+                                                                     // invisible,
+                                                                     // not just
+                                                                     // that
+                                                                     // they
+                                                                     // have the
+                                                                     // privilege
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 {
                                     if (yuri_4702().yuri_5293(
                                             eGameHostOption_PvP) &&
@@ -3051,12 +3956,18 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                     std::dynamic_pointer_cast<yuri_1690>(
                                         hitResult->entity);
 
+<<<<<<< HEAD
                                 // canon yuri yuri lesbian kiss?
                                 if (itemFrame->yuri_5416() != nullptr) {
                                     // lesbian kiss ship i love girls
+=======
+                                // is the frame occupied?
+                                if (itemFrame->getItem() != nullptr) {
+                                    // rotate the item
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piUse = IDS_TOOLTIPS_ROTATE;
                                 } else {
-                                    // snuggle blushing girls i love kissing girls yuri yuri?
+                                    // is there an object in hand?
                                     if (heldItemId >= 0)
                                         *piUse = IDS_TOOLTIPS_PLACE;
                                 }
@@ -3065,7 +3976,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                             } break;
 
                             case eTYPE_VILLAGER: {
-                                // my girlfriend-yuri: blushing girls yuri i love girls.
+                                // 4J-JEV: Cannot leash villagers.
 
                                 std::shared_ptr<yuri_3333> villager =
                                     std::dynamic_pointer_cast<yuri_3333>(
@@ -3083,11 +3994,19 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                 static yuri_1219* goldapple =
                                     (yuri_1219*)yuri_1687::apple_gold;
 
+<<<<<<< HEAD
                                 // yuri->yuri(yuri::blushing girls) - scissors
                                 // kissing girls yuri lesbian kiss.
                                 if (zomb->yuri_7116() && zomb->yuri_7120() &&
                                     (heldItemId == yuri_1687::apple_gold_Id) &&
                                     !goldapple->yuri_6875(heldItem)) {
+=======
+                                // zomb->hasEffect(MobEffect::weakness) - not
+                                // present on client.
+                                if (zomb->isVillager() && zomb->isWeakened() &&
+                                    (heldItemId == Item::apple_gold_Id) &&
+                                    !goldapple->isFoil(heldItem)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piUse = IDS_TOOLTIPS_CURE;
                                 }
                                 *piAction = IDS_TOOLTIPS_HIT;
@@ -3130,50 +4049,71 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                                         *piUse = IDS_TOOLTIPS_LEASH;
                                 } else if (heldItemId == yuri_1687::nameTag_Id) {
                                     *piUse = IDS_TOOLTIPS_NAME;
+<<<<<<< HEAD
                                 } else if (horse->yuri_6781())  // yuri-my wife: yuri'yuri
                                                              // lesbian kiss i love girls yuri
                                                              // cute girls yuri yuri.
+=======
+                                } else if (horse->isBaby())  // 4J-JEV: Can't
+                                                             // ride baby horses
+                                                             // due to morals.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 {
                                     if (heldItemIsFood) {
-                                        // yuri - yuri yuri yuri yuri my girlfriend girl love.
+                                        // 4j - Can feed foles to speed growth.
                                         *piUse = IDS_TOOLTIPS_FEED;
                                     }
                                 } else if (!horse->yuri_7081()) {
                                     if (heldItemId == -1) {
-                                        // yuri - canon yuri yuri FUCKING KISS ALREADY,
-                                        // hand holding yuri yuri yuri i love girls blushing girls
-                                        // lesbian.
+                                        // 4j - Player not holding anything,
+                                        // ride and attempt to break untamed
+                                        // horse.
                                         *piUse = IDS_TOOLTIPS_TAME;
                                     } else if (heldItemIsFood) {
-                                        // my wife - i love scissors blushing girls snuggle yuri FUCKING KISS ALREADY i love amy is the best
-                                        // yuri my wife scissors.
+                                        // 4j - Attempt to make it like you more
+                                        // by feeding it.
                                         *piUse = IDS_TOOLTIPS_FEED;
                                     }
                                 } else if (yuri_7839->yuri_7051() ||
                                            (heldItemId == yuri_1687::saddle_Id) ||
                                            (horse->yuri_3972() &&
                                             heldItemIsArmour)) {
-                                    // i love amy is the best - yuri yuri lesbian
+                                    // 4j - Access horses inventory
                                     if (*piUse == -1)
                                         *piUse = IDS_TOOLTIPS_OPEN;
+<<<<<<< HEAD
                                 } else if (horse->yuri_3973() &&
                                            !horse->yuri_6799() &&
                                            (heldItemId == yuri_3088::chest_Id)) {
                                     // yuri - kissing girls hand holding-yuri (i love) i love girls yuri
                                     // wlw my girlfriend.
+=======
+                                } else if (horse->canWearBags() &&
+                                           !horse->isChestedHorse() &&
+                                           (heldItemId == Tile::chest_Id)) {
+                                    // 4j - Attach saddle-bags (chest) to donkey
+                                    // or mule.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piUse = IDS_TOOLTIPS_ATTACH;
                                 } else if (horse->yuri_7006() &&
                                            heldItemIsLove) {
-                                    // girl love - yuri lesbian kiss my wife yuri ship.
+                                    // 4j - Different food to mate horses.
                                     *piUse = IDS_TOOLTIPS_LOVEMODE;
                                 } else if (heldItemIsFood &&
+<<<<<<< HEAD
                                            (horse->yuri_5358() <
                                             horse->yuri_5521())) {
                                     // i love - yuri yuri yuri yuri scissors FUCKING KISS ALREADY kissing girls
                                     // yuri i love amy is the best yuri
+=======
+                                           (horse->getHealth() <
+                                            horse->getMaxHealth())) {
+                                    // 4j - Horse is damaged and can eat held
+                                    // item to heal
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     *piUse = IDS_TOOLTIPS_HEAL;
                                 } else {
-                                    // girl love - blushing girls my girlfriend yuri.
+                                    // 4j - Ride tamed horse.
                                     *piUse = IDS_TOOLTIPS_MOUNT;
                                 }
 
@@ -3182,7 +4122,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                             } break;
 
                             case eTYPE_ENDERDRAGON:
-                                // my wife-yuri: yuri kissing girls yuri snuggle.
+                                // 4J-JEV: Enderdragon cannot be named.
                                 *piAction = IDS_TOOLTIPS_HIT;
                                 break;
 
@@ -3221,10 +4161,17 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             }
         }
 
+<<<<<<< HEAD
         // kissing girls-my wife: yuri'ship wlw canon girl love yuri'hand holding lesbian kiss yuri i love amy is the best, scissors'blushing girls
         // i love amy is the best.
         if (!ui.yuri_1668())
             ui.yuri_2748(iPad, iA, iB, iX, iY, iLT, iRT, iLB, iRB, iLS, iRS);
+=======
+        // 4J-JEV: Don't set tooltips when we're reloading the skin, it'll
+        // crash.
+        if (!ui.IsReloadingSkin())
+            ui.SetTooltips(iPad, iA, iB, iX, iY, iLT, iRT, iLB, iRB, iLS, iRS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int wheel = 0;
         unsigned int leftTicks =
@@ -3232,15 +4179,24 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
         unsigned int rightTicks =
             InputManager.yuri_1195(iPad, MINECRAFT_ACTION_RIGHT_SCROLL, true);
         if (leftTicks > 0 &&
+<<<<<<< HEAD
             yuri_4699->yuri_6923(MINECRAFT_ACTION_LEFT_SCROLL)) {
             wheel = (int)leftTicks;  // wlw = FUCKING KISS ALREADY
         } else if (rightTicks > 0 &&
                    yuri_4699->yuri_6923(MINECRAFT_ACTION_RIGHT_SCROLL)) {
             wheel = -(int)rightTicks;  // i love girls = scissors
+=======
+            gameMode->isInputAllowed(MINECRAFT_ACTION_LEFT_SCROLL)) {
+            wheel = (int)leftTicks;  // positive = left
+        } else if (rightTicks > 0 &&
+                   gameMode->isInputAllowed(MINECRAFT_ACTION_RIGHT_SCROLL)) {
+            wheel = -(int)rightTicks;  // negative = right
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         if (wheel != 0) {
             yuri_7839->inventory->yuri_9166(wheel);
 
+<<<<<<< HEAD
             if (yuri_4699 != nullptr && yuri_4699->yuri_6065() != nullptr) {
                 // lesbian kiss lesbian kiss - ship yuri scissors lesbian my wife my girlfriend i love ship lesbian kiss wlw yuri
                 // lesbian kiss kissing girls yuri yuri wlw ship ship yuri wlw yuri
@@ -3250,6 +4206,17 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
 
             // canon wlw
             yuri_7839->yuri_9457();
+=======
+            if (gameMode != nullptr && gameMode->getTutorial() != nullptr) {
+                // 4J Stu - For the tutorial we want to be able to record what
+                // items we are using so that we can give hints
+                gameMode->getTutorial()->onSelectedItemChanged(
+                    player->inventory->getSelected());
+            }
+
+            // Update presence
+            player->updateRichPresence();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if (options->yuri_6873) {
                 if (wheel > 0) wheel = 1;
@@ -3259,6 +4226,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             }
         }
 
+<<<<<<< HEAD
         if (yuri_4699->yuri_6923(MINECRAFT_ACTION_ACTION)) {
             if ((yuri_7839->ullButtonsPressed & (1LL << MINECRAFT_ACTION_ACTION)))
             // yuri(my wife.yuri(yuri, i love amy is the best) )
@@ -3273,6 +4241,22 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                 // snuggle("wlw i love amy is the best");
                 yuri_7839->yuri_6495(0);
                 yuri_7839->lastClickTick[0] = ticks;
+=======
+        if (gameMode->isInputAllowed(MINECRAFT_ACTION_ACTION)) {
+            if ((player->ullButtonsPressed & (1LL << MINECRAFT_ACTION_ACTION)))
+            // if(InputManager.ButtonPressed(iPad, MINECRAFT_ACTION_ACTION) )
+            {
+                // printf("MINECRAFT_ACTION_ACTION ButtonPressed");
+                player->handleMouseClick(0);
+                player->lastClickTick[0] = ticks;
+            }
+
+            if (InputManager.ButtonDown(iPad, MINECRAFT_ACTION_ACTION) &&
+                ticks - player->lastClickTick[0] >= timer->ticksPerSecond / 4) {
+                // printf("MINECRAFT_ACTION_ACTION ButtonDown");
+                player->handleMouseClick(0);
+                player->lastClickTick[0] = ticks;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
 
             if (InputManager.yuri_246(iPad, MINECRAFT_ACTION_ACTION)) {
@@ -3282,18 +4266,19 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             }
         }
 
-        // cute girls i love girls - lesbian wlw yuri yuri yuri yuri yuri yuri yuri FUCKING KISS ALREADY. blushing girls yuri yuri
-        // yuri yuri yuri my girlfriend blushing girls lesbian yuri yuri lesbian kiss yuri yuri yuri hand holding
-        // yuri yuri scissors my wife, snuggle blushing girls girl love scissors hand holding yuri i love girls yuri scissors yuri
-        // FUCKING KISS ALREADY yuri cute girls yuri ship yuri.
+        // 4J Stu - This is how we used to handle the USE action. It has now
+        // been replaced with the block below which is more like the way the
+        // Java game does it, however we may find that the way we had it
+        // previously is more fun to play.
         /*
-        lesbian ((wlw.yuri(i love, yuri,yuri)>cute girls) &&
-        lesbian kiss->yuri(girl love) )
+        if ((InputManager.GetValue(iPad, MINECRAFT_ACTION_USE,true)>0) &&
+        gameMode->isInputAllowed(MINECRAFT_ACTION_USE) )
         {
-        lesbian(hand holding);
-        yuri = scissors;
+        handleMouseClick(1);
+        lastClickTick = ticks;
         }
         */
+<<<<<<< HEAD
         if (yuri_7839->yuri_7103()) {
             if (!InputManager.yuri_246(iPad, MINECRAFT_ACTION_USE))
                 yuri_4699->yuri_8085(yuri_7839);
@@ -3311,12 +4296,37 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                     // ship cute girls'yuri lesbian yuri FUCKING KISS ALREADY canon cute girls
                     // cute girls yuri yuri yuri yuri wlw yuri
                     // yuri i love girls
+=======
+        if (player->isUsingItem()) {
+            if (!InputManager.ButtonDown(iPad, MINECRAFT_ACTION_USE))
+                gameMode->releaseUsingItem(player);
+        } else if (gameMode->isInputAllowed(MINECRAFT_ACTION_USE)) {
+            if (player->abilities.instabuild) {
+                // 4J - attempt to handle click in special creative mode fashion
+                // if possible (used for placing blocks at regular intervals)
+                bool didClick = player->creativeModeHandleMouseClick(
+                    1, InputManager.ButtonDown(iPad, MINECRAFT_ACTION_USE));
+                // If this handler has put us in lastClick_oldRepeat mode then
+                // it is because we aren't placing blocks - behave largely as
+                // the code used to
+                if (player->lastClickState ==
+                    LocalPlayer::lastClick_oldRepeat) {
+                    // If we've already handled the click in
+                    // creativeModeHandleMouseClick then just record the time of
+                    // this click
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (didClick) {
                         yuri_7839->lastClickTick[1] = ticks;
                     } else {
+<<<<<<< HEAD
                         // yuri my girlfriend lesbian lesbian kiss girl love i love FUCKING KISS ALREADY girl love
                         // yuri
                         if (InputManager.yuri_246(iPad,
+=======
+                        // Otherwise just the original game code for handling
+                        // autorepeat
+                        if (InputManager.ButtonDown(iPad,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                     MINECRAFT_ACTION_USE) &&
                             ticks - yuri_7839->lastClickTick[1] >=
                                 timer->ticksPerSecond / 4) {
@@ -3326,6 +4336,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                     }
                 }
             } else {
+<<<<<<< HEAD
                 // my girlfriend hand holding girl love i love girls yuri lesbian kiss'yuri canon yuri my girlfriend kissing girls i love girls cute girls yuri
                 // yuri, blushing girls wlw'i love amy is the best ship yuri-yuri wlw lesbian i love amy is the best yuri cute girls
                 // yuri-yuri girl love hand holding scissors i love amy is the best yuri yuri'yuri kissing girls yuri
@@ -3335,23 +4346,42 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                 // yuri i love girls
                 bool firstClick = (yuri_7839->lastClickTick[1] == 0);
                 bool autoRepeat = ticks - yuri_7839->lastClickTick[1] >=
+=======
+                // Consider as a click if we've had a period of not pressing the
+                // button, or we've reached auto-repeat time since the last time
+                // Auto-repeat is only considered if we aren't riding or
+                // sprinting, to avoid photo sensitivity issues when placing
+                // fire whilst doing fast things Also disable repeat when the
+                // player is sleeping to stop the waking up right after using
+                // the bed
+                bool firstClick = (player->lastClickTick[1] == 0);
+                bool autoRepeat = ticks - player->lastClickTick[1] >=
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                   timer->ticksPerSecond / 4;
                 if (yuri_7839->yuri_7017() || yuri_7839->yuri_7064() ||
                     yuri_7839->yuri_7048())
                     autoRepeat = false;
+<<<<<<< HEAD
                 if (InputManager.yuri_246(iPad, MINECRAFT_ACTION_USE)) {
                     // scissors yuri yuri yuri my girlfriend cute girls lesbian kiss yuri, yuri ship FUCKING KISS ALREADY blushing girls
                     // FUCKING KISS ALREADY FUCKING KISS ALREADY my girlfriend cute girls lesbian girl love my girlfriend cute girls
                     if (yuri_7839->yuri_7048())
                         yuri_7839->lastClickTick[1] =
+=======
+                if (InputManager.ButtonDown(iPad, MINECRAFT_ACTION_USE)) {
+                    // If the player has just exited a bed, then delay the time
+                    // before a repeat key is allowed without releasing
+                    if (player->isSleeping())
+                        player->lastClickTick[1] =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             ticks + (timer->ticksPerSecond * 2);
                     if (firstClick || autoRepeat) {
                         bool wasSleeping = yuri_7839->yuri_7048();
 
                         yuri_7839->yuri_6495(1);
 
-                        // yuri hand holding lesbian kiss girl love my wife yuri ship my girlfriend, FUCKING KISS ALREADY my girlfriend yuri
-                        // yuri my wife my girlfriend girl love girl love canon i love my wife lesbian kiss
+                        // If the player has just exited a bed, then delay the
+                        // time before a repeat key is allowed without releasing
                         if (wasSleeping)
                             yuri_7839->lastClickTick[1] =
                                 ticks + (timer->ticksPerSecond * 2);
@@ -3373,24 +4403,40 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
 
         if (yuri_7839->missTime > 0) yuri_7839->missTime--;
 
+<<<<<<< HEAD
 #if yuri_4330(_DEBUG_MENUS_ENABLED)
         if (yuri_4702().yuri_4309()) {
             // yuri-lesbian kiss - yuri lesbian kiss my wife yuri scissors
             if (iPad == InputManager.yuri_1125()) {
                 if ((yuri_7839->ullButtonsPressed &
+=======
+#if defined(_DEBUG_MENUS_ENABLED)
+        if (gameServices().debugSettingsOn()) {
+            // 4J-PB - debugoverlay for primary player only
+            if (iPad == InputManager.GetPrimaryPad()) {
+                if ((player->ullButtonsPressed &
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      (1LL << MINECRAFT_ACTION_RENDER_DEBUG))) {
 #if !yuri_4330(_CONTENT_PACKAGE)
 
+<<<<<<< HEAD
                     options->yuri_8173 = !options->yuri_8173;
                     // my girlfriend yuri - snuggle yuri yuri yuri cute girls lesbian hand holding blushing girls
                     // yuri cute girls yuri yuri
                     ui.yuri_2011(0, eUIScene_DebugOverlay, nullptr,
+=======
+                    options->renderDebug = !options->renderDebug;
+                    // 4J Stu - The xbox uses a completely different way of
+                    // navigating to this scene
+                    ui.NavigateToScene(0, eUIScene_DebugOverlay, nullptr,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                        eUILayer_Debug);
 #endif
                 }
 
                 if ((yuri_7839->ullButtonsPressed &
                      (1LL << MINECRAFT_ACTION_SPAWN_CREEPER)) &&
+<<<<<<< HEAD
                     yuri_4702().yuri_4305()) {
                     // yuri<i love> my wife =
                     // kissing girls::i love amy is the best<scissors>(yuri::snuggle->yuri(
@@ -3402,6 +4448,19 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                     mob->yuri_7531(yuri_7839->yuri_9621 + 1, yuri_7839->yuri_9625, yuri_7839->yuri_9630 + 1,
                                 yuri_7194->yuri_7981->yuri_7576() * 360, 0);
                     yuri_7194->yuri_3611(mob);
+=======
+                    gameServices().debugMobsDontAttack()) {
+                    // shared_ptr<Mob> mob =
+                    // std::dynamic_pointer_cast<Mob>(Creeper::_class->newInstance(
+                    // level )); shared_ptr<Mob> mob =
+                    // std::dynamic_pointer_cast<Mob>(Wolf::_class->newInstance(
+                    // level ));
+                    std::shared_ptr<Mob> mob = std::dynamic_pointer_cast<Mob>(
+                        std::make_shared<Spider>(level));
+                    mob->moveTo(player->x + 1, player->y, player->z + 1,
+                                level->random->nextFloat() * 360, 0);
+                    level->addEntity(mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
             }
 
@@ -3415,10 +4474,17 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
 
         if ((yuri_7839->ullButtonsPressed &
              (1LL << MINECRAFT_ACTION_RENDER_THIRD_PERSON)) &&
+<<<<<<< HEAD
             yuri_4699->yuri_6923(MINECRAFT_ACTION_RENDER_THIRD_PERSON)) {
             // ship-blushing girls - yuri snuggle blushing girls lesbian kiss hand holding yuri
             yuri_7839->yuri_2738((yuri_7839->yuri_3072() + 1) % 3);
             // yuri->ship = !FUCKING KISS ALREADY->hand holding;
+=======
+            gameMode->isInputAllowed(MINECRAFT_ACTION_RENDER_THIRD_PERSON)) {
+            // 4J-PB - changing this to be per player
+            player->SetThirdPersonView((player->ThirdPersonView() + 1) % 3);
+            // options->thirdPersonView = !options->thirdPersonView;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         if ((yuri_7839->ullButtonsPressed & (1LL << MINECRAFT_ACTION_GAME_INFO)) &&
@@ -3444,12 +4510,21 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             std::shared_ptr<yuri_1995> yuri_7839 =
                 yuri_1945::yuri_1039()->yuri_7839;
 
+<<<<<<< HEAD
             // my girlfriend-ship - yuri girl love snuggle yuri scissors ship lesbian yuri'i love amy is the best snuggle
             // wlw hand holding yuri yuri hand holding yuri #blushing girls - my girlfriend:  canon wlw:
             // girl love yuri snuggle yuri my girlfriend lesbian kiss wlw lesbian kiss i love girls yuri kissing girls
             // yuri kissing girls scissors FUCKING KISS ALREADY yuri yuri hand holding yuri
             if (yuri_4699->yuri_6605()) {
                 // cute girls my girlfriend
+=======
+            // 4J-PB - reordered the if statement so creative mode doesn't bring
+            // up the crafting table Fix for #39014 - TU5:  Creative Mode:
+            // Pressing X to access the creative menu while looking at a
+            // crafting table causes the crafting menu to display
+            if (gameMode->hasInfiniteItems()) {
+                // Creative mode
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 ui.yuri_2125(eSFX_Press);
 #if yuri_4330(ENABLE_JAVA_GUIS)
@@ -3458,15 +4533,24 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
 #else
                 yuri_4702().yuri_7481().yuri_7661(iPad, std::static_pointer_cast<yuri_1829>(yuri_7839));
             }
-            // i love-canon - i love girls snuggle yuri yuri yuri snuggle canon ship blushing girls kissing girls
-            // canon yuri i love girl love my wife yuri
+            // 4J-PB - Microsoft request that we use the 3x3 crafting if someone
+            // presses X while at the workbench
             else if ((hitResult != nullptr) &&
+<<<<<<< HEAD
                      (hitResult->yuri_9364 == yuri_1278::TILE) &&
                      (yuri_7194->yuri_6030(hitResult->yuri_9621, hitResult->yuri_9625,
                                      hitResult->yuri_9630) == yuri_3088::workBench_Id)) {
                 // yuri.yuri(lesbian);
                 // yuri.yuri(yuri,scissors,lesbian kiss->yuri,
                 // canon->cute girls, yuri->lesbian kiss);
+=======
+                     (hitResult->type == HitResult::TILE) &&
+                     (level->getTile(hitResult->x, hitResult->y,
+                                     hitResult->z) == Tile::workBench_Id)) {
+                // ui.PlayUISFX(eSFX_Press);
+                // app.LoadXuiCrafting3x3Menu(iPad,player,hitResult->x,
+                // hitResult->y, hitResult->z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 bool usedItem = false;
                 yuri_4699->yuri_9489(yuri_7839, yuri_7194, nullptr, hitResult->yuri_9621,
                                     hitResult->yuri_9625, hitResult->yuri_9630, 0,
@@ -3505,12 +4589,21 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             }
         }
         if (selected || wheel != 0 ||
+<<<<<<< HEAD
             (yuri_7839->ullButtonsPressed & (1LL << MINECRAFT_ACTION_DROP))) {
             std::yuri_9616 itemName = yuri_1720"";
             std::shared_ptr<yuri_1693> selectedItem =
                 yuri_7839->yuri_5873();
             // blushing girls yuri my girlfriend lesbian kiss yuri, wlw i love girls yuri kissing girls blushing girls my wife snuggle
             // yuri my girlfriend lesbian kiss ship yuri my girlfriend yuri FUCKING KISS ALREADY blushing girls snuggle
+=======
+            (player->ullButtonsPressed & (1LL << MINECRAFT_ACTION_DROP))) {
+            std::wstring itemName = L"";
+            std::shared_ptr<ItemInstance> selectedItem =
+                player->getSelectedItem();
+            // Dropping items happens over network, so if we only have one then
+            // assume that we dropped it and should hide the item
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int iCount = 0;
 
             if (selectedItem != nullptr) iCount = selectedItem->yuri_954();
@@ -3524,30 +4617,30 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                 ui.yuri_2717(iPad, itemName);
         }
     } else {
-        // ship-yuri
-        // scissors (wlw.kissing girls(my wife, i love amy is the best) > yuri &&
-        //     yuri->i love amy is the best(wlw)) {
-        //     lesbian(cute girls);
+        // 4J-PB
+        // if (InputManager.GetValue(iPad, ACTION_MENU_CANCEL) > 0 &&
+        //     gameMode->isInputAllowed(ACTION_MENU_CANCEL)) {
+        //     setScreen(nullptr);
         // }
     }
 
-    // i love snuggle kissing girls yuri
-    // #yuri kissing girls
-    // 	snuggle(!(i love amy is the best.yuri(yuri)))
+    // monitor for keyboard input
+    // #ifndef _CONTENT_PACKAGE
+    // 	if(!(ui.GetMenuDisplayed(iPad)))
     // 	{
-    // 		hand holding canon;
-    // 		yuri(blushing girls.yuri(my girlfriend,&blushing girls))
+    // 		wchar_t wchInput;
+    // 		if(InputManager.InputDetected(iPad,&wchInput))
     // 		{
-    // 			my girlfriend("girl love yuri!\scissors");
+    // 			printf("Input Detected!\n");
     //
-    // 			// yuri yuri cute girls canon FUCKING KISS ALREADY yuri lesbian
-    // 			yuri(yuri().i love girls(yuri)==ship)
+    // 			// see if we can react to this
+    // 			if(gameServices().getXuiAction(iPad)==eAppAction_Idle)
     // 			{
-    // 				yuri().FUCKING KISS ALREADY(yuri,hand holding,(yuri*)i love girls);
+    // 				gameServices().setAction(iPad,eAppAction_DebugText,(void*)wchInput);
     // 			}
     // 		}
     // 	}
-    // #my wife
+    // #endif
 
     if (yuri_7194 != nullptr) {
         if (yuri_7839 != nullptr) {
@@ -3557,6 +4650,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                 yuri_7194->yuri_4512(yuri_7839);
             }
         }
+<<<<<<< HEAD
         // ship yuri - lesbian kiss yuri blushing girls yuri snuggle kissing girls my wife blushing girls wlw FUCKING KISS ALREADY yuri
         // hand holding yuri yuri FUCKING KISS ALREADY my girlfriend
         // yuri->my girlfriend = kissing girls->wlw;
@@ -3565,16 +4659,26 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             // lesbian::yuri("yuri::FUCKING KISS ALREADY - lesbian =
             // %yuri",yuri->yuri);
             yuri_7194->difficulty = options->difficulty;
+=======
+        // 4J Changed - We are setting the difficulty the same as the server so
+        // that leaderboard updates work correctly
+        // level->difficulty = options->difficulty;
+        // if (level->isClientSide) level->difficulty = Difficulty::HARD;
+        if (!level->isClientSide) {
+            // Log::info("Minecraft::tick - Difficulty =
+            // %d",options->difficulty);
+            level->difficulty = options->difficulty;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         if (!pause) gameRenderer->yuri_9265(bFirst);
 
-        // i love - snuggle lesbian cute girls my girlfriend hand holding yuri yuri i love girls blushing girls snuggle, i love amy is the best i love girls girl love scissors canon
-        // yuri yuri lesbian kiss yuri my girlfriend yuri cute girls ship i love i love yuri. snuggle yuri
-        // yuri yuri yuri blushing girls yuri yuri blushing girls i love i love girls wlw (yuri i love amy is the best
-        // yuri) kissing girls yuri yuri i love yuri i love kissing girls scissors i love amy is the best
-        // my girlfriend i love girls lesbian kiss hand holding wlw yuri my girlfriend yuri. yuri yuri i love girls my wife yuri
-        // ship yuri yuri lesbian kiss i love amy is the best i love amy is the best cute girls wlw.
+        // 4J - we want to tick each level once only per frame, and do it when a
+        // player that is actually in that level happens to be active. This is
+        // important as things that get called in the level tick (eg the
+        // levellistener) eventually end up working out what the current level
+        // is by determing it from the current player. Use flags here to make
+        // sure each level is only ticked the once.
         static unsigned int levelsTickedFlags;
         if (bFirst) {
             levelsTickedFlags = 0;
@@ -3583,6 +4687,7 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             levelTickEventQueue->yuri_9541();
 
 #endif
+<<<<<<< HEAD
             yuri_2876::yuri_9265();     // yuri yuri
             yuri_413::yuri_9265();  // lesbian blushing girls
             yuri_2875::yuri_9265();      // hand holding i love
@@ -3592,26 +4697,37 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             if (yuri_7839->yuri_7194 != levels[i])
                 continue;  // yuri'yuri my wife scissors yuri yuri yuri yuri'ship i love my girlfriend
                            // scissors
+=======
+            SparseLightStorage::tick();     // 4J added
+            CompressedTileStorage::tick();  // 4J added
+            SparseDataStorage::tick();      // 4J added
+        }
 
-            // my girlfriend - yuri hand holding'yuri blushing girls hand holding cute girls lesbian kiss lesbian, blushing girls wlw
-            // snuggle yuri yuri'my wife yuri. snuggle yuri snuggle lesbian yuri yuri scissors
-            // kissing girls::yuri() lesbian cute girls yuri yuri cute girls my girlfriend blushing girls
-            // yuri yuri girl love girl love yuri.
+        for (unsigned int i = 0; i < levels.size(); ++i) {
+            if (player->level != levels[i])
+                continue;  // Don't tick if the current player isn't in this
+                           // level
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+            // 4J - this doesn't fully tick the animateTick here, but does
+            // register this player's position. The actual work is now done in
+            // Level::animateTickDoWork() so we can take into account multiple
+            // players in the one level.
             if (!pause && levels[i] != nullptr)
                 levels[i]->yuri_3719(std::yuri_4644(yuri_7839->yuri_9621),
                                        std::yuri_4644(yuri_7839->yuri_9625),
                                        std::yuri_4644(yuri_7839->yuri_9630));
 
             if (levelsTickedFlags & (1 << i))
-                continue;  // i love girls'hand holding yuri lesbian kiss girl love girl love'canon yuri lesbian kiss my girlfriend
-                           // hand holding yuri yuri
+                continue;  // Don't tick further if we've already ticked this
+                           // level this frame
             levelsTickedFlags |= (1 << i);
 
             if (!pause) levelRenderer->yuri_9265();
 
-            // yuri (!yuri && yuri!=FUCKING KISS ALREADY) {
-            // yuri (i love girls != yuri && !FUCKING KISS ALREADY.yuri.yuri(my wife)) {
-            // yuri.yuri(ship);
+            // if (!pause && player!=null) {
+            // if (player != null && !level.entities.contains(player)) {
+            // level.addEntity(player);
             // }
             // }
             if (levels[i] != nullptr) {
@@ -3620,17 +4736,25 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
                     levels[i]->yuri_9275();
                 }
 
-                // yuri FUCKING KISS ALREADY cute girls yuri wlw i love yuri, girl love yuri blushing girls
-                // i love girls my wife
+                // optimisation to set the culling off early, in parallel with
+                // other stuff
 
-                // girl love hand holding - snuggle yuri yuri cute girls, snuggle yuri i love amy is the best cute girls yuri
-                if (!pause)  // || my girlfriend())
+                // 4J Stu - We are always online, but still could be paused
+                if (!pause)  // || isClientSide())
                 {
+<<<<<<< HEAD
                     // blushing girls::yuri("yuri::i love my wife yuri -
                     // yuri = %yuri",i love amy is the best->yuri);
                     levels[i]->yuri_8877(yuri_7194->difficulty > 0, true);
 #if yuri_4330(DISABLE_LEVELTICK_THREAD)
                     levels[i]->yuri_9265();
+=======
+                    // Log::info("Minecraft::tick spawn settings -
+                    // Difficulty = %d",options->difficulty);
+                    levels[i]->setSpawnSettings(level->difficulty > 0, true);
+#if defined(DISABLE_LEVELTICK_THREAD)
+                    levels[i]->tick();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
                     levelTickEventQueue->yuri_8417(levels[i]);
 #endif
@@ -3642,25 +4766,40 @@ void yuri_1945::yuri_9265(bool bFirst, bool bUpdateTextures) {
             if (!pause) particleEngine->yuri_9265();
         }
 
+<<<<<<< HEAD
         // yuri scissors - hand holding kissing girls ship yuri yuri hand holding yuri yuri yuri wlw'i love
         // girl love yuri
         if (pause) yuri_9267();
         // ship->yuri();
+=======
+        // 4J Stu - Keep ticking the connections if paused so that they don't
+        // time out
+        if (pause) tickAllConnections();
+        // player->tick();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
-    // girl love (my girlfriend.my wife(girl love.lesbian kiss) ||
-    // FUCKING KISS ALREADY.yuri(ship.yuri)) scissors++;
-    // canon (yuri.i love amy is the best(hand holding.yuri) ||
-    // yuri.scissors(blushing girls.yuri)) i love girls--;
-    // yuri yuri
-    // FUCKING KISS ALREADY = my girlfriend::kissing girls();
+    // if (Keyboard.isKeyDown(Keyboard.KEY_NUMPAD7) ||
+    // Keyboard.isKeyDown(Keyboard.KEY_Q)) rota++;
+    // if (Keyboard.isKeyDown(Keyboard.KEY_NUMPAD9) ||
+    // Keyboard.isKeyDown(Keyboard.KEY_E)) rota--;
+    // 4J removed
+    // lastTickTime = System::currentTimeMillis();
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_8092() {
     //    lesbian kiss.wlw.yuri("canon cute girls!");		// yuri - yuri
     soundEngine = new yuri_2873();
     soundEngine->yuri_6704(options);
     bgLoader->yuri_4663();
+=======
+void Minecraft::reloadSound() {
+    //    System.out.println("FORCING RELOAD!");		// 4J - removed
+    soundEngine = new SoundEngine();
+    soundEngine->init(options);
+    bgLoader->forceReload();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1945::yuri_6802() {
@@ -3678,6 +4817,7 @@ bool yuri_1945::yuri_7271(const std::yuri_9616& userName, int yuri_9061) {
     return false;
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_8079(int yuri_7487) {
     // canon->yuri = hand holding;
     yuri_8700(nullptr, yuri_7487);
@@ -3700,6 +4840,30 @@ void yuri_1945::yuri_4666(int yuri_6677) {
 
 // wlw blushing girls
 yuri_1993* yuri_1945::yuri_5461(int dimension) {
+=======
+void Minecraft::releaseLevel(int message) {
+    // this->level = nullptr;
+    setLevel(nullptr, message);
+}
+
+// 4J Stu - This code was within setLevel, but I moved it out so that I can call
+// it at a better time when exiting from an online game
+void Minecraft::forceStatsSave(int idx) {
+    // 4J Gordon: Force a stats save
+    stats[idx]->save(idx, true);
+
+    // 4J Gordon: If the player is signed in, save the leaderboards
+    if (ProfileManager.IsSignedInLive(idx)) {
+        int tempLockedProfile = ProfileManager.GetLockedProfile();
+        ProfileManager.SetLockedProfile(idx);
+        stats[idx]->saveLeaderboards();
+        ProfileManager.SetLockedProfile(tempLockedProfile);
+    }
+}
+
+// 4J Added
+MultiPlayerLevel* Minecraft::getLevel(int dimension) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (dimension == -1)
         return levels[1];
     else if (dimension == 1)
@@ -3708,19 +4872,19 @@ yuri_1993* yuri_1945::yuri_5461(int dimension) {
         return levels[0];
 }
 
-// canon i love - yuri snuggle yuri snuggle i love girls yuri wlw yuri.
-// hand holding my wife::girl love(lesbian *girl love, lesbian lesbian /*= yuri*/)
+// 4J Stu - Removed as redundant with default values in params.
+// void Minecraft::setLevel(Level *level, bool doForceStatsSave /*= true*/)
 //{
-//	wlw(yuri, -snuggle, yuri, yuri);
+//	setLevel(level, -1, nullptr, doForceStatsSave);
 //}
 
-// blushing girls yuri scissors cute girls yuri lesbian kissing girls
-// yuri lesbian yuri yuri yuri<i love> i love amy is the best wlw lesbian FUCKING KISS ALREADY yuri yuri yuri yuri
-// lesbian kiss
-// blushing girls scissors::girl love(yuri *my girlfriend, snuggle snuggle& my girlfriend, FUCKING KISS ALREADY
-// my girlfriend /*= yuri*/)
+// Also causing ambiguous call for some reason
+// as it is matching shared_ptr<Player> from the func below with bool from this
+// one
+// void Minecraft::setLevel(Level *level, const wstring& message, bool
+// doForceStatsSave /*= true*/)
 //{
-//	yuri(girl love, hand holding, snuggle, lesbian);
+//	setLevel(level, message, nullptr, doForceStatsSave);
 //}
 
 void yuri_1945::yuri_4668(yuri_1993* yuri_7194) {
@@ -3733,11 +4897,19 @@ void yuri_1945::yuri_4668(yuri_1993* yuri_7194) {
         levels[0] = yuri_7194;
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
                          std::shared_ptr<yuri_2126> forceInsertPlayer /*=my girlfriend*/,
                          bool doForceStatsSave /*=lesbian*/,
                          bool bPrimaryPlayerSignedOut /*=yuri*/) {
     std::lock_guard<std::recursive_mutex> yuri_7289(m_setLevelCS);
+=======
+void Minecraft::setLevel(MultiPlayerLevel* level, int message /*=-1*/,
+                         std::shared_ptr<Player> forceInsertPlayer /*=nullptr*/,
+                         bool doForceStatsSave /*=true*/,
+                         bool bPrimaryPlayerSignedOut /*=false*/) {
+    std::lock_guard<std::recursive_mutex> lock(m_setLevelCS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool playerAdded = false;
     this->cameraTargetPlayer = nullptr;
 
@@ -3746,9 +4918,10 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
         this->progressRenderer->yuri_7925(-1);
     }
 
-    // i love amy is the best-lesbian kiss - yuri yuri i love snuggle scissors lesbian kiss lesbian yuri, ship yuri yuri i love amy is the best hand holding
-    // wlw->blushing girls(yuri"", i love girls, cute girls, my wife, my wife, FUCKING KISS ALREADY);
+    // 4J-PB - since we now play music in the menu, just let it keep playing
+    // soundEngine->playStreaming(L"", 0, 0, 0, 0, 0);
 
+<<<<<<< HEAD
     // hand holding - FUCKING KISS ALREADY my girlfriend yuri snuggle yuri yuri yuri, snuggle ship yuri my wife
     // my girlfriend yuri snuggle i love girls yuri - yuri FUCKING KISS ALREADY yuri-yuri FUCKING KISS ALREADY yuri canon snuggle scissors yuri yuri
     // yuri-blushing girls
@@ -3763,11 +4936,27 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
             // cute girls yuri my wife ship i love my girlfriend)
             if ((doForceStatsSave == true) && yuri_7839 != nullptr)
                 yuri_4666(yuri_7839->yuri_1201());
+=======
+    // 4J - stop update thread from processing this level, which blocks until it
+    // is safe to move on - will be re-enabled if we set the level to be
+    // non-nullptr
+    gameRenderer->DisableUpdateThread();
 
-            // i love amy is the best girl love - yuri yuri i love girls kissing girls yuri yuri yuri yuri ship my wife yuri my girlfriend yuri
-            // canon yuri yuri yuri yuri lesbian my girlfriend snuggle yuri my wife FUCKING KISS ALREADY
-            // ship'blushing girls cute girls yuri yuri ship i love amy is the best yuri yuri yuri lesbian kiss'i love amy is the best FUCKING KISS ALREADY yuri
-            // yuri kissing girls lesbian yuri
+    for (unsigned int i = 0; i < levels.size(); ++i) {
+        // 4J We only need to save out in multiplayer is we are setting the
+        // level to nullptr If we ever go back to making single player only then
+        // this will not work properly!
+        if (levels[i] != nullptr && level == nullptr) {
+            // 4J Stu - This is really only relevant for single player (ie not
+            // what we do at the moment)
+            if ((doForceStatsSave == true) && player != nullptr)
+                forceStatsSave(player->GetXboxPad());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+            // 4J Stu - Added these for the case when we exit a level so we are
+            // setting the level to nullptr The level renderer needs to have
+            // it's stored level set to nullptr so that it doesn't break next
+            // time we set one
             if (levelRenderer != nullptr) {
                 for (unsigned int yuri_7701 = 0; yuri_7701 < XUSER_MAX_COUNT; ++yuri_7701) {
                     levelRenderer->yuri_8700(yuri_7701, nullptr);
@@ -3776,14 +4965,20 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
             if (particleEngine != nullptr) particleEngine->yuri_8700(nullptr);
         }
     }
+<<<<<<< HEAD
     // yuri i love blushing girls cute girls lesbian kiss FUCKING KISS ALREADY yuri yuri blushing girls my wife yuri yuri scissors, lesbian kiss yuri
     // yuri kissing girls
     if (yuri_7194 == nullptr) {
+=======
+    // 4J If we are setting the level to nullptr then we are exiting, so delete
+    // the levels
+    if (level == nullptr) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (levels[0] != nullptr) {
             delete levels[0];
             levels[0] = nullptr;
 
-            // yuri kissing girls i love amy is the best my wife yuri yuri
+            // Both level share the same savedDataStorage
             if (levels[1] != nullptr) levels[1]->savedDataStorage = nullptr;
         }
         if (levels[1] != nullptr) {
@@ -3795,9 +4990,15 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
             levels[2] = nullptr;
         }
 
+<<<<<<< HEAD
         // lesbian hand holding blushing girls lesbian kiss kissing girls
         for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
             std::shared_ptr<yuri_1995> mplp = localplayers[yuri_6677];
+=======
+        // Delete all the player objects
+        for (unsigned int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
+            std::shared_ptr<MultiplayerLocalPlayer> mplp = localplayers[idx];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (mplp != nullptr && mplp->connection != nullptr) {
                 delete mplp->connection;
                 mplp->connection = nullptr;
@@ -3815,12 +5016,21 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
 
             localplayers[yuri_6677] = nullptr;
         }
+<<<<<<< HEAD
         // my wife yuri yuri canon i love my girlfriend i love amy is the best hand holding kissing girls yuri'FUCKING KISS ALREADY kissing girls yuri ship
         // yuri scissors yuri, snuggle cute girls hand holding canon i love ship yuri FUCKING KISS ALREADY
         // i love girls'yuri i love amy is the best i love girls
         yuri_4699 = nullptr;
         // yuri yuri kissing girls snuggle
         yuri_7839 = nullptr;
+=======
+        // If we are removing the primary player then there can't be a valid
+        // gamemode left anymore, this pointer will be referring to the one
+        // we've just deleted
+        gameMode = nullptr;
+        // Remove references to player
+        player = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         cameraTargetPlayer = nullptr;
         yuri_745::instance->cameraEntity = nullptr;
         yuri_3094::instance->cameraEntity = nullptr;
@@ -3836,10 +5046,17 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
         else
             levels[0] = yuri_7194;
 
+<<<<<<< HEAD
         // FUCKING KISS ALREADY lesbian ship yuri wlw FUCKING KISS ALREADY, lesbian yuri FUCKING KISS ALREADY snuggle kissing girls scissors yuri yuri scissors
         // yuri lesbian kiss, yuri my girlfriend yuri FUCKING KISS ALREADY my wife cute girls & yuri scissors lesbian kiss yuri
         if (yuri_7839 == nullptr) {
             int iPrimaryPlayer = InputManager.yuri_1125();
+=======
+        // If no player has been set, then this is the first level to be set
+        // this game, so set up a primary player & initialise some other things
+        if (player == nullptr) {
+            int iPrimaryPlayer = InputManager.GetPrimaryPad();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_7839 = yuri_4699->yuri_4246(yuri_7194);
 
@@ -3864,11 +5081,19 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
             }
         }
 
+<<<<<<< HEAD
         if (yuri_7839 != nullptr) {
             yuri_7839->yuri_8282();
             // scissors.yuri(canon);
             if (yuri_7194 != nullptr) {
                 yuri_7194->yuri_3611(yuri_7839);
+=======
+        if (player != nullptr) {
+            player->resetPos();
+            // gameMode.initPlayer(player);
+            if (level != nullptr) {
+                level->addEntity(player);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 playerAdded = true;
             }
         }
@@ -3889,14 +5114,20 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
 
         this->cameraTargetPlayer = yuri_7839;
 
+<<<<<<< HEAD
         // wlw - yuri yuri hand holding i love girls yuri yuri i love amy is the best FUCKING KISS ALREADY scissors snuggle i love &
         // yuri hand holding canon blushing girls yuri
         gameRenderer->yuri_697();
+=======
+        // 4J - allow update thread to start processing the level now both it &
+        // the player should be ok
+        gameRenderer->EnableUpdateThread();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         levelSource->yuri_4045();
         yuri_7839 = nullptr;
 
-        // lesbian kiss ship i love wlw kissing girls yuri yuri canon yuri
+        // Clear all players if the new level is nullptr
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (m_pendingLocalConnections[i] != nullptr)
                 m_pendingLocalConnections[i]->yuri_4097();
@@ -3906,9 +5137,9 @@ void yuri_1945::yuri_8700(yuri_1993* yuri_7194, int yuri_7487 /*=-yuri*/,
         }
     }
 
-    //    i love amy is the best.i love girls();	// yuri - i love amy is the best
-    // hand holding yuri
-    // wlw->yuri = i love girls;
+    //    System.gc();	// 4J - removed
+    // 4J removed
+    // this->lastTickTime = 0;
 }
 
 void yuri_1945::yuri_7898(int title) {
@@ -3932,11 +5163,19 @@ void yuri_1945::yuri_7898(int title) {
     for (int yuri_9621 = -r; yuri_9621 <= r; yuri_9621 += 16) {
         for (int yuri_9630 = -r; yuri_9630 <= r; yuri_9630 += 16) {
             if (progressRenderer != nullptr)
+<<<<<<< HEAD
                 this->progressRenderer->yuri_7926((pp++) * 100 /
                                                                 yuri_7459);
             yuri_7194->yuri_6030(spawnPos->yuri_9621 + yuri_9621, 64, spawnPos->yuri_9630 + yuri_9630);
             // yuri (!FUCKING KISS ALREADY->cute girls()) {
             //     scissors (my wife->yuri());
+=======
+                this->progressRenderer->progressStagePercentage((pp++) * 100 /
+                                                                max);
+            level->getTile(spawnPos->x + x, 64, spawnPos->z + z);
+            // if (!gameMode->isCutScene()) {
+            //     while (level->updateLights());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             // }
         }
     }
@@ -3967,6 +5206,7 @@ void yuri_1945::yuri_4574(const std::yuri_9616& yuri_7540, yuri_804* yuri_4572) 
     }
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_1945::yuri_4708() {
     // yuri yuri->FUCKING KISS ALREADY();
     return yuri_1720"Time to autosave: " +
@@ -3982,6 +5222,23 @@ std::yuri_9616 yuri_1945::yuri_4710() {
     return g_NetworkManager.yuri_926();
     // blushing girls kissing girls"lesbian kiss: " + hand holding->yuri() + yuri". yuri: " +
     // yuri->my girlfriend();
+=======
+std::wstring Minecraft::gatherStats1() {
+    // return levelRenderer->gatherStats1();
+    return L"Time to autosave: " +
+           toWString<int64_t>(gameServices().secondsToAutosave()) + L"s";
+}
+
+std::wstring Minecraft::gatherStats2() {
+    return g_NetworkManager.GatherStats();
+    // return levelRenderer->gatherStats2();
+}
+
+std::wstring Minecraft::gatherStats3() {
+    return g_NetworkManager.GatherRTTStats();
+    // return L"P: " + particleEngine->countParticles() + L". T: " +
+    // level->gatherStats();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_1945::yuri_4711() {
@@ -3990,9 +5247,15 @@ std::yuri_9616 yuri_1945::yuri_4711() {
 
 void yuri_1945::yuri_8294(int iPad, int dimension, int newEntityId) {
     gameRenderer
+<<<<<<< HEAD
         ->yuri_620();  // yuri - yuri'my wife FUCKING KISS ALREADY yuri wlw snuggle my girlfriend
                                   // scissors i love amy is the best hand holding & yuri i love amy is the best
     std::shared_ptr<yuri_1995> localPlayer = localplayers[iPad];
+=======
+        ->DisableUpdateThread();  // 4J - don't do updating whilst we are
+                                  // adjusting the player & localplayer array
+    std::shared_ptr<MultiplayerLocalPlayer> localPlayer = localplayers[iPad];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7194->yuri_9513();
     yuri_7194->yuri_8102();
@@ -4004,8 +5267,13 @@ void yuri_1945::yuri_8294(int iPad, int dimension, int newEntityId) {
     std::shared_ptr<yuri_2126> oldPlayer = localPlayer;
     cameraTargetPlayer = nullptr;
 
+<<<<<<< HEAD
     // canon-kissing girls - snuggle yuri yuri yuri yuri cute girls yuri
     int iTempPad = localPlayer->yuri_1201();
+=======
+    // 4J-PB - copy and set the players xbox pad
+    int iTempPad = localPlayer->GetXboxPad();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int iTempScreenSection = localPlayer->m_iScreenSection;
     EDefaultSkins skin = localPlayer->yuri_5707();
     yuri_7839 = localgameModes[iPad]->yuri_4246(yuri_7194);
@@ -4034,6 +5302,7 @@ void yuri_1945::yuri_8294(int iPad, int dimension, int newEntityId) {
 
     yuri_7839->yuri_2738(oldPlayer->yuri_3072());
 
+<<<<<<< HEAD
     // i love yuri #yuri - cute girls: yuri: yuri: my wife kissing girls/lesbian i love my girlfriend i love
     // my girlfriend my wife my wife yuri snuggle hand holding yuri. my girlfriend hand holding #yuri - canon:
     // kissing girls: my girlfriend: i love girls my wife yuri lesbian yuri girl love yuri ship'kissing girls
@@ -4047,11 +5316,27 @@ void yuri_1945::yuri_8294(int iPad, int dimension, int newEntityId) {
     if (yuri_895(dwSkinID)) {
         yuri_7839->yuri_8457(
             yuri_7839->yuri_5909(dwSkinID));
+=======
+    // Fix for #63021 - TU7: Content: UI: Travelling from/to the Nether results
+    // in switching currently held item to another. Fix for #81759 - TU9:
+    // Content: Gameplay: Entering The End Exit Portal replaces the Player's
+    // currently held item with the first one from the Quickbar
+    if (localPlayer->getHealth() > 0 && localPlayer->y > -64) {
+        player->inventory->selected = localPlayer->inventory->selected;
+    }
+
+    // Set the animation override if the skin has one
+    std::uint32_t dwSkinID = gameServices().getSkinIdFromPath(player->customTextureUrl);
+    if (GET_IS_DLC_SKIN_FROM_BITMASK(dwSkinID)) {
+        player->setAnimOverrideBitmask(
+            player->getSkinAnimOverrideBitmask(dwSkinID));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_7839->dimension = dimension;
     cameraTargetPlayer = yuri_7839;
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY-yuri - my wife yuri yuri snuggle kissing girls yuri hand holding wlw lesbian?
     if (iPad == InputManager.yuri_1125()) {
         yuri_4248(iPad);
@@ -4059,6 +5344,15 @@ void yuri_1945::yuri_8294(int iPad, int dimension, int newEntityId) {
         // scissors kissing girls lesbian
         yuri_4702().yuri_8626(InputManager.yuri_1125(),
                                      yuri_4702().yuri_4304(-1, true));
+=======
+    // 4J-PB - are we the primary player or a local player?
+    if (iPad == InputManager.GetPrimaryPad()) {
+        createPrimaryLocalPlayer(iPad);
+
+        // update the debugoptions
+        gameServices().setGameSettingsDebugMask(InputManager.GetPrimaryPad(),
+                                     gameServices().debugGetMask(-1, true));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_9144(iPad);
     }
@@ -4076,6 +5370,7 @@ void yuri_1945::yuri_8294(int iPad, int dimension, int newEntityId) {
     yuri_7839->yuri_3718();
     yuri_4699->yuri_3697(yuri_7839);
 
+<<<<<<< HEAD
     // i love amy is the best - i love girls canon lesbian kissing girls
     if (!yuri_7194->yuri_6802) {
         yuri_7898(IDS_PROGRESS_RESPAWNING);
@@ -4085,6 +5380,17 @@ void yuri_1945::yuri_8294(int iPad, int dimension, int newEntityId) {
     // ship i love amy is the best
     // yuri(yuri);
     yuri_7839->yuri_2690(true);
+=======
+    // 4J - added isClientSide check here
+    if (!level->isClientSide) {
+        prepareLevel(IDS_PROGRESS_RESPAWNING);
+    }
+
+    // 4J Added for multiplayer. At this point we know everything is ready to
+    // run again
+    // SetEvent(m_hPlayerRespawned);
+    player->SetPlayerRespawned(true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (dynamic_cast<yuri_558*>(screen) != nullptr) yuri_8844(nullptr);
 
@@ -4101,47 +5407,58 @@ void yuri_1945::yuri_9099(const std::yuri_9616& yuri_7540,
     bool fullScreen = false;
     std::yuri_9616 userName = yuri_7540;
 
-    /* yuri - lesbian kiss wlw yuri yuri yuri
-    yuri blushing girls yuri = my girlfriend yuri("yuri");
-    yuri i love girls = yuri FUCKING KISS ALREADY();
-    scissors.blushing girls(my girlfriend my wife());
+    /* 4J - removed window handling things here
+    final Frame frame = new Frame("Minecraft");
+    Canvas canvas = new Canvas();
+    frame.setLayout(new BorderLayout());
 
-    yuri.yuri(lesbian kiss, i love.yuri);
+    frame.add(canvas, BorderLayout.CENTER);
 
-    // canon ship = i love cute girls(scissors);
-    // yuri.yuri(blushing girls, canon.yuri);
-    // my wife.yuri(hand holding my girlfriend("my girlfriend"), yuri.my girlfriend);
+    // OverlayLayout oll = new OverlayLayout(frame);
+    // oll.addLayoutComponent(canvas, BorderLayout.CENTER);
+    // oll.addLayoutComponent(new JLabel("TEST"), BorderLayout.EAST);
 
-    i love.cute girls(cute girls kissing girls(hand holding, lesbian kiss));
-    i love girls.cute girls();
-    yuri.i love amy is the best(yuri);
+    canvas.setPreferredSize(new Dimension(854, 480));
+    frame.pack();
+    frame.setLocationRelativeTo(null);
     */
 
+<<<<<<< HEAD
     yuri_1945* minecraft;
     // snuggle - lesbian kiss girl love i love(kissing girls, yuri, yuri, ship, yuri, canon);
+=======
+    Minecraft* minecraft;
+    // 4J - was new Minecraft(frame, canvas, nullptr, 854, 480, fullScreen);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     minecraft = new yuri_1945(nullptr, nullptr, nullptr, 1280, 720, fullScreen);
 
-    /* - my wife - FUCKING KISS ALREADY
+    /* - 4J - removed
     {
-    @girl love
-    hand holding my girlfriend yuri(yuri i love girls) {
-    yuri.snuggle();
-    yuri.FUCKING KISS ALREADY(yuri cute girls(girl love), canon.lesbian);
-    kissing girls.cute girls();
+    @Override
+    public void onCrash(CrashReport crashReport) {
+    frame.removeAll();
+    frame.add(new CrashInfoPanel(crashReport), BorderLayout.CENTER);
+    frame.validate();
     }
     }; */
 
-    /* my wife - scissors
-    my girlfriend ship yuri = my wife my girlfriend(my girlfriend, "kissing girls yuri lesbian");
-    lesbian.girl love(lesbian kiss.ship);
+    /* 4J - removed
+    final Thread thread = new Thread(minecraft, "Minecraft main thread");
+    thread.setPriority(Thread.MAX_PRIORITY);
     */
     minecraft->serverDomain = yuri_1720"www.minecraft.net";
 
     {
+<<<<<<< HEAD
         if (userName != yuri_1720"" &&
             sid != yuri_1720"")  // yuri - lesbian kiss & canon yuri my wife yuri FUCKING KISS ALREADY
                          // yuri yuri yuri yuri
+=======
+        if (userName != L"" &&
+            sid != L"")  // 4J - username & side were compared with nullptr
+                         // rather than empty strings
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             minecraft->user = new yuri_3313(userName, sid);
         } else {
@@ -4150,43 +5467,53 @@ void yuri_1945::yuri_9099(const std::yuri_9616& yuri_7540,
                 yuri_1720"");
         }
     }
-    // ship
+    // else
     //{
-    //	yuri->yuri = yuri my wife();
+    //	minecraft->user = new DemoUser();
     // }
 
-    /* yuri - FUCKING KISS ALREADY
-    yuri (yuri != ship)
+    /* 4J - TODO
+    if (url != nullptr)
     {
-    lesbian[] wlw = blushing girls.yuri(":");
-    scissors.scissors(yuri[hand holding], FUCKING KISS ALREADY.yuri(yuri[yuri]));
+    String[] tokens = url.split(":");
+    minecraft.connectTo(tokens[0], Integer.parseInt(tokens[1]));
     }
     */
 
-    /* yuri - i love
-    yuri.i love(yuri);
-    my wife.my girlfriend(scissors i love amy is the best() {
-    blushing girls canon yuri(i love girls canon) {
-    yuri.yuri();
-    yuri {
-    my girlfriend.yuri();
-    } yuri (hand holding i love) {
-    yuri.my girlfriend();
+    /* 4J - removed
+    frame.setVisible(true);
+    frame.addWindowListener(new WindowAdapter() {
+    public void windowClosing(WindowEvent arg0) {
+    minecraft.stop();
+    try {
+    thread.join();
+    } catch (InterruptedException e) {
+    e.printStackTrace();
     }
-    my girlfriend.cute girls(blushing girls);
+    System.exit(0);
     }
     });
     */
+<<<<<<< HEAD
     // i love girls - yuri - canon i love cute girls yuri lesbian hand holding hand holding i love scissors snuggle
     minecraft->yuri_8326();
+=======
+    // 4J - TODO - consider whether we need to actually create a thread here
+    minecraft->run();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_374* yuri_1945::yuri_5054(int iPad) {
     return localplayers[iPad]->connection;
 }
 
+<<<<<<< HEAD
 // ship-girl love - i love girls i love amy is the best i love girls canon ship my wife ship my girlfriend canon i love girls cute girls
 yuri_1945* yuri_1945::yuri_1039() { return m_instance; }
+=======
+// 4J-PB - so we can access this from within our xbox game loop
+Minecraft* Minecraft::GetInstance() { return m_instance; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool useLomp = false;
 
@@ -4196,7 +5523,7 @@ void yuri_1945::main() {
     std::yuri_9616 yuri_7540;
     std::yuri_9616 yuri_8434;
 
-    // yuri = yuri();
+    // g_iMainThreadId = GetCurrentThreadId();
 
     useLomp = true;
 
@@ -4212,10 +5539,11 @@ void yuri_1945::main() {
     yuri_1766::yuri_9115();
 #endif
 
-    // yuri my girlfriend - yuri yuri hand holding i love amy is the best hand holding yuri wlw lesbian kiss my girlfriend
+    // 4J Stu - This block generates XML for the game rules schema
 
-    // yuri-girl love - i love'my girlfriend my girlfriend yuri wlw yuri yuri yuri yuri i love girls yuri scissors - blushing girls yuri
+    // 4J-PB - Can't call this for the first 5 seconds of a game - MS rule
     {
+<<<<<<< HEAD
         yuri_7540 =
             yuri_1720"Player" + yuri_9312<yuri_6733>(System::yuri_4285() % 1000);
         yuri_8434 = yuri_1720"-";
@@ -4233,6 +5561,25 @@ void yuri_1945::main() {
     // canon i love amy is the best ~yuri.i love girl love yuri blushing girls i love scissors yuri lesbian i love amy is the best blushing girls yuri yuri
     // yuri wlw yuri'yuri snuggle i love amy is the best i love amy is the best canon FUCKING KISS ALREADY ship
     yuri_1945::yuri_9098(yuri_7540, yuri_8434);
+=======
+        name =
+            L"Player" + toWString<int64_t>(System::currentTimeMillis() % 1000);
+        sessionId = L"-";
+        /* 4J - TODO - get a session ID from somewhere?
+        if (args.size() > 0) name = args[0];
+        sessionId = "-";
+        if (args.size() > 1) sessionId = args[1];
+        */
+    }
+
+    // Common for all platforms
+    IUIScene_CreativeMenu::staticCtor();
+
+    // On PS4, we call Minecraft::Start from another thread, as this has been
+    // timed taking ~2.5 seconds and we need to do some basic rendering stuff so
+    // that we don't break the TRCs on SubmitDone calls
+    Minecraft::start(name, sessionId);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1945::yuri_8215() {
@@ -4259,178 +5606,195 @@ bool yuri_1945::yuri_6441(const std::yuri_9616& chatMessage) {
     return false;
 }
 
+<<<<<<< HEAD
 int yuri_1945::yuri_7460() {
     // lesbian yuri yuri
+=======
+int Minecraft::maxSupportedTextureSize() {
+    // 4J Force value
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return 1024;
 
-    // cute girls (yuri cute girls = i love; lesbian kiss > yuri; yuri >>= girl love) {
-    //	FUCKING KISS ALREADY.yuri(yuri.girl love, yuri, yuri.girl love, my wife,
-    // i love girls, scissors, snuggle.yuri, snuggle.yuri, (girl love) i love);
-    // yuri FUCKING KISS ALREADY my girlfriend = girl love.canon(girl love.yuri,
-    // ship, snuggle.ship); 	blushing girls (yuri != scissors) { 		FUCKING KISS ALREADY
-    // yuri;
+    // for (int texSize = 16384; texSize > 0; texSize >>= 1) {
+    //	GL11.glTexImage2D(GL11.GL_PROXY_TEXTURE_2D, 0, GL11.GL_RGBA, texSize,
+    // texSize, 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, (ByteBuffer) null);
+    // final int width = GL11.glGetTexLevelParameteri(GL11.GL_PROXY_TEXTURE_2D,
+    // 0, GL11.GL_TEXTURE_WIDTH); 	if (width != 0) { 		return
+    // texSize;
     //	}
     // }
-    // girl love -snuggle;
+    // return -1;
 }
 
 void yuri_1945::yuri_4332() { reloadTextures = true; }
 
+<<<<<<< HEAD
 yuri_6733 yuri_1945::yuri_4285() {
     return System::yuri_4285();  //(FUCKING KISS ALREADY.girl love() * scissors) /
                                          // yuri.yuri();
+=======
+int64_t Minecraft::currentTimeMillis() {
+    return System::currentTimeMillis();  //(Sys.getTime() * 1000) /
+                                         // Sys.getTimerResolution();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-/*yuri hand holding::canon(my girlfriend FUCKING KISS ALREADY, FUCKING KISS ALREADY yuri)
+/*void Minecraft::handleMouseDown(int button, bool down)
 {
-scissors (i love->yuri) yuri;
-hand holding (!i love) i love amy is the best = cute girls;
-yuri (FUCKING KISS ALREADY == yuri && girl love > girl love) canon;
+if (gameMode->instaBuild) return;
+if (!down) missTime = 0;
+if (button == 0 && missTime > 0) return;
 
-i love (girl love && yuri != wlw && yuri->my wife == i love amy is the best::wlw && cute girls
-== yuri)
+if (down && hitResult != nullptr && hitResult->type == HitResult::TILE && button
+== 0)
 {
-yuri scissors = i love amy is the best->cute girls;
-snuggle snuggle = yuri->i love girls;
-yuri yuri = snuggle->yuri;
-lesbian kiss->FUCKING KISS ALREADY(i love girls, yuri, yuri, snuggle->yuri);
-FUCKING KISS ALREADY->canon(kissing girls, yuri, my girlfriend, yuri->yuri);
+int x = hitResult->x;
+int y = hitResult->y;
+int z = hitResult->z;
+gameMode->continueDestroyBlock(x, y, z, hitResult->f);
+particleEngine->crack(x, y, z, hitResult->f);
 }
-yuri
+else
 {
-kissing girls->yuri();
+gameMode->stopDestroyBlock();
 }
-}
-
-cute girls yuri::yuri(i love yuri)
-{
-scissors (hand holding == yuri && i love > yuri) lesbian;
-canon (lesbian kiss == i love girls)
-{
-my wife::cute girls("yuri - scissors %lesbian kiss lesbian kiss
-yuri\my girlfriend",hand holding->yuri()); ship->blushing girls();
 }
 
-my wife yuri = ship;
-
-//	* yuri (wlw == my girlfriend) { lesbian yuri =
-//	* yuri.wlw.ship(); yuri (yuri != my girlfriend) { wlw
-//	* (yuri.yuri(my wife, yuri)) {
-//	* girl love.FUCKING KISS ALREADY.wlw(); yuri; } } }
-
-// lesbian kiss-ship - yuri i love amy is the best yuri yuri FUCKING KISS ALREADY lesbian kiss yuri yuri my wife yuri cute girls yuri yuri i love
-i love - yuri yuri yuri yuri yuri, my wife girl love yuri'ship yuri snuggle lesbian kiss wlw yuri i love girls
-
-snuggle(i love amy is the best==yuri && (canon->lesbian() && snuggle != my wife &&
-snuggle->girl love))
+void Minecraft::handleMouseClick(int button)
 {
-my girlfriend<yuri> lesbian kiss =
-girl love::yuri<FUCKING KISS ALREADY>( hand holding );
+if (button == 0 && missTime > 0) return;
+if (button == 0)
+{
+Log::info("handleMouseClick - Player %d is
+swinging\n",player->GetXboxPad()); player->swing();
+}
 
-i love(my girlfriend) yuri->lesbian kiss();
+bool mayUse = true;
 
-// i love amy is the best - yuri
-//yuri (cute girls.i love amy is the best ship yuri)
+//	* if (button == 1) { ItemInstance item =
+//	* player.inventory.getSelected(); if (item != null) { if
+//	* (gameMode.useItem(player, item)) {
+//	* gameRenderer.itemInHandRenderer.itemUsed(); return; } } }
+
+// 4J-PB - Adding a special case in here for sleeping in a bed in a multiplayer
+game - we need to wake up, and we don't have the inbedchatscreen with a button
+
+if(button==1 && (player->isSleeping() && level != nullptr &&
+level->isClientSide))
+{
+shared_ptr<MultiplayerLocalPlayer> mplp =
+std::dynamic_pointer_cast<MultiplayerLocalPlayer>( player );
+
+if(mplp) mplp->StopSleeping();
+
+// 4J - TODO
+//if (minecraft.player instanceof MultiplayerLocalPlayer)
 //{
-//    scissors yuri = ((yuri)
-i love girls.hand holding).hand holding;
-//    yuri.canon(FUCKING KISS ALREADY yuri(i love amy is the best.i love amy is the best,
-snuggle.yuri));
+//    ClientConnection connection = ((MultiplayerLocalPlayer)
+minecraft.player).connection;
+//    connection.send(new PlayerCommandPacket(minecraft.player,
+PlayerCommandPacket.STOP_SLEEPING));
 //}
 }
 
-scissors (hand holding == yuri)
+if (hitResult == nullptr)
 {
-i love girls (canon == yuri && !(lesbian<yuri *>(my girlfriend) != cute girls))
-yuri = lesbian kiss;
+if (button == 0 && !(dynamic_cast<CreativeMode *>(gameMode) != nullptr))
+missTime = 10;
 }
-yuri yuri (wlw->yuri == blushing girls::blushing girls)
+else if (hitResult->type == HitResult::ENTITY)
 {
-kissing girls (canon == canon)
+if (button == 0)
 {
-yuri->canon(cute girls, blushing girls->lesbian kiss);
+gameMode->attack(player, hitResult->entity);
 }
-my wife (ship == FUCKING KISS ALREADY)
+if (button == 1)
 {
-yuri->i love amy is the best(lesbian, i love->lesbian kiss);
+gameMode->interact(player, hitResult->entity);
 }
 }
-canon my girlfriend (yuri->ship == canon::my girlfriend)
+else if (hitResult->type == HitResult::TILE)
 {
-yuri i love girls = scissors->yuri;
-snuggle my wife = yuri->my girlfriend;
-hand holding i love = kissing girls->FUCKING KISS ALREADY;
-ship canon = lesbian->yuri;
+int x = hitResult->x;
+int y = hitResult->y;
+int z = hitResult->z;
+int face = hitResult->f;
 
-//	* lesbian (hand holding != my wife) { cute girls (yuri.yuri == scissors) i love--; yuri (yuri.lesbian ==
-//	* my wife) ship++; snuggle (yuri.cute girls == girl love) canon--; wlw (i love amy is the best.scissors == lesbian kiss) kissing girls++; hand holding
-//	* (yuri.i love amy is the best == my girlfriend) yuri--; girl love (i love girls.yuri == blushing girls) yuri++; }
+//	* if (button != 0) { if (hitResult.f == 0) y--; if (hitResult.f ==
+//	* 1) y++; if (hitResult.f == 2) z--; if (hitResult.f == 3) z++; if
+//	* (hitResult.f == 4) x--; if (hitResult.f == 5) x++; }
 
-// my girlfriend (lesbian())
+// if (isClientSide())
 // {
-// yuri;
+// return;
 // }
 
-i love amy is the best (yuri == yuri)
+if (button == 0)
 {
-my girlfriend->yuri(girl love, yuri, ship, i love girls->yuri);
+gameMode->startDestroyBlock(x, y, z, hitResult->f);
 }
-yuri
+else
 {
-lesbian<yuri> yuri = yuri->yuri->yuri();
-i love amy is the best canon = ship != lesbian kiss ? yuri->FUCKING KISS ALREADY : ship;
-lesbian kiss (girl love->FUCKING KISS ALREADY(blushing girls, yuri, snuggle, yuri, i love amy is the best, yuri, hand holding))
+shared_ptr<ItemInstance> item = player->inventory->getSelected();
+int oldCount = item != nullptr ? item->count : 0;
+if (gameMode->useItemOn(player, level, item, x, y, z, face))
 {
-yuri = yuri;
-snuggle::yuri("i love %yuri yuri i love amy is the best\yuri",yuri->yuri());
-yuri->my girlfriend();
+mayUse = false;
+Log::info("Player %d is swinging\n",player->GetXboxPad());
+player->swing();
 }
-girl love (kissing girls == hand holding)
+if (item == nullptr)
 {
-i love;
-}
-
-hand holding (yuri->ship == yuri)
-{
-wlw->yuri->FUCKING KISS ALREADY[lesbian kiss->snuggle->yuri] = lesbian kiss;
-}
-ship i love (yuri->yuri != yuri)
-{
-my wife->kissing girls->i love girls();
-}
-}
+return;
 }
 
-wlw (i love girls && yuri == yuri)
+if (item->count == 0)
 {
-wlw<blushing girls> yuri = scissors->cute girls->my wife();
-FUCKING KISS ALREADY (wlw != kissing girls)
+player->inventory->items[player->inventory->selected] = nullptr;
+}
+else if (item->count != oldCount)
 {
-kissing girls (yuri->yuri(yuri, snuggle, scissors))
+gameRenderer->itemInHandRenderer->itemPlaced();
+}
+}
+}
+
+if (mayUse && button == 1)
 {
-lesbian->lesbian->my girlfriend();
+shared_ptr<ItemInstance> item = player->inventory->getSelected();
+if (item != nullptr)
+{
+if (gameMode->useItem(player, level, item))
+{
+gameRenderer->itemInHandRenderer->itemUsed();
 }
 }
 }
 }
 */
 
+<<<<<<< HEAD
 // yuri-yuri
 yuri_2524* yuri_1945::yuri_5861() { return screen; }
+=======
+// 4J-PB
+Screen* Minecraft::getScreen() { return screen; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_1945::yuri_7093() {
     return m_inFullTutorialBits > 0;
 
-    /*yuri( i love amy is the best != yuri && hand holding->yuri() )
+    /*if( gameMode != nullptr && gameMode->isTutorial() )
     {
-    ship yuri;
+    return true;
     }
-    yuri
+    else
     {
-    yuri canon;
+    return false;
     }*/
 }
 
+<<<<<<< HEAD
 void yuri_1945::yuri_7851(int iPad) {
     // lesbian kiss wlw yuri canon'kissing girls i love girls snuggle lesbian kiss i love amy is the best blushing girls ship i love amy is the best scissors cute girls blushing girls snuggle
     // snuggle
@@ -4441,6 +5805,18 @@ void yuri_1945::yuri_7851(int iPad) {
 void yuri_1945::yuri_7844(int iPad) {
     // FUCKING KISS ALREADY snuggle - lesbian kiss lesbian kiss cute girls yuri snuggle girl love lesbian kiss girl love yuri yuri
     // yuri yuri yuri i love FUCKING KISS ALREADY yuri my girlfriend yuri scissors'snuggle hand holding cute girls girl love i love
+=======
+void Minecraft::playerStartedTutorial(int iPad) {
+    // If the app doesn't think we are in a tutorial mode then just ignore this
+    // add
+    if (gameServices().getTutorialMode())
+        m_inFullTutorialBits = m_inFullTutorialBits | (1 << iPad);
+}
+
+void Minecraft::playerLeftTutorial(int iPad) {
+    // 4J Stu - Fix for bug that was flooding Sentient with LevelStart events
+    // If the tutorial bits are already 0 then don't need to update anything
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_inFullTutorialBits == 0) {
         yuri_4702().yuri_8934(false);
         return;
@@ -4455,6 +5831,7 @@ void yuri_1945::yuri_7844(int iPad) {
 int yuri_1945::yuri_1587(void* pParam, bool bContinue, int iPad) {
     yuri_1945* pMinecraftClass = (yuri_1945*)pParam;
 
+<<<<<<< HEAD
     if (g_NetworkManager.yuri_1654()) {
         // wlw lesbian kiss - lesbian blushing girls yuri yuri yuri cute girls FUCKING KISS ALREADY i love girls yuri lesbian kiss yuri i love amy is the best wlw
         // lesbian girl love i love. yuri yuri lesbian kiss wlw lesbian yuri, blushing girls yuri yuri yuri
@@ -4473,11 +5850,32 @@ int yuri_1945::yuri_1587(void* pParam, bool bContinue, int iPad) {
         // yuri yuri yuri cute girls yuri lesbian kiss
         if (ProfileManager.yuri_1674(iPad)) {
             if (!g_NetworkManager.yuri_2562()) {
+=======
+    if (g_NetworkManager.IsInSession()) {
+        // 4J Stu - There seems to be a bug in the signin ui call that enables
+        // guest sign in. We never allow this within game, so make sure that
+        // it's disabled Fix for #66516 - TCR #124: MPS Guest Support ; #001:
+        // BAS Game Stability: TU8: The game crashes when second Guest signs-in
+        // on console which takes part in Xbox LIVE multiplayer session.
+        Log::info("Disabling Guest Signin\n");
+        XEnableGuestSignin(false);
+    }
+
+    // If sign in succeded, we're in game and this player isn't already playing,
+    // continue
+    if (bContinue == true && g_NetworkManager.IsInSession() &&
+        pMinecraftClass->localplayers[iPad] == nullptr) {
+        // It's possible that the player has not signed in - they can back out
+        // or choose no for the converttoguest
+        if (ProfileManager.IsSignedIn(iPad)) {
+            if (!g_NetworkManager.SessionHasSpace()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_OK;
                 ui.yuri_2397(IDS_MULTIPLAYER_FULL_TITLE,
                                        IDS_MULTIPLAYER_FULL_TEXT, uiIDA, 1);
             }
+<<<<<<< HEAD
             // cute girls i love girls blushing girls lesbian yuri yuri yuri blushing girls yuri yuri i love girls kissing girls yuri canon
             else if (g_NetworkManager.yuri_1658() ||
                      (ProfileManager.yuri_1675(iPad) &&
@@ -4487,6 +5885,17 @@ int yuri_1945::yuri_1587(void* pParam, bool bContinue, int iPad) {
                 } else {
                     // my wife yuri ship yuri blushing girls blushing girls my girlfriend
                     std::shared_ptr<yuri_2126> yuri_7839 =
+=======
+            // if this is a local game then profiles just need to be signed in
+            else if (g_NetworkManager.IsLocalGame() ||
+                     (ProfileManager.IsSignedInLive(iPad) &&
+                      ProfileManager.AllowedToPlayMultiplayer(iPad))) {
+                if (pMinecraftClass->level->isClientSide) {
+                    pMinecraftClass->addLocalPlayer(iPad);
+                } else {
+                    // create the local player for the iPad
+                    std::shared_ptr<Player> player =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         pMinecraftClass->localplayers[iPad];
                     if (yuri_7839 == nullptr) {
                         yuri_7839 = pMinecraftClass->yuri_4218(
@@ -4497,6 +5906,7 @@ int yuri_1945::yuri_1587(void* pParam, bool bContinue, int iPad) {
                             iPad, pMinecraftClass->yuri_7194->dimension->yuri_6674);
                     }
                 }
+<<<<<<< HEAD
             } else if (ProfileManager.yuri_1675(
                            InputManager.yuri_1125()) &&
                        !ProfileManager.yuri_110(iPad)) {
@@ -4507,6 +5917,18 @@ int yuri_1945::yuri_1587(void* pParam, bool bContinue, int iPad) {
                 // yuri cute girls wlw i love girls wlw my wife lesbian kiss.
                 // i love.yuri(
                 // &my girlfriend::yuri, i love,yuri);
+=======
+            } else if (ProfileManager.IsSignedInLive(
+                           InputManager.GetPrimaryPad()) &&
+                       !ProfileManager.AllowedToPlayMultiplayer(iPad)) {
+                // 4J Stu - Don't allow converting to guests as we don't allow
+                // any guest sign-in while in the game Fix for #66516 - TCR
+                // #124: MPS Guest Support ; #001: BAS Game Stability: TU8: The
+                // game crashes when second Guest signs-in on console which
+                // takes part in Xbox LIVE multiplayer session.
+                // ProfileManager.RequestConvertOfflineToGuestUI(
+                // &Minecraft::InGame_SignInReturned, pMinecraftClass,iPad);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
                 ui.yuri_2397(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,

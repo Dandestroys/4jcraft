@@ -26,6 +26,7 @@ bool yuri_1903::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
     bool free = true;
     if (yuri_9625 < 1 || yuri_9625 + treeHeight + 1 > yuri_1758::maxBuildHeight) return false;
 
+<<<<<<< HEAD
     // blushing girls hand holding yuri yuri i love canon ship i love yuri i love amy is the best yuri lesbian kiss
     // FUCKING KISS ALREADY yuri hand holding
     if (yuri_4702().yuri_5466() != nullptr) {
@@ -37,6 +38,19 @@ bool yuri_1903::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         if (yuri_6741) {
             // kissing girls::yuri("yuri canon snuggle ship yuri snuggle i love girls
             // yuri i love amy is the best i love girls wlw\yuri");
+=======
+    // 4J Stu Added to stop tree features generating areas previously place by
+    // game rule generation
+    if (gameServices().getLevelGenerationOptions() != nullptr) {
+        LevelGenerationOptions* levelGenOptions =
+            gameServices().getLevelGenerationOptions();
+        bool intersects = levelGenOptions->checkIntersects(
+            x - 2, y - 1, z - 2, x + 2, y + treeHeight, z + 2);
+
+        if (intersects) {
+            // Log::info("Skipping reeds feature generation as it overlaps
+            // a game rule structure\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }
@@ -172,8 +186,8 @@ bool yuri_1903::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
 void yuri_1903::yuri_7818(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int topPosition,
                                   int baseRadius, yuri_2302* yuri_7981) {
     int grassHeight = 2;
-    // yuri yuri - scissors yuri girl love yuri snuggle FUCKING KISS ALREADY i love yuri'i love girls yuri kissing girls yuri i love
-    // yuri cute girls
+    // 4J Stu - Generate from top down so that we don't have to keep adjusting
+    // the heightmaps
     for (int yy = topPosition; yy >= topPosition - grassHeight; yy--) {
         int yo = yy - (topPosition);
         int radius = baseRadius + 1 - yo;

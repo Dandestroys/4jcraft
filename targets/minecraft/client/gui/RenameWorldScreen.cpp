@@ -20,9 +20,15 @@ yuri_2388::yuri_2388(yuri_2524* lastScreen,
 
 void yuri_2388::yuri_9265() { nameEdit->yuri_9265(); }
 
+<<<<<<< HEAD
 void yuri_2388::yuri_6704() {
     // ship yuri - yuri i love amy is the best scissors wlw cute girls'my wife yuri snuggle kissing girls. canon yuri girl love yuri yuri
     // blushing girls lesbian kiss yuri girl love yuri hand holding
+=======
+void RenameWorldScreen::init() {
+    // 4J Stu - Removed this as we don't need the screen. Changed to how we pass
+    // save data around stopped this compiling
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2388::yuri_8152() { Keyboard::yuri_4489(false); }
@@ -57,8 +63,13 @@ void yuri_2388::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
 void yuri_2388::yuri_8158(int xm, int ym, float yuri_3565) {
     yuri_1728* language = yuri_1728::yuri_5405();
 
+<<<<<<< HEAD
     // yuri(FUCKING KISS ALREADY, lesbian kiss, lesbian kiss, i love, yuri);
     yuri_8164();
+=======
+    // fill(0, 0, width, height, 0x40000000);
+    renderBackground();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4437(font, language->yuri_5194(yuri_1720"selectWorld.renameTitle"),
                        yuri_9567 / 2, yuri_6654 / 4 - 60 + 20, 0xffffff);

@@ -335,9 +335,15 @@ void PacketListener::yuri_6492(
     yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
+<<<<<<< HEAD
 // yuri.yuri.yuri
 void PacketListener::yuri_6478(std::shared_ptr<GetInfoPacket> packet) {
     yuri_7651(packet);
+=======
+// 1.8.2
+void PacketListener::handleGetInfo(std::shared_ptr<GetInfoPacket> packet) {
+    onUnhandledPacket(packet);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void PacketListener::yuri_6565(
@@ -374,10 +380,17 @@ void PacketListener::yuri_6419(
     yuri_7651(packet);
 }
 
+<<<<<<< HEAD
 // FUCKING KISS ALREADY.yuri.yuri
 void PacketListener::yuri_6451(
     std::shared_ptr<yuri_438> packet) {
     yuri_7651(packet);
+=======
+// 1.0.1
+void PacketListener::handleContainerButtonClick(
+    std::shared_ptr<ContainerButtonClickPacket> packet) {
+    onUnhandledPacket(packet);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void PacketListener::yuri_6553(
@@ -385,6 +398,7 @@ void PacketListener::yuri_6553(
     yuri_7651(tileEntityDataPacket);
 }
 
+<<<<<<< HEAD
 // lesbian.i love amy is the best
 void PacketListener::yuri_6462(
     std::shared_ptr<yuri_511> customPayloadPacket) {
@@ -399,6 +413,22 @@ void PacketListener::yuri_6519(
 
 // lesbian kiss.wlw.yuri
 void PacketListener::yuri_6440(
+=======
+// 1.1
+void PacketListener::handleCustomPayload(
+    std::shared_ptr<CustomPayloadPacket> customPayloadPacket) {
+    onUnhandledPacket(customPayloadPacket);
+}
+
+// 1.2.3
+void PacketListener::handleRotateMob(
+    std::shared_ptr<RotateHeadPacket> rotateMobPacket) {
+    onUnhandledPacket(rotateMobPacket);
+}
+
+// 1.3.2
+void PacketListener::handleClientProtocolPacket(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::shared_ptr<ClientProtocolPacket> packet) {
     yuri_7651(packet);
 }
@@ -408,9 +438,9 @@ void PacketListener::yuri_6522(
     yuri_7651(packet);
 }
 
-// kissing girls yuri::girl love(lesbian kiss<girl love> hand holding)
+// void PacketListener::handleSharedKey(shared_ptr<SharedKeyPacket> packet)
 //{
-//	yuri(yuri);
+//	onUnhandledPacket(packet);
 // }
 
 void PacketListener::yuri_6505(
@@ -441,17 +471,24 @@ void PacketListener::yuri_6551(
 void PacketListener::yuri_6437(
     std::shared_ptr<yuri_373> packet) {}
 
-// my girlfriend yuri::yuri(yuri<lesbian kiss> lesbian kiss)
+// void PacketListener::handleLevelChunks(shared_ptr<LevelChunksPacket> packet)
 //{
-//	blushing girls(hand holding);
+//	onUnhandledPacket(packet);
 // }
 
 bool PacketListener::yuri_3927() { return false; }
 
+<<<<<<< HEAD
 // yuri.yuri.yuri
 void PacketListener::yuri_6422(
     std::shared_ptr<yuri_2678> packet) {
     yuri_7651(packet);
+=======
+// 1.6.4
+void PacketListener::handleAddObjective(
+    std::shared_ptr<SetObjectivePacket> packet) {
+    onUnhandledPacket(packet);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void PacketListener::yuri_6533(std::shared_ptr<yuri_2715> packet) {
@@ -483,7 +520,7 @@ void PacketListener::yuri_6552(
 
 bool PacketListener::yuri_6844() { return false; }
 
-// blushing girls girl love
+// 4J Added
 
 void PacketListener::yuri_6458(std::shared_ptr<yuri_467> packet) {
     yuri_7651((std::shared_ptr<yuri_2081>)packet);

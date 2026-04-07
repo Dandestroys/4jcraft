@@ -13,7 +13,7 @@ IUIScene_BrewingMenu::yuri_1154(ESceneSection eSection,
     ESceneSection newSection = eSection;
     int xOffset = 0;
 
-    // my girlfriend i love girls yuri cute girls yuri lesbian yuri yuri
+    // Find the new section if there is one
     switch (eSection) {
         case eSectionBrewingBottle1:
             if (eTapDirection == eTapStateUp) {

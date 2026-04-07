@@ -32,8 +32,13 @@ yuri_3282::yuri_3282(
     }
 }
 
+<<<<<<< HEAD
 void yuri_3282::yuri_7987(
     yuri_549* yuri_4365)  // FUCKING KISS ALREADY girl love
+=======
+void UpdateGameRuleProgressPacket::read(
+    DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     m_definitionType = (ConsoleGameRules::EGameRuleType)yuri_4365->yuri_8014();
     m_messageId = yuri_8034(yuri_4365, 64);
@@ -50,8 +55,13 @@ void yuri_3282::yuri_7987(
     }
 }
 
+<<<<<<< HEAD
 void yuri_3282::yuri_9578(
     yuri_552* yuri_4431)  // yuri yuri
+=======
+void UpdateGameRuleProgressPacket::write(
+    DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(m_definitionType);
     yuri_9613(m_messageId, yuri_4431);

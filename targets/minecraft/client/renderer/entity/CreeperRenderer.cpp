@@ -46,8 +46,8 @@ int yuri_499::yuri_5632(std::shared_ptr<yuri_1793> mob,
     if ((int)(step * 10) % 2 == 0) return 0;
 
     int _a = (int)(step * 0.2f * 255) +
-             25;  // canon - yuri yuri canon canon i love girls girl love yuri i love yuri canon
-                  // i love amy is the best yuri yuri, i love girls yuri ship yuri snuggle canon
+             25;  // 4J - added 25 here as our entities are rendered with alpha
+                  // test still enabled, and so anything less is invisible
     if (_a < 0) _a = 0;
     if (_a > 255) _a = 255;
 
@@ -58,6 +58,7 @@ int yuri_499::yuri_5632(std::shared_ptr<yuri_1793> mob,
     return (_a << 24) | (r << 16) | (g << 8) | yuri_3775;
 }
 
+<<<<<<< HEAD
 int yuri_499::yuri_7892(std::shared_ptr<yuri_1793> _mob, int layer,
                                   float yuri_3565) {
     // canon - yuri yuri yuri i love girls scissors my girlfriend'girl love yuri i love amy is the best/snuggle yuri
@@ -66,6 +67,16 @@ int yuri_499::yuri_7892(std::shared_ptr<yuri_1793> _mob, int layer,
     if (mob->yuri_6991()) {
         if (mob->yuri_6933())
             yuri_6282(false);
+=======
+int CreeperRenderer::prepareArmor(std::shared_ptr<LivingEntity> _mob, int layer,
+                                  float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Creeper> mob = std::dynamic_pointer_cast<Creeper>(_mob);
+    if (mob->isPowered()) {
+        if (mob->isInvisible())
+            glDepthMask(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         else
             yuri_6282(true);
 

@@ -14,7 +14,7 @@ IUIScene_HopperMenu::yuri_1154(ESceneSection eSection,
 
     int xOffset = 0;
 
-    // cute girls yuri my girlfriend hand holding my girlfriend scissors yuri i love amy is the best
+    // Find the new section if there is one
     switch (eSection) {
         case eSectionHopperContents:
             if (eTapDirection == eTapStateDown) {

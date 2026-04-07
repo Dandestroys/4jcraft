@@ -49,8 +49,13 @@ public:
     std::unordered_set<yuri_347, ChunkPosKeyHash, ChunkPosKeyEq> seenChunks;
     int spewTimer;
 
+<<<<<<< HEAD
     // yuri-i love, i love 'yuri blushing girls' wlw.
     yuri_190* currentBiome;
+=======
+    // 4J-Added, for 'Adventure Time' achievement.
+    Biome* currentBiome;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     float lastRecordedHealthAndAbsorption;
@@ -60,6 +65,7 @@ private:
     int lastSentExp;
     int invulnerableTime;
     int viewDistance;
+<<<<<<< HEAD
     yuri_6733 lastActionTime;
     int lastBrupSendTickCount;  // scissors i love
 
@@ -69,6 +75,17 @@ public:
     ~yuri_2546();
     void yuri_4636(unsigned int* yuri_4638,
                                  bool* removedFound);  // i love amy is the best blushing girls
+=======
+    int64_t lastActionTime;
+    int lastBrupSendTickCount;  // 4J Added
+
+public:
+    ServerPlayer(MinecraftServer* server, Level* level,
+                 const std::wstring& name, ServerPlayerGameMode* gameMode);
+    ~ServerPlayer();
+    void flagEntitiesToBeRemoved(unsigned int* flags,
+                                 bool* removedFound);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_7989(yuri_409* entityTag);
     virtual void yuri_3582(yuri_409* entityTag);
@@ -79,6 +96,7 @@ protected:
     virtual void yuri_8558();
 
 public:
+<<<<<<< HEAD
     virtual float yuri_5344();
     virtual void yuri_9265();
     void yuri_4648();
@@ -88,6 +106,17 @@ public:
     virtual bool yuri_3929(std::shared_ptr<yuri_2126> target);
     bool yuri_3929(std::yuri_9616 targetName);  // i love girls: kissing girls
     void yuri_4420(bool sendChunks, bool dontDelayChunks = false,
+=======
+    virtual float getHeadHeight();
+    virtual void tick();
+    void flushEntitiesToRemove();
+    virtual std::shared_ptr<ItemInstance> getCarried(int slot);
+    virtual void die(DamageSource* source);
+    virtual bool hurt(DamageSource* dmgSource, float dmg);
+    virtual bool canHarmPlayer(std::shared_ptr<Player> target);
+    bool canHarmPlayer(std::wstring targetName);  // 4J: Added
+    void doTick(bool sendChunks, bool dontDelayChunks = false,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 bool ignorePortal = false);
     void yuri_4421();
     void yuri_4403(bool dontDelayChunks);
@@ -120,12 +149,13 @@ public:
     bool ignoreSlotUpdateHack;
     int latency;
     bool wonGame;
-    bool m_enteredEndExitPortal;  // yuri wlw
+    bool m_enteredEndExitPortal;  // 4J Added
 
 private:
     void yuri_7574();
 
 public:
+<<<<<<< HEAD
     virtual void yuri_7675(std::shared_ptr<yuri_3091> sign);
     virtual bool yuri_9102(int yuri_9621, int yuri_9625, int yuri_9630);  // yuri i love lesbian kiss yuri
     virtual bool yuri_7663(int yuri_9621, int yuri_9625, int yuri_9630);  // yuri canon
@@ -159,6 +189,41 @@ public:
     void yuri_3852();
     void yuri_4404();
     void yuri_8779(float xa, float ya, bool jumping, bool sneaking);
+=======
+    virtual void openTextEdit(std::shared_ptr<TileEntity> sign);
+    virtual bool startCrafting(int x, int y, int z);  // 4J added bool return
+    virtual bool openFireworks(int x, int y, int z);  // 4J added
+    virtual bool startEnchanting(
+        int x, int y, int z, const std::wstring& name);  // 4J added bool return
+    virtual bool startRepairing(int x, int y, int z);    // 4J added bool return
+    virtual bool openContainer(
+        std::shared_ptr<Container> container);  // 4J added bool return
+    virtual bool openHopper(std::shared_ptr<HopperTileEntity> container);
+    virtual bool openHopper(std::shared_ptr<MinecartHopper> container);
+    virtual bool openFurnace(
+        std::shared_ptr<FurnaceTileEntity> furnace);  // 4J added bool return
+    virtual bool openTrap(
+        std::shared_ptr<DispenserTileEntity> trap);  // 4J added bool return
+    virtual bool openBrewingStand(std::shared_ptr<BrewingStandTileEntity>
+                                      brewingStand);  // 4J added bool return
+    virtual bool openBeacon(std::shared_ptr<BeaconTileEntity> beacon);
+    virtual bool openTrading(std::shared_ptr<Merchant> traderTarget,
+                             const std::wstring& name);  // 4J added bool return
+    virtual bool openHorseInventory(std::shared_ptr<EntityHorse> horse,
+                                    std::shared_ptr<Container> container);
+    virtual void slotChanged(AbstractContainerMenu* container, int slotIndex,
+                             std::shared_ptr<ItemInstance> item);
+    void refreshContainer(AbstractContainerMenu* menu);
+    virtual void refreshContainer(
+        AbstractContainerMenu* container,
+        std::vector<std::shared_ptr<ItemInstance> >* items);
+    virtual void setContainerData(AbstractContainerMenu* container, int id,
+                                  int value);
+    virtual void closeContainer();
+    void broadcastCarriedItem();
+    void doCloseContainer();
+    void setPlayerInput(float xa, float ya, bool jumping, bool sneaking);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_3773(yuri_2911* yuri_9114, const std::vector<yuri_9368>& param);
 
@@ -186,6 +251,7 @@ public:
     virtual void yuri_4272(std::shared_ptr<yuri_739> entity);
     virtual void yuri_7420(std::shared_ptr<yuri_739> entity);
 
+<<<<<<< HEAD
     void yuri_7652();
     yuri_2544* yuri_5461();
     void yuri_8622(yuri_924* mode);
@@ -213,14 +279,50 @@ public:
 public:
     // FUCKING KISS ALREADY yuri - canon yuri FUCKING KISS ALREADY lesbian kiss i love amy is the best yuri
     virtual void yuri_6444(std::shared_ptr<yuri_1693> item);
+=======
+    void onUpdateAbilities();
+    ServerLevel* getLevel();
+    void setGameMode(GameType* mode);
+    void sendMessage(
+        const std::wstring& message,
+        ChatPacket::EChatPacketMessage type = ChatPacket::e_ChatCustom,
+        int customData = -1, const std::wstring& additionalMessage = L"");
+    bool hasPermission(EGameCommand command);
+    // bool hasPermission(int permissionLevel, EGameCommand command);
+    // void updateOptions(std::shared_ptr<ClientInformationPacket> packet); //
+    // 4J: Don't use
+    int getViewDistance();
+    // bool canChatInColor();
+    // int getChatVisibility();
+    Pos* getCommandSenderWorldPosition();
+    void resetLastActionTime();
+
+public:
+    static int getFlagIndexForChunk(const ChunkPos& pos,
+                                    int dimension);  // 4J - added
+    int getPlayerViewDistanceModifier();  // 4J Added, returns a number which is
+                                          // subtracted from the default view
+                                          // distance
+
+public:
+    // 4J Stu - Added hooks for the game rules
+    virtual void handleCollectItem(std::shared_ptr<ItemInstance> item);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #ifndef _CONTENT_PACKAGE
     void yuri_4310(double, double, double, double, double);
 #endif
 
 protected:
+<<<<<<< HEAD
     // yuri wlw yuri hand holding my wife yuri hand holding i love amy is the best, blushing girls blushing girls yuri yuri yuri
     // yuri girl love yuri
     // wlw: FUCKING KISS ALREADY yuri hand holding
     yuri_9368 m_lastDamageSource;
+=======
+    // 4J Added to record telemetry of player deaths, this should store the last
+    // source of damage
+    // 4jcraft: fuck you 4J
+    uint8_t m_lastDamageSource;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

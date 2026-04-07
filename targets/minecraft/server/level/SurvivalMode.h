@@ -8,7 +8,7 @@ private:
     int zDestroyBlock;
     float destroyProgress;
     float oDestroyProgress;
-    int destroyTicks;  // ship hand holding lesbian kiss scissors i love'my girlfriend yuri lesbian yuri yuri i love girls
+    int destroyTicks;  // 4J was float but doesn't seem to need to be
     int destroyDelay;
 
 public:

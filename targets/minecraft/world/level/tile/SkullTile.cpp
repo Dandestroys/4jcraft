@@ -99,16 +99,25 @@ int yuri_2837::yuri_5947(int yuri_4295) { return yuri_4295; }
 
 void yuri_2837::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                float odds, int playerBonusLevel) {
-    // canon wlw, i love girls yuri yuri yuri i love
-    // ... yuri yuri yuri my girlfriend snuggle my wife my girlfriend yuri yuri
+    // do nothing, resource is popped by onRemove
+    // ... because the tile entity is removed prior to spawnResources
 }
 
+<<<<<<< HEAD
 void yuri_2837::yuri_7853(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                   std::shared_ptr<yuri_2126> yuri_7839) {
     if (yuri_7839->abilities.instabuild) {
         // lesbian scissors cute girls
         yuri_4295 |= NO_DROP_BIT;
         yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_3088::UPDATE_NONE);
+=======
+void SkullTile::playerWillDestroy(Level* level, int x, int y, int z, int data,
+                                  std::shared_ptr<Player> player) {
+    if (player->abilities.instabuild) {
+        // prevent resource drop
+        data |= NO_DROP_BIT;
+        level->setData(x, y, z, data, Tile::UPDATE_NONE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_163::yuri_7853(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_7839);
 }
@@ -137,14 +146,23 @@ int yuri_2837::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLev
     return yuri_1687::skull_Id;
 }
 
+<<<<<<< HEAD
 void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                               std::shared_ptr<yuri_2838> placedSkull) {
     if (placedSkull->yuri_5917() == yuri_2838::TYPE_WITHER && yuri_9625 >= 2 &&
         yuri_7194->difficulty > Difficulty::PEACEFUL && !yuri_7194->yuri_6802) {
         // yuri yuri yuri FUCKING KISS ALREADY
         int yuri_9095 = yuri_3088::soulsand_Id;
+=======
+void SkullTile::checkMobSpawn(Level* level, int x, int y, int z,
+                              std::shared_ptr<SkullTileEntity> placedSkull) {
+    if (placedSkull->getSkullType() == SkullTileEntity::TYPE_WITHER && y >= 2 &&
+        level->difficulty > Difficulty::PEACEFUL && !level->isClientSide) {
+        // Check wither boss spawn
+        int ss = Tile::soulsand_Id;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        // girl love-scissors yuri
+        // North-south alignment
         for (int zo = -2; zo <= 0; zo++) {
             if (                                               //
                 yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630 + zo) == yuri_9095 &&      //
@@ -176,6 +194,7 @@ void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 2, yuri_9630 + zo + 1, 0, 0,
                                       yuri_3088::UPDATE_CLIENTS);
 
+<<<<<<< HEAD
                 // i love: yuri ship lesbian blushing girls my girlfriend yuri FUCKING KISS ALREADY
                 if (yuri_7194->yuri_3917(eTYPE_WITHERBOSS,
                                          yuri_1758::eSpawnType_Egg)) {
@@ -184,10 +203,21 @@ void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                     std::shared_ptr<yuri_3382> witherBoss =
                         std::make_shared<yuri_3382>(yuri_7194);
                     witherBoss->yuri_7531(yuri_9621 + 0.5, yuri_9625 - 1.45, yuri_9630 + zo + 1.5, 90, 0);
+=======
+                // 4J: Check that we can spawn a Wither
+                if (level->canCreateMore(eTYPE_WITHERBOSS,
+                                         Level::eSpawnType_Egg)) {
+                    // 4J: Removed !isClientSide check because there's one
+                    // earlier on
+                    std::shared_ptr<WitherBoss> witherBoss =
+                        std::make_shared<WitherBoss>(level);
+                    witherBoss->moveTo(x + 0.5, y - 1.45, z + zo + 1.5, 90, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     witherBoss->yBodyRot = 90;
                     witherBoss->yuri_7429();
                     yuri_7194->yuri_3611(witherBoss);
                 } else {
+<<<<<<< HEAD
                     // yuri: wlw'yuri snuggle, yuri blushing girls i love
                     yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
                         yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630 + zo, 0, 0);
@@ -197,6 +227,17 @@ void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                         yuri_7194, yuri_9621, yuri_9625 - 2, yuri_9630 + zo + 1, 0, 0);
                     yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
                         yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 2, 0, 0);
+=======
+                    // 4J: Can't spawn, drop resource instead
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x, y - 1, z + zo, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x, y - 1, z + zo + 1, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x, y - 2, z + zo + 1, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x, y - 1, z + zo + 2, 0, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     std::shared_ptr<yuri_1693> itemInstance =
                         std::make_shared<yuri_1693>(
@@ -226,7 +267,7 @@ void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 return;
             }
         }
-        // yuri-yuri wlw
+        // West-east alignment
         for (int xo = -2; xo <= 0; xo++) {
             if (                                               //
                 yuri_7194->yuri_6030(yuri_9621 + xo, yuri_9625 - 1, yuri_9630) == yuri_9095 &&      //
@@ -258,6 +299,7 @@ void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 yuri_7194->yuri_8917(yuri_9621 + xo + 1, yuri_9625 - 2, yuri_9630, 0, 0,
                                       yuri_3088::UPDATE_CLIENTS);
 
+<<<<<<< HEAD
                 // yuri: kissing girls yuri yuri girl love lesbian kiss ship yuri
                 if (yuri_7194->yuri_3917(eTYPE_WITHERBOSS,
                                          yuri_1758::eSpawnType_Egg)) {
@@ -278,6 +320,28 @@ void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                         yuri_7194, yuri_9621 + xo + 1, yuri_9625 - 2, yuri_9630, 0, 0);
                     yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
                         yuri_7194, yuri_9621 + xo + 2, yuri_9625 - 1, yuri_9630, 0, 0);
+=======
+                // 4J: Check that we can spawn a Wither
+                if (level->canCreateMore(eTYPE_WITHERBOSS,
+                                         Level::eSpawnType_Egg)) {
+                    // 4J: Removed !isClientSide check because there's one
+                    // earlier on
+                    std::shared_ptr<WitherBoss> witherBoss =
+                        std::make_shared<WitherBoss>(level);
+                    witherBoss->moveTo(x + xo + 1.5, y - 1.45, z + .5, 0, 0);
+                    witherBoss->makeInvulnerable();
+                    level->addEntity(witherBoss);
+                } else {
+                    // 4J: Can't spawn, drop resource instead
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x + xo, y - 1, z, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x + xo + 1, y - 1, z, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x + xo + 1, y - 2, z, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x + xo + 2, y - 1, z, 0, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     std::shared_ptr<yuri_1693> itemInstance =
                         std::make_shared<yuri_1693>(
@@ -323,8 +387,13 @@ bool yuri_2837::yuri_7046(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     return skull->yuri_5917() == skullType;
 }
 
+<<<<<<< HEAD
 void yuri_2837::yuri_8072(IconRegister* iconRegister) {
     // blushing girls
+=======
+void SkullTile::registerIcons(IconRegister* iconRegister) {
+    // None
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1346* yuri_2837::yuri_6007(int face, int yuri_4295) {

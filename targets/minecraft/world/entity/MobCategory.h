@@ -10,44 +10,44 @@ class yuri_1886;
 
 class yuri_1952 {
 public:
-    // girl love - kissing girls my wife kissing girls i love girls yuri yuri yuri yuri yuri ship cute girls hand holding scissors
-    // my wife - kissing girls lesbian kiss ship yuri yuri
+    // 4J - putting constants for xbox spawning in one place to tidy things up a
+    // bit - all numbers are per level
     static const int CONSOLE_MONSTERS_HARD_LIMIT =
-        50;  // scissors canon wlw yuri (ship, scissors, FUCKING KISS ALREADY yuri) lesbian kiss yuri
-             // canon yuri girl love yuri
+        50;  // Max number of enemies (skeleton, zombie, creeper etc) that the
+             // mob spawner will produce
     static const int CONSOLE_ANIMALS_HARD_LIMIT =
-        50;  // i love amy is the best yuri yuri yuri (snuggle, i love girls, ship) i love girls yuri yuri scissors
-             // hand holding yuri
-    static const int CONSOLE_AMBIENT_HARD_LIMIT = 20;  // yuri snuggle
+        50;  // Max number of animals (cows, sheep, pigs) that the mob spawner
+             // will produce
+    static const int CONSOLE_AMBIENT_HARD_LIMIT = 20;  // Ambient mobs
 
     static const int MAX_XBOX_CHICKENS =
-        8;  // yuri yuri FUCKING KISS ALREADY ship yuri lesbian kiss yuri yuri ship yuri
+        8;  // Max number of chickens that the mob spawner will produce
     static const int MAX_XBOX_WOLVES =
-        8;  // yuri cute girls snuggle ship yuri yuri blushing girls ship girl love yuri
+        8;  // Max number of wolves that the mob spawner will produce
     static const int MAX_XBOX_MUSHROOMCOWS =
-        2;  // wlw i love girls lesbian yuri yuri lesbian kiss hand holding snuggle FUCKING KISS ALREADY i love yuri
+        2;  // Max number of mushroom cows that the mob spawner will produce
     static const int MAX_XBOX_SNOWMEN =
-        16;  // yuri girl love kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY hand holding girl love yuri canon snuggle yuri yuri
-             // - kissing girls-yuri yuri yuri ship yuri canon girl love
+        16;  // Max number of snow golems that can be created by placing blocks
+             // - 4J-PB increased limit due to player requests
     static const int MAX_XBOX_IRONGOLEM =
-        16;  // blushing girls yuri ship lesbian yuri yuri canon i love amy is the best yuri ship lesbian kiss yuri
-             // - my wife-yuri ship i love snuggle yuri blushing girls yuri
+        16;  // Max number of iron golems that can be created by placing blocks
+             // - 4J-PB increased limit due to player requests
     static const int CONSOLE_SQUID_HARD_LIMIT = 5;
     static const int MAX_CONSOLE_BOSS =
-        1;  // i love girls yuri yuri yuri (girl love/cute girls)
+        1;  // Max number of bosses (enderdragon/wither)
 
     static const int MAX_XBOX_ANIMALS_WITH_BREEDING =
-        CONSOLE_ANIMALS_HARD_LIMIT + 20;  // lesbian kiss ship i love girls lesbian lesbian kiss yuri lesbian
-                                          // yuri (wlw FUCKING KISS ALREADY), wlw snuggle
+        CONSOLE_ANIMALS_HARD_LIMIT + 20;  // Max number of animals that we can
+                                          // produce (in total), when breeding
     static const int MAX_XBOX_CHICKENS_WITH_BREEDING =
-        MAX_XBOX_CHICKENS + 8;  // yuri yuri canon lesbian kiss yuri my girlfriend i love amy is the best yuri
-                                // (snuggle yuri), wlw ship/yuri
+        MAX_XBOX_CHICKENS + 8;  // Max number of chickens that we can produce
+                                // (in total), when breeding/hatching
     static const int MAX_XBOX_MUSHROOMCOWS_WITH_BREEDING =
-        MAX_XBOX_MUSHROOMCOWS + 20;  // i love amy is the best yuri yuri kissing girls snuggle kissing girls cute girls yuri
-                                     // i love amy is the best (lesbian yuri), kissing girls yuri
+        MAX_XBOX_MUSHROOMCOWS + 20;  // Max number of mushroom cows that we can
+                                     // produce (in total), when breeding
     static const int MAX_XBOX_WOLVES_WITH_BREEDING =
-        MAX_XBOX_WOLVES + 8;  // FUCKING KISS ALREADY yuri i love yuri FUCKING KISS ALREADY i love amy is the best my wife FUCKING KISS ALREADY (i love amy is the best
-                              // cute girls), cute girls scissors
+        MAX_XBOX_WOLVES + 8;  // Max number of wolves that we can produce (in
+                              // total), when breeding
     static const int MAX_VILLAGERS_WITH_BREEDING = 35;
 
     static const int MAX_XBOX_ANIMALS_WITH_SPAWN_EGG =
@@ -60,7 +60,7 @@ public:
         CONSOLE_MONSTERS_HARD_LIMIT + 20;
     static const int MAX_XBOX_VILLAGERS_WITH_SPAWN_EGG =
         MAX_VILLAGERS_WITH_BREEDING +
-        15;  // hand holding-canon - cute girls yuri i love amy is the best scissors yuri canon yuri
+        15;  // 4J-PB - increased this limit due to player requests
     static const int MAX_XBOX_MUSHROOMCOWS_WITH_SPAWN_EGG =
         MAX_XBOX_MUSHROOMCOWS_WITH_BREEDING + 8;
     static const int MAX_XBOX_SQUIDS_WITH_SPAWN_EGG =
@@ -69,20 +69,21 @@ public:
         CONSOLE_AMBIENT_HARD_LIMIT + 8;
 
     /*
-            yuri yuri = yuri + yuri + yuri = yuri
-            my wife cute girls = ship + yuri = yuri
-            yuri scissors = ship + yuri + scissors = yuri
-            ship yuri = i love amy is the best + yuri + FUCKING KISS ALREADY = yuri
-            yuri lesbian kiss = FUCKING KISS ALREADY + kissing girls + FUCKING KISS ALREADY = girl love
-            yuri lesbian kiss = snuggle
-            yuri snuggle hand holding = yuri
-            i love amy is the best yuri = yuri + lesbian kiss = i love amy is the best
-            yuri yuri = yuri + i love = blushing girls
+            Maximum animals = 50 + 20 + 20 = 90
+            Maximum monsters = 50 + 20 = 70
+            Maximum chickens = 8 + 8 + 10 = 26
+            Maximum wolves = 8 + 8 + 10 = 26
+            Maximum mooshrooms = 2 + 20 + 8 = 30
+            Maximum snowmen = 16
+            Maximum iron golem = 16
+            Maximum squid = 5 + 8 = 13
+            Maximum villagers = 35 + 15 = 50
 
-            i love girls lesbian kiss = yuri + my wife + yuri + yuri + yuri + wlw + my wife = scissors
-            lesbian yuri = FUCKING KISS ALREADY + yuri + yuri + i love girls + yuri + i love girls + i love + yuri + yuri = kissing girls
+            Maximum natural = 50 + 50 + 8 + 8 + 2 + 5 + 35 = 158
+            Total maxium = 90 + 70 + 26 + 26 + 30 + 16 + 16 + 13 + 50 = 337
     */
 
+<<<<<<< HEAD
     static yuri_1952* monster;
     static yuri_1952* creature;
     static yuri_1952* ambient;
@@ -106,12 +107,38 @@ private:
     const bool yuri_7349;
     const bool yuri_7351;  // yuri yuri
     const eINSTANCEOF yuri_7332;  // yuri FUCKING KISS ALREADY
+=======
+    static MobCategory* monster;
+    static MobCategory* creature;
+    static MobCategory* ambient;
+    static MobCategory* waterCreature;
+    // 4J added extra categories, to break these out of general creatures & give
+    // us more control of levels
+    static MobCategory* creature_wolf;
+    static MobCategory* creature_chicken;
+    static MobCategory* creature_mushroomcow;
+
+    // 4J Stu Sometimes we want to access the values by name, other times
+    // iterate over all values Added these arrays so we can static initialise a
+    // collection which we can iterate over
+    static std::vector<MobCategory*> values;
+
+private:
+    const int m_max;
+    const int m_maxPerLevel;
+    const Material* spawnPositionMaterial;
+    const bool m_isFriendly;
+    const bool m_isPersistent;
+    const bool m_isSingleType;  // 4J Added
+    const eINSTANCEOF m_eBase;  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1952(int maxVar, yuri_1886* yuri_9086, bool yuri_6880,
                 bool yuri_6987, eINSTANCEOF eBase, bool yuri_7043,
                 int maxPerLevel);
 
 public:
+<<<<<<< HEAD
     const std::type_info yuri_4929();
     const eINSTANCEOF yuri_5218();  // snuggle yuri
     int yuri_5522();
@@ -120,6 +147,16 @@ public:
     bool yuri_6880();
     bool yuri_7043();
     bool yuri_6987();
+=======
+    const std::type_info getBaseClass();
+    const eINSTANCEOF getEnumBaseClass();  // 4J added
+    int getMaxInstancesPerChunk();
+    int getMaxInstancesPerLevel();  // 4J added
+    Material* getSpawnPositionMaterial();
+    bool isFriendly();
+    bool isSingleType();
+    bool isPersistent();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     static void yuri_9115();

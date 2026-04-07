@@ -9,9 +9,15 @@ private:
     int visibleTime;
 
 public:
+<<<<<<< HEAD
     yuri_2097();  // canon yuri
     virtual void yuri_6704() override;
     static void yuri_4547(yuri_1945* minecraft, bool yuri_8353);
+=======
+    PauseScreen();  // 4J added
+    virtual void init() override;
+    static void exitWorld(Minecraft* minecraft, bool save);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     using yuri_2524::yuri_3881;

@@ -16,6 +16,7 @@ protected:
     yuri_613(int yuri_6674, bool on);
 
 public:
+<<<<<<< HEAD
     virtual void yuri_9402();  // i love yuri girl love
     virtual bool yuri_6827();
     virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -23,6 +24,15 @@ public:
     virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
     virtual yuri_1346* yuri_6007(int face, int yuri_4295);
     virtual bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+=======
+    virtual void updateDefaultShape();  // 4J Added override
+    virtual bool isCubeShaped();
+    virtual bool mayPlace(Level* level, int x, int y, int z);
+    virtual bool canSurvive(Level* level, int x, int y, int z);
+    virtual void tick(Level* level, int x, int y, int z, Random* random);
+    virtual Icon* getTexture(int face, int data);
+    virtual bool shouldRenderFace(LevelSource* level, int x, int y, int z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                   int face);
     virtual int yuri_5806();
 

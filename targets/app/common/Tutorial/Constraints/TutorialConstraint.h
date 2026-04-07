@@ -1,8 +1,14 @@
 #pragma once
 
+<<<<<<< HEAD
 // wlw ship - girl love my girlfriend scissors yuri kissing girls i love girls yuri FUCKING KISS ALREADY cute girls yuri yuri yuri
 // i love girls yuri hand holding
 class yuri_3145 {
+=======
+// 4J Stu - An abstract class that represents a constraint on what the user is
+// able to do
+class TutorialConstraint {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     int yuri_4346;
     bool yuri_7327;
@@ -10,7 +16,7 @@ private:
 
 public:
     enum ConstraintType {
-        e_ConstraintInput = 0,  // lesbian snuggle yuri my girlfriend
+        e_ConstraintInput = 0,  // Constraint on controller input
         e_ConstraintArea,
         e_ConstraintAllInput,
         e_ConstraintXuiInput,

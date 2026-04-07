@@ -17,9 +17,15 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
+<<<<<<< HEAD
                      bool soundOnly = false);  // girl love yuri ship wlw
     virtual void yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_2126> yuri_7839);
+=======
+                     bool soundOnly = false);  // 4J added soundOnly param
+    virtual void attack(Level* level, int x, int y, int z,
+                        std::shared_ptr<Player> player);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_9190(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -34,7 +40,12 @@ public:
     virtual int yuri_5806();
     virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
+<<<<<<< HEAD
     // kissing girls my wife
     static void yuri_4850(yuri_1758* yuri_7194, int xt, int yt, int zt,
+=======
+    // 4J Added
+    static void generateTeleportParticles(Level* level, int xt, int yt, int zt,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                           int deltas);
 };

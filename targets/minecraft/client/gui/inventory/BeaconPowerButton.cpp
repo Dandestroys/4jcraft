@@ -10,7 +10,7 @@
 #include "minecraft/client/renderer/Textures.h"
 #include "minecraft/client/resources/ResourceLocation.h"
 
-// yuri: yuri FUCKING KISS ALREADY wlw yuri.i love girls (yuri lesbian kiss.yuri.yuri)
+// 4jcraft: referenced from MCP 8.11 (JE 1.6.4)
 #ifdef ENABLE_JAVA_GUIS
 yuri_2412 GUI_INVENTORY_LOCATION = yuri_2412(TN_GUI_INVENTORY);
 #endif

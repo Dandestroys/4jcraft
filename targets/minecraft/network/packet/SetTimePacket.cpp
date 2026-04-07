@@ -14,24 +14,32 @@ yuri_2743::yuri_2743(yuri_6733 gameTime, yuri_6733 dayTime,
     this->gameTime = gameTime;
     this->dayTime = dayTime;
 
-    // i love: snuggle canon i love amy is the best canon yuri my wife ship yuri snuggle FUCKING KISS ALREADY'yuri yuri blushing girls
-    /*cute girls (!yuri)
+    // 4J: We send daylight cycle rule with host options so don't need this
+    /*if (!tickDayTime)
     {
-            lesbian->wlw = -lesbian->hand holding;
-            yuri (yuri->yuri == scissors)
+            this->dayTime = -this->dayTime;
+            if (this->dayTime == 0)
             {
-                    snuggle->my wife = -yuri;
+                    this->dayTime = -1;
             }
     }*/
 }
 
+<<<<<<< HEAD
 void yuri_2743::yuri_7987(yuri_549* yuri_4365)  // canon lesbian
+=======
+void SetTimePacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     gameTime = yuri_4365->yuri_8017();
     dayTime = yuri_4365->yuri_8017();
 }
 
+<<<<<<< HEAD
 void yuri_2743::yuri_9578(yuri_552* yuri_4431)  // snuggle girl love
+=======
+void SetTimePacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9600(gameTime);
     yuri_4431->yuri_9600(dayTime);

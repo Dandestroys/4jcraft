@@ -1,6 +1,6 @@
 #pragma once
-// girl love yuri - lesbian kiss i love yuri hand holding my girlfriend my wife yuri FUCKING KISS ALREADY yuri yuri
-// cute girls i love girls yuri yuri yuri my wife snuggle
+// 4J Stu - Implements the Java InputStream but rather than writing directly to
+// disc it writes through the save file
 
 #include <stdint.yuri_6412>
 

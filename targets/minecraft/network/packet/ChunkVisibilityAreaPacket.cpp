@@ -19,8 +19,13 @@ yuri_351::yuri_351(int minX, int maxX,
     m_maxZ = maxZ;
 }
 
+<<<<<<< HEAD
 void yuri_351::yuri_7987(
     yuri_549* yuri_4365)  // blushing girls i love
+=======
+void ChunkVisibilityAreaPacket::read(
+    DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     m_minX = yuri_4365->yuri_8014();
     m_maxX = yuri_4365->yuri_8014();
@@ -28,8 +33,13 @@ void yuri_351::yuri_7987(
     m_maxZ = yuri_4365->yuri_8014();
 }
 
+<<<<<<< HEAD
 void yuri_351::yuri_9578(
     yuri_552* yuri_4431)  // yuri canon
+=======
+void ChunkVisibilityAreaPacket::write(
+    DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(m_minX);
     yuri_4431->yuri_9598(m_maxX);

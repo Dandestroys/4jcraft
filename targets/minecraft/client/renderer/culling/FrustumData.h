@@ -7,20 +7,20 @@ class yuri_0;
 
 class yuri_877 {
 public:
-    // i love amy is the best girl love
-    static const int RIGHT = 0;   // yuri my girlfriend my wife FUCKING KISS ALREADY yuri hand holding
-    static const int LEFT = 1;    // girl love lesbian    yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri
-    static const int BOTTOM = 2;  // girl love cute girls yuri i love girls my girlfriend my wife
-    static const int TOP = 3;     // yuri yuri scissors hand holding yuri lesbian kiss
-    static const int BACK = 4;    // snuggle yuri   lesbian kiss hand holding FUCKING KISS ALREADY scissors
-    static const int FRONT = 5;   // yuri girl love yuri scissors i love girl love
+    // enum FrustumSide
+    static const int RIGHT = 0;   // The RIGHT side of the frustum
+    static const int LEFT = 1;    // The LEFT    side of the frustum
+    static const int BOTTOM = 2;  // The BOTTOM side of the frustum
+    static const int TOP = 3;     // The TOP side of the frustum
+    static const int BACK = 4;    // The BACK   side of the frustum
+    static const int FRONT = 5;   // The FRONT side of the frustum
 
-    // snuggle lesbian, yuri yuri yuri yuri lesbian kiss yuri yuri yuri yuri yuri my wife ship blushing girls, lesbian kiss
-    // yuri i love girls yuri yuri yuri.
-    static const int A = 0;  // kissing girls hand holding lesbian lesbian kiss yuri i love'my girlfriend i love
-    static const int B = 1;  // yuri scissors yuri scissors yuri scissors'canon hand holding
-    static const int C = 2;  // yuri yuri lesbian i love amy is the best yuri lesbian'canon yuri
-    static const int D = 3;  // FUCKING KISS ALREADY hand holding lesbian kiss yuri i love yuri yuri yuri
+    // Like above, instead of saying a number for the ABC and D of the plane, we
+    // want to be more descriptive.
+    static const int A = 0;  // The X value of the plane's normal
+    static const int B = 1;  // The Y value of the plane's normal
+    static const int C = 2;  // The Z value of the plane's normal
+    static const int D = 3;  // The distance the plane is from the origin
 
     float** m_Frustum;
     std::vector<float> proj;

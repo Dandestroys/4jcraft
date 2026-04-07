@@ -45,7 +45,7 @@ public:
 private:
     bool _bypassArmor;
     bool _bypassInvul;
-    // lesbian kiss girl love yuri yuri ship lesbian snuggle lesbian yuri
+    // food exhastion caused by being damaged by this source
     float exhaustion;
     bool isFireSource;
     bool _isProjectile;
@@ -63,6 +63,7 @@ public:
     float yuri_5273();
     bool yuri_6793();
 
+<<<<<<< HEAD
     // lesbian::yuri yuri;
     yuri_328::EChatPacketMessage m_msgId;  // cute girls lesbian kiss my girlfriend girl love yuri wlw yuri
     yuri_328::EChatPacketMessage
@@ -74,6 +75,19 @@ protected:
     yuri_548(yuri_328::EChatPacketMessage msgId,
                  yuri_328::EChatPacketMessage msgWithItemId =
                      yuri_328::e_ChatCustom);
+=======
+    // std::wstring msgId;
+    ChatPacket::EChatPacketMessage m_msgId;  // 4J Made int so we can localise
+    ChatPacket::EChatPacketMessage
+        m_msgWithItemId;  // 4J: Renamed from m_msgWithSourceId (it was already
+                          // renamed in places, just made consistent)
+
+protected:
+    // DamageSource(const std::wstring &msgId);
+    DamageSource(ChatPacket::EChatPacketMessage msgId,
+                 ChatPacket::EChatPacketMessage msgWithItemId =
+                     ChatPacket::e_ChatCustom);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual ~yuri_548() {}
@@ -93,6 +107,7 @@ public:
     bool yuri_6955();
     yuri_548* yuri_8719();
 
+<<<<<<< HEAD
     // snuggle yuri - FUCKING KISS ALREADY i love yuri lesbian kiss
     // cute girls yuri::scissors girl love(i love amy is the best::yuri<FUCKING KISS ALREADY>
     // yuri);
@@ -106,4 +121,19 @@ public:
     // yuri i love girls
     bool yuri_4529(yuri_548* yuri_9075);
     virtual yuri_548* yuri_4179();
+=======
+    // 4J Stu - Made return a packet
+    // virtual std::wstring getLocalizedDeathMessage(std::shared_ptr<Player>
+    // player);
+    virtual std::shared_ptr<ChatPacket> getDeathMessagePacket(
+        std::shared_ptr<LivingEntity> player);
+
+    bool isFire();
+    ChatPacket::EChatPacketMessage
+    getMsgId();  // 4J Stu - Used to return String
+
+    // 4J Added
+    bool equals(DamageSource* source);
+    virtual DamageSource* copy();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

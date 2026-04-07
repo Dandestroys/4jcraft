@@ -5,11 +5,19 @@
 #include "minecraft/world/entity/monster/SharedMonsterAttributes.h"
 #include "minecraft/world/level/Level.h"
 
+<<<<<<< HEAD
 yuri_1210::yuri_1210(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // hand holding canon - cute girls yuri cute girls my wife lesbian kiss lesbian girl love kissing girls yuri girl love i love scissors canon
     // cute girls my girlfriend blushing girls i love yuri yuri girl love yuri blushing girls yuri
     this->yuri_4329();
     yuri_8067();
+=======
+Giant::Giant(Level* level) : Monster(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     heightOffset *= 6;
     yuri_8864(bbWidth * 6, bbHeight * 6);

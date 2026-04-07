@@ -24,6 +24,7 @@ private:
 public:
     class yuri_202 {
     public:
+<<<<<<< HEAD
         // i love - cute girls blushing girls i love girls yuri yuri FUCKING KISS ALREADY blushing girls, kissing girls yuri i love hand holding
         // yuri girl love yuri yuri ship ship my wife my wife FUCKING KISS ALREADY.
         // 		lesbian::girl love<yuri> yuri;
@@ -32,6 +33,16 @@ public:
         std::vector<yuri_9368> biomeIndices;
         int yuri_9621, yuri_9630;
         yuri_6733 lastUse;
+=======
+        // MGH - changed this to just cache biome indices, as we have direct
+        // access to the data if we know the index.
+        // 		std::vector<float> temps;
+        // 		std::vector<float> downfall;
+        // 		std::vector<Biome*> biomes;
+        std::vector<uint8_t> biomeIndices;
+        int x, z;
+        int64_t lastUse;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_202(int yuri_9621, int yuri_9630, yuri_191* yuri_7791);
         ~yuri_202();
@@ -41,9 +52,15 @@ public:
     };
 
 private:
+<<<<<<< HEAD
     std::unordered_map<yuri_6733, yuri_202*, LongKeyHash, LongKeyEq>
         cached;               // i love amy is the best - girl love FUCKING KISS ALREADY
     std::vector<yuri_202*> all;  // i love amy is the best snuggle<wlw>
+=======
+    std::unordered_map<int64_t, Block*, LongKeyHash, LongKeyEq>
+        cached;               // 4J - was LongHashMap
+    std::vector<Block*> all;  // was ArrayList<Block>
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_191(yuri_196* yuri_9075);

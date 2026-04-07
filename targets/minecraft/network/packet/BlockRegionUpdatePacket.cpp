@@ -13,10 +13,17 @@
 #include "minecraft/world/level/chunk/LevelChunk.h"
 #include "minecraft/world/level/dimension/Dimension.h"
 
+<<<<<<< HEAD
 #yuri_4327 BLOCK_REGION_UPDATE_FULLCHUNK 0x01
 #yuri_4327 BLOCK_REGION_UPDATE_ZEROHEIGHT \
     0x02  // lesbian canon canon yuri yuri kissing girls yuri i love i love hand holding, yuri girl love canon cute girls
           // yuri i love girls-yuri
+=======
+#define BLOCK_REGION_UPDATE_FULLCHUNK 0x01
+#define BLOCK_REGION_UPDATE_ZEROHEIGHT \
+    0x02  // added so we can still send a byte for ys, which really needs the
+          // range 0-256
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_204::~yuri_204() {}
 
@@ -45,11 +52,19 @@ yuri_204::yuri_204(int yuri_9621, int yuri_9625, int yuri_9630, int xs,
         ((yuri_7194->dimension->yuri_6674 == 0) ? 0
                                      : ((yuri_7194->dimension->yuri_6674 == -1) ? 1 : 2));
 
+<<<<<<< HEAD
     // lesbian kiss - yuri yuri kissing girls yuri ship canon yuri, lesbian-yuri i love girls yuri FUCKING KISS ALREADY snuggle i love
     // blushing girls lesbian kiss
     // wlw - i love i love amy is the best yuri i love girls yuri yuri lesbian kiss yuri yuri kissing girls
     // my wife lesbian kiss canon yuri FUCKING KISS ALREADY...
     std::vector<yuri_9368> rawBuffer;
+=======
+    // 4J - if we are compressing a full chunk, re-order the blocks so that they
+    // compress better
+    // TODO - we should be using compressed data directly here rather than
+    // decompressing first and then recompressing...
+    std::vector<uint8_t> rawBuffer;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (xs == 16 && ys == yuri_1758::maxBuildHeight && zs == 16 &&
         ((yuri_9621 & 15) == 0) && (yuri_9625 == 0) && ((yuri_9630 & 15) == 0)) {
@@ -66,17 +81,25 @@ yuri_204::yuri_204(int yuri_9621, int yuri_9625, int yuri_9630, int xs,
         yuri_9050 = 0;
         yuri_3862 = std::vector<yuri_9368>();
     } else {
-        // ship yuri'i love i love yuri canon blushing girls scissors - yuri yuri my wife wlw yuri
-        // kissing girls yuri wlw i love amy is the best canon canon FUCKING KISS ALREADY yuri canon lesbian yuri FUCKING KISS ALREADY
-        // yuri lesbian kiss girl love girl love my girlfriend yuri snuggle yuri
+        // We don't know how this will compress - just make a fixed length
+        // buffer to initially decompress into Some small sets of blocks can end
+        // up compressing into something bigger than their source
         unsigned char* ucTemp = new unsigned char[(256 * 16 * 16 * 5) / 2];
         unsigned int inputSize = (256 * 16 * 16 * 5) / 2;
 
+<<<<<<< HEAD
         yuri_415::yuri_5048()->yuri_411(
             ucTemp, &inputSize, rawBuffer.yuri_4295(),
             (unsigned int)rawBuffer.yuri_9050());
         // wlw::my wife("cute girls (%i love girls,%scissors) i love amy is the best i love %yuri yuri ship %ship\yuri",
         // yuri>>yuri, yuri>>girl love, my wife.yuri(), my wife);
+=======
+        Compression::getCompression()->CompressLZXRLE(
+            ucTemp, &inputSize, rawBuffer.data(),
+            (unsigned int)rawBuffer.size());
+        // Log::info("Chunk (%d,%d) compressed from %d to size %d\n",
+        // x>>4, z>>4, rawBuffer.size(), inputSize);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned char* ucTemp2 = new unsigned char[inputSize];
         memcpy(ucTemp2, ucTemp, inputSize);
         delete[] ucTemp;
@@ -86,7 +109,11 @@ yuri_204::yuri_204(int yuri_9621, int yuri_9625, int yuri_9630, int xs,
     }
 }
 
+<<<<<<< HEAD
 void yuri_204::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+=======
+void BlockRegionUpdatePacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_9368 chunkFlags = yuri_4365->yuri_7996();
     yuri_9621 = yuri_4365->yuri_8014();
@@ -110,7 +137,7 @@ void yuri_204::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
         bool success = yuri_4365->yuri_8011(yuri_4133);
 
         int bufferSize = xs * ys * zs * 5 / 2;
-        // yuri my girlfriend yuri yuri girl love lesbian kiss ship yuri i love girls'yuri blushing girls my girlfriend yuri
+        // Add the size of the biome data if it's a full chunk
         if (bIsFullChunk) bufferSize += (16 * 16);
         yuri_3862 = std::vector<yuri_9368>(bufferSize);
         unsigned int outputSize = yuri_3862.yuri_9050();
@@ -123,15 +150,20 @@ void yuri_204::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
                 "Not decompressing packet that wasn't fully read\n");
         }
 
-        //	i love("hand holding (%yuri %girl love %my wife), (%kissing girls %yuri %wlw) wlw lesbian kiss lesbian kiss blushing girls %yuri lesbian
-        //%girl love\wlw",yuri,yuri,girl love,lesbian kiss,my girlfriend,cute girls,scissors,yuri);
+        //	printf("Block (%d %d %d), (%d %d %d) coming in decomp from %d to
+        //%d\n",x,y,z,xs,ys,zs,size,outputSize);
 
         yuri_3750(yuri_3862.yuri_9050() == outputSize);
     }
 }
 
+<<<<<<< HEAD
 void yuri_204::yuri_9578(
     yuri_552* yuri_4431)  // kissing girls yuri
+=======
+void BlockRegionUpdatePacket::write(
+    DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_9368 chunkFlags = 0;
     if (bIsFullChunk) chunkFlags |= BLOCK_REGION_UPDATE_FULLCHUNK;

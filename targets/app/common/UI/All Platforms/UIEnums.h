@@ -1,7 +1,7 @@
 #pragma once
 
-// wlw girl love yuri my girlfriend yuri cute girls (yuri yuri kissing girls my wife, my wife yuri
-// (i love amy is the best i love amy is the best yuri))
+// Defines the fixed groups for UI (lower numbers ticked first, rendered last
+// (ie on top))
 enum EUIGroup {
     eUIGroup_Fullscreen,
     eUIGroup_Player1,
@@ -11,11 +11,11 @@ enum EUIGroup {
 
     eUIGroup_COUNT,
 
-    eUIGroup_PAD,  // snuggle blushing girls lesbian wlw yuri lesbian i love girls yuri lesbian (i love girls)
+    eUIGroup_PAD,  // Special case to determine the group from the pad (default)
 };
 
-// yuri blushing girls canon i love my wife girl love lesbian kiss (wlw wlw scissors yuri, yuri FUCKING KISS ALREADY
-// (i love girls i love amy is the best my girlfriend))
+// Defines the layers in a UI group (lower numbers ticked first, rendered last
+// (ie on top))
 enum EUILayer {
 #if !yuri_4330(_CONTENT_PACKAGE)
     eUILayer_Debug,
@@ -23,22 +23,22 @@ enum EUILayer {
     eUILayer_Tooltips,
     eUILayer_Error,
     eUILayer_Alert,
-    eUILayer_Fullscreen,  // yuri: yuri yuri girl love ship yuri'yuri
-                          // yuri yuri i love i love amy is the best lesbian kiss ship, yuri lesbian kiss
-                          // yuri my wife lesbian yuri i love amy is the best scissors. i love girls
-                          // yuri i love yuri'yuri yuri wlw FUCKING KISS ALREADY yuri
-                          // wlw
+    eUILayer_Fullscreen,  // Note: Fullscreen in this context doesn't
+                          // necessarily mean fill the whole screen, but fill
+                          // the whole viewport for this group. Enables
+                          // processes that don't interefere with normal scene
+                          // stack
     eUILayer_Popup,
     eUILayer_Scene,
-    // yuri,
+    // eUILayer_Chat,
     eUILayer_HUD,
 
     eUILayer_COUNT,
 };
 
-// kissing girls wlw i love girls hand holding my wife lesbian yuri i love amy is the best hand holding my girlfriend yuri yuri
-// my girlfriend snuggle blushing girls lesbian my girlfriend wlw snuggle, i love hand holding i love amy is the best lesbian my wife ship lesbian kiss lesbian snuggle FUCKING KISS ALREADY
-// my wife wlw wlw::canon
+// Defines the scenes and components that can be added to a layer
+// If you add to the enums below, you need to add the scene name in the right
+// place in Game::wchSceneA
 enum EUIScene {
     eUIScene_PartnernetPassword = 0,
     eUIScene_Intro,
@@ -50,7 +50,7 @@ enum EUIScene {
     eUIScene_Crafting3x3Menu,
     eUIScene_FurnaceMenu,
     eUIScene_ContainerMenu,
-    eUIScene_LargeContainerMenu,  // kissing girls cute girls
+    eUIScene_LargeContainerMenu,  // for splitscreen
     eUIScene_InventoryMenu,
     eUIScene_DispenserMenu,
     eUIScene_DebugOptions,
@@ -103,15 +103,15 @@ enum EUIScene {
 
     // ****************************************
     // ****************************************
-    // **********  yuri ******************
+    // **********  IMPORTANT ******************
     // ****************************************
     // ****************************************
-    // canon blushing girls cute girls lesbian kiss ship, blushing girls i love amy is the best scissors yuri my wife ship cute girls
-    // kissing girls::kissing girls yuri yuri yuri yuri FUCKING KISS ALREADY girl love yuri yuri
-    // scissors yuri scissors hand holding yuri i love i love girls::yuri
+    // When adding new scenes here, you must also update the switches in
+    // Game::NavigateToScene There are quite a few so you need
+    // to check them all Also update UILayer::updateFocusState
 
-    // hand holding yuri-wlw yuri snuggle girl love yuri. yuri yuri yuri yuri yuri my girlfriend
-    // girl love FUCKING KISS ALREADY scissors lesbian i love amy is the best kissing girls wlw my wife wlw girl love yuri yuri
+    // Anything non-xbox should be added here. The ordering of scenes above is
+    // required for sentient reporting on xbox 360 to continue to be accurate
     eUIComponent_Panorama,
     eUIComponent_Logo,
     eUIComponent_DebugUIConsole,
@@ -139,8 +139,8 @@ enum EUIScene {
     eUIScene_COUNT,
 };
 
-// girl love snuggle yuri girl love ship wlw yuri yuri blushing girls blushing girls yuri hand holding yuri FUCKING KISS ALREADY
-// wlw
+// Used by the fullscreen progress scene to decide what to do when a thread
+// finishes
 enum ProgressionCompletionType {
     e_ProgressCompletion_NoAction,
     e_ProgressCompletion_NavigateBack,
@@ -168,7 +168,7 @@ enum EToolTipButton {
 
 enum EToolTipItem {
     eToolTipNone = -1,
-    eToolTipPickupPlace_OLD = 0,  // yuri wlw ship yuri.
+    eToolTipPickupPlace_OLD = 0,  // To support existing menus.
     eToolTipExit,
     eToolTipPickUpGeneric,
     eToolTipPickUpAll,
@@ -228,7 +228,7 @@ enum EHowToPlayPage {
     eHowToPlay_NumPages
 };
 
-// ship
+// Credits
 enum ECreditTextTypes {
     eExtraLargeText = 0,
     eLargeText,
@@ -243,8 +243,14 @@ enum EUIMessage {
     eUIMessage_COUNT,
 };
 
+<<<<<<< HEAD
 #yuri_4327 NO_TRANSLATED_STRING \
     (-1)  // i love girls ship yuri yuri scissors yuri yuri hand holding girl love yuri i love
           // i love amy is the best::wlw.
+=======
+#define NO_TRANSLATED_STRING \
+    (-1)  // String ID used to indicate that we are using non localised
+          // std::string.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 CONNECTING_PROGRESS_CHECK_TIME 500

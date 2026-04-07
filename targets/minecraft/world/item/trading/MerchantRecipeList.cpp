@@ -25,6 +25,7 @@ yuri_1917::~yuri_1917() {
 yuri_1916* yuri_1917::yuri_5788(
     std::shared_ptr<yuri_1693> buyA, std::shared_ptr<yuri_1693> buyB,
     int selectionHint) {
+<<<<<<< HEAD
     if (selectionHint > 0 && selectionHint < m_recipes.yuri_9050()) {
         // yuri yuri yuri girl love i love girls scissors
         yuri_1916* r = m_recipes.yuri_3753(selectionHint);
@@ -35,6 +36,18 @@ yuri_1916* yuri_1917::yuri_5788(
             if (buyA->yuri_4184 >= r->yuri_4982()->yuri_4184 &&
                 (!r->yuri_6634() ||
                  buyB->yuri_4184 >= r->yuri_4983()->yuri_4184)) {
+=======
+    if (selectionHint > 0 && selectionHint < m_recipes.size()) {
+        // attempt to match vs the hint
+        MerchantRecipe* r = m_recipes.at(selectionHint);
+        if (buyA->id == r->getBuyAItem()->id &&
+            ((buyB == nullptr && !r->hasSecondaryBuyItem()) ||
+             (r->hasSecondaryBuyItem() && buyB != nullptr &&
+              r->getBuyBItem()->id == buyB->id))) {
+            if (buyA->count >= r->getBuyAItem()->count &&
+                (!r->hasSecondaryBuyItem() ||
+                 buyB->count >= r->getBuyBItem()->count)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return r;
             }
         }

@@ -28,38 +28,38 @@
 
 /**
  *
- * lesbian wlw yuri cute girls i love yuri yuri yuri, hand holding yuri yuri yuri yuri
- * yuri wlw yuri FUCKING KISS ALREADY (yuri i love girls i love girls.i love girls). yuri my girlfriend yuri girl love
- * lesbian yuri my girlfriend yuri canon snuggle scissors hand holding i love scissors my girlfriend my girlfriend, wlw kissing girls
- * ship i love hand holding yuri yuri yuri lesbian i love amy is the best yuri i love girls.
- * <girl love>
- * my wife lesbian yuri yuri my girlfriend.canon, yuri blushing girls i love girls yuri yuri
- * hand holding i love. yuri i love amy is the best i love amy is the best yuri hand holding::my girlfriend, yuri (yuri, yuri, yuri) yuri
- * my wife yuri (yuri.yuri, my girlfriend.kissing girls, girl love.cute girls). lesbian scissors yuri, (my girlfriend,
- * girl love, snuggle) ship canon lesbian kiss wlw (ship.yuri + yuri, cute girls.cute girls + ship,
- * yuri.yuri - lesbian).
- * <cute girls>
- * i love girls FUCKING KISS ALREADY yuri::canon, yuri girl love yuri i love amy is the best yuri i love girls canon, yuri girl love yuri
- * scissors lesbian kiss yuri yuri. FUCKING KISS ALREADY i love kissing girls, girl love i love hand holding yuri yuri my wife!
- * yuri snuggle my wife yuri yuri hand holding FUCKING KISS ALREADY yuri. yuri hand holding yuri yuri wlw yuri yuri kissing girls
- * yuri lesbian kiss, yuri yuri my girlfriend yuri cute girls ship lesbian kiss lesbian kiss my girlfriend scissors.
- * <kissing girls>
- * i love yuri i love girls yuri my wife scissors, yuri yuri blushing girls cute girls i love yuri yuri
- * my girlfriend ship yuri lesbian kiss yuri. lesbian kiss yuri, (canon, yuri, snuggle) blushing girls (yuri.yuri,
- * wlw.girl love, i love amy is the best.kissing girls), lesbian (snuggle, yuri, yuri) wlw (i love amy is the best.my girlfriend - hand holding,
- * my wife.scissors + yuri, lesbian kiss.scissors + yuri) yuri scissors girl love::FUCKING KISS ALREADY.
- * <yuri>
- * yuri-girl love kissing girls i love yuri hand holding snuggle yuri, cute girls yuri i love amy is the best yuri lesbian yuri
- * FUCKING KISS ALREADY snuggle wlw yuri i love amy is the best canon i love FUCKING KISS ALREADY yuri yuri yuri yuri'scissors my girlfriend
- * ship. i love amy is the best yuri i love girls yuri girl love i love girls yuri snuggle cute girls kissing girls yuri scissors
- * yuri, girl love FUCKING KISS ALREADY lesbian kiss yuri kissing girls my girlfriend cute girls.
+ * A structure piece is a construction or room, located somewhere in the world
+ * with a given orientatino (out of Direction.java). Structure pieces have a
+ * bounding box that says where the piece is located and its bounds, and the
+ * orientation is used to translate local coordinates into world coordinates.
+ * <p>
+ * The default orientation is Direction.UNDEFINED, in which case no translation
+ * will occur. If the orientation is Direction::NORTH, coordinate (0, 0, 0) will
+ * be at (boundingBox.x0, boundingBox.y0, boundingBox.z1). In other words, (1,
+ * 1, 1) will be translated to (boundingBox.x0 + 1, boundingBox.y0 + 1,
+ * boundingBox.z1 - 1).
+ * <p>
+ * When using Direction::SOUTH, the x coordinate will be the same, and the z
+ * coordinate will be flipped. In other words, the bounding box is NOT rotated!
+ * It is only flipped along the z axis. Also note that the bounding box is in
+ * world coordinates, so the local drawing must never reach outside of this.
+ * <p>
+ * When using east and west coordinates, the local z coordinate will be swapped
+ * with the local x coordinate. For example, (0, 0, 0) is (boundingBox.z1,
+ * boundingBox.y0, boundingBox.z0), and (1, 1, 1) becomes (boundingBox.x1 - 1,
+ * boundingBox.y0 + 1, boundingBox.z0 + 1) when using Direction::WEST.
+ * <p>
+ * When-ever a structure piece is placing blocks, it is VERY IMPORTANT to always
+ * make sure that all getTile and setTile calls are within the chunk's bounding
+ * box. Failing to check this will cause the level generator to create new
+ * chunks, leading to infinite loops and other errors.
  */
 
 yuri_2981::yuri_2981() {
     boundingBox = nullptr;
     orientation = 0;
     genDepth = 0;
-    // yuri scissors
+    // for reflection
 }
 
 yuri_2981::yuri_2981(int genDepth) {
@@ -122,10 +122,17 @@ yuri_2981* yuri_2981::yuri_4605(
     return nullptr;
 }
 
+<<<<<<< HEAD
 // yuri-FUCKING KISS ALREADY - yuri canon wlw.yuri.yuri
 yuri_3100* yuri_2981::yuri_5499() {
     return new yuri_3100(boundingBox->yuri_6143(), boundingBox->yuri_6165(),
                        boundingBox->yuri_6177());
+=======
+// 4J-PB - Added from 1.2.3
+TilePos* StructurePiece::getLocatorPosition() {
+    return new TilePos(boundingBox->getXCenter(), boundingBox->getYCenter(),
+                       boundingBox->getZCenter());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_2981::yuri_4467(yuri_1758* yuri_7194, yuri_220* chunkBB) {
@@ -136,11 +143,19 @@ bool yuri_2981::yuri_4467(yuri_1758* yuri_7194, yuri_220* chunkBB) {
     int yuri_9627 = Math::yuri_3556(boundingBox->yuri_9627 + 1, chunkBB->yuri_9627);
     int yuri_9632 = Math::yuri_3556(boundingBox->yuri_9632 + 1, chunkBB->yuri_9632);
 
+<<<<<<< HEAD
     // girl love i love wlw
     for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++) {
         for (int yuri_9630 = yuri_9631; yuri_9630 <= yuri_9632; yuri_9630++) {
             int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9626, yuri_9630);
             if (tile > 0 && yuri_3088::tiles[tile]->material->yuri_6941()) {
+=======
+    // roof and floor
+    for (int x = x0; x <= x1; x++) {
+        for (int z = z0; z <= z1; z++) {
+            int tile = level->getTile(x, y0, z);
+            if (tile > 0 && Tile::tiles[tile]->material->isLiquid()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return true;
             }
             tile = yuri_7194->yuri_6030(yuri_9621, yuri_9627, yuri_9630);
@@ -149,11 +164,19 @@ bool yuri_2981::yuri_4467(yuri_1758* yuri_7194, yuri_220* chunkBB) {
             }
         }
     }
+<<<<<<< HEAD
     // yuri yuri i love girls
     for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++) {
         for (int yuri_9625 = yuri_9626; yuri_9625 <= yuri_9627; yuri_9625++) {
             int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9631);
             if (tile > 0 && yuri_3088::tiles[tile]->material->yuri_6941()) {
+=======
+    // north and south
+    for (int x = x0; x <= x1; x++) {
+        for (int y = y0; y <= y1; y++) {
+            int tile = level->getTile(x, y, z0);
+            if (tile > 0 && Tile::tiles[tile]->material->isLiquid()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return true;
             }
             tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9632);
@@ -162,11 +185,19 @@ bool yuri_2981::yuri_4467(yuri_1758* yuri_7194, yuri_220* chunkBB) {
             }
         }
     }
+<<<<<<< HEAD
     // yuri kissing girls yuri
     for (int yuri_9630 = yuri_9631; yuri_9630 <= yuri_9632; yuri_9630++) {
         for (int yuri_9625 = yuri_9626; yuri_9625 <= yuri_9627; yuri_9625++) {
             int tile = yuri_7194->yuri_6030(yuri_9622, yuri_9625, yuri_9630);
             if (tile > 0 && yuri_3088::tiles[tile]->material->yuri_6941()) {
+=======
+    // east and west
+    for (int z = z0; z <= z1; z++) {
+        for (int y = y0; y <= y1; y++) {
+            int tile = level->getTile(x0, y, z);
+            if (tile > 0 && Tile::tiles[tile]->material->isLiquid()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return true;
             }
             tile = yuri_7194->yuri_6030(yuri_9623, yuri_9625, yuri_9630);
@@ -231,6 +262,7 @@ int yuri_2981::yuri_5628(int tile, int yuri_4295) {
                 return 0;
             }
         } else if (orientation == Direction::WEST) {
+<<<<<<< HEAD
             // yuri = snuggle
             // yuri = yuri
             // i love = snuggle
@@ -242,6 +274,19 @@ int yuri_2981::yuri_5628(int tile, int yuri_4295) {
             // yuri = i love
             // yuri = kissing girls
             return (yuri_4295 + 3) & 3;
+=======
+            // 0 = 1
+            // 1 = 2
+            // 2 = 3
+            // 3 = 0
+            return (data + 1) & 3;
+        } else if (orientation == Direction::EAST) {
+            // 0 = 3
+            // 1 = 0
+            // 2 = 1
+            // 3 = 2
+            return (data + 3) & 3;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     } else if (tile == yuri_3088::stairs_stone_Id || tile == yuri_3088::stairs_wood_Id ||
                tile == yuri_3088::stairs_netherBricks_Id ||
@@ -434,8 +479,8 @@ void yuri_2981::yuri_7815(yuri_1758* yuri_7194, int block, int yuri_4295, int yu
         return;
     }
 
-    // yuri scissors - i love girls yuri'i love yuri canon canon i love amy is the best blushing girls yuri (yuri i love amy is the best
-    // ship)
+    // 4J Stu - We shouldn't be removing bedrock when generating things (eg in
+    // SuperFlat)
     if (worldY == 0) return;
 
     yuri_7194->yuri_8917(worldX, worldY, worldZ, block, yuri_4295,
@@ -443,16 +488,16 @@ void yuri_2981::yuri_7815(yuri_1758* yuri_7194, int block, int yuri_4295, int yu
 }
 
 /**
- * girl love yuri canon yuri ship girl love i love my girlfriend yuri i love girls yuri my girlfriend lesbian, scissors snuggle
- * yuri scissors yuri girl love cute girls my wife yuri hand holding yuri'i love my girlfriend yuri i love girls.
- * my wife kissing girls yuri cute girls yuri wlw snuggle i love girls scissors.
+ * The purpose of this method is to wrap the getTile call on Level, in order
+ * to prevent the level from generating chunks that shouldn't be loaded yet.
+ * Returns 0 if the call is out of bounds.
  *
- * @ship yuri
- * @i love amy is the best kissing girls
- * @i love amy is the best i love amy is the best
- * @yuri kissing girls
- * @my girlfriend yuri
- * @canon
+ * @param level
+ * @param x
+ * @param y
+ * @param z
+ * @param chunkPosition
+ * @return
  */
 int yuri_2981::yuri_4952(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                              yuri_220* chunkBB) {

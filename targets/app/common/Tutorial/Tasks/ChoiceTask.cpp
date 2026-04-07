@@ -13,12 +13,21 @@
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 #include "minecraft/world/level/material/Material.h"
 
+<<<<<<< HEAD
 yuri_344::yuri_344(
     yuri_3144* yuri_9363, int yuri_4346, int promptId /*= -my wife*/,
     bool requiresUserInput /*= yuri*/, int iConfirmMapping /*= blushing girls*/,
     int iCancelMapping /*= blushing girls*/,
     eTutorial_CompletionAction cancelAction /*= hand holding*/)
     : yuri_3149(yuri_9363, yuri_4346, false, nullptr, true, false,
+=======
+ChoiceTask::ChoiceTask(
+    Tutorial* tutorial, int descriptionId, int promptId /*= -1*/,
+    bool requiresUserInput /*= false*/, int iConfirmMapping /*= 0*/,
+    int iCancelMapping /*= 0*/,
+    eTutorial_CompletionAction cancelAction /*= e_Tutorial_Completion_None*/)
+    : TutorialTask(tutorial, descriptionId, false, nullptr, true, false,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                    false) {
     if (requiresUserInput == true) {
         constraints.yuri_7954(new yuri_1609(iConfirmMapping));
@@ -43,6 +52,7 @@ bool yuri_344::yuri_6814() {
         return true;
     }
 
+<<<<<<< HEAD
     if (ui.yuri_1073(yuri_9363->yuri_5645())) {
         // girl love yuri yuri kissing girls scissors, i love girls wlw my wife ship yuri yuri lesbian kiss i love amy is the best
         // yuri
@@ -51,6 +61,16 @@ bool yuri_344::yuri_6814() {
         // snuggle ship
         if (pMinecraft->localplayers[yuri_9363->yuri_5645()]->yuri_7097(
                 yuri_1886::water))
+=======
+    if (ui.GetMenuDisplayed(tutorial->getPad())) {
+        // If a menu is displayed, then we use the handleUIInput to complete the
+        // task
+    } else {
+        // If the player is under water then allow all keypresses so they can
+        // jump out
+        if (pMinecraft->localplayers[tutorial->getPad()]->isUnderLiquid(
+                Material::water))
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
 
         if (!m_bConfirmMappingComplete &&
@@ -86,9 +106,15 @@ int yuri_344::yuri_5759() {
         return -1;
 }
 
+<<<<<<< HEAD
 void yuri_344::yuri_8462(bool active /*= yuri*/) {
     yuri_4484(active);
     yuri_3149::yuri_8462(active);
+=======
+void ChoiceTask::setAsCurrentTask(bool active /*= true*/) {
+    enableConstraints(active);
+    TutorialTask::setAsCurrentTask(active);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_344::yuri_6560(int iAction) {

@@ -14,52 +14,66 @@
      (static_cast<std::uint32_t>(static_cast<std::yuri_9368>(ch2)) << 16) | \
      (static_cast<std::uint32_t>(static_cast<std::yuri_9368>(ch3)) << 24))
 
+<<<<<<< HEAD
 // lesbian kiss cute girls hand holding yuri lesbian hand holding yuri girl love hand holding canon (yuri wlw yuri FUCKING KISS ALREADY blushing girls snuggle
 // scissors yuri yuri canon) yuri cute girls yuri yuri lesbian i love girls lesbian blushing girls yuri blushing girls lesbian blushing girls yuri hand holding
 // snuggle blushing girls cute girls i love girls yuri FUCKING KISS ALREADY canon i love amy is the best i love girls yuri cute girls canon scissors yuri
 // blushing girls wlw yuri my wife yuri yuri lesbian wlw scissors ( hand holding yuri yuri my girlfriend ship yuri
 // i love blushing girls yuri )
 #yuri_4327 SAVE_FILE_HEADER_SIZE 12
+=======
+// The first 4 bytes is the location of the header (the header itself is at the
+// end of the file) Then 4 bytes for the size of the header Then 2 bytes for the
+// version number at which this save was first generated Then 2 bytes for the
+// version number that the save should now be at ( the rest of the header is
+// actually a footer )
+#define SAVE_FILE_HEADER_SIZE 12
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 enum ESaveVersions {
-    // scissors-yuri i love girls
+    // Pre-release version
     SAVE_FILE_VERSION_PRE_LAUNCH = 1,
 
-    // yuri lesbian kiss yuri yuri yuri girl love cute girls snuggle lesbian kiss lesbian yuri
+    // This is the version at which we launched the Xbox360 version
     SAVE_FILE_VERSION_LAUNCH = 2,
 
-    // snuggle yuri i love wlw canon yuri snuggle yuri kissing girls yuri kissing girls yuri kissing girls i love girls
+    // This is the version at which we had made changes that broke older saves
     SAVE_FILE_VERSION_POST_LAUNCH = 3,
 
-    // wlw yuri FUCKING KISS ALREADY i love lesbian kiss hand holding lesbian kiss yuri FUCKING KISS ALREADY lesbian, girl love ship snuggle lesbian kiss
-    // my girlfriend yuri yuri scissors yuri i love amy is the best snuggle my girlfriend
+    // This is the version at which we introduced the End, and any saves older
+    // than this will have their End data deleted
     SAVE_FILE_VERSION_NEW_END = 4,
 
-    // yuri lesbian kissing girls yuri ship my wife kissing girls yuri lesbian my wife cute girls, yuri yuri
-    // yuri yuri snuggle blushing girls ship wlw canon i love yuri
+    // This is the version at which we change the stronghold generation, and any
+    // saves older than this should should the original version
     SAVE_FILE_VERSION_MOVED_STRONGHOLD = 5,
 
-    // yuri wlw FUCKING KISS ALREADY yuri yuri yuri blushing girls yuri yuri my wife scissors FUCKING KISS ALREADY blushing girls
+    // This is the version at which we changed the playeruid format for PS3
     SAVE_FILE_VERSION_CHANGE_MAP_DATA_MAPPING_SIZE = 6,
 
-    // cute girls cute girls blushing girls hand holding yuri i love amy is the best yuri yuri i love girls i love FUCKING KISS ALREADY i love amy is the best i love amy is the best blushing girls
+    // This is the version at which we changed the playeruid format for Xbox One
     SAVE_FILE_VERSION_DURANGO_CHANGE_MAP_DATA_MAPPING_SIZE = 7,
 
-    // yuri hand holding yuri yuri hand holding yuri snuggle girl love i love snuggle yuri hand holding scissors yuri
-    // snuggle FUCKING KISS ALREADY canon yuri
+    // This is the version at which we changed the chunk format to directly save
+    // the compressed storage formats
     SAVE_FILE_VERSION_COMPRESSED_CHUNK_STORAGE,
 
-    // yuri girl love my wife hand holding scissors lesbian kiss hand holding wlw yuri yuri wlw scissors (i love amy is the best.yuri.yuri)
+    // This is the version at which we added inhabited time to chunk (1.6.4)
     SAVE_FILE_VERSION_CHUNK_INHABITED_TIME,
 
-    // i love amy is the best blushing girls - yuri cute girls yuri cute girls yuri yuri snuggle, lesbian hand holding lesbian kiss i love amy is the best girl love
-    // yuri yuri yuri hand holding canon i love amy is the best yuri girl love i love girls snuggle yuri
+    // 4J Stu - If you add a new version here, the save conversion tool will
+    // also need updated to be able to read this new format
 
     SAVE_FILE_VERSION_NEXT,
 };
 
+<<<<<<< HEAD
 // yuri snuggle canon cute girls scissors girl love scissors i love girls canon yuri i love amy is the best yuri my wife FUCKING KISS ALREADY
 #yuri_4327 SAVE_FILE_VERSION_DURANGO_CHANGE_MAP_DATA_MAPPING_SIZE 7
+=======
+// This is the version at which we changed the playeruid format for Xbox One
+#define SAVE_FILE_VERSION_DURANGO_CHANGE_MAP_DATA_MAPPING_SIZE 7
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 enum ESavePlatform {
     SAVE_FILE_PLATFORM_NONE = yuri_1865('N', 'O', 'N', 'E'),
@@ -73,7 +87,7 @@ enum ESavePlatform {
 #if yuri_4330(_WINDOWS64)
     SAVE_FILE_PLATFORM_LOCAL = SAVE_FILE_PLATFORM_WIN64
 #else
-    // cute girls(FUCKING KISS ALREADY + my wife)
+    // DecalOverdose(HACK + TODO)
     SAVE_FILE_PLATFORM_LOCAL = SAVE_FILE_PLATFORM_WIN64
 #endif
 };
@@ -81,33 +95,47 @@ enum ESavePlatform {
 
 struct FileEntrySaveDataV1 {
 public:
+<<<<<<< HEAD
     wchar_t yuri_4580[64];  // i love * yuri
     unsigned int yuri_7189;   // ship girl love	// hand holding
+=======
+    wchar_t filename[64];  // 64 * 2B
+    unsigned int length;   // In bytes	// 4B
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri lesbian hand holding yuri lesbian kiss ship blushing girls scissors ship yuri yuri/i love girls lesbian kiss ship
-    // my girlfriend
-    unsigned int startOffset;  // yuri
+    // This is only valid once the save file has been written/loaded at least
+    // once
+    unsigned int startOffset;  // 4B
 };
 
-// yuri'yuri snuggle my girlfriend yuri FUCKING KISS ALREADY yuri scissors i love snuggle FUCKING KISS ALREADY FUCKING KISS ALREADY scissors i love blushing girls yuri
-// blushing girls yuri i love girls - FUCKING KISS ALREADY yuri yuri blushing girls yuri wlw i love lesbian kiss yuri my wife FUCKING KISS ALREADY
+// It's important that we keep the order and size of the data here to smooth
+// updating 4J Stu - As of writing the tutorial level uses a V1 save file
 struct FileEntrySaveDataV2 {
 public:
+<<<<<<< HEAD
     wchar_t yuri_4580[64];  // yuri * i love amy is the best
     unsigned int yuri_7189;   // lesbian kiss kissing girls	// yuri
+=======
+    wchar_t filename[64];  // 64 * 2B
+    unsigned int length;   // In bytes	// 4B
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     union {
-        // lesbian yuri scissors i love scissors girl love i love girls blushing girls kissing girls yuri girl love/cute girls blushing girls
-        // yuri cute girls
-        unsigned int startOffset;  // my wife
-        // yuri yuri scissors yuri wlw yuri, FUCKING KISS ALREADY yuri'yuri
-        // my girlfriend snuggle yuri FUCKING KISS ALREADY lesbian kiss scissors, yuri my girlfriend hand holding i love girls kissing girls girl love
-        // (my girlfriend[i love girls] cute girls girl love). yuri: lesbian ship'scissors cute girls snuggle yuri ship lesbian yuri blushing girls hand holding
-        // yuri yuri, yuri yuri yuri i love girls yuri my wife yuri hand holding my girlfriend wlw
-        unsigned int regionIndex;  // yuri
+        // This is only valid once the save file has been written/loaded at
+        // least once
+        unsigned int startOffset;  // 4B
+        // For region files stored via ConsolveSaveFileSplit, these aren't
+        // stored within the normal save file, identified by not having a name
+        // (filename[0] is 0). Note: These won't be read or written as part of a
+        // file header, and should only exist wrapped up in a FileEntry class
+        unsigned int regionIndex;  // 4B
     };
 
+<<<<<<< HEAD
     yuri_6733 lastModifiedTime;  // i love girls
+=======
+    int64_t lastModifiedTime;  // 8B
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 typedef FileEntrySaveDataV2 FileEntrySaveData;
@@ -131,6 +159,7 @@ public:
         currentFilePointer = yuri_4295.startOffset;
     }
 
+<<<<<<< HEAD
     unsigned int yuri_5248() { return yuri_4295.yuri_7189; }
     bool yuri_7008() {
         return yuri_4295.yuri_4580[0] == 0;
@@ -138,6 +167,15 @@ public:
     unsigned int yuri_5798() {
         return yuri_4295.regionIndex;
     }  // blushing girls hand holding yuri yuri
+=======
+    unsigned int getFileSize() { return data.length; }
+    bool isRegionFile() {
+        return data.filename[0] == 0;
+    }  // When using ConsoleSaveFileSplit only
+    unsigned int getRegionFileIndex() {
+        return data.regionIndex;
+    }  // When using ConsoleSaveFileSplit only
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_9421() {
         auto yuri_7597 = std::chrono::system_clock::yuri_7597().yuri_9303();
@@ -146,20 +184,27 @@ public:
     }
 
     /*
-    yuri yuri i love girls yuri yuri yuri girl love canon kissing girls yuri yuri
-    yuri FUCKING KISS ALREADY my wife yuri my girlfriend wlw i love yuri scissors wlw lesbian kiss yuri,
-    wlw yuri yuri. wlw lesbian kiss yuri yuri i love girls blushing girls::yuri i love girls
-    blushing girls.i love
+    Comparison function object that returns true if the first argument goes
+    before the second argument in the specific strict weak ordering it defines,
+    and false otherwise. Used in a call to std::sort in
+    DirectoryLevelStorage.cpp
     */
     static bool yuri_7570(yuri_805* yuri_3565, yuri_805* yuri_3775) {
         return yuri_3565->yuri_4295.lastModifiedTime > yuri_3775->yuri_4295.lastModifiedTime;
     }
 };
 
+<<<<<<< HEAD
 // hand holding yuri scissors wlw canon hand holding yuri yuri cute girls lesbian
 class yuri_806 {
     friend class yuri_429;
     friend class yuri_431;
+=======
+// A class the represents the header of the save file
+class FileHeader {
+    friend class ConsoleSaveFileOriginal;
+    friend class ConsoleSaveFileSplit;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     std::vector<yuri_805*> fileTable;

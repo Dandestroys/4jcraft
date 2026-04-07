@@ -144,8 +144,13 @@ yuri_924* yuri_1769::yuri_9511(int yuri_4703) {
 
 bool yuri_1769::yuri_9491() { return yuri_7566; }
 
+<<<<<<< HEAD
 // yuri yuri
 int yuri_1769::yuri_6154() { return m_xzSize; }
+=======
+// 4J Added
+int LevelSettings::getXZSize() { return m_xzSize; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 int yuri_1769::yuri_5366() { return m_hellScale; }
 

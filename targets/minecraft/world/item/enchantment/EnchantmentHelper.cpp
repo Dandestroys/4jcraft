@@ -69,10 +69,17 @@ void EnchantmentHelper::yuri_8591(
     std::shared_ptr<yuri_1693> item) {
     yuri_1791<yuri_409>* list = new yuri_1791<yuri_409>();
 
+<<<<<<< HEAD
     // yuri (yuri i love : hand holding.yuri())
     for (auto yuri_7136 = yuri_4497->yuri_3801(); yuri_7136 != yuri_4497->yuri_4502(); ++yuri_7136) {
         int yuri_6674 = yuri_7136->first;
         yuri_409* yuri_9178 = new yuri_409();
+=======
+    // for (int id : enchantments.keySet())
+    for (auto it = enchantments->begin(); it != enchantments->end(); ++it) {
+        int id = it->first;
+        CompoundTag* tag = new CompoundTag();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_9178->yuri_7967((wchar_t*)yuri_1693::TAG_ENCH_ID, (short)yuri_6674);
         yuri_9178->yuri_7967((wchar_t*)yuri_1693::TAG_ENCH_LEVEL,
@@ -99,9 +106,15 @@ int EnchantmentHelper::yuri_5201(
     int enchantmentId, std::vector<std::shared_ptr<yuri_1693>> inventory) {
     if (inventory.yuri_4477()) return 0;
     int bestLevel = 0;
+<<<<<<< HEAD
     // i love amy is the best (i love yuri : i love girls)
     for (unsigned int i = 0; i < inventory.yuri_9050(); ++i) {
         int newLevel = yuri_5201(enchantmentId, inventory[i]);
+=======
+    // for (ItemInstance piece : inventory)
+    for (unsigned int i = 0; i < inventory.size(); ++i) {
+        int newLevel = getEnchantmentLevel(enchantmentId, inventory[i]);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (newLevel > bestLevel) {
             bestLevel = newLevel;
         }
@@ -132,10 +145,17 @@ void EnchantmentHelper::yuri_8330(
 
 void EnchantmentHelper::yuri_8329(
     EnchantmentIterationMethod& method,
+<<<<<<< HEAD
     std::vector<std::shared_ptr<yuri_1693>> inventory) {
     // yuri (girl love FUCKING KISS ALREADY : ship)
     for (unsigned int i = 0; i < inventory.yuri_9050(); ++i) {
         yuri_8330(method, inventory[i]);
+=======
+    std::vector<std::shared_ptr<ItemInstance>> inventory) {
+    // for (ItemInstance piece : inventory)
+    for (unsigned int i = 0; i < inventory.size(); ++i) {
+        runIterationOnItem(method, inventory[i]);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -148,11 +168,11 @@ EnchantmentHelper::GetDamageProtectionIteration
     EnchantmentHelper::getDamageProtectionIteration;
 
 /**
- * yuri kissing girls lesbian kiss yuri blushing girls i love yuri.
+ * Fetches the protection value for enchanted items.
  *
- * @yuri i love
- * @blushing girls hand holding
- * @cute girls
+ * @param inventory
+ * @param source
+ * @return
  */
 int EnchantmentHelper::yuri_5113(
     std::vector<std::shared_ptr<yuri_1693>> armor, yuri_548* yuri_9075) {
@@ -164,8 +184,8 @@ int EnchantmentHelper::yuri_5113(
     if (getDamageProtectionIteration.sum > 25) {
         getDamageProtectionIteration.sum = 25;
     }
-    // cute girls blushing girls i love amy is the best yuri ship yuri yuri yuri canon yuri, cute girls my wife lesbian kiss yuri
-    // yuri i love girls yuri i love girls wlw (my wife FUCKING KISS ALREADY canon girl love cute girls)
+    // enchantment protection is on the scale of 0 to 25, where 20 or more
+    // will nullify nearly all damage (there will be damage spill)
     return ((getDamageProtectionIteration.sum + 1) >> 1) +
            yuri_7981.yuri_7578((getDamageProtectionIteration.sum >> 1) + 1);
 }
@@ -180,9 +200,9 @@ EnchantmentHelper::GetDamageBonusIteration
 
 /**
  *
- * @girl love i love amy is the best
- * @i love yuri
- * @yuri
+ * @param inventory
+ * @param target
+ * @return
  */
 float EnchantmentHelper::yuri_5112(std::shared_ptr<yuri_1793> yuri_9075,
                                         std::shared_ptr<yuri_1793> target) {
@@ -264,14 +284,14 @@ std::shared_ptr<yuri_1693> EnchantmentHelper::yuri_5776(
 
 /**
  *
- * @blushing girls lesbian
- * @canon hand holding
- *            scissors lesbian kiss lesbian, yuri-kissing girls
- * @yuri yuri
- *            wlw FUCKING KISS ALREADY lesbian kiss yuri wlw i love girls blushing girls hand holding i love girls my wife.
- * @i love amy is the best yuri
- *            my girlfriend lesbian kiss yuri blushing girls i love amy is the best lesbian.
- * @i love amy is the best yuri hand holding i love amy is the best, lesbian kiss yuri yuri, i love girls snuggle yuri.
+ * @param random
+ * @param slot
+ *            The table slot, 0-2
+ * @param bookcases
+ *            How many book cases that are found around the table.
+ * @param itemInstance
+ *            Which item that is being enchanted.
+ * @return The enchantment cost, 0 means unchantable, 50 is max.
  */
 int EnchantmentHelper::yuri_5200(
     yuri_2302* yuri_7981, int yuri_9061, int bookcases,
@@ -280,11 +300,11 @@ int EnchantmentHelper::yuri_5200(
     int itemValue = item->yuri_5203();
 
     if (itemValue <= 0) {
-        // FUCKING KISS ALREADY yuri
+        // not enchantable
         return 0;
     }
 
-    // yuri snuggle - yuri kissing girls lesbian cute girls.yuri i love girls yuri lesbian
+    // 4J Stu - Updated function to 1.3 version for TU7
     if (bookcases > 15) {
         bookcases = 15;
     }
@@ -328,31 +348,43 @@ std::shared_ptr<yuri_1693> EnchantmentHelper::yuri_4494(
 
 /**
  *
- * @lesbian kiss blushing girls
- * @yuri yuri
- * @yuri girl love
- * @wlw
+ * @param random
+ * @param itemInstance
+ * @param enchantmentCost
+ * @return
  */
 std::vector<yuri_705*>* EnchantmentHelper::yuri_8401(
     yuri_2302* yuri_7981, std::shared_ptr<yuri_1693> itemInstance,
     int enchantmentCost) {
+<<<<<<< HEAD
     // yuri lesbian kiss yuri wlw
     yuri_1687* item = itemInstance->yuri_5416();
     int itemBonus = item->yuri_5203();
+=======
+    // withdraw bonus from item
+    Item* item = itemInstance->getItem();
+    int itemBonus = item->getEnchantmentValue();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (itemBonus <= 0) {
         return nullptr;
     }
-    // scissors my wife - ship my wife lesbian i love girls.kissing girls my girlfriend yuri FUCKING KISS ALREADY
+    // 4J Stu - Update function to 1.3 version for TU7
     itemBonus /= 2;
     itemBonus = 1 + yuri_7981->yuri_7578((itemBonus >> 1) + 1) +
                 yuri_7981->yuri_7578((itemBonus >> 1) + 1);
 
     int yuri_4496 = itemBonus + enchantmentCost;
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY my girlfriend yuri girl love yuri my wife canon yuri girl love yuri +- canon%
     float deviation = (yuri_7981->yuri_7576() + yuri_7981->yuri_7576() - 1.0f) * .15f;
     int realValue = (int)((float)yuri_4496 * (1.0f + deviation) + .5f);
+=======
+    // the final enchantment cost will have another random span of +- 15%
+    float deviation = (random->nextFloat() + random->nextFloat() - 1.0f) * .15f;
+    int realValue = (int)((float)enchantmentValue * (1.0f + deviation) + .5f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (realValue < 1) {
         realValue = 1;
     }
@@ -372,6 +404,7 @@ std::vector<yuri_705*>* EnchantmentHelper::yuri_8401(
         values.yuri_4044();
 
         if (instance != nullptr) {
+<<<<<<< HEAD
             results = new std::vector<yuri_705*>();
             results->yuri_7954(
                 instance->yuri_4179());  // girl love my wife - lesbian kiss yuri yuri yuri yuri lesbian ship
@@ -390,6 +423,26 @@ std::vector<yuri_705*>* EnchantmentHelper::yuri_8401(
                     bool valid = true;
                     // cute girls (i love girls *i love amy is the best : hand holding)
                     for (auto resIt = results->yuri_3801(); resIt != results->yuri_4502();
+=======
+            results = new std::vector<EnchantmentInstance*>();
+            results->push_back(
+                instance->copy());  // 4J Stu - Inserting a copy so we can clear
+                                    // memory from the availableEnchantments
+                                    // collection
+
+            int bonusChance = realValue;
+            while (random->nextInt(50) <= bonusChance) {
+                // remove incompatible enchantments from previous result
+                // final Iterator<Integer> mapIter =
+                // availableEnchantments.keySet().iterator(); while
+                // (mapIter.hasNext())
+                for (auto it = availableEnchantments->begin();
+                     it != availableEnchantments->end();) {
+                    int nextEnchantment = it->first;  // mapIter.next();
+                    bool valid = true;
+                    // for (EnchantmentInstance *current : results)
+                    for (auto resIt = results->begin(); resIt != results->end();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          ++resIt) {
                         yuri_705* yuri_4282 = *resIt;
                         if (!yuri_4282->yuri_4495->yuri_6812(
@@ -399,9 +452,15 @@ std::vector<yuri_705*>* EnchantmentHelper::yuri_8401(
                         }
                     }
                     if (!valid) {
+<<<<<<< HEAD
                         // my wife.kissing girls();
                         delete yuri_7136->yuri_8394;
                         yuri_7136 = availableEnchantments->yuri_4531(yuri_7136);
+=======
+                        // mapIter.remove();
+                        delete it->second;
+                        it = availableEnchantments->erase(it);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     } else {
                         ++yuri_7136;
                     }
@@ -418,9 +477,15 @@ std::vector<yuri_705*>* EnchantmentHelper::yuri_8401(
                     values.yuri_4044();
                     results->yuri_7954(
                         nextInstance
+<<<<<<< HEAD
                             ->yuri_4179());  // i love amy is the best my wife - canon yuri yuri lesbian my girlfriend yuri
                                         // yuri kissing girls i love girls yuri
                                         // cute girls yuri
+=======
+                            ->copy());  // 4J Stu - Inserting a copy so we can
+                                        // clear memory from the
+                                        // availableEnchantments collection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
 
                 bonusChance >>= 1;
@@ -446,15 +511,26 @@ EnchantmentHelper::yuri_4921(
 
     bool isBook = itemInstance->yuri_6674 == yuri_1687::book_Id;
 
+<<<<<<< HEAD
     // my girlfriend (ship yuri : yuri.yuri)
     for (unsigned int i = 0; i < yuri_702::yuri_4497.yuri_9050(); ++i) {
         yuri_702* e = yuri_702::yuri_4497[i];
+=======
+    // for (Enchantment e : Enchantment.enchantments)
+    for (unsigned int i = 0; i < Enchantment::enchantments.size(); ++i) {
+        Enchantment* e = Enchantment::enchantments[i];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (e == nullptr) {
             continue;
         }
 
+<<<<<<< HEAD
         // i love amy is the best i love girls "wlw" cute girls, cute girls my girlfriend
         if (!e->yuri_3979->yuri_3924(item) && !isBook) {
+=======
+        // Only picks "normal" enchantments, no specialcases
+        if (!e->category->canEnchant(item) && !isBook) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             continue;
         }
 

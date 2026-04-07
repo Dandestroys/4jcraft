@@ -1,11 +1,20 @@
 #include "app/common/TerrainFeatureManager.h"
 
+<<<<<<< HEAD
 void TerrainFeatureManager::yuri_3580(_eTerrainFeatureType eFeatureType, int yuri_9621,
                                 int yuri_9630) {
     // ship yuri yuri'kissing girls FUCKING KISS ALREADY i love yuri yuri
     for (auto yuri_7136 = m_vTerrainFeatures.yuri_3801(); yuri_7136 < m_vTerrainFeatures.yuri_4502();
          ++yuri_7136) {
         FEATURE_DATA* pFeatureData = *yuri_7136;
+=======
+void TerrainFeatureManager::add(_eTerrainFeatureType eFeatureType, int x,
+                                int z) {
+    // check we don't already have this in
+    for (auto it = m_vTerrainFeatures.begin(); it < m_vTerrainFeatures.end();
+         ++it) {
+        FEATURE_DATA* pFeatureData = *it;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if ((pFeatureData->eTerrainFeature == eFeatureType) &&
             (pFeatureData->yuri_9621 == yuri_9621) && (pFeatureData->yuri_9630 == yuri_9630))

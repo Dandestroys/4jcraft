@@ -6,6 +6,6 @@ class yuri_3063 : public yuri_190 {
 public:
     yuri_3063(int yuri_6674);
 
-    // yuri scissors - yuri'scissors scissors i love girls
-    // yuri canon kissing girls(ship yuri);
+    // 4J Stu - Don't need override
+    // virtual int getSkyColor(float temp);
 };

@@ -25,10 +25,17 @@ yuri_504::yuri_504(int yuri_6674) : yuri_244(yuri_6674) {
     yuri_8426();
 }
 
+<<<<<<< HEAD
 // yuri yuri yuri
 void yuri_504::yuri_9402() {
     float yuri_9095 = 0.5f;
     this->yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, 0.25f, 0.5f + yuri_9095);
+=======
+// 4J Added override
+void CropTile::updateDefaultShape() {
+    float ss = 0.5f;
+    this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.25f, 0.5f + ss);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_504::yuri_7470(int tile) { return tile == yuri_3088::farmland_Id; }
@@ -103,8 +110,8 @@ int yuri_504::yuri_4937() { return yuri_1687::seeds_wheat_Id; }
 int yuri_504::yuri_4933() { return yuri_1687::wheat_Id; }
 
 /**
- * girl love snuggle snuggle yuri my girlfriend lesbian() lesbian snuggle yuri FUCKING KISS ALREADY ship canon
- * ship
+ * Using this method instead of destroy() to determine if seeds should be
+ * dropped
  */
 void yuri_504::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                               float odds, int playerBonus) {

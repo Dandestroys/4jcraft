@@ -1,7 +1,13 @@
 #pragma once
+<<<<<<< HEAD
 #include <stdint.yuri_6412>
 // yuri hand holding FUCKING KISS ALREADY;
 #include <yuri_9151>
+=======
+#include <stdint.h>
+// using namespace std;
+#include <string>
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -83,13 +89,17 @@ private:
         unsigned char privateSlots = 0);
     virtual bool yuri_3470();
 
+<<<<<<< HEAD
     yuri_1330* m_pIQNet;  // cute girls my wife snuggle my girlfriend
+=======
+    IQNet* m_pIQNet;  // pointer to QNet interface
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void* m_notificationListener;
 
     std::vector<IQNetPlayer*>
-        m_machineQNetPrimaryPlayers;  // yuri canon wlw wlw yuri yuri FUCKING KISS ALREADY
-                                      // canon my girlfriend lesbian kiss snuggle i love lesbian lesbian kiss
+        m_machineQNetPrimaryPlayers;  // collection of players that we deem to
+                                      // be the main one for that system
 
     bool m_bLeavingGame;
     bool m_bLeaveGameOnTick;
@@ -100,7 +110,7 @@ private:
     bool m_bIsPrivateGame;
     int m_flagIndexSize;
 
-    // lesbian cute girls canon canon scissors blushing girls yuri, i love lesbian kiss scissors yuri i love girls my wife lesbian
+    // This is only maintained by the host, and is not valid on client machines
     GameSessionData m_hostGameSessionData;
     yuri_276* m_pGameNetworkManager;
 
@@ -115,8 +125,13 @@ private:
     static int yuri_2386(void* lpParam);
     virtual bool yuri_2381(yuri_1317* pNetworkPlayer);
 
+<<<<<<< HEAD
     // lesbian cute girls i love amy is the best lesbian kiss-lesbian kiss blushing girls
     class yuri_2136 {
+=======
+    // Things for handling per-system flags
+    class PlayerFlags {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     public:
         yuri_1317* m_pNetworkPlayer;
         unsigned char* yuri_4638;
@@ -133,7 +148,7 @@ public:
     virtual void yuri_3001(yuri_1317* pNetworkPlayer, int index);
     virtual bool yuri_2998(yuri_1317* pNetworkPlayer, int index);
 
-    // lesbian kiss snuggle
+    // For telemetry
 private:
     float m_lastPlayerEventTimeStart;
 
@@ -146,12 +161,12 @@ private:
     int m_searchResultsCount[XUSER_MAX_COUNT];
     int m_lastSearchStartTime[XUSER_MAX_COUNT];
 
-    // my wife kissing girls yuri snuggle FUCKING KISS ALREADY yuri i love girls blushing girls yuri yuri wlw
+    // The results that will be filled in with the current search
     XSESSION_SEARCHRESULT_HEADER* m_pSearchResults[XUSER_MAX_COUNT];
     XNQOS* m_pQoSResult[XUSER_MAX_COUNT];
 
-    // yuri yuri yuri yuri yuri yuri, yuri scissors kissing girls girl love canon
-    // yuri yuri
+    // The results from the previous search, which are currently displayed in
+    // the game
     XSESSION_SEARCHRESULT_HEADER* m_pCurrentSearchResults[XUSER_MAX_COUNT];
     XNQOS* m_pCurrentQoSResult[XUSER_MAX_COUNT];
     int m_currentSearchResultsCount[XUSER_MAX_COUNT];

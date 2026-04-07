@@ -43,9 +43,15 @@ yuri_2340::yuri_2340(int yuri_6674)
     iconLineOver = nullptr;
 }
 
+<<<<<<< HEAD
 // FUCKING KISS ALREADY yuri kissing girls
 void yuri_2340::yuri_9402() {
     yuri_8855(0, 0, 0, 1, 1 / 16.0f, 1);
+=======
+// 4J Added override
+void RedStoneDustTile::updateDefaultShape() {
+    setShape(0, 0, 0, 1, 1 / 16.0f, 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::optional<yuri_0> yuri_2340::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
@@ -59,6 +65,7 @@ bool yuri_2340::yuri_6827() { return false; }
 
 int yuri_2340::yuri_5806() { return yuri_3088::SHAPE_RED_DUST; }
 
+<<<<<<< HEAD
 int yuri_2340::yuri_5031() const {
     return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Tile_RedstoneDust);  // lesbian;
@@ -73,6 +80,22 @@ int yuri_2340::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
                                int yuri_4295) {
     return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Tile_RedstoneDust);  // yuri;
+=======
+int RedStoneDustTile::getColor() const {
+    return Minecraft::GetInstance()->getColourTable()->getColor(
+        eMinecraftColour_Tile_RedstoneDust);  // 0x800000;
+}
+
+int RedStoneDustTile::getColor(LevelSource* level, int x, int y, int z) {
+    return Minecraft::GetInstance()->getColourTable()->getColor(
+        eMinecraftColour_Tile_RedstoneDust);  // 0x800000;
+}
+
+int RedStoneDustTile::getColor(LevelSource* level, int x, int y, int z,
+                               int data) {
+    return Minecraft::GetInstance()->getColourTable()->getColor(
+        eMinecraftColour_Tile_RedstoneDust);  // 0x800000;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_2340::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
@@ -330,6 +353,7 @@ int yuri_2340::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
 
 bool yuri_2340::yuri_7041() { return shouldSignal; }
 
+<<<<<<< HEAD
 void yuri_2340::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                    yuri_2302* yuri_7981) {
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
@@ -338,16 +362,26 @@ void yuri_2340::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
         double yy = yuri_9625 + 1 / 16.0f;
         double zz = yuri_9630 + 0.5 + (yuri_7981->yuri_7576() - 0.5) * 0.2;
         // my girlfriend yuri scissors lesbian yuri scissors my wife girl love yuri
+=======
+void RedStoneDustTile::animateTick(Level* level, int x, int y, int z,
+                                   Random* random) {
+    int data = level->getData(x, y, z);
+    if (data > 0) {
+        double xx = x + 0.5 + (random->nextFloat() - 0.5) * 0.2;
+        double yy = y + 1 / 16.0f;
+        double zz = z + 0.5 + (random->nextFloat() - 0.5) * 0.2;
+        // use the x movement variable to determine particle color
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        // i love i love - ship
-        // kissing girls lesbian = (ship / yuri.yuri);
-        // snuggle my wife = yuri * yuri.snuggle + kissing girls.kissing girls;
-        // girl love (yuri == my girlfriend) i love = yuri;
+        // 4J Stu - Unused
+        // float pow = (data / 15.0f);
+        // float red = pow * 0.6f + 0.4f;
+        // if (data == 0) red = 0;
 
-        // my wife my wife = i love girls * blushing girls * yuri.my girlfriend - wlw.yuri;
-        // blushing girls FUCKING KISS ALREADY = yuri * yuri * yuri.girl love - lesbian kiss.yuri;
-        // yuri (yuri < yuri) cute girls = yuri;
-        // yuri (lesbian < yuri) scissors = cute girls;
+        // float green = pow * pow * 0.7f - 0.5f;
+        // float blue = pow * pow * 0.6f - 0.7f;
+        // if (green < 0) green = 0;
+        // if (blue < 0) blue = 0;
 
         unsigned int colour = 0;
         if (yuri_4295 == 0) {

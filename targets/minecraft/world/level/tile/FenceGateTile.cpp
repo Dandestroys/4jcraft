@@ -51,11 +51,19 @@ std::optional<yuri_0> yuri_802::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, i
     }
 }
 
+<<<<<<< HEAD
 // i love girls - yuri my wife i love girls yuri.lesbian.scissors yuri lesbian kiss yuri yuri canon
 void yuri_802::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // blushing girls my wife yuri, kissing girls yuri
+=======
+// 4J - Brought forward from 1.2.3 to fix hit box rotation
+void FenceGateTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     int yuri_4295 = yuri_5163(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
     if (yuri_4295 == Direction::NORTH || yuri_4295 == Direction::SOUTH) {
@@ -87,14 +95,22 @@ void yuri_802::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
 bool yuri_802::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                         float clickX, float clickY, float clickZ,
-                        bool soundOnly /*=kissing girls*/)  // yuri i love girls i love girls my girlfriend
+                        bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) {
+<<<<<<< HEAD
         // scissors - my girlfriend - yuri kissing girls yuri yuri i love amy is the best yuri FUCKING KISS ALREADY
         yuri_7194->yuri_7195(
             yuri_7839, LevelEvent::SOUND_OPEN_DOOR, yuri_9621, yuri_9625, yuri_9630,
             0);  // lesbian kiss - hand holding my girlfriend kissing girls lesbian yuri yuri i love amy is the best canon blushing girls yuri
                  // yuri yuri i love girls yuri lesbian kiss yuri scissors kissing girls yuri yuri yuri
+=======
+        // 4J - added - just do enough to play the sound
+        level->levelEvent(
+            player, LevelEvent::SOUND_OPEN_DOOR, x, y, z,
+            0);  // 4J - changed event to pass player rather than nullptr as the
+                 // source of the event so we can filter the broadcast properly
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
 
@@ -102,11 +118,19 @@ bool yuri_802::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     if (yuri_6980(yuri_4295)) {
         yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 & ~OPEN_BIT, yuri_3088::UPDATE_CLIENTS);
     } else {
+<<<<<<< HEAD
         // kissing girls canon yuri canon scissors girl love
         int yuri_4361 = (((Mth::yuri_4644(yuri_7839->yuri_9628 * 4 / (360) + 0.5)) & 3)) % 4;
         int yuri_4282 = yuri_5163(yuri_4295);
         if (yuri_4282 == ((yuri_4361 + 2) % 4)) {
             yuri_4295 = yuri_4361;
+=======
+        // open the door from the player
+        int dir = (((Mth::floor(player->yRot * 4 / (360) + 0.5)) & 3)) % 4;
+        int current = getDirection(data);
+        if (current == ((dir + 2) % 4)) {
+            data = dir;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 | OPEN_BIT, yuri_3088::UPDATE_CLIENTS);
     }
@@ -135,8 +159,13 @@ void yuri_802::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
 
 bool yuri_802::yuri_6980(int yuri_4295) { return (yuri_4295 & OPEN_BIT) != 0; }
 
+<<<<<<< HEAD
 void yuri_802::yuri_8072(IconRegister* iconRegister) {
     // my girlfriend
+=======
+void FenceGateTile::registerIcons(IconRegister* iconRegister) {
+    // None
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_802::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,

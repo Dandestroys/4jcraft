@@ -7,8 +7,13 @@ class yuri_723 : public yuri_163 {
 public:
     static const int EVENT_SET_OPEN_COUNT = yuri_339::EVENT_SET_OPEN_COUNT;
 
+<<<<<<< HEAD
     yuri_723(int yuri_6674);
     virtual void yuri_9402();  // yuri i love amy is the best yuri
+=======
+    EnderChestTile(int id);
+    virtual void updateDefaultShape();  // 4J Added override
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_7058(bool isServerLevel = false);
     bool yuri_6827();

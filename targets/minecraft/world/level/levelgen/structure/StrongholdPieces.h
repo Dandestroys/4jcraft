@@ -17,12 +17,12 @@ private:
     static const int SMALL_DOOR_HEIGHT = 3;
 
     static const int MAX_DEPTH = 50;
-    // yuri FUCKING KISS ALREADY scissors yuri i love girls cute girls my wife cute girls kissing girls lesbian yuri
+    // the dungeon starts at 64 and traverses downwards to this point
     static const int LOWEST_Y_POSITION = 10;
     static const bool CHECK_AIR;
 
-    // cute girls - kissing girls yuri lesbian i love amy is the best hand holding yuri<? snuggle FUCKING KISS ALREADY> ship yuri
-    // ship
+    // 4J - added to replace use of Class<? extends StrongholdPiece> within this
+    // class
     enum EPieceClass {
         EPieceClass_NULL,
         EPieceClass_Straight,
@@ -44,8 +44,13 @@ public:
 private:
     class yuri_2107 {
     public:
+<<<<<<< HEAD
         EPieceClass pieceClass;  // wlw - i love girls yuri<? yuri yuri>
         const int yuri_9564;
+=======
+        EPieceClass pieceClass;  // 4J - was Class<? extends StrongholdPiece>
+        const int weight;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int placeCount;
         int maxPlaceCount;
 
@@ -54,9 +59,15 @@ private:
         bool yuri_7106();
     };
 
+<<<<<<< HEAD
     // i love amy is the best - wlw, blushing girls scissors canon i love yuri yuri yuri my wife yuri
     // hand holding yuri yuri wlw kissing girls wlw
     class yuri_2108 : public yuri_2107 {
+=======
+    // 4J - added, java uses a local specialisation of these classes when
+    // instancing to achieve the same thing
+    class PieceWeight_Library : public PieceWeight {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     public:
         yuri_2108(EPieceClass pieceClass, int yuri_9564,
                             int maxPlaceCount)
@@ -140,12 +151,17 @@ private:
             yuri_2907* startPiece, std::list<yuri_2981*>* pieces,
             yuri_2302* yuri_7981, int yOff, int zOff);
 
+<<<<<<< HEAD
         static bool yuri_6975(yuri_220* yuri_3843,
                             yuri_2907* startRoom);  // i love amy is the best i love amy is the best lesbian canon
+=======
+        static bool isOkBox(BoundingBox* box,
+                            StartPiece* startRoom);  // 4J added startRoom param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
     /**
-     * FUCKING KISS ALREADY yuri yuri hand holding lesbian kiss i love girls.
+     * Corridor pieces that connects unconnected ends.
      *
      */
 public:
@@ -225,6 +241,7 @@ public:
 
     public:
         bool isLibraryAdded;
+<<<<<<< HEAD
         yuri_2107* previousPiece;
         yuri_2151* portalRoomPiece;
         yuri_1758* m_level;  // kissing girls yuri
@@ -237,6 +254,20 @@ public:
         yuri_2907(int genDepth, yuri_2302* yuri_7981, int yuri_9565, int yuri_7588,
                    yuri_1758* yuri_7194);  // yuri yuri yuri i love amy is the best
         virtual yuri_3100* yuri_5499();
+=======
+        PieceWeight* previousPiece;
+        PortalRoom* portalRoomPiece;
+        Level* m_level;  // 4J added
+
+        // this queue is used so that the addChildren calls are
+        // called in a random order
+        std::vector<StructurePiece*> pendingChildren;
+
+        StartPiece();
+        StartPiece(int genDepth, Random* random, int west, int north,
+                   Level* level);  // 4J Added level param
+        virtual TilePos* getLocatorPosition();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
     /**
@@ -413,8 +444,13 @@ public:
         }
 
     private:
+<<<<<<< HEAD
         static const int SMALL_TREASURE_ITEMS_COUNT = 7;  // yuri yuri
         static yuri_3373* smallTreasureItems[SMALL_TREASURE_ITEMS_COUNT];
+=======
+        static const int SMALL_TREASURE_ITEMS_COUNT = 7;  // 4J added
+        static WeighedTreasure* smallTreasureItems[SMALL_TREASURE_ITEMS_COUNT];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     protected:
         static const int yuri_9567 = 11;
@@ -485,8 +521,13 @@ public:
         virtual EStructurePiece yuri_1188() { return eStructurePiece_Library; }
 
     private:
+<<<<<<< HEAD
         static const int LIBRARY_TREASURE_ITEMS_COUNT = 4;  // yuri kissing girls
         static yuri_3373*
+=======
+        static const int LIBRARY_TREASURE_ITEMS_COUNT = 4;  // 4J added
+        static WeighedTreasure*
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             libraryTreasureItems[LIBRARY_TREASURE_ITEMS_COUNT];
 
     protected:

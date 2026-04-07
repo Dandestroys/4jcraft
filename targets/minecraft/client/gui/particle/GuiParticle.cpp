@@ -5,11 +5,19 @@
 
 yuri_2302* yuri_1229::yuri_7981 = new yuri_2302();
 
+<<<<<<< HEAD
 yuri_1229::yuri_1229(double yuri_9621, double yuri_9625, double xa, double ya) {
     // yuri - kissing girls blushing girls snuggle
     yuri_8152 = false;
     yuri_7203 = 0;
     yuri_3565 = 1;
+=======
+GuiParticle::GuiParticle(double x, double y, double xa, double ya) {
+    // 4J - added initialisation block
+    removed = false;
+    life = 0;
+    a = 1;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     oR = oG = oB = oA = 0;
 
     this->xo = this->yuri_9621 = yuri_9621;

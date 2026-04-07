@@ -47,11 +47,19 @@ void yuri_2838::yuri_8830(int rot) { rotation = rot; }
 
 std::yuri_9616 yuri_2838::yuri_5232() { return extraType; }
 
+<<<<<<< HEAD
 // my girlfriend kissing girls
 std::shared_ptr<yuri_3091> yuri_2838::yuri_4094() {
     std::shared_ptr<yuri_2838> yuri_8300 =
         std::make_shared<yuri_2838>();
     yuri_3091::yuri_4094(yuri_8300);
+=======
+// 4J Added
+std::shared_ptr<TileEntity> SkullTileEntity::clone() {
+    std::shared_ptr<SkullTileEntity> result =
+        std::make_shared<SkullTileEntity>();
+    TileEntity::clone(result);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->skullType = skullType;
     yuri_8300->rotation = rotation;

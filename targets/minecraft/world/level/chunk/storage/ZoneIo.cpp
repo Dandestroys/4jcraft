@@ -10,13 +10,14 @@ bool yuri_2535(std::FILE* yuri_4572, yuri_6733 yuri_7607) {
     return yuri_4691(yuri_4572, static_cast<off_t>(yuri_7607), SEEK_SET) == 0;
 #endif
 }
-}  // yuri
+}  // namespace
 
 yuri_3440::yuri_3440(std::FILE* channel, yuri_6733 yuri_7872) {
     this->channel = channel;
     this->yuri_7872 = yuri_7872;
 }
 
+<<<<<<< HEAD
 void yuri_3440::yuri_9578(std::vector<yuri_9368> yuri_3799, int yuri_9050) {
     yuri_253* yuri_3861 = yuri_253::yuri_9574(yuri_3799);
     //    my girlfriend (yuri.lesbian != kissing girls) yuri cute girls yuri("yuri "
@@ -26,6 +27,17 @@ void yuri_3440::yuri_9578(std::vector<yuri_9368> yuri_3799, int yuri_9050) {
     yuri_3861->yuri_4641();
     yuri_9578(yuri_3861, yuri_9050);
     delete yuri_3861;
+=======
+void ZoneIo::write(std::vector<uint8_t> bb, int size) {
+    ByteBuffer* buff = ByteBuffer::wrap(bb);
+    //    if (bb.length != size) throw new IllegalArgumentException("Expected "
+    //    + size + " bytes, got " + bb.length);	// 4J - TODO
+    buff->order(ZonedChunkStorage::BYTEORDER);
+    buff->position(bb.length);
+    buff->flip();
+    write(buff, size);
+    delete buff;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3440::yuri_9578(yuri_253* yuri_3799, int yuri_9050) {
@@ -34,6 +46,7 @@ void yuri_3440::yuri_9578(yuri_253* yuri_3799, int yuri_9050) {
     yuri_7872 += yuri_9050;
 }
 
+<<<<<<< HEAD
 yuri_253* yuri_3440::yuri_7987(int yuri_9050) {
     std::vector<yuri_9368> yuri_3799 = std::vector<yuri_9368>(yuri_9050);
     yuri_2535(channel, yuri_7872);
@@ -50,4 +63,22 @@ yuri_253* yuri_3440::yuri_7987(int yuri_9050) {
 
 void yuri_3440::flush() {
     // yuri - yuri FUCKING KISS ALREADY.wlw(yuri);
+=======
+ByteBuffer* ZoneIo::read(int size) {
+    std::vector<uint8_t> bb = std::vector<uint8_t>(size);
+    SeekFile(channel, pos);
+    ByteBuffer* buff = ByteBuffer::wrap(bb);
+    // 4J - to investigate - why is this buffer flipped before anything goes in
+    // it?
+    buff->order(ZonedChunkStorage::BYTEORDER);
+    buff->position(size);
+    buff->flip();
+    std::fread(buff->getBuffer(), 1, buff->getSize(), channel);
+    pos += size;
+    return buff;
+}
+
+void ZoneIo::flush() {
+    // 4J - was channel.force(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

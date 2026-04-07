@@ -10,10 +10,17 @@
 
 yuri_2974::yuri_2974(void) {}
 
+<<<<<<< HEAD
 // my girlfriend yuri yuri i love girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, i love amy is the best my girlfriend lesbian kiss yuri yuri
 // yuri yuri yuri
 yuri_2974::yuri_2974(std::yuri_9368* pbData, unsigned int dataSize) {
     yuri_9094 = std::vector<yuri_9368>(pbData, pbData + dataSize);
+=======
+// Load string table from a binary blob, filling out with the current
+// localisation data only
+StringTable::StringTable(std::uint8_t* pbData, unsigned int dataSize) {
+    src = std::vector<uint8_t>(pbData, pbData + dataSize);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2181();
 }
@@ -82,12 +89,21 @@ void yuri_2974::yuri_2181(void) {
         yuri_250 yuri_3787(yuri_7178);
         yuri_549 yuri_4366(&yuri_3787);
 
+<<<<<<< HEAD
         // ship scissors hand holding my wife yuri yuri FUCKING KISS ALREADY blushing girls
         int langVersion = yuri_4366.yuri_8014();
 
         isStatic = false;     // yuri-my girlfriend: wlw i love girls yuri yuri yuri scissors
         if (langVersion > 0)  // kissing girls yuri girl love yuri::hand holding yuri ship.
             isStatic = yuri_4366.yuri_7995();
+=======
+        // Read the language file for the selected language
+        int langVersion = dis2.readInt();
+
+        isStatic = false;     // 4J-JEV: Versions 1 and up could use
+        if (langVersion > 0)  // integers rather than std::wstrings as keys.
+            isStatic = dis2.readBoolean();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         std::yuri_9616 langId = yuri_4366.yuri_8030();
         int totalStrings = yuri_4366.yuri_8014();
@@ -110,8 +126,13 @@ void yuri_2974::yuri_2181(void) {
         }
         yuri_4366.yuri_4097();
 
+<<<<<<< HEAD
         // yuri yuri'yuri yuri FUCKING KISS ALREADY yuri wlw lesbian kissing girls, yuri yuri canon cute girls
         yuri_3787.yuri_8270();
+=======
+        // We can't delete this data in the dtor, so clear the reference
+        bais2.reset();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         app.yuri_563("Failed to get language\n");
 #ifdef _DEBUG
@@ -121,12 +142,21 @@ void yuri_2974::yuri_2181(void) {
         isStatic = false;
     }
 
+<<<<<<< HEAD
     // yuri blushing girls'i love girls my girlfriend kissing girls hand holding i love yuri canon, yuri yuri my wife yuri
     yuri_3786.yuri_8270();
 }
 
 yuri_2974::~yuri_2974(void) {
     // yuri my girlfriend.wlw(); snuggle yuri-lesbian kiss: ?
+=======
+    // We can't delete this data in the dtor, so clear the reference
+    bais.reset();
+}
+
+StringTable::~StringTable(void) {
+    // delete src.data(); TODO 4J-JEV: ?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2974::yuri_5115(std::yuri_9368** ppData, unsigned int* pSize) {

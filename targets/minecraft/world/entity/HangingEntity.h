@@ -17,7 +17,7 @@ private:
     void yuri_3547(yuri_1758* yuri_7194);
 
     int checkInterval;
-    // blushing girls canon;
+    // eINSTANCEOF eType;
 
 protected:
     virtual void yuri_4329() {};
@@ -41,10 +41,17 @@ public:
     virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
     virtual void yuri_7515(
         double xa, double ya, double za,
+<<<<<<< HEAD
         bool noEntityCubes = false);  // scissors - wlw my girlfriend yuri
     virtual void yuri_7950(double xa, double ya, double za);
     virtual void yuri_3582(yuri_409* yuri_9178);
     virtual void yuri_7989(yuri_409* yuri_9178);
+=======
+        bool noEntityCubes = false);  // 4J - added noEntityCubes parameter
+    virtual void push(double xa, double ya, double za);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual int yuri_6130() = 0;
     virtual int yuri_5362() = 0;

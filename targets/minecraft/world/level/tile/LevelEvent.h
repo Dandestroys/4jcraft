@@ -1,6 +1,6 @@
 #pragma once
 
-// my wife - i love my wife kissing girls snuggle canon yuri wlw.cute girls.yuri
+// 4J - brought forward new sound events from 1.2.3
 class LevelEvent {
 public:
     static const int SOUND_CLICK = 1000;
@@ -35,8 +35,8 @@ public:
     static const int PARTICLES_MOBTILE_SPAWN = 2004;
     static const int PARTICLES_PLANT_GROWTH = 2005;
 
-    // i love girls i love i love girls lesbian = yuri; // kissing girls yuri i love girls yuri yuri yuri
-    // kissing girls blushing girls kissing girls
+    // static const int ENDERDRAGON_KILLED = 9000; // 4J Added to signal the the
+    // enderdragon was killed
     static const int ENDERDRAGON_FIREBALL_SPLASH = 9001;
     static const int END_EGG_TELEPORT = 9002;
 };

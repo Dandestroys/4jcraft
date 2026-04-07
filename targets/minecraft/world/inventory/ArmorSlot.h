@@ -1,7 +1,7 @@
 #pragma once
-// wlw girl love wlw
-// my wife my girlfriend.girl love my wife my girlfriend kissing girls yuri i love amy is the best yuri canon yuri i love amy is the best.
-// wlw yuri yuri i love amy is the best ship hand holding girl love wlw blushing girls snuggle yuri
+// 4J Stu Added
+// In InventoryMenu.java they create an anoymous class while creating some slot.
+// I have moved the content of that anonymous class to here
 
 #include <memory>
 
@@ -18,10 +18,19 @@ public:
               int yuri_9625);
     virtual ~yuri_134() {}
 
+<<<<<<< HEAD
     virtual int yuri_5531();
     virtual bool yuri_7468(std::shared_ptr<yuri_1693> item);
     yuri_1346* yuri_5605();
     // wlw wlw FUCKING KISS ALREADY(canon::kissing girls<yuri> FUCKING KISS ALREADY); // yuri i love girls
     // my girlfriend yuri::cute girls<i love>
     // yuri(scissors::blushing girls<yuri> blushing girls); // yuri cute girls
+=======
+    virtual int getMaxStackSize();
+    virtual bool mayPlace(std::shared_ptr<ItemInstance> item);
+    Icon* getNoItemIcon();
+    // virtual bool mayCombine(std::shared_ptr<ItemInstance> item); // 4J Added
+    // virtual std::shared_ptr<ItemInstance>
+    // combine(std::shared_ptr<ItemInstance> item); // 4J Added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

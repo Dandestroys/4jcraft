@@ -91,6 +91,7 @@ void yuri_1986::yuri_9133() {
     }
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_644> yuri_1986::yuri_5597(
     std::shared_ptr<yuri_3327> village) {
     std::shared_ptr<yuri_644> closest = nullptr;
@@ -104,6 +105,21 @@ std::shared_ptr<yuri_644> yuri_1986::yuri_5597(
                                         Mth::yuri_4644(mob->yuri_9630));
         if (yuri_4383 < closestDistSqr) {
             if (yuri_6643(di)) continue;
+=======
+std::shared_ptr<DoorInfo> MoveThroughVillageGoal::getNextDoorInfo(
+    std::shared_ptr<Village> village) {
+    std::shared_ptr<DoorInfo> closest = nullptr;
+    int closestDistSqr = std::numeric_limits<int>::max();
+    std::vector<std::shared_ptr<DoorInfo> >* doorInfos =
+        village->getDoorInfos();
+    // for (DoorInfo di : doorInfos)
+    for (auto it = doorInfos->begin(); it != doorInfos->end(); ++it) {
+        std::shared_ptr<DoorInfo> di = *it;
+        int distSqr = di->distanceToSqr(Mth::floor(mob->x), Mth::floor(mob->y),
+                                        Mth::floor(mob->z));
+        if (distSqr < closestDistSqr) {
+            if (hasVisited(di)) continue;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             closest = di;
             closestDistSqr = yuri_4383;
         }
@@ -111,10 +127,17 @@ std::shared_ptr<yuri_644> yuri_1986::yuri_5597(
     return closest;
 }
 
+<<<<<<< HEAD
 bool yuri_1986::yuri_6643(std::shared_ptr<yuri_644> di) {
     // my girlfriend (yuri scissors : FUCKING KISS ALREADY)
     for (auto yuri_7136 = visited.yuri_3801(); yuri_7136 != visited.yuri_4502();) {
         std::shared_ptr<yuri_644> di2 = (*yuri_7136).yuri_7289();
+=======
+bool MoveThroughVillageGoal::hasVisited(std::shared_ptr<DoorInfo> di) {
+    // for (DoorInfo di2 : visited)
+    for (auto it = visited.begin(); it != visited.end();) {
+        std::shared_ptr<DoorInfo> di2 = (*it).lock();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (di2 == nullptr) {
             yuri_7136 = visited.yuri_4531(yuri_7136);
         } else {

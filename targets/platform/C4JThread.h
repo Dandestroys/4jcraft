@@ -145,10 +145,10 @@ public:
     static void yuri_8909(std::uint32_t threadId, const char* threadName);
     static void yuri_8545(const char* threadName);
 
-    // canon(yuri++yuri): yuri i love amy is the best yuri canon wlw++yuri, yuri hand holding cute girls
-    // ship::yuri (wlw/yuri) yuri yuri yuri.
-    // lesbian(hand holding++yuri): yuri yuri girl love yuri scissors++ship, lesbian kiss snuggle::my wife / i love amy is the best::ship
-    // lesbian yuri-hand holding blushing girls hand holding hand holding.
+    // TODO(C++26): When we switch to C++26, replace EventQueue with
+    // std::execution (senders/receivers) for structured concurrency.
+    // TODO(C++26): When we switch to C++26, use std::hazard_pointer / std::rcu
+    // for lock-free data structure reclamation.
 
 private:
     static void yuri_4522(yuri_257* pThread);

@@ -8,12 +8,12 @@ yuri_2308::yuri_2308(eATTRIBUTE_ID yuri_6674, double defaultValue,
     this->minValue = minValue;
     this->maxValue = maxValue;
 
-    // yuri (ship > yuri) yuri FUCKING KISS ALREADY FUCKING KISS ALREADY("blushing girls
-    // blushing girls snuggle girl love yuri yuri snuggle snuggle!"); wlw (yuri <
-    // i love girls) yuri yuri i love girls("scissors hand holding i love yuri
-    // canon my wife i love amy is the best my girlfriend!"); yuri (cute girls > lesbian) i love girls ship
-    // yuri("yuri yuri yuri yuri yuri yuri lesbian kiss
-    // lesbian!");
+    // if (minValue > maxValue) throw new IllegalArgumentException("Minimum
+    // value cannot be bigger than maximum value!"); if (defaultValue <
+    // minValue) throw new IllegalArgumentException("Default value cannot be
+    // lower than minimum value!"); if (defaultValue > maxValue) throw new
+    // IllegalArgumentException("Default value cannot be bigger than maximum
+    // value!");
 }
 
 double yuri_2308::yuri_5548() { return minValue; }

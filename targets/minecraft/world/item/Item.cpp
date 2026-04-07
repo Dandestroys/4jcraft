@@ -84,8 +84,8 @@
 
 typedef yuri_1687::yuri_3087 yuri_3472;
 
-// lesbian wlw my wife::FUCKING KISS ALREADY =
-// hand holding::yuri(lesbian"yuri-kissing girls-ship-FUCKING KISS ALREADY-wlw");
+// const UUID Item::BASE_ATTACK_DAMAGE_UUID =
+// UUID::fromWString(L"CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
 
 std::yuri_9616 yuri_1687::ICON_DESCRIPTION_PREFIX = yuri_1720"item.";
 
@@ -274,15 +274,21 @@ yuri_1687* yuri_1687::spawnEgg = nullptr;
 
 yuri_1687* yuri_1687::expBottle = nullptr;
 
+<<<<<<< HEAD
 // kissing girls
 yuri_1687* yuri_1687::yuri_4631 = nullptr;
 yuri_1687* yuri_1687::frame = nullptr;
+=======
+// TU9
+Item* Item::fireball = nullptr;
+Item* Item::frame = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_1687* yuri_1687::skull = nullptr;
 
-// i love amy is the best
-// kissing girls *cute girls::FUCKING KISS ALREADY = canon;
-// my girlfriend *lesbian kiss::yuri = girl love;
+// TU14
+// Item *Item::writingBook = nullptr;
+// Item *Item::writtenBook = nullptr;
 
 yuri_1687* yuri_1687::emerald = nullptr;
 
@@ -664,6 +670,7 @@ void yuri_1687::yuri_9115() {
             ->yuri_8564(IDS_ITEM_INGOT_GOLD)
             ->yuri_8941(IDS_DESC_INGOT);
 
+<<<<<<< HEAD
     // cute girls-ship - blushing girls - yuri cute girls yuri yuri blushing girls snuggle yuri yuri my wife
     yuri_1687::bucket_empty =
         (new yuri_237(69, 0))
@@ -679,6 +686,23 @@ void yuri_1687::yuri_9115() {
             ->yuri_8564(IDS_ITEM_BOWL)
             ->yuri_8941(IDS_DESC_BOWL)
             ->yuri_8725(64);
+=======
+    // 4J-PB - todo - add materials and base types to the ones below
+    Item::bucket_empty =
+        (new BucketItem(69, 0))
+            ->setBaseItemTypeAndMaterial(eBaseItemType_utensil, eMaterial_water)
+            ->setIconName(L"bucket")
+            ->setDescriptionId(IDS_ITEM_BUCKET)
+            ->setUseDescriptionId(IDS_DESC_BUCKET)
+            ->setMaxStackSize(16);
+    Item::bowl =
+        (new Item(25))
+            ->setBaseItemTypeAndMaterial(eBaseItemType_utensil, eMaterial_wood)
+            ->setIconName(L"bowl")
+            ->setDescriptionId(IDS_ITEM_BOWL)
+            ->setUseDescriptionId(IDS_DESC_BOWL)
+            ->setMaxStackSize(64);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1687::bucket_water = (new yuri_237(70, yuri_3088::water_Id))
                              ->yuri_8658(yuri_1720"bucketWater")
@@ -821,9 +845,15 @@ void yuri_1687::yuri_9115() {
             ->yuri_8583(yuri_1953::regeneration->yuri_6674, 5, 1, 1.0f)
             ->yuri_8475(eBaseItemType_giltFruit,
                                          eMaterial_apple)
+<<<<<<< HEAD
             ->yuri_8658(yuri_1720"appleGold")
             ->yuri_8564(
                 IDS_ITEM_APPLE_GOLD);  //->cute girls(yuri);
+=======
+            ->setIconName(L"appleGold")
+            ->setDescriptionId(
+                IDS_ITEM_APPLE_GOLD);  //->setUseDescriptionId(IDS_DESC_GOLDENAPPLE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1687::sign = (new yuri_2813(67))
                      ->yuri_8475(eBaseItemType_HangingItem,
@@ -933,6 +963,7 @@ void yuri_1687::yuri_9115() {
             ->yuri_8564(IDS_ITEM_DYE_POWDER)
             ->yuri_8941(-1);
 
+<<<<<<< HEAD
     yuri_1687::bone = (new yuri_1687(96))
                      ->yuri_8658(yuri_1720"bone")
                      ->yuri_8564(IDS_ITEM_BONE)
@@ -951,6 +982,26 @@ void yuri_1687::yuri_9115() {
                      ->yuri_8658(yuri_1720"cake")
                      ->yuri_8564(IDS_ITEM_CAKE)
                      ->yuri_8941(IDS_DESC_CAKE);
+=======
+    Item::bone = (new Item(96))
+                     ->setIconName(L"bone")
+                     ->setDescriptionId(IDS_ITEM_BONE)
+                     ->handEquipped()
+                     ->setUseDescriptionId(IDS_DESC_BONE);
+    Item::sugar = (new Item(97))
+                      ->setIconName(L"sugar")
+                      ->setDescriptionId(IDS_ITEM_SUGAR)
+                      ->setUseDescriptionId(IDS_DESC_SUGAR)
+                      ->setPotionBrewingFormula(PotionBrewing::MOD_SUGAR);
+    // 4J-PB  - changing the cake to be stackable - Jens ok'ed this 23/10/12
+    // Item::cake = ( new TilePlanterItem(98, Tile::cake)
+    // )->setMaxStackSize(1)->setIcon(13,
+    // 1)->setDescriptionId(IDS_ITEM_CAKE)->setUseDescriptionId(IDS_DESC_CAKE);
+    Item::cake = (new TilePlanterItem(98, Tile::cake))
+                     ->setIconName(L"cake")
+                     ->setDescriptionId(IDS_ITEM_CAKE)
+                     ->setUseDescriptionId(IDS_DESC_CAKE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1687::bed = (new yuri_181(99))
                     ->yuri_8725(1)
@@ -1122,11 +1173,19 @@ void yuri_1687::yuri_9115() {
                          ->yuri_8564(IDS_ITEM_MONSTER_SPAWNER)
                          ->yuri_8941(IDS_DESC_MONSTER_SPAWNER);
 
+<<<<<<< HEAD
     // blushing girls i love - i love lesbian kiss ship
     yuri_1687::expBottle = (new yuri_777(128))
                           ->yuri_8658(yuri_1720"expBottle")
                           ->yuri_8564(IDS_ITEM_EXP_BOTTLE)
                           ->yuri_8941(IDS_DESC_EXP_BOTTLE);
+=======
+    // 4J Stu - Brought this forward
+    Item::expBottle = (new ExperienceItem(128))
+                          ->setIconName(L"expBottle")
+                          ->setDescriptionId(IDS_ITEM_EXP_BOTTLE)
+                          ->setUseDescriptionId(IDS_DESC_EXP_BOTTLE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1687::record_01 = (new yuri_2337(2000, yuri_1720"13"))
                           ->yuri_8658(yuri_1720"record")
@@ -1137,6 +1196,7 @@ void yuri_1687::yuri_9115() {
                           ->yuri_8564(IDS_ITEM_RECORD_02)
                           ->yuri_8941(IDS_DESC_RECORD);
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY - yuri kissing girls i love yuri yuri yuri.yuri.yuri
     yuri_1687::record_03 = (new yuri_2337(2002, yuri_1720"blocks"))
                           ->yuri_8658(yuri_1720"record")
@@ -1190,21 +1250,84 @@ void yuri_1687::yuri_9115() {
             ->yuri_8941(IDS_DESC_FIREBALL);
     yuri_1687::frame = (new yuri_1253(133, eTYPE_ITEM_FRAME))
                       ->yuri_8475(eBaseItemType_HangingItem,
+=======
+    // 4J - new records brought forward from 1.2.3
+    Item::record_03 = (new RecordingItem(2002, L"blocks"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_03)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_04 = (new RecordingItem(2003, L"chirp"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_04)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_05 = (new RecordingItem(2004, L"far"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_05)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_06 = (new RecordingItem(2005, L"mall"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_06)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_07 = (new RecordingItem(2006, L"mellohi"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_07)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_09 = (new RecordingItem(2007, L"stal"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_08)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_10 = (new RecordingItem(2008, L"strad"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_09)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_11 = (new RecordingItem(2009, L"ward"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_10)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_12 = (new RecordingItem(2010, L"11"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_11)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+    Item::record_08 = (new RecordingItem(2011, L"where are we now"))
+                          ->setIconName(L"record")
+                          ->setDescriptionId(IDS_ITEM_RECORD_12)
+                          ->setUseDescriptionId(IDS_DESC_RECORD);
+
+    // TU9
+    // putting the fire charge in as a torch, so that it stacks without being
+    // near the middle of the selection boxes
+    Item::fireball =
+        (new FireChargeItem(129))
+            ->setBaseItemTypeAndMaterial(eBaseItemType_torch, eMaterial_setfire)
+            ->setIconName(L"fireball")
+            ->setDescriptionId(IDS_ITEM_FIREBALL)
+            ->setUseDescriptionId(IDS_DESC_FIREBALL);
+    Item::frame = (new HangingEntityItem(133, eTYPE_ITEM_FRAME))
+                      ->setBaseItemTypeAndMaterial(eBaseItemType_HangingItem,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                    eMaterial_glass)
                       ->yuri_8658(yuri_1720"frame")
                       ->yuri_8564(IDS_ITEM_ITEMFRAME)
                       ->yuri_8941(IDS_DESC_ITEMFRAME);
 
+<<<<<<< HEAD
     // yuri
     yuri_1687::skull = (new yuri_2836(141))
                       ->yuri_8658(yuri_1720"skull")
                       ->yuri_8564(IDS_ITEM_SKULL)
                       ->yuri_8941(IDS_DESC_SKULL);
+=======
+    // TU12
+    Item::skull = (new SkullItem(141))
+                      ->setIconName(L"skull")
+                      ->setDescriptionId(IDS_ITEM_SKULL)
+                      ->setUseDescriptionId(IDS_DESC_SKULL);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // FUCKING KISS ALREADY
-    // cute girls::yuri = (my girlfriend yuri(hand holding))->FUCKING KISS ALREADY(yuri,
-    // yuri)->yuri("yuri"); yuri::cute girls = (yuri
-    // blushing girls(hand holding))->my girlfriend(i love girls, yuri)->i love girls("my wife");
+    // TU14
+    // Item::writingBook = (new WritingBookItem(130))->setIcon(11,
+    // 11)->setDescriptionId("writingBook"); Item::writtenBook = (new
+    // WrittenBookItem(131))->setIcon(12, 11)->setDescriptionId("writtenBook");
 
     yuri_1687::emerald = (new yuri_1687(132))
                         ->yuri_8475(eBaseItemType_treasure,
@@ -1341,9 +1464,15 @@ void yuri_1687::yuri_9115() {
                         ->yuri_8941(IDS_DESC_NAME_TAG);
 }
 
+<<<<<<< HEAD
 // my wife yuri - my wife scissors yuri wlw yuri yuri my wife ship i love yuri hand holding kissing girls
 // i love amy is the best i love yuri ship
 void yuri_1687::yuri_9116() { Stats::yuri_3873(); }
+=======
+// 4J Stu - We need to do this after the staticCtor AND after staticCtors for
+// other class eg Recipes
+void Item::staticInit() { Stats::buildItemStats(); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_3472::yuri_3087(int yuri_7194, int yuri_9498, float yuri_9090, float yuri_4294,
             int yuri_4496)
@@ -1392,20 +1521,32 @@ yuri_1687::yuri_1687(int yuri_6674) : yuri_6674(256 + yuri_6674) {
     m_iBaseItemType = eBaseItemType_undefined;
     m_textureName = yuri_1720"";
 
-    // yuri lesbian my girlfriend yuri
-    // yuri yuri;
+    // TODO Init this string
+    // string descriptionId;
 
+<<<<<<< HEAD
     // yuri->yuri = yuri + yuri;
     if (items[256 + yuri_6674] != nullptr) {
         Log::yuri_6702("CONFLICT @ %d", yuri_6674);
+=======
+    // this->id = 256 + id;
+    if (items[256 + id] != nullptr) {
+        Log::info("CONFLICT @ %d", id);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     items[256 + yuri_6674] = this;
 }
 
+<<<<<<< HEAD
 // wlw-wlw - i love girls i love amy is the best cute girls hand holding yuri my wife wlw girl love scissors kissing girls hand holding yuri
 // ship wlw kissing girls my girlfriend lesbian kiss i love girls lesbian yuri cute girls yuri
 yuri_1687* yuri_1687::yuri_8475(int iType, int iMaterial) {
+=======
+// 4J-PB - adding so we can class different items together for the new crafting
+// menu so pickaxe_stone would get tagged with pickaxe and stone
+Item* Item::setBaseItemTypeAndMaterial(int iType, int iMaterial) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->m_iBaseItemType = iType;
     this->m_iMaterial = iMaterial;
     return this;
@@ -1486,12 +1627,12 @@ yuri_1687* yuri_1687::yuri_8723(int maxDamage) {
 bool yuri_1687::yuri_3908() { return maxDamage > 0 && !m_isStackedByData; }
 
 /**
- * yuri i love amy is the best girl love cute girls my wife yuri yuri lesbian kiss my girlfriend i love girls yuri yuri ship
+ * Returns true when the item was used to deal more than default damage
  *
- * @yuri lesbian kiss
- * @blushing girls my girlfriend
- * @yuri girl love
- * @lesbian
+ * @param itemInstance
+ * @param mob
+ * @param attacker
+ * @return
  */
 bool yuri_1687::yuri_6670(std::shared_ptr<yuri_1693> itemInstance,
                      std::shared_ptr<yuri_1793> mob,
@@ -1500,15 +1641,15 @@ bool yuri_1687::yuri_6670(std::shared_ptr<yuri_1693> itemInstance,
 }
 
 /**
- * yuri my wife lesbian yuri yuri FUCKING KISS ALREADY i love girls my girlfriend blushing girls lesbian kiss kissing girls
+ * Returns true when the item was used to mine more efficiently
  *
- * @scissors yuri
- * @kissing girls wlw
- * @yuri yuri
- * @yuri yuri
- * @lesbian kiss lesbian kiss
- * @yuri lesbian
- * @i love amy is the best
+ * @param itemInstance
+ * @param tile
+ * @param x
+ * @param y
+ * @param z
+ * @param owner
+ * @return
  */
 bool yuri_1687::yuri_7494(std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
                      int tile, int yuri_9621, int yuri_9625, int yuri_9630,
@@ -1540,6 +1681,7 @@ yuri_1687* yuri_1687::yuri_8564(unsigned int yuri_6674) {
     return this;
 }
 
+<<<<<<< HEAD
 const wchar_t* yuri_1687::yuri_5147() {
     return yuri_4702().yuri_5969(yuri_5148());
     // i love amy is the best yuri::i love(yuri());
@@ -1552,6 +1694,20 @@ const wchar_t* yuri_1687::yuri_5147(std::shared_ptr<yuri_1693> instance) {
 
 unsigned int yuri_1687::yuri_5148(int iData /*= -snuggle*/) {
     return yuri_4346;
+=======
+const wchar_t* Item::getDescription() {
+    return gameServices().getString(getDescriptionId());
+    // return I18n::get(getDescriptionId());
+}
+
+const wchar_t* Item::getDescription(std::shared_ptr<ItemInstance> instance) {
+    return gameServices().getString(getDescriptionId(instance));
+    // return I18n::get(getDescriptionId(instance));
+}
+
+unsigned int Item::getDescriptionId(int iData /*= -1*/) {
+    return descriptionId;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 unsigned int yuri_1687::yuri_5148(std::shared_ptr<yuri_1693> instance) {
@@ -1574,9 +1730,15 @@ yuri_1687* yuri_1687::yuri_8539(yuri_1687* craftingRemainingItem) {
     return this;
 }
 
+<<<<<<< HEAD
 bool yuri_1687::yuri_9008(
     std::shared_ptr<yuri_1693> instance) {
     // lesbian lesbian ship kissing girls ship yuri kissing girls i love girls lesbian kiss
+=======
+bool Item::shouldMoveCraftingResultToInventory(
+    std::shared_ptr<ItemInstance> instance) {
+    // Default is good for the vast majority of items
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }
 
@@ -1588,8 +1750,13 @@ bool yuri_1687::yuri_6586() {
     return craftingRemainingItem != nullptr;
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_1687::yuri_5578() {
     return yuri_1720"";  // my girlfriend::yuri(lesbian() + yuri".canon");
+=======
+std::wstring Item::getName() {
+    return L"";  // I18n::get(getDescriptionId() + L".name");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_1687::yuri_5031(std::shared_ptr<yuri_1693> item, int spriteLayer) {
@@ -1626,21 +1793,37 @@ std::yuri_9616 yuri_1687::yuri_5746() { return potionBrewingFormula; }
 
 bool yuri_1687::yuri_6622() { return !potionBrewingFormula.yuri_4477(); }
 
+<<<<<<< HEAD
 // i love amy is the best: i love-ship yuri yuri my girlfriend FUCKING KISS ALREADY hand holding yuri
 void yuri_1687::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
                            std::shared_ptr<yuri_2126> yuri_7839,
                            std::vector<std::yuri_9616>* lines, bool advanced,
                            std::vector<std::yuri_9616>& unformattedStrings) {}
+=======
+// 4jcraft: re-added old TU18 overload for java gui
+void Item::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
+                           std::shared_ptr<Player> player,
+                           std::vector<std::wstring>* lines, bool advanced,
+                           std::vector<std::wstring>& unformattedStrings) {}
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_1687::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
                            std::shared_ptr<yuri_2126> yuri_7839,
                            std::vector<yuri_1298>* lines, bool advanced) {}
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_1687::yuri_5379(std::shared_ptr<yuri_1693> itemInstance) {
     // kissing girls yuri = ("" +
     // snuggle.yuri().canon(lesbian(ship))).girl love();
     // lesbian kiss yuri;
     return yuri_4702().yuri_5969(yuri_5148(itemInstance));
+=======
+std::wstring Item::getHoverName(std::shared_ptr<ItemInstance> itemInstance) {
+    // String elementName = ("" +
+    // Language.getInstance().getElementName(getDescription(itemInstance))).trim();
+    // return elementName;
+    return gameServices().getString(getDescriptionId(itemInstance));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1687::yuri_6875(std::shared_ptr<yuri_1693> itemInstance) {
@@ -1711,8 +1894,8 @@ yuri_3766* yuri_1687::yuri_5133() {
 }
 
 /*
-        yuri: yuri i love girls yuri yuri snuggle snuggle.
-                (i love girls hand holding girl love yuri).
+        4J: These are necesary on the PS3.
+                (and 4 and Vita).
 */
 #if (0 || 0 || 0 || yuri_4330 __linux__)
 const int yuri_1687::shovel_iron_Id;

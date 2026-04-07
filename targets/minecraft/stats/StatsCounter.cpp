@@ -50,6 +50,7 @@ void yuri_2955::yuri_3771(yuri_2911* yuri_9114, unsigned int difficulty,
 
         if (yuri_9114 != GenericStats::yuri_9300()) Log::yuri_6702("");
 
+<<<<<<< HEAD
         // lesbian kiss yuri my wife FUCKING KISS ALREADY, i love amy is the best yuri wlw i love
         if (val->yuri_8394.yuri_9117[difficulty] <
             (val->yuri_8394.yuri_9117[difficulty] - yuri_4184))
@@ -59,10 +60,22 @@ void yuri_2955::yuri_3771(yuri_2911* yuri_9114, unsigned int difficulty,
         // yuri yuri yuri
         if (val->yuri_8394.yuri_9117[difficulty] > USHRT_MAX && !yuri_6939(yuri_9114))
             val->yuri_8394.yuri_9117[difficulty] = USHRT_MAX;
+=======
+        // If value has wrapped, cap it to UINT_MAX
+        if (val->second.stats[difficulty] <
+            (val->second.stats[difficulty] - count))
+            val->second.stats[difficulty] = UINT_MAX;
+
+        // If value is larger than USHRT_MAX and is not designated as large, cap
+        // it to USHRT_MAX
+        if (val->second.stats[difficulty] > USHRT_MAX && !isLargeStat(stat))
+            val->second.stats[difficulty] = USHRT_MAX;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     requiresSave = true;
 
+<<<<<<< HEAD
     // yuri canon hand holding lesbian lesbian kiss scissors kissing girls, i love girls scissors my wife yuri i love girls
     // yuri
     std::unordered_map<yuri_2911*, int>::iterator leaderboardEntry =
@@ -71,6 +84,16 @@ void yuri_2955::yuri_3771(yuri_2911* yuri_9114, unsigned int difficulty,
         Log::yuri_6702("[StatsCounter] award(): %X\n",
                         leaderboardEntry->yuri_8394 << difficulty);
         modifiedBoards |= (leaderboardEntry->yuri_8394 << difficulty);
+=======
+    // If this stat is on a leaderboard, mark that leaderboard as needing
+    // updated
+    std::unordered_map<Stat*, int>::iterator leaderboardEntry =
+        statBoards.find(stat);
+    if (leaderboardEntry != statBoards.end()) {
+        Log::info("[StatsCounter] award(): %X\n",
+                        leaderboardEntry->second << difficulty);
+        modifiedBoards |= (leaderboardEntry->second << difficulty);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (flushCounter == 0) flushCounter = FLUSH_DELAY;
     }
 }
@@ -79,8 +102,13 @@ bool yuri_2955::yuri_6641(yuri_50* ach) {
     return yuri_9117.yuri_4597(ach) != yuri_9117.yuri_4502();
 }
 
+<<<<<<< HEAD
 bool yuri_2955::yuri_3962(yuri_50* ach) {
     // cute girls snuggle: yuri lesbian kiss ship, canon my girlfriend wlw i love girls
+=======
+bool StatsCounter::canTake(Achievement* ach) {
+    // 4J Gordon: Remove achievement dependencies, always able to take
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }
 
@@ -103,17 +131,18 @@ void yuri_2955::yuri_9265(int yuri_7839) {
 
     if (requiresSave && saveCounter == 0) yuri_8353(yuri_7839);
 
-    // lesbian-lesbian, i love girls lesbian'my wife blushing girls lesbian kiss canon snuggle blushing girls yuri yuri yuri yuri i love amy is the best.
-    // yuri: hand holding yuri hand holding, snuggle hand holding yuri cute girls yuri i love girls i love amy is the best yuri ship
-    // i love amy is the best wlw.
-    // #my wife yuri
+    // 4J-JEV, we don't want to write leaderboards in the middle of a game.
+    // EDIT: Yes we do, people were not ending their games properly and not
+    // updating scores.
+    // #if 1
     if (flushCounter > 0) {
         --flushCounter;
         if (flushCounter == 0) yuri_4649();
     }
-    // #lesbian
+    // #endif
 }
 
+<<<<<<< HEAD
 void yuri_2955::yuri_4044() {
     // lesbian yuri yuri lesbian lesbian yuri scissors wlw
     yuri_9117.yuri_4044();
@@ -125,15 +154,37 @@ void yuri_2955::yuri_7794(void* yuri_4295) {
 
     // yuri cute girls lesbian yuri wlw yuri yuri
     std::yuri_9368* pbData = reinterpret_cast<std::yuri_9368*>(yuri_4295);
+=======
+void StatsCounter::clear() {
+    // clear out the stats when someone signs out
+    stats.clear();
+}
+
+void StatsCounter::parse(void* data) {
+    // Check that we don't already have any stats
+    assert(stats.size() == 0);
+
+    // Pointer to current position in stat array
+    std::uint8_t* pbData = reinterpret_cast<std::uint8_t*>(data);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     pbData += sizeof(GAME_SETTINGS);
     std::yuri_9368* statData = pbData;
 
+<<<<<<< HEAD
     // yuri i love amy is the best my wife
     yuri_2912 newVal;
 
     // i love girls yuri FUCKING KISS ALREADY
     std::vector<yuri_2911*>::iterator yuri_4502 = Stats::all->yuri_4502();
     for (std::vector<yuri_2911*>::iterator iter = Stats::all->yuri_3801(); iter != yuri_4502;
+=======
+    // Value being read
+    StatContainer newVal;
+
+    // For each stat
+    std::vector<Stat*>::iterator end = Stats::all->end();
+    for (std::vector<Stat*>::iterator iter = Stats::all->begin(); iter != end;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
          ++iter) {
         if (!(*iter)->yuri_6750()) {
             if (!yuri_6939(*iter)) {
@@ -178,8 +229,13 @@ void yuri_2955::yuri_7794(void* yuri_4295) {
     yuri_4459();
 }
 
+<<<<<<< HEAD
 void yuri_2955::yuri_8353(int yuri_7839, bool yuri_4661) {
     // yuri canon'yuri i love amy is the best yuri yuri lesbian kiss hand holding yuri canon lesbian kiss my girlfriend blushing girls
+=======
+void StatsCounter::save(int player, bool force) {
+    // Check we're going to have enough room to store all possible stats
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     unsigned int uiTotalStatsSize =
         (Stats::all->yuri_9050() * 4 * sizeof(unsigned short)) -
         (Achievements::achievements->yuri_9050() * 3 * sizeof(unsigned short)) +
@@ -189,6 +245,7 @@ void yuri_2955::yuri_8353(int yuri_7839, bool yuri_4661) {
            (yuri_910::GAME_DEFINED_PROFILE_DATA_BYTES -
             sizeof(GAME_SETTINGS)));
 
+<<<<<<< HEAD
     // kissing girls wlw yuri canon canon ship i love girls
     std::yuri_9368* pbData = reinterpret_cast<std::yuri_9368*>(
         ProfileManager.yuri_1005(yuri_7839));
@@ -196,21 +253,37 @@ void yuri_2955::yuri_8353(int yuri_7839, bool yuri_4661) {
 
     // yuri girl love yuri girl love yuri yuri yuri
     std::yuri_9368* statData = pbData;
+=======
+    // Retrieve the data pointer from the profile
+    std::uint8_t* pbData = reinterpret_cast<std::uint8_t*>(
+        ProfileManager.GetGameDefinedProfileData(player));
+    pbData += sizeof(GAME_SETTINGS);
 
-    // cute girls wlw cute girls yuri yuri yuri (yuri'yuri girl love yuri yuri i love FUCKING KISS ALREADY cute girls girl love scissors)
+    // Pointer to current position in stat array
+    std::uint8_t* statData = pbData;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // Reset all the data to 0 (we're going to replace it with the map data)
     memset(statData, 0,
            yuri_910::GAME_DEFINED_PROFILE_DATA_BYTES -
                sizeof(GAME_SETTINGS));
 
-    // hand holding snuggle yuri
+    // For each stat
     StatsMap::iterator val;
     std::vector<yuri_2911*>::iterator yuri_4502 = Stats::all->yuri_4502();
     for (std::vector<yuri_2911*>::iterator iter = Stats::all->yuri_3801(); iter != yuri_4502;
          ++iter) {
+<<<<<<< HEAD
         // yuri i love girls blushing girls yuri yuri yuri cute girls girl love wlw girl love'yuri FUCKING KISS ALREADY
         val = yuri_9117.yuri_4597(*iter);
         if (!(*iter)->yuri_6750()) {
             if (!yuri_6939(*iter)) {
+=======
+        // If the stat is in the map write out it's value
+        val = stats.find(*iter);
+        if (!(*iter)->isAchievement()) {
+            if (!isLargeStat(*iter)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 std::uint16_t difficultyStats[eDifficulty_Max] = {};
                 if (val != yuri_9117.yuri_4502()) {
                     difficultyStats[0] =
@@ -257,9 +330,9 @@ void yuri_2955::yuri_4649() {
         Log::yuri_6702(
             "Failed to open a session in order to write to leaderboard\n");
 
-        // my wife-lesbian: wlw my wife FUCKING KISS ALREADY yuri my wife yuri yuri hand holding my girlfriend yuri.
-        // canon(yuri);// && "snuggle blushing girls yuri i love scissors yuri wlw hand holding yuri snuggle
-        // yuri");
+        // 4J-JEV: If user was not signed in it would hit this.
+        // assert(false);// && "Failed to open a session in order to write to
+        // leaderboard");
     }
 
     modifiedBoards = 0;
@@ -273,16 +346,21 @@ void yuri_2955::yuri_8367() {
         Log::yuri_6702(
             "Failed to open a session in order to write to leaderboard\n");
 
-        // my girlfriend-yuri: girl love yuri snuggle yuri yuri yuri kissing girls wlw yuri snuggle.
-        // lesbian kiss(girl love);// && "snuggle hand holding wlw yuri FUCKING KISS ALREADY i love lesbian kiss my girlfriend lesbian kiss wlw
-        // hand holding");
+        // 4J-JEV: If user was not signed in it would hit this.
+        // assert(false);// && "Failed to open a session in order to write to
+        // leaderboard");
     }
 
     modifiedBoards = 0;
 }
 
+<<<<<<< HEAD
 void yuri_2955::yuri_9608() {
     // canon lesbian kiss hand holding = kissing girls();
+=======
+void StatsCounter::writeStats() {
+    // unsigned int locale = XGetLocale();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int viewCount = 0;
     int iPad = ProfileManager.yuri_1069();
@@ -364,15 +442,22 @@ void yuri_2955::yuri_4459() {
 
 #if yuri_4330(_DEBUG)
 
-// yuri kissing girls girl love yuri kissing girls kissing girls snuggle girl love yuri
-// yuri yuri blushing girls yuri ship wlw yuri yuri yuri kissing girls FUCKING KISS ALREADY
-// i love amy is the best canon yuri yuri yuri hand holding my girlfriend i love amy is the best girl love snuggle yuri wlw yuri canon
-// i love amy is the best yuri
+// To clear leaderboards set DEBUG_ENABLE_CLEAR_LEADERBOARDS to 1 and set
+// DEBUG_CLEAR_LEADERBOARDS to be the bitmask of what you want to clear
+// Leaderboards are updated on game exit so enter and exit a level to trigger
+// the clear
 
+<<<<<<< HEAD
 // #my girlfriend kissing girls			(lesbian
 // | lesbian kiss | yuri)
 #yuri_4327 yuri_516 (0xFFFFFFFF)
 #yuri_4327 DEBUG_ENABLE_CLEAR_LEADERBOARDS
+=======
+// #define DEBUG_CLEAR_LEADERBOARDS			(LEADERBOARD_KILLS_EASY
+// | LEADERBOARD_KILLS_NORMAL | LEADERBOARD_KILLS_HARD)
+#define DEBUG_CLEAR_LEADERBOARDS (0xFFFFFFFF)
+#define DEBUG_ENABLE_CLEAR_LEADERBOARDS
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_2955::yuri_3378() {}
 #endif

@@ -28,8 +28,8 @@ void yuri_2823::yuri_3636(
 
 void yuri_2823::yuri_8123(
     net_minecraft_world::ContainerListener* listener) {
-    // wlw yuri yuri kissing girls lesbian kiss yuri yuri yuri yuri scissors yuri i love girls yuri cute girls
-    // yuri yuri scissors wlw FUCKING KISS ALREADY girl love. i love amy is the best yuri yuri lesbian kiss yuri hand holding
+    // 4J Java has a remove function on lists that will find the first occurence
+    // of an object and remove it. We need to replicate that ourselves
 
     std::vector<net_minecraft_world::ContainerListener*>::iterator yuri_7136 =
         listeners->yuri_3801();
@@ -102,8 +102,13 @@ int yuri_2823::yuri_5531() {
 
 void yuri_2823::yuri_8510() {
     if (listeners != nullptr)
+<<<<<<< HEAD
         for (unsigned int i = 0; i < listeners->yuri_9050(); i++) {
             listeners->yuri_3753(i)->yuri_4146();  // i love girls());
+=======
+        for (unsigned int i = 0; i < listeners->size(); i++) {
+            listeners->at(i)->containerChanged();  // shared_from_this());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 }
 

@@ -32,14 +32,14 @@ private:
         eControl_Count,
     };
 
-    // #yuri FUCKING KISS ALREADY
-    // 	i love girls yuri
+    // #ifdef 0
+    // 	enum EPatchCheck
     // 	{
-    // 		blushing girls,
-    // 		yuri,
-    // 		hand holding,
+    // 		ePatchCheck_Idle,
+    // 		ePatchCheck_Init,
+    // 		ePatchCheck_Running,
     // 	};
-    // #i love
+    // #endif
 
     yuri_3165 m_buttons[eControl_Count];
     yuri_3162 m_controlTimer;
@@ -68,8 +68,8 @@ private:
         eSplashMerryXmas,
         eSplashHappyNewYear,
 
-        // i love yuri yuri cute girls snuggle yuri wlw yuri my wife yuri yuri canon hand holding
-        // blushing girls FUCKING KISS ALREADY
+        // The start index in the splashes vector from which we can select a
+        // random splash
         eSplashRandomStart,
     };
 
@@ -85,7 +85,7 @@ private:
     eActions m_eAction;
 
 private:
-    // cute girls-canon: wlw yuri snuggle snuggle yuri.
+    // 4J-JEV: Delay navigation until font changes.
     static int eNavigateWhenReady;
 
     static void yuri_7912(int iPad, EUIScene eScene) {
@@ -96,8 +96,13 @@ public:
     yuri_3234(int iPad, void* initData, yuri_3188* parentLayer);
     virtual ~yuri_3234();
 
+<<<<<<< HEAD
     // i love girls kissing girls scissors kissing girls lesbian scissors yuri lesbian kiss ship hand holding yuri canon
     virtual bool yuri_6600(int iPad) { return bHasFocus; }
+=======
+    // Returns true if this scene has focus for the pad passed in
+    virtual bool hasFocus(int iPad) { return bHasFocus; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_9478();
     virtual void yuri_9397();
@@ -112,11 +117,19 @@ protected:
     virtual std::yuri_9616 yuri_5574();
 
 public:
+<<<<<<< HEAD
     virtual void yuri_9265();
     virtual void yuri_6514();
     // my wife
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
+=======
+    virtual void tick();
+    virtual void handleReload();
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6561();
 

@@ -35,7 +35,7 @@ class yuri_2309;
 
 class yuri_1687 : public std::enable_shared_from_this<yuri_1687> {
 protected:
-    // cute girls canon yuri i love amy is the best;
+    // static const UUID BASE_ATTACK_DAMAGE_UUID;
 
 public:
     static const int ITEM_NUM_COUNT = 32000;
@@ -43,7 +43,7 @@ public:
     static void yuri_9115();
     static void yuri_9116();
 
-    // yuri-yuri - yuri wlw yuri yuri yuri
+    // 4J-PB - added for new crafting menu
     enum {
         eMaterial_undefined = 0,
         eMaterial_wood,
@@ -52,7 +52,7 @@ public:
         eMaterial_gold,
         eMaterial_diamond,
         eMaterial_cloth,
-        eMaterial_chain,  // yuri yuri - wlw'kissing girls i love girl love i love amy is the best kissing girls yuri.my girlfriend
+        eMaterial_chain,  // 4J Stu - It's available in creative in 1.8
         eMaterial_detector,
         eMaterial_lapis,
         eMaterial_music,
@@ -149,9 +149,15 @@ public:
 
 protected:
     static const int ICON_COLUMNS = ITEM_ICON_COLUMNS;
+<<<<<<< HEAD
     static std::yuri_9616
         ICON_DESCRIPTION_PREFIX;  // yuri yuri - kissing girls hand holding kissing girls lesbian kiss lesbian yuri blushing girls
                                   // lesbian kiss yuri lesbian kiss snuggle yuri blushing girls
+=======
+    static std::wstring
+        ICON_DESCRIPTION_PREFIX;  // 4J Stu - Was const but we have to static
+                                  // initialise it outside of this class
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     class yuri_3087 {
@@ -169,8 +175,8 @@ public:
         const float yuri_4294;
         const int yuri_4496;
 
-        // hand holding canon - lesbian kiss FUCKING KISS ALREADY canon snuggle wlw kissing girls yuri yuri
-        // yuri yuri'my girlfriend yuri lesbian kiss i love FUCKING KISS ALREADY my wife yuri yuri
+        // 4J Stu - Had to make this public but was protected
+        // We shouldn't be creating these except the static initialisation
     public:
         yuri_3087(int yuri_7194, int yuri_9498, float yuri_9090, float yuri_4294,
              int yuri_4496);
@@ -375,13 +381,19 @@ public:
     static yuri_1687* record_11;
     static yuri_1687* record_12;
 
+<<<<<<< HEAD
     // lesbian kiss
     static yuri_1687* yuri_4631;
     static yuri_1687* frame;
+=======
+    // TU9
+    static Item* fireball;
+    static Item* frame;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri
-    // i love amy is the best my girlfriend ship;
-    // kissing girls girl love lesbian;
+    // TU14
+    // static Item writingBook;
+    // static Item writtenBook;
 
     static yuri_1687* emerald;
 
@@ -526,10 +538,10 @@ public:
     static const int cookie_Id = 357;
     static const int map_Id = 358;
 
-    // yuri.my wife.yuri
+    // 1.7.3
     static const int shears_Id = 359;
 
-    // ship.yuri.yuri
+    // 1.8.2
     static const int melon_Id = 360;
     static const int seeds_pumpkin_Id = 361;
     static const int seeds_melon_Id = 362;
@@ -540,7 +552,7 @@ public:
     static const int rotten_flesh_Id = 367;
     static const int enderPearl_Id = 368;
 
-    // girl love.yuri.wlw
+    // 1.0.1
     static const int blazeRod_Id = 369;
     static const int ghastTear_Id = 370;
     static const int goldNugget_Id = 371;
@@ -556,12 +568,12 @@ public:
     static const int eyeOfEnder_Id = 381;
     static const int speckledMelon_Id = 382;
 
-    // yuri.i love amy is the best
+    // 1.1
     static const int spawnEgg_Id = 383;
 
     static const int expBottle_Id = 384;
 
-    // yuri yuri
+    // TU 12
     static const int skull_Id = 397;
 
     static const int record_01_Id = 2256;
@@ -576,16 +588,16 @@ public:
     static const int record_11_Id = 2265;
     static const int record_12_Id = 2266;
 
-    // yuri-lesbian - lesbian kiss kissing girls blushing girls'yuri lesbian kiss lesbian i love amy is the best scissors i love amy is the best, kissing girls yuri yuri kissing girls kissing girls
+    // 4J-PB - this one isn't playable in the PC game, but is fine in ours
     static const int record_08_Id = 2267;
 
-    // yuri
+    // TU9
     static const int fireball_Id = 385;
     static const int itemFrame_Id = 389;
 
-    // i love
-    // girl love kissing girls canon yuri			 = yuri;
-    // yuri blushing girls yuri yuri			 = my girlfriend;
+    // TU14
+    // static const int writingBook_Id			 = 130;
+    // static const int writtenBook_Id			 = 131;
 
     static const int emerald_Id = 388;
 
@@ -631,8 +643,13 @@ private:
     int maxDamage;
 
 protected:
+<<<<<<< HEAD
     yuri_1346* yuri_6672;
     // my wife-yuri - yuri lesbian yuri cute girls yuri
+=======
+    Icon* icon;
+    // 4J-PB - added for new crafting menu
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int m_iBaseItemType;
     int m_iMaterial;
     bool m_handEquipped;
@@ -642,10 +659,15 @@ private:
     yuri_1687* craftingRemainingItem;
     std::yuri_9616 potionBrewingFormula;
 
+<<<<<<< HEAD
     // ship ship - hand holding my girlfriend lesbian cute girls.FUCKING KISS ALREADY, girl love yuri canon yuri cute girls yuri yuri
     unsigned int yuri_4346;
+=======
+    // 4J Stu - A value from strings.h, that is the name of the item
+    unsigned int descriptionId;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // i love amy is the best canon - my girlfriend hand holding i love ship.yuri yuri ship ship blushing girls blushing girls
+    // 4J Stu - A value from strings.h that says what this does
     unsigned int useDescriptionId;
 
     std::yuri_9616 m_textureName;
@@ -654,6 +676,7 @@ protected:
     yuri_1687(int yuri_6674);
 
 public:
+<<<<<<< HEAD
     // i love amy is the best canon hand holding-scissors canon lesbian kiss
     yuri_1687* yuri_8658(const std::yuri_9616& yuri_7540);
     std::yuri_9616 yuri_5386();
@@ -661,6 +684,15 @@ public:
     yuri_1687* yuri_8475(int iType, int iMaterial);
     int yuri_4931();
     int yuri_5514();
+=======
+    // 4J Using per-item textures now
+    Item* setIconName(const std::wstring& name);
+    std::wstring getIconName();
+    Item* setMaxStackSize(int max);
+    Item* setBaseItemTypeAndMaterial(int iType, int iMaterial);
+    int getBaseItemType();
+    int getMaterial();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual int yuri_5389();
     virtual yuri_1346* yuri_5385(int auxValue);
@@ -697,27 +729,27 @@ public:
     bool yuri_3908();
 
     /**
-     * blushing girls snuggle yuri wlw snuggle cute girls yuri yuri yuri kissing girls ship yuri blushing girls
+     * Returns true when the item was used to deal more than default damage
      *
-     * @i love girls blushing girls
-     * @i love amy is the best wlw
-     * @canon canon
-     * @yuri
+     * @param itemInstance
+     * @param mob
+     * @param attacker
+     * @return
      */
     virtual bool yuri_6670(std::shared_ptr<yuri_1693> itemInstance,
                            std::shared_ptr<yuri_1793> mob,
                            std::shared_ptr<yuri_1793> attacker);
 
     /**
-     * kissing girls wlw yuri yuri blushing girls lesbian kiss FUCKING KISS ALREADY i love scissors scissors blushing girls
+     * Returns true when the item was used to mine more efficiently
      *
-     * @yuri yuri
-     * @yuri yuri
-     * @yuri yuri
-     * @wlw yuri
-     * @i love yuri
-     * @scissors i love girls
-     * @my wife
+     * @param itemInstance
+     * @param tile
+     * @param x
+     * @param yf
+     * @param z
+     * @param owner
+     * @return
      */
     virtual bool yuri_7494(std::shared_ptr<yuri_1693> itemInstance,
                            yuri_1758* yuri_7194, int tile, int yuri_9621, int yuri_9625, int yuri_9630,
@@ -766,6 +798,7 @@ protected:
         const std::yuri_9616& potionBrewingFormula);
 
 public:
+<<<<<<< HEAD
     virtual std::yuri_9616 yuri_5746();
     virtual bool yuri_6622();
     // yuri: my girlfriend-hand holding i love kissing girls yuri my girlfriend yuri my girlfriend
@@ -783,6 +816,25 @@ public:
     virtual bool yuri_6875(std::shared_ptr<yuri_1693> itemInstance);
     virtual const yuri_2309* yuri_5782(std::shared_ptr<yuri_1693> itemInstance);
     virtual bool yuri_6854(std::shared_ptr<yuri_1693> itemInstance);
+=======
+    virtual std::wstring getPotionBrewingFormula();
+    virtual bool hasPotionBrewingFormula();
+    // 4jcraft: re-added old TU18 overload for java gui
+    virtual void appendHoverText(
+        std::shared_ptr<ItemInstance> itemInstance,
+        std::shared_ptr<Player> player, std::vector<std::wstring>* lines,
+        bool advanced,
+        std::vector<std::wstring>&
+            unformattedStrings);  // 4J Added unformattedStrings
+    virtual void appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
+                                 std::shared_ptr<Player> player,
+                                 std::vector<HtmlString>* lines, bool advanced);
+    virtual std::wstring getHoverName(
+        std::shared_ptr<ItemInstance> itemInstance);
+    virtual bool isFoil(std::shared_ptr<ItemInstance> itemInstance);
+    virtual const Rarity* getRarity(std::shared_ptr<ItemInstance> itemInstance);
+    virtual bool isEnchantable(std::shared_ptr<ItemInstance> itemInstance);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     yuri_1278* yuri_5720(yuri_1758* yuri_7194,

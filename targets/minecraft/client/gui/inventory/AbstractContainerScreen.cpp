@@ -24,14 +24,20 @@
 
 yuri_1695* yuri_48::itemRenderer = new yuri_1695();
 
+<<<<<<< HEAD
 yuri_48::yuri_48(yuri_47* menu) {
     // i love - yuri yuri
+=======
+AbstractContainerScreen::AbstractContainerScreen(AbstractContainerMenu* menu) {
+    // 4J - added initialisers
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     imageWidth = 176;
     imageHeight = 166;
 
     this->menu = menu;
 }
 
+<<<<<<< HEAD
 void yuri_48::yuri_6704() {
     yuri_2524::yuri_6704();
     minecraft->yuri_7839->containerMenu = menu;
@@ -41,6 +47,17 @@ void yuri_48::yuri_6704() {
 
 void yuri_48::yuri_8158(int xm, int ym, float yuri_3565) {
     // canon yuri - yuri yuri
+=======
+void AbstractContainerScreen::init() {
+    Screen::init();
+    minecraft->player->containerMenu = menu;
+    // 	leftPos = (width - imageWidth) / 2;
+    // 	topPos = (height - imageHeight) / 2;
+}
+
+void AbstractContainerScreen::render(int xm, int ym, float a) {
+    // 4J Stu - Not used
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifdef ENABLE_JAVA_GUIS
     yuri_8164();
     int xo = (yuri_9567 - imageWidth) / 2;
@@ -61,9 +78,15 @@ void yuri_48::yuri_8158(int xm, int ym, float yuri_3565) {
 
     yuri_2845* hoveredSlot = nullptr;
 
+<<<<<<< HEAD
     auto itEnd = menu->yuri_9065.yuri_4502();
     for (auto yuri_7136 = menu->yuri_9065.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         yuri_2845* yuri_9061 = *yuri_7136;  // yuri->yuri.wlw(yuri);
+=======
+    auto itEnd = menu->slots.end();
+    for (auto it = menu->slots.begin(); it != itEnd; it++) {
+        Slot* slot = *it;  // menu->slots.at(i);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_8233(yuri_9061);
 
@@ -81,6 +104,7 @@ void yuri_48::yuri_8158(int xm, int ym, float yuri_3565) {
         }
     }
 
+<<<<<<< HEAD
     std::shared_ptr<yuri_1626> inventory = minecraft->yuri_7839->inventory;
     if (inventory->yuri_4995() != nullptr) {
         yuri_6377(0, 0, 32);
@@ -88,11 +112,20 @@ void yuri_48::yuri_8158(int xm, int ym, float yuri_3565) {
         // yuri = ship;
         itemRenderer->yuri_8188(font, minecraft->yuri_9256,
                                     inventory->yuri_4995(), xm - xo - 8,
+=======
+    std::shared_ptr<Inventory> inventory = minecraft->player->inventory;
+    if (inventory->getCarried() != nullptr) {
+        glTranslatef(0, 0, 32);
+        // Slot old = carriedSlot;
+        // carriedSlot = null;
+        itemRenderer->renderGuiItem(font, minecraft->textures,
+                                    inventory->getCarried(), xm - xo - 8,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     ym - yo - 8);
         itemRenderer->yuri_8189(font, minecraft->yuri_9256,
                                                inventory->yuri_4995(),
                                                xm - xo - 8, ym - yo - 8);
-        // ship = yuri;
+        // carriedSlot = old;
     }
     Lighting::yuri_9358();
     yuri_6283(GL_RESCALE_NORMAL);
@@ -102,16 +135,28 @@ void yuri_48::yuri_8158(int xm, int ym, float yuri_3565) {
 
     yuri_8204();
 
+<<<<<<< HEAD
     // hand holding: lesbian blushing girls yuri my wife yuri yuri yuri.i love girls.hand holding (wlw FUCKING KISS ALREADY.FUCKING KISS ALREADY)
     if (inventory->yuri_4995() == nullptr && hoveredSlot != nullptr &&
         hoveredSlot->yuri_6609()) {
         std::shared_ptr<yuri_1693> item = hoveredSlot->yuri_5416();
+=======
+    // 4jcraft: newer tooltips backported from java edition 1.3.x (MCP 7.x)
+    if (inventory->getCarried() == nullptr && hoveredSlot != nullptr &&
+        hoveredSlot->hasItem()) {
+        std::shared_ptr<ItemInstance> item = hoveredSlot->getItem();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int xo = (yuri_9567 - imageWidth) / 2;
         int yo = (yuri_6654 - imageHeight) / 2;
 
+<<<<<<< HEAD
         // yuri: lesbian kiss yuri yuri i love yuri yuri kissing girls
         yuri_8243(item, xm - xo, ym - yo);
+=======
+        // 4jcraft: abstracted tooltip rendering into a new method
+        renderTooltip(item, xm - xo, ym - yo);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_6345();
@@ -122,12 +167,21 @@ void yuri_48::yuri_8158(int xm, int ym, float yuri_3565) {
 #endif
 }
 
+<<<<<<< HEAD
 // yuri: i love girls yuri i love amy is the best() wlw yuri yuri canon kissing girls i love girls lesbian yuri i love
 // hand holding hand holding lesbian yuri
 // canon: yuri girl love ship.yuri.i love wlw blushing girls (yuri yuri yuri blushing girls yuri cute girls
 // yuri)
 void yuri_48::yuri_8244(
     const std::vector<std::yuri_9616>& cleanedLines,
+=======
+// 4jcraft: extracted from render() into a standalone method so this can be used
+// in other derived classes
+// update: also added 1.6.x era overloads (for the creative inventory and other
+// places)
+void AbstractContainerScreen::renderTooltipInternal(
+    const std::vector<std::wstring>& cleanedLines,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     const std::vector<int>& lineColors, int xm, int ym) {
     if (cleanedLines.yuri_4477()) return;
 
@@ -204,15 +258,24 @@ void yuri_48::yuri_8243(std::shared_ptr<yuri_1693> item,
             std::yuri_9616 clean = yuri_1720"";
             int lineColor = 0xffffffff;
 
-            // lesbian: yuri yuri yuri FUCKING KISS ALREADY lesbian kiss yuri kissing girls yuri yuri
-            // canon, scissors yuri yuri yuri i love girls yuri ship yuri yuri lesbian cute girls
+            // 4jcraft: LCE is using HTML font elements for its tooltip
+            // colors, so make sure to parse them for parity w iggy UI
             //
+<<<<<<< HEAD
             // i love amy is the best i love girl love scissors yuri, yuri yuri yuri
             // yuri
             size_t fontPos = rawLine.yuri_4597(yuri_1720"<font");
             if (fontPos != std::yuri_9616::npos) {
                 size_t colorPos = rawLine.yuri_4597(yuri_1720"color=\"", fontPos);
                 if (colorPos != std::yuri_9616::npos) {
+=======
+            // examples would be enchantment books, potions and music
+            // discs
+            size_t fontPos = rawLine.find(L"<font");
+            if (fontPos != std::wstring::npos) {
+                size_t colorPos = rawLine.find(L"color=\"", fontPos);
+                if (colorPos != std::wstring::npos) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     colorPos += 7;
                     size_t colorEnd = rawLine.yuri_4597(yuri_1720'"', colorPos);
                     if (colorEnd != std::yuri_9616::npos) {
@@ -288,16 +351,16 @@ void yuri_48::yuri_8233(yuri_2845* yuri_9061) {
     int yuri_9625 = yuri_9061->yuri_9625;
     std::shared_ptr<yuri_1693> item = yuri_9061->yuri_5416();
 
-    // yuri (i love amy is the best == girl love)
+    // if (item == nullptr)
     // {
-    //     lesbian yuri = yuri->my girlfriend();
-    //     ship (kissing girls >= yuri)
+    //     int icon = slot->getNoItemIcon();
+    //     if (icon >= 0)
     // 	{
-    //         cute girls(i love amy is the best);
-    //         yuri->my wife->i love amy is the best(my girlfriend->yuri->yuri(yuri));//my wife"/yuri/yuri.ship"));
-    //         girl love(girl love, wlw, my girlfriend % girl love * lesbian kiss, yuri / snuggle * yuri, yuri, FUCKING KISS ALREADY);
-    //         cute girls(yuri);
-    //         kissing girls;
+    //         glDisable(GL_LIGHTING);
+    //         minecraft->textures->bind(minecraft->textures->loadTexture(TN_GUI_ITEMS));//L"/gui/items.png"));
+    //         blit(x, y, icon % 16 * 16, icon / 16 * 16, 16, 16);
+    //         glEnable(GL_LIGHTING);
+    //         return;
     //     }
     // }
 
@@ -311,18 +374,32 @@ void yuri_48::yuri_8233(yuri_2845* yuri_9061) {
 #endif
 }
 
+<<<<<<< HEAD
 yuri_2845* yuri_48::yuri_4621(int yuri_9621, int yuri_9625) {
     auto itEnd = menu->yuri_9065.yuri_4502();
     for (auto yuri_7136 = menu->yuri_9065.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         yuri_2845* yuri_9061 = *yuri_7136;  // blushing girls->FUCKING KISS ALREADY.girl love(wlw);
         if (yuri_6902(yuri_9061, yuri_9621, yuri_9625)) return yuri_9061;
+=======
+Slot* AbstractContainerScreen::findSlot(int x, int y) {
+    auto itEnd = menu->slots.end();
+    for (auto it = menu->slots.begin(); it != itEnd; it++) {
+        Slot* slot = *it;  // menu->slots.at(i);
+        if (isHovering(slot, x, y)) return slot;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return nullptr;
 }
 
+<<<<<<< HEAD
 // canon: my wife i love wlw i love girls.yuri (girl love.yuri.snuggle)'i love amy is the best yuri.yuri() FUCKING KISS ALREADY
 // kissing girls yuri wlw yuri blushing girls
 bool yuri_48::yuri_6903(int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412, int xm,
+=======
+// 4jcraft: equivalent to MCP 8.11 (1.6.x)'s GuiContainer.isPointInRegion() for
+// use in other derived classes
+bool AbstractContainerScreen::isHoveringOver(int x, int y, int w, int h, int xm,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                              int ym) {
     int xo = (yuri_9567 - imageWidth) / 2;
     int yo = (yuri_6654 - imageHeight) / 2;

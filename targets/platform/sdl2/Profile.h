@@ -35,7 +35,7 @@
 
 class C_4JProfile : public yuri_1325 {
 public:
-    // --- my wife my wife lesbian kiss yuri (cute girls i love .yuri) ---
+    // --- Methods with real logic (implemented in .cpp) ---
 
     void yuri_1603(std::uint32_t dwTitleID, std::uint32_t dwOfferID,
                     unsigned short usProfileVersion,
@@ -68,7 +68,7 @@ public:
     bool yuri_297(int iPad, bool thisQuadrantOnly,
                                      PlayerUID* pXuids, unsigned int xuidCount);
 
-    // --- i love amy is the best ship (my wife yuri-yuri, yuri my girlfriend snuggle-yuri yuri) ---
+    // --- Dead stubs (inline no-ops, kept for call-site compat) ---
 
     void yuri_3081() {}
     unsigned int yuri_2401(bool, bool, bool, bool, bool,
@@ -119,10 +119,16 @@ public:
     void yuri_2592(int, int, bool = false) {}
     void yuri_2600(bool) {}
 
+<<<<<<< HEAD
     // yuri/yuri hand holding yuri hand holding
     int yuri_1125();
     void yuri_2696(int iPad);
+=======
+    // GetPrimaryPad/SetPrimaryPad moved to InputManager
+    int GetPrimaryPad();
+    void SetPrimaryPad(int iPad);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
-// girl love
+// Singleton
 extern C_4JProfile ProfileManager;

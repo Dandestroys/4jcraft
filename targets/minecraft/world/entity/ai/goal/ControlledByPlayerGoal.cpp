@@ -44,9 +44,15 @@ yuri_451::yuri_451(yuri_1950* mob, float maxSpeed,
 void yuri_451::yuri_9098() {
     yuri_9090 = 0;
 
+<<<<<<< HEAD
     // kissing girls my wife - yuri my girlfriend lesbian FUCKING KISS ALREADY yuri yuri yuri girl love canon scissors i love amy is the best blushing girls
     // yuri scissors FUCKING KISS ALREADY yuri cute girls blushing girls blushing girls yuri hand holding girl love scissors ship yuri
     if (mob->yuri_5950() < walkSpeed) mob->yuri_8879(walkSpeed);
+=======
+    // 4J Stu - Need to initialise this otherwise the pig will never move if you
+    // jump on before another goal has made it move and set the speed
+    if (mob->getSpeed() < walkSpeed) mob->setSpeed(walkSpeed);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_451::yuri_9133() {

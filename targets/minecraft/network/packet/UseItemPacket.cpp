@@ -27,15 +27,25 @@ yuri_3309::yuri_3309(int yuri_9621, int yuri_9625, int yuri_9630, int face,
     this->yuri_9625 = yuri_9625;
     this->yuri_9630 = yuri_9630;
     this->face = face;
+<<<<<<< HEAD
     // kissing girls - cute girls canon i love girls yuri canon hand holding kissing girls yuri yuri yuri yuri canon yuri ship
     // yuri cute girls yuri
     this->item = item ? item->yuri_4179() : std::shared_ptr<yuri_1693>();
+=======
+    // 4J - take copy of item as we want our packets to have full ownership of
+    // any referenced data
+    this->item = item ? item->copy() : std::shared_ptr<ItemInstance>();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->clickX = clickX;
     this->clickY = clickY;
     this->clickZ = clickZ;
 }
 
+<<<<<<< HEAD
 void yuri_3309::yuri_7987(yuri_549* yuri_4365)  // wlw yuri
+=======
+void UseItemPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_9621 = yuri_4365->yuri_8014();
     yuri_9625 = yuri_4365->yuri_8032();
@@ -47,7 +57,11 @@ void yuri_3309::yuri_7987(yuri_549* yuri_4365)  // wlw yuri
     clickZ = yuri_4365->yuri_8032() / CLICK_ACCURACY;
 }
 
+<<<<<<< HEAD
 void yuri_3309::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
+=======
+void UseItemPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_9621);
     yuri_4431->yuri_9578(yuri_9625);

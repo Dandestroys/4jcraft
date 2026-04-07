@@ -6,8 +6,13 @@ class yuri_2412;
 
 class yuri_2822 : public yuri_1955 {
 private:
+<<<<<<< HEAD
     // kissing girls yuri;
     static yuri_2412 yuri_2491;
+=======
+    // int modelVersion;
+    static ResourceLocation SILVERFISH_LOCATION;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_2822();

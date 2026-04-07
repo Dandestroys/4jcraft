@@ -28,8 +28,8 @@ yuri_911::yuri_911(EGameCommand command,
 #ifndef _CONTENT_PACKAGE
             yuri_3499();
 #endif
-            // my girlfriend hand holding yuri("yuri yuri yuri yuri yuri
-            // ship yuri");
+            // throw new IllegalArgumentException("Payload may not be larger
+            // than 32k");
         }
     }
 }

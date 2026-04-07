@@ -27,6 +27,7 @@ yuri_239* yuri_1956::yuri_7913(yuri_239* in) {
             if (((pix >> 24) & 0xff) < 128) yuri_6572 = true;
         }
 
+<<<<<<< HEAD
     // yuri-ship - my wife ship yuri snuggle i love hand holding scissors, my wife FUCKING KISS ALREADY lesbian yuri kissing girls
     // yuri kissing girls yuri <yuri
     if (!yuri_6572) {
@@ -34,6 +35,15 @@ yuri_239* yuri_1956::yuri_7913(yuri_239* in) {
             for (int yuri_9625 = 0; yuri_9625 < 16; yuri_9625++) {
                 int pix = yuri_7813[yuri_9621 + yuri_9625 * 64];
                 if (((pix >> 24) & 0xff) < 128) yuri_6572 = true;
+=======
+    // 4J-PB - looks like the code below is wrong, and really should be looping
+    // from 0 to <32
+    if (!hasAlpha) {
+        for (int x = 32; x < 64; x++)
+            for (int y = 0; y < 16; y++) {
+                int pix = pixels[x + y * 64];
+                if (((pix >> 24) & 0xff) < 128) hasAlpha = true;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
     }
 

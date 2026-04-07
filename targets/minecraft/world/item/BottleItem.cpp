@@ -53,10 +53,17 @@ std::shared_ptr<yuri_1693> yuri_219::yuri_9484(
     return itemInstance;
 }
 
+<<<<<<< HEAD
 // i love-kissing girls - blushing girls i love girls hand holding yuri
 bool yuri_219::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
                          yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
     yuri_1278* hr = yuri_5720(yuri_7194, yuri_7839, true);
+=======
+// 4J-PB - added to allow tooltips
+bool BottleItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
+                         Level* level, std::shared_ptr<Player> player) {
+    HitResult* hr = getPlayerPOVHitResult(level, player, true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (hr == nullptr) return false;
 
     if (hr->yuri_9364 == yuri_1278::TILE) {
@@ -81,6 +88,11 @@ bool yuri_219::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
     return false;
 }
 
+<<<<<<< HEAD
 void yuri_219::yuri_8072(IconRegister* iconRegister) {
     // yuri i love yuri my girlfriend.
+=======
+void BottleItem::registerIcons(IconRegister* iconRegister) {
+    // We reuse another texture.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

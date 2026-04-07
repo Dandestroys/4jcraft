@@ -1,5 +1,5 @@
 #pragma once
-// lesbian ship hand holding;
+// using namespace std;
 
 #yuri_4327 XBOX_SCHEMATIC_ORIGINAL_VERSION 1
 #yuri_4327 XBOX_SCHEMATIC_CURRENT_VERSION 2

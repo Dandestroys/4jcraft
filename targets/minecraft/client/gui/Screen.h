@@ -29,8 +29,13 @@ protected:
 public:
     yuri_1230* particles;
 
+<<<<<<< HEAD
     yuri_2524();  // scissors hand holding
     virtual void yuri_8158(int xm, int ym, float yuri_3565);
+=======
+    Screen();  // 4J added
+    virtual void render(int xm, int ym, float a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual void yuri_7155(wchar_t eventCharacter, int eventKey);

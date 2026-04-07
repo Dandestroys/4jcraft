@@ -33,9 +33,15 @@ bool yuri_2337::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
                           std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
                           int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                           float clickZ, bool bTestUseOnOnly) {
+<<<<<<< HEAD
     // girl love-yuri - snuggle blushing girls i love girls i love girls yuri girl love yuri ship lesbian yuri cute girls
     if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_3088::jukebox_Id &&
         yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) == 0) {
+=======
+    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    if (level->getTile(x, y, z) == Tile::jukebox_Id &&
+        level->getData(x, y, z) == 0) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (!bTestUseOnOnly) {
             if (yuri_7194->yuri_6802) return true;
 

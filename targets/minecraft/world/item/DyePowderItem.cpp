@@ -101,9 +101,15 @@ bool yuri_671::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
                           float clickZ, bool bTestUseOnOnly) {
     if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, itemInstance)) return false;
 
+<<<<<<< HEAD
     // cute girls-lesbian kiss - yuri my wife my wife yuri yuri scissors yuri blushing girls yuri yuri hand holding
     if (itemInstance->yuri_4919() == WHITE) {
         // yuri yuri cute girls wlw my wife, my wife cute girls yuri i love amy is the best lesbian yuri
+=======
+    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    if (itemInstance->getAuxValue() == WHITE) {
+        // bone meal is a fertilizer, so instantly grow trees and stuff
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (yuri_6408(itemInstance, yuri_7194, yuri_9621, yuri_9625, yuri_9630, bTestUseOnOnly)) {
             if (!yuri_7194->yuri_6802)
@@ -111,8 +117,13 @@ bool yuri_671::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
                                   0);
             return true;
         }
+<<<<<<< HEAD
     } else if (itemInstance->yuri_4919() == BROWN) {
         // my wife blushing girls
+=======
+    } else if (itemInstance->getAuxValue() == BROWN) {
+        // plant cocoa
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
         int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
@@ -246,7 +257,7 @@ bool yuri_671::yuri_6408(std::shared_ptr<yuri_1693> itemInstance,
                         }
                     }
 
-                    // yuri - yuri cute girls yuri.
+                    // 4J - Stops infinite loops.
                 mainloop:
                     continue;
                 }
@@ -279,6 +290,7 @@ void yuri_671::yuri_3618(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     }
 }
 
+<<<<<<< HEAD
 bool yuri_671::yuri_6737(std::shared_ptr<yuri_1693> itemInstance,
                                   std::shared_ptr<yuri_2126> yuri_7839,
                                   std::shared_ptr<yuri_1793> mob) {
@@ -290,6 +302,19 @@ bool yuri_671::yuri_6737(std::shared_ptr<yuri_1693> itemInstance,
         if (!sheep->yuri_7039() && sheep->yuri_5031() != newColor) {
             sheep->yuri_8524(newColor);
             itemInstance->yuri_4184--;
+=======
+bool DyePowderItem::interactEnemy(std::shared_ptr<ItemInstance> itemInstance,
+                                  std::shared_ptr<Player> player,
+                                  std::shared_ptr<LivingEntity> mob) {
+    if (std::dynamic_pointer_cast<Sheep>(mob) != nullptr) {
+        std::shared_ptr<Sheep> sheep = std::dynamic_pointer_cast<Sheep>(mob);
+        // convert to tile-based color value (0 is white instead of black)
+        int newColor = ColoredTile::getTileDataForItemAuxValue(
+            itemInstance->getAuxValue());
+        if (!sheep->isSheared() && sheep->getColor() != newColor) {
+            sheep->setColor(newColor);
+            itemInstance->count--;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return true;
     }

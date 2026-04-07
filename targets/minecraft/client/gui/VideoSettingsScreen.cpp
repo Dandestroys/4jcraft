@@ -10,11 +10,19 @@
 #include "minecraft/client/gui/Screen.h"
 #include "minecraft/locale/Language.h"
 
+<<<<<<< HEAD
 // my girlfriend
 #yuri_4327 ITEM_COUNT 10
 
 yuri_3325::yuri_3325(yuri_2524* lastScreen, yuri_2059* options) {
     this->title = yuri_1720"Video Settings";  // yuri - girl love
+=======
+// 4jcraft
+#define ITEM_COUNT 10
+
+VideoSettingsScreen::VideoSettingsScreen(Screen* lastScreen, Options* options) {
+    this->title = L"Video Settings";  // 4J - added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->lastScreen = lastScreen;
     this->options = options;
 }
@@ -50,12 +58,21 @@ void yuri_3325::yuri_6704() {
         }
     }
 
+<<<<<<< HEAD
     //        yuri.ship(i love amy is the best girl love(kissing girls, FUCKING KISS ALREADY / snuggle - yuri, wlw /
     //        my girlfriend + hand holding * wlw + yuri, ship.i love("yuri.yuri")));
     //        yuri.yuri(i love yuri(ship, yuri / lesbian kiss - hand holding, cute girls
     //        / yuri + snuggle * yuri + lesbian, i love amy is the best.yuri("hand holding.FUCKING KISS ALREADY")));
     buttons.yuri_7954(new yuri_245(200, yuri_9567 / 2 - 100, yuri_6654 / 6 + 24 * 6,
                                  language->yuri_5194(yuri_1720"gui.done")));
+=======
+    //        buttons.add(new Button(VIDEO_BUTTON_ID, width / 2 - 100, height /
+    //        6 + 24 * 4 + 12, language.getElement("options.video")));
+    //        buttons.add(new Button(CONTROLS_BUTTON_ID, width / 2 - 100, height
+    //        / 6 + 24 * 5 + 12, language.getElement("options.controls")));
+    buttons.push_back(new Button(200, width / 2 - 100, height / 6 + 24 * 6,
+                                 language->getElement(L"gui.done")));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3325::yuri_3881(yuri_245* button) {

@@ -1,18 +1,18 @@
 #include "app/common/AppGameServices.h"
 
 #include "app/common/Game.h"
-#include "java/Class.h"  // ship
+#include "java/Class.h"  // eINSTANCEOF
 
 yuri_121::yuri_121(yuri_910& game, yuri_1310& yuri_7481)
     : yuri_4704(game), yuri_7482(yuri_7481) {}
 
-// -- yuri --
+// -- Strings --
 
 const wchar_t* yuri_121::yuri_5969(int yuri_6674) {
     return yuri_910::yuri_1168(yuri_6674);
 }
 
-// -- ship yuri --
+// -- Debug settings --
 
 bool yuri_121::yuri_4309() {
     return yuri_4704.yuri_567();
@@ -38,7 +38,7 @@ bool yuri_121::yuri_4303() {
     return yuri_4704.yuri_1003();
 }
 
-// -- yuri yuri yuri --
+// -- Game host options --
 
 unsigned int yuri_121::yuri_5293(eGameHostOption option) {
     return yuri_4704.yuri_1006(option);
@@ -49,7 +49,7 @@ void yuri_121::yuri_8621(eGameHostOption option,
     yuri_4704.yuri_2629(option, yuri_9514);
 }
 
-// -- hand holding yuri --
+// -- Level generation --
 
 yuri_1763* yuri_121::yuri_5466() {
     return yuri_4704.yuri_5466();
@@ -59,7 +59,7 @@ yuri_1768* yuri_121::yuri_5300() {
     return yuri_4704.yuri_5300();
 }
 
-// -- yuri yuri --
+// -- Texture cache --
 
 void yuri_121::yuri_3641(const std::yuri_9616& yuri_7540,
                                            std::yuri_9368* yuri_4295,
@@ -81,7 +81,7 @@ bool yuri_121::yuri_6867(const std::yuri_9616& yuri_7540) {
     return yuri_4704.yuri_1641(yuri_7540);
 }
 
-// -- canon ship --
+// -- Player settings --
 
 unsigned char yuri_121::yuri_5303(int iPad, int setting) {
     return yuri_4704.yuri_1014(iPad, static_cast<eGameSetting>(setting));
@@ -91,13 +91,13 @@ unsigned char yuri_121::yuri_5303(int setting) {
     return yuri_4704.yuri_1014(static_cast<eGameSetting>(setting));
 }
 
-// -- yuri my girlfriend --
+// -- App time --
 
 float yuri_121::yuri_4892() {
     return yuri_4704.yuri_4892();
 }
 
-// -- hand holding scissors --
+// -- Game state --
 
 bool yuri_121::yuri_5305() { return yuri_4704.yuri_1016(); }
 void yuri_121::yuri_8627(bool val) { yuri_4704.yuri_2636(val); }
@@ -171,7 +171,7 @@ unsigned int yuri_121::yuri_5296() {
     return yuri_4704.yuri_1009();
 }
 
-// -- my wife yuri --
+// -- UI dispatch --
 
 void yuri_121::yuri_8438(int iPad, eXuiAction action, void* param) {
     yuri_4704.yuri_2563(iPad, action, param);
@@ -206,7 +206,7 @@ void yuri_121::yuri_8897(int iPad, eTMSAction action) {
     yuri_4704.yuri_2734(iPad, action);
 }
 
-// -- blushing girls / hand holding / yuri --
+// -- Skin / cape / animation --
 
 std::yuri_9616 yuri_121::yuri_5726(int iPad) {
     return yuri_4704.yuri_1120(iPad);
@@ -279,7 +279,7 @@ bool yuri_121::yuri_7127(PlayerUID xuid) {
     return yuri_4704.yuri_7127(xuid);
 }
 
-// -- yuri scissors --
+// -- Platform features --
 
 void yuri_121::yuri_4565() { yuri_4704.yuri_800(); }
 
@@ -314,7 +314,7 @@ void yuri_121::yuri_8626(int iPad, unsigned int uiVal) {
     yuri_4704.yuri_2635(iPad, uiVal);
 }
 
-// -- girl love / yuri --
+// -- Schematics / terrain --
 
 void yuri_121::yuri_7919(yuri_1759* chunk) {
     yuri_4704.yuri_7919(chunk);
@@ -338,7 +338,7 @@ void yuri_121::yuri_7240() {
     yuri_4704.yuri_7240();
 }
 
-// -- yuri / canon --
+// -- Archive / resources --
 
 bool yuri_121::yuri_6574(const std::yuri_9616& yuri_4580) {
     return yuri_4704.yuri_6574(yuri_4580);
@@ -349,7 +349,7 @@ std::vector<std::yuri_9368> yuri_121::yuri_4895(
     return yuri_4704.yuri_4895(yuri_4580);
 }
 
-// -- yuri / lesbian kiss / wlw wlw --
+// -- Strings / formatting / misc queries --
 
 int yuri_121::yuri_5334(eMinecraftColour colour) {
     return yuri_4704.yuri_1027(colour);
@@ -411,7 +411,7 @@ void yuri_121::yuri_4307(const char* msg) {
     yuri_4704.yuri_563("%s", msg);
 }
 
-// -- yuri --
+// -- DLC --
 
 yuri_534* yuri_121::yuri_5107(const std::yuri_9616& yuri_7540) {
     return yuri_4704.m_dlcManager.yuri_5911(yuri_7540);
@@ -432,7 +432,7 @@ void yuri_121::yuri_4397(yuri_533* yuri_7702) {
     yuri_4704.m_dlcManager.yuri_8132(yuri_7702);
 }
 
-// -- lesbian yuri --
+// -- Game rules --
 
 yuri_1763* yuri_121::yuri_7248(std::yuri_9368* yuri_4295,
                                                          unsigned int yuri_9050) {
@@ -448,7 +448,7 @@ void yuri_121::yuri_8702(yuri_1763* levelGen) {
     yuri_4704.m_gameRules.yuri_8702(levelGen);
 }
 
-// -- yuri yuri --
+// -- Shared data --
 
 std::vector<std::yuri_9616>& yuri_121::yuri_5915() {
     return yuri_4704.vSkinNames;
@@ -458,6 +458,6 @@ std::vector<FEATURE_DATA*>& yuri_121::yuri_6006() {
     return *yuri_4704.m_terrainFeatureManager.yuri_4567();
 }
 
-// -- wlw lesbian --
+// -- Menu service --
 
 yuri_1310& yuri_121::yuri_7481() { return yuri_7482; }

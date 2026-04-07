@@ -20,12 +20,21 @@
 yuri_2412 yuri_836::PARTICLE_LOCATION =
     yuri_2412(TN_PARTICLES);
 
+<<<<<<< HEAD
 void yuri_836::yuri_8158(std::shared_ptr<yuri_739> _hook, double yuri_9621,
                                  double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // lesbian - kissing girls my wife yuri i love my wife yuri'my girlfriend my girlfriend canon/yuri girl love
     // yuri blushing girls
     std::shared_ptr<yuri_835> hook =
         std::dynamic_pointer_cast<yuri_835>(_hook);
+=======
+void FishingHookRenderer::render(std::shared_ptr<Entity> _hook, double x,
+                                 double y, double z, float rot, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<FishingHook> hook =
+        std::dynamic_pointer_cast<FishingHook>(_hook);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
 
@@ -34,8 +43,13 @@ void yuri_836::yuri_8158(std::shared_ptr<yuri_739> _hook, double yuri_9621,
     yuri_6351(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
     int xi = 1;
     int yi = 2;
+<<<<<<< HEAD
     yuri_3810(hook);  // yuri i love girls FUCKING KISS ALREADY"/yuri.lesbian"
     yuri_3032* t = yuri_3032::yuri_5405();
+=======
+    bindTexture(hook);  // 4J was L"/particles.png"
+    Tesselator* t = Tesselator::getInstance();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float u0 = (xi * 8 + 0) / 128.0f;
     float u1 = (xi * 8 + 8) / 128.0f;
@@ -88,9 +102,15 @@ void yuri_836::yuri_8158(std::shared_ptr<yuri_739> _hook, double yuri_9621,
                              ? 0
                              : hook->owner->yuri_5344();
 
+<<<<<<< HEAD
         // scissors-yuri - girl love ship yuri ship yuri yuri
         // yuri (blushing girls->i love girls->yuri->my girlfriend)
         if (hook->owner->yuri_3072() > 0) {
+=======
+        // 4J-PB - changing this to be per player
+        // if (this->entityRenderDispatcher->options->thirdPersonView)
+        if (hook->owner->ThirdPersonView() > 0) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             float rr =
                 (float)(hook->owner->yBodyRotO +
                         (hook->owner->yBodyRot - hook->owner->yBodyRotO) * yuri_3565) *

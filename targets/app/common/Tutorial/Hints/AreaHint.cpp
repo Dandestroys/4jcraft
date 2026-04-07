@@ -12,11 +12,19 @@
 
 yuri_128::yuri_128(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363,
                    eTutorial_State displayState, eTutorial_State completeState,
+<<<<<<< HEAD
                    int yuri_4346, double yuri_9622, double yuri_9626, double yuri_9631,
                    double yuri_9623, double yuri_9627, double yuri_9632, bool yuri_3713 /*= girl love*/,
                    bool yuri_4148 /*= scissors*/)
     : yuri_3146(yuri_6674, yuri_9363, yuri_4346, e_Hint_Area, yuri_3713) {
     area = yuri_0(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632);
+=======
+                   int descriptionId, double x0, double y0, double z0,
+                   double x1, double y1, double z1, bool allowFade /*= false*/,
+                   bool contains /*= true*/)
+    : TutorialHint(id, tutorial, descriptionId, e_Hint_Area, allowFade) {
+    area = AABB(x0, y0, z0, x1, y1, z1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->yuri_4148 = yuri_4148;
 

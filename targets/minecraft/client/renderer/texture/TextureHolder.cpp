@@ -47,10 +47,17 @@ void yuri_3051::yuri_8617(int targetSize) {
     yuri_8382 = (float)targetSize / std::yuri_7491(yuri_9567, yuri_6654);
 }
 
+<<<<<<< HEAD
 //@scissors
 std::yuri_9616 yuri_3051::yuri_9311() {
     return yuri_1720"TextureHolder{width=" + yuri_9312(yuri_9567) + yuri_1720", height=" +
            yuri_9312(yuri_6654) + yuri_1720'}';
+=======
+//@Override
+std::wstring TextureHolder::toString() {
+    return L"TextureHolder{width=" + toWString(width) + L", height=" +
+           toWString(height) + L'}';
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_3051::yuri_4118(const yuri_3051* other) const {

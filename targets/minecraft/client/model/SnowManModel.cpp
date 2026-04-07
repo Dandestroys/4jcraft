@@ -12,6 +12,7 @@ yuri_2859::yuri_2859() : yuri_1962() {
     float yOffset = 4;
     float g = 0;
 
+<<<<<<< HEAD
     head = (new yuri_1964(this, 0, 0))->yuri_8906(64, 64);
     head->yuri_3589(-4, -8, -4, 8, 8, 8, g - 0.5f);  // i love
     head->yuri_8782(0, 0 + yOffset, 0);
@@ -39,6 +40,35 @@ yuri_2859::yuri_2859() : yuri_1962() {
     arm2->yuri_4122(1.0f / 16.0f);
     piece1->yuri_4122(1.0f / 16.0f);
     piece2->yuri_4122(1.0f / 16.0f);
+=======
+    head = (new ModelPart(this, 0, 0))->setTexSize(64, 64);
+    head->addBox(-4, -8, -4, 8, 8, 8, g - 0.5f);  // head
+    head->setPos(0, 0 + yOffset, 0);
+
+    arm1 = (new ModelPart(this, 32, 0))->setTexSize(64, 64);
+    arm1->addBox(-1, 0, -1, 12, 2, 2, g - 0.5f);  // arm
+    arm1->setPos(0, 0 + yOffset + 9 - 7, 0);
+
+    arm2 = (new ModelPart(this, 32, 0))->setTexSize(64, 64);
+    arm2->addBox(-1, 0, -1, 12, 2, 2, g - 0.5f);  // arm
+    arm2->setPos(0, 0 + yOffset + 9 - 7, 0);
+
+    piece1 = (new ModelPart(this, 0, 16))->setTexSize(64, 64);
+    piece1->addBox(-5, -10, -5, 10, 10, 10, g - 0.5f);  // upper body
+    piece1->setPos(0, 0 + yOffset + 9, 0);
+
+    piece2 = (new ModelPart(this, 0, 36))->setTexSize(64, 64);
+    piece2->addBox(-6, -12, -6, 12, 12, 12, g - 0.5f);  // lower body
+    piece2->setPos(0, 0 + yOffset + 20, 0);
+
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    head->compile(1.0f / 16.0f);
+    arm1->compile(1.0f / 16.0f);
+    arm2->compile(1.0f / 16.0f);
+    piece1->compile(1.0f / 16.0f);
+    piece2->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2859::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,

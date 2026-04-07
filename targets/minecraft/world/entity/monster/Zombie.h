@@ -89,8 +89,13 @@ public:
     virtual void yuri_7163(std::shared_ptr<yuri_1793> mob);
     virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
+<<<<<<< HEAD
         int extraData = 0);  // lesbian kiss yuri ship cute girls
     virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
+=======
+        int extraData = 0);  // 4J Added extraData param
+    virtual bool mobInteract(std::shared_ptr<Player> player);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual void yuri_9101(int yuri_9299);

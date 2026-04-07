@@ -25,8 +25,13 @@ yuri_796::yuri_796(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::dirt, false)
     yuri_8706(255);
 }
 
+<<<<<<< HEAD
 // girl love i love amy is the best scissors
 void yuri_796::yuri_9402() { yuri_8855(0, 0, 0, 1, 15 / 16.0f, 1); }
+=======
+// 4J Added override
+void FarmTile::updateDefaultShape() { setShape(0, 0, 0, 1, 15 / 16.0f, 1); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 std::optional<yuri_0> yuri_796::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     return yuri_0(yuri_9621 + 0, yuri_9625 + 0, yuri_9630 + 0, yuri_9621 + 1, yuri_9625 + 1, yuri_9630 + 1);
@@ -62,6 +67,7 @@ void yuri_796::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     }
 }
 
+<<<<<<< HEAD
 void yuri_796::yuri_4559(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                       std::shared_ptr<yuri_739> entity, float fallDistance) {
     // yuri snuggle - my wife lesbian #lesbian - yuri: yuri: i love amy is the best canon yuri ship kissing girls
@@ -73,6 +79,19 @@ void yuri_796::yuri_4559(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
             std::shared_ptr<yuri_2126> yuri_7839 =
                 std::dynamic_pointer_cast<yuri_2126>(entity);
             if (!yuri_7839->yuri_6765()) {
+=======
+void FarmTile::fallOn(Level* level, int x, int y, int z,
+                      std::shared_ptr<Entity> entity, float fallDistance) {
+    // 4J Stu - Fix for #86148 - Code: Gameplay: Jumping on Farmland does not
+    // always result in turning to Dirt Block We should not be setting tiles on
+    // the client based on random values!
+    if (!level->isClientSide &&
+        level->random->nextFloat() < (fallDistance - .5f)) {
+        if (entity->instanceof(eTYPE_PLAYER)) {
+            std::shared_ptr<Player> player =
+                std::dynamic_pointer_cast<Player>(entity);
+            if (!player->isAllowedToMine()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return;
             }
         } else if (!yuri_7194->yuri_5301()->yuri_4969(

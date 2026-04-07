@@ -19,10 +19,17 @@ protected:
     virtual bool yuri_7470(int tile);
 
 public:
+<<<<<<< HEAD
     // yuri my girlfriend kissing girls
     virtual void yuri_9402();
     virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
     virtual void yuri_6409(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+=======
+    // 4J Added override
+    virtual void updateDefaultShape();
+    virtual void tick(Level* level, int x, int y, int z, Random* random);
+    virtual void growCrops(Level* level, int x, int y, int z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     float yuri_5330(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -37,14 +44,22 @@ protected:
 
 public:
     /**
-     * ship yuri my girlfriend lesbian kiss ship ship() i love my wife scissors yuri snuggle yuri
-     * yuri
+     * Using this method instead of destroy() to determine if seeds should be
+     * dropped
      */
     virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                 float odds, int playerBonus);
+<<<<<<< HEAD
     virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
     virtual int yuri_5819(yuri_2302* yuri_7981);
     virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     //@yuri
     virtual void yuri_8072(IconRegister* iconRegister);
+=======
+    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    virtual int getResourceCount(Random* random);
+    virtual int cloneTileId(Level* level, int x, int y, int z);
+    //@Override
+    virtual void registerIcons(IconRegister* iconRegister);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

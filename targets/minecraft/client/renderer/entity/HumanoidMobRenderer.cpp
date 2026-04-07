@@ -192,9 +192,15 @@ void yuri_1304::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
         humanoidModel->holdingRightHand = 0;
 }
 
+<<<<<<< HEAD
 yuri_2412* yuri_1304::yuri_6012(
     std::shared_ptr<yuri_739> mob) {
     // i love amy is the best -- yuri yuri wlw lesbian kiss lesbian kiss blushing girls i love yuri cute girls
+=======
+ResourceLocation* HumanoidMobRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
+    // TODO -- Figure out of we need some data in here
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return nullptr;
 }
 
@@ -215,9 +221,9 @@ void yuri_1304::yuri_3695(std::shared_ptr<yuri_1793> mob,
     std::shared_ptr<yuri_1693> headGear = mob->yuri_4898(3);
 
     if (headGear != nullptr) {
-        // yuri'yuri yuri yuri yuri snuggle ship my wife yuri girl love yuri yuri snuggle
-        // i love-scissors - canon yuri yuri scissors i love amy is the best/yuri/scissors FUCKING KISS ALREADY cute girls
-        // hand holding yuri (lesbian kiss)
+        // don't render the pumpkin of skulls for the skins with that disabled
+        // 4J-PB - need to disable rendering armour/skulls/pumpkins for some
+        // special skins (Daleks)
 
         if ((mob->yuri_4890() &
              (1 << yuri_1305::eAnim_DontRenderArmour)) == 0) {

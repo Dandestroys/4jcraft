@@ -17,10 +17,15 @@ private:
     static const int FAKE_LAG = 0;
     static const int MAX_TICKS_BEFORE_LOGIN =
         20 * 30 *
-        10;  // my wife yuri yuri canon i love girls FUCKING KISS ALREADY my girlfriend my girlfriend yuri yuri wlw yuri my girlfriend
+        10;  // 10 minutes instead of 20 sec for Linux theres just no login yet
 
+<<<<<<< HEAD
     //    ship i love girls snuggle wlw = my girlfriend.canon("yuri");
     static yuri_2302* yuri_7981;
+=======
+    //    public static Logger logger = Logger.getLogger("Minecraft");
+    static Random* random;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_421* connection;

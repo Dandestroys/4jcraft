@@ -16,8 +16,13 @@ bool UIControl_SaveList::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     bool success =
         yuri_3166::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // yuri snuggle yuri
     m_funcSetTextureName = yuri_8069(yuri_1720"SetTextureName");
+=======
+    // SlotList specific initialisers
+    m_funcSetTextureName = registerFastName(L"SetTextureName");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

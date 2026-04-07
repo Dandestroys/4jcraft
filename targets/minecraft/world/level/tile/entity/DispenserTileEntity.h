@@ -56,7 +56,13 @@ public:
     virtual void yuri_9135();
     virtual bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
 
+<<<<<<< HEAD
     // lesbian yuri
     virtual std::shared_ptr<yuri_3091> yuri_4094();
     void yuri_70(std::shared_ptr<yuri_1693> item, unsigned int yuri_9061);
+=======
+    // 4J Added
+    virtual std::shared_ptr<TileEntity> clone();
+    void AddItemBack(std::shared_ptr<ItemInstance> item, unsigned int slot);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

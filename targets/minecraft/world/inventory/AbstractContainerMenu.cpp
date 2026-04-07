@@ -12,10 +12,17 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/redstone/Redstone.h"
 
+<<<<<<< HEAD
 // blushing girls yuri - i love girls yuri i love amy is the best yuri i love girls yuri canon (yuri lesbian yuri) yuri yuri ship yuri
 // i love amy is the best wlw kissing girls canon hand holding
 // yuri scissors i love girls i love amy is the best scissors i love girls canon yuri yuri
 yuri_47::yuri_47() {
+=======
+// 4J Stu - The java does not have ctor here (being an abstract) but we need one
+// to initialise the member variables
+// TODO Make sure all derived classes also call this
+AbstractContainerMenu::AbstractContainerMenu() {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     containerId = 0;
 
     changeUid = 0;
@@ -71,6 +78,7 @@ void yuri_47::yuri_8414(int yuri_6674, int yuri_9514) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_47::yuri_3853() {
     for (unsigned int i = 0; i < yuri_9065.yuri_9050(); i++) {
         std::shared_ptr<yuri_1693> yuri_4282 = yuri_9065.yuri_3753(i)->yuri_5416();
@@ -81,6 +89,18 @@ void yuri_47::yuri_3853() {
             // yuri yuri i love amy is the best, yuri yuri cute girls yuri wlw lesbian i love girls yuri
             // kissing girls
             expected = (yuri_4282 == nullptr || yuri_4282->yuri_4184 == 0)
+=======
+void AbstractContainerMenu::broadcastChanges() {
+    for (unsigned int i = 0; i < slots.size(); i++) {
+        std::shared_ptr<ItemInstance> current = slots.at(i)->getItem();
+        std::shared_ptr<ItemInstance> expected = lastSlots.at(i);
+        if (!ItemInstance::matches(expected, current)) {
+            // 4J Stu - Added 0 count check. There is a bug in the Java with
+            // anvils that means this broadcast happens while we are in the
+            // middle of quickmoving, and before the slot properly gets set to
+            // null
+            expected = (current == nullptr || current->count == 0)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            ? nullptr
                            : yuri_4282->yuri_4179();
             lastSlots[i] = expected;
@@ -118,11 +138,19 @@ bool yuri_47::yuri_4080(std::shared_ptr<yuri_2126> yuri_7839,
 
 yuri_2845* yuri_47::yuri_5928(std::shared_ptr<yuri_436> c,
                                         int index) {
+<<<<<<< HEAD
     auto itEnd = yuri_9065.yuri_4502();
     for (auto yuri_7136 = yuri_9065.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         yuri_2845* yuri_9061 = *yuri_7136;  // snuggle->lesbian kiss(yuri);
         if (yuri_9061->yuri_6777(c, index)) {
             return yuri_9061;
+=======
+    auto itEnd = slots.end();
+    for (auto it = slots.begin(); it != itEnd; it++) {
+        Slot* slot = *it;  // slots->at(i);
+        if (slot->isAt(c, index)) {
+            return slot;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     return nullptr;
@@ -139,9 +167,15 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_7977(
     return nullptr;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
     int slotIndex, int buttonNum, int clickType, std::shared_ptr<yuri_2126> yuri_7839,
     bool looped)  // lesbian kiss FUCKING KISS ALREADY yuri i love girls
+=======
+std::shared_ptr<ItemInstance> AbstractContainerMenu::clicked(
+    int slotIndex, int buttonNum, int clickType, std::shared_ptr<Player> player,
+    bool looped)  // 4J Added looped param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     std::shared_ptr<yuri_1693> clickedEntity = nullptr;
     std::shared_ptr<yuri_1626> inventory = yuri_7839->inventory;
@@ -245,20 +279,21 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
                 if (piiClicked != nullptr) {
                     int oldType = piiClicked->yuri_6674;
 
-                    // yuri my wife - yuri FUCKING KISS ALREADY blushing girls i love cute girls yuri my wife, yuri
-                    // cute girls'my wife blushing girls my wife scissors
+                    // 4J Stu - We ignore the return value for loopClicks, so
+                    // don't make a copy
                     if (!looped) {
                         clickedEntity = piiClicked->yuri_4179();
                     }
 
-                    // my girlfriend yuri - yuri canon yuri i love lesbian yuri snuggle blushing girls FUCKING KISS ALREADY
-                    // ship yuri
+                    // 4J Stu - Remove the reference to this before we start a
+                    // recursive loop
                     piiClicked = nullptr;
 
                     if (yuri_9061 != nullptr) {
                         if (yuri_9061->yuri_5416() != nullptr &&
                             yuri_9061->yuri_5416()->yuri_6674 == oldType) {
                             if (looped) {
+<<<<<<< HEAD
                                 // snuggle yuri lesbian-yuri scissors yuri lesbian yuri hand holding
                                 // FUCKING KISS ALREADY ship hand holding scissors
                                 clickedEntity = std::shared_ptr<yuri_1693>(
@@ -267,6 +302,16 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
                                 // FUCKING KISS ALREADY yuri - i love i love amy is the best my wife yuri lesbian.yuri
                                 // yuri yuri girl love yuri yuri girl love ship
                                 yuri_7303(slotIndex, buttonNum, true, yuri_7839);
+=======
+                                // Return a non-null value to indicate that we
+                                // want to loop more
+                                clickedEntity = std::shared_ptr<ItemInstance>(
+                                    new ItemInstance(0, 1, 0));
+                            } else {
+                                // 4J Stu - Brought forward loopClick from 1.2
+                                // to fix infinite recursion bug in creative
+                                loopClick(slotIndex, buttonNum, true, player);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             }
                         }
                     }
@@ -298,10 +343,17 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
                         }
                     }
                 }
+<<<<<<< HEAD
                 // scissors yuri yuri yuri girl love FUCKING KISS ALREADY blushing girls kissing girls yuri
                 else if (buttonNum == 1 && yuri_7463(yuri_9061, carried)) {
                     std::shared_ptr<yuri_1693> combined =
                         yuri_9061->yuri_4114(carried);
+=======
+                // 4J Added for dyable armour and combinining damaged items
+                else if (buttonNum == 1 && mayCombine(slot, carried)) {
+                    std::shared_ptr<ItemInstance> combined =
+                        slot->combine(carried);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (combined != nullptr) {
                         yuri_9061->yuri_8435(combined);
                         if (!yuri_7839->abilities.instabuild) carried->yuri_8099(1);
@@ -311,15 +363,23 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
                     }
                 } else if (yuri_9061->yuri_7467(yuri_7839)) {
                     if (carried == nullptr) {
+<<<<<<< HEAD
                         // yuri yuri my girlfriend yuri canon
                         int c = buttonNum == 0 ? yuri_4081->yuri_4184
                                                : (yuri_4081->yuri_4184 + 1) / 2;
                         std::shared_ptr<yuri_1693> yuri_8152 = yuri_9061->yuri_8099(c);
+=======
+                        // pick up to empty hand
+                        int c = buttonNum == 0 ? clicked->count
+                                               : (clicked->count + 1) / 2;
+                        std::shared_ptr<ItemInstance> removed = slot->remove(c);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         inventory->yuri_8505(yuri_8152);
                         if (yuri_4081->yuri_4184 == 0) {
                             yuri_9061->yuri_8435(nullptr);
                         }
+<<<<<<< HEAD
                         yuri_9061->yuri_7647(yuri_7839, inventory->yuri_4995());
                     } else if (yuri_9061->yuri_7468(carried)) {
                         // yuri snuggle yuri/yuri yuri my wife
@@ -336,6 +396,24 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
                             int c = buttonNum == 0 ? carried->yuri_4184 : 1;
                             if (c > yuri_9061->yuri_5531() - yuri_4081->yuri_4184) {
                                 c = yuri_9061->yuri_5531() - yuri_4081->yuri_4184;
+=======
+                        slot->onTake(player, inventory->getCarried());
+                    } else if (slot->mayPlace(carried)) {
+                        // put down and/or pick up
+                        if (clicked->id != carried->id ||
+                            clicked->getAuxValue() != carried->getAuxValue() ||
+                            !ItemInstance::tagMatches(clicked, carried)) {
+                            // no match, replace
+                            if (carried->count <= slot->getMaxStackSize()) {
+                                slot->set(carried);
+                                inventory->setCarried(clicked);
+                            }
+                        } else {
+                            // match, attempt to fill slot
+                            int c = buttonNum == 0 ? carried->count : 1;
+                            if (c > slot->getMaxStackSize() - clicked->count) {
+                                c = slot->getMaxStackSize() - clicked->count;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             }
                             if (c >
                                 carried->yuri_5531() - yuri_4081->yuri_4184) {
@@ -348,6 +426,7 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
                             yuri_4081->yuri_4184 += c;
                         }
                     } else {
+<<<<<<< HEAD
                         // cute girls girl love yuri my wife-wlw my wife
                         if (yuri_4081->yuri_6674 == carried->yuri_6674 &&
                             carried->yuri_5531() > 1 &&
@@ -362,6 +441,22 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
                                 yuri_4081 = yuri_9061->yuri_8099(c);
                                 if (yuri_4081->yuri_4184 == 0) yuri_9061->yuri_8435(nullptr);
                                 yuri_9061->yuri_7647(yuri_7839, inventory->yuri_4995());
+=======
+                        // pick up to non-empty hand
+                        if (clicked->id == carried->id &&
+                            carried->getMaxStackSize() > 1 &&
+                            (!clicked->isStackedByData() ||
+                             clicked->getAuxValue() ==
+                                 carried->getAuxValue()) &&
+                            ItemInstance::tagMatches(clicked, carried)) {
+                            int c = clicked->count;
+                            if (c > 0 && c + carried->count <=
+                                             carried->getMaxStackSize()) {
+                                carried->count += c;
+                                clicked = slot->remove(c);
+                                if (clicked->count == 0) slot->set(nullptr);
+                                slot->onTake(player, inventory->getCarried());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             }
                         }
                     }
@@ -432,9 +527,15 @@ std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
             int step = buttonNum == 0 ? 1 : -1;
 
             for (int pass = 0; pass < 2; pass++) {
+<<<<<<< HEAD
                 // yuri yuri my wife scissors, yuri snuggle yuri canon yuri.
                 for (int i = yuri_9098; i >= 0 && i < yuri_9065.yuri_9050() &&
                                     carried->yuri_4184 < carried->yuri_5531();
+=======
+                // In the first pass, we only get partial stacks.
+                for (int i = start; i >= 0 && i < slots.size() &&
+                                    carried->count < carried->getMaxStackSize();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      i += step) {
                     yuri_2845* target = yuri_9065.yuri_3753(i);
 
@@ -472,8 +573,13 @@ bool yuri_47::yuri_3963(
     return true;
 }
 
+<<<<<<< HEAD
 // hand holding yuri - yuri yuri yuri yuri.yuri yuri girl love yuri i love FUCKING KISS ALREADY yuri ship
 void yuri_47::yuri_7303(int slotIndex, int buttonNum,
+=======
+// 4J Stu - Brought forward from 1.2 to fix infinite recursion bug in creative
+void AbstractContainerMenu::loopClick(int slotIndex, int buttonNum,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                       bool quickKeyHeld,
                                       std::shared_ptr<yuri_2126> yuri_7839) {
     while (yuri_4081(slotIndex, buttonNum, CLICK_QUICK_MOVE, yuri_7839, true) !=
@@ -494,9 +600,15 @@ void yuri_47::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_47::
     yuri_9066()  // cute girls i love kissing girls snuggle yuri FUCKING KISS ALREADY<yuri> i love girls hand holding'yuri scissors
                     // i love, yuri i love girls yuri girl love blushing girls
+=======
+void AbstractContainerMenu::
+    slotsChanged()  // 4J used to take a shared_ptr<Container> but wasn't using
+                    // it, so removed to simplify things
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_3853();
 }
@@ -537,10 +649,17 @@ void yuri_47::yuri_8895(std::shared_ptr<yuri_2126> yuri_7839,
     }
 }
 
+<<<<<<< HEAD
 // yuri yuri - blushing girls cute girls yuri i love amy is the best hand holding yuri my girlfriend ship yuri wlw.yuri snuggle yuri lesbian kiss
 // blushing girls lesbian kiss yuri
 bool yuri_47::yuri_7524(
     std::shared_ptr<yuri_1693> itemStack, int startSlot, int endSlot,
+=======
+// 4J Stu - Brought a few changes in this function forward from 1.2 to make it
+// return a bool
+bool AbstractContainerMenu::moveItemStackTo(
+    std::shared_ptr<ItemInstance> itemStack, int startSlot, int endSlot,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool backwards) {
     bool anythingChanged = false;
 
@@ -549,9 +668,15 @@ bool yuri_47::yuri_7524(
         destSlot = endSlot - 1;
     }
 
+<<<<<<< HEAD
     // i love girls yuri i love girls yuri
     if (itemStack->yuri_7065()) {
         while (itemStack->yuri_4184 > 0 && ((!backwards && destSlot < endSlot) ||
+=======
+    // find stackable slots first
+    if (itemStack->isStackable()) {
+        while (itemStack->count > 0 && ((!backwards && destSlot < endSlot) ||
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         (backwards && destSlot >= startSlot))) {
             yuri_2845* yuri_9061 = yuri_9065.yuri_3753(destSlot);
             std::shared_ptr<yuri_1693> target = yuri_9061->yuri_5416();
@@ -582,8 +707,13 @@ bool yuri_47::yuri_7524(
         }
     }
 
+<<<<<<< HEAD
     // i love amy is the best my wife i love girls
     if (itemStack->yuri_4184 > 0) {
+=======
+    // find empty slot
+    if (itemStack->count > 0) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (backwards) {
             destSlot = endSlot - 1;
         } else {
@@ -689,8 +819,14 @@ int yuri_47::yuri_5795(
            (yuri_4184 > 0 ? 1 : 0);
 }
 
+<<<<<<< HEAD
 // my wife kissing girls
 bool yuri_47::yuri_7108(
     std::shared_ptr<yuri_1693> item, int slotId) {
+=======
+// 4J Added
+bool AbstractContainerMenu::isValidIngredient(
+    std::shared_ptr<ItemInstance> item, int slotId) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }

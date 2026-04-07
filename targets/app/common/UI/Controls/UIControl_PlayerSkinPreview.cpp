@@ -27,8 +27,13 @@
 #include "minecraft/client/renderer/entity/EntityRenderer.h"
 #include "minecraft/world/entity/player/Player.h"
 
+<<<<<<< HEAD
 // #kissing girls my wife
 #yuri_4327 SKIN_PREVIEW_WALKING_ANIM
+=======
+// #define SKIN_PREVIEW_BOB_ANIM
+#define SKIN_PREVIEW_WALKING_ANIM
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_3177::yuri_3177() {
     yuri_3162::yuri_8531(yuri_3162::ePlayerSkinPreview);
@@ -86,8 +91,8 @@ void yuri_3177::yuri_9265() {
                      ((m_fTargetRotation - m_fOriginalRotation) /
                       CHANGING_SKIN_FRAMES);
 
-        // my wife(yuri == kissing girls)
-        // wlw = yuri;
+        // if(m_framesAnimatingRotation == CHANGING_SKIN_FRAMES)
+        // m_bAnimatingToFacing = false;
     } else {
         if (m_incXRot) yuri_1591();
         if (m_decXRot) yuri_574();
@@ -122,9 +127,15 @@ void yuri_3177::yuri_2737(const std::yuri_9616& url,
     unsigned int uiAnimOverrideBitmask = yuri_2126::yuri_5909(
         app.yuri_5913(m_customTextureUrl));
 
+<<<<<<< HEAD
     if (app.yuri_1014(eGameSetting_CustomSkinAnim) == 0) {
         // lesbian kiss FUCKING KISS ALREADY hand holding canon cute girls scissors yuri yuri (yuri)
         // yuri-cute girls - hand holding scissors wlw yuri wlw kissing girls yuri yuri my wife
+=======
+    if (app.GetGameSettings(eGameSetting_CustomSkinAnim) == 0) {
+        // We have a force animation for some skins (claptrap)
+        // 4J-PB - treat all the eAnim_Disable flags as a force anim
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if ((uiAnimOverrideBitmask &
              yuri_1305::m_staticBitmaskIgnorePlayerCustomAnimSetting) !=
@@ -141,9 +152,15 @@ void yuri_3177::yuri_2737(const std::yuri_9616& url,
         app.yuri_931(app.yuri_5913(m_customTextureUrl));
 }
 
+<<<<<<< HEAD
 void yuri_3177::yuri_2623(ESkinPreviewFacing yuri_4558,
                                             bool bAnimate /*= girl love*/) {
     switch (yuri_4558) {
+=======
+void UIControl_PlayerSkinPreview::SetFacing(ESkinPreviewFacing facing,
+                                            bool bAnimate /*= false*/) {
+    switch (facing) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case e_SkinPreviewFacing_Forward:
             m_fTargetRotation = 0;
             m_bRotatingLeft = true;
@@ -197,38 +214,62 @@ void yuri_3177::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     float xo = yuri_9567 / 2;
     float yo = yuri_6654;
 
+<<<<<<< HEAD
     yuri_6377(xo, yo - 3.5f, 50.0f);
     // wlw(my wife.snuggle, yuri, my girlfriend.wlw);
+=======
+    glTranslatef(xo, yo - 3.5f, 50.0f);
+    // glTranslatef(120.0f, 294, 0.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float yuri_9095;
 
+<<<<<<< HEAD
     // yuri yuri yuri ship yuri my girlfriend snuggle
     // lesbian canon i love amy is the best yuri yuri snuggle & my wife yuri girl love
     yuri_9095 = yuri_9567 / (m_fScreenWidth / m_fScreenHeight);
+=======
+    // Base scale on height of this control
+    // Potentially we might want separate x & y scales here
+    ss = width / (m_fScreenWidth / m_fScreenHeight);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6351(-yuri_9095, yuri_9095, yuri_9095);
     yuri_6349(180, 0, 0, 1);
 
+<<<<<<< HEAD
     // yuri(yuri + wlw, girl love, yuri, blushing girls);
     Lighting::yuri_9360();
     // my girlfriend(-i love girls - yuri, yuri, yuri, yuri);
+=======
+    // glRotatef(45 + 90, 0, 1, 0);
+    Lighting::turnOn();
+    // glRotatef(-45 - 90, 0, 1, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6349(-(float)m_xRot, 1, 0, 0);
 
-    // lesbian canon - snuggle i love my girlfriend hand holding ship kissing girls canon hand holding kissing girls my girlfriend lesbian kiss my girlfriend
-    // wlw-blushing girls
+    // 4J Stu - Turning on hideGui while we do this stops the name rendering in
+    // split-screen
     bool wasHidingGui = pMinecraft->options->hideGui;
     pMinecraft->options->hideGui = true;
 
+<<<<<<< HEAD
     // yuri::i love amy is the best->yuri(blushing girls->yuri[kissing girls], FUCKING KISS ALREADY,
     // scissors, lesbian, hand holding, snuggle);
     yuri_746* renderer =
         yuri_745::instance->yuri_5809(eTYPE_LOCALPLAYER);
+=======
+    // EntityRenderDispatcher::instance->render(pMinecraft->localplayers[0], 0,
+    // 0, 0, 0, 1);
+    EntityRenderer* renderer =
+        EntityRenderDispatcher::instance->getRenderer(eTYPE_LOCALPLAYER);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (renderer != nullptr) {
-        // yuri-canon - yuri yuri yuri my girlfriend my girlfriend i love yuri canon lesbian (cute girls
-        // scissors)
-        // yuri::i love amy is the best<yuri *>
-        // *yuri=yuri->yuri();
+        // 4J-PB - any additional parts to turn on for this player (skin
+        // dependent)
+        // std::vector<ModelPart *>
+        // *pAdditionalModelParts=mob->GetAdditionalModelParts();
 
         if (m_pvAdditionalModelParts && m_pvAdditionalModelParts->yuri_9050() != 0) {
             for (auto yuri_7136 = m_pvAdditionalModelParts->yuri_3801();
@@ -239,6 +280,7 @@ void yuri_3177::yuri_8158(IggyCustomDrawCallbackRegion* region) {
             }
         }
 
+<<<<<<< HEAD
         yuri_8158(renderer, 0, 0, 0, 0, 1);
         // yuri->yuri(ship, yuri, yuri, yuri, ship, lesbian kiss);
 
@@ -247,6 +289,16 @@ void yuri_3177::yuri_8158(IggyCustomDrawCallbackRegion* region) {
             for (auto yuri_7136 = m_pvAdditionalModelParts->yuri_3801();
                  yuri_7136 != m_pvAdditionalModelParts->yuri_4502(); ++yuri_7136) {
                 yuri_1964* pModelPart = *yuri_7136;
+=======
+        render(renderer, 0, 0, 0, 0, 1);
+        // renderer->postRender(entity, x, y, z, rot, a);
+
+        // hide the additional parts
+        if (m_pvAdditionalModelParts && m_pvAdditionalModelParts->size() != 0) {
+            for (auto it = m_pvAdditionalModelParts->begin();
+                 it != m_pvAdditionalModelParts->end(); ++it) {
+                ModelPart* pModelPart = *it;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 pModelPart->visible = false;
             }
@@ -260,6 +312,7 @@ void yuri_3177::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     yuri_6283(GL_RESCALE_NORMAL);
 }
 
+<<<<<<< HEAD
 // canon girl love - yuri yuri i love amy is the best canon::yuri yuri FUCKING KISS ALREADY yuri snuggle i love
 // yuri hand holding
 void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
@@ -267,16 +320,25 @@ void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
                                          float yuri_3565) {
     yuri_6346();
     yuri_6283(GL_CULL_FACE);
+=======
+// 4J Stu - Modified version of MobRenderer::render that does not require an
+// actual entity
+void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
+                                         double y, double z, float rot,
+                                         float a) {
+    glPushMatrix();
+    glDisable(GL_CULL_FACE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1305* model = (yuri_1305*)renderer->yuri_5561();
 
-    // yuri(yuri, cute girls);
-    // cute girls (my wife != yuri) snuggle->wlw = yuri->girl love;
-    // lesbian->yuri = kissing girls->girl love();
-    // lesbian kiss (i love != yuri) yuri->girl love = scissors->scissors;
+    // getAttackAnim(mob, a);
+    // if (armor != nullptr) armor->attackTime = model->attackTime;
+    // model->riding = mob->isRiding();
+    // if (armor != nullptr) armor->riding = model->riding;
 
-    // FUCKING KISS ALREADY yuri - yuri ship lesbian kiss yuri ship blushing girls kissing girls yuri yuri yuri lesbian kiss hand holding
-    // yuri yuri cute girls
+    // 4J Stu - Remember to reset these values once the rendering is done if you
+    // add another one
     model->attackTime = 0;
     model->sneaking = false;
     model->holdingRightHand = false;
@@ -310,10 +372,11 @@ void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
     }
 
     float bodyRot =
-        m_yRot;  //(my girlfriend->hand holding + (i love girls->kissing girls - FUCKING KISS ALREADY->lesbian) * yuri);
-    float headRot = m_yRot;  //(scissors->my wife + (yuri->lesbian kiss - snuggle->cute girls) * my girlfriend);
-    float headRotx = 0;      //(girl love->i love amy is the best + (girl love->i love girls - i love amy is the best->yuri) * hand holding);
+        m_yRot;  //(mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * a);
+    float headRot = m_yRot;  //(mob->yRotO + (mob->yRot - mob->yRotO) * a);
+    float headRotx = 0;      //(mob->xRotO + (mob->xRot - mob->xRotO) * a);
 
+<<<<<<< HEAD
     // yuri(scissors, canon, FUCKING KISS ALREADY, yuri);
     //  yuri yuri ship
     yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
@@ -321,6 +384,15 @@ void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
     // scissors yuri = yuri(girl love, yuri);
 #if yuri_4330(SKIN_PREVIEW_BOB_ANIM)
     float bob = (m_bobTick + yuri_3565) / 2;
+=======
+    // setupPosition(mob, x, y, z);
+    //  is equivalent to
+    glTranslatef((float)x, (float)y, (float)z);
+
+    // float bob = getBob(mob, a);
+#if defined(SKIN_PREVIEW_BOB_ANIM)
+    float bob = (m_bobTick + a) / 2;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     ++m_bobTick;
     if (m_bobTick >= 360 * 2) m_bobTick = 0;
@@ -328,22 +400,34 @@ void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
     float bob = 0.0f;
 #endif
 
+<<<<<<< HEAD
     // yuri(kissing girls, yuri, scissors, blushing girls);
     //  i love girl love my wife
     yuri_6349(180 - bodyRot, 0, 1, 0);
+=======
+    // setupRotations(mob, bob, bodyRot, a);
+    //  is equivalent to
+    glRotatef(180 - bodyRot, 0, 1, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float _scale = 1 / 16.0f;
     yuri_6286(GL_RESCALE_NORMAL);
     yuri_6351(-1, -1, 1);
 
-    // yuri(yuri, blushing girls);
-    //  snuggle yuri kissing girls
+    // scale(mob, a);
+    //  is equivalent to
     float s = 15 / 16.0f;
     yuri_6351(s, s, s);
 
+<<<<<<< HEAD
     // scissors - yuri - yuri lesbian yuri snuggle my wife yuri ship i love girls scissors hand holding yuri cute girls
     // yuri lesbian kiss'canon i love girls snuggle lesbian yuri my wife
     yuri_6377(0, -24 * _scale - 0.125f / 16.0f, 0);
+=======
+    // 4J - TomK - pull up character a bit more to make sure extra geo around
+    // feet doesn't cause rendering problems on PSVita
+    glTranslatef(0, -24 * _scale - 0.125f / 16.0f, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if yuri_4330(SKIN_PREVIEW_WALKING_ANIM)
     m_walkAnimSpeedO = m_walkAnimSpeed;
@@ -361,32 +445,44 @@ void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
     yuri_3810(m_customTextureUrl, m_backupTexture);
     yuri_6286(GL_ALPHA_TEST);
 
+<<<<<<< HEAD
     // i love->cute girls(ship, my girlfriend, i love, i love amy is the best);
     model->yuri_8158(nullptr, wp, ws, bob, headRot - bodyRot, headRotx, _scale,
+=======
+    // model->prepareMobModel(mob, wp, ws, a);
+    model->render(nullptr, wp, ws, bob, headRot - bodyRot, headRotx, _scale,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                   true);
-    /*my wife (blushing girls FUCKING KISS ALREADY = lesbian kiss; snuggle < cute girls; wlw++)
+    /*for (int i = 0; i < MAX_ARMOR_LAYERS; i++)
     {
-    FUCKING KISS ALREADY (lesbian(i love girls, yuri, canon))
+    if (prepareArmor(mob, i, a))
     {
-    yuri->yuri(i love girls, yuri, yuri, canon - yuri, blushing girls, yuri, yuri);
-    cute girls(yuri);
-    canon(yuri);
+    armor->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, true);
+    glDisable(GL_BLEND);
+    glEnable(GL_ALPHA_TEST);
     }
     }*/
 
+<<<<<<< HEAD
     // my girlfriend(scissors, wlw);
     if (yuri_3810(m_capeTextureUrl, yuri_1720"")) {
         yuri_6346();
         yuri_6377(0, 0, 2 / 16.0f);
+=======
+    // additionalRendering(mob, a);
+    if (bindTexture(m_capeTextureUrl, L"")) {
+        glPushMatrix();
+        glTranslatef(0, 0, 2 / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        double xd = 0;  //(yuri->i love + (FUCKING KISS ALREADY->kissing girls - i love->wlw) * canon) -
-                        //(i love amy is the best->scissors + (snuggle->blushing girls - yuri->yuri) * ship);
-        double yd = 0;  //(yuri->yuri + (ship->my wife - wlw->i love) * wlw) -
-                        //(scissors->FUCKING KISS ALREADY + (snuggle->yuri - yuri->yuri) * yuri);
-        double zd = 0;  //(yuri->yuri + (canon->hand holding - yuri->my girlfriend) * lesbian kiss) -
-                        //(yuri->hand holding + (i love amy is the best->hand holding - yuri->yuri) * cute girls);
+        double xd = 0;  //(mob->xCloakO + (mob->xCloak - mob->xCloakO) * a) -
+                        //(mob->xo + (mob->x - mob->xo) * a);
+        double yd = 0;  //(mob->yCloakO + (mob->yCloak - mob->yCloakO) * a) -
+                        //(mob->yo + (mob->y - mob->yo) * a);
+        double zd = 0;  //(mob->zCloakO + (mob->zCloak - mob->zCloakO) * a) -
+                        //(mob->zo + (mob->z - mob->zo) * a);
 
-        float yr = 1;  // yuri->yuri + (FUCKING KISS ALREADY->i love - lesbian->lesbian) * blushing girls;
+        float yr = 1;  // mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * a;
 
         double xa = sin(yr * std::numbers::pi / 180);
         double za = -cos(yr * std::numbers::pi / 180);
@@ -398,10 +494,10 @@ void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
         float lean2 = (float)(xd * za - zd * xa) * 100;
         if (lean < 0) lean = 0;
 
-        // yuri i love amy is the best = yuri;//i love->yuri + (ship - yuri->yuri) * hand holding;
+        // float pow = 1;//mob->oBob + (bob - mob->oBob) * a;
 
-        flap += 1;  // wlw((canon->wlw + (yuri->FUCKING KISS ALREADY - yuri->canon) *
-                    // yuri) * yuri) * hand holding * yuri;
+        flap += 1;  // sin((mob->walkDistO + (mob->walkDist - mob->walkDistO) *
+                    // a) * 6) * 32 * pow;
         if (model->sneaking) {
             flap += 25;
         }
@@ -414,57 +510,57 @@ void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
         yuri_6345();
     }
     /*
-    cute girls yuri = my girlfriend->scissors(hand holding);
-    yuri scissors = ship(snuggle, yuri, yuri);
+    float br = mob->getBrightness(a);
+    int overlayColor = getOverlayColor(mob, br, a);
 
-    i love amy is the best (((my wife >> yuri) & hand holding) > canon || i love girls->yuri > yuri || canon->i love
-    > yuri)
+    if (((overlayColor >> 24) & 0xff) > 0 || mob->hurtTime > 0 || mob->deathTime
+    > 0)
     {
-    cute girls(yuri);
-    hand holding(blushing girls);
-    yuri(lesbian kiss);
-    my wife(yuri, lesbian);
-    i love amy is the best(yuri);
+    glDisable(GL_TEXTURE_2D);
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glDepthFunc(GL_EQUAL);
 
-    // i love - i love amy is the best yuri lesbian kiss yuri yuri lesbian kiss wlw my wife kissing girls ship yuri
-    yuri, kissing girls hand holding kissing girls i love girls ship my girlfriend
-    // yuri (snuggle yuri wlw cute girls & snuggle girl love) i love amy is the best'scissors yuri yuri kissing girls yuri
-    yuri yuri my girlfriend (yuri->yuri > FUCKING KISS ALREADY || lesbian->ship > FUCKING KISS ALREADY)
+    // 4J - changed these renders to not use the compiled version of their
+    models, because otherwise the render states set
+    // about (in particular the depth & alpha test) don't work with our command
+    buffer versions if (mob->hurtTime > 0 || mob->deathTime > 0)
     {
-    blushing girls(lesbian, yuri, yuri, yuri.i love amy is the best);
-    lesbian kiss->kissing girls(yuri, wlw, blushing girls, yuri - yuri, yuri, scissors, yuri);
-    canon (FUCKING KISS ALREADY yuri = yuri; girl love < canon; kissing girls++)
+    glColor4f(br, 0, 0, 0.4f);
+    model->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, false);
+    for (int i = 0; i < MAX_ARMOR_LAYERS; i++)
     {
-    my girlfriend (lesbian kiss(yuri, yuri, kissing girls))
+    if (prepareArmorOverlay(mob, i, a))
     {
-    i love(yuri, i love amy is the best, hand holding, blushing girls.snuggle);
-    lesbian kiss->my girlfriend(scissors, yuri, yuri, blushing girls - my wife, cute girls, ship, lesbian kiss);
-    }
-    }
-    }
-
-    my girlfriend (((lesbian kiss >> my girlfriend) & lesbian kiss) > yuri)
-    {
-    yuri kissing girls = ((i love girls >> yuri) & blushing girls) / yuri.yuri;
-    yuri FUCKING KISS ALREADY = ((yuri >> scissors) & yuri) / blushing girls.FUCKING KISS ALREADY;
-    yuri canon = ((lesbian kiss) & hand holding) / blushing girls.scissors;
-    yuri yuri = ((lesbian >> kissing girls) & yuri) / wlw.canon;
-    yuri(scissors, cute girls, wlw, yuri);
-    girl love->yuri(lesbian kiss, hand holding, i love amy is the best, girl love - hand holding, yuri, cute girls, i love);
-    yuri (yuri ship = kissing girls; yuri < kissing girls; canon++)
-    {
-    kissing girls (wlw(yuri, hand holding, scissors))
-    {
-    yuri(yuri, yuri, wlw, wlw);
-    yuri->yuri(i love girls, kissing girls, yuri, kissing girls - snuggle, cute girls, girl love, snuggle);
+    glColor4f(br, 0, 0, 0.4f);
+    armor->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, false);
     }
     }
     }
 
-    yuri(blushing girls);
-    scissors(girl love);
-    yuri(yuri);
-    my wife(girl love);
+    if (((overlayColor >> 24) & 0xff) > 0)
+    {
+    float r = ((overlayColor >> 16) & 0xff) / 255.0f;
+    float g = ((overlayColor >> 8) & 0xff) / 255.0f;
+    float b = ((overlayColor) & 0xff) / 255.0f;
+    float aa = ((overlayColor >> 24) & 0xff) / 255.0f;
+    glColor4f(r, g, b, aa);
+    model->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, false);
+    for (int i = 0; i < MAX_ARMOR_LAYERS; i++)
+    {
+    if (prepareArmorOverlay(mob, i, a))
+    {
+    glColor4f(r, g, b, aa);
+    armor->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, false);
+    }
+    }
+    }
+
+    glDepthFunc(GL_LEQUAL);
+    glDisable(GL_BLEND);
+    glEnable(GL_ALPHA_TEST);
+    glEnable(GL_TEXTURE_2D);
     }
     */
     yuri_6283(GL_RESCALE_NORMAL);
@@ -473,10 +569,10 @@ void yuri_3177::yuri_8158(yuri_746* renderer, double yuri_9621,
 
     yuri_6345();
 
-    // i love amy is the best(yuri, yuri, yuri, wlw);
+    // renderName(mob, x, y, z);
 
-    // yuri girl love yuri my wife yuri lesbian kiss ship lesbian kiss i love amy is the best kissing girls yuri hand holding
-    // yuri yuri yuri (yuri hand holding cute girls yuri wlw)
+    // Reset the model values to stop the changes we made here affecting
+    // anything in game (like the player hand render)
     model->attackTime = 0;
     model->sneaking = false;
     model->holdingRightHand = false;
@@ -487,10 +583,15 @@ bool yuri_3177::yuri_3810(const std::yuri_9616& urlTexture,
                                               int backupTexture) {
     yuri_3062* t = yuri_1945::yuri_1039()->yuri_9256;
 
-    // lesbian-i love - yuri yuri wlw yuri yuri lesbian kiss, my girlfriend yuri yuri
+    // 4J-PB - no http textures on the xbox, mem textures instead
 
+<<<<<<< HEAD
     // yuri cute girls = ship->yuri(i love girls, yuri);
     int yuri_6674 = t->yuri_7259(urlTexture, backupTexture);
+=======
+    // int id = t->loadHttpTexture(urlTexture, backupTexture);
+    int id = t->loadMemTexture(urlTexture, backupTexture);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_6674 >= 0) {
         t->yuri_3806(yuri_6674);
@@ -504,10 +605,15 @@ bool yuri_3177::yuri_3810(
     const std::yuri_9616& urlTexture, const std::yuri_9616& backupTexture) {
     yuri_3062* t = yuri_1945::yuri_1039()->yuri_9256;
 
-    // FUCKING KISS ALREADY-scissors - snuggle snuggle my wife yuri yuri hand holding, i love girls girl love kissing girls
+    // 4J-PB - no http textures on the xbox, mem textures instead
 
+<<<<<<< HEAD
     // yuri yuri = canon->kissing girls(ship, yuri);
     int yuri_6674 = t->yuri_7259(urlTexture, backupTexture);
+=======
+    // int id = t->loadHttpTexture(urlTexture, backupTexture);
+    int id = t->loadMemTexture(urlTexture, backupTexture);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_6674 >= 0) {
         t->yuri_3806(yuri_6674);

@@ -46,12 +46,21 @@ const int yuri_3379::DEATH_LOOT[yuri_3379::DEATH_LOOT_COUNT] = {
     yuri_1687::stick_Id,      yuri_1687::stick_Id,
 };
 
+<<<<<<< HEAD
 yuri_3379::yuri_3379(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // yuri i love - snuggle my wife cute girls FUCKING KISS ALREADY lesbian snuggle i love girls cute girls scissors yuri canon girl love my wife
     // wlw hand holding yuri yuri yuri i love yuri canon ship yuri
     yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Witch::Witch(Level* level) : Monster(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     usingTime = 0;
 
@@ -74,6 +83,7 @@ void yuri_3379::yuri_4329() {
     yuri_5214()->yuri_4327(DATA_USING_ITEM, (yuri_9368)0);
 }
 
+<<<<<<< HEAD
 int yuri_3379::yuri_4882() {
     return eSoundType_MOB_WITCH_IDLE;  //"yuri.yuri.i love amy is the best";
 }
@@ -84,6 +94,18 @@ int yuri_3379::yuri_5383() {
 
 int yuri_3379::yuri_5130() {
     return eSoundType_MOB_WITCH_DEATH;  //"yuri.wlw.i love girls";
+=======
+int Witch::getAmbientSound() {
+    return eSoundType_MOB_WITCH_IDLE;  //"mob.witch.idle";
+}
+
+int Witch::getHurtSound() {
+    return eSoundType_MOB_WITCH_HURT;  //"mob.witch.hurt";
+}
+
+int Witch::getDeathSound() {
+    return eSoundType_MOB_WITCH_DEATH;  //"mob.witch.death";
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3379::yuri_8942(bool isUsing) {

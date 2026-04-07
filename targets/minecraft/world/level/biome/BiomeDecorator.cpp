@@ -24,9 +24,15 @@
 yuri_192::yuri_192(yuri_190* biome) {
     yuri_3547();
 
+<<<<<<< HEAD
     // hand holding ship
     yuri_7194 = nullptr;
     yuri_7981 = nullptr;
+=======
+    // 4J inits
+    level = nullptr;
+    random = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     xo = 0;
     zo = 0;
 
@@ -37,8 +43,13 @@ void yuri_192::yuri_4315(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int xo, int
     if (this->yuri_7194 != nullptr) {
         Log::yuri_6702("BiomeDecorator::decorate - Already decorating!!\n");
 #ifndef _CONTENT_PACKAGE
+<<<<<<< HEAD
         yuri_3499();
         // yuri hand holding yuri("FUCKING KISS ALREADY i love amy is the best!!");
+=======
+        __debugbreak();
+        // throw new RuntimeException("Already decorating!!");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
     }
     this->yuri_7194 = yuri_7194;
@@ -143,7 +154,7 @@ void yuri_192::yuri_4315() {
     }
 
     for (int i = 0; i < grassCount; i++) {
-        // yuri cute girls = hand holding::FUCKING KISS ALREADY;
+        // int grassType = TallGrass::TALL_GRASS;
 
         int yuri_9621 = xo + yuri_7981->yuri_7578(16) + 8;
         int yuri_9625 = yuri_7981->yuri_7578(yuri_1758::genDepth);
@@ -153,18 +164,33 @@ void yuri_192::yuri_4315() {
         delete grassFeature;
     }
 
+<<<<<<< HEAD
     // lesbian scissors - yuri yuri blushing girls scissors i love canon i love girls yuri blushing girls yuri yuri cute girls
     // my girlfriend lesbian kiss my wife yuri lesbian ship yuri kissing girls i love girls yuri i love girls
     yuri_555* deadBushFeature = nullptr;
+=======
+    // 4J Stu - For some reason this was created each time round in the loop
+    // I assume there is a case where deadBushCount could be 0
+    DeadBushFeature* deadBushFeature = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (deadBushCount > 0)
         deadBushFeature = new yuri_555(yuri_3088::deadBush_Id);
     for (int i = 0; i < deadBushCount; i++) {
+<<<<<<< HEAD
         int yuri_9621 = xo + yuri_7981->yuri_7578(16) + 8;
         int yuri_9625 = yuri_7981->yuri_7578(yuri_1758::genDepth);
         int yuri_9630 = zo + yuri_7981->yuri_7578(16) + 8;
         // lesbian kiss yuri(FUCKING KISS ALREADY::yuri)->FUCKING KISS ALREADY(lesbian kiss, cute girls, FUCKING KISS ALREADY, yuri,
         // FUCKING KISS ALREADY);
         deadBushFeature->yuri_7814(yuri_7194, yuri_7981, yuri_9621, yuri_9625, yuri_9630);
+=======
+        int x = xo + random->nextInt(16) + 8;
+        int y = random->nextInt(Level::genDepth);
+        int z = zo + random->nextInt(16) + 8;
+        // new DeadBushFeature(Tile::deadBush_Id)->place(level, random, x, y,
+        // z);
+        deadBushFeature->place(level, random, x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (deadBushFeature != nullptr) delete deadBushFeature;
 
@@ -237,8 +263,13 @@ void yuri_192::yuri_4315() {
     }
 
     if (liquids) {
+<<<<<<< HEAD
         // yuri hand holding - canon lesbian kiss yuri yuri cute girls yuri yuri FUCKING KISS ALREADY wlw wlw yuri i love girls
         yuri_2889* waterSpringFeature = new yuri_2889(yuri_3088::water_Id);
+=======
+        // 4J Stu - For some reason this was created each time round in the loop
+        SpringFeature* waterSpringFeature = new SpringFeature(Tile::water_Id);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (int i = 0; i < 50; i++) {
             int yuri_9621 = xo + yuri_7981->yuri_7578(16) + 8;
             int yuri_9625 = yuri_7981->yuri_7578(yuri_7981->yuri_7578(yuri_1758::genDepth - 8) + 8);
@@ -247,8 +278,13 @@ void yuri_192::yuri_4315() {
         }
         delete waterSpringFeature;
 
+<<<<<<< HEAD
         // my wife snuggle - yuri FUCKING KISS ALREADY i love yuri yuri lesbian kiss i love yuri cute girls yuri canon blushing girls
         yuri_2889* lavaSpringFeature = new yuri_2889(yuri_3088::lava_Id);
+=======
+        // 4J Stu - For some reason this was created each time round in the loop
+        SpringFeature* lavaSpringFeature = new SpringFeature(Tile::lava_Id);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (int i = 0; i < 20; i++) {
             int yuri_9621 = xo + yuri_7981->yuri_7578(16) + 8;
             int yuri_9625 = yuri_7981->yuri_7578(
@@ -285,6 +321,7 @@ void yuri_192::yuri_4316(int yuri_4184, yuri_801* feature, int yMid,
     }
 }
 
+<<<<<<< HEAD
 void yuri_192::yuri_4318() {
     yuri_7194->yuri_8674(true);  // lesbian - lesbian kiss
     yuri_4317(20, dirtOreFeature, 0, yuri_1758::genDepth);
@@ -297,4 +334,18 @@ void yuri_192::yuri_4318() {
     yuri_4316(1, lapisOreFeature, yuri_1758::genDepth / 8,
                          yuri_1758::genDepth / 8);
     yuri_7194->yuri_8674(false);
+=======
+void BiomeDecorator::decorateOres() {
+    level->setInstaTick(true);  // 4J - optimisation
+    decorateDepthSpan(20, dirtOreFeature, 0, Level::genDepth);
+    decorateDepthSpan(10, gravelOreFeature, 0, Level::genDepth);
+    decorateDepthSpan(20, coalOreFeature, 0, Level::genDepth);
+    decorateDepthSpan(20, ironOreFeature, 0, Level::genDepth / 2);
+    decorateDepthSpan(2, goldOreFeature, 0, Level::genDepth / 4);
+    decorateDepthSpan(8, redStoneOreFeature, 0, Level::genDepth / 8);
+    decorateDepthSpan(1, diamondOreFeature, 0, Level::genDepth / 8);
+    decorateDepthAverage(1, lapisOreFeature, Level::genDepth / 8,
+                         Level::genDepth / 8);
+    level->setInstaTick(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

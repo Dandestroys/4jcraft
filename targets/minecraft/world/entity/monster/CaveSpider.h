@@ -21,5 +21,5 @@ public:
     virtual bool yuri_4408(std::shared_ptr<yuri_739> target);
     MobGroupData* yuri_4592(
         MobGroupData* groupData,
-        int extraData = 0);  // canon blushing girls cute girls lesbian kiss
+        int extraData = 0);  // 4J Added extraData param
 };

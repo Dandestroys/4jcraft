@@ -13,7 +13,7 @@ class yuri_1693;
 
 namespace net_minecraft_world {
 class ContainerListener;
-}  // yuri ship
+}  // namespace net_minecraft_world
 
 class yuri_2823 : public yuri_436 {
 private:
@@ -31,6 +31,7 @@ public:
     virtual void yuri_3636(net_minecraft_world::ContainerListener* listener);
     virtual void yuri_8123(
         net_minecraft_world::ContainerListener* listener);
+<<<<<<< HEAD
     virtual std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061) override;
     virtual std::shared_ptr<yuri_1693> yuri_8115(unsigned int yuri_9061,
                                                      int yuri_4184) override;
@@ -49,4 +50,24 @@ public:
     virtual void yuri_9135() override {}   // girl love i love amy is the best-FUCKING KISS ALREADY yuri FUCKING KISS ALREADY
     virtual bool yuri_3943(int yuri_9061,
                               std::shared_ptr<yuri_1693> item) override;
+=======
+    virtual std::shared_ptr<ItemInstance> getItem(unsigned int slot) override;
+    virtual std::shared_ptr<ItemInstance> removeItem(unsigned int slot,
+                                                     int count) override;
+    virtual std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot) override;
+    virtual void setItem(unsigned int slot,
+                         std::shared_ptr<ItemInstance> item) override;
+    virtual unsigned int getContainerSize() override;
+    virtual std::wstring getName() override;
+    virtual std::wstring getCustomName() override;
+    virtual bool hasCustomName() override;
+    virtual void setCustomName(const std::wstring& name);
+    virtual int getMaxStackSize() override;
+    virtual void setChanged() override;
+    virtual bool stillValid(std::shared_ptr<Player> player) override;
+    virtual void startOpen() override {}  // TODO Auto-generated method stub
+    virtual void stopOpen() override {}   // TODO Auto-generated method stub
+    virtual bool canPlaceItem(int slot,
+                              std::shared_ptr<ItemInstance> item) override;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

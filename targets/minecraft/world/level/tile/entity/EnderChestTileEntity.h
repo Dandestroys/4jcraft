@@ -29,6 +29,11 @@ public:
     void yuri_9135();
     bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
 
+<<<<<<< HEAD
     // yuri i love girls
     virtual std::shared_ptr<yuri_3091> yuri_4094();
+=======
+    // 4J Added
+    virtual std::shared_ptr<TileEntity> clone();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

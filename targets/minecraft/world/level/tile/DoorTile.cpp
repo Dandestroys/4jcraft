@@ -101,10 +101,17 @@ std::optional<yuri_0> yuri_647::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, i
     return yuri_3088::yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
+<<<<<<< HEAD
 void yuri_647::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri hand holding girl love, yuri yuri
+=======
+void DoorTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_8855(yuri_5046(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
 }
@@ -158,6 +165,7 @@ void yuri_647::yuri_8855(int compositeData) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_647::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                       std::shared_ptr<yuri_2126> yuri_7839) {
     // lesbian yuri #yuri - cute girls: i love amy is the best: yuri: wlw yuri yuri i love hand holding
@@ -168,16 +176,34 @@ void yuri_647::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
 
 // kissing girls-yuri - my wife scissors i love amy is the best canon ship ship
 bool yuri_647::yuri_3033() { return yuri_6674 == yuri_3088::door_wood_Id; }
+=======
+void DoorTile::attack(Level* level, int x, int y, int z,
+                      std::shared_ptr<Player> player) {
+    // Fix for #92957 - TU11: Content: Multiplayer: Wooden Doors splits in half
+    // and glitch in open / close motion while being mined. In lastest PC
+    // version this is commented out, so do that now to fix bug above
+    // use(level, x, y, z, player);
+}
+
+// 4J-PB - Adding a TestUse for tooltip display
+bool DoorTile::TestUse() { return id == Tile::door_wood_Id; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_647::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                    std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                    float clickX, float clickY, float clickZ,
-                   bool soundOnly /*=blushing girls*/)  // hand holding yuri lesbian FUCKING KISS ALREADY
+                   bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) {
+<<<<<<< HEAD
         // hand holding - scissors - hand holding i love amy is the best lesbian ship snuggle lesbian yuri
         if (material != yuri_1886::metal) {
             yuri_7194->yuri_7195(yuri_7839, LevelEvent::SOUND_OPEN_DOOR, yuri_9621, yuri_9625, yuri_9630, 0);
+=======
+        // 4J - added - just do enough to play the sound
+        if (material != Material::metal) {
+            level->levelEvent(player, LevelEvent::SOUND_OPEN_DOOR, x, y, z, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return false;
     }
@@ -291,7 +317,7 @@ int yuri_647::yuri_5046(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int 
         upperData = yuri_7194->yuri_5115(yuri_9621, yuri_9625 + 1, yuri_9630);
     }
 
-    // hand holding: yuri, yuri, wlw/yuri, lesbian kiss, ship
+    // bits: dir, dir, open/closed, isUpper, isRightHinge
     bool isRightHinge = (upperData & 1) != 0;
     return (lowerData & C_LOWER_DATA_MASK) | (isUpper ? 8 : 0) |
            (isRightHinge ? 16 : 0);

@@ -9,7 +9,13 @@ public:
     virtual int yuri_5464(int auxValue);
     virtual yuri_1346* yuri_5385(int itemAuxValue);
 
+<<<<<<< HEAD
     // canon yuri yuri yuri my girlfriend yuri canon yuri FUCKING KISS ALREADY blushing girls i love
     virtual unsigned int yuri_5148(
         std::shared_ptr<yuri_1693> instance);
+=======
+    // 4J brought forward to have unique names for different sapling types
+    virtual unsigned int getDescriptionId(
+        std::shared_ptr<ItemInstance> instance);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

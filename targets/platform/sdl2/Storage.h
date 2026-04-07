@@ -5,16 +5,22 @@
 #include <functional>
 #include <yuri_9151>
 #include <vector>
-// #yuri <FUCKING KISS ALREADY.yuri>
+// #include <xtms.h>
 
 #include "../PlatformTypes.h"
 #include "../IPlatformStorage.h"
 
 class C4JStringTable;
 
+<<<<<<< HEAD
 #yuri_4327 MAX_DISPLAYNAME_LENGTH 128  // yuri yuri canon
 #yuri_4327 MAX_DETAILS_LENGTH 128      // wlw FUCKING KISS ALREADY yuri
 #yuri_4327 MAX_SAVEFILENAME_LENGTH 32  // blushing girls
+=======
+#define MAX_DISPLAYNAME_LENGTH 128  // CELL_SAVEDATA_SYSP_SUBTITLE_SIZE on PS3
+#define MAX_DETAILS_LENGTH 128      // CELL_SAVEDATA_SYSP_SUBTITLE_SIZE on PS3
+#define MAX_SAVEFILENAME_LENGTH 32  // CELL_SAVEDATA_DIRNAME_SIZE
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 struct CONTAINER_METADATA {
     time_t modifiedTime;
@@ -38,10 +44,15 @@ using PSAVE_DETAILS = SAVE_DETAILS*;
 
 typedef std::vector<PXMARKETPLACE_CONTENTOFFER_INFO> OfferDataArray;
 typedef std::vector<PXCONTENT_DATA> XContentDataArray;
-// my girlfriend my wife::ship <cute girls> my girlfriend;
+// typedef std::vector <PSAVE_DETAILS> SaveDetailsArray;
 
+<<<<<<< HEAD
 // yuri yuri lesbian FUCKING KISS ALREADY yuri yuri yuri
 #yuri_4327 CURRENT_DLC_VERSION_NUM 3
+=======
+// Current version of the dlc data creator
+#define CURRENT_DLC_VERSION_NUM 3
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class yuri_256 : public yuri_1328 {
 public:
@@ -108,8 +119,13 @@ public:
 
     void yuri_3081(void);
 
+<<<<<<< HEAD
     // yuri
     yuri_256::EMessageResult yuri_2400(
+=======
+    // Messages
+    C4JStorage::EMessageResult RequestMessageBox(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned int uiTitle, unsigned int uiText, unsigned int* uiOptionA,
         unsigned int uiOptionC, unsigned int pad = XUSER_INDEX_ANY,
         std::function<int(int, const yuri_256::EMessageResult)> yuri_3901 =
@@ -119,15 +135,25 @@ public:
 
     yuri_256::EMessageResult yuri_1075();
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY snuggle
     bool yuri_2708(std::function<int(const bool)> yuri_3901,
                        bool bForceResetOfSaveDevice = false);
 
     // yuri
     void yuri_1596(unsigned int uiSaveVersion, const wchar_t* pwchDefaultSaveName,
+=======
+    // save device
+    bool SetSaveDevice(std::function<int(const bool)> callback,
+                       bool bForceResetOfSaveDevice = false);
+
+    // savegame
+    void Init(unsigned int uiSaveVersion, const wchar_t* pwchDefaultSaveName,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
               char* pszSavePackName, int iMinimumSaveSize,
               std::function<int(const ESavingMessage, int)> yuri_3901,
               const char* szGroupID);
+<<<<<<< HEAD
     void yuri_2410();  // yuri kissing girls lesbian kiss canon yuri scissors yuri yuri girl love lesbian
                            // hand holding blushing girls
     void yuri_2606(
@@ -153,6 +179,33 @@ public:
     yuri_256::ESaveGameState yuri_2505(
         std::function<int(const bool)> yuri_3901);
     void yuri_461(std::yuri_9368* pbThumbnail,
+=======
+    void ResetSaveData();  // Call before a new save to clear out stored save
+                           // file name
+    void SetDefaultSaveNameForKeyboardDisplay(
+        const wchar_t* pwchDefaultSaveName);
+    void SetSaveTitle(const wchar_t* pwchDefaultSaveName);
+    bool GetSaveUniqueNumber(int* piVal);
+    bool GetSaveUniqueFilename(char* pszName);
+    void SetSaveUniqueFilename(char* szFilename);
+    void SetState(ESaveGameControlState eControlState,
+                  std::function<int(const bool)> callback);
+    void SetSaveDisabled(bool bDisable);
+    bool GetSaveDisabled(void);
+    unsigned int GetSaveSize();
+    void GetSaveData(void* pvData, unsigned int* puiBytes);
+    void* AllocateSaveData(unsigned int uiBytes);
+    void SetSaveImages(
+        std::uint8_t* pbThumbnail, unsigned int thumbnailBytes,
+        std::uint8_t* pbImage, unsigned int imageBytes,
+        std::uint8_t* pbTextData,
+        unsigned int textDataBytes);  // Sets the thumbnail & image for the
+                                      // save, optionally setting the
+                                      // metadata in the png
+    C4JStorage::ESaveGameState SaveSaveData(
+        std::function<int(const bool)> callback);
+    void CopySaveDataToNewSave(std::uint8_t* pbThumbnail,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                unsigned int cbThumbnail, wchar_t* wchNewName,
                                std::function<int(bool)> yuri_3901);
     void yuri_2709(unsigned int uiPad, bool bSelected);
@@ -160,22 +213,41 @@ public:
     yuri_256::ESaveGameState yuri_642(bool* pbExists);
     bool yuri_737();
 
+<<<<<<< HEAD
     void yuri_2712(
         float fY);  // yuri 'scissors' i love yuri girl love canon yuri kissing girls lesbian
                     // yuri i love amy is the best
     // my girlfriend lesbian ship yuri yuri i love girls
     yuri_256::ESaveGameState yuri_1150(
+=======
+    void SetSaveMessageVPosition(
+        float fY);  // The 'Saving' message will display at a default position
+                    // unless changed
+    // Get the info for the saves
+    C4JStorage::ESaveGameState GetSavesInfo(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int iPad,
         std::function<int(SAVE_DETAILS* pSaveDetails, const bool)> yuri_3901,
         char* pszSavePackName);
+<<<<<<< HEAD
     PSAVE_DETAILS yuri_2423();
     void yuri_368();  // i love amy is the best yuri
     yuri_256::ESaveGameState yuri_1820(
+=======
+    PSAVE_DETAILS ReturnSavesInfo();
+    void ClearSavesInfo();  // Clears results
+    C4JStorage::ESaveGameState LoadSaveDataThumbnail(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         PSAVE_INFO pSaveInfo,
         std::function<int(std::yuri_9368* thumbnailData,
                           unsigned int thumbnailBytes)>
+<<<<<<< HEAD
             yuri_3901);  // lesbian blushing girls kissing girls yuri scissors my wife lesbian kiss scissors
                         // my wife scissors
+=======
+            callback);  // Get the thumbnail for an individual save referenced
+                        // by pSaveInfo
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_1139(unsigned int fileIndex,
                               XCONTENT_DATA& xContentData);
@@ -183,20 +255,34 @@ public:
                               std::yuri_9368** ppbImageData,
                               unsigned int* pImageBytes);
 
+<<<<<<< HEAD
     // kissing girls girl love yuri. FUCKING KISS ALREADY yuri cute girls scissors snuggle my girlfriend yuri girl love i love
     yuri_256::ESaveGameState yuri_1818(
+=======
+    // Load the save. Need to call GetSaveData once the callback is called
+    C4JStorage::ESaveGameState LoadSaveData(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         PSAVE_INFO pSaveInfo,
         std::function<int(const bool, const bool)> yuri_3901);
     yuri_256::ESaveGameState yuri_590(
         PSAVE_INFO pSaveInfo,
         std::function<int(const bool)> yuri_3901);
 
+<<<<<<< HEAD
     // scissors
     void yuri_2360(
         std::function<int(yuri_256::DLC_TMS_DETAILS*, int)> yuri_3901);
     void yuri_2596(char* pszDLCRoot);
     yuri_256::EDLCStatus yuri_977(
         int iPad, std::function<int(int, std::uint32_t, int)> yuri_3901,
+=======
+    // DLC
+    void RegisterMarketplaceCountsCallback(
+        std::function<int(C4JStorage::DLC_TMS_DETAILS*, int)> callback);
+    void SetDLCPackageRoot(char* pszDLCRoot);
+    C4JStorage::EDLCStatus GetDLCOffers(
+        int iPad, std::function<int(int, std::uint32_t, int)> callback,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         std::uint32_t dwOfferTypesBitmask = XMARKETPLACE_OFFERING_TYPE_CONTENT);
     unsigned int yuri_299();
     void yuri_361();
@@ -219,8 +305,13 @@ public:
                                std::vector<std::yuri_9151>& fileList);
     std::yuri_9151 yuri_1086(std::yuri_9151 szMount);
 
+<<<<<<< HEAD
     // yuri my girlfriend snuggle
     yuri_256::ETMSStatus yuri_2329(
+=======
+    // Global title storage
+    C4JStorage::ETMSStatus ReadTMSFile(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int iQuadrant, eGlobalStorage eStorageFacility,
         yuri_256::eTMS_FileType eFileType, wchar_t* pwchFilename,
         std::yuri_9368** ppBuffer, unsigned int* pBufferSize,
@@ -233,7 +324,7 @@ public:
                        wchar_t* pwchFilename);
     void yuri_2969(wchar_t* pwchName = nullptr);
 
-    // my girlfriend++
+    // TMS++
 #ifdef _XBOX
     yuri_256::ETMSStatus yuri_3401(
         int iPad, yuri_256::eGlobalStorage eStorageFacility,
@@ -242,26 +333,35 @@ public:
     int yuri_1193(int iPad, TMSCLIENT_CALLBACK yuri_881, void* lpParam);
 #endif
 
+<<<<<<< HEAD
     // cute girls i love girls++ yuri/yuri yuri yuri yuri yuri wlw yuri-my wife
     // yuri i love amy is the best my wife hand holding yuri yuri my wife i love ship hand holding.
     yuri_256::ETMSStatus yuri_3007(
         int iPad, yuri_256::eGlobalStorage eStorageFacility,
         yuri_256::eTMS_FILETYPEVAL eFileTypeVal, const char* szFilename,
         std::function<int(int, int, PTMSPP_FILEDATA, const char*)> yuri_3901 =
+=======
+    // Older TMS++ write/quota entry points were kept in platform-specific
+    // implementations and are intentionally not part of this shared API.
+    C4JStorage::ETMSStatus TMSPP_ReadFile(
+        int iPad, C4JStorage::eGlobalStorage eStorageFacility,
+        C4JStorage::eTMS_FILETYPEVAL eFileTypeVal, const char* szFilename,
+        std::function<int(int, int, PTMSPP_FILEDATA, const char*)> callback =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             nullptr,
         int iUserData = 0);
-    // my wife yuri++ FUCKING KISS ALREADY/lesbian kiss hand holding yuri canon-scissors. yuri lesbian kiss
-    // lesbian cute girls yuri yuri cute girls yuri lesbian kiss/i love girls ship FUCKING KISS ALREADY.
+    // Older TMS++ list/delete helpers stayed platform-specific. The shared
+    // surface keeps the read path plus CRC/subfile helpers below.
 
-    // 	yuri yuri
+    // 	enum eXBLWS
     // 	{
-    // 		my girlfriend,
-    // 		blushing girls,
-    // 		snuggle,
-    // 		i love,
+    // 		eXBLWS_GET,
+    // 		eXBLWS_POST,
+    // 		eXBLWS_PUT,
+    // 		eXBLWS_DELETE,
     // 	};
-    // wlw
-    // yuri(yuri lesbian kiss);
+    // bool
+    // XBLWS_Command(eXBLWS eCommand);
 
     unsigned int yuri_284(unsigned char* yuri_3860, int len);
 

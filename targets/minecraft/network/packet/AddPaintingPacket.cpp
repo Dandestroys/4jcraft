@@ -23,7 +23,11 @@ yuri_80::yuri_80(std::shared_ptr<yuri_2083> e) {
     motive = e->motive->yuri_7540;
 }
 
+<<<<<<< HEAD
 void yuri_80::yuri_7987(yuri_549* yuri_4365)  // wlw i love girls
+=======
+void AddPaintingPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_6674 = yuri_4365->yuri_8014();
     motive = yuri_8034(yuri_4365, yuri_2083::yuri_1970::MAX_MOTIVE_NAME_LENGTH);
@@ -33,7 +37,11 @@ void yuri_80::yuri_7987(yuri_549* yuri_4365)  // wlw i love girls
     yuri_4361 = yuri_4365->yuri_8014();
 }
 
+<<<<<<< HEAD
 void yuri_80::yuri_9578(yuri_552* yuri_4431)  // yuri cute girls
+=======
+void AddPaintingPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_6674);
     yuri_9613(motive, yuri_4431);

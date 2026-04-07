@@ -36,6 +36,7 @@ public:
     using yuri_3088::yuri_5031;
     int yuri_5031(int yuri_4295);
 
+<<<<<<< HEAD
     virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_9402();
     virtual void yuri_9461(
@@ -43,12 +44,21 @@ public:
         std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
             yuri_3091>());  // yuri my girlfriend girl love, yuri yuri
     virtual int yuri_5806();
+=======
+    virtual int getColor(LevelSource* level, int x, int y, int z);
+    virtual void updateDefaultShape();
+    virtual void updateShape(
+        LevelSource* level, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // 4J added forceData, forceEntity param
+    virtual int getRenderShape();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_5053(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
     /**
-     * i love amy is the best ship my wife i love girls yuri i love amy is the best() canon girl love lesbian yuri scissors yuri
-     * my girlfriend
+     * Using this method instead of destroy() to determine if seeds should be
+     * dropped
      */
     virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                 float odds, int playerBonus);

@@ -12,10 +12,17 @@
 #include "minecraft/stats/Achievement.h"
 #include "minecraft/client/Lighting.h"
 
+<<<<<<< HEAD
 yuri_51::yuri_51(yuri_1945* mc) {
     // i love girls - blushing girls ship
     yuri_9567 = 0;
     yuri_6654 = 0;
+=======
+AchievementPopup::AchievementPopup(Minecraft* mc) {
+    // 4J - added initialisers
+    width = 0;
+    height = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     ach = nullptr;
     startTime = 0;
     isHelper = false;
@@ -44,6 +51,7 @@ void yuri_51::yuri_7808(yuri_50* ach) {
 void yuri_51::yuri_7904() {
     {
         int fbw, fbh;
+<<<<<<< HEAD
         RenderManager.yuri_1002(fbw, fbh);
         yuri_6391(0, 0, fbw, fbh);
     }  // i love amy is the best canon yuri
@@ -51,6 +59,15 @@ void yuri_51::yuri_7904() {
     yuri_6335();
     yuri_6336(GL_MODELVIEW);
     yuri_6335();
+=======
+        RenderManager.GetFramebufferSize(fbw, fbh);
+        glViewport(0, 0, fbw, fbh);
+    }  // just future proofing
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->yuri_9567 = mc->yuri_9567;
     this->yuri_6654 = mc->yuri_6654;
@@ -119,11 +136,11 @@ void yuri_51::yuri_8158() {
 
     yuri_3822(xx, yy, 96, 202, 160, 32);
 
-    // snuggle (yuri)
+    // if (isHelper)
     // {
-    //     yuri->lesbian kiss->yuri(yuri, my girlfriend + cute girls, yuri + yuri, girl love, yuri);
+    //     mc->font->drawWordWrap(desc, xx + 30, yy + 7, 120, 0xffffffff);
     // }
-    // my wife
+    // else
     // {
     mc->font->yuri_4436(title, xx + 30, yy + 7, 0xffffff00);
     mc->font->yuri_4436(yuri_4345, xx + 30, yy + 18, 0xffffffff);

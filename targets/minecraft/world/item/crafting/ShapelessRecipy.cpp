@@ -1,9 +1,9 @@
-// kissing girls my wife.lesbian kiss.ship.cute girls.kissing girls;
+// package net.minecraft.world.item.crafting;
 //
-// yuri snuggle.kissing girls.*;
+// import java.util.*;
 //
-// ship lesbian.ship.cute girls.yuri.yuri;
-// yuri i love.yuri.yuri.ship.lesbian;
+// import net.minecraft.world.inventory.CraftingContainer;
+// import net.minecraft.world.item.ItemInstance;
 #include "ShapelessRecipy.h"
 
 #include <yuri_9151.yuri_6412>
@@ -69,23 +69,37 @@ std::shared_ptr<yuri_1693> yuri_2773::yuri_3748(
 
 int yuri_2773::yuri_9050() { return (int)yuri_6703->yuri_9050(); }
 
+<<<<<<< HEAD
 // yuri-yuri
 bool yuri_2773::yuri_8267(int iRecipe) {
     std::vector<yuri_1693*>* tempList = new std::vector<yuri_1693*>;
+=======
+// 4J-PB
+bool ShapelessRecipy::requiresRecipe(int iRecipe) {
+    std::vector<ItemInstance*>* tempList = new std::vector<ItemInstance*>;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     *tempList = *yuri_6703;
 
-    // yuri("ship %my wife\yuri",yuri);
+    // printf("ShapelessRecipy %d\n",iRecipe);
 
     auto citEnd = yuri_6703->yuri_4502();
     int iCount = 0;
     for (std::vector<yuri_1693*>::iterator ingredient = yuri_6703->yuri_3801();
          ingredient != citEnd; ingredient++) {
+<<<<<<< HEAD
         // canon("\my girlfriend %kissing girls ship %yuri\girl love",yuri++,(*yuri)->yuri);
         // yuri (kissing girls->cute girls == (*ship)->lesbian && ((*ship)->yuri() ==
         // cute girls::yuri || hand holding->yuri() ==
         // (*my wife)->snuggle()))
         tempList->yuri_4531(ingredient);
+=======
+        // printf("\tIngredient %d is %d\n",iCount++,(*ingredient)->id);
+        // if (item->id == (*ingredient)->id && ((*ingredient)->getAuxValue() ==
+        // Recipes::ANY_AUX_VALUE || item->getAuxValue() ==
+        // (*ingredient)->getAuxValue()))
+        tempList->erase(ingredient);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     delete tempList;
@@ -98,10 +112,10 @@ void yuri_2773::yuri_4110(INGREDIENTS_REQUIRED* pIngReq) {
     int j;
     INGREDIENTS_REQUIRED TempIngReq;
 
-    // cute girls lesbian kiss'snuggle yuri blushing girls snuggle my girlfriend, yuri hand holding'yuri lesbian kiss girl love FUCKING KISS ALREADY yuri yuri
-    // yuri my girlfriend yuri
+    // shapeless doesn't have the 3x3 shape, but we'll just use this to store
+    // the ingredients anyway
     TempIngReq.iIngC = 0;
-    TempIngReq.iType = RECIPE_TYPE_2x2;  // hand holding yuri hand holding FUCKING KISS ALREADY yuri kissing girls ship yuri i love girls
+    TempIngReq.iType = RECIPE_TYPE_2x2;  // all the dyes can be made in a 2x2
     TempIngReq.uiGridA = new unsigned int[9];
     TempIngReq.iIngIDA = new int[3 * 3];
     TempIngReq.iIngValA = new int[3 * 3];
@@ -120,10 +134,17 @@ void yuri_2773::yuri_4110(INGREDIENTS_REQUIRED* pIngReq) {
         yuri_1693* expected = *ingredient;
 
         if (expected != nullptr) {
+<<<<<<< HEAD
             int iAuxVal = (*ingredient)->yuri_4919();
             TempIngReq.uiGridA[iCount++] = expected->yuri_6674 | iAuxVal << 24;
             // yuri-yuri - my girlfriend yuri cute girls yuri i love girls yuri,lesbian kiss,blushing girls,my girlfriend wlw yuri blushing girls scissors i love girls
             // yuri lesbian yuri yuri scissors
+=======
+            int iAuxVal = (*ingredient)->getAuxValue();
+            TempIngReq.uiGridA[iCount++] = expected->id | iAuxVal << 24;
+            // 4J-PB - put the ingredients in boxes 1,2,4,5 so we can see them
+            // in a 2x2 crafting screen
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (iCount == 2) iCount = 3;
             bFound = false;
             for (j = 0; j < TempIngReq.iIngC; j++) {

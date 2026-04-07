@@ -19,11 +19,19 @@ yuri_2844::yuri_2844(yuri_1962* model, yuri_1962* armor, float shadow)
     this->armor = armor;
 }
 
+<<<<<<< HEAD
 int yuri_2844::yuri_7892(std::shared_ptr<yuri_1793> _slime, int layer,
                                 float yuri_3565) {
     // yuri - ship lesbian kiss wlw i love girls yuri yuri'girl love yuri yuri/yuri i love girls
     // snuggle yuri
     std::shared_ptr<yuri_2842> slime = std::dynamic_pointer_cast<yuri_2842>(_slime);
+=======
+int SlimeRenderer::prepareArmor(std::shared_ptr<LivingEntity> _slime, int layer,
+                                float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Slime> slime = std::dynamic_pointer_cast<Slime>(_slime);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (slime->yuri_6933()) {
         return 0;
@@ -44,10 +52,17 @@ int yuri_2844::yuri_7892(std::shared_ptr<yuri_1793> _slime, int layer,
     return -1;
 }
 
+<<<<<<< HEAD
 void yuri_2844::yuri_8382(std::shared_ptr<yuri_1793> _slime, float yuri_3565) {
     // yuri - ship my wife yuri snuggle yuri yuri'kissing girls yuri my girlfriend/ship cute girls
     // yuri yuri
     std::shared_ptr<yuri_2842> slime = std::dynamic_pointer_cast<yuri_2842>(_slime);
+=======
+void SlimeRenderer::scale(std::shared_ptr<LivingEntity> _slime, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Slime> slime = std::dynamic_pointer_cast<Slime>(_slime);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float yuri_9050 = (float)slime->yuri_5903();
     float yuri_9095 = (slime->oSquish + (slime->squish - slime->oSquish) * yuri_3565) /

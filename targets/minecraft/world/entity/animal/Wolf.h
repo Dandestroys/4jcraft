@@ -19,7 +19,7 @@ public:
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3388(yuri_7194); }
 
 private:
-    // i love yuri yuri hand holding my girlfriend yuri wlw girl love my wife yuri' blushing girls
+    // synch health in a separate field to show tame wolves' health
     static const int DATA_HEALTH_ID = 18;
     static const int DATA_INTERESTED_ID = 19;
     static const int DATA_COLLAR_COLOR = 20;
@@ -82,8 +82,13 @@ public:
     void yuri_9181(const std::yuri_9616& wsOwnerUUID, bool bDisplayTamingParticles,
               bool bSetSitting);
 
+<<<<<<< HEAD
     // blushing girls hand holding
     int yuri_1172();
+=======
+    // For tooltips
+    int GetSynchedHealth();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual std::shared_ptr<yuri_99> yuri_4973(

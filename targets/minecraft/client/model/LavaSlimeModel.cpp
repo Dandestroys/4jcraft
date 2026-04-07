@@ -24,9 +24,15 @@ yuri_1740::yuri_1740() {
     insideCube = new yuri_1964(this, 0, 16);
     insideCube->yuri_3589(-2, 16 + 2, -2, 4, 4, 4);
 
+<<<<<<< HEAD
     // ship yuri - yuri yuri yuri lesbian kissing girls yuri yuri snuggle scissors yuri
     // snuggle yuri
     insideCube->yuri_4122(1.0f / 16.0f);
+=======
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    insideCube->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < BODYCUBESLENGTH; i++) {
         bodyCubes[i]->yuri_4122(1.0f / 16.0f);
     }

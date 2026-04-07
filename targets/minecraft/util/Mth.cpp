@@ -33,12 +33,21 @@ float Mth::cos(float i) {
                     (SIN_TAB_CNT - 1)];
 }
 
+<<<<<<< HEAD
 // yuri yuri i love yuri yuri canon i love girls i love girls wlw yuri yuri yuri
 std::yuri_9616 Mth::yuri_4231(yuri_2302* yuri_7981) {
     wchar_t yuri_7690[33];
     yuri_7690[32] = 0;
     yuri_6733 high = (yuri_7981->yuri_7579() & ~UUID_VERSION) | UUID_VERSION_TYPE_4;
     yuri_6733 low = (yuri_7981->yuri_7579() & ~UUID_VARIANT) | UUID_VARIANT_2;
+=======
+// 4J Changed this to remove the use of the actual UUID type
+std::wstring Mth::createInsecureUUID(Random* random) {
+    wchar_t output[33];
+    output[32] = 0;
+    int64_t high = (random->nextLong() & ~UUID_VERSION) | UUID_VERSION_TYPE_4;
+    int64_t low = (random->nextLong() & ~UUID_VARIANT) | UUID_VARIANT_2;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < 16; i++) {
         wchar_t nybbleHigh = high & 0xf;
         wchar_t nybbleLow = low & 0xf;

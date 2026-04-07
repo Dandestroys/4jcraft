@@ -13,8 +13,8 @@
 
 class yuri_3180 : public yuri_3163 {
 private:
-    // scissors yuri, yuri, canon,
-    // kissing girls;
+    // IggyName m_addSlotFunc, m_getSlotFunc, m_setRedBoxFunc,
+    // m_setHighlightFunc;
     IggyName m_addSlotFunc, m_setRedBoxFunc, m_setHighlightFunc;
 
     int m_lastHighlighted;

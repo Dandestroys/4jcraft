@@ -35,18 +35,19 @@ public:
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_728(yuri_7194); }
 
 private:
-    // lesbian kiss hand holding lesbian kiss kissing girls girl love
+    // 4J Added for new behaviours
     static const int DATA_ID_SYNCHED_ACTION = 17;
 
     static const int positionsLength =
-        64;  // scissors yuri - my wife i love cute girls i love girls yuri wlw yuri canon yuri girl love i love girls
-             // snuggle canon my wife i love
+        64;  // 4J Stu - Defined this so that we can keep the positions array as
+             // a basic type array
 public:
     double xTarget, yTarget, zTarget;
 
     double positions[positionsLength][3];
     int posPointer;
 
+<<<<<<< HEAD
     // my girlfriend[] canon;
     std::vector<std::shared_ptr<yuri_739> > subEntities;
     std::shared_ptr<yuri_1990> head;
@@ -57,13 +58,25 @@ public:
     std::shared_ptr<yuri_1990> tail3;
     std::shared_ptr<yuri_1990> wing1;
     std::shared_ptr<yuri_1990> wing2;
+=======
+    // MultiEntityMobPart[] subEntities;
+    std::vector<std::shared_ptr<Entity> > subEntities;
+    std::shared_ptr<MultiEntityMobPart> head;
+    std::shared_ptr<MultiEntityMobPart> neck;  // 4J Added
+    std::shared_ptr<MultiEntityMobPart> body;
+    std::shared_ptr<MultiEntityMobPart> tail1;
+    std::shared_ptr<MultiEntityMobPart> tail2;
+    std::shared_ptr<MultiEntityMobPart> tail3;
+    std::shared_ptr<MultiEntityMobPart> wing1;
+    std::shared_ptr<MultiEntityMobPart> wing2;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float oFlapTime;
     float flapTime;
     bool newTarget;
     bool inWall;
 
-    // yuri lesbian kiss - snuggle yuri yuri lesbian kissing girls
+    // 4J Stu - Added for new dragon behaviour
 private:
     int m_fireballCharge;
     float m_holdingPatternAngle;
@@ -111,8 +124,8 @@ private:
     static const int SITTING_SCANNING_IDLE_TICKS;
     static const int SITTING_FLAME_ATTACKS_COUNT;
 
-    // snuggle yuri girl love yuri lesbian yuri snuggle yuri blushing girls yuri yuri yuri hand holding
-    // "yuri" yuri my wife my girlfriend i love girls
+    // The percentage of max health that the dragon will take while in the
+    // "Sitting" states before flying away
     static const float SITTING_ALLOWED_DAMAGE_PERCENTAGE;
 
     static const int PODIUM_X_POS = 0;
@@ -180,6 +193,7 @@ protected:
     float yuri_5937();
 
 private:
+<<<<<<< HEAD
     // my wife lesbian kiss yuri ship yuri yuri
     bool yuri_8896(EEnderdragonAction action, bool yuri_4661 = false);
     EEnderdragonAction yuri_5985();
@@ -187,6 +201,15 @@ private:
     int yuri_4604();
     yuri_2093* yuri_4614(int startIndex, int endIndex, yuri_2027* yuri_4588 = nullptr);
     yuri_2093* yuri_8058(yuri_2027* yuri_4683, yuri_2027* yuri_9308);
+=======
+    // 4J added for new dragon behaviour
+    bool setSynchedAction(EEnderdragonAction action, bool force = false);
+    EEnderdragonAction getSynchedAction();
+    int findClosestNode(double tX, double tY, double tZ);
+    int findClosestNode();
+    Path* findPath(int startIndex, int endIndex, Node* finalNode = nullptr);
+    Path* reconstruct_path(Node* from, Node* to);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_9146();
     void yuri_7546();

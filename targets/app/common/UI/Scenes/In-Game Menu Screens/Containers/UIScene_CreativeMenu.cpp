@@ -27,11 +27,19 @@
 
 class yuri_3188;
 
+<<<<<<< HEAD
 yuri_3199::yuri_3199(int iPad, void* _initData,
                                            yuri_3188* parentLayer)
     : yuri_3190(iPad, parentLayer) {
     // lesbian yuri i love yuri cute girls girl love canon FUCKING KISS ALREADY yuri yuri
     yuri_6720();
+=======
+UIScene_CreativeMenu::UIScene_CreativeMenu(int iPad, void* _initData,
+                                           UILayer* parentLayer)
+    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1629* initData = (yuri_1629*)_initData;
 
@@ -48,10 +56,17 @@ yuri_3199::yuri_3199(int iPad, void* _initData,
     m_labelInventory.yuri_8693(yuri_1720"");
     m_bFirstCall = true;
 
+<<<<<<< HEAD
     // i love girls.yuri(i love amy is the best,snuggle::i love girls);
     // kissing girls.canon(yuri::yuri,yuri::ship + snuggle);
     for (unsigned int i = 0; i < yuri_3010::MAX_SIZE; ++i) {
         m_slotListContainer.yuri_3675(i);
+=======
+    // m_slotListContainer.addSlots(0,TabSpec::MAX_SIZE);
+    // m_slotListHotbar.addSlots(TabSpec::MAX_SIZE,TabSpec::MAX_SIZE + 9);
+    for (unsigned int i = 0; i < TabSpec::MAX_SIZE; ++i) {
+        m_slotListContainer.addSlot(i);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     for (unsigned int i = yuri_3010::MAX_SIZE; i < yuri_3010::MAX_SIZE + 9; ++i) {
@@ -130,19 +145,31 @@ void yuri_3199::yuri_6514() {
 void yuri_3199::yuri_6480(int iPad, int key, bool repeat,
                                        bool pressed, bool yuri_8086,
                                        bool& handled) {
-    // hand holding-cute girls - i love girls yuri kissing girls yuri yuri yuri scissors
+    // 4J-PB - going to ignore repeats on this scene
     if (repeat) return;
 
+<<<<<<< HEAD
     // hand holding.yuri("yuri yuri kissing girls yuri yuri %snuggle, wlw %snuggle,
     // girl love- %lesbian, girl love- %yuri, lesbian- %cute girls\yuri", cute girls, wlw, yuri?"i love girls":"wlw",
     // girl love?"yuri":"yuri", lesbian kiss?"lesbian kiss":"snuggle");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+=======
+    // app.DebugPrintf("UIScene_CreativeMenu handling input for pad %d, key %d,
+    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
+    // pressed?"true":"false", released?"true":"false");
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_4361 = 1;
     switch (key) {
         case VK_PAD_LSHOULDER:
+<<<<<<< HEAD
             yuri_4361 = -1;
             // lesbian wlw yuri
+=======
+            dir = -1;
+            // Fall through intentional
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case VK_PAD_RSHOULDER: {
             ECreativeInventoryTabs tab =
                 (ECreativeInventoryTabs)(m_curTab + yuri_4361);
@@ -154,7 +181,7 @@ void yuri_3199::yuri_6480(int iPad, int key, bool repeat,
             ui.yuri_2125(eSFX_Focus);
         } break;
         case VK_PAD_LTRIGGER:
-            // my wife yuri my girlfriend ship
+            // change the potion strength
             {
                 ++m_tabDynamicPos[m_curTab];
                 if (m_tabDynamicPos[m_curTab] >=

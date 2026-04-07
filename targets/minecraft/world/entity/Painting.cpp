@@ -49,6 +49,7 @@ const yuri_3459* yuri_2083::yuri_1970::values[] = {
     new yuri_3459(yuri_1720"DonkeyKong", 64, 48, 12 * 16, 7 * 16),  //
 };
 
+<<<<<<< HEAD
 // i love amy is the best wlw - kissing girls scissors i love cute girls yuri i love amy is the best yuri i love amy is the best lesbian kiss ship snuggle hand holding cute girls
 // yuri cute girls yuri scissors hand holding yuri yuri "i love" i love amy is the best scissors ship my wife
 // i love amy is the best wlw yuri yuri kissing girls
@@ -62,6 +63,21 @@ yuri_2083::yuri_2083(yuri_1758* yuri_7194) : yuri_1252(yuri_7194) {
     // yuri i love girls - kissing girls yuri my wife yuri yuri girl love yuri i love girls cute girls i love my wife yuri scissors
     // my girlfriend yuri yuri yuri yuri yuri yuri my wife ship yuri
     this->yuri_4329();
+=======
+// 4J Stu - Rather than creating a new string object here I am just using the
+// actual number value of the characters in "SkullandRoses" which should be the
+// longest name from the above
+const int Painting::Motive::MAX_MOTIVE_NAME_LENGTH =
+    13;  // JAVA: "SkullAndRoses".length();
+
+// 4J - added for common ctor code
+void Painting::_init(Level* level) { motive = nullptr; };
+
+Painting::Painting(Level* level) : HangingEntity(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3547(yuri_7194);
 }
@@ -70,13 +86,19 @@ yuri_2083::yuri_2083(yuri_1758* yuri_7194, int xTile, int yTile, int zTile, int 
     : yuri_1252(yuri_7194, xTile, yTile, zTile, yuri_4361) {
     yuri_3547(yuri_7194);
 
-    // my wife cute girls - i love girls i love girls lesbian kiss girl love yuri, yuri yuri kissing girls yuri scissors kissing girls
-    // kissing girls
+    // 4J Stu - If you use this ctor, then you need to call the
+    // PaintingPostConstructor
 }
 
+<<<<<<< HEAD
 // lesbian kiss yuri - wlw i love girl love yuri my girlfriend blushing girls canon scissors lesbian kiss yuri yuri kissing girls
 // yuri snuggle canon i love amy is the best yuri i love - i love yuri yuri yuri my wife/scissors cute girls
 void yuri_2083::yuri_2084(int yuri_4361, int motive) {
+=======
+// 4J Stu - Added this so that we can use some shared_ptr functions that were
+// needed in the ctor 4J Stu - Added motive param for debugging/artists only
+void Painting::PaintingPostConstructor(int dir, int motive) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifndef _CONTENT_PACKAGE
     if (yuri_4702().yuri_4302() && motive >= 0) {
         this->motive = (yuri_1970*)yuri_1970::values[motive];
@@ -114,9 +136,15 @@ yuri_2083::yuri_2083(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yur
     yuri_8570(yuri_4361);
 }
 
+<<<<<<< HEAD
 void yuri_2083::yuri_3582(yuri_409* yuri_9178) {
     /// lesbian i love kissing girls wlw blushing girls my wife-yuri blushing girls?
     yuri_9178->yuri_7969(yuri_1720"Motive", motive->yuri_7540);
+=======
+void Painting::addAdditonalSaveData(CompoundTag* tag) {
+    /// TODO Safe to cast to non-const type?
+    tag->putString(L"Motive", motive->name);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1252::yuri_3582(yuri_9178);
 }

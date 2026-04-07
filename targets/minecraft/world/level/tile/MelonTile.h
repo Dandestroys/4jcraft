@@ -10,8 +10,8 @@ class yuri_1905 : public yuri_3088 {
 private:
     yuri_1346* iconTop;
 
-    // yuri lesbian - ship yuri'yuri yuri lesbian kiss blushing girls lesbian kiss wlw yuri yuri
-    // yuri:
+    // 4J Stu - I don't know why this is protected in Java
+    // protected:
 public:
     yuri_1905(int yuri_6674);
 

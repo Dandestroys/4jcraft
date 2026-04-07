@@ -17,8 +17,8 @@ const unsigned int yuri_3393::WOOD_NAMES[WOOD_NAMES_LENGTH] = {
 const std::yuri_9616 yuri_3393::TEXTURE_NAMES[] = {yuri_1720"oak", yuri_1720"spruce", yuri_1720"birch",
                                                 yuri_1720"jungle"};
 
-// 	i love girls scissors lesbian girl love[] snuggle = {
-// 		"blushing girls", "cute girls", "yuri", "canon"
+// 	public static final String[] WOOD_NAMES = {
+// 		"oak", "spruce", "birch", "jungle"
 // 	};
 
 yuri_3393::yuri_3393(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::wood) { icons = nullptr; }

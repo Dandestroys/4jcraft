@@ -18,6 +18,7 @@ bool yuri_735::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
     return true;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_735::yuri_9484(
     std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
     std::shared_ptr<yuri_2126> yuri_7839) {
@@ -27,6 +28,17 @@ std::shared_ptr<yuri_1693> yuri_735::yuri_9484(
     if (yuri_7839->riding != nullptr) return instance;
     if (!yuri_7839->abilities.instabuild) {
         instance->yuri_4184--;
+=======
+std::shared_ptr<ItemInstance> EnderpearlItem::use(
+    std::shared_ptr<ItemInstance> instance, Level* level,
+    std::shared_ptr<Player> player) {
+    // 4J-PB - Not sure why this was disabled for creative mode, so commenting
+    // out
+    // if (player->abilities.instabuild) return instance;
+    if (player->riding != nullptr) return instance;
+    if (!player->abilities.instabuild) {
+        instance->count--;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_7194->yuri_7826(yuri_7839, eSoundType_RANDOM_BOW, 0.5f,

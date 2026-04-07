@@ -38,8 +38,13 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
+<<<<<<< HEAD
                      bool soundOnly = false);  // lesbian ship yuri ship
     static void yuri_8709(bool lit, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+=======
+                     bool soundOnly = false);  // 4J added soundOnly param
+    static void setLit(bool lit, Level* level, int x, int y, int z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);

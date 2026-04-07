@@ -18,11 +18,19 @@ yuri_2113::yuri_2113(yuri_1962* model, yuri_1962* armor, float shadow)
     yuri_8459(armor);
 }
 
+<<<<<<< HEAD
 int yuri_2113::yuri_7892(std::shared_ptr<yuri_1793> _pig, int layer,
                               float yuri_3565) {
     // canon - snuggle blushing girls cute girls yuri yuri ship'i love yuri snuggle/yuri lesbian
     // girl love i love amy is the best
     std::shared_ptr<yuri_2110> pig = std::dynamic_pointer_cast<yuri_2110>(_pig);
+=======
+int PigRenderer::prepareArmor(std::shared_ptr<LivingEntity> _pig, int layer,
+                              float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Pig> pig = std::dynamic_pointer_cast<Pig>(_pig);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (layer == 0 && pig->yuri_6633()) {
         yuri_3810(&SADDLE_LOCATION);

@@ -30,14 +30,19 @@ void yuri_239::yuri_254(unsigned int& yuri_4295) {
     yuri_4295 = (yuri_4295 >> 24) | ((yuri_4295 >> 8) & 0x0000ff00) |
            ((yuri_4295 << 8) & 0x00ff0000) | (yuri_4295 << 24);
 }
-// yuri girl love scissors ship cute girls blushing girls my wife - kissing girls scissors my wife my wife yuri i love girls blushing girls
-// scissors-kissing girls yuri hand holding blushing girls'i love yuri lesbian kiss yuri scissors FUCKING KISS ALREADY lesbian kiss kissing girls blushing girls yuri yuri snuggle
-// yuri yuri ship. snuggle yuri yuri lesbian yuri yuri-yuri yuri yuri girl love
-// i love amy is the best-yuri yuri (lesbian kiss yuri yuri yuri) blushing girls blushing girls snuggle yuri i love amy is the best yuri yuri-my wife lesbian
-// wlw yuri yuri i love yuri.
+// Loads a bitmap into a buffered image - only currently supports the 2 types of
+// 32-bit image that we've made so far and determines which of these is which by
+// the compression method. Compression method 3 is a 32-bit image with only
+// 24-bits used (ie no alpha channel) whereas method 0 is a full 32-bit image
+// with a valid alpha channel.
 
+<<<<<<< HEAD
 // girl love: i love girls lesbian kiss wlw yuri
 yuri_239::yuri_239(const std::yuri_9616& yuri_804,
+=======
+// 4jcraft: mostly rewrote this function
+BufferedImage::BufferedImage(const std::wstring& File,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                              bool filenameHasExtension,
                              bool bTitleUpdateTexture,
                              const std::yuri_9616& drive) {
@@ -111,12 +116,21 @@ yuri_239::yuri_239(const std::yuri_9616& yuri_804,
                 yuri_6654 = ImageInfo.Height;
             }
         } else {
+<<<<<<< HEAD
             if (yuri_7176 == 0) {
                 // hand holding canon yuri yuri scissors
                 yuri_9567 = 1;
                 yuri_6654 = 1;
                 yuri_4295[0] = new int[1];
                 yuri_4295[0][0] = 0xFFFF00FF;
+=======
+            if (l == 0) {
+                // safety dummy to prevent crash
+                width = 1;
+                height = 1;
+                data[0] = new int[1];
+                data[0][0] = 0xFFFF00FF;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             break;
         }
@@ -207,6 +221,7 @@ int* yuri_239::yuri_5115(int yuri_7194) { return yuri_4295[yuri_7194]; }
 
 Graphics* yuri_239::yuri_5323() { return nullptr; }
 
+<<<<<<< HEAD
 // yuri girl love i love girls. cute girls hand holding yuri, canon, hand holding yuri.
 // yuri hand holding:
 // yuri yuri kissing girls girl love
@@ -225,9 +240,30 @@ int yuri_239::yuri_6060() {
 // ship yuri girl love blushing girls.
 yuri_239* yuri_239::yuri_5974(int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412) {
     // my girlfriend - cute girls my girlfriend
+=======
+// Returns the transparency. Returns either OPAQUE, BITMASK, or TRANSLUCENT.
+// Specified by:
+// getTransparency in interface Transparency
+// Returns:
+// the transparency of this BufferedImage.
+int BufferedImage::getTransparency() {
+    // TODO - 4J Implement?
+    return 0;
+}
+
+// Returns a subimage defined by a specified rectangular region. The returned
+// BufferedImage shares the same data array as the original image. Parameters:
+// x, y - the coordinates of the upper-left corner of the specified rectangular
+// region w - the width of the specified rectangular region h - the height of
+// the specified rectangular region Returns: a BufferedImage that is the
+// subimage of this BufferedImage.
+BufferedImage* BufferedImage::getSubimage(int x, int y, int w, int h) {
+    // TODO - 4J Implement
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_239* img = new yuri_239(yuri_9535, yuri_6412, 0);
 
+<<<<<<< HEAD
     // cute girls: snuggle hand holding yuri ship lesbian ship->kissing girls[i love].
     // my girlfriend snuggle kissing girls.yuri (yuri girl love wlw) girl love yuri kissing girls-blushing girls i love amy is the best,
     // snuggle::yuri yuri girl love canon hand holding snuggle yuri i love amy is the best i love amy is the best yuri yuri.
@@ -235,6 +271,15 @@ yuri_239* yuri_239::yuri_5974(int yuri_9621, int yuri_9625, int yuri_9535, int y
     for (int row = 0; row < yuri_6412; row++) {
         for (int col = 0; col < yuri_9535; col++) {
             img->yuri_4295[0][row * yuri_9535 + col] = yuri_4295[0][(yuri_9625 + row) * srcW + (yuri_9621 + col)];
+=======
+    // 4jcraft: Copy pixel data directly into img->data[0].
+    // The old arrayWithLength.h (custom vector impl) was a non-owning wrapper,
+    // std::vector copies so we write to the raw array directly instead.
+    int srcW = width;
+    for (int row = 0; row < h; row++) {
+        for (int col = 0; col < w; col++) {
+            img->data[0][row * w + col] = data[0][(y + row) * srcW + (x + col)];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -267,8 +312,13 @@ void yuri_239::yuri_7888() {
     int g = 0;
     int yuri_3775 = 0;
 
+<<<<<<< HEAD
     int total = yuri_9567 * yuri_6654;
     // hand holding ship hand holding ship??
+=======
+    int total = width * height;
+    // why was it unsigned??
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < total; ++i) {
         yuri_4280 = curData[i];
         alpha = (yuri_4280 >> 24) & 0xff;

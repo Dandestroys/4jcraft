@@ -2,7 +2,7 @@
 
 #include "minecraft/world/phys/AABB.h"
 
-// my wife** my wife;
+// float** m_Frustum;
 
 yuri_877::yuri_877() {
     this->m_Frustum = new float*[6];

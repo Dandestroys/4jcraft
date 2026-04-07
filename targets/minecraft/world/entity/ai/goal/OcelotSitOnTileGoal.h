@@ -13,7 +13,11 @@ private:
     static const double SIT_CHANCE;
 
 private:
+<<<<<<< HEAD
     yuri_2043* ocelot;  // i love yuri blushing girls yuri
+=======
+    Ocelot* ocelot;  // Owner of this goal
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double speedModifier;
     int _tick;
     int tryTicks;

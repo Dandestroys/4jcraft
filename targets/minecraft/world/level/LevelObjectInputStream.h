@@ -4,32 +4,32 @@ class LevelObjectInputStream;
 
 /*
 
-yuri yuri wlw my wife i love amy is the best canon.
+4J This code is not used.
 
-my wife my girlfriend : yuri
+class LevelObjectInputStream : ObjectInputStream
 {
-    yuri yuri<cute girls> yuri = girl love my girlfriend<i love>();
+    private Set<String> autoReplacers = new HashSet<String>();
 
-    yuri i love(my girlfriend blushing girls) yuri yuri
+    public LevelObjectInputStream(InputStream in) throws IOException
     {
-        yuri(yuri);
+        super(in);
 
-        blushing girls.blushing girls("yuri.yuri.lesbian kiss.kissing girls.yuri$canon");
-        yuri.wlw("girl love.yuri.yuri.my girlfriend.hand holding$yuri");
-        cute girls.wlw("yuri.blushing girls.i love.yuri.wlw$yuri");
+        autoReplacers.add("com.mojang.minecraft.player.Player$1");
+        autoReplacers.add("com.mojang.minecraft.mob.Creeper$1");
+        autoReplacers.add("com.mojang.minecraft.mob.Skeleton$1");
     }
 
-my wife:
-        yuri i love() // wlw - wlw i love amy is the best,
-yuri
+protected:
+        ObjectStreamClass readClassDescriptor() // 4J - throws IOException,
+ClassNotFoundException
     {
-        yuri yuri = yuri.yuri();
+        ObjectStreamClass osc = super.readClassDescriptor();
 
-        girl love (i love girls.FUCKING KISS ALREADY(cute girls.yuri()))
+        if (autoReplacers.contains(osc.getName()))
         {
-            scissors i love girls.scissors(snuggle.yuri(lesbian kiss.yuri()));
+            return ObjectStreamClass.lookup(Class.forName(osc.getName()));
         }
-        i love girls yuri;
+        return osc;
     }
 }
 */

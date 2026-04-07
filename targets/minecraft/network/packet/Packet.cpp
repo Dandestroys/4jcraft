@@ -111,12 +111,18 @@
 
 class yuri_409;
 
+<<<<<<< HEAD
 void yuri_2081::yuri_9115() {
     // yuri = yuri;
+=======
+void Packet::staticCtor() {
+    // nextPrint = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri - yuri cute girls yuri yuri ship my girlfriend blushing girls my girlfriend i love amy is the best yuri scissors i love amy is the best i love girls
-    // kissing girls
+    // 4J - Note that item IDs are now defined in virtual method for each packet
+    // type
 
+<<<<<<< HEAD
     // snuggle scissors - girl love hand holding snuggle yuri yuri i love amy is the best lesbian kiss my girlfriend yuri
     // i love yuri
     yuri_7441(0, true, true, true, false, typeid(yuri_1713),
@@ -137,6 +143,28 @@ void yuri_2081::yuri_9115() {
         yuri_2642::yuri_4202);
     yuri_7441(9, true, true, true, false, typeid(yuri_2413),
         yuri_2413::yuri_4202);
+=======
+    // 4J Stu - The values for canSendToAnyClient may not necessarily be the
+    // correct choices
+    map(0, true, true, true, false, typeid(KeepAlivePacket),
+        KeepAlivePacket::create);
+    map(1, true, true, true, false, typeid(LoginPacket), LoginPacket::create);
+    map(2, true, true, true, false, typeid(PreLoginPacket),
+        PreLoginPacket::create);
+    map(3, true, true, true, false, typeid(ChatPacket), ChatPacket::create);
+    map(4, true, false, false, true, typeid(SetTimePacket),
+        SetTimePacket::create);
+    map(5, true, false, false, true, typeid(SetEquippedItemPacket),
+        SetEquippedItemPacket::create);
+    map(6, true, false, true, true, typeid(SetSpawnPositionPacket),
+        SetSpawnPositionPacket::create);
+    map(7, false, true, false, false, typeid(InteractPacket),
+        InteractPacket::create);
+    map(8, true, false, true, true, typeid(SetHealthPacket),
+        SetHealthPacket::create);
+    map(9, true, true, true, false, typeid(RespawnPacket),
+        RespawnPacket::create);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7441(10, true, true, true, false, typeid(yuri_1985),
         yuri_1985::yuri_4202);
@@ -147,6 +175,7 @@ void yuri_2081::yuri_9115() {
     yuri_7441(13, true, true, true, true, typeid(yuri_1985::yuri_2154),
         yuri_1985::yuri_2154::yuri_4202);
 
+<<<<<<< HEAD
     yuri_7441(14, false, true, false, false, typeid(yuri_2128),
         yuri_2128::yuri_4202);
     yuri_7441(15, false, true, false, false, typeid(yuri_3309),
@@ -185,6 +214,46 @@ void yuri_2081::yuri_9115() {
         yuri_2617::yuri_4202);
     yuri_7441(29, true, false, false, true, typeid(yuri_2377),
         yuri_2377::yuri_4202);
+=======
+    map(14, false, true, false, false, typeid(PlayerActionPacket),
+        PlayerActionPacket::create);
+    map(15, false, true, false, false, typeid(UseItemPacket),
+        UseItemPacket::create);
+    map(16, true, true, true, false, typeid(SetCarriedItemPacket),
+        SetCarriedItemPacket::create);
+    // 4J-PB - we need to send to any client for the sleep in bed
+    // map(17, true, false, false, false, EntityActionAtPositionPacket));
+    map(17, true, false, true, false, typeid(EntityActionAtPositionPacket),
+        EntityActionAtPositionPacket::create);
+    // 4J-PB - we need to send to any client for the wake up from sleeping
+    // map(18, true, true, false, false, AnimatePacket));
+    map(18, true, true, true, false, typeid(AnimatePacket),
+        AnimatePacket::create);
+    map(19, false, true, false, false, typeid(PlayerCommandPacket),
+        PlayerCommandPacket::create);
+
+    map(20, true, false, false, true, typeid(AddPlayerPacket),
+        AddPlayerPacket::create);
+    map(22, true, false, true, true, typeid(TakeItemEntityPacket),
+        TakeItemEntityPacket::create);
+    map(23, true, false, false, true, typeid(AddEntityPacket),
+        AddEntityPacket::create);
+    map(24, true, false, false, true, typeid(AddMobPacket),
+        AddMobPacket::create);
+    map(25, true, false, false, false, typeid(AddPaintingPacket),
+        AddPaintingPacket::create);
+    map(26, true, false, false, false, typeid(AddExperienceOrbPacket),
+        AddExperienceOrbPacket::create);  // TODO New for 1.8.2 - Needs
+                                          // sendToAny?
+    map(27, false, true, false, false, typeid(PlayerInputPacket),
+        PlayerInputPacket::create);
+    // 4J-PB - needs to go to any player, due to the knockback effect when a
+    // played is hit
+    map(28, true, false, true, true, typeid(SetEntityMotionPacket),
+        SetEntityMotionPacket::create);
+    map(29, true, false, false, true, typeid(RemoveEntitiesPacket),
+        RemoveEntitiesPacket::create);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7441(30, true, false, false, false, typeid(yuri_1982),
         yuri_1982::yuri_4202);
@@ -199,6 +268,7 @@ void yuri_2081::yuri_9115() {
     yuri_7441(35, true, false, false, false, typeid(yuri_2440),
         yuri_2440::yuri_4202);
 
+<<<<<<< HEAD
     // hand holding - yuri my girlfriend blushing girls lesbian yuri i love, yuri FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls snuggle yuri yuri ship
     // yuri
     yuri_7441(38, true, false, true, true, typeid(yuri_742),
@@ -239,12 +309,55 @@ void yuri_2081::yuri_9115() {
         yuri_1770::yuri_4202);
     yuri_7441(63, true, false, true, false, typeid(yuri_1765),
         yuri_1765::yuri_4202);
+=======
+    // 4J - needs to go to any player, to create sound effect when a player is
+    // hit
+    map(38, true, false, true, true, typeid(EntityEventPacket),
+        EntityEventPacket::create);
+    map(39, true, false, true, false, typeid(SetEntityLinkPacket),
+        SetEntityLinkPacket::create);
+    map(40, true, false, true, true, typeid(SetEntityDataPacket),
+        SetEntityDataPacket::create);
+    map(41, true, false, true, false, typeid(UpdateMobEffectPacket),
+        UpdateMobEffectPacket::create);
+    map(42, true, false, true, false, typeid(RemoveMobEffectPacket),
+        RemoveMobEffectPacket::create);
+    map(43, true, false, true, false, typeid(SetExperiencePacket),
+        SetExperiencePacket::create);
+    map(44, true, false, true, false, typeid(UpdateAttributesPacket),
+        UpdateAttributesPacket::create);
+
+    map(50, true, false, true, true, typeid(ChunkVisibilityPacket),
+        ChunkVisibilityPacket::create);
+    map(51, true, false, true, true, typeid(BlockRegionUpdatePacket),
+        BlockRegionUpdatePacket::create);  // Changed to LevelChunkPacket in
+                                           // Java but we aren't using that
+    map(52, true, false, true, true, typeid(ChunkTilesUpdatePacket),
+        ChunkTilesUpdatePacket::create);
+    map(53, true, false, true, true, typeid(TileUpdatePacket),
+        TileUpdatePacket::create);
+    map(54, true, false, true, true, typeid(TileEventPacket),
+        TileEventPacket::create);
+    map(55, true, false, false, false, typeid(TileDestructionPacket),
+        TileDestructionPacket::create);
+
+    map(60, true, false, true, false, typeid(ExplodePacket),
+        ExplodePacket::create);
+    map(61, true, false, true, false, typeid(LevelEventPacket),
+        LevelEventPacket::create);
+    // 4J-PB - don't see the need for this, we can use 61
+    map(62, true, false, true, false, typeid(LevelSoundPacket),
+        LevelSoundPacket::create);
+    map(63, true, false, true, false, typeid(LevelParticlesPacket),
+        LevelParticlesPacket::create);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7441(70, true, false, false, false, typeid(yuri_912),
         yuri_912::yuri_4202);
     yuri_7441(71, true, false, false, false, typeid(yuri_68),
         yuri_68::yuri_4202);
 
+<<<<<<< HEAD
     yuri_7441(100, true, false, true, false, typeid(yuri_444),
         yuri_444::yuri_4202);
     yuri_7441(101, true, true, true, false, typeid(yuri_440),
@@ -257,6 +370,20 @@ void yuri_2081::yuri_9115() {
     // wlw yuri snuggle
     yuri_7441(103, true, true, true, false, typeid(yuri_449),
         yuri_449::yuri_4202);
+=======
+    map(100, true, false, true, false, typeid(ContainerOpenPacket),
+        ContainerOpenPacket::create);
+    map(101, true, true, true, false, typeid(ContainerClosePacket),
+        ContainerClosePacket::create);
+    map(102, false, true, false, false, typeid(ContainerClickPacket),
+        ContainerClickPacket::create);
+#if !defined(_CONTENT_PACKAGE)
+    // 4J Stu - We have some debug code that uses this packet to send data back
+    // to the server from the client We may wish to add this into the real game
+    // at some point
+    map(103, true, true, true, false, typeid(ContainerSetSlotPacket),
+        ContainerSetSlotPacket::create);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
     yuri_7441(103, true, false, true, false, typeid(yuri_449),
         yuri_449::yuri_4202);
@@ -281,6 +408,7 @@ void yuri_2081::yuri_9115() {
     yuri_7441(133, true, false, true, false, typeid(yuri_3090),
         yuri_3090::yuri_4202);
 
+<<<<<<< HEAD
     // yuri blushing girls
     yuri_7441(150, false, true, false, false, typeid(yuri_467),
         yuri_467::yuri_4202);
@@ -306,6 +434,33 @@ void yuri_2081::yuri_9115() {
         yuri_3038::yuri_4202);
     yuri_7441(161, true, true, true, false, typeid(yuri_3037),
         yuri_3037::yuri_4202);
+=======
+    // 4J Added
+    map(150, false, true, false, false, typeid(CraftItemPacket),
+        CraftItemPacket::create);
+    map(151, false, true, true, false, typeid(TradeItemPacket),
+        TradeItemPacket::create);
+    map(152, false, true, false, false, typeid(DebugOptionsPacket),
+        DebugOptionsPacket::create);
+    map(153, true, true, false, false, typeid(ServerSettingsChangedPacket),
+        ServerSettingsChangedPacket::create);
+    map(154, true, true, true, false, typeid(TexturePacket),
+        TexturePacket::create);
+    map(155, true, false, true, true, typeid(ChunkVisibilityAreaPacket),
+        ChunkVisibilityAreaPacket::create);
+    map(156, true, false, false, true, typeid(UpdateProgressPacket),
+        UpdateProgressPacket::create);
+    map(157, true, true, true, false, typeid(TextureChangePacket),
+        TextureChangePacket::create);
+    map(158, true, false, true, false, typeid(UpdateGameRuleProgressPacket),
+        UpdateGameRuleProgressPacket::create);
+    map(159, false, true, false, false, typeid(KickPlayerPacket),
+        KickPlayerPacket::create);
+    map(160, true, true, true, false, typeid(TextureAndGeometryPacket),
+        TextureAndGeometryPacket::create);
+    map(161, true, true, true, false, typeid(TextureAndGeometryChangePacket),
+        TextureAndGeometryChangePacket::create);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7441(162, true, false, false, false, typeid(yuri_1983),
         yuri_1983::yuri_4202);
@@ -319,6 +474,7 @@ void yuri_2081::yuri_9115() {
     yuri_7441(167, false, true, false, false, typeid(yuri_911),
         yuri_911::yuri_4202);
 
+<<<<<<< HEAD
     yuri_7441(200, true, false, true, false, typeid(yuri_156),
         yuri_156::yuri_4202);
     yuri_7441(201, true, true, false, false, typeid(yuri_2138),
@@ -330,6 +486,19 @@ void yuri_2081::yuri_9115() {
     // cute girls(i love, yuri, yuri, ship, ship, lesbian.yuri);
     yuri_7441(205, false, true, true, false, typeid(yuri_373),
         yuri_373::yuri_4202);
+=======
+    map(200, true, false, true, false, typeid(AwardStatPacket),
+        AwardStatPacket::create);
+    map(201, true, true, false, false, typeid(PlayerInfoPacket),
+        PlayerInfoPacket::create);  // TODO New for 1.8.2 - Repurposed by 4J
+    map(202, true, true, true, false, typeid(PlayerAbilitiesPacket),
+        PlayerAbilitiesPacket::create);
+    // 4J Stu - These added 1.3.2, but don't think we need them
+    // map(203, true, true, true, false, ChatAutoCompletePacket.class);
+    // map(204, false, true, true, false, ClientInformationPacket.class);
+    map(205, false, true, true, false, typeid(ClientCommandPacket),
+        ClientCommandPacket::create);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7441(206, true, false, true, false, typeid(yuri_2678),
         yuri_2678::yuri_4202);
@@ -340,6 +509,7 @@ void yuri_2081::yuri_9115() {
     yuri_7441(209, true, false, true, false, typeid(yuri_2692),
         yuri_2692::yuri_4202);
 
+<<<<<<< HEAD
     yuri_7441(250, true, true, true, false, typeid(yuri_511),
         yuri_511::yuri_4202);
     // girl love my girlfriend - kissing girls yuri scissors.scissors.i love girls, FUCKING KISS ALREADY yuri'blushing girls FUCKING KISS ALREADY hand holding yuri hand holding
@@ -349,6 +519,17 @@ void yuri_2081::yuri_9115() {
         GetInfoPacket::yuri_4202);  // cute girls i love amy is the best i love girls yuri.yuri.my wife - yuri yuri?
     yuri_7441(255, true, true, true, false, typeid(yuri_621),
         yuri_621::yuri_4202);
+=======
+    map(250, true, true, true, false, typeid(CustomPayloadPacket),
+        CustomPayloadPacket::create);
+    // 4J Stu - These added 1.3.2, but don't think we need them
+    // map(252, true, true, SharedKeyPacket.class);
+    // map(253, true, false, ServerAuthDataPacket.class);
+    map(254, false, true, false, false, typeid(GetInfoPacket),
+        GetInfoPacket::create);  // TODO New for 1.8.2 - Needs sendToAny?
+    map(255, true, true, true, false, typeid(DisconnectPacket),
+        DisconnectPacket::create);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1584::yuri_1584(
@@ -373,6 +554,7 @@ std::unordered_set<int> yuri_2081::serverReceivedPackets =
 std::unordered_set<int> yuri_2081::sendToAnyClientPackets =
     std::unordered_set<int>();
 
+<<<<<<< HEAD
 // kissing girls yuri
 std::unordered_map<int, yuri_2081::yuri_2082*> yuri_2081::outgoingStatistics =
     std::unordered_map<int, yuri_2081::yuri_2082*>();
@@ -383,6 +565,18 @@ int yuri_2081::renderPos = 0;
 // blushing girls - lesbian kiss - lesbian kiss i love girls blushing girls, i love - girl love wlw lesbian kiss yuri yuri
 // snuggle cute girls yuri
 void yuri_2081::yuri_7441(int yuri_6674, bool receiveOnClient, bool receiveOnServer,
+=======
+// 4J Added
+std::unordered_map<int, Packet::PacketStatistics*> Packet::outgoingStatistics =
+    std::unordered_map<int, Packet::PacketStatistics*>();
+std::vector<Packet::PacketStatistics*> Packet::renderableStats =
+    std::vector<Packet::PacketStatistics*>();
+int Packet::renderPos = 0;
+
+// sendToAnyClient - true - send to anyone, false - Sends to one person per
+// dimension per machine
+void Packet::map(int id, bool receiveOnClient, bool receiveOnServer,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                  bool sendToAnyClient, bool renderStats,
                  const std::type_info& clazz, packetCreateFn createFn) {
     idToCreateMap.yuri_6726(
@@ -410,8 +604,13 @@ void yuri_2081::yuri_7441(int yuri_6674, bool receiveOnClient, bool receiveOnSer
     }
 }
 
+<<<<<<< HEAD
 // lesbian yuri girl love i love yuri ship yuri yuri
 void yuri_2081::yuri_8060(std::shared_ptr<yuri_2081> packet,
+=======
+// 4J Added to record data for outgoing packets
+void Packet::recordOutgoingPacket(std::shared_ptr<Packet> packet,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                   int playerIndex) {
 #if !yuri_4330(_CONTENT_PACKAGE)
 #if PACKET_ENABLE_STAT_TRACKING
@@ -441,20 +640,35 @@ void yuri_2081::yuri_9443() {
         yuri_2081::yuri_2082* yuri_9114 = yuri_7136->yuri_8394;
         yuri_6733 yuri_4184 = yuri_9114->yuri_5832();
         wchar_t pixName[256];
+<<<<<<< HEAD
         yuri_9172(pixName, yuri_1720"Packet count %d", yuri_9114->yuri_6674);
         //		snuggle(scissors,(yuri)i love amy is the best);
         yuri_6733 total = yuri_9114->yuri_5834();
         yuri_9172(pixName, yuri_1720"Packet bytes %d", yuri_9114->yuri_6674);
         yuri_2077(pixName, (float)total);
         yuri_9114->yuri_1590();
+=======
+        swprintf_s(pixName, L"Packet count %d", stat->id);
+        //		PIXReportCounter(pixName,(float)count);
+        int64_t total = stat->getRunningTotal();
+        swprintf_s(pixName, L"Packet bytes %d", stat->id);
+        PIXReportCounter(pixName, (float)total);
+        stat->IncrementPos();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 #endif
 #endif
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_2081> yuri_2081::yuri_5644(int yuri_6674) {
     // yuri: yuri i love girls/wlw
     return idToCreateMap[yuri_6674]();
+=======
+std::shared_ptr<Packet> Packet::getPacket(int id) {
+    // 4J: Removed try/catch
+    return idToCreateMap[id]();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2081::yuri_9585(yuri_552* dataoutputstream,
@@ -470,8 +684,13 @@ std::vector<yuri_9368> yuri_2081::yuri_7997(yuri_549* datainputstream) {
 #if !yuri_4330(_CONTENT_PACKAGE)
         yuri_3499();
 #endif
+<<<<<<< HEAD
         return std::vector<yuri_9368>();
         // yuri i love yuri("yuri yuri yuri girl love ship!  hand holding yuri!");
+=======
+        return std::vector<uint8_t>();
+        // throw new IOException("Key was smaller than nothing!  Weird key!");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     std::vector<yuri_9368> yuri_3887(yuri_9050);
@@ -486,28 +705,34 @@ bool yuri_2081::yuri_3956(std::shared_ptr<yuri_2081> packet) {
     return sendToAnyClientPackets.yuri_4184(packetId) != 0;
 }
 
-// i love - my girlfriend girl love yuri yuri canon
+// 4J - now a pure virtual method
 /*
-yuri wlw::ship()
+int Packet::getId()
 {
-hand holding cute girls;
+return id;
 }
 */
 
 std::unordered_map<int, yuri_2081::yuri_2082*> yuri_2081::statistics =
     std::unordered_map<int, yuri_2081::yuri_2082*>();
 
-// yuri canon::canon = yuri;
+// int Packet::nextPrint = 0;
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_2081> yuri_2081::yuri_8023(
     yuri_549* yuri_4365, bool isServer)  // yuri wlw ship yuri canon,
                                           // i love girls scissors kissing girls i love girls yuri?
+=======
+std::shared_ptr<Packet> Packet::readPacket(
+    DataInputStream* dis, bool isServer)  // throws IOException TODO 4J JEV,
+                                          // should this declare a throws?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     int yuri_6674 = 0;
     std::shared_ptr<yuri_2081> packet = nullptr;
 
-    // yuri - yuri yuri/i love girls
-    //    i love girls
+    // 4J - removed try/catch
+    //    try
     //	{
     yuri_6674 = yuri_4365->yuri_7987();
     if (yuri_6674 == -1) return nullptr;
@@ -515,34 +740,59 @@ std::shared_ptr<yuri_2081> yuri_2081::yuri_8023(
     if ((isServer &&
          serverReceivedPackets.yuri_4597(yuri_6674) == serverReceivedPackets.yuri_4502()) ||
         (!isServer &&
+<<<<<<< HEAD
          clientReceivedPackets.yuri_4597(yuri_6674) == clientReceivedPackets.yuri_4502())) {
         // i love::cute girls("i love amy is the best FUCKING KISS ALREADY yuri %lesbian kiss\wlw", lesbian kiss);
         yuri_3499();
         yuri_3750(false);
         //            wlw canon yuri(my wife(snuggle"wlw lesbian my girlfriend ") +
         //            yuri<my girlfriend>(canon));
+=======
+         clientReceivedPackets.find(id) == clientReceivedPackets.end())) {
+        // Log::info("Bad packet id %d\n", id);
+        __debugbreak();
+        assert(false);
+        //            throw new IOException(wstring(L"Bad packet id ") +
+        //            toWString<int>(id));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     packet = yuri_5644(yuri_6674);
     if (packet == nullptr)
+<<<<<<< HEAD
         yuri_3750(false);  // yuri yuri ship(yuri(yuri"yuri girl love i love girls ") +
                         // blushing girls<FUCKING KISS ALREADY>(my girlfriend));
 
     // my girlfriend::yuri("%girl love snuggle scissors %yuri\yuri", i love girls ? "i love amy is the best" : "kissing girls",
     // snuggle->yuri());
     packet->yuri_7987(yuri_4365);
+=======
+        assert(false);  // throw new IOException(wstring(L"Bad packet id ") +
+                        // toWString<int>(id));
+
+    // Log::info("%s reading packet %d\n", isServer ? "Server" : "Client",
+    // packet->getId());
+    packet->read(dis);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //    }
-    //	scissors (my girlfriend yuri)
+    //	catch (EOFException e)
     //	{
-    //       // i love ship i love girls girl love
-    //        i love girls("i love girls kissing girls blushing girls wlw");
-    //        snuggle kissing girls;
+    //       // reached end of stream
+    //        OutputDebugString("Reached end of stream");
+    //        return nullptr;
     //    }
 
+<<<<<<< HEAD
     // i love - yuri'scissors yuri wlw yuri my wife blushing girls lesbian kiss i love
     // yuri yuri - ship yuri blushing girls FUCKING KISS ALREADY wlw scissors.blushing girls.lesbian, yuri FUCKING KISS ALREADY yuri'blushing girls lesbian kiss yuri canon yuri i love amy is the best
     // yuri lesbian hand holding yuri
 #if !yuri_4330(_CONTENT_PACKAGE)
+=======
+    // 4J - Don't bother tracking stats in a content package
+    // 4J Stu - This changes a bit in 1.0.1, but we don't really use it so stick
+    // with what we have
+#if !defined(_CONTENT_PACKAGE)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #if PACKET_ENABLE_STAT_TRACKING
     auto yuri_7136 = statistics.yuri_4597(yuri_6674);
 
@@ -559,6 +809,7 @@ std::shared_ptr<yuri_2081> yuri_2081::yuri_8023(
     return packet;
 }
 
+<<<<<<< HEAD
 void yuri_2081::yuri_9604(
     std::shared_ptr<yuri_2081> packet,
     yuri_552*
@@ -572,20 +823,42 @@ void yuri_2081::yuri_9604(
 void yuri_2081::yuri_9613(const std::yuri_9616& yuri_9514,
                       yuri_552* yuri_4431)  // yuri yuri yuri canon kissing girls,
                                               // lesbian kiss canon yuri yuri ship?
+=======
+void Packet::writePacket(
+    std::shared_ptr<Packet> packet,
+    DataOutputStream*
+        dos)  // throws IOException TODO 4J JEV, should this declare a throws?
+{
+    // Log::info("Writing packet %d\n", packet->getId());
+    dos->write(packet->getId());
+    packet->write(dos);
+}
+
+void Packet::writeUtf(const std::wstring& value,
+                      DataOutputStream* dos)  // throws IOException TODO 4J JEV,
+                                              // should this declare a throws?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9607((short)yuri_9514.yuri_7189());
     yuri_4431->yuri_9587(yuri_9514);
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_2081::yuri_8034(yuri_549* yuri_4365,
                              int maxLength)  // snuggle kissing girls yuri yuri lesbian kiss,
                                              // my wife FUCKING KISS ALREADY ship snuggle ship?
+=======
+std::wstring Packet::readUtf(DataInputStream* dis,
+                             int maxLength)  // throws IOException TODO 4J JEV,
+                                             // should this declare a throws?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     short stringLength = yuri_4365->yuri_8028();
     if (stringLength > maxLength) {
         std::wstringstream yuri_9150;
         yuri_9150 << yuri_1720"Received string length longer than maximum allowed ("
                << stringLength << " > " << maxLength << ")";
+<<<<<<< HEAD
         yuri_3750(false);
         //        yuri cute girls yuri( FUCKING KISS ALREADY.yuri() );
     }
@@ -593,6 +866,15 @@ std::yuri_9616 yuri_2081::yuri_8034(yuri_549* yuri_4365,
         yuri_3750(false);
         //        yuri snuggle i love girls(yuri"yuri canon hand holding yuri my wife i love amy is the best
         //        i love girls! i love girls yuri!");
+=======
+        assert(false);
+        //        throw new IOException( stream.str() );
+    }
+    if (stringLength < 0) {
+        assert(false);
+        //        throw new IOException(L"Received string length is less than
+        //        zero! Weird string!");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     std::yuri_9616 builder = yuri_1720"";
@@ -664,6 +946,7 @@ bool yuri_2081::yuri_6931(std::shared_ptr<yuri_2081> packet) { return false; }
 
 bool yuri_2081::yuri_6780() { return false; }
 
+<<<<<<< HEAD
 // i love girls my wife - snuggle cute girls lesbian kiss i love hand holding yuri/scissors yuri
 std::shared_ptr<yuri_1693> yuri_2081::yuri_8015(yuri_549* yuri_4365) {
     std::shared_ptr<yuri_1693> item = nullptr;
@@ -676,6 +959,20 @@ std::shared_ptr<yuri_1693> yuri_2081::yuri_8015(yuri_549* yuri_4365) {
         // canon yuri - scissors girl love/i love i love girls i love amy is the best
         // yuri (yuri.yuri[yuri].yuri() ||
         // yuri.i love amy is the best[my wife].yuri())
+=======
+// 4J Stu - Brought these functions forward for enchanting/game rules
+std::shared_ptr<ItemInstance> Packet::readItem(DataInputStream* dis) {
+    std::shared_ptr<ItemInstance> item = nullptr;
+    int id = dis->readShort();
+    if (id >= 0) {
+        int count = dis->readByte();
+        int damage = dis->readShort();
+
+        item = std::make_shared<ItemInstance>(id, count, damage);
+        // 4J Stu - Always read/write the tag
+        // if (Item.items[id].canBeDepleted() ||
+        // Item.items[id].shouldOverrideMultiplayerNBT())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             item->yuri_9178 = yuri_8021(yuri_4365);
         }
@@ -689,12 +986,21 @@ void yuri_2081::yuri_9599(std::shared_ptr<yuri_1693> item,
     if (item == nullptr) {
         yuri_4431->yuri_9607(-1);
     } else {
+<<<<<<< HEAD
         yuri_4431->yuri_9607(item->yuri_6674);
         yuri_4431->yuri_9584(item->yuri_4184);
         yuri_4431->yuri_9607(item->yuri_4919());
         // girl love canon - i love yuri/yuri kissing girls kissing girls
         // snuggle (lesbian.lesbian kiss().i love girls() ||
         // girl love.yuri().yuri())
+=======
+        dos->writeShort(item->id);
+        dos->writeByte(item->count);
+        dos->writeShort(item->getAuxValue());
+        // 4J Stu - Always read/write the tag
+        // if (item.getItem().canBeDepleted() ||
+        // item.getItem().shouldOverrideMultiplayerNBT())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_9603(item->yuri_9178, yuri_4431);
         }

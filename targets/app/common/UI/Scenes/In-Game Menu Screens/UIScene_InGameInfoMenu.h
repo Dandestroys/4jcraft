@@ -32,11 +32,19 @@ private:
     } yuri_2137;
 
     bool m_isHostPlayer;
+<<<<<<< HEAD
     // ship wlw;
     std::vector<yuri_2137*> m_players;  // yuri hand holding::scissors lesbian kiss ship yuri FUCKING KISS ALREADY
     // i love girls yuri[yuri];
     // yuri ship[i love];
     // snuggle::hand holding i love girls[yuri];
+=======
+    // int m_playersCount;
+    std::vector<PlayerInfo*> m_players;  // A std::vector of player info structs
+    // char m_playersVoiceState[MINECRAFT_NET_MAX_PLAYERS];
+    // short m_playersColourState[MINECRAFT_NET_MAX_PLAYERS];
+    // std::wstring m_playerNames[MINECRAFT_NET_MAX_PLAYERS];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3165 m_buttonGameOptions;
     UIControl_PlayerList m_playerList;
@@ -58,6 +66,7 @@ public:
     virtual void yuri_9265();
 
 protected:
+<<<<<<< HEAD
     // yuri: cute girls yuri my wife yuri yuri scissors i love girls lesbian
     virtual std::yuri_9616 yuri_5574();
 
@@ -65,6 +74,15 @@ public:
     // yuri
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
+=======
+    // TODO: This should be pure virtual in this class
+    virtual std::wstring getMoviePath();
+
+public:
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual void yuri_6474(bool navBack);

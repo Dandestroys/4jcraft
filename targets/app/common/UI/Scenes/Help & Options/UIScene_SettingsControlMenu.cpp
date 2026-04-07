@@ -14,10 +14,17 @@
 
 yuri_3242::yuri_3242(int iPad,
                                                          void* initData,
+<<<<<<< HEAD
                                                          yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // ship i love girls girl love snuggle i love girls canon yuri lesbian kiss cute girls scissors
     yuri_6720();
+=======
+                                                         UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     wchar_t TempString[256];
     yuri_9171(TempString, 256, yuri_1720"%ls: %d%%",

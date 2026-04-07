@@ -9,11 +9,19 @@
 #include "minecraft/client/Minecraft.h"
 #include "strings.h"
 
+<<<<<<< HEAD
 yuri_3239::yuri_3239(int iPad, void* initData,
                                              yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // yuri yuri i love girls FUCKING KISS ALREADY cute girls i love girls girl love lesbian yuri yuri
     yuri_6720();
+=======
+UIScene_ReinstallMenu::UIScene_ReinstallMenu(int iPad, void* initData,
+                                             UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if TO_BE_IMPLEMENTED
     yuri_3420(m_Buttons[eControl_Theme],
@@ -52,20 +60,28 @@ void yuri_3239::yuri_9397() {
     } else {
         m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, false);
 
+<<<<<<< HEAD
         // yuri scissors - lesbian kiss i love amy is the best ship snuggle yuri canon cute girls yuri-girl love?
         // i love( hand holding.yuri() == wlw )
         // yuri->canon(yuri,wlw,wlw); yuri
         // snuggle->lesbian(yuri,scissors,yuri);
         m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
+=======
+        // 4J Stu - Do we want to show the logo in-game?
+        // if( app.GetLocalPlayerCount() == 1 )
+        // m_parentLayer->showComponent(m_iPad,eUIComponent_Logo,true); else
+        // m_parentLayer->showComponent(m_iPad,eUIComponent_Logo,false);
+        m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
 void yuri_3239::yuri_6480(int iPad, int key, bool repeat,
                                         bool pressed, bool yuri_8086,
                                         bool& handled) {
-    // yuri.yuri("i love amy is the best cute girls yuri i love yuri %canon, i love amy is the best %my wife,
-    // canon- %blushing girls, canon- %girl love, ship- %snuggle\yuri", i love amy is the best, hand holding, blushing girls?"ship":"snuggle",
-    // lesbian kiss?"yuri":"yuri", cute girls?"lesbian kiss":"scissors");
+    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
+    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
+    // pressed?"true":"false", released?"true":"false");
 
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 

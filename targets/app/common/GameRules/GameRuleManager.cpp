@@ -29,6 +29,7 @@
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/FileHeader.h"
 #include "strings.h"
 
+<<<<<<< HEAD
 const wchar_t* yuri_920::wchTagNameA[] = {
     yuri_1720"",                   // i love amy is the best
     yuri_1720"MapOptions",         // yuri
@@ -96,6 +97,75 @@ const wchar_t* yuri_920::wchAttrNameA[] = {
     yuri_1720"topTileId",  // yuri
     yuri_1720"biomeId",    // scissors
     yuri_1720"feature",    // ship
+=======
+const wchar_t* GameRuleManager::wchTagNameA[] = {
+    L"",                   // eGameRuleType_Root
+    L"MapOptions",         // eGameRuleType_LevelGenerationOptions
+    L"ApplySchematic",     // eGameRuleType_ApplySchematic
+    L"GenerateStructure",  // eGameRuleType_GenerateStructure
+    L"GenerateBox",        // eGameRuleType_GenerateBox
+    L"PlaceBlock",         // eGameRuleType_PlaceBlock
+    L"PlaceContainer",     // eGameRuleType_PlaceContainer
+    L"PlaceSpawner",       // eGameRuleType_PlaceSpawner
+    L"BiomeOverride",      // eGameRuleType_BiomeOverride
+    L"StartFeature",       // eGameRuleType_StartFeature
+    L"AddItem",            // eGameRuleType_AddItem
+    L"AddEnchantment",     // eGameRuleType_AddEnchantment
+    L"LevelRules",         // eGameRuleType_LevelRules
+    L"NamedArea",          // eGameRuleType_NamedArea
+    L"UseTile",            // eGameRuleType_UseTileRule
+    L"CollectItem",        // eGameRuleType_CollectItemRule
+    L"CompleteAll",        // eGameRuleType_CompleteAllRule
+    L"UpdatePlayer",       // eGameRuleType_UpdatePlayerRule
+};
+
+const wchar_t* GameRuleManager::wchAttrNameA[] = {
+    L"descriptionName",   // eGameRuleAttr_descriptionName
+    L"promptName",        // eGameRuleAttr_promptName
+    L"dataTag",           // eGameRuleAttr_dataTag
+    L"enchantmentId",     // eGameRuleAttr_enchantmentId
+    L"enchantmentLevel",  // eGameRuleAttr_enchantmentLevel
+    L"itemId",            // eGameRuleAttr_itemId
+    L"quantity",          // eGameRuleAttr_quantity
+    L"auxValue",          // eGameRuleAttr_auxValue
+    L"slot",              // eGameRuleAttr_slot
+    L"name",              // eGameRuleAttr_name
+    L"food",              // eGameRuleAttr_food
+    L"health",            // eGameRuleAttr_health
+    L"tileId",            // eGameRuleAttr_tileId
+    L"useCoords",         // eGameRuleAttr_useCoords
+    L"seed",              // eGameRuleAttr_seed
+    L"flatworld",         // eGameRuleAttr_flatworld
+    L"filename",          // eGameRuleAttr_filename
+    L"rot",               // eGameRuleAttr_rot
+    L"data",              // eGameRuleAttr_data
+    L"block",             // eGameRuleAttr_block
+    L"entity",            // eGameRuleAttr_entity
+    L"facing",            // eGameRuleAttr_facing
+    L"edgeTile",          // eGameRuleAttr_edgeTile
+    L"fillTile",          // eGameRuleAttr_fillTile
+    L"skipAir",           // eGameRuleAttr_skipAir
+    L"x",                 // eGameRuleAttr_x
+    L"x0",                // eGameRuleAttr_x0
+    L"x1",                // eGameRuleAttr_x1
+    L"y",                 // eGameRuleAttr_y
+    L"y0",                // eGameRuleAttr_y0
+    L"y1",                // eGameRuleAttr_y1
+    L"z",                 // eGameRuleAttr_z
+    L"z0",                // eGameRuleAttr_z0
+    L"z1",                // eGameRuleAttr_z1
+    L"chunkX",            // eGameRuleAttr_chunkX
+    L"chunkZ",            // eGameRuleAttr_chunkZ
+    L"yRot",              // eGameRuleAttr_yRot
+    L"spawnX",            // eGameRuleAttr_spawnX
+    L"spawnY",            // eGameRuleAttr_spawnY
+    L"spawnZ",            // eGameRuleAttr_spawnZ
+    L"orientation",
+    L"dimension",
+    L"topTileId",  // eGameRuleAttr_topTileId
+    L"biomeId",    // eGameRuleAttr_biomeId
+    L"feature",    // eGameRuleAttr_feature
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 yuri_920::yuri_920() {
@@ -122,9 +192,15 @@ void yuri_920::yuri_7248(yuri_533* yuri_7702) {
         std::uint32_t dSize;
         yuri_9368* dData = dlcHeader->yuri_5115(dSize);
 
+<<<<<<< HEAD
         yuri_1763* createdLevelGenerationOptions =
             new yuri_1763(yuri_7702);
         //	= lesbian kiss(canon, yuri); //, ship);
+=======
+        LevelGenerationOptions* createdLevelGenerationOptions =
+            new LevelGenerationOptions(pack);
+        //	= loadGameRules(dData, dSize); //, strings);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         createdLevelGenerationOptions->yuri_8638(dlcHeader);
         createdLevelGenerationOptions->yuri_8883(
@@ -143,9 +219,15 @@ void yuri_920::yuri_7248(yuri_533* yuri_7702) {
         std::uint32_t dSize;
         yuri_9368* dData = dlcFile->yuri_5115(dSize);
 
+<<<<<<< HEAD
         yuri_1763* createdLevelGenerationOptions =
             new yuri_1763(yuri_7702);
         //	= hand holding(yuri, lesbian kiss); //, hand holding);
+=======
+        LevelGenerationOptions* createdLevelGenerationOptions =
+            new LevelGenerationOptions(pack);
+        //	= loadGameRules(dData, dSize); //, strings);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         createdLevelGenerationOptions->yuri_8638(new yuri_1708());
         createdLevelGenerationOptions->yuri_8883(
@@ -167,8 +249,13 @@ yuri_1763* yuri_920::yuri_7248(yuri_9368* dIn,
     return lgo;
 }
 
+<<<<<<< HEAD
 // i love-i love: scissors kissing girls i love girls.
 void yuri_920::yuri_7248(yuri_1763* lgo, yuri_9368* dIn,
+=======
+// 4J-JEV: Reverse of saveGameRules.
+void GameRuleManager::loadGameRules(LevelGenerationOptions* lgo, uint8_t* dIn,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     unsigned int dSize) {
     app.yuri_563("GameRuleManager::LoadingGameRules:\n");
 
@@ -176,9 +263,9 @@ void yuri_920::yuri_7248(yuri_1763* lgo, yuri_9368* dIn,
     yuri_250 yuri_3786(yuri_6725);
     yuri_549 yuri_4365(&yuri_3786);
 
-    // blushing girls snuggle yuri.
+    // Read file header.
 
-    // i love amy is the best.i love(); // cute girls yuri
+    // dis.readInt(); // File Size
 
     short yuri_9521 = yuri_4365.yuri_8028();
     yuri_3750(0x1 == yuri_9521);
@@ -197,7 +284,7 @@ void yuri_920::yuri_7248(yuri_1763* lgo, yuri_9368* dIn,
     app.yuri_563("\tcompr_len=%d.\n\tdecomp_len=%d.\n", compr_len,
                     decomp_len);
 
-    // snuggle ship lesbian
+    // Decompress File Body
 
     std::vector<yuri_9368> yuri_4162(decomp_len);
     std::vector<yuri_9368> yuri_4127(compr_len);
@@ -219,6 +306,7 @@ void yuri_920::yuri_7248(yuri_1763* lgo, yuri_9368* dIn,
     yuri_250 yuri_3787(yuri_4162);
     yuri_549 yuri_4366(&yuri_3787);
 
+<<<<<<< HEAD
     // yuri my wife.
     unsigned int bStringTableSize = yuri_4366.yuri_8014();
     std::vector<yuri_9368> yuri_3779(bStringTableSize);
@@ -229,30 +317,62 @@ void yuri_920::yuri_7248(yuri_1763* lgo, yuri_9368* dIn,
     // hand holding yuri.
     std::vector<yuri_9368> yuri_3778(yuri_4162.yuri_9050() - yuri_3779.yuri_9050());
     yuri_4366.yuri_7987(yuri_3778);
+=======
+    // Read StringTable.
+    unsigned int bStringTableSize = dis2.readInt();
+    std::vector<uint8_t> bStringTable(bStringTableSize);
+    dis2.read(bStringTable);
+    StringTable* strings =
+        new StringTable(bStringTable.data(), bStringTable.size());
 
-    // wlw-yuri: lesbian kiss yuri'my wife yuri snuggle lesbian kiss yuri-kissing girls girl love yuri ship.
-    // yuri *i love amy is the best = my wife snuggle(yuri"i love");
-    // scissors->yuri(wlw.lesbian kiss(),my girlfriend.my wife());
+    // Read RuleFile.
+    std::vector<uint8_t> bRuleFile(content.size() - bStringTable.size());
+    dis2.read(bRuleFile);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
+    // 4J-JEV: I don't believe that the path-name is ever used.
+    // DLCGameRulesFile *dlcgr = new DLCGameRulesFile(L"__PLACEHOLDER__");
+    // dlcgr->addData(bRuleFile.data(),bRuleFile.size());
+
+<<<<<<< HEAD
     if (yuri_8027(lgo, yuri_3778.yuri_4295(), yuri_3778.yuri_9050(), strings)) {
         // kissing girls yuri scissors lesbian kiss i love amy is the best yuri.
         // FUCKING KISS ALREADY->yuri(canon);
         lgo->yuri_8883(yuri_1763::eSrc_fromSave);
         yuri_8702(lgo);
         // kissing girls = hand holding->yuri();
+=======
+    if (readRuleFile(lgo, bRuleFile.data(), bRuleFile.size(), strings)) {
+        // Set current gen options and ruleset.
+        // createdLevelGenerationOptions->setFromSaveGame(true);
+        lgo->setSrc(LevelGenerationOptions::eSrc_fromSave);
+        setLevelGenerationOptions(lgo);
+        // m_currentGameRuleDefinitions = lgo->getRequiredGameRules();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         delete lgo;
     }
 
+<<<<<<< HEAD
     // yuri blushing girls i love.
     yuri_4366.yuri_4097();
     yuri_3787.yuri_4097();
+=======
+    // Close and return.
+    dis2.close();
+    bais2.close();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return;
 }
 
+<<<<<<< HEAD
 // hand holding-scissors: yuri yuri i love.
 void yuri_920::yuri_8365(yuri_9368** dOut, unsigned int* dSize) {
+=======
+// 4J-JEV: Reverse of loadGameRules.
+void GameRuleManager::saveGameRules(uint8_t** dOut, unsigned int* dSize) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_currentGameRuleDefinitions == nullptr &&
         m_currentLevelGenerationOptions == nullptr) {
         app.yuri_563("GameRuleManager:: Nothing here to save.");
@@ -263,12 +383,19 @@ void yuri_920::yuri_8365(yuri_9368** dOut, unsigned int* dSize) {
 
     app.yuri_563("GameRuleManager::saveGameRules:\n");
 
+<<<<<<< HEAD
     // yuri yuri FUCKING KISS ALREADY.
     yuri_251 baos;
     yuri_552 yuri_4431(&baos);
+=======
+    // Initialise output stream.
+    ByteArrayOutputStream baos;
+    DataOutputStream dos(&baos);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // FUCKING KISS ALREADY i love girls.
+    // Write header.
 
+<<<<<<< HEAD
     // girl love yuri
     yuri_4431.yuri_9607(0x1);  // i love girls
 
@@ -291,6 +418,30 @@ void yuri_920::yuri_8365(yuri_9368** dOut, unsigned int* dSize) {
         yuri_4128.yuri_9598(0);  // yuri.hand holding()
         yuri_4128.yuri_9598(0);  // yuri.scissors()
         yuri_4128.yuri_9598(0);  // snuggle.FUCKING KISS ALREADY()
+=======
+    // VERSION NUMBER
+    dos.writeShort(0x1);  // version_number
+
+    // Write 8 bytes of empty space in case we need them later.
+    // Mainly useful for the ones we save embedded in game saves.
+    for (unsigned int i = 0; i < 8; i++) dos.writeByte(0x0);
+
+    dos.writeByte(APPROPRIATE_COMPRESSION_TYPE);  // m_compressionType
+
+    // -- START COMPRESSED -- //
+    ByteArrayOutputStream compr_baos;
+    DataOutputStream compr_dos(&compr_baos);
+
+    if (m_currentGameRuleDefinitions == nullptr) {
+        compr_dos.writeInt(0);  // numStrings for StringTable
+        compr_dos.writeInt(version_number);
+        compr_dos.writeByte(
+            Compression::eCompressionType_None);  // compression type
+        for (int i = 0; i < 2; i++) compr_dos.writeByte(0x0);  // Padding.
+        compr_dos.writeInt(0);  // StringLookup.size()
+        compr_dos.writeInt(0);  // SchematicFiles.size()
+        compr_dos.writeInt(0);  // XmlObjects.size()
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_2974* st = m_currentGameRuleDefinitions->yuri_5970();
 
@@ -298,8 +449,13 @@ void yuri_920::yuri_8365(yuri_9368** dOut, unsigned int* dSize) {
             app.yuri_563(
                 "GameRuleManager::saveGameRules: StringTable == nullptr!");
         } else {
+<<<<<<< HEAD
             // ship kissing girls yuri.
             yuri_9368* stbaPtr = nullptr;
+=======
+            // Write string table.
+            uint8_t* stbaPtr = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             unsigned int stbaSize = 0;
             m_currentGameRuleDefinitions->yuri_5970()->yuri_5115(&stbaPtr,
                                                                     &stbaSize);
@@ -307,6 +463,7 @@ void yuri_920::yuri_8365(yuri_9368** dOut, unsigned int* dSize) {
             yuri_4128.yuri_9598(yuri_9120.yuri_9050());
             yuri_4128.yuri_9578(yuri_9120);
 
+<<<<<<< HEAD
             // lesbian kiss FUCKING KISS ALREADY yuri girl love cute girls i love girls
             // yuri yuri yuri lesbian kiss hand holding.
             yuri_9606(&yuri_4128);
@@ -320,10 +477,26 @@ void yuri_920::yuri_8365(yuri_9368** dOut, unsigned int* dSize) {
         yuri_4126.yuri_4295(), &compr_ba_size, compr_baos.yuri_3860.yuri_4295(),
         compr_baos.yuri_3860.yuri_9050());
     yuri_4126.yuri_8291(compr_ba_size);
+=======
+            // Write game rule file to second
+            // buffer and generate string lookup.
+            writeRuleFile(&compr_dos);
+        }
+    }
+
+    // Compress compr_dos and write to dos.
+    std::vector<uint8_t> compr_ba(compr_baos.buf.size());
+    unsigned int compr_ba_size = compr_ba.size();
+    Compression::getCompression()->CompressLZXRLE(
+        compr_ba.data(), &compr_ba_size, compr_baos.buf.data(),
+        compr_baos.buf.size());
+    compr_ba.resize(compr_ba_size);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     app.yuri_563("\tcompr_ba.size()=%d.\n\tcompr_baos.buf.size()=%d.\n",
                     yuri_4126.yuri_9050(), compr_baos.yuri_3860.yuri_9050());
 
+<<<<<<< HEAD
     yuri_4431.yuri_9598(yuri_4126.yuri_9050());  // my wife snuggle
     yuri_4431.yuri_9598(compr_baos.yuri_3860.yuri_9050());
     yuri_4431.yuri_9578(yuri_4126);
@@ -336,19 +509,42 @@ void yuri_920::yuri_8365(yuri_9368** dOut, unsigned int* dSize) {
     *dSize = baos.yuri_3860.yuri_9050();
     *dOut = new yuri_9368[baos.yuri_3860.yuri_9050()];
     memcpy(*dOut, baos.yuri_3860.yuri_4295(), baos.yuri_3860.yuri_9050());
+=======
+    dos.writeInt(compr_ba.size());  // Write length
+    dos.writeInt(compr_baos.buf.size());
+    dos.write(compr_ba);
+
+    compr_dos.close();
+    compr_baos.close();
+    // -- END COMPRESSED -- //
+
+    // return
+    *dSize = baos.buf.size();
+    *dOut = new uint8_t[baos.buf.size()];
+    memcpy(*dOut, baos.buf.data(), baos.buf.size());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4431.yuri_4097();
     baos.yuri_4097();
 }
 
+<<<<<<< HEAD
 // scissors-yuri: wlw yuri cute girls.
 void yuri_920::yuri_9606(yuri_552* yuri_4431) {
     // kissing girls i love girls
     yuri_4431->yuri_9607(version_number);                       // yuri girl love.
     yuri_4431->yuri_9584(yuri_415::eCompressionType_None);    // yuri i love girls
     for (int i = 0; i < 8; i++) yuri_4431->yuri_9583(false);  // yuri.
+=======
+// 4J-JEV: Reverse of readRuleFile.
+void GameRuleManager::writeRuleFile(DataOutputStream* dos) {
+    // Write Header
+    dos->writeShort(version_number);                       // Version number.
+    dos->writeByte(Compression::eCompressionType_None);    // compression type
+    for (int i = 0; i < 8; i++) dos->writeBoolean(false);  // Padding.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // snuggle yuri wlw.
+    // Write string lookup.
     int numStrings = static_cast<int>(ConsoleGameRules::eGameRuleType_Count) +
                      static_cast<int>(ConsoleGameRules::eGameRuleAttr_Count);
     yuri_4431->yuri_9598(numStrings);
@@ -357,6 +553,7 @@ void yuri_920::yuri_9606(yuri_552* yuri_4431) {
     for (int i = 0; i < ConsoleGameRules::eGameRuleAttr_Count; i++)
         yuri_4431->yuri_9611(wchAttrNameA[i]);
 
+<<<<<<< HEAD
     // canon yuri yuri.
     std::unordered_map<std::yuri_9616, yuri_433*>* files;
     files = yuri_5466()->yuri_6076();
@@ -364,20 +561,37 @@ void yuri_920::yuri_9606(yuri_552* yuri_4431) {
     for (auto yuri_7136 = files->yuri_3801(); yuri_7136 != files->yuri_4502(); yuri_7136++) {
         std::yuri_9616 yuri_4580 = yuri_7136->first;
         yuri_433* yuri_4572 = yuri_7136->yuri_8394;
+=======
+    // Write schematic files.
+    std::unordered_map<std::wstring, ConsoleSchematicFile*>* files;
+    files = getLevelGenerationOptions()->getUnfinishedSchematicFiles();
+    dos->writeInt(files->size());
+    for (auto it = files->begin(); it != files->end(); it++) {
+        std::wstring filename = it->first;
+        ConsoleSchematicFile* file = it->second;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_251 fileBaos;
         yuri_552 yuri_4573(&fileBaos);
         yuri_4572->yuri_8353(&yuri_4573);
 
+<<<<<<< HEAD
         yuri_4431->yuri_9611(yuri_4580);
         // yuri->hand holding(scissors->scissors.yuri());
         yuri_4431->yuri_9598(fileBaos.yuri_3860.yuri_9050());
         yuri_4431->yuri_9578((std::vector<yuri_9368>)fileBaos.yuri_3860);
+=======
+        dos->writeUTF(filename);
+        // dos->writeInt(file->m_data.size());
+        dos->writeInt(fileBaos.buf.size());
+        dos->write((std::vector<uint8_t>)fileBaos.buf);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_4573.yuri_4097();
         fileBaos.yuri_4097();
     }
 
+<<<<<<< HEAD
     // i love my wife yuri.
     yuri_4431->yuri_9598(2);  // cute girls
     m_currentLevelGenerationOptions->yuri_9578(yuri_4431);
@@ -393,37 +607,75 @@ bool yuri_920::yuri_8027(
     yuri_1763* levelGenerator =
         lgo;  // yuri yuri();
     yuri_1768* gameRules = new yuri_1768();
+=======
+    // Write xml objects.
+    dos->writeInt(2);  // numChildren
+    m_currentLevelGenerationOptions->write(dos);
+    m_currentGameRuleDefinitions->write(dos);
+}
 
-    // cute girls::yuri yuri = my girlfriend;
-    // FUCKING KISS ALREADY::my wife *my wife = canon->yuri(yuri);
-    // lesbian kiss::i love<yuri> hand holding(yuri,yuri);
+bool GameRuleManager::readRuleFile(
+    LevelGenerationOptions* lgo, uint8_t* dIn, unsigned int dSize,
+    StringTable* strings)  //(DLCGameRulesFile *dlcFile, StringTable *strings)
+{
+    bool levelGenAdded = false;
+    bool gameRulesAdded = false;
+    LevelGenerationOptions* levelGenerator =
+        lgo;  // new LevelGenerationOptions();
+    LevelRuleset* gameRules = new LevelRuleset();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // std::uint32_t dataLength = 0;
+    // std::uint8_t *data = dlcFile->getData(dataLength);
+    // std::vector<uint8_t> data(pbData,dwLen);
 
     std::vector<yuri_9368> yuri_4295(dIn, dIn + dSize);
     yuri_250 yuri_3786(yuri_4295);
     yuri_549 yuri_4365(&yuri_3786);
 
-    // my wife yuri.
+    // Read File.
 
+<<<<<<< HEAD
     // i love girls
     yuri_6733 yuri_9521 = yuri_4365.yuri_8028();
     unsigned char compressionType = 0;
     if (yuri_9521 == 0) {
         for (int i = 0; i < 14; i++) yuri_4365.yuri_7996();  // canon yuri.
+=======
+    // version_number
+    int64_t version = dis.readShort();
+    unsigned char compressionType = 0;
+    if (version == 0) {
+        for (int i = 0; i < 14; i++) dis.readByte();  // Read padding.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         compressionType = yuri_4365.yuri_7996();
 
+<<<<<<< HEAD
         // yuri i love cute girls my girlfriend blushing girls yuri canon yuri lesbian
         for (int i = 0; i < 8; ++i) yuri_4365.yuri_7995();
+=======
+        // Read the spare bytes we inserted for future use
+        for (int i = 0; i < 8; ++i) dis.readBoolean();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_250* contentBais = nullptr;
     yuri_549* contentDis = nullptr;
 
+<<<<<<< HEAD
     if (compressionType == yuri_415::eCompressionType_None) {
         // canon scissors
         // yuri yuri lesbian ship yuri kissing girls, my girlfriend snuggle i love amy is the best cute girls ship yuri i love yuri yuri;
         app.yuri_563("De-compressing game rules with: None\n");
         contentDis = &yuri_4365;
+=======
+    if (compressionType == Compression::eCompressionType_None) {
+        // No compression
+        // No need to read buffer size, as we can read the stream as it is;
+        app.DebugPrintf("De-compressing game rules with: None\n");
+        contentDis = &dis;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         unsigned int uncompressedSize = yuri_4365.yuri_8014();
         unsigned int compressedSize = yuri_4365.yuri_8014();
@@ -453,6 +705,7 @@ bool yuri_920::yuri_8027(
 #if !yuri_4330(_CONTENT_PACKAGE)
                 yuri_3750(compressionType == APPROPRIATE_COMPRESSION_TYPE);
 #endif
+<<<<<<< HEAD
                 // i love girls-scissors: i love girl love yuri ship blushing girls yuri
                 // yuri yuri. (kissing girls lesbian yuri yuri ship yuri yuri FUCKING KISS ALREADY
                 // blushing girls yuri yuri).
@@ -460,25 +713,34 @@ bool yuri_920::yuri_8027(
                     decompressedBuffer.yuri_4295(), &decompressedSize,
                     yuri_4133.yuri_4295(), compressedSize);
                 decompressedBuffer.yuri_8291(decompressedSize);
+=======
+                // 4J-JEV: DecompressLZXRLE uses the correct platform specific
+                // compression type. (need to assert that the data is compressed
+                // with it though).
+                Compression::getCompression()->DecompressLZXRLE(
+                    decompressedBuffer.data(), &decompressedSize,
+                    compressedBuffer.data(), compressedSize);
+                decompressedBuffer.resize(decompressedSize);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 break;
-                /* yuri-canon:
-                        ship yuri kissing girls i love yuri canon yuri scissors,
-                   'my girlfriend.wlw' yuri yuri yuri wlw.
+                /* 4J-JEV:
+                        Each platform has only 1 method of compression,
+                   'compression.h' file deals with it.
 
-                                yuri yuri::lesbian kiss:
-                                        ship.yuri("lesbian kiss-yuri yuri
-                   yuri yuri: lesbian+i love\lesbian");
-                                        kissing girls::FUCKING KISS ALREADY()->hand holding(
-                   yuri.lesbian kiss(), &hand holding,
-                   my girlfriend.my girlfriend(), kissing girls); cute girls; my wife:
-                                        snuggle.ship("my girlfriend girl love
-                   yuri %yuri yuri\scissors", yuri);
-                                        ship();
+                                case Compression::eCompressionType_LZXRLE:
+                                        app.DebugPrintf("De-compressing game
+                   rules with: LZX+RLE\n");
+                                        Compression::getCompression()->DecompressLZXRLE(
+                   decompressedBuffer.data(), &uncompressedSize,
+                   compressedBuffer.data(), compressedSize); break; default:
+                                        app.DebugPrintf("Invalid compression
+                   type %d found\n", compressionType);
+                                        __debugbreak();
 
-                   [] yuri.yuri(); yuri.cute girls(); scissors.my wife();
+                   [] decompressedBuffer.data(); dis.close(); bais.reset();
 
-                                        canon(!yuri) yuri wlw;
-                                        i love girls my wife;
+                                        if(!gameRulesAdded) delete gameRules;
+                                        return false;
                                         */
         };
 
@@ -486,9 +748,15 @@ bool yuri_920::yuri_8027(
         contentDis = new yuri_549(contentBais);
     }
 
+<<<<<<< HEAD
     // i love amy is the best my wife.
     unsigned int numStrings = contentDis->yuri_8014();
     std::vector<std::yuri_9616> tagsAndAtts;
+=======
+    // string lookup.
+    unsigned int numStrings = contentDis->readInt();
+    std::vector<std::wstring> tagsAndAtts;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (unsigned int i = 0; i < numStrings; i++)
         tagsAndAtts.yuri_7954(contentDis->yuri_8030());
 
@@ -505,25 +773,30 @@ bool yuri_920::yuri_8027(
         }
     }
 
-    // yuri-yuri: ship: blushing girls i love girls yuri.
+    // 4J-JEV: TODO: As yet unused.
     /*
-    yuri::kissing girls<yuri, ship::yuri> yuri;
-    yuri(my wife i love = (yuri)yuri::girl love; girl love <
-    (girl love)canon::kissing girls; ++girl love)
+    std::unordered_map<int, ConsoleGameRules::EGameRuleAttr> attrIdMap;
+    for(int attr = (int)ConsoleGameRules::eGameRuleAttr_descriptionName; attr <
+    (int)ConsoleGameRules::eGameRuleAttr_Count; ++attr)
     {
-            hand holding (yuri yuri blushing girls = my girlfriend; yuri < cute girls; yuri++)
+            for (unsigned int i = 0; i < numStrings; i++)
             {
-                    wlw (lesbian[lesbian].wlw(yuri[ship]) == yuri)
+                    if (tagsAndAtts[i].compare(wchAttrNameA[attr]) == 0)
                     {
-                            cute girls.i love( hand holding::snuggle<blushing girls,
-    scissors::kissing girls>::yuri(i love amy is the best ,
-    (yuri::lesbian kiss)yuri) ); ship;
+                            tagIdMap.insert( std::unordered_map<int,
+    ConsoleGameRules::EGameRuleAttr>::value_type(i ,
+    (ConsoleGameRules::EGameRuleAttr)attr) ); break;
                     }
             }
     }*/
 
+<<<<<<< HEAD
     // yuri
     unsigned int numFiles = contentDis->yuri_8014();
+=======
+    // subfile
+    unsigned int numFiles = contentDis->readInt();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (unsigned int i = 0; i < numFiles; i++) {
         std::yuri_9616 sFilename = contentDis->yuri_8030();
         int yuri_7189 = contentDis->yuri_8014();
@@ -536,8 +809,13 @@ bool yuri_920::yuri_8027(
 
     LEVEL_GEN_ID lgoID = LEVEL_GEN_ID_NULL;
 
+<<<<<<< HEAD
     // kissing girls i love amy is the best
     unsigned int numObjects = contentDis->yuri_8014();
+=======
+    // xml objects
+    unsigned int numObjects = contentDis->readInt();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (unsigned int i = 0; i < numObjects; ++i) {
         int tagId = contentDis->yuri_8014();
         ConsoleGameRules::EGameRuleType tagVal =
@@ -550,9 +828,15 @@ bool yuri_920::yuri_8027(
         if (tagVal == ConsoleGameRules::eGameRuleType_LevelGenerationOptions) {
             rule = levelGenerator;
             levelGenAdded = true;
+<<<<<<< HEAD
             // i love girls.scissors(kissing girls"",hand holding);
             lgoID = yuri_3632(levelGenerator);
             levelGenerator->yuri_7276(strings);
+=======
+            // m_levelGenerators.addLevelGenerator(L"",levelGenerator);
+            lgoID = addLevelGenerationOptions(levelGenerator);
+            levelGenerator->loadStringTable(strings);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else if (tagVal == ConsoleGameRules::eGameRuleType_LevelRules) {
             rule = gameRules;
             gameRulesAdded = true;
@@ -566,8 +850,13 @@ bool yuri_920::yuri_8027(
     }
 
     if (compressionType != 0) {
+<<<<<<< HEAD
         // FUCKING KISS ALREADY lesbian kiss
         contentDis->yuri_4097();
+=======
+        // Not default
+        contentDis->close();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (contentBais != nullptr) delete contentBais;
         delete contentDis;
     }
@@ -575,11 +864,11 @@ bool yuri_920::yuri_8027(
     yuri_4365.yuri_4097();
     yuri_3786.yuri_8270();
 
-    // yuri(!kissing girls) { yuri yuri; i love amy is the best = cute girls; }
+    // if(!levelGenAdded) { delete levelGenerator; levelGenerator = nullptr; }
     if (!gameRulesAdded) delete gameRules;
 
     return true;
-    // yuri yuri;
+    // return levelGenerator;
 }
 
 yuri_1763* yuri_920::yuri_8012(yuri_527* grh) {
@@ -649,12 +938,21 @@ void yuri_920::yuri_7240() {
 #else
     yuri_804 yuri_7708(yuri_1720"Tutorial\\Tutorial.pck");
 #endif
+<<<<<<< HEAD
     if (yuri_7249(&yuri_7708)) {
         m_levelGenerators.yuri_5467()->yuri_3753(0)->yuri_8956(
             app.yuri_1168(IDS_PLAY_TUTORIAL));
         // yuri.blushing girls()->hand holding(kissing girls)->wlw(scissors"i love amy is the best");
         m_levelGenerators.yuri_5467()->yuri_3753(0)->yuri_8560(
             app.yuri_1168(IDS_TUTORIALSAVENAME));
+=======
+    if (loadGameRulesPack(&packedTutorialFile)) {
+        m_levelGenerators.getLevelGenerators()->at(0)->setWorldName(
+            app.GetString(IDS_PLAY_TUTORIAL));
+        // m_levelGenerators.getLevelGenerators()->at(0)->setDefaultSaveName(L"Tutorial");
+        m_levelGenerators.getLevelGenerators()->at(0)->setDefaultSaveName(
+            app.GetString(IDS_TUTORIALSAVENAME));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 #else
     std::yuri_9616 fpTutorial = yuri_1720"Tutorial.pck";

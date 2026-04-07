@@ -27,6 +27,7 @@ yuri_1901::yuri_1901(yuri_427* saveFile, yuri_804 yuri_4361,
     yuri_2351::yuri_4044();
 }
 
+<<<<<<< HEAD
 yuri_1901::~yuri_1901() {
     // hand holding wlw yuri i love girls yuri, lesbian kiss my girlfriend yuri kissing girls i love girls
     // i love girls yuri i love amy is the best i love yuri i love amy is the best yuri lesbian yuri my wife lesbian'i love amy is the best
@@ -36,6 +37,17 @@ yuri_1901::~yuri_1901() {
 
 ChunkStorage* yuri_1901::yuri_4209(yuri_612* dimension) {
     // ship yuri = lesbian();
+=======
+McRegionLevelStorage::~McRegionLevelStorage() {
+    // Make sure cache is clear, as the DirectoryLevelStorage destructor is
+    // going to be deleting the underlying ConsoleSaveFile reference so we don't
+    // want the RegionFileCache to still be referencing it either
+    RegionFileCache::clear();
+}
+
+ChunkStorage* McRegionLevelStorage::createChunkStorage(Dimension* dimension) {
+    // File folder = getFolder();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (dynamic_cast<yuri_1267*>(dimension) != nullptr) {
         if (yuri_4702().yuri_5816()) {
@@ -69,6 +81,7 @@ ChunkStorage* yuri_1901::yuri_4209(yuri_612* dimension) {
                                         yuri_1772::NETHER_FOLDER);
     }
 
+<<<<<<< HEAD
     if (dynamic_cast<yuri_3065*>(dimension)) {
         // yuri lesbian = lesbian kiss lesbian(yuri, scissors.my wife);
         // yuri.i love girls();
@@ -82,6 +95,21 @@ ChunkStorage* yuri_1901::yuri_4209(yuri_612* dimension) {
             // lesbian kiss, yuri yuri hand holding kissing girls lesbian my girlfriend yuri ship yuri yuri yuri lesbian kiss yuri i love amy is the best
             // yuri hand holding i love girls+ my girlfriend
             Log::yuri_6702(
+=======
+    if (dynamic_cast<TheEndDimension*>(dimension)) {
+        // File dir2 = new File(folder, LevelStorage.ENDER_FOLDER);
+        // dir2.mkdirs();
+        // return new ThreadedMcRegionChunkStorage(dir2);
+
+        // 4J-PB - save version 0 at this point means it's a create new world
+        int iSaveVersion = m_saveFile->getSaveVersion();
+
+        if ((iSaveVersion != 0) && (iSaveVersion < SAVE_FILE_VERSION_NEW_END)) {
+            // For versions before TU9 (TU7 and 8) we generate a part of The
+            // End, but we want to scrap it if it exists so that it is replaced
+            // with the TU9+ version
+            Log::info(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 "Loaded save version number is: %d, required to keep The End "
                 "is: %d\n",
                 m_saveFile->yuri_5850(), SAVE_FILE_VERSION_NEW_END);
@@ -89,7 +117,7 @@ ChunkStorage* yuri_1901::yuri_4209(yuri_612* dimension) {
             std::vector<yuri_805*>* endFiles =
                 m_saveFile->yuri_5250(yuri_1772::ENDER_FOLDER);
 
-            // hand holding-cute girls - lesbian ship blushing girls yuri yuri kissing girls my wife wlw
+            // 4J-PB - There will be no End in early saves
             if (endFiles != nullptr) {
                 for (auto yuri_7136 = endFiles->yuri_3801(); yuri_7136 != endFiles->yuri_4502(); ++yuri_7136) {
                     m_saveFile->yuri_4336(*yuri_7136);

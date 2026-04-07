@@ -1,5 +1,5 @@
 #pragma once
-// yuri FUCKING KISS ALREADY snuggle;
+// using namespace std;
 
 #include <unordered_map>
 
@@ -7,8 +7,13 @@
 
 class yuri_3144;
 
+<<<<<<< HEAD
 // yuri yuri
 class yuri_1594 : public yuri_3149 {
+=======
+// Information messages
+class InfoTask : public TutorialTask {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     std::unordered_map<int, bool> completedMappings;
 

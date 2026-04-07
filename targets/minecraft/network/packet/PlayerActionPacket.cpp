@@ -28,7 +28,11 @@ yuri_2128::yuri_2128(int action, int yuri_9621, int yuri_9625, int yuri_9630,
     this->face = face;
 }
 
+<<<<<<< HEAD
 void yuri_2128::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+=======
+void PlayerActionPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     action = yuri_4365->yuri_8032();
     yuri_9621 = yuri_4365->yuri_8014();
@@ -37,7 +41,11 @@ void yuri_2128::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
     face = yuri_4365->yuri_8032();
 }
 
+<<<<<<< HEAD
 void yuri_2128::yuri_9578(yuri_552* yuri_4431)  // girl love yuri
+=======
+void PlayerActionPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9578(action);
     yuri_4431->yuri_9598(yuri_9621);

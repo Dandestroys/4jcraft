@@ -23,8 +23,13 @@ class yuri_2911;
 class yuri_1945;
 class yuri_1964;
 
+<<<<<<< HEAD
 // yuri lesbian snuggle lesbian hand holding yuri i love yuri yuri yuri yuri
 #yuri_4327 PLAYER_IDLE_TIME 300
+=======
+// Time in seconds before the players presence is update to Idle
+#define PLAYER_IDLE_TIME 300
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class yuri_1829 : public yuri_2126 {
 public:
@@ -37,15 +42,15 @@ public:
 protected:
     yuri_1945* minecraft;
     int sprintTriggerTime;
-    bool sprintTriggerRegisteredReturn;  // yuri yuri
-    bool twoJumpsRegistered;             // FUCKING KISS ALREADY scissors
+    bool sprintTriggerRegisteredReturn;  // 4J added
+    bool twoJumpsRegistered;             // 4J added
 
-    unsigned int m_uiInactiveTicks;  // yuri yuri hand holding i love canon yuri
+    unsigned int m_uiInactiveTicks;  // To measure time for idle anims
 
     unsigned long long m_awardedThisSession;
 
-    // my wife - yuri yuri ship yuri yuri i love amy is the best ship.
-    // scissors yuri lesbian;
+    // 4J - Last time we checked for achievement uunlocks.
+    // long long m_lastAchievementUpdate;
 
 public:
     int sprintTime;
@@ -59,21 +64,21 @@ public:
     yuri_1829(yuri_1945* minecraft, yuri_1758* yuri_7194, yuri_3313* user, int dimension);
     virtual ~yuri_1829();
 
-    int m_iScreenSection;  // i love girl love snuggle lesbian yuri, scissors -wlw yuri
-                           // i love amy is the best wlw
+    int m_iScreenSection;  // assuming 4player splitscreen for now, or -1 for
+                           // single player
     uint64_t
-        ullButtonsPressed;  // blushing girls i love FUCKING KISS ALREADY yuri, canon my girlfriend kissing girls
-                            // my girlfriend yuri yuri i love yuri my girlfriend my girlfriend
-    // girl love i love amy is the best, yuri lesbian kiss girl love my girlfriend yuri my wife FUCKING KISS ALREADY blushing girls yuri yuri FUCKING KISS ALREADY ship
-    // yuri::blushing girls
+        ullButtonsPressed;  // Stores the button presses, since the inputmanager
+                            // can be ticked faster than the minecraft
+    // player tick, and a button press and release combo can be missed in the
+    // minecraft::tick
 
     uint64_t ullDpad_last;
     uint64_t ullDpad_this;
     uint64_t ullDpad_filtered;
 
-    // scissors-i love - my wife yuri my wife canon yuri yuri yuri, yuri yuri scissors yuri
-    // yuri yuri wlw yuri
-    // yuri wlw;
+    // 4J-PB - moved these in from the minecraft structure, since they are per
+    // player things for splitscreen
+    // int ticks;
     int missTime;
     int lastClickTick[2];
     bool yuri_7003;
@@ -88,15 +93,20 @@ private:
     float jumpRidingScale;
 
 protected:
+<<<<<<< HEAD
     // canon-blushing girls - yuri'cute girls yuri scissors
     int yuri_7341;
+=======
+    // 4J-PB - player's xbox pad
+    int m_iPad;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool m_bIsIdle;
 
 private:
-    // hand holding my wife lesbian kiss
+    // local player fly
     // --------------------------------------------------------------------------
-    // yuri lesbian kiss FUCKING KISS ALREADY
+    // smooth camera settings
 
     yuri_2852 smoothFlyX;
     yuri_2852 smoothFlyY;
@@ -111,6 +121,7 @@ protected:
     bool yuri_6850();
 
 public:
+<<<<<<< HEAD
     virtual void yuri_3704();
     virtual void yuri_3986(int i);
     virtual float yuri_5242();
@@ -157,6 +168,54 @@ public:
     // scissors - scissors yuri yuri yuri lesbian kiss lesbian yuri yuri yuri scissors girl love, snuggle snuggle hand holding i love girls
     // i love girls, yuri yuri snuggle
     virtual void yuri_2738(int val) { m_iThirdPersonView = val; }
+=======
+    virtual void aiStep();
+    virtual void changeDimension(int i);
+    virtual float getFieldOfViewModifier();
+    virtual void addAdditonalSaveData(CompoundTag* entityTag);
+    virtual void readAdditionalSaveData(CompoundTag* entityTag);
+    virtual void closeContainer();
+    virtual void openTextEdit(std::shared_ptr<TileEntity> sign);
+    virtual bool openContainer(
+        std::shared_ptr<Container> container);  // 4J added bool return
+    virtual bool openHopper(
+        std::shared_ptr<HopperTileEntity> container);  // 4J added bool return
+    virtual bool openHopper(
+        std::shared_ptr<MinecartHopper> container);  // 4J added bool return
+    virtual bool openHorseInventory(
+        std::shared_ptr<EntityHorse> horse,
+        std::shared_ptr<Container> container);        // 4J added bool return
+    virtual bool startCrafting(int x, int y, int z);  // 4J added bool return
+    virtual bool openFireworks(int x, int y, int z);  // 4J added
+    virtual bool startEnchanting(
+        int x, int y, int z, const std::wstring& name);  // 4J added bool return
+    virtual bool startRepairing(int x, int y, int z);
+    virtual bool openFurnace(
+        std::shared_ptr<FurnaceTileEntity> furnace);  // 4J added bool return
+    virtual bool openBrewingStand(std::shared_ptr<BrewingStandTileEntity>
+                                      brewingStand);  // 4J added bool return
+    virtual bool openBeacon(
+        std::shared_ptr<BeaconTileEntity> beacon);  // 4J added bool return
+    virtual bool openTrap(
+        std::shared_ptr<DispenserTileEntity> trap);  // 4J added bool return
+    virtual bool openTrading(std::shared_ptr<Merchant> traderTarget,
+                             const std::wstring& name);
+    virtual void crit(std::shared_ptr<Entity> e);
+    virtual void magicCrit(std::shared_ptr<Entity> e);
+    virtual void take(std::shared_ptr<Entity> e, int orgCount);
+    virtual void chat(const std::wstring& message);
+    virtual bool isSneaking();
+    // virtual bool isIdle();
+    virtual void hurtTo(float newHealth, uint8_t damageSource);
+    virtual void respawn();
+    virtual void animateRespawn();
+    virtual void displayClientMessage(int messageId);
+    virtual void awardStat(Stat* stat, const std::vector<uint8_t>& param);
+    virtual int ThirdPersonView() { return m_iThirdPersonView; }
+    // 4J - have changed 3rd person view to be 0 if not enabled, 1 for mode like
+    // original, 2 reversed mode
+    virtual void SetThirdPersonView(int val) { m_iThirdPersonView = val; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_2405() { m_uiInactiveTicks = 0; }
     unsigned int yuri_1036() { return m_uiInactiveTicks; }
@@ -164,6 +223,7 @@ public:
         if (m_uiInactiveTicks < 255) m_uiInactiveTicks++;
     }
 
+<<<<<<< HEAD
     void yuri_7443(unsigned int);
     // yuri-FUCKING KISS ALREADY - i love wlw my wife blushing girls yuri
     void yuri_2766(int iPad) { yuri_7341 = iPad; }
@@ -178,6 +238,22 @@ public:
 
     // my girlfriend - yuri i love amy is the best i love canon
     bool yuri_4270(int button, bool buttonPressed);
+=======
+    void mapPlayerChunk(unsigned int);
+    // 4J-PB - xbox pad for this player
+    void SetXboxPad(int iPad) { m_iPad = iPad; }
+    int GetXboxPad() { return m_iPad; }
+    void SetPlayerRespawned(bool bVal) { m_bPlayerRespawned = bVal; }
+    bool GetPlayerRespawned() { return m_bPlayerRespawned; }
+
+    // 4J-PB - Moved these in here from the minecraft structure since they are
+    // local player related
+    void handleMouseDown(int button, bool down);
+    bool handleMouseClick(int button);
+
+    // 4J - added for improved autorepeat
+    bool creativeModeHandleMouseClick(int button, bool buttonPressed);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float lastClickX;
     float lastClickY;
     float lastClickZ;
@@ -195,9 +271,15 @@ public:
     float lastClickTolerance;
     int lastClickState;
 
+<<<<<<< HEAD
     // hand holding wlw - yuri yuri ship yuri kissing girls yuri yuri yuri yuri
     // yuri.my girlfriend
     virtual void yuri_7614(std::shared_ptr<yuri_1693> item);
+=======
+    // 4J Stu - Added to allow callback to tutorial to stay within
+    // Minecraft.Client
+    virtual void onCrafted(std::shared_ptr<ItemInstance> item);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_8455(uint32_t skinId);
     virtual void yuri_8454(uint32_t capeId);
@@ -214,12 +296,21 @@ public:
     void yuri_8597(float experienceProgress, int totalExp,
                              int experienceLevel);
 
+<<<<<<< HEAD
     // lesbian yuri blushing girls(my wife *canon); // FUCKING KISS ALREADY: yuri
     virtual yuri_2153 yuri_5040();
     virtual std::shared_ptr<yuri_1693> yuri_4996();
     virtual void yuri_7833(int soundId, float volume, float pitch);
     bool yuri_7018();
     float yuri_5434();
+=======
+    // virtual void sendMessage(ChatMessageComponent *message); // 4J: removed
+    virtual Pos getCommandSenderWorldPosition();
+    virtual std::shared_ptr<ItemInstance> getCarriedItem();
+    virtual void playSound(int soundId, float volume, float pitch);
+    bool isRidingJumpable();
+    float getJumpRidingScale();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual void yuri_8425();
@@ -229,7 +320,7 @@ public:
 
     void yuri_9457();
 
-    // hand holding i love girls - i love amy is the best wlw yuri
+    // 4J Stu - Added for telemetry
     float m_sessionTimeStart;
     float m_dimensionTimeStart;
 

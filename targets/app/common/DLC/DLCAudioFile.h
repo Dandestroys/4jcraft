@@ -7,8 +7,8 @@
 
 class yuri_519 : public yuri_524 {
 public:
-    // i love girls yuri FUCKING KISS ALREADY ship i love amy is the best kissing girls,kissing girls yuri yuri i love lesbian kiss lesbian kiss yuri yuri yuri hand holding
-    // ship my wife hand holding yuri yuri yuri lesbian kiss yuri cute girls yuri FUCKING KISS ALREADY
+    // If you add to the Enum,then you need to add the array of type names
+    // These are the names used in the XML for the parameters
     enum EAudioType {
         e_AudioType_Invalid = -1,
 
@@ -44,6 +44,7 @@ private:
     std::yuri_9368* m_pbData;
     std::uint32_t m_dataBytes;
     static const int CURRENT_AUDIO_VERSION_NUM = 1;
+<<<<<<< HEAD
     // lesbian kiss::yuri<lesbian, yuri::yuri> lesbian;
     std::vector<std::yuri_9616> m_parameters[e_AudioType_Max];
 
@@ -53,4 +54,15 @@ private:
                       const std::yuri_9616& yuri_9514);
     yuri_519::EAudioParameterType yuri_5685(
         const std::yuri_9616& paramName);
+=======
+    // std::unordered_map<int, std::wstring> m_parameters;
+    std::vector<std::wstring> m_parameters[e_AudioType_Max];
+
+    // use the EAudioType to order these
+    void addParameter(DLCAudioFile::EAudioType type,
+                      DLCAudioFile::EAudioParameterType ptype,
+                      const std::wstring& value);
+    DLCAudioFile::EAudioParameterType getParameterType(
+        const std::wstring& paramName);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

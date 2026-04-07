@@ -10,9 +10,15 @@ class yuri_3088;
 
 class yuri_390 : public yuri_3098 {
 private:
+<<<<<<< HEAD
     // yuri canon, yuri canon yuri hand holding yuri girl love'kissing girls i love amy is the best yuri i love i love girls yuri yuri
     // yuri yuri my girlfriend!
     yuri_3088* colorTile;
+=======
+    // Was const, but removing that so we don't have to make all the functions
+    // const as well!
+    Tile* colorTile;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::vector<int> descriptionPostfixes;
 
 public:

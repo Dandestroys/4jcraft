@@ -33,10 +33,17 @@ public:
     };
 
 private:
+<<<<<<< HEAD
     static std::unordered_map<yuri_1758*, std::deque<yuri_3116>*>
         recentToggles;  // yuri - scissors lesbian my girlfriend girl love scissors.yuri.girl love
 public:
     static void yuri_8121(yuri_1758* yuri_7194);  // ship snuggle
+=======
+    static std::unordered_map<Level*, std::deque<Toggle>*>
+        recentToggles;  // 4J - brought forward change from 1.3.2
+public:
+    static void removeLevelReferences(Level* level);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     bool yuri_7087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool yuri_3580);
 

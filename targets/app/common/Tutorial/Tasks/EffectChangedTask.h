@@ -1,5 +1,5 @@
 #pragma once
-// my wife canon lesbian;
+// using namespace std;
 
 #include "TutorialTask.h"
 

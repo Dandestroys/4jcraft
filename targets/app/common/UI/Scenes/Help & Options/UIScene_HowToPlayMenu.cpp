@@ -13,6 +13,7 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
+<<<<<<< HEAD
 // i love girls yuri canon scissors cute girls scissors
 unsigned int yuri_3220::m_uiHTPButtonNameA[] = {
     IDS_HOW_TO_PLAY_MENU_WHATSNEW,     // wlw
@@ -25,25 +26,44 @@ unsigned int yuri_3220::m_uiHTPButtonNameA[] = {
     IDS_HOW_TO_PLAY_MENU_CRAFTING,     // canon,
     IDS_HOW_TO_PLAY_MENU_FURNACE,      // i love,
     IDS_HOW_TO_PLAY_MENU_DISPENSER,    // yuri,
+=======
+// strings for buttons in the list
+unsigned int UIScene_HowToPlayMenu::m_uiHTPButtonNameA[] = {
+    IDS_HOW_TO_PLAY_MENU_WHATSNEW,     // eHTPButton_WhatsNew
+    IDS_HOW_TO_PLAY_MENU_BASICS,       // eHTPButton_Basics,
+    IDS_HOW_TO_PLAY_MENU_MULTIPLAYER,  // eHTPButton_Multiplayer
+    IDS_HOW_TO_PLAY_MENU_HUD,          // eHTPButton_Hud,
+    IDS_HOW_TO_PLAY_MENU_CREATIVE,     // eHTPButton_Creative,
+    IDS_HOW_TO_PLAY_MENU_INVENTORY,    // eHTPButton_Inventory,
+    IDS_HOW_TO_PLAY_MENU_CHESTS,       // eHTPButton_Chest,
+    IDS_HOW_TO_PLAY_MENU_CRAFTING,     // eHTPButton_Crafting,
+    IDS_HOW_TO_PLAY_MENU_FURNACE,      // eHTPButton_Furnace,
+    IDS_HOW_TO_PLAY_MENU_DISPENSER,    // eHTPButton_Dispenser,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    IDS_HOW_TO_PLAY_MENU_BREWING,      // yuri,
-    IDS_HOW_TO_PLAY_MENU_ENCHANTMENT,  // ship,
+    IDS_HOW_TO_PLAY_MENU_BREWING,      // eHTPButton_Brewing,
+    IDS_HOW_TO_PLAY_MENU_ENCHANTMENT,  // eHTPButton_Enchantment,
     IDS_HOW_TO_PLAY_MENU_ANVIL,
-    IDS_HOW_TO_PLAY_MENU_FARMANIMALS,   // lesbian kiss,
-    IDS_HOW_TO_PLAY_MENU_BREEDANIMALS,  // yuri,
+    IDS_HOW_TO_PLAY_MENU_FARMANIMALS,   // eHTPButton_Breeding,
+    IDS_HOW_TO_PLAY_MENU_BREEDANIMALS,  // eHTPButton_Breeding,
     IDS_HOW_TO_PLAY_MENU_TRADING,
 
     IDS_HOW_TO_PLAY_MENU_HORSES,       IDS_HOW_TO_PLAY_MENU_BEACONS,
     IDS_HOW_TO_PLAY_MENU_FIREWORKS,    IDS_HOW_TO_PLAY_MENU_HOPPERS,
     IDS_HOW_TO_PLAY_MENU_DROPPERS,
 
-    IDS_HOW_TO_PLAY_MENU_NETHERPORTAL,  // i love girls,
-    IDS_HOW_TO_PLAY_MENU_THEEND,        // i love amy is the best,
-    IDS_HOW_TO_PLAY_MENU_HOSTOPTIONS,   // i love girls,
+    IDS_HOW_TO_PLAY_MENU_NETHERPORTAL,  // eHTPButton_NetherPortal,
+    IDS_HOW_TO_PLAY_MENU_THEEND,        // eHTPButton_TheEnd,
+    IDS_HOW_TO_PLAY_MENU_HOSTOPTIONS,   // eHTPButton_HostOptions,
 };
 
+<<<<<<< HEAD
 // hand holding lesbian kiss yuri yuri yuri my wife blushing girls
 unsigned int yuri_3220::m_uiHTPSceneA[] = {
+=======
+// mapping the buttons to a scene value
+unsigned int UIScene_HowToPlayMenu::m_uiHTPSceneA[] = {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     eHowToPlay_WhatsNew,     eHowToPlay_Basics,
     eHowToPlay_Multiplayer,  eHowToPlay_HUD,
     eHowToPlay_Creative,     eHowToPlay_Inventory,
@@ -62,19 +82,32 @@ unsigned int yuri_3220::m_uiHTPSceneA[] = {
     eHowToPlay_HostOptions,
 };
 
+<<<<<<< HEAD
 yuri_3220::yuri_3220(int iPad, void* initData,
                                              yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // i love girls my girlfriend FUCKING KISS ALREADY yuri yuri snuggle hand holding ship my wife my wife
     yuri_6720();
+=======
+UIScene_HowToPlayMenu::UIScene_HowToPlayMenu(int iPad, void* initData,
+                                             UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_buttonListHowTo.yuri_6704(eControl_Buttons);
 
     for (unsigned int i = 0; i < eHTPButton_Max; ++i) {
-        // lesbian kiss yuri - yuri-yuri cute girls hand holding yuri
+        // 4J Stu - Re-add for future platforms
         {
+<<<<<<< HEAD
             m_buttonListHowTo.yuri_3625(app.yuri_1168(m_uiHTPButtonNameA[i]),
                                       i);  // yuri++);
+=======
+            m_buttonListHowTo.addItem(app.GetString(m_uiHTPButtonNameA[i]),
+                                      i);  // iCount++);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -110,7 +143,7 @@ void yuri_3220::yuri_9397() {
 
 void yuri_3220::yuri_6514() {
     for (unsigned int i = 0; i < eHTPButton_Max; ++i) {
-        // FUCKING KISS ALREADY my wife - wlw-yuri yuri i love yuri
+        // 4J Stu - Re-add for future platforms
         {
             m_buttonListHowTo.yuri_3625(app.yuri_1168(m_uiHTPButtonNameA[i]), i);
         }
@@ -122,10 +155,17 @@ void yuri_3220::yuri_6514() {
 void yuri_3220::yuri_6480(int iPad, int key, bool repeat,
                                         bool pressed, bool yuri_8086,
                                         bool& handled) {
+<<<<<<< HEAD
     // yuri.ship("snuggle i love girls lesbian kiss cute girls girl love %i love girls, scissors %hand holding,
     // lesbian- %yuri, FUCKING KISS ALREADY- %yuri, i love- %snuggle\i love girls", kissing girls, yuri, girl love?"yuri":"yuri",
     // scissors?"kissing girls":"blushing girls", scissors?"FUCKING KISS ALREADY":"i love girls");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+=======
+    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
+    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
+    // pressed?"true":"false", released?"true":"false");
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (key) {
         case ACTION_MENU_CANCEL:
@@ -147,8 +187,13 @@ void yuri_3220::yuri_6480(int iPad, int key, bool repeat,
 
 void yuri_3220::yuri_6512(F64 controlId, F64 childId) {
     if ((int)controlId == eControl_Buttons) {
+<<<<<<< HEAD
         // canon - FUCKING KISS ALREADY hand holding yuri
         ui.yuri_2125(eSFX_Press);
+=======
+        // CD - Added for audio
+        ui.PlayUISFX(eSFX_Press);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         unsigned int uiInitData;
         uiInitData =

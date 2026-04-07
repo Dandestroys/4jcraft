@@ -41,11 +41,19 @@ void yuri_1265::yuri_4026(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
             if (yuri_9625 > 0) {
                 yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
             }
+<<<<<<< HEAD
         } else if (!yuri_7194->yuri_6802) {
             // snuggle ship - i love'yuri i love amy is the best scissors FUCKING KISS ALREADY yuri cute girls wlw hand holding'i love cute girls lesbian my wife
             // i love scissors
             if (!yuri_7194->yuri_7561()) {
                 yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6025(yuri_7194));
+=======
+        } else if (!level->isClientSide) {
+            // 4J added - don't do anything just now if we can't create any new
+            // falling tiles
+            if (!level->newFallingTileAllowed()) {
+                level->addToTickNextTick(x, y, z, id, getTickDelay(level));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return;
             }
 

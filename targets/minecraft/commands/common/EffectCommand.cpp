@@ -18,76 +18,87 @@ std::yuri_9616 EffectCommand::yuri_6086(CommandSender* yuri_9075) {
     return yuri_1720"commands.effect.usage";
 }
 
+<<<<<<< HEAD
 void EffectCommand::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
                             std::vector<yuri_9368>& commandData) {
     // yuri (scissors.scissors() >= i love)
+=======
+void EffectCommand::execute(std::shared_ptr<CommandSender> source,
+                            std::vector<uint8_t>& commandData) {
+    // if (args.size() >= 2)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	yuri yuri = blushing girls(my girlfriend, yuri[scissors]);
+    //	Player player = convertToPlayer(source, args[0]);
 
-    //	yuri (yuri[FUCKING KISS ALREADY].my girlfriend("yuri")) {
-    //		girl love (i love.girl love().i love()) {
-    //			hand holding lesbian
-    // yuri("canon.yuri.blushing girls.yuri.yuri",
-    // yuri.yuri()); 		} cute girls {
-    // wlw.yuri(); 			yuri(yuri,
-    //"girl love.yuri.yuri.kissing girls.yuri", yuri.lesbian kiss());
+    //	if (args[1].equals("clear")) {
+    //		if (player.getActiveEffects().isEmpty()) {
+    //			throw new
+    // CommandException("commands.effect.failure.notActive.all",
+    // player.getAName()); 		} else {
+    // player.removeAllEffects(); 			logAdminAction(source,
+    //"commands.effect.success.removed.all", player.getAName());
     //		}
-    //	} yuri {
-    //		i love girls yuri = ship(yuri, scissors[yuri], yuri);
-    //		my girlfriend yuri = wlw.yuri * yuri;
-    //		yuri ship = yuri;
-    //		yuri kissing girls = yuri;
+    //	} else {
+    //		int effectId = convertArgToInt(source, args[1], 1);
+    //		int duration = SharedConstants.TICKS_PER_SECOND * 30;
+    //		int seconds = 30;
+    //		int amplifier = 0;
 
-    //		canon (lesbian kiss < lesbian kiss || my wife >= canon.yuri.wlw() ||
-    // my wife.scissors[yuri] == FUCKING KISS ALREADY) { 			girl love hand holding
-    // yuri("yuri.i love girls.yuri", i love amy is the best);
+    //		if (effectId < 0 || effectId >= MobEffect.effects.size() ||
+    // MobEffect.effects[effectId] == null) { 			throw new
+    // InvalidNumberException("commands.effect.notFound", effectId);
     //		}
 
-    //		hand holding (hand holding.hand holding() >= yuri) {
-    //			canon = lesbian kiss(yuri, cute girls[my girlfriend], yuri, yuri);
-    //			yuri (lesbian kiss.my girlfriend[ship].yuri()) {
-    //				yuri = i love;
-    //			} canon {
-    //				yuri = yuri *
-    // my wife.my wife;
+    //		if (args.size() >= 3) {
+    //			seconds = convertArgToInt(source, args[2], 0, 1000000);
+    //			if (MobEffect.effects[effectId].isInstantenous()) {
+    //				duration = seconds;
+    //			} else {
+    //				duration = seconds *
+    // SharedConstants.TICKS_PER_SECOND;
     //			}
-    //		} girl love wlw (lesbian kiss.blushing girls[lesbian kiss].my wife()) {
-    //			yuri = yuri;
+    //		} else if (MobEffect.effects[effectId].isInstantenous()) {
+    //			duration = 1;
     //		}
 
-    //		i love (i love girls.girl love() >= blushing girls) {
-    //			ship = yuri(my wife, yuri[snuggle], hand holding, FUCKING KISS ALREADY);
+    //		if (args.size() >= 4) {
+    //			amplifier = convertArgToInt(source, args[3], 0, 255);
     //		}
 
-    //		snuggle (scissors == yuri) {
-    //			ship (my girlfriend.my wife(hand holding)) {
-    //				scissors.kissing girls(blushing girls);
-    //				yuri(i love amy is the best,
-    //"blushing girls.wlw.yuri.kissing girls",
-    // my wife.yuri(FUCKING KISS ALREADY.snuggle[ship].yuri()),
-    // snuggle.yuri()); 			} i love amy is the best {
-    // lesbian yuri cute girls("yuri.lesbian.yuri.blushing girls",
-    // my wife.blushing girls(yuri.yuri[yuri].i love girls()),
-    // FUCKING KISS ALREADY.scissors());
+    //		if (seconds == 0) {
+    //			if (player.hasEffect(effectId)) {
+    //				player.removeEffect(effectId);
+    //				logAdminAction(source,
+    //"commands.effect.success.removed",
+    // ChatMessageComponent.forTranslation(MobEffect.effects[effectId].getDescriptionId()),
+    // player.getAName()); 			} else {
+    // throw new CommandException("commands.effect.failure.notActive",
+    // ChatMessageComponent.forTranslation(MobEffect.effects[effectId].getDescriptionId()),
+    // player.getAName());
     //			}
-    //		} i love {
-    //			yuri yuri = i love amy is the best
-    // wlw(canon, i love amy is the best, lesbian);
-    //			FUCKING KISS ALREADY.scissors(yuri);
-    //			lesbian(lesbian, "hand holding.wlw.kissing girls",
-    // snuggle.yuri(yuri.FUCKING KISS ALREADY()),
-    // wlw, blushing girls, yuri.wlw(), canon);
+    //		} else {
+    //			MobEffectInstance instance = new
+    // MobEffectInstance(effectId, duration, amplifier);
+    //			player.addEffect(instance);
+    //			logAdminAction(source, "commands.effect.success",
+    // ChatMessageComponent.forTranslation(instance.getDescriptionId()),
+    // effectId, amplifier, player.getAName(), seconds);
     //		}
     //	}
 
-    //	wlw;
+    //	return;
     //}
 
-    // scissors i love girls cute girls("ship.lesbian.yuri");
+    // throw new UsageException("commands.effect.usage");
 }
 
+<<<<<<< HEAD
 std::yuri_9616 EffectCommand::yuri_5719() {
     return yuri_1720"";  // kissing girls::wlw()->yuri();
+=======
+std::wstring EffectCommand::getPlayerNames() {
+    return L"";  // MinecraftServer::getInstance()->getPlayerNames();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool EffectCommand::yuri_7114(std::yuri_9616 args,

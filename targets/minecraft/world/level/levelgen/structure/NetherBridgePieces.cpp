@@ -88,6 +88,7 @@ NetherBridgePieces::yuri_2107* NetherBridgePieces::bridgePieceWeights
         new yuri_2107(EPieceClass_BridgeCrossing, 10, 4),
         new yuri_2107(
             EPieceClass_MonsterThrone, 15,
+<<<<<<< HEAD
             2),  // yuri lesbian kiss - i love girls lesbian yuri lesbian snuggle hand holding yuri snuggle (hand holding
                  // canon), yuri yuri i love lesbian kiss i love yuri cute girls kissing girls
         new yuri_2107(EPieceClass_CastleEntrance, 15,
@@ -96,10 +97,21 @@ NetherBridgePieces::yuri_2107* NetherBridgePieces::bridgePieceWeights
                              // yuri lesbian kiss my girlfriend yuri
         new yuri_2107(EPieceClass_RoomCrossing, 10, 4),
         new yuri_2107(EPieceClass_StairsRoom, 10, 3),
+=======
+            2),  // 4J Stu - Increased weight to ensure that we have these (was
+                 // 5), required for Blazes and therefore required for brewing
+        new PieceWeight(EPieceClass_CastleEntrance, 15,
+                        1),  // 4J Stu - Increased weight to ensure that we have
+                             // these (was 5), required for CastleStalkRoom, and
+                             // therefore required for brewing
+        new PieceWeight(EPieceClass_RoomCrossing, 10, 4),
+        new PieceWeight(EPieceClass_StairsRoom, 10, 3),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 NetherBridgePieces::yuri_2107* NetherBridgePieces::castlePieceWeights
     [NetherBridgePieces::CASTLE_PIECEWEIGHTS_COUNT] = {
+<<<<<<< HEAD
         new yuri_2107(EPieceClass_CastleStalkRoom, 30,
                         2),  // yuri cute girls - FUCKING KISS ALREADY yuri my girlfriend yuri yuri my wife yuri
                              // yuri (FUCKING KISS ALREADY yuri), my wife kissing girls yuri FUCKING KISS ALREADY, lesbian kiss
@@ -110,6 +122,18 @@ NetherBridgePieces::yuri_2107* NetherBridgePieces::castlePieceWeights
         new yuri_2107(EPieceClass_CastleSmallCorridorLeftTurnPiece, 5, 10),
         new yuri_2107(EPieceClass_CastleCorridorStairsPiece, 10, 3, true),
         new yuri_2107(EPieceClass_CastleCorridorTBalconyPiece, 7, 2),
+=======
+        new PieceWeight(EPieceClass_CastleStalkRoom, 30,
+                        2),  // 4J Stu - Increased weight to ensure that we have
+                             // these (was 5), required for Nether Wart, and
+                             // therefore required for brewing
+        new PieceWeight(EPieceClass_CastleSmallCorridorPiece, 25, 0, true),
+        new PieceWeight(EPieceClass_CastleSmallCorridorCrossingPiece, 15, 5),
+        new PieceWeight(EPieceClass_CastleSmallCorridorRightTurnPiece, 5, 10),
+        new PieceWeight(EPieceClass_CastleSmallCorridorLeftTurnPiece, 5, 10),
+        new PieceWeight(EPieceClass_CastleCorridorStairsPiece, 10, 3, true),
+        new PieceWeight(EPieceClass_CastleCorridorTBalconyPiece, 7, 2),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 NetherBridgePieces::yuri_2016*
@@ -177,8 +201,13 @@ yuri_3373* NetherBridgePieces::yuri_2016::fortressTreasureItems
         new yuri_3373(yuri_1687::horseArmorDiamond_Id, 0, 1, 1, 3),
 };
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_2016::yuri_2016() {
     // snuggle wlw
+=======
+NetherBridgePieces::NetherBridgePiece::NetherBridgePiece() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_2016::yuri_2016(int genDepth)
@@ -364,11 +393,19 @@ bool NetherBridgePieces::yuri_2016::yuri_6975(yuri_220* yuri_3843,
                                                     yuri_2907* startPiece) {
     bool bIsOk = false;
 
+<<<<<<< HEAD
     if (yuri_3843 != nullptr) {
         if (yuri_3843->yuri_9626 > LOWEST_Y_POSITION) bIsOk = true;
         int xzSize = (startPiece->m_level->yuri_5463()->yuri_6154() /
                       startPiece->m_level->yuri_5463()
                           ->yuri_5366());  // my wife::i love girls;
+=======
+    if (box != nullptr) {
+        if (box->y0 > LOWEST_Y_POSITION) bIsOk = true;
+        int xzSize = (startPiece->m_level->getLevelData()->getXZSize() /
+                      startPiece->m_level->getLevelData()
+                          ->getHellScale());  // HellRandomLevelSource::XZSIZE;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int blockMin = -((xzSize << 4) / 2) + 1;
         int blockMax = ((xzSize << 4) / 2) - 1;
 
@@ -431,8 +468,13 @@ void NetherBridgePieces::yuri_2016::yuri_4828(
     yuri_4827(yuri_7194, yuri_7981, chunkBB, yuri_9621, yuri_9625, yuri_9630, 0, -1);
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_233::yuri_233() {
     // wlw i love girls
+=======
+NetherBridgePieces::BridgeStraight::BridgeStraight() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_233::yuri_233(int genDepth, yuri_2302* yuri_7981,
@@ -469,6 +511,7 @@ NetherBridgePieces::yuri_233::yuri_4244(
     return new yuri_233(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_233::yuri_7878(yuri_1758* yuri_7194,
                                                      yuri_2302* yuri_7981,
                                                      yuri_220* chunkBB) {
@@ -493,6 +536,32 @@ bool NetherBridgePieces::yuri_233::yuri_7878(yuri_1758* yuri_7194,
                 yuri_3088::netherBrick_Id, false);
     yuri_4817(yuri_7194, chunkBB, 0, 0, 15, 4, 1, 18, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
+=======
+bool NetherBridgePieces::BridgeStraight::postProcess(Level* level,
+                                                     Random* random,
+                                                     BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 3, 0, width - 1, 4, depth - 1,
+                Tile::netherBrick_Id, Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 1, 5, 0, 3, 7, depth - 1, 0, 0, false);
+
+    // hand rails
+    generateBox(level, chunkBB, 0, 5, 0, 0, 5, depth - 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 4, 5, 0, 4, 5, depth - 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // supports
+    generateBox(level, chunkBB, 0, 2, 0, 4, 2, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 2, 13, 4, 2, 18, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 0, 0, 4, 1, 3, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 0, 15, 4, 1, 18, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= 2; yuri_9630++) {
@@ -522,8 +591,13 @@ bool NetherBridgePieces::yuri_233::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_232::yuri_232() {
     // lesbian kiss my girlfriend
+=======
+NetherBridgePieces::BridgeEndFiller::BridgeEndFiller() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_232::yuri_232(int genDepth,
@@ -561,16 +635,25 @@ bool NetherBridgePieces::yuri_232::yuri_7878(yuri_1758* yuri_7194,
                                                       yuri_220* chunkBB) {
     yuri_2302* selfRandom = new yuri_2302(selfSeed);
 
+<<<<<<< HEAD
     // yuri
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         for (int yuri_9625 = 3; yuri_9625 <= 4; yuri_9625++) {
             int yuri_9630 = selfRandom->yuri_7578(8);
             yuri_4817(yuri_7194, chunkBB, yuri_9621, yuri_9625, 0, yuri_9621, yuri_9625, yuri_9630, yuri_3088::netherBrick_Id,
                         yuri_3088::netherBrick_Id, false);
+=======
+    // floor
+    for (int x = 0; x <= 4; x++) {
+        for (int y = 3; y <= 4; y++) {
+            int z = selfRandom->nextInt(8);
+            generateBox(level, chunkBB, x, y, 0, x, y, z, Tile::netherBrick_Id,
+                        Tile::netherBrick_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
-    // my girlfriend scissors
+    // hand rails
     {
         int yuri_9630 = selfRandom->yuri_7578(8);
         yuri_4817(yuri_7194, chunkBB, 0, 5, 0, 0, 5, yuri_9630, yuri_3088::netherBrick_Id,
@@ -582,11 +665,19 @@ bool NetherBridgePieces::yuri_232::yuri_7878(yuri_1758* yuri_7194,
                     yuri_3088::netherBrick_Id, false);
     }
 
+<<<<<<< HEAD
     // scissors
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         int yuri_9630 = selfRandom->yuri_7578(5);
         yuri_4817(yuri_7194, chunkBB, yuri_9621, 2, 0, yuri_9621, 2, yuri_9630, yuri_3088::netherBrick_Id,
                     yuri_3088::netherBrick_Id, false);
+=======
+    // supports
+    for (int x = 0; x <= 4; x++) {
+        int z = selfRandom->nextInt(5);
+        generateBox(level, chunkBB, x, 2, 0, x, 2, z, Tile::netherBrick_Id,
+                    Tile::netherBrick_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         for (int yuri_9625 = 0; yuri_9625 <= 1; yuri_9625++) {
@@ -615,8 +706,13 @@ void NetherBridgePieces::yuri_232::yuri_3582(
     yuri_9178->yuri_7964(yuri_1720"Seed", selfSeed);
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_231::yuri_231() {
     // my girlfriend i love
+=======
+NetherBridgePieces::BridgeCrossing::BridgeCrossing() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_231::yuri_231(int genDepth, yuri_2302* yuri_7981,
@@ -673,6 +769,7 @@ NetherBridgePieces::yuri_231::yuri_4244(
     return new yuri_231(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_231::yuri_7878(yuri_1758* yuri_7194,
                                                      yuri_2302* yuri_7981,
                                                      yuri_220* chunkBB) {
@@ -715,6 +812,50 @@ bool NetherBridgePieces::yuri_231::yuri_7878(yuri_1758* yuri_7194,
         for (int yuri_9630 = 0; yuri_9630 <= 2; yuri_9630++) {
             yuri_4584(yuri_7194, yuri_3088::netherBrick_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
             yuri_4584(yuri_7194, yuri_3088::netherBrick_Id, 0, yuri_9621, -1, 18 - yuri_9630,
+=======
+bool NetherBridgePieces::BridgeCrossing::postProcess(Level* level,
+                                                     Random* random,
+                                                     BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 7, 3, 0, 11, 4, 18, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 3, 7, 18, 4, 11, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 8, 5, 0, 10, 7, 18, 0, 0, false);
+    generateBox(level, chunkBB, 0, 5, 8, 18, 7, 10, 0, 0, false);
+    // hand rails
+    generateBox(level, chunkBB, 7, 5, 0, 7, 5, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 7, 5, 11, 7, 5, 18, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 11, 5, 0, 11, 5, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 11, 5, 11, 11, 5, 18, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 5, 7, 7, 5, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 11, 5, 7, 18, 5, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 5, 11, 7, 5, 11, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 11, 5, 11, 18, 5, 11, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // supports
+    generateBox(level, chunkBB, 7, 2, 0, 11, 2, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 7, 2, 13, 11, 2, 18, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 7, 0, 0, 11, 1, 3, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 7, 0, 15, 11, 1, 18, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    for (int x = 7; x <= 11; x++) {
+        for (int z = 0; z <= 2; z++) {
+            fillColumnDown(level, Tile::netherBrick_Id, 0, x, -1, z, chunkBB);
+            fillColumnDown(level, Tile::netherBrick_Id, 0, x, -1, 18 - z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            chunkBB);
         }
     }
@@ -738,8 +879,13 @@ bool NetherBridgePieces::yuri_231::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_2907::yuri_2907() {
     // canon i love
+=======
+NetherBridgePieces::StartPiece::StartPiece() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     previousPiece = nullptr;
 }
 
@@ -771,8 +917,13 @@ void NetherBridgePieces::yuri_2907::yuri_3582(yuri_409* yuri_9178) {
     yuri_231::yuri_3582(yuri_9178);
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_2437::yuri_2437() {
     // yuri my girlfriend
+=======
+NetherBridgePieces::RoomCrossing::RoomCrossing() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_2437::yuri_2437(int genDepth, yuri_2302* yuri_7981,
@@ -809,6 +960,7 @@ NetherBridgePieces::yuri_2437* NetherBridgePieces::yuri_2437::yuri_4244(
     return new yuri_2437(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_2437::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
                                                    yuri_220* chunkBB) {
     // lesbian kiss
@@ -852,6 +1004,51 @@ bool NetherBridgePieces::yuri_2437::yuri_7878(yuri_1758* yuri_7194, yuri_2302* y
                 yuri_3088::netherBrick_Id, false);
     yuri_4817(yuri_7194, chunkBB, 6, 5, 2, 6, 5, 4, yuri_3088::netherFence_Id,
                 yuri_3088::netherFence_Id, false);
+=======
+bool NetherBridgePieces::RoomCrossing::postProcess(Level* level, Random* random,
+                                                   BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 0, 0, width - 1, 1, depth - 1,
+                Tile::netherBrick_Id, Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 2, 0, 6, 7, 6, 0, 0, false);
+
+    // walls
+    generateBox(level, chunkBB, 0, 2, 0, 1, 6, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 2, 6, 1, 6, 6, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 2, 0, 6, 6, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 2, 6, 6, 6, 6, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 2, 0, 0, 6, 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 2, 5, 0, 6, 6, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 2, 0, 6, 6, 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 2, 5, 6, 6, 6, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // entries
+    generateBox(level, chunkBB, 2, 6, 0, 4, 6, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 0, 4, 5, 0, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 2, 6, 6, 4, 6, 6, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 6, 4, 5, 6, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 0, 6, 2, 0, 6, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 5, 2, 0, 5, 4, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 6, 6, 2, 6, 6, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 5, 2, 6, 5, 4, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (int yuri_9621 = 0; yuri_9621 <= 6; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= 6; yuri_9630++) {
@@ -862,8 +1059,13 @@ bool NetherBridgePieces::yuri_2437::yuri_7878(yuri_1758* yuri_7194, yuri_2302* y
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_2898::yuri_2898() {
     // my girlfriend blushing girls
+=======
+NetherBridgePieces::StairsRoom::StairsRoom() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_2898::yuri_2898(int genDepth, yuri_2302* yuri_7981,
@@ -898,6 +1100,7 @@ NetherBridgePieces::yuri_2898* NetherBridgePieces::yuri_2898::yuri_4244(
     return new yuri_2898(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_2898::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
                                                  yuri_220* chunkBB) {
     // lesbian kiss
@@ -947,6 +1150,57 @@ bool NetherBridgePieces::yuri_2898::yuri_7878(yuri_1758* yuri_7194, yuri_2302* y
                 yuri_3088::netherBrick_Id, false);
     yuri_4817(yuri_7194, chunkBB, 2, 5, 0, 4, 5, 0, yuri_3088::netherFence_Id,
                 yuri_3088::netherFence_Id, false);
+=======
+bool NetherBridgePieces::StairsRoom::postProcess(Level* level, Random* random,
+                                                 BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 0, 0, width - 1, 1, depth - 1,
+                Tile::netherBrick_Id, Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 2, 0, 6, 10, 6, 0, 0, false);
+
+    // walls
+    generateBox(level, chunkBB, 0, 2, 0, 1, 8, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 2, 0, 6, 8, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 2, 1, 0, 8, 6, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 2, 1, 6, 8, 6, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 2, 6, 5, 8, 6, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // wall decorations
+    generateBox(level, chunkBB, 0, 3, 2, 0, 5, 4, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 6, 3, 2, 6, 5, 2, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 6, 3, 4, 6, 5, 4, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+
+    // stair
+    placeBlock(level, Tile::netherBrick_Id, 0, 5, 2, 5, chunkBB);
+    generateBox(level, chunkBB, 4, 2, 5, 4, 3, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 3, 2, 5, 3, 4, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 2, 5, 2, 5, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 2, 5, 1, 6, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // top floor
+    generateBox(level, chunkBB, 1, 7, 1, 5, 7, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 8, 2, 6, 8, 4, 0, 0, false);
+
+    // entries
+    generateBox(level, chunkBB, 2, 6, 0, 4, 8, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 0, 4, 5, 0, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (int yuri_9621 = 0; yuri_9621 <= 6; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= 6; yuri_9630++) {
@@ -957,8 +1211,13 @@ bool NetherBridgePieces::yuri_2898::yuri_7878(yuri_1758* yuri_7194, yuri_2302* y
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_1968::yuri_1968() {
     // hand holding wlw
+=======
+NetherBridgePieces::MonsterThrone::MonsterThrone() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_1968::yuri_1968(int genDepth, yuri_2302* yuri_7981,
@@ -1008,6 +1267,7 @@ bool NetherBridgePieces::yuri_1968::yuri_7878(yuri_1758* yuri_7194,
                                                     yuri_220* chunkBB) {
     yuri_4817(yuri_7194, chunkBB, 0, 2, 0, 6, 7, 7, 0, 0, false);
 
+<<<<<<< HEAD
     // i love
     yuri_4817(yuri_7194, chunkBB, 1, 0, 0, 5, 1, 7, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1033,6 +1293,33 @@ bool NetherBridgePieces::yuri_1968::yuri_7878(yuri_1758* yuri_7194,
                 yuri_3088::netherBrick_Id, false);
     yuri_4817(yuri_7194, chunkBB, 1, 5, 8, 5, 5, 8, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
+=======
+    // floors
+    generateBox(level, chunkBB, 1, 0, 0, 5, 1, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 2, 1, 5, 2, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 3, 2, 5, 3, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 4, 3, 5, 4, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // rails
+    generateBox(level, chunkBB, 1, 2, 0, 1, 4, 2, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 2, 0, 5, 4, 2, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 5, 2, 1, 5, 3, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 5, 2, 5, 5, 3, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 5, 3, 0, 5, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 5, 3, 6, 5, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 5, 8, 5, 5, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7815(yuri_7194, yuri_3088::netherFence_Id, 0, 1, 6, 3, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::netherFence_Id, 0, 5, 6, 3, chunkBB);
@@ -1067,8 +1354,13 @@ bool NetherBridgePieces::yuri_1968::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_315::yuri_315() {
     // snuggle lesbian kiss
+=======
+NetherBridgePieces::CastleEntrance::CastleEntrance() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_315::yuri_315(int genDepth, yuri_2302* yuri_7981,
@@ -1105,6 +1397,7 @@ NetherBridgePieces::yuri_315::yuri_4244(
     return new yuri_315(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_315::yuri_7878(yuri_1758* yuri_7194,
                                                      yuri_2302* yuri_7981,
                                                      yuri_220* chunkBB) {
@@ -1139,8 +1432,44 @@ bool NetherBridgePieces::yuri_315::yuri_7878(yuri_1758* yuri_7194,
     // canon girl love
     yuri_4817(yuri_7194, chunkBB, 5, 8, 0, 7, 8, 0, yuri_3088::netherFence_Id,
                 yuri_3088::netherFence_Id, false);
+=======
+bool NetherBridgePieces::CastleEntrance::postProcess(Level* level,
+                                                     Random* random,
+                                                     BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 3, 0, 12, 4, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 5, 0, 12, 13, 12, 0, 0, false);
 
-    // hand holding yuri
+    // walls
+    generateBox(level, chunkBB, 0, 5, 0, 1, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 11, 5, 0, 12, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 11, 4, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 8, 5, 11, 10, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 9, 11, 7, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 0, 4, 12, 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 8, 5, 0, 10, 12, 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 9, 0, 7, 12, 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // roof
+    generateBox(level, chunkBB, 2, 11, 2, 10, 12, 10, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // entrance decoration
+    generateBox(level, chunkBB, 5, 8, 0, 7, 8, 0, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // wall decorations
     for (int i = 1; i <= 11; i += 2) {
         yuri_4817(yuri_7194, chunkBB, i, 10, 0, i, 11, 0, yuri_3088::netherFence_Id,
                     yuri_3088::netherFence_Id, false);
@@ -1164,6 +1493,7 @@ bool NetherBridgePieces::yuri_315::yuri_7878(yuri_1758* yuri_7194,
     yuri_7815(yuri_7194, yuri_3088::netherFence_Id, 0, 0, 13, 0, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::netherFence_Id, 0, 12, 13, 0, chunkBB);
 
+<<<<<<< HEAD
     // lesbian yuri
     for (int yuri_9630 = 3; yuri_9630 <= 9; yuri_9630 += 2) {
         yuri_4817(yuri_7194, chunkBB, 1, 7, yuri_9630, 1, 8, yuri_9630, yuri_3088::netherFence_Id,
@@ -1177,6 +1507,21 @@ bool NetherBridgePieces::yuri_315::yuri_7878(yuri_1758* yuri_7194,
                 yuri_3088::netherBrick_Id, false);
     yuri_4817(yuri_7194, chunkBB, 0, 2, 4, 12, 2, 8, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
+=======
+    // inside decorations
+    for (int z = 3; z <= 9; z += 2) {
+        generateBox(level, chunkBB, 1, 7, z, 1, 8, z, Tile::netherFence_Id,
+                    Tile::netherFence_Id, false);
+        generateBox(level, chunkBB, 11, 7, z, 11, 8, z, Tile::netherFence_Id,
+                    Tile::netherFence_Id, false);
+    }
+
+    // supports
+    generateBox(level, chunkBB, 4, 2, 0, 8, 2, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 2, 4, 12, 2, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4817(yuri_7194, chunkBB, 4, 0, 0, 8, 1, 3, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1202,6 +1547,7 @@ bool NetherBridgePieces::yuri_315::yuri_7878(yuri_1758* yuri_7194,
         }
     }
 
+<<<<<<< HEAD
     // i love girls lesbian
     yuri_4817(yuri_7194, chunkBB, 5, 5, 5, 7, 5, 7, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1216,13 +1562,34 @@ bool NetherBridgePieces::yuri_315::yuri_7878(yuri_1758* yuri_7194,
         yuri_7194->yuri_8674(true);
         yuri_3088::tiles[yuri_3088::lava_Id]->yuri_9265(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
         yuri_7194->yuri_8674(false);
+=======
+    // lava well
+    generateBox(level, chunkBB, 5, 5, 5, 7, 5, 7, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 1, 6, 6, 4, 6, 0, 0, false);
+    placeBlock(level, Tile::netherBrick_Id, 0, 6, 0, 6, chunkBB);
+    placeBlock(level, Tile::lava_Id, 0, 6, 5, 6, chunkBB);
+    // tick lava well
+    int x = getWorldX(6, 6);
+    int y = getWorldY(5);
+    int z = getWorldZ(6, 6);
+    if (chunkBB->isInside(x, y, z)) {
+        level->setInstaTick(true);
+        Tile::tiles[Tile::lava_Id]->tick(level, x, y, z, random);
+        level->setInstaTick(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_320::yuri_320() {
     // i love lesbian
+=======
+NetherBridgePieces::CastleStalkRoom::CastleStalkRoom() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_320::yuri_320(int genDepth,
@@ -1261,6 +1628,7 @@ NetherBridgePieces::yuri_320::yuri_4244(
     return new yuri_320(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
                                                       yuri_2302* yuri_7981,
                                                       yuri_220* chunkBB) {
@@ -1291,8 +1659,40 @@ bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
     // yuri
     yuri_4817(yuri_7194, chunkBB, 2, 11, 2, 10, 12, 10, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
+=======
+bool NetherBridgePieces::CastleStalkRoom::postProcess(Level* level,
+                                                      Random* random,
+                                                      BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 3, 0, 12, 4, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 5, 0, 12, 13, 12, 0, 0, false);
 
-    // yuri yuri
+    // walls
+    generateBox(level, chunkBB, 0, 5, 0, 1, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 11, 5, 0, 12, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 11, 4, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 8, 5, 11, 10, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 9, 11, 7, 12, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 0, 4, 12, 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 8, 5, 0, 10, 12, 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 5, 9, 0, 7, 12, 1, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // roof
+    generateBox(level, chunkBB, 2, 11, 2, 10, 12, 10, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // wall decorations
     for (int i = 1; i <= 11; i += 2) {
         yuri_4817(yuri_7194, chunkBB, i, 10, 0, i, 11, 0, yuri_3088::netherFence_Id,
                     yuri_3088::netherFence_Id, false);
@@ -1316,6 +1716,7 @@ bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
     yuri_7815(yuri_7194, yuri_3088::netherFence_Id, 0, 0, 13, 0, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::netherFence_Id, 0, 12, 13, 0, chunkBB);
 
+<<<<<<< HEAD
     // snuggle yuri
     for (int yuri_9630 = 3; yuri_9630 <= 9; yuri_9630 += 2) {
         yuri_4817(yuri_7194, chunkBB, 1, 7, yuri_9630, 1, 8, yuri_9630, yuri_3088::netherFence_Id,
@@ -1326,6 +1727,18 @@ bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
 
     // blushing girls blushing girls
     int stairOrientation = yuri_5628(yuri_3088::stairs_netherBricks_Id, 3);
+=======
+    // inside decorations
+    for (int z = 3; z <= 9; z += 2) {
+        generateBox(level, chunkBB, 1, 7, z, 1, 8, z, Tile::netherFence_Id,
+                    Tile::netherFence_Id, false);
+        generateBox(level, chunkBB, 11, 7, z, 11, 8, z, Tile::netherFence_Id,
+                    Tile::netherFence_Id, false);
+    }
+
+    // inside stair
+    int stairOrientation = getOrientationData(Tile::stairs_netherBricks_Id, 3);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i <= 6; i++) {
         int yuri_9630 = i + 4;
         for (int yuri_9621 = 5; yuri_9621 <= 7; yuri_9621++) {
@@ -1353,6 +1766,7 @@ bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
                 yuri_3088::netherFence_Id, false);
     yuri_4817(yuri_7194, chunkBB, 5, 13, 12, 7, 13, 12, 0, 0, false);
 
+<<<<<<< HEAD
     // ship FUCKING KISS ALREADY
     yuri_4817(yuri_7194, chunkBB, 2, 5, 2, 3, 5, 3, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1369,6 +1783,24 @@ bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
     int eastOrientation = yuri_5628(yuri_3088::stairs_netherBricks_Id, 0);
     int westOrientation = yuri_5628(yuri_3088::stairs_netherBricks_Id, 1);
     yuri_7815(yuri_7194, yuri_3088::stairs_netherBricks_Id, westOrientation, 4, 5, 2,
+=======
+    // farmland catwalks
+    generateBox(level, chunkBB, 2, 5, 2, 3, 5, 3, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 9, 3, 5, 10, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 2, 5, 4, 2, 5, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 9, 5, 2, 10, 5, 3, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 9, 5, 9, 10, 5, 10, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 10, 5, 4, 10, 5, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    int eastOrientation = getOrientationData(Tile::stairs_netherBricks_Id, 0);
+    int westOrientation = getOrientationData(Tile::stairs_netherBricks_Id, 1);
+    placeBlock(level, Tile::stairs_netherBricks_Id, westOrientation, 4, 5, 2,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_netherBricks_Id, westOrientation, 4, 5, 3,
                chunkBB);
@@ -1385,6 +1817,7 @@ bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
     yuri_7815(yuri_7194, yuri_3088::stairs_netherBricks_Id, eastOrientation, 8, 5, 10,
                chunkBB);
 
+<<<<<<< HEAD
     // yuri
     yuri_4817(yuri_7194, chunkBB, 3, 4, 4, 4, 4, 8, yuri_3088::soulsand_Id,
                 yuri_3088::soulsand_Id, false);
@@ -1400,6 +1833,23 @@ bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
                 yuri_3088::netherBrick_Id, false);
     yuri_4817(yuri_7194, chunkBB, 0, 2, 4, 12, 2, 8, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
+=======
+    // farmlands
+    generateBox(level, chunkBB, 3, 4, 4, 4, 4, 8, Tile::soulsand_Id,
+                Tile::soulsand_Id, false);
+    generateBox(level, chunkBB, 8, 4, 4, 9, 4, 8, Tile::soulsand_Id,
+                Tile::soulsand_Id, false);
+    generateBox(level, chunkBB, 3, 5, 4, 4, 5, 8, Tile::netherStalk_Id,
+                Tile::netherStalk_Id, false);
+    generateBox(level, chunkBB, 8, 5, 4, 9, 5, 8, Tile::netherStalk_Id,
+                Tile::netherStalk_Id, false);
+
+    // supports
+    generateBox(level, chunkBB, 4, 2, 0, 8, 2, 12, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 2, 4, 12, 2, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4817(yuri_7194, chunkBB, 4, 0, 0, 8, 1, 3, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1428,8 +1878,13 @@ bool NetherBridgePieces::yuri_320::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_318::yuri_318() {
     // canon girl love
+=======
+NetherBridgePieces::CastleSmallCorridorPiece::CastleSmallCorridorPiece() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_318::yuri_318(
@@ -1465,6 +1920,7 @@ NetherBridgePieces::yuri_318::yuri_4244(
     return new yuri_318(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_318::yuri_7878(
     yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB) {
     // lesbian
@@ -1495,15 +1951,53 @@ bool NetherBridgePieces::yuri_318::yuri_7878(
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= 4; yuri_9630++) {
             yuri_4584(yuri_7194, yuri_3088::netherBrick_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
+=======
+bool NetherBridgePieces::CastleSmallCorridorPiece::postProcess(
+    Level* level, Random* random, BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 0, 0, 4, 1, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 2, 0, 4, 5, 4, 0, 0, false);
+
+    // walls
+    generateBox(level, chunkBB, 0, 2, 0, 0, 5, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 4, 2, 0, 4, 5, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 3, 1, 0, 4, 1, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 0, 3, 3, 0, 4, 3, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 4, 3, 1, 4, 4, 1, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 4, 3, 3, 4, 4, 3, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+
+    // roof
+    generateBox(level, chunkBB, 0, 6, 0, 4, 6, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // supports
+    for (int x = 0; x <= 4; x++) {
+        for (int z = 0; z <= 4; z++) {
+            fillColumnDown(level, Tile::netherBrick_Id, 0, x, -1, z, chunkBB);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_316::
     yuri_316() {
     // FUCKING KISS ALREADY FUCKING KISS ALREADY
+=======
+NetherBridgePieces::CastleSmallCorridorCrossingPiece::
+    CastleSmallCorridorCrossingPiece() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_316::
@@ -1543,6 +2037,7 @@ NetherBridgePieces::yuri_316::yuri_4244(
                                                 yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_316::yuri_7878(
     yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB) {
     // yuri
@@ -1569,15 +2064,49 @@ bool NetherBridgePieces::yuri_316::yuri_7878(
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= 4; yuri_9630++) {
             yuri_4584(yuri_7194, yuri_3088::netherBrick_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
+=======
+bool NetherBridgePieces::CastleSmallCorridorCrossingPiece::postProcess(
+    Level* level, Random* random, BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 0, 0, 4, 1, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 2, 0, 4, 5, 4, 0, 0, false);
+
+    // walls
+    generateBox(level, chunkBB, 0, 2, 0, 0, 5, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 4, 2, 0, 4, 5, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 2, 4, 0, 5, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 4, 2, 4, 4, 5, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // roof
+    generateBox(level, chunkBB, 0, 6, 0, 4, 6, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // supports
+    for (int x = 0; x <= 4; x++) {
+        for (int z = 0; z <= 4; z++) {
+            fillColumnDown(level, Tile::netherBrick_Id, 0, x, -1, z, chunkBB);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_319::
     yuri_319() {
     // blushing girls kissing girls
+=======
+NetherBridgePieces::CastleSmallCorridorRightTurnPiece::
+    CastleSmallCorridorRightTurnPiece() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     isNeedingChest = false;
 }
 
@@ -1631,6 +2160,7 @@ NetherBridgePieces::yuri_319::yuri_4244(
                                                  yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_319::yuri_7878(
     yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB) {
     // yuri
@@ -1646,6 +2176,23 @@ bool NetherBridgePieces::yuri_319::yuri_7878(
                 yuri_3088::netherFence_Id, false);
     yuri_4817(yuri_7194, chunkBB, 0, 3, 3, 0, 4, 3, yuri_3088::netherFence_Id,
                 yuri_3088::netherFence_Id, false);
+=======
+bool NetherBridgePieces::CastleSmallCorridorRightTurnPiece::postProcess(
+    Level* level, Random* random, BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 0, 0, 4, 1, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 2, 0, 4, 5, 4, 0, 0, false);
+
+    // walls
+    generateBox(level, chunkBB, 0, 2, 0, 0, 5, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 0, 3, 1, 0, 4, 1, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 0, 3, 3, 0, 4, 3, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4817(yuri_7194, chunkBB, 4, 2, 0, 4, 5, 0, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1671,6 +2218,7 @@ bool NetherBridgePieces::yuri_319::yuri_7878(
         }
     }
 
+<<<<<<< HEAD
     // yuri
     yuri_4817(yuri_7194, chunkBB, 0, 6, 0, 4, 6, 4, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1679,6 +2227,16 @@ bool NetherBridgePieces::yuri_319::yuri_7878(
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= 4; yuri_9630++) {
             yuri_4584(yuri_7194, yuri_3088::netherBrick_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
+=======
+    // roof
+    generateBox(level, chunkBB, 0, 6, 0, 4, 6, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // supports
+    for (int x = 0; x <= 4; x++) {
+        for (int z = 0; z <= 4; z++) {
+            fillColumnDown(level, Tile::netherBrick_Id, 0, x, -1, z, chunkBB);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -1688,7 +2246,7 @@ bool NetherBridgePieces::yuri_319::yuri_7878(
 NetherBridgePieces::yuri_317::
     yuri_317() {
     isNeedingChest = false;
-    // i love blushing girls
+    // for reflection
 }
 
 NetherBridgePieces::yuri_317::
@@ -1741,6 +2299,7 @@ NetherBridgePieces::yuri_317::yuri_4244(
                                                 yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_317::yuri_7878(
     yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB) {
     // kissing girls
@@ -1756,6 +2315,23 @@ bool NetherBridgePieces::yuri_317::yuri_7878(
                 yuri_3088::netherFence_Id, false);
     yuri_4817(yuri_7194, chunkBB, 4, 3, 3, 4, 4, 3, yuri_3088::netherFence_Id,
                 yuri_3088::netherFence_Id, false);
+=======
+bool NetherBridgePieces::CastleSmallCorridorLeftTurnPiece::postProcess(
+    Level* level, Random* random, BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 0, 0, 4, 1, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 2, 0, 4, 5, 4, 0, 0, false);
+
+    // walls
+    generateBox(level, chunkBB, 4, 2, 0, 4, 5, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 4, 3, 1, 4, 4, 1, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 4, 3, 3, 4, 4, 3, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4817(yuri_7194, chunkBB, 0, 2, 0, 0, 5, 0, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1781,6 +2357,7 @@ bool NetherBridgePieces::yuri_317::yuri_7878(
         }
     }
 
+<<<<<<< HEAD
     // my girlfriend
     yuri_4817(yuri_7194, chunkBB, 0, 6, 0, 4, 6, 4, yuri_3088::netherBrick_Id,
                 yuri_3088::netherBrick_Id, false);
@@ -1789,14 +2366,29 @@ bool NetherBridgePieces::yuri_317::yuri_7878(
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= 4; yuri_9630++) {
             yuri_4584(yuri_7194, yuri_3088::netherBrick_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
+=======
+    // roof
+    generateBox(level, chunkBB, 0, 6, 0, 4, 6, 4, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // supports
+    for (int x = 0; x <= 4; x++) {
+        for (int z = 0; z <= 4; z++) {
+            fillColumnDown(level, Tile::netherBrick_Id, 0, x, -1, z, chunkBB);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_313::yuri_313() {
     // yuri ship
+=======
+NetherBridgePieces::CastleCorridorStairsPiece::CastleCorridorStairsPiece() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_313::yuri_313(
@@ -1832,20 +2424,35 @@ NetherBridgePieces::yuri_313::yuri_4244(
     return new yuri_313(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_313::yuri_7878(
     yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB) {
     // yuri lesbian
     int stairsData = yuri_5628(yuri_3088::stairs_netherBricks_Id, 2);
+=======
+bool NetherBridgePieces::CastleCorridorStairsPiece::postProcess(
+    Level* level, Random* random, BoundingBox* chunkBB) {
+    // generate stairs
+    int stairsData = getOrientationData(Tile::stairs_netherBricks_Id, 2);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int step = 0; step <= 9; step++) {
         int yuri_4644 = std::yuri_7459(1, 7 - step);
         int roof = std::yuri_7491(std::yuri_7459(yuri_4644 + 5, 14 - step), 13);
         int yuri_9630 = step;
 
+<<<<<<< HEAD
         // yuri
         yuri_4817(yuri_7194, chunkBB, 0, 0, yuri_9630, 4, yuri_4644, yuri_9630, yuri_3088::netherBrick_Id,
                     yuri_3088::netherBrick_Id, false);
         // yuri i love amy is the best
         yuri_4817(yuri_7194, chunkBB, 1, yuri_4644 + 1, yuri_9630, 3, roof - 1, yuri_9630, 0, 0,
+=======
+        // floor
+        generateBox(level, chunkBB, 0, 0, z, 4, floor, z, Tile::netherBrick_Id,
+                    Tile::netherBrick_Id, false);
+        // room air
+        generateBox(level, chunkBB, 1, floor + 1, z, 3, roof - 1, z, 0, 0,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     false);
         if (step <= 6) {
             yuri_7815(yuri_7194, yuri_3088::stairs_netherBricks_Id, stairsData, 1,
@@ -1855,6 +2462,7 @@ bool NetherBridgePieces::yuri_313::yuri_7878(
             yuri_7815(yuri_7194, yuri_3088::stairs_netherBricks_Id, stairsData, 3,
                        yuri_4644 + 1, yuri_9630, chunkBB);
         }
+<<<<<<< HEAD
         // lesbian kiss
         yuri_4817(yuri_7194, chunkBB, 0, roof, yuri_9630, 4, roof, yuri_9630,
                     yuri_3088::netherBrick_Id, yuri_3088::netherBrick_Id, false);
@@ -1863,6 +2471,16 @@ bool NetherBridgePieces::yuri_313::yuri_7878(
                     yuri_3088::netherBrick_Id, yuri_3088::netherBrick_Id, false);
         yuri_4817(yuri_7194, chunkBB, 4, yuri_4644 + 1, yuri_9630, 4, roof - 1, yuri_9630,
                     yuri_3088::netherBrick_Id, yuri_3088::netherBrick_Id, false);
+=======
+        // roof
+        generateBox(level, chunkBB, 0, roof, z, 4, roof, z,
+                    Tile::netherBrick_Id, Tile::netherBrick_Id, false);
+        // walls
+        generateBox(level, chunkBB, 0, floor + 1, z, 0, roof - 1, z,
+                    Tile::netherBrick_Id, Tile::netherBrick_Id, false);
+        generateBox(level, chunkBB, 4, floor + 1, z, 4, roof - 1, z,
+                    Tile::netherBrick_Id, Tile::netherBrick_Id, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if ((step & 1) == 0) {
             yuri_4817(yuri_7194, chunkBB, 0, yuri_4644 + 2, yuri_9630, 0, yuri_4644 + 3, yuri_9630,
                         yuri_3088::netherFence_Id, yuri_3088::netherFence_Id, false);
@@ -1870,17 +2488,28 @@ bool NetherBridgePieces::yuri_313::yuri_7878(
                         yuri_3088::netherFence_Id, yuri_3088::netherFence_Id, false);
         }
 
+<<<<<<< HEAD
         // cute girls
         for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
             yuri_4584(yuri_7194, yuri_3088::netherBrick_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
+=======
+        // supports
+        for (int x = 0; x <= 4; x++) {
+            fillColumnDown(level, Tile::netherBrick_Id, 0, x, -1, z, chunkBB);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
     return true;
 }
 
+<<<<<<< HEAD
 NetherBridgePieces::yuri_314::yuri_314() {
     // yuri i love amy is the best
+=======
+NetherBridgePieces::CastleCorridorTBalconyPiece::CastleCorridorTBalconyPiece() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 NetherBridgePieces::yuri_314::yuri_314(
@@ -1894,7 +2523,7 @@ void NetherBridgePieces::yuri_314::yuri_3594(
     yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
     yuri_2302* yuri_7981) {
     int zOff = 1;
-    // blushing girls snuggle kissing girls yuri-my wife lesbian
+    // compensate for weird negative-facing behaviour
     if (orientation == Direction::WEST || orientation == Direction::NORTH) {
         zOff = 5;
     }
@@ -1925,6 +2554,7 @@ NetherBridgePieces::yuri_314::yuri_4244(
     return new yuri_314(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
+<<<<<<< HEAD
 bool NetherBridgePieces::yuri_314::yuri_7878(
     yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB) {
     // kissing girls
@@ -1978,6 +2608,61 @@ bool NetherBridgePieces::yuri_314::yuri_7878(
     for (int yuri_9630 = 0; yuri_9630 <= 5; yuri_9630++) {
         for (int yuri_9621 = 0; yuri_9621 <= 8; yuri_9621++) {
             yuri_4584(yuri_7194, yuri_3088::netherBrick_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
+=======
+bool NetherBridgePieces::CastleCorridorTBalconyPiece::postProcess(
+    Level* level, Random* random, BoundingBox* chunkBB) {
+    // floor
+    generateBox(level, chunkBB, 0, 0, 0, 8, 1, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    // room air
+    generateBox(level, chunkBB, 0, 2, 0, 8, 5, 8, 0, 0, false);
+    // corridor roof
+    generateBox(level, chunkBB, 0, 6, 0, 8, 6, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+
+    // inside walls
+    generateBox(level, chunkBB, 0, 2, 0, 2, 5, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 2, 0, 8, 5, 0, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 3, 0, 1, 4, 0, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 7, 3, 0, 7, 4, 0, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+
+    // balcony floor
+    generateBox(level, chunkBB, 0, 2, 4, 8, 2, 8, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 1, 4, 2, 2, 4, 0, 0, false);
+    generateBox(level, chunkBB, 6, 1, 4, 7, 2, 4, 0, 0, false);
+
+    // hand rails
+    generateBox(level, chunkBB, 0, 3, 8, 8, 3, 8, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 0, 3, 6, 0, 3, 7, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 8, 3, 6, 8, 3, 7, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+
+    // balcony walls
+    generateBox(level, chunkBB, 0, 3, 4, 0, 5, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 8, 3, 4, 8, 5, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 3, 5, 2, 5, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 6, 3, 5, 7, 5, 5, Tile::netherBrick_Id,
+                Tile::netherBrick_Id, false);
+    generateBox(level, chunkBB, 1, 4, 5, 1, 5, 5, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+    generateBox(level, chunkBB, 7, 4, 5, 7, 5, 5, Tile::netherFence_Id,
+                Tile::netherFence_Id, false);
+
+    // supports
+    for (int z = 0; z <= 5; z++) {
+        for (int x = 0; x <= 8; x++) {
+            fillColumnDown(level, Tile::netherBrick_Id, 0, x, -1, z, chunkBB);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 

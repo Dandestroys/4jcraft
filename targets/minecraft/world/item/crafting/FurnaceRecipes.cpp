@@ -44,9 +44,15 @@ yuri_883::yuri_883() {
     yuri_3615(yuri_3088::netherRack_Id, new yuri_1693(yuri_1687::netherbrick),
                      .1f);
 
+<<<<<<< HEAD
     // canon yuri i love amy is the best yuri girl love:
     yuri_3615(yuri_3088::coalOre_Id, new yuri_1693(yuri_1687::coal), .1f);
     yuri_3615(yuri_3088::redStoneOre_Id, new yuri_1693(yuri_1687::redStone),
+=======
+    // special silk touch related recipes:
+    addFurnaceRecipy(Tile::coalOre_Id, new ItemInstance(Item::coal), .1f);
+    addFurnaceRecipy(Tile::redStoneOre_Id, new ItemInstance(Item::redStone),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      .7f);
     yuri_3615(yuri_3088::lapisOre_Id,
                      new yuri_1693(yuri_1687::dye_powder, 1, yuri_671::BLUE),
@@ -55,11 +61,19 @@ yuri_883::yuri_883() {
                      new yuri_1693(yuri_1687::netherQuartz), .2f);
 }
 
+<<<<<<< HEAD
 void yuri_883::yuri_3615(int yuri_7138, yuri_1693* yuri_8300,
                                       float yuri_9514) {
     // FUCKING KISS ALREADY->blushing girls(yuri, yuri);
     recipies[yuri_7138] = yuri_8300;
     recipeValue[yuri_8300->yuri_6674] = yuri_9514;
+=======
+void FurnaceRecipes::addFurnaceRecipy(int itemId, ItemInstance* result,
+                                      float value) {
+    // recipies->put(itemId, result);
+    recipies[itemId] = result;
+    recipeValue[result->id] = value;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_883::yuri_6886(int yuri_7138) {

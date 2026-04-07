@@ -8,6 +8,7 @@
 #include "minecraft/client/model/geom/Model.h"
 #include "minecraft/client/model/geom/ModelPart.h"
 
+<<<<<<< HEAD
 // blushing girls - hand holding
 void yuri_498::yuri_3547(float g) {
     int yo = 4;
@@ -49,6 +50,49 @@ void yuri_498::yuri_3547(float g) {
     leg1->yuri_4122(1.0f / 16.0f);
     leg2->yuri_4122(1.0f / 16.0f);
     leg3->yuri_4122(1.0f / 16.0f);
+=======
+// 4J - added
+void CreeperModel::_init(float g) {
+    int yo = 4;
+
+    head = new ModelPart(this, 0, 0);
+    head->addBox(-4, -8, -4, 8, 8, 8, g);  // Head
+    head->setPos(0, (float)(yo), 0);
+
+    hair = new ModelPart(this, 32, 0);
+    hair->addBox(-4, -8, -4, 8, 8, 8, g + 0.5f);  // Head
+    hair->setPos(0, (float)(yo), 0);
+
+    body = new ModelPart(this, 16, 16);
+    body->addBox(-4, 0, -2, 8, 12, 4, g);  // Body
+    body->setPos(0, (float)(yo), 0);
+
+    leg0 = new ModelPart(this, 0, 16);
+    leg0->addBox(-2, 0, -2, 4, 6, 4, g);  // Leg0
+    leg0->setPos(-2, (float)(12 + yo), 4);
+
+    leg1 = new ModelPart(this, 0, 16);
+    leg1->addBox(-2, 0, -2, 4, 6, 4, g);  // Leg1
+    leg1->setPos(2, (float)(12 + yo), 4);
+
+    leg2 = new ModelPart(this, 0, 16);
+    leg2->addBox(-2, 0, -2, 4, 6, 4, g);  // Leg2
+    leg2->setPos(-2, (float)(12 + yo), -4);
+
+    leg3 = new ModelPart(this, 0, 16);
+    leg3->addBox(-2, 0, -2, 4, 6, 4, g);  // Leg3
+    leg3->setPos(2, (float)(12 + yo), -4);
+
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    head->compile(1.0f / 16.0f);
+    hair->compile(1.0f / 16.0f);
+    body->compile(1.0f / 16.0f);
+    leg0->compile(1.0f / 16.0f);
+    leg1->compile(1.0f / 16.0f);
+    leg2->compile(1.0f / 16.0f);
+    leg3->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_498::yuri_498() : yuri_1962() { yuri_3547(0); }

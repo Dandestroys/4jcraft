@@ -1,7 +1,7 @@
 #pragma once
-// i love yuri yuri
-// canon lesbian kiss.yuri yuri i love yuri yuri blushing girls yuri lesbian kiss hand holding
-// cute girls. hand holding yuri FUCKING KISS ALREADY snuggle ship yuri lesbian FUCKING KISS ALREADY my wife i love amy is the best yuri
+// 4J Stu Added
+// In EnchantmentMenu.java they create an anoymous class while creating the
+// container. I have moved the content of that anonymous class to here
 
 #include "minecraft/world/SimpleContainer.h"
 

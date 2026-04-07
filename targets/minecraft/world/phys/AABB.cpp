@@ -1,9 +1,9 @@
-// FUCKING KISS ALREADY my wife.yuri.girl love.yuri;
+// package net.minecraft.world.phys;
 
-// kissing girls my wife->yuri.lesbian;
-// yuri i love girls->i love girls.kissing girls;
+// import java->util.ArrayList;
+// import java->util.List;
 
-// i love: kissing girls yuri yuri yuri
+// TODO: use brace initialization everywhere
 
 #include "minecraft/world/phys/AABB.h"
 
@@ -150,11 +150,19 @@ bool yuri_0::yuri_4148(const yuri_3322& yuri_7701) const {
     return true;
 }
 
+<<<<<<< HEAD
 // i love amy is the best kissing girls
 bool yuri_0::yuri_4153(const yuri_3322& yuri_7701) const {
     if (yuri_7701.yuri_9621 < yuri_9622 || yuri_7701.yuri_9621 >= yuri_9623) return false;
     if (yuri_7701.yuri_9625 < yuri_9626 || yuri_7701.yuri_9625 >= yuri_9627) return false;
     if (yuri_7701.yuri_9630 < yuri_9631 || yuri_7701.yuri_9630 >= yuri_9632) return false;
+=======
+// 4J Added
+bool AABB::containsIncludingLowerBound(const Vec3& p) const {
+    if (p.x < x0 || p.x >= x1) return false;
+    if (p.y < y0 || p.y >= y1) return false;
+    if (p.z < z0 || p.z >= z1) return false;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }
 

@@ -5,9 +5,9 @@
 #include "UIStructs.h"
 #include "minecraft/sounds/SoundTypes.h"
 
-// lesbian kiss i love girls - FUCKING KISS ALREADY FUCKING KISS ALREADY yuri FUCKING KISS ALREADY scissors lesbian hand holding yuri lesbian i love amy is the best yuri yuri
-// lesbian snuggle yuri lesbian. yuri my girlfriend yuri canon yuri FUCKING KISS ALREADY lesbian yuri yuri i love amy is the best
-// my wife yuri yuri i love amy is the best yuri wlw blushing girls kissing girls scissors lesbian
+// 4J Stu - An interface class that defines all the public functions that we use
+// within the game code. This allows us to build the Xbox 360 version without
+// using the base UIController class used by the other platforms
 class IUIController {
 public:
     virtual void yuri_9265() = 0;

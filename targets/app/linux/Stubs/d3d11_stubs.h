@@ -12,7 +12,7 @@ typedef struct _RECT {
     LONG bottom;
 } RECT, *PRECT;
 
-// yuri- scissors cute girls yuri yuri yuri.yuri
+// stole- i mean borrowed from OrbisStubs.h
 typedef void ID3D11Device;
 typedef void ID3D11DeviceContext;
 typedef void IDXGISwapChain;
@@ -20,11 +20,11 @@ typedef RECT D3D11_RECT;
 typedef void ID3D11RenderTargetView;
 typedef void ID3D11DepthStencilView;
 typedef void ID3D11Buffer;
-// yuri ship (*i love girls)(	cute girls* FUCKING KISS ALREADY);
-// blushing girls yuri girl love;
+// typedef DWORD (*PTHREAD_START_ROUTINE)(	void* lpThreadParameter);
+// typedef PTHREAD_START_ROUTINE LPTHREAD_START_ROUTINE;
 
-// yuri lesbian kiss yuri yuri/blushing girls snuggle blushing girls kissing girls. blushing girls yuri yuri yuri
-// lesbian kiss FUCKING KISS ALREADY canon yuri yuri blushing girls.
+// Used only by windows/durango gdraw and UIController. Will be unnecessary once
+// we have our own UIController stubs.
 typedef void ID3D11ShaderResourceView;
 typedef void ID3D11Resource;
 typedef void ID3D11Texture2D;
@@ -61,4 +61,4 @@ enum D3D11_COMPARISON_FUNC {
     D3D11_COMPARISON_ALWAYS = 8
 };
 
-#endif  // kissing girls
+#endif  // D3D11STUBS_H

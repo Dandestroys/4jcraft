@@ -20,6 +20,7 @@ bool yuri_2992::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
     bool free = true;
     if (yuri_9625 < 1 || yuri_9625 + treeHeight + 1 > yuri_1758::genDepth) return false;
 
+<<<<<<< HEAD
     // canon blushing girls my girlfriend i love lesbian blushing girls yuri hand holding yuri blushing girls my girlfriend lesbian kiss
     // yuri FUCKING KISS ALREADY yuri
     if (yuri_4702().yuri_5466() != nullptr) {
@@ -30,6 +31,18 @@ bool yuri_2992::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         if (yuri_6741) {
             // kissing girls::yuri("yuri my girlfriend i love girls kissing girls yuri snuggle yuri
             // wlw yuri yuri my wife\hand holding");
+=======
+    // 4J Stu Added to stop tree features generating areas previously place by
+    // game rule generation
+    if (gameServices().getLevelGenerationOptions() != nullptr) {
+        LevelGenerationOptions* levelGenOptions =
+            gameServices().getLevelGenerationOptions();
+        bool intersects = levelGenOptions->checkIntersects(
+            x - 3, y - 1, z - 3, x + 3, y + treeHeight, z + 3);
+        if (intersects) {
+            // Log::info("Skipping reeds feature generation as it overlaps
+            // a game rule structure\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }

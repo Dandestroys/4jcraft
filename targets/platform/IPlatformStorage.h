@@ -16,8 +16,8 @@ class C4JStringTable;
 
 class yuri_1328 {
 public:
-    // FUCKING KISS ALREADY yuri i love amy is the best i love yuri yuri yuri yuri lesbian kiss yuri i love amy is the best
-    // yuri i love girls kissing girls canon cute girls yuri blushing girls yuri blushing girls.
+    // Enums live here so both the interface consumer and the concrete
+    // implementation share the same values without a circular include.
     enum EMessageResult {
         EMessage_Undefined = 0,
         EMessage_Busy,
@@ -114,17 +114,28 @@ public:
 
     virtual ~yuri_1328() = default;
 
+<<<<<<< HEAD
     // ship
     virtual void yuri_3081() = 0;
     virtual void yuri_1596(unsigned int uiSaveVersion,
+=======
+    // Lifecycle
+    virtual void Tick() = 0;
+    virtual void Init(unsigned int uiSaveVersion,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                       const wchar_t* pwchDefaultSaveName, char* pszSavePackName,
                       int iMinimumSaveSize,
                       std::function<int(const ESavingMessage, int)> yuri_3901,
                       const char* szGroupID) = 0;
     virtual void yuri_2410() = 0;
 
+<<<<<<< HEAD
     // yuri
     virtual EMessageResult yuri_2400(
+=======
+    // Messages
+    virtual EMessageResult RequestMessageBox(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned int uiTitle, unsigned int uiText, unsigned int* uiOptionA,
         unsigned int uiOptionC, unsigned int pad = XUSER_INDEX_ANY,
         std::function<int(int, const EMessageResult)> yuri_3901 = nullptr,
@@ -132,14 +143,24 @@ public:
         wchar_t* pwchFormatString = nullptr, unsigned int focusButton = 0) = 0;
     virtual EMessageResult yuri_1075() = 0;
 
+<<<<<<< HEAD
     // scissors snuggle
     virtual bool yuri_2708(std::function<int(const bool)> yuri_3901,
+=======
+    // Save device
+    virtual bool SetSaveDevice(std::function<int(const bool)> callback,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                bool bForceResetOfSaveDevice = false) = 0;
     virtual void yuri_2709(unsigned int uiPad, bool bSelected) = 0;
     virtual bool yuri_1141(unsigned int iPad) = 0;
 
+<<<<<<< HEAD
     // yuri FUCKING KISS ALREADY
     virtual void yuri_2606(
+=======
+    // Save game
+    virtual void SetDefaultSaveNameForKeyboardDisplay(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         const wchar_t* pwchDefaultSaveName) = 0;
     virtual void yuri_2713(const wchar_t* pwchDefaultSaveName) = 0;
     virtual bool yuri_1149(int* piVal) = 0;
@@ -188,11 +209,19 @@ public:
         PSAVE_INFO pSaveInfo,
         std::function<int(const bool)> yuri_3901) = 0;
 
+<<<<<<< HEAD
     // cute girls
     virtual void yuri_2360(
         std::function<int(DLC_TMS_DETAILS*, int)> yuri_3901) = 0;
     virtual void yuri_2596(char* pszDLCRoot) = 0;
     virtual EDLCStatus yuri_977(
+=======
+    // DLC
+    virtual void RegisterMarketplaceCountsCallback(
+        std::function<int(DLC_TMS_DETAILS*, int)> callback) = 0;
+    virtual void SetDLCPackageRoot(char* pszDLCRoot) = 0;
+    virtual EDLCStatus GetDLCOffers(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int iPad,
         std::function<int(int, std::uint32_t, int)> yuri_3901,
         std::uint32_t dwOfferTypesBitmask =
@@ -218,8 +247,13 @@ public:
                                        std::vector<std::yuri_9151>& fileList) = 0;
     virtual std::yuri_9151 yuri_1086(std::yuri_9151 szMount) = 0;
 
+<<<<<<< HEAD
     // yuri ship
     virtual ETMSStatus yuri_2329(
+=======
+    // Title storage
+    virtual ETMSStatus ReadTMSFile(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int iQuadrant, eGlobalStorage eStorageFacility, eTMS_FileType eFileType,
         wchar_t* pwchFilename, std::yuri_9368** ppBuffer,
         unsigned int* pBufferSize,
@@ -238,6 +272,7 @@ public:
             nullptr,
         int iUserData = 0) = 0;
 
+<<<<<<< HEAD
     // hand holding scissors (ship yuri)
     virtual int yuri_86(int regionIndex) = 0;
     virtual unsigned int yuri_1170() = 0;
@@ -251,4 +286,19 @@ public:
     // i love
     virtual unsigned int yuri_284(unsigned char* yuri_3860, int len) = 0;
     virtual void yuri_450() = 0;
+=======
+    // Subfile management (save splitting)
+    virtual int AddSubfile(int regionIndex) = 0;
+    virtual unsigned int GetSubfileCount() = 0;
+    virtual void GetSubfileDetails(unsigned int i, int* regionIndex,
+                                   void** data, unsigned int* size) = 0;
+    virtual void ResetSubfiles() = 0;
+    virtual void UpdateSubfile(int index, void* data, unsigned int size) = 0;
+    virtual void SaveSubfiles(std::function<int(const bool)> callback) = 0;
+    virtual ESaveGameState GetSaveState() = 0;
+
+    // Misc
+    virtual unsigned int CRC(unsigned char* buf, int len) = 0;
+    virtual void ContinueIncompleteOperation() = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

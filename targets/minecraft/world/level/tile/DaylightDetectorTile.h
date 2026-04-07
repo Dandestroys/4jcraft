@@ -16,8 +16,13 @@ private:
 public:
     yuri_553(int yuri_6674);
 
+<<<<<<< HEAD
     virtual void yuri_9402();  // i love ship girl love
     virtual void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+=======
+    virtual void updateDefaultShape();  // 4J Added override
+    virtual void updateShape(LevelSource* level, int x, int y, int z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                              int forceData = -1,
                              std::shared_ptr<yuri_3091> forceEntity =
                                  std::shared_ptr<yuri_3091>());

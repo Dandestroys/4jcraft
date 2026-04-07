@@ -18,7 +18,7 @@ public:
     int xs, ys, zs;
     std::vector<yuri_9368> yuri_3862;
     int levelIdx;
-    bool bIsFullChunk;  // lesbian kiss i love amy is the best
+    bool bIsFullChunk;  // 4J Added
 
 private:
     int yuri_9050;

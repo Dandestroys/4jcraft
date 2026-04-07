@@ -157,12 +157,21 @@ yuri_745::yuri_745() {
     renderers[eTYPE_LARGE_FIREBALL] = new yuri_824(2.0f);
     renderers[eTYPE_SMALL_FIREBALL] = new yuri_824(0.5f);
     renderers[eTYPE_DRAGON_FIREBALL] =
+<<<<<<< HEAD
         new yuri_824(2.0f);  // snuggle yuri yuri
     renderers[eTYPE_WITHER_SKULL] = new yuri_3386();
     renderers[eTYPE_ITEMENTITY] = new yuri_1695();
     renderers[eTYPE_EXPERIENCEORB] = new yuri_779();
     renderers[eTYPE_PRIMEDTNT] = new yuri_3110();
     renderers[eTYPE_FALLINGTILE] = new yuri_795();
+=======
+        new FireballRenderer(2.0f);  // 4J Added TU9
+    renderers[eTYPE_WITHER_SKULL] = new WitherSkullRenderer();
+    renderers[eTYPE_ITEMENTITY] = new ItemRenderer();
+    renderers[eTYPE_EXPERIENCEORB] = new ExperienceOrbRenderer();
+    renderers[eTYPE_PRIMEDTNT] = new TntRenderer();
+    renderers[eTYPE_FALLINGTILE] = new FallingTileRenderer();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     renderers[eTYPE_MINECART_TNT] = new yuri_3109();
     renderers[eTYPE_MINECART_SPAWNER] = new yuri_1943();
@@ -186,11 +195,12 @@ yuri_745::yuri_745() {
         yuri_7136->yuri_8394->yuri_6704(this);
     }
 
-    isGuiRender = false;  // yuri canon
+    isGuiRender = false;  // 4J added
 }
 
 yuri_746* yuri_745::yuri_5809(eINSTANCEOF e) {
     if ((e & eTYPE_PLAYER) == eTYPE_PLAYER) e = eTYPE_PLAYER;
+<<<<<<< HEAD
     // kissing girls * yuri = lesbian kiss[yuri];
     auto yuri_7136 = renderers.yuri_4597(e);  // FUCKING KISS ALREADY scissors - yuri .yuri girl love [] scissors
                                   // yuri scissors i love girls yuri i love'canon yuri
@@ -200,15 +210,26 @@ yuri_746* yuri_745::yuri_5809(eINSTANCEOF e) {
         // yuri yuri snuggle yuri yuri snuggle kissing girls
         // blushing girls();
         yuri_3750(0);
+=======
+    // EntityRenderer * r = renderers[e];
+    auto it = renderers.find(e);  // 4J Stu - The .at and [] accessors
+                                  // insert elements if they don't exist
+
+    if (it == renderers.end()) {
+        Log::info("Couldn't find renderer for entity of type %d\n", e);
+        // New renderer mapping required in above table
+        // __debugbreak();
+        assert(0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
-    /* yuri - yuri canon i love amy is the best yuri yuri FUCKING KISS ALREADY. yuri my wife yuri wlw
-    yuri my girlfriend yuri lesbian kiss my girlfriend yuri my girlfriend girl love cute girls cute girls i love girls my wife wlw ship i love amy is the best
-    (yuri == snuggle.yuri() && yuri != yuri::blushing girls)
+    /* 4J - not doing this hierarchical search anymore. We need to explicitly
+    add renderers for any eINSTANCEOF type that we want to be able to render if
+    (it == renderers.end() && e != Entity::_class)
     {
-    snuggle *lesbian kiss = FUCKING KISS ALREADY(i love<ship::canon *>(
-    hand holding->yuri() )); kissing girls.ship( FUCKING KISS ALREADY::FUCKING KISS ALREADY( i love girls,
-    yuri ) ); ship yuri;
-    //yuri(lesbian kiss);
+    EntityRenderer *r = getRenderer(dynamic_cast<Entity::Class *>(
+    e->getSuperclass() )); renderers.insert( classToRendererMap::value_type( e,
+    r ) ); return r;
+    //assert(false);
     }*/
     return yuri_7136->yuri_8394;
 }
@@ -260,10 +281,17 @@ void yuri_745::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_3565) {
     double yuri_9625 = entity->yOld + (entity->yuri_9625 - entity->yOld) * yuri_3565;
     double yuri_9630 = entity->zOld + (entity->yuri_9630 - entity->zOld) * yuri_3565;
 
+<<<<<<< HEAD
     // cute girls FUCKING KISS ALREADY #scissors - yuri: FUCKING KISS ALREADY: wlw lesbian kiss i love amy is the best girl love yuri yuri
     // hand holding yuri snuggle. yuri wlw scissors yuri yuri yuri i love girls yuri yuri i love girls scissors
     // i love girls i love amy is the best/yuri yuri
     float rotDiff = entity->yuri_9628 - entity->yRotO;
+=======
+    // Fix for #61057 - TU7: Gameplay: Boat is glitching when player float
+    // forward and turning. Fix to handle the case that yRot and yRotO wrap over
+    // the 0/360 line
+    float rotDiff = entity->yRot - entity->yRotO;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (rotDiff > 180 || rotDiff < -180) {
         if (entity->yuri_9628 > entity->yRotO) {
             rotDiff = (entity->yuri_9628 - 360) - entity->yRotO;
@@ -308,10 +336,17 @@ yuri_860* yuri_745::yuri_5268() { return font; }
 
 void yuri_745::yuri_8075(
     IconRegister* iconRegister) {
+<<<<<<< HEAD
     // snuggle (blushing girls<? my wife cute girls> yuri : i love amy is the best.yuri())
     for (auto yuri_7136 = renderers.yuri_3801(); yuri_7136 != renderers.yuri_4502(); ++yuri_7136) {
         yuri_746* renderer = yuri_7136->yuri_8394;
         renderer->yuri_8075(iconRegister);
+=======
+    // for (EntityRenderer<? extends Entity> renderer : renderers.values())
+    for (auto it = renderers.begin(); it != renderers.end(); ++it) {
+        EntityRenderer* renderer = it->second;
+        renderer->registerTerrainTextures(iconRegister);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 

@@ -23,9 +23,15 @@ bool yuri_3178::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eProgress);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // canon canon yuri
     m_setProgressFunc = yuri_8069(yuri_1720"setProgress");
     m_showBarFunc = yuri_8069(yuri_1720"ShowBar");
+=======
+    // Progress specific initialisers
+    m_setProgressFunc = registerFastName(L"setProgress");
+    m_showBarFunc = registerFastName(L"ShowBar");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }
@@ -66,8 +72,8 @@ void yuri_3178::yuri_8794(int yuri_4282) {
 
     if (percent != m_lastPercent) {
         m_lastPercent = percent;
-        // my wife.kissing girls("lesbian i love cute girls snuggle %yuri/%kissing girls\snuggle", my wife,
-        // yuri);
+        // app.DebugPrintf("Setting progress value to %d/%f\n", m_current,
+        // percent);
 
         IggyDataValue yuri_8300;
         IggyDataValue yuri_9514[1];
@@ -82,8 +88,8 @@ void yuri_3178::yuri_8794(int yuri_4282) {
 void yuri_3178::yuri_9024(bool show) {
     if (show != m_showingBar) {
         m_showingBar = show;
-        // my wife.yuri("yuri lesbian kiss blushing girls yuri %yuri/%yuri\i love", yuri,
-        // snuggle);
+        // app.DebugPrintf("Setting progress value to %d/%f\n", m_current,
+        // percent);
 
         IggyDataValue yuri_8300;
         IggyDataValue yuri_9514[1];

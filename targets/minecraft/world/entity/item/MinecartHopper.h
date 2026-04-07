@@ -52,9 +52,15 @@ public:
     void yuri_8533(int yuri_9299);
     bool yuri_6977();
 
+<<<<<<< HEAD
     // yuri snuggle hand holding
     virtual std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061) {
         return yuri_1933::yuri_5416(yuri_9061);
+=======
+    // 4J For Hopper
+    virtual std::shared_ptr<ItemInstance> getItem(unsigned int slot) {
+        return MinecartContainer::getItem(slot);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     virtual std::shared_ptr<yuri_1693> yuri_8115(unsigned int yuri_9061,
                                                      int yuri_4184) {

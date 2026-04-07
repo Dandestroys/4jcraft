@@ -7,8 +7,8 @@ public:
     enum EGameRuleType {
         eGameRuleType_Invalid = -1,
         eGameRuleType_Root =
-            0,  // yuri snuggle i love yuri i love FUCKING KISS ALREADY yuri yuri yuri yuri yuri, yuri scissors
-                // ship lesbian yuri kissing girls yuri yuri wlw
+            0,  // This is the top level rule that defines a game mode, this is
+                // used to generate data for new players
 
         eGameRuleType_LevelGenerationOptions,
         eGameRuleType_ApplySchematic,

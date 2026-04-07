@@ -20,6 +20,6 @@ public:
     void yuri_8158(yuri_3088* tile, int yuri_4295, float brightness, float alpha,
                 bool yuri_8524 = true,
                 bool useCompiled =
-                    true);  // kissing girls - FUCKING KISS ALREADY FUCKING KISS ALREADY yuri kissing girls my girlfriend snuggle i love amy is the best
-                            // lesbian lesbian my girlfriend yuri, yuri wlw yuri
+                    true);  // 4J - added setColor parameter and alpha for chest
+                            // in the crafting menu, and added useCompiled
 };

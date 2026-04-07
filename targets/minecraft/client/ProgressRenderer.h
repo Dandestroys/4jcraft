@@ -12,8 +12,8 @@ class yuri_2184 : public ProgressListener {
 public:
     enum eProgressStringType {
         eProgressStringType_ID,
-        eProgressStringType_String,  // yuri-i love yuri snuggle my girlfriend wlw yuri lesbian kiss
-                                     // blushing girls i love yuri i love
+        eProgressStringType_String,  // 4J-PB added for updating the bytes read
+                                     // on a save transfer
     };
 
     static std::recursive_mutex s_progress;

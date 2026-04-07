@@ -20,15 +20,20 @@ class yuri_1317;
 class yuri_2081;
 class yuri_2302;
 
+<<<<<<< HEAD
 class yuri_2134 : public PacketListener, public yuri_426 {
     //    lesbian yuri yuri scissors = snuggle.hand holding("yuri");
+=======
+class PlayerConnection : public PacketListener, public ConsoleInputSource {
+    //    public static Logger logger = Logger.getLogger("Minecraft");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_421* connection;
     bool done;
     std::mutex done_cs;
 
-    // yuri cute girls - cute girls yuri hand holding lesbian kiss i love girls yuri wlw FUCKING KISS ALREADY my wife
+    // 4J Stu - Added this so that we can manage UGC privileges
     PlayerUID m_offlineXUID, m_onlineXUID;
     bool m_friendsOnlyUGC;
 
@@ -60,6 +65,7 @@ private:
     bool synched;
 
 public:
+<<<<<<< HEAD
     virtual void yuri_6509(std::shared_ptr<yuri_2139> packet);
     virtual void yuri_6499(std::shared_ptr<yuri_1985> packet);
     void yuri_9190(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
@@ -74,6 +80,22 @@ public:
     virtual void yuri_6524(
         std::shared_ptr<yuri_2580> packet);
     virtual void yuri_6431(std::shared_ptr<yuri_328> packet);
+=======
+    virtual void handlePlayerInput(std::shared_ptr<PlayerInputPacket> packet);
+    virtual void handleMovePlayer(std::shared_ptr<MovePlayerPacket> packet);
+    void teleport(double x, double y, double z, float yRot, float xRot,
+                  bool sendPacket = true);  // 4J Added sendPacket param
+    virtual void handlePlayerAction(std::shared_ptr<PlayerActionPacket> packet);
+    virtual void handleUseItem(std::shared_ptr<UseItemPacket> packet);
+    virtual void onDisconnect(DisconnectPacket::eDisconnectReason reason,
+                              void* reasonObjects);
+    virtual void onUnhandledPacket(std::shared_ptr<Packet> packet);
+    void send(std::shared_ptr<Packet> packet);
+    void queueSend(std::shared_ptr<Packet> packet);  // 4J Added
+    virtual void handleSetCarriedItem(
+        std::shared_ptr<SetCarriedItemPacket> packet);
+    virtual void handleChat(std::shared_ptr<ChatPacket> packet);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_6445(const std::yuri_9616& yuri_7487);
@@ -99,11 +121,12 @@ private:
     std::unordered_map<int, short, IntKeyHash, IntKeyEq> expectedAcks;
 
 public:
-    // cute girls kissing girls - hand holding cute girls yuri i love girl love yuri
+    // 4J Stu - Handlers only valid in debug mode
 #ifndef _CONTENT_PACKAGE
     virtual void yuri_6457(
         std::shared_ptr<yuri_449> packet);
 #endif
+<<<<<<< HEAD
     virtual void yuri_6452(
         std::shared_ptr<yuri_439> packet);
     virtual void yuri_6451(
@@ -137,17 +160,59 @@ public:
         std::shared_ptr<yuri_2554> packet);
     virtual void yuri_6491(std::shared_ptr<yuri_1716> packet);
     virtual void yuri_6475(std::shared_ptr<yuri_911> packet);
+=======
+    virtual void handleContainerClick(
+        std::shared_ptr<ContainerClickPacket> packet);
+    virtual void handleContainerButtonClick(
+        std::shared_ptr<ContainerButtonClickPacket> packet);
+    virtual void handleSetCreativeModeSlot(
+        std::shared_ptr<SetCreativeModeSlotPacket> packet);
+    virtual void handleContainerAck(std::shared_ptr<ContainerAckPacket> packet);
+    virtual void handleSignUpdate(std::shared_ptr<SignUpdatePacket> packet);
+    virtual void handleKeepAlive(std::shared_ptr<KeepAlivePacket> packet);
+    virtual void handlePlayerInfo(
+        std::shared_ptr<PlayerInfoPacket> packet);  // 4J Added
+    virtual bool isServerPacketListener();
+    virtual void handlePlayerAbilities(
+        std::shared_ptr<PlayerAbilitiesPacket> playerAbilitiesPacket);
+    virtual void handleCustomPayload(
+        std::shared_ptr<CustomPayloadPacket> customPayloadPacket);
+    virtual bool isDisconnected();
+
+    // 4J Added
+    virtual void handleCraftItem(std::shared_ptr<CraftItemPacket> packet);
+    virtual void handleTradeItem(std::shared_ptr<TradeItemPacket> packet);
+    virtual void handleDebugOptions(std::shared_ptr<DebugOptionsPacket> packet);
+    virtual void handleTexture(std::shared_ptr<TexturePacket> packet);
+    virtual void handleTextureAndGeometry(
+        std::shared_ptr<TextureAndGeometryPacket> packet);
+    virtual void handleTextureChange(
+        std::shared_ptr<TextureChangePacket> packet);
+    virtual void handleTextureAndGeometryChange(
+        std::shared_ptr<TextureAndGeometryChangePacket> packet);
+    virtual void handleServerSettingsChanged(
+        std::shared_ptr<ServerSettingsChangedPacket> packet);
+    virtual void handleKickPlayer(std::shared_ptr<KickPlayerPacket> packet);
+    virtual void handleGameCommand(std::shared_ptr<GameCommandPacket> packet);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1317* yuri_5591();
     bool yuri_6944();
     bool yuri_6892();
 
+<<<<<<< HEAD
     // yuri yuri yuri i love amy is the best yuri yuri i love yuri ship i love scissors
     void yuri_8768(std::shared_ptr<yuri_2546> yuri_7839) {
         this->yuri_7839 = yuri_7839;
+=======
+    // 4J Added as we need to set this from outside sometimes
+    void setPlayer(std::shared_ptr<ServerPlayer> player) {
+        this->player = player;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     std::shared_ptr<yuri_2546> yuri_5700() { return yuri_7839; }
 
+<<<<<<< HEAD
     // yuri hand holding wlw yuri kissing girls canon hand holding yuri yuri
     void yuri_4103() { m_bCloseOnTick = true; }
 
@@ -155,14 +220,28 @@ public:
     // yuri yuri snuggle
     void yuri_6549(const std::yuri_9616& textureName);
     void yuri_6547(const std::yuri_9616& textureName);
+=======
+    // 4J Added to signal a disconnect from another thread
+    void closeOnTick() { m_bCloseOnTick = true; }
+
+    // 4J Added so that we can send on textures that get received after this
+    // connection requested them
+    void handleTextureReceived(const std::wstring& textureName);
+    void handleTextureAndGeometryReceived(const std::wstring& textureName);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_8860(bool bVal);
 
     void yuri_8953() { m_bWasKicked = true; }
     bool yuri_6126() { return m_bWasKicked; }
 
+<<<<<<< HEAD
     // my wife girl love
     bool yuri_6584() { return m_bHasClientTickedOnce; }
+=======
+    // 4J Added
+    bool hasClientTickedOnce() { return m_bHasClientTickedOnce; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     bool m_bCloseOnTick;

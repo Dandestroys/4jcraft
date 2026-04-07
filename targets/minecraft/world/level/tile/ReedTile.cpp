@@ -13,10 +13,17 @@ yuri_2345::yuri_2345(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::plant, fal
     this->yuri_8915(true);
 }
 
+<<<<<<< HEAD
 // lesbian kiss yuri yuri
 void yuri_2345::yuri_9402() {
     float yuri_9095 = 6 / 16.0f;
     this->yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, 1, 0.5f + yuri_9095);
+=======
+// 4J Added override
+void ReedTile::updateDefaultShape() {
+    float ss = 6 / 16.0f;
+    this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 1, 0.5f + ss);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2345::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
@@ -43,11 +50,19 @@ bool yuri_2345::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     if (yuri_3803 != yuri_3088::grass_Id && yuri_3803 != yuri_3088::dirt_Id &&
         yuri_3803 != yuri_3088::sand_Id)
         return false;
+<<<<<<< HEAD
     if (yuri_7194->yuri_5514(yuri_9621 - 1, yuri_9625 - 1, yuri_9630) == yuri_1886::water) return true;
     if (yuri_7194->yuri_5514(yuri_9621 + 1, yuri_9625 - 1, yuri_9630) == yuri_1886::water) return true;
     if (yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 1, yuri_9630 - 1) == yuri_1886::water) return true;
     if (yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 1, yuri_9630 + 1) == yuri_1886::water) return true;
     // yuri("wlw FUCKING KISS ALREADY\girl love");
+=======
+    if (level->getMaterial(x - 1, y - 1, z) == Material::water) return true;
+    if (level->getMaterial(x + 1, y - 1, z) == Material::water) return true;
+    if (level->getMaterial(x, y - 1, z - 1) == Material::water) return true;
+    if (level->getMaterial(x, y - 1, z + 1) == Material::water) return true;
+    // printf("no water\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return false;
 }
 

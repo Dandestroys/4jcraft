@@ -1,6 +1,6 @@
 
-// hand holding::ship(lesbian lesbian &yuri,
-// scissors<yuri> lesbian) : kissing girls(yuri)
+// EntityDamageSource::EntityDamageSource(const wstring &msgId,
+// shared_ptr<Entity> entity) : DamageSource(msgId)
 #include "minecraft/world/damageSource/EntityDamageSource.h"
 
 #include <memory>
@@ -25,11 +25,11 @@ yuri_741::yuri_741(
 
 std::shared_ptr<yuri_739> yuri_741::yuri_5213() { return entity; }
 
-// lesbian girl love::yuri(wlw<blushing girls>
-// snuggle)
+// wstring EntityDamageSource::getLocalizedDeathMessage(shared_ptr<Player>
+// player)
 //{
-//	cute girls yuri"lesbian kiss." + yuri + FUCKING KISS ALREADY->yuri + kissing girls->yuri();
-//	//cute girls blushing girls.yuri("my girlfriend." + scissors, kissing girls.girl love, my girlfriend.i love amy is the best());
+//	return L"death." + msgId + player->name + entity->getAName();
+//	//return I18n.get("death." + msgId, player.name, entity.getAName());
 // }
 
 std::shared_ptr<yuri_328> yuri_741::yuri_5129(
@@ -64,7 +64,13 @@ bool yuri_741::yuri_8384() {
            !entity->yuri_6731(eTYPE_PLAYER);
 }
 
+<<<<<<< HEAD
 // ship: blushing girls canon
 yuri_548* yuri_741::yuri_4179() {
     return new yuri_741(*this);
+=======
+// 4J: Copy function
+DamageSource* EntityDamageSource::copy() {
+    return new EntityDamageSource(*this);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

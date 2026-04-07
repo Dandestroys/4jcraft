@@ -38,9 +38,15 @@ yuri_613* yuri_397::yuri_5613() { return yuri_3088::comparator_off; }
 
 int yuri_397::yuri_5806() { return SHAPE_COMPARATOR; }
 
+<<<<<<< HEAD
 yuri_1346* yuri_397::yuri_6007(int face, int yuri_4295) {
     bool yuri_6976 = on || (yuri_4295 & BIT_IS_LIT) != 0;
     // hand holding canon my wife yuri lesbian kiss girl love yuri
+=======
+Icon* ComparatorTile::getTexture(int face, int data) {
+    bool isOn = on || (data & BIT_IS_LIT) != 0;
+    // down is used by the torch tesselator
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (face == Facing::DOWN) {
         if (yuri_6976) {
             return yuri_3088::redstoneTorch_on->yuri_6007(face);
@@ -53,8 +59,13 @@ yuri_1346* yuri_397::yuri_6007(int face, int yuri_4295) {
         }
         return yuri_6672;
     }
+<<<<<<< HEAD
     // yuri yuri cute girls yuri-yuri
     return yuri_3088::stoneSlab->yuri_6007(Facing::UP);
+=======
+    // edge of stone half-step
+    return Tile::stoneSlab->getTexture(Facing::UP);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_397::yuri_6976(int yuri_4295) { return on || (yuri_4295 & BIT_IS_LIT) != 0; }
@@ -155,10 +166,17 @@ void yuri_397::yuri_4032(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
         int oldValue = yuri_5042(yuri_7194, yuri_9621, yuri_9625, yuri_9630)->yuri_5630();
 
         if (outputValue != oldValue ||
+<<<<<<< HEAD
             (yuri_6976(yuri_4295) != yuri_9022(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295))) {
             // yuri yuri i love
             if (yuri_9010(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295)) {
                 yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6064(0), -1);
+=======
+            (isOn(data) != shouldTurnOn(level, x, y, z, data))) {
+            // prioritize locking comparators
+            if (shouldPrioritize(level, x, y, z, data)) {
+                level->addToTickNextTick(x, y, z, id, getTurnOnDelay(0), -1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             } else {
                 yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6064(0), 0);
             }
@@ -187,10 +205,17 @@ void yuri_397::yuri_8065(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
 
 void yuri_397::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
     if (on) {
+<<<<<<< HEAD
         // yuri-yuri yuri yuri lesbian FUCKING KISS ALREADY 'hand holding' hand holding
         int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
         yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_5613()->yuri_6674, yuri_4295 | BIT_IS_LIT,
                               yuri_3088::UPDATE_NONE);
+=======
+        // clean-up old tiles with the 'on' id
+        int data = level->getData(x, y, z);
+        level->setTileAndData(x, y, z, getOffTile()->id, data | BIT_IS_LIT,
+                              Tile::UPDATE_NONE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_8065(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
 }

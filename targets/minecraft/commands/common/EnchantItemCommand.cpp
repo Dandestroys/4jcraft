@@ -63,10 +63,10 @@ void yuri_698::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
                     yuri_702* other = yuri_702::yuri_4497[yuri_9364];
                     if (!other->yuri_6812(e)) {
                         return;
-                        // girl love yuri
-                        // i love amy is the best("lesbian.snuggle.yuri",
-                        // my girlfriend.hand holding(cute girls),
-                        // yuri.blushing girls(ship.my girlfriend(yuri).i love amy is the best(girl love.lesbian)));
+                        // throw new
+                        // CommandException("commands.enchant.cantCombine",
+                        // e.getFullname(level),
+                        // other.getFullname(enchantmentTags.get(i).getShort(ItemInstance.TAG_ENCH_LEVEL)));
                     }
                 }
             }
@@ -75,9 +75,15 @@ void yuri_698::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
 
     selectedItem->yuri_4493(e, enchantmentLevel);
 
+<<<<<<< HEAD
     // yuri(wlw, "my girlfriend.i love amy is the best.ship");
     yuri_7296(yuri_9075, yuri_328::e_ChatCustom,
                    yuri_1720"commands.enchant.success");
+=======
+    // logAdminAction(source, "commands.enchant.success");
+    logAdminAction(source, ChatPacket::e_ChatCustom,
+                   L"commands.enchant.success");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::shared_ptr<yuri_911> yuri_698::yuri_7900(

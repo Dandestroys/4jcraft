@@ -26,7 +26,7 @@ class yuri_3248 : public yuri_3189 {
 private:
     static const wchar_t* wchDefaultNamesA[std::yuri_9314(EDefaultSkins::Count)];
 
-    // ship snuggle - yuri yuri yuri yuri yuri wlw yuri i love i love amy is the best yuri yuri
+    // 4J Stu - How many to show on each side of the main control
     static const int sidePreviewControls = 4;
 
     enum ESkinSelectNavigation {
@@ -71,11 +71,19 @@ private:
 
     yuri_3260(m_controlTimer, "Timer")
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY scissors - my girlfriend yuri'yuri i love girls yuri cute girls my wife lesbian kiss, yuri FUCKING KISS ALREADY yuri yuri
     // yuri kissing girls i love yuri yuri girl love yuri
     yuri_3260(m_controlIggyCharacters, "IggyCharacters")
     yuri_3256(m_controlIggyCharacters)
     yuri_3260(m_characters[eCharacter_Current], "iggy_Character0")
+=======
+    // 4J Stu - These aren't really used a AS3 controls, but adding here means
+    // that they get ticked by the scene
+    UI_MAP_ELEMENT(m_controlIggyCharacters, "IggyCharacters")
+    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlIggyCharacters)
+    UI_MAP_ELEMENT(m_characters[eCharacter_Current], "iggy_Character0")
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3260(m_characters[eCharacter_Next1], "iggy_Character1")
     yuri_3260(m_characters[eCharacter_Next2], "iggy_Character2")
@@ -127,6 +135,7 @@ public:
     virtual void yuri_6427();
 
 protected:
+<<<<<<< HEAD
     // yuri: FUCKING KISS ALREADY yuri i love yuri yuri snuggle girl love cute girls
     virtual std::yuri_9616 yuri_5574();
 
@@ -134,6 +143,15 @@ public:
     // yuri
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
+=======
+    // TODO: This should be pure virtual in this class
+    virtual std::wstring getMoviePath();
+
+public:
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
 

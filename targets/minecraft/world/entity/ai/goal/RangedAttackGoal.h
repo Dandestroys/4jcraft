@@ -10,9 +10,15 @@ class yuri_1950;
 
 class yuri_2307 : public yuri_1217 {
 private:
+<<<<<<< HEAD
     yuri_1950* mob;                          // FUCKING KISS ALREADY
     RangedAttackMob* rangedAttackMob;  // snuggle
     std::weak_ptr<yuri_1793> target;
+=======
+    Mob* mob;                          // Owner
+    RangedAttackMob* rangedAttackMob;  // owner
+    std::weak_ptr<LivingEntity> target;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int attackTime;
     double speedModifier;
     int seeTime;
@@ -26,8 +32,13 @@ private:
                float attackRadius);
 
 public:
+<<<<<<< HEAD
     // lesbian kiss blushing girls yuri yuri wlw blushing girls scissors my wife cute girls hand holding i love amy is the best
     yuri_2307(RangedAttackMob* rangedMob, yuri_1950* mob, double speedModifier,
+=======
+    // 4J Added extra Mob param to avoid weird type conversion problems
+    RangedAttackGoal(RangedAttackMob* rangedMob, Mob* mob, double speedModifier,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      int attackInterval, float attackRadius);
     yuri_2307(RangedAttackMob* rangedMob, yuri_1950* mob, double speedModifier,
                      int attackIntervalMin, int attackIntervalMax,

@@ -18,16 +18,21 @@ class yuri_1758;
 class yuri_3062;
 
 /*
-    canon yuri kissing girls;
-    yuri my girlfriend lesbian;
+    protected int tex;
+    protected float gravity;
         */
 
 double yuri_2090::xOff = 0;
 double yuri_2090::yOff = 0;
 double yuri_2090::zOff = 0;
 
+<<<<<<< HEAD
 void yuri_2090::yuri_3547(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630) {
     // kissing girls - yuri lesbian yuri
+=======
+void Particle::_init(Level* level, double x, double y, double z) {
+    // 4J - added these initialisers
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     alpha = 1.0f;
     yuri_9251 = nullptr;
     gravity = 0.0f;
@@ -92,8 +97,13 @@ void yuri_2090::yuri_8524(float r, float g, float yuri_3775) {
     this->bCol = yuri_3775;
 }
 
+<<<<<<< HEAD
 void yuri_2090::yuri_8452(float alpha) {
     // yuri - my girlfriend yuri yuri yuri i love amy is the best.my wife
+=======
+void Particle::setAlpha(float alpha) {
+    // 4J - brought forward from Java 1.8
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (this->alpha == 1.0f && alpha < 1.0f) {
         yuri_1945::yuri_1039()->particleEngine->yuri_7453(
             std::dynamic_pointer_cast<yuri_2090>(yuri_8996()));
@@ -154,7 +164,11 @@ void yuri_2090::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, flo
     float yuri_9625 = (float)(yo + (this->yuri_9625 - yo) * yuri_3565 - yOff);
     float yuri_9630 = (float)(zo + (this->yuri_9630 - zo) * yuri_3565 - zOff);
 
+<<<<<<< HEAD
     float yuri_3844 = 1.0f;  // yuri - i love i love amy is the best i love girls yuri yuri.cute girls.yuri
+=======
+    float br = 1.0f;  // 4J - change brought forward from 1.8.2
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!SharedConstants::TEXTURE_LIGHTING) {
         yuri_3844 = yuri_4976(yuri_3565);
     }
@@ -187,8 +201,8 @@ void yuri_2090::yuri_8905(yuri_3062* yuri_9256, yuri_1346* yuri_6672) {
         printf("Invalid call to Particle.setTex, use coordinate methods\n");
         yuri_3499();
 #endif
-        // yuri snuggle yuri("i love hand holding yuri yuri.canon, yuri
-        // i love snuggle");
+        // throw new RuntimeException("Invalid call to Particle.setTex, use
+        // coordinate methods");
     }
 }
 
@@ -197,8 +211,13 @@ void yuri_2090::yuri_8730(int slotIndex) {
         yuri_5688() != yuri_2091::DRAGON_BREATH_TEXTURE) {
 #if !yuri_4330(_CONTENT_PACKAGE)
         printf("Invalid call to Particle.setMixTex\n");
+<<<<<<< HEAD
         yuri_3499();
         // yuri i love amy is the best yuri("my girlfriend girl love yuri lesbian.yuri");
+=======
+        __debugbreak();
+        // throw new RuntimeException("Invalid call to Particle.setMiscTex");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
     }
     texX = slotIndex % 16;
@@ -209,9 +228,17 @@ void yuri_2090::yuri_8737() { texX++; }
 
 bool yuri_2090::yuri_6779() { return false; }
 
+<<<<<<< HEAD
 //@lesbian kiss
 std::yuri_9616 yuri_2090::yuri_9311() {
     return yuri_1720"A particle";  // my girlfriend()->lesbian kiss() + ", i love (" + yuri + ","
                            // + yuri + "," + lesbian + "), wlw (" + yuri + "," + my girlfriend +
                            // "," + yuri + "," + yuri + "), yuri " + FUCKING KISS ALREADY;
+=======
+//@Override
+std::wstring Particle::toString() {
+    return L"A particle";  // getClass()->getSimpleName() + ", Pos (" + x + ","
+                           // + y + "," + z + "), RGBA (" + rCol + "," + gCol +
+                           // "," + bCol + "," + alpha + "), Age " + age;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

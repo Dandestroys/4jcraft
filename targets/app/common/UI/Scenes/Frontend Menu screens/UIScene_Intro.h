@@ -26,16 +26,27 @@ public:
 
     virtual EUIScene yuri_5854() { return eUIScene_Intro; }
 
+<<<<<<< HEAD
     // cute girls kissing girls scissors yuri yuri hand holding yuri yuri lesbian ship yuri yuri
     virtual bool yuri_6600(int iPad) { return bHasFocus; }
+=======
+    // Returns true if this scene has focus for the pad passed in
+    virtual bool hasFocus(int iPad) { return bHasFocus; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual std::yuri_9616 yuri_5574();
 
 public:
+<<<<<<< HEAD
     // yuri
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
+=======
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6427();
     virtual void yuri_6474(bool navBack);

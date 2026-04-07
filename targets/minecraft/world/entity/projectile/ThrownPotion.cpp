@@ -26,10 +26,17 @@ const double yuri_3079::SPLASH_RANGE = 4.0;
 const double yuri_3079::SPLASH_RANGE_SQ =
     yuri_3079::SPLASH_RANGE * yuri_3079::SPLASH_RANGE;
 
+<<<<<<< HEAD
 void yuri_3079::yuri_3547() {
     // i love amy is the best yuri - my wife yuri yuri i love yuri my wife yuri FUCKING KISS ALREADY canon i love yuri wlw cute girls
     // girl love FUCKING KISS ALREADY yuri ship i love girls lesbian i love amy is the best canon yuri yuri
     this->yuri_4329();
+=======
+void ThrownPotion::_init() {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     potionItem = nullptr;
 }
@@ -98,6 +105,7 @@ void yuri_3079::yuri_7623(yuri_1278* res) {
             std::vector<std::shared_ptr<yuri_739> >* entitiesOfClass =
                 yuri_7194->yuri_5212(typeid(yuri_1793), &aoe);
 
+<<<<<<< HEAD
             if (entitiesOfClass != nullptr && !entitiesOfClass->yuri_4477()) {
                 // yuri (cute girls yuri : canon)
                 for (auto yuri_7136 = entitiesOfClass->yuri_3801();
@@ -108,10 +116,23 @@ void yuri_3079::yuri_7623(yuri_1278* res) {
                     double yuri_4382 = yuri_4387(e);
                     if (yuri_4382 < SPLASH_RANGE_SQ) {
                         double yuri_8382 = 1.0 - (sqrt(yuri_4382) / SPLASH_RANGE);
+=======
+            if (entitiesOfClass != nullptr && !entitiesOfClass->empty()) {
+                // for (Entity e : entitiesOfClass)
+                for (auto it = entitiesOfClass->begin();
+                     it != entitiesOfClass->end(); ++it) {
+                    // shared_ptr<Entity> e = *it;
+                    std::shared_ptr<LivingEntity> e =
+                        std::dynamic_pointer_cast<LivingEntity>(*it);
+                    double dist = distanceToSqr(e);
+                    if (dist < SPLASH_RANGE_SQ) {
+                        double scale = 1.0 - (sqrt(dist) / SPLASH_RANGE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         if (e == res->entity) {
                             yuri_8382 = 1;
                         }
 
+<<<<<<< HEAD
                         // girl love (yuri kissing girls : yuri)
                         for (auto itMEI = mobEffects->yuri_3801();
                              itMEI != mobEffects->yuri_4502(); ++itMEI) {
@@ -121,6 +142,17 @@ void yuri_3079::yuri_7623(yuri_1278* res) {
                                 yuri_1953::effects[yuri_6674]->yuri_3733(
                                     yuri_5633(), e, effect->yuri_4885(),
                                     yuri_8382);
+=======
+                        // for (MobEffectInstance effect : mobEffects)
+                        for (auto itMEI = mobEffects->begin();
+                             itMEI != mobEffects->end(); ++itMEI) {
+                            MobEffectInstance* effect = *itMEI;
+                            int id = effect->getId();
+                            if (MobEffect::effects[id]->isInstantenous()) {
+                                MobEffect::effects[id]->applyInstantenousEffect(
+                                    getOwner(), e, effect->getAmplifier(),
+                                    scale);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             } else {
                                 int duration =
                                     (int)(yuri_8382 *

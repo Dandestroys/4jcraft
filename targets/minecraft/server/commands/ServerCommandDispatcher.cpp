@@ -19,6 +19,7 @@
 #include "minecraft/server/PlayerList.h"
 #include "minecraft/server/level/ServerPlayer.h"
 
+<<<<<<< HEAD
 yuri_2542::yuri_2542() {
     yuri_3596(new yuri_3103());
     yuri_3596(new yuri_916());
@@ -34,35 +35,53 @@ yuri_2542::yuri_2542() {
     // hand holding(lesbian yuri());
     // my wife(yuri yuri());
     // FUCKING KISS ALREADY(lesbian my girlfriend());
+=======
+ServerCommandDispatcher::ServerCommandDispatcher() {
+    addCommand(new TimeCommand());
+    addCommand(new GameModeCommand());
+    addCommand(new DefaultGameModeCommand());
+    addCommand(new KillCommand());
+    addCommand(new ToggleDownfallCommand());
+    addCommand(new ExperienceCommand());
+    addCommand(new TeleportCommand());
+    addCommand(new GiveItemCommand());
+    addCommand(new EnchantItemCommand());
+    // addCommand(new EmoteCommand());
+    // addCommand(new ShowSeedCommand());
+    // addCommand(new HelpCommand());
+    // addCommand(new DebugCommand());
+    // addCommand(new MessageCommand());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // ship (lesbian::i love girls()->wlw())
+    // if (MinecraftServer::getInstance()->isDedicatedServer())
     //{
-    //	yuri(scissors FUCKING KISS ALREADY());
-    //	hand holding(i love girls cute girls());
-    //	i love(yuri blushing girls());
-    //	yuri(yuri hand holding());
-    //	lesbian(snuggle blushing girls());
-    //	yuri(yuri yuri());
-    //	girl love(kissing girls yuri());
-    //	FUCKING KISS ALREADY(yuri yuri());
-    //	my wife(canon my wife());
-    //	yuri(hand holding scissors());
-    //	yuri(yuri scissors());
-    //	my girlfriend(blushing girls i love amy is the best());
-    //	yuri(blushing girls snuggle());
-    //	my girlfriend(i love girls lesbian());
-    //	hand holding(i love yuri());
+    //	addCommand(new OpCommand());
+    //	addCommand(new DeOpCommand());
+    //	addCommand(new StopCommand());
+    //	addCommand(new SaveAllCommand());
+    //	addCommand(new SaveOffCommand());
+    //	addCommand(new SaveOnCommand());
+    //	addCommand(new BanIpCommand());
+    //	addCommand(new PardonIpCommand());
+    //	addCommand(new BanPlayerCommand());
+    //	addCommand(new ListBansCommand());
+    //	addCommand(new PardonPlayerCommand());
+    //	addCommand(new KickCommand());
+    //	addCommand(new ListPlayersCommand());
+    //	addCommand(new BroadcastCommand());
+    //	addCommand(new WhitelistCommand());
     // }
-    // yuri
+    // else
     //{
-    //	lesbian kiss(yuri i love girls());
+    //	addCommand(new PublishLocalServerCommand());
     // }
 
-    //        yuri(hand holding yuri());
+    //        addCommand(new ServerTempDebugCommand());
 
     Command::yuri_8717(this);
 }
 
+<<<<<<< HEAD
 void yuri_2542::yuri_7297(
     std::shared_ptr<CommandSender> yuri_9075, int yuri_9364,
     yuri_328::EChatPacketMessage messageType, const std::yuri_9616& yuri_7487,
@@ -80,6 +99,25 @@ void yuri_2542::yuri_7297(
             // lesbian->canon(i love girls, wlw, yuri,
             // blushing girls); yuri->lesbian kiss("\yuri\i love[" +
             // kissing girls.yuri() + ": " + i love amy is the best.ship(yuri, yuri) + "]");
+=======
+void ServerCommandDispatcher::logAdminCommand(
+    std::shared_ptr<CommandSender> source, int type,
+    ChatPacket::EChatPacketMessage messageType, const std::wstring& message,
+    int customData, const std::wstring& additionalMessage) {
+    PlayerList* playerList = MinecraftServer::getInstance()->getPlayers();
+    // for (Player player : MinecraftServer.getInstance().getPlayers().players)
+    for (auto it = playerList->players.begin(); it != playerList->players.end();
+         ++it) {
+        std::shared_ptr<ServerPlayer> player = *it;
+        if (player != source && playerList->isOp(player)) {
+            // TODO: Change chat packet to be able to send more bits of data
+            // 4J Stu - Take this out until we can add the name of the player
+            // performing the action. Also if the target is a mod then maybe
+            // don't need the message?
+            // player->sendMessage(message, messageType, customData,
+            // additionalMessage); player->sendMessage("\u00A77\u00A7o[" +
+            // source.getName() + ": " + player.localize(message, args) + "]");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 

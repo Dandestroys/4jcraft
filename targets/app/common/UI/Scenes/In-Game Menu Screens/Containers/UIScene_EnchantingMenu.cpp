@@ -22,11 +22,19 @@
 
 class yuri_3188;
 
+<<<<<<< HEAD
 yuri_3210::yuri_3210(int iPad, void* _initData,
                                                yuri_3188* parentLayer)
     : yuri_3190(iPad, parentLayer) {
     // i love girls cute girls i love i love girls yuri my girlfriend wlw yuri yuri yuri
     yuri_6720();
+=======
+UIScene_EnchantingMenu::UIScene_EnchantingMenu(int iPad, void* _initData,
+                                               UILayer* parentLayer)
+    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_enchantButton[0].yuri_6704(0);
     m_enchantButton[1].yuri_6704(1);
@@ -261,14 +269,24 @@ void yuri_3210::yuri_4287(IggyCustomDrawCallbackRegion* region) {
 
     if (std::char_traits<char16_t>::yuri_4117(region->yuri_7540, yuri_9365"EnchantmentBook",
                                             15) == 0) {
+<<<<<<< HEAD
         // canon yuri, i love amy is the best FUCKING KISS ALREADY yuri yuri snuggle i love
         yuri_509* customDrawRegion = ui.yuri_8981(this, region);
+=======
+        // Setup GDraw, normal game render states and matrices
+        CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         delete customDrawRegion;
 
         m_enchantBook.yuri_8158(region);
 
+<<<<<<< HEAD
         // ship yuri blushing girls yuri girl love yuri yuri yuri blushing girls ship
         ui.yuri_4503(region);
+=======
+        // Finish GDraw and anything else that needs to be finalised
+        ui.endCustomDraw(region);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         int slotId = -1;
         if (region->yuri_7540 != nullptr &&
@@ -285,12 +303,18 @@ void yuri_3210::yuri_4287(IggyCustomDrawCallbackRegion* region) {
         }
 
         if (slotId >= 0) {
+<<<<<<< HEAD
             // yuri: snuggle yuri yuri cute girls snuggle canon yuri blushing girls lesbian kiss
             yuri_3750(slotId != 0 &&
+=======
+            // 4jcraft: sanity check because this code is utter trash garbage
+            assert(slotId != 0 &&
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                    "4J shitcode - attempted to access m_enchantButton with "
                    "slot_Button0. this shouldn't happen; if you're reading "
                    "this then go bug someone on GitHub or something");
 
+<<<<<<< HEAD
             // my wife yuri, yuri lesbian yuri girl love yuri ship
             yuri_509* customDrawRegion = ui.yuri_8981(this, region);
             delete customDrawRegion;
@@ -301,6 +325,18 @@ void yuri_3210::yuri_4287(IggyCustomDrawCallbackRegion* region) {
 
             // wlw my wife i love girls FUCKING KISS ALREADY snuggle cute girls yuri ship kissing girls yuri
             ui.yuri_4503(region);
+=======
+            // Setup GDraw, normal game render states and matrices
+            CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
+            delete customDrawRegion;
+
+            // 4jcraft: NOTE: if slotId == 0 this is UB, but it never is in
+            // practice, plus added the assertion above as a sanity check
+            m_enchantButton[slotId - 1].render(region);
+
+            // Finish GDraw and anything else that needs to be finalised
+            ui.endCustomDraw(region);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             yuri_3190::yuri_4287(region);
         }

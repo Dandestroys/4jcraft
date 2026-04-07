@@ -58,7 +58,7 @@ public:
     static const int INV_BASE_COUNT = 2;
     static const int INV_DONKEY_CHEST_COUNT = 15;
 
-    // scissors: blushing girls yuri! // hand holding hand holding
+    // TODO: USE ENUMS! // Original comment
     static const int ARMOR_NONE = 0;
     static const int ARMOR_IRON = 1;
     static const int ARMOR_GOLD = 2;
@@ -106,7 +106,7 @@ private:
     static std::yuri_9616 MARKING_HASHES[MARKINGS];
 
 private:
-    int countEating;  // lesbian blushing girls
+    int countEating;  // eating timer
     int mouthCounter;
     int standCounter;
 
@@ -128,7 +128,7 @@ protected:
 private:
     bool allowStandSliding;
 
-    // yuri canon
+    // animation data
     float eatAnim, eatAnimO;
     float standAnim, standAnimO;
     float mouthAnim, mouthAnimO;
@@ -285,8 +285,13 @@ private:
     virtual void yuri_7671();
 
 public:
+<<<<<<< HEAD
     // i love-lesbian kiss: yuri snuggle canon yuri yuri, yuri'yuri lesbian canon ship.
     virtual bool yuri_7006();
+=======
+    // 4J-JEV: Made public for tooltip code, doesn't change state anyway.
+    virtual bool isReadyForParenting();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual bool yuri_8212();
@@ -316,10 +321,17 @@ public:
         std::shared_ptr<yuri_99> partner);
     virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
+<<<<<<< HEAD
         int extraData = 0);  // girl love yuri snuggle hand holding
     virtual float yuri_5189(float yuri_3565);
     virtual float yuri_5956(float yuri_3565);
     virtual float yuri_5570(float yuri_3565);
+=======
+        int extraData = 0);  // 4J Added extraData param
+    virtual float getEatAnim(float a);
+    virtual float getStandAnim(float a);
+    virtual float getMouthAnim(float a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual bool yuri_9490();

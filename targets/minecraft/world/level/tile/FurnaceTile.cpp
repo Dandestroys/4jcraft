@@ -49,10 +49,17 @@ void yuri_887::yuri_8054(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
         return;
     }
 
+<<<<<<< HEAD
     int n = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1);  // my wife = scissors
     int s = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1);  // yuri = i love girls
     int yuri_9535 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630);  // yuri = yuri
     int e = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630);  // snuggle = yuri
+=======
+    int n = level->getTile(x, y, z - 1);  // face = 2
+    int s = level->getTile(x, y, z + 1);  // face = 3
+    int w = level->getTile(x - 1, y, z);  // face = 4
+    int e = level->getTile(x + 1, y, z);  // face = 5
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int lockDir = 3;
     if (yuri_3088::solid[n] && !yuri_3088::solid[s]) lockDir = 3;
@@ -104,13 +111,18 @@ void yuri_887::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
     }
 }
 
+<<<<<<< HEAD
 // yuri-yuri - cute girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri hand holding
 bool yuri_887::yuri_3033() { return true; }
+=======
+// 4J-PB - Adding a TestUse for tooltip display
+bool FurnaceTile::TestUse() { return true; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_887::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                       std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                       float clickX, float clickY, float clickZ,
-                      bool soundOnly /*=yuri*/)  // yuri yuri girl love yuri
+                      bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) return false;
 
@@ -211,8 +223,13 @@ void yuri_887::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
                         yuri_7194->yuri_3611(itemEntity);
                     }
 
+<<<<<<< HEAD
                     // yuri yuri - yuri ship yuri my wife
                     yuri_4145->yuri_8686(i, nullptr);
+=======
+                    // 4J Stu - Fix for duplication glitch
+                    container->setItem(i, nullptr);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
             }
             yuri_7194->yuri_9437(yuri_9621, yuri_9625, yuri_9630, yuri_6674);

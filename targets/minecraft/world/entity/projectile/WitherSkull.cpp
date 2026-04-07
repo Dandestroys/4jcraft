@@ -76,9 +76,15 @@ void yuri_3385::yuri_7623(yuri_1278* res) {
             }
             if (res->entity->yuri_6731(eTYPE_LIVINGENTITY)) {
                 int witherSeconds = 0;
+<<<<<<< HEAD
                 if (yuri_7194->difficulty <= Difficulty::EASY) {
                     // yuri
                 } else if (yuri_7194->difficulty == Difficulty::NORMAL) {
+=======
+                if (level->difficulty <= Difficulty::EASY) {
+                    // Nothing
+                } else if (level->difficulty == Difficulty::NORMAL) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     witherSeconds = 10;
                 } else if (yuri_7194->difficulty == Difficulty::HARD) {
                     witherSeconds = 40;

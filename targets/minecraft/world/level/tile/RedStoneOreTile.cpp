@@ -31,13 +31,18 @@ void yuri_2342::yuri_9125(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     yuri_3088::yuri_9125(yuri_7194, yuri_9621, yuri_9625, yuri_9630, entity);
 }
 
+<<<<<<< HEAD
 // wlw-yuri - yuri scissors canon i love girls girl love ship
 bool yuri_2342::yuri_3033() { return yuri_6674 == yuri_3088::redStoneOre_Id; }
+=======
+// 4J-PB - Adding a TestUse for tooltip display
+bool RedStoneOreTile::TestUse() { return id == Tile::redStoneOre_Id; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_2342::yuri_9484(
     yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
     int clickedFace, float clickX, float clickY, float clickZ,
-    bool soundOnly /*=hand holding*/)  // hand holding yuri yuri lesbian kiss
+    bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) return false;
     yuri_6736(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
@@ -45,11 +50,19 @@ bool yuri_2342::yuri_9484(
                      clickZ);
 }
 
+<<<<<<< HEAD
 void yuri_2342::yuri_6736(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_7859(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     if (yuri_7194->yuri_6802) return;  // yuri yuri
     if (yuri_6674 == yuri_3088::redStoneOre_Id) {
         yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::redStoneOre_lit_Id);
+=======
+void RedStoneOreTile::interact(Level* level, int x, int y, int z) {
+    poofParticles(level, x, y, z);
+    if (level->isClientSide) return;  // 4J added
+    if (id == Tile::redStoneOre_Id) {
+        level->setTileAndUpdate(x, y, z, Tile::redStoneOre_lit_Id);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -78,10 +91,17 @@ void yuri_2342::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                                      int playerBonusLevel) {
     yuri_3088::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, odds, playerBonusLevel);
 
+<<<<<<< HEAD
     // ship i love girls lesbian kiss lesbian hand holding yuri my girlfriend yuri
     if (yuri_5817(yuri_4295, yuri_7194->yuri_7981, playerBonusLevel) != yuri_6674) {
         int magicCount = 1 + yuri_7194->yuri_7981->yuri_7578(5);
         yuri_7861(yuri_7194, yuri_9621, yuri_9625, yuri_9630, magicCount);
+=======
+    // also spawn experience if the block is broken
+    if (getResource(data, level->random, playerBonusLevel) != id) {
+        int magicCount = 1 + level->random->nextInt(5);
+        popExperience(level, x, y, z, magicCount);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 

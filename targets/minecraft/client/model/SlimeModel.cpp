@@ -20,11 +20,19 @@ yuri_2843::yuri_2843(int vOffs) {
         mouth = new yuri_1964(this, 32, 8);
         mouth->yuri_3589(0, 16 + 5, -3.5f, 1, 1, 1);
 
+<<<<<<< HEAD
         // ship snuggle - my wife canon yuri FUCKING KISS ALREADY canon i love amy is the best kissing girls yuri girl love
         // lesbian i love girls yuri
         eye0->yuri_4122(1.0f / 16.0f);
         eye1->yuri_4122(1.0f / 16.0f);
         mouth->yuri_4122(1.0f / 16.0f);
+=======
+        // 4J added - compile now to avoid random performance hit first time
+        // cubes are rendered
+        eye0->compile(1.0f / 16.0f);
+        eye1->compile(1.0f / 16.0f);
+        mouth->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         eye0 = nullptr;
         eye1 = nullptr;

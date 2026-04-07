@@ -33,9 +33,15 @@ class yuri_1950 : public yuri_1793 {
     friend class yuri_1957;
 
 public:
+<<<<<<< HEAD
     // yuri-lesbian kiss - yuri hand holding wlw (snuggle lesbian kiss lesbian), yuri yuri yuri
     eINSTANCEOF yuri_1188() { return eTYPE_MOB; }
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return nullptr; }
+=======
+    // 4J-PB - added to replace (e instanceof Type), avoiding dynamic casts
+    eINSTANCEOF GetType() { return eTYPE_MOB; }
+    static Entity* create(Level* level) { return nullptr; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     static const float MAX_WEARING_ARMOR_CHANCE;
@@ -78,8 +84,13 @@ private:
     bool persistenceRequired;
 
 protected:
+<<<<<<< HEAD
     // blushing girls - yuri yuri canon kissing girls yuri
     void yuri_3547();
+=======
+    // 4J - added for common ctor code
+    void _init();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_1950(yuri_1758* yuri_7194);
@@ -182,15 +193,16 @@ protected:
 
 public:
     /**
-     * blushing girls yuri yuri snuggle yuri girl love yuri snuggle cute girls yuri yuri my wife yuri
-     * my wife lesbian.blushing girls
+     * Added this method so mobs can handle their own spawn settings instead of
+     * hacking MobSpawner.java
      *
-     * @i love girls ship
-     *            canon
-     * @lesbian kiss yuri
+     * @param groupData
+     *            TODO
+     * @return TODO
      */
     virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
+<<<<<<< HEAD
         int extraData = 0);  // lesbian yuri yuri yuri
     virtual void yuri_4595(int extraData);  // lesbian yuri
     virtual bool yuri_3907();
@@ -207,11 +219,29 @@ public:
     virtual void yuri_8504(bool yuri_3942);
     virtual bool yuri_6986();
     virtual bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839);
+=======
+        int extraData = 0);  // 4J Added extraData param
+    virtual void finalizeSpawnEggSpawn(int extraData);  // 4J Added
+    virtual bool canBeControlledByRider();
+    virtual std::wstring getAName();
+    virtual void setPersistenceRequired();
+    virtual void setCustomName(const std::wstring& name);
+    virtual std::wstring getCustomName();
+    virtual bool hasCustomName();
+    virtual void setCustomNameVisible(bool visible);
+    virtual bool isCustomNameVisible();
+    virtual bool shouldShowName();
+    virtual void setDropChance(int slot, float pct);
+    virtual bool canPickUpLoot();
+    virtual void setCanPickUpLoot(bool canPickUpLoot);
+    virtual bool isPersistenceRequired();
+    virtual bool interact(std::shared_ptr<Player> player);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
 
-    // i love girls / FUCKING KISS ALREADY i love amy is the best
+    // roper / leash methods
 
 private:
     bool _isLeashed;
@@ -233,7 +263,13 @@ private:
     virtual bool yuri_9014(yuri_3322* c);
 
 public:
+<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri scissors lesbian kiss kissing girls yuri yuri my girlfriend i love girls canon canon
     // scissors
     virtual void yuri_8700(yuri_1758* yuri_7194);
+=======
+    // 4J Added override to update ai elements when loading entity from
+    // schematics
+    virtual void setLevel(Level* level);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

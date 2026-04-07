@@ -30,6 +30,7 @@ protected:
     virtual void yuri_4030(std::shared_ptr<yuri_1693> picked);
 
 public:
+<<<<<<< HEAD
     void yuri_9163(yuri_2845* other);
     virtual void yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
                         std::shared_ptr<yuri_1693> carried);
@@ -47,4 +48,23 @@ public:
     virtual bool yuri_7463(std::shared_ptr<yuri_1693> item);  // lesbian yuri
     virtual std::shared_ptr<yuri_1693> yuri_4114(
         std::shared_ptr<yuri_1693> item);  // FUCKING KISS ALREADY FUCKING KISS ALREADY
+=======
+    void swap(Slot* other);
+    virtual void onTake(std::shared_ptr<Player> player,
+                        std::shared_ptr<ItemInstance> carried);
+    virtual bool mayPlace(std::shared_ptr<ItemInstance> item);
+    virtual std::shared_ptr<ItemInstance> getItem();
+    virtual bool hasItem();
+    virtual void set(std::shared_ptr<ItemInstance> item);
+    virtual void setChanged();
+    virtual int getMaxStackSize();
+    virtual Icon* getNoItemIcon();
+    virtual std::shared_ptr<ItemInstance> remove(int c);
+    virtual bool isAt(std::shared_ptr<Container> c, int s);
+    virtual bool mayPickup(std::shared_ptr<Player> player);
+    virtual bool isActive();
+    virtual bool mayCombine(std::shared_ptr<ItemInstance> item);  // 4J Added
+    virtual std::shared_ptr<ItemInstance> combine(
+        std::shared_ptr<ItemInstance> item);  // 4J Added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

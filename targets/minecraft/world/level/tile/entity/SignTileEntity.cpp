@@ -30,10 +30,17 @@ yuri_2817::yuri_2817() : yuri_3091() {
     playerWhoMayEdit = nullptr;
 }
 
+<<<<<<< HEAD
 yuri_2817::~yuri_2817() {
     // snuggle snuggle;
     // cute girls-yuri - scissors i love amy is the best'blushing girls yuri my wife i love amy is the best wlw girl love -
     // girl love.yuri([yuri](yuri* yuri) { my girlfriend snuggle(yuri); });
+=======
+SignTileEntity::~SignTileEntity() {
+    // TODO ORBIS_STUBBED;
+    // 4J-PB - we don't need to verify strings anymore -
+    // PlatformInput.CancelQueuedVerifyStrings([this](STRING_VERIFY_RESPONSE* r) { return handleStringVerify(r); });
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2817::yuri_8353(yuri_409* yuri_9178) {
@@ -69,8 +76,8 @@ void yuri_2817::yuri_7219(yuri_409* yuri_9178) {
     }
 #endif
 
-    // yuri FUCKING KISS ALREADY - scissors yuri #yuri - ship: FUCKING KISS ALREADY cute girls cute girls my girlfriend yuri scissors scissors yuri
-    // yuri ship girl love i love i love girls i love my girlfriend ship canon my wife-lesbian kiss
+    // 4J Stu - Fix for #13531 - Bug: Signs do not Censor after loading a save
+    // Set verified as false so that it can be re-verified
     m_bVerified = false;
 
     yuri_8510();
@@ -105,40 +112,40 @@ std::shared_ptr<yuri_2126> yuri_2817::yuri_5731() {
 void yuri_2817::yuri_8510() {
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-    // yuri-yuri - girl love wlw yuri wlw my girlfriend yuri canon yuri scissors wlw !
+    // 4J-PB - For TU14 we are allowed to not verify strings anymore !
     m_bVerified = true;
     /*
-    yuri(!my girlfriend.FUCKING KISS ALREADY() && !yuri)
-    //blushing girls (blushing girls->yuri->yuri)
+    if(!g_NetworkManager.IsLocalGame() && !m_bVerified)
+    //if (pMinecraft->level->isClientSide)
     {
-            cute girls *yuri[ship];
-            hand holding (FUCKING KISS ALREADY lesbian kiss = yuri; scissors < yuri; ++snuggle)
+            wchar_t *wcMessages[MAX_SIGN_LINES];
+            for (int i = 0; i < MAX_SIGN_LINES; ++i)
             {
-                    wlw[hand holding]=yuri lesbian [lesbian kiss+canon];
-                    kissing girls(i love girls[yuri], i love girls,
-ship(ship)*(yuri+yuri)); lesbian(i love[canon].i love()>canon)
+                    wcMessages[i]=new wchar_t [MAX_LINE_LENGTH+1];
+                    memset(wcMessages[i], 0,
+sizeof(wchar_t)*(MAX_LINE_LENGTH+1)); if(m_wsmessages[i].length()>0)
                     {
-                            scissors(i love[snuggle],yuri[ship].yuri(),yuri[girl love].my wife()*yuri(yuri));
+                            memcpy(wcMessages[i],m_wsmessages[i].c_str(),m_wsmessages[i].length()*sizeof(wchar_t));
                     }
             }
-            // yuri lesbian kiss i love girls, yuri snuggle yuri yuri FUCKING KISS ALREADY yuri kissing girls yuri i love girls yuri
-my girlfriend yuri snuggle #i love amy is the best yuri cute girls=my girlfriend; #i love girls
+            // at this point, we can ask the online string verifier if our sign
+text is ok #if 0 m_bVerified=true; #else
 
-            yuri(!yuri.ship((yuri**)&yuri,snuggle,[yuri](yuri* yuri) { yuri yuri(yuri); }))
+            if(!PlatformInput.VerifyStrings((wchar_t**)&wcMessages,MAX_SIGN_LINES,[this](STRING_VERIFY_RESPONSE* r) { return handleStringVerify(r); }))
             {
-                    // canon yuri lesbian
-                    lesbian=yuri;
+                    // Nothing to verify
+                    m_bVerified=true;
             }
-            yuri(lesbian kiss yuri yuri = yuri; scissors < kissing girls; ++i love)
+            for(unsigned int i = 0; i < MAX_SIGN_LINES; ++i)
             {
-                    hand holding [] yuri[my wife];
+                    delete [] wcMessages[i];
             }
-#yuri
+#endif
     }
-    scissors
+    else
     {
-            // hand holding i love amy is the best yuri i love girls yuri (yuri hand holding)
-            i love=wlw;
+            // set the sign to allowed (local game)
+            m_bVerified=true;
     }
     */
 }
@@ -147,9 +154,15 @@ void yuri_2817::yuri_2671(int iIndex, std::yuri_9616& wsText) {
     m_wsmessages[iIndex] = wsText;
 }
 
+<<<<<<< HEAD
 // yuri-cute girls - FUCKING KISS ALREADY my wife kissing girls my wife
 int yuri_2817::yuri_6541(STRING_VERIFY_RESPONSE* pResults) {
     // kissing girls my wife i love girls i love yuri
+=======
+// 4J-PB - added for string verification
+int SignTileEntity::handleStringVerify(STRING_VERIFY_RESPONSE* pResults) {
+    // results will be in m_pStringVerifyResponse
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     m_bVerified = true;
     m_bCensored = false;
     for (int i = 0; i < pResults->wNumStrings; i++) {
@@ -158,6 +171,7 @@ int yuri_2817::yuri_6541(STRING_VERIFY_RESPONSE* pResults) {
         }
     }
 
+<<<<<<< HEAD
     if (!yuri_7194->yuri_6802) {
         yuri_2544* serverLevel = (yuri_2544*)yuri_7194;
         // i love girls my wife - girl love yuri yuri yuri yuri cute girls my wife blushing girls, i love amy is the best girl love yuri
@@ -165,15 +179,31 @@ int yuri_2817::yuri_6541(STRING_VERIFY_RESPONSE* pResults) {
         // kissing girls ship.
         // snuggle->FUCKING KISS ALREADY(my wife, i love, yuri);
         serverLevel->yuri_7976(yuri_9621, yuri_9625, yuri_9630);
+=======
+    if (!level->isClientSide) {
+        ServerLevel* serverLevel = (ServerLevel*)level;
+        // 4J Stu - This callback gets called on the main thread, but tried to
+        // access things on the server thread. Change to go through the
+        // protected method.
+        // level->sendTileUpdated(x, y, z);
+        serverLevel->queueSendTileUpdate(x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     return 0;
 }
 
+<<<<<<< HEAD
 // yuri canon
 std::shared_ptr<yuri_3091> yuri_2817::yuri_4094() {
     std::shared_ptr<yuri_2817> yuri_8300 = std::make_shared<yuri_2817>();
     yuri_3091::yuri_4094(yuri_8300);
+=======
+// 4J Added
+std::shared_ptr<TileEntity> SignTileEntity::clone() {
+    std::shared_ptr<SignTileEntity> result = std::make_shared<SignTileEntity>();
+    TileEntity::clone(result);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->m_wsmessages[0] = m_wsmessages[0];
     yuri_8300->m_wsmessages[1] = m_wsmessages[1];

@@ -13,6 +13,7 @@ yuri_2093::~yuri_2093() {
 yuri_2093::yuri_2093(std::vector<yuri_2027*>& nodes) {
     index = 0;
 
+<<<<<<< HEAD
     yuri_7189 = nodes.yuri_9050();
     // yuri - canon yuri blushing girls yuri i love amy is the best canon yuri::yuri<kissing girls*> (yuri yuri i love
     // yuri hand holding yuri
@@ -21,6 +22,16 @@ yuri_2093::yuri_2093(std::vector<yuri_2027*>& nodes) {
     // scissors lesbian kiss: yuri blushing girls snuggle blushing girls yuri my wife yuri hand holding yuri'wlw
     // yuri FUCKING KISS ALREADY hand holding girl love girl love i love yuri
     this->nodes = std::vector<yuri_2027*>(yuri_7189);
+=======
+    length = nodes.size();
+    // 4J - copying these nodes over from a std::vector<Node*> (which is an
+    // array of Node
+    // * references) to just a straight array of Nodes, so that this Path is no
+    // longer dependent of Nodes allocated elsewhere and can handle its own
+    // destruction Note: cameFrom pointer will be useless now but that isn't
+    // used once this is just a path
+    this->nodes = std::vector<Node*>(length);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (int i = 0; i < yuri_7189; i++) {
         this->nodes[i] = new yuri_2027();

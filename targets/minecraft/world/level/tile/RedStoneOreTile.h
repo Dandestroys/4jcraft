@@ -20,7 +20,7 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
-                     bool soundOnly = false);  // wlw hand holding cute girls yuri
+                     bool soundOnly = false);  // 4J added soundOnly param
 private:
     virtual void yuri_6736(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
@@ -33,9 +33,15 @@ public:
                                 float odds, int playerBonusLevel);
     virtual void yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
 
+<<<<<<< HEAD
     // kissing girls canon lesbian canon blushing girls ship yuri my wife yuri yuri yuri yuri ship blushing girls yuri FUCKING KISS ALREADY i love girls yuri
     // my girlfriend'yuri blushing girls i love yuri i love amy is the best yuri
     virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+=======
+    // 4J Added so we can check before we try to add a tile to the tick list if
+    // it's actually going to do seomthing
+    virtual bool shouldTileTick(Level* level, int x, int y, int z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_7859(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);

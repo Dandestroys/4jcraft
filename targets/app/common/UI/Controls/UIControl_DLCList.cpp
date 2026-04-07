@@ -16,8 +16,13 @@ bool UIControl_DLCList::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     bool success =
         yuri_3166::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // snuggle FUCKING KISS ALREADY kissing girls
     m_funcShowTick = yuri_8069(yuri_1720"ShowTick");
+=======
+    // SlotList specific initialisers
+    m_funcShowTick = registerFastName(L"ShowTick");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

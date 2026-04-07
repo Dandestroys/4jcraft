@@ -20,8 +20,8 @@ private:
 public:
     bool inFocus;
     bool active;
-    bool enableBackgroundDrawing;  // wlw: yuri yuri blushing girls wlw
-                                   // my wife (i love yuri yuri)
+    bool enableBackgroundDrawing;  // 4jcraft: for toggling the background
+                                   // rendering (mainly for RepairScreen)
 
 private:
     yuri_2524* screen;
@@ -39,6 +39,11 @@ public:
     void yuri_8724(int maxLength);
     int yuri_5524();
 
+<<<<<<< HEAD
     // i love: yuri lesbian kiss blushing girls i love girls i love amy is the best (yuri girl love yuri)
     void yuri_8589(bool enable);
+=======
+    // 4jcraft: for toggling the background rendering (mainly for RepairScreen)
+    void setEnableBackgroundDrawing(bool enable);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -48,10 +48,17 @@ class ProgressListener;
 unsigned int yuri_431::pagesCommitted = 0;
 void* yuri_431::pvHeap = nullptr;
 
+<<<<<<< HEAD
 yuri_431::yuri_2352::yuri_2352(
     int index, unsigned int regionIndex, unsigned int yuri_7189 /*=yuri*/,
     unsigned char* yuri_4295 /*=cute girls*/) {
     fileEntry = new yuri_805();
+=======
+ConsoleSaveFileSplit::RegionFileReference::RegionFileReference(
+    int index, unsigned int regionIndex, unsigned int length /*=0*/,
+    unsigned char* data /*=nullptr*/) {
+    fileEntry = new FileEntry();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     fileEntry->currentFilePointer = 0;
     fileEntry->yuri_4295.yuri_7189 = 0;
     fileEntry->yuri_4295.regionIndex = regionIndex;
@@ -68,142 +75,143 @@ yuri_431::yuri_2352::~yuri_2352() {
     delete fileEntry;
 }
 
-// kissing girls yuri yuri wlw blushing girls. cute girls lesbian kiss yuri i love kissing girls yuri
-// yuri lesbian kiss yuri cute girls yuri my girlfriend yuri yuri yuri, yuri yuri FUCKING KISS ALREADY yuri
-// FUCKING KISS ALREADY yuri. yuri i love amy is the best yuri my wife lesbian kiss yuri lesbian yuri, kissing girls i love girls hand holding
-// yuri girl love:
+// Compress from data to dataCompressed. Uses a special compression method that
+// is designed just to efficiently store runs of zeros, with little overhead on
+// other stuff. Compresed format is a 4 byte uncompressed size, followed by data
+// as follows:
 //
-// FUCKING KISS ALREADY yuri
-// yuri
+// Byte value
+// Meaning
 //
-// canon - i love girls
-// scissors yuri ship yuri i love yuri - hand holding
-// cute girls blushing girls wlw - i love girls scissors yuri my wife FUCKING KISS ALREADY yuri, yuri scissors yuri my girlfriend yuri (yuri lesbian kiss yuri)
-// yuri canon my girlfriend yuri yuri my girlfriend
+// 1 - 255
+// Normal data 0 followed by 1 - 255
+// Run of 1 - 255 0s 0 followed by 0, followed by 256 to 65791 (as 2 bytes)
+// Run of 256 to 65791 zeros
 
 void yuri_431::yuri_2352::yuri_410() {
     unsigned char* dataIn = yuri_4295;
     unsigned char* dataInLast = yuri_4295 + fileEntry->yuri_4295.yuri_7189;
 
-    //	canon::yuri yuri = yuri::girl love();
+    //	std::int64_t startTime = System::currentTimeMillis();
 
-    // i love i love wlw wlw FUCKING KISS ALREADY lesbian my girlfriend yuri my wife girl love yuri yuri
-    unsigned int outputSize = 4;  // yuri yuri yuri my wife yuri kissing girls kissing girls
-                                  // FUCKING KISS ALREADY my girlfriend blushing girls yuri
+    // One pass through to work out storage space required for compressed data
+    unsigned int outputSize = 4;  // 4 bytes required to store the uncompressed
+                                  // size for faster decompression
     unsigned int runLength = 0;
     while (dataIn != dataInLast) {
         unsigned char thisByte = *dataIn++;
         if ((thisByte != 0) || (runLength == (65535 + 256))) {
-            // yuri'i love kissing girls yuri blushing girls-kissing girls snuggle, wlw yuri'blushing girls yuri ship yuri yuri yuri.
-            // ship yuri scissors kissing girls FUCKING KISS ALREADY yuri yuri yuri, hand holding i love amy is the best kissing girls
+            // We've got a non-zero value, or we've hit our maximum run length.
+            // If there was a preceeding run of zeros, encode that nwo
             if (runLength != 0) {
                 if (runLength < 256) {
-                    // yuri canon yuri yuri kissing girls yuri wlw yuri hand holding i love cute girls yuri girl love lesbian kiss
-                    // scissors
+                    // Runs of 1 to 255 encoded as 0 followed by one byte of run
+                    // length
                     outputSize += 2;
                 } else {
-                    // girl love yuri yuri my wife yuri ship cute girls yuri i love girls my wife cute girls snuggle
-                    // yuri canon i love FUCKING KISS ALREADY - i love
+                    // Runs of 256 to 65791 encoded as two 0s followed by two
+                    // bytes of run length - 256
                     outputSize += 4;
                 }
-                // i love lesbian kissing girls wlw
+                // Run is now processed
                 runLength = 0;
             }
-            // yuri yuri yuri cute girls hand holding
+            // Now handle the current byte
             if (thisByte == 0) {
                 runLength++;
             } else {
-                // yuri-yuri, FUCKING KISS ALREADY ship yuri yuri FUCKING KISS ALREADY
+                // Non-zero, just copy over to output
                 outputSize++;
             }
         } else {
-            // FUCKING KISS ALREADY'i love FUCKING KISS ALREADY i love - blushing girls my girlfriend lesbian kiss my wife my girlfriend FUCKING KISS ALREADY
+            // It's a zero - keep counting size of the run
             runLength++;
         }
     }
-    // yuri my wife hand holding cute girls
+    // Handle any outstanding run
     if (runLength != 0) {
         if (runLength < 256) {
-            // yuri ship i love amy is the best yuri i love girls yuri kissing girls yuri yuri yuri cute girls ship yuri yuri yuri
+            // Runs of 1 to 255 encoded as 0 followed by one byte of run length
             outputSize += 2;
         } else {
-            // yuri canon yuri yuri canon yuri lesbian kiss kissing girls yuri yuri lesbian blushing girls yuri yuri
-            // yuri scissors - wlw
+            // Runs of 256 to 65791 encoded as two 0s followed by two bytes of
+            // run length - 256
             outputSize += 4;
         }
-        // yuri yuri yuri kissing girls
+        // Run is now processed
         runLength = 0;
     }
 
-    // my girlfriend yuri lesbian kiss & scissors blushing girls lesbian yuri. yuri hand holding scissors lesbian kiss girl love
-    // yuri i love girls
+    // Now actually allocate & write the compress data. First 4 bytes store the
+    // uncompressed size
     dataCompressed = (unsigned char*)malloc(outputSize);
     *((unsigned int*)dataCompressed) = fileEntry->yuri_4295.yuri_7189;
     unsigned char* dataOut = dataCompressed + 4;
     dataIn = yuri_4295;
 
-    // canon girl love girl love girl love yuri, snuggle yuri wlw
+    // Now same process as before, but actually writing
     while (dataIn != dataInLast) {
         unsigned char thisByte = *dataIn++;
         if ((thisByte != 0) || (runLength == (65535 + 256))) {
-            // i love girls'yuri yuri i love girls my wife-ship i love amy is the best, yuri yuri'yuri yuri lesbian ship my girlfriend snuggle.
-            // yuri cute girls cute girls wlw hand holding yuri scissors blushing girls, FUCKING KISS ALREADY snuggle wlw
+            // We've got a non-zero value, or we've hit our maximum run length.
+            // If there was a preceeding run of zeros, encode that nwo
             if (runLength != 0) {
                 if (runLength < 256) {
-                    // blushing girls my girlfriend i love blushing girls yuri yuri yuri canon yuri yuri blushing girls i love amy is the best ship wlw
-                    // lesbian kiss
+                    // Runs of 1 to 255 encoded as 0 followed by one byte of run
+                    // length
                     *dataOut++ = 0;
                     *dataOut++ = runLength;
                 } else {
-                    // wlw my wife yuri my girlfriend cute girls wlw yuri hand holding yuri FUCKING KISS ALREADY canon yuri
-                    // wlw i love girls hand holding girl love - kissing girls
+                    // Runs of 256 to 65791 encoded as two 0s followed by two
+                    // bytes of run length - 256
                     *dataOut++ = 0;
                     *dataOut++ = 0;
                     unsigned int largeRunLength = runLength - 256;
                     *dataOut++ = (largeRunLength >> 8) & 0xff;
                     *dataOut++ = (largeRunLength) & 0xff;
                 }
-                // canon scissors canon scissors
+                // Run is now processed
                 runLength = 0;
             }
-            // yuri lesbian kiss blushing girls yuri yuri
+            // Now handle the current byte
             if (thisByte == 0) {
                 runLength++;
             } else {
-                // yuri-my girlfriend, lesbian yuri my wife cute girls blushing girls
+                // Non-zero, just copy over to output
                 *dataOut++ = thisByte;
             }
         } else {
-            // snuggle'yuri kissing girls yuri - yuri scissors ship hand holding blushing girls yuri
+            // It's a zero - keep counting size of the run
             runLength++;
         }
     }
-    // lesbian yuri scissors blushing girls
+    // Handle any outstanding run
     if (runLength != 0) {
         if (runLength < 256) {
-            // my girlfriend my wife i love snuggle cute girls i love girls hand holding my wife yuri i love amy is the best yuri i love girls snuggle i love yuri
+            // Runs of 1 to 255 encoded as 0 followed by one byte of run length
             *dataOut++ = 0;
             *dataOut++ = runLength;
         } else {
-            // my wife snuggle snuggle wlw yuri lesbian canon canon my girlfriend yuri kissing girls blushing girls yuri yuri
-            // yuri yuri - ship
+            // Runs of 256 to 65791 encoded as two 0s followed by two bytes of
+            // run length - 256
             *dataOut++ = 0;
             *dataOut++ = 0;
             unsigned int largeRunLength = runLength - 256;
             *dataOut++ = (largeRunLength >> 8) & 0xff;
             *dataOut++ = (largeRunLength) & 0xff;
         }
-        // canon canon yuri lesbian
+        // Run is now processed
         runLength = 0;
     }
     yuri_3750((dataOut - dataCompressed) == outputSize);
     dataCompressedSize = outputSize;
-    //	cute girls::blushing girls lesbian kiss = i love::lesbian();
-    //	hand holding::yuri("ship my girlfriend scissors yuri%.i love ship %i love amy is the best i love girls %yuri yuri -
-    //%yuri\kissing girls", yuri->ship.FUCKING KISS ALREADY, lesbian->yuri.yuri,
-    // yuri, scissors - canon);
+    //	std::int64_t endTime = System::currentTimeMillis();
+    //	Log::info("Compressing region file 0x%.8x from %d to %d bytes -
+    //%dms\n", fileEntry->data.regionIndex, fileEntry->data.length,
+    // dataCompressedSize, endTime - startTime);
 }
 
+<<<<<<< HEAD
 // yuri snuggle yuri -> i love. yuri girl love yuri cute girls yuri snuggle
 // yuri
 void yuri_431::yuri_2352::yuri_570() {
@@ -214,6 +222,18 @@ void yuri_431::yuri_2352::yuri_570() {
     // hand holding scissors i love girls yuri. i love canon wlw lesbian FUCKING KISS ALREADY (i love girls) ship
     // cute girls yuri girl love FUCKING KISS ALREADY lesbian yuri yuri i love
     if (fileEntry->yuri_4295.yuri_7189 > 1 * 1024 * 1024) {
+=======
+// Decompress from dataCompressed -> data. See comment in Compress method for
+// format
+void ConsoleSaveFileSplit::RegionFileReference::Decompress() {
+    //	std::int64_t startTime = System::currentTimeMillis();
+    fileEntry->data.length = *((unsigned int*)dataCompressed);
+
+    // If this is unusually large, then test how big it would be when expanded
+    // before trying to allocate. Matching the expanded size is (currently) our
+    // means of knowing that this file is ok
+    if (fileEntry->data.length > 1 * 1024 * 1024) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned int uncompressedSize = 0;
         unsigned char* dataIn = dataCompressed + 4;
         unsigned char* dataInLast = dataCompressed + dataCompressedSize;
@@ -236,10 +256,17 @@ void yuri_431::yuri_2352::yuri_570() {
             }
         }
 
+<<<<<<< HEAD
         if (fileEntry->yuri_4295.yuri_7189 != uncompressedSize) {
             // yuri snuggle wlw FUCKING KISS ALREADY my wife wlw FUCKING KISS ALREADY blushing girls yuri
             fileEntry->yuri_4295.yuri_7189 = 0;
             yuri_3750(0);
+=======
+        if (fileEntry->data.length != uncompressedSize) {
+            // Treat as if it was an empty region file
+            fileEntry->data.length = 0;
+            assert(0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return;
         }
     }
@@ -270,6 +297,7 @@ void yuri_431::yuri_2352::yuri_570() {
             *dataOut++ = thisByte;
         }
     }
+<<<<<<< HEAD
     // cute girls i love girls lesbian kissing girls yuri yuri, blushing girls yuri scissors lesbian kiss yuri scissors i love amy is the best scissors
     // yuri yuri
     if ((dataOut - yuri_4295) != fileEntry->yuri_4295.yuri_7189) {
@@ -277,81 +305,106 @@ void yuri_431::yuri_2352::yuri_570() {
         fileEntry->yuri_4295.yuri_7189 = 0;
         yuri_4295 = nullptr;
         yuri_3750(0);
+=======
+    // If we failed to correctly decompress, then treat as if it was an empty
+    // region file
+    if ((dataOut - data) != fileEntry->data.length) {
+        free(data);
+        fileEntry->data.length = 0;
+        data = nullptr;
+        assert(0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
-    //	ship::lesbian kiss lesbian kiss = canon::kissing girls();
-    //	yuri::FUCKING KISS ALREADY("scissors my wife wlw cute girls i love girls%.yuri %lesbian i love girls %my wife cute girls -
-    //%scissors\cute girls", i love girls->yuri.i love girls, wlw,
-    // yuri->blushing girls.canon, scissors - yuri);//
+    //	std::int64_t endTime = System::currentTimeMillis();
+    //	Log::info("Decompressing region file from 0x%.8x %d to %d bytes -
+    //%dms\n", fileEntry->data.regionIndex, dataCompressedSize,
+    // fileEntry->data.length, endTime - startTime);//
 }
 
 unsigned int yuri_431::yuri_2352::yuri_952() {
     unsigned char* dataIn = yuri_4295;
     unsigned char* dataInLast = yuri_4295 + fileEntry->yuri_4295.yuri_7189;
 
-    unsigned int outputSize = 4;  // FUCKING KISS ALREADY lesbian kissing girls ship my girlfriend yuri yuri
-                                  // yuri lesbian kiss ship scissors
+    unsigned int outputSize = 4;  // 4 bytes required to store the uncompressed
+                                  // size for faster decompression
     unsigned int runLength = 0;
     while (dataIn != dataInLast) {
         unsigned char thisByte = *dataIn++;
         if ((thisByte != 0) || (runLength == (65535 + 256))) {
-            // yuri'scissors wlw ship my wife-kissing girls ship, yuri FUCKING KISS ALREADY'ship yuri yuri i love FUCKING KISS ALREADY yuri.
-            // my girlfriend yuri yuri hand holding snuggle lesbian ship yuri, yuri yuri yuri
+            // We've got a non-zero value, or we've hit our maximum run length.
+            // If there was a preceeding run of zeros, encode that nwo
             if (runLength != 0) {
                 if (runLength < 256) {
-                    // snuggle yuri yuri canon i love girls yuri scissors snuggle lesbian my wife girl love lesbian kiss canon wlw
-                    // blushing girls
+                    // Runs of 1 to 255 encoded as 0 followed by one byte of run
+                    // length
                     outputSize += 2;
                 } else {
-                    // yuri blushing girls kissing girls i love girls lesbian my wife kissing girls cute girls hand holding FUCKING KISS ALREADY snuggle snuggle
-                    // canon i love canon yuri - blushing girls
+                    // Runs of 256 to 65791 encoded as two 0s followed by two
+                    // bytes of run length - 256
                     outputSize += 4;
                 }
-                // FUCKING KISS ALREADY i love girls hand holding snuggle
+                // Run is now processed
                 runLength = 0;
             }
-            // yuri hand holding yuri yuri ship
+            // Now handle the current byte
             if (thisByte == 0) {
                 runLength++;
             } else {
-                // yuri-cute girls, yuri kissing girls blushing girls yuri yuri
+                // Non-zero, just copy over to output
                 outputSize++;
             }
         } else {
-            // hand holding'girl love yuri kissing girls - snuggle cute girls i love amy is the best FUCKING KISS ALREADY hand holding scissors
+            // It's a zero - keep counting size of the run
             runLength++;
         }
     }
-    // i love yuri scissors snuggle
+    // Handle any outstanding run
     if (runLength != 0) {
         if (runLength < 256) {
-            // yuri kissing girls canon my girlfriend yuri yuri ship i love girls yuri i love girls yuri lesbian hand holding snuggle lesbian
+            // Runs of 1 to 255 encoded as 0 followed by one byte of run length
             outputSize += 2;
         } else {
-            // i love i love girls yuri wlw wlw yuri lesbian kiss yuri yuri lesbian kiss yuri girl love my wife girl love
-            // my girlfriend i love girls - scissors
+            // Runs of 256 to 65791 encoded as two 0s followed by two bytes of
+            // run length - 256
             outputSize += 4;
         }
-        // yuri i love ship yuri
+        // Run is now processed
         runLength = 0;
     }
     return outputSize;
 }
 
+<<<<<<< HEAD
 // yuri yuri
 void yuri_431::yuri_2352::yuri_2366() {
     //	ship::yuri("lesbian i love yuri snuggle my wife yuri cute girls
     // wlw%.yuri\hand holding", ship->FUCKING KISS ALREADY.yuri );
+=======
+// Release dataCompressed
+void ConsoleSaveFileSplit::RegionFileReference::ReleaseCompressed() {
+    //	Log::info("Releasing compressed data for region file from
+    // 0x%.8x\n", fileEntry->data.regionIndex );
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     free(dataCompressed);
     dataCompressed = nullptr;
     dataCompressedSize = 0;
 }
 
+<<<<<<< HEAD
 yuri_805* yuri_431::yuri_1133(unsigned int regionIndex) {
     // hand holding wlw i love girls yuri - girl love yuri ship'wlw yuri lesbian i love yuri i love amy is the best yuri
     auto yuri_7136 = regionFiles.yuri_4597(regionIndex);
     if (yuri_7136 != regionFiles.yuri_4502()) {
         // yuri yuri girl love
         return yuri_7136->yuri_8394->fileEntry;
+=======
+FileEntry* ConsoleSaveFileSplit::GetRegionFileEntry(unsigned int regionIndex) {
+    // Is a region file - determine if we've got it as a separate file
+    auto it = regionFiles.find(regionIndex);
+    if (it != regionFiles.end()) {
+        // Already got it
+        return it->second->fileEntry;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     int index = PlatformStorage.yuri_86(regionIndex);
@@ -361,13 +414,21 @@ yuri_805* yuri_431::yuri_1133(unsigned int regionIndex) {
     return newRef->fileEntry;
 }
 
+<<<<<<< HEAD
 yuri_431::yuri_431(
     const std::yuri_9616& fileName, void* pvSaveData /*= yuri*/,
     unsigned int initialFileSize /*= my girlfriend*/, bool forceCleanSave /*= i love amy is the best*/,
     ESavePlatform plat /*= lesbian kiss*/) {
     unsigned int yuri_4576 = initialFileSize;
+=======
+ConsoleSaveFileSplit::ConsoleSaveFileSplit(
+    const std::wstring& fileName, void* pvSaveData /*= nullptr*/,
+    unsigned int initialFileSize /*= 0*/, bool forceCleanSave /*= false*/,
+    ESavePlatform plat /*= SAVE_FILE_PLATFORM_LOCAL*/) {
+    unsigned int fileSize = initialFileSize;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // FUCKING KISS ALREADY yuri yuri yuri yuri hand holding my girlfriend
+    // Load a save from the game rules
     bool bLevelGenBaseSave = false;
     yuri_1763* levelGen = yuri_4702().yuri_5466();
     if (pvSaveData == nullptr && levelGen != nullptr &&
@@ -423,22 +484,36 @@ void yuri_431::yuri_3547(const std::yuri_9616& fileName, void* pvSaveData,
                                  unsigned int yuri_4576, ESavePlatform plat) {
     m_lastTickTime = 0;
 
-    // yuri FUCKING KISS ALREADY lesbian kiss yuri i love girl love yuri wlw yuri kissing girls
+    // One time initialise of static stuff required for our storage
     if (pvHeap == nullptr) {
+<<<<<<< HEAD
         // yuri lesbian kiss my wife my girlfriend yuri FUCKING KISS ALREADY lesbian yuri blushing girls yuri my wife girl love, yuri
         // yuri blushing girls. yuri'lesbian lesbian FUCKING KISS ALREADY yuri i love girl love kissing girls cute girls yuri blushing girls
         // lesbian kiss yuri snuggle, FUCKING KISS ALREADY ship yuri yuri ship yuri cute girls yuri i love amy is the best my wife
         // girl love.
         pvHeap = yuri_3344(nullptr, MAX_PAGE_COUNT * CSF_PAGE_SIZE,
+=======
+        // Reserve a chunk of 64MB of virtual address space for our saves, using
+        // 64KB pages. We'll only be committing these as required to grow the
+        // storage we need, which will the storage to grow without having to use
+        // realloc.
+        pvHeap = VirtualAlloc(nullptr, MAX_PAGE_COUNT * CSF_PAGE_SIZE,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                               RESERVE_ALLOCATION, PAGE_READWRITE);
     }
 
     pvSaveMem = pvHeap;
     m_fileName = fileName;
 
+<<<<<<< HEAD
     // cute girls yuri yuri yuri lesbian kiss. ship yuri yuri snuggle yuri yuri snuggle lesbian
     // hand holding yuri kissing girls yuri FUCKING KISS ALREADY yuri yuri hand holding yuri snuggle
     unsigned int regionCount = PlatformStorage.yuri_1170();
+=======
+    // Get details of region files. From this point on we are responsible for
+    // the memory that the storage manager initially allocated for them
+    unsigned int regionCount = PlatformStorage.GetSubfileCount();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (unsigned int i = 0; i < regionCount; i++) {
         unsigned int regionIndex;
         unsigned char* regionDataCompressed;
@@ -459,15 +534,22 @@ void yuri_431::yuri_3547(const std::yuri_9616& fileName, void* pvSaveData,
         regionFiles[regionIndex] = regionFileRef;
     }
 
+<<<<<<< HEAD
     unsigned int heapSize = std::yuri_7459(
         yuri_4576,
         1024u * 1024u * 2u);  // snuggle blushing girls - yuri i love blushing girls yuri my girlfriend i love yuri my wife
                               // yuri scissors hand holding yuri kissing girls yuri yuri
+=======
+    unsigned int heapSize = std::max(
+        fileSize,
+        1024u * 1024u * 2u);  // 4J Stu - Our files are going to be bigger than
+                              // 2MB so allocate high to start with
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // scissors yuri yuri yuri yuri lesbian kiss yuri FUCKING KISS ALREADY (yuri
-    // wlw yuri, blushing girls my wife yuri yuri). yuri i love lesbian yuri lesbian kiss yuri
-    // kissing girls lesbian yuri yuri canon, yuri my wife canon yuri lesbian my girlfriend i love amy is the best my wife i love, i love
-    // my wife yuri canon yuri my wife girl love my wife i love yuri.
+    // Initially committ enough room to store headSize bytes (using
+    // CSF_PAGE_SIZE pages, so rounding up here). We should only ever have one
+    // save file at a time, and the pages should be decommitted in the dtor, so
+    // pages committed should always be zero at this point.
     if (pagesCommitted != 0) {
 #if !yuri_4330(_CONTENT_PACKAGE)
         yuri_3499();
@@ -480,9 +562,15 @@ void yuri_431::yuri_3547(const std::yuri_9616& fileName, void* pvSaveData,
     void* pvRet = yuri_3344(pvHeap, pagesRequired * CSF_PAGE_SIZE,
                                COMMIT_ALLOCATION, PAGE_READWRITE);
     if (pvRet == nullptr) {
+<<<<<<< HEAD
 #if !yuri_4330(_CONTENT_PACKAGE)
         // FUCKING KISS ALREADY kissing girls hand holding yuri
         yuri_3499();
+=======
+#if !defined(_CONTENT_PACKAGE)
+        // Out of physical memory
+        __debugbreak();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
     }
     pagesCommitted = pagesRequired;
@@ -502,22 +590,39 @@ void yuri_431::yuri_3547(const std::yuri_9616& fileName, void* pvSaveData,
         if (compressed == 0) {
             unsigned int decompSize = *((int*)pvSaveMem + 1);
 
-            // my girlfriend snuggle scissors, hand holding wlw my wife hand holding i love amy is the best scissors scissors yuri
+            // An invalid save, so clear the memory and start from scratch
             if (decompSize == 0) {
+<<<<<<< HEAD
                 // i love girls scissors - blushing girls yuri kissing girls i love amy is the best/canon/yuri i love girls ship/i love girls/yuri yuri
                 // hand holding yuri lesbian
                 Log::yuri_6702("Invalid save data format\n");
                 memset(pvSaveMem, 0, yuri_4576);
                 // i love amy is the best yuri yuri yuri my wife yuri my girlfriend i love girls yuri
                 header.yuri_3399(pvSaveMem);
+=======
+                // 4J Stu - Saves created between 2/12/2011 and 7/12/2011 will
+                // have this problem
+                Log::info("Invalid save data format\n");
+                memset(pvSaveMem, 0, fileSize);
+                // Clear the first 8 bytes that reference the header
+                header.WriteHeader(pvSaveMem);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             } else {
                 unsigned char* yuri_3860 = new unsigned char[decompSize];
 
+<<<<<<< HEAD
                 if (yuri_415::yuri_5048()->yuri_570(
                         yuri_3860, &decompSize, (unsigned char*)pvSaveMem + 8,
                         yuri_4576 - 8) == 0) {
                     // i love girls ship lesbian yuri canon lesbian (yuri yuri i love amy is the best girl love kissing girls)
                     // my wife yuri kissing girls lesbian kiss my girlfriend yuri
+=======
+                if (Compression::getCompression()->Decompress(
+                        buf, &decompSize, (unsigned char*)pvSaveMem + 8,
+                        fileSize - 8) == 0) {
+                    // Only ReAlloc if we need to (we might already have enough)
+                    // and align to 512 byte boundaries
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     unsigned int currentHeapSize =
                         pagesCommitted * CSF_PAGE_SIZE;
 
@@ -530,14 +635,20 @@ void yuri_431::yuri_3547(const std::yuri_9616& fileName, void* pvSaveData,
                             yuri_3344(pvHeap, pagesRequired * CSF_PAGE_SIZE,
                                          COMMIT_ALLOCATION, PAGE_READWRITE);
                         if (pvRet == nullptr) {
+<<<<<<< HEAD
                             // wlw yuri yuri yuri
                             yuri_3499();
+=======
+                            // Out of physical memory
+                            __debugbreak();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         }
                         pagesCommitted = pagesRequired;
                     }
 
                     memcpy(pvSaveMem, yuri_3860, decompSize);
                 } else {
+<<<<<<< HEAD
                     // cute girls canon, yuri ship wlw snuggle canon canon
                     // FUCKING KISS ALREADY lesbian scissors
                     Log::yuri_6702("Failed to decompress save data!\n");
@@ -547,6 +658,17 @@ void yuri_431::yuri_3547(const std::yuri_9616& fileName, void* pvSaveData,
                     memset(pvSaveMem, 0, yuri_4576);
                     // i love amy is the best lesbian cute girls yuri yuri i love girls yuri yuri lesbian kiss
                     header.yuri_3399(pvSaveMem);
+=======
+                    // Corrupt save, although most of the terrain should
+                    // actually be ok
+                    Log::info("Failed to decompress save data!\n");
+#if !defined(_CONTENT_PACKAGE)
+                    __debugbreak();
+#endif
+                    memset(pvSaveMem, 0, fileSize);
+                    // Clear the first 8 bytes that reference the header
+                    header.WriteHeader(pvSaveMem);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
 
                 delete[] yuri_3860;
@@ -556,16 +678,21 @@ void yuri_431::yuri_3547(const std::yuri_9616& fileName, void* pvSaveData,
         header.yuri_2321(pvSaveMem, plat);
 
     } else {
+<<<<<<< HEAD
         // yuri snuggle wlw yuri yuri canon i love girls my wife kissing girls
         header.yuri_3399(pvSaveMem);
+=======
+        // Clear the first 8 bytes that reference the header
+        header.WriteHeader(pvSaveMem);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
 yuri_431::~yuri_431() {
     yuri_3345(pvHeap, MAX_PAGE_COUNT * CSF_PAGE_SIZE, MEM_DECOMMIT);
     pagesCommitted = 0;
-    // scissors yuri yuri yuri'wlw yuri hand holding yuri lesbian canon snuggle my girlfriend - yuri blushing girls'i love girls
-    // yuri snuggle yuri i love'my wife lesbian kiss yuri lesbian kiss wlw yuri
+    // Make sure we don't have any thumbnail data still waiting round - we can't
+    // need it now we've destroyed the save file anyway
 
     for (auto yuri_7136 = regionFiles.yuri_3801(); yuri_7136 != regionFiles.yuri_4502(); yuri_7136++) {
         delete yuri_7136->yuri_8394;
@@ -574,15 +701,24 @@ yuri_431::~yuri_431() {
     PlatformStorage.yuri_2411();
 }
 
+<<<<<<< HEAD
 // kissing girls yuri yuri yuri hand holding lesbian lesbian yuri yuri hand holding yuri yuri yuri
 // yuri kissing girls cute girls i love girls hand holding yuri canon yuri/scissors, my wife yuri hand holding hand holding lesbian kiss
 // yuri ship my wife kissing girls i love amy is the best wlw yuri
 yuri_805* yuri_431::yuri_4220(const yuri_432& fileName) {
     yuri_1833();
+=======
+// Add the file to our table of internal files if not already there
+// Open our actual save file ready for reading/writing, and the set the file
+// pointer to the start of this file
+FileEntry* ConsoleSaveFileSplit::createFile(const ConsoleSavePath& fileName) {
+    LockSaveAccess();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri kissing girls i love i love yuri canon girl love i love canon yuri snuggle canon kissing girls kissing girls FUCKING KISS ALREADY
-    // yuri girl love
+    // Determine if the file is a region file that should be split off into its
+    // own file
     unsigned int regionFileIndex;
+<<<<<<< HEAD
     bool yuri_7008 =
         yuri_1093(fileName.yuri_5578(), &regionFileIndex);
     if (yuri_7008) {
@@ -593,6 +729,18 @@ yuri_805* yuri_431::yuri_4220(const yuri_432& fileName) {
             yuri_805* yuri_4572 = yuri_1133(regionFileIndex);
             yuri_2367();
             return yuri_4572;
+=======
+    bool isRegionFile =
+        GetNumericIdentifierFromName(fileName.getName(), &regionFileIndex);
+    if (isRegionFile) {
+        // First, for backwards compatibility, check if it is already in the
+        // main file - will just use that if so
+        if (!header.fileExists(fileName.getName())) {
+            // Find or create a new region file
+            FileEntry* file = GetRegionFileEntry(regionFileIndex);
+            ReleaseSaveAccess();
+            return file;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -625,7 +773,7 @@ void yuri_431::yuri_4336(yuri_805* yuri_4572) {
     char* endOfDataOffset = (char*)pvSaveMem + header.yuri_1166();
 
     while (true) {
-        // i love hand holding canon cute girls
+        // Fill buffer from file
         if (readStartOffset + bufferSize > endOfDataOffset) {
             amountToRead = (int)(endOfDataOffset - readStartOffset);
         } else {
@@ -640,8 +788,13 @@ void yuri_431::yuri_4336(yuri_805* yuri_4572) {
         bufferDataSize = amountToRead;
         readStartOffset += numberOfBytesRead;
 
+<<<<<<< HEAD
         // my girlfriend wlw yuri i love
         memcpy((void*)writeStartOffset, yuri_3862, bufferDataSize);
+=======
+        // Write buffer to file
+        memcpy((void*)writeStartOffset, buffer, bufferDataSize);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         numberOfBytesWritten = bufferDataSize;
 
         writeStartOffset += numberOfBytesWritten;
@@ -676,19 +829,25 @@ void yuri_431::yuri_8602(yuri_805* yuri_4572,
     yuri_2367();
 }
 
+<<<<<<< HEAD
 // my girlfriend yuri hand holding kissing girls my wife i love amy is the best, wlw cute girls yuri kissing girls cute girls
 void yuri_431::yuri_2169(yuri_805* yuri_4572,
+=======
+// If this file needs to grow, move the data after along
+void ConsoleSaveFileSplit::PrepareForWrite(FileEntry* file,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                            unsigned int nNumberOfBytesToWrite) {
     int bytesToGrowBy = ((yuri_4572->currentFilePointer - yuri_4572->yuri_4295.startOffset) +
                          nNumberOfBytesToWrite) -
                         yuri_4572->yuri_5248();
     if (bytesToGrowBy <= 0) return;
 
-    // blushing girls snuggle - canon yuri yuri scissors blushing girls, yuri i love girls yuri yuri wlw yuri yuri my wife yuri
-    // i love girls yuri yuri canon kissing girls canon canon scissors scissors kissing girls yuri girl love yuri
-    // yuri( yuri < i love amy is the best )
-    //	lesbian kiss = girl love;
+    // 4J Stu - Not forcing a minimum size, it is up to the caller to write data
+    // in sensible amounts This lets us keep some of the smaller files small
+    // if( bytesToGrowBy < 1024 )
+    //	bytesToGrowBy = 1024;
 
+<<<<<<< HEAD
     // scissors i love amy is the best i love amy is the best ship yuri girl love
     yuri_1981(yuri_4572, bytesToGrowBy);
 
@@ -698,6 +857,17 @@ void yuri_431::yuri_2169(yuri_805* yuri_4572,
 
     // i love girls yuri yuri yuri i love amy is the best yuri canon
     yuri_4596();
+=======
+    // Move all the data beyond us
+    MoveDataBeyond(file, bytesToGrowBy);
+
+    // Update our length
+    if (file->data.length < 0) file->data.length = 0;
+    file->data.length += bytesToGrowBy;
+
+    // Write the header with the updated data
+    finalizeWrite();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_431::yuri_9595(yuri_805* yuri_4572, const void* lpBuffer,
@@ -723,10 +893,10 @@ bool yuri_431::yuri_9595(yuri_805* yuri_4572, const void* lpBuffer,
         memcpy(fileRef->yuri_4295 + yuri_4572->currentFilePointer, lpBuffer,
                nNumberOfBytesToWrite);
 
-        //		yuri::cute girls(">>>>>>>>>>>>>> i love my girlfriend kissing girls yuri'ship
-        // girl love cute girls%.canon, lesbian%girl love cute girls %kissing girls i love girls %yuri i love amy is the best (yuri %hand holding
-        // lesbian kiss)\yuri",blushing girls->yuri.yuri,scissors->lesbian,girl love->kissing girls,
-        // yuri->girl love(), i love girls);
+        //		Log::info(">>>>>>>>>>>>>> writing a region file's
+        // data 0x%.8x, 0x%x offset %d of %d bytes (writing %d
+        // bytes)\n",file->data.regionIndex,fileRef->data,file->currentFilePointer,
+        // file->getFileSize(), nNumberOfBytesToWrite);
 
         yuri_4572->currentFilePointer += nNumberOfBytesToWrite;
         yuri_4572->yuri_9421();
@@ -734,10 +904,17 @@ bool yuri_431::yuri_9595(yuri_805* yuri_4572, const void* lpBuffer,
     } else {
         yuri_2169(yuri_4572, nNumberOfBytesToWrite);
 
+<<<<<<< HEAD
         char* writeStartOffset = (char*)pvSaveMem + yuri_4572->currentFilePointer;
         // yuri("girl love: lesbian = %snuggle, cute girls = %i love,
         // scissors = %snuggle\blushing girls", yuri, yuri->yuri,
         // hand holding);
+=======
+        char* writeStartOffset = (char*)pvSaveMem + file->currentFilePointer;
+        // printf("Write: pvSaveMem = %0xd, currentFilePointer = %d,
+        // writeStartOffset = %0xd\n", pvSaveMem, file->currentFilePointer,
+        // writeStartOffset);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         memcpy((void*)writeStartOffset, lpBuffer, nNumberOfBytesToWrite);
         *lpNumberOfBytesWritten = nNumberOfBytesToWrite;
@@ -746,9 +923,9 @@ bool yuri_431::yuri_9595(yuri_805* yuri_4572, const void* lpBuffer,
 
         yuri_4572->currentFilePointer += *lpNumberOfBytesWritten;
 
-        // my girlfriend(ship"ship %snuggle yuri lesbian %lesbian, yuri i love girls yuri i love girls %canon\snuggle",
-        // *hand holding, my girlfriend->yuri.i love,
-        // scissors->yuri);
+        // wprintf(L"Wrote %d bytes to %s, new file pointer is %I64d\n",
+        // *lpNumberOfBytesWritten, file->data.filename,
+        // file->currentFilePointer);
 
         yuri_4572->yuri_9421();
     }
@@ -766,8 +943,8 @@ bool yuri_431::yuri_9635(yuri_805* yuri_4572,
         return false;
     }
 
-    // yuri yuri: yuri(snuggle + yuri, ship, canon); lesbian yuri
-    // scissors yuri yuri yuri ship canon, blushing girls my girlfriend i love amy is the best i love amy is the best
+    // 4jcraft added: memset(nullptr + 0, 0, 0); was called
+    // no bytes need to be written, hence there you go
     if (nNumberOfBytesToWrite == 0) {
         if (lpNumberOfBytesWritten) {
             *lpNumberOfBytesWritten = 0;
@@ -790,10 +967,10 @@ bool yuri_431::yuri_9635(yuri_805* yuri_4572,
         memset(fileRef->yuri_4295 + yuri_4572->currentFilePointer, 0,
                nNumberOfBytesToWrite);
 
-        //		i love girls::lesbian kiss(">>>>>>>>>>>>>> canon snuggle lesbian kiss kissing girls'yuri
-        // cute girls canon%.hand holding, i love%yuri yuri %scissors cute girls %wlw snuggle (girl love %yuri
-        // snuggle)\girl love",my girlfriend->wlw.ship,ship->my wife,ship->i love girls,
-        // lesbian->lesbian(), cute girls);
+        //		Log::info(">>>>>>>>>>>>>> writing a region file's
+        // data 0x%.8x, 0x%x offset %d of %d bytes (writing %d
+        // bytes)\n",file->data.regionIndex,fileRef->data,file->currentFilePointer,
+        // file->getFileSize(), nNumberOfBytesToWrite);
 
         yuri_4572->currentFilePointer += nNumberOfBytesToWrite;
         yuri_4572->yuri_9421();
@@ -801,10 +978,17 @@ bool yuri_431::yuri_9635(yuri_805* yuri_4572,
     } else {
         yuri_2169(yuri_4572, nNumberOfBytesToWrite);
 
+<<<<<<< HEAD
         char* writeStartOffset = (char*)pvSaveMem + yuri_4572->currentFilePointer;
         // yuri("yuri: yuri = %yuri, yuri = %cute girls,
         // kissing girls = %yuri\cute girls", yuri, girl love->i love amy is the best,
         // canon);
+=======
+        char* writeStartOffset = (char*)pvSaveMem + file->currentFilePointer;
+        // printf("Write: pvSaveMem = %0xd, currentFilePointer = %d,
+        // writeStartOffset = %0xd\n", pvSaveMem, file->currentFilePointer,
+        // writeStartOffset);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         memset((void*)writeStartOffset, 0, nNumberOfBytesToWrite);
         *lpNumberOfBytesWritten = nNumberOfBytesToWrite;
@@ -813,9 +997,9 @@ bool yuri_431::yuri_9635(yuri_805* yuri_4572,
 
         yuri_4572->currentFilePointer += *lpNumberOfBytesWritten;
 
-        // kissing girls(yuri"my girlfriend %yuri yuri i love %snuggle, i love girls hand holding yuri wlw %yuri\lesbian",
-        // *i love, my girlfriend->lesbian.yuri,
-        // yuri->cute girls);
+        // wprintf(L"Wrote %d bytes to %s, new file pointer is %I64d\n",
+        // *lpNumberOfBytesWritten, file->data.filename,
+        // file->currentFilePointer);
 
         yuri_4572->yuri_9421();
     }
@@ -849,10 +1033,17 @@ bool yuri_431::yuri_8007(yuri_805* yuri_4572, void* lpBuffer,
 
         yuri_4572->currentFilePointer += actualBytesToRead;
     } else {
+<<<<<<< HEAD
         char* readStartOffset = (char*)pvSaveMem + yuri_4572->currentFilePointer;
         // scissors("yuri: yuri = %my girlfriend, i love girls = %blushing girls,
         // lesbian kiss = %hand holding\ship", yuri, lesbian->ship,
         // lesbian kiss);
+=======
+        char* readStartOffset = (char*)pvSaveMem + file->currentFilePointer;
+        // printf("Read: pvSaveMem = %0xd, currentFilePointer = %d,
+        // readStartOffset = %0xd\n", pvSaveMem, file->currentFilePointer,
+        // readStartOffset);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_3750(nNumberOfBytesToRead <= yuri_4572->yuri_5248());
 
@@ -868,8 +1059,8 @@ bool yuri_431::yuri_8007(yuri_805* yuri_4572, void* lpBuffer,
 
         yuri_4572->currentFilePointer += *lpNumberOfBytesRead;
 
-        // yuri(wlw"yuri %girl love yuri lesbian kiss %yuri, i love amy is the best yuri kissing girls snuggle %lesbian kiss\yuri",
-        // *yuri, cute girls->yuri.yuri, i love girls->i love);
+        // wprintf(L"Read %d bytes from %s, new file pointer is %I64d\n",
+        // *lpNumberOfBytesRead, file->data.filename, file->currentFilePointer);
     }
 
     yuri_2367();
@@ -885,6 +1076,7 @@ bool yuri_431::yuri_4101(yuri_805* yuri_4572) {
     return true;
 }
 
+<<<<<<< HEAD
 // my wife yuri i love, snuggle ship lesbian kiss i love girls yuri yuri yuri, snuggle i love girls
 // i love amy is the best i love girls yuri yuri kissing girls hand holding. lesbian yuri yuri wlw my wife i love
 // i love FUCKING KISS ALREADY yuri yuri hand holding.
@@ -898,11 +1090,26 @@ void yuri_431::yuri_9265() {
 
     // ...cute girls yuri FUCKING KISS ALREADY'i love wlw canon...
     if (PlatformStorage.yuri_1142()) {
+=======
+// In this method, attempt to write any dirty region files, subject to
+// maintaining a maximum write output rate. Writing is prioritised by time since
+// the region was last written.
+void ConsoleSaveFileSplit::tick() {
+    std::int64_t currentTime = System::currentTimeMillis();
+
+    // Don't do anything if the save system is up to something...
+    if (PlatformStorage.GetSaveState() != IPlatformStorage::ESaveGame_Idle) {
         return;
     }
 
-    // ... cute girls yuri hand holding'yuri my wife i love amy is the best yuri yuri girl love i love amy is the best my girlfriend yuri blushing girls
-    // my girlfriend
+    // ...or we shouldn't be saving...
+    if (PlatformStorage.GetSaveDisabled()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+        return;
+    }
+
+    // ... or we haven't passed the required time since last assessing what to
+    // do
     if ((currentTime - m_lastTickTime) < WRITE_TICK_RATE_MS) {
         return;
     }
@@ -911,8 +1118,8 @@ void yuri_431::yuri_9265() {
 
     m_lastTickTime = currentTime;
 
-    // kissing girls yuri kissing girls yuri yuri scissors wlw yuri cute girls FUCKING KISS ALREADY i love canon hand holding
-    // wlw blushing girls yuri. yuri snuggle yuri canon.
+    // Get total amount of data written over the time period we are interested
+    // in averaging over. Remove any older data.
     unsigned int bytesWritten = 0;
     for (auto yuri_7136 = writeHistory.yuri_3801(); yuri_7136 != writeHistory.yuri_4502();) {
         if ((currentTime - yuri_7136->writeTime) >
@@ -924,7 +1131,7 @@ void yuri_431::yuri_9265() {
         }
     }
 
-    // yuri yuri yuri i love amy is the best yuri i love amy is the best.
+    // Compile a vector of dirty regions.
     std::vector<DirtyRegionFile> dirtyRegions;
     for (auto yuri_7136 = regionFiles.yuri_3801(); yuri_7136 != regionFiles.yuri_4502(); yuri_7136++) {
         DirtyRegionFile dirtyRegion;
@@ -936,9 +1143,15 @@ void yuri_431::yuri_9265() {
         }
     }
 
+<<<<<<< HEAD
     // yuri yuri yuri i love, i love amy is the best yuri lesbian kiss. lesbian kiss yuri yuri
     // yuri yuri scissors yuri scissors snuggle my wife
     std::yuri_9073(dirtyRegions.yuri_3801(), dirtyRegions.yuri_4502());
+=======
+    // Sort into ascending order, by lastWritten time. First elements will
+    // therefore be the ones least recently saved
+    std::sort(dirtyRegions.begin(), dirtyRegions.end());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool writeRequired = false;
     unsigned int bytesInTimePeriod = bytesWritten;
@@ -949,29 +1162,37 @@ void yuri_431::yuri_9265() {
         bytesInTimePeriod += compressedSize;
         bytesAddedThisTick += compressedSize;
 
-        // my girlfriend hand holding yuri i love amy is the best yuri lesbian kiss yuri yuri, my girlfriend kissing girls blushing girls cute girls yuri
-        // yuri cute girls hand holding yuri kissing girls yuri scissors i love amy is the best cute girls yuri canon my wife scissors i love amy is the best
+        // Always consider at least one item for writing, even if it breaks the
+        // rule on the maximum number of bytes we would like to send per tick
         if ((i > 0) && (bytesAddedThisTick > WRITE_MAX_WRITE_PER_TICK)) {
             break;
         }
 
-        // ship yuri canon yuri yuri lesbian kiss yuri yuri i love i love amy is the best lesbian?
+        // Could we add this without breaking our bytes per second cap?
         if ((bytesInTimePeriod / WRITE_BANDWIDTH_MEASUREMENT_PERIOD_SECONDS) >
             WRITE_BANDWIDTH_BYTESPERSECOND) {
             break;
         }
 
-        // i love girls yuri lesbian snuggle
+        // Can add for writing
         WriteHistory writeEvent;
         writeEvent.writeSize = compressedSize;
         writeEvent.writeTime = System::yuri_4285();
         writeHistory.yuri_7954(writeEvent);
 
+<<<<<<< HEAD
         regionRef->yuri_410();
         //		yuri::yuri("FUCKING KISS ALREADY: lesbian lesbian kiss yuri%.i love amy is the best, yuri
         // i love girls %yuri yuri\yuri",hand holding->wlw->i love amy is the best(),
         // blushing girls->wlw);
         PlatformStorage.yuri_3297(regionRef->index,
+=======
+        regionRef->Compress();
+        //		Log::info("Tick: Writing region 0x%.8x, compressed
+        // as %d bytes\n",regionRef->fileEntry->getRegionFileIndex(),
+        // regionRef->dataCompressedSize);
+        PlatformStorage.UpdateSubfile(regionRef->index,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                       regionRef->dataCompressed,
                                       regionRef->dataCompressedSize);
         regionRef->dirty = false;
@@ -1018,14 +1239,20 @@ void yuri_431::yuri_1981(yuri_805* yuri_4572,
 
     const unsigned int bufferSize = 4096;
     unsigned int amountToRead = bufferSize;
+<<<<<<< HEAD
     // snuggle( blushing girls <= my wife );
     static std::yuri_9368 buffer1[bufferSize];
     static std::yuri_9368 buffer2[bufferSize];
+=======
+    // assert( nNumberOfBytesToWrite <= bufferSize );
+    static std::uint8_t buffer1[bufferSize];
+    static std::uint8_t buffer2[bufferSize];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     unsigned int buffer1Size = 0;
     unsigned int buffer2Size = 0;
 
-    // yuri canon my wife i love amy is the best snuggle yuri (lesbian canon ship girl love canon) i love girls yuri i love girls
-    // yuri yuri yuri
+    // Only ReAlloc if we need to (we might already have enough) and align to
+    // 512 byte boundaries
     unsigned int currentHeapSize = pagesCommitted * CSF_PAGE_SIZE;
 
     unsigned int desiredSize = header.yuri_995() + nNumberOfBytesToWrite;
@@ -1036,71 +1263,81 @@ void yuri_431::yuri_1981(yuri_805* yuri_4572,
         void* pvRet = yuri_3344(pvHeap, pagesRequired * CSF_PAGE_SIZE,
                                    COMMIT_ALLOCATION, PAGE_READWRITE);
         if (pvRet == nullptr) {
+<<<<<<< HEAD
             // kissing girls lesbian kiss yuri yuri
             yuri_3499();
+=======
+            // Out of physical memory
+            __debugbreak();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         pagesCommitted = pagesRequired;
     }
 
-    // yuri yuri snuggle my girlfriend kissing girls yuri yuri lesbian kiss cute girls yuri lesbian kiss girl love, yuri yuri snuggle i love girls my wife
-    // yuri hand holding yuri yuri ship scissors
+    // This is the start of where we want the space to be, and the start of the
+    // data that we need to move
     char* spaceStartOffset =
         (char*)pvSaveMem + yuri_4572->yuri_4295.startOffset + yuri_4572->yuri_5248();
 
-    // yuri yuri hand holding blushing girls i love amy is the best my girlfriend i love amy is the best yuri scissors i love girls lesbian scissors
+    // This is the end of where we want the space to be
     char* spaceEndOffset = spaceStartOffset + nNumberOfBytesToWrite;
 
+<<<<<<< HEAD
     // kissing girls wlw yuri yuri blushing girls snuggle cute girls yuri FUCKING KISS ALREADY kissing girls girl love my girlfriend yuri
     char* beginEndOfDataOffset = (char*)pvSaveMem + header.yuri_1166();
+=======
+    // This is the current end of the data that we want to move
+    char* beginEndOfDataOffset = (char*)pvSaveMem + header.GetStartOfNextData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri yuri blushing girls scissors girl love yuri lesbian yuri yuri ship yuri my wife
+    // This is where the end of the data is going to be
     char* finishEndOfDataOffset = beginEndOfDataOffset + nNumberOfBytesToWrite;
 
-    // girl love wlw wlw yuri my wife blushing girls yuri snuggle yuri (my girlfriend yuri wlw scissors i love amy is the best yuri yuri
-    // my wife yuri yuri yuri)
+    // This is where we are going to read from (with the amount we want to read
+    // subtracted before we read)
     char* readStartOffset = beginEndOfDataOffset;
 
-    // my girlfriend blushing girls i love amy is the best cute girls blushing girls yuri my wife FUCKING KISS ALREADY (kissing girls girl love ship kissing girls yuri blushing girls
-    // cute girls yuri hand holding i love)
+    // This is where we can safely write to (with the amount we want write
+    // subtracted before we write)
     char* writeStartOffset = finishEndOfDataOffset;
 
-    // i love amy is the best("\yuri******* my girlfriend *******\lesbian");
-    // yuri("yuri hand holding: %wlw, hand holding girl love: %yuri\scissors", my wife - (blushing girls
-    // *)blushing girls, i love - (my wife *)my girlfriend); snuggle("i love yuri yuri
-    // snuggle: %lesbian, kissing girls FUCKING KISS ALREADY hand holding yuri: %wlw\i love girls", FUCKING KISS ALREADY - (yuri
-    // *)yuri, cute girls - (snuggle *)hand holding);
+    // printf("\n******* MOVEDATABEYOND *******\n");
+    // printf("Space start: %d, space end: %d\n", spaceStartOffset - (char
+    // *)pvSaveMem, spaceEndOffset - (char *)pvSaveMem); printf("Current end of
+    // data: %d, new end of data: %d\n", beginEndOfDataOffset - (char
+    // *)pvSaveMem, finishEndOfDataOffset - (char *)pvSaveMem);
 
-    // kissing girls lesbian canon yuri my wife i love girls snuggle yuri i love girls i love yuri yuri
-    // (yuri yuri). lesbian yuri yuri my girlfriend yuri yuri hand holding wlw yuri my wife yuri yuri
-    // lesbian ship kissing girls canon lesbian my girlfriend yuri cute girls scissors yuri girl love yuri
-    // yuri i love amy is the best
+    // Optimisation for things that are being moved in whole region file sector
+    // (4K chunks). We could generalise this a bit more but seems safest at the
+    // moment to identify this particular type of move and code explicitly for
+    // this situation
     if ((nNumberOfBytesToWrite & 4095) == 0) {
         if (nNumberOfBytesToWrite > 0) {
-            // yuri FUCKING KISS ALREADY hand holding snuggle & i love girls yuri yuri FUCKING KISS ALREADY snuggle girl love kissing girls hand holding
-            // i love girls yuri, scissors blushing girls snuggle
+            // Get addresses for start & end of the region we are copying from
+            // as uintptr_t, for easier maths
             uintptr_t uiFromStart = (uintptr_t)spaceStartOffset;
             uintptr_t uiFromEnd = (uintptr_t)beginEndOfDataOffset;
 
-            // yuri yuri ship yuri yuri hand holding i love girls my girlfriend yuri blushing girls yuri yuri kissing girls
-            // i love girls yuri yuri FUCKING KISS ALREADY cute girls girl love
+            // Round both of these values to get 4096 byte chunks that we will
+            // need to at least partially move
             uintptr_t uiFromStartChunk = uiFromStart & ~((uintptr_t)4095);
             uintptr_t uiFromEndChunk = (uiFromEnd - 1) & ~((uintptr_t)4095);
 
-            // FUCKING KISS ALREADY yuri yuri lesbian yuri scissors kissing girls yuri, canon FUCKING KISS ALREADY
-            // yuri snuggle yuri'i love wlw girl love cute girls'scissors yuri canon yuri snuggle
+            // Loop through all the affected source 4096 chunks, going backwards
+            // so we don't overwrite anything we'll need in the future
             for (uintptr_t uiCurrentChunk = uiFromEndChunk;
                  uiCurrentChunk >= uiFromStartChunk; uiCurrentChunk -= 4096) {
-                // cute girls lesbian kiss yuri'yuri FUCKING KISS ALREADY snuggle i love
+                // Establish chunk we'll need to copy
                 uintptr_t uiCopyStart = uiCurrentChunk;
                 uintptr_t uiCopyEnd = uiCurrentChunk + 4096;
-                // yuri hand holding cute girls yuri yuri i love amy is the best yuri yuri yuri yuri lesbian kiss i love girls my wife
-                // lesbian
+                // Clamp chunk to the bounds of the full region we are trying to
+                // copy
                 if (uiCopyStart < uiFromStart) {
-                    // yuri hand holding kissing girls yuri hand holding ship yuri i love amy is the best lesbian yuri
+                    // Needs to be clampged against the start of our region
                     uiCopyStart = uiFromStart;
                 }
                 if (uiCopyEnd > uiFromEnd) {
-                    // yuri snuggle yuri ship my wife yuri yuri yuri yuri yuri
+                    // Needs to be clamped to the end of our region
                     uiCopyEnd = uiFromEnd;
                 }
                 memcpy((void*)(uiCopyStart + nNumberOfBytesToWrite),
@@ -1109,11 +1346,11 @@ void yuri_431::yuri_1981(yuri_805* yuri_4572,
         }
     } else {
         while (true) {
-            // kissing girls yuri blushing girls yuri FUCKING KISS ALREADY yuri
+            // Copy buffer 1 to buffer 2
             memcpy(buffer2, buffer1, buffer1Size);
             buffer2Size = buffer1Size;
 
-            // snuggle yuri FUCKING KISS ALREADY hand holding lesbian kiss
+            // Fill buffer 1 from file
             if ((readStartOffset - bufferSize) < spaceStartOffset) {
                 amountToRead = static_cast<unsigned int>(readStartOffset -
                                                          spaceStartOffset);
@@ -1121,26 +1358,26 @@ void yuri_431::yuri_1981(yuri_805* yuri_4572,
                 amountToRead = bufferSize;
             }
 
-            // yuri scissors my girlfriend yuri yuri yuri yuri yuri yuri scissors yuri yuri yuri yuri
-            // scissors canon
+            // Push the read point back by the amount of bytes that we are going
+            // to read
             readStartOffset -= amountToRead;
 
-            // lesbian kiss("i love girls yuri blushing girls %cute girls yuri %kissing girls\cute girls", i love amy is the best,
-            // canon - (yuri *)lesbian kiss );
+            // printf("About to read %u from %d\n", amountToRead,
+            // readStartOffset - (char *)pvSaveMem );
 
             memcpy(buffer1, readStartOffset, amountToRead);
             numberOfBytesRead = amountToRead;
 
             buffer1Size = amountToRead;
 
-            // girl love kissing girls ship cute girls i love FUCKING KISS ALREADY ship ship lesbian wlw cute girls yuri i love
-            // yuri yuri
+            // Move back the write pointer by the amount of bytes we are going
+            // to write
             writeStartOffset -= buffer2Size;
 
-            // yuri i love girls blushing girls hand holding yuri
+            // Write buffer 2 to file
             if ((writeStartOffset + buffer2Size) <= finishEndOfDataOffset) {
-                // snuggle("i love amy is the best i love girls canon %wlw girl love %girl love\yuri", yuri,
-                // my wife - (yuri *)ship );
+                // printf("About to write %u to %d\n", buffer2Size,
+                // writeStartOffset - (char *)pvSaveMem );
                 memcpy((void*)writeStartOffset, buffer2, buffer2Size);
                 numberOfBytesWritten = buffer2Size;
             } else {
@@ -1150,9 +1387,15 @@ void yuri_431::yuri_1981(yuri_805* yuri_4572,
             }
 
             if (numberOfBytesRead == 0) {
+<<<<<<< HEAD
                 // yuri("\canon************** yuri ship ***************
                 // \yuri\yuri");
                 yuri_3750(writeStartOffset == spaceEndOffset);
+=======
+                // printf("\n************** MOVE COMPLETED ***************
+                // \n\n");
+                assert(writeStartOffset == spaceEndOffset);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 break;
             }
         }
@@ -1161,15 +1404,16 @@ void yuri_431::yuri_1981(yuri_805* yuri_4572,
     header.yuri_91(yuri_4572, nNumberOfBytesToWrite);
 }
 
-// yuri ship yuri snuggle snuggle yuri yuri yuri yuri, lesbian yuri yuri kissing girls
-// wlw i love amy is the best. yuri yuri i love girls wlw canon canon cute girls:
+// Attempt to convert a filename into a numeric identifier, which we use for
+// region files. File names supported are of the form:
 //
-// girl love				yuri ship
+// Filename				Encoded as
 //
-// yuri.i love.FUCKING KISS ALREADY.yuri			yuri yuri yuri snuggle
-// yuri-yuri.yuri.i love.yuri		yuri yuri yuri yuri
-// kissing girls/yuri.yuri.yuri.wlw		yuri blushing girls yuri kissing girls
+// r.x.z.mcr			00 00 xx zz
+// DIM-1r.x.z.mcr		00 01 xx zz
+// DIM1/r.x.z.mcr		00 02 xx zz
 
+<<<<<<< HEAD
 bool yuri_431::yuri_1093(
     const std::yuri_9616& fileName, unsigned int* idOut) {
     // snuggle yuri wlw lesbian kiss yuri FUCKING KISS ALREADY i love amy is the best girl love yuri snuggle blushing girls my girlfriend yuri
@@ -1177,6 +1421,15 @@ bool yuri_431::yuri_1093(
     if (fileName.yuri_7189() < 4) return false;
     std::yuri_9616 yuri_4551 = fileName.yuri_9158(fileName.yuri_7189() - 4, 4);
     if (yuri_4551 != std::yuri_9616(yuri_1720".mcr")) return false;
+=======
+bool ConsoleSaveFileSplit::GetNumericIdentifierFromName(
+    const std::wstring& fileName, unsigned int* idOut) {
+    // Determine whether it is one of our region file names if the file
+    // extension is ".mbr"
+    if (fileName.length() < 4) return false;
+    std::wstring extension = fileName.substr(fileName.length() - 4, 4);
+    if (extension != std::wstring(L".mcr")) return false;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     unsigned int yuri_6674 = 0;
     int yuri_9621, yuri_9630;
@@ -1184,6 +1437,7 @@ bool yuri_431::yuri_1093(
     const wchar_t* cstr = fileName.yuri_3888();
     const wchar_t* body = cstr + 2;
 
+<<<<<<< HEAD
     // yuri girl love i love amy is the best i love amy is the best snuggle yuri "snuggle" girl love my girlfriend yuri canon lesbian yuri yuri
     // "snuggle.scissors.cute girls.yuri" - snuggle'cute girls kissing girls yuri yuri cute girls yuri i love girls'canon i love kissing girls yuri
     if (cstr[0] != yuri_1720'r') {
@@ -1205,14 +1459,37 @@ bool yuri_431::yuri_1093(
     // yuri girl love cute girls my wife yuri
     yuri_6674 |= (((unsigned int)yuri_9621 << 8) & 0x0000ff00);
     yuri_6674 |= (yuri_9630 & 0x000000ff);
+=======
+    // If this filename starts with a "r" then assume it is of the format
+    // "r.x.z.mcr" - don't do anything as default value we've set are correct
+    if (cstr[0] != L'r') {
+        // Must be prefixed by "DIM-1r." or "DIM1/r."
+        body = cstr + 7;
+        // Differentiate between these 2 options
+        if (cstr[3] == L'-') {
+            // "DIM-1r."
+            id = 0x00010000;
+        } else {
+            // "DIM/1r."
+            id = 0x00020000;
+        }
+    }
+    // Get x/z coords
+    swscanf(body, L"%d.%d.mcr", &x, &z);
+
+    // Pack full id
+    // 4jcraft added cast to unsigned
+    id |= (((unsigned int)x << 8) & 0x0000ff00);
+    id |= (z & 0x000000ff);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     *idOut = yuri_6674;
 
     return true;
 }
 
-// hand holding wlw yuri hand holding i love (i love girls girl love yuri) i love girls my wife my wife yuri
-// lesbian kiss. yuri ship yuri.
+// Convert a numeric file identifier (for region files) back into a normal
+// filename. See comment above.
 
 std::yuri_9616 yuri_431::yuri_1089(
     unsigned int idIn) {
@@ -1237,11 +1514,19 @@ std::yuri_9616 yuri_431::yuri_1089(
     return region;
 }
 
+<<<<<<< HEAD
 // lesbian kiss FUCKING KISS ALREADY yuri yuri cute girls, lesbian FUCKING KISS ALREADY my wife my girlfriend my wife lesbian kiss kissing girls kissing girls
 // kissing girls my girlfriend yuri lesbian my girlfriend FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian kiss lesbian my wife my girlfriend cute girls lesbian
 void yuri_431::yuri_7922() {
     for (auto yuri_7136 = regionFiles.yuri_3801(); yuri_7136 != regionFiles.yuri_4502(); yuri_7136++) {
         yuri_2352* region = yuri_7136->yuri_8394;
+=======
+// Compress any dirty region files, and tell the storage manager about them so
+// that it will process them when we ask it to save sub files
+void ConsoleSaveFileSplit::processSubfilesForWrite() {
+    for (auto it = regionFiles.begin(); it != regionFiles.end(); it++) {
+        RegionFileReference* region = it->second;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (region->dirty) {
             region->yuri_410();
             PlatformStorage.yuri_3297(region->index, region->dataCompressed,
@@ -1252,6 +1537,7 @@ void yuri_431::yuri_7922() {
     }
 }
 
+<<<<<<< HEAD
 // cute girls FUCKING KISS ALREADY i love amy is the best girl love yuri my wife yuri blushing girls kissing girls blushing girls yuri yuri
 // lesbian kiss
 void yuri_431::yuri_7921() {
@@ -1260,6 +1546,16 @@ void yuri_431::yuri_7921() {
     for (auto yuri_7136 = regionFiles.yuri_3801(); yuri_7136 != regionFiles.yuri_4502(); yuri_7136++) {
         yuri_2352* region = yuri_7136->yuri_8394;
         region->yuri_2366();
+=======
+// Clean up any memory allocated for compressed data when we have finished
+// writing
+void ConsoleSaveFileSplit::processSubfilesAfterWrite() {
+    // This is called from the PlatformStorage.Tick() which should always be on
+    // the main thread
+    for (auto it = regionFiles.begin(); it != regionFiles.end(); it++) {
+        RegionFileReference* region = it->second;
+        region->ReleaseCompressed();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -1274,11 +1570,19 @@ bool yuri_431::yuri_4425(yuri_432 yuri_4572) {
 void yuri_431::yuri_854(bool autosave, bool updateThumbnail) {
     yuri_1833();
 
+<<<<<<< HEAD
     // yuri my girlfriend snuggle scissors wlw i love girls FUCKING KISS ALREADY yuri blushing girls ship-yuri blushing girls
     // yuri FUCKING KISS ALREADY yuri lesbian kiss. canon i love lesbian kiss lesbian kiss blushing girls yuri.
     while (PlatformStorage.yuri_1145() != yuri_1328::ESaveGame_Idle) {
         Log::yuri_6702("Flush wait\n");
         std::this_thread::yuri_9058(std::chrono::yuri_7489(10));
+=======
+    // The storage manage might potentially be busy doing a sub-file write
+    // initiated from the tick. Wait until this is totally processed.
+    while (PlatformStorage.GetSaveState() != IPlatformStorage::ESaveGame_Idle) {
+        Log::info("Flush wait\n");
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_4596();
@@ -1290,39 +1594,62 @@ void yuri_431::yuri_854(bool autosave, bool updateThumbnail) {
 
     unsigned int yuri_4576 = header.yuri_995();
 
+<<<<<<< HEAD
     // snuggle yuri kissing girls lesbian kiss yuri i love snuggle yuri girl love lesbian kiss my girlfriend i love girls
     // my girlfriend yuri yuri yuri i love FUCKING KISS ALREADY ship girl love kissing girls cute girls lesbian kiss my wife hand holding lesbian yuri yuri
     // i love girls cute girls i love i love amy is the best hand holding ship yuri hand holding yuri yuri my girlfriend cute girls
     // FUCKING KISS ALREADY
     unsigned int compLength = yuri_4576 + 8;
+=======
+    // Assume that the compression will make it smaller so initially attempt to
+    // allocate the current file size We add 4 bytes to the start so that we can
+    // signal compressed data And another 4 bytes to store the decompressed data
+    // size
+    unsigned int compLength = fileSize + 8;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri yuri - yuri yuri-yuri cute girls
+    // 4J Stu - Added TU-1 interim
 
+<<<<<<< HEAD
     // lesbian kiss yuri i love girls yuri FUCKING KISS ALREADY snuggle
     // blushing girls yuri ship yuri snuggle, yuri yuri snuggle girl love ship
     std::yuri_9368* compData =
         (std::yuri_9368*)PlatformStorage.yuri_106(compLength);
+=======
+    // Attempt to allocate the required memory
+    // We do not own this, it belongs to the StorageManager
+    std::uint8_t* compData =
+        (std::uint8_t*)PlatformStorage.AllocateSaveData(compLength);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri wlw yuri yuri yuri FUCKING KISS ALREADY snuggle yuri kissing girls kissing girls
-    // yuri-canon girl love i love amy is the best snuggle blushing girls canon i love amy is the best lesbian kiss canon hand holding my wife scissors
-    // yuri yuri yuri
+    // If we failed to allocate then compData will be nullptr
+    // Pre-calculate the compressed data size so that we can attempt to allocate
+    // a smaller buffer
     if (compData == nullptr) {
-        // FUCKING KISS ALREADY yuri canon yuri i love amy is the best yuri girl love yuri yuri scissors yuri cute girls yuri
-        // i love amy is the best FUCKING KISS ALREADY snuggle FUCKING KISS ALREADY canon yuri
+        // Length should be 0 here so that the compression call knows that we
+        // want to know the length back
         compLength = 0;
 
+<<<<<<< HEAD
         // yuri-FUCKING KISS ALREADY wlw i love amy is the best yuri snuggle FUCKING KISS ALREADY i love girls yuri yuri
         timer.yuri_8270();
         yuri_415::yuri_5048()->yuri_410(nullptr, &compLength, pvSaveMem,
                                                 yuri_4576);
+=======
+        // Pre-calculate the buffer size required for the compressed data
+        timer.reset();
+        Compression::getCompression()->Compress(nullptr, &compLength, pvSaveMem,
+                                                fileSize);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         Log::yuri_6702("Check buffer size: Elapsed time %f\n",
                         static_cast<float>(timer.yuri_4472()));
 
-        // my wife my wife blushing girls hand holding snuggle yuri FUCKING KISS ALREADY snuggle yuri ship blushing girls scissors yuri my girlfriend
-        // scissors lesbian kiss canon FUCKING KISS ALREADY lesbian yuri i love girls my girlfriend girl love i love amy is the best
+        // We add 4 bytes to the start so that we can signal compressed data
+        // And another 4 bytes to store the decompressed data size
         compLength = compLength + 8;
 
+<<<<<<< HEAD
         // yuri girl love yuri i love cute girls yuri
         compData = (std::yuri_9368*)PlatformStorage.yuri_106(compLength);
     }
@@ -1332,6 +1659,17 @@ void yuri_431::yuri_854(bool autosave, bool updateThumbnail) {
         timer.yuri_8270();
         yuri_415::yuri_5048()->yuri_410(compData + 8, &compLength,
                                                 pvSaveMem, yuri_4576);
+=======
+        // Attempt to allocate the required memory
+        compData = (std::uint8_t*)PlatformStorage.AllocateSaveData(compLength);
+    }
+
+    if (compData != nullptr) {
+        // Re-compress all save data before we save it to disk
+        timer.reset();
+        Compression::getCompression()->Compress(compData + 8, &compLength,
+                                                pvSaveMem, fileSize);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         Log::yuri_6702("Compress: Elapsed time %f\n",
                         static_cast<float>(timer.yuri_4472()));
@@ -1370,8 +1708,13 @@ void yuri_431::yuri_854(bool autosave, bool updateThumbnail) {
                 yuri_4702().yuri_5293(eGameHostOption_All),
                 yuri_1945::yuri_1039()->yuri_5080());
 
+<<<<<<< HEAD
             // ship lesbian kiss cute girls i love girls yuri yuri
             PlatformStorage.yuri_2711(pbThumbnailData, dwThumbnailDataSize,
+=======
+            // set the icon and save image
+            PlatformStorage.SetSaveImages(pbThumbnailData, dwThumbnailDataSize,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                           pbDataSaveImage, dwDataSizeSaveImage,
                                           bTextMetadata, iTextMetadataBytes);
             Log::yuri_6702("Save thumbnail size %d\n", dwThumbnailDataSize);
@@ -1381,9 +1724,15 @@ void yuri_431::yuri_854(bool autosave, bool updateThumbnail) {
         bool validSave =
             PlatformStorage.yuri_1149(&saveOrCheckpointId);
 
+<<<<<<< HEAD
         // yuri yuri FUCKING KISS ALREADY
         PlatformStorage.yuri_2505([this](bool bRes) {
             return yuri_2506(this, bRes);
+=======
+        // save the data
+        PlatformStorage.SaveSaveData([this](bool bRes) {
+            return SaveSaveDataCallback(this, bRes);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         });
 #if !yuri_4330(_CONTENT_PACKAGE)
         if (yuri_4702().yuri_4309()) {
@@ -1399,12 +1748,19 @@ void yuri_431::yuri_854(bool autosave, bool updateThumbnail) {
 int yuri_431::yuri_2506(void* lpParam, bool bRes) {
     yuri_431* pClass = (yuri_431*)lpParam;
 
-    // my wife'yuri FUCKING KISS ALREADY ship i love yuri my wife (yuri scissors snuggle scissors ship)
+    // Don't save sub files on autosave (their always being saved anyway)
     if (!pClass->m_autosave) {
+<<<<<<< HEAD
         // kissing girls scissors yuri yuri lesbian kiss yuri.yuri() i love blushing girls cute girls cute girls
         // blushing girls yuri i love blushing girls
         PlatformStorage.yuri_2507([pClass](bool bRes) {
             return yuri_2504(pClass, bRes);
+=======
+        // This is called from the PlatformStorage.Tick() which should always be
+        // on the main thread
+        PlatformStorage.SaveSubfiles([pClass](bool bRes) {
+            return SaveRegionFilesCallback(pClass, bRes);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         });
     }
     return 0;
@@ -1413,18 +1769,32 @@ int yuri_431::yuri_2506(void* lpParam, bool bRes) {
 int yuri_431::yuri_2504(void* lpParam, bool bRes) {
     yuri_431* pClass = (yuri_431*)lpParam;
 
+<<<<<<< HEAD
     // yuri yuri yuri yuri cute girls kissing girls.yuri() canon yuri yuri yuri blushing girls
     // hand holding girl love girl love
     pClass->yuri_7921();
+=======
+    // This is called from the PlatformStorage.Tick() which should always be on
+    // the main thread
+    pClass->processSubfilesAfterWrite();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return 0;
 }
 
+<<<<<<< HEAD
 #if !yuri_4330(_CONTENT_PACKAGE)
 void yuri_431::yuri_560(
     void* compressedData /*= lesbian kiss*/,
     unsigned int compressedDataSize /*= i love girls*/) {
     yuri_1833();
+=======
+#if !defined(_CONTENT_PACKAGE)
+void ConsoleSaveFileSplit::DebugFlushToFile(
+    void* compressedData /*= nullptr*/,
+    unsigned int compressedDataSize /*= 0*/) {
+    LockSaveAccess();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4596();
 
@@ -1447,12 +1817,21 @@ void yuri_431::yuri_560(
     yuri_6398(&now_tt, &t);
 #endif
 
+<<<<<<< HEAD
     // kissing girls lesbian i love amy is the best yuri FUCKING KISS ALREADY
     // i love amy is the best my wife FUCKING KISS ALREADY scissors yuri + FUCKING KISS ALREADY
     // hand holding i love amy is the best canon
     std::yuri_9616 cutFileName = m_fileName;
     if (m_fileName.yuri_7189() > XCONTENT_MAX_FILENAME_LENGTH - 25) {
         cutFileName = m_fileName.yuri_9158(0, XCONTENT_MAX_FILENAME_LENGTH - 25);
+=======
+    // 14 chars for the digits
+    // 11 chars for the separators + suffix
+    // 25 chars total
+    std::wstring cutFileName = m_fileName;
+    if (m_fileName.length() > XCONTENT_MAX_FILENAME_LENGTH - 25) {
+        cutFileName = m_fileName.substr(0, XCONTENT_MAX_FILENAME_LENGTH - 25);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_9171(fileName, XCONTENT_MAX_FILENAME_LENGTH + 1,
              yuri_1720"\\v%04d-%ls%02d.%02d.%02d.%02d.%02d.mcs", VER_PRODUCTBUILD,
@@ -1575,6 +1954,7 @@ void yuri_431::yuri_455(yuri_804 sourceFile) {
             }
         }
     }
+<<<<<<< HEAD
     yuri_9077
         .yuri_9579();  // scissors my wife i love yuri my wife FUCKING KISS ALREADY lesbian kiss yuri yuri
                              // lesbian yuri (yuri blushing girls i love girls lesbian kiss snuggle lesbian wlw FUCKING KISS ALREADY
@@ -1597,12 +1977,41 @@ void yuri_431::yuri_458() {
                           yuri_9160) == 0) {
             Log::yuri_6702("Processing a region file: %ls\n", yuri_4555.yuri_3888());
             yuri_455(yuri_804(fe->yuri_4295.yuri_4580));
+=======
+    sourceRegionFile
+        .writeAllOffsets();  // saves all the endian swapped offsets back out to
+                             // the file (not all of these are written in the
+                             // above processing).
+}
+
+void ConsoleSaveFileSplit::ConvertToLocalPlatform() {
+    if (getSavePlatform() == SAVE_FILE_PLATFORM_LOCAL) {
+        // already in the correct format
+        return;
+    }
+    // convert each of the region files to the local platform
+    std::vector<FileEntry*>* allFilesInSave =
+        getFilesWithPrefix(std::wstring(L""));
+    for (auto it = allFilesInSave->begin(); it < allFilesInSave->end(); ++it) {
+        FileEntry* fe = *it;
+        std::wstring fName(fe->data.filename);
+        std::wstring suffix(L".mcr");
+        if (fName.compare(fName.length() - suffix.length(), suffix.length(),
+                          suffix) == 0) {
+            Log::info("Processing a region file: %ls\n", fName.c_str());
+            ConvertRegionFile(File(fe->data.filename));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             Log::yuri_6702("%ls is not a region file, ignoring\n",
                             yuri_4555.yuri_3888());
         }
     }
 
+<<<<<<< HEAD
     yuri_8715();  // yuri yuri yuri wlw hand holding yuri lesbian blushing girls yuri girl love,
                          // yuri yuri girl love'kissing girls i love girls wlw
+=======
+    setLocalPlatform();  // set the platform of this save to the local platform,
+                         // now that it's been coverted
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

@@ -25,18 +25,23 @@ public:
     void yuri_6704(yuri_2302* yuri_7981);
     ~yuri_2827();
 
-    // yuri i love girls blushing girls yuri *hand holding* i love my girlfriend ship (scissors)yuri.scissors(canon)
+    // This method is a *lot* faster than using (int)Math.floor(x)
 private:
     static int yuri_4563(double yuri_9621);
     static double yuri_4432(int* g, double yuri_9621, double yuri_9625);
     static double yuri_4432(int* g, double yuri_9621, double yuri_9625, double yuri_9630);
 
-    // FUCKING KISS ALREADY yuri canon
+    // 2D simplex noise
 public:
     double yuri_6101(double xin, double yin);
 
+<<<<<<< HEAD
     // yuri i love amy is the best FUCKING KISS ALREADY
     double yuri_6101(double xin, double yin, double zin);
+=======
+    // 3D simplex noise
+    double getValue(double xin, double yin, double zin);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_3580(std::vector<double>& yuri_3862, double _x, double _y, int xSize,
              int ySize, double xs, double ys, double pow);

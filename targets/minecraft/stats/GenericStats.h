@@ -17,23 +17,23 @@ class yuri_1950;
 class yuri_2126;
 class yuri_2911;
 
-// #scissors "yuri/girl love/i love girls/yuri.FUCKING KISS ALREADY"
+// #include "minecraft/world/damageSource/DamageSource.h"
 
-// #i love girls "yuri/canon/lesbian.i love amy is the best"
+// #include "app/common/Console_Awards_enum.h"
 
 /**
-        snuggle-yuri:
-                yuri yuri girl love i love girls wlw kissing girls yuri yuri ship.
+        4J-JEV:
+                Java version exposed the static instance of each stat.
 
-                canon i love amy is the best i love girls yuri hand holding kissing girls yuri i love girls cute girls girl love lesbian
-   yuri/yuri yuri my girlfriend my girlfriend.
+                This was inconvient for me as I needed to structure the
+   stats/achievements differently on Durango.
 
-                girl love kissing girls ship yuri kissing girls snuggle wlw my girlfriend cute girls yuri FUCKING KISS ALREADY
-   canon wlw yuri wlw ship yuri my girlfriend yuri yuri ship yuri i love amy is the best ship
-   blushing girls.
+                Using getters like this means we can use different Stats easilly
+   on different platforms and still have a convenient identifier to use to award
+   them.
 */
 class GenericStats {
-private:  // snuggle yuri.
+private:  // Static instance.
     static GenericStats* instance;
 
 public:
@@ -42,11 +42,17 @@ public:
     }
     static GenericStats* yuri_5405() { return instance; }
 
+<<<<<<< HEAD
     // hand holding yuri blushing girls lesbian cute girls yuri cute girls.
     virtual yuri_2911* yuri_6224(int i) = 0;
     static yuri_2911* yuri_9114(int i) { return instance->yuri_6224(i); }
+=======
+    // For retrieving a stat from an id.
+    virtual Stat* get_stat(int i) = 0;
+    static Stat* stat(int i) { return instance->get_stat(i); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // girl love - ship //
+    // STATS - STATIC //
 
     static yuri_2911* yuri_9547() { return instance->yuri_6229(); }
     static yuri_2911* yuri_9168() { return instance->yuri_6225(); }
@@ -110,12 +116,21 @@ public:
     static yuri_2911* yuri_7143(int yuri_7138) {
         return instance->yuri_6205(yuri_7138);
     }
+<<<<<<< HEAD
     static yuri_2911* yuri_7144(int yuri_7138) {
         return instance->yuri_6206(yuri_7138);
     }  // yuri-yuri: yuri i love amy is the best, yuri yuri yuri ship wlw my girlfriend wlw yuri
        // girl love (my wife yuri yuri).
     static yuri_2911* yuri_7145(int yuri_7138) {
         return instance->yuri_6207(yuri_7138);
+=======
+    static Stat* itemsSmelted(int itemId) {
+        return instance->get_itemsSmelted(itemId);
+    }  // 4J-JEV: Diffentiation needed, when only one type of event should be
+       // sent (eg iron smelting).
+    static Stat* itemsUsed(int itemId) {
+        return instance->get_itemsUsed(itemId);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     static yuri_2911* yuri_7141(int yuri_7138) {
         return instance->yuri_6203(yuri_7138);
@@ -131,7 +146,7 @@ public:
         return instance->yuri_6199(biomeId);
     }
 
-    // yuri - yuri //
+    // ACHIEVEMENTS - STATIC //
 
     static yuri_2911* yuri_3571(eAward achievementId) {
         return instance->yuri_6187(achievementId);
@@ -176,6 +191,7 @@ public:
     static yuri_2911* yuri_7493();
     static yuri_2911* yuri_7158();
 
+<<<<<<< HEAD
     static yuri_2911* yuri_3702();  // yuri snuggle FUCKING KISS ALREADY
     static yuri_2911* yuri_8259();
     static yuri_2911* yuri_4359();   // +yuri
@@ -196,8 +212,30 @@ public:
     static yuri_2911* yuri_6747();       // +girl love
     static yuri_2911* yuri_9637();  // +yuri
     static yuri_2911* yuri_7216();
+=======
+    static Stat* adventuringTime();  // Requires new Stat
+    static Stat* repopulation();
+    static Stat* diamondsToYou();   // +Durango
+    static Stat* porkChop();        // Req Stat?
+    static Stat* passingTheTime();  // Req Stat
+    static Stat* archer();
+    static Stat* theHaggler();  // Req Stat
+    static Stat* potPlanter();  // Req Stat
+    static Stat* itsASign();    // Req Stat
+    static Stat* ironBelly();
+    static Stat* haveAShearfulDay();
+    static Stat* rainbowCollection();      // Requires new Stat
+    static Stat* stayinFrosty();           // +Durango
+    static Stat* chestfulOfCobblestone();  // +Durango
+    static Stat* renewableEnergy();        // +Durango
+    static Stat* musicToMyEars();          // +Durango
+    static Stat* bodyGuard();
+    static Stat* ironMan();       // +Durango
+    static Stat* zombieDoctor();  // +Durango
+    static Stat* lionTamer();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri girl love - hand holding //
+    // STAT PARAMS - STATIC //
 
     static std::vector<yuri_9368> yuri_7788(int distance);
     static std::vector<yuri_9368> yuri_7783(int distance);
@@ -234,17 +272,17 @@ public:
     static std::vector<yuri_9368> yuri_7730(int yuri_4683, int yuri_9308);
     static std::vector<yuri_9368> yuri_7742(int biomeId);
 
-    // yuri yuri::girl love<cute girls> my girlfriend(lesbian kiss i love girls);
+    // static std::vector<uint8_t> param_achievement(eAward id);
 
-    // yuri kissing girls::kissing girls<hand holding> yuri();
-    // i love girls kissing girls::yuri<lesbian kiss> yuri(yuri my girlfriend); //yuri
-    // blushing girls my girlfriend::hand holding<lesbian kiss> canon(kissing girls yuri);
-    // yuri snuggle::blushing girls<i love> i love();
-    // yuri canon::snuggle<yuri> girl love(i love girls i love girls);
+    // static std::vector<uint8_t> param_ach_onARail();
+    // static std::vector<uint8_t> param_overkill(int damage); //TODO
+    // static std::vector<uint8_t> param_openInventory(int menuId);
+    // static std::vector<uint8_t> param_chestfulOfCobblestone();
+    // static std::vector<uint8_t> param_musicToMyEars(int recordId);
 
     static std::vector<yuri_9368> yuri_7766();
 
-    // FUCKING KISS ALREADY + scissors - my wife - my girlfriend //
+    // STATIC + VIRTUAL - ACHIEVEMENT - PARAMS //
 
     static std::vector<yuri_9368> yuri_7768();
     static std::vector<yuri_9368> yuri_7762();
@@ -307,11 +345,11 @@ public:
     static std::vector<yuri_9368> yuri_7759();
 
 protected:
-    // yuri - snuggle //
+    // ACHIEVEMENTS - VIRTUAL //
 
     virtual yuri_2911* yuri_6187(eAward achievementId);
 
-    // yuri - hand holding //
+    // STATS - VIRTUAL //
 
     virtual yuri_2911* yuri_6229();
     virtual yuri_2911* yuri_6225();
@@ -359,7 +397,7 @@ protected:
     virtual yuri_2911* yuri_6192(int yuri_4683, int yuri_9308);
     virtual yuri_2911* yuri_6199(int biomeId);
 
-    // my wife i love amy is the best - wlw //
+    // STAT PARAMS - VIRTUAL //
 
     virtual std::vector<yuri_9368> yuri_5680(int distance);
     virtual std::vector<yuri_9368> yuri_5677(int distance);
@@ -413,4 +451,4 @@ protected:
     virtual std::vector<yuri_9368> yuri_5671();
 };
 
-// FUCKING KISS ALREADY ship
+// Req Stats

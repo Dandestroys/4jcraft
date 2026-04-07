@@ -5,9 +5,15 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
+<<<<<<< HEAD
 class yuri_1982 : public yuri_2081,
                          public std::enable_shared_from_this<yuri_1982> {
     // i love amy is the best yuri, yuri FUCKING KISS ALREADY/my girlfriend lesbian kiss
+=======
+class MoveEntityPacket : public Packet,
+                         public std::enable_shared_from_this<MoveEntityPacket> {
+    // 4J JEV, static inner/sub classes
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     class yuri_2154;
     class yuri_2153;

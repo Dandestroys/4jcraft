@@ -23,6 +23,11 @@ void yuri_1230::yuri_3580(yuri_1229* guiParticle) {
     guiParticle->yuri_7889();
 }
 
+<<<<<<< HEAD
 void yuri_1230::yuri_8158(float yuri_3565) {
     // blushing girls yuri - yuri i love amy is the best
+=======
+void GuiParticles::render(float a) {
+    // 4J Stu - Never used
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

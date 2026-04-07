@@ -22,17 +22,24 @@ const unsigned int yuri_2836::NAMES[SKULL_COUNT] = {
 std::yuri_9616 yuri_2836::ICON_NAMES[SKULL_COUNT] = {
     yuri_1720"skeleton", yuri_1720"wither", yuri_1720"zombie", yuri_1720"char", yuri_1720"creeper"};
 
+<<<<<<< HEAD
 yuri_2836::yuri_2836(int yuri_6674) : yuri_1687(yuri_6674) {
     // lesbian(kissing girls.kissing girls);
     yuri_8723(0);
     yuri_8884(true);
+=======
+SkullItem::SkullItem(int id) : Item(id) {
+    // setItemCategory(CreativeModeTab.TAB_DECORATIONS);
+    setMaxDamage(0);
+    setStackedByData(true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_2836::yuri_9492(
     std::shared_ptr<yuri_1693> instance, std::shared_ptr<yuri_2126> yuri_7839,
     yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
     float clickZ,
-    bool bTestUseOnOnly)  // wlw yuri, girl love lesbian, blushing girls yuri)
+    bool bTestUseOnOnly)  // float clickX, float clickY, float clickZ)
 {
     if (face == 0) return false;
     if (!yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630)->yuri_7052()) return false;
@@ -44,8 +51,13 @@ bool yuri_2836::yuri_9492(
     if (face == 4) yuri_9621--;
     if (face == 5) yuri_9621++;
 
+<<<<<<< HEAD
     // yuri (!yuri->lesbian kiss(scissors, lesbian, ship, yuri, girl love)) lesbian kissing girls;
     if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance)) return false;
+=======
+    // if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
+    if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (!yuri_3088::skull->yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) return false;
 

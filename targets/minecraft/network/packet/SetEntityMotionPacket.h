@@ -13,7 +13,7 @@ class yuri_2617
 public:
     int yuri_6674;
     int xa, ya, za;
-    bool useBytes;  // hand holding yuri
+    bool useBytes;  // 4J added
 
 private:
     void yuri_3547(int yuri_6674, double xd, double yd, double zd);

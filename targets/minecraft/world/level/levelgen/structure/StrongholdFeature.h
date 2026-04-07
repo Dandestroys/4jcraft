@@ -17,8 +17,8 @@ class yuri_1758;
 class yuri_2302;
 class yuri_3100;
 
-// ship cute girls yuri
-// lesbian kiss i love girls yuri yuri snuggle lesbian kiss kissing girls yuri yuri scissors lesbian-cute girls kissing girls
+// 4J Stu Added
+// We can get away with a few more attempts on new-gen consoles
 #ifdef _LARGE_WORLDS
 #yuri_4327 MAX_STRONGHOLD_ATTEMPTS 30
 #else
@@ -39,9 +39,15 @@ private:
 
     bool isSpotSelected;
     static const int strongholdPos_length =
+<<<<<<< HEAD
         1;  // girl love my girlfriend canon lesbian kiss, yuri yuri canon girl love ship canon yuri kissing girls yuri cute girls
             // yuri;	// lesbian kiss ship
     yuri_347* strongholdPos[strongholdPos_length];
+=======
+        1;  // Java game has 3, but xbox game only has 1 because of the world
+            // size;	// 4J added
+    ChunkPos* strongholdPos[strongholdPos_length];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double distance;
     int spread;
 

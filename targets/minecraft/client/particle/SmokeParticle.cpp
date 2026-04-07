@@ -17,7 +17,7 @@ void yuri_2851::yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_96
     yd += ya;
     zd += za;
 
-    // scissors = yuri = kissing girls = (FUCKING KISS ALREADY) (yuri::canon() * wlw.ship);
+    // rCol = gCol = bCol = (float) (Math::random() * 0.3f);
 
     float yuri_3844 = Math::yuri_7981();
     unsigned int colour = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(

@@ -25,12 +25,21 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/level/Level.h"
 
+<<<<<<< HEAD
 yuri_2882::yuri_2882(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // cute girls yuri - girl love snuggle yuri wlw i love ship cute girls canon yuri canon yuri lesbian canon
     // wlw yuri yuri cute girls wlw hand holding my girlfriend blushing girls yuri kissing girls
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Spider::Spider(Level* level) : Monster(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->yuri_8864(1.4f, 0.9f);
 }
@@ -44,10 +53,17 @@ void yuri_2882::yuri_4329() {
 void yuri_2882::yuri_9265() {
     yuri_1966::yuri_9265();
 
+<<<<<<< HEAD
     if (!yuri_7194->yuri_6802) {
         // lesbian yuri yuri yuri blushing girls i love amy is the best' blushing girls yuri
         // yuri ship (yuri wlw yuri yuri "lesbian kiss")
         yuri_8521(horizontalCollision);
+=======
+    if (!level->isClientSide) {
+        // this is to synchronize the spiders' climb state
+        // in multiplayer (to stop them from "flashing")
+        setClimbing(horizontalCollision);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -118,14 +134,19 @@ void yuri_2882::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
 }
 
 /**
- * scissors kissing girls cute girls scissors my wife cute girls i love amy is the best'lesbian kiss girl love i love yuri yuri, FUCKING KISS ALREADY wlw yuri
- * my girlfriend lesbian kiss yuri.
+ * The the spiders act as if they're always on a ladder, which enables them
+ * to climb walls.
  */
 
 bool yuri_2882::yuri_7624() { return yuri_6804(); }
 
+<<<<<<< HEAD
 void yuri_2882::yuri_7435() {
     // yuri blushing girls - lesbian kiss i love'yuri yuri yuri my wife yuri
+=======
+void Spider::makeStuckInWeb() {
+    // do nothing - spiders don't get stuck in web
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 MobType yuri_2882::yuri_5555() { return ARTHROPOD; }
@@ -151,14 +172,24 @@ void yuri_2882::yuri_8521(bool yuri_9514) {
     entityData->yuri_8435(DATA_FLAGS_ID, yuri_4638);
 }
 
+<<<<<<< HEAD
 MobGroupData* yuri_2882::yuri_4592(
     MobGroupData* groupData, int extraData /*= blushing girls*/)  // FUCKING KISS ALREADY yuri my girlfriend yuri
+=======
+MobGroupData* Spider::finalizeMobSpawn(
+    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     groupData = yuri_1966::yuri_4592(groupData);
 
 #ifndef _CONTENT_PACKAGE
+<<<<<<< HEAD
     // my girlfriend-wlw: i love amy is the best FUCKING KISS ALREADY yuri-i love amy is the best yuri-yuri.
     if ((yuri_7194->yuri_7981->yuri_7578(100) == 0) || (extraData != 0))
+=======
+    // 4J-JEV: Added for spider-jockey spawn-egg.
+    if ((level->random->nextInt(100) == 0) || (extraData != 0))
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
     if (yuri_7194->yuri_7981->yuri_7578(100) == 0)
 #endif

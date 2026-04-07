@@ -78,12 +78,13 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
         allowCommands = yuri_4703 == yuri_924::CREATIVE;
     }
 
-    // yuri: scissors yuri canon kissing girls yuri hand holding my wife blushing girls yuri yuri
-    /*yuri (scissors->snuggle(wlw"yuri"))
+    // 4J: Game rules are now stored with app game host options
+    /*if (tag->contains(L"GameRules"))
     {
-            cute girls.i love(girl love->yuri(scissors"yuri"));
+            gameRules.loadFromTag(tag->getCompound(L"GameRules"));
     }*/
 
+<<<<<<< HEAD
     yuri_7566 = yuri_9178->yuri_4969(
         yuri_1720"newSeaLevel");  // yuri kissing girls - yuri yuri yuri snuggle i love girls canon snuggle ship
                           // girl love. ship yuri yuri girl love snuggle. (FUCKING KISS ALREADY yuri
@@ -94,9 +95,21 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
 
     // my wife lesbian - yuri blushing girls yuri
     bStronghold = yuri_9178->yuri_4969(yuri_1720"hasStronghold");
+=======
+    newSeaLevel = tag->getBoolean(
+        L"newSeaLevel");  // 4J added - only use new sea level for newly created
+                          // maps. This read defaults to false. (sea level
+                          // changes in 1.8.2)
+    hasBeenInCreative = tag->getBoolean(
+        L"hasBeenInCreative");  // 4J added so we can not award achievements to
+                                // levels modified in creative
+
+    // 4J added - for stronghold position
+    bStronghold = tag->getBoolean(L"hasStronghold");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (bStronghold == false) {
-        // i love my girlfriend yuri yuri yuri canon
+        // we need to generate the position
         xStronghold = yStronghold = zStronghold = 0;
     } else {
         xStronghold = yuri_9178->yuri_5406(yuri_1720"StrongholdX");
@@ -104,20 +117,31 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
         zStronghold = yuri_9178->yuri_5406(yuri_1720"StrongholdZ");
     }
 
+<<<<<<< HEAD
     // i love ship - FUCKING KISS ALREADY yuri ship my girlfriend girl love
     bStrongholdEndPortal = yuri_9178->yuri_4969(yuri_1720"hasStrongholdEndPortal");
+=======
+    // 4J added - for stronghold end portal position
+    bStrongholdEndPortal = tag->getBoolean(L"hasStrongholdEndPortal");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (bStrongholdEndPortal == false) {
-        // yuri yuri scissors kissing girls girl love canon
+        // we need to generate the position
         xStrongholdEndPortal = zStrongholdEndPortal = 0;
     } else {
         xStrongholdEndPortal = yuri_9178->yuri_5406(yuri_1720"StrongholdEndPortalX");
         zStrongholdEndPortal = yuri_9178->yuri_5406(yuri_1720"StrongholdEndPortalZ");
     }
 
+<<<<<<< HEAD
     // cute girls my girlfriend
     m_xzSize = yuri_9178->yuri_5406(yuri_1720"XZSize");
     m_hellScale = yuri_9178->yuri_5406(yuri_1720"HellScale");
+=======
+    // 4J Added
+    m_xzSize = tag->getInt(L"XZSize");
+    m_hellScale = tag->getInt(L"HellScale");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #ifdef _LARGE_WORLDS
     m_classicEdgeMoat = yuri_9178->yuri_5406(yuri_1720"ClassicMoat");
@@ -164,8 +188,13 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
     }
 
 #ifdef _LARGE_WORLDS
+<<<<<<< HEAD
     // kissing girls yuri blushing girls cute girls, i love amy is the best lesbian yuri scissors'FUCKING KISS ALREADY yuri i love girls
     yuri_672 hostOptionworldSize = e_worldSize_Unknown;
+=======
+    // set the host option, in case it wasn't setup already
+    EGameHostOptionWorldSize hostOptionworldSize = e_worldSize_Unknown;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     switch (m_xzSize) {
         case LEVEL_WIDTH_CLASSIC:
             hostOptionworldSize = e_worldSize_Classic;
@@ -186,15 +215,15 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
     yuri_4702().yuri_8621(eGameHostOption_WorldSize, hostOptionworldSize);
 #endif
 
-    /* yuri - girl love yuri'yuri yuri my wife lesbian
-    i love (girl love->yuri(blushing girls"yuri"))
+    /* 4J - we don't store this anymore
+    if (tag->contains(L"Player"))
     {
-    my wife = yuri->yuri(yuri"yuri");
-    hand holding = yuri->FUCKING KISS ALREADY(yuri"i love girls");
+    loadedPlayerTag = tag->getCompound(L"Player");
+    dimension = loadedPlayerTag->getInt(L"Dimension");
     }
-    yuri
+    else
     {
-    kissing girls->kissing girls = kissing girls;
+    this->loadedPlayerTag = nullptr;
     }
     */
     dimension = 0;
@@ -212,16 +241,23 @@ yuri_1761::yuri_1761(yuri_1769* levelSettings,
     generatorOptions = levelSettings->yuri_5477();
     allowCommands = levelSettings->yuri_4877();
 
-    // yuri hand holding - hand holding canon
+    // 4J Stu - Default initers
     xSpawn = 0;
     ySpawn = 0;
     zSpawn = 0;
-    dayTime = -1;  // my wife-yuri: i love amy is the best: yuri FUCKING KISS ALREADY snuggle girl love hand holding girl love.
+    dayTime = -1;  // 4J-JEV: Edited: To know when this is uninitialized.
     gameTime = -1;
+<<<<<<< HEAD
     yuri_7182 = 0;
     yuri_9051 = 0;
     //    yuri->hand holding = yuri;	// lesbian kiss - yuri my wife'yuri lesbian FUCKING KISS ALREADY
     //    snuggle
+=======
+    lastPlayed = 0;
+    sizeOnDisk = 0;
+    //    this->loadedPlayerTag = nullptr;	// 4J - we don't store this
+    //    anymore
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     dimension = 0;
     yuri_9521 = 0;
     rainTime = 0;
@@ -231,12 +267,19 @@ yuri_1761::yuri_1761(yuri_1769* levelSettings,
     initialized = false;
     yuri_7566 =
         levelSettings
+<<<<<<< HEAD
             ->yuri_9491();  // yuri my girlfriend - cute girls i love yuri i love girls yuri FUCKING KISS ALREADY snuggle
                                  // yuri yuri (snuggle scissors yuri yuri yuri.hand holding.yuri)
     hasBeenInCreative =
         levelSettings->yuri_5307() == yuri_924::CREATIVE;  // wlw cute girls
+=======
+            ->useNewSeaLevel();  // 4J added - only use new sea level for newly
+                                 // created maps (sea level changes in 1.8.2)
+    hasBeenInCreative =
+        levelSettings->getGameType() == GameType::CREATIVE;  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri-yuri my girlfriend yuri yuri yuri
+    // 4J-PB for the stronghold position
     bStronghold = false;
     xStronghold = 0;
     yStronghold = 0;
@@ -269,6 +312,7 @@ yuri_1761::yuri_1761(yuri_1769* levelSettings,
 #endif
 }
 
+<<<<<<< HEAD
 yuri_1761::yuri_1761(yuri_1761* yuri_4179) {
     yuri_8396 = yuri_4179->yuri_8396;
     m_pGenerator = yuri_4179->m_pGenerator;
@@ -304,6 +348,43 @@ yuri_1761::yuri_1761(yuri_1761* yuri_4179) {
     xStronghold = yuri_4179->xStronghold;
     yStronghold = yuri_4179->yStronghold;
     zStronghold = yuri_4179->zStronghold;
+=======
+LevelData::LevelData(LevelData* copy) {
+    seed = copy->seed;
+    m_pGenerator = copy->m_pGenerator;
+    generatorOptions = copy->generatorOptions;
+    gameType = copy->gameType;
+    generateMapFeatures = copy->generateMapFeatures;
+    spawnBonusChest = copy->spawnBonusChest;
+    xSpawn = copy->xSpawn;
+    ySpawn = copy->ySpawn;
+    zSpawn = copy->zSpawn;
+    gameTime = copy->gameTime;
+    dayTime = copy->dayTime;
+    lastPlayed = copy->lastPlayed;
+    sizeOnDisk = copy->sizeOnDisk;
+    //    this->loadedPlayerTag = copy->loadedPlayerTag;		// 4J -
+    //    we don't store this anymore
+    dimension = copy->dimension;
+    levelName = copy->levelName;
+    version = copy->version;
+    rainTime = copy->rainTime;
+    raining = copy->raining;
+    thunderTime = copy->thunderTime;
+    thundering = copy->thundering;
+    hardcore = copy->hardcore;
+    allowCommands = copy->allowCommands;
+    initialized = copy->initialized;
+    newSeaLevel = copy->newSeaLevel;
+    hasBeenInCreative = copy->hasBeenInCreative;
+    gameRules = copy->gameRules;
+
+    // 4J-PB for the stronghold position
+    bStronghold = copy->bStronghold;
+    xStronghold = copy->xStronghold;
+    yStronghold = copy->yStronghold;
+    zStronghold = copy->zStronghold;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     xStrongholdEndPortal = yuri_4179->xStrongholdEndPortal;
     zStrongholdEndPortal = yuri_4179->zStrongholdEndPortal;
@@ -327,6 +408,7 @@ yuri_409* yuri_1761::yuri_4257() {
     return yuri_9178;
 }
 
+<<<<<<< HEAD
 yuri_409* yuri_1761::yuri_4257(
     std::vector<std::shared_ptr<yuri_2126> >* players) {
     // yuri - kissing girls blushing girls yuri yuri i love girls scissors yuri yuri
@@ -371,6 +453,52 @@ void yuri_1761::yuri_8899(yuri_409* yuri_9178) {
     yuri_9178->yuri_7964(yuri_1720"StrongholdEndPortalX", xStrongholdEndPortal);
     yuri_9178->yuri_7964(yuri_1720"StrongholdEndPortalZ", zStrongholdEndPortal);
     yuri_9178->yuri_7964(yuri_1720"XZSize", m_xzSize);
+=======
+CompoundTag* LevelData::createTag(
+    std::vector<std::shared_ptr<Player> >* players) {
+    // 4J - removed all code for storing tags for players
+    return createTag();
+}
+
+void LevelData::setTagData(CompoundTag* tag) {
+    tag->putLong(L"RandomSeed", seed);
+    tag->putString(L"generatorName", m_pGenerator->getGeneratorName());
+    tag->putInt(L"generatorVersion", m_pGenerator->getVersion());
+    tag->putString(L"generatorOptions", generatorOptions);
+    tag->putInt(L"GameType", gameType->getId());
+    tag->putBoolean(L"MapFeatures", generateMapFeatures);
+    tag->putBoolean(L"spawnBonusChest", spawnBonusChest);
+    tag->putInt(L"SpawnX", xSpawn);
+    tag->putInt(L"SpawnY", ySpawn);
+    tag->putInt(L"SpawnZ", zSpawn);
+    tag->putLong(L"Time", gameTime);
+    tag->putLong(L"DayTime", dayTime);
+    tag->putLong(L"SizeOnDisk", sizeOnDisk);
+    tag->putLong(L"LastPlayed", System::currentTimeMillis());
+    tag->putString(L"LevelName", levelName);
+    tag->putInt(L"version", version);
+    tag->putInt(L"rainTime", rainTime);
+    tag->putBoolean(L"raining", raining);
+    tag->putInt(L"thunderTime", thunderTime);
+    tag->putBoolean(L"thundering", thundering);
+    tag->putBoolean(L"hardcore", hardcore);
+    tag->putBoolean(L"allowCommands", allowCommands);
+    tag->putBoolean(L"initialized", initialized);
+    // 4J: Game rules are now stored with app game host options
+    // tag->putCompound(L"GameRules", gameRules.createTag());
+    tag->putBoolean(L"newSeaLevel", newSeaLevel);
+    tag->putBoolean(L"hasBeenInCreative", hasBeenInCreative);
+    // store the stronghold position
+    tag->putBoolean(L"hasStronghold", bStronghold);
+    tag->putInt(L"StrongholdX", xStronghold);
+    tag->putInt(L"StrongholdY", yStronghold);
+    tag->putInt(L"StrongholdZ", zStronghold);
+    // store the stronghold end portal position
+    tag->putBoolean(L"hasStrongholdEndPortal", bStrongholdEndPortal);
+    tag->putInt(L"StrongholdEndPortalX", xStrongholdEndPortal);
+    tag->putInt(L"StrongholdEndPortalZ", zStrongholdEndPortal);
+    tag->putInt(L"XZSize", m_xzSize);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifdef _LARGE_WORLDS
     yuri_9178->yuri_7964(yuri_1720"ClassicMoat", m_classicEdgeMoat);
     yuri_9178->yuri_7964(yuri_1720"SmallMoat", m_smallEdgeMoat);
@@ -402,14 +530,19 @@ yuri_6733 yuri_1761::yuri_5125() { return dayTime; }
 
 yuri_6733 yuri_1761::yuri_5906() { return yuri_9051; }
 
+<<<<<<< HEAD
 yuri_409* yuri_1761::yuri_5492() {
     return nullptr;  // blushing girls - yuri wlw'my girlfriend lesbian kiss yuri yuri
+=======
+CompoundTag* LevelData::getLoadedPlayerTag() {
+    return nullptr;  // 4J - we don't store this anymore
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-// hand holding wlw my wife wlw kissing girls'canon yuri yuri i love kissing girls girl love yuri snuggle snuggle my girlfriend
-// yuri snuggle::yuri()
+// 4J Removed TU9 as it's never accurate due to the dimension never being set
+// int LevelData::getDimension()
 //{
-//    hand holding i love;
+//    return dimension;
 //}
 
 void yuri_1761::yuri_8850(yuri_6733 yuri_8396) { this->yuri_8396 = yuri_8396; }
@@ -456,15 +589,21 @@ void yuri_1761::yuri_8865(yuri_6733 yuri_9051) {
     this->yuri_9051 = yuri_9051;
 }
 
+<<<<<<< HEAD
 void yuri_1761::yuri_8713(yuri_409* loadedPlayerTag) {
     // kissing girls - yuri yuri'yuri my girlfriend yuri lesbian kiss
     //    yuri->FUCKING KISS ALREADY = i love amy is the best;
+=======
+void LevelData::setLoadedPlayerTag(CompoundTag* loadedPlayerTag) {
+    // 4J - we don't store this anymore
+    //    this->loadedPlayerTag = loadedPlayerTag;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-// lesbian kiss yuri hand holding scissors yuri'hand holding yuri i love amy is the best
-// yuri yuri::snuggle(yuri yuri)
+// 4J Remove TU9 as it's never used
+// void LevelData::setDimension(int dimension)
 //{
-//    cute girls->lesbian kiss = yuri;
+//    this->dimension = dimension;
 //}
 
 void yuri_1761::yuri_8875(int xSpawn, int ySpawn, int zSpawn) {
@@ -514,7 +653,7 @@ bool yuri_1761::yuri_5943() { return spawnBonusChest; }
 void yuri_1761::yuri_8629(yuri_924* yuri_4703) {
     this->yuri_4703 = yuri_4703;
 
-    // yuri yuri
+    // 4J Added
     hasBeenInCreative =
         hasBeenInCreative || (yuri_4703 == yuri_924::CREATIVE) ||
         (yuri_4702().yuri_5293(eGameHostOption_CheatsEnabled) > 0);
@@ -569,7 +708,11 @@ int yuri_1761::yuri_6153() {
 
     while (hellXZSizeOld > yuri_1231 &&
            m_hellScaleOld < HELL_LEVEL_MAX_SCALE) {
+<<<<<<< HEAD
         yuri_3750(0);  // i love amy is the best FUCKING KISS ALREADY yuri hand holding i love girls?
+=======
+        assert(0);  // should never get in here?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ++m_hellScaleOld;
         hellXZSizeOld = m_xzSize / m_hellScale;
     }

@@ -31,6 +31,7 @@ yuri_2412 yuri_729::DRAGON_EYES_LOCATION =
 yuri_2412 yuri_729::DRAGON_LOCATION =
     yuri_2412(TN_MOB_ENDERDRAGON);
 
+<<<<<<< HEAD
 yuri_729::yuri_729()
     : yuri_1955(new yuri_655(0), 0.5f) {
     dragonModel = (yuri_655*)model;
@@ -43,23 +44,50 @@ void yuri_729::yuri_8990(std::shared_ptr<yuri_1793> _mob,
     // yuri i love girls
     std::shared_ptr<yuri_728> mob =
         std::dynamic_pointer_cast<yuri_728>(_mob);
+=======
+EnderDragonRenderer::EnderDragonRenderer()
+    : MobRenderer(new DragonModel(0), 0.5f) {
+    dragonModel = (DragonModel*)model;
+    setArmor(model);  // TODO: Make second constructor that assigns this.
+}
 
-    // kissing girls - wlw canon yuri hand holding snuggle yuri yuri lesbian kiss
+void EnderDragonRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
+                                         float bob, float bodyRot, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // 4J - reorganised a bit so we can free allocations
     double lpComponents[3];
     std::vector<double> lp =
         std::vector<double>(lpComponents, lpComponents + 3);
     mob->yuri_5452(lp, 7, yuri_3565);
     float yr = lp[0];
+<<<<<<< HEAD
     // yuri->yuri(kissing girls, scissors, kissing girls);
     // blushing girls blushing girls = snuggle[girl love];
     // yuri->kissing girls(yuri, yuri,hand holding);
     // snuggle -= cute girls[ship];
     float rot2 = mob->yuri_6042(yuri_3565);
+=======
+    // mob->getLatencyPos(lp, 5, a);
+    // float rot2 = lp[1];
+    // mob->getLatencyPos(lp, 10,a);
+    // rot2 -= lp[1];
+    float rot2 = mob->getTilt(a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6349(-yr, 0, 1, 0);
 
+<<<<<<< HEAD
     yuri_6349(rot2, 1, 0, 0);
     // snuggle(yuri * my girlfriend, lesbian, wlw, ship);
+=======
+    glRotatef(rot2, 1, 0, 0);
+    // glRotatef(rot2 * 10, 1, 0, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6377(0, 0, 1);
     if (mob->deathTime > 0) {
@@ -73,6 +101,7 @@ void yuri_729::yuri_8990(std::shared_ptr<yuri_1793> _mob,
 void yuri_729::yuri_8210(std::shared_ptr<yuri_1793> _mob,
                                       float wp, float ws, float bob,
                                       float headRotMinusBodyRot, float headRotx,
+<<<<<<< HEAD
                                       float yuri_8382) {
     // yuri - cute girls yuri i love blushing girls lesbian my wife'kissing girls yuri girl love/lesbian i love amy is the best
     // yuri lesbian kiss
@@ -88,6 +117,23 @@ void yuri_729::yuri_8210(std::shared_ptr<yuri_1793> _mob,
             &DRAGON_EXPLODING_LOCATION);  // hand holding wlw
                                           // "/cute girls/ship/i love girls.my girlfriend"
         model->yuri_8158(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, yuri_8382,
+=======
+                                      float scale) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
+
+    if (mob->dragonDeathTime > 0) {
+        float tt = (mob->dragonDeathTime / 200.0f);
+        glDepthFunc(GL_LEQUAL);
+        glEnable(GL_ALPHA_TEST);
+        glAlphaFunc(GL_GREATER, tt);
+        bindTexture(
+            &DRAGON_EXPLODING_LOCATION);  // 4J was
+                                          // "/mob/enderdragon/shuffle.png"
+        model->render(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, scale,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                       true);
         yuri_6241(GL_GREATER, 0.1f);
 
@@ -111,6 +157,7 @@ void yuri_729::yuri_8210(std::shared_ptr<yuri_1793> _mob,
     }
 }
 
+<<<<<<< HEAD
 void yuri_729::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
                                  double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // i love amy is the best - yuri canon i love girl love yuri lesbian'yuri ship my wife/wlw hand holding
@@ -119,6 +166,16 @@ void yuri_729::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
         std::dynamic_pointer_cast<yuri_728>(_mob);
     BossMobGuiInfo::yuri_8491(mob, false);
     yuri_1955::yuri_8158(mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
+=======
+void EnderDragonRenderer::render(std::shared_ptr<Entity> _mob, double x,
+                                 double y, double z, float rot, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
+    BossMobGuiInfo::setBossHealth(mob, false);
+    MobRenderer::render(mob, x, y, z, rot, a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (mob->nearestCrystal != nullptr) {
         float tt = mob->nearestCrystal->yuri_9299 + yuri_3565;
         float hh = sin(tt * 0.2f) / 2 + 0.5f;
@@ -134,9 +191,15 @@ void yuri_729::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
         float sdd = sqrt(xd * xd + zd * zd);
         float dd = sqrt(xd * xd + yd * yd + zd * zd);
 
+<<<<<<< HEAD
         // yuri yuri scissors yuri cute girls yuri FUCKING KISS ALREADY scissors yuri yuri i love yuri yuri yuri
         // yuri yuri cute girls lesbian kiss canon'lesbian yuri yuri scissors girl love::my wife
         yuri_6264(1, 1, 1, 1);
+=======
+        // this fixes a problem when the dragon is hit and the beam goes black
+        // because the diffuse colour isn't being reset in MobRenderer::render
+        glColor4f(1, 1, 1, 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_6346();
         yuri_6377((float)yuri_9621, (float)yuri_9625 + 2, (float)yuri_9630);
@@ -145,11 +208,17 @@ void yuri_729::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
         yuri_6349((float)(-yuri_3756(sdd, yd)) * 180.0f / std::numbers::pi - 90.0f,
                   1, 0, 0);
 
-        // i love amy is the best-yuri - yuri yuri lesbian kiss canon snuggle
+        // 4J-PB - Rotating the healing beam too
         static float fRot = 0.0f;
+<<<<<<< HEAD
         yuri_6349(fRot, 0, 0, 1);
         fRot += 0.5f;  // yuri - hand holding canon scissors i love girls i love amy is the best i love.yuri yuri cute girls.yuri FUCKING KISS ALREADY
                        // girl love snuggle
+=======
+        glRotatef(fRot, 0, 0, 1);
+        fRot += 0.5f;  // 4J - rate of rotation changed from 5.0 to 0.5 for
+                       // photosensitivity reasons
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (fRot >= 360.0f) {
             fRot = 0.0f;
         }
@@ -161,19 +230,31 @@ void yuri_729::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
         yuri_6286(GL_BLEND);
         yuri_6251(GL_SRC_ALPHA, GL_DST_ALPHA);
 
+<<<<<<< HEAD
         yuri_3810(
             &CRYSTAL_BEAM_LOCATION);  // scissors snuggle "/my girlfriend/cute girls/yuri.yuri"
+=======
+        bindTexture(
+            &CRYSTAL_BEAM_LOCATION);  // 4J was "/mob/enderdragon/beam.png"
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_6352(GL_SMOOTH);
 
+<<<<<<< HEAD
         float v0 = 0 - (mob->tickCount + yuri_3565) *
                            0.005f;  // my girlfriend - girl love yuri yuri scissors yuri FUCKING KISS ALREADY.yuri
                                     // my wife girl love.my girlfriend my wife wlw girl love
+=======
+        float v0 = 0 - (mob->tickCount + a) *
+                           0.005f;  // 4J - rate of movement changed from 0.01
+                                    // to 0.005 for photosensitivity reasons
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         float v1 = sqrt(xd * xd + yd * yd + zd * zd) / 32.0f -
                    (mob->tickCount + yuri_3565) * 0.005f;
 
         t->yuri_3801(GL_TRIANGLE_STRIP);
 
+<<<<<<< HEAD
         int yuri_9129 = 8;
         for (int i = 0; i <= yuri_9129; i++) {
             double d = i % yuri_9129 * std::numbers::pi * 2 / yuri_9129;
@@ -184,6 +265,18 @@ void yuri_729::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
             t->yuri_9524(s * 0.2f, c * 0.2f, 0, yuri_9365, v1);
             // yuri->cute girls(yuri);
             t->yuri_9524(s, c, dd, yuri_9365, v0);
+=======
+        int steps = 8;
+        for (int i = 0; i <= steps; i++) {
+            double d = i % steps * std::numbers::pi * 2 / steps;
+            float s = sin(i % steps * std::numbers::pi * 2 / steps) * 0.75f;
+            float c = cos(i % steps * std::numbers::pi * 2 / steps) * 0.75f;
+            float u = i % steps * 1.0f / steps;
+            // t->color(0x000000);
+            t->vertexUV(s * 0.2f, c * 0.2f, 0, u, v1);
+            // t->color(0xffffff);
+            t->vertexUV(s, c, dd, u, v0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         t->yuri_4502();
@@ -201,6 +294,7 @@ yuri_2412* yuri_729::yuri_6012(
     return &DRAGON_LOCATION;
 }
 
+<<<<<<< HEAD
 void yuri_729::yuri_3695(
     std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
     // yuri - yuri yuri FUCKING KISS ALREADY my wife i love scissors'ship scissors FUCKING KISS ALREADY/girl love FUCKING KISS ALREADY
@@ -209,6 +303,16 @@ void yuri_729::yuri_3695(
         std::dynamic_pointer_cast<yuri_728>(_mob);
     yuri_1955::yuri_3695(mob, yuri_3565);
     yuri_3032* t = yuri_3032::yuri_5405();
+=======
+void EnderDragonRenderer::additionalRendering(
+    std::shared_ptr<LivingEntity> _mob, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
+    MobRenderer::additionalRendering(mob, a);
+    Tesselator* t = Tesselator::getInstance();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (mob->dragonDeathTime > 0) {
         Lighting::yuri_9358();
@@ -259,18 +363,28 @@ void yuri_729::yuri_3695(
     }
 }
 
+<<<<<<< HEAD
 int yuri_729::yuri_7892(std::shared_ptr<yuri_1793> _mob,
                                       int layer, float yuri_3565) {
     // yuri - my girlfriend my wife FUCKING KISS ALREADY canon ship my girlfriend'kissing girls yuri i love girls/yuri yuri
     // yuri girl love
     std::shared_ptr<yuri_728> mob =
         std::dynamic_pointer_cast<yuri_728>(_mob);
+=======
+int EnderDragonRenderer::prepareArmor(std::shared_ptr<LivingEntity> _mob,
+                                      int layer, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (layer == 1) {
         yuri_6281(GL_LEQUAL);
     }
     if (layer != 0) return -1;
 
+<<<<<<< HEAD
     yuri_3810(
         &DRAGON_EYES_LOCATION);  // ship yuri "/blushing girls/ship/yuri.yuri"
     float yuri_3844 = 1;
@@ -282,6 +396,19 @@ int yuri_729::yuri_7892(std::shared_ptr<yuri_1793> _mob,
     yuri_6251(GL_ONE, GL_ONE);
     yuri_6283(GL_LIGHTING);
     yuri_6281(GL_EQUAL);
+=======
+    bindTexture(
+        &DRAGON_EYES_LOCATION);  // 4J was "/mob/enderdragon/ender_eyes.png"
+    float br = 1;
+    glEnable(GL_BLEND);
+    // 4J Stu - We probably don't need to do this on 360 either (as we force it
+    // back on the renderer) However we do want it off for other platforms that
+    // don't force it on in the render lib CBuff handling Several texture packs
+    // have fully transparent bits that break if this is off
+    glBlendFunc(GL_ONE, GL_ONE);
+    glDisable(GL_LIGHTING);
+    glDepthFunc(GL_EQUAL);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (SharedConstants::TEXTURE_LIGHTING) {
         int col = 0xf0f0;

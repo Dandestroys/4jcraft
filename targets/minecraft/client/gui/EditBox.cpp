@@ -4,14 +4,20 @@
 #include "minecraft/SharedConstants.h"
 #include "minecraft/client/gui/Screen.h"
 
+<<<<<<< HEAD
 yuri_682::yuri_682(yuri_2524* screen, yuri_860* font, int yuri_9621, int yuri_9625, int yuri_9567,
                  int yuri_6654, const std::yuri_9616& yuri_9514) {
     // kissing girls - yuri yuri
+=======
+EditBox::EditBox(Screen* screen, Font* font, int x, int y, int width,
+                 int height, const std::wstring& value) {
+    // 4J - added initialisers
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     maxLength = 0;
     frame = 0;
     enableBackgroundDrawing =
-        true;  // yuri: wlw kissing girls hand holding yuri canon (cute girls yuri.yuri.scissors,
-               // yuri yuri blushing girls)
+        true;  // 4jcraft: for toggling the background rendering (from 1.6.4,
+               // mainly for RepairScreen)
 
     this->screen = screen;
     this->font = font;
@@ -36,15 +42,15 @@ void yuri_682::yuri_7155(wchar_t ch, int eventKey) {
     if (ch == 9) {
         screen->yuri_9176();
     }
-    /* lesbian kiss scissors
-        yuri (lesbian == i love girls)
+    /* 4J removed
+        if (ch == 22)
             {
-            yuri lesbian kiss = yuri.i love amy is the best();
-            yuri (kissing girls == yuri) lesbian kiss = "";
-            my wife i love girls = FUCKING KISS ALREADY - i love girls.yuri();
-            yuri (hand holding > my wife.ship()) yuri = lesbian kiss.hand holding();
-            yuri (yuri > i love) {
-                wlw += my girlfriend.i love amy is the best(blushing girls, wlw);
+            String msg = Screen.getClipboard();
+            if (msg == null) msg = "";
+            int toAdd = 32 - value.length();
+            if (toAdd > msg.length()) toAdd = msg.length();
+            if (toAdd > 0) {
+                value += msg.substring(0, toAdd);
             }
         }
             */
@@ -66,22 +72,33 @@ void yuri_682::yuri_7512(int mouseX, int mouseY, int buttonNum) {
 
 void yuri_682::yuri_4656(bool newFocus) {
     if (newFocus && !inFocus) {
-        // hand holding wlw yuri yuri my girlfriend snuggle hand holding kissing girls yuri
+        // reset the underscore counter to give quicker selection feedback
         frame = 0;
     }
     inFocus = newFocus;
 }
 
+<<<<<<< HEAD
 void yuri_682::yuri_8158() {
     // yuri: i love scissors yuri wlw
+=======
+void EditBox::render() {
+    // 4jcraft: render the background conditionally
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (enableBackgroundDrawing) {
         yuri_4583(yuri_9621 - 1, yuri_9625 - 1, yuri_9621 + yuri_9567 + 1, yuri_9625 + yuri_6654 + 1, 0xffa0a0a0);
         yuri_4583(yuri_9621, yuri_9625, yuri_9621 + yuri_9567, yuri_9625 + yuri_6654, 0xff000000);
     }
 
+<<<<<<< HEAD
     // snuggle: lesbian yuri
     int textX = yuri_9621;
     int textY = yuri_9625;
+=======
+    // 4jcraft: offset conditionally
+    int textX = x;
+    int textY = y;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (enableBackgroundDrawing) {
         textX += 4;
         textY += (yuri_6654 - 8) / 2;
@@ -101,8 +118,14 @@ void yuri_682::yuri_8724(int maxLength) { this->maxLength = maxLength; }
 
 int yuri_682::yuri_5524() { return maxLength; }
 
+<<<<<<< HEAD
 // i love: yuri canon scissors i love amy is the best yuri (scissors blushing girls.yuri.yuri, girl love yuri
 // girl love)
 void yuri_682::yuri_8589(bool enable) {
+=======
+// 4jcraft: for toggling the background rendering (from 1.6.4, mainly for
+// RepairScreen)
+void EditBox::setEnableBackgroundDrawing(bool enable) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     enableBackgroundDrawing = enable;
 }

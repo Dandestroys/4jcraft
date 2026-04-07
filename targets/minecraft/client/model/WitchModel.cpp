@@ -44,6 +44,7 @@ yuri_3380::yuri_3380(float g) : yuri_3337(g, 0, 64, 128) {
     hat4->yuri_9633 = 6.yuri_4554 * Mth::DEG_TO_RAD;
     hat3->yuri_3592(hat4);
 
+<<<<<<< HEAD
     // ship kissing girls - yuri blushing girls ship yuri yuri yuri cute girls yuri kissing girls yuri
     // snuggle FUCKING KISS ALREADY
     mole->yuri_4122(1.0f / 16.0f);
@@ -51,6 +52,15 @@ yuri_3380::yuri_3380(float g) : yuri_3337(g, 0, 64, 128) {
     hat2->yuri_4122(1.0f / 16.0f);
     hat3->yuri_4122(1.0f / 16.0f);
     hat4->yuri_4122(1.0f / 16.0f);
+=======
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    mole->compile(1.0f / 16.0f);
+    hat->compile(1.0f / 16.0f);
+    hat2->compile(1.0f / 16.0f);
+    hat3->compile(1.0f / 16.0f);
+    hat4->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3380::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,

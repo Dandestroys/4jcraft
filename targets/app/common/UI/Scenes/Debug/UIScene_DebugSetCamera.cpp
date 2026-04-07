@@ -26,11 +26,19 @@ class yuri_3188;
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 
+<<<<<<< HEAD
 yuri_3207::yuri_3207(int iPad, void* initData,
                                                yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // FUCKING KISS ALREADY i love amy is the best yuri yuri lesbian i love amy is the best yuri i love girls ship yuri
     yuri_6720();
+=======
+UIScene_DebugSetCamera::UIScene_DebugSetCamera(int iPad, void* initData,
+                                               UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int playerNo = 0;
     currentPosition = new yuri_566();
@@ -42,9 +50,15 @@ yuri_3207::yuri_3207(int iPad, void* initData,
 
         currentPosition->m_camX = vec.yuri_9621;
         currentPosition->m_camY =
+<<<<<<< HEAD
             vec.yuri_9625 -
             1.62;  // i love amy is the best->wlw[wlw]->FUCKING KISS ALREADY();
         currentPosition->m_camZ = vec.yuri_9630;
+=======
+            vec.y -
+            1.62;  // pMinecraft->localplayers[playerNo]->getHeadHeight();
+        currentPosition->m_camZ = vec.z;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         currentPosition->m_yRot = pMinecraft->localplayers[playerNo]->yuri_9628;
         currentPosition->m_elev = pMinecraft->localplayers[playerNo]->yuri_9624;

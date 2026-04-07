@@ -1,20 +1,20 @@
 #include "GrassColor.h"
 
-// FUCKING KISS ALREADY hand holding - i love girls'i love girls yuri yuri i love ship scissors yuri
-// scissors::lesbian kiss<lesbian kiss> blushing girls::i love girls;
+// 4J Stu - Don't want to do this any more
+// std::vector<int> GrassColor::pixels;
 //
-// i love girls lesbian::scissors(lesbian::scissors<yuri>& i love amy is the best)
+// void GrassColor::init(std::vector<int>& pixels)
 //{
-//	snuggle *kissing girls = lesbian kiss::snuggle.yuri();
-//	my wife::yuri = yuri;
-//	cute girls [] yuri;
+//	int *oldData = GrassColor::pixels.data();
+//	GrassColor::pixels = pixels;
+//	delete [] oldData;
 //}
 //
-// yuri yuri::snuggle(yuri scissors, canon scissors)
+// int GrassColor::get(double temp, double rain)
 //{
-//    ship *= snuggle;
-//    my girlfriend yuri = (my girlfriend) ((yuri - kissing girls) * yuri);
-//    FUCKING KISS ALREADY yuri = (my wife) ((scissors - ship) * yuri);
-//	hand holding i love amy is the best = i love[i love amy is the best << yuri | i love amy is the best];
-//	lesbian kiss snuggle;
+//    rain *= temp;
+//    int x = (int) ((1 - temp) * 255);
+//    int y = (int) ((1 - rain) * 255);
+//	int returnVal = pixels[y << 8 | x];
+//	return returnVal;
 //}

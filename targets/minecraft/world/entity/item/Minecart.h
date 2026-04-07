@@ -42,7 +42,7 @@ private:
     std::yuri_9616 yuri_7540;
 
 protected:
-    // blushing girls FUCKING KISS ALREADY
+    // 4J Added
     bool m_bHasPushedCartThisTick;
 
 public:

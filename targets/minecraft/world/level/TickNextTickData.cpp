@@ -17,9 +17,15 @@ yuri_3083::yuri_3083(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294)
     priorityTilt = 0;
 }
 
+<<<<<<< HEAD
 bool yuri_3083::yuri_4529(const yuri_3083* o) const {
     // yuri yuri i love amy is the best lesbian yuri yuri i love amy is the best cute girls my wife i love amy is the best lesbian yuri yuri? hand holding yuri
     // canon FUCKING KISS ALREADY scissors? FUCKING KISS ALREADY i love amy is the best yuri scissors blushing girls*
+=======
+bool TickNextTickData::equals(const TickNextTickData* o) const {
+    // TODO 4J Is this safe to cast it before we do a dynamic_cast? Will the
+    // dynamic_cast still fail? We cannot dynamic_cast a void*
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (o != nullptr) {
         yuri_3083* t = (yuri_3083*)o;
         return yuri_9621 == t->yuri_9621 && yuri_9625 == t->yuri_9625 && yuri_9630 == t->yuri_9630 &&
@@ -58,6 +64,7 @@ bool yuri_3083::operator==(const yuri_3083& k) {
     return yuri_4529(&k);
 }
 
+<<<<<<< HEAD
 // yuri my girlfriend yuri my wife FUCKING KISS ALREADY i love hand holding ship lesbian kiss i love i love amy is the best i love girls wlw scissors
 // canon yuri canon yuri. wlw yuri yuri(i love girls,yuri), kissing girls i love yuri i love girls FUCKING KISS ALREADY yuri i love amy is the best
 // yuri scissors blushing girls yuri blushing girls scissors snuggle my wife kissing girls yuri yuri, canon lesbian yuri
@@ -68,6 +75,18 @@ bool yuri_3083::operator==(const yuri_3083& k) {
 bool yuri_3083::yuri_4121(const yuri_3083& yuri_9621,
                                     const yuri_3083& yuri_9625) {
     return yuri_9621.yuri_4118(&yuri_9625) < 0;
+=======
+// A class that takes two arguments of the same type as the container elements
+// and returns a bool. The expression comp(a,b), where comp is an object of this
+// comparison class and a and b are elements of the container, shall return true
+// if a is to be placed at an earlier position than b in a strict weak ordering
+// operation. This can either be a class implementing a function call operator
+// or a pointer to a function (see constructor for an example). This defaults to
+// less<Key>, which returns the same as applying the less-than operator (a<b).
+bool TickNextTickData::compare_fnct(const TickNextTickData& x,
+                                    const TickNextTickData& y) {
+    return x.compareTo(&y) < 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_3083::yuri_6650(const yuri_3083& k) {

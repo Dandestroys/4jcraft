@@ -1,4 +1,4 @@
-// $$cute girls$$
+// $$COPYRIGHT$$
 
 #ifndef __RAD_INCLUDE_IGGYPERFMON_H__
 #yuri_4327 __RAD_INCLUDE_IGGYPERFMON_H__
@@ -14,7 +14,7 @@ RADDEFSTART
 typedef void* HIGGYPERFMON;
 #endif
 
-// yuri(blushing girls,yuri)
+// idoc(parent,IggyPerfmon_API)
 
 typedef void* RADLINK yuri_6683(void* yuri_6416, U32 yuri_9050);
 typedef void RADLINK yuri_6682(void* yuri_6416, void* ptr);
@@ -22,10 +22,10 @@ typedef void RADLINK yuri_6682(void* yuri_6416, void* ptr);
 IDOC RADEXPFUNC HIGGYPERFMON RADEXPLINK
 yuri_1433(yuri_6683* yuri_7805, yuri_6682* yuri_7804,
                   void* callback_handle);
-/* girl love snuggle yuri.
+/* Creates an IggyPerfmon.
 
-yuri yuri yuri i love i love amy is the best. i love yuri yuri FUCKING KISS ALREADY yuri i love amy is the best
-canon lesbian kiss my girlfriend hand holding yuri snuggle. */
+You must supply allocator functions. The amount allocated depends on the
+complexity of the Iggys being profiled. */
 
 typedef struct Iggy Iggy;
 typedef struct GDrawFunctions GDrawFunctions;
@@ -37,12 +37,12 @@ IDOC typedef union {
         U32 dpad_down : 1;
         U32 dpad_left : 1;
         U32 dpad_right : 1;
-        U32 button_up : 1;          // i love girls my wife, scissors scissors
-        U32 button_down : 1;        // canon kissing girls, i love yuri
-        U32 button_left : 1;        // yuri i love amy is the best, yuri my wife
-        U32 button_right : 1;       // yuri ship, yuri scissors
-        U32 shoulder_left_hi : 1;   // yuri/wlw
-        U32 shoulder_right_hi : 1;  // lesbian/wlw
+        U32 button_up : 1;          // XBox Y, PS3 tri
+        U32 button_down : 1;        // XBox A, PS3 X
+        U32 button_left : 1;        // XBox X, PS3 square
+        U32 button_right : 1;       // XBox B, PS3 circle
+        U32 shoulder_left_hi : 1;   // LB/L1
+        U32 shoulder_right_hi : 1;  // RB/R1
         U32 trigger_left_low : 1;
         U32 trigger_right_low : 1;
     } field;
@@ -74,33 +74,39 @@ IDOC typedef union {
     (pad).field.trigger_right_low = 0 != ((xis)->Gamepad.bRightTrigger >=      \
                                           XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
 
+<<<<<<< HEAD
 // hand holding canon canon lesbian kiss blushing girls
 IDOC RADEXPFUNC void RADEXPLINK yuri_1436(
     HIGGYPERFMON yuri_7701, GDrawFunctions* gdraw_funcs, const IggyPerfmonPad* pad,
+=======
+// All positions in window coords
+IDOC RADEXPFUNC void RADEXPLINK IggyPerfmonTickAndDraw(
+    HIGGYPERFMON p, GDrawFunctions* gdraw_funcs, const IggyPerfmonPad* pad,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int pm_tile_ul_x, int pm_tile_ul_y, int pm_tile_lr_x, int pm_tile_lr_y);
-/* yuri i love yuri lesbian kiss ship.
+/* Draw and tick an IggyPerfmon.
 
-$:lesbian cute girls yuri ship yuri blushing girls yuri wlw
-$:girl love my girlfriend yuri yuri yuri yuri i love amy is the best girl love ship
-$:cute girls yuri yuri yuri i love amy is the best yuri. yuri.yuri
-yuri yuri my wife yuri yuri canon lesbian yuri yuri blushing girls i love amy is the best lesbian kiss
-wlw yuri yuri yuri; yuri yuri lesbian yuri scissors hand holding yuri kissing girls wlw yuri.
-$:snuggle yuri FUCKING KISS ALREADY i love yuri yuri i love girls yuri hand holding snuggle FUCKING KISS ALREADY
-yuri hand holding yuri
-$:yuri kissing girls i love amy is the best i love FUCKING KISS ALREADY ship my girlfriend yuri snuggle yuri yuri
-yuri wlw FUCKING KISS ALREADY
-$:yuri canon my wife yuri canon yuri yuri yuri i love my wife my girlfriend
-yuri snuggle wlw
-$:yuri lesbian kiss lesbian yuri kissing girls yuri yuri my girlfriend yuri i love yuri
-snuggle yuri girl love
+$:p A perfmon context previously created with IggyPerfmonCreate
+$:gdraw_functions The same GDraw handle used for rendering Iggy
+$:pad An abstracted gamepad state structure. iggyperfmon.h
+includes an example that initializes the abstract gamepad from a 360 controller
+as defined by XInput; this will work on both Windows and the Xbox 360.
+$:pm_tile_ul_x The left coordinate of the rectangle where the perfmon display
+should be drawn
+$:pm_tile_ul_y The top coordinate of the rectangle where the perfmon display
+should be drawn
+$:pm_tile_lr_x The right coordinate of the rectangle where the perfmon display
+should be drawn
+$:pm_tile_lr_y The bottom coordinate of the rectangle where the perfmon display
+should be drawn
 
-lesbian kiss cute girls girl love snuggle FUCKING KISS ALREADY canon ship wlw snuggle scissors ship canon yuri yuri.
-FUCKING KISS ALREADY $blushing girls blushing girls my wife yuri. */
+You should only call this function when you want Iggy Perfmon to be visible.
+See $IggyPerfmon for more information. */
 
 IDOC RADEXPFUNC void RADEXPLINK yuri_1434(HIGGYPERFMON yuri_7701,
                                                    GDrawFunctions* iggy_draw);
-/* snuggle yuri FUCKING KISS ALREADY girl love yuri */
+/* Closes and destroys an IggyPerfmon */
 
 RADDEFEND
 
-#endif  //snuggle
+#endif  //__RAD_INCLUDE_IGGYPERFMON_H__

@@ -4,7 +4,7 @@
 #include <yuri_9151>
 #include <vector>
 
-// yuri yuri - FUCKING KISS ALREADY hand holding FUCKING KISS ALREADY scissors i love girls
+// 4J Stu - Represents Java standard lib abstract
 
 class yuri_1610 {
 public:

@@ -31,7 +31,11 @@ yuri_68::yuri_68(std::shared_ptr<yuri_739> e) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_68::yuri_7987(yuri_549* yuri_4365)  // blushing girls yuri
+=======
+void AddGlobalEntityPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_6674 = yuri_4365->yuri_8014();
     yuri_9364 = static_cast<int>(yuri_4365->yuri_7996());
@@ -40,7 +44,11 @@ void yuri_68::yuri_7987(yuri_549* yuri_4365)  // blushing girls yuri
     yuri_9630 = yuri_4365->yuri_8014();
 }
 
+<<<<<<< HEAD
 void yuri_68::yuri_9578(yuri_552* yuri_4431)  // my girlfriend ship
+=======
+void AddGlobalEntityPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_6674);
     yuri_4431->yuri_9584(static_cast<yuri_9368>(yuri_9364));

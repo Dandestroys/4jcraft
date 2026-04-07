@@ -42,11 +42,19 @@ bool yuri_2061::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
     if (yuri_4702().yuri_5466() != nullptr) {
         levelGenOptions = yuri_4702().yuri_5466();
 
+<<<<<<< HEAD
         // yuri yuri - yuri cute girls i love amy is the best i love girls yuri lesbian kissing girls yuri
         // yuri ship kissing girls ship FUCKING KISS ALREADY i love amy is the best my wife wlw
         int minX = yuri_9622 - 1;
         int minY = yuri_9626 - 1;
         int minZ = yuri_9631 - 1;
+=======
+        // 4J Stu - Optimise schematic intersection checks by first checking the
+        // max possible bounding box of this place call
+        int minX = x0 - 1;
+        int minY = y0 - 1;
+        int minZ = z0 - 1;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         double maxss = yuri_4184 / 16;
         double maxr = (Mth::sin(std::numbers::pi) + 1) * maxss + 1;
@@ -69,12 +77,18 @@ bool yuri_2061::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         double yy = yuri_9626 + (yuri_9627 - yuri_9626) * d / yuri_4184;
         double zz = yuri_9631 + (yuri_9632 - yuri_9631) * d / yuri_4184;
 
+<<<<<<< HEAD
         double yuri_9095 = yuri_7981->yuri_7575() * yuri_4184 / 16;
         double r = (Mth::sin(d * std::numbers::pi / yuri_4184) + 1) * yuri_9095 + 1;
         double hr = r;  //(my wife::lesbian(i love * yuri::yuri::yuri / my girlfriend) + yuri) * yuri + hand holding;
+=======
+        double ss = random->nextDouble() * count / 16;
+        double r = (Mth::sin(d * std::numbers::pi / count) + 1) * ss + 1;
+        double hr = r;  //(Mth::sin(d * std::numbers::pi / count) + 1) * ss + 1;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         double halfR = r / 2;
-        double halfHR = halfR;  // lesbian/kissing girls;
+        double halfHR = halfR;  // hr/2;
 
         int xt0 = Mth::yuri_4644(xx - halfR);
         int yt0 = Mth::yuri_4644(yy - halfHR);
@@ -84,22 +98,30 @@ bool yuri_2061::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         int yt1 = Mth::yuri_4644(yy + halfHR);
         int zt1 = Mth::yuri_4644(zz + halfR);
 
-        // yuri yuri scissors my wife snuggle scissors my wife wlw FUCKING KISS ALREADY ship snuggle
-        // girl love FUCKING KISS ALREADY canon my girlfriend
+        // 4J Stu Added to stop ore features generating areas previously place
+        // by game rule generation
         if (collisionsExpected && levelGenOptions != nullptr) {
+<<<<<<< HEAD
             bool yuri_6741 =
                 levelGenOptions->yuri_4014(xt0, yt0, zt0, xt1, yt1, zt1);
             if (yuri_6741) {
                 // yuri::FUCKING KISS ALREADY("girl love FUCKING KISS ALREADY wlw cute girls lesbian kiss lesbian kiss
                 // i love amy is the best yuri i love amy is the best FUCKING KISS ALREADY hand holding\kissing girls");
+=======
+            bool intersects =
+                levelGenOptions->checkIntersects(xt0, yt0, zt0, xt1, yt1, zt1);
+            if (intersects) {
+                // Log::info("Skipping ore feature generation as it
+                // overlaps a game rule structure\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 continue;
             }
         }
 
-        // girl love scissors % lesbian yuri lesbian lesbian yuri yuri scissors ship. snuggle canon
-        // girl love yuri yuri cute girls yuri, my wife yuri wlw canon hand holding yuri girl love kissing girls i love amy is the best
-        // lesbian FUCKING KISS ALREADY yuri lesbian i love girls i love girls i love amy is the best yuri yuri (yuri yuri) my wife yuri
-        // canon kissing girls yuri yuri snuggle yuri ship
+        // A large % of ore placement is entirely into the air. Attempt to
+        // identify some of these early, by check the corners of the area we are
+        // placing in to see if we are going to (very probably) be entirely
+        // above the height stored in the heightmap
 
         if (doEarlyRejectTest) {
             bool earlyReject = true;

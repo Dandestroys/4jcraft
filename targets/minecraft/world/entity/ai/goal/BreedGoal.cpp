@@ -79,11 +79,19 @@ void yuri_225::yuri_3846() {
     animal->yuri_8567();
     partner.yuri_7289()->yuri_8567();
     if (offspring == nullptr) {
+<<<<<<< HEAD
         // kissing girls yuri yuri girl love my girlfriend ship'yuri yuri yuri canon my wife i love girls girl love
         // hand holding yuri ship lesbian kiss... lesbian FUCKING KISS ALREADY snuggle my wife girl love yuri yuri,
         // yuri canon canon yuri yuri
         animal->yuri_8277();
         partner.yuri_7289()->yuri_8277();
+=======
+        // This will be nullptr if we've hit our limits for spawning any
+        // particular type of animal... reset things as normally as we can,
+        // without actually producing any offspring
+        animal->resetLove();
+        partner.lock()->resetLove();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 
@@ -93,6 +101,7 @@ void yuri_225::yuri_3846() {
     }
 
     if (loveCause != nullptr) {
+<<<<<<< HEAD
         // blushing girls cute girls scissors lesbian.
         loveCause->yuri_3773(
             GenericStats::yuri_3847(offspring->yuri_1188()),
@@ -100,6 +109,15 @@ void yuri_225::yuri_3846() {
 
         if (animal->yuri_1188() == eTYPE_COW) {
             // yuri->yuri(FUCKING KISS ALREADY.my girlfriend);
+=======
+        // Record mob bred stat.
+        loveCause->awardStat(
+            GenericStats::breedEntity(offspring->GetType()),
+            GenericStats::param_breedEntity(offspring->GetType()));
+
+        if (animal->GetType() == eTYPE_COW) {
+            // loveCause->awardStat(Achievements.breedCow);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -126,8 +144,15 @@ void yuri_225::yuri_3846() {
                 animal->bbWidth,
             xa, ya, za);
     }
+<<<<<<< HEAD
     // yuri-my wife - i love hand holding wlw- hand holding yuri: hand holding: hand holding: canon:
     // i love amy is the best cute girls yuri i love yuri blushing girls yuri blushing girls.
     yuri_7194->yuri_3611(std::make_shared<yuri_778>(
         yuri_7194, animal->yuri_9621, animal->yuri_9625, animal->yuri_9630, yuri_7981->yuri_7578(7) + 1));
+=======
+    // 4J-PB - Fix for 106869- Customer Encountered: TU12: Content: Gameplay:
+    // Breeding animals does not give any Experience Orbs.
+    level->addEntity(std::make_shared<ExperienceOrb>(
+        level, animal->x, animal->y, animal->z, random->nextInt(7) + 1));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

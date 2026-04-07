@@ -40,10 +40,17 @@ protected:
 public:
     virtual void yuri_9265();
 
+<<<<<<< HEAD
     // lesbian kiss
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
     virtual void yuri_6465();
+=======
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+    virtual void handleDestroy();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6517(F64 startIndex, bool up);
 

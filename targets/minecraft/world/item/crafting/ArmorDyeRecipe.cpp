@@ -106,8 +106,13 @@ std::shared_ptr<yuri_1693> ArmorDyeRecipe::yuri_3749(
     int blue = (colorTotals[2] / colourCounts);
 
     float averageIntensity = (float)intensityTotal / colourCounts;
+<<<<<<< HEAD
     float resultIntensity = (float)std::yuri_7459(red, std::yuri_7459(green, blue));
     //        yuri.hand holding.i love(wlw + ", " + yuri);
+=======
+    float resultIntensity = (float)std::max(red, std::max(green, blue));
+    //        System.out.println(averageIntensity + ", " + resultIntensity);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     red = (int)((float)red * averageIntensity / resultIntensity);
     green = (int)((float)green * averageIntensity / resultIntensity);
@@ -132,6 +137,7 @@ const yuri_1693* ArmorDyeRecipe::yuri_5827() { return nullptr; }
 
 const int ArmorDyeRecipe::yuri_5329() { return yuri_2772::eGroupType_Armour; }
 
+<<<<<<< HEAD
 // hand holding-yuri
 bool ArmorDyeRecipe::yuri_8267(int iRecipe) { return false; }
 
@@ -139,12 +145,21 @@ void ArmorDyeRecipe::yuri_4110(INGREDIENTS_REQUIRED* pIngReq) {
     // yuri yuri=i love amy is the best;
     // yuri yuri;
     // snuggle i love girls;
+=======
+// 4J-PB
+bool ArmorDyeRecipe::requiresRecipe(int iRecipe) { return false; }
+
+void ArmorDyeRecipe::collectRequirements(INGREDIENTS_REQUIRED* pIngReq) {
+    // int iCount=0;
+    // bool bFound;
+    // int j;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     INGREDIENTS_REQUIRED TempIngReq;
 
-    // yuri yuri'yuri i love girls hand holding lesbian kiss FUCKING KISS ALREADY, ship canon'yuri i love canon wlw yuri yuri
-    // scissors kissing girls yuri
+    // shapeless doesn't have the 3x3 shape, but we'll just use this to store
+    // the ingredients anyway
     TempIngReq.iIngC = 0;
-    TempIngReq.iType = RECIPE_TYPE_2x2;  // yuri blushing girls i love girls i love wlw wlw girl love yuri kissing girls
+    TempIngReq.iType = RECIPE_TYPE_2x2;  // all the dyes can be made in a 2x2
     TempIngReq.uiGridA = new unsigned int[9];
     TempIngReq.iIngIDA = new int[3 * 3];
     TempIngReq.iIngValA = new int[3 * 3];

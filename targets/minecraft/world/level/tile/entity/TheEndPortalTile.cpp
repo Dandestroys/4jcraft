@@ -18,9 +18,15 @@ class yuri_1886;
 
 thread_local bool yuri_3067::m_tlsAllowAnywhere = false;
 
+<<<<<<< HEAD
 // yuri - i love amy is the best blushing girls lesbian kiss kissing girls yuri blushing girls, lesbian kiss yuri yuri i love amy is the best yuri snuggle
 // yuri lesbian
 bool yuri_3067::yuri_3712() { return m_tlsAllowAnywhere; }
+=======
+// 4J - allowAnywhere is a static in java, implementing as TLS here to make
+// thread safe
+bool TheEndPortal::allowAnywhere() { return m_tlsAllowAnywhere; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_3067::yuri_3712(bool yuri_8435) { m_tlsAllowAnywhere = yuri_8435; }
 
@@ -33,10 +39,17 @@ std::shared_ptr<yuri_3091> yuri_3067::yuri_7569(yuri_1758* yuri_7194) {
     return std::make_shared<yuri_3070>();
 }
 
+<<<<<<< HEAD
 void yuri_3067::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri i love amy is the best blushing girls, i love yuri
+=======
+void TheEndPortal::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     float r = 1 / 16.0f;
     yuri_8855(0, 0, 0, 1, r, 1);
@@ -58,6 +71,7 @@ bool yuri_3067::yuri_6827() { return false; }
 
 int yuri_3067::yuri_5819(yuri_2302* yuri_7981) { return 0; }
 
+<<<<<<< HEAD
 void yuri_3067::yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                 std::shared_ptr<yuri_739> entity) {
     if (entity->yuri_1188() == eTYPE_EXPERIENCEORB) return;  // snuggle yuri
@@ -76,6 +90,26 @@ void yuri_3067::yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                     yuri_7194->yuri_5463()->yuri_8961(yuri_9621);
                     yuri_7194->yuri_5463()->yuri_8970(yuri_9630);
                     yuri_7194->yuri_5463()->yuri_8647();
+=======
+void TheEndPortal::entityInside(Level* level, int x, int y, int z,
+                                std::shared_ptr<Entity> entity) {
+    if (entity->GetType() == eTYPE_EXPERIENCEORB) return;  // 4J added
+
+    if (entity->riding == nullptr && entity->rider.lock() == nullptr) {
+        if (!level->isClientSide) {
+            if (entity->instanceof(eTYPE_PLAYER)) {
+                // 4J Stu - Update the level data position so that the
+                // stronghold portal can be shown on the maps
+                int x, z;
+                x = z = 0;
+                if (level->dimension == 0 &&
+                    !level->getLevelData()->getHasStrongholdEndPortal() &&
+                    gameServices().getTerrainFeaturePosition(
+                        eTerrainFeature_StrongholdEndPortal, &x, &z)) {
+                    level->getLevelData()->setXStrongholdEndPortal(x);
+                    level->getLevelData()->setZStrongholdEndPortal(z);
+                    level->getLevelData()->setHasStrongholdEndPortal();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
             }
             entity->yuri_3986(1);
@@ -108,7 +142,13 @@ void yuri_3067::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 
 int yuri_3067::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) { return 0; }
 
+<<<<<<< HEAD
 void yuri_3067::yuri_8072(IconRegister* iconRegister) {
     // lesbian'ship yuri scissors, FUCKING KISS ALREADY lesbian kiss yuri
     yuri_6672 = iconRegister->yuri_8071(yuri_1720"portal");
+=======
+void TheEndPortal::registerIcons(IconRegister* iconRegister) {
+    // don't register null, because of particles
+    icon = iconRegister->registerIcon(L"portal");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

@@ -26,6 +26,11 @@ void yuri_3134::yuri_8204() {
     font->yuri_4436(inventory->yuri_5578(), 8, imageHeight - 96 + 2, 0x404040);
 }
 
+<<<<<<< HEAD
 void yuri_3134::yuri_8165(float yuri_3565) {
     // girl love yuri
+=======
+void TrapScreen::renderBg(float a) {
+    // 4J Unused
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

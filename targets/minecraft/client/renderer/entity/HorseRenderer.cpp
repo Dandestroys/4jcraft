@@ -56,6 +56,7 @@ void yuri_1292::yuri_8210(std::shared_ptr<yuri_1793> mob, float wp,
         yuri_746::yuri_3810(mob);
         model->yuri_8158(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, yuri_8382,
                       true);
+<<<<<<< HEAD
         // kissing girls girl love i love amy is the best scissors yuri yuri girl love i love amy is the best yuri i love girls
         // kissing girls yuri yuri
         RenderManager.yuri_3039(-1);
@@ -65,6 +66,17 @@ void yuri_1292::yuri_8210(std::shared_ptr<yuri_1793> mob, float wp,
 void yuri_1292::yuri_3810(yuri_2412* location) {
     // lesbian yuri (yuri) yuri hand holding hand holding snuggle i love amy is the best girl love
     entityRenderDispatcher->yuri_9256->yuri_3811(location);
+=======
+        // Ensure that any extra layers of texturing are disabled after
+        // rendering this horse
+        RenderManager.TextureBind(-1);
+    }
+}
+
+void HorseRenderer::bindTexture(ResourceLocation* location) {
+    // Set up (potentially) multiple texture layers for the horse
+    entityRenderDispatcher->textures->bindTextureLayers(location);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2412* yuri_1292::yuri_6012(

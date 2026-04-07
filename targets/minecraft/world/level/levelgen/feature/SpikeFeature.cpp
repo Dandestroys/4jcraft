@@ -11,7 +11,7 @@
 
 yuri_2886::yuri_2886(int tile) {
     this->tile = tile;
-    // yuri=hand holding;
+    // m_iIndex=0;
 }
 
 bool yuri_2886::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
@@ -64,7 +64,7 @@ bool yuri_2886::yuri_7821(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
 
     int hh = 12 + (iIndex * 3);
 
-    // snuggle my girlfriend yuri yuri yuri lesbian kiss
+    // fill any tiles below the spike
 
     for (int xx = yuri_9621 - iRadius; xx <= yuri_9621 + iRadius; xx++) {
         for (int zz = yuri_9630 - iRadius; zz <= yuri_9630 + iRadius; zz++) {
@@ -73,6 +73,7 @@ bool yuri_2886::yuri_7821(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
             if (xd * xd + zd * zd <= iRadius * iRadius + 1) {
                 int iTileBelow = 1;
 
+<<<<<<< HEAD
                 while ((yuri_9625 - iTileBelow > -10) &&
                        yuri_7194->yuri_6030(xx, yuri_9625 - iTileBelow, zz) != tile) {
                     if (yuri_7194->yuri_6852(xx, yuri_9625 - iTileBelow, zz)) {
@@ -80,6 +81,15 @@ bool yuri_2886::yuri_7821(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
                         yuri_7194->yuri_8917(xx, yuri_9625 - iTileBelow, zz,
                                               yuri_3088::obsidian_Id, 0,
                                               yuri_3088::UPDATE_CLIENTS);
+=======
+                while ((y - iTileBelow > -10) &&
+                       level->getTile(xx, y - iTileBelow, zz) != tile) {
+                    if (level->isEmptyTile(xx, y - iTileBelow, zz)) {
+                        // empty tile
+                        level->setTileAndData(xx, y - iTileBelow, zz,
+                                              Tile::obsidian_Id, 0,
+                                              Tile::UPDATE_CLIENTS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     } else {
                         yuri_7194->yuri_8917(xx, yuri_9625 - iTileBelow, zz,
                                               yuri_3088::obsidian_Id, 0,
@@ -99,8 +109,13 @@ bool yuri_2886::yuri_7821(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
                     int zd = zz - yuri_9630;
                     int iVal = xd * xd + zd * zd;
                     if (iVal <= iRadius * iRadius + 1) {
+<<<<<<< HEAD
                         // girl love->scissors(my girlfriend, yuri, i love amy is the best, yuri::ship);
                         yuri_7815(yuri_7194, xx, yy, zz, yuri_3088::obsidian_Id, 0);
+=======
+                        // level->setTile(xx, yy, zz, Tile::obsidian_Id);
+                        placeBlock(level, xx, yy, zz, Tile::obsidian_Id, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
                 }
             }
@@ -110,7 +125,7 @@ bool yuri_2886::yuri_7821(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         }
     }
 
-    // lesbian kiss cute girls yuri girl love hand holding kissing girls hand holding i love amy is the best yuri scissors my girlfriend yuri wlw hand holding
+    // cap the last spikes with a fence to stop lucky arrows hitting the crystal
 
     if (iIndex > 5) {
         for (int yy = yuri_9625; yy < yuri_9625 + hh; yy++) {
@@ -138,8 +153,13 @@ bool yuri_2886::yuri_7821(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
             }
         }
 
+<<<<<<< HEAD
         // yuri girl love FUCKING KISS ALREADY my wife yuri
         int yy = yuri_9625 + hh + 3;
+=======
+        // and cap off the top
+        int yy = y + hh + 3;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (yy < yuri_1758::genDepth) {
             for (int xx = yuri_9621 - 2; xx <= yuri_9621 + 2; xx++) {
@@ -154,9 +174,15 @@ bool yuri_2886::yuri_7821(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         std::make_shared<yuri_725>(yuri_7194);
     enderCrystal->yuri_7531(yuri_9621 + 0.5f, yuri_9625 + hh, yuri_9630 + 0.5f, yuri_7981->yuri_7576() * 360,
                          0);
+<<<<<<< HEAD
     yuri_7194->yuri_3611(enderCrystal);
     yuri_7815(yuri_7194, yuri_9621, yuri_9625 + hh, yuri_9630, yuri_3088::unbreakable_Id, 0);
     // yuri->yuri(kissing girls, yuri + my wife, i love girls, i love girls::yuri);
+=======
+    level->addEntity(enderCrystal);
+    placeBlock(level, x, y + hh, z, Tile::unbreakable_Id, 0);
+    // level->setTile(x, y + hh, z, Tile::unbreakable_Id);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return true;
 }

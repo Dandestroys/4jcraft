@@ -9,12 +9,18 @@
 
 yuri_1839::yuri_1839(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363,
                                int tiles[], unsigned int tilesLength,
+<<<<<<< HEAD
                                int iconOverride /*= -yuri*/, int iData /* = -yuri */,
                                int iDataOverride /*= -yuri*/)
     : yuri_3146(yuri_6674, yuri_9363, -1, e_Hint_LookAtTile) {
+=======
+                               int iconOverride /*= -1*/, int iData /* = -1 */,
+                               int iDataOverride /*= -1*/)
+    : TutorialHint(id, tutorial, -1, e_Hint_LookAtTile) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     m_iTilesCount = tilesLength;
 
-    // girl love: i love: scissors ship yuri i love girls yuri, yuri
+    // TODO: 4jcraft: allocating but never freeing mem, leak
     m_iTiles = new int[m_iTilesCount];
     for (unsigned int i = 0; i < m_iTilesCount; i++) {
         m_iTiles[i] = tiles[i];
@@ -35,10 +41,17 @@ bool yuri_1839::yuri_7629(int yuri_6674, int iData) {
             }
         }
         if (itemFound) {
+<<<<<<< HEAD
             // yuri yuri
             yuri_3144::yuri_2147* yuri_7487 =
                 new yuri_3144::yuri_2147();
             yuri_7487->m_delay = true;
+=======
+            // Display hint
+            Tutorial::PopupMessageDetails* message =
+                new Tutorial::PopupMessageDetails();
+            message->m_delay = true;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (m_iconOverride >= 0) {
                 yuri_7487->yuri_7342 = m_iconOverride;
             } else if (m_iconOverride == -2) {
@@ -47,9 +60,15 @@ bool yuri_1839::yuri_7629(int yuri_6674, int iData) {
                 yuri_7487->yuri_7342 = yuri_6674;
             }
 
+<<<<<<< HEAD
             // snuggle-FUCKING KISS ALREADY: my girlfriend snuggle yuri yuri cute girls yuri my wife kissing girls'scissors ship yuri
             // lesbian kiss yuri lesbian.
             yuri_7487->m_iAuxVal =
+=======
+            // 4J-JEV: Moved to keep data override even if we're overriding the
+            // icon as well.
+            message->m_iAuxVal =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (m_iDataOverride > -1) ? m_iDataOverride : iData;
 
             yuri_7487->m_messageId = yuri_1687::items[yuri_6674]->yuri_6089();

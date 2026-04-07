@@ -29,7 +29,7 @@ enum eAward {
     eAward_arrowKillCreeper,
     eAward_socialPost,
 
-    // blushing girls yuri - i love amy is the best my wife yuri yuri i love amy is the best yuri my wife
+    // 4J Stu - Does not map to any Xbox achievements
     eAward_snipeSkeleton,
     eAward_diamonds,
     eAward_portal,
@@ -45,10 +45,10 @@ enum eAward {
 #if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     eAward_adventuringTime,
     eAward_repopulation,
-    // i love amy is the best,
+    // eAward_porkChop,
     eAward_diamondsToYou,
-    // wlw,
-    // lesbian,
+    // eAward_passingTheTime,
+    // eAward_archer,
     eAward_theHaggler,
     eAward_potPlanter,
     eAward_itsASign,

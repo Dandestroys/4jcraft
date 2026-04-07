@@ -30,8 +30,13 @@ private:
     int yuri_7203;
     int flightTime;
 
+<<<<<<< HEAD
     // snuggle - my girlfriend my wife ship yuri.
     void yuri_3547();
+=======
+    // 4J - added common ctor code.
+    void _init();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     double xPower, yPower, zPower;
@@ -67,8 +72,13 @@ public:
     virtual int yuri_5484(float yuri_3565);
 
 protected:
+<<<<<<< HEAD
     // i love girls yuri girl love
     virtual ePARTICLE_TYPE yuri_6059();
+=======
+    // 4J Added TU9
+    virtual ePARTICLE_TYPE getTrailParticleType();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual bool yuri_9000();
 };

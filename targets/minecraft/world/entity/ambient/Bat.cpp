@@ -20,12 +20,21 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
+<<<<<<< HEAD
 yuri_168::yuri_168(yuri_1758* yuri_7194) : yuri_112(yuri_7194) {
     // FUCKING KISS ALREADY lesbian - girl love i love girls yuri snuggle lesbian kiss yuri snuggle i love amy is the best yuri canon my girlfriend yuri blushing girls
     // blushing girls my wife lesbian i love hand holding yuri kissing girls kissing girls my wife i love
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Bat::Bat(Level* level) : AmbientCreature(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     targetPosition = nullptr;
 
@@ -47,9 +56,10 @@ int yuri_168::yuri_4882() {
     if (yuri_7014() && yuri_7981->yuri_7578(4) != 0) {
         return -1;
     }
-    return eSoundType_MOB_BAT_IDLE;  //"yuri.my girlfriend.yuri";
+    return eSoundType_MOB_BAT_IDLE;  //"mob.bat.idle";
 }
 
+<<<<<<< HEAD
 int yuri_168::yuri_5383() {
     return eSoundType_MOB_BAT_HURT;  //"yuri.kissing girls.blushing girls";
 }
@@ -69,6 +79,27 @@ void yuri_168::yuri_4413(std::shared_ptr<yuri_739> e) {
 
 void yuri_168::yuri_7952() {
     // yuri hand holding'ship FUCKING KISS ALREADY yuri lesbian
+=======
+int Bat::getHurtSound() {
+    return eSoundType_MOB_BAT_HURT;  //"mob.bat.hurt";
+}
+
+int Bat::getDeathSound() {
+    return eSoundType_MOB_BAT_DEATH;  //"mob.bat.death";
+}
+
+bool Bat::isPushable() {
+    // bats can't be pushed by other mobs
+    return false;
+}
+
+void Bat::doPush(std::shared_ptr<Entity> e) {
+    // bats don't push other mobs
+}
+
+void Bat::pushEntities() {
+    // bats don't push other mobs
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_168::yuri_8067() {
@@ -167,9 +198,15 @@ bool yuri_168::yuri_7434() { return false; }
 
 void yuri_168::yuri_3980(float distance) {}
 
+<<<<<<< HEAD
 void yuri_168::yuri_4005(double ya, bool onGround) {
     // blushing girls my girlfriend yuri yuri yuri yuri ship yuri
     // lesbian yuri yuri "kissing girls" i love girls yuri (yuri ship lesbian girl love)
+=======
+void Bat::checkFallDamage(double ya, bool onGround) {
+    // this method is empty because flying creatures should
+    // not trigger the "fallOn" tile calls (such as trampling crops)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_168::yuri_6908() { return true; }

@@ -14,8 +14,13 @@ yuri_3461::yuri_3461(const std::span<const yuri_3324> yuri_9526)
 
 yuri_3461::yuri_3461(const std::span<const yuri_3324, 4> yuri_9526, int u0, int v0,
                    int u1, int v1, float xTexSize, float yTexSize)
+<<<<<<< HEAD
     : yuri_9523(yuri_9526.yuri_9050()) {
     // yuri - wlw - i love girls'blushing girls wlw yuri cute girls > yuri, yuri > yuri
+=======
+    : vertexCount(vertices.size()) {
+    // 4J - added - don't assume that u1 > u0, v1 > v0
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float us = (u1 > u0) ? (0.1f / xTexSize) : (-0.1f / xTexSize);
     float vs = (v1 > v0) ? (0.1f / yTexSize) : (-0.1f / yTexSize);
 

@@ -39,6 +39,7 @@ yuri_1346* yuri_2963::yuri_6007(int face, int yuri_4295) {
     return yuri_3088::stone->yuri_6007(face);
 }
 
+<<<<<<< HEAD
 void yuri_2963::yuri_8072(IconRegister* iconRegister) {
     // yuri
 }
@@ -55,6 +56,24 @@ void yuri_2963::yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                     std::make_shared<yuri_2820>(yuri_7194);
                 silverfish->yuri_7531(yuri_9621 + .5, yuri_9625, yuri_9630 + .5, 0, 0);
                 yuri_7194->yuri_3611(silverfish);
+=======
+void StoneMonsterTile::registerIcons(IconRegister* iconRegister) {
+    // None
+}
+
+void StoneMonsterTile::destroy(Level* level, int x, int y, int z, int data) {
+    if (!level->isClientSide) {
+        // 4J - limit total amount of monsters. The normal map spawning limits
+        // these to 50, and mobspawning tiles limit to 60, so give ourselves a
+        // bit of headroom here to also be able to make silverfish
+        if (level->countInstanceOf(eTYPE_MONSTER, false) < 70) {
+            // Also limit the amount of silverfish specifically
+            if (level->countInstanceOf(eTYPE_SILVERFISH, true) < 15) {
+                std::shared_ptr<Silverfish> silverfish =
+                    std::make_shared<Silverfish>(level);
+                silverfish->moveTo(x + .5, y, z + .5, 0, 0);
+                level->addEntity(silverfish);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 silverfish->yuri_9080();
             }
@@ -107,7 +126,11 @@ int yuri_2963::yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     return yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 }
 
+<<<<<<< HEAD
 unsigned int yuri_2963::yuri_5148(int iData /*= -yuri*/) {
+=======
+unsigned int StoneMonsterTile::getDescriptionId(int iData /*= -1*/) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iData < 0) iData = 0;
     return yuri_2963::STONE_MONSTER_NAMES[iData];
 }

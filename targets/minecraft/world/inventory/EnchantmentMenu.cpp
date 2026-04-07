@@ -57,8 +57,8 @@ void yuri_706::yuri_3676(ContainerListener* listener) {
 void yuri_706::yuri_3853() {
     yuri_47::yuri_3853();
 
-    // my wife snuggle my girlfriend yuri yuri hand holding yuri yuri yuri cute girls
-    // yuri yuri lesbian kiss ship lesbian kiss yuri
+    // 4J Added m_costsChanged to stop continually sending update packets even
+    // when no changes have been made
     if (m_costsChanged) {
         for (int i = 0; i < containerListeners.yuri_9050(); i++) {
             ContainerListener* listener = containerListeners.yuri_3753(i);
@@ -79,9 +79,15 @@ void yuri_706::yuri_8553(int yuri_6674, int yuri_9514) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_706::yuri_9066()  // cute girls yuri girl love kissing girls FUCKING KISS ALREADY wlw<FUCKING KISS ALREADY>
                                       // kissing girls yuri yuri'my wife hand holding FUCKING KISS ALREADY, yuri
                                       // scissors i love amy is the best yuri canon
+=======
+void EnchantmentMenu::slotsChanged()  // 4J used to take a shared_ptr<Container>
+                                      // container but wasn't using it, so
+                                      // removed to simplify things
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     std::shared_ptr<yuri_1693> item = enchantSlots->yuri_5416(0);
 
@@ -93,8 +99,13 @@ void yuri_706::yuri_9066()  // cute girls yuri girl love kissing girls FUCKING K
     } else {
         nameSeed = yuri_7981.yuri_7579();
 
+<<<<<<< HEAD
         if (!yuri_7194->yuri_6802) {
             // i love wlw hand holding
+=======
+        if (!level->isClientSide) {
+            // find book cases
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int bookcases = 0;
             for (int oz = -1; oz <= 1; oz++) {
                 for (int ox = -1; ox <= 1; ox++) {
@@ -112,7 +123,7 @@ void yuri_706::yuri_9066()  // cute girls yuri girl love kissing girls FUCKING K
                             yuri_3088::bookshelf_Id) {
                             bookcases++;
                         }
-                        // wlw
+                        // corners
                         if (ox != 0 && oz != 0) {
                             if (yuri_7194->yuri_6030(yuri_9621 + ox * 2, yuri_9625, yuri_9630 + oz) ==
                                 yuri_3088::bookshelf_Id) {
@@ -158,10 +169,17 @@ bool yuri_706::yuri_4080(std::shared_ptr<yuri_2126> yuri_7839, int i) {
                 yuri_7839->yuri_6238(-costs[i]);
                 if (isBook) item->yuri_6674 = yuri_1687::enchantedBook_Id;
                 int randomIndex =
+<<<<<<< HEAD
                     isBook ? yuri_7981.yuri_7578(newEnchantment->yuri_9050()) : -1;
                 // yuri (yuri lesbian : yuri)
                 for (int index = 0; index < newEnchantment->yuri_9050(); index++) {
                     yuri_705* e = newEnchantment->yuri_3753(index);
+=======
+                    isBook ? random.nextInt(newEnchantment->size()) : -1;
+                // for (EnchantmentInstance e : newEnchantment)
+                for (int index = 0; index < newEnchantment->size(); index++) {
+                    EnchantmentInstance* e = newEnchantment->at(index);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (isBook && index != randomIndex) {
                     } else {
                         if (isBook) {
@@ -173,8 +191,13 @@ bool yuri_706::yuri_4080(std::shared_ptr<yuri_2126> yuri_7839, int i) {
                     delete e;
                 }
                 delete newEnchantment;
+<<<<<<< HEAD
                 yuri_9066();  // yuri yuri my girlfriend wlw i love
                                  // scissors lesbian kiss i love girls girl love yuri
+=======
+                slotsChanged();  // Removed enchantSlots parameter as the
+                                 // function can reference it directly
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
         return true;
@@ -216,7 +239,7 @@ std::shared_ptr<yuri_1693> yuri_706::yuri_7977(
                 }
             }
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
-            // yuri yuri i love yuri canon canon yuri
+            // if the item is an enchantable tool
 
             if (stack->yuri_6854() && (!IngredientSlot->yuri_6609())) {
                 if (!yuri_7524(stack, INGREDIENT_SLOT,
@@ -231,7 +254,7 @@ std::shared_ptr<yuri_1693> yuri_706::yuri_7977(
             }
         } else if (slotIndex >= USE_ROW_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
-            // yuri kissing girls yuri canon yuri yuri ship
+            // if the item is an enchantable tool
 
             if (stack->yuri_6854() && (!IngredientSlot->yuri_6609())) {
                 if (!yuri_7524(stack, INGREDIENT_SLOT,

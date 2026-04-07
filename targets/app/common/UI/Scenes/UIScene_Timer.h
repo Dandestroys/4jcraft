@@ -23,11 +23,19 @@ public:
 
     virtual EUIScene yuri_5854() { return eUIScene_Timer; }
 
+<<<<<<< HEAD
     // canon FUCKING KISS ALREADY cute girls wlw my wife yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, kissing girls my girlfriend blushing girls yuri lesbian
     // lesbian kiss yuri yuri FUCKING KISS ALREADY lesbian kiss i love
     virtual bool yuri_6661() { return true; }
     virtual void yuri_8090(bool yuri_4661);
     virtual bool yuri_7548();
+=======
+    // Returns true if lower scenes in this scenes layer, or in any layer below
+    // this scenes layers should be hidden
+    virtual bool hidesLowerScenes() { return true; }
+    virtual void reloadMovie(bool force);
+    virtual bool needsReloaded();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual std::yuri_9616 yuri_5574();

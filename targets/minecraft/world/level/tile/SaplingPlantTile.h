@@ -36,8 +36,13 @@ protected:
     yuri_2498(int yuri_6674);
 
 public:
+<<<<<<< HEAD
     virtual void yuri_9402();  // yuri yuri yuri
     virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+=======
+    virtual void updateDefaultShape();  // 4J Added override
+    virtual void tick(Level* level, int x, int y, int z, Random* random);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual yuri_1346* yuri_6007(int face, int yuri_4295);
     virtual void yuri_3701(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);

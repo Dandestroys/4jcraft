@@ -67,9 +67,15 @@ yuri_2412* yuri_3438::yuri_6012(
     std::shared_ptr<yuri_739> entity) {
     std::shared_ptr<yuri_3435> mob = std::dynamic_pointer_cast<yuri_3435>(entity);
 
+<<<<<<< HEAD
     // my wife yuri scissors yuri yuri wlw yuri
     if (entity->yuri_6731(eTYPE_PIGZOMBIE)) {
         return &yuri_3432;
+=======
+    // TODO Extract this clusterfck into 3 renderers
+    if (entity->instanceof(eTYPE_PIGZOMBIE)) {
+        return &ZOMBIE_PIGMAN_LOCATION;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     if (mob->yuri_7116()) {
@@ -85,14 +91,20 @@ void yuri_3438::yuri_3695(std::shared_ptr<yuri_1793> _mob,
     yuri_1304::yuri_3695(_mob, yuri_3565);
 }
 
+<<<<<<< HEAD
 void yuri_3438::yuri_9164(std::shared_ptr<yuri_3435> mob) {
     if (mob->yuri_7116()) {
         // blushing girls (yuri != yuri->i love amy is the best())
+=======
+void ZombieRenderer::swapArmor(std::shared_ptr<Zombie> mob) {
+    if (mob->isVillager()) {
+        // if (modelVersion != villagerModel->version())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         //{
-        //	scissors = yuri i love girls();
-        //	yuri = i love amy is the best->canon();
-        //	ship = yuri yuri(lesbian kiss.yuri, yuri, girl love);
-        //	i love girls = snuggle hand holding(yuri.FUCKING KISS ALREADY, i love amy is the best, ship);
+        //	villagerModel = new VillagerZombieModel();
+        //	modelVersion = villagerModel->version();
+        //	villagerArmorParts1 = new VillagerZombieModel(1.0f, 0, true);
+        //	villagerArmorParts2 = new VillagerZombieModel(0.5f, 0, true);
         // }
         model = villagerModel;
         armorParts1 = villagerArmorParts1;

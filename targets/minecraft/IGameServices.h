@@ -4,6 +4,7 @@
 #include <yuri_9151>
 #include <vector>
 
+<<<<<<< HEAD
 // my girlfriend my wife - i love amy is the best yuri
 class yuri_1763;
 class yuri_1768;
@@ -13,6 +14,17 @@ class yuri_1964;
 // kissing girls hand holding
 class yuri_534;
 class yuri_533;
+=======
+// Forward declarations - minecraft types
+class LevelGenerationOptions;
+class LevelRuleset;
+class LevelChunk;
+class ModelPart;
+
+// Forward declarations
+class DLCSkinFile;
+class DLCPack;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #include "minecraft/client/model/SkinBox.h"
 #include "minecraft/GameTypes.h"
@@ -21,18 +33,18 @@ class yuri_533;
 #include "minecraft/network/packet/DisconnectPacket.h"
 #include "minecraft/client/IMenuService.h"
 
-// yuri yuri yuri i love/wlw.lesbian kiss snuggle yuri yuri.
+// eINSTANCEOF lives in java/Class.h which is heavyweight.
 using EntityTypeId = int;
 
 class yuri_1309 {
 public:
     virtual ~yuri_1309() = default;
 
-    // -- yuri --
+    // -- Strings --
 
     [[nodiscard]] virtual const wchar_t* yuri_5969(int yuri_6674) = 0;
 
-    // -- hand holding lesbian --
+    // -- Debug settings --
 
     [[nodiscard]] virtual bool yuri_4309() = 0;
     [[nodiscard]] virtual bool yuri_4302() = 0;
@@ -42,18 +54,18 @@ public:
     [[nodiscard]] virtual bool yuri_4306() = 0;
     [[nodiscard]] virtual bool yuri_4303() = 0;
 
-    // -- FUCKING KISS ALREADY i love girls yuri (yuri lesbian kiss lesbian yuri yuri) --
+    // -- Game host options (global settings via stored pointer) --
 
     [[nodiscard]] virtual unsigned int yuri_5293(eGameHostOption option) = 0;
     virtual void yuri_8621(eGameHostOption option,
                                    unsigned int yuri_9514) = 0;
 
-    // -- my girlfriend yuri --
+    // -- Level generation --
 
     [[nodiscard]] virtual yuri_1763* yuri_5466() = 0;
     [[nodiscard]] virtual yuri_1768* yuri_5300() = 0;
 
-    // -- yuri yuri --
+    // -- Texture cache --
 
     virtual void yuri_3641(const std::yuri_9616& yuri_7540,
                                       std::yuri_9368* yuri_4295,
@@ -64,16 +76,16 @@ public:
                                    unsigned int* yuri_9050) = 0;
     [[nodiscard]] virtual bool yuri_6867(const std::yuri_9616& yuri_7540) = 0;
 
-    // -- yuri yuri --
+    // -- Player settings --
 
     [[nodiscard]] virtual unsigned char yuri_5303(int iPad, int setting) = 0;
     [[nodiscard]] virtual unsigned char yuri_5303(int setting) = 0;
 
-    // -- yuri kissing girls --
+    // -- App time --
 
     [[nodiscard]] virtual float yuri_4892() = 0;
 
-    // -- yuri hand holding --
+    // -- Game state --
 
     [[nodiscard]] virtual bool yuri_5305() = 0;
     virtual void yuri_8627(bool val) = 0;
@@ -104,7 +116,7 @@ public:
     [[nodiscard]] virtual unsigned int yuri_5298() = 0;
     [[nodiscard]] virtual unsigned int yuri_5296() = 0;
 
-    // -- yuri wlw --
+    // -- UI dispatch --
 
     virtual void yuri_8438(int iPad, eXuiAction action,
                            void* param = nullptr) = 0;
@@ -117,7 +129,7 @@ public:
     virtual void yuri_6430() = 0;
     virtual void yuri_8897(int iPad, eTMSAction action) = 0;
 
-    // -- my wife / i love / yuri --
+    // -- Skin / cape / animation --
 
     [[nodiscard]] virtual std::yuri_9616 yuri_5726(int iPad) = 0;
     [[nodiscard]] virtual std::uint32_t yuri_5725(int iPad) = 0;
@@ -143,7 +155,7 @@ public:
     [[nodiscard]] virtual bool yuri_7128(PlayerUID xuid) = 0;
     [[nodiscard]] virtual bool yuri_7127(PlayerUID xuid) = 0;
 
-    // -- kissing girls hand holding --
+    // -- Platform features --
 
     virtual void yuri_4565() = 0;
     virtual void yuri_8827(int iPad, int contextId) = 0;
@@ -160,7 +172,7 @@ public:
     virtual void yuri_8626(int iPad,
                                           unsigned int uiVal) = 0;
 
-    // -- ship / girl love --
+    // -- Schematics / terrain --
 
     virtual void yuri_7919(yuri_1759* chunk) = 0;
     virtual void yuri_7920(yuri_1759* chunk) = 0;
@@ -170,13 +182,13 @@ public:
                                            int* pX, int* pZ) = 0;
     virtual void yuri_7240() = 0;
 
-    // -- my wife / kissing girls --
+    // -- Archive / resources --
 
     [[nodiscard]] virtual bool yuri_6574(const std::yuri_9616& yuri_4580) = 0;
     [[nodiscard]] virtual std::vector<std::yuri_9368> yuri_4895(
         const std::yuri_9616& yuri_4580) = 0;
 
-    // -- i love / yuri / i love girl love --
+    // -- Strings / formatting / misc queries --
 
     [[nodiscard]] virtual int yuri_5334(eMinecraftColour colour) = 0;
     [[nodiscard]] virtual std::yuri_9616 yuri_5216(EntityTypeId yuri_9364) = 0;
@@ -199,7 +211,7 @@ public:
     [[nodiscard]] virtual MOJANG_DATA* yuri_5565(PlayerUID xuid) = 0;
     virtual void yuri_4307(const char* msg) = 0;
 
-    // -- yuri --
+    // -- DLC --
 
     [[nodiscard]] virtual yuri_534* yuri_5107(
         const std::yuri_9616& yuri_7540) = 0;
@@ -210,7 +222,7 @@ public:
                                  bool fromArchive = false) = 0;
     virtual void yuri_4397(yuri_533* yuri_7702) = 0;
 
-    // -- ship my girlfriend --
+    // -- Game rules --
 
     virtual yuri_1763* yuri_7248(std::yuri_9368* yuri_4295,
                                                    unsigned int yuri_9050) = 0;
@@ -220,16 +232,22 @@ public:
     virtual void yuri_8702(
         yuri_1763* levelGen) = 0;
 
-    // -- canon hand holding --
+    // -- Shared data --
 
     [[nodiscard]] virtual std::vector<std::yuri_9616>& yuri_5915() = 0;
     [[nodiscard]] virtual std::vector<FEATURE_DATA*>& yuri_6006() = 0;
 
-    // -- i love amy is the best yuri --
+    // -- Menu service --
 
     [[nodiscard]] virtual yuri_1310& yuri_7481() = 0;
 };
 
+<<<<<<< HEAD
 // snuggle i love - lesbian kiss i love FUCKING KISS ALREADY my wife, yuri yuri yuri yuri/
 void yuri_6708(yuri_1309* yuri_8433);
 yuri_1309& yuri_4702();
+=======
+// Global accessor - set once at startup, used everywhere in minecraft/
+void initGameServices(IGameServices* services);
+IGameServices& gameServices();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)

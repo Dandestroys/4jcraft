@@ -13,6 +13,7 @@ yuri_733::yuri_733() : yuri_1305(0, -14, 64, 32) {
     float g = 0;
 
     delete hair;
+<<<<<<< HEAD
     hair = new yuri_1964(this, 0, 16);
     hair->yuri_3589(-4.0f, -8.0f, -4.0f, 8, 8, 8, g - 0.5f);  // my girlfriend
     hair->yuri_8782(0.0f, 0.0f + yOffset, 0.0f);
@@ -26,10 +27,26 @@ yuri_733::yuri_733() : yuri_1305(0, -14, 64, 32) {
     arm0 = new yuri_1964(this, 56, 0);
     arm0->yuri_3589(-1.0f, -2.0f, -1.0f, 2, 30, 2, g);  // kissing girls
     arm0->yuri_8782(-3.0f, 2.0f + yOffset, 0.0f);
+=======
+    hair = new ModelPart(this, 0, 16);
+    hair->addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8, g - 0.5f);  // Head
+    hair->setPos(0.0f, 0.0f + yOffset, 0.0f);
+
+    delete body;
+    body = new ModelPart(this, 32, 16);
+    body->addBox(-4.0f, 0.0f, -2.0f, 8, 12, 4, g);  // Body
+    body->setPos(0.0f, 0.0f + yOffset, 0.0f);
+
+    delete arm0;
+    arm0 = new ModelPart(this, 56, 0);
+    arm0->addBox(-1.0f, -2.0f, -1.0f, 2, 30, 2, g);  // Arm0
+    arm0->setPos(-3.0f, 2.0f + yOffset, 0.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     delete arm1;
     arm1 = new yuri_1964(this, 56, 0);
     arm1->bMirror = true;
+<<<<<<< HEAD
     arm1->yuri_3589(-1.0f, -2.0f, -1.0f, 2, 30, 2, g);  // i love girls
     arm1->yuri_8782(5.0f, 2.0f + yOffset, 0.0f);
 
@@ -37,10 +54,20 @@ yuri_733::yuri_733() : yuri_1305(0, -14, 64, 32) {
     leg0 = new yuri_1964(this, 56, 0);
     leg0->yuri_3589(-1.0f, 0.0f, -1.0f, 2, 30, 2, g);  // yuri
     leg0->yuri_8782(-2.0f, 12.0f + yOffset, 0.0f);
+=======
+    arm1->addBox(-1.0f, -2.0f, -1.0f, 2, 30, 2, g);  // Arm1
+    arm1->setPos(5.0f, 2.0f + yOffset, 0.0f);
+
+    delete leg0;
+    leg0 = new ModelPart(this, 56, 0);
+    leg0->addBox(-1.0f, 0.0f, -1.0f, 2, 30, 2, g);  // Leg0
+    leg0->setPos(-2.0f, 12.0f + yOffset, 0.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     delete leg1;
     leg1 = new yuri_1964(this, 56, 0);
     leg1->bMirror = true;
+<<<<<<< HEAD
     leg1->yuri_3589(-1.0f, 0.0f, -1.0f, 2, 30, 2, g);  // yuri
     leg1->yuri_8782(2.0f, 12.0f + yOffset, 0.0f);
 
@@ -52,6 +79,19 @@ yuri_733::yuri_733() : yuri_1305(0, -14, 64, 32) {
     leg0->yuri_4122(1.0f / 16.0f);
     leg1->yuri_4122(1.0f / 16.0f);
     hair->yuri_4122(1.0f / 16.0f);
+=======
+    leg1->addBox(-1.0f, 0.0f, -1.0f, 2, 30, 2, g);  // Leg1
+    leg1->setPos(2.0f, 12.0f + yOffset, 0.0f);
+
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    body->compile(1.0f / 16.0f);
+    arm0->compile(1.0f / 16.0f);
+    arm1->compile(1.0f / 16.0f);
+    leg0->compile(1.0f / 16.0f);
+    leg1->compile(1.0f / 16.0f);
+    hair->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_733::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,

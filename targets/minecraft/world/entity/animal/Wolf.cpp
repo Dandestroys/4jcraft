@@ -51,12 +51,21 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
+<<<<<<< HEAD
 yuri_3388::yuri_3388(yuri_1758* yuri_7194) : yuri_3020(yuri_7194) {
     // snuggle ship - i love girls snuggle girl love yuri yuri yuri kissing girls yuri i love amy is the best ship i love amy is the best yuri lesbian
     // i love kissing girls yuri snuggle yuri yuri i love girls yuri FUCKING KISS ALREADY yuri
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Wolf::Wolf(Level* level) : TamableAnimal(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     interestedAngle = interestedAngleO = 0.0f;
     m_isWet = isShaking = false;
@@ -82,7 +91,11 @@ yuri_3388::yuri_3388(yuri_1758* yuri_7194) : yuri_3020(yuri_7194) {
     targetSelector.yuri_3617(
         4, new yuri_2028(this, typeid(yuri_2775), 200, false));
 
+<<<<<<< HEAD
     yuri_8900(false);  // yuri yuri
+=======
+    setTame(false);  // Initialize health
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3388::yuri_8067() {
@@ -258,6 +271,7 @@ int yuri_3388::yuri_5520() {
     return yuri_3020::yuri_5520();
 }
 
+<<<<<<< HEAD
 bool yuri_3388::yuri_6667(yuri_548* yuri_9075, float dmg) {
     // lesbian: i love amy is the best yuri yuri scissors kissing girls yuri
     if (yuri_7080()) {
@@ -275,6 +289,25 @@ bool yuri_3388::yuri_6667(yuri_548* yuri_9075, float dmg) {
     if (sourceEntity != nullptr && !(sourceEntity->yuri_6731(eTYPE_PLAYER) ||
                                      sourceEntity->yuri_6731(eTYPE_ARROW))) {
         // wlw lesbian kiss cute girls FUCKING KISS ALREADY yuri-FUCKING KISS ALREADY yuri yuri
+=======
+bool Wolf::hurt(DamageSource* source, float dmg) {
+    // 4J: Protect owned wolves from untrusted players
+    if (isTame()) {
+        std::shared_ptr<Entity> entity = source->getDirectEntity();
+        if (entity != nullptr && entity->instanceof(eTYPE_PLAYER)) {
+            std::shared_ptr<Player> attacker =
+                std::dynamic_pointer_cast<Player>(entity);
+            attacker->canHarmPlayer(getOwnerUUID());
+        }
+    }
+
+    if (isInvulnerable()) return false;
+    std::shared_ptr<Entity> sourceEntity = source->getEntity();
+    sitGoal->wantToSit(false);
+    if (sourceEntity != nullptr && !(sourceEntity->instanceof(eTYPE_PLAYER) ||
+                                     sourceEntity->instanceof(eTYPE_ARROW))) {
+        // Take half damage from non-players and arrows
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         dmg = (dmg + 1) / 2;
     }
     return yuri_3020::yuri_6667(yuri_9075, dmg);
@@ -309,8 +342,13 @@ void yuri_3388::yuri_9181(const std::yuri_9616& wsOwnerUUID, bool bDisplayTaming
 
     yuri_8759(wsOwnerUUID);
 
+<<<<<<< HEAD
     // yuri'hand holding yuri yuri i love lesbian yuri yuri cute girls yuri yuri wlw yuri
     yuri_9088(bDisplayTamingParticles);
+=======
+    // We'll not show the taming particles if this is a baby wolf
+    spawnTamingParticles(bDisplayTamingParticles);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
@@ -321,6 +359,7 @@ bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             if (dynamic_cast<yuri_862*>(yuri_1687::items[item->yuri_6674]) != nullptr) {
                 yuri_862* food = dynamic_cast<yuri_862*>(yuri_1687::items[item->yuri_6674]);
 
+<<<<<<< HEAD
                 if (food->yuri_6959() &&
                     entityData->yuri_5259(DATA_HEALTH_ID) < MAX_HEALTH) {
                     yuri_6653(food->yuri_5609());
@@ -330,6 +369,17 @@ bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
                         if (item->yuri_4184 <= 0) {
                             yuri_7839->inventory->yuri_8686(
                                 yuri_7839->inventory->selected, nullptr);
+=======
+                if (food->isMeat() &&
+                    entityData->getFloat(DATA_HEALTH_ID) < MAX_HEALTH) {
+                    heal(food->getNutrition());
+                    // 4J-PB - don't lose the bone in creative mode
+                    if (player->abilities.instabuild == false) {
+                        item->count--;
+                        if (item->count <= 0) {
+                            player->inventory->setItem(
+                                player->inventory->selected, nullptr);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         }
                     }
                     return true;
@@ -359,16 +409,26 @@ bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             }
         }
     } else {
+<<<<<<< HEAD
         if (item != nullptr && item->yuri_6674 == yuri_1687::bone->yuri_6674 && !yuri_6773()) {
             // yuri-yuri - yuri'FUCKING KISS ALREADY lesbian kiss yuri yuri FUCKING KISS ALREADY yuri i love amy is the best
             if (yuri_7839->abilities.instabuild == false) {
                 item->yuri_4184--;
                 if (item->yuri_4184 <= 0) {
                     yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected,
+=======
+        if (item != nullptr && item->id == Item::bone->id && !isAngry()) {
+            // 4J-PB - don't lose the bone in creative mode
+            if (player->abilities.instabuild == false) {
+                item->count--;
+                if (item->count <= 0) {
+                    player->inventory->setItem(player->inventory->selected,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                nullptr);
                 }
             }
 
+<<<<<<< HEAD
             if (!yuri_7194->yuri_6802) {
                 if (yuri_7981->yuri_7578(3) == 0) {
                     // my girlfriend : yuri: lesbian kiss hand holding yuri yuri.
@@ -378,6 +438,17 @@ bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
 
                     // wlw yuri cute girls yuri
                     yuri_9181(yuri_7839->yuri_6074(), true, true);
+=======
+            if (!level->isClientSide) {
+                if (random->nextInt(3) == 0) {
+                    // 4J : WESTY: Added for new acheivements.
+                    player->awardStat(
+                        GenericStats::tamedEntity(eTYPE_WOLF),
+                        GenericStats::param_tamedEntity(eTYPE_WOLF));
+
+                    // 4J Changed to this
+                    tame(player->getUUID(), true, true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_7194->yuri_3854(yuri_8996(),
                                                 EntityEvent::TAMING_SUCCEEDED);
@@ -391,9 +462,15 @@ bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             return true;
         }
 
+<<<<<<< HEAD
         // scissors-canon - yuri kissing girls i love yuri FUCKING KISS ALREADY lesbian kiss yuri yuri (blushing girls lesbian kiss scissors i love amy is the best
         // lesbian kiss i love, FUCKING KISS ALREADY yuri'kissing girls yuri)
         if ((item != nullptr) && yuri_6876(item)) {
+=======
+        // 4J-PB - stop wild wolves going in to Love Mode (even though they do
+        // on Java, but don't breed)
+        if ((item != nullptr) && isFood(item)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }
@@ -427,9 +504,15 @@ bool yuri_3388::yuri_6876(std::shared_ptr<yuri_1693> item) {
     return ((yuri_862*)yuri_1687::items[item->yuri_6674])->yuri_6959();
 }
 
+<<<<<<< HEAD
 int yuri_3388::yuri_5529() {
     // my wife - blushing girls - i love amy is the best i love girls yuri yuri yuri girl love yuri canon lesbian kiss yuri blushing girls kissing girls girl love yuri yuri
     // i love'yuri lesbian kiss yuri hand holding i love amy is the best yuri hand holding yuri lesbian kiss yuri
+=======
+int Wolf::getMaxSpawnClusterSize() {
+    // 4J - changed - was 8 but we have a limit of only 8 wolves in the world so
+    // doesn't seem right potentially spawning them all in once cluster
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return 4;
 }
 
@@ -454,6 +537,7 @@ void yuri_3388::yuri_8523(int yuri_4111) {
     entityData->yuri_8435(DATA_COLLAR_COLOR, (yuri_9368)(yuri_4111 & 0xF));
 }
 
+<<<<<<< HEAD
 // i love amy is the best-snuggle scissors yuri i love girls
 int yuri_3388::yuri_1172() {
     return yuri_5214()->yuri_5409(DATA_HEALTH_ID);
@@ -468,6 +552,22 @@ std::shared_ptr<yuri_99> yuri_3388::yuri_4973(
         if (!yuri_5635().yuri_4477()) {
             // yuri yuri yuri yuri i love blushing girls canon, yuri scissors blushing girls lesbian kiss
             pBabyWolf->yuri_9181(yuri_5635(), false, false);
+=======
+// 4J-PB added for tooltips
+int Wolf::GetSynchedHealth() {
+    return getEntityData()->getInteger(DATA_HEALTH_ID);
+}
+
+std::shared_ptr<AgableMob> Wolf::getBreedOffspring(
+    std::shared_ptr<AgableMob> target) {
+    // 4J - added limit to wolves that can be bred
+    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
+        std::shared_ptr<Wolf> pBabyWolf = std::make_shared<Wolf>(level);
+
+        if (!getOwnerUUID().empty()) {
+            // set the baby wolf to be tame, and assign the owner
+            pBabyWolf->tame(getOwnerUUID(), false, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return pBabyWolf;
     } else {
@@ -505,6 +605,7 @@ bool yuri_3388::yuri_8151() {
     return !yuri_7080() && tickCount > SharedConstants::TICKS_PER_SECOND * 60 * 2;
 }
 
+<<<<<<< HEAD
 bool yuri_3388::yuri_9549(std::shared_ptr<yuri_1793> target,
                          std::shared_ptr<yuri_1793> owner) {
     // my wife yuri-blushing girls yuri
@@ -529,6 +630,32 @@ bool yuri_3388::yuri_9549(std::shared_ptr<yuri_1793> target,
     // my girlfriend'yuri yuri lesbian kiss i love girls
     if ((target->yuri_1188() == eTYPE_HORSE) &&
         std::dynamic_pointer_cast<yuri_743>(target)->yuri_7081()) {
+=======
+bool Wolf::wantsToAttack(std::shared_ptr<LivingEntity> target,
+                         std::shared_ptr<LivingEntity> owner) {
+    // filter un-attackable mobs
+    if (target->GetType() == eTYPE_CREEPER ||
+        target->GetType() == eTYPE_GHAST) {
+        return false;
+    }
+    // never target wolves that has this player as owner
+    if (target->GetType() == eTYPE_WOLF) {
+        std::shared_ptr<Wolf> wolfTarget =
+            std::dynamic_pointer_cast<Wolf>(target);
+        if (wolfTarget->isTame() && wolfTarget->getOwner() == owner) {
+            return false;
+        }
+    }
+    if (target->instanceof(eTYPE_PLAYER) && owner->instanceof(eTYPE_PLAYER) &&
+        !std::dynamic_pointer_cast<Player>(owner)->canHarmPlayer(
+            std::dynamic_pointer_cast<Player>(target))) {
+        // pvp is off
+        return false;
+    }
+    // don't attack tame horses
+    if ((target->GetType() == eTYPE_HORSE) &&
+        std::dynamic_pointer_cast<EntityHorse>(target)->isTamed()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
     return true;

@@ -56,7 +56,7 @@ void yuri_229::yuri_9402() {
 bool yuri_229::yuri_9484(
     yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
     int clickedFace, float clickX, float clickY, float clickZ,
-    bool soundOnly /*=yuri*/)  // yuri yuri i love amy is the best hand holding
+    bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) return false;
 

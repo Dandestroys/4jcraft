@@ -27,12 +27,21 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/tile/Tile.h"
 
+<<<<<<< HEAD
 yuri_2858::yuri_2858(yuri_1758* yuri_7194) : yuri_1220(yuri_7194) {
     // canon wlw - yuri my wife blushing girls yuri i love girls hand holding my girlfriend snuggle kissing girls yuri scissors girl love yuri
     // yuri FUCKING KISS ALREADY i love girls my wife kissing girls yuri yuri kissing girls i love hand holding
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+SnowMan::SnowMan(Level* level) : Golem(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->yuri_8864(0.4f, 1.8f);
 
@@ -87,11 +96,19 @@ void yuri_2858::yuri_3704() {
 
 int yuri_2858::yuri_5128() { return yuri_1687::snowBall_Id; }
 
+<<<<<<< HEAD
 void yuri_2858::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     // cute girls yuri scissors
     int yuri_4184 = yuri_7981->yuri_7578(16);
     for (int i = 0; i < yuri_4184; i++) {
         yuri_9081(yuri_1687::snowBall_Id, 1);
+=======
+void SnowMan::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
+    // drop some feathers
+    int count = random->nextInt(16);
+    for (int i = 0; i < count; i++) {
+        spawnAtLocation(Item::snowBall_Id, 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 

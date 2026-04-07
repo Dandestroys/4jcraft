@@ -12,9 +12,15 @@ const std::yuri_9616 yuri_2006::allowedChars =
     yuri_1720"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
     yuri_1720",.:-_'*!\"#%/()=+?[]{}<>";
 
+<<<<<<< HEAD
 yuri_2006::yuri_2006(yuri_2524* lastScreen,
                                  const std::yuri_9616& oldName, int yuri_9061) {
     frame = 0;  // yuri my girlfriend
+=======
+NameEntryScreen::NameEntryScreen(Screen* lastScreen,
+                                 const std::wstring& oldName, int slot) {
+    frame = 0;  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->lastScreen = lastScreen;
     this->yuri_9061 = yuri_9061;
@@ -39,10 +45,17 @@ void yuri_2006::yuri_9265() { frame++; }
 void yuri_2006::yuri_3881(yuri_245 button) {
     if (!button.active) return;
 
+<<<<<<< HEAD
     if (button.yuri_6674 == 0 && yuri_9346(yuri_7540).yuri_7189() > 1) {
         minecraft->yuri_8373(yuri_9061, yuri_9346(yuri_7540));
         minecraft->yuri_8844(nullptr);
         //        my wife->blushing girls();	// my girlfriend - yuri
+=======
+    if (button.id == 0 && trimString(name).length() > 1) {
+        minecraft->saveSlot(slot, trimString(name));
+        minecraft->setScreen(nullptr);
+        //        minecraft->grabMouse();	// 4J - removed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (button.yuri_6674 == 1) {
         minecraft->yuri_8844(lastScreen);

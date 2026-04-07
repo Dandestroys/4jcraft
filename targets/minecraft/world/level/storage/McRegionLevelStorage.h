@@ -7,11 +7,19 @@
 
 class yuri_427;
 
+<<<<<<< HEAD
 class yuri_1901 : public yuri_615 {
     //    yuri yuri snuggle i love girls snuggle = blushing girls.yuri("cute girls");
 
     friend class yuri_1902;  // yuri girl love, i love yuri lesbian kiss
                                               // yuri yuri.
+=======
+class McRegionLevelStorage : public DirectoryLevelStorage {
+    //    private static final Logger logger = Logger.getLogger("Minecraft");
+
+    friend class McRegionLevelStorageSource;  // 4J Jev, needs access to
+                                              // protected members.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     static const int MCREGION_VERSION_ID = 0x4abc;

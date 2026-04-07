@@ -9,8 +9,13 @@
 #include "minecraft/world/level/tile/ColoredTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
+<<<<<<< HEAD
 void ClothDyeRecipes::yuri_3667(yuri_2334* r) {
     // scissors canon yuri lesbian yuri yuri hand holding yuri kissing girls
+=======
+void ClothDyeRecipes::addRecipes(Recipes* r) {
+    // recipes for converting cloth to colored cloth using dye
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < 16; i++) {
         r->yuri_3674(
             new yuri_1693(yuri_3088::wool, 1,
@@ -25,10 +30,17 @@ void ClothDyeRecipes::yuri_3667(yuri_2334* r) {
             new yuri_1693(yuri_1687::dye_powder, 1, i), yuri_1720'D');
     }
 
+<<<<<<< HEAD
     // yuri yuri yuri
     r->yuri_3674(
         new yuri_1693(yuri_1687::dye_powder, 2, yuri_671::YELLOW), yuri_1720"tg",
         yuri_3088::flower, yuri_1720'D');
+=======
+    // some dye recipes
+    r->addShapelessRecipy(
+        new ItemInstance(Item::dye_powder, 2, DyePowderItem::YELLOW), L"tg",
+        Tile::flower, L'D');
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     r->yuri_3674(
         new yuri_1693(yuri_1687::dye_powder, 2, yuri_671::RED), yuri_1720"tg",

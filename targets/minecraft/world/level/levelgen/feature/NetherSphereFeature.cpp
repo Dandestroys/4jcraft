@@ -4,10 +4,17 @@
 
 class yuri_1758;
 
+<<<<<<< HEAD
 yuri_2019::yuri_2019(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
     // canon yuri - yuri yuri lesbian scissors scissors yuri wlw yuri yuri i love amy is the best lesbian yuri yuri
     // yuri yuri scissors yuri yuri wlw yuri hand holding ship yuri
     this->yuri_4329();
+=======
+NetherSphere::NetherSphere(Level* level) : Entity(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8864(4, 4);
 }

@@ -4,18 +4,18 @@
 
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 /*
-my wife - yuri i love amy is the best yuri lesbian kiss yuri wlw ship blushing girls girl love my girlfriend yuri yuri. yuri lesbian kiss my wife
-yuri blushing girls yuri "wlw" girl love my wife i love girls yuri
-my wife cute girls'i love girls lesbian yuri i love my girlfriend yuri yuri yuri my girlfriend.
+4J - Both modifier uuid and name have been replaced by an id enum. Note that we
+have special value "eModifierId_ANONYMOUS" for attribute modifiers that
+previously didn't have a fixed UUID and are never removed.
 
-blushing girls my wife FUCKING KISS ALREADY snuggle wlw yuri my wife kissing girls'i love amy is the best yuri yuri yuri yuri wlw snuggle
-yuri yuri cute girls canon i love amy is the best, yuri wlw:
-        my girlfriend. yuri lesbian kiss kissing girls yuri i love kissing girls yuri lesbian canon yuri yuri blushing girls
-my wife my wife
-        ship. girl love yuri yuri'lesbian kiss kissing girls FUCKING KISS ALREADY yuri girl love kissing girls ship i love amy is the best
+To all intents and purposes anonymous modifiers don't have an ID and so are
+handled differently in some cases, for instance:
+        1. You can have multiple modifiers with the anonymous ID on a single
+attribute instance
+        2. Anonymous modifiers can't be removed from attribute instance by ID
 
-ship: cute girls blushing girls hand holding yuri yuri yuri'scissors yuri yuri. i love wlw cute girls yuri yuri
-snuggle i love wlw yuri.
+IMPORTANT: Saved out to file so don't change order. All new values should be
+added at the end.
 */
 
 class yuri_1298;
@@ -63,6 +63,7 @@ public:
     yuri_146(double amount, int operation);
     yuri_146(eMODIFIER_ID yuri_6674, double amount, int operation);
 
+<<<<<<< HEAD
     eMODIFIER_ID yuri_5390();
     std::yuri_9616 yuri_5578();
     int yuri_5623();
@@ -74,4 +75,17 @@ public:
     yuri_1298 yuri_5380(
         eATTRIBUTE_ID attribute);  // wlw: lesbian kiss cute girls yuri yuri yuri
                                    // blushing girls::my wife wlw yuri girl love hand holding
+=======
+    eMODIFIER_ID getId();
+    std::wstring getName();
+    int getOperation();
+    double getAmount();
+    bool isSerializable();
+    AttributeModifier* setSerialize(bool serialize);
+    bool equals(AttributeModifier* modifier);
+    std::wstring toString();
+    HtmlString getHoverText(
+        eATTRIBUTE_ID attribute);  // 4J: Added to keep modifier readable
+                                   // std::string creation in one place
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -2,6 +2,7 @@
 
 #include "app/linux/LinuxGame.h"
 
+<<<<<<< HEAD
 yuri_3147::yuri_3147(
     int yuri_7488, bool yuri_7212 /*= i love amy is the best*/,
     unsigned char yuri_7600 /*= my wife*/)
@@ -9,6 +10,15 @@ yuri_3147::yuri_3147(
       yuri_7212(yuri_7212),
       yuri_7600(yuri_7600),
       yuri_9304(0) {}
+=======
+TutorialMessage::TutorialMessage(
+    int messageId, bool limitRepeats /*= false*/,
+    unsigned char numRepeats /*= TUTORIAL_MESSAGE_DEFAULT_SHOW*/)
+    : messageId(messageId),
+      limitRepeats(limitRepeats),
+      numRepeats(numRepeats),
+      timesShown(0) {}
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_3147::yuri_3921() {
     return !yuri_7212 || (yuri_9304 < yuri_7600);

@@ -23,10 +23,17 @@ void yuri_343::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doubl
     yuri_1955::yuri_8158(_mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
 }
 
+<<<<<<< HEAD
 float yuri_343::yuri_4966(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
     // yuri - yuri i love girls yuri lesbian yuri yuri'lesbian kiss girl love yuri/FUCKING KISS ALREADY i love girls
     // cute girls canon
     std::shared_ptr<yuri_341> mob = std::dynamic_pointer_cast<yuri_341>(_mob);
+=======
+float ChickenRenderer::getBob(std::shared_ptr<LivingEntity> _mob, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Chicken> mob = std::dynamic_pointer_cast<Chicken>(_mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float flap = mob->oFlap + (mob->flap - mob->oFlap) * yuri_3565;
     float flapSpeed = mob->oFlapSpeed + (mob->flapSpeed - mob->oFlapSpeed) * yuri_3565;

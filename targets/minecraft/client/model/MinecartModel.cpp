@@ -44,8 +44,8 @@ yuri_1939::yuri_1939() : yuri_1962() {
     cubes[3]->yuri_9628 = std::numbers::pi / 2 * 2;
     cubes[5]->yuri_9624 = -std::numbers::pi / 2;
 
-    // FUCKING KISS ALREADY wlw - kissing girls i love amy is the best kissing girls yuri yuri blushing girls blushing girls girl love yuri yuri
-    // yuri scissors
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
     for (int i = 0; i < MINECART_LENGTH; i++) {
         cubes[i]->yuri_4122(1.0f / 16.0f);
     }

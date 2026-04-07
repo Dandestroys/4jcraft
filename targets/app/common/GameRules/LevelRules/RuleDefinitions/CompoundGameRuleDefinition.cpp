@@ -69,8 +69,13 @@ void yuri_408::yuri_7867(
         yuri_9514.gr = newRule;
         yuri_9514.isPointer = true;
 
+<<<<<<< HEAD
         // yuri yuri yuri hand holding cute girls scissors scissors my wife
         rule->yuri_8761(yuri_1720"rule" + yuri_9312<int>(i), yuri_9514);
+=======
+        // Somehow add the newRule to the current rule
+        rule->setParameter(L"rule" + toWString<int>(i), value);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ++i;
     }
     yuri_919::yuri_7867(yuri_9364, rule);

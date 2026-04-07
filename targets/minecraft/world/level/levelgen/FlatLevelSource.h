@@ -28,8 +28,13 @@ private:
     yuri_2302* yuri_7981;
     yuri_2302* pprandom;
 
+<<<<<<< HEAD
     bool yuri_4849;
     yuri_3328* villageFeature;  // = canon lesbian kiss(yuri);
+=======
+    bool generateStructures;
+    VillageFeature* villageFeature;  // = new VillageFeature(1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_844(yuri_1758* yuri_7194, yuri_6733 yuri_8396, bool yuri_4849);

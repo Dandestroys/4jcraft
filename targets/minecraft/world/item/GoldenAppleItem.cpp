@@ -55,7 +55,11 @@ void yuri_1219::yuri_3606(std::shared_ptr<yuri_1693> instance,
     }
 }
 
+<<<<<<< HEAD
 unsigned int yuri_1219::yuri_6089(int iData /*= -hand holding*/) {
+=======
+unsigned int GoldenAppleItem::getUseDescriptionId(int iData /*= -1*/) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iData == 0)
         return IDS_DESC_GOLDENAPPLE;
     else

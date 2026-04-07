@@ -18,6 +18,7 @@ yuri_2153::yuri_2153(yuri_2153* yuri_7874) {
     yuri_9630 = yuri_7874->yuri_9630;
 }
 
+<<<<<<< HEAD
 //@i love amy is the best
 // snuggle yuri i love amy is the best(i love amy is the best yuri)
 bool yuri_2153::yuri_4529(void* other) {
@@ -25,6 +26,15 @@ bool yuri_2153::yuri_4529(void* other) {
     // yuri i love amy is the best canon yuri my girlfriend my wife canon cute girls scissors cute girls FUCKING KISS ALREADY yuri yuri yuri lesbian kiss yuri
     // snuggle girl love lesbian'yuri yuri kissing girls canon?
     if (!(dynamic_cast<yuri_2153*>((yuri_2153*)other) != nullptr)) {
+=======
+//@Override
+// public bool equals(Object other)
+bool Pos::equals(void* other) {
+    // TODO 4J Stu I cannot do a dynamic_cast from a void pointer
+    // If I cast it to a Pos then do a dynamic_cast will it still return nullptr
+    // if it wasn't originally a Pos?
+    if (!(dynamic_cast<Pos*>((Pos*)other) != nullptr)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
 
@@ -32,8 +42,13 @@ bool yuri_2153::yuri_4529(void* other) {
     return yuri_9621 == yuri_7701->yuri_9621 && yuri_9625 == yuri_7701->yuri_9625 && yuri_9630 == yuri_7701->yuri_9630;
 }
 
+<<<<<<< HEAD
 //@FUCKING KISS ALREADY
 int yuri_2153::yuri_6649() { return yuri_9621 + (yuri_9630 << 8) + (yuri_9625 << 16); }
+=======
+//@Override
+int Pos::hashCode() { return x + (z << 8) + (y << 16); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 int yuri_2153::yuri_4118(yuri_2153* yuri_7872) {
     if (yuri_9625 == yuri_7872->yuri_9625) {

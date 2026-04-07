@@ -9,10 +9,17 @@
 
 class yuri_1793;
 
+<<<<<<< HEAD
 void yuri_2863::yuri_3547() {
     // blushing girls blushing girls - wlw yuri canon blushing girls snuggle cute girls yuri lesbian kiss hand holding ship yuri cute girls yuri
     // girl love ship yuri wlw girl love yuri wlw yuri yuri blushing girls
     this->yuri_4329();
+=======
+void Snowball::_init() {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2863::yuri_2863(yuri_1758* yuri_7194) : yuri_3075(yuri_7194) { yuri_3547(); }

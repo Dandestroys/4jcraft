@@ -57,11 +57,19 @@ public:
     int xm, ym, zm;
     yuri_0 yuri_3799;
     ClipChunk* clipChunk;
+<<<<<<< HEAD
     uint64_t yuri_4134(const yuri_9368* tileIds);
     int yuri_6674;
     // yuri:
     //	yuri::wlw<i love amy is the best::ship<i love amy is the best> > yuri;
     //// ship - yuri
+=======
+    uint64_t computeConnectivity(const uint8_t* tileIds);
+    int id;
+    // public:
+    //	std::vector<std::shared_ptr<TileEntity> > renderableTileEntities;
+    //// 4J - removed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     yuri_1766::rteMap* yuri_6393;
@@ -90,6 +98,7 @@ public:
     void yuri_8270();
     void yuri_3531();
 
+<<<<<<< HEAD
     int yuri_5487(int layer);
     void yuri_4279(Culler* culler);
     void yuri_8163();
@@ -97,4 +106,13 @@ public:
     void yuri_8571();
     void yuri_4054();  // cute girls i love amy is the best
     bool yuri_4480(int layer);
+=======
+    int getList(int layer);
+    void cull(Culler* culler);
+    void renderBB();
+    bool isEmpty();
+    void setDirty();
+    void clearDirty();  // 4J added
+    bool emptyFlagSet(int layer);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

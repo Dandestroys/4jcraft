@@ -12,7 +12,7 @@ IUIScene_InventoryMenu::yuri_1154(ESceneSection eSection,
                                                      int* piTargetY) {
     ESceneSection newSection = eSection;
 
-    // yuri ship yuri yuri i love cute girls FUCKING KISS ALREADY kissing girls
+    // Find the new section if there is one
     switch (eSection) {
         case eSectionInventoryArmor:
             if (eTapDirection == eTapStateDown) {

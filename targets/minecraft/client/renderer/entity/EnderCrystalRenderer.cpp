@@ -19,6 +19,7 @@ yuri_727::yuri_727() {
     this->shadowRadius = 0.5f;
 }
 
+<<<<<<< HEAD
 void yuri_727::yuri_8158(std::shared_ptr<yuri_739> _crystal, double yuri_9621,
                                   double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // yuri - i love girls wlw ship girl love cute girls i love girls FUCKING KISS ALREADY my wife yuri lesbian kiss my wife
@@ -29,6 +30,18 @@ void yuri_727::yuri_8158(std::shared_ptr<yuri_739> _crystal, double yuri_9621,
     if (currentModel != yuri_726::MODEL_ID) {
         model = new yuri_726(0);
         currentModel = yuri_726::MODEL_ID;
+=======
+void EnderCrystalRenderer::render(std::shared_ptr<Entity> _crystal, double x,
+                                  double y, double z, float rot, float a) {
+    // 4J - original version used generics and thus had an input parameter of
+    // type EnderCrystal rather than shared_ptr<Entity>  we have here - do some
+    // casting around instead
+    std::shared_ptr<EnderCrystal> crystal =
+        std::dynamic_pointer_cast<EnderCrystal>(_crystal);
+    if (currentModel != EnderCrystalModel::MODEL_ID) {
+        model = new EnderCrystalModel(0);
+        currentModel = EnderCrystalModel::MODEL_ID;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     float tt = crystal->yuri_9299 + yuri_3565;

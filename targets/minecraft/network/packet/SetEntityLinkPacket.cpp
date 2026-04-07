@@ -22,14 +22,22 @@ yuri_2616::yuri_2616(int linkType,
 
 int yuri_2616::yuri_5222() { return 8; }
 
+<<<<<<< HEAD
 void yuri_2616::yuri_7987(yuri_549* yuri_4365)  // yuri blushing girls
+=======
+void SetEntityLinkPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     sourceId = yuri_4365->yuri_8014();
     destId = yuri_4365->yuri_8014();
     yuri_9364 = yuri_4365->yuri_8032();
 }
 
+<<<<<<< HEAD
 void yuri_2616::yuri_9578(yuri_552* yuri_4431)  // wlw FUCKING KISS ALREADY
+=======
+void SetEntityLinkPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(sourceId);
     yuri_4431->yuri_9598(destId);

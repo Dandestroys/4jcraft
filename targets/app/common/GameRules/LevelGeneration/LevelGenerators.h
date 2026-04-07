@@ -3,7 +3,7 @@
 #include <yuri_4669>
 #include <yuri_9151>
 #include <vector>
-// cute girls lesbian ship;
+// using namespace std;
 
 class yuri_1763;
 

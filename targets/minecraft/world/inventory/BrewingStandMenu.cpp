@@ -50,12 +50,21 @@ void yuri_227::yuri_3676(ContainerListener* listener) {
 void yuri_227::yuri_3853() {
     yuri_47::yuri_3853();
 
+<<<<<<< HEAD
     // yuri (snuggle yuri = yuri; scissors < i love amy is the best->FUCKING KISS ALREADY(); snuggle++)
     for (auto yuri_7136 = containerListeners.yuri_3801(); yuri_7136 != containerListeners.yuri_4502();
          ++yuri_7136) {
         ContainerListener* listener = *yuri_7136;  // ship.i love amy is the best(yuri);
         if (tc != brewingStand->yuri_4974()) {
             listener->yuri_8530(this, 0, brewingStand->yuri_4974());
+=======
+    // for (int i = 0; i < containerListeners->size(); i++)
+    for (auto it = containerListeners.begin(); it != containerListeners.end();
+         ++it) {
+        ContainerListener* listener = *it;  // containerListeners.at(i);
+        if (tc != brewingStand->getBrewTime()) {
+            listener->setContainerData(this, 0, brewingStand->getBrewTime());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     tc = brewingStand->yuri_4974();
@@ -101,6 +110,7 @@ std::shared_ptr<yuri_1693> yuri_227::yuri_7977(
                 return nullptr;
             }
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
+<<<<<<< HEAD
             // girl love-yuri - girl love my girlfriend lesbian kiss hand holding yuri ship, yuri lesbian canon canon
             // wlw yuri
             if ((yuri_1687::items[stack->yuri_6674]->yuri_6622() ||
@@ -108,15 +118,32 @@ std::shared_ptr<yuri_1693> yuri_227::yuri_7977(
                 (!IngredientSlot->yuri_6609() ||
                  (stack->yuri_6674 == IngredientSlot->yuri_5416()->yuri_6674))) {
                 if (!yuri_7524(stack, INGREDIENT_SLOT,
+=======
+            // 4J-PB - if the item is an ingredient, quickmove it into the
+            // ingredient slot
+            if ((Item::items[stack->id]->hasPotionBrewingFormula() ||
+                 (stack->id == Item::netherwart_seeds_Id)) &&
+                (!IngredientSlot->hasItem() ||
+                 (stack->id == IngredientSlot->getItem()->id))) {
+                if (!moveItemStackTo(stack, INGREDIENT_SLOT,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      INGREDIENT_SLOT + 1, false)) {
                     return nullptr;
                 }
             }
+<<<<<<< HEAD
             // my wife?
             else if ((stack->yuri_6674 == yuri_1687::potion_Id) &&
                      (!PotionSlot1->yuri_6609() || !PotionSlot2->yuri_6609() ||
                       !PotionSlot3->yuri_6609())) {
                 if (!yuri_7524(stack, BOTTLE_SLOT_START,
+=======
+            // potion?
+            else if ((stack->id == Item::potion_Id) &&
+                     (!PotionSlot1->hasItem() || !PotionSlot2->hasItem() ||
+                      !PotionSlot3->hasItem())) {
+                if (!moveItemStackTo(stack, BOTTLE_SLOT_START,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      BOTTLE_SLOT_END + 1, false)) {
                     return nullptr;
                 }
@@ -126,6 +153,7 @@ std::shared_ptr<yuri_1693> yuri_227::yuri_7977(
             }
         } else if (slotIndex >= USE_ROW_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
+<<<<<<< HEAD
             // yuri-yuri - yuri snuggle girl love kissing girls yuri FUCKING KISS ALREADY, yuri yuri i love amy is the best yuri
             // scissors girl love
             if ((yuri_1687::items[stack->yuri_6674]->yuri_6622() ||
@@ -133,15 +161,32 @@ std::shared_ptr<yuri_1693> yuri_227::yuri_7977(
                 (!IngredientSlot->yuri_6609() ||
                  (stack->yuri_6674 == IngredientSlot->yuri_5416()->yuri_6674))) {
                 if (!yuri_7524(stack, INGREDIENT_SLOT,
+=======
+            // 4J-PB - if the item is an ingredient, quickmove it into the
+            // ingredient slot
+            if ((Item::items[stack->id]->hasPotionBrewingFormula() ||
+                 (stack->id == Item::netherwart_seeds_Id)) &&
+                (!IngredientSlot->hasItem() ||
+                 (stack->id == IngredientSlot->getItem()->id))) {
+                if (!moveItemStackTo(stack, INGREDIENT_SLOT,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      INGREDIENT_SLOT + 1, false)) {
                     return nullptr;
                 }
             }
+<<<<<<< HEAD
             // yuri?
             else if ((stack->yuri_6674 == yuri_1687::potion_Id) &&
                      (!PotionSlot1->yuri_6609() || !PotionSlot2->yuri_6609() ||
                       !PotionSlot3->yuri_6609())) {
                 if (!yuri_7524(stack, BOTTLE_SLOT_START,
+=======
+            // potion?
+            else if ((stack->id == Item::potion_Id) &&
+                     (!PotionSlot1->hasItem() || !PotionSlot2->hasItem() ||
+                      !PotionSlot3->hasItem())) {
+                if (!moveItemStackTo(stack, BOTTLE_SLOT_START,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      BOTTLE_SLOT_END + 1, false)) {
                     return nullptr;
                 }

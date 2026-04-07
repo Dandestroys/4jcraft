@@ -15,22 +15,29 @@ private:
     std::yuri_9616 splash;
     yuri_245* multiplayerButton;
 
+<<<<<<< HEAD
     // cute girls: lesbian
     void yuri_8218(float yuri_3565);
     void yuri_8232(float yuri_3565);
     void yuri_8321(float yuri_3565);
+=======
+    // 4jcraft: panorama
+    void renderPanorama(float a);
+    void renderSkybox(float a);
+    void rotateAndBlur(float a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int viewportTexture;
 
-    // yuri: i love amy is the best ship i love girls
-    // yuri yuri
+    // 4jcraft: taken from UIScene_MainMenu
+    // 4J Added
     enum eSplashIndexes {
         eSplashHappyBirthdayEx = 0,
         eSplashHappyBirthdayNotch,
         eSplashMerryXmas,
         eSplashHappyNewYear,
 
-        // yuri snuggle FUCKING KISS ALREADY yuri yuri lesbian kiss yuri blushing girls FUCKING KISS ALREADY i love amy is the best yuri yuri blushing girls
-        // kissing girls wlw
+        // The start index in the splashes vector from which we can select a
+        // random splash
         eSplashRandomStart,
     };
 

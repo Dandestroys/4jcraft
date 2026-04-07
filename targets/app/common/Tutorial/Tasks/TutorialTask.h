@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 
-// wlw yuri yuri;
+// using namespace std;
 #include "app/common/Tutorial/TutorialEnum.h"
 
 class yuri_1758;
@@ -13,8 +13,9 @@ class yuri_1953;
 class yuri_739;
 class yuri_1693;
 
-// FUCKING KISS ALREADY yuri snuggle yuri yuri wlw scissors snuggle snuggle i love amy is the best.
+// A class that represents each individual task in the tutorial.
 //
+<<<<<<< HEAD
 // my girlfriend:
 // lesbian	- yuri cute girls i love lesbian, my girlfriend yuri yuri scissors lesbian lesbian kiss
 // snuggle FUCKING KISS ALREADY my wife yuri.
@@ -27,6 +28,20 @@ class yuri_1693;
 // yuri- cute girls hand holding cute girls yuri yuri yuri yuri lesbian kissing girls lesbian yuri
 // i love i love amy is the best snuggle i love girls
 class yuri_3149 {
+=======
+// Members:
+// enablePreCompletion	- If this is true, then the player can complete this
+// task out of sequence.
+//						 This stops us asking them to do
+// things they have already done
+// constraints			- A list of constraints which can be activated
+// (as a whole).
+//						 If they are active, then the
+// constraints are removed when the task is completed
+// areConstraintsEnabled- A flag which records whether or not we have added the
+// constraints to the tutorial
+class TutorialTask {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 protected:
     int yuri_4346;
     int yuri_7369;

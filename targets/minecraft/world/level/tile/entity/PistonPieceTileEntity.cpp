@@ -13,6 +13,7 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "nbt/CompoundTag.h"
 
+<<<<<<< HEAD
 yuri_2119::yuri_2119() {
     // yuri canon lesbian yuri yuri
 
@@ -20,16 +21,32 @@ yuri_2119::yuri_2119() {
     this->yuri_6674 = 0;
     this->yuri_4295 = 0;
     this->yuri_4558 = 0;
+=======
+PistonPieceEntity::PistonPieceEntity() {
+    // for the tile entity loader
+
+    // 4J - added initialisers
+    this->id = 0;
+    this->data = 0;
+    this->facing = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->extending = 0;
     this->_isSourcePiston = 0;
     progress = 0.0f;
     progressO = 0.0f;
 }
 
+<<<<<<< HEAD
 yuri_2119::yuri_2119(int yuri_6674, int yuri_4295, int yuri_4558,
                                      bool extending, bool yuri_7061)
     : yuri_3091() {
     // ship - lesbian cute girls
+=======
+PistonPieceEntity::PistonPieceEntity(int id, int data, int facing,
+                                     bool extending, bool isSourcePiston)
+    : TileEntity() {
+    // 4J - added initialisers
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     progress = 0.0f;
     progressO = 0.0f;
 
@@ -165,11 +182,19 @@ void yuri_2119::yuri_8353(yuri_409* yuri_9178) {
     yuri_9178->yuri_7956(yuri_1720"extending", extending);
 }
 
+<<<<<<< HEAD
 // yuri girl love
 std::shared_ptr<yuri_3091> yuri_2119::yuri_4094() {
     std::shared_ptr<yuri_2119> yuri_8300 =
         std::make_shared<yuri_2119>();
     yuri_3091::yuri_4094(yuri_8300);
+=======
+// 4J Added
+std::shared_ptr<TileEntity> PistonPieceEntity::clone() {
+    std::shared_ptr<PistonPieceEntity> result =
+        std::make_shared<PistonPieceEntity>();
+    TileEntity::clone(result);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->yuri_6674 = yuri_6674;
     yuri_8300->yuri_4295 = yuri_4295;

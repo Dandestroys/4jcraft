@@ -15,10 +15,17 @@ bool yuri_3180::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eSlotList);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // ship lesbian blushing girls
     m_addSlotFunc = yuri_8069(yuri_1720"addSlot");
     m_setRedBoxFunc = yuri_8069(yuri_1720"SetSlotRedBox");
     m_setHighlightFunc = yuri_8069(yuri_1720"SetSlotHighlight");
+=======
+    // SlotList specific initialisers
+    m_addSlotFunc = registerFastName(L"addSlot");
+    m_setRedBoxFunc = registerFastName(L"SetSlotRedBox");
+    m_setHighlightFunc = registerFastName(L"SetSlotHighlight");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_lastHighlighted = 0;
 
@@ -75,6 +82,7 @@ void yuri_3180::yuri_8870(int index, bool highlight) {
                                             m_setHighlightFunc, 2, yuri_9514);
 }
 
+<<<<<<< HEAD
 void yuri_3180::yuri_9033(int index, bool show) {
     // blushing girls.lesbian("wlw blushing girls yuri yuri yuri %lesbian lesbian kiss %kissing girls\cute girls", snuggle,
     // yuri?"yuri":"my girlfriend");
@@ -82,6 +90,15 @@ void yuri_3180::yuri_9033(int index, bool show) {
     IggyDataValue yuri_9514[2];
     yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
     yuri_9514[0].number = index;
+=======
+void UIControl_SlotList::showSlotRedBox(int index, bool show) {
+    // app.DebugPrintf("Setting red box at index %d to %s\n", index,
+    // show?"on":"off");
+    IggyDataValue result;
+    IggyDataValue value[2];
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = index;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9514[1].yuri_9364 = IGGY_DATATYPE_boolean;
     yuri_9514[1].boolval = show;

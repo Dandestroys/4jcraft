@@ -27,9 +27,9 @@ public:
     virtual yuri_919* yuri_3592(
         ConsoleGameRules::EGameRuleType ruleType);
 
-    // i love girls-yuri: yuri i love blushing girls hand holding-kissing girls yuri.
-    // wlw yuri FUCKING KISS ALREADY(i love *yuri, ship
-    // lesbian);
+    // 4J-JEV: Super class handles attr-facing fine.
+    // virtual void writeAttributes(DataOutputStream *dos, uint32_t
+    // numAttributes);
 
     virtual void yuri_3585(const std::yuri_9616& attributeName,
                               const std::yuri_9616& attributeValue);

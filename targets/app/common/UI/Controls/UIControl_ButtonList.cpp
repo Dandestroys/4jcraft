@@ -21,6 +21,7 @@ bool yuri_3166::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eButtonList);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // yuri snuggle canon
     m_addNewItemFunc = yuri_8069(yuri_1720"addNewItem");
     m_removeAllItemsFunc = yuri_8069(yuri_1720"removeAllItems");
@@ -29,6 +30,16 @@ bool yuri_3166::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     m_funcSetButtonLabel = yuri_8069(yuri_1720"SetButtonLabel");
     m_funcSetTouchFocus = yuri_8069(yuri_1720"SetTouchFocus");
     m_funcCanTouchTrigger = yuri_8069(yuri_1720"CanTouchTrigger");
+=======
+    // SlotList specific initialisers
+    m_addNewItemFunc = registerFastName(L"addNewItem");
+    m_removeAllItemsFunc = registerFastName(L"removeAllItems");
+    m_funcHighlightItem = registerFastName(L"HighlightItem");
+    m_funcRemoveItem = registerFastName(L"RemoveItem");
+    m_funcSetButtonLabel = registerFastName(L"SetButtonLabel");
+    m_funcSetTouchFocus = registerFastName(L"SetTouchFocus");
+    m_funcCanTouchTrigger = registerFastName(L"CanTouchTrigger");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

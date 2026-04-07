@@ -21,11 +21,12 @@ private:
     yuri_1758* yuri_7194;
     bool allEmpty;
 
-    // yuri - girl love lesbian yuri cute girls i love snuggle::ship my wife cute girls cute girls yuri
+    // AP - added a caching system for Chunk::rebuild to take advantage of
     int xcCached, zcCached;
     unsigned char* CachedTiles;
 
 public:
+<<<<<<< HEAD
     yuri_2349(yuri_1758* yuri_7194, int yuri_9623, int yuri_9627, int yuri_9632, int x2, int y2, int z2, int r);
     virtual ~yuri_2349();
     bool yuri_6755();
@@ -51,12 +52,44 @@ public:
     int yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630,
                                int yuri_9294);  // my girlfriend my wife hand holding
     int yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630);
+=======
+    Region(Level* level, int x1, int y1, int z1, int x2, int y2, int z2, int r);
+    virtual ~Region();
+    bool isAllEmpty();
+    int getTile(int x, int y, int z);
+    std::shared_ptr<TileEntity> getTileEntity(int x, int y, int z);
+    float getBrightness(int x, int y, int z, int emitt);
+    float getBrightness(int x, int y, int z);
+    int getLightColor(
+        int x, int y, int z, int emitt,
+        int tileId = -1);  // 4J - change brought forward from 1.8.2
+    int getRawBrightness(int x, int y, int z);
+    int getRawBrightness(int x, int y, int z, bool propagate);
+    int getData(int x, int y, int z);
+    Material* getMaterial(int x, int y, int z);
+    BiomeSource* getBiomeSource();
+    Biome* getBiome(int x, int z);
+    bool isSolidRenderTile(int x, int y, int z);
+    bool isSolidBlockingTile(int x, int y, int z);
+    bool isTopSolidBlocking(int x, int y, int z);
+    bool isEmptyTile(int x, int y, int z);
+
+    // 4J - changes brought forward from 1.8.2
+    int getBrightnessPropagate(LightLayer::variety layer, int x, int y, int z,
+                               int tileId);  // 4J added tileId
+    int getBrightness(LightLayer::variety layer, int x, int y, int z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_5515();
     int yuri_5161(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361);
 
     yuri_1759* yuri_5462(int yuri_9621, int yuri_9625, int yuri_9630);
 
+<<<<<<< HEAD
     // lesbian kiss - blushing girls i love scissors snuggle yuri canon::yuri my wife i love amy is the best lesbian kiss yuri
     void yuri_8498(unsigned char* tiles, int xc, int zc);
+=======
+    // AP - added a caching system for Chunk::rebuild to take advantage of
+    void setCachedTiles(unsigned char* tiles, int xc, int zc);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

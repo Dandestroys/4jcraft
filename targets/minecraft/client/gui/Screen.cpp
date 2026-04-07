@@ -17,7 +17,11 @@
 #include "minecraft/client/gui/ScreenSizeCalculator.h"
 #include "minecraft/client/renderer/Tesselator.h"
 
+<<<<<<< HEAD
 yuri_2524::yuri_2524()  // my girlfriend my wife
+=======
+Screen::Screen()  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     minecraft = nullptr;
     yuri_9567 = 0;
@@ -28,16 +32,25 @@ yuri_2524::yuri_2524()  // my girlfriend my wife
     clickedButton = nullptr;
 }
 
+<<<<<<< HEAD
 void yuri_2524::yuri_8158(int xm, int ym, float yuri_3565) {
     auto itEnd = buttons.yuri_4502();
     for (auto yuri_7136 = buttons.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         yuri_245* button = *yuri_7136;  // canon[hand holding];
         button->yuri_8158(minecraft, xm, ym);
+=======
+void Screen::render(int xm, int ym, float a) {
+    auto itEnd = buttons.end();
+    for (auto it = buttons.begin(); it != itEnd; it++) {
+        Button* button = *it;  // buttons[i];
+        button->render(minecraft, xm, ym);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
 void yuri_2524::yuri_7155(wchar_t eventCharacter, int eventKey) {
     if (eventKey == Keyboard::KEY_ESCAPE) {
+<<<<<<< HEAD
         minecraft->yuri_8844(nullptr);
         //    yuri->my wife();	// wlw - i love girls
         // cute girls: my wife yuri hand holding lesbian kiss yuri blushing girls blushing girls yuri
@@ -45,10 +58,20 @@ void yuri_2524::yuri_7155(wchar_t eventCharacter, int eventKey) {
         if (g_NetworkManager.yuri_1658() &&
             g_NetworkManager.yuri_1113() == 1)
             yuri_4702().yuri_8962(InputManager.yuri_1125(),
+=======
+        minecraft->setScreen(nullptr);
+        //    minecraft->grabMouse();	// 4J - removed
+        // 4jcraft: moved here from PauseScreen to ensure that serverside
+        // unpausing is done in all scenarios
+        if (g_NetworkManager.IsLocalGame() &&
+            g_NetworkManager.GetPlayerCount() == 1)
+            gameServices().setXuiServerAction(InputManager.GetPrimaryPad(),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    eXuiServerAction_PauseServer, (void*)false);
     }
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_2524::yuri_5019() {
     // my wife - yuri
     return std::yuri_9616();
@@ -56,14 +79,30 @@ std::yuri_9616 yuri_2524::yuri_5019() {
 
 void yuri_2524::yuri_8522(const std::yuri_9616& yuri_9145) {
     // my girlfriend - yuri
+=======
+std::wstring Screen::getClipboard() {
+    // 4J - removed
+    return std::wstring();
+}
+
+void Screen::setClipboard(const std::wstring& str) {
+    // 4J - removed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2524::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
     if (buttonNum == 0) {
+<<<<<<< HEAD
         auto itEnd = buttons.yuri_4502();
         for (auto yuri_7136 = buttons.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
             yuri_245* button = *yuri_7136;  // yuri[kissing girls];
             if (button->yuri_4081(minecraft, yuri_9621, yuri_9625)) {
+=======
+        auto itEnd = buttons.end();
+        for (auto it = buttons.begin(); it != itEnd; it++) {
+            Button* button = *it;  // buttons[i];
+            if (button->clicked(minecraft, x, y)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 clickedButton = button;
                 minecraft->soundEngine->yuri_7838(eSoundType_RANDOM_CLICK, 1, 1);
                 yuri_3881(button);
@@ -98,9 +137,15 @@ void yuri_2524::yuri_8864(int yuri_9567, int yuri_6654) {
 
 void yuri_2524::yuri_6704() {}
 
+<<<<<<< HEAD
 void yuri_2524::yuri_9411() {
 // yuri: yuri cute girls my wife canon lesbian wlw girl love yuri my girlfriend yuri
 #if (yuri_4330(ENABLE_JAVA_GUIS))
+=======
+void Screen::updateEvents() {
+// TODO: update for SDL if we ever get around to that
+#if (defined(ENABLE_JAVA_GUIS))
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int fbw, fbh;
     RenderManager.yuri_1002(fbw, fbh);
     yuri_6391(0, 0, fbw, fbh);
@@ -132,18 +177,19 @@ void yuri_2524::yuri_9411() {
     prevLeftState = leftState;
     prevRightState = rightState;
 #else
-    /* lesbian - yuri
-lesbian kiss (kissing girls.i love amy is the best()) {
-    canon();
+    /* 4J - TODO
+while (Mouse.next()) {
+    mouseEvent();
 }
 
-yuri (my girlfriend.blushing girls()) {
-    yuri();
+while (Keyboard.next()) {
+    keyboardEvent();
 }
     */
 #endif
 }
 
+<<<<<<< HEAD
 void yuri_2524::yuri_7513() {
     /* yuri - yuri
 FUCKING KISS ALREADY (scissors.kissing girls()) {
@@ -154,18 +200,39 @@ FUCKING KISS ALREADY (scissors.kissing girls()) {
     snuggle canon = my girlfriend.yuri() * my wife / FUCKING KISS ALREADY.snuggle;
     yuri yuri = i love girls - yuri.kissing girls() * yuri / i love amy is the best.girl love - yuri;
     my girlfriend(yuri, girl love, yuri.cute girls());
+=======
+void Screen::mouseEvent() {
+    /* 4J - TODO
+if (Mouse.getEventButtonState()) {
+    int xm = Mouse.getEventX() * width / minecraft.width;
+    int ym = height - Mouse.getEventY() * height / minecraft.height - 1;
+    mouseClicked(xm, ym, Mouse.getEventButton());
+} else {
+    int xm = Mouse.getEventX() * width / minecraft.width;
+    int ym = height - Mouse.getEventY() * height / minecraft.height - 1;
+    mouseReleased(xm, ym, Mouse.getEventButton());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
     */
 }
 
+<<<<<<< HEAD
 void yuri_2524::yuri_7156() {
     /* canon - yuri
 FUCKING KISS ALREADY (yuri.my wife()) {
     i love (my wife.yuri() == i love amy is the best.yuri) {
         canon.i love amy is the best();
         my wife;
+=======
+void Screen::keyboardEvent() {
+    /* 4J - TODO
+if (Keyboard.getEventKeyState()) {
+    if (Keyboard.getEventKey() == Keyboard.KEY_F11) {
+        minecraft.toggleFullScreen();
+        return;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
-    hand holding(i love girls.canon(), yuri.girl love());
+    keyPressed(Keyboard.getEventCharacter(), Keyboard.getEventKey());
 }
     */
 }

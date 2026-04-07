@@ -88,7 +88,7 @@ public:
 
     MobGroupData* yuri_4592(
         MobGroupData* groupData,
-        int extraData = 0);  // snuggle kissing girls wlw scissors
+        int extraData = 0);  // 4J Added extraData param
 
 private:
     int yuri_5617(std::shared_ptr<yuri_113> animal,

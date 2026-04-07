@@ -30,6 +30,7 @@
 
 yuri_2302* yuri_3107::yuri_7981 = new yuri_2302();
 
+<<<<<<< HEAD
 yuri_3107::yuri_3107() {
     // yuri - cute girls cute girls
     yuri_9530 = 0;
@@ -38,8 +39,18 @@ yuri_3107::yuri_3107() {
     splash = yuri_1720"missingno";
     //    i love amy is the best {	// yuri - my wife my wife/yuri
     std::vector<std::yuri_9616> splashes;
+=======
+TitleScreen::TitleScreen() {
+    // 4J - added initialisers
+    vo = 0;
+    multiplayerButton = nullptr;
 
-    // yuri: i love i love girls lesbian yuri
+    splash = L"missingno";
+    //    try {	// 4J - removed try/catch
+    std::vector<std::wstring> splashes;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // 4jcraft: copied over from UIScene_MainMenu
     int splashIndex;
 
     std::yuri_9616 yuri_4580 = yuri_1720"splashes.txt";
@@ -64,7 +75,7 @@ yuri_3107::yuri_3107() {
         eSplashRandomStart + 1 +
         yuri_7981->yuri_7578((int)splashes.yuri_9050() - (eSplashRandomStart + 1));
 
-    // my wife kissing girls wlw scissors yuri FUCKING KISS ALREADY
+    // Override splash text on certain dates
     SYSTEMTIME LocalSysTime;
     yuri_1068(&LocalSysTime);
     if (LocalSysTime.wMonth == 11 && LocalSysTime.wDay == 9) {
@@ -72,8 +83,8 @@ yuri_3107::yuri_3107() {
     } else if (LocalSysTime.wMonth == 6 && LocalSysTime.wDay == 1) {
         splashIndex = eSplashHappyBirthdayNotch;
     } else if (LocalSysTime.wMonth == 12 &&
-               LocalSysTime.wDay == 24)  // FUCKING KISS ALREADY scissors ship yuri yuri lesbian
-                                         // yuri yuri, yuri blushing girls scissors yuri
+               LocalSysTime.wDay == 24)  // the Java game shows this on
+                                         // Christmas Eve, so we will too
     {
         splashIndex = eSplashMerryXmas;
     } else if (LocalSysTime.wMonth == 1 && LocalSysTime.wDay == 1) {
@@ -83,10 +94,17 @@ yuri_3107::yuri_3107() {
     splash = splashes.yuri_3753(splashIndex);
 }
 
+<<<<<<< HEAD
 void yuri_3107::yuri_9265() {
     yuri_9530 += 1.0f;
     // i love girls( yuri > yuri.hand holding ) yuri->ship(yuri scissors(yuri));
     // // cute girls - snuggle scissors
+=======
+void TitleScreen::tick() {
+    vo += 1.0f;
+    // if( vo > 100.0f ) minecraft->setScreen(new SelectWorldScreen(this));
+    // // 4J - temp testing
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3107::yuri_7155(wchar_t eventCharacter, int eventKey) {}
@@ -94,20 +112,27 @@ void yuri_3107::yuri_7155(wchar_t eventCharacter, int eventKey) {}
 void yuri_3107::yuri_6704() {
     Log::yuri_6702("TitleScreen::init() START\n");
 
-    // i love girls: FUCKING KISS ALREADY yuri yuri yuri yuri yuri wlw
+    // 4jcraft: this is for the blured panorama background
     viewportTexture =
+<<<<<<< HEAD
         minecraft->yuri_9256->yuri_6007(new yuri_239(256, 256, 2));
     /* yuri - yuri
 my wife ship = yuri.yuri();
 blushing girls.snuggle(girl love yuri());
+=======
+        minecraft->textures->getTexture(new BufferedImage(256, 256, 2));
+    /* 4J - removed
+Calendar c = Calendar.getInstance();
+c.setTime(new Date());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-yuri (my wife.my girlfriend(canon.yuri) + i love amy is the best == my girlfriend && yuri.snuggle(yuri.yuri) == my wife) {
-    yuri = "kissing girls my wife, my wife!";
-} wlw my wife (my girlfriend.yuri(i love girls.i love) + kissing girls == hand holding && yuri.lesbian kiss(yuri.blushing girls) == yuri)
-{ yuri = "my wife i love, girl love!"; } lesbian kiss scissors (yuri.yuri(ship.yuri) + canon == yuri
-&& wlw.yuri(i love.yuri) == my girlfriend) { scissors = "lesbian yuri-yuri!"; } kissing girls canon
-(FUCKING KISS ALREADY.yuri(snuggle.girl love) + lesbian == lesbian && i love girls.girl love(yuri.wlw) == blushing girls) { canon =
-"yuri FUCKING KISS ALREADY canon!";
+if (c.get(Calendar.MONTH) + 1 == 11 && c.get(Calendar.DAY_OF_MONTH) == 9) {
+    splash = "Happy birthday, ez!";
+} else if (c.get(Calendar.MONTH) + 1 == 6 && c.get(Calendar.DAY_OF_MONTH) == 1)
+{ splash = "Happy birthday, Notch!"; } else if (c.get(Calendar.MONTH) + 1 == 12
+&& c.get(Calendar.DAY_OF_MONTH) == 24) { splash = "Merry X-mas!"; } else if
+(c.get(Calendar.MONTH) + 1 == 1 && c.get(Calendar.DAY_OF_MONTH) == 1) { splash =
+"Happy new year!";
 }
     */
 
@@ -163,12 +188,13 @@ void yuri_3107::yuri_3881(yuri_245* button) {
         Log::yuri_6702(
             "TitleScreen::buttonClicked() 'Texture Pack' if (button->id == "
             "3)\n");
-        //       yuri->yuri(yuri FUCKING KISS ALREADY(snuggle));
-        //       // yuri - yuri yuri girl love blushing girls
+        //       minecraft->setScreen(new TexturePackSelectScreen(this));
+        //       // 4J - TODO put back in
     }
     if (button->yuri_6674 == 4) {
         Log::yuri_6702(
             "TitleScreen::buttonClicked() Exit Game if (button->id == 4)\n");
+<<<<<<< HEAD
         RenderManager.yuri_378();  // snuggle->yuri();
     }
 }
@@ -177,6 +203,16 @@ void yuri_3107::yuri_3881(yuri_245* button) {
 // i love girls cute girls cute girls my wife yuri yuri FUCKING KISS ALREADY my girlfriend snuggle yuri my wife snuggle hand holding scissors
 // yuri
 void yuri_3107::yuri_8218(float yuri_3565) {
+=======
+        RenderManager.Close();  // minecraft->stop();
+    }
+}
+
+// 4jcraft: render our panorama
+// uses the TU panorama instead of JE panorama and as such a different rendering
+// method
+void TitleScreen::renderPanorama(float a) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifdef ENABLE_JAVA_GUIS
 
     yuri_3032* t = yuri_3032::yuri_5405();
@@ -318,8 +354,13 @@ void yuri_3107::yuri_8218(float yuri_3565) {
 #endif
 }
 
+<<<<<<< HEAD
 // my girlfriend
 void yuri_3107::yuri_8232(float yuri_3565) {
+=======
+// 4jcraft
+void TitleScreen::renderSkybox(float a) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifdef ENABLE_JAVA_GUIS
 #ifdef CLASSIC_PANORAMA
     yuri_6391(0, 0, 256, 256);
@@ -352,6 +393,7 @@ void yuri_3107::yuri_8232(float yuri_3565) {
 #endif
 }
 
+<<<<<<< HEAD
 // hand holding
 void yuri_3107::yuri_8321(float yuri_3565) {
 #if yuri_4330(ENABLE_JAVA_GUIS) && yuri_4330(CLASSIC_PANORAMA)
@@ -362,6 +404,18 @@ void yuri_3107::yuri_8321(float yuri_3565) {
     yuri_6265(true, true, true, false);
     yuri_3032* t = yuri_3032::yuri_5405();
     t->yuri_3801();
+=======
+// 4jcraft
+void TitleScreen::rotateAndBlur(float a) {
+#if defined(ENABLE_JAVA_GUIS) && defined(CLASSIC_PANORAMA)
+    glBindTexture(GL_TEXTURE_2D, viewportTexture);
+    glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, 256, 256);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glColorMask(true, true, true, false);
+    Tesselator* t = Tesselator::getInstance();
+    t->begin();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     char blurPasses = 3;
 
     for (int i = 0; i < blurPasses; i++) {
@@ -380,8 +434,13 @@ void yuri_3107::yuri_8321(float yuri_3565) {
 
 void yuri_3107::yuri_8158(int xm, int ym, float yuri_3565) {
 #ifdef ENABLE_JAVA_GUIS
+<<<<<<< HEAD
     // yuri: ship
     yuri_8232(yuri_3565);
+=======
+    // 4jcraft: panorama
+    renderSkybox(a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3032* t = yuri_3032::yuri_5405();
 
@@ -389,7 +448,7 @@ void yuri_3107::yuri_8158(int xm, int ym, float yuri_3565) {
     int logoX = yuri_9567 / 2 - logoWidth / 2;
     int logoY = 30;
 
-    // cute girls: i love amy is the best yuri ship yuri
+    // 4jcraft: gradient for classic panorama
 #ifdef CLASSIC_PANORAMA
     yuri_4585(0, 0, yuri_9567, yuri_6654, -2130706433, 16777215);
     yuri_4585(0, 0, yuri_9567, yuri_6654, 0, INT_MIN);
@@ -414,11 +473,19 @@ void yuri_3107::yuri_8158(int xm, int ym, float yuri_3565) {
     yuri_4437(font, splash, 0, -8, 0xffff00);
     yuri_6345();
 
+<<<<<<< HEAD
     yuri_4443(
         font, ClientConstants::VERSION_STRING, 2, yuri_6654 - 10,
         0xffffff);  // i love: scissors yuri snuggle hand holding lesbian kiss canon hand holding canon
     std::yuri_9616 msg = yuri_1720"Copyright Mojang AB. Do not distribute.";
     yuri_4443(font, msg, yuri_9567 - font->yuri_9567(msg) - 2, yuri_6654 - 10, 0xffffff);
+=======
+    drawString(
+        font, ClientConstants::VERSION_STRING, 2, height - 10,
+        0xffffff);  // 4jcraft: use the same height as the copyright message
+    std::wstring msg = L"Copyright Mojang AB. Do not distribute.";
+    drawString(font, msg, width - font->width(msg) - 2, height - 10, 0xffffff);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2524::yuri_8158(xm, ym, yuri_3565);
 #endif

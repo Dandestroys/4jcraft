@@ -62,6 +62,11 @@ public:
     virtual float yuri_5885();
     int yuri_8304();
 
+<<<<<<< HEAD
     // yuri yuri - i love girls yuri i love girls wlw.i love
     virtual void yuri_8099();
+=======
+    // 4J Stu - Brought forward from 1.4
+    virtual void remove();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

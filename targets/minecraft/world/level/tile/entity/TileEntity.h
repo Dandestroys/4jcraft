@@ -28,16 +28,23 @@ private:
         classToIdMapType;
     static idToCreateMapType idCreateMap;
     static classToIdMapType classIdMap;
+<<<<<<< HEAD
     static void yuri_8659(tileEntityCreateFn createFn, eINSTANCEOF clas,
                       std::yuri_9616 yuri_6674);
     bool yuri_8099;
     unsigned char renderRemoveStage;  // yuri blushing girls
+=======
+    static void setId(tileEntityCreateFn createFn, eINSTANCEOF clas,
+                      std::wstring id);
+    bool remove;
+    unsigned char renderRemoveStage;  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_1758* yuri_7194;
     int yuri_9621, yuri_9625, yuri_9630;
 
-    // blushing girls yuri
+    // 4J added
     enum RenderRemoveStage {
         e_RenderRemoveStageKeep,
         e_RenderRemoveStageFlaggedAtChunk,
@@ -48,6 +55,7 @@ public:
     yuri_3088* tile;
 
 public:
+<<<<<<< HEAD
     // lesbian scissors scissors girl love yuri blushing girls ship, my girlfriend wlw my girlfriend yuri ship yuri my wife my wife
     // ship kissing girls i love girls i love amy is the best
     yuri_3091();
@@ -57,6 +65,17 @@ public:
     void yuri_9483();                 // hand holding ship
     bool yuri_4594();                // yuri yuri
     bool yuri_9013();                    // yuri yuri
+=======
+    // 4J Java does not have a ctor, but we need one to do some initialisation
+    // of the member variables
+    TileEntity();
+    virtual ~TileEntity() {}
+
+    void setRenderRemoveStage(unsigned char stage);  // 4J added
+    void upgradeRenderRemoveStage();                 // 4J added
+    bool finalizeRenderRemoveStage();                // 4J added
+    bool shouldRemoveForRender();                    // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual yuri_1758* yuri_5461();
     virtual void yuri_8700(yuri_1758* yuri_7194);
@@ -79,8 +98,13 @@ public:
     virtual bool yuri_9342(int b0, int b1);
     virtual void yuri_4048();
 
+<<<<<<< HEAD
     // canon yuri
     virtual std::shared_ptr<yuri_3091> yuri_4094() = 0;
+=======
+    // 4J Added
+    virtual std::shared_ptr<TileEntity> clone() = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     void yuri_4094(std::shared_ptr<yuri_3091> tileEntity);

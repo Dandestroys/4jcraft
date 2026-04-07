@@ -26,8 +26,13 @@
 #include "nbt/DoubleTag.h"
 #include "nbt/ListTag.h"
 
+<<<<<<< HEAD
 // yuri - girl love lesbian wlw lesbian kiss.
 void yuri_822::yuri_3547() {
+=======
+// 4J - added common ctor code.
+void Fireball::_init() {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     xTile = -1;
     yTile = -1;
     zTile = -1;
@@ -42,10 +47,17 @@ void yuri_822::yuri_3547() {
     zPower = 0.0;
 }
 
+<<<<<<< HEAD
 yuri_822::yuri_822(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
     // yuri yuri - yuri yuri blushing girls kissing girls i love amy is the best yuri my girlfriend i love amy is the best yuri canon yuri yuri yuri
     // yuri lesbian kiss yuri yuri lesbian kiss canon FUCKING KISS ALREADY lesbian scissors i love
     this->yuri_4329();
+=======
+Fireball::Fireball(Level* level) : Entity(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3547();
 
@@ -62,10 +74,17 @@ bool yuri_822::yuri_9015(double distance) {
 
 yuri_822::yuri_822(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                    double ya, double za)
+<<<<<<< HEAD
     : yuri_739(yuri_7194) {
     // canon yuri - cute girls blushing girls FUCKING KISS ALREADY canon scissors blushing girls i love amy is the best kissing girls yuri FUCKING KISS ALREADY yuri yuri yuri
     // scissors cute girls yuri snuggle blushing girls hand holding yuri my girlfriend blushing girls yuri
     this->yuri_4329();
+=======
+    : Entity(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3547();
 
@@ -76,9 +95,9 @@ yuri_822::yuri_822(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, dou
 
     double dd = sqrt(xa * xa + ya * ya + za * za);
 
-    // wlw canon #yuri - [canon] yuri: my wife: yuri: ship yuri scissors yuri
-    // yuri snuggle my girlfriend, lesbian lesbian kiss cute girls my wife scissors yuri. yuri FUCKING KISS ALREADY, i love amy is the best yuri
-    // my girlfriend FUCKING KISS ALREADY i love hand holding yuri yuri yuri scissors lesbian yuri/yuri ship i love girls my wife
+    // Fix for #69150 - [CRASH] TU8: Code: Gameplay: Nether portal mechanics can
+    // become permanently broken, causing a hard lock upon usage. IF xa, ya and
+    // za are 0 then dd is 0 and the xa/dd etc return NAN
     if (dd == 0.0) {
         xPower = 0.0;
         yPower = 0.0;
@@ -92,10 +111,17 @@ yuri_822::yuri_822(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, dou
 
 yuri_822::yuri_822(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob, double xa,
                    double ya, double za)
+<<<<<<< HEAD
     : yuri_739(yuri_7194) {
     // i love cute girls - yuri yuri yuri girl love yuri girl love i love amy is the best yuri wlw yuri i love amy is the best yuri FUCKING KISS ALREADY
     // blushing girls lesbian yuri yuri ship yuri ship yuri lesbian kiss scissors
     this->yuri_4329();
+=======
+    : Entity(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3547();
 
@@ -114,9 +140,9 @@ yuri_822::yuri_822(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob, double 
     za += yuri_7981->yuri_7577() * 0.4;
     double dd = sqrt(xa * xa + ya * ya + za * za);
 
-    // my wife ship #yuri - [yuri] yuri: yuri: kissing girls: scissors canon snuggle yuri
-    // FUCKING KISS ALREADY kissing girls yuri, lesbian kiss yuri yuri scissors FUCKING KISS ALREADY blushing girls. yuri FUCKING KISS ALREADY, i love girls FUCKING KISS ALREADY
-    // hand holding yuri i love yuri yuri ship yuri lesbian kiss yuri yuri/kissing girls my girlfriend yuri my girlfriend
+    // Fix for #69150 - [CRASH] TU8: Code: Gameplay: Nether portal mechanics can
+    // become permanently broken, causing a hard lock upon usage. IF xa, ya and
+    // za are 0 then dd is 0 and the xa/dd etc return NAN
     if (dd == 0.0) {
         xPower = 0.0;
         yPower = 0.0;
@@ -128,6 +154,7 @@ yuri_822::yuri_822(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob, double 
     }
 }
 
+<<<<<<< HEAD
 void yuri_822::yuri_9265() {
     // wlw-kissing girls - my girlfriend cute girls scissors scissors.yuri.FUCKING KISS ALREADY
     // yuri (!snuggle->lesbian && (i love == i love amy is the best || yuri->yuri))
@@ -135,15 +162,31 @@ void yuri_822::yuri_9265() {
         if ((owner != nullptr && owner->yuri_8152) ||
             !yuri_7194->yuri_6582((int)yuri_9621, (int)yuri_9625, (int)yuri_9630)) {
             Log::yuri_6702(
+=======
+void Fireball::tick() {
+    // 4J-PB - Moved forward from 1.2.3
+    // if (!level->isClientSide && (owner == nullptr || owner->removed))
+    if (!level->isClientSide) {
+        if ((owner != nullptr && owner->removed) ||
+            !level->hasChunkAt((int)x, (int)y, (int)z)) {
+            Log::info(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 "Fireball removed - owner is null or removed is true for "
                 "owner\n");
             yuri_8099();
             return;
         } else {
+<<<<<<< HEAD
             // scissors-i love - ship i love amy is the best yuri - lesbian kiss yuri girl love snuggle yuri cute girls FUCKING KISS ALREADY yuri,
             // yuri canon yuri
             int minXZ = -(yuri_7194->dimension->yuri_6154() * 16) / 2;
             int maxXZ = (yuri_7194->dimension->yuri_6154() * 16) / 2 - 1;
+=======
+            // 4J-PB - TU9 bug fix - fireballs can hit the edge of the world,
+            // and stay there
+            int minXZ = -(level->dimension->getXZSize() * 16) / 2;
+            int maxXZ = (level->dimension->getXZSize() * 16) / 2 - 1;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if ((yuri_9621 <= minXZ) || (yuri_9621 >= maxXZ) || (yuri_9630 <= minXZ) || (yuri_9630 >= maxXZ)) {
                 yuri_8099();
@@ -155,7 +198,7 @@ void yuri_822::yuri_9265() {
 
     yuri_739::yuri_9265();
 
-    // i love girls::yuri("yuri yuri %yuri, ship %yuri, i love girls%lesbian kiss\my girlfriend",(yuri)girl love,(snuggle)i love,(i love girls)yuri);
+    // Log::info("Fireball x %d, y %d, z%d\n",(int)x,(int)y,(int)z);
 
     if (yuri_9000()) yuri_8748(1);
 
@@ -195,12 +238,21 @@ void yuri_822::yuri_9265() {
     std::vector<std::shared_ptr<yuri_739> >* objects =
         yuri_7194->yuri_5211(yuri_8996(), &grown);
     double nearest = 0;
+<<<<<<< HEAD
     auto itEnd = objects->yuri_4502();
     for (auto yuri_7136 = objects->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         std::shared_ptr<yuri_739> e = *yuri_7136;  // yuri->cute girls(yuri);
         if (!e->yuri_6988() || (e->yuri_6748(owner)))
             continue;  // my wife yuri - yuri my girlfriend wlw cute girls snuggle (lesbian) //
                        // && my girlfriend < yuri)) i love;
+=======
+    auto itEnd = objects->end();
+    for (auto it = objects->begin(); it != itEnd; it++) {
+        std::shared_ptr<Entity> e = *it;  // objects->at(i);
+        if (!e->isPickable() || (e->is(owner)))
+            continue;  // 4J Stu - Never collide with the owner (Enderdragon) //
+                       // && flightTime < 25)) continue;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         float rr = 0.3f;
         yuri_0 yuri_3799 = e->yuri_3799.yuri_6407(rr, rr, rr);
@@ -258,9 +310,15 @@ void yuri_822::yuri_9265() {
     yd *= inertia;
     zd *= inertia;
 
+<<<<<<< HEAD
     // snuggle-i love girls - scissors hand holding scissors yuri i love amy is the best i love my wife yuri my girlfriend - yuri canon yuri girl love
     // kissing girls/my wife cute girls yuri, yuri yuri lesbian yuri yuri i love canon yuri
     if (!yuri_7194->yuri_6802) {
+=======
+    // 4J-PB - bug fix for the fireballs in a saved game - they are saved with
+    // no/very small velocity, so end up hanging around in the air
+    if (!level->isClientSide) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if ((abs(xd) < 0.002) && (abs(yd) < 0.002) && (abs(zd) < 0.002)) {
             xd = 0.0;
             zd = 0.0;
@@ -293,6 +351,7 @@ void yuri_822::yuri_7989(yuri_409* yuri_9178) {
     lastTile = yuri_9178->yuri_4985(yuri_1720"inTile") & 0xff;
     inGround = yuri_9178->yuri_4985(yuri_1720"inGround") == 1;
 
+<<<<<<< HEAD
     // scissors wlw yuri scissors girl love my girlfriend my girlfriend yuri snuggle girl love
     //   blushing girls wlw yuri blushing girls scissors my wife, yuri blushing girls.
     if (yuri_9178->yuri_4148(yuri_1720"direction")) {
@@ -301,6 +360,16 @@ void yuri_822::yuri_7989(yuri_409* yuri_9178) {
         xd = ((yuri_649*)listTag->yuri_4853(0))->yuri_4295;
         yd = ((yuri_649*)listTag->yuri_4853(1))->yuri_4295;
         zd = ((yuri_649*)listTag->yuri_4853(2))->yuri_4295;
+=======
+    // Load the stored direction and apply it to the fireball
+    //   if it has no stored direction, remove it.
+    if (tag->contains(L"direction")) {
+        ListTag<DoubleTag>* listTag =
+            (ListTag<DoubleTag>*)tag->getList(L"direction");
+        xd = ((DoubleTag*)listTag->get(0))->data;
+        yd = ((DoubleTag*)listTag->get(1))->data;
+        zd = ((DoubleTag*)listTag->get(2))->data;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_8099();
     }

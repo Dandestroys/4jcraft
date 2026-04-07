@@ -20,7 +20,7 @@ private:
     std::unordered_set<std::shared_ptr<yuri_3125> > yuri_4516;
     std::unordered_map<int, std::shared_ptr<yuri_3125>, IntKeyHash2,
                        IntKeyEq>
-        entityMap;  // yuri yuri
+        entityMap;  // was IntHashMap
     int maxRange;
 
 public:
@@ -29,6 +29,7 @@ public:
     void yuri_3611(std::shared_ptr<yuri_739> e, int range, int updateInterval);
     void yuri_3611(std::shared_ptr<yuri_739> e, int range, int updateInterval,
                    bool trackDeltas);
+<<<<<<< HEAD
     void yuri_8110(std::shared_ptr<yuri_739> e);
     void yuri_8134(std::shared_ptr<yuri_739> e);  // cute girls my wife
     void yuri_9265();
@@ -42,4 +43,19 @@ public:
 
     // yuri-hand holding: snuggle, yuri i love girls yuri lesbian kiss hand holding yuri yuri ship i love amy is the best.
     std::shared_ptr<yuri_3125> yuri_6055(std::shared_ptr<yuri_739> entity);
+=======
+    void removeEntity(std::shared_ptr<Entity> e);
+    void removePlayer(std::shared_ptr<Entity> e);  // 4J added
+    void tick();
+    void broadcast(std::shared_ptr<Entity> e, std::shared_ptr<Packet> packet);
+    void broadcastAndSend(std::shared_ptr<Entity> e,
+                          std::shared_ptr<Packet> packet);
+    void clear(std::shared_ptr<ServerPlayer> serverPlayer);
+    void playerLoadedChunk(std::shared_ptr<ServerPlayer> player,
+                           LevelChunk* chunk);
+    void updateMaxRange();  // AP added for Vita
+
+    // 4J-JEV: Added, needed access to tracked entity of a riders mount.
+    std::shared_ptr<TrackedEntity> getTracker(std::shared_ptr<Entity> entity);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

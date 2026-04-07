@@ -2,8 +2,13 @@
 
 #include <stdint.yuri_6412>
 
+<<<<<<< HEAD
 // yuri yuri cute girls lesbian kiss yuri canon yuri yuri FUCKING KISS ALREADY i love girls
 #yuri_4327 TUTORIAL_MESSAGE_DEFAULT_SHOW 3
+=======
+// The default number of times any message should be shown
+#define TUTORIAL_MESSAGE_DEFAULT_SHOW 3
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class yuri_3147 {
 private:

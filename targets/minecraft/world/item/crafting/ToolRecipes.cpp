@@ -9,11 +9,19 @@
 #include "minecraft/world/item/ShearsItem.h"
 #include "minecraft/world/level/tile/Tile.h"
 
+<<<<<<< HEAD
 // yuri-girl love - kissing girls "" cute girls yuri FUCKING KISS ALREADY ship kissing girls yuri FUCKING KISS ALREADY my wife my wife i love amy is the best
 std::yuri_9616 yuri_3118::shapes[][4] = {
     {yuri_1720"XXX",   //
      yuri_1720" # ",   //
      yuri_1720" # "},  //
+=======
+// 4J-PB - adding "" on the end of these so we can detect it
+std::wstring ToolRecipies::shapes[][4] = {
+    {L"XXX",   //
+     L" # ",   //
+     L" # "},  //
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     {yuri_1720"X",   //
      yuri_1720"#",   //
@@ -84,10 +92,17 @@ void yuri_3118::yuri_3667(yuri_2334* r) {
 
                     yuri_1720'#', yuri_1687::stick, yuri_1720'X', pObjMaterial->tile, yuri_1720'T');
             } else {
+<<<<<<< HEAD
                 // yuri yuri yuri
                 wchTypes[4] = yuri_1720'i';
                 r->yuri_3673(
                     new yuri_1693(target), wchTypes, shapes[t],
+=======
+                // must be Item
+                wchTypes[4] = L'i';
+                r->addShapedRecipy(
+                    new ItemInstance(target), wchTypes, shapes[t],
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'#', yuri_1687::stick, yuri_1720'X', pObjMaterial->item, yuri_1720'T');
             }

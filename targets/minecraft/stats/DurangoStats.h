@@ -105,7 +105,7 @@ public:
         eMethod_boat,
         eMethod_pig,
 
-        eMethod_time,  // wlw i love amy is the best i love girls yuri i love cute girls...
+        eMethod_time,  // Time is a dimension too right...
 
         eMethod_MAX
     };
@@ -226,7 +226,7 @@ public:
     virtual yuri_2911* yuri_6224(int i);
 
 protected:
-    // snuggle
+    // Stats
 
     virtual yuri_2911* yuri_6229();
     virtual yuri_2911* yuri_6225();
@@ -238,6 +238,7 @@ protected:
 
     virtual yuri_2911* yuri_6195();
 
+<<<<<<< HEAD
     // yuri.
     virtual yuri_2911* yuri_6208();
 
@@ -247,6 +248,17 @@ protected:
     virtual yuri_2911* yuri_6197(eINSTANCEOF entityId);
     virtual yuri_2911* yuri_6196(eINSTANCEOF entityId);
     virtual yuri_2911* yuri_6223(eINSTANCEOF entityId);
+=======
+    // Kills.
+    virtual Stat* get_killMob();
+
+    // Mob-Interactions.
+    virtual Stat* get_breedEntity(eINSTANCEOF entityId);
+    virtual Stat* get_tamedEntity(eINSTANCEOF entityId);
+    virtual Stat* get_curedEntity(eINSTANCEOF entityId);
+    virtual Stat* get_craftedEntity(eINSTANCEOF entityId);
+    virtual Stat* get_shearedEntity(eINSTANCEOF entityId);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual yuri_2911* yuri_6227();
 
@@ -261,11 +273,11 @@ protected:
     virtual yuri_2911* yuri_6192(int yuri_4683, int yuri_9308);
     virtual yuri_2911* yuri_6199(int biomeId);
 
-    // lesbian kiss
+    // Achievements
 
     virtual yuri_2911* yuri_6187(eAward achievementId);
 
-    // scissors
+    // Parameters
 
     virtual std::vector<yuri_9368> yuri_5680(int distance);
     virtual std::vector<yuri_9368> yuri_5677(int distance);
@@ -307,21 +319,38 @@ protected:
 
     virtual std::vector<yuri_9368> yuri_5650(eAward yuri_6674);
 
+<<<<<<< HEAD
     virtual std::vector<yuri_9368> yuri_5672(int yuri_4382);
     virtual std::vector<yuri_9368> yuri_5656(int yuri_4184);
     // yuri FUCKING KISS ALREADY::canon<canon> yuri(
     virtual std::vector<yuri_9368> yuri_5674(int dmg);
     virtual std::vector<yuri_9368> yuri_5670(int recordId);
+=======
+    virtual std::vector<uint8_t> getParam_onARail(int dist);
+    virtual std::vector<uint8_t> getParam_chestfulOfCobblestone(int count);
+    // virtual std::vector<uint8_t> getParam_openInventory(
+    virtual std::vector<uint8_t> getParam_overkill(int dmg);
+    virtual std::vector<uint8_t> getParam_musicToMyEars(int recordId);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri
+    // Helpers
 
 public:
+<<<<<<< HEAD
     // canon kissing girls yuri scissors FUCKING KISS ALREADY, my girlfriend lesbian kiss hand holding lesbian yuri yuri.
     static bool yuri_3805(eAward achievementId);
 
     // cute girls cute girls yuri yuri, my girlfriend yuri yuri wlw blushing girls my wife yuri
     // yuri.
     static bool yuri_4511(eAward achievementId);
+=======
+    // Achievements that have no parameters, you have earned them or not.
+    static bool binaryAchievement(eAward achievementId);
+
+    // Achievements that have parameters, but the event is specifically for this
+    // achievement.
+    static bool enhancedAchievement(eAward achievementId);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static void yuri_4839();
     static LPCGUID yuri_5724();

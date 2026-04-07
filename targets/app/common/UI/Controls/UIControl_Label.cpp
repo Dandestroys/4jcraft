@@ -17,7 +17,7 @@ bool yuri_3173::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eLabel);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
-    // lesbian kiss yuri hand holding
+    // Label specific initialisers
 
     return success;
 }
@@ -43,7 +43,7 @@ void yuri_3173::yuri_6704(yuri_3253 yuri_7177) {
 void yuri_3173::yuri_2310() {
     yuri_3163::yuri_2310();
 
-    // blushing girls-i love girls: ship i love'i love girls scissors snuggle.
+    // 4J-JEV: This can't be reinitialised.
     if (m_reinitEnabled) {
         yuri_6704(m_label);
     }

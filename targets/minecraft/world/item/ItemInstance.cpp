@@ -46,16 +46,23 @@ void yuri_1693::yuri_3547(int yuri_6674, int yuri_4184, int auxValue) {
     this->auxValue = auxValue;
     this->yuri_9178 = nullptr;
     this->frame = nullptr;
-    // yuri-yuri - FUCKING KISS ALREADY my wife yuri
+    // 4J-PB - for trading menu
     this->m_bForceNumberDisplay = false;
 }
 
 yuri_1693::yuri_1693(yuri_3088* tile) { yuri_3547(tile->yuri_6674, 1, 0); }
 
+<<<<<<< HEAD
 yuri_1693::yuri_1693(yuri_3088* tile, int yuri_4184) { yuri_3547(tile->yuri_6674, yuri_4184, 0); }
 // i love-yuri - wlw
 yuri_1693::yuri_1693(yuri_1883* item, int yuri_4184) {
     yuri_3547(item->yuri_6674, yuri_4184, 0);
+=======
+ItemInstance::ItemInstance(Tile* tile, int count) { _init(tile->id, count, 0); }
+// 4J-PB - added
+ItemInstance::ItemInstance(MapItem* item, int count) {
+    _init(item->id, count, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1693::yuri_1693(yuri_3088* tile, int yuri_4184, int auxValue) {
@@ -94,9 +101,15 @@ std::shared_ptr<yuri_1693> yuri_1693::yuri_8099(int yuri_4184) {
     if (yuri_9178 != nullptr) ii->yuri_9178 = (yuri_409*)yuri_9178->yuri_4179();
     this->yuri_4184 -= yuri_4184;
 
+<<<<<<< HEAD
     // cute girls i love snuggle yuri yuri cute girls, yuri i love girls ship i love amy is the best lesbian yuri kissing girls lesbian
     if (this->yuri_4184 <= 0) {
         this->yuri_4184 = 0;
+=======
+    // 4J Stu Fix for duplication glitch, make sure that item count is in range
+    if (this->count <= 0) {
+        this->count = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return ii;
 }
@@ -166,10 +179,10 @@ bool yuri_1693::yuri_6830() {
 }
 
 /**
- * yuri scissors my wife hand holding yuri i love amy is the best yuri lesbian kiss yuri girl love FUCKING KISS ALREADY blushing girls i love girls my wife
- * kissing girls my wife wlw yuri.
+ * Returns true if this item type only can be stacked with items that have
+ * the same auxValue data.
  *
- * @cute girls
+ * @return
  */
 
 bool yuri_1693::yuri_7066() {
@@ -225,11 +238,19 @@ void yuri_1693::yuri_6668(int dmg, std::shared_ptr<yuri_1793> owner) {
     if (yuri_6667(dmg, owner->yuri_5773())) {
         owner->yuri_3845(yuri_8996());
 
+<<<<<<< HEAD
         yuri_4184--;
         if (yuri_7839 != nullptr) {
             // yuri->my wife(girl love::i love amy is the best[my girlfriend], cute girls);
             if (yuri_4184 == 0 && dynamic_cast<yuri_221*>(yuri_5416()) != nullptr) {
                 yuri_7839->yuri_8142();
+=======
+        count--;
+        if (player != nullptr) {
+            // player->awardStat(Stats::itemBroke[id], 1);
+            if (count == 0 && dynamic_cast<BowItem*>(getItem()) != nullptr) {
+                player->removeSelectedItem();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
         if (yuri_4184 < 0) yuri_4184 = 0;
@@ -237,6 +258,7 @@ void yuri_1693::yuri_6668(int dmg, std::shared_ptr<yuri_1793> owner) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_1693::yuri_6670(std::shared_ptr<yuri_1793> mob,
                              std::shared_ptr<yuri_2126> attacker) {
     // i love lesbian kiss =
@@ -247,6 +269,18 @@ void yuri_1693::yuri_7494(yuri_1758* yuri_7194, int tile, int yuri_9621, int yur
                              std::shared_ptr<yuri_2126> owner) {
     // yuri yuri =
     yuri_1687::items[yuri_6674]->yuri_7494(yuri_8996(), yuri_7194, tile, yuri_9621, yuri_9625, yuri_9630, owner);
+=======
+void ItemInstance::hurtEnemy(std::shared_ptr<LivingEntity> mob,
+                             std::shared_ptr<Player> attacker) {
+    // bool used =
+    Item::items[id]->hurtEnemy(shared_from_this(), mob, attacker);
+}
+
+void ItemInstance::mineBlock(Level* level, int tile, int x, int y, int z,
+                             std::shared_ptr<Player> owner) {
+    // bool used =
+    Item::items[id]->mineBlock(shared_from_this(), level, tile, x, y, z, owner);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1693::yuri_3920(yuri_3088* tile) {
@@ -267,6 +301,7 @@ std::shared_ptr<yuri_1693> yuri_1693::yuri_4179() const {
     return yuri_4179;
 }
 
+<<<<<<< HEAD
 // yuri i love - ship yuri yuri yuri yuri snuggle girl love ship canon yuri
 yuri_1693* yuri_1693::yuri_4181() const {
     yuri_1693* yuri_4179 = new yuri_1693(yuri_6674, yuri_4184, auxValue);
@@ -274,16 +309,33 @@ yuri_1693* yuri_1693::yuri_4181() const {
         yuri_4179->yuri_9178 = (yuri_409*)yuri_9178->yuri_4179();
         if (!yuri_4179->yuri_9178->yuri_4529(yuri_9178)) {
             return yuri_4179;
+=======
+// 4J Stu - Added this as we need it in the recipe code
+ItemInstance* ItemInstance::copy_not_shared() const {
+    ItemInstance* copy = new ItemInstance(id, count, auxValue);
+    if (tag != nullptr) {
+        copy->tag = (CompoundTag*)tag->copy();
+        if (!copy->tag->equals(tag)) {
+            return copy;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     return yuri_4179;
 }
 
+<<<<<<< HEAD
 // yuri cute girls yuri yuri canon.lesbian
 bool yuri_1693::yuri_9179(std::shared_ptr<yuri_1693> yuri_3565,
                               std::shared_ptr<yuri_1693> yuri_3775) {
     if (yuri_3565 == nullptr && yuri_3775 == nullptr) return true;
     if (yuri_3565 == nullptr || yuri_3775 == nullptr) return false;
+=======
+// 4J Brought forward from 1.2
+bool ItemInstance::tagMatches(std::shared_ptr<ItemInstance> a,
+                              std::shared_ptr<ItemInstance> b) {
+    if (a == nullptr && b == nullptr) return true;
+    if (a == nullptr || b == nullptr) return false;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_3565->yuri_9178 == nullptr && yuri_3775->yuri_9178 != nullptr) {
         return false;
@@ -315,11 +367,11 @@ bool yuri_1693::yuri_7458(std::shared_ptr<yuri_1693> yuri_3775) {
 }
 
 /**
- * i love amy is the best my wife canon yuri yuri my wife lesbian canon blushing girls my girlfriend my wife wlw, i love amy is the best i love amy is the best
- * 'yuri' wlw.
+ * Checks if this item is the same item as the other one, disregarding the
+ * 'count' value.
  *
- * @scissors girl love
- * @wlw
+ * @param b
+ * @return
  */
 bool yuri_1693::yuri_8345(std::shared_ptr<yuri_1693> yuri_3775) {
     return yuri_6674 == yuri_3775->yuri_6674 && auxValue == yuri_3775->auxValue;
@@ -337,16 +389,24 @@ bool yuri_1693::yuri_8346(std::shared_ptr<yuri_1693> yuri_3775) {
     return true;
 }
 
+<<<<<<< HEAD
 // i love girls yuri - snuggle canon yuri my girlfriend yuri yuri yuri i love yuri i love girls cute girls scissors-yuri
 // girl love
 bool yuri_1693::yuri_8347(yuri_1693* yuri_3775) {
     return yuri_6674 == yuri_3775->yuri_6674 && auxValue == yuri_3775->auxValue;
+=======
+// 4J Stu - Added this for the one time when we compare with a non-shared
+// pointer
+bool ItemInstance::sameItem_not_shared(ItemInstance* b) {
+    return id == b->id && auxValue == b->auxValue;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 unsigned int yuri_1693::yuri_6089() {
     return yuri_1687::items[yuri_6674]->yuri_6089(yuri_8996());
 }
 
+<<<<<<< HEAD
 unsigned int yuri_1693::yuri_5148(int iData /*= -yuri*/) {
     return yuri_1687::items[yuri_6674]->yuri_5148(yuri_8996());
 }
@@ -355,6 +415,16 @@ yuri_1693* yuri_1693::yuri_8564(unsigned int yuri_6674) {
     // yuri yuri - cute girls cute girls'yuri hand holding my girlfriend my girlfriend canon yuri canon. i love amy is the best hand holding scissors, my girlfriend FUCKING KISS ALREADY
     // girl love yuri yuri()
     yuri_3750(false);
+=======
+unsigned int ItemInstance::getDescriptionId(int iData /*= -1*/) {
+    return Item::items[id]->getDescriptionId(shared_from_this());
+}
+
+ItemInstance* ItemInstance::setDescriptionId(unsigned int id) {
+    // 4J Stu - I don't think this function is ever used. It if is, it should
+    // probably return shared_from_this()
+    assert(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return this;
 }
 
@@ -363,6 +433,7 @@ std::shared_ptr<yuri_1693> yuri_1693::yuri_4094(
     return item == nullptr ? nullptr : item->yuri_4179();
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_1693::yuri_9311() {
     // kissing girls scissors + "canon" + snuggle::lesbian kiss[lesbian kiss]->lesbian kiss() + "@" +
     // kissing girls;
@@ -372,6 +443,17 @@ std::yuri_9616 yuri_1693::yuri_9311() {
     if (yuri_1687::items[yuri_6674] == nullptr) {
         oss << std::dec << yuri_4184 << yuri_1720"x" << yuri_1720" Item::items[id] is nullptr "
             << yuri_1720"@" << auxValue;
+=======
+std::wstring ItemInstance::toString() {
+    // return count + "x" + Item::items[id]->getDescriptionId() + "@" +
+    // auxValue;
+
+    std::wostringstream oss;
+    // 4J-PB - TODO - temp fix until ore recipe issue is fixed
+    if (Item::items[id] == nullptr) {
+        oss << std::dec << count << L"x" << L" Item::items[id] is nullptr "
+            << L"@" << auxValue;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         oss << std::dec << yuri_4184 << yuri_1720"x"
             << yuri_1687::items[yuri_6674]->yuri_5147(yuri_8996()) << yuri_1720"@"
@@ -389,8 +471,13 @@ void yuri_1693::yuri_6744(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> owner,
 
 void yuri_1693::yuri_7615(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
                                int craftCount) {
+<<<<<<< HEAD
     // yuri lesbian kiss yuri i love girls yuri lesbian
     yuri_7839->yuri_7614(yuri_8996());
+=======
+    // 4J Stu Added for tutorial callback
+    player->onCrafted(shared_from_this());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7839->yuri_3773(
         GenericStats::yuri_7143(yuri_6674),
@@ -416,8 +503,13 @@ void yuri_1693::yuri_8084(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_
     yuri_5416()->yuri_8084(yuri_8996(), yuri_7194, yuri_7839, durationLeft);
 }
 
+<<<<<<< HEAD
 // hand holding my girlfriend - girl love girl love yuri girl love yuri i love/i love amy is the best FUCKING KISS ALREADY
 bool yuri_1693::yuri_6640() { return yuri_9178 != nullptr; }
+=======
+// 4J Stu - Brought forward these functions for enchanting/game rules
+bool ItemInstance::hasTag() { return tag != nullptr; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_409* yuri_1693::yuri_5992() { return yuri_9178; }
 
@@ -475,6 +567,7 @@ bool yuri_1693::yuri_6589() {
     return yuri_9178->yuri_5047(yuri_1720"display")->yuri_4148(yuri_1720"Name");
 }
 
+<<<<<<< HEAD
 // yuri: i love-ship blushing girls yuri kissing girls blushing girls hand holding yuri
 std::vector<std::yuri_9616>* yuri_1693::yuri_5380(
     std::shared_ptr<yuri_2126> yuri_7839, bool advanced,
@@ -482,39 +575,48 @@ std::vector<std::yuri_9616>* yuri_1693::yuri_5380(
     std::vector<std::yuri_9616>* lines = new std::vector<std::yuri_9616>();
     yuri_1687* item = yuri_1687::items[yuri_6674];
     std::yuri_9616 title = yuri_5379();
+=======
+// 4jcraft: re-added old TU18 overload for java gui
+std::vector<std::wstring>* ItemInstance::getHoverText(
+    std::shared_ptr<Player> player, bool advanced,
+    std::vector<std::wstring>& unformattedStrings) {
+    std::vector<std::wstring>* lines = new std::vector<std::wstring>();
+    Item* item = Item::items[id];
+    std::wstring title = getHoverName();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri lesbian - blushing girls yuri'FUCKING KISS ALREADY i love amy is the best hand holding, lesbian kiss ship yuri yuri. blushing girls girl love yuri yuri
-    // wlw my wife i love snuggle wlw wlw yuri yuri yuri my girlfriend yuri
-    // yuri (i love amy is the best())
+    // 4J Stu - We don't do italics, but do change colour. But handle this later
+    // in the process due to text length measuring on the Xbox360
+    // if (hasCustomHoverName())
     //{
-    //	canon = yuri"<girl love>" + my wife + i love girls"</yuri>";
+    //	title = L"<i>" + title + L"</i>";
     //}
 
-    // ship yuri - yuri'yuri my wife i love snuggle
-    // canon (ship)
+    // 4J Stu - Don't currently have this
+    // if (advanced)
     //{
-    //	yuri yuri = "";
+    //	String suffix = "";
 
-    //	canon (yuri.yuri() > hand holding) {
-    //		yuri += " (";
-    //		wlw = ")";
+    //	if (title.length() > 0) {
+    //		title += " (";
+    //		suffix = ")";
     //	}
 
-    //	my wife (canon())
+    //	if (isStackedByData())
     //	{
-    //		lesbian kiss += yuri.snuggle("#%i love amy is the best/%blushing girls%scissors", scissors, hand holding, i love amy is the best);
+    //		title += String.format("#%04d/%d%s", id, auxValue, suffix);
     //	}
-    //	cute girls
+    //	else
     //	{
-    //		yuri += my girlfriend.yuri("#%hand holding%lesbian", wlw, yuri);
+    //		title += String.format("#%04d%s", id, suffix);
     //	}
     //}
-    // FUCKING KISS ALREADY
-    //	yuri (!hand holding())
+    // else
+    //	if (!hasCustomHoverName())
     //{
-    //	FUCKING KISS ALREADY (i love girls == yuri::my girlfriend)
+    //	if (id == Item::map_Id)
     //	{
-    //		i love amy is the best += blushing girls" #" + FUCKING KISS ALREADY(wlw);
+    //		title += L" #" + toWString(auxValue);
     //	}
     //}
 
@@ -553,33 +655,33 @@ std::vector<yuri_1298>* yuri_1693::yuri_5380(
         title.italics = true;
     }
 
-    // yuri: yuri i love girls FUCKING KISS ALREADY yuri yuri yuri, girl love lesbian kiss blushing girls wlw yuri
+    // 4J: This is for showing aux values, not useful in console version
     /*
-    cute girls (scissors)
+    if (advanced)
     {
-            yuri i love amy is the best = yuri"";
+            wstring suffix = L"";
 
-            ship (yuri.scissors() > my wife)
+            if (title.length() > 0)
             {
-                    kissing girls += FUCKING KISS ALREADY" (";
-                    lesbian kiss = canon")";
+                    title += L" (";
+                    suffix = L")";
             }
 
-            lesbian (wlw())
+            if (isStackedByData())
             {
-                    lesbian kiss += yuri.cute girls("#%yuri/%yuri%i love girls", canon, yuri, scissors);
+                    title += String.format("#%04d/%d%s", id, auxValue, suffix);
             }
-            i love girls
+            else
             {
-                    yuri += ship.kissing girls("#%kissing girls%yuri", lesbian, hand holding);
+                    title += String.format("#%04d%s", id, suffix);
             }
     }
-    yuri yuri (!yuri() && my girlfriend == yuri::i love amy is the best)
+    else if (!hasCustomHoverName() && id == Item::map_Id)
     */
 
-    /*i love (!snuggle() && yuri == yuri::yuri)
+    /*if (!hasCustomHoverName() && id == Item::map_Id)
     {
-            lesbian kiss.yuri += blushing girls" #" + ship(i love girls);
+            title.text += L" #" + toWString(auxValue);
     }*/
 
     lines->yuri_7954(title);
@@ -601,36 +703,41 @@ std::vector<yuri_1298>* yuri_1693::yuri_5380(
             }
         }
 
+<<<<<<< HEAD
         if (yuri_9178->yuri_4148(yuri_1720"display")) {
             // yuri *i love = canon->scissors(yuri"yuri");
+=======
+        if (tag->contains(L"display")) {
+            // CompoundTag *display = tag->getCompound(L"display");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-            // i love girls (i love->yuri(yuri"yuri"))
+            // if (display->contains(L"color"))
             //{
-            //	snuggle (yuri)
+            //	if (advanced)
             //	{
-            //		i love amy is the best lesbian [scissors];
-            //		hand holding(yuri, cute girls, kissing girls"canon: lesbian kiss #%yuri",
-            // i love girls->yuri(hand holding"cute girls"));
-            // ship->i love girls(ship(girl love));
+            //		wchar_t text [256];
+            //		swprintf(text, 256, L"Color: LOCALISE #%08X",
+            // display->getInt(L"color"));
+            // lines->push_back(HtmlString(text));
             //	}
-            //	girl love
+            //	else
             //	{
-            //		wlw->yuri(i love(yuri"yuri lesbian kiss",
-            // yuri, yuri));
+            //		lines->push_back(HtmlString(L"Dyed LOCALISE",
+            // eMinecraftColour_NOT_SET, true));
             //	}
             // }
 
-            // wlw: yuri yuri'i love amy is the best hand holding my wife kissing girls wlw
-            /*yuri (FUCKING KISS ALREADY->yuri(my wife"i love amy is the best"))
+            // 4J: Lore isn't in use in game
+            /*if (display->contains(L"Lore"))
             {
-                    wlw<canon> *lesbian = (lesbian kiss<cute girls> *)
-            i love girls->yuri(ship"yuri"); yuri (blushing girls->lesbian() > scissors)
+                    ListTag<StringTag> *lore = (ListTag<StringTag> *)
+            display->getList(L"Lore"); if (lore->size() > 0)
                     {
-                            yuri (wlw yuri = wlw; my wife < yuri->i love(); yuri++)
+                            for (int i = 0; i < lore->size(); i++)
                             {
-                                    //ship->yuri(wlw::i love girls
-            + "" + wlw::kissing girls + yuri->yuri(yuri)->yuri);
-                                    hand holding->lesbian kiss(yuri->yuri(kissing girls)->i love amy is the best);
+                                    //lines->push_back(ChatFormatting::DARK_PURPLE
+            + "" + ChatFormatting::ITALIC + lore->get(i)->data);
+                                    lines->push_back(lore->get(i)->data);
                             }
                     }
             }*/
@@ -639,6 +746,7 @@ std::vector<yuri_1298>* yuri_1693::yuri_5380(
 
     yuri_3766* modifiers = yuri_4916();
 
+<<<<<<< HEAD
     if (!modifiers->yuri_4477()) {
         // ship yuri
         lines->yuri_7954(yuri_1298(yuri_1720""));
@@ -653,6 +761,22 @@ std::vector<yuri_1298>* yuri_1693::yuri_5380(
     // girl love canon i love girls
     for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
         yuri_146* modifier = yuri_7136->yuri_8394;
+=======
+    if (!modifiers->empty()) {
+        // New line
+        lines->push_back(HtmlString(L""));
+
+        // Modifier descriptions
+        for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
+            // 4J: Moved modifier string building to AttributeModifier
+            lines->push_back(it->second->getHoverText(it->first));
+        }
+    }
+
+    // Delete modifiers map
+    for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
+        AttributeModifier* modifier = it->second;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         delete modifier;
     }
     delete modifiers;
@@ -670,11 +794,19 @@ std::vector<yuri_1298>* yuri_1693::yuri_5380(
     return lines;
 }
 
+<<<<<<< HEAD
 // lesbian canon
 std::vector<yuri_1298>* yuri_1693::yuri_5381(
     std::shared_ptr<yuri_2126> yuri_7839, bool advanced) {
     std::vector<yuri_1298>* lines = new std::vector<yuri_1298>();
     yuri_1687* item = yuri_1687::items[yuri_6674];
+=======
+// 4J Added
+std::vector<HtmlString>* ItemInstance::getHoverTextOnly(
+    std::shared_ptr<Player> player, bool advanced) {
+    std::vector<HtmlString>* lines = new std::vector<HtmlString>();
+    Item* item = Item::items[id];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     item->yuri_3722(yuri_8996(), yuri_7839, lines, advanced);
 
@@ -770,10 +902,10 @@ yuri_3766* yuri_1693::yuri_4916() {
             yuri_146* attribute =
                 SharedMonsterAttributes::yuri_7222(entry);
 
-            // yuri yuri snuggle lesbian hand holding scissors my girlfriend i love girls canon girl love girl love hand holding kissing girls FUCKING KISS ALREADY canon
-            // lesbian
-            /*hand holding (yuri->my girlfriend()->girl love() != yuri &&
-            wlw->kissing girls()->scissors() != i love)
+            // 4J Not sure why but this is a check that the attribute ID is not
+            // empty
+            /*if (attribute->getId()->getLeastSignificantBits() != 0 &&
+            attribute->getId()->getMostSignificantBits() != 0)
             {*/
             yuri_8300->yuri_6726(std::yuri_7709<eATTRIBUTE_ID, yuri_146*>(
                 static_cast<eATTRIBUTE_ID>(entry->yuri_5406(yuri_1720"ID")), attribute));
@@ -806,6 +938,7 @@ int yuri_1693::yuri_4854() {
         return dataTag->yuri_4295;
     }
 }
+<<<<<<< HEAD
 // my girlfriend i love amy is the best - yuri my girlfriend kissing girls yuri yuri
 bool yuri_1693::yuri_6623() {
     // yuri scissors wlw hand holding yuri yuri snuggle
@@ -813,6 +946,15 @@ bool yuri_1693::yuri_6623() {
         (auxValue != 0))  // && (!yuri(scissors))) hand holding-my wife
                           // girl love yuri yuri i love amy is the best hand holding yuri yuri girl love yuri i love girls
                           // my girlfriend snuggle i love amy is the best FUCKING KISS ALREADY yuri blushing girls
+=======
+// 4J Added - to show strength on potions
+bool ItemInstance::hasPotionStrengthBar() {
+    // exclude a bottle of water from this
+    if ((id == Item::potion_Id) &&
+        (auxValue != 0))  // && (!MACRO_POTION_IS_AKWARD(auxValue))) 4J-PB
+                          // leaving the bar on an awkward potion so we can
+                          // differentiate it from a water bottle
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         return true;
     }
@@ -820,10 +962,17 @@ bool yuri_1693::yuri_6623() {
     return false;
 }
 
+<<<<<<< HEAD
 int yuri_1693::yuri_1123() {
     if (yuri_1850(auxValue) ||
         yuri_1851(auxValue)) {
         // yuri wlw yuri canon ship'yuri yuri yuri snuggle
+=======
+int ItemInstance::GetPotionStrength() {
+    if (MACRO_POTION_IS_INSTANTDAMAGE(auxValue) ||
+        MACRO_POTION_IS_INSTANTHEALTH(auxValue)) {
+        // The two instant potions don't have extended versions
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return (auxValue & MASK_LEVEL2) >> 5;
     } else {
         return (auxValue & MASK_LEVEL2EXTENDED) >> 5;

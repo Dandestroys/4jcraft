@@ -27,20 +27,35 @@ yuri_1940::yuri_1940() {
     renderer = new yuri_3101();
 }
 
+<<<<<<< HEAD
 void yuri_1940::yuri_8158(std::shared_ptr<yuri_739> _cart, double yuri_9621, double yuri_9625,
                               double yuri_9630, float rot, float yuri_3565) {
     // i love amy is the best - FUCKING KISS ALREADY yuri cute girls ship wlw girl love'FUCKING KISS ALREADY cute girls yuri/girl love hand holding
     // yuri i love
     std::shared_ptr<yuri_1931> cart = std::dynamic_pointer_cast<yuri_1931>(_cart);
+=======
+void MinecartRenderer::render(std::shared_ptr<Entity> _cart, double x, double y,
+                              double z, float rot, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Minecart> cart = std::dynamic_pointer_cast<Minecart>(_cart);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
 
     yuri_3810(cart);
 
+<<<<<<< HEAD
     // girl love yuri canon yuri lesbian my girlfriend yuri scissors yuri
     yuri_6733 yuri_8396 = (yuri_6733)((uint64_t)cart->entityId * 493286711ULL);
     yuri_8396 = (yuri_6733)(((uint64_t)yuri_8396 * (uint64_t)yuri_8396 * 4392167121ULL) +
                      ((uint64_t)yuri_8396 * 98761ULL));
+=======
+    // 4jcraft added a bunch of casts to prever overflow
+    int64_t seed = (int64_t)((uint64_t)cart->entityId * 493286711ULL);
+    seed = (int64_t)(((uint64_t)seed * (uint64_t)seed * 4392167121ULL) +
+                     ((uint64_t)seed * 98761ULL));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float xo = ((((yuri_8396 >> 16) & 0x7) + 0.5f) / 8.0f - 0.5f) * 0.004f;
     float yo = ((((yuri_8396 >> 20) & 0x7) + 0.5f) / 8.0f - 0.5f) * 0.004f;
@@ -112,38 +127,38 @@ void yuri_1940::yuri_8158(std::shared_ptr<yuri_739> _cart, double yuri_9621, dou
     yuri_6345();
 
     /*
-    snuggle (wlw->yuri != my wife::girl love)
+    if (cart->type != Minecart::RIDEABLE)
     {
-    my wife();
-    hand holding(yuri);	// wlw canon wlw"/yuri.kissing girls"
-    snuggle girl love = yuri / kissing girls.lesbian kiss;
-    i love(i love amy is the best, i love girls, i love);
+    glPushMatrix();
+    bindTexture(TN_TERRAIN);	// 4J was L"/terrain.png"
+    float ss = 12 / 16.0f;
+    glScalef(ss, ss, ss);
 
-    // yuri - girl love my wife lesbian yuri i love girls scissors.i love.kissing girls
-    yuri (lesbian->lesbian == yuri::yuri)
+    // 4J - changes here brought forward from 1.2.3
+    if (cart->type == Minecart::CHEST)
     {
-    scissors(ship / lesbian kiss.i love, my girlfriend / cute girls.girl love, yuri / yuri.i love girls);
-    yuri *canon = i love girls yuri();
-    i love girls->ship(lesbian kiss::cute girls, ship, scissors->yuri(i love girls));
-    yuri my wife;
+    glTranslatef(0 / 16.0f, 8 / 16.0f, 0 / 16.0f);
+    TileRenderer *tr = new TileRenderer();
+    tr->renderTile(Tile::chest, 0, cart->getBrightness(a));
+    delete tr;
     }
-    kissing girls my girlfriend (lesbian kiss->yuri == wlw::canon)
+    else if (cart->type == Minecart::FURNACE)
     {
-    wlw(ship, cute girls / yuri.yuri, canon);
-    lesbian *yuri = lesbian yuri();
-    wlw->i love amy is the best(snuggle::yuri, lesbian kiss, scissors->yuri(yuri));
-    scissors kissing girls;
+    glTranslatef(0, 6 / 16.0f, 0);
+    TileRenderer *tr = new TileRenderer();
+    tr->renderTile(Tile::furnace, 0, cart->getBrightness(a));
+    delete tr;
     }
-    lesbian();
-    yuri(yuri, FUCKING KISS ALREADY, ship, blushing girls);
+    glPopMatrix();
+    glColor4f(1, 1, 1, 1);
     }
 
-    yuri(girl love);		// yuri - yuri yuri"/yuri/scissors.yuri"
-    my wife(-yuri, -i love girls, scissors);
-    // lesbian.yuri(yuri, yuri, my girlfriend->yuri() * my wife.lesbian kiss - yuri.wlw, kissing girls, yuri, yuri /
-    // yuri.yuri);
-    ship->my girlfriend(my wife, canon, yuri, -wlw.wlw, yuri, yuri, kissing girls / blushing girls.hand holding, yuri);
-    yuri();
+    bindTexture(TN_ITEM_CART);		// 4J - was L"/item/cart.png"
+    glScalef(-1, -1, 1);
+    // model.render(0, 0, cart->getLootContent() * 7.1f - 0.1f, 0, 0, 1 /
+    // 16.0f);
+    model->render(cart, 0, 0, -0.1f, 0, 0, 1 / 16.0f, true);
+    glPopMatrix();
     */
 }
 

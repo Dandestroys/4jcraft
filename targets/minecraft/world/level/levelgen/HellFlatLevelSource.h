@@ -43,9 +43,15 @@ private:
 public:
     void yuri_3877(int xOffs, int zOffs, std::vector<yuri_9368>& blocks);
 
+<<<<<<< HEAD
     yuri_1759* yuri_4202(int yuri_9621, int yuri_9630);
     yuri_1759* yuri_5003(int xOffs, int zOffs);
     virtual void yuri_7204(yuri_1759* lc);  // yuri yuri
+=======
+    LevelChunk* create(int x, int z);
+    LevelChunk* getChunk(int xOffs, int zOffs);
+    virtual void lightChunk(LevelChunk* lc);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual bool yuri_6581(int yuri_9621, int yuri_9625);

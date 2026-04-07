@@ -10,8 +10,13 @@
 class yuri_1829;
 class yuri_1693;
 
+<<<<<<< HEAD
 // canon yuri - yuri yuri cute girls blushing girls'girl love yuri hand holding cute girls snuggle yuri
 class yuri_1339 {
+=======
+// 4J Stu - Crafting menu code that's shared across Iggy and XUI
+class IUIScene_CraftingMenu {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 protected:
 #yuri_4327 DISPLAY_INVENTORY 0
 #yuri_4327 DISPLAY_DESCRIPTION 1
@@ -38,7 +43,7 @@ protected:
     typedef struct {
         int iCount;
         int iItemBaseType;
-        int iRecipeA[m_iMaxVSlotC];  // hand holding my girlfriend yuri yuri ship i love yuri
+        int iRecipeA[m_iMaxVSlotC];  // tiers of item that can be made
     } CANBEMADE;
 
     CANBEMADE CanBeMadeA[m_iMaxHSlotC];
@@ -46,11 +51,16 @@ protected:
     int m_iCurrentSlotHIndex;
     int m_iCurrentSlotVIndex;
     int m_iRecipeC;
+<<<<<<< HEAD
     int m_iContainerType;  // canon my girlfriend yuri
     std::shared_ptr<yuri_1829> m_pPlayer;
+=======
+    int m_iContainerType;  // 2x2 or 3x3
+    std::shared_ptr<LocalPlayer> m_pPlayer;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int m_iGroupIndex;
 
-    int iVSlotIndexA[3];  // girl love yuri canon i love girls yuri i love amy is the best hand holding
+    int iVSlotIndexA[3];  // index of the v slots currently displayed
 
     static const wchar_t* m_GroupIconNameA[m_iMaxGroup3x3];
     static yuri_2335::_eGroupType m_GroupTypeMapping4GridA[m_iMaxGroup2x2];

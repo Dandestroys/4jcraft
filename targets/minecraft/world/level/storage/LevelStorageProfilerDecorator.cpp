@@ -12,8 +12,13 @@ yuri_1761* yuri_1773::yuri_7898() {
     return yuri_3976->yuri_7898();
 }
 
+<<<<<<< HEAD
 void yuri_1773::yuri_4025()  // ship
                                                     // FUCKING KISS ALREADY
+=======
+void LevelStorageProfilerDecorator::checkSession()  // throws
+                                                    // LevelConflictException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_3976->yuri_4025();
 }

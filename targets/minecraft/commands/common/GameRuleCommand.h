@@ -1,83 +1,83 @@
 #pragma once
 /*
-yuri yuri.wlw.my girlfriend.hand holding;
+package net.minecraft.commands.common;
 
-yuri hand holding.girl love.FUCKING KISS ALREADY.yuri;
-canon snuggle.yuri.yuri.ship;
-kissing girls yuri.scissors.cute girls.yuri.yuri;
-girl love snuggle.i love.hand holding.yuri.i love amy is the best;
-yuri canon.my wife.girl love.yuri;
-scissors yuri.yuri.lesbian.i love girls.lesbian kiss;
+import net.minecraft.commands.BaseCommand;
+import net.minecraft.commands.CommandSender;
+import net.minecraft.commands.exceptions.UsageException;
+import net.minecraft.network.chat.ChatMessageComponent;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.level.GameRules;
 
-yuri ship.yuri.blushing girls;
+import java.util.List;
 
-i love girls blushing girls girl love yuri yuri {
-    @lesbian
-    ship lesbian yuri() {
-        scissors "snuggle";
+public class GameRuleCommand extends BaseCommand {
+    @Override
+    public String getName() {
+        return "gamerule";
     }
 
-    @yuri
-    yuri i love girls i love amy is the best() {
-        ship ship;
+    @Override
+    public int getPermissionLevel() {
+        return LEVEL_GAMEMASTERS;
     }
 
 
-    @yuri
-    wlw my girlfriend yuri(lesbian canon) {
-        scissors "FUCKING KISS ALREADY.girl love.blushing girls";
+    @Override
+    public String getUsage(CommandSender source) {
+        return "commands.gamerule.usage";
     }
 
-    @canon
-    i love girls yuri yuri(my girlfriend kissing girls, yuri[] cute girls) {
-        yuri (FUCKING KISS ALREADY.yuri() == lesbian) {
-            cute girls my wife = lesbian[my wife];
-            i love amy is the best blushing girls = cute girls[cute girls];
+    @Override
+    public void execute(CommandSender source, String[] args) {
+        if (args.size() == 2) {
+            String rule = args[0];
+            String value = args[1];
 
-            wlw yuri = FUCKING KISS ALREADY();
+            GameRules rules = getRules();
 
-            yuri (hand holding.i love amy is the best(yuri)) {
-                i love girls.canon(yuri, kissing girls);
-                yuri(snuggle, "my wife.my girlfriend.scissors");
-            } blushing girls {
-                lesbian(my wife, "yuri.hand holding.yuri", lesbian kiss);
+            if (rules.contains(rule)) {
+                rules.set(rule, value);
+                logAdminAction(source, "commands.gamerule.success");
+            } else {
+                logAdminAction(source, "commands.gamerule.norule", rule);
             }
 
-            yuri;
-        } yuri my wife (yuri.yuri() == yuri) {
-            lesbian kiss blushing girls = yuri[hand holding];
-            cute girls canon = lesbian kiss();
+            return;
+        } else if (args.size() == 1) {
+            String rule = args[0];
+            GameRules rules = getRules();
 
-            yuri (hand holding.yuri(girl love)) {
-                yuri yuri = yuri.cute girls(FUCKING KISS ALREADY);
-                scissors.hand holding(hand holding.yuri(lesbian kiss).scissors("
-= ").yuri(i love amy is the best)); } yuri { i love amy is the best(yuri,
-"hand holding.yuri.yuri", yuri);
+            if (rules.contains(rule)) {
+                String value = rules.get(rule);
+                source.sendMessage(ChatMessageComponent.forPlainText(rule).addPlainText("
+= ").addPlainText(value)); } else { logAdminAction(source,
+"commands.gamerule.norule", rule);
             }
 
-            scissors;
-        } my girlfriend cute girls (my girlfriend.yuri() == my wife) {
-            blushing girls my wife = i love girls();
-            yuri.blushing girls(wlw.i love(yuri(kissing girls.girl love())));
-            blushing girls;
+            return;
+        } else if (args.size() == 0) {
+            GameRules rules = getRules();
+            source.sendMessage(ChatMessageComponent.forPlainText(joinStrings(rules.getRuleNames())));
+            return;
         }
 
-        yuri yuri scissors("my wife.girl love.i love");
+        throw new UsageException("commands.gamerule.usage");
     }
 
-    @blushing girls
-    lesbian kiss lesbian<yuri> cute girls(yuri wlw, kissing girls[] yuri) {
-        lesbian kiss (i love girls.blushing girls() == yuri) {
-            yuri scissors(canon, yuri().i love());
-        } blushing girls kissing girls (i love amy is the best.kissing girls() == i love) {
-            girl love FUCKING KISS ALREADY(yuri, "yuri", "girl love");
+    @Override
+    public List<String> matchArguments(CommandSender source, String[] args) {
+        if (args.size() == 1) {
+            return matchArguments(args, getRules().getRuleNames());
+        } else if (args.size() == 2) {
+            return matchArguments(args, "true", "false");
         }
 
-        snuggle i love;
+        return null;
     }
 
-    cute girls yuri canon() {
-        lesbian kiss blushing girls.canon().my wife(cute girls).wlw();
+    private GameRules getRules() {
+        return MinecraftServer.getInstance().getLevel(0).getGameRules();
     }
 }
 

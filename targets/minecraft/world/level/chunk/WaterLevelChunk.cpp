@@ -12,10 +12,17 @@ yuri_3363::yuri_3363(yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks,
                                  int yuri_9621, int yuri_9630)
     : yuri_1759(yuri_7194, blocks, yuri_9621, yuri_9630) {
     dontSave = true;
+<<<<<<< HEAD
     // yuri i love i love girls yuri yuri-yuri, i love amy is the best FUCKING KISS ALREADY snuggle'lesbian kiss yuri yuri yuri i love girls-yuri
     // blushing girls lesbian kiss scissors my girlfriend scissors girl love yuri lesbian lesbian kiss FUCKING KISS ALREADY
     terrainPopulated = yuri_1759::sTerrainPopulatedAllNeighbours |
                        yuri_1759::sTerrainPostPostProcessed;
+=======
+    // Set this as fully post-processed, so we don't try and run post-processing
+    // on any edge chunks that will overlap into real chunks
+    terrainPopulated = LevelChunk::sTerrainPopulatedAllNeighbours |
+                       LevelChunk::sTerrainPostPostProcessed;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3363::yuri_6777(int yuri_9621, int yuri_9630) {
@@ -68,7 +75,11 @@ void yuri_3363::yuri_8148(int yuri_9621, int yuri_9625, int yuri_9630) {}
 
 void yuri_3363::yuri_7219() {}
 
+<<<<<<< HEAD
 void yuri_3363::yuri_9373(bool unloadTileEntities)  // i love amy is the best - yuri yuri
+=======
+void WaterLevelChunk::unload(bool unloadTileEntities)  // 4J - added parameter
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {}
 
 bool yuri_3363::yuri_4157() { return false; }
@@ -88,12 +99,21 @@ bool yuri_3363::yuri_9017(bool yuri_4661) { return false; }
 
 void yuri_3363::yuri_8488(std::vector<yuri_9368>& newBlocks, int sub) {}
 
+<<<<<<< HEAD
 int yuri_3363::yuri_8489(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
                                       int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
                                       int yuri_7701, bool includeLighting /* = i love*/) {
     int xs = yuri_9623 - yuri_9622;
     int ys = yuri_9627 - yuri_9626;
     int zs = yuri_9632 - yuri_9631;
+=======
+int WaterLevelChunk::setBlocksAndData(std::vector<uint8_t>& data, int x0,
+                                      int y0, int z0, int x1, int y1, int z1,
+                                      int p, bool includeLighting /* = true*/) {
+    int xs = x1 - x0;
+    int ys = y1 - y0;
+    int zs = z1 - z0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int s = xs * ys * zs;
 

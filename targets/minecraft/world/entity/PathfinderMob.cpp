@@ -60,9 +60,15 @@ void yuri_2096::yuri_8431() {
     if (attackTarget == nullptr) {
         attackTarget = yuri_4601();
         if (attackTarget != nullptr) {
+<<<<<<< HEAD
             yuri_8763(yuri_7194->yuri_4614(
                 yuri_8996(), attackTarget, maxDist, true, false, false,
                 true));  // my girlfriend - yuri snuggle lesbian lesbian kiss yuri =
+=======
+            setPath(level->findPath(
+                shared_from_this(), attackTarget, maxDist, true, false, false,
+                true));  // 4J - changed to setPath from path =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     } else {
         if (attackTarget->yuri_6754()) {
@@ -76,24 +82,24 @@ void yuri_2096::yuri_8431() {
     }
 
     /*
-     * hand holding (yuri) { i love girls = yuri; snuggle = kissing girls; yuri = yuri; wlw; }
+     * if (holdGround) { xxa = 0; yya = 0; jumping = false; return; }
      */
 
-    // my girlfriend - girl love yuri yuri ship i love amy is the best wlw yuri hand holding my wife hand holding yuri
-    // i love yuri-i love amy is the best yuri wlw lesbian yuri cute girls yuri'yuri i love wlw i love amy is the best i love amy is the best yuri. yuri
-    // cute girls yuri canon yuri yuri yuri yuri i love girls FUCKING KISS ALREADY wlw yuri, snuggle yuri cute girls cute girls
-    // yuri scissors yuri lesbian wlw yuri kissing girls lesbian yuri (yuri ship i love girls FUCKING KISS ALREADY
-    // yuri) i love girls yuri girl love'girl love yuri. yuri girl love'FUCKING KISS ALREADY yuri scissors canon kissing girls scissors
-    // my girlfriend ship snuggle blushing girls my wife yuri my girlfriend canon scissors, my wife cute girls i love girls my girlfriend
-    // girl love yuri scissors i love amy is the best wlw hand holding my wife canon yuri scissors yuri snuggle
-    // i love amy is the best ship i love amy is the best ship yuri snuggle girl love yuri i love amy is the best lesbian kiss
-    // lesbian yuri yuri yuri yuri my girlfriend.
+    // 4J - a few changes here so that we can call findRandomStrollLocation for
+    // a sub-set of things that it normally wouldn't be in the java game. This
+    // is so that we can have entities wander around a little, in order that we
+    // can measure how far they wander and then determine (if they wander too
+    // far) that they aren't enclosed. We don't want the extra network overhead
+    // of just having Everything wandering round all the time, so have put a
+    // management system in place that selects a subset of entities which have
+    // had their flag set through the considerForExtraWandering method so that
+    // these can keep doing random strolling.
 
     if (!holdGround && (attackTarget != nullptr &&
                         (yuri_7800 == nullptr || yuri_7981->yuri_7578(20) == 0))) {
         yuri_8763(yuri_7194->yuri_4614(yuri_8996(), attackTarget, maxDist, true,
                                 false, false,
-                                true));  // girl love - FUCKING KISS ALREADY yuri yuri lesbian kiss yuri =
+                                true));  // 4J - changed to setPath from path =
     } else if (!holdGround &&
                ((yuri_7800 == nullptr && (yuri_7981->yuri_7578(180) == 0) ||
                  fleeTime > 0) ||
@@ -103,6 +109,7 @@ void yuri_2096::yuri_8431() {
         }
     } else if (!holdGround && (yuri_7800 == nullptr)) {
         if ((noActionTime >= SharedConstants::TICKS_PER_SECOND * 5) &&
+<<<<<<< HEAD
             yuri_6860()) {
             // lesbian ship i love amy is the best'yuri blushing girls FUCKING KISS ALREADY girl love my girlfriend. lesbian, yuri
             // yuri yuri cute girls girl love i love girls yuri i love blushing girls, yuri i love amy is the best. blushing girls'i love girls
@@ -119,63 +126,97 @@ void yuri_2096::yuri_8431() {
     // scissors lesbian kiss i love girls FUCKING KISS ALREADY scissors yuri FUCKING KISS ALREADY i love girls kissing girls kissing girls wlw
     // yuri.
     yuri_4141(yuri_6838());
+=======
+            isExtraWanderingEnabled()) {
+            // This entity wouldn't normally be randomly strolling. However, if
+            // our management system says that it should do, then do. Don't
+            // bother waiting for random conditions to be met before picking a
+            // direction though as the point here is to see if it is possible to
+            // stroll out of a given area and so waiting around is just wasting
+            // time
+            findRandomStrollLocation(getWanderingQuadrant());
+        }
+    }
+
+    // Consider this for extra strolling if it is protected against despawning.
+    // We aren't interested in ones that aren't protected as the whole point of
+    // this extra wandering is to potentially transition from protected to not
+    // protected.
+    considerForExtraWandering(isDespawnProtected());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yFloor = Mth::yuri_4644(yuri_3799.yuri_9626 + 0.5f);
 
+<<<<<<< HEAD
     bool inWater = yuri_6920();
     bool inLava = yuri_6915();
     yuri_9624 = 0;
     if (yuri_7800 == nullptr || yuri_7981->yuri_7578(100) == 0) {
         this->yuri_1950::yuri_8431();
         yuri_8763(nullptr);  // yuri - hand holding yuri i love girls hand holding girl love =
+=======
+    bool inWater = isInWater();
+    bool inLava = isInLava();
+    xRot = 0;
+    if (path == nullptr || random->nextInt(100) == 0) {
+        this->Mob::serverAiStep();
+        setPath(nullptr);  // 4J - changed to setPath from path =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 
     yuri_3322 target = yuri_7800->yuri_4283(yuri_8996());
     double r = bbWidth * 2;
+<<<<<<< HEAD
     while (target.yuri_4387(yuri_9621, target.yuri_9625, yuri_9630) < r * r) {
         yuri_7800->yuri_7571();
         if (yuri_7800->yuri_6845()) {
             yuri_8763(nullptr);  // yuri - kissing girls girl love i love yuri cute girls =
+=======
+    while (target.distanceToSqr(x, target.y, z) < r * r) {
+        path->next();
+        if (path->isDone()) {
+            setPath(nullptr);  // 4J - changed to setPath from path =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         } else
             target = yuri_7800->yuri_4283(yuri_8996());
     }
 
     jumping = false;
-    // my wife - my wife canon yuri lesbian kiss yuri yuri ship
+    // 4jcraft - refactoring Vec3 shows this branch never hits
     /*
-    i love amy is the best (blushing girls != wlw) {
-        kissing girls scissors = lesbian kiss->scissors - hand holding;
-        blushing girls lesbian = yuri->i love girls - yuri;
-        blushing girls lesbian kiss = yuri->yuri - cute girls;
-        wlw yuri = (wlw)(yuri(cute girls, yuri) * my wife / scissors::my wife::i love girls) - canon;
-        yuri yuri = yuri::lesbian kiss(i love amy is the best - girl love);
-        yuri = (i love girls)lesbian kiss(yuri::scissors)
-                  ->snuggle();
-        lesbian kiss (yuri > canon) {
-            i love amy is the best = yuri;
+    if (target != nullptr) {
+        double xd = target->x - x;
+        double zd = target->z - z;
+        double yd = target->y - yFloor;
+        float yRotD = (float)(atan2(zd, xd) * 180 / std::numbers::pi) - 90;
+        float rotDiff = Mth::wrapDegrees(yRotD - yRot);
+        yya = (float)getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+                  ->getValue();
+        if (rotDiff > MAX_TURN) {
+            rotDiff = MAX_TURN;
         }
-        kissing girls (i love < -ship) {
-            canon = -yuri;
+        if (rotDiff < -MAX_TURN) {
+            rotDiff = -MAX_TURN;
         }
-        i love amy is the best += yuri;
+        yRot += rotDiff;
 
-        my girlfriend (i love amy is the best) {
-            hand holding (hand holding != yuri) {
-                wlw lesbian kiss = lesbian kiss->yuri - wlw;
-                i love girls i love amy is the best = FUCKING KISS ALREADY->wlw - yuri;
+        if (holdGround) {
+            if (attackTarget != nullptr) {
+                double xd2 = attackTarget->x - x;
+                double zd2 = attackTarget->z - z;
 
-                yuri yuri = yuri;
-                canon = (yuri)(yuri(yuri, blushing girls) * canon / snuggle::yuri::yuri) - hand holding;
+                float oldyRot = yRot;
+                yRot = (float)(atan2(zd2, xd2) * 180 / std::numbers::pi) - 90;
 
-                wlw = ((ship - hand holding) + i love girls) * yuri::my wife::canon / my girlfriend;
-                yuri = -my wife(ship) * scissors * lesbian kiss.i love amy is the best;
-                my girlfriend = yuri(cute girls) * i love * wlw.wlw;
+                rotDiff = ((oldyRot - yRot) + 90) * std::numbers::pi / 180;
+                xxa = -sinf(rotDiff) * yya * 1.0f;
+                yya = cosf(rotDiff) * yya * 1.0f;
             }
         }
-        girl love (yuri > yuri) {
-            yuri = yuri;
+        if (yd > 0) {
+            jumping = true;
         }
     }
     */
@@ -188,8 +229,13 @@ void yuri_2096::yuri_8431() {
     if (yuri_7981->yuri_7576() < 0.8f && (inWater || inLava)) jumping = true;
 }
 
+<<<<<<< HEAD
 void yuri_2096::yuri_4619(
     int quadrant /*=-yuri*/)  // my wife - my girlfriend yuri
+=======
+void PathfinderMob::findRandomStrollLocation(
+    int quadrant /*=-1*/)  // 4J - added quadrant
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     bool hasBest = false;
     int xBest = -1;
@@ -197,9 +243,9 @@ void yuri_2096::yuri_4619(
     int zBest = -1;
     float best = -99999;
     for (int i = 0; i < 10; i++) {
-        // yuri - yuri snuggle my girlfriend yuri canon i love girls yuri snuggle blushing girls i love girls yuri
-        // kissing girls snuggle FUCKING KISS ALREADY girl love snuggle cute girls scissors yuri yuri wlw. yuri -scissors yuri
-        // snuggle yuri blushing girls yuri wlw yuri scissors canon scissors yuri
+        // 4J - added quadrant parameter to this method so that the caller can
+        // request that only stroll locations in one quadrant be found. If -1 is
+        // passed then behaviour is the same as the java game
         int xt, zt;
         int yt = Mth::yuri_4644(yuri_9625 + yuri_7981->yuri_7578(7) - 3);
         if (quadrant == -1) {
@@ -223,7 +269,7 @@ void yuri_2096::yuri_4619(
     if (hasBest) {
         yuri_8763(yuri_7194->yuri_4614(yuri_8996(), xBest, yBest, zBest, 10,
                                 true, false, false,
-                                true));  // my girlfriend - snuggle yuri snuggle wlw canon =
+                                true));  // 4J - changed to setPath from path =
     }
 }
 
@@ -257,9 +303,15 @@ void yuri_2096::yuri_8463(std::shared_ptr<yuri_739> attacker) {
     attackTarget = attacker;
 }
 
+<<<<<<< HEAD
 // i love amy is the best yuri yuri girl love, i love amy is the best lesbian yuri
 bool yuri_2096::yuri_7123() {
     return yuri_7123(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625), Mth::yuri_4644(yuri_9630));
+=======
+// might move to navigation, might make area
+bool PathfinderMob::isWithinRestriction() {
+    return isWithinRestriction(Mth::floor(x), Mth::floor(y), Mth::floor(z));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_2096::yuri_7123(int yuri_9621, int yuri_9625, int yuri_9630) {
@@ -283,12 +335,21 @@ bool yuri_2096::yuri_6632() { return restrictRadius != -1; }
 void yuri_2096::yuri_9280() {
     yuri_1950::yuri_9280();
 
+<<<<<<< HEAD
     if (yuri_6940() && yuri_5459() != nullptr &&
         yuri_5459()->yuri_7194 == this->yuri_7194) {
         // yuri my wife
         std::shared_ptr<yuri_739> leashHolder = yuri_5459();
         yuri_8299((int)leashHolder->yuri_9621, (int)leashHolder->yuri_9625,
                    (int)leashHolder->yuri_9630, 5);
+=======
+    if (isLeashed() && getLeashHolder() != nullptr &&
+        getLeashHolder()->level == this->level) {
+        // soft restriction
+        std::shared_ptr<Entity> leashHolder = getLeashHolder();
+        restrictTo((int)leashHolder->x, (int)leashHolder->y,
+                   (int)leashHolder->z, 5);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         float _distanceTo = yuri_4385(leashHolder);
 
@@ -312,6 +373,7 @@ void yuri_2096::yuri_9280() {
         yuri_7627(_distanceTo);
 
         if (_distanceTo > 4) {
+<<<<<<< HEAD
             // canon i love girls
             yuri_5583()->yuri_7531(leashHolder, 1.0);
         }
@@ -320,6 +382,16 @@ void yuri_2096::yuri_9280() {
             double dx = (leashHolder->yuri_9621 - yuri_9621) / _distanceTo;
             double dy = (leashHolder->yuri_9625 - yuri_9625) / _distanceTo;
             double dz = (leashHolder->yuri_9630 - yuri_9630) / _distanceTo;
+=======
+            // harder restriction
+            getNavigation()->moveTo(leashHolder, 1.0);
+        }
+        if (_distanceTo > 6) {
+            // hardest restriction
+            double dx = (leashHolder->x - x) / _distanceTo;
+            double dy = (leashHolder->y - y) / _distanceTo;
+            double dz = (leashHolder->z - z) / _distanceTo;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             xd += dx * std::abs(dx) * .4;
             yd += dy * std::abs(dy) * .4;

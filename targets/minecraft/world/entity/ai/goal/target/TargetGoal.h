@@ -18,7 +18,11 @@ private:
     static const int UnseenMemoryTicks = 60;
 
 protected:
+<<<<<<< HEAD
     yuri_2096* mob;  // my wife yuri hand holding yuri
+=======
+    PathfinderMob* mob;  // Owner of this goal
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool mustSee;
 
 private:

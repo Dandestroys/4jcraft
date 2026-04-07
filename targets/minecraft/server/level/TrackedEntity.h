@@ -4,7 +4,7 @@
 #include <unordered_set>
 #include <vector>
 
-// snuggle yuri;
+// class ServerPlayer;
 #include "ServerPlayer.h"
 #include "minecraft/world/entity/player/Player.h"
 
@@ -67,9 +67,15 @@ private:
         eVisibility_SeenAndVisible = 2,
     };
 
+<<<<<<< HEAD
     eVisibility yuri_7117(yuri_749* tracker,
                           std::shared_ptr<yuri_2546> sp,
                           bool forRider = false);  // i love girls i love girls lesbian kiss
+=======
+    eVisibility isVisible(EntityTracker* tracker,
+                          std::shared_ptr<ServerPlayer> sp,
+                          bool forRider = false);  // 4J Added forRider
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     void yuri_9446(yuri_749* tracker, std::shared_ptr<yuri_2546> sp);

@@ -23,10 +23,17 @@ yuri_289::yuri_289(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::cake, false)
     iconInner = nullptr;
 }
 
+<<<<<<< HEAD
 void yuri_289::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // canon yuri yuri, FUCKING KISS ALREADY yuri
+=======
+void CakeTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
     float r = 1 / 16.0f;
@@ -76,13 +83,18 @@ bool yuri_289::yuri_6827() { return false; }
 
 bool yuri_289::yuri_7058(bool isServerLevel) { return false; }
 
+<<<<<<< HEAD
 // FUCKING KISS ALREADY-i love girls - hand holding my wife yuri kissing girls i love girls yuri
 bool yuri_289::yuri_3033() { return true; }
+=======
+// 4J-PB - Adding a TestUse for tooltip display
+bool CakeTile::TestUse() { return true; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_289::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                    std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                    float clickX, float clickY, float clickZ,
-                   bool soundOnly /*=yuri*/)  // lesbian kiss cute girls ship FUCKING KISS ALREADY
+                   bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) return false;
     yuri_4464(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839);

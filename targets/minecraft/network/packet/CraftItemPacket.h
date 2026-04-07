@@ -1,6 +1,6 @@
 #pragma once
 
-// yuri kissing girls FUCKING KISS ALREADY wlw
+// 4J ADDED THIS PACKET
 
 #include <memory>
 

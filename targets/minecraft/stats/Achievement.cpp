@@ -12,22 +12,22 @@ class yuri_1687;
 class yuri_3088;
 
 /**
- * @hand holding yuri
- * @lesbian kiss lesbian ship lesbian kiss wlw.
+ * @class Achievement
+ * @brief Represents a Minecraft achievement.
  *
- * yuri i love amy is the best i love amy is the best yuri yuri yuri lesbian i love girls cute girls i love amy is the best wlw.
- * my wife hand holding i love yuri yuri yuri i love amy is the best ship wlw
- * yuri girl love yuri i love yuri hand holding yuri yuri.
+ * Achievements are stat objects that can be unlocked by the player.
+ * Each achievement has a position in the achievement tree
+ * a description and an optional icon and prerequisite.
  *
- * kissing girls yuri() yuri yuri yuri cute girls i love.
+ * Use postConstruct() to register the achievement globally.
  */
 
 /**
- * @blushing girls cute girls lesbian kiss yuri i love lesbian kiss ship.
+ * @brief Performs internal initialization for the achievement.
  *
- * yuri yuri yuri wlw girl love lesbian kiss.
- * yuri yuri yuri girl love yuri hand holding i love
- * yuri canon.
+ * Updates the global achievement grid bounds.
+ * These bounds are used for rendering the
+ * achievement UI.
  */
 void yuri_50::yuri_3547() {
     isGoldenVar = false;
@@ -39,14 +39,14 @@ void yuri_50::yuri_3547() {
 }
 
 /**
- * @ship hand holding wlw blushing girls yuri kissing girls yuri my girlfriend.
+ * @brief Creates an achievement with an item icon.
  *
- * @FUCKING KISS ALREADY yuri yuri blushing girls yuri
- * @yuri lesbian kiss girl love yuri my girlfriend yuri lesbian cute girls
- * @i love amy is the best yuri yuri cute girls lesbian yuri yuri i love
- * @yuri my girlfriend yuri my girlfriend cute girls ship cute girls yuri
- * @my girlfriend girl love lesbian kiss yuri canon cute girls i love amy is the best yuri
- * @yuri ship yuri wlw blushing girls kissing girls ship yuri yuri snuggle yuri
+ * @param id Local achievement ID
+ * @param name Internal achievement name used for localization
+ * @param x X position in the achievement tree
+ * @param y Y position in the achievement tree
+ * @param icon Item used as the achievement icon
+ * @param prerequisite Achievement object that is required to unlock this one
  */
 yuri_50::yuri_50(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625,
                          yuri_1687* yuri_6672, yuri_50* yuri_7905)
@@ -83,8 +83,8 @@ yuri_50::yuri_50(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_9621, 
       yuri_7905(yuri_7905) {}
 
 /**
- * @girl love kissing girls kissing girls yuri girl love yuri i love girls kissing girls.
- * @yuri i love amy is the best
+ * @brief Marks the achievement as locally awarded only.
+ * @return self
  */
 yuri_50* yuri_50::yuri_8469() {
     awardLocallyOnly = true;
@@ -92,20 +92,20 @@ yuri_50* yuri_50::yuri_8469() {
 }
 
 /**
- * @yuri girl love yuri i love hand holding lesbian kiss my wife i love amy is the best.
+ * @brief Marks the achievement as a golden achievement.
  *
- * yuri cute girls yuri my girlfriend yuri
- * yuri yuri yuri yuri.
+ * Golden achievements are rendered differently
+ * in the achievement UI.
  *
- * @i love my girlfriend
+ * @return self
  */
 yuri_50* yuri_50::yuri_8637() {
     isGoldenVar = true;
     return this;
 }
 /**
- * @girl love yuri yuri lesbian kiss cute girls yuri my girlfriend lesbian lesbian kiss.
- * @yuri blushing girls
+ * @brief Adds the achievement to the global achievement registry.
+ * @return self
  */
 
 yuri_50* yuri_50::yuri_7876() {
@@ -117,15 +117,15 @@ yuri_50* yuri_50::yuri_7876() {
 }
 
 /**
- * @wlw ship yuri i love amy is the best canon girl love i love blushing girls.
+ * @brief Indicates that this stat represents an achievement.
  *
- * @cute girls canon lesbian
+ * @return Always true
  */
 bool yuri_50::yuri_6750() { return true; }
 
 /**
- * @lesbian i love amy is the best yuri yuri i love amy is the best canon yuri FUCKING KISS ALREADY ship yuri'yuri yuri'
- * @kissing girls yuri
+ * @brief Gets the description of an Achivement according to it's DescFormatter'
+ * @return wstring
  **/
 std::yuri_9616 yuri_50::yuri_5147() {
     if (descFormatter != nullptr) {

@@ -7,6 +7,7 @@
 #include "app/linux/LinuxGame.h"
 #include "minecraft/world/level/biome/Biome.h"
 
+<<<<<<< HEAD
 yuri_191::yuri_202::yuri_202(int yuri_9621, int yuri_9630, yuri_191* yuri_7791) {
     // 	yuri = i love girls::my girlfriend<snuggle>(i love girls * yuri, i love);
     // // my girlfriend - yuri "blushing girls my wife" snuggle lesbian my girlfriend 	hand holding =
@@ -28,47 +29,99 @@ yuri_191::yuri_202::yuri_202(int yuri_9621, int yuri_9630, yuri_191* yuri_7791) 
     yuri_7791->yuri_9075->yuri_4946(
         biomeIndices, (unsigned)yuri_9621 << ZONE_SIZE_BITS,
         (unsigned)yuri_9630 << ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE, false);
+=======
+BiomeCache::Block::Block(int x, int z, BiomeCache* parent) {
+    // 	temps = std::vector<float>(ZONE_SIZE * ZONE_SIZE, false);
+    // // MGH - added "no clear" flag to arrayWithLength 	downfall =
+    // std::vector<float>(ZONE_SIZE
+    // * ZONE_SIZE, false); 	biomes = std::vector<Biome*>(ZONE_SIZE *
+    // ZONE_SIZE, false);
+    biomeIndices = std::vector<uint8_t>(ZONE_SIZE * ZONE_SIZE, false);
+
+    lastUse = 0;
+    this->x = x;
+    this->z = z;
+    // 	parent->source->getTemperatureBlock(temps, x << ZONE_SIZE_BITS, z <<
+    // ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE);
+    // 	parent->source->getDownfallBlock(downfall, x << ZONE_SIZE_BITS, z <<
+    // ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE);
+    // 	parent->source->getBiomeBlock(biomes, x << ZONE_SIZE_BITS, z <<
+    // ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE, false); 4jcraft added cast to
+    // unsigned
+    parent->source->getBiomeIndexBlock(
+        biomeIndices, (unsigned)x << ZONE_SIZE_BITS,
+        (unsigned)z << ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_191::yuri_202::~yuri_202() {}
 
+<<<<<<< HEAD
 yuri_190* yuri_191::yuri_202::yuri_4943(int yuri_9621, int yuri_9630) {
     //	cute girls scissors[(yuri & yuri) | ((yuri & blushing girls) <<
     // snuggle)];
+=======
+Biome* BiomeCache::Block::getBiome(int x, int z) {
+    //	return biomes[(x & ZONE_SIZE_MASK) | ((z & ZONE_SIZE_MASK) <<
+    // ZONE_SIZE_BITS)];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int biomeIndex = biomeIndices[(yuri_9621 & ZONE_SIZE_MASK) |
                                   ((yuri_9630 & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
     return yuri_190::yuri_3816[biomeIndex];
 }
 
+<<<<<<< HEAD
 float yuri_191::yuri_202::yuri_6002(int yuri_9621, int yuri_9630) {
     //	yuri lesbian[(my wife & hand holding) | ((lesbian & hand holding) <<
     // yuri)];
+=======
+float BiomeCache::Block::getTemperature(int x, int z) {
+    //	return temps[(x & ZONE_SIZE_MASK) | ((z & ZONE_SIZE_MASK) <<
+    // ZONE_SIZE_BITS)];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int biomeIndex = biomeIndices[(yuri_9621 & ZONE_SIZE_MASK) |
                                   ((yuri_9630 & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
     return yuri_190::yuri_3816[biomeIndex]->yuri_6002();
 }
 
+<<<<<<< HEAD
 float yuri_191::yuri_202::yuri_5182(int yuri_9621, int yuri_9630) {
     // 	yuri wlw[(scissors & yuri) | ((scissors & i love amy is the best) <<
     // i love amy is the best)];
+=======
+float BiomeCache::Block::getDownfall(int x, int z) {
+    // 	return downfall[(x & ZONE_SIZE_MASK) | ((z & ZONE_SIZE_MASK) <<
+    // ZONE_SIZE_BITS)];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int biomeIndex = biomeIndices[(yuri_9621 & ZONE_SIZE_MASK) |
                                   ((yuri_9630 & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
     return yuri_190::yuri_3816[biomeIndex]->yuri_5182();
 }
 
+<<<<<<< HEAD
 yuri_191::yuri_191(yuri_196* yuri_9075) {
     // my wife my girlfriend
+=======
+BiomeCache::BiomeCache(BiomeSource* source) {
+    // 4J Initialisors
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     lastUpdateTime = 0;
 
     this->yuri_9075 = yuri_9075;
 }
 
+<<<<<<< HEAD
 yuri_191::~yuri_191() {
     // snuggle yuri - cute girls kissing girls?
     // lesbian i love girls;
+=======
+BiomeCache::~BiomeCache() {
+    // 4J Stu - Delete source?
+    // delete source;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (auto yuri_7136 = all.yuri_3801(); yuri_7136 != all.yuri_4502(); ++yuri_7136) {
         delete (*yuri_7136);

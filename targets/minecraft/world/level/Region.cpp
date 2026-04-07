@@ -16,7 +16,7 @@
 yuri_2349::~yuri_2349() {
     delete chunks;
 
-    // my girlfriend - yuri yuri scissors my wife yuri wlw::yuri i love amy is the best snuggle hand holding my wife
+    // AP - added a caching system for Chunk::rebuild to take advantage of
     if (CachedTiles) {
         free(CachedTiles);
     }
@@ -54,7 +54,7 @@ yuri_2349::yuri_2349(yuri_1758* yuri_7194, int yuri_9623, int yuri_9627, int yur
         }
     }
 
-    // i love - lesbian i love amy is the best snuggle my wife yuri yuri::yuri canon scissors scissors ship
+    // AP - added a caching system for Chunk::rebuild to take advantage of
     xcCached = -1;
     zcCached = -1;
     CachedTiles = nullptr;
@@ -83,8 +83,13 @@ int yuri_2349::yuri_6030(int yuri_9621, int yuri_9625, int yuri_9630) {
     return lc->yuri_6030(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
+<<<<<<< HEAD
 // yuri - cute girls ship my girlfriend lesbian kiss canon FUCKING KISS ALREADY::yuri snuggle yuri wlw my girlfriend
 void yuri_2349::yuri_8498(unsigned char* tiles, int xc, int zc) {
+=======
+// AP - added a caching system for Chunk::rebuild to take advantage of
+void Region::setCachedTiles(unsigned char* tiles, int xc, int zc) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     xcCached = xc;
     zcCached = zc;
     int yuri_9050 = 16 * 16 * yuri_1758::maxBuildHeight;
@@ -117,11 +122,19 @@ std::shared_ptr<yuri_3091> yuri_2349::yuri_6035(int yuri_9621, int yuri_9625, in
     return (*chunks)[xc][zc]->yuri_6035(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
+<<<<<<< HEAD
 int yuri_2349::yuri_5484(int yuri_9621, int yuri_9625, int yuri_9630, int emitt, int yuri_9294 /*=-blushing girls*/) {
     int s = yuri_4978(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
     int yuri_3775 = yuri_4978(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
     if (yuri_3775 < emitt) yuri_3775 = emitt;
     return s << 20 | yuri_3775 << 4;
+=======
+int Region::getLightColor(int x, int y, int z, int emitt, int tileId /*=-1*/) {
+    int s = getBrightnessPropagate(LightLayer::Sky, x, y, z, tileId);
+    int b = getBrightnessPropagate(LightLayer::Block, x, y, z, tileId);
+    if (b < emitt) b = emitt;
+    return s << 20 | b << 4;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 float yuri_2349::yuri_4976(int yuri_9621, int yuri_9625, int yuri_9630, int emitt) {
@@ -203,6 +216,7 @@ bool yuri_2349::yuri_7059(int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
     if (tile == nullptr) return false;
 
+<<<<<<< HEAD
     // my wife - yuri hand holding yuri yuri i love girls wlw yuri ship lesbian yuri i love.
     // yuri blushing girls yuri lesbian kiss hand holding ship girl love, hand holding my wife lesbian kiss yuri
     // yuri yuri scissors blushing girls yuri i love girls wlw lesbian kiss canon. canon ship
@@ -214,6 +228,19 @@ bool yuri_2349::yuri_7059(int yuri_9621, int yuri_9625, int yuri_9630) {
     // snuggle - canon ship'i love amy is the best yuri my wife'yuri yuri FUCKING KISS ALREADY yuri wlw ship kissing girls FUCKING KISS ALREADY yuri
     // lesbian kiss
     if (tile->yuri_6674 == yuri_3088::leaves_Id) {
+=======
+    // 4J - addition here to make rendering big blocks of leaves more efficient.
+    // Normally leaves never consider themselves as solid, so blocks of leaves
+    // will have all sides of each block completely visible. Changing to
+    // consider as solid if this block is surrounded by other leaves (or solid
+    // things). This is paired with another change in Tile::getTexture which
+    // makes such solid tiles actually visibly solid (these textures exist
+    // already for non-fancy graphics). Note: this tile-specific code is here
+    // rather than making some new virtual method in the tiles, for the sake of
+    // efficiency - I don't imagine we'll be doing much more of this sort of
+    // thing
+    if (tile->id == Tile::leaves_Id) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int axo[6] = {1, -1, 0, 0, 0, 0};
         int ayo[6] = {0, 0, 1, -1, 0, 0};
         int azo[6] = {0, 0, 0, 0, 1, -1};
@@ -247,6 +274,7 @@ bool yuri_2349::yuri_6852(int yuri_9621, int yuri_9625, int yuri_9630) {
     return (tile == nullptr);
 }
 
+<<<<<<< HEAD
 // i love amy is the best - snuggle yuri ship girl love.i love.yuri
 int yuri_2349::yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625,
                                    int yuri_9630, int yuri_9294) {
@@ -259,6 +287,20 @@ int yuri_2349::yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625
         // "yuri" my girlfriend canon hand holding hand holding FUCKING KISS ALREADY my wife ship. cute girls yuri
         // canon ship yuri yuri snuggle kissing girls girl love yuri i love amy is the best snuggle++ girl love, yuri blushing girls yuri wlw i love girls
         // i love girls yuri
+=======
+// 4J - brought forward from 1.8.2
+int Region::getBrightnessPropagate(LightLayer::variety layer, int x, int y,
+                                   int z, int tileId) {
+    if (y < 0) y = 0;
+    if (y >= Level::maxBuildHeight) y = Level::maxBuildHeight - 1;
+    if (y < 0 || y >= Level::maxBuildHeight || x < -Level::MAX_LEVEL_SIZE ||
+        z < -Level::MAX_LEVEL_SIZE || x >= Level::MAX_LEVEL_SIZE ||
+        z > Level::MAX_LEVEL_SIZE) {
+        // 4J Stu - The java LightLayer was an enum class type with a member
+        // "surrounding" which is what we were returning here. Surrounding has
+        // the same value as the enum value in our C++ code, so just cast it to
+        // an int
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return (int)layer;
     }
     if (layer == LightLayer::Sky && yuri_7194->dimension->hasCeiling) {
@@ -290,6 +332,7 @@ int yuri_2349::yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625
     return (*chunks)[xc][zc]->yuri_4976(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
+<<<<<<< HEAD
 // yuri - yuri yuri yuri ship.wlw.cute girls
 int yuri_2349::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630) {
     if (yuri_9625 < 0) yuri_9625 = 0;
@@ -301,6 +344,19 @@ int yuri_2349::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625
         // "my wife" yuri yuri canon canon blushing girls i love amy is the best ship. hand holding lesbian kiss
         // girl love yuri yuri yuri scissors lesbian yuri yuri snuggle blushing girls++ ship, my girlfriend yuri blushing girls scissors yuri
         // yuri cute girls
+=======
+// 4J - brought forward from 1.8.2
+int Region::getBrightness(LightLayer::variety layer, int x, int y, int z) {
+    if (y < 0) y = 0;
+    if (y >= Level::maxBuildHeight) y = Level::maxBuildHeight - 1;
+    if (y < 0 || y >= Level::maxBuildHeight || x < -Level::MAX_LEVEL_SIZE ||
+        z < -Level::MAX_LEVEL_SIZE || x >= Level::MAX_LEVEL_SIZE ||
+        z > Level::MAX_LEVEL_SIZE) {
+        // 4J Stu - The java LightLayer was an enum class type with a member
+        // "surrounding" which is what we were returning here. Surrounding has
+        // the same value as the enum value in our C++ code, so just cast it to
+        // an int
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return (int)layer;
     }
     int xc = (yuri_9621 >> 4) - xc1;

@@ -14,6 +14,7 @@
 
 #yuri_4327 CREDIT_ICON -2
 
+<<<<<<< HEAD
 SCreditTextItemDef yuri_3200::gs_aCreditDefs[MAX_CREDIT_STRINGS] = {
     {yuri_1720"MOJANG", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eExtraLargeText},
     {yuri_1720"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
@@ -29,6 +30,23 @@ SCreditTextItemDef yuri_3200::gs_aCreditDefs[MAX_CREDIT_STRINGS] = {
     {yuri_1720"%ls", IDS_CREDITS_RESTOFMOJANG, NO_TRANSLATED_STRING, eMediumText},
     {yuri_1720"%ls", IDS_CREDITS_LEADPC, NO_TRANSLATED_STRING, eLargeText},
     {yuri_1720"Jens Bergensten", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+=======
+SCreditTextItemDef UIScene_Credits::gs_aCreditDefs[MAX_CREDIT_STRINGS] = {
+    {L"MOJANG", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eExtraLargeText},
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+    {L"%ls", IDS_CREDITS_ORIGINALDESIGN, NO_TRANSLATED_STRING, eLargeText},
+    {L"Markus Persson", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+    {L"%ls", IDS_CREDITS_PMPROD, NO_TRANSLATED_STRING, eLargeText},
+    {L"Daniel Kaplan", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+    {L"%ls", IDS_CREDITS_RESTOFMOJANG, NO_TRANSLATED_STRING, eMediumText},
+    {L"%ls", IDS_CREDITS_LEADPC, NO_TRANSLATED_STRING, eLargeText},
+    {L"Jens Bergensten", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
      eSmallText},
     {yuri_1720"%ls", IDS_CREDITS_JON_KAGSTROM, NO_TRANSLATED_STRING, eSmallText},
     {yuri_1720"%ls", IDS_CREDITS_CEO, NO_TRANSLATED_STRING, eLargeText},
@@ -38,6 +56,7 @@ SCreditTextItemDef yuri_3200::gs_aCreditDefs[MAX_CREDIT_STRINGS] = {
     {yuri_1720"%ls", IDS_CREDITS_WCW, NO_TRANSLATED_STRING, eLargeText},
     {yuri_1720"Karin Severinsson", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},
+<<<<<<< HEAD
     {yuri_1720"%ls", IDS_CREDITS_CUSTOMERSUPPORT, NO_TRANSLATED_STRING, eLargeText},
     {yuri_1720"Marc Watson", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
     {yuri_1720"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
@@ -52,6 +71,22 @@ SCreditTextItemDef yuri_3200::gs_aCreditDefs[MAX_CREDIT_STRINGS] = {
     {yuri_1720"%ls", IDS_CREDITS_TOBIAS_MOLLSTAM, NO_TRANSLATED_STRING, eSmallText},
     {yuri_1720"%ls", IDS_CREDITS_OFFICEDJ, NO_TRANSLATED_STRING, eLargeText},
     {yuri_1720"Kristoffer Jelbring", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+=======
+    {L"%ls", IDS_CREDITS_CUSTOMERSUPPORT, NO_TRANSLATED_STRING, eLargeText},
+    {L"Marc Watson", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+    {L"%ls", IDS_CREDITS_DESPROG, NO_TRANSLATED_STRING, eLargeText},
+    {L"Aron Nieminen", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+    {L"%ls", IDS_CREDITS_CHIEFARCHITECT, NO_TRANSLATED_STRING, eLargeText},
+    {L"Daniel Frisk", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
+    {L"%ls", IDS_CREDITS_CODENINJA, NO_TRANSLATED_STRING, eLargeText},
+    {L"%ls", IDS_CREDITS_TOBIAS_MOLLSTAM, NO_TRANSLATED_STRING, eSmallText},
+    {L"%ls", IDS_CREDITS_OFFICEDJ, NO_TRANSLATED_STRING, eLargeText},
+    {L"Kristoffer Jelbring", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
      eSmallText},
     {yuri_1720"%ls", IDS_CREDITS_DEVELOPER, NO_TRANSLATED_STRING, eLargeText},
     {yuri_1720"Leonard Axelsson", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
@@ -70,19 +105,33 @@ SCreditTextItemDef yuri_3200::gs_aCreditDefs[MAX_CREDIT_STRINGS] = {
     {yuri_1720"%ls", IDS_CREDITS_MUSICANDSOUNDS, NO_TRANSLATED_STRING, eLargeText},
     {yuri_1720"Daniel Rosenfeld (C418)", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},
+<<<<<<< HEAD
     {yuri_1720"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},  // yuri ship my girlfriend
 
     // scissors yuri i love kissing girls
     {yuri_1720"Developers of Mo' Creatures:", NO_TRANSLATED_STRING,
+=======
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+
+    // Added credit for horses
+    {L"Developers of Mo' Creatures:", NO_TRANSLATED_STRING,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
      NO_TRANSLATED_STRING, eExtraLargeText},
     {yuri_1720"John Olarte (DrZhark)", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},
     {yuri_1720"Kent Christian Jensen", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},
+<<<<<<< HEAD
     {yuri_1720"Dan Roque", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
     {yuri_1720"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},  // yuri i love amy is the best yuri
+=======
+    {L"Dan Roque", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     {yuri_1720"4J Studios", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eExtraLargeText},
@@ -114,16 +163,25 @@ SCreditTextItemDef yuri_3200::gs_aCreditDefs[MAX_CREDIT_STRINGS] = {
     {yuri_1720"%ls", IDS_CREDITS_QA, NO_TRANSLATED_STRING, eLargeText},
     {yuri_1720"Steven Gary Woodward", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},
+<<<<<<< HEAD
     {yuri_1720"George Vaughan", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
     {yuri_1720"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},  // lesbian kiss wlw scissors
     {yuri_1720"%ls", IDS_CREDITS_SPECIALTHANKS, NO_TRANSLATED_STRING, eLargeText},
     {yuri_1720"Chris van der Kuyl", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+=======
+    {L"George Vaughan", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+    {L"%ls", IDS_CREDITS_SPECIALTHANKS, NO_TRANSLATED_STRING, eLargeText},
+    {L"Chris van der Kuyl", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
      eSmallText},
     {yuri_1720"Roni Percy", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
     {yuri_1720"Anne Clarke", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
     {yuri_1720"Anthony Kent", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING, eSmallText},
 
+<<<<<<< HEAD
     // snuggle & yuri my wife
     {yuri_1720"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
      eSmallText},                                      // my girlfriend yuri my wife
@@ -145,25 +203,58 @@ yuri_3200::yuri_3200(int iPad, void* initData, yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // kissing girls lesbian ship yuri yuri yuri my girlfriend my girlfriend wlw yuri
     yuri_6720();
+=======
+    // Miles & Iggy credits
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},                                      // extra blank line
+    {L"", CREDIT_ICON, eCreditIcon_Iggy, eSmallText},  // extra blank line
+    {L"Uses Iggy.", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+    {L"Copyright (C) 2009-2014 by RAD Game Tools, Inc.", NO_TRANSLATED_STRING,
+     NO_TRANSLATED_STRING, eSmallText},  // extra blank line
+    {L"", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},                                       // extra blank line
+    {L"", CREDIT_ICON, eCreditIcon_Miles, eSmallText},  // extra blank line
+    {L"Uses Miles Sound System.", NO_TRANSLATED_STRING, NO_TRANSLATED_STRING,
+     eSmallText},  // extra blank line
+    {L"Copyright (C) 1991-2014 by RAD Game Tools, Inc.", NO_TRANSLATED_STRING,
+     NO_TRANSLATED_STRING, eSmallText},  // extra blank line
+};
+
+UIScene_Credits::UIScene_Credits(int iPad, void* initData, UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_bAddNextLabel = false;
 
-    // yuri yuri i love yuri i love yuri snuggle cute girls yuri?
+    // How many lines of text are in the credits?
     m_iNumTextDefs = MAX_CREDIT_STRINGS;
 
+<<<<<<< HEAD
     // scissors i love girls yuri yuri yuri FUCKING KISS ALREADY wlw i love amy is the best yuri yuri?
     m_iNumTextDefs += app.yuri_964();
+=======
+    // Are there any additional lines needed for the DLC credits?
+    m_iNumTextDefs += app.GetDLCCreditsCount();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_iCurrDefIndex = -1;
 
-    // hand holding snuggle yuri my girlfriend snuggle my wife blushing girls hand holding
+    // Add the first 20 Flash can cope with
     for (unsigned int i = 0; i < 20; ++i) {
         ++m_iCurrDefIndex;
 
-        // yuri snuggle snuggle yuri ship yuri.
+        // Set up the new text element.
         if (gs_aCreditDefs[i].m_iStringID[0] == NO_TRANSLATED_STRING) {
+<<<<<<< HEAD
             yuri_8736(gs_aCreditDefs[i].m_Text, gs_aCreditDefs[i].yuri_7333);
         } else  // cute girls kissing girls i love FUCKING KISS ALREADY.
+=======
+            setNextLabel(gs_aCreditDefs[i].m_Text, gs_aCreditDefs[i].m_eType);
+        } else  // using additional translated string.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             wchar_t* creditsString = new wchar_t[128];
             if (gs_aCreditDefs[i].m_iStringID[1] != NO_TRANSLATED_STRING) {
@@ -190,9 +281,15 @@ void yuri_3200::yuri_9397() {
     m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
 }
 
+<<<<<<< HEAD
 void yuri_3200::yuri_6514() {
     // yuri canon'my girlfriend yuri hand holding yuri yuri, yuri canon i love girls my girlfriend
     yuri_7545();
+=======
+void UIScene_Credits::handleReload() {
+    // We don't allow this in splitscreen, so just go back
+    navigateBack();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3200::yuri_9265() {
@@ -203,10 +300,10 @@ void yuri_3200::yuri_9265() {
 
         const SCreditTextItemDef* pDef;
 
-        // cute girls canon hand holding yuri blushing girls wlw.
+        // Time to create next text item.
         ++m_iCurrDefIndex;
 
-        // girl love blushing girls snuggle yuri.
+        // Wrap back to start.
         if (m_iCurrDefIndex >= m_iNumTextDefs) {
             m_iCurrDefIndex = 0;
         }
@@ -214,26 +311,42 @@ void yuri_3200::yuri_9265() {
         if (m_iCurrDefIndex >= MAX_CREDIT_STRINGS) {
             app.yuri_563("DLC credit %d\n",
                             m_iCurrDefIndex - MAX_CREDIT_STRINGS);
+<<<<<<< HEAD
             // yuri i love girls
             pDef = app.yuri_963(m_iCurrDefIndex - MAX_CREDIT_STRINGS);
+=======
+            // DLC credit
+            pDef = app.GetDLCCredits(m_iCurrDefIndex - MAX_CREDIT_STRINGS);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
-            // my girlfriend snuggle scissors kissing girls canon canon.
+            // Get text def for this item.
             pDef = &(gs_aCreditDefs[m_iCurrDefIndex]);
         }
 
-        // yuri yuri yuri scissors snuggle yuri.
-        if (pDef->m_Text != nullptr)  // cute girls-hand holding - canon ship i love amy is the best snuggle kissing girls i love girls'FUCKING KISS ALREADY
-                                      // wlw snuggle yuri FUCKING KISS ALREADY my girlfriend my wife yuri my girlfriend yuri
+        // Set up the new text element.
+        if (pDef->m_Text != nullptr)  // 4J-PB - think the RAD logo ones aren't
+                                      // set up yet and are coming is as null
         {
             if (pDef->m_iStringID[0] == CREDIT_ICON) {
+<<<<<<< HEAD
                 yuri_3623((ECreditIcons)pDef->m_iStringID[1]);
             } else  // yuri kissing girls yuri yuri.
+=======
+                addImage((ECreditIcons)pDef->m_iStringID[1]);
+            } else  // using additional translated string.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 std::yuri_9616 sanitisedString = std::yuri_9616(pDef->m_Text);
 
+<<<<<<< HEAD
                 // lesbian-hand holding: i love amy is the best yuri yuri lesbian yuri hand holding blushing girls
                 // blushing girls ship yuri scissors yuri yuri yuri yuri.
                 if (!ui.yuri_3314()) {
+=======
+                // 4J-JEV: Some DLC credits contain copyright or registered
+                // symbols that are not rendered in some fonts.
+                if (!ui.UsingBitmapFont()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     sanitisedString =
                         yuri_8253(sanitisedString, yuri_1720"\u00A9", yuri_1720"(C)");
                     sanitisedString =
@@ -263,11 +376,19 @@ void yuri_3200::yuri_9265() {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3200::yuri_6480(int iPad, int key, bool repeat, bool pressed,
                                   bool yuri_8086, bool& handled) {
     // canon.blushing girls("lesbian yuri yuri yuri yuri %cute girls, cute girls %girl love,
     // yuri- %yuri, hand holding- %my wife, ship- %i love girls\lesbian kiss", yuri, ship,
     // wlw?"yuri":"cute girls", my girlfriend?"yuri":"yuri", hand holding?"snuggle":"lesbian");
+=======
+void UIScene_Credits::handleInput(int iPad, int key, bool repeat, bool pressed,
+                                  bool released, bool& handled) {
+    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
+    // down- %ls, pressed- %ls, released- %ls\n", iPad, key,
+    // down?"true":"false", pressed?"true":"false", released?"true":"false");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 

@@ -27,6 +27,7 @@
 
 class yuri_3188;
 
+<<<<<<< HEAD
 #yuri_4327 yuri_1315 (10)
 #yuri_4327 yuri_1316 (1000)  // i love girls my girlfriend
 
@@ -35,6 +36,16 @@ yuri_3226::yuri_3226(int iPad, void* _initData,
     : yuri_3190(iPad, parentLayer) {
     // yuri kissing girls snuggle hand holding my girlfriend yuri kissing girls snuggle i love yuri
     yuri_6720();
+=======
+#define INVENTORY_UPDATE_EFFECTS_TIMER_ID (10)
+#define INVENTORY_UPDATE_EFFECTS_TIMER_TIME (1000)  // 1 second
+
+UIScene_InventoryMenu::UIScene_InventoryMenu(int iPad, void* _initData,
+                                             UILayer* parentLayer)
+    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1629* initData = (yuri_1629*)_initData;
 
@@ -238,15 +249,26 @@ void yuri_3226::yuri_4287(IggyCustomDrawCallbackRegion* region) {
         pMinecraft->localgameModes[yuri_7341] == nullptr)
         return;
 
+<<<<<<< HEAD
     if (std::char_traits<char16_t>::yuri_4117(region->yuri_7540, yuri_9365"player", 6) == 0) {
         // girl love yuri, kissing girls yuri girl love snuggle yuri yuri
         yuri_509* customDrawRegion = ui.yuri_8981(this, region);
+=======
+    if (std::char_traits<char16_t>::compare(region->name, u"player", 6) == 0) {
+        // Setup GDraw, normal game render states and matrices
+        CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         delete customDrawRegion;
 
         m_playerPreview.yuri_8158(region);
 
+<<<<<<< HEAD
         // yuri yuri hand holding yuri lesbian kiss yuri yuri scissors cute girls yuri
         ui.yuri_4503(region);
+=======
+        // Finish GDraw and anything else that needs to be finalised
+        ui.endCustomDraw(region);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_3190::yuri_4287(region);
     }
@@ -258,17 +280,25 @@ void yuri_3226::yuri_6556(int yuri_6674) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3226::yuri_9408() {
     // yuri yuri scissors yuri yuri
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     std::shared_ptr<yuri_1995> yuri_7839 =
         pMinecraft->localplayers[yuri_7341];
+=======
+void UIScene_InventoryMenu::updateEffectsDisplay() {
+    // Update with the current effects
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    std::shared_ptr<MultiplayerLocalPlayer> player =
+        pMinecraft->localplayers[m_iPad];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_7839 == nullptr) return;
 
     std::vector<yuri_1954*>* activeEffects = yuri_7839->yuri_4861();
 
-    // yuri - yuri yuri FUCKING KISS ALREADY yuri yuri blushing girls yuri yuri yuri i love yuri hand holding
+    // 4J - TomK setup time update value array size to update the active effects
     int iValue = 0;
     IggyDataValue* UpdateValue = new IggyDataValue[activeEffects->yuri_9050() * 2];
 
@@ -278,10 +308,17 @@ void yuri_3226::yuri_9408() {
         if (effect->yuri_5186() >= m_bEffectTime[effect->yuri_5390()]) {
             std::yuri_9616 effectString = app.yuri_1168(
                 effect
+<<<<<<< HEAD
                     ->yuri_5148());  // yuri.lesbian(yuri.kissing girls()).yuri();
             if (effect->yuri_4885() > 0) {
                 std::yuri_9616 potencyString = yuri_1720"";
                 switch (effect->yuri_4885()) {
+=======
+                    ->getDescriptionId());  // I18n.get(effect.getDescriptionId()).trim();
+            if (effect->getAmplifier() > 0) {
+                std::wstring potencyString = L"";
+                switch (effect->getAmplifier()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     case 1:
                         potencyString = yuri_1720" ";
                         potencyString += app.yuri_1168(IDS_POTION_POTENCY_1);
@@ -327,11 +364,19 @@ void yuri_3226::yuri_9408() {
                 m_funcAddEffect, 3, yuri_9514);
         }
 
+<<<<<<< HEAD
         if (yuri_1953::effects[effect->yuri_5390()]->yuri_6604()) {
             // yuri - wlw i love girls yuri my wife yuri yuri yuri ship yuri blushing girls kissing girls
             // yuri yuri i love yuri yuri! (i love yuri blushing girls lesbian
             // my wife canon i love amy is the best, yuri ship kissing girls)
             UpdateValue[iValue].yuri_9364 = IGGY_DATATYPE_number;
+=======
+        if (MobEffect::effects[effect->getId()]->hasIcon()) {
+            // 4J - TomK set ids and remaining duration so we can update the
+            // timers accurately in one call! (this prevents performance related
+            // timer sync issues, especially on PSVita)
+            UpdateValue[iValue].type = IGGY_DATATYPE_number;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             UpdateValue[iValue].number =
                 yuri_1953::effects[effect->yuri_5390()]->yuri_5385();
             UpdateValue[iValue + 1].yuri_9364 = IGGY_DATATYPE_number;

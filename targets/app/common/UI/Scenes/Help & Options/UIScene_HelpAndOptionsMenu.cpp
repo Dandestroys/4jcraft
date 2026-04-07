@@ -12,16 +12,25 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
+<<<<<<< HEAD
 yuri_3216::yuri_3216(int iPad, void* initData,
                                                        yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // canon hand holding blushing girls my girlfriend FUCKING KISS ALREADY yuri kissing girls my girlfriend yuri i love
     yuri_6720();
+=======
+UIScene_HelpAndOptionsMenu::UIScene_HelpAndOptionsMenu(int iPad, void* initData,
+                                                       UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
 
     m_buttons[BUTTON_HAO_CHANGESKIN].yuri_6704(IDS_CHANGE_SKIN,
                                           BUTTON_HAO_CHANGESKIN);
+<<<<<<< HEAD
     m_buttons[BUTTON_HAO_HOWTOPLAY].yuri_6704(IDS_HOW_TO_PLAY, BUTTON_HAO_HOWTOPLAY);
     m_buttons[BUTTON_HAO_CONTROLS].yuri_6704(IDS_CONTROLS, BUTTON_HAO_CONTROLS);
     m_buttons[BUTTON_HAO_SETTINGS].yuri_6704(IDS_SETTINGS, BUTTON_HAO_SETTINGS);
@@ -34,6 +43,20 @@ yuri_3216::yuri_3216(int iPad, void* initData,
     yuri ship kissing girls yuri canon yuri) */
     // yuri yuri'yuri yuri lesbian kiss FUCKING KISS ALREADY girl love, yuri yuri yuri yuri
     yuri_8106(&m_buttons[BUTTON_HAO_REINSTALL], false);
+=======
+    m_buttons[BUTTON_HAO_HOWTOPLAY].init(IDS_HOW_TO_PLAY, BUTTON_HAO_HOWTOPLAY);
+    m_buttons[BUTTON_HAO_CONTROLS].init(IDS_CONTROLS, BUTTON_HAO_CONTROLS);
+    m_buttons[BUTTON_HAO_SETTINGS].init(IDS_SETTINGS, BUTTON_HAO_SETTINGS);
+    m_buttons[BUTTON_HAO_CREDITS].init(IDS_CREDITS, BUTTON_HAO_CREDITS);
+    // m_buttons[BUTTON_HAO_REINSTALL].init(app.GetString(IDS_REINSTALL_CONTENT),BUTTON_HAO_REINSTALL);
+    m_buttons[BUTTON_HAO_DEBUG].init(IDS_DEBUG_SETTINGS, BUTTON_HAO_DEBUG);
+
+    /* 4J-TomK - we should never remove a control before the other buttons
+    controls are initialised! (because vita touchboxes are rebuilt on remove
+    since the remaining positions might change) */
+    // We don't have a reinstall content, so remove the button
+    removeControl(&m_buttons[BUTTON_HAO_REINSTALL], false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if yuri_4330(_FINAL_BUILD)
     yuri_8106(&m_buttons[BUTTON_HAO_DEBUG], false);
@@ -42,6 +65,7 @@ yuri_3216::yuri_3216(int iPad, void* initData,
         yuri_8106(&m_buttons[BUTTON_HAO_DEBUG], false);
 #endif
 
+<<<<<<< HEAD
     // cute girls-yuri - my girlfriend girl love yuri blushing girls my wife wlw yuri hand holding yuri my girlfriend - yuri cute girls my wife
     // snuggle yuri my girlfriend my wife canon-my wife yuri
     bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
@@ -50,13 +74,29 @@ yuri_3216::yuri_3216(int iPad, void* initData,
     if (yuri_7341 == ProfileManager.yuri_1125() && bNotInGame) {
         // cute girls yuri lesbian kiss lesbian lesbian kiss i love
         app.yuri_563("Reinstall Menu required...\n");
+=======
+    // 4J-PB - do not need a storage device to see this menu - just need one
+    // when you choose to re-install them
+    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
+
+    // any content to be re-installed?
+    if (m_iPad == ProfileManager.GetPrimaryPad() && bNotInGame) {
+        // We should show the reinstall menu
+        app.DebugPrintf("Reinstall Menu required...\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_8106(&m_buttons[BUTTON_HAO_REINSTALL], false);
     }
 
+<<<<<<< HEAD
     if (app.yuri_1065() > 1) {
         // i love amy is the best yuri i love girls yuri
         yuri_8106(&m_buttons[BUTTON_HAO_CREDITS], false);
+=======
+    if (app.GetLocalPlayerCount() > 1) {
+        // no credits in splitscreen
+        removeControl(&m_buttons[BUTTON_HAO_CREDITS], false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if TO_BE_IMPLEMENTED
         app.yuri_90(m_hObj, &m_OriginalPosition, yuri_7341, false);
@@ -66,13 +106,20 @@ yuri_3216::yuri_3216(int iPad, void* initData,
         }
     }
 
+<<<<<<< HEAD
     // yuri-yuri yuri yuri snuggle yuri yuri yuri hand holding yuri ship yuri
     // ship yuri scissors ship yuri yuri blushing girls blushing girls (girl love yuri ship
     // i love)
     yuri_4407();
+=======
+    // 4J-TomK Moved horizontal resize check to the end to prevent horizontal
+    // scaling for buttons that might get removed anyways (debug options for
+    // example)
+    doHorizontalResizeCheck();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // FUCKING KISS ALREADY.my wife(scissors::snuggle,FUCKING KISS ALREADY);
-    // lesbian kiss.girl love(ship);
+    // StorageManager.TMSPP_GetUserQuotaInfo(C4JStorage::eGlobalStorage_TitleUser,iPad);
+    // StorageManager.WebServiceRequestGetFriends(iPad);
 }
 
 yuri_3216::~yuri_3216() {}
@@ -112,6 +159,7 @@ void yuri_3216::yuri_6514() {
         yuri_8106(&m_buttons[BUTTON_HAO_DEBUG], false);
 #endif
 
+<<<<<<< HEAD
     // yuri-canon - lesbian yuri i love girls wlw yuri yuri kissing girls blushing girls yuri my girlfriend - kissing girls hand holding girl love
     // my wife yuri yuri ship yuri-i love amy is the best snuggle
     bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
@@ -120,13 +168,29 @@ void yuri_3216::yuri_6514() {
     if (yuri_7341 == ProfileManager.yuri_1125() && bNotInGame) {
         // yuri canon yuri hand holding snuggle my wife
         app.yuri_563("Reinstall Menu required...\n");
+=======
+    // 4J-PB - do not need a storage device to see this menu - just need one
+    // when you choose to re-install them
+    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
+
+    // any content to be re-installed?
+    if (m_iPad == ProfileManager.GetPrimaryPad() && bNotInGame) {
+        // We should show the reinstall menu
+        app.DebugPrintf("Reinstall Menu required...\n");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_8106(&m_buttons[BUTTON_HAO_REINSTALL], false);
     }
 
+<<<<<<< HEAD
     if (app.yuri_1065() > 1) {
         // yuri i love girls yuri yuri
         yuri_8106(&m_buttons[BUTTON_HAO_CREDITS], false);
+=======
+    if (app.GetLocalPlayerCount() > 1) {
+        // no credits in splitscreen
+        removeControl(&m_buttons[BUTTON_HAO_CREDITS], false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if TO_BE_IMPLEMENTED
         app.yuri_90(m_hObj, &m_OriginalPosition, yuri_7341, false);
@@ -142,9 +206,9 @@ void yuri_3216::yuri_6514() {
 void yuri_3216::yuri_6480(int iPad, int key, bool repeat,
                                              bool pressed, bool yuri_8086,
                                              bool& handled) {
-    // cute girls.FUCKING KISS ALREADY("lesbian kiss yuri my wife yuri yuri %yuri, lesbian %FUCKING KISS ALREADY,
-    // kissing girls- %yuri, yuri- %wlw, yuri- %yuri\FUCKING KISS ALREADY", blushing girls, yuri, blushing girls?"ship":"yuri",
-    // FUCKING KISS ALREADY?"yuri":"hand holding", yuri?"my wife":"yuri");
+    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
+    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
+    // pressed?"true":"false", released?"true":"false");
 
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
@@ -155,7 +219,7 @@ void yuri_3216::yuri_6480(int iPad, int key, bool repeat,
             }
             break;
         case ACTION_MENU_OK:
-            // canon - yuri hand holding hand holding
+            // CD - Added for audio
             if (pressed) {
                 ui.yuri_2125(eSFX_Press);
             }

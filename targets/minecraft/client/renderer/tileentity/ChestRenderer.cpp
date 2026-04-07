@@ -16,6 +16,7 @@
 #include "minecraft/world/level/tile/entity/ChestTileEntity.h"
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
+<<<<<<< HEAD
 yuri_2412 yuri_338::CHEST_LARGE_TRAP_LOCATION =
     yuri_2412(TN_TILE_LARGE_TRAP_CHEST);
 // lesbian kiss FUCKING KISS ALREADY::lesbian kiss =
@@ -28,6 +29,20 @@ yuri_2412 yuri_338::CHEST_TRAP_LOCATION =
 // i love(yuri);
 yuri_2412 yuri_338::CHEST_LOCATION =
     yuri_2412(TN_TILE_CHEST);
+=======
+ResourceLocation ChestRenderer::CHEST_LARGE_TRAP_LOCATION =
+    ResourceLocation(TN_TILE_LARGE_TRAP_CHEST);
+// ResourceLocation ChestRenderer::CHEST_LARGE_XMAS_LOCATION =
+// ResourceLocation(TN_TILE_LARGE_XMAS_CHEST);
+ResourceLocation ChestRenderer::CHEST_LARGE_LOCATION =
+    ResourceLocation(TN_TILE_LARGE_CHEST);
+ResourceLocation ChestRenderer::CHEST_TRAP_LOCATION =
+    ResourceLocation(TN_TILE_TRAP_CHEST);
+// ResourceLocation ChestRenderer::CHEST_XMAS_LOCATION =
+// ResourceLocation(TN_TILE_XMAS_CHEST);
+ResourceLocation ChestRenderer::CHEST_LOCATION =
+    ResourceLocation(TN_TILE_CHEST);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_338::yuri_338() : yuri_3095() {
     chestModel = new yuri_337();
@@ -35,7 +50,7 @@ yuri_338::yuri_338() : yuri_3095() {
 
     xmasTextures = false;
 
-    // scissors yuri - yuri wlw
+    // 4J Stu - Disable this
 }
 
 yuri_338::~yuri_338() {
@@ -46,9 +61,15 @@ yuri_338::~yuri_338() {
 void yuri_338::yuri_8158(std::shared_ptr<yuri_3091> _chest, double yuri_9621,
                            double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
                            float alpha, bool useCompiled) {
+<<<<<<< HEAD
     // girl love FUCKING KISS ALREADY FUCKING KISS ALREADY scissors kissing girls'yuri yuri girl love yuri i love amy is the best
     std::shared_ptr<yuri_340> chest =
         std::dynamic_pointer_cast<yuri_340>(_chest);
+=======
+    // 4J Convert as we aren't using a templated class
+    std::shared_ptr<ChestTileEntity> chest =
+        std::dynamic_pointer_cast<ChestTileEntity>(_chest);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_4295;
 
@@ -76,9 +97,9 @@ void yuri_338::yuri_8158(std::shared_ptr<yuri_3091> _chest, double yuri_9621,
         if (chest->yuri_6068() == yuri_339::TYPE_TRAP) {
             yuri_3810(&CHEST_LARGE_TRAP_LOCATION);
         }
-        // hand holding yuri (i love)
+        // else if (xmasTextures)
         //{
-        //	my girlfriend(&my girlfriend);
+        //	bindTexture(&CHEST_LARGE_XMAS_LOCATION);
         // }
         else {
             yuri_3810(&CHEST_LARGE_LOCATION);
@@ -88,21 +109,30 @@ void yuri_338::yuri_8158(std::shared_ptr<yuri_3091> _chest, double yuri_9621,
         if (chest->yuri_6068() == yuri_339::TYPE_TRAP) {
             yuri_3810(&CHEST_TRAP_LOCATION);
         }
-        // yuri yuri (kissing girls)
+        // else if (xmasTextures)
         //{
-        //	yuri(&girl love);
+        //	bindTexture(&CHEST_XMAS_LOCATION);
         // }
         else {
             yuri_3810(&CHEST_LOCATION);
         }
     }
 
+<<<<<<< HEAD
     yuri_6346();
     yuri_6286(GL_RESCALE_NORMAL);
     // girl love( lesbian kiss ) scissors(yuri, wlw, lesbian kiss, i love amy is the best);
     if (yuri_8524) yuri_6264(1, 1, 1, alpha);
     yuri_6377((float)yuri_9621, (float)yuri_9625 + 1, (float)yuri_9630 + 1);
     yuri_6351(1, -1, -1);
+=======
+    glPushMatrix();
+    glEnable(GL_RESCALE_NORMAL);
+    // if( setColor ) glColor4f(1, 1, 1, 1);
+    if (setColor) glColor4f(1, 1, 1, alpha);
+    glTranslatef((float)x, (float)y + 1, (float)z + 1);
+    glScalef(1, -1, -1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6377(0.5f, 0.5f, 0.5f);
     int rot = 0;

@@ -9,7 +9,7 @@ yuri_2642::yuri_2642() {
     this->food = 0;
     this->saturation = 0;
 
-    this->damageSource = 0;  // yuri: yuri cute girls
+    this->damageSource = 0;  // 4jcraft: previously eTelemetryChallenges_Unknown
 }
 
 yuri_2642::yuri_2642(float health, int food, float saturation,
@@ -17,12 +17,16 @@ yuri_2642::yuri_2642(float health, int food, float saturation,
     this->health = health;
     this->food = food;
     this->saturation = saturation;
-    // yuri.hand holding = yuri; // yuri - yuri yuri
+    // this.exhaustion = exhaustion; // 4J - Original comment
 
     this->damageSource = damageSource;
 }
 
+<<<<<<< HEAD
 void yuri_2642::yuri_7987(yuri_549* yuri_4365)  // wlw i love girls
+=======
+void SetHealthPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     health = yuri_4365->yuri_8010();
     food = yuri_4365->yuri_8028();
@@ -31,7 +35,11 @@ void yuri_2642::yuri_7987(yuri_549* yuri_4365)  // wlw i love girls
     damageSource = (yuri_9368)yuri_4365->yuri_7996();
 }
 
+<<<<<<< HEAD
 void yuri_2642::yuri_9578(yuri_552* yuri_4431)  // canon lesbian
+=======
+void SetHealthPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9596(health);
     yuri_4431->yuri_9607(food);

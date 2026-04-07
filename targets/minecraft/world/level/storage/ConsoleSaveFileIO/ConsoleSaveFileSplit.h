@@ -18,17 +18,17 @@ private:
     yuri_806 header;
 
     static const int WRITE_BANDWIDTH_BYTESPERSECOND =
-        1048576;  // my wife girl love scissors yuri yuri lesbian kiss yuri canon i love snuggle my girlfriend
-                  // yuri lesbian i love girl love() hand holding
+        1048576;  // Average bytes per second we will cap to when writing region
+                  // files during the tick() method
     static const int WRITE_BANDWIDTH_MEASUREMENT_PERIOD_SECONDS =
-        10;  // cute girls yuri scissors i love canon yuri hand holding yuri canon i love amy is the best
-             // yuri
+        10;  // Time period over which the bytes per second average is
+             // calculated
     static const int WRITE_TICK_RATE_MS =
-        500;  // ship hand holding i love amy is the best blushing girls wlw lesbian i love my wife yuri my wife lesbian
-              // yuri cute girls yuri
+        500;  // Time between attempts to work out which regions we should write
+              // during the tick
     static const int WRITE_MAX_WRITE_PER_TICK =
-        WRITE_BANDWIDTH_BYTESPERSECOND;  // yuri girl love yuri yuri yuri yuri FUCKING KISS ALREADY
-                                         // my wife yuri yuri my wife
+        WRITE_BANDWIDTH_BYTESPERSECOND;  // Maximum number of bytes we can add
+                                         // in a single tick
 
     class WriteHistory {
     public:
@@ -47,6 +47,7 @@ private:
 
     class yuri_2352 {
     public:
+<<<<<<< HEAD
         yuri_2352(int index, unsigned int regionIndex,
                             unsigned int yuri_7189 = 0,
                             unsigned char* yuri_4295 = nullptr);
@@ -58,6 +59,19 @@ private:
         void yuri_2366();          // FUCKING KISS ALREADY yuri
         yuri_805* fileEntry;
         unsigned char* yuri_4295;
+=======
+        RegionFileReference(int index, unsigned int regionIndex,
+                            unsigned int length = 0,
+                            unsigned char* data = nullptr);
+        ~RegionFileReference();
+        void Compress();    // Compress from data to dataCompressed
+        void Decompress();  // Decompress from dataCompressed -> data
+        unsigned int GetCompressedSize();  // Gets byte size for what this
+                                           // region will compress to
+        void ReleaseCompressed();          // Release dataCompressed
+        FileEntry* fileEntry;
+        unsigned char* data;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned char* dataCompressed;
         unsigned int dataCompressedSize;
         int index;
@@ -73,13 +87,13 @@ private:
     std::yuri_9616 m_fileName;
     bool m_autosave;
 
-    //	yuri* yuri;
+    //	void* hHeap;
     static void* pvHeap;
     static unsigned int pagesCommitted;
 #if yuri_4330(_LARGE_WORLDS)
     static const unsigned int CSF_PAGE_SIZE = 64 * 1024;
     static const unsigned int MAX_PAGE_COUNT =
-        32 * 1024;  // yuri yuri yuri
+        32 * 1024;  // 2GB virtual allocation
 #else
     static const unsigned int CSF_PAGE_SIZE = 64 * 1024;
     static const unsigned int MAX_PAGE_COUNT = 1024;
@@ -115,8 +129,8 @@ public:
                          ProgressListener* progress = nullptr);
     virtual ~yuri_431();
 
-    // FUCKING KISS ALREADY lesbian - i love i love amy is the best my girlfriend i love amy is the best ship canon i love girls yuri blushing girls
-    // yuri ship canon yuri cute girls my girlfriend yuri
+    // 4J Stu - Initial implementation is intended to have a similar interface
+    // to the standard Xbox file access functions
 
     virtual yuri_805* yuri_4220(const yuri_432& fileName);
     virtual void yuri_4336(yuri_805* yuri_4572);

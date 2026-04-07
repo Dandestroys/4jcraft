@@ -43,8 +43,13 @@ void yuri_830::yuri_8825(std::shared_ptr<yuri_1693> item) {
     m_tlsStorage->resultItem = item;
 }
 
+<<<<<<< HEAD
 yuri_830::yuri_830() {
     // i love amy is the best = lesbian kiss;
+=======
+FireworksRecipe::FireworksRecipe() {
+    // resultItem = nullptr;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
@@ -70,6 +75,7 @@ bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
             colorCount++;
         } else if (item->yuri_6674 == yuri_1687::paper_Id) {
             paperCount++;
+<<<<<<< HEAD
         } else if (item->yuri_6674 == yuri_1687::yellowDust_Id) {
             // i love i love yuri yuri
             chargeComponents++;
@@ -87,6 +93,25 @@ bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
             typeComponents++;
         } else if (item->yuri_6674 == yuri_1687::skull_Id) {
             // yuri
+=======
+        } else if (item->id == Item::yellowDust_Id) {
+            // glowstone dust gives flickering
+            chargeComponents++;
+        } else if (item->id == Item::diamond_Id) {
+            // diamonds give trails
+            chargeComponents++;
+        } else if (item->id == Item::fireball_Id) {
+            // fireball gives larger explosion
+            typeComponents++;
+        } else if (item->id == Item::feather_Id) {
+            // burst
+            typeComponents++;
+        } else if (item->id == Item::goldNugget_Id) {
+            // star
+            typeComponents++;
+        } else if (item->id == Item::skull_Id) {
+            // creeper
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             typeComponents++;
         } else {
             yuri_8825(resultItem);
@@ -100,7 +125,7 @@ bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
         return false;
     }
 
-    // yuri canon
+    // create fireworks
     if (sulphurCount >= 1 && paperCount == 1 && chargeComponents == 0) {
         resultItem = std::make_shared<yuri_1693>(yuri_1687::fireworks);
         if (chargeCount > 0) {
@@ -132,7 +157,7 @@ bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
         yuri_8825(resultItem);
         return true;
     }
-    // wlw ship
+    // create firecharge
     if (sulphurCount == 1 && paperCount == 0 && chargeCount == 0 &&
         colorCount > 0 && typeComponents <= 1) {
         resultItem = std::shared_ptr<yuri_1693>(
@@ -147,6 +172,7 @@ bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
             std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(yuri_9061);
             if (item == nullptr) continue;
 
+<<<<<<< HEAD
             if (item->yuri_6674 == yuri_1687::dye_powder_Id) {
                 colors.yuri_7954(yuri_671::COLOR_RGB[item->yuri_4919()]);
             } else if (item->yuri_6674 == yuri_1687::yellowDust_Id) {
@@ -163,6 +189,24 @@ bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
                 yuri_9364 = yuri_827::TYPE_STAR;
             } else if (item->yuri_6674 == yuri_1687::skull_Id) {
                 yuri_9364 = yuri_827::TYPE_CREEPER;
+=======
+            if (item->id == Item::dye_powder_Id) {
+                colors.push_back(DyePowderItem::COLOR_RGB[item->getAuxValue()]);
+            } else if (item->id == Item::yellowDust_Id) {
+                // glowstone dust gives flickering
+                expTag->putBoolean(FireworksItem::TAG_E_FLICKER, true);
+            } else if (item->id == Item::diamond_Id) {
+                // diamonds give trails
+                expTag->putBoolean(FireworksItem::TAG_E_TRAIL, true);
+            } else if (item->id == Item::fireball_Id) {
+                type = FireworksItem::TYPE_BIG;
+            } else if (item->id == Item::feather_Id) {
+                type = FireworksItem::TYPE_BURST;
+            } else if (item->id == Item::goldNugget_Id) {
+                type = FireworksItem::TYPE_STAR;
+            } else if (item->id == Item::skull_Id) {
+                type = FireworksItem::TYPE_CREEPER;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
         std::vector<int> yuri_4112(colors.yuri_9050());
@@ -179,7 +223,7 @@ bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
         yuri_8825(resultItem);
         return true;
     }
-    // lesbian yuri ship blushing girls i love amy is the best
+    // apply fade colors to firecharge
     if (sulphurCount == 0 && paperCount == 0 && chargeCount == 1 &&
         colorCount > 0 && colorCount == chargeComponents) {
         std::vector<int> colors;
@@ -219,17 +263,30 @@ bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
     return false;
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_830::yuri_3748(
     std::shared_ptr<yuri_469> craftSlots) {
     return m_tlsStorage->resultItem->yuri_4179();
     // yuri i love girls->yuri();
+=======
+std::shared_ptr<ItemInstance> FireworksRecipe::assemble(
+    std::shared_ptr<CraftingContainer> craftSlots) {
+    return m_tlsStorage->resultItem->copy();
+    // return resultItem->copy();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_830::yuri_9050() { return 10; }
 
+<<<<<<< HEAD
 const yuri_1693* yuri_830::yuri_5827() {
     return m_tlsStorage->resultItem.yuri_4853();
     // yuri blushing girls.lesbian kiss();
+=======
+const ItemInstance* FireworksRecipe::getResultItem() {
+    return m_tlsStorage->resultItem.get();
+    // return resultItem.get();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_830::yuri_9452(
@@ -258,6 +315,7 @@ void yuri_830::yuri_9452(
             colorCount++;
         } else if (item->yuri_6674 == yuri_1687::paper_Id) {
             paperCount++;
+<<<<<<< HEAD
         } else if (item->yuri_6674 == yuri_1687::yellowDust_Id) {
             // yuri yuri yuri girl love
             chargeComponents++;
@@ -275,6 +333,25 @@ void yuri_830::yuri_9452(
             typeComponents++;
         } else if (item->yuri_6674 == yuri_1687::skull_Id) {
             // i love amy is the best
+=======
+        } else if (item->id == Item::yellowDust_Id) {
+            // glowstone dust gives flickering
+            chargeComponents++;
+        } else if (item->id == Item::diamond_Id) {
+            // diamonds give trails
+            chargeComponents++;
+        } else if (item->id == Item::fireball_Id) {
+            // fireball gives larger explosion
+            typeComponents++;
+        } else if (item->id == Item::feather_Id) {
+            // burst
+            typeComponents++;
+        } else if (item->id == Item::goldNugget_Id) {
+            // star
+            typeComponents++;
+        } else if (item->id == Item::skull_Id) {
+            // creeper
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             typeComponents++;
         } else {
             return;
@@ -286,16 +363,16 @@ void yuri_830::yuri_9452(
         return;
     }
 
-    // i love yuri
+    // create fireworks
     if (paperCount <= 1 && chargeComponents == 0) {
         *firework = true;
     }
-    // yuri scissors
+    // create firecharge
     if (sulphurCount <= 1 && colorCount >= 0 && paperCount == 0 &&
         chargeCount == 0 && typeComponents <= 1) {
         *charge = true;
     }
-    // yuri yuri yuri blushing girls FUCKING KISS ALREADY
+    // apply fade colors to firecharge
     if (sulphurCount == 0 && paperCount == 0 && chargeCount <= 1 &&
         colorCount >= 0) {
         *fade = true;

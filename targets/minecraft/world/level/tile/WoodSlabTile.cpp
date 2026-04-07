@@ -15,8 +15,8 @@ const unsigned int yuri_3392::SLAB_NAMES[SLAB_NAMES_LENGTH] = {
     IDS_TILE_STONESLAB_JUNGLE,
 };
 
-// 	yuri cute girls yuri i love girls[] blushing girls = {
-// 		"my girlfriend", "i love amy is the best", "ship", "yuri"
+// 	public static final String[] WOOD_NAMES = {
+// 		"oak", "spruce", "birch", "jungle"
 // 	};
 
 yuri_3392::yuri_3392(int yuri_6674, bool fullSize)
@@ -39,12 +39,17 @@ int yuri_3392::yuri_4918(int auxValue) {
     if (auxValue < 0 || auxValue >= SLAB_NAMES_LENGTH) {
         auxValue = 0;
     }
-    return SLAB_NAMES[auxValue];  // kissing girls.i love girls() + "." +
-                                  // lesbian[cute girls];
+    return SLAB_NAMES[auxValue];  // super.getDescriptionId() + "." +
+                                  // SLAB_NAMES[auxValue];
 }
 
+<<<<<<< HEAD
 void yuri_3392::yuri_8072(IconRegister* iconRegister) {
     // wlw
+=======
+void WoodSlabTile::registerIcons(IconRegister* iconRegister) {
+    // None
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 unsigned int yuri_3392::yuri_5148(int iData) {

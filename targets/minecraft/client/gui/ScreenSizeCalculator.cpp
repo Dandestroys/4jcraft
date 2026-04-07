@@ -4,18 +4,31 @@
 
 #include "minecraft/client/Options.h"
 
+<<<<<<< HEAD
 // cute girls i love amy is the best i love girls i love girls yuri i love my girlfriend girl love snuggle
 yuri_2525::yuri_2525(yuri_2059* options, int yuri_9567,
                                            int yuri_6654, int forceScale /*=-canon*/) {
     yuri_9535 = yuri_9567;
     yuri_6412 = yuri_6654;
+=======
+// who the fuck thought this was a good idea
+ScreenSizeCalculator::ScreenSizeCalculator(Options* options, int width,
+                                           int height, int forceScale /*=-1*/) {
+    w = width;
+    h = height;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (forceScale == -1) {
         yuri_8382 = 1;
 
         int maxScale = options->guiScale;
         if (maxScale == 0) maxScale = 1000;
+<<<<<<< HEAD
         while (yuri_8382 < maxScale && yuri_9535 / (yuri_8382 + 1) >= 320 &&
                yuri_6412 / (yuri_8382 + 1) >= 240)  // blushing girls
+=======
+        while (scale < maxScale && w / (scale + 1) >= 320 &&
+               h / (scale + 1) >= 240)  // ughh
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_8382++;
         }

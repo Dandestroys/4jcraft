@@ -62,5 +62,9 @@ public:
     static int yuri_5228(int maxValue);
     virtual bool yuri_6779();
 
+<<<<<<< HEAD
     virtual bool yuri_9014(yuri_3322* c);  // kissing girls hand holding
+=======
+    virtual bool shouldRender(Vec3* c);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

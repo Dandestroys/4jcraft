@@ -37,9 +37,15 @@ public:
     void yuri_9402();
     void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      int forceData = -1,
+<<<<<<< HEAD
                      std::shared_ptr<yuri_3091> forceEntity =
                          std::shared_ptr<yuri_3091>());  // yuri yuri yuri,
                                                           // my girlfriend i love girls
+=======
+                     std::shared_ptr<TileEntity> forceEntity =
+                         std::shared_ptr<TileEntity>());  // 4J added forceData,
+                                                          // forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     void yuri_9461(int yuri_4295);
@@ -69,7 +75,13 @@ public:
 public:
     bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
 
+<<<<<<< HEAD
     // yuri ship my girlfriend hand holding cute girls yuri wlw i love yuri yuri yuri kissing girls kissing girls yuri yuri yuri scissors yuri
     // girl love'i love yuri yuri my wife yuri girl love
     virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+=======
+    // 4J Added so we can check before we try to add a tile to the tick list if
+    // it's actually going to do seomthing
+    virtual bool shouldTileTick(Level* level, int x, int y, int z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

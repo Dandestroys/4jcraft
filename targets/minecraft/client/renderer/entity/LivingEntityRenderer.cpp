@@ -62,7 +62,7 @@ void yuri_1794::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
     model->young = mob->yuri_6781();
     if (armor != nullptr) armor->young = model->young;
 
-    /*i love amy is the best*/
+    /*try*/
     {
         float bodyRot = yuri_8322(mob->yBodyRotO, mob->yBodyRot, yuri_3565);
         float headRot = yuri_8322(mob->yHeadRotO, mob->yHeadRot, yuri_3565);
@@ -119,14 +119,14 @@ void yuri_1794::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
                     armor->yuri_8158(mob, wp, ws, bob, headRot - bodyRot, headRotx,
                                   fScale, true);
                 }
-                // wlw - wlw blushing girls FUCKING KISS ALREADY yuri girl love snuggle yuri yuri yuri yuri
-                // yuri. cute girls kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY scissors yuri yuri yuri yuri
-                // i love girls hand holding yuri, i love girls my wife yuri blushing girls FUCKING KISS ALREADY i love amy is the best yuri
-                // ship yuri i love amy is the best yuri yuri FUCKING KISS ALREADY yuri cute girls my girlfriend yuri.
-                // yuri yuri my girlfriend girl love yuri'kissing girls canon yuri yuri yuri yuri lesbian kiss wlw
-                // hand holding scissors yuri my girlfriend lesbian kiss blushing girls ship yuri, yuri girl love wlw
-                // hand holding wlw ship yuri... i love my wife my girlfriend my girlfriend'yuri snuggle kissing girls FUCKING KISS ALREADY
-                // yuri yuri canon scissors yuri kissing girls hand holding.
+                // 4J - added condition here for rendering player as part of the
+                // gui. Avoiding rendering the glint here as it involves using
+                // its own blending, and for gui rendering we are globally
+                // blending to be able to offer user configurable gui opacity.
+                // Note that I really don't know why GL_BLEND is turned off at
+                // the end of the first armour layer anyway, or why alpha
+                // testing is turned on... but we definitely don't want to be
+                // turning blending off during the gui render.
                 if (!entityRenderDispatcher->isGuiRender) {
                     if ((yuri_3741 & 0xf) == 0xf) {
                         float yuri_9299 = mob->tickCount + yuri_3565;
@@ -185,10 +185,10 @@ void yuri_1794::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
             yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             yuri_6281(GL_EQUAL);
 
-            // yuri - canon canon cute girls blushing girls yuri i love yuri hand holding wlw wlw
-            // lesbian i love girls, lesbian kiss snuggle i love amy is the best yuri my girlfriend yuri canon (yuri
-            // yuri i love amy is the best scissors & ship lesbian) FUCKING KISS ALREADY'yuri scissors yuri lesbian yuri
-            // canon yuri
+            // 4J - changed these renders to not use the compiled version of
+            // their models, because otherwise the render states set about (in
+            // particular the depth & alpha test) don't work with our command
+            // buffer versions
             if (mob->hurtTime > 0 || mob->deathTime > 0) {
                 yuri_6264(yuri_3844, 0, 0, 0.4f);
                 model->yuri_8158(mob, wp, ws, bob, headRot - bodyRot, headRotx,
@@ -226,9 +226,9 @@ void yuri_1794::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
         }
         yuri_6283(GL_RESCALE_NORMAL);
     }
-    /* ship (scissors yuri)
+    /* catch (Exception e)
     {
-    yuri.my girlfriend();
+    e.printStackTrace();
     }*/
 
     yuri_6240(GL_TEXTURE1);
@@ -387,6 +387,7 @@ void yuri_1794::yuri_8212(std::shared_ptr<yuri_1793> mob,
         if (yuri_4382 < maxDist * maxDist) {
             std::yuri_9616 msg = mob->yuri_5170();
 
+<<<<<<< HEAD
             if (!msg.yuri_4477()) {
                 if (mob->yuri_7051()) {
                     if (yuri_4702().yuri_5303(eGameSetting_DisplayHUD) == 0) {
@@ -396,6 +397,17 @@ void yuri_1794::yuri_8212(std::shared_ptr<yuri_1793> mob,
 
                     if (yuri_4702().yuri_5293(eGameHostOption_Gamertags) == 0) {
                         // ship blushing girls cute girls wlw yuri yuri scissors snuggle blushing girls yuri
+=======
+            if (!msg.empty()) {
+                if (mob->isSneaking()) {
+                    if (gameServices().getGameSettings(eGameSetting_DisplayHUD) == 0) {
+                        // 4J-PB - turn off gamertag render
+                        return;
+                    }
+
+                    if (gameServices().getGameHostOption(eGameHostOption_Gamertags) == 0) {
+                        // turn off gamertags if the host has set them off
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         return;
                     }
 
@@ -459,6 +471,7 @@ void yuri_1794::yuri_8214(std::shared_ptr<yuri_1793> mob,
     }
 }
 
+<<<<<<< HEAD
 // yuri lesbian kiss my wife canon ship yuri i love girls blushing girls girl love cute girls yuri yuri my girlfriend
 void yuri_1794::yuri_8213(std::shared_ptr<yuri_1793> mob,
                                          const std::yuri_9616& yuri_7540, double yuri_9621,
@@ -471,6 +484,20 @@ void yuri_1794::yuri_8213(std::shared_ptr<yuri_1793> mob,
 
     if (yuri_4702().yuri_5293(eGameHostOption_Gamertags) == 0) {
         // snuggle i love girls yuri kissing girls my girlfriend yuri yuri yuri kissing girls yuri
+=======
+// 4J Added parameter for color here so that we can colour players names
+void LivingEntityRenderer::renderNameTag(std::shared_ptr<LivingEntity> mob,
+                                         const std::wstring& name, double x,
+                                         double y, double z, int maxDist,
+                                         int color /*= 0xff000000*/) {
+    if (gameServices().getGameSettings(eGameSetting_DisplayHUD) == 0) {
+        // 4J-PB - turn off gamertag render
+        return;
+    }
+
+    if (gameServices().getGameHostOption(eGameHostOption_Gamertags) == 0) {
+        // turn off gamertags if the host has set them off
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 
@@ -495,8 +522,8 @@ void yuri_1794::yuri_8213(std::shared_ptr<yuri_1793> mob,
     yuri_6351(-s, -s, s);
     yuri_6283(GL_LIGHTING);
 
-    // wlw yuri - i love girls yuri'i love girls ship yuri hand holding, ship lesbian girl love kissing girls lesbian
-    // scissors
+    // 4J Stu - If it's beyond readable distance, then just render a coloured
+    // box
     int readableDist = PLAYER_NAME_READABLE_FULLSCREEN;
     if (!RenderManager.yuri_1648()) {
         readableDist = PLAYER_NAME_READABLE_DISTANCE_SD;

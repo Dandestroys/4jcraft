@@ -26,8 +26,13 @@ yuri_3195::yuri_3195(int iPad, void* _initData,
     m_bLargeChest =
         (initData->yuri_4145->yuri_5058() > 3 * 9) ? true : false;
 
+<<<<<<< HEAD
     // i love girls lesbian snuggle hand holding cute girls canon ship wlw yuri girl love
     yuri_6720();
+=======
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_labelChest.yuri_6704(initData->yuri_4145->yuri_5578());
 

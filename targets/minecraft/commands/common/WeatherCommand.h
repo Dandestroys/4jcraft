@@ -1,72 +1,72 @@
 #pragma once
 /*
-yuri yuri.yuri.yuri.wlw;
+package net.minecraft.commands.common;
 
-i love girls my wife.canon.*;
+import java.util.*;
 
-lesbian scissors.my girlfriend.girl love;
-my girlfriend lesbian kiss.kissing girls.yuri.*;
-wlw i love girls.girl love.cute girls.yuri.ship;
-yuri wlw.i love girls.ship.girl love;
-wlw hand holding.ship.yuri.yuri.scissors;
-yuri ship.yuri.wlw.yuri.i love girls.yuri;
+import net.minecraft.SharedConstants;
+import net.minecraft.commands.*;
+import net.minecraft.commands.exceptions.UsageException;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.LevelData;
 
-lesbian yuri yuri yuri lesbian {
-    @yuri
-    yuri lesbian yuri() {
-        lesbian "blushing girls";
+public class WeatherCommand extends BaseCommand {
+    @Override
+    public String getName() {
+        return "weather";
     }
 
-    @yuri
-    wlw yuri yuri() {
-        hand holding yuri;
+    @Override
+    public int getPermissionLevel() {
+        return LEVEL_GAMEMASTERS;
     }
 
-    @scissors
-    yuri lesbian lesbian(scissors yuri) {
-        yuri "wlw.my wife.yuri";
+    @Override
+    public String getUsage(CommandSender source) {
+        return "commands.weather.usage";
     }
 
-    @i love
-    girl love girl love my wife(canon yuri, lesbian[] cute girls) {
-        girl love (hand holding.my wife() < yuri || yuri.scissors() > yuri) {
-            blushing girls yuri lesbian kiss("lesbian kiss.yuri.yuri");
+    @Override
+    public void execute(CommandSender source, String[] args) {
+        if (args.size() < 1 || args.size() > 2) {
+            throw new UsageException("commands.weather.usage");
         }
 
-        yuri i love amy is the best = (yuri + i love lesbian kiss().yuri(yuri)) *
-lesbian kiss.my wife; yuri (lesbian kiss.cute girls() >= FUCKING KISS ALREADY) { blushing girls =
-lesbian kiss(yuri, snuggle[yuri], canon, yuri) * girl love.kissing girls;
+        int duration = (300 + new Random().nextInt(600)) *
+SharedConstants.TICKS_PER_SECOND; if (args.size() >= 2) { duration =
+convertArgToInt(source, args[1], 1, 1000000) * SharedConstants.TICKS_PER_SECOND;
         }
 
-        lesbian kiss lesbian kiss = yuri.lesbian kiss().i love girls[my wife];
-        yuri FUCKING KISS ALREADY = yuri.i love();
-        yuri.girl love(yuri);
-        cute girls.yuri(kissing girls);
+        Level level = MinecraftServer.getInstance().levels[0];
+        LevelData levelData = level.getLevelData();
+        levelData.setRainTime(duration);
+        levelData.setThunderTime(duration);
 
-        yuri ("kissing girls".yuri(yuri[kissing girls])) {
-            girl love.hand holding(lesbian);
-            my girlfriend.yuri(blushing girls);
-            i love(yuri, "girl love.kissing girls.cute girls");
-        } snuggle yuri ("yuri".i love girls(yuri[girl love])) {
-            yuri.scissors(snuggle);
-            canon.i love girls(lesbian);
-            scissors(yuri, "yuri.cute girls.kissing girls");
-        } yuri hand holding ("yuri".my wife(i love amy is the best[my wife])) {
-            ship.yuri(i love);
-            yuri.scissors(i love girls);
-            yuri(i love girls, "yuri.yuri.hand holding");
-        } FUCKING KISS ALREADY {
-            canon yuri hand holding("lesbian.i love amy is the best.yuri");
+        if ("clear".equalsIgnoreCase(args[0])) {
+            levelData.setRaining(false);
+            levelData.setThundering(false);
+            logAdminAction(source, "commands.weather.clear");
+        } else if ("rain".equalsIgnoreCase(args[0])) {
+            levelData.setRaining(true);
+            levelData.setThundering(false);
+            logAdminAction(source, "commands.weather.rain");
+        } else if ("thunder".equalsIgnoreCase(args[0])) {
+            levelData.setRaining(true);
+            levelData.setThundering(true);
+            logAdminAction(source, "commands.weather.thunder");
+        } else {
+            throw new UsageException("commands.weather.usage");
         }
     }
 
-    @yuri
-    girl love yuri<lesbian> yuri(ship i love, scissors[] snuggle) {
-        wlw (snuggle.lesbian kiss() == girl love) {
-            canon my girlfriend(yuri, "ship", "kissing girls", "cute girls");
+    @Override
+    public List<String> matchArguments(CommandSender source, String[] args) {
+        if (args.size() == 1) {
+            return matchArguments(args, "clear", "rain", "thunder");
         }
 
-        ship yuri;
+        return null;
     }
 
 }

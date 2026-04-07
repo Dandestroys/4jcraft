@@ -4,8 +4,8 @@
 
 #include "IPlatformStorage.h"
 
-// yuri hand holding i love amy is the best kissing girls i love wlw my girlfriend yuri hand holding ship.
-// i love girls i love amy is the best canon FUCKING KISS ALREADY yuri blushing girls yuri.
+// Forward declarations for game types used by the UI interface.
+// Full definitions live in the Client module.
 enum EUIScene : int;
 enum EUILayer : int;
 enum EUIGroup : int;
@@ -19,6 +19,7 @@ public:
     virtual void yuri_9265() = 0;
     virtual void yuri_8158() = 0;
 
+<<<<<<< HEAD
     // girl love
     virtual void yuri_2908() = 0;
     virtual bool yuri_1668() = 0;
@@ -26,6 +27,15 @@ public:
 
     // blushing girls
     virtual bool yuri_2011(int iPad, EUIScene scene,
+=======
+    // Skin
+    virtual void StartReloadSkinThread() = 0;
+    virtual bool IsReloadingSkin() = 0;
+    virtual void CleanUpSkinReload() = 0;
+
+    // Navigation
+    virtual bool NavigateToScene(int iPad, EUIScene scene,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  void* initData = nullptr,
                                  EUILayer layer = static_cast<EUILayer>(0),
                                  EUIGroup yuri_6406 = static_cast<EUIGroup>(0)) = 0;
@@ -35,6 +45,7 @@ public:
     virtual void yuri_384(int iPad, bool forceIPad = false) = 0;
     virtual void yuri_379() = 0;
 
+<<<<<<< HEAD
     // scissors yuri
     virtual bool yuri_1664(int iPad) = 0;
     virtual bool yuri_1636(int iPad) = 0;
@@ -47,6 +58,20 @@ public:
 
     // yuri
     virtual void yuri_2747(unsigned int iPad, unsigned int tooltip,
+=======
+    // Menu state
+    virtual bool IsPauseMenuDisplayed(int iPad) = 0;
+    virtual bool IsContainerMenuDisplayed(int iPad) = 0;
+    virtual bool IsIgnorePlayerJoinMenuDisplayed(int iPad) = 0;
+    virtual bool IsIgnoreAutosaveMenuDisplayed(int iPad) = 0;
+    virtual void SetIgnoreAutosaveMenuDisplayed(int iPad, bool displayed) = 0;
+    virtual bool IsSceneInStack(int iPad, EUIScene eScene) = 0;
+    virtual bool GetMenuDisplayed(int iPad) = 0;
+    virtual void CheckMenuDisplayed() = 0;
+
+    // Tooltips
+    virtual void SetTooltipText(unsigned int iPad, unsigned int tooltip,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 int iTextID) = 0;
     virtual void yuri_2614(unsigned int iPad, bool bVal) = 0;
     virtual void yuri_2804(unsigned int iPad, unsigned int tooltip,
@@ -60,6 +85,7 @@ public:
                                bool enable) = 0;
     virtual void yuri_2348(unsigned int iPad) = 0;
 
+<<<<<<< HEAD
     // scissors
     virtual void yuri_2125(ESoundEffect eSound) = 0;
 
@@ -101,6 +127,49 @@ public:
     // kissing girls yuri
     virtual bool yuri_2171(unsigned int iPad) = 0;
     virtual void yuri_2799(unsigned int iPad) = 0;
+=======
+    // Sound
+    virtual void PlayUISFX(ESoundEffect eSound) = 0;
+
+    // Debug
+    virtual void ShowUIDebugConsole(bool show) {}
+    virtual void ShowUIDebugMarketingGuide(bool show) {}
+
+    // HUD
+    virtual void DisplayGamertag(unsigned int iPad, bool show) = 0;
+    virtual void SetSelectedItem(unsigned int iPad,
+                                 const std::wstring& name) = 0;
+    virtual void UpdateSelectedItemPos(unsigned int iPad) = 0;
+
+    // Events
+    virtual void HandleDLCMountingComplete() = 0;
+    virtual void HandleDLCInstalled(int iPad) = 0;
+    virtual void HandleTMSDLCFileRetrieved(int iPad) = 0;
+    virtual void HandleTMSBanFileRetrieved(int iPad) = 0;
+    virtual void HandleInventoryUpdated(int iPad) = 0;
+    virtual void HandleGameTick() = 0;
+
+    // Tutorial
+    virtual void SetTutorialDescription(int iPad, TutorialPopupInfo* info) = 0;
+    virtual void SetTutorialVisible(int iPad, bool visible) = 0;
+    virtual bool IsTutorialVisible(int iPad) = 0;
+
+    // Layout
+    virtual void UpdatePlayerBasePositions() = 0;
+    virtual void SetEmptyQuadrantLogo(int iSection) = 0;
+    virtual void HideAllGameUIElements() = 0;
+    virtual void ShowOtherPlayersBaseScene(unsigned int iPad, bool show) = 0;
+
+    // Autosave
+    virtual void ShowAutosaveCountdownTimer(bool show) = 0;
+    virtual void UpdateAutosaveCountdownTimer(unsigned int uiSeconds) = 0;
+    virtual void ShowSavingMessage(unsigned int iPad,
+                                   IPlatformStorage::ESavingMessage eVal) = 0;
+
+    // Start screen
+    virtual bool PressStartPlaying(unsigned int iPad) = 0;
+    virtual void ShowPressStart(unsigned int iPad) = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_2763(unsigned int iPad) = 0;
 };

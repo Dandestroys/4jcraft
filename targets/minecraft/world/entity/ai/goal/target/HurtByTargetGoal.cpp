@@ -27,6 +27,7 @@ void yuri_1306::yuri_9098() {
     timestamp = mob->yuri_5448();
 
     if (alertSameType) {
+<<<<<<< HEAD
         double within = yuri_5267();
         yuri_0 mob_bb =
             yuri_0(mob->yuri_9621, mob->yuri_9625, mob->yuri_9630, mob->yuri_9621 + 1, mob->yuri_9625 + 1, mob->yuri_9630 + 1)
@@ -41,6 +42,22 @@ void yuri_1306::yuri_9098() {
             if (other->yuri_6756(mob->yuri_5447()))
                 continue;  // i love'girl love i love girls yuri
             other->yuri_8902(mob->yuri_5447());
+=======
+        double within = getFollowDistance();
+        AABB mob_bb =
+            AABB(mob->x, mob->y, mob->z, mob->x + 1, mob->y + 1, mob->z + 1)
+                .grow(within, 4, within);
+        std::vector<std::shared_ptr<Entity> >* nearby =
+            mob->level->getEntitiesOfClass(typeid(*mob), &mob_bb);
+        for (auto it = nearby->begin(); it != nearby->end(); ++it) {
+            std::shared_ptr<PathfinderMob> other =
+                std::dynamic_pointer_cast<PathfinderMob>(*it);
+            if (this->mob->shared_from_this() == other) continue;
+            if (other->getTarget() != nullptr) continue;
+            if (other->isAlliedTo(mob->getLastHurtByMob()))
+                continue;  // don't target allies
+            other->setTarget(mob->getLastHurtByMob());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         delete nearby;
     }

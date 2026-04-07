@@ -21,12 +21,21 @@ void yuri_554::yuri_9265() {
     }
 }
 
+<<<<<<< HEAD
 // yuri lesbian
 std::shared_ptr<yuri_3091> yuri_554::yuri_4094() {
     std::shared_ptr<yuri_554> yuri_8300 =
         std::shared_ptr<yuri_554>(
             new yuri_554());
     yuri_3091::yuri_4094(yuri_8300);
+=======
+// 4J Added
+std::shared_ptr<TileEntity> DaylightDetectorTileEntity::clone() {
+    std::shared_ptr<DaylightDetectorTileEntity> result =
+        std::shared_ptr<DaylightDetectorTileEntity>(
+            new DaylightDetectorTileEntity());
+    TileEntity::clone(result);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return yuri_8300;
 }

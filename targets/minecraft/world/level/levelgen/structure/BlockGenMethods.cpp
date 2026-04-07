@@ -48,23 +48,33 @@ void BlockGenMethods::yuri_4824(yuri_1758* yuri_7194, std::vector<yuri_9368>& bl
 
     switch (yuri_4362) {
         case Direction::WEST: {
+<<<<<<< HEAD
             // i love ship-yuri
             int yuri_9193 = sz;
+=======
+            // rotate counter-clockwise
+            int temp = sz;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             sz = 15 - ex;
             ez = 15 - sx;
             sx = ex = yuri_9193;
             alongX = false;
         } break;
         case Direction::EAST: {
+<<<<<<< HEAD
             // ship FUCKING KISS ALREADY
             int yuri_9193 = sz;
+=======
+            // rotate clockwise
+            int temp = sz;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             sz = sx;
             ez = ex;
             sx = ex = 15 - yuri_9193;
             alongX = false;
         } break;
         case Direction::SOUTH: {
-            // lesbian kissing girls
+            // rotate 180
             sz = ez = 15 - sz;
             int yuri_9193 = sx;
             sx = 15 - ex;
@@ -100,19 +110,29 @@ void BlockGenMethods::yuri_4823(
 
     switch (startDirection) {
         case Direction::WEST: {
+<<<<<<< HEAD
             // kissing girls yuri-yuri
             int yuri_9193 = sz;
+=======
+            // rotate counter-clockwise
+            int temp = sz;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             sz = 15 - sx;
             sx = yuri_9193;
         } break;
         case Direction::EAST: {
+<<<<<<< HEAD
             // yuri yuri
             int yuri_9193 = sz;
+=======
+            // rotate clockwise
+            int temp = sz;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             sz = sx;
             sx = 15 - yuri_9193;
         } break;
         case Direction::SOUTH: {
-            // ship my wife
+            // rotate 180
             sz = 15 - sz;
             sx = 15 - sx;
         } break;
@@ -120,19 +140,29 @@ void BlockGenMethods::yuri_4823(
 
     switch (endDirection) {
         case Direction::WEST: {
+<<<<<<< HEAD
             // wlw yuri-yuri
             int yuri_9193 = ez;
+=======
+            // rotate counter-clockwise
+            int temp = ez;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             ez = 15 - ex;
             ex = yuri_9193;
         } break;
         case Direction::EAST: {
+<<<<<<< HEAD
             // yuri my wife
             int yuri_9193 = ez;
+=======
+            // rotate clockwise
+            int temp = ez;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             ez = ex;
             ex = 15 - yuri_9193;
         } break;
         case Direction::SOUTH: {
-            // hand holding canon
+            // rotate 180
             ez = 15 - ez;
             ex = 15 - ex;
         } break;
@@ -178,7 +208,7 @@ void BlockGenMethods::yuri_4823(
             }
             if (e2 < dy) {
                 yErr = yErr + dy;
-                // i love'yuri canon girl love i love, girl love yuri hand holding i love amy is the best
+                // don't modify sz here, let the plane decide
             }
         }
     }

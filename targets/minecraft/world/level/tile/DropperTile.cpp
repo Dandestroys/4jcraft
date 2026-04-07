@@ -66,8 +66,13 @@ void yuri_658::yuri_4373(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
                 yuri_8095 = item->yuri_4179();
                 if (--yuri_8095->yuri_4184 == 0) yuri_8095 = nullptr;
             } else {
+<<<<<<< HEAD
                 // lesbian i love canon i love girls, hand holding yuri yuri girl love
                 yuri_8095 = item->yuri_4179();
+=======
+                // placing one item failed, so restore original count
+                remaining = item->copy();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         } else {
             yuri_8095 = DISPENSE_BEHAVIOUR->yuri_4372(&yuri_9075, item);

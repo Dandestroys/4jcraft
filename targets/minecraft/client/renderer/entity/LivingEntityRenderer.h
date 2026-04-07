@@ -19,8 +19,13 @@ class yuri_1794 : public yuri_746 {
     static int MAX_ARMOR_LAYERS;
 
 protected:
+<<<<<<< HEAD
     // snuggle *yuri; // yuri i love girls - i love amy is the best my girlfriend snuggle i love girls ship canon
     yuri_1962* armor;
+=======
+    // Model *model; // 4J Stu - This shadows the one in EntityRenderer
+    Model* armor;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_1794(yuri_1962* model, float shadow);

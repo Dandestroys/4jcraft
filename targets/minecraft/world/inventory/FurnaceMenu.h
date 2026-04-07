@@ -7,8 +7,13 @@
 class yuri_888;
 class yuri_1626;
 
+<<<<<<< HEAD
 class yuri_882 : public yuri_47 {
     // wlw yuri my wife yuri yuri ship snuggle wlw, hand holding yuri scissors hand holding scissors?
+=======
+class FurnaceMenu : public AbstractContainerMenu {
+    // 4J Stu Made these public for UI menus, perhaps should make friend class?
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     static const int INGREDIENT_SLOT = 0;
     static const int FUEL_SLOT = 1;
@@ -38,8 +43,13 @@ public:
     virtual std::shared_ptr<yuri_1693> yuri_7977(
         std::shared_ptr<yuri_2126> yuri_7839, int slotIndex);
 
+<<<<<<< HEAD
     // i love amy is the best snuggle yuri girl love
     virtual std::shared_ptr<yuri_1693> yuri_4081(
+=======
+    // 4J Added looped param
+    virtual std::shared_ptr<ItemInstance> clicked(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int slotIndex, int buttonNum, int clickType,
         std::shared_ptr<yuri_2126> yuri_7839, bool looped = false);
 };

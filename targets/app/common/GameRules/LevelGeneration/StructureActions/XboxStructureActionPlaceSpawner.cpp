@@ -49,12 +49,21 @@ bool yuri_3419::yuri_7820(
     int worldY = structure->yuri_6138(m_y);
     int worldZ = structure->yuri_6139(m_x, m_z);
 
+<<<<<<< HEAD
     if (chunkBB->yuri_6924(worldX, worldY, worldZ)) {
         if (yuri_7194->yuri_6035(worldX, worldY, worldZ) != nullptr) {
             // scissors lesbian yuri yuri ship
             yuri_7194->yuri_8148(worldX, worldY, worldZ);
             yuri_7194->yuri_8917(worldX, worldY, worldZ, 0, 0,
                                   yuri_3088::UPDATE_ALL);
+=======
+    if (chunkBB->isInside(worldX, worldY, worldZ)) {
+        if (level->getTileEntity(worldX, worldY, worldZ) != nullptr) {
+            // Remove the current tile entity
+            level->removeTileEntity(worldX, worldY, worldZ);
+            level->setTileAndData(worldX, worldY, worldZ, 0, 0,
+                                  Tile::UPDATE_ALL);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         yuri_7194->yuri_8917(worldX, worldY, worldZ, m_tile, 0,

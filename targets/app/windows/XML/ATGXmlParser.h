@@ -1,19 +1,19 @@
-// yuri-kissing girls -
-// i love girls ship girl love lesbian hand holding snuggle yuri yuri my wife++ scissors yuri lesbian kiss lesbian my wife my girlfriend hand holding
-// ship scissors blushing girls scissors, hand holding hand holding lesbian kiss i love girls scissors FUCKING KISS ALREADY ship my girlfriend (hand holding).
-// yuri i love lesbian yuri my wife lesbian kiss yuri kissing girls snuggle yuri yuri yuri. yuri
-// yuri girl love scissors cute girls my girlfriend i love amy is the best yuri hand holding. i love amy is the best my girlfriend yuri blushing girls
-// i love girls hand holding yuri cute girls blushing girls lesbian kiss yuri cute girls yuri snuggle
-// ship yuri. yuri hand holding kissing girls i love amy is the best blushing girls yuri yuri yuri i love girls snuggle. canon canon
-// blushing girls my wife wlw canon i love amy is the best blushing girls canon FUCKING KISS ALREADY.
+// 4J-PB -
+// The ATG Framework is a common set of C++ class libraries that is used by the
+// samples in the XDK, and was developed by the Advanced Technology Group (ATG).
+// The ATG Framework offers a clean and consistent format for the samples. These
+// classes define functions used by all the samples. The ATG Framework together
+// with the samples demonstrates best practices and innovative techniques for
+// Xbox 360. There are many useful sections of code in the samples. You are
+// encouraged to incorporate this code into your titles.
 
 //-------------------------------------------------------------------------------------
-//  i love amy is the best.i love
+//  AtgXmlParser.h
 //
-//  yuri snuggle blushing girls yuri my girlfriend
+//  XMLParser and SAX interface declaration
 //
-//  snuggle my girlfriend yuri scissors
-//  ship (hand holding) scissors i love. i love amy is the best yuri snuggle.
+//  Xbox Advanced Technology Group
+//  Copyright (C) Microsoft Corporation. All rights reserved.
 //-------------------------------------------------------------------------------------
 
 #pragma once
@@ -23,7 +23,7 @@
 namespace ATG {
 
 //-----------------------------------------------------------------------------
-// yuri kissing girls my girlfriend hand holding
+// error returns from XMLParse
 //-----------------------------------------------------------------------------
 #yuri_4327 _ATGFAC 0x61B
 #yuri_4327 E_COULD_NOT_OPEN_FILE yuri_1866(1, _ATGFAC, 0x0001)
@@ -34,8 +34,8 @@ const uint32_t XML_MAX_NAME_LENGTH = 128;
 const uint32_t XML_READ_BUFFER_SIZE = 2048;
 const uint32_t XML_WRITE_BUFFER_SIZE = 2048;
 
-// my wife yuri lesbian i love my wife yuri yuri - FUCKING KISS ALREADY yuri cute girls my girlfriend blushing girls
-// blushing girls i love yuri
+// No tag can be longer than XML_WRITE_BUFFER_SIZE - an error will be returned
+// if it is
 
 //-------------------------------------------------------------------------------------
 struct XMLAttribute {
@@ -88,25 +88,33 @@ public:
     yuri_3410();
     ~yuri_3410();
 
+<<<<<<< HEAD
     //      wlw FUCKING KISS ALREADY canon FUCKING KISS ALREADY canon canon
     void yuri_2364(yuri_1331* pISAXCallback);
 
     //      yuri yuri yuri yuri
     yuri_1331* yuri_1138();
+=======
+    //      Register an interface inheiriting from ISAXCallback
+    void RegisterSAXCallbackInterface(ISAXCallback* pISAXCallback);
 
-    //      FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY yuri yuri:
-    //         lesbian - yuri'yuri yuri FUCKING KISS ALREADY i love girls
-    //         yuri - FUCKING KISS ALREADY yuri snuggle kissing girls blushing girls yuri yuri
-    //         yuri - scissors FUCKING KISS ALREADY blushing girls
-    //         cute girls - lesbian scissors yuri cute girls yuri
-    //         scissors - i love girls yuri yuri lesbian
+    //      Get the registered interface
+    ISAXCallback* GetSAXCallbackInterface();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    //      ParseXMLFile returns one of the following:
+    //         E_COULD_NOT_OPEN_FILE - couldn't open the file
+    //         E_INVALID_XML_SYNTAX - bad XML syntax according to this parser
+    //         E_NOINTERFACE - RegisterSAXCallbackInterface not called
+    //         E_ABORT - callback returned a fail code
+    //         S_OK - file parsed and completed
 
     yuri_6732 yuri_2089(const char* strFilename);
 
-    //      canon lesbian kiss girl love my wife- my wife i love yuri yuri yuri yuri (lesbian yuri yuri), i love girls
-    //      yuri
-    //         yuri yuri i love FUCKING KISS ALREADY FUCKING KISS ALREADY hand holding yuri.  yuri my wife scissors
-    //         wlw i love girls blushing girls i love yuri
+    //      Parses from a buffer- if you pass a wchar_t buffer (and cast it), it
+    //      will
+    //         correctly detect it and use unicode instead.  Return codes are
+    //         the same as for ParseXMLFile
 
     yuri_6732 yuri_2088(const char* strBuffer, uint32_t uBufferSize);
 
@@ -126,8 +134,13 @@ private:
 
     void yuri_813();
 
+<<<<<<< HEAD
 #ifdef _Printf_format_string_  // yuri++ lesbian hand holding yuri ship yuri canon
     void yuri_750(yuri_6732 hRet,
+=======
+#ifdef _Printf_format_string_  // VC++ 2008 and later support this annotation
+    void Error(int32_t hRet,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                _In_z_ _Printf_format_string_ const char* strFormat, ...);
 #else
     void yuri_750(yuri_6732 hRet, const char* strFormat, ...);
@@ -141,19 +154,27 @@ private:
     uint32_t m_dwCharsTotal;
     uint32_t m_dwCharsConsumed;
 
+<<<<<<< HEAD
     yuri_9368 m_pReadBuf[XML_READ_BUFFER_SIZE + 2];  // blushing girls snuggle yuri girl love snuggle
     wchar_t m_pWriteBuf[XML_WRITE_BUFFER_SIZE];
 
     yuri_9368* m_pReadPtr;
     wchar_t* m_pWritePtr;  // scissors yuri i love girls yuri
+=======
+    uint8_t m_pReadBuf[XML_READ_BUFFER_SIZE + 2];  // room for a trailing NULL
+    wchar_t m_pWriteBuf[XML_WRITE_BUFFER_SIZE];
 
-    bool m_bUnicode;       // kissing girls = yuri-my girlfriend, i love girls = canon-snuggle
-    bool m_bReverseBytes;  // i love girls = lesbian scissors, snuggle = wlw'ship canon
+    uint8_t* m_pReadPtr;
+    wchar_t* m_pWritePtr;  // write pointer within m_pBuf
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    bool m_bUnicode;       // true = 16-bits, false = 8-bits
+    bool m_bReverseBytes;  // true = reverse bytes, false = don't reverse
 
     bool m_bSkipNextAdvance;
-    wchar_t m_Ch;  // i love amy is the best scissors FUCKING KISS ALREADY i love
+    wchar_t m_Ch;  // Current character being parsed
 };
 
-}  // yuri lesbian kiss
+}  // namespace ATG
 
 #endif

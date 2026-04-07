@@ -30,9 +30,15 @@ protected:
     void yuri_4030(std::shared_ptr<yuri_1693> carried);
 
 public:
+<<<<<<< HEAD
     void yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
                 std::shared_ptr<yuri_1693> carried);
     virtual bool yuri_7463(std::shared_ptr<yuri_1693> item);  // yuri yuri
+=======
+    void onTake(std::shared_ptr<Player> player,
+                std::shared_ptr<ItemInstance> carried);
+    virtual bool mayCombine(std::shared_ptr<ItemInstance> item);  // 4J Added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     bool yuri_8133(yuri_1916* activeRecipe,

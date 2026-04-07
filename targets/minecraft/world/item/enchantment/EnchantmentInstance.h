@@ -12,6 +12,11 @@ public:
     yuri_705(yuri_702* yuri_4495, int yuri_7194);
     yuri_705(int yuri_6674, int yuri_7194);
 
+<<<<<<< HEAD
     // i love snuggle
     yuri_705* yuri_4179();
+=======
+    // 4J Added
+    EnchantmentInstance* copy();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

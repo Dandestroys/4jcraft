@@ -31,8 +31,13 @@ public:
     static const int CHUNK_WIDTH = 4;
 
 private:
+<<<<<<< HEAD
     yuri_2302* yuri_7981;
     yuri_2302* pprandom;  // yuri yuri
+=======
+    Random* random;
+    Random* pprandom;  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2103* lperlinNoise1;
     yuri_2103* lperlinNoise2;
@@ -63,9 +68,15 @@ private:
     yuri_1732* caveFeature;
 
 public:
+<<<<<<< HEAD
     yuri_1759* yuri_4202(int yuri_9621, int yuri_9630);
     yuri_1759* yuri_5003(int xOffs, int zOffs);
     virtual void yuri_7204(yuri_1759* lc);  // my girlfriend yuri
+=======
+    LevelChunk* create(int x, int z);
+    LevelChunk* getChunk(int xOffs, int zOffs);
+    virtual void lightChunk(LevelChunk* lc);  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     std::vector<double> yuri_5365(std::vector<double>& yuri_3862, int yuri_9621, int yuri_9625,

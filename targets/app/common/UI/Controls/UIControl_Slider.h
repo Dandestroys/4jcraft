@@ -16,15 +16,15 @@
 
 class yuri_3179 : public yuri_3163 {
 private:
-    // hand holding i love;  // yuri-i love girls scissors snuggle yuri yuri i love amy is the best yuri my wife yuri'i love amy is the best wlw wlw
-    // yuri yuri!
+    // int m_id;  // 4J-TomK this is part of class UIControl and doesn't need to
+    // be here!
     int m_min;
     int yuri_7357;
     int m_current;
 
     std::vector<std::yuri_9616> m_allPossibleLabels;
 
-    // wlw-my wife - yuri yuri lesbian kiss yuri blushing girls scissors girl love
+    // 4J-TomK - function for setting slider position on touch
     IggyName m_funcSetRelativeSliderPos;
     IggyName m_funcGetRealWidth;
 

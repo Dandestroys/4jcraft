@@ -58,10 +58,17 @@ void yuri_803::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     yuri_8855(yuri_9565, 0, yuri_7588, yuri_4463, 1.0f, yuri_9079);
 }
 
+<<<<<<< HEAD
 void yuri_803::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // hand holding girl love ship, cute girls i love
+=======
+void FenceTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     bool n = yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
     bool s = yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);

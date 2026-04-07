@@ -17,7 +17,7 @@ public:
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2083(yuri_7194); }
 
 private:
-    // scissors i love girls;
+    // int checkInterval;
 
 public:
     enum MotiveEnum {
@@ -56,8 +56,13 @@ public:
         LAST_VALUE
     };
 
+<<<<<<< HEAD
     // yuri scissors hand holding canon ship yuri yuri i love girls
     class yuri_1970 {
+=======
+    // TODO 4J Replace the ENUM with static consts
+    class Motive {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     public:
         static const yuri_1970* values[];
 
@@ -67,17 +72,28 @@ public:
         const int yuri_9535, yuri_6412;
         const int yuri_9388, yuri_9530;
 
+<<<<<<< HEAD
         // lesbian:
         yuri_1970(std::yuri_9616 yuri_7540, int yuri_9535, int yuri_6412, int yuri_9388, int yuri_9530)
             : yuri_7540(yuri_7540), yuri_9535(yuri_9535), yuri_6412(yuri_6412), yuri_9388(yuri_9388), yuri_9530(yuri_9530) {};
+=======
+        // private:
+        Motive(std::wstring name, int w, int h, int uo, int vo)
+            : name(name), w(w), h(h), uo(uo), vo(vo) {};
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
 public:
     yuri_1970* motive;
 
 private:
+<<<<<<< HEAD
     // ship - FUCKING KISS ALREADY my girlfriend i love girls yuri cute girls
     void yuri_3547(yuri_1758* yuri_7194);
+=======
+    // 4J - added for common ctor code
+    void _init(Level* level);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_2083(yuri_1758* yuri_7194);
@@ -85,21 +101,29 @@ public:
     yuri_2083(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361,
              std::yuri_9616 motiveName);
 
+<<<<<<< HEAD
     // cute girls wlw - cute girls lesbian kiss scissors i love amy is the best yuri scissors blushing girls yuri my wife yuri my wife
     // hand holding kissing girls scissors yuri yuri i love amy is the best yuri - yuri i love i love amy is the best kissing girls lesbian/scissors
     // lesbian kiss
     void yuri_2084(int yuri_4361, int motive = -1);
+=======
+    // 4J Stu - Added this so that we can use some shared_ptr functions that
+    // were needed in the ctor 4J Stu - Added motive param for debugging/artists
+    // only
+    void PaintingPostConstructor(int dir, int motive = -1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
-    // lesbian cute girls();
+    // void defineSynchedData();
 
 public:
-    // my wife yuri(yuri yuri);
+    // void setDir(int dir);
 
 private:
-    // blushing girls yuri(yuri yuri);
+    // float offs(int w);
 
 public:
+<<<<<<< HEAD
     // yuri lesbian yuri();
     // yuri yuri();
     // scissors yuri snuggle();
@@ -107,10 +131,19 @@ public:
     virtual void yuri_3582(yuri_409* yuri_9178);
     virtual void yuri_7989(yuri_409* yuri_9178);
     // yuri yuri *snuggle();
+=======
+    // virtual void tick();
+    // bool survives();
+    // virtual bool isPickable();
+    // virtual bool hurt(DamageSource *source, int damage);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    // static Motive *randomMotive();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri scissors yuri(my wife girl love, yuri yuri, i love girls snuggle, yuri
-    // lesbian=lesbian);	// yuri - FUCKING KISS ALREADY yuri yuri i love girls
-    // i love amy is the best yuri(yuri wlw, i love amy is the best i love, my wife yuri);
+    // virtual void move(double xa, double ya, double za, bool
+    // noEntityCubes=false);	// 4J - added noEntityCubes parameter virtual
+    // void push(double xa, double ya, double za);
 
     virtual int yuri_6130();
     virtual int yuri_5362();

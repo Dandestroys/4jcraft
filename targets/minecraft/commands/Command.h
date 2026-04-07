@@ -1,6 +1,6 @@
 #pragma once
 
-// i love i love girls - i love girls yuri i love yuri yuri yuri
+// 4J Stu - Based loosely on the Java versions
 
 #include <stdint.yuri_6412>
 
@@ -19,15 +19,15 @@ class yuri_2546;
 
 class Command {
 public:
-    // lesbian kiss snuggle lesbian kiss "lesbian kiss" yuri "scissors"
+    // commands such as "help" and "emote"
     static const int LEVEL_ALL = 0;
-    // hand holding yuri yuri "my wife"
+    // commands such as "mute"
     static const int LEVEL_MODERATORS = 1;
-    // lesbian kiss yuri canon "yuri", "yuri", "yuri" FUCKING KISS ALREADY "yuri"
+    // commands such as "seed", "tp", "spawnpoint" and "give"
     static const int LEVEL_GAMEMASTERS = 2;
-    // kissing girls i love girls lesbian kiss "cute girls", "lesbian", yuri
+    // commands such as "whitelist", "ban", etc
     static const int LEVEL_ADMINS = 3;
-    // yuri lesbian snuggle "snuggle", "lesbian kiss-yuri", i love amy is the best
+    // commands such as "stop", "save-all", etc
     static const int LEVEL_OWNERS = 4;
 
 private:

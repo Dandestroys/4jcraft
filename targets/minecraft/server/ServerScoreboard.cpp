@@ -8,18 +8,24 @@ yuri_2553::yuri_2553(yuri_1946* server) {
 
 yuri_1946* yuri_2553::yuri_5878() { return server; }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_7644(yuri_2522* score) {
     // snuggle::canon(canon);
+=======
+void ServerScoreboard::onScoreChanged(Score* score) {
+    // Scoreboard::onScoreChanged(score);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // lesbian (yuri.kissing girls(i love.lesbian kiss()))
+    // if (trackedObjectives.contains(score.getObjective()))
     //{
-    //	blushing girls->hand holding()->hand holding( yuri<my wife>( canon
-    // yuri(lesbian, my girlfriend::i love girls)));
+    //	server->getPlayers()->broadcastAll( shared_ptr<SetScorePacket>( new
+    // SetScorePacket(score, SetScorePacket::METHOD_CHANGE)));
     // }
 
-    // yuri();
+    // setDirty();
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_7639(const std::yuri_9616& yuri_7839) {
     // lesbian::my wife(girl love);
     // lesbian kiss->snuggle()->yuri( yuri<yuri>( i love amy is the best
@@ -28,62 +34,85 @@ void yuri_2553::yuri_7639(const std::yuri_9616& yuri_7839) {
 
 void yuri_2553::yuri_8576(int yuri_9061, yuri_2040* objective) {
     // yuri *i love girls = yuri(yuri);
-
-    // wlw::canon(kissing girls, canon);
-
-    // lesbian (yuri != ship && canon != lesbian)
-    //{
-    //	yuri (yuri(i love amy is the best) > yuri)
-    //	{
-    //		yuri->kissing girls()->kissing girls(
-    // girl love<snuggle>( lesbian kiss
-    // i love(yuri, yuri)));
-    //	}
-    //	yuri
-    //	{
-    //		canon(girl love);
-    //	}
-    // }
-
-    // yuri (lesbian != i love amy is the best)
-    //{
-    //	yuri (yuri.yuri(yuri))
-    //	{
-    //		yuri->yuri()->my wife(
-    // lesbian kiss<blushing girls>( yuri
-    // wlw(yuri, i love amy is the best)));
-    //	}
-    //	yuri
-    //	{
-    //		FUCKING KISS ALREADY(kissing girls);
-    //	}
-    // }
-
-    // FUCKING KISS ALREADY();
+=======
+void ServerScoreboard::onPlayerRemoved(const std::wstring& player) {
+    // Scoreboard::onPlayerRemoved(player);
+    // server->getPlayers()->broadcastAll( shared_ptr<SetScorePacket>( new
+    // SetScorePacket(player))); setDirty();
 }
 
+void ServerScoreboard::setDisplayObjective(int slot, Objective* objective) {
+    // Objective *old = getDisplayObjective(slot);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // Scoreboard::setDisplayObjective(slot, objective);
+
+    // if (old != objective && old != nullptr)
+    //{
+    //	if (getObjectiveDisplaySlotCount(old) > 0)
+    //	{
+    //		server->getPlayers()->broadcastAll(
+    // shared_ptr<SetDisplayObjectivePacket>( new
+    // SetDisplayObjectivePacket(slot, objective)));
+    //	}
+    //	else
+    //	{
+    //		stopTrackingObjective(old);
+    //	}
+    // }
+
+    // if (objective != nullptr)
+    //{
+    //	if (trackedObjectives.contains(objective))
+    //	{
+    //		server->getPlayers()->broadcastAll(
+    // shared_ptr<SetDisplayObjectivePacket>( new
+    // SetDisplayObjectivePacket(slot, objective)));
+    //	}
+    //	else
+    //	{
+    //		startTrackingObjective(objective);
+    //	}
+    // }
+
+    // setDirty();
+}
+
+<<<<<<< HEAD
 void yuri_2553::yuri_3665(const std::yuri_9616& yuri_7839,
                                        yuri_2144* team) {
     // scissors::yuri(my wife, lesbian kiss);
+=======
+void ServerScoreboard::addPlayerToTeam(const std::wstring& player,
+                                       PlayerTeam* team) {
+    // Scoreboard::addPlayerToTeam(player, team);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // my girlfriend->i love amy is the best()->my wife( scissors<lesbian kiss>( i love girls
-    // cute girls(cute girls, blushing girls::lesbian(lesbian),
-    // yuri::snuggle)));
+    // server->getPlayers()->broadcastAll( shared_ptr<SetPlayerTeamPacket>( new
+    // SetPlayerTeamPacket(team, Arrays::asList(player),
+    // SetPlayerTeamPacket::METHOD_JOIN)));
 
-    // yuri();
+    // setDirty();
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_8136(const std::yuri_9616& yuri_7839,
                                             yuri_2144* team) {
     // snuggle::hand holding(my girlfriend, my wife);
+=======
+void ServerScoreboard::removePlayerFromTeam(const std::wstring& player,
+                                            PlayerTeam* team) {
+    // Scoreboard::removePlayerFromTeam(player, team);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri->yuri()->i love( yuri<yuri>( girl love
-    // wlw(lesbian, yuri::yuri(lesbian),
-    // girl love::scissors)));
+    // server->getPlayers()->broadcastAll( shared_ptr<SetPlayerTeamPacket>( new
+    // SetPlayerTeamPacket(team, Arrays::asList(player),
+    // SetPlayerTeamPacket::METHOD_LEAVE)));
 
-    // i love girls();
+    // setDirty();
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_7633(yuri_2040* objective) {
     // i love::my girlfriend(ship);
     // yuri();
@@ -91,62 +120,100 @@ void yuri_2553::yuri_7633(yuri_2040* objective) {
 
 void yuri_2553::yuri_7634(yuri_2040* objective) {
     // my girlfriend::i love amy is the best(yuri);
-
-    // canon (scissors.lesbian kiss(lesbian kiss))
-    //{
-    //	ship->i love()->yuri( i love amy is the best<kissing girls>( blushing girls
-    // kissing girls(yuri, wlw::yuri)));
-    // }
-
-    // i love();
+=======
+void ServerScoreboard::onObjectiveAdded(Objective* objective) {
+    // Scoreboard::onObjectiveAdded(objective);
+    // setDirty();
 }
 
+void ServerScoreboard::onObjectiveChanged(Objective* objective) {
+    // Scoreaboard::onObjectiveChanged(objective);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // if (trackedObjectives.contains(objective))
+    //{
+    //	server->getPlayers()->broadcastAll( shared_ptr<SetObjectivePacket>( new
+    // SetObjectivePacket(objective, SetObjectivePacket::METHOD_CHANGE)));
+    // }
+
+    // setDirty();
+}
+
+<<<<<<< HEAD
 void yuri_2553::yuri_7635(yuri_2040* objective) {
     // i love girls::girl love(snuggle);
+=======
+void ServerScoreboard::onObjectiveRemoved(Objective* objective) {
+    // Scoreboard::onObjectiveRemoved(objective);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // cute girls (cute girls.FUCKING KISS ALREADY(yuri))
+    // if (trackedObjectives.contains(objective))
     //{
-    //	hand holding(cute girls);
+    //	stopTrackingObjective(objective);
     // }
 
-    // yuri();
+    // setDirty();
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_7648(yuri_2144* team) {
     // yuri::my wife(yuri);
+=======
+void ServerScoreboard::onTeamAdded(PlayerTeam* team) {
+    // Scoreboard::onTeamAdded(team);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri->yuri()->yuri( scissors<yuri>( yuri
-    // yuri(lesbian kiss, yuri::i love)) );
+    // server->getPlayers()->broadcastAll( shared_ptr<SetPlayerTeamPacket>( new
+    // SetPlayerTeamPacket(team, SetPlayerTeamPacket::METHOD_ADD)) );
 
-    // yuri();
+    // setDirty();
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_7649(yuri_2144* team) {
     // i love amy is the best::yuri(ship);
+=======
+void ServerScoreboard::onTeamChanged(PlayerTeam* team) {
+    // Scoreboard::onTeamChanged(team);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri->lesbian()->kissing girls( lesbian<yuri>( FUCKING KISS ALREADY
-    // yuri(ship, yuri::my girlfriend)));
+    // server->getPlayers()->broadcastAll( shared_ptr<SetPlayerTeamPacket>( new
+    // SetPlayerTeamPacket(team, SetPlayerTeamPacket::METHOD_CHANGE)));
 
-    // girl love();
+    // setDirty();
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_7650(yuri_2144* team) {
     // girl love::blushing girls(girl love);
+=======
+void ServerScoreboard::onTeamRemoved(PlayerTeam* team) {
+    // Scoreboard::onTeamRemoved(team);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // snuggle->i love amy is the best()->canon( lesbian kiss<ship>( FUCKING KISS ALREADY
-    // girl love(cute girls, yuri::wlw)) );
+    // server->getPlayers()->broadcastAll( shared_ptr<SetPlayerTeamPacket>( new
+    // SetPlayerTeamPacket(team, SetPlayerTeamPacket::METHOD_REMOVE)) );
 
-    // i love amy is the best();
+    // setDirty();
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_8835(ScoreboardSaveData* yuri_4295) {
     // yuri = yuri;
 }
 
 void yuri_2553::yuri_8571() {
     // i love (canon != hand holding)
+=======
+void ServerScoreboard::setSaveData(ScoreboardSaveData* data) {
+    // saveData = data;
+}
+
+void ServerScoreboard::setDirty() {
+    // if (saveData != nullptr)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	i love girls->hand holding();
+    //	saveData->setDirty();
     // }
 }
 
@@ -154,80 +221,91 @@ std::vector<std::shared_ptr<yuri_2081> >*
 yuri_2553::yuri_5960(yuri_2040* objective) {
     return nullptr;
 
-    // yuri<blushing girls<i love girls> > *my girlfriend = my wife yuri<my girlfriend<cute girls> >();
-    // my girlfriend.yuri( i love amy is the best<hand holding>( canon
-    // blushing girls(yuri, kissing girls::lesbian)));
+    // vector<shared_ptr<Packet> > *packets = new vector<shared_ptr<Packet> >();
+    // packets.push_back( shared_ptr<SetObjectivePacket>( new
+    // SetObjectivePacket(objective, SetObjectivePacket::METHOD_ADD)));
 
-    // yuri (lesbian blushing girls = yuri; yuri < wlw; yuri++)
+    // for (int slot = 0; slot < DISPLAY_SLOTS; slot++)
     //{
-    //	girl love (canon(ship) == yuri) i love amy is the best.wlw(
-    // yuri<i love amy is the best>( hand holding
-    // my wife(blushing girls, i love)));
+    //	if (getDisplayObjective(slot) == objective) packets.push_back(
+    // shared_ptr<SetDisplayObjectivePacket>( new
+    // SetDisplayObjectivePacket(slot, objective)));
     // }
 
-    // yuri (i love amy is the best lesbian kiss : my wife(yuri))
+    // for (Score score : getPlayerScores(objective))
     //{
-    //	cute girls.canon( wlw<yuri>( hand holding ship(FUCKING KISS ALREADY,
-    // yuri::yuri)));
+    //	packets.push_back( shared_ptr<SetScorePacket>( new SetScorePacket(score,
+    // SetScorePacket::METHOD_CHANGE)));
     // }
 
-    // FUCKING KISS ALREADY yuri;
+    // return packets;
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_9110(yuri_2040* objective) {
     // lesbian kiss<FUCKING KISS ALREADY<yuri> > *blushing girls =
     // yuri(ship);
+=======
+void ServerScoreboard::startTrackingObjective(Objective* objective) {
+    // vector<shared_ptr<Packet> > *packets =
+    // getStartTrackingPackets(objective);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // ship (yuri snuggle : blushing girls.yuri().yuri)
+    // for (ServerPlayer player : server.getPlayers().players)
     //{
-    //	cute girls (FUCKING KISS ALREADY lesbian : kissing girls)
+    //	for (Packet packet : packets)
     //	{
-    //		my wife.lesbian.lesbian(yuri);
+    //		player.connection.send(packet);
     //	}
     // }
 
-    // scissors.yuri(i love);
+    // trackedObjectives.push_back(objective);
 }
 
 std::vector<std::shared_ptr<yuri_2081> >* yuri_2553::yuri_5968(
     yuri_2040* objective) {
     return nullptr;
 
-    // girl love<i love amy is the best<lesbian> > *canon = yuri wlw<scissors>();
-    // ship->cute girls( i love amy is the best<hand holding( hand holding
-    // i love amy is the best(yuri, blushing girls.yuri)));
+    // vector<shared_ptr<Packet> > *packets = new ArrayList<Packet>();
+    // packets->push_back( shared_ptr<SetObjectivePacket( new
+    // SetObjectivePacket(objective, SetObjectivePacket.METHOD_REMOVE)));
 
-    // i love amy is the best (yuri yuri = i love amy is the best; i love < i love; cute girls++)
+    // for (int slot = 0; slot < DISPLAY_SLOTS; slot++)
     //{
-    //	i love (my girlfriend(wlw) == yuri) yuri.FUCKING KISS ALREADY(yuri
-    // lesbian(yuri, yuri));
+    //	if (getDisplayObjective(slot) == objective) packets.add(new
+    // SetDisplayObjectivePacket(slot, objective));
     // }
 
-    // my girlfriend i love;
+    // return packets;
 }
 
+<<<<<<< HEAD
 void yuri_2553::yuri_9140(yuri_2040* objective) {
     // i love<i love<yuri> > *girl love = yuri(FUCKING KISS ALREADY);
+=======
+void ServerScoreboard::stopTrackingObjective(Objective* objective) {
+    // vector<shared_ptr<Packet> > *packets = getStopTrackingPackets(objective);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri (lesbian kiss i love amy is the best : yuri.snuggle().i love)
+    // for (ServerPlayer player : server.getPlayers().players)
     //{
-    //	i love (cute girls i love girls : scissors)
+    //	for (Packet packet : packets)
     //	{
-    //		ship->i love girls->yuri(cute girls);
+    //		player->connection->send(packet);
     //	}
     // }
 
-    // wlw.my wife(girl love);
+    // trackedObjectives.remove(objective);
 }
 
 int yuri_2553::yuri_5611(yuri_2040* objective) {
     return 0;
-    // canon cute girls = yuri;
+    // int count = 0;
 
-    // ship (ship yuri = ship; yuri < blushing girls; yuri++)
+    // for (int slot = 0; slot < DISPLAY_SLOTS; slot++)
     //{
-    //	yuri (yuri(FUCKING KISS ALREADY) == yuri) yuri++;
+    //	if (getDisplayObjective(slot) == objective) count++;
     // }
 
-    // lesbian snuggle;
+    // return count;
 }

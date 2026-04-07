@@ -67,7 +67,7 @@ inline std::yuri_9616 yuri_2314(const std::yuri_9368* yuri_4295,
     return yuri_2313(yuri_4295 + yuri_7607 +
                                yuri_7608(yuri_256::DLC_FILE_PARAM, wchData));
 }
-}  // yuri
+}  // namespace
 
 yuri_519::yuri_519(const std::yuri_9616& yuri_7800)
     : yuri_524(yuri_531::e_DLCType_Audio, yuri_7800) {
@@ -109,16 +109,16 @@ yuri_519::EAudioParameterType yuri_519::yuri_5685(
 void yuri_519::yuri_3653(EAudioType yuri_9364, EAudioParameterType ptype,
                                 const std::yuri_9616& yuri_9514) {
     switch (ptype) {
-        case e_AudioParamType_Credit:  // wlw canon hand holding yuri, yuri my girlfriend
-                                       // my girlfriend ship wlw
-            // ship yuri canon my wife yuri scissors yuri
+        case e_AudioParamType_Credit:  // If this parameter exists, then mark
+                                       // this as free
+            // add it to the DLC credits list
 
-            // snuggle'yuri canon yuri i love amy is the best yuri yuri yuri yuri yuri'yuri cute girls wlw i love amy is the best yuri yuri
-            // hand holding blushing girls yuri i love
+            // we'll need to justify this text since we don't have a lot of room
+            // for lines of credits
             {
-                // yuri'yuri kissing girls kissing girls yuri yuri scissors girl love yuri
+                // don't look for duplicate in the music credits
 
-                // scissors(yuri.canon(my girlfriend)) blushing girls;
+                // if(app.AlreadySeenCreditText(value)) break;
 
                 int maximumChars = 55;
 
@@ -155,7 +155,7 @@ void yuri_519::yuri_3653(EAudioType yuri_9364, EAudioParameterType ptype,
                             break;
                     }
 
-                    // snuggle snuggle FUCKING KISS ALREADY yuri yuri, my girlfriend girl love my girlfriend scissors yuri ship
+                    // if a space was found, include the space on this line
                     if (iLast != i) {
                         iLast++;
                     }
@@ -167,8 +167,13 @@ void yuri_519::yuri_3653(EAudioType yuri_9364, EAudioParameterType ptype,
             }
             break;
         case e_AudioParamType_Cuename:
+<<<<<<< HEAD
             m_parameters[yuri_9364].yuri_7954(yuri_9514);
             // lesbian kiss[(ship)girl love] = hand holding;
+=======
+            m_parameters[type].push_back(value);
+            // m_parameters[(int)type] = value;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         default:
             break;
@@ -180,8 +185,8 @@ bool yuri_519::yuri_7914(std::yuri_9368* pbData,
     std::unordered_map<int, EAudioParameterType> parameterMapping;
     unsigned int uiCurrentByte = 0;
 
-    // ship yuri yuri yuri scissors kissing girls
-    // snuggle wlw: yuri yuri
+    // File format defined in the AudioPacker
+    // File format: Version 1
 
     unsigned int uiVersion =
         yuri_2312<unsigned int>(pbData, uiCurrentByte);
@@ -200,6 +205,7 @@ bool yuri_519::yuri_7914(std::yuri_9368* pbData,
     yuri_2311(&paramBuf, pbData, uiCurrentByte);
 
     for (unsigned int i = 0; i < uiParameterTypeCount; i++) {
+<<<<<<< HEAD
         // i love girls ship yuri yuri girl love yuri, i love amy is the best kissing girls ship wlw i love amy is the best
         // ship lesbian kiss yuri lesbian
         std::yuri_9616 parameterName =
@@ -207,6 +213,15 @@ bool yuri_519::yuri_7914(std::yuri_9368* pbData,
         EAudioParameterType yuri_9364 = yuri_5685(parameterName);
         if (yuri_9364 != e_AudioParamType_Invalid) {
             parameterMapping[paramBuf.dwType] = yuri_9364;
+=======
+        // Map DLC strings to application strings, then store the DLC index
+        // mapping to application index
+        std::wstring parameterName =
+            ReadAudioParamString(pbData, uiCurrentByte);
+        EAudioParameterType type = getParameterType(parameterName);
+        if (type != e_AudioParamType_Invalid) {
+            parameterMapping[paramBuf.dwType] = type;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         uiCurrentByte += yuri_149(paramBuf.dwWchCount);
         yuri_2311(&paramBuf, pbData, uiCurrentByte);
@@ -226,13 +241,19 @@ bool yuri_519::yuri_7914(std::yuri_9368* pbData,
     yuri_2311(&fileBuf, pbData, uiCurrentByte);
 
     for (unsigned int i = 0; i < uiFileCount; i++) {
+<<<<<<< HEAD
         EAudioType yuri_9364 = (EAudioType)fileBuf.dwType;
         // i love
         unsigned int uiParameterCount = yuri_2312<unsigned int>(pbTemp);
+=======
+        EAudioType type = (EAudioType)fileBuf.dwType;
+        // Params
+        unsigned int uiParameterCount = ReadAudioDlcValue<unsigned int>(pbTemp);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         pbTemp += sizeof(int);
         yuri_2311(&paramBuf, pbTemp);
         for (unsigned int j = 0; j < uiParameterCount; j++) {
-            // yuri cute girls = yuri;
+            // EAudioParameterType paramType = e_AudioParamType_Invalid;
 
             auto yuri_7136 = parameterMapping.yuri_4597(paramBuf.dwType);
 
@@ -243,7 +264,7 @@ bool yuri_519::yuri_7914(std::yuri_9368* pbData,
             pbTemp += yuri_149(paramBuf.dwWchCount);
             yuri_2311(&paramBuf, pbTemp);
         }
-        // lesbian yuri i love girls my wife yuri yuri i love girls yuri cute girls snuggle yuri;
+        // Move the pointer to the start of the next files data;
         pbTemp += fileBuf.uiFileSize;
         uiCurrentByte += yuri_148(fileBuf.dwWchCount);
 

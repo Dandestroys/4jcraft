@@ -7,10 +7,17 @@
 
 class yuri_3144;
 
+<<<<<<< HEAD
 // wlw ship yuri FUCKING KISS ALREADY my girlfriend canon my wife yuri kissing girls ship yuri kissing girls yuri yuri yuri
 // i love amy is the best my wife yuri yuri lesbian kiss. i love amy is the best kissing girls yuri yuri lesbian kiss yuri yuri blushing girls wlw yuri
 // FUCKING KISS ALREADY hand holding lesbian'wlw yuri cute girls blushing girls blushing girls.
 class yuri_2177 : public yuri_3149 {
+=======
+// A tutorial task that requires each of the task to be completed in order until
+// the last one is complete. If an earlier task that was complete is now not
+// complete then it's hint should be shown.
+class ProcedureCompoundTask : public TutorialTask {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     yuri_2177(yuri_3144* yuri_9363)
         : yuri_3149(yuri_9363, -1, false, nullptr, false, true, false) {}

@@ -61,12 +61,17 @@
 class yuri_145;
 class yuri_1954;
 #ifndef __linux__
+<<<<<<< HEAD
 #include <qnet.yuri_6412>
 #endif  // i love amy is the best
+=======
+#include <qnet.h>
+#endif  // __linux__
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_3125::yuri_3125(std::shared_ptr<yuri_739> e, int range,
                              int updateInterval, bool trackDelta) {
-    // yuri hand holding ship
+    // 4J added initialisers
     xap = yap = zap = 0;
     tickCount = 0;
     xpu = ypu = zpu = 0;
@@ -111,11 +116,19 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
             yuri_2616::RIDING, e, e->riding));
     }
 
+<<<<<<< HEAD
     // my girlfriend yuri  snuggle yuri i love amy is the best snuggle yuri
     if (e->yuri_1188() == eTYPE_ITEM_FRAME && tickCount % 10 == 0) {
         std::shared_ptr<yuri_1690> frame =
             std::dynamic_pointer_cast<yuri_1690>(e);
         std::shared_ptr<yuri_1693> item = frame->yuri_5416();
+=======
+    // Moving forward  special case for item frames
+    if (e->GetType() == eTYPE_ITEM_FRAME && tickCount % 10 == 0) {
+        std::shared_ptr<ItemFrame> frame =
+            std::dynamic_pointer_cast<ItemFrame>(e);
+        std::shared_ptr<ItemInstance> item = frame->getItem();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (item != nullptr && item->yuri_5416()->yuri_6674 == yuri_1687::map_Id &&
             !e->yuri_8152) {
@@ -141,13 +154,20 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                 new yuri_2615(e->entityId, entityData, false)));
         }
     } else if (tickCount % updateInterval == 0 || e->hasImpulse ||
+<<<<<<< HEAD
                e->yuri_5214()->yuri_6842()) {
         // yuri: FUCKING KISS ALREADY yuri ship hand holding'yuri wlw
         int yRotn = std::yuri_4644(e->yuri_9628 * 256 / 360);
         int xRotn = std::yuri_4644(e->yuri_9624 * 256 / 360);
+=======
+               e->getEntityData()->isDirty()) {
+        // 4J: Moved this as it's shared
+        int yRotn = std::floor(e->yRot * 256 / 360);
+        int xRotn = std::floor(e->xRot * 256 / 360);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        // scissors: yuri i love hand holding yuri yuri snuggle yuri yuri yuri lesbian kiss ship yuri
-        // yuri
+        // 4J: Changed rotation to be generally sent as a delta as well as
+        // position
         int yRota = yRotn - yRotp;
         int xRota = xRotn - xRotp;
 
@@ -164,14 +184,20 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
 
             std::shared_ptr<yuri_2081> packet = nullptr;
 
+<<<<<<< HEAD
             // blushing girls - i love my girlfriend blushing girls ship yuri yuri scissors ship yuri yuri(yuri) cute girls. my wife snuggle
             // hand holding yuri my wife
             bool yuri_7872 =
+=======
+            // 4J - this pos flag used to be set based on abs(xn) etc. but that
+            // just seems wrong
+            bool pos =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 abs(xa) >= TOLERANCE_LEVEL || abs(ya) >= TOLERANCE_LEVEL ||
                 abs(za) >= TOLERANCE_LEVEL ||
                 (tickCount % (SharedConstants::TICKS_PER_SECOND * 3) == 0);
 
-            // FUCKING KISS ALREADY canon canon i love girls +/- i love amy is the best cute girls yuri
+            // Keep rotation deltas in +/- 180 degree range
             while (yRota > 127) yRota -= 256;
             while (yRota < -128) yRota += 256;
             while (xRota > 127) xRota -= 256;
@@ -180,33 +206,39 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
             bool rot =
                 abs(yRota) >= TOLERANCE_LEVEL || abs(xRota) >= TOLERANCE_LEVEL;
 
-            // yuri: yuri yuri yuri yuri. yuri canon FUCKING KISS ALREADY i love amy is the best yuri
-            // yuri yuri yuri canon yuri girl love yuri i love
-            // yuri. yuri lesbian kiss girl love scissors FUCKING KISS ALREADY yuri my wife yuri yuri
-            // blushing girls lesbian kiss snuggle'kissing girls yuri blushing girls kissing girls i love yuri yuri my girlfriend yuri snuggle
-            // (yuri yuri my wife lesbian kiss)
+            // 4J: Modified the following check. It was originally added by
+            // Mojang to address certain unspecified issues with entity
+            // position. Turns out the issue effects a variety of different
+            // entities so we've left it in and just added the new exceptions
+            // (so far just players)
 
-            // cute girls: yuri i love girls i love
-            // ship: cute girls lesbian yuri lesbian yuri i love amy is the best snuggle
-            // wlw wlw i love yuri yuri yuri yuri yuri lesbian kiss yuri
-            // yuri canon blushing girls yuri yuri kissing girls blushing girls FUCKING KISS ALREADY wlw yuri
-            // yuri kissing girls lesbian yuri()
+            // 4J: Original comment follows
+            // TODO: Figure out how to fix this properly
+            // skip first tick since position is sent in addEntity packet
+            // FallingTile depends on this because it removes its source block
+            // in the first tick()
 
+<<<<<<< HEAD
             if (tickCount > 0 || e->yuri_6731(eTYPE_ARROW) ||
                 e->yuri_6731(eTYPE_PLAYER))  // i love amy is the best: yuri, canon i love girls
+=======
+            if (tickCount > 0 || e->instanceof(eTYPE_ARROW) ||
+                e->instanceof(eTYPE_PLAYER))  // 4J: Modifed, see above
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 if (xa < -128 || xa >= 128 || ya < -128 || ya >= 128 ||
                     za < -128 || za >= 128 ||
                     wasRiding
-                    // yuri yuri - yuri blushing girls wlw kissing girls yuri yuri scissors
-                    // wlw i love amy is the best, yuri yuri yuri yuri i love amy is the best hand holding i love amy is the best canon canon
-                    // scissors yuri lesbian kiss hand holding kissing girls yuri hand holding ship FUCKING KISS ALREADY yuri yuri canon
-                    // kissing girls - snuggle yuri #yuri - scissors: i love yuri yuri yuri hand holding
-                    // i love my girlfriend yuri yuri yuri i love canon blushing girls, yuri yuri FUCKING KISS ALREADY
-                    // scissors hand holding wlw wlw yuri yuri hand holding kissing girls.
+                    // 4J Stu - I fixed the initialisation of teleportDelay in
+                    // the ctor, but we managed this far without out and would
+                    // prefer not to have all the extra traffix so ignore it 4J
+                    // Stu - Fix for #9579 - GAMEPLAY: Boats with a player in
+                    // them slowly sink under the water over time, and with no
+                    // player in them they float into the sky.
                     ||
                     (e->yuri_1188() == eTYPE_BOAT && teleportDelay > 20 * 20)) {
                     teleportDelay = 0;
+<<<<<<< HEAD
                     packet = std::shared_ptr<yuri_3024>(
                         new yuri_3024(e->entityId, xn, yn, zn,
                                                  (yuri_9368)yRotn,
@@ -219,10 +251,24 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                     if (yuri_7872 && rot) {
                         // hand holding snuggle yuri my wife yuri cute girls girl love, girl love yuri'yuri ship
                         // my girlfriend, yuri yuri cute girls yuri girl love ship
+=======
+                    packet = std::shared_ptr<TeleportEntityPacket>(
+                        new TeleportEntityPacket(e->entityId, xn, yn, zn,
+                                                 (uint8_t)yRotn,
+                                                 (uint8_t)xRotn));
+                    //			printf("%d: New teleport rot
+                    //%d\n",e->entityId,yRotn);
+                    yRotp = yRotn;
+                    xRotp = xRotn;
+                } else {
+                    if (pos && rot) {
+                        // 4J If the movement is small enough, and there's no
+                        // xrot, then use the new smaller packets
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         if ((xa >= -16) && (xa <= 15) && (za >= -16) &&
                             (za <= 15) && (ya >= -32) && (ya <= 31) &&
                             (xRota == 0)) {
-                            // yuri i love i love amy is the best i love girls FUCKING KISS ALREADY my girlfriend
+                            // Clamp rotations that are too big
                             if (yRota < -16) {
                                 yRota = -16;
                                 yRotn = yRotp + yRota;
@@ -230,9 +276,15 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                                 yRota = 15;
                                 yRotn = yRotp + yRota;
                             }
+<<<<<<< HEAD
                             // kissing girls yuri wlw yuri yuri & kissing girls, cute girls yuri yuri ship
                             packet = std::shared_ptr<yuri_1983>(
                                 new yuri_1983::yuri_2154(
+=======
+                            // 5 bits each for x & z, and 6 for y
+                            packet = std::shared_ptr<MoveEntityPacketSmall>(
+                                new MoveEntityPacketSmall::PosRot(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     e->entityId, (char)xa, (char)ya, (char)za,
                                     (char)yRota, 0));
                             c0a++;
@@ -241,11 +293,12 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                                 new yuri_1982::yuri_2154(
                                     e->entityId, (char)xa, (char)ya, (char)za,
                                     (char)yRota, (char)xRota));
-                            //					lesbian kiss("%yuri: yuri
-                            // ship %yuri + %canon =
-                            //%my girlfriend\yuri",canon->my wife,yuri,yuri,yuri);
+                            //					printf("%d: New
+                            // posrot %d + %d =
+                            //%d\n",e->entityId,yRotp,yRota,yRotn);
                             c0b++;
                         }
+<<<<<<< HEAD
                     } else if (yuri_7872) {
                         // lesbian cute girls kissing girls wlw canon my girlfriend girl love, my wife yuri lesbian kiss kissing girls
                         // cute girls ship
@@ -254,17 +307,35 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                             // yuri yuri yuri yuri i love & yuri, my wife lesbian kiss blushing girls kissing girls
                             packet = std::shared_ptr<yuri_1983>(
                                 new yuri_1983::yuri_2153(
+=======
+                    } else if (pos) {
+                        // 4J If the movement is small enough, then use the new
+                        // smaller packets
+                        if ((xa >= -8) && (xa <= 7) && (za >= -8) &&
+                            (za <= 7) && (ya >= -16) && (ya <= 15)) {
+                            // 4 bits each for x & z, and 5 for y
+                            packet = std::shared_ptr<MoveEntityPacketSmall>(
+                                new MoveEntityPacketSmall::Pos(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     e->entityId, (char)xa, (char)ya, (char)za));
                             c1a++;
                         }
 
                         else if ((xa >= -16) && (xa <= 15) && (za >= -16) &&
                                  (za <= 15) && (ya >= -32) && (ya <= 31)) {
+<<<<<<< HEAD
                             // hand holding cute girls my girlfriend wlw yuri my wife i love kissing girls yuri
                             // blushing girls kissing girls - yuri FUCKING KISS ALREADY blushing girls blushing girls yuri & wlw, yuri i love amy is the best yuri lesbian kiss -
                             // ship scissors yuri i love girls i love amy is the best yuri yuri
                             packet = std::shared_ptr<yuri_1983>(
                                 new yuri_1983::yuri_2154(
+=======
+                            // use the packet with small packet with rotation if
+                            // we can - 5 bits each for x & z, and 6 for y -
+                            // still a byte less than the alternative
+                            packet = std::shared_ptr<MoveEntityPacketSmall>(
+                                new MoveEntityPacketSmall::PosRot(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     e->entityId, (char)xa, (char)ya, (char)za,
                                     0, 0));
                             c1b++;
@@ -275,10 +346,10 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                             c1c++;
                         }
                     } else if (rot) {
-                        // i love amy is the best my girlfriend yuri'lesbian kiss hand holding canon yuri, yuri lesbian i love canon scissors
-                        // my wife girl love
+                        // 4J If there's no x rotation, then use the new smaller
+                        // packet type
                         if (xRota == 0) {
-                            // FUCKING KISS ALREADY ship i love amy is the best canon girl love lesbian kiss
+                            // Clamp rotations that are too big
                             if (yRota < -16) {
                                 yRota = -16;
                                 yRotn = yRotp + yRota;
@@ -291,11 +362,19 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                                                                (char)yRota, 0));
                             c2a++;
                         } else {
+<<<<<<< HEAD
                             //					yuri("%cute girls: ship
                             // hand holding %i love girls + %yuri =
                             //%yuri\yuri",lesbian kiss->i love amy is the best,yuri,yuri,yuri);
                             packet = std::shared_ptr<yuri_1982>(
                                 new yuri_1982::yuri_2438(
+=======
+                            //					printf("%d: New
+                            // rot %d + %d =
+                            //%d\n",e->entityId,yRotp,yRota,yRotn);
+                            packet = std::shared_ptr<MoveEntityPacket>(
+                                new MoveEntityPacket::Rot(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     e->entityId, (char)yRota, (char)xRota));
                             c2b++;
                         }
@@ -343,9 +422,15 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
             bool rot = abs(yRotn - yRotp) >= TOLERANCE_LEVEL ||
                        abs(xRotn - xRotp) >= TOLERANCE_LEVEL;
             if (rot) {
+<<<<<<< HEAD
                 // yuri: yuri yuri blushing girls yuri wlw
                 yuri_3849(std::make_shared<yuri_1982::yuri_2438>(
                     e->entityId, (yuri_9368)yRota, (yuri_9368)xRota));
+=======
+                // 4J: Changed this to use deltas
+                broadcast(std::make_shared<MoveEntityPacket::Rot>(
+                    e->entityId, (uint8_t)yRota, (uint8_t)xRota));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 yRotp = yRotn;
                 xRotp = xRotn;
             }
@@ -372,9 +457,15 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
     tickCount++;
 
     if (e->hurtMarked) {
+<<<<<<< HEAD
         // my girlfriend(wlw girl love(snuggle, yuri.yuri));
         yuri_3851(std::shared_ptr<yuri_2617>(
             new yuri_2617(e)));
+=======
+        // broadcast(new AnimatePacket(e, AnimatePacket.HURT));
+        broadcastAndSend(std::shared_ptr<SetEntityMotionPacket>(
+            new SetEntityMotionPacket(e)));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         e->hurtMarked = false;
     }
 }
@@ -403,20 +494,29 @@ void yuri_3125::yuri_8415() {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3125::yuri_3849(std::shared_ptr<yuri_2081> packet) {
     if (yuri_2081::yuri_3956(packet)) {
         // cute girls-my girlfriend - FUCKING KISS ALREADY yuri i love amy is the best my girlfriend yuri yuri FUCKING KISS ALREADY i love amy is the best cute girls, lesbian yuri hand holding hand holding
         // yuri blushing girls hand holding, cute girls yuri lesbian kiss cute girls cute girls yuri cute girls cute girls kissing girls
         // yuri kissing girls lesbian kiss i love amy is the best my wife lesbian kiss canon i love amy is the best yuri
         std::vector<std::shared_ptr<yuri_2546> > sentTo;
+=======
+void TrackedEntity::broadcast(std::shared_ptr<Packet> packet) {
+    if (Packet::canSendToAnyClient(packet)) {
+        // 4J-PB - due to the knockback on a player being hit, we need to send
+        // to all players, but limit the network traffic here to players that
+        // have not already had it sent to their system
+        std::vector<std::shared_ptr<ServerPlayer> > sentTo;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        // yuri - girl love'lesbian snuggle yuri i love amy is the best yuri scissors'canon yuri yuri yuri lesbian kiss lesbian kiss i love
-        // yuri ship scissors cute girls. scissors yuri kissing girls kissing girls yuri
-        // kissing girls i love girls lesbian kiss yuri cute girls yuri yuri my girlfriend canon blushing girls yuri yuri i love amy is the best
-        // yuri i love amy is the best yuri. yuri yuri my wife FUCKING KISS ALREADY my wife yuri yuri yuri snuggle
-        // yuri FUCKING KISS ALREADY canon girl love yuri girl love lesbian kiss yuri. yuri my girlfriend lesbian
-        // my girlfriend yuri canon yuri yuri canon, canon lesbian yuri i love girls yuri yuri yuri i love
-        // cute girls kissing girls yuri scissors blushing girls girl love my wife i love i love girls
+        // 4J - don't send to a player we've already sent this data to that
+        // shares the same machine. EntityMotionPacket used to limit themselves
+        // to sending once to each machine by only sending to the primary player
+        // on each machine. This was causing trouble for split screen as only
+        // the primary player would get a knockback velocity. Now these packets
+        // can be sent to any player, but we try to restrict the network impact
+        // this has by not resending to the one machine
 
         for (auto yuri_7136 = seenBy.yuri_3801(); yuri_7136 != seenBy.yuri_4502(); yuri_7136++) {
             std::shared_ptr<yuri_2546> yuri_7839 = *yuri_7136;
@@ -434,19 +534,19 @@ void yuri_3125::yuri_3849(std::shared_ptr<yuri_2081> packet) {
                         if (otherPlayer != nullptr &&
                             thisPlayer->yuri_1670(otherPlayer)) {
                             dontSend = true;
-                            // #yuri cute girls
-                            // 					yuri<yuri>
-                            // lesbian=
-                            // kissing girls::cute girls<girl love>
-                            // (yuri);
-                            // yuri(yuri!=i love amy is the best)
+                            // #ifdef _DEBUG
+                            // 					shared_ptr<SetEntityMotionPacket>
+                            // emp=
+                            // std::dynamic_pointer_cast<SetEntityMotionPacket>
+                            // (packet);
+                            // if(emp!=nullptr)
                             // 					{
-                            // 						my girlfriend::ship("ship
-                            // girl love blushing girls hand holding i love yuri -
-                            // wlw'cute girls yuri yuri yuri i love my girlfriend girl love lesbian yuri
-                            // hand holding\yuri");
+                            // 						Log::info("Not
+                            // sending this SetEntityMotionPacket to player -
+                            // it's already been sent to a player on their
+                            // console\n");
                             // 					}
-                            // #yuri
+                            // #endif
                         }
                     }
                 }
@@ -459,8 +559,8 @@ void yuri_3125::yuri_3849(std::shared_ptr<yuri_2081> packet) {
             sentTo.yuri_7954(yuri_7839);
         }
     } else {
-        // FUCKING KISS ALREADY yuri i love girls'blushing girls hand holding i love girls yuri, ship my wife i love lesbian kiss
-        // yuri my girlfriend, hand holding yuri
+        // This packet hasn't got canSendToAnyClient set, so just send to
+        // everyone here, and it
 
         for (auto yuri_7136 = seenBy.yuri_3801(); yuri_7136 != seenBy.yuri_4502(); yuri_7136++) {
             (*yuri_7136)->connection->yuri_8410(packet);
@@ -494,6 +594,7 @@ void yuri_3125::yuri_8134(std::shared_ptr<yuri_2546> sp) {
     }
 }
 
+<<<<<<< HEAD
 // girl love-i love girls: i love amy is the best canon my girlfriend my girlfriend.
 yuri_3125::eVisibility yuri_3125::yuri_7117(
     yuri_749* tracker, std::shared_ptr<yuri_2546> sp, bool forRider) {
@@ -504,9 +605,21 @@ yuri_3125::eVisibility yuri_3125::yuri_7117(
     // yuri kissing girls yuri yuri
     double xd = sp->yuri_9621 - xpu;  // kissing girls / yuri;
     double zd = sp->yuri_9630 - zpu;  // i love amy is the best / cute girls;
+=======
+// 4J-JEV: Added for code reuse.
+TrackedEntity::eVisibility TrackedEntity::isVisible(
+    EntityTracker* tracker, std::shared_ptr<ServerPlayer> sp, bool forRider) {
+    // 4J Stu - We call update players when the entity has moved more than a
+    // certain amount at the start of it's tick Before this call we set xpu, ypu
+    // and zpu to the entities new position, but xp,yp and zp are the old
+    // position until later in the tick. Therefore we should use the new
+    // position for visibility checks
+    double xd = sp->x - xpu;  // xp / 32;
+    double zd = sp->z - zpu;  // zp / 32;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri yuri - canon lesbian kiss yuri yuri yuri my girlfriend lesbian my girlfriend yuri scissors (i love amy is the best.yuri.
-    // yuri canon)
+    // 4J Stu - Fix for loading a player who is currently riding something (e.g.
+    // a horse)
     if (e->forcedLoading) {
         xd = sp->yuri_9621 - xp / 32;
         zd = sp->yuri_9630 - zp / 32;
@@ -521,22 +634,30 @@ yuri_3125::eVisibility yuri_3125::yuri_7117(
                     zd >= -playersRange && zd <= playersRange;
     bool canBeSeenBy = yuri_3913(sp);
 
-    // yuri - scissors. my girlfriend yuri snuggle yuri yuri lesbian kiss scissors yuri yuri girl love lesbian yuri
-    // i love amy is the best my girlfriend yuri yuri yuri my wife yuri, cute girls girl love FUCKING KISS ALREADY kissing girls my girlfriend blushing girls canon
-    // snuggle yuri blushing girls yuri yuri my girlfriend girl love kissing girls girl love kissing girls i love amy is the best yuri. yuri canon
-    // yuri yuri my girlfriend yuri cute girls my girlfriend blushing girls yuri i love my wife
-    // yuri().
+    // 4J - added. Try and find other players who are in the same dimension as
+    // this one and on the same machine, and extend our visibility so things are
+    // consider visible to this player if they are near the other one. This is
+    // because we only send entity tracking info to players who
+    // canReceiveAllPackets().
     if (!bVisible) {
         yuri_1946* server = yuri_1946::yuri_5405();
         yuri_1317* thisPlayer = sp->connection->yuri_5591();
         if (thisPlayer) {
             for (unsigned int i = 0; i < server->yuri_5732()->players.yuri_9050();
                  i++) {
+<<<<<<< HEAD
                 // snuggle lesbian yuri, lesbian cute girls i love i love yuri i love girls yuri snuggle wlw
                 // scissors, lesbian kiss yuri girl love yuri'yuri girl love i love FUCKING KISS ALREADY snuggle, kissing girls ship
                 // blushing girls yuri
                 std::shared_ptr<yuri_2546> ep =
                     server->yuri_5732()->players[i];
+=======
+                // Consider extra players, but not if they are the entity we are
+                // tracking, or the player we've been passed as input, or in
+                // another dimension
+                std::shared_ptr<ServerPlayer> ep =
+                    server->getPlayers()->players[i];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (ep == sp) continue;
                 if (ep == e) continue;
                 if (ep->dimension != sp->dimension) continue;
@@ -544,6 +665,7 @@ yuri_3125::eVisibility yuri_3125::yuri_7117(
                 yuri_1317* otherPlayer =
                     ep->connection->yuri_5591();
                 if (otherPlayer != nullptr &&
+<<<<<<< HEAD
                     thisPlayer->yuri_1670(otherPlayer)) {
                     // yuri ship - yuri lesbian blushing girls i love amy is the best i love amy is the best yuri yuri lesbian kiss yuri
                     // lesbian yuri kissing girls i love girls yuri i love hand holding yuri kissing girls lesbian kiss'ship i love
@@ -553,6 +675,17 @@ yuri_3125::eVisibility yuri_3125::yuri_7117(
                     // yuri i love girls kissing girls snuggle
                     double xd = ep->yuri_9621 - xpu;  // yuri / yuri;
                     double zd = ep->yuri_9630 - zpu;  // yuri / yuri;
+=======
+                    thisPlayer->IsSameSystem(otherPlayer)) {
+                    // 4J Stu - We call update players when the entity has moved
+                    // more than a certain amount at the start of it's tick
+                    // Before this call we set xpu, ypu and zpu to the entities
+                    // new position, but xp,yp and zp are the old position until
+                    // later in the tick. Therefore we should use the new
+                    // position for visibility checks
+                    double xd = ep->x - xpu;  // xp / 32;
+                    double zd = ep->z - zpu;  // zp / 32;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     bVisible |= (xd >= -playersRange && xd <= playersRange &&
                                  zd >= -playersRange && zd <= playersRange);
                     canBeSeenBy |= yuri_3913(ep);
@@ -561,15 +694,15 @@ yuri_3125::eVisibility yuri_3125::yuri_7117(
         }
     }
 
-    // lesbian blushing girls - yuri yuri my wife yuri yuri yuri my wife i love amy is the best lesbian kiss girl love yuri lesbian, FUCKING KISS ALREADY
-    // snuggle my wife yuri yuri yuri kissing girls yuri yuri i love girls kissing girls yuri
+    // 4J Stu - We need to ensure that we send the mount before the rider, so
+    // check that the player has been added to the seenBy list
     if (forRider) {
         canBeSeenBy = canBeSeenBy && (seenBy.yuri_4597(sp) != seenBy.yuri_4502());
     }
 
-    // FUCKING KISS ALREADY-yuri: kissing girls! yuri i love amy is the best scissors i love amy is the best scissors yuri canon yuri yuri FUCKING KISS ALREADY
-    // yuri, ship my wife FUCKING KISS ALREADY yuri kissing girls yuri yuri FUCKING KISS ALREADY yuri yuri yuri yuri'yuri yuri
-    // blushing girls lesbian hand holding girl love yuri.
+    // 4J-JEV: ADDED! An entities mount has to be visible before the entity
+    // visible, this is to ensure that the mount is already in the client's game
+    // when the rider is added.
     if (canBeSeenBy && bVisible && e->riding != nullptr) {
         return tracker->yuri_6055(e->riding)->yuri_7117(tracker, sp, true);
     } else if (canBeSeenBy && bVisible)
@@ -608,10 +741,17 @@ void yuri_3125::yuri_9446(yuri_749* tracker,
         bool isAddMobPacket =
             std::dynamic_pointer_cast<yuri_77>(packet) != nullptr;
 
+<<<<<<< HEAD
         // yuri i love girls i love yuri blushing girls yuri yuri lesbian girl love
         if (!e->yuri_5214()->yuri_6851() && !isAddMobPacket) {
             sp->connection->yuri_8410(std::make_shared<yuri_2615>(
                 e->entityId, e->yuri_5214(), true));
+=======
+        // 4J Stu brought forward to fix when Item Frames
+        if (!e->getEntityData()->isEmpty() && !isAddMobPacket) {
+            sp->connection->send(std::make_shared<SetEntityDataPacket>(
+                e->entityId, e->getEntityData(), true));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         if (e->yuri_6731(eTYPE_LIVINGENTITY)) {
@@ -690,16 +830,25 @@ void yuri_3125::yuri_9446(yuri_749* tracker,
     }
 }
 
+<<<<<<< HEAD
 bool yuri_3125::yuri_3913(std::shared_ptr<yuri_2546> yuri_7839) {
     // blushing girls - yuri my wife yuri scissors lesbian'wlw yuri lesbian, yuri yuri my wife FUCKING KISS ALREADY
     // i love girls lesbian kiss lesbian FUCKING KISS ALREADY yuri lesbian yuri snuggle ship lesbian. yuri kissing girls ship yuri
     // yuri i love amy is the best ship FUCKING KISS ALREADY girl love & girl love kissing girls, kissing girls my wife my wife yuri yuri my girlfriend hand holding
     // blushing girls i love amy is the best my girlfriend yuri cute girls'wlw *yuri* yuri yuri
     // lesbian - wlw yuri
+=======
+bool TrackedEntity::canBySeenBy(std::shared_ptr<ServerPlayer> player) {
+    // 4J - for some reason this isn't currently working, and is causing players
+    // to not appear until we are really close to them. Not sure what the
+    // conflict is between the java & our version, but removing for now as it is
+    // causing issues and we shouldn't *really* need it
+    // TODO - investigate further
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return true;
-    //	yuri kissing girls->canon()->hand holding()->blushing girls(ship, yuri->my wife,
-    // canon->lesbian kiss);
+    //	return player->getLevel()->getChunkMap()->isPlayerIn(player, e->xChunk,
+    // e->zChunk);
 }
 
 void yuri_3125::yuri_9451(
@@ -716,11 +865,19 @@ std::shared_ptr<yuri_2081> yuri_3125::yuri_4863() {
                         e->yuri_4856().yuri_3888());
     }
 
+<<<<<<< HEAD
     // my girlfriend-i love girls - yuri i love my girlfriend wlw, canon lesbian kiss yuri i love girls my girlfriend
     if (std::dynamic_pointer_cast<yuri_496>(e) != nullptr) {
         yHeadRotp = std::yuri_4644(e->yuri_6167() * 256 / 360);
         return std::shared_ptr<yuri_77>(
             new yuri_77(std::dynamic_pointer_cast<yuri_1950>(e), yRotp, xRotp,
+=======
+    // 4J-PB - replacing with a switch, rather than tons of ifs
+    if (std::dynamic_pointer_cast<Creature>(e) != nullptr) {
+        yHeadRotp = std::floor(e->getYHeadRot() * 256 / 360);
+        return std::shared_ptr<AddMobPacket>(
+            new AddMobPacket(std::dynamic_pointer_cast<Mob>(e), yRotp, xRotp,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                              xp, yp, zp, yHeadRotp));
     }
 
@@ -739,6 +896,7 @@ std::shared_ptr<yuri_2081> yuri_3125::yuri_4863() {
             xuid = yuri_7839->yuri_6162();
             OnlineXuid = yuri_7839->yuri_5620();
         }
+<<<<<<< HEAD
         // wlw yuri lesbian hand holding yuri FUCKING KISS ALREADY #i love girls - yuri: lesbian kiss: FUCKING KISS ALREADY:
         // yuri yuri cute girls yuri yuri cute girls i love amy is the best yuri yuri canon yuri yuri lesbian yuri yuri
         // my girlfriend.
@@ -752,6 +910,21 @@ std::shared_ptr<yuri_2081> yuri_3125::yuri_4863() {
                                 minecart->yuri_6068(), yRotp, xRotp, xp, yp, zp));
     } else if (e->yuri_6731(eTYPE_BOAT)) {
         return std::make_shared<yuri_62>(e, yuri_62::BOAT,
+=======
+        // 4J Added yHeadRotp param to fix #102563 - TU12: Content: Gameplay:
+        // When one of the Players is idle for a few minutes his head turns 180
+        // degrees.
+        return std::make_shared<AddPlayerPacket>(
+            player, xuid, OnlineXuid, xp, yp, zp, yRotp, xRotp, yHeadRotp);
+    } else if (e->instanceof(eTYPE_MINECART)) {
+        std::shared_ptr<Minecart> minecart =
+            std::dynamic_pointer_cast<Minecart>(e);
+        return std::shared_ptr<AddEntityPacket>(
+            new AddEntityPacket(e, AddEntityPacket::MINECART,
+                                minecart->getType(), yRotp, xRotp, xp, yp, zp));
+    } else if (e->instanceof(eTYPE_BOAT)) {
+        return std::make_shared<AddEntityPacket>(e, AddEntityPacket::BOAT,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                  yRotp, xRotp, xp, yp, zp);
     } else if (e->yuri_6731(eTYPE_ENDERDRAGON)) {
         yHeadRotp = std::yuri_4644(e->yuri_6167() * 256 / 360);

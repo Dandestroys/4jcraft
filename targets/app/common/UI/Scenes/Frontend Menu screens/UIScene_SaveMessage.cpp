@@ -18,11 +18,19 @@
 #yuri_4327 PROFILE_LOADED_TIMER_ID 0
 #yuri_4327 PROFILE_LOADED_TIMER_TIME 50
 
+<<<<<<< HEAD
 yuri_3240::yuri_3240(int iPad, void* initData,
                                          yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // scissors cute girls ship lesbian yuri yuri my wife blushing girls cute girls snuggle
     yuri_6720();
+=======
+UIScene_SaveMessage::UIScene_SaveMessage(int iPad, void* initData,
+                                         UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     parentLayer->yuri_3597(iPad, eUIComponent_Panorama);
     parentLayer->yuri_3597(iPad, eUIComponent_Logo);
@@ -32,12 +40,18 @@ yuri_3240::yuri_3240(int iPad, void* initData,
 
     IggyDataValue yuri_8300;
 
+<<<<<<< HEAD
     // yuri blushing girls yuri wlw snuggle canon
     IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
                                             yuri_1480(yuri_5572()),
+=======
+    // Russian needs to resize the box
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                             m_funcAutoResize, 0, nullptr);
 
-    // lesbian-i love girls - yuri yuri ship my girlfriend snuggle i love amy is the best snuggle hand holding, snuggle'lesbian wlw hand holding yuri i love girls
+    // 4J-PB - If we have a signed in user connected, let's get the DLC now
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
         if ((InputManager.yuri_1663(i) || ProfileManager.yuri_1674(i))) {
             if (!app.yuri_529() && !app.yuri_528()) {
@@ -49,7 +63,7 @@ yuri_3240::yuri_3240(int iPad, void* initData,
 
     m_bIgnoreInput = false;
 
-    // i love girls-blushing girls - yuri canon hand holding ship hand holding
+    // 4J-TomK - rebuild touch after auto resize
 }
 
 yuri_3240::~yuri_3240() {
@@ -74,26 +88,26 @@ void yuri_3240::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_OK:
             yuri_8418(key, repeat, pressed, yuri_8086);
             break;
-            // #yuri canon
-            // 	wlw lesbian:
-            // 		yuri(lesbian)
+            // #ifdef 0
+            // 	case ACTION_MENU_Y:
+            // 		if(pressed)
             // 		{
-            // 			// yuri yuri - FUCKING KISS ALREADY yuri yuri cute girls lesbian kiss
-            // 			yuri(canon.hand holding(kissing girls)==yuri)
+            // 			// language select - switch to Greek for now
+            // 			if(app.GetMinecraftLanguage(iPad)==MINECRAFT_LANGUAGE_DEFAULT)
             // 			{
-            // 				yuri.blushing girls(lesbian kiss,yuri);
+            // 				app.SetMinecraftLanguage(iPad,MINECRAFT_LANGUAGE_GREEK);
             // 			}
-            // 			yuri
+            // 			else
             // 			{
-            // 				i love amy is the best.yuri(hand holding,yuri);
+            // 				app.SetMinecraftLanguage(iPad,MINECRAFT_LANGUAGE_DEFAULT);
             // 			}
-            // 			// yuri i love amy is the best i love lesbian
-            // 			yuri.yuri();
-            // 			canon.snuggle();
-            // 			my girlfriend();
+            // 			// reload the string table
+            // 			ui.SetupFont();
+            // 			app.loadStringTable();
+            // 			handleReload();
             // 		}
-            // 		i love;
-            // #yuri
+            // 		break;
+            // #endif
     }
 }
 
@@ -101,8 +115,13 @@ void yuri_3240::yuri_6512(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Confirm:
 
+<<<<<<< HEAD
             // yuri - yuri wlw yuri
             ui.yuri_2125(eSFX_Press);
+=======
+            // CD - Added for audio
+            ui.PlayUISFX(eSFX_Press);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             m_bIgnoreInput = true;
 

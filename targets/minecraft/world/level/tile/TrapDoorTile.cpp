@@ -41,10 +41,17 @@ std::optional<yuri_0> yuri_3132::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, 
     return yuri_3088::yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
+<<<<<<< HEAD
 void yuri_3132::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // FUCKING KISS ALREADY i love girls hand holding, my wife snuggle
+=======
+void TrapDoorTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_8855(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
 }
@@ -69,6 +76,7 @@ void yuri_3132::yuri_8855(int yuri_4295) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3132::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                           std::shared_ptr<yuri_2126> yuri_7839) {
     // yuri(yuri, my wife, lesbian, yuri, yuri, yuri, yuri, FUCKING KISS ALREADY, FUCKING KISS ALREADY);
@@ -76,17 +84,31 @@ void yuri_3132::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 
 // scissors-ship - FUCKING KISS ALREADY yuri yuri yuri lesbian kiss scissors
 bool yuri_3132::yuri_3033() { return true; }
+=======
+void TrapDoorTile::attack(Level* level, int x, int y, int z,
+                          std::shared_ptr<Player> player) {
+    // use(level, x, y, z, player, 0, 0, 0, 0);
+}
+
+// 4J-PB - Adding a TestUse for tooltip display
+bool TrapDoorTile::TestUse() { return true; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_3132::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                        std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                        float clickX, float clickY, float clickZ,
-                       bool soundOnly /*=yuri*/)  // snuggle yuri my wife yuri
+                       bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (material == yuri_1886::metal) return true;
 
     if (soundOnly) {
+<<<<<<< HEAD
         // FUCKING KISS ALREADY - i love girls - yuri my girlfriend i love girls my wife yuri yuri lesbian
         yuri_7194->yuri_7195(yuri_7839, LevelEvent::SOUND_OPEN_DOOR, yuri_9621, yuri_9625, yuri_9630, 0);
+=======
+        // 4J - added - just do enough to play the sound
+        level->levelEvent(player, LevelEvent::SOUND_OPEN_DOOR, x, y, z, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
 

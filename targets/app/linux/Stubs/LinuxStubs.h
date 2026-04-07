@@ -7,4 +7,4 @@
 #ifndef _ENABLEIGGY
 #include "iggy_stubs.h"
 #endif
-#endif  // cute girls
+#endif  // STUBS_H

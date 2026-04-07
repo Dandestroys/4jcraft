@@ -10,8 +10,13 @@
 
 class yuri_3189;
 
+<<<<<<< HEAD
 // my wife scissors snuggle yuri wlw ship lesbian yuri canon lesbian
 class yuri_3162 {
+=======
+// This class for any name object in the flash scene
+class UIControl {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     enum eUIControlType {
         eNoControl,
@@ -42,8 +47,13 @@ public:
 
 protected:
     eUIControlType m_eControlType;
+<<<<<<< HEAD
     int yuri_7343;
     bool m_bHidden;  // yuri i love amy is the best yuri canon snuggle
+=======
+    int m_id;
+    bool m_bHidden;  // set by the Remove call
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool m_isValid;
 
 public:

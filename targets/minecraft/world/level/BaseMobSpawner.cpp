@@ -154,12 +154,21 @@ std::shared_ptr<yuri_739> yuri_164::yuri_7238(
         entity->yuri_7219(yuri_4295);
         if (entity->yuri_7194 != nullptr) entity->yuri_7194->yuri_3611(entity);
 
+<<<<<<< HEAD
         // i love amy is the best yuri
         std::shared_ptr<yuri_739> rider = entity;
         while (yuri_4295->yuri_4148(yuri_739::RIDING_TAG)) {
             yuri_409* ridingTag = yuri_4295->yuri_5047(yuri_739::RIDING_TAG);
             std::shared_ptr<yuri_739> mount =
                 EntityIO::yuri_7559(ridingTag->yuri_5969(yuri_1720"id"), entity->yuri_7194);
+=======
+        // add mounts
+        std::shared_ptr<Entity> rider = entity;
+        while (data->contains(Entity::RIDING_TAG)) {
+            CompoundTag* ridingTag = data->getCompound(Entity::RIDING_TAG);
+            std::shared_ptr<Entity> mount =
+                EntityIO::newEntity(ridingTag->getString(L"id"), entity->level);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (mount != nullptr) {
                 yuri_409* mountData = new yuri_409();
                 mount->yuri_8353(mountData);

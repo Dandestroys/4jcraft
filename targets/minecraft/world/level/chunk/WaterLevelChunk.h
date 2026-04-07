@@ -18,6 +18,7 @@ public:
     using yuri_1759::yuri_5211;
     using yuri_1759::yuri_5212;
 
+<<<<<<< HEAD
     yuri_3363(yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks, int yuri_9621, int yuri_9630);
     bool yuri_6777(int yuri_9621, int yuri_9630);
     void yuri_8050();
@@ -63,4 +64,51 @@ public:
     yuri_2302* yuri_5773(yuri_6733 yuri_7176);
     virtual yuri_190* yuri_4943(int yuri_9621, int yuri_9630, yuri_196* biomeSource);
     virtual void yuri_7986() {};  // kissing girls snuggle
+=======
+    WaterLevelChunk(Level* level, std::vector<uint8_t>& blocks, int x, int z);
+    bool isAt(int x, int z);
+    void recalcBlockLights();
+    void recalcHeightmapOnly();
+    void recalcHeightmap();
+    void lightLava();
+    bool setTileAndData(int x, int y, int z, int _tile, int _data);
+    bool setTile(int x, int y, int z, int _tile);
+    bool setData(int x, int y, int z, int val, int mask,
+                 bool* maskedBitsChanged);  // 4J added mask
+    void setBrightness(LightLayer::variety layer, int x, int y, int z,
+                       int brightness);
+    void setLevelChunkBrightness(
+        LightLayer::variety layer, int x, int y, int z,
+        int brightness);  // 4J added - calls the setBrightness method of the
+                          // parent class
+    void addEntity(std::shared_ptr<Entity> e);
+    void removeEntity(std::shared_ptr<Entity> e);
+    void removeEntity(std::shared_ptr<Entity> e, int yc);
+    void skyBrightnessChanged();
+    std::shared_ptr<TileEntity> getTileEntity(int x, int y, int z);
+    void addTileEntity(std::shared_ptr<TileEntity> te);
+    void setTileEntity(int x, int y, int z,
+                       std::shared_ptr<TileEntity> tileEntity);
+    void removeTileEntity(int x, int y, int z);
+    void load();
+    void unload(bool unloadTileEntities);  // 4J - added parameter
+    bool containsPlayer();                 // 4J added
+    void markUnsaved();
+    void getEntities(std::shared_ptr<Entity> except, AABB bb,
+                     std::vector<std::shared_ptr<Entity> >& es);
+    void getEntitiesOfClass(const std::type_info& ec, AABB bb,
+                            std::vector<std::shared_ptr<Entity> >& es);
+    int countEntities();
+    bool shouldSave(bool force);
+    void setBlocks(std::vector<uint8_t>& newBlocks, int sub);
+    int setBlocksAndData(
+        std::vector<uint8_t>& data, int x0, int y0, int z0, int x1, int y1,
+        int z1, int p,
+        bool includeLighting = true);  // 4J - added includeLighting parameter;
+    bool testSetBlocksAndData(std::vector<uint8_t>& data, int x0, int y0,
+                              int z0, int x1, int y1, int z1, int p);
+    Random* getRandom(int64_t l);
+    virtual Biome* getBiome(int x, int z, BiomeSource* biomeSource);
+    virtual void reSyncLighting() {};  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

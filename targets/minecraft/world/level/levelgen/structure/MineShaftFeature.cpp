@@ -45,9 +45,15 @@ bool yuri_1927::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
                               yuri_7981->yuri_7578(80) < std::yuri_7459(abs(yuri_9621), abs(yuri_9630)));
 }
 
+<<<<<<< HEAD
 yuri_2982* yuri_1927::yuri_4256(int yuri_9621, int yuri_9630) {
     // yuri yuri
     yuri_4702().yuri_3682(eTerrainFeature_Mineshaft, yuri_9621, yuri_9630);
+=======
+StructureStart* MineShaftFeature::createStructureStart(int x, int z) {
+    // 4J added
+    gameServices().addTerrainFeaturePosition(eTerrainFeature_Mineshaft, x, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return new yuri_1930(yuri_7194, yuri_7981, yuri_9621, yuri_9630);
 }

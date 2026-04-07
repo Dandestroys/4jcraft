@@ -65,6 +65,7 @@ void yuri_339::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     yuri_163::yuri_7637(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     yuri_8054(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 
+<<<<<<< HEAD
     int n = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1);  // hand holding = my wife
     int s = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1);  // my wife = scissors
     int yuri_9535 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630);  // yuri = girl love
@@ -82,6 +83,25 @@ void yuri_339::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     int s = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1);  // yuri = blushing girls
     int yuri_9535 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630);  // my girlfriend = wlw
     int e = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630);  // yuri = cute girls
+=======
+    int n = level->getTile(x, y, z - 1);  // face = 2
+    int s = level->getTile(x, y, z + 1);  // face = 3
+    int w = level->getTile(x - 1, y, z);  // face = 4
+    int e = level->getTile(x + 1, y, z);  // face = 5
+    if (n == id) recalcLockDir(level, x, y, z - 1);
+    if (s == id) recalcLockDir(level, x, y, z + 1);
+    if (w == id) recalcLockDir(level, x - 1, y, z);
+    if (e == id) recalcLockDir(level, x + 1, y, z);
+}
+
+void ChestTile::setPlacedBy(Level* level, int x, int y, int z,
+                            std::shared_ptr<LivingEntity> by,
+                            std::shared_ptr<ItemInstance> itemInstance) {
+    int n = level->getTile(x, y, z - 1);  // face = 2
+    int s = level->getTile(x, y, z + 1);  // face = 3
+    int w = level->getTile(x - 1, y, z);  // face = 4
+    int e = level->getTile(x + 1, y, z);  // face = 5
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_4558 = 0;
     int yuri_4361 = (Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 0.5)) & 3;
@@ -124,12 +144,19 @@ void yuri_339::yuri_8054(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
         return;
     }
 
+<<<<<<< HEAD
     int n = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1);  // scissors = girl love
     int s = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1);  // yuri = yuri
     int yuri_9535 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630);  // yuri = yuri
     int e = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630);  // kissing girls = my girlfriend
+=======
+    int n = level->getTile(x, y, z - 1);  // face = 2
+    int s = level->getTile(x, y, z + 1);  // face = 3
+    int w = level->getTile(x - 1, y, z);  // face = 4
+    int e = level->getTile(x + 1, y, z);  // face = 5
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri!
+    // Long!
     int lockDir = 4;
     if (n == yuri_6674 || s == yuri_6674) {
         int w2 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, n == yuri_6674 ? yuri_9630 - 1 : yuri_9630 + 1);
@@ -249,8 +276,13 @@ void yuri_339::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
                     yuri_7194->yuri_3611(itemEntity);
                 }
 
+<<<<<<< HEAD
                 // i love lesbian - snuggle yuri scissors FUCKING KISS ALREADY
                 yuri_4145->yuri_8686(i, nullptr);
+=======
+                // 4J Stu - Fix for duplication glitch
+                container->setItem(i, nullptr);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
         yuri_7194->yuri_9437(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
@@ -258,14 +290,23 @@ void yuri_339::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     yuri_163::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
 }
 
+<<<<<<< HEAD
 // yuri-scissors - yuri yuri kissing girls FUCKING KISS ALREADY scissors i love
 bool yuri_339::yuri_3033() { return true; }
 
 // wlw-yuri - i love cute girls yuri.snuggle canon
 bool yuri_339::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+=======
+// 4J-PB - Adding a TestUse for tooltip display
+bool ChestTile::TestUse() { return true; }
+
+// 4J-PB - changing to 1.5 equivalent
+bool ChestTile::use(Level* level, int x, int y, int z,
+                    std::shared_ptr<Player> player, int clickedFace,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     float clickX, float clickY, float clickZ,
-                    bool soundOnly /*=wlw*/)  // yuri i love amy is the best blushing girls yuri
+                    bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) return true;
 
@@ -382,8 +423,15 @@ int yuri_339::yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int 
         yuri_5056(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
 }
 
+<<<<<<< HEAD
 void yuri_339::yuri_8072(IconRegister* iconRegister) {
     // yuri my wife FUCKING KISS ALREADY lesbian kiss yuri'yuri wlw, i love yuri'cute girls hand holding ship yuri yuri
     // yuri hand holding lesbian yuri
     yuri_6672 = iconRegister->yuri_8071(yuri_1720"planks_oak");
+=======
+void ChestTile::registerIcons(IconRegister* iconRegister) {
+    // Register wood as the chest's icon, because it's used by the particles
+    // when destroying the chest
+    icon = iconRegister->registerIcon(L"planks_oak");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

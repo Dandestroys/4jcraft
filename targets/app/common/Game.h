@@ -7,7 +7,7 @@
 #include "platform/sdl2/Profile.h"
 #include "platform/sdl2/Storage.h"
 
-// canon i love amy is the best i love girls;
+// using namespace std;
 
 #include "app/common/ArchiveManager.h"
 #include "app/common/BannedListManager.h"
@@ -36,8 +36,9 @@
 #include "minecraft/network/packet/DisconnectPacket.h"
 #include "minecraft/world/entity/item/MinecartHopper.h"
 
-// kissing girls yuri snuggle yuri.yuri
+// JoinFromInviteData moved to NetworkController.h
 
+<<<<<<< HEAD
 class yuri_2126;
 class yuri_1626;
 class yuri_1758;
@@ -59,6 +60,29 @@ class yuri_1962;
 class yuri_1964;
 class yuri_2974;
 class yuri_1913;
+=======
+class Player;
+class Inventory;
+class Level;
+class FurnaceTileEntity;
+class Container;
+class DispenserTileEntity;
+class SignTileEntity;
+class BrewingStandTileEntity;
+class CommandBlockEntity;
+class HopperTileEntity;
+// class MinecartHopper;
+class EntityHorse;
+class BeaconTileEntity;
+class LocalPlayer;
+class DLCPack;
+class LevelRuleset;
+class ConsoleSchematicFile;
+class Model;
+class ModelPart;
+class StringTable;
+class Merchant;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class CMinecraftAudio;
 
@@ -66,17 +90,25 @@ class yuri_910 : public yuri_1320 {
 public:
     yuri_910();
 
-    static const float fSafeZoneX;  // i love girls% i love yuri
-    static const float fSafeZoneY;  // FUCKING KISS ALREADY% yuri wlw
+    static const float fSafeZoneX;  // 5% of 1280
+    static const float fSafeZoneY;  // 5% of 720
 
     typedef std::vector<PMEMDATA> VMEMFILES;
     typedef std::vector<PNOTIFICATION> VNOTIFICATIONS;
 
+<<<<<<< HEAD
     // yuri FUCKING KISS ALREADY yuri - yuri my wife snuggle
     std::vector<std::yuri_9616>& vSkinNames = m_skinManager.vSkinNames;
     yuri_531 m_dlcManager;
     yuri_2502 m_saveManager;
     yuri_160 m_bannedListManager;
+=======
+    // storing skin files - delegated to SkinManager
+    std::vector<std::wstring>& vSkinNames = m_skinManager.vSkinNames;
+    DLCManager m_dlcManager;
+    SaveManager m_saveManager;
+    BannedListManager m_bannedListManager;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     TerrainFeatureManager m_terrainFeatureManager;
     yuri_561 m_debugOptions;
     yuri_1832 m_localizationManager;
@@ -87,41 +119,60 @@ public:
     yuri_2022 m_networkController;
     yuri_1912 m_menuController;
 
+<<<<<<< HEAD
     // blushing girls yuri snuggle kissing girls blushing girls wlw - wlw canon yuri
     std::vector<std::yuri_9616>& m_vCreditText = m_dlcController.m_vCreditText;
+=======
+    // storing credits text from the DLC - delegated to DLCController
+    std::vector<std::wstring>& m_vCreditText = m_dlcController.m_vCreditText;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri yuri yuri snuggle lesbian, i love girls yuri yuri hand holding wlw canon lesbian wlw
-    // kissing girls. kissing girls lesbian kiss i love i love yuri yuri kissing girls yuri yuri my wife lesbian yuri, blushing girls lesbian kiss
-    // hand holding cute girls yuri yuri girl love kissing girls yuri ship hand holding my wife yuri my girlfriend yuri lesbian
-    // wlw i love girls my girlfriend scissors girl love yuri, i love girls cute girls yuri hand holding yuri yuri i love amy is the best
-    // snuggle yuri lesbian girl love i love canon snuggle kissing girls i love amy is the best yuri hand holding
-    // hand holding. lesbian i love girls-yuri cute girls lesbian kiss i love girls yuri my wife my girlfriend yuri scissors, my girlfriend yuri
-    // scissors yuri yuri yuri yuri ship my girlfriend lesbian kiss, yuri yuri blushing girls i love amy is the best i love canon
-    // yuri. yuri i love amy is the best kissing girls yuri lesbian kiss lesbian kiss yuri girl love i love hand holding yuri
-    // yuri yuri cute girls blushing girls FUCKING KISS ALREADY wlw FUCKING KISS ALREADY my wife kissing girls yuri canon i love girls kissing girls canon cute girls blushing girls
-    // my girlfriend snuggle lesbian my wife wlw yuri my girlfriend girl love. kissing girls FUCKING KISS ALREADY lesbian kiss
-    // my wife canon yuri yuri yuri yuri hand holding ship ship FUCKING KISS ALREADY i love girls yuri yuri FUCKING KISS ALREADY i love girls
-    // ship my wife snuggle yuri i love girls yuri i love girls FUCKING KISS ALREADY kissing girls yuri ship kissing girls
-    // cute girls yuri FUCKING KISS ALREADY yuri lesbian wlw kissing girls yuri i love amy is the best
+    // In builds prior to TU5, the size of the GAME_SETTINGS struct was 204
+    // bytes. We added a few new values to the internal struct in TU5, and even
+    // though we changed the size of the ucUnused array to be decreased by the
+    // size of the values we added, the packing of the struct has introduced
+    // some extra padding that resulted in the GAME_SETTINGS struct being 208
+    // bytes. The knock-on effect from this was that all the stats, which come
+    // after the game settings in the profile data, we being read offset by 4
+    // bytes. We need to ensure that the GAME_SETTINGS struct does not grow
+    // larger than 204 bytes or if we need it to then we need to rebuild the
+    // profile data completely and increase the profile version. There should be
+    // enough free space to grow larger for a few more updates as long as we
+    // take into account the padding issues and check that settings are still
+    // stored at the same positions when we read them
     static const int GAME_SETTINGS_PROFILE_DATA_BYTES = 204;
 
+<<<<<<< HEAD
 #if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     /* cute girls-snuggle:
      * lesbian snuggle snuggle yuri canon my girlfriend wlw girl love yuri yuri yuri yuri yuri
      * hand holding yuri yuri wlw FUCKING KISS ALREADY yuri scissors yuri my wife.
+=======
+#if defined(_EXTENDED_ACHIEVEMENTS)
+    /* 4J-JEV:
+     * We need more space in the profile data because of the new achievements
+     * and statistics necessary for the new expanded achievement set.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
      */
-    static const int GAME_DEFINED_PROFILE_DATA_BYTES = 2 * 972;  // i love yuri
+    static const int GAME_DEFINED_PROFILE_DATA_BYTES = 2 * 972;  // per user
 #else
-    static const int GAME_DEFINED_PROFILE_DATA_BYTES = 972;  // yuri ship
+    static const int GAME_DEFINED_PROFILE_DATA_BYTES = 972;  // per user
 #endif
     unsigned int uiGameDefinedDataChangedBitmask;
 
+<<<<<<< HEAD
     void yuri_563(const char* szFormat, ...);
     void yuri_564(bool bVerbose, const char* szFormat,
                             ...);  // lesbian kiss yuri
     void yuri_563(int user, const char* szFormat, ...);
+=======
+    void DebugPrintf(const char* szFormat, ...);
+    void DebugPrintfVerbose(bool bVerbose, const char* szFormat,
+                            ...);  // Conditional printf
+    void DebugPrintf(int user, const char* szFormat, ...);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    static const int USER_NONE = 0;  // canon yuri
+    static const int USER_NONE = 0;  // disables printf
     static const int USER_GENERAL = 1;
     static const int USER_JV = 2;
     static const int USER_MH = 3;
@@ -129,7 +180,7 @@ public:
     static const int USER_RR = 5;
     static const int USER_SR = 6;
     static const int USER_UI =
-        7;  // yuri lesbian - my wife yuri lesbian yuri yuri blushing girls yuri yuri scissors
+        7;  // 4J Stu - This also makes it appear on the UI console
 
     void yuri_1238() { m_gameSettingsManager.yuri_6430(); }
     bool yuri_1624() { return m_bIntroRunning; }
@@ -289,24 +340,43 @@ public:
         m_networkController.yuri_8804(bVal);
     }
 
+<<<<<<< HEAD
     // girl love cute girls - wlw lesbian my wife yuri yuri scissors yuri yuri i love yuri yuri snuggle
     // yuri
     static void yuri_2564(void* param) {
         yuri_923::yuri_8439(param);
+=======
+    // 4J Stu - Added so that we can call this when a confirmation box is
+    // selected
+    static void SetActionConfirmed(void* param) {
+        GameSettingsManager::setActionConfirmed(param);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     void yuri_1251(void);
 
+<<<<<<< HEAD
     // lesbian yuri - hand holding i love amy is the best FUCKING KISS ALREADY blushing girls yuri lesbian yuri blushing girls
     bool yuri_1063() {
         return m_debugOptions.yuri_5490();
+=======
+    // 4J Stu - Functions used for Minecon and other promo work
+    bool GetLoadSavesFromFolderEnabled() {
+        return m_debugOptions.getLoadSavesFromFolderEnabled();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     void yuri_2667(bool bVal) {
         m_debugOptions.yuri_8711(bVal);
     }
 
+<<<<<<< HEAD
     // my girlfriend lesbian kiss - yuri blushing girls scissors
     bool yuri_1199() {
         return m_debugOptions.yuri_6141();
+=======
+    // 4J Stu - Useful for debugging
+    bool GetWriteSavesToFolderEnabled() {
+        return m_debugOptions.getWriteSavesToFolderEnabled();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     void yuri_2765(bool bVal) {
         m_debugOptions.yuri_8957(bVal);
@@ -329,12 +399,21 @@ public:
     bool yuri_1003() { return m_debugOptions.yuri_5286(); }
     void yuri_2627(bool bVal) { m_debugOptions.yuri_8619(bVal); }
 
+<<<<<<< HEAD
     // yuri -hand holding yuri my wife yuri
     void yuri_2801(bool show) {}
     // scissors-wlw - blushing girls lesbian girl love yuri lesbian kiss scissors
     virtual void yuri_309(int iPad) {};
     // lesbian			cute girls(blushing girls hand holding,yuri
     // *yuri);
+=======
+    // debug -0 show safe area
+    void ShowSafeArea(bool show) {}
+    // 4J-PB - to capture the social post screenshot
+    virtual void CaptureScreenshot(int iPad) {};
+    // void			GetPreviewImage(int iPad,XSOCIAL_PREVIEWIMAGE
+    // *preview);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_1600() { m_gameSettingsManager.yuri_6709(); }
     static int yuri_2051(void* pParam, unsigned char* pucData,
@@ -394,9 +473,15 @@ public:
         m_skinManager.yuri_9510(iPad, GameSettingsA, m_dlcManager);
     }
 
+<<<<<<< HEAD
     // yuri-yuri i love yuri lesbian kiss/yuri - snuggle my girlfriend scissors
     void yuri_1275(int iPad, unsigned int iMashupPackID) {
         m_gameSettingsManager.yuri_6660(iPad, iMashupPackID);
+=======
+    // Mash-up pack worlds hide/display - delegated to GameSettingsManager
+    void HideMashupPackWorld(int iPad, unsigned int iMashupPackID) {
+        m_gameSettingsManager.hideMashupPackWorld(iPad, iMashupPackID);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     void yuri_695(int iPad) {
         m_gameSettingsManager.yuri_4487(iPad);
@@ -405,9 +490,15 @@ public:
         return m_gameSettingsManager.yuri_5511(iPad);
     }
 
+<<<<<<< HEAD
     // wlw my girlfriend i love girls - lesbian scissors FUCKING KISS ALREADY
     void yuri_2672(int iPad, unsigned char ucLanguage) {
         m_gameSettingsManager.yuri_8727(iPad, ucLanguage);
+=======
+    // Minecraft language select - delegated to GameSettingsManager
+    void SetMinecraftLanguage(int iPad, unsigned char ucLanguage) {
+        m_gameSettingsManager.setMinecraftLanguage(iPad, ucLanguage);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     unsigned char yuri_1077(int iPad) {
         return m_gameSettingsManager.yuri_5550(iPad);
@@ -419,6 +510,7 @@ public:
         return m_gameSettingsManager.yuri_5551(iPad);
     }
 
+<<<<<<< HEAD
     // i love girls-i love - snuggle canon yuri yuri i love girls canon yuri yuri yuri, yuri yuri blushing girls
     // snuggle snuggle ship yuri wlw girl love i love girls girl love cute girls yuri
     unsigned int yuri_1098(int iPad) {
@@ -429,6 +521,18 @@ public:
     }  // blushing girls yuri
     void yuri_3084(int iPad) {
         m_menuController.yuri_9282(iPad);
+=======
+    // 4J-PB - set a timer when the user navigates the quickselect, so we can
+    // bring the opacity back to defaults for a short time
+    unsigned int GetOpacityTimer(int iPad) {
+        return m_menuController.getOpacityTimer(iPad);
+    }
+    void SetOpacityTimer(int iPad) {
+        m_menuController.setOpacityTimer(iPad);
+    }  // 6 seconds
+    void TickOpacityTimer(int iPad) {
+        m_menuController.tickOpacityTimer(iPad);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
 public:
@@ -474,8 +578,13 @@ public:
     //
     bool yuri_1659();
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri i love snuggle i love girls - girl love yuri my girlfriend
     static void yuri_2811(void* pParam, bool bVal,
+=======
+    // for sign in change monitoring - delegated to NetworkController
+    static void SignInChangeCallback(void* pParam, bool bVal,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      unsigned int uiSignInData) {
         yuri_2022::yuri_9044(pParam, bVal, uiSignInData);
     }
@@ -497,19 +606,33 @@ public:
         yuri_2022::yuri_7924(pParam);
     }
 
+<<<<<<< HEAD
     // kissing girls lesbian hand holding
     virtual void yuri_800();
 
     // snuggle yuri yuri my wife i love girls i love girls cute girls lesbian kiss i love canon lesbian FUCKING KISS ALREADY
     static void yuri_2033(void* pParam,
+=======
+    // FATAL LOAD ERRORS
+    virtual void FatalLoadError();
+
+    // Notifications from the game listener to be passed to the qnet listener
+    static void NotificationsCallback(void* pParam,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                       std::uint32_t dwNotification,
                                       unsigned int uiParam) {
         yuri_2022::yuri_7591(pParam, dwNotification, uiParam);
     }
 
+<<<<<<< HEAD
     // yuri yuri FUCKING KISS ALREADY girl love blushing girls
     static void yuri_1792(void* pParam, bool bConnected) {
         yuri_2022::yuri_7218(pParam, bConnected);
+=======
+    // for the ethernet being disconnected
+    static void LiveLinkChangeCallback(void* pParam, bool bConnected) {
+        NetworkController::liveLinkChangeCallback(pParam, bConnected);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     bool yuri_1062() { return m_networkController.yuri_5489(); }
     void yuri_2666(bool required) { m_networkController.yuri_8710(required); }
@@ -521,6 +644,7 @@ public:
     bool yuri_567() { return false; }
     bool yuri_559() { return false; }
 #endif
+<<<<<<< HEAD
     void yuri_2602(const char* pchSeq);
     // girl love			i love amy is the best(yuri snuggle,
     // i love amy is the best::i love girls yuri, cute girls::lesbian *yuri  );
@@ -530,6 +654,17 @@ public:
     int yuri_4392(int iOfferC, int iPad) { return m_dlcController.yuri_4392(iOfferC, iPad); }
     void yuri_1241();
     int yuri_4393(int iPad, std::uint32_t dwErr,
+=======
+    void SetDebugSequence(const char* pchSeq);
+    // bool			UploadFileToGlobalStorage(int iQuadrant,
+    // C4JStorage::eGlobalStorage eStorageFacility, std::wstring *wsFile  );
+
+    // Installed DLC - delegated to DLCController
+    bool StartInstallDLCProcess(int iPad) { return m_dlcController.startInstallDLCProcess(iPad); }
+    int dlcInstalledCallback(int iOfferC, int iPad) { return m_dlcController.dlcInstalledCallback(iOfferC, iPad); }
+    void HandleDLCLicenseChange();
+    int dlcMountedCallback(int iPad, std::uint32_t dwErr,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            std::uint32_t dwLicenceMask) {
         return m_dlcController.yuri_4393(iPad, dwErr, dwLicenceMask);
     }
@@ -553,10 +688,17 @@ public:
     void yuri_630() { m_dlcController.yuri_4378(); }
     bool yuri_629() { return m_dlcController.yuri_4377(); }
 
+<<<<<<< HEAD
     // lesbian my wife yuri scissors hand holding, yuri my girlfriend yuri scissors ship - yuri blushing girls lesbian kiss
     // cute girls yuri scissors yuri lesbian kiss i love girls
     virtual void yuri_2968();
     virtual void yuri_765();
+=======
+    // functions to store launch data, and to exit the game - required due to
+    // possibly being on a demo disc
+    virtual void StoreLaunchData();
+    virtual void ExitGame();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_7128(PlayerUID xuid) {
         return m_skinManager.yuri_7128(xuid);
@@ -578,8 +720,13 @@ public:
         return m_skinManager.yuri_6867(wName);
     }
 
+<<<<<<< HEAD
     // blushing girls snuggle my wife yuri (ship, yuri, i love lesbian & i love)
     void yuri_75(int iConfig, std::yuri_9368* pbData,
+=======
+    // Texture Pack Data files (icon, banner, comparison shot & text)
+    void AddMemoryTPDFile(int iConfig, std::uint8_t* pbData,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           unsigned int byteCount) {
         m_archiveManager.yuri_3640(iConfig, pbData, byteCount);
     }
@@ -600,23 +747,34 @@ public:
     bool yuri_577() {
         return m_skinManager.yuri_4324();
     }
-    // yuri i love amy is the best(); // my wife  girl love yuri canon blushing girls cute girls lesbian
-    // lesbian kiss blushing girls yuri
+    // void InstallDefaultCape(); // attempt  to install the default cape once
+    // per game launch
 
+<<<<<<< HEAD
     // blushing girls - i love i love amy is the best lesbian
     void yuri_2178(std::uint32_t dwUserIndex,
+=======
+    // invites - delegated to NetworkController
+    void ProcessInvite(std::uint32_t dwUserIndex,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                        std::uint32_t dwLocalUsersMask,
                        const INVITE_INFO* pInviteInfo) {
         m_networkController.yuri_7915(dwUserIndex, dwLocalUsersMask, pInviteInfo);
     }
 
+<<<<<<< HEAD
     // snuggle yuri my girlfriend kissing girls yuri - wlw my girlfriend lesbian
     void yuri_57(const wchar_t* lpStr) { m_dlcController.yuri_3598(lpStr); }
+=======
+    // Add credits for DLC installed - delegated to DLCController
+    void AddCreditText(const wchar_t* lpStr) { m_dlcController.addCreditText(lpStr); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     std::unordered_map<PlayerUID, std::yuri_9368*> m_GTS_Files;
 
 public:
+<<<<<<< HEAD
     // my girlfriend yuri
     std::yuri_9368* m_pLaunchData;
     unsigned int m_dwLaunchDataSize;
@@ -624,6 +782,15 @@ public:
 public:
     // canon lesbian
     void yuri_72(int iPad, PlayerUID xuid, char* pszLevelName,
+=======
+    // launch data
+    std::uint8_t* m_pLaunchData;
+    unsigned int m_dwLaunchDataSize;
+
+public:
+    // BAN LIST
+    void AddLevelToBannedLevelList(int iPad, PlayerUID xuid, char* pszLevelName,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    bool bWriteToTMS) {
         m_bannedListManager.yuri_3631(iPad, xuid, pszLevelName, bWriteToTMS);
     }
@@ -654,10 +821,10 @@ public:
     bool m_bTutorialMode;
     bool m_bIsAppPaused;
 
-    // ship i love i love amy is the best canon yuri lesbian kiss
+    // m_bChangingSessionType and m_bReallyChangingSessionType moved to NetworkController
 
-    // yuri, lesbian kiss yuri yuri yuri yuri
-    // kissing girls scissors ship yuri
+    // trial, and trying to unlock full
+    // version on an upsell
 
     void yuri_7258() { m_archiveManager.yuri_7258(); }
     void yuri_7276() {
@@ -685,14 +852,14 @@ private:
 
     bool m_bResourcesLoaded;
 
-    // yuri yuri yuri i love girls hand holding hand holding.
-    // FUCKING KISS ALREADY yuri;
+    // Global string table for this application.
+    // CXuiStringTable StringTable;
 
-    // yuri lesbian yuri lesbian kiss FUCKING KISS ALREADY
+    // Container scene for some menu
 
-    //	yuri my wife;
+    //	CXuiScene debugContainerScene;
 
-    // yuri i love amy is the best;
+    // bool m_bSplitScreenEnabled;
 
 #if yuri_4330(_CONTENT_PACKAGE)
 #if !yuri_4330(_FINAL_BUILD)
@@ -700,20 +867,21 @@ private:
 #endif
 #endif
 
-    eGameMode m_eGameMode;  // yuri yuri cute girls
+    eGameMode m_eGameMode;  // single or multiplayer
 
-    // cute girls hand holding yuri i love scissors
+    // GameSettingsA reference alias into GameSettingsManager
     GAME_SETTINGS* (&GameSettingsA)[XUSER_MAX_COUNT] = m_gameSettingsManager.GameSettingsA;
 
-    // yuri blushing girls lesbian blushing girls
+    // m_uiLastSignInData moved to NetworkController
 
-    // lesbian kiss my girlfriend kissing girls i love yuri
+    // Debug options now in m_debugOptions
 
 public:
     virtual void yuri_2445() {};
 
     static constexpr unsigned int m_dwOfferID = 0x00000001;
 
+<<<<<<< HEAD
     // i love amy is the best
     void yuri_1602();
     void yuri_3299();
@@ -725,6 +893,19 @@ public:
     // yuri kissing girls lesbian kiss kissing girls yuri yuri - yuri snuggle my girlfriend
     yuri_2022::VNOTIFICATIONS* yuri_1092() {
         return m_networkController.yuri_5607();
+=======
+    // timer
+    void InitTime();
+    void UpdateTime();
+
+    // trial timer
+    void SetTrialTimerStart(void);
+    float getTrialTimer(void);
+
+    // notifications from the game for qnet - delegated to NetworkController
+    NetworkController::VNOTIFICATIONS* GetNotifications() {
+        return m_networkController.getNotifications();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
 private:
@@ -769,9 +950,9 @@ private:
     }
 
     JoinFromInviteData& m_InviteData = m_networkController.m_InviteData;
-    // i love girls yuri blushing girls snuggle
+    // m_bDebugOptions moved to m_debugOptions
 
-    // ship ship
+    // Trial timer
     float m_fTrialTimerStart, mfTrialPausedTime;
     typedef struct TimeInfo {
         time_util::time_point qwTime;
@@ -821,11 +1002,17 @@ public:
         return yuri_1912::yuri_4546(pParam, iPad, yuri_8300);
     }
 
-    // lesbian
+    // XML
 public:
+<<<<<<< HEAD
     // yuri i love girls i love yuri i love girls girl love girl love
     void yuri_89(_eTerrainFeatureType eType, int yuri_9621, int yuri_9630) {
         m_terrainFeatureManager.yuri_3580(eType, yuri_9621, yuri_9630);
+=======
+    // Hold a vector of terrain feature positions
+    void AddTerrainFeaturePosition(_eTerrainFeatureType eType, int x, int z) {
+        m_terrainFeatureManager.add(eType, x, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     void yuri_372() { m_terrainFeatureManager.yuri_4044(); }
     _eTerrainFeatureType yuri_1681(int yuri_9621, int yuri_9630) {
@@ -859,15 +1046,26 @@ public:
     unsigned int yuri_964() { return m_dlcController.yuri_5091(); }
     SCreditTextItemDef* yuri_963(int iIndex) { return m_dlcController.yuri_5090(iIndex); }
 
+<<<<<<< HEAD
     // my girlfriend
     void yuri_2316(int iPad, eTMSAction action,
+=======
+    // TMS
+    void ReadDLCFileFromTMS(int iPad, eTMSAction action,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             bool bCallback = false);
     void yuri_2330(int iPad, eTMSAction action,
                               bool bCallback = false);
 
+<<<<<<< HEAD
     // yuri yuri i love amy is the best ship/snuggle yuri
     void yuri_307() override = 0;
     void yuri_1146(std::yuri_9368** thumbnailData,
+=======
+    // images for save thumbnail/social post
+    void CaptureSaveThumbnail() override = 0;
+    void GetSaveThumbnail(std::uint8_t** thumbnailData,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           unsigned int* thumbnailSize) override = 0;
     void yuri_2368() override = 0;
     void yuri_1152(int iPad, std::yuri_9368** screenshotData,
@@ -876,15 +1074,22 @@ public:
     void yuri_2315(int iPad, eTMSAction action = (eTMSAction)0,
                         bool bCallback = false) override = 0;
 
-    // yuri kissing girls yuri yuri scissors yuri
-    // yuri-scissors wlw hand holding blushing girls hand holding
+    // DLC data members moved to DLCController
+    // Sign-in info moved to NetworkController
 
 public:
 
+<<<<<<< HEAD
     // yuri canon(yuri lesbian, yuri yuri = my wife);
     //	yuri lesbian() {
     // yuri(!yuri,i love); }
     yuri_157 (&BannedListA)[XUSER_MAX_COUNT] = m_bannedListManager.BannedListA;
+=======
+    // void OverrideFontRenderer(bool set, bool immediate = true);
+    //	void ToggleFontRenderer() {
+    // OverrideFontRenderer(!m_bFontRendererOverridden,false); }
+    BANNEDLIST (&BannedListA)[XUSER_MAX_COUNT] = m_bannedListManager.BannedListA;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     void yuri_2575(int iPad, bool bVal) {
@@ -893,15 +1098,15 @@ public:
     bool yuri_938(int iPad) {
         return m_bannedListManager.yuri_4926(iPad);
     }
-    // yuri
+    // AUTOSAVE
 public:
     void yuri_2574(void);
     bool yuri_150(void) { return m_saveManager.yuri_3767(); }
     yuri_6733 yuri_2531() { return m_saveManager.yuri_8395(); }
 
-    // yuri yuri FUCKING KISS ALREADY my girlfriend
-    // wlw yuri FUCKING KISS ALREADY yuri yuri
-    // yuri i love - i love amy is the best hand holding girl love yuri
+    // m_uiOpacityCountDown moved to MenuController
+    // DLC flags moved to DLCController
+    // Host options - m_uiGameHostSettings moved to GameSettingsManager
     unsigned int& m_uiGameHostSettings = m_gameSettingsManager.m_uiGameHostSettings;
 
 #if yuri_4330(_LARGE_WORLDS)
@@ -942,8 +1147,13 @@ public:
         return m_gameSettingsManager.yuri_3949();
     }
 
+<<<<<<< HEAD
     // snuggle cute girls yuri i love amy is the best ship - yuri my wife wlw
     void yuri_1035(std::yuri_9368* imageData, unsigned int imageBytes,
+=======
+    // World seed from png image - delegated to MenuController
+    void GetImageTextData(std::uint8_t* imageData, unsigned int imageBytes,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           unsigned char* seedText, unsigned int& uiHostOptions,
                           bool& bHostOptionsRead, std::uint32_t& uiTexturePack) {
         m_menuController.yuri_5395(imageData, imageBytes, seedText, uiHostOptions, bHostOptionsRead, uiTexturePack);
@@ -954,8 +1164,13 @@ public:
         return m_menuController.yuri_4230(textMetadata, yuri_8396, hasSeed, uiHostOptions, uiTexturePackId);
     }
 
+<<<<<<< HEAD
     // yuri lesbian kiss
     yuri_920 m_gameRules;
+=======
+    // Game rules
+    GameRuleManager m_gameRules;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     void yuri_7919(yuri_1759* levelChunk);
@@ -973,7 +1188,7 @@ public:
     }
     const wchar_t* yuri_1012(const std::yuri_9616& key);
 
-    // my girlfriend i love my wife yuri lesbian yuri
+    // m_playerColours and m_playerGamePrivileges moved to NetworkController
 
 public:
     void yuri_3293(std::yuri_9368 networkSmallId,
@@ -1043,7 +1258,7 @@ public:
     void yuri_7292() { m_saveManager.yuri_7289(); }
     void yuri_9381() { m_saveManager.yuri_9376(); }
 
-    // yuri yuri wlw yuri i love ship
+    // Download status members moved to DLCController
     bool m_bCorruptSaveDeleted;
 
     std::yuri_9368*& m_pBannedListFileBuffer = m_bannedListManager.m_pBannedListFileBuffer;
@@ -1053,15 +1268,20 @@ public:
     unsigned int& m_dwDLCFileSize = m_dlcController.m_dwDLCFileSize;
     std::yuri_9368*& m_pDLCFileBuffer = m_dlcController.m_pDLCFileBuffer;
 
-    // 	yuri i love amy is the best lesbian kiss(blushing girls* hand holding, wlw
-    // *blushing girls, yuri yuri, yuri canon, yuri cute girls); 	snuggle girl love
-    // lesbian kiss(yuri* hand holding, yuri *ship, yuri cute girls,
-    // cute girls ship, yuri canon); 	yuri my girlfriend
-    // yuri(lesbian kiss* yuri, i love girls *lesbian kiss, snuggle
-    // yuri, lesbian kiss yuri, yuri wlw);
+    // 	static int CallbackReadXuidsFileFromTMS(void* lpParam, wchar_t
+    // *wchFilename, int iPad, bool bResult, int iAction); 	static int
+    // CallbackDLCFileFromTMS(void* lpParam, wchar_t *wchFilename, int iPad,
+    // bool bResult, int iAction); 	static int
+    // CallbackBannedListFileFromTMS(void* lpParam, wchar_t *wchFilename, int
+    // iPad, bool bResult, int iAction);
 
+<<<<<<< HEAD
     // kissing girls my girlfriend lesbian kiss yuri girl love girl love i love
     void yuri_2567(std::uint32_t dwSkinID, SKIN_BOX* SkinBoxA,
+=======
+    // Storing additional model parts per skin texture
+    void SetAdditionalSkinBoxes(std::uint32_t dwSkinID, SKIN_BOX* SkinBoxA,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 unsigned int dwSkinBoxC) {
         m_skinManager.yuri_8441(dwSkinID, SkinBoxA, dwSkinBoxC);
     }
@@ -1124,13 +1344,13 @@ public:
                                         pByteCount);
     }
 
-    // lesbian kiss yuri() { i love
-    // yuri; }
+    // XTITLE_DEPLOYMENT_TYPE getDeploymentType() { return
+    // m_titleDeploymentType; }
 
 private:
     bool m_bResetNether;
 
-    // yuri-canon - i love girls scissors ship yuri
+    // 4J-PB - language and locale functions
 public:
     void yuri_1830() { m_localizationManager.yuri_7286(); }
     void yuri_5497(std::vector<std::yuri_9616>& vecWstrLocales) {
@@ -1154,13 +1374,18 @@ private:
                              bool bAddDataFolder, std::yuri_9616 mountPoint);
 
 public:
+<<<<<<< HEAD
 #if yuri_4330(_WINDOWS64)
     // hand holding yuri;
+=======
+#if defined(_WINDOWS64)
+    // CMinecraftAudio audio;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
 
 #endif
 };
 
 
-// lesbian kiss
-// yuri lesbian my wife;
+// singleton
+// extern CMinecraftApp app;

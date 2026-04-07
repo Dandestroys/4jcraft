@@ -10,12 +10,21 @@ yuri_2590::yuri_2590() {
     this->item = nullptr;
 }
 
+<<<<<<< HEAD
 yuri_2590::yuri_2590(
     int yuri_9064, std::shared_ptr<yuri_1693> item) {
     this->yuri_9064 = yuri_9064;
     // ship - yuri yuri yuri yuri yuri i love girls my girlfriend my wife girl love blushing girls canon yuri yuri yuri
     // my wife yuri hand holding
     this->item = item ? item->yuri_4179() : std::shared_ptr<yuri_1693>();
+=======
+SetCreativeModeSlotPacket::SetCreativeModeSlotPacket(
+    int slotNum, std::shared_ptr<ItemInstance> item) {
+    this->slotNum = slotNum;
+    // 4J - take copy of item as we want our packets to have full ownership of
+    // any referenced data
+    this->item = item ? item->copy() : std::shared_ptr<ItemInstance>();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2590::yuri_6416(PacketListener* listener) {

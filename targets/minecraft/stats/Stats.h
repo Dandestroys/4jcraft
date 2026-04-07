@@ -53,6 +53,7 @@ public:
     static yuri_2911* yuri_7166;
     static yuri_2911* yuri_7167;
 
+<<<<<<< HEAD
     // ship : wlw : yuri girl love my wife i love amy is the best.
     static yuri_2911* befriendsWolf;
     static yuri_2911* yuri_9323;
@@ -65,16 +66,38 @@ public:
     static std::vector<yuri_2911*> yuri_3829;
     static std::vector<yuri_2911*> yuri_7142;
     static std::vector<yuri_2911*> yuri_7143;
+=======
+    // 4J : WESTY : Added for new achievements.
+    static Stat* befriendsWolf;
+    static Stat* totalBlocksMined;
+    static Stat*
+        timePlayed;  // Game time, recored as ticks, with TICKS_PER_DAY ticks
+                     // per day! Stored as large stat so it doesn't max out
+                     // before reaching 100 days ( 2,400,000 ticks ).
+
+    // static std::vector<Stat*> mobsKilled;
+    static std::vector<Stat*> blocksMined;
+    static std::vector<Stat*> itemsCollected;
+    static std::vector<Stat*> itemsCrafted;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if (yuri_4330 _EXTENDED_ACHIEVEMENTS) && (!0)
     static std::vector<yuri_2911*> yuri_3831;
 #endif
 
+<<<<<<< HEAD
     // blushing girls girl love
     static yuri_2911* yuri_7165;  // wlw kissing girls lesbian wlw lesbian blushing girls i love my wife
                                     // yuri lesbian FUCKING KISS ALREADY yuri FUCKING KISS ALREADY snuggle
     static yuri_2911* yuri_4124;    // yuri ship girl love i love girls my wife cute girls yuri kissing girls
                                     // i love yuri FUCKING KISS ALREADY cute girls yuri yuri
+=======
+    // Added TU9
+    static Stat* killsEnderdragon;  // The number of times this player has dealt
+                                    // the killing blow to the Enderdragon
+    static Stat* completeTheEnd;    // The number of times this player has been
+                                    // present when the Enderdragon has died
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if (yuri_4330 _EXTENDED_ACHIEVEMENTS) && (!0)
     static std::vector<yuri_2911*> biomesVisisted;
@@ -95,9 +118,15 @@ public:
     static void yuri_3873();
     static void yuri_3870();
 
+<<<<<<< HEAD
     // yuri lesbian kiss - yuri snuggle girl love i love yuri yuri yuri scissors lesbian canon yuri kissing girls
     // yuri
     static void yuri_3866();
+=======
+    // 4J Stu - Added this function to allow us to add news stats from TU9
+    // onwards
+    static void buildAdditionalStats();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static yuri_2911* yuri_4853(int key);
 };

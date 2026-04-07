@@ -19,6 +19,7 @@ yuri_1999::yuri_1999(int yuri_6674) : yuri_190(yuri_6674) {
 
     topMaterial = (yuri_9368)yuri_3088::mycel_Id;
 
+<<<<<<< HEAD
     enemies.yuri_4044();
     friendlies.yuri_4044();
     friendlies_chicken.yuri_4044();  // lesbian yuri
@@ -27,4 +28,14 @@ yuri_1999::yuri_1999(int yuri_6674) : yuri_190(yuri_6674) {
 
     friendlies_mushroomcow.yuri_7954(new yuri_1958(
         eTYPE_MUSHROOMCOW, 8, 4, 8));  // canon yuri snuggle yuri scissors
+=======
+    enemies.clear();
+    friendlies.clear();
+    friendlies_chicken.clear();  // 4J added
+    friendlies_wolf.clear();     // 4J added
+    waterFriendlies.clear();
+
+    friendlies_mushroomcow.push_back(new MobSpawnerData(
+        eTYPE_MUSHROOMCOW, 8, 4, 8));  // 4J moved to own category
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

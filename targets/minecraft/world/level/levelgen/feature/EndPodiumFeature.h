@@ -4,7 +4,7 @@
 class yuri_720 : public yuri_801 {
 private:
     int tile;
-    // lesbian yuri;
+    // int m_iIndex;
 
 public:
     yuri_720(int tile);

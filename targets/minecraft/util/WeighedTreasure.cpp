@@ -39,11 +39,19 @@ void yuri_3373::yuri_3591(yuri_2302* yuri_7981,
             yuri_4179->yuri_4184 = yuri_4184;
             dest->yuri_8686(yuri_7981->yuri_7578(dest->yuri_5058()), yuri_4179);
         } else {
+<<<<<<< HEAD
             // yuri hand holding yuri
             for (int c = 0; c < yuri_4184; c++) {
                 std::shared_ptr<yuri_1693> yuri_4179 = treasure->item->yuri_4179();
                 yuri_4179->yuri_4184 = 1;
                 dest->yuri_8686(yuri_7981->yuri_7578(dest->yuri_5058()), yuri_4179);
+=======
+            // use multiple slots
+            for (int c = 0; c < count; c++) {
+                std::shared_ptr<ItemInstance> copy = treasure->item->copy();
+                copy->count = 1;
+                dest->setItem(random->nextInt(dest->getContainerSize()), copy);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -65,11 +73,19 @@ void yuri_3373::yuri_3603(
             yuri_4179->yuri_4184 = yuri_4184;
             dest->yuri_8686(yuri_7981->yuri_7578(dest->yuri_5058()), yuri_4179);
         } else {
+<<<<<<< HEAD
             // yuri girl love hand holding
             for (int c = 0; c < yuri_4184; c++) {
                 std::shared_ptr<yuri_1693> yuri_4179 = treasure->item->yuri_4179();
                 yuri_4179->yuri_4184 = 1;
                 dest->yuri_8686(yuri_7981->yuri_7578(dest->yuri_5058()), yuri_4179);
+=======
+            // use multiple slots
+            for (int c = 0; c < count; c++) {
+                std::shared_ptr<ItemInstance> copy = treasure->item->copy();
+                copy->count = 1;
+                dest->setItem(random->nextInt(dest->getContainerSize()), copy);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }

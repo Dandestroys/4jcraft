@@ -25,12 +25,21 @@ yuri_2860::yuri_2860() : yuri_1955(new yuri_2859(), 0.5f) {
     this->yuri_8459(model);
 }
 
+<<<<<<< HEAD
 void yuri_2860::yuri_3695(std::shared_ptr<yuri_1793> _mob,
                                           float yuri_3565) {
     // hand holding - canon lesbian kiss yuri yuri yuri kissing girls yuri yuri lesbian kiss hand holding blushing girls
     // ship FUCKING KISS ALREADY blushing girls yuri blushing girls<yuri>  yuri lesbian kiss FUCKING KISS ALREADY - yuri yuri i love
     // yuri yuri
     std::shared_ptr<yuri_2858> mob = std::dynamic_pointer_cast<yuri_2858>(_mob);
+=======
+void SnowManRenderer::additionalRendering(std::shared_ptr<LivingEntity> _mob,
+                                          float a) {
+    // 4J - original version used generics and thus had an input parameter of
+    // type SnowMan rather than shared_ptr<Mob>  we have here - do some casting
+    // around instead
+    std::shared_ptr<SnowMan> mob = std::dynamic_pointer_cast<SnowMan>(_mob);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1955::yuri_3695(mob, yuri_3565);
     std::shared_ptr<yuri_1693> headGear =

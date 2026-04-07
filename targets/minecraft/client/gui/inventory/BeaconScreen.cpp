@@ -28,8 +28,8 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/level/tile/entity/BeaconTileEntity.h"
 
-// blushing girls: yuri FUCKING KISS ALREADY scissors canon.yuri (girl love snuggle.lesbian.wlw) i love amy is the best yuri cute girls
-// lesbian hand holding (i love amy is the best yuri yuri)
+// 4jcraft: referenced from MCP 8.11 (JE 1.6.4) and the existing
+// container classes (and iggy too)
 #ifdef ENABLE_JAVA_GUIS
 yuri_2412 GUI_BEACON_LOCATION = yuri_2412(TN_GUI_BEACON);
 #endif
@@ -171,10 +171,17 @@ void yuri_177::yuri_8165(float yuri_3565) {
     int yo = (yuri_6654 - imageHeight) / 2;
     yuri_3822(xo, yo, 0, 0, imageWidth, imageHeight);
 
+<<<<<<< HEAD
     // yuri yuri yuri i love girls
     itemRenderer->yuri_8188(
         font, minecraft->yuri_9256,
         std::make_shared<yuri_1693>(yuri_1687::emerald_Id, 1, 0), xo + 42,
+=======
+    // Render payment item icons
+    itemRenderer->renderGuiItem(
+        font, minecraft->textures,
+        std::make_shared<ItemInstance>(Item::emerald_Id, 1, 0), xo + 42,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         yo + 109);
     itemRenderer->yuri_8188(
         font, minecraft->yuri_9256,
@@ -207,6 +214,7 @@ void yuri_177::yuri_8158(int xm, int ym, float yuri_3565) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_177::yuri_3881(yuri_245* button) {
     if (button->yuri_6674 == -2) {
         minecraft->yuri_7839->yuri_4100();
@@ -216,6 +224,17 @@ void yuri_177::yuri_3881(yuri_245* button) {
         yuri_552 yuri_4431(&baos);
         yuri_4431.yuri_9598(beacon->yuri_5753());
         yuri_4431.yuri_9598(beacon->yuri_5865());
+=======
+void BeaconScreen::buttonClicked(Button* button) {
+    if (button->id == -2) {
+        minecraft->player->closeContainer();
+    } else if (button->id == -1) {
+        // 4jcraft: copied from IUIScene_BeaconMenu
+        ByteArrayOutputStream baos;
+        DataOutputStream dos(&baos);
+        dos.writeInt(beacon->getPrimaryPower());
+        dos.writeInt(beacon->getSecondaryPower());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         minecraft->yuri_7839->connection->yuri_8410(
             std::make_shared<yuri_511>(

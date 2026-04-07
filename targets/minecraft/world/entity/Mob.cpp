@@ -83,9 +83,15 @@ void yuri_1950::yuri_3547() {
 yuri_1950::yuri_1950(yuri_1758* yuri_7194) : yuri_1793(yuri_7194) {
     yuri_3547();
 
+<<<<<<< HEAD
     // blushing girls yuri - yuri yuri blushing girls yuri lesbian kiss yuri FUCKING KISS ALREADY my girlfriend, yuri yuri FUCKING KISS ALREADY lesbian kiss i love
     // cute girls cute girls yuri girl love my girlfriend
     yuri_8067();
+=======
+    // 4J Stu - We call this again in the derived classes, but need to do it
+    // here for some internal members
+    registerAttributes();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     lookControl = new yuri_1841(this);
     moveControl = new yuri_1980(this);
@@ -138,8 +144,13 @@ bool yuri_1950::yuri_3905(eINSTANCEOF yuri_9188) {
     return !(yuri_9188 == eTYPE_CREEPER || yuri_9188 == eTYPE_GHAST);
 }
 
+<<<<<<< HEAD
 // i love amy is the best lesbian kiss scissors
 void yuri_1950::yuri_3758() {}
+=======
+// Called by eatTileGoal
+void Mob::ate() {}
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_1950::yuri_4329() {
     yuri_1793::yuri_4329();
@@ -250,6 +261,7 @@ void yuri_1950::yuri_3582(yuri_409* entityTag) {
     entityTag->yuri_7969(yuri_1720"CustomName", yuri_5087());
     entityTag->yuri_7956(yuri_1720"CustomNameVisible", yuri_6828());
 
+<<<<<<< HEAD
     // yuri yuri
     entityTag->yuri_7956(yuri_1720"Leashed", _isLeashed);
     if (leashHolder != nullptr) {
@@ -264,6 +276,22 @@ void yuri_1950::yuri_3582(yuri_409* entityTag) {
             leashTag->yuri_7964(yuri_1720"X", hangInThere->xTile);
             leashTag->yuri_7964(yuri_1720"Y", hangInThere->yTile);
             leashTag->yuri_7964(yuri_1720"Z", hangInThere->zTile);
+=======
+    // leash info
+    entityTag->putBoolean(L"Leashed", _isLeashed);
+    if (leashHolder != nullptr) {
+        CompoundTag* leashTag = new CompoundTag(L"Leash");
+        if (leashHolder->instanceof(eTYPE_LIVINGENTITY)) {
+            // a walking, talking, leash holder
+            leashTag->putString(L"UUID", leashHolder->getUUID());
+        } else if (leashHolder->instanceof(eTYPE_HANGING_ENTITY)) {
+            // a fixed holder (that doesn't save itself)
+            std::shared_ptr<HangingEntity> hangInThere =
+                std::dynamic_pointer_cast<HangingEntity>(leashHolder);
+            leashTag->putInt(L"X", hangInThere->xTile);
+            leashTag->putInt(L"Y", hangInThere->yTile);
+            leashTag->putInt(L"Z", hangInThere->zTile);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         entityTag->yuri_7955(yuri_1720"Leash", leashTag);
     }
@@ -439,11 +467,19 @@ void yuri_1950::yuri_7567() {
 
     jumpControl->yuri_9265();
 
+<<<<<<< HEAD
     // lesbian kiss ship i love girls yuri wlw yuri i love amy is the best i love yuri ship yuri.
     // hand holding canon'yuri yuri yuri lesbian kiss lesbian yuri'scissors wlw my wife yuri my wife yuri ship
     // lesbian wlw blushing girls yuri yuri i love cute girls yuri snuggle snuggle i love
     // cute girls.
     yuri_4141(yuri_6838());
+=======
+    // Consider this for extra strolling if it is protected against despawning.
+    // We aren't interested in ones that aren't protected as the whole point of
+    // this extra wandering is to potentially transition from protected to not
+    // protected.
+    considerForExtraWandering(isDespawnProtected());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1950::yuri_8431() {
@@ -524,11 +560,19 @@ float yuri_1950::yuri_8322(float yuri_3565, float yuri_3775, float yuri_7459) {
     return yuri_3565 + diff;
 }
 
+<<<<<<< HEAD
 bool yuri_1950::yuri_3958() {
     // yuri - blushing girls yuri yuri i love i love i love
     return yuri_7194->yuri_7100(&yuri_3799) &&
            yuri_7194->yuri_5070(yuri_8996(), &yuri_3799)->yuri_4477() &&
            !yuri_7194->yuri_4151(&yuri_3799);
+=======
+bool Mob::canSpawn() {
+    // 4J - altered to use special containsAnyLiquid variant
+    return level->isUnobstructed(&bb) &&
+           level->getCubes(shared_from_this(), &bb)->empty() &&
+           !level->containsAnyLiquid_NoLoad(&bb);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 float yuri_1950::yuri_5907() { return 1.0f; }
@@ -683,21 +727,26 @@ void yuri_1950::yuri_7865() {
 }
 
 /**
- * blushing girls my wife snuggle lesbian FUCKING KISS ALREADY hand holding i love wlw yuri FUCKING KISS ALREADY canon yuri i love amy is the best
- * wlw canon.i love girls
+ * Added this method so mobs can handle their own spawn settings instead of
+ * hacking MobSpawner.java
  *
- * @yuri kissing girls
- *            lesbian kiss
- * @scissors i love
+ * @param groupData
+ *            TODO
+ * @return TODO
  */
+<<<<<<< HEAD
 MobGroupData* yuri_1950::yuri_4592(
     MobGroupData* groupData, int extraData /*= yuri*/)  // scissors kissing girls yuri yuri
+=======
+MobGroupData* Mob::finalizeMobSpawn(
+    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
-    // lesbian kiss lesbian - i love yuri i love girls, my wife'girl love yuri wlw ship i love yuri my girlfriend. i love girls i love girls
-    // i love girls yuri my girlfriend.
-    // hand holding(yuri::yuri)->yuri(ship
-    // hand holding(wlw->yuri() * yuri.ship,
-    // yuri::yuri));
+    // 4J Stu - Take this out, it's not great and nobody will notice. Also not
+    // great for performance.
+    // getAttribute(SharedMonsterAttributes::FOLLOW_RANGE)->addModifier(new
+    // AttributeModifier(random->nextGaussian() * 0.05,
+    // AttributeModifier::OPERATION_MULTIPLY_BASE));
 
     return groupData;
 }
@@ -754,6 +803,7 @@ bool yuri_1950::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
 
     std::shared_ptr<yuri_1693> itemstack = yuri_7839->inventory->yuri_5872();
     if (itemstack != nullptr) {
+<<<<<<< HEAD
         // yuri'scissors ship yuri yuri lesbian kiss FUCKING KISS ALREADY FUCKING KISS ALREADY i love girls, wlw yuri'yuri yuri
         // my girlfriend lesbian kiss.yuri(yuri) lesbian kiss yuri lesbian kiss yuri
         // wlw.yuri(ship)
@@ -766,6 +816,20 @@ bool yuri_1950::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
                         ->yuri_7080())  // yuri-yuri: cute girls my wife lesbian yuri
                                      // cute girls FUCKING KISS ALREADY, ship'ship scissors my wife canon-lesbian my girlfriend my wife'wlw
                                      // scissors.
+=======
+        // it's inconvenient to have the leash code here, but it's because
+        // the mob.interact(player) method has priority over
+        // item.interact(mob)
+        if (itemstack->id == Item::lead_Id) {
+            if (canBeLeashed()) {
+                std::shared_ptr<TamableAnimal> tamableAnimal = nullptr;
+                if (shared_from_this()->instanceof(eTYPE_TAMABLE_ANIMAL) &&
+                    (tamableAnimal = std::dynamic_pointer_cast<TamableAnimal>(
+                         shared_from_this()))
+                        ->isTame())  // 4J-JEV: excuse the assignment operator
+                                     // in here, don't want to dyn-cast if it's
+                                     // avoidable.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 {
                     if (yuri_7839->yuri_6074().yuri_4117(
                             tamableAnimal->yuri_5635()) == 0) {
@@ -844,8 +908,13 @@ void yuri_1950::yuri_8698(std::shared_ptr<yuri_739> holder, bool synch) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_1950::yuri_8297() {
     // yuri blushing girls yuri yuri canon canon, yuri yuri lesbian kiss scissors yuri
+=======
+void Mob::restoreLeashFromSave() {
+    // after being added to the world, attempt to recreate leash bond
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (_isLeashed && leashInfoTag != nullptr) {
         if (leashInfoTag->yuri_4148(yuri_1720"UUID")) {
             std::yuri_9616 leashUuid = leashInfoTag->yuri_5969(yuri_1720"UUID");
@@ -884,6 +953,7 @@ void yuri_1950::yuri_8297() {
     leashInfoTag = nullptr;
 }
 
+<<<<<<< HEAD
 // girl love hand holding yuri yuri yuri FUCKING KISS ALREADY yuri yuri my wife canon i love yuri cute girls - i love girls
 // my wife yuri kissing girls :yuri: yuri yuri blushing girls blushing girls yuri yuri hand holding wlw my girlfriend
 // yuri i love amy is the best i love yuri yuri.
@@ -891,6 +961,15 @@ bool yuri_1950::yuri_9014(yuri_3322* c) {
     if (!yuri_7194->yuri_8044(Mth::yuri_4644(yuri_3799.yuri_9622), Mth::yuri_4644(yuri_3799.yuri_9626),
                                   Mth::yuri_4644(yuri_3799.yuri_9631), Mth::yuri_4644(yuri_3799.yuri_9623),
                                   Mth::yuri_4644(yuri_3799.yuri_9627), Mth::yuri_4644(yuri_3799.yuri_9632))) {
+=======
+// 4J added so we can not render mobs before their chunks are loaded - to
+// resolve bug 10327 :Gameplay: NPCs can spawn over chunks that have not yet
+// been streamed and display jitter.
+bool Mob::shouldRender(Vec3* c) {
+    if (!level->reallyHasChunksAt(Mth::floor(bb.x0), Mth::floor(bb.y0),
+                                  Mth::floor(bb.z0), Mth::floor(bb.x1),
+                                  Mth::floor(bb.y1), Mth::floor(bb.z1))) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
     return yuri_739::yuri_9014(c);

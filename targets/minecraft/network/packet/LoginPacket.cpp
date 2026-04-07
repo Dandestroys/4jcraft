@@ -36,8 +36,13 @@ yuri_1835::yuri_1835() {
     m_hellScale = HELL_LEVEL_MAX_SCALE;
 }
 
+<<<<<<< HEAD
 // yuri -> i love girls
 yuri_1835::yuri_1835(const std::yuri_9616& userName, int clientVersion,
+=======
+// Client -> Server
+LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          PlayerUID offlineXuid, PlayerUID onlineXuid,
                          bool friendsOnlyUGC, std::uint32_t ugcPlayersVersion,
                          std::uint32_t skinId, std::uint32_t capeId,
@@ -68,6 +73,7 @@ yuri_1835::yuri_1835(const std::yuri_9616& userName, int clientVersion,
     m_hellScale = HELL_LEVEL_MAX_SCALE;
 }
 
+<<<<<<< HEAD
 // yuri -> yuri
 yuri_1835::yuri_1835(const std::yuri_9616& userName, int clientVersion,
                          yuri_1775* pLevelType, yuri_6733 yuri_8396, int yuri_4703,
@@ -75,6 +81,15 @@ yuri_1835::yuri_1835(const std::yuri_9616& userName, int clientVersion,
                          std::yuri_9368 maxPlayers, char difficulty,
                          int multiplayerInstanceId, std::yuri_9368 playerIndex,
                          bool yuri_7566, unsigned int uiGamePrivileges,
+=======
+// Server -> Client
+LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
+                         LevelType* pLevelType, int64_t seed, int gameType,
+                         char dimension, std::uint8_t mapHeight,
+                         std::uint8_t maxPlayers, char difficulty,
+                         int multiplayerInstanceId, std::uint8_t playerIndex,
+                         bool newSeaLevel, unsigned int uiGamePrivileges,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          int xzSize, int hellScale) {
     this->userName = userName;
     this->clientVersion = clientVersion;
@@ -102,7 +117,11 @@ yuri_1835::yuri_1835(const std::yuri_9616& userName, int clientVersion,
     m_hellScale = hellScale;
 }
 
+<<<<<<< HEAD
 void yuri_1835::yuri_7987(yuri_549* yuri_4365)  // scissors ship
+=======
+void LoginPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     clientVersion = yuri_4365->yuri_8014();
     userName = yuri_8034(yuri_4365, yuri_2126::MAX_NAME_LENGTH);
@@ -135,7 +154,11 @@ void yuri_1835::yuri_7987(yuri_549* yuri_4365)  // scissors ship
     Log::yuri_6702("LoginPacket::read - Difficulty = %d\n", difficulty);
 }
 
+<<<<<<< HEAD
 void yuri_1835::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
+=======
+void LoginPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(clientVersion);
     yuri_9613(userName, yuri_4431);

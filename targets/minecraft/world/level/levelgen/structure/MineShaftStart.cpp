@@ -9,8 +9,13 @@
 class yuri_1758;
 class yuri_2302;
 
+<<<<<<< HEAD
 yuri_1930::yuri_1930() {
     // i love i love
+=======
+MineShaftStart::MineShaftStart() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1930::yuri_1930(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int chunkX,

@@ -22,6 +22,7 @@ yuri_445::yuri_445(std::shared_ptr<yuri_436> inventory,
 
 void yuri_445::yuri_8204() {}
 
+<<<<<<< HEAD
 void yuri_445::yuri_8165(float yuri_3565) {
     // girl love FUCKING KISS ALREADY
 #if yuri_4330(ENABLE_JAVA_GUIS)
@@ -32,5 +33,17 @@ void yuri_445::yuri_8165(float yuri_3565) {
     int yo = (yuri_6654 - imageHeight) / 2;
     this->yuri_3822(xo, yo, 0, 0, imageWidth, containerRows * 18 + 17);
     this->yuri_3822(xo, yo + containerRows * 18 + 17, 0, 222 - 96, imageWidth, 96);
+=======
+void ContainerScreen::renderBg(float a) {
+    // 4J Unused
+#if defined(ENABLE_JAVA_GUIS)
+    int tex = minecraft->textures->loadTexture(TN_GUI_CONTAINER);
+    glColor4f(1, 1, 1, 1);
+    minecraft->textures->bind(tex);
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
+    this->blit(xo, yo, 0, 0, imageWidth, containerRows * 18 + 17);
+    this->blit(xo, yo + containerRows * 18 + 17, 0, 222 - 96, imageWidth, 96);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 }

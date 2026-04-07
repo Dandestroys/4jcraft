@@ -35,14 +35,22 @@ yuri_2133::yuri_2133(std::shared_ptr<yuri_739> e, int action,
     this->yuri_4295 = yuri_4295;
 }
 
+<<<<<<< HEAD
 void yuri_2133::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+=======
+void PlayerCommandPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_6674 = yuri_4365->yuri_8014();
     action = yuri_4365->yuri_7996();
     yuri_4295 = yuri_4365->yuri_8014();
 }
 
+<<<<<<< HEAD
 void yuri_2133::yuri_9578(yuri_552* yuri_4431)  // FUCKING KISS ALREADY yuri
+=======
+void PlayerCommandPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_6674);
     yuri_4431->yuri_9584(action);

@@ -26,6 +26,7 @@ public:
     void yuri_7155(char ch, int eventKey);
     void yuri_7512(int mouseX, int mouseY, int buttonNum);
 
+<<<<<<< HEAD
     // snuggle: my wife lesbian snuggle kissing girls yuri yuri (lesbian
     // kissing girls lesbian yuri.FUCKING KISS ALREADY.yuri.cute girls.canon)
     void yuri_8064(yuri_47* yuri_4145,
@@ -33,6 +34,15 @@ public:
     void yuri_9062(yuri_47* yuri_4145, int slotIndex,
                      std::shared_ptr<yuri_1693> item);
     void yuri_8530(yuri_47* yuri_4145, int yuri_6674, int yuri_9514);
+=======
+    // 4jcraft: these 3 are to implement Containerlistener (see
+    // IUIScene_AnvilMenu and net.minecraft.world.inventory.ContainerListener)
+    void refreshContainer(AbstractContainerMenu* container,
+                          std::vector<std::shared_ptr<ItemInstance> >* items);
+    void slotChanged(AbstractContainerMenu* container, int slotIndex,
+                     std::shared_ptr<ItemInstance> item);
+    void setContainerData(AbstractContainerMenu* container, int id, int value);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_9420();

@@ -17,11 +17,19 @@ bool yuri_3169::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eDynamicLabel);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // yuri snuggle lesbian kiss
     m_funcAddText = yuri_8069(yuri_1720"AddText");
     m_funcTouchScroll = yuri_8069(yuri_1720"TouchScroll");
     m_funcGetRealWidth = yuri_8069(yuri_1720"GetRealWidth");
     m_funcGetRealHeight = yuri_8069(yuri_1720"GetRealHeight");
+=======
+    // Label specific initialisers
+    m_funcAddText = registerFastName(L"AddText");
+    m_funcTouchScroll = registerFastName(L"TouchScroll");
+    m_funcGetRealWidth = registerFastName(L"GetRealWidth");
+    m_funcGetRealHeight = registerFastName(L"GetRealHeight");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

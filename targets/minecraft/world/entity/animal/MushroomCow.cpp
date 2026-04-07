@@ -17,11 +17,19 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
+<<<<<<< HEAD
 yuri_1997::yuri_1997(yuri_1758* yuri_7194) : yuri_464(yuri_7194) {
     // FUCKING KISS ALREADY my girlfriend - i love amy is the best ship i love yuri canon yuri yuri ship yuri hand holding yuri yuri i love amy is the best
     // yuri kissing girls blushing girls hand holding ship yuri ship kissing girls i love girl love
     this->yuri_4329();
     yuri_8648(yuri_5521());
+=======
+MushroomCow::MushroomCow(Level* level) : Cow(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->yuri_8864(0.9f, 1.3f);
 }
@@ -44,11 +52,19 @@ bool yuri_1997::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             return true;
         }
     }
+<<<<<<< HEAD
     // yuri: i love girls yuri yuri lesbian kiss blushing girls ship yuri'i love girls yuri yuri scissors
     if (item != nullptr && item->yuri_6674 == yuri_1687::shears_Id && yuri_4870() >= 0 &&
         yuri_7194->yuri_3917(eTYPE_COW, yuri_1758::eSpawnType_Breed)) {
         yuri_8099();
         yuri_7194->yuri_3655(eParticleType_largeexplode, yuri_9621, yuri_9625 + bbHeight / 2, yuri_9630,
+=======
+    // 4J: Do not allow shearing if we can't create more cows
+    if (item != nullptr && item->id == Item::shears_Id && getAge() >= 0 &&
+        level->canCreateMore(eTYPE_COW, Level::eSpawnType_Breed)) {
+        remove();
+        level->addParticle(eParticleType_largeexplode, x, y + bbHeight / 2, z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            0, 0, 0);
         if (!yuri_7194->yuri_6802) {
             yuri_8099();
@@ -70,6 +86,7 @@ bool yuri_1997::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
     return yuri_464::yuri_7506(yuri_7839);
 }
 
+<<<<<<< HEAD
 // i love girls - yuri canon girl love my girlfriend yuri i love yuri wlw snuggle yuri yuri wlw, ship my wife
 // lesbian kiss snuggle yuri my girlfriend lesbian kiss snuggle yuri yuri - scissors yuri my girlfriend yuri i love amy is the best scissors wlw'i love girls
 // blushing girls cute girls
@@ -88,6 +105,26 @@ std::shared_ptr<yuri_99> yuri_1997::yuri_4973(
     // i love - i love girls i love girls canon blushing girls yuri scissors girl love scissors yuri my wife
     if (yuri_7194->yuri_3917(yuri_1188(), yuri_1758::eSpawnType_Breed)) {
         return std::make_shared<yuri_1997>(yuri_7194);
+=======
+// 4J - added so that mushroom cows have more of a chance of spawning, they can
+// now spawn on mycelium as well as grass - seems a bit odd that they don't
+// already really
+bool MushroomCow::canSpawn() {
+    int xt = Mth::floor(x);
+    int yt = Mth::floor(bb.y0);
+    int zt = Mth::floor(z);
+    return (level->getTile(xt, yt - 1, zt) == Tile::grass_Id ||
+            level->getTile(xt, yt - 1, zt) == Tile::mycel_Id) &&
+           level->getDaytimeRawBrightness(xt, yt, zt) > 8 &&
+           PathfinderMob::canSpawn();
+}
+
+std::shared_ptr<AgableMob> MushroomCow::getBreedOffspring(
+    std::shared_ptr<AgableMob> target) {
+    // 4J - added limit to number of animals that can be bred
+    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
+        return std::make_shared<MushroomCow>(level);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         return nullptr;
     }

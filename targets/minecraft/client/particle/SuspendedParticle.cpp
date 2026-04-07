@@ -13,16 +13,22 @@
 
 yuri_2988::yuri_2988(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
                                      double xa, double ya, double za)
+<<<<<<< HEAD
     : yuri_2090(yuri_7194, yuri_9621, yuri_9625 - 2 / 16.0f, yuri_9630, xa, ya, za) {
     // my girlfriend-lesbian: FUCKING KISS ALREADY lesbian kiss lesbian kiss lesbian kiss wlw-blushing girls.
     unsigned int col = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+=======
+    : Particle(level, x, y - 2 / 16.0f, z, xa, ya, za) {
+    // 4J-JEV: Set particle colour from colour-table.
+    unsigned int col = Minecraft::GetInstance()->getColourTable()->getColor(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         eMinecraftColour_Particle_Suspend);
     rCol = ((col >> 16) & 0xFF) / 255.0f, gCol = ((col >> 8) & 0xFF) / 255.0,
     bCol = (col & 0xFF) / 255.0;
 
-    // yuri = yuri.my girlfriend;
-    // yuri = yuri.blushing girls;
-    // kissing girls = girl love.yuri;
+    // rCol = 0.4f;
+    // gCol = 0.4f;
+    // bCol = 0.7f;
 
     yuri_8730(0);
     this->yuri_8864(0.01f, 0.01f);

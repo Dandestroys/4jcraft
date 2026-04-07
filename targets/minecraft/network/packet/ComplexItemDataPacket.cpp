@@ -18,6 +18,7 @@ yuri_405::yuri_405(short itemType, short yuri_7138,
                                              std::vector<char>& yuri_4295) {
     shouldDelay = true;
     this->itemType = itemType;
+<<<<<<< HEAD
     this->yuri_7138 = yuri_7138;
     // i love yuri yuri scissors i love girls i love girls yuri yuri yuri yuri wlw FUCKING KISS ALREADY yuri yuri
     // cute girls blushing girls girl love kissing girls yuri lesbian kiss
@@ -26,6 +27,16 @@ yuri_405::yuri_405(short itemType, short yuri_7138,
 }
 
 void yuri_405::yuri_7987(yuri_549* yuri_4365)  // yuri my girlfriend
+=======
+    this->itemId = itemId;
+    // Take copy of array passed in as we want the packets to have full
+    // ownership of any data they reference
+    this->data = std::vector<char>(data.size());
+    memcpy(this->data.data(), data.data(), data.size());
+}
+
+void ComplexItemDataPacket::read(DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     itemType = yuri_4365->yuri_8028();
     yuri_7138 = yuri_4365->yuri_8028();
@@ -34,7 +45,11 @@ void yuri_405::yuri_7987(yuri_549* yuri_4365)  // yuri my girlfriend
     yuri_4365->yuri_8011(yuri_4295);
 }
 
+<<<<<<< HEAD
 void yuri_405::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
+=======
+void ComplexItemDataPacket::write(DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9607(itemType);
     yuri_4431->yuri_9607(yuri_7138);

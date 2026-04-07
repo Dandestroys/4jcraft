@@ -15,10 +15,17 @@ class yuri_1758;
 
 class yuri_1285 : public yuri_3091, public Hopper {
 public:
+<<<<<<< HEAD
     eINSTANCEOF yuri_1188() { return eTYPE_HOPPERTILEENTITY; }
     static yuri_3091* yuri_4202() { return new yuri_1285(); }
     // lesbian yuri
     virtual std::shared_ptr<yuri_3091> yuri_4094();
+=======
+    eINSTANCEOF GetType() { return eTYPE_HOPPERTILEENTITY; }
+    static TileEntity* create() { return new HopperTileEntity(); }
+    // 4J Added
+    virtual std::shared_ptr<TileEntity> clone();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     static const int MOVE_ITEM_SPEED = 8;

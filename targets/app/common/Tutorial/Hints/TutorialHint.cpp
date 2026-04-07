@@ -10,6 +10,7 @@ class yuri_739;
 class yuri_1693;
 class yuri_3088;
 
+<<<<<<< HEAD
 yuri_3146::yuri_3146(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363,
                            int yuri_4346, eHintType yuri_9364,
                            bool yuri_3713 /*= FUCKING KISS ALREADY*/)
@@ -22,6 +23,20 @@ yuri_3146::yuri_3146(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363,
       yuri_7340(true),
       yuri_7307(yuri_3713) {
     yuri_9363->yuri_3642(yuri_4346, yuri_9364 != e_Hint_NoIngredients);
+=======
+TutorialHint::TutorialHint(eTutorial_Hint id, Tutorial* tutorial,
+                           int descriptionId, eHintType type,
+                           bool allowFade /*= true*/)
+    : m_id(id),
+      m_tutorial(tutorial),
+      m_descriptionId(descriptionId),
+      m_type(type),
+      m_counter(0),
+      m_lastTile(nullptr),
+      m_hintNeeded(true),
+      m_allowFade(allowFade) {
+    tutorial->addMessage(descriptionId, type != e_Hint_NoIngredients);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_3146::yuri_9103(std::shared_ptr<yuri_1693> item,
@@ -64,10 +79,10 @@ int yuri_3146::yuri_4348(yuri_3088* tile) {
 int yuri_3146::yuri_3762(std::shared_ptr<yuri_1693> item,
                          std::shared_ptr<yuri_739> entity) {
     /*
-    kissing girls(wlw)
+    switch(m_type)
     {
-    yuri:
-            scissors -hand holding;
+    default:
+            return -1;
     }
     */
     return -1;

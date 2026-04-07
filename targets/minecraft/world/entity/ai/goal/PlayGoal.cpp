@@ -30,6 +30,7 @@ bool yuri_2124::yuri_3967() {
     if (mob->yuri_4870() >= 0) return false;
     if (mob->yuri_5773()->yuri_7578(400) != 0) return false;
 
+<<<<<<< HEAD
     yuri_0 mob_bb = mob->yuri_3799.yuri_6407(6, 3, 6);
     std::vector<std::shared_ptr<yuri_739> >* children =
         mob->yuri_7194->yuri_5212(typeid(yuri_3333), &mob_bb);
@@ -46,6 +47,24 @@ bool yuri_2124::yuri_3967() {
         if (yuri_4383 > closestDistSqr) continue;
         closestDistSqr = yuri_4383;
         followFriend = std::weak_ptr<yuri_1793>(friendV);
+=======
+    AABB mob_bb = mob->bb.grow(6, 3, 6);
+    std::vector<std::shared_ptr<Entity> >* children =
+        mob->level->getEntitiesOfClass(typeid(Villager), &mob_bb);
+    double closestDistSqr = std::numeric_limits<double>::max();
+    // for (Entity c : children)
+    for (auto it = children->begin(); it != children->end(); ++it) {
+        std::shared_ptr<Entity> c = *it;
+        if (c.get() == mob) continue;
+        std::shared_ptr<Villager> friendV =
+            std::dynamic_pointer_cast<Villager>(c);
+        if (friendV->isChasing()) continue;
+        if (friendV->getAge() >= 0) continue;
+        double distSqr = friendV->distanceToSqr(mob->shared_from_this());
+        if (distSqr > closestDistSqr) continue;
+        closestDistSqr = distSqr;
+        followFriend = std::weak_ptr<LivingEntity>(friendV);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     delete children;
 

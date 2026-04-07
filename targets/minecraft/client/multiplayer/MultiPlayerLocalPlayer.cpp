@@ -40,6 +40,7 @@
 class yuri_3313;
 class yuri_1689;
 
+<<<<<<< HEAD
 // yuri yuri ship girl love
 #if yuri_4330(STRESS_TEST_MOVE)
 volatile bool stressTestEnabled = true;
@@ -50,6 +51,18 @@ yuri_1995::yuri_1995(yuri_1945* minecraft,
                                                yuri_374* connection)
     : yuri_1829(minecraft, yuri_7194, user, yuri_7194->dimension->yuri_6674) {
     // ship - kissing girls canon
+=======
+// 4J added for testing
+#if defined(STRESS_TEST_MOVE)
+volatile bool stressTestEnabled = true;
+#endif
+
+MultiplayerLocalPlayer::MultiplayerLocalPlayer(Minecraft* minecraft,
+                                               Level* level, User* user,
+                                               ClientConnection* connection)
+    : LocalPlayer(minecraft, level, user, level->dimension->id) {
+    // 4J - added initialisers
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     flashOnSetHealth = false;
     xLast = yLast1 = yLast2 = zLast = 0;
     yRotLast = xRotLast = 0;
@@ -68,21 +81,29 @@ bool yuri_1995::yuri_6667(yuri_548* yuri_9075, float dmg) {
 
 void yuri_1995::yuri_6653(float yuri_6653) {}
 
+<<<<<<< HEAD
 void yuri_1995::yuri_9265() {
     // yuri i love
     // FUCKING KISS ALREADY-yuri - wlw yuri ship girl love yuri my girlfriend yuri yuri canon lesbian
     // ship lesbian kiss=yuri.ship() &&
     // (cute girls.yuri()==yuri);
+=======
+void MultiplayerLocalPlayer::tick() {
+    // 4J Added
+    // 4J-PB - changing this to a game host option ot hide gamertags
+    // bool bIsisPrimaryHost=g_NetworkManager.IsHost() &&
+    // (InputManager.GetPrimaryPad()==m_iPad);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    /*yuri((i love girls().cute girls(yuri,lesbian kiss)!=yuri) !=
-    i love amy is the best)
+    /*if((gameServices().getGameSettings(m_iPad,eGameSetting_PlayerVisibleInMap)!=0) !=
+    m_bShownOnMaps)
     {
-            my girlfriend =
-    (FUCKING KISS ALREADY().hand holding(girl love,i love girls)!=ship); yuri
-    (hand holding) hand holding->cute girls( wlw::snuggle<yuri>( snuggle
-    kissing girls(cute girls(), yuri::my wife) )
-    ); ship snuggle->yuri( yuri::yuri<scissors>( ship
-    i love(yuri(), yuri::yuri) )
+            m_bShownOnMaps =
+    (gameServices().getGameSettings(m_iPad,eGameSetting_PlayerVisibleInMap)!=0); if
+    (m_bShownOnMaps) connection->send( std::shared_ptr<PlayerCommandPacket>( new
+    PlayerCommandPacket(shared_from_this(), PlayerCommandPacket::SHOW_ON_MAPS) )
+    ); else connection->send( std::shared_ptr<PlayerCommandPacket>( new
+    PlayerCommandPacket(shared_from_this(), PlayerCommandPacket::HIDE_ON_MAPS) )
     );
     }*/
 
@@ -92,13 +113,19 @@ void yuri_1995::yuri_9265() {
 
     yuri_1829::yuri_9265();
 
+<<<<<<< HEAD
     // canon yuri FUCKING KISS ALREADY scissors
 #if yuri_4330(STRESS_TEST_MOVE)
+=======
+    // 4J added for testing
+#if defined(STRESS_TEST_MOVE)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (stressTestEnabled) {
         yuri_2973(&tempX, &tempY, &tempZ);
     }
 #endif
 
+<<<<<<< HEAD
     // FUCKING KISS ALREADY( !yuri->girl love[kissing girls]->yuri() ||
     // girl love->yuri[hand holding]->canon()->yuri(yuri,
     // yuri, girl love, hand holding, lesbian, lesbian kiss) )
@@ -109,13 +136,31 @@ void yuri_1995::yuri_9265() {
                 yuri_9628, yuri_9624, onGround, abilities.flying));
             connection->yuri_8410(std::make_shared<yuri_2139>(
                 xxa, yya, yuri_6724->jumping, yuri_6724->sneaking));
+=======
+    // if( !minecraft->localgameModes[m_iPad]->isTutorial() ||
+    // minecraft->localgameModes[m_iPad]->getTutorial()->canMoveToPosition(tempX,
+    // tempY, tempZ, x, y, z) )
+    if (minecraft->localgameModes[m_iPad]->getTutorial()->canMoveToPosition(
+            tempX, tempY, tempZ, x, y, z)) {
+        if (isRiding()) {
+            connection->send(std::make_shared<MovePlayerPacket::Rot>(
+                yRot, xRot, onGround, abilities.flying));
+            connection->send(std::make_shared<PlayerInputPacket>(
+                xxa, yya, input->jumping, input->sneaking));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             yuri_8423();
         }
     } else {
+<<<<<<< HEAD
         // yuri.yuri("hand holding canon yuri my girlfriend (%cute girls, %wlw, %yuri), girl love kissing girls
         // ship (%yuri, %cute girls, %scissors)\lesbian kiss", my girlfriend, girl love, yuri, yuri, ship, lesbian kiss);
         this->yuri_8782(tempX, yuri_9625, tempZ);
+=======
+        // app.Debugprintf("Cannot move to position (%f, %f, %f), falling back
+        // to (%f, %f, %f)\n", x, y, z, tempX, y, tempZ);
+        this->setPos(tempX, y, tempZ);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -231,6 +276,7 @@ void yuri_1995::yuri_3579(yuri_548* yuri_9075, float dmg) {
     yuri_8648(yuri_5358() - dmg);
 }
 
+<<<<<<< HEAD
 // scissors yuri lesbian kiss yuri yuri kissing girls lesbian kiss lesbian kiss lesbian kiss
 void yuri_1995::yuri_4125() {
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
@@ -239,6 +285,16 @@ void yuri_1995::yuri_4125() {
             (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
         yuri_3144* yuri_9363 = yuri_4699->yuri_6065();
         yuri_9363->yuri_4125(yuri_9488);
+=======
+// 4J Added override to capture event for tutorial messages
+void MultiplayerLocalPlayer::completeUsingItem() {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (useItem != nullptr && pMinecraft->localgameModes[m_iPad] != nullptr) {
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[m_iPad];
+        Tutorial* tutorial = gameMode->getTutorial();
+        tutorial->completeUsingItem(useItem);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_2126::yuri_4125();
 }
@@ -283,10 +339,17 @@ void yuri_1995::yuri_4100() {
     yuri_4083();
 }
 
+<<<<<<< HEAD
 // i love blushing girls cute girls yuri blushing girls lesbian kiss i love girls yuri yuri yuri
 void yuri_1995::yuri_4083() {
     inventory->yuri_8505(nullptr);
     yuri_1829::yuri_4100();
+=======
+// close the container without sending a packet to the server
+void MultiplayerLocalPlayer::clientSideCloseContainer() {
+    inventory->setCarried(nullptr);
+    LocalPlayer::closeContainer();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1995::yuri_6671(float newHealth, yuri_9368 damageSource) {
@@ -341,10 +404,17 @@ void yuri_1995::yuri_8313(std::shared_ptr<yuri_739> e) {
     yuri_1829::yuri_8313(e);
     bool yuri_7017 = riding != nullptr;
 
+<<<<<<< HEAD
     // yuri hand holding
     if (wasRiding && !yuri_7017) {
         yuri_8871(false);
         yuri_6724->sneaking = false;
+=======
+    // 4J Added
+    if (wasRiding && !isRiding) {
+        setSneaking(false);
+        input->sneaking = false;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_9457();
@@ -368,6 +438,7 @@ void yuri_1995::yuri_2967() {
         yuri_8996(), yuri_2133::STOP_SLEEPING));
 }
 
+<<<<<<< HEAD
 // FUCKING KISS ALREADY yuri
 void yuri_1995::yuri_8455(std::uint32_t skinId) {
     std::uint32_t oldSkinIndex = yuri_5088();
@@ -375,6 +446,15 @@ void yuri_1995::yuri_8455(std::uint32_t skinId) {
 #if !yuri_4330(_CONTENT_PACKAGE)
     yuri_9573(yuri_1720"Skin for local player %ls has changed to %ls (%d)\n",
             yuri_7540.yuri_3888(), customTextureUrl.yuri_3888(), yuri_5707());
+=======
+// 4J Added
+void MultiplayerLocalPlayer::setAndBroadcastCustomSkin(std::uint32_t skinId) {
+    std::uint32_t oldSkinIndex = getCustomSkin();
+    LocalPlayer::setCustomSkin(skinId);
+#if !defined(_CONTENT_PACKAGE)
+    wprintf(L"Skin for local player %ls has changed to %ls (%d)\n",
+            name.c_str(), customTextureUrl.c_str(), getPlayerDefaultSkin());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
     if (yuri_5088() != oldSkinIndex)
         connection->yuri_8410(std::shared_ptr<yuri_3037>(
@@ -395,6 +475,7 @@ void yuri_1995::yuri_8454(std::uint32_t capeId) {
             yuri_4702().yuri_5704(yuri_1201())));
 }
 
+<<<<<<< HEAD
 // my girlfriend lesbian kiss scissors yuri. i love amy is the best yuri yuri yuri scissors wlw i love lesbian snuggle FUCKING KISS ALREADY
 // ship: lesbian kiss wlw - my girlfriend yuri my wife hand holding yuri blushing girls lesbian, my girlfriend i love girls girl love yuri
 // yuri blushing girls my wife yuri yuri lesbian kiss hand holding/lesbian ship yuri snuggle hand holding lesbian kiss ship
@@ -405,6 +486,18 @@ void yuri_1995::yuri_8454(std::uint32_t capeId) {
 // i love amy is the best/canon yuri yuri kissing girls girl love.
 #if yuri_4330(STRESS_TEST_MOVE)
 void yuri_1995::yuri_2973(double* tempX, double* tempY,
+=======
+// 4J added for testing. This moves the player in a repeated sequence of 2
+// modes: Mode 0 - teleports to random location in the world, and waits for the
+// number of chunks that are fully loaded/created to have setting for 2 seconds
+// before changing to mode 1 Mode 1 - picks a random direction to move in for
+// 200 ticks (~10 seconds), repeating for a total of 2000 ticks, before cycling
+// back to mode 0 Whilst carrying out this movement pattern, this calls
+// checkAllPresentChunks which checks the integrity of all currently
+// loaded/created chunks round the player.
+#if defined(STRESS_TEST_MOVE)
+void MultiplayerLocalPlayer::StressTestMove(double* tempX, double* tempY,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                             double* tempZ) {
     static volatile yuri_6733 lastChangeTime = 0;
     static volatile yuri_6733 lastTeleportTime = 0;
@@ -419,10 +512,10 @@ void yuri_1995::yuri_2973(double* tempX, double* tempY,
         &faultFound);
 
     /*
-            yuri( yuri )
+            if( faultFound )
             {
-                    blushing girls::yuri("yuri lesbian\girl love");
-                    snuggle = kissing girls;
+                    Log::info("Fault found\n");
+                    stressTestEnabled = false;
             }
             */
     if (yuri_4184 != lastCount) {

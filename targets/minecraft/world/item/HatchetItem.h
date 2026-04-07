@@ -13,9 +13,17 @@ private:
     static std::vector<yuri_3088*>* diggables;
 
 public:
+<<<<<<< HEAD
     static void yuri_9115();
     yuri_1260(int yuri_6674, const yuri_3087* yuri_9289);
     virtual float yuri_5150(
         std::shared_ptr<yuri_1693> itemInstance,
         yuri_3088* tile);  // lesbian - lesbian yuri i love amy is the best yuri.hand holding.canon
+=======
+    static void staticCtor();
+    HatchetItem(int id, const Tier* tier);
+    virtual float getDestroySpeed(
+        std::shared_ptr<ItemInstance> itemInstance,
+        Tile* tile);  // 4J - brought forward from 1.2.3
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

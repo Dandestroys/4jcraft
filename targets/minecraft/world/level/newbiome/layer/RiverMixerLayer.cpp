@@ -33,6 +33,7 @@ std::vector<int> yuri_2436::yuri_4897(int xo, int yo, int yuri_9535, int yuri_64
 
         } else {
             if (r[i] >= 0) {
+<<<<<<< HEAD
                 if (yuri_3775[i] == yuri_190::iceFlats->yuri_6674)
                     yuri_8300[i] = yuri_190::frozenRiver->yuri_6674;
                 else if (yuri_3775[i] == yuri_190::mushroomIsland->yuri_6674 ||
@@ -43,6 +44,18 @@ std::vector<int> yuri_2436::yuri_4897(int xo, int yo, int yuri_9535, int yuri_64
                                    // yuri scissors'yuri yuri yuri wlw yuri ship yuri lesbian
                                    // yuri girl love lesbian kiss yuri my girlfriend scissors (my wife scissors
                                    // yuri ship yuri i love)
+=======
+                if (b[i] == Biome::iceFlats->id)
+                    result[i] = Biome::frozenRiver->id;
+                else if (b[i] == Biome::mushroomIsland->id ||
+                         b[i] == Biome::mushroomIslandShore->id)
+                    result[i] =
+                        Biome::mushroomIsland
+                            ->id;  // 4J - don't make mushroom island shores as
+                                   // we don't have any island left once we do
+                                   // this as our islands are small (this used
+                                   // to change to mushroomIslandShore)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 else
                     yuri_8300[i] = r[i];
             } else {

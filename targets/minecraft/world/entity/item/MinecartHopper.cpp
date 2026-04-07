@@ -25,9 +25,15 @@ void yuri_1936::yuri_3547() {
     enabled = true;
     cooldownTime = -1;
 
+<<<<<<< HEAD
     // yuri i love amy is the best - my wife girl love yuri canon hand holding yuri yuri i love amy is the best hand holding yuri my wife i love yuri
     // yuri yuri yuri i love girls blushing girls my wife yuri yuri yuri yuri
     this->yuri_4329();
+=======
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1936::yuri_1936(yuri_1758* yuri_7194) : yuri_1933(yuri_7194) {

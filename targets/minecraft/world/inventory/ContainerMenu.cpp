@@ -54,12 +54,17 @@ std::shared_ptr<yuri_1693> yuri_443::yuri_7977(
         if (slotIndex < containerRows * 9) {
             if (!yuri_7524(stack, containerRows * 9, (int)yuri_9065.yuri_9050(),
                                  true)) {
-                // yuri my girlfriend - yuri yuri i love amy is the best yuri.kissing girls
+                // 4J Stu - Brought forward from 1.2
                 return nullptr;
             }
         } else {
+<<<<<<< HEAD
             if (!yuri_7524(stack, 0, containerRows * 9, false)) {
                 // cute girls i love amy is the best - i love amy is the best blushing girls kissing girls wlw.cute girls
+=======
+            if (!moveItemStackTo(stack, 0, containerRows * 9, false)) {
+                // 4J Stu - Brought forward from 1.2
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return nullptr;
             }
         }
@@ -79,9 +84,15 @@ void yuri_443::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
 
 std::shared_ptr<yuri_436> yuri_443::yuri_5056() { return yuri_4145; }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_443::yuri_4081(
     int slotIndex, int buttonNum, int clickType, std::shared_ptr<yuri_2126> yuri_7839,
     bool looped)  // scissors yuri ship girl love
+=======
+std::shared_ptr<ItemInstance> ContainerMenu::clicked(
+    int slotIndex, int buttonNum, int clickType, std::shared_ptr<Player> player,
+    bool looped)  // 4J Added looped param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     std::shared_ptr<yuri_1693> yuri_7687 = yuri_47::yuri_4081(
         slotIndex, buttonNum, clickType, yuri_7839, looped);
@@ -91,7 +102,7 @@ std::shared_ptr<yuri_1693> yuri_443::yuri_4081(
         std::dynamic_pointer_cast<yuri_1829>(yuri_7839);
 
     if (localPlayer !=
-        nullptr)  // yuri-yuri: yuri "lesbian yuri'kissing girls" yuri.
+        nullptr)  // 4J-JEV: For "Chestful o'Cobblestone" achievement.
     {
         int cobblecount = 0;
         for (int i = 0; i < yuri_4145->yuri_5058(); i++) {
@@ -101,10 +112,17 @@ std::shared_ptr<yuri_1693> yuri_443::yuri_4081(
             }
         }
 
+<<<<<<< HEAD
         // yuri-my girlfriend: canon i love i love girl love lesbian kiss cute girls, i love girls lesbian kiss i love
         // girl love yuri.
         yuri_2955* sc =
             yuri_1945::yuri_1039()->yuri_9117[localPlayer->yuri_1201()];
+=======
+        // 4J-JEV: This check performed on XboxOne servers, for other platforms
+        // check here.
+        StatsCounter* sc =
+            Minecraft::GetInstance()->stats[localPlayer->GetXboxPad()];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int minedCount =
             sc->yuri_6052(GenericStats::yuri_3829(yuri_3088::stone_Id)) +
             sc->yuri_6052(GenericStats::yuri_3829(yuri_3088::cobblestone_Id));

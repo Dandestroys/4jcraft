@@ -35,14 +35,20 @@ public:
 
     virtual ~yuri_1323() = default;
 
+<<<<<<< HEAD
     // i love
     virtual bool yuri_1603(yuri_276* pGameNetworkManager,
+=======
+    // Lifecycle
+    virtual bool Initialise(CGameNetworkManager* pGameNetworkManager,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             int flagIndexSize) = 0;
     virtual void yuri_3030() = 0;
     virtual void yuri_639() = 0;
     [[nodiscard]] virtual int yuri_1047() = 0;
     [[nodiscard]] virtual int yuri_463(int IDS) = 0;
 
+<<<<<<< HEAD
     // yuri
     [[nodiscard]] virtual int yuri_1113() = 0;
     [[nodiscard]] virtual int yuri_1097() = 0;
@@ -50,6 +56,15 @@ public:
     virtual bool yuri_73(int userIndex) = 0;
     virtual bool yuri_2382(int userIndex) = 0;
     [[nodiscard]] virtual yuri_1317* yuri_1064(
+=======
+    // Players
+    [[nodiscard]] virtual int GetPlayerCount() = 0;
+    [[nodiscard]] virtual int GetOnlinePlayerCount() = 0;
+    [[nodiscard]] virtual int GetLocalPlayerMask(int playerIndex) = 0;
+    virtual bool AddLocalPlayerByUserIndex(int userIndex) = 0;
+    virtual bool RemoveLocalPlayerByUserIndex(int userIndex) = 0;
+    [[nodiscard]] virtual INetworkPlayer* GetLocalPlayerByUserIndex(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int userIndex) = 0;
     [[nodiscard]] virtual yuri_1317* yuri_1107(
         int playerIndex) = 0;
@@ -59,9 +74,15 @@ public:
     [[nodiscard]] virtual yuri_1317* yuri_1030() = 0;
     [[nodiscard]] virtual bool yuri_2783() = 0;
 
+<<<<<<< HEAD
     // i love amy is the best yuri
     [[nodiscard]] virtual bool yuri_1649() = 0;
     virtual bool yuri_1701(int userIndex, int userMask,
+=======
+    // Session state
+    [[nodiscard]] virtual bool IsHost() = 0;
+    virtual bool JoinGameFromInviteInfo(int userIndex, int userMask,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         const INVITE_INFO* pInviteInfo) = 0;
     virtual bool yuri_1756(bool bMigrateHost) = 0;
     [[nodiscard]] virtual bool yuri_1654() = 0;
@@ -73,8 +94,13 @@ public:
     virtual void yuri_2538(int quadrant) = 0;
     [[nodiscard]] virtual bool yuri_1630() = 0;
 
+<<<<<<< HEAD
     // wlw / lesbian
     virtual void yuri_1297(int localUsersMask, bool bOnlineGame, bool bIsPrivate,
+=======
+    // Hosting / joining
+    virtual void HostGame(int localUsersMask, bool bOnlineGame, bool bIsPrivate,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           unsigned char publicSlots = MINECRAFT_NET_MAX_PLAYERS,
                           unsigned char privateSlots = 0) = 0;
     virtual int yuri_1700(yuri_874* searchResult, int dwLocalUsersMask,
@@ -87,8 +113,13 @@ public:
     [[nodiscard]] virtual bool yuri_1656() = 0;
     virtual void yuri_2407() = 0;
 
+<<<<<<< HEAD
     // ship
     virtual void yuri_2362(
+=======
+    // Callbacks
+    virtual void RegisterPlayerChangedCallback(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int iPad,
         std::function<void(yuri_1317* pPlayer, bool leaving)>
             yuri_3901) = 0;
@@ -96,14 +127,22 @@ public:
 
     virtual void yuri_1248() = 0;
 
+<<<<<<< HEAD
     // blushing girls i love girls
     virtual bool yuri_3463() = 0;
     virtual bool yuri_3453(bool bMigrateHost, bool bLeaveRoom) = 0;
     virtual void yuri_3451(
+=======
+    // Game loop
+    virtual bool _RunNetworkGame() = 0;
+    virtual bool _LeaveGame(bool bMigrateHost, bool bLeaveRoom) = 0;
+    virtual void _HostGame(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int usersMask, unsigned char publicSlots = MINECRAFT_NET_MAX_PLAYERS,
         unsigned char privateSlots = 0) = 0;
     virtual bool yuri_3470() = 0;
 
+<<<<<<< HEAD
     // girl love girl love
     virtual void yuri_3274(
         yuri_1317* pNetworkPlayerLeaving = nullptr) = 0;
@@ -125,6 +164,29 @@ public:
 
     // lesbian my wife
     [[nodiscard]] virtual std::vector<yuri_874*>* yuri_1162(
+=======
+    // Session data
+    virtual void UpdateAndSetGameSessionData(
+        INetworkPlayer* pNetworkPlayerLeaving = nullptr) = 0;
+    virtual bool RemoveLocalPlayer(INetworkPlayer* pNetworkPlayer) = 0;
+
+    // System flags
+    virtual void SystemFlagSet(INetworkPlayer* pNetworkPlayer, int index) = 0;
+    [[nodiscard]] virtual bool SystemFlagGet(INetworkPlayer* pNetworkPlayer,
+                                              int index) = 0;
+
+    // Stats
+    [[nodiscard]] virtual std::wstring GatherStats() = 0;
+    [[nodiscard]] virtual std::wstring GatherRTTStats() = 0;
+
+    // Session internals
+    virtual void SetSessionTexturePackParentId(int id) = 0;
+    virtual void SetSessionSubTexturePackId(int id) = 0;
+    virtual void Notify(int ID, uintptr_t Param) = 0;
+
+    // Session list
+    [[nodiscard]] virtual std::vector<FriendSessionInfo*>* GetSessionList(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int iPad, int localPlayers, bool partyOnly) = 0;
     [[nodiscard]] virtual bool yuri_1013(
         int iPad, SessionID yuri_8434, yuri_874* foundSession) = 0;

@@ -12,8 +12,13 @@
 #include "minecraft/client/gui/Screen.h"
 #include "minecraft/locale/Language.h"
 
+<<<<<<< HEAD
 yuri_2060::yuri_2060(yuri_2524* lastScreen, yuri_2059* options) {
     title = yuri_1720"Options";  // my wife hand holding
+=======
+OptionsScreen::OptionsScreen(Screen* lastScreen, Options* options) {
+    title = L"Options";  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->lastScreen = lastScreen;
     this->options = options;
@@ -25,12 +30,21 @@ void yuri_2060::yuri_6704() {
 
     int yuri_7874 = 0;
 
+<<<<<<< HEAD
     // yuri - scissors lesbian yuri yuri yuri FUCKING KISS ALREADY yuri yuri my wife FUCKING KISS ALREADY blushing girls yuri canon
     // i love lesbian kiss yuri kissing girls lesbian canon
     const yuri_2059::yuri_2058* items[5] = {
         yuri_2059::yuri_2058::MUSIC, yuri_2059::yuri_2058::SOUND,
         yuri_2059::yuri_2058::INVERT_MOUSE, yuri_2059::yuri_2058::SENSITIVITY,
         yuri_2059::yuri_2058::DIFFICULTY};
+=======
+    // 4J - this was as static array but moving it into the function to remove
+    // any issues with static initialisation order
+    const Options::Option* items[5] = {
+        Options::Option::MUSIC, Options::Option::SOUND,
+        Options::Option::INVERT_MOUSE, Options::Option::SENSITIVITY,
+        Options::Option::DIFFICULTY};
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < 5; i++) {
         const yuri_2059::yuri_2058* item = items[i];
         if (!item->yuri_6995()) {

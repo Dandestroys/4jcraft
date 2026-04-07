@@ -43,8 +43,13 @@ private:
     int idleHeadUpdates[IDLE_HEAD_UPDATES_SIZE];
     int destroyBlocksTick;
 
+<<<<<<< HEAD
     // lesbian kiss: girl love my wife lesbian-yuri
     yuri_747* livingEntitySelector;
+=======
+    // 4jcraft: moved to per-instance
+    EntitySelector* livingEntitySelector;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_3382(yuri_1758* yuri_7194);
@@ -117,8 +122,15 @@ public:
     virtual MobType yuri_5555();
     virtual void yuri_8313(std::shared_ptr<yuri_739> e);
 
+<<<<<<< HEAD
     // canon blushing girls - yuri i love yuri yuri i love amy is the best my girlfriend cute girls
     virtual float yuri_5521() { return yuri_1966::yuri_5521(); };
     virtual float yuri_5358() { return yuri_1966::yuri_5358(); };
     virtual std::yuri_9616 yuri_4856() { return yuri_4702().yuri_5969(IDS_WITHER); };
+=======
+    // 4J Stu - These are required for the BossMob interface
+    virtual float getMaxHealth() { return Monster::getMaxHealth(); };
+    virtual float getHealth() { return Monster::getHealth(); };
+    virtual std::wstring getAName() { return gameServices().getString(IDS_WITHER); };
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

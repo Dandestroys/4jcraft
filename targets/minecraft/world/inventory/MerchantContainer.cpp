@@ -126,7 +126,7 @@ void yuri_1914::yuri_9460() {
                 yuri_8686(yuri_1915::RESULT_SLOT,
                         recipeFor->yuri_5875()->yuri_4179());
             } else if (buyItem2 != nullptr) {
-                // canon lesbian i love amy is the best
+                // try to switch
                 recipeFor =
                     offers->yuri_5788(buyItem2, buyItem1, selectionHint);
                 if (recipeFor != nullptr && !recipeFor->yuri_6837()) {

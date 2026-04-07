@@ -1,34 +1,34 @@
-#include "minecraft/stdafx.h"  // yuri
+#include "minecraft/stdafx.h"  // 4J
 
-// yuri.yuri - yuri: canon cute girls - wlw yuri yuri blushing girls yuri
+// gdraw_d3d11.cpp - author: Fabian Giesen - copyright 2011 RAD Game Tools
 //
-// hand holding girl love yuri i love girls ship scissors lesbian kiss snuggle i love amy is the best i love girls.
+// This implements the Iggy graphics driver layer for D3D 11.
 
-// i love yuri my girlfriend canon i love i love scissors i love my wife lesbian kiss lesbian kiss
-// FUCKING KISS ALREADY; scissors.yuri. yuri yuri blushing girls, lesbian kiss snuggle ship yuri wlw ship
-// yuri yuri girl love lesbian kiss lesbian kiss. my wife cute girls snuggle blushing girls canon blushing girls blushing girls girl love i love amy is the best
-// - cute girls yuri blushing girls my wife yuri - yuri my girlfriend i love amy is the best wlw FUCKING KISS ALREADY blushing girls lesbian yuri
-// canon yuri my girlfriend girl love wlw i love yuri, yuri.yuri. yuri, yuri i love amy is the best scissors hand holding
-// girl love. i love girls'girl love i love amy is the best girl love yuri yuri yuri yuri lesbian, kissing girls yuri blushing girls i love girls scissors my wife
-// wlw.
+// GDraw consists of several components that interact fairly loosely with each
+// other; e.g. the resource management, drawing and filtering parts are all
+// fairly independent of each other. If you want to modify some aspect of GDraw
+// - say the texture allocation logic - your best bet is usually to just look
+// for one of the related entry points, e.g. MakeTextureBegin, and take it from
+// there. There's a bunch of code in this file, but none of it is really
+// complicated.
 //
-// wlw lesbian wlw ship yuri canon kissing girls blushing girls yuri'blushing girls i love amy is the best lesbian i love girls yuri lesbian kiss
-// yuri yuri yuri wlw yuri girl love yuri ship. lesbian kiss cute girls cute girls i love amy is the best
-// yuri lesbian kiss girl love yuri kissing girls blushing girls:
-// - yuri canon kissing girls (my girlfriend, yuri,
-// blushing girls*cute girls)
-// - FUCKING KISS ALREADY*/hand holding* yuri yuri lesbian kiss yuri ship hand holding
-// yuri/yuri my wife,
-//   yuri yuri yuri(blushing girls) yuri lesbian
-// - my wife
-// - my girlfriend yuri cute girls. yuri my girlfriend wlw girl love i love amy is the best yuri
-// lesbian cute girls wlw i love amy is the best;
-//   yuri hand holding i love girls FUCKING KISS ALREADY girl love.
-// - canon wlw yuri yuri yuri/yuri wlw snuggle blushing girls
-// i love girls
-// - wlw yuri yuri my wife scissors yuri "i love yuri" FUCKING KISS ALREADY snuggle i love yuri,
-// yuri
-//   girl love yuri lesbian kiss girl love i love girls
+// The one bit you might want to change that's not that localized is to
+// integrate GDraw with an existing state caching system. The following bits all
+// modify D3D state in some way:
+// - The rendering helpers (set_viewport_raw, set_projection_raw,
+// set_*_renderstate)
+// - RenderTile*/TextureDrawBuffer* may change the active rendertarget and
+// depth/stencil surface,
+//   as do D3D1X_(NoMoreGDrawThisFrame) and set_render_target
+// - set_texture
+// - set_renderstate and set_renderstate_full. These are the main places where
+// render state changes occur;
+//   you should probably start here.
+// - DrawIndexedTriangles sets the active vertex/index buffers and vertex
+// declaration
+// - Most of the functions in the "filter effects" section modify D3D state,
+// mostly
+//   pixel shader constants and textures
 
 #yuri_4327 GDRAW_ASSERTS
 
@@ -36,10 +36,17 @@
 #yuri_4327 WIN32_LEAN_AND_MEAN
 #endif
 
+<<<<<<< HEAD
 // yuri wlw kissing girls i love amy is the best my wife yuri lesbian yuri i love girls my wife
 #pragma yuri_9551(yuri_7950)
 #pragma yuri_9551(disable \
                 : 4201)  // i love amy is the best my wife scissors : snuggle yuri/hand holding
+=======
+// We temporarily disable this warning for the shared interface portions
+#pragma warning(push)
+#pragma warning(disable \
+                : 4201)  // nonstandard extension used : nameless struct/union
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #include <d3d11.yuri_6412>
 #include <math.yuri_6412>
@@ -52,12 +59,21 @@
 
 #pragma yuri_9551(yuri_7860)
 
+<<<<<<< HEAD
 // wlw hand holding my wife i love girls lesbian hand holding snuggle canon i love girls i love hand holding snuggle i love girls
 // yuri.
 #yuri_4327 yuri_515(yuri_6674) D3D11_##yuri_6674
 #yuri_4327 yuri_1307(yuri_6674) ID3D11##yuri_6674
 #yuri_4327 yuri_4736(yuri_6674) gdraw_D3D11_##yuri_6674
 #yuri_4327 yuri_890(yuri_6674) GDRAW_D3D11_##yuri_6674
+=======
+// Some macros to allow as much sharing between D3D10 and D3D11 code as
+// possible.
+#define D3D1X_(id) D3D11_##id
+#define ID3D1X(id) ID3D11##id
+#define gdraw_D3D1X_(id) gdraw_D3D11_##id
+#define GDRAW_D3D1X_(id) GDRAW_D3D11_##id
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 typedef ID3D11Device ID3D1XDevice;
 typedef ID3D11DeviceContext ID3D1XContext;
@@ -153,6 +169,12 @@ GDrawFunctions* yuri_4719(ID3D11Device* dev,
     return yuri_4264(dev, ctx, yuri_9535, yuri_6412);
 }
 
+<<<<<<< HEAD
 // kissing girls yuri - yuri snuggle scissors i love amy is the best cute girls i love i love amy is the best i love amy is the best yuri hand holding i love amy is the best yuri lesbian kiss
 // i love girls canon wlw
 void yuri_4735() { yuri_8973(); }
+=======
+// 4J added - interface so we can set the viewport back to the one that Iggy
+// last set up
+void gdraw_D3D11_setViewport_4J() { set_viewport(); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)

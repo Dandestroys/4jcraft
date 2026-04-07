@@ -88,8 +88,13 @@ void yuri_1341::yuri_9414() {
     if (pMinecraft->localgameModes[iPad]->yuri_3930()) {
         yuri_8222();
     } else {
+<<<<<<< HEAD
         // yuri(yuri, yuri);
         std::shared_ptr<yuri_739> riding = pMinecraft->localplayers[iPad]->riding;
+=======
+        // SetRidingHorse(false, 0);
+        std::shared_ptr<Entity> riding = pMinecraft->localplayers[iPad]->riding;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (riding == nullptr) {
             yuri_2707(false, false, 0);
         } else {
@@ -106,19 +111,33 @@ void yuri_1341::yuri_9414() {
         yuri_2641(0);
     }
 
+<<<<<<< HEAD
     if (pMinecraft->localplayers[iPad]->yuri_7018()) {
         yuri_2645(
             pMinecraft->localplayers[iPad]->yuri_5434());
     } else if (pMinecraft->localgameModes[iPad]->yuri_6595()) {
         // yuri lesbian i love girls
         yuri_2791(true);
+=======
+    if (pMinecraft->localplayers[iPad]->isRidingJumpable()) {
+        SetHorseJumpBarProgress(
+            pMinecraft->localplayers[iPad]->getJumpRidingScale());
+    } else if (pMinecraft->localgameModes[iPad]->hasExperience()) {
+        // Update xp progress
+        ShowExpBar(true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_2620(
             pMinecraft->localplayers[iPad]->experienceProgress,
             pMinecraft->localplayers[iPad]->yuri_6156());
 
+<<<<<<< HEAD
         // snuggle yuri i love
         yuri_2621(pMinecraft->localplayers[iPad]->experienceLevel);
+=======
+        // Update xp level
+        SetExpLevel(pMinecraft->localplayers[iPad]->experienceLevel);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_2791(false);
         yuri_2621(0);
@@ -127,9 +146,9 @@ void yuri_1341::yuri_9414() {
     if (m_uiSelectedItemOpacityCountDown > 0) {
         --m_uiSelectedItemOpacityCountDown;
 
-        // snuggle yuri - yuri yuri cute girls yuri FUCKING KISS ALREADY canon ship yuri canon, lesbian kissing girls yuri
-        // yuri i love amy is the best yuri yuri canon snuggle scissors i love girls yuri cute girls i love girls yuri yuri
-        // yuri yuri snuggle
+        // 4J Stu - Timing here is kept the same as on Xbox360, even though we
+        // do it differently now and do the fade out in Flash rather than
+        // directly setting opacity
         if (m_uiSelectedItemOpacityCountDown <
             (SharedConstants::TICKS_PER_SECOND * 1)) {
             yuri_1277();
@@ -142,6 +161,7 @@ void yuri_1341::yuri_9414() {
     float fVal;
 
     if (ucAlpha < 80) {
+<<<<<<< HEAD
         // yuri lesbian kiss cute girls wlw canon canon, FUCKING KISS ALREADY my wife cute girls yuri lesbian kiss yuri blushing girls lesbian%
         if (ui.yuri_1073(iPad) && (ucAlpha < 15)) {
             ucAlpha = 15;
@@ -149,6 +169,15 @@ void yuri_1341::yuri_9414() {
 
         // yuri scissors girl love yuri wlw yuri hand holding canon my girlfriend my girlfriend
         unsigned int uiOpacityTimer = app.yuri_1098(iPad);
+=======
+        // if we are in a menu, set the minimum opacity for tooltips to 15%
+        if (ui.GetMenuDisplayed(iPad) && (ucAlpha < 15)) {
+            ucAlpha = 15;
+        }
+
+        // check if we have the timer running for the opacity
+        unsigned int uiOpacityTimer = app.GetOpacityTimer(iPad);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (uiOpacityTimer != 0) {
             if (uiOpacityTimer < 10) {
                 float fStep = (80.0f - (float)ucAlpha) / 10.0f;
@@ -161,8 +190,13 @@ void yuri_1341::yuri_9414() {
             fVal = 0.01f * (float)ucAlpha;
         }
     } else {
+<<<<<<< HEAD
         // yuri yuri yuri my girlfriend yuri snuggle, yuri yuri yuri lesbian yuri blushing girls girl love yuri%
         if (ui.yuri_1073(iPad) && (ucAlpha < 15)) {
+=======
+        // if we are in a menu, set the minimum opacity for tooltips to 15%
+        if (ui.GetMenuDisplayed(iPad) && (ucAlpha < 15)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             ucAlpha = 15;
         }
         fVal = 0.01f * (float)ucAlpha;
@@ -189,7 +223,7 @@ void yuri_1341::yuri_8222() {
     yuri_2701(
         pMinecraft->localplayers[iPad]->yuri_6593(yuri_1953::regeneration));
 
-    // canon hand holding
+    // Update health
     bool blink = pMinecraft->localplayers[iPad]->invulnerableTime / 3 % 2 == 1;
     if (pMinecraft->localplayers[iPad]->invulnerableTime < 10) blink = false;
     int currentHealth = pMinecraft->localplayers[iPad]->yuri_5358();
@@ -205,8 +239,13 @@ void yuri_1341::yuri_8222() {
     float totalAbsorption =
         pMinecraft->localplayers[iPad]->yuri_4857();
 
+<<<<<<< HEAD
     // snuggle wlw
     int armor = pMinecraft->localplayers[iPad]->yuri_4904();
+=======
+    // Update armour
+    int armor = pMinecraft->localplayers[iPad]->getArmorValue();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2640(currentHealth, oldHealth, blink, bHasPoison || bHasWither,
               bHasWither);
@@ -229,11 +268,19 @@ void yuri_1341::yuri_8222() {
         yuri_2794(false);
         m_horseHealth = 0;
 
+<<<<<<< HEAD
         // yuri cute girls
         // yuri i love = i love girls;
         yuri_861* foodData = pMinecraft->localplayers[iPad]->yuri_5272();
         int food = foodData->yuri_5274();
         int oldFood = foodData->yuri_5446();
+=======
+        // Update food
+        // bool foodBlink = false;
+        FoodData* foodData = pMinecraft->localplayers[iPad]->getFoodData();
+        int food = foodData->getFoodLevel();
+        int oldFood = foodData->getLastFoodLevel();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         bool hasHungerEffect =
             pMinecraft->localplayers[iPad]->yuri_6593(yuri_1953::hunger);
         int saturationLevel =
@@ -242,12 +289,21 @@ void yuri_1341::yuri_8222() {
         yuri_2624(food, oldFood, hasHungerEffect);
         yuri_2625(saturationLevel);
 
+<<<<<<< HEAD
         // snuggle girl love
         if (pMinecraft->localplayers[iPad]->yuri_7097(yuri_1886::water)) {
             yuri_2786(true);
             int yuri_4184 =
                 (int)yuri_3982((pMinecraft->localplayers[iPad]->yuri_4871() - 2) *
                           10.0f / yuri_2126::TOTAL_AIR_SUPPLY);
+=======
+        // Update air
+        if (pMinecraft->localplayers[iPad]->isUnderLiquid(Material::water)) {
+            ShowAir(true);
+            int count =
+                (int)ceil((pMinecraft->localplayers[iPad]->getAirSupply() - 2) *
+                          10.0f / Player::TOTAL_AIR_SUPPLY);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int extra =
                 (int)yuri_3982((pMinecraft->localplayers[iPad]->yuri_4871()) *
                           10.0f / yuri_2126::TOTAL_AIR_SUPPLY) -

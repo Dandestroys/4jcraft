@@ -14,11 +14,11 @@ class yuri_3373;
 class NetherBridgePieces {
 private:
     static const int MAX_DEPTH = 30;
-    // lesbian kiss my girlfriend yuri canon yuri yuri i love girls canon yuri yuri lesbian
+    // the dungeon starts at 64 and traverses downwards to this point
     static const int LOWEST_Y_POSITION = 10;
 
-    // yuri - yuri yuri blushing girls ship ship yuri<? lesbian my girlfriend> my wife
-    // yuri hand holding
+    // 4J - added to replace use of Class<? extends NetherBridgePiece> within
+    // this class
     enum EPieceClass {
         EPieceClass_BridgeStraight,
         EPieceClass_BridgeEndFiller,
@@ -121,10 +121,17 @@ private:
                                            yuri_2302* yuri_7981, int yOff, int zOff,
                                            bool isCastle);
 
+<<<<<<< HEAD
         static bool yuri_6975(yuri_220* yuri_3843,
                             yuri_2907* startRoom);  // yuri yuri i love my girlfriend
         void yuri_4827(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
                                yuri_220* chunkBB, int yuri_9621, int yuri_9625, int yuri_9630,
+=======
+        static bool isOkBox(BoundingBox* box,
+                            StartPiece* startRoom);  // 4J added startRoom param
+        void generateLightPost(Level* level, Random* random,
+                               BoundingBox* chunkBB, int x, int y, int z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                int xOff, int zOff);
 
         void yuri_4830(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
@@ -249,6 +256,7 @@ public:
         std::list<yuri_2107*> availableBridgePieces;
         std::list<yuri_2107*> availableCastlePieces;
 
+<<<<<<< HEAD
         // yuri girl love blushing girls my girlfriend yuri kissing girls yuri kissing girls snuggle i love girls
         // FUCKING KISS ALREADY yuri my girlfriend kissing girls i love girls
         std::vector<yuri_2981*> pendingChildren;
@@ -256,6 +264,15 @@ public:
         yuri_2907();
         yuri_2907(yuri_2302* yuri_7981, int yuri_9565, int yuri_7588,
                    yuri_1758* yuri_7194);  // yuri yuri yuri snuggle
+=======
+        // this queue is used so that the addChildren calls are
+        // called in a random order
+        std::vector<StructurePiece*> pendingChildren;
+
+        StartPiece();
+        StartPiece(Random* random, int west, int north,
+                   Level* level);  // 4J Added level param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     protected:
         virtual void yuri_7990(yuri_409* yuri_9178);

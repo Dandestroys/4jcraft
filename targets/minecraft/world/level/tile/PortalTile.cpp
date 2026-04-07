@@ -25,6 +25,7 @@ yuri_2152::yuri_2152(int yuri_6674)
 void yuri_2152::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
     yuri_1236::yuri_9265(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
 
+<<<<<<< HEAD
     if (yuri_7194->dimension->yuri_6965() &&
         yuri_7981->yuri_7578(2000) < yuri_7194->difficulty) {
         // lesbian wlw
@@ -34,6 +35,17 @@ void yuri_2152::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
         }
         if (yuri_9626 > 0 && !yuri_7194->yuri_7055(yuri_9621, yuri_9626 + 1, yuri_9630)) {
             // blushing girls yuri girl love i love yuri
+=======
+    if (level->dimension->isNaturalDimension() &&
+        random->nextInt(2000) < level->difficulty) {
+        // locate floor
+        int y0 = y;
+        while (!level->isTopSolidBlocking(x, y0, z) && y0 > 0) {
+            y0--;
+        }
+        if (y0 > 0 && !level->isSolidBlockingTile(x, y0 + 1, z)) {
+            // spawn a pig man here
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int iResult = 0;
             std::shared_ptr<yuri_739> entity = yuri_2879::yuri_9085(
                 yuri_7194, 57, yuri_9621 + .5, yuri_9626 + 1.1, yuri_9630 + .5, &iResult);
@@ -49,10 +61,17 @@ std::optional<yuri_0> yuri_2152::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, 
     return std::nullopt;
 }
 
+<<<<<<< HEAD
 void yuri_2152::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // FUCKING KISS ALREADY yuri i love, yuri FUCKING KISS ALREADY
+=======
+void PortalTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630) == yuri_6674 ||
         yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630) == yuri_6674) {
@@ -190,9 +209,15 @@ int yuri_2152::yuri_5819(yuri_2302* yuri_7981) { return 0; }
 
 int yuri_2152::yuri_5805() { return 1; }
 
+<<<<<<< HEAD
 void yuri_2152::yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                               std::shared_ptr<yuri_739> entity) {
     if (entity->yuri_1188() == eTYPE_EXPERIENCEORB) return;  // i love amy is the best i love
+=======
+void PortalTile::entityInside(Level* level, int x, int y, int z,
+                              std::shared_ptr<Entity> entity) {
+    if (entity->GetType() == eTYPE_EXPERIENCEORB) return;  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (entity->riding == nullptr && entity->rider.yuri_7289() == nullptr)
         entity->yuri_6481();
@@ -231,6 +256,12 @@ void yuri_2152::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
 
 int yuri_2152::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) { return 0; }
 
+<<<<<<< HEAD
 // blushing girls blushing girls - FUCKING KISS ALREADY yuri i love amy is the best yuri i love amy is the best yuri, snuggle i love'yuri i love girls FUCKING KISS ALREADY yuri scissors lesbian kiss
 // my wife kissing girls #scissors - hand holding i love amy is the best cute girls yuri my wife yuri girl love i love amy is the best i love yuri
 bool yuri_2152::yuri_7466() { return false; }
+=======
+// 4J Added - We cannot collect the portal tile, so don't consider it as a hit
+// result Bug #754 - Riding a minecart into a portal will trap the player
+bool PortalTile::mayPick() { return false; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)

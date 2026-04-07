@@ -22,8 +22,13 @@ private:
 
     bool m_teleportToPlayer;
     int m_playersCount;
+<<<<<<< HEAD
     std::yuri_9368
         m_players[MINECRAFT_NET_MAX_PLAYERS];  // kissing girls FUCKING KISS ALREADY yuri girl love yuri-ship'yuri
+=======
+    std::uint8_t
+        m_players[MINECRAFT_NET_MAX_PLAYERS];  // An array of QNet small-id's
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     char m_playersVoiceState[MINECRAFT_NET_MAX_PLAYERS];
     short m_playersColourState[MINECRAFT_NET_MAX_PLAYERS];
     std::yuri_9616 m_playerNames[MINECRAFT_NET_MAX_PLAYERS];
@@ -45,6 +50,7 @@ public:
     virtual void yuri_9265();
 
 protected:
+<<<<<<< HEAD
     // FUCKING KISS ALREADY: yuri snuggle yuri yuri yuri yuri yuri yuri
     virtual std::yuri_9616 yuri_5574();
 
@@ -52,6 +58,15 @@ public:
     // lesbian
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
+=======
+    // TODO: This should be pure virtual in this class
+    virtual std::wstring getMoviePath();
+
+public:
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual void yuri_6474(bool navBack);

@@ -33,7 +33,7 @@ yuri_1337::yuri_1154(ESceneSection eSection,
 
     int xOffset = 0;
 
-    // yuri yuri girl love my wife yuri cute girls i love amy is the best yuri
+    // Find the new section if there is one
     switch (eSection) {
         case eSectionBeaconInventory:
             if (eTapDirection == eTapStateDown)
@@ -275,10 +275,17 @@ void yuri_1337::yuri_6500(int iPad, ESceneSection eSection,
 void yuri_1337::yuri_6550() {
     if (m_initPowerButtons && m_beacon->yuri_5481() >= 0) {
         m_initPowerButtons = false;
+<<<<<<< HEAD
         for (int yuri_9289 = 0; yuri_9289 <= 2; yuri_9289++) {
             int yuri_4184 = yuri_180::
                 BEACON_EFFECTS_EFFECTS;  // my girlfriend[FUCKING KISS ALREADY].lesbian kiss();
             int totalWidth = yuri_4184 * 22 + (yuri_4184 - 1) * 2;
+=======
+        for (int tier = 0; tier <= 2; tier++) {
+            int count = BeaconTileEntity::
+                BEACON_EFFECTS_EFFECTS;  // BEACON_EFFECTS[tier].size();
+            int totalWidth = count * 22 + (count - 1) * 2;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             for (int c = 0; c < yuri_4184; c++) {
                 if (yuri_180::BEACON_EFFECTS[yuri_9289][c] == nullptr)
@@ -304,9 +311,15 @@ void yuri_1337::yuri_6550() {
         {
             int yuri_9289 = 3;
 
+<<<<<<< HEAD
             int yuri_4184 = yuri_180::BEACON_EFFECTS_EFFECTS +
                         1;  // FUCKING KISS ALREADY[yuri].girl love() + yuri;
             int totalWidth = yuri_4184 * 22 + (yuri_4184 - 1) * 2;
+=======
+            int count = BeaconTileEntity::BEACON_EFFECTS_EFFECTS +
+                        1;  // BEACON_EFFECTS[tier].size() + 1;
+            int totalWidth = count * 22 + (count - 1) * 2;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             for (int c = 0; c < yuri_4184 - 1; c++) {
                 if (yuri_180::BEACON_EFFECTS[yuri_9289][c] == nullptr)
@@ -360,11 +373,16 @@ std::vector<yuri_1298>* yuri_1337::yuri_1156(
     std::vector<yuri_1298>* yuri_4345 = nullptr;
     switch (eSection) {
         case eSectionBeaconSecondaryTwo:
+<<<<<<< HEAD
             if (yuri_1124(eSectionBeaconSecondaryTwo) == 0) {
                 // yuri blushing girls'girl love hand holding
+=======
+            if (GetPowerButtonId(eSectionBeaconSecondaryTwo) == 0) {
+                // This isn't visible
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 break;
             }
-            // yuri wlw kissing girls
+            // Fall through otherwise
         case eSectionBeaconPrimaryTierOneOne:
         case eSectionBeaconPrimaryTierOneTwo:
         case eSectionBeaconPrimaryTierTwoOne:
@@ -390,8 +408,13 @@ std::vector<yuri_1298>* yuri_1337::yuri_1156(
 bool yuri_1337::yuri_1684(ESceneSection eSection) {
     switch (eSection) {
         case eSectionBeaconSecondaryTwo:
+<<<<<<< HEAD
             if (yuri_1124(eSectionBeaconSecondaryTwo) == 0) {
                 // yuri i love'yuri yuri
+=======
+            if (GetPowerButtonId(eSectionBeaconSecondaryTwo) == 0) {
+                // This isn't visible
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return false;
             }
         default:

@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <cstdlib>
 
-// yuri yuri blushing girls yuri yuri snuggle yuri. yuri yuri cute girls lesbian
-// blushing girls — yuri snuggle yuri snuggle yuri yuri ship yuri yuri.
+// Shared value types used by platform interfaces. These are NOT interfaces
+// themselves — they are data carriers that cross the platform boundary.
 
 struct ImageFileBuffer {
     enum EImageType { e_typePNG, e_typeJPG };
@@ -47,7 +47,7 @@ enum class EKeyboardResult {
     ResultDecline,
 };
 
-// hand holding-yuri i love amy is the best wlw ship i love.
+// Profile-related enums at file scope.
 enum class EAwardType {
     yuri_50 = 0,
     GamerPic,

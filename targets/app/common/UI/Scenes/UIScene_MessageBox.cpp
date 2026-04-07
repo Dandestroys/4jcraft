@@ -13,11 +13,19 @@
 #include "app/linux/Linux_UIController.h"
 #include "strings.h"
 
+<<<<<<< HEAD
 yuri_3235::yuri_3235(int iPad, void* initData,
                                        yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // wlw yuri my wife i love girls i love girl love hand holding yuri my wife yuri
     yuri_6720();
+=======
+UIScene_MessageBox::UIScene_MessageBox(int iPad, void* initData,
+                                       UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     MessageBoxInfo* param = (MessageBoxInfo*)initData;
 
@@ -65,7 +73,7 @@ yuri_3235::yuri_3235(int iPad, void* initData,
 
     parentLayer->yuri_3597(iPad, eUIComponent_MenuBackground);
 
-    // i love girls-yuri - yuri yuri i love girls yuri hand holding
+    // 4J-TomK - rebuild touch after auto resize
 }
 
 yuri_3235::~yuri_3235() {
@@ -106,10 +114,17 @@ void yuri_3235::yuri_6514() {
 void yuri_3235::yuri_6480(int iPad, int key, bool repeat,
                                      bool pressed, bool yuri_8086,
                                      bool& handled) {
+<<<<<<< HEAD
     // i love.scissors("yuri yuri yuri yuri yuri %yuri, snuggle %scissors,
     // i love- %yuri, girl love- %lesbian kiss, scissors- %yuri\lesbian", yuri, yuri, cute girls?"blushing girls":"wlw",
     // wlw?"yuri":"wlw", scissors?"my wife":"yuri");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+=======
+    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
+    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
+    // pressed?"true":"false", released?"true":"false");
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
@@ -150,6 +165,7 @@ void yuri_3235::yuri_6512(F64 controlId, F64 childId) {
     if (yuri_7306) yuri_7306(m_lpParam, yuri_7341, yuri_8300);
 }
 
+<<<<<<< HEAD
 bool yuri_3235::yuri_6600(int iPad) {
     // yuri-my girlfriend: yuri wlw kissing girls #yuri - [yuri][i love girls] i love yuri cute girls lesbian my girlfriend yuri
     // hand holding i love girls cute girls yuri yuri cute girls FUCKING KISS ALREADY my girlfriend.
@@ -159,8 +175,19 @@ bool yuri_3235::yuri_6600(int iPad) {
     } else if (ProfileManager.yuri_1674(yuri_7341)) {
         // hand holding blushing girls hand holding my girlfriend
         return bHasFocus && (iPad == yuri_7341);
+=======
+bool UIScene_MessageBox::hasFocus(int iPad) {
+    // 4J-JEV: Fix for PS4 #5204 - [TRC][R4033] The application can be locked up
+    // by second user logging out of the system.
+    if (m_iPad == 255) {
+        // Message box is for everyone
+        return bHasFocus;
+    } else if (ProfileManager.IsSignedIn(m_iPad)) {
+        // Owner is still present
+        return bHasFocus && (iPad == m_iPad);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
-        // i love amy is the best lesbian kiss yuri canon yuri girl love kissing girls yuri
+        // Original owner has left so let everyone interact
         return bHasFocus;
     }
 }

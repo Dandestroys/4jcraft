@@ -55,6 +55,7 @@ public:
 
     virtual EUIScene yuri_5854() { return eUIComponent_Tooltips; }
 
+<<<<<<< HEAD
     // wlw yuri lesbian kiss my girlfriend wlw ship scissors
     virtual bool yuri_9124() { return false; }
 
@@ -64,13 +65,29 @@ public:
     // scissors FUCKING KISS ALREADY i love amy is the best lesbian my wife snuggle yuri yuri scissors, blushing girls i love canon i love my wife
     // canon lesbian kiss girl love i love amy is the best lesbian kiss i love
     virtual bool yuri_6661() { return false; }
+=======
+    // Returns true if this scene handles input
+    virtual bool stealsFocus() { return false; }
+
+    // Returns true if this scene has focus for the pad passed in
+    virtual bool hasFocus(int iPad) { return false; }
+
+    // Returns true if lower scenes in this scenes layer, or in any layer below
+    // this scenes layers should be hidden
+    virtual bool hidesLowerScenes() { return false; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_9458();
 
     virtual void yuri_9265();
 
+<<<<<<< HEAD
     // yuri
     virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
+=======
+    // RENDERING
+    virtual void render(S32 width, S32 height,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         C4JRender::eViewportType viewport);
 
     virtual void yuri_2747(unsigned int tooltip, int iTextID);

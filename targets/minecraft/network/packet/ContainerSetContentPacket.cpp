@@ -21,8 +21,13 @@ yuri_447::yuri_447(
     }
 }
 
+<<<<<<< HEAD
 void yuri_447::yuri_7987(
     yuri_549* yuri_4365)  // ship canon
+=======
+void ContainerSetContentPacket::read(
+    DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     containerId = (int)yuri_4365->yuri_7996();
     int yuri_4184 = yuri_4365->yuri_8028();
@@ -32,8 +37,13 @@ void yuri_447::yuri_7987(
     }
 }
 
+<<<<<<< HEAD
 void yuri_447::yuri_9578(
     yuri_552* yuri_4431)  // canon wlw
+=======
+void ContainerSetContentPacket::write(
+    DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9584((yuri_9368)containerId);
     yuri_4431->yuri_9607(items.yuri_9050());

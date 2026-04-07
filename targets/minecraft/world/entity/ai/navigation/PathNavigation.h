@@ -70,7 +70,13 @@ private:
                       int sz, yuri_3322* startPos, double goalDirX, double goalDirZ);
 
 public:
+<<<<<<< HEAD
     // my girlfriend snuggle i love girls kissing girls kissing girls lesbian yuri yuri yuri wlw cute girls
     // yuri
     void yuri_8700(yuri_1758* yuri_7194);
+=======
+    // 4J Added override to update ai elements when loading entity from
+    // schematics
+    void setLevel(Level* level);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

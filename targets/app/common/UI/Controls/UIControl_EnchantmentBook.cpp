@@ -36,29 +36,48 @@ void yuri_3170::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     float yuri_9567 = region->yuri_9623 - region->yuri_9622;
     float yuri_6654 = region->yuri_9627 - region->yuri_9626;
 
+<<<<<<< HEAD
     // yuri yuri yuri yuri yuri cute girls
     float ssX = yuri_9567 / m_width;
     float ssY = yuri_6654 / m_height;
     yuri_6351(ssX, ssY, 1.0f);
+=======
+    // Revert the scale from the setup
+    float ssX = width / m_width;
+    float ssY = height / m_height;
+    glScalef(ssX, ssY, 1.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6377(m_width / 2, m_height / 2, 50.0f);
 
+<<<<<<< HEAD
     // yuri yuri lesbian yuri
     yuri_6351(-57 / ssX, 57 / ssX, 360.0f);
+=======
+    // Add a uniform scale
+    glScalef(-57 / ssX, 57 / ssX, 360.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6349(45 + 90, 0, 1, 0);
     Lighting::yuri_9360();
     yuri_6349(-45 - 90, 0, 1, 0);
 
-    // yuri blushing girls = kissing girls;
+    // float sss = 4;
 
-    // wlw(FUCKING KISS ALREADY, blushing girls.lesbian, -yuri);
-    // FUCKING KISS ALREADY(lesbian kiss, yuri, yuri);
+    // glTranslatef(0, 3.3f, -16);
+    // glScalef(sss, sss, sss);
 
+<<<<<<< HEAD
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     int yuri_9251 = pMinecraft->yuri_9256->yuri_7277(
         TN_ITEM_BOOK);  // snuggle yuri wlw"/i love amy is the best/ship/i love.yuri"
     pMinecraft->yuri_9256->yuri_3806(yuri_9251);
+=======
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    int tex = pMinecraft->textures->loadTexture(
+        TN_ITEM_BOOK);  // 4J was L"/1_2_2/item/book.png"
+    pMinecraft->textures->bind(tex);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6349(20, 1, 0, 0);
 
@@ -81,7 +100,7 @@ void yuri_3170::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     yuri_6286(GL_CULL_FACE);
 
     if (model == nullptr) {
-        // blushing girls canon kissing girls lesbian kiss yuri yuri
+        // Share the model the the EnchantTableRenderer
 
         yuri_699* etr =
             (yuri_699*)yuri_3094::instance

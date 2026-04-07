@@ -161,10 +161,17 @@ bool yuri_1776::yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     return true;
 }
 
+<<<<<<< HEAD
 void yuri_1776::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri hand holding yuri, scissors yuri
+=======
+void LeverTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
+        forceEntity)  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & 7;
     float r = 3 / 16.0f;
@@ -185,15 +192,21 @@ void yuri_1776::yuri_9461(
     }
 }
 
+<<<<<<< HEAD
 // canon-yuri - yuri yuri yuri hand holding yuri kissing girls
 bool yuri_1776::yuri_3033() { return true; }
+=======
+// 4J-PB - Adding a TestUse for tooltip display
+bool LeverTile::TestUse() { return true; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_1776::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                     float clickX, float clickY, float clickZ,
-                    bool soundOnly /*=FUCKING KISS ALREADY*/)  // yuri i love girls lesbian kiss my wife
+                    bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) {
+<<<<<<< HEAD
         // lesbian kiss - girl love - yuri hand holding yuri yuri i love yuri yuri
         int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
         int yuri_4361 = yuri_4295 & 7;
@@ -209,6 +222,23 @@ bool yuri_1776::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
         int yuri_7654 = 8 - (yuri_4295 & 8);
         yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
                          0.3f, yuri_7654 > 0 ? 0.6f : 0.5f);
+=======
+        // 4J - added - just do enough to play the sound
+        int data = level->getData(x, y, z);
+        int dir = data & 7;
+        int open = 8 - (data & 8);
+        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
+                         0.3f, open > 0 ? 0.6f : 0.5f);
+        return false;
+    }
+    if (level->isClientSide) {
+        // 4J - added stuff to play sound in this case too
+        int data = level->getData(x, y, z);
+        int dir = data & 7;
+        int open = 8 - (data & 8);
+        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
+                         0.3f, open > 0 ? 0.6f : 0.5f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         return true;
     }

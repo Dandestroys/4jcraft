@@ -39,6 +39,7 @@ protected:
     yuri_647(int yuri_6674, yuri_1886* material);
 
 public:
+<<<<<<< HEAD
     virtual yuri_1346* yuri_6007(int face, int yuri_4295);
     virtual yuri_1346* yuri_6007(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
     virtual void yuri_8072(IconRegister* iconRegister);
@@ -54,6 +55,23 @@ public:
             yuri_3091>());  // yuri snuggle ship, yuri yuri
     int yuri_5159(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     bool yuri_6980(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+=======
+    virtual Icon* getTexture(int face, int data);
+    virtual Icon* getTexture(LevelSource* level, int x, int y, int z, int face);
+    virtual void registerIcons(IconRegister* iconRegister);
+    virtual bool blocksLight();
+    virtual bool isSolidRender(bool isServerLevel = false);
+    virtual bool isCubeShaped();
+    virtual int getRenderShape();
+    virtual AABB getTileAABB(Level* level, int x, int y, int z);
+    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    virtual void updateShape(
+        LevelSource* level, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // 4J added forceData, forceEntity param
+    int getDir(LevelSource* level, int x, int y, int z);
+    bool isOpen(LevelSource* level, int x, int y, int z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     using yuri_3088::yuri_8855;
@@ -66,6 +84,7 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
+<<<<<<< HEAD
                      bool soundOnly = false);  // snuggle ship yuri my wife
     void yuri_8752(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool shouldOpen);
     virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
@@ -79,4 +98,19 @@ public:
     virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_7853(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                    std::shared_ptr<yuri_2126> yuri_7839);
+=======
+                     bool soundOnly = false);  // 4J added soundOnly param
+    void setOpen(Level* level, int x, int y, int z, bool shouldOpen);
+    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
+    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    virtual HitResult* clip(Level* level, int xt, int yt, int zt, Vec3* a,
+                            Vec3* b);
+    virtual bool mayPlace(Level* level, int x, int y, int z);
+    static bool isOpen(int data);
+    virtual int getPistonPushReaction();
+    int getCompositeData(LevelSource* level, int x, int y, int z);
+    virtual int cloneTileId(Level* level, int x, int y, int z);
+    virtual void playerWillDestroy(Level* level, int x, int y, int z, int data,
+                                   std::shared_ptr<Player> player);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

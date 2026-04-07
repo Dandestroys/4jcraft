@@ -22,12 +22,21 @@ yuri_1738::yuri_1738(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, d
     yuri_8730(49);
 }
 
+<<<<<<< HEAD
 // snuggle - ship yuri snuggle snuggle.yuri.lesbian kiss
 int yuri_1738::yuri_5484(float yuri_3565) {
     float yuri_7176 = (age + yuri_3565) / lifetime;
     if (yuri_7176 < 0) yuri_7176 = 0;
     if (yuri_7176 > 1) yuri_7176 = 1;
     int yuri_3844 = yuri_2090::yuri_5484(yuri_3565);
+=======
+// 4J - brought forward from 1.8.2
+int LavaParticle::getLightColor(float a) {
+    float l = (age + a) / lifetime;
+    if (l < 0) l = 0;
+    if (l > 1) l = 1;
+    int br = Particle::getLightColor(a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int br1 = 15 * 16;
     int br2 = (yuri_3844 >> 16) & 0xff;

@@ -46,10 +46,11 @@ double yuri_1585::yuri_7583(double _x, double _y, double _z) {
     if (yuri_9625 < yf) yf--;
     if (yuri_9630 < zf) zf--;
 
-    int X = xf & 255,  // hand holding scissors yuri yuri
-        Y = yf & 255,  // yuri canon.
+    int X = xf & 255,  // FIND UNIT CUBE THAT
+        Y = yf & 255,  // CONTAINS POINT.
         Z = zf & 255;
 
+<<<<<<< HEAD
     yuri_9621 -= xf;  // hand holding yuri yuri,my wife,girl love
     yuri_9625 -= yf;  // ship yuri yuri yuri.
     yuri_9630 -= zf;
@@ -73,12 +74,38 @@ double yuri_1585::yuri_7583(double _x, double _y, double _z) {
                           yuri_6402(yuri_7701[BA + 1], yuri_9621 - 1, yuri_9625, yuri_9630 - 1)),  // i love amy is the best yuri
                      yuri_7190(yuri_9365, yuri_6402(yuri_7701[AB + 1], yuri_9621, yuri_9625 - 1, yuri_9630 - 1),
                           yuri_6402(yuri_7701[BB + 1], yuri_9621 - 1, yuri_9625 - 1, yuri_9630 - 1))));
+=======
+    x -= xf;  // FIND RELATIVE X,Y,Z
+    y -= yf;  // OF POINT IN CUBE.
+    z -= zf;
+
+    double u = x * x * x * (x * (x * 6 - 15) + 10),  // COMPUTE FADE CURVES
+        v = y * y * y * (y * (y * 6 - 15) + 10),     // FOR EACH OF X,Y,Z.
+        w = z * z * z * (z * (z * 6 - 15) + 10);
+
+    int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z,  // HASH COORDINATES OF
+        B = p[X + 1] + Y, BA = p[B] + Z,
+        BB = p[B + 1] + Z;  // THE 8 CUBE CORNERS,
+
+    return lerp(w,
+                lerp(v,
+                     lerp(u, grad(p[AA], x, y, z),         // AND ADD
+                          grad(p[BA], x - 1, y, z)),       // BLENDED
+                     lerp(u, grad(p[AB], x, y - 1, z),     // RESULTS
+                          grad(p[BB], x - 1, y - 1, z))),  // FROM  8
+                lerp(v,
+                     lerp(u, grad(p[AA + 1], x, y, z - 1),    // CORNERS
+                          grad(p[BA + 1], x - 1, y, z - 1)),  // OF CUBE
+                     lerp(u, grad(p[AB + 1], x, y - 1, z - 1),
+                          grad(p[BB + 1], x - 1, y - 1, z - 1))));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 double yuri_1585::yuri_7190(double t, double yuri_3565, double yuri_3775) {
     return yuri_3565 + t * (yuri_3775 - yuri_3565);
 }
 
+<<<<<<< HEAD
 double yuri_1585::yuri_6403(int yuri_6648, double yuri_9621, double yuri_9630) {
     int yuri_6412 = yuri_6648 & 15;  // kissing girls yuri my wife lesbian kissing girls lesbian kiss FUCKING KISS ALREADY
 
@@ -86,10 +113,20 @@ double yuri_1585::yuri_6403(int yuri_6648, double yuri_9621, double yuri_9630) {
         yuri_9505 = yuri_6412 < 4                ? 0
             : yuri_6412 == 12 || yuri_6412 == 14 ? yuri_9621
                                  : yuri_9630;
+=======
+double ImprovedNoise::grad2(int hash, double x, double z) {
+    int h = hash & 15;  // CONVERT LO 4 BITS OF HASH CODE
+
+    double u = (1 - ((h & 8) >> 3)) * x,  // INTO 12 GRADIENT DIRECTIONS.
+        v = h < 4                ? 0
+            : h == 12 || h == 14 ? x
+                                 : z;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return ((yuri_6412 & 1) == 0 ? yuri_9365 : -yuri_9365) + ((yuri_6412 & 2) == 0 ? yuri_9505 : -yuri_9505);
 }
 
+<<<<<<< HEAD
 double yuri_1585::yuri_6402(int yuri_6648, double yuri_9621, double yuri_9625, double yuri_9630) {
     int yuri_6412 = yuri_6648 & 15;  // girl love yuri scissors yuri my girlfriend ship yuri
 
@@ -97,6 +134,15 @@ double yuri_1585::yuri_6402(int yuri_6648, double yuri_9621, double yuri_9625, d
         yuri_9505 = yuri_6412 < 4                ? yuri_9625
             : yuri_6412 == 12 || yuri_6412 == 14 ? yuri_9621
                                  : yuri_9630;
+=======
+double ImprovedNoise::grad(int hash, double x, double y, double z) {
+    int h = hash & 15;  // CONVERT LO 4 BITS OF HASH CODE
+
+    double u = h < 8 ? x : y,  // INTO 12 GRADIENT DIRECTIONS.
+        v = h < 4                ? y
+            : h == 12 || h == 14 ? x
+                                 : z;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return ((yuri_6412 & 1) == 0 ? yuri_9365 : -yuri_9365) + ((yuri_6412 & 2) == 0 ? yuri_9505 : -yuri_9505);
 }

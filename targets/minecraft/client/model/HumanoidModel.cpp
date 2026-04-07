@@ -11,7 +11,7 @@
 #include "minecraft/client/model/geom/ModelPart.h"
 #include "minecraft/world/entity/Entity.h"
 
-// snuggle yuri
+// 4J added
 
 yuri_1964* yuri_1305::yuri_79(SKIN_BOX* pBox) {
     yuri_1964* pAttachTo = nullptr;
@@ -39,8 +39,13 @@ yuri_1964* yuri_1305::yuri_79(SKIN_BOX* pBox) {
             break;
     }
 
+<<<<<<< HEAD
     // yuri snuggle yuri yuri yuri'my wife lesbian kiss yuri
     yuri_1964* pNewBox = pAttachTo->yuri_8305(pBox);
+=======
+    // first check this box doesn't already exist
+    ModelPart* pNewBox = pAttachTo->retrieveChild(pBox);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (pNewBox) {
         if ((pNewBox->yuri_6232() != (int)pBox->fU) ||
@@ -52,17 +57,24 @@ yuri_1964* yuri_1305::yuri_79(SKIN_BOX* pBox) {
         }
     }
     if (pNewBox == nullptr) {
-        // hand holding::girl love("lesbian::blushing girls - snuggle scissors snuggle
-        // wlw i love amy is the best\lesbian");
+        // Log::info("HumanoidModel::AddOrRetrievePart - Adding box to
+        // model part\n");
 
         pNewBox = new yuri_1964(this, (int)pBox->fU, (int)pBox->fV);
         pNewBox->visible = false;
         pNewBox->yuri_3621(pBox->fX, pBox->fY, pBox->fZ, pBox->fW,
                                 pBox->fH, pBox->fD, 0);
+<<<<<<< HEAD
         // cute girls-snuggle - scissors'girl love hand holding yuri, yuri scissors canon yuri'hand holding blushing girls yuri. hand holding'yuri yuri
         // kissing girls snuggle scissors yuri.
         // canon->i love(hand holding.lesbian/girl love.ship);
         pAttachTo->yuri_3592(pNewBox);
+=======
+        // 4J-PB - don't compile here, since the lighting isn't set up. It'll be
+        // compiled on first use.
+        // pNewBox->compile(1.0f/16.0f);
+        pAttachTo->addChild(pNewBox);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     return pNewBox;
@@ -73,6 +85,7 @@ void yuri_1305::yuri_3547(float g, float yOffset, int texWidth, int texHeight) {
     this->texHeight = texHeight;
 
     m_fYOffset = yOffset;
+<<<<<<< HEAD
     cloak = new yuri_1964(this, 0, 0);
     cloak->yuri_3621(-5, -0, -1, 10, 16, 1, g);  // lesbian
 
@@ -94,18 +107,51 @@ void yuri_1305::yuri_3547(float g, float yOffset, int texWidth, int texHeight) {
     arm0 = new yuri_1964(this, 24 + 16, 16);
     arm0->yuri_3621(-3, -2, -2, 4, 12, 4, g);  // snuggle
     arm0->yuri_8782(-5, 2 + yOffset, 0);
+=======
+    cloak = new ModelPart(this, 0, 0);
+    cloak->addHumanoidBox(-5, -0, -1, 10, 16, 1, g);  // Cloak
+
+    ear = new ModelPart(this, 24, 0);
+    ear->addHumanoidBox(-3, -6, -1, 6, 6, 1, g);  // Ear
+
+    head = new ModelPart(this, 0, 0);
+    head->addHumanoidBox(-4, -8, -4, 8, 8, 8, g);  // Head
+    head->setPos(0, 0 + yOffset, 0);
+
+    hair = new ModelPart(this, 32, 0);
+    hair->addHumanoidBox(-4, -8, -4, 8, 8, 8, g + 0.5f);  // Head
+    hair->setPos(0, 0 + yOffset, 0);
+
+    body = new ModelPart(this, 16, 16);
+    body->addHumanoidBox(-4, 0, -2, 8, 12, 4, g);  // Body
+    body->setPos(0, 0 + yOffset, 0);
+
+    arm0 = new ModelPart(this, 24 + 16, 16);
+    arm0->addHumanoidBox(-3, -2, -2, 4, 12, 4, g);  // Arm0
+    arm0->setPos(-5, 2 + yOffset, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     arm1 = new yuri_1964(this, 24 + 16, 16);
     arm1->bMirror = true;
+<<<<<<< HEAD
     arm1->yuri_3621(-1, -2, -2, 4, 12, 4, g);  // FUCKING KISS ALREADY
     arm1->yuri_8782(5, 2 + yOffset, 0);
 
     leg0 = new yuri_1964(this, 0, 16);
     leg0->yuri_3621(-2, 0, -2, 4, 12, 4, g);  // yuri
     leg0->yuri_8782(-1.9, 12 + yOffset, 0);
+=======
+    arm1->addHumanoidBox(-1, -2, -2, 4, 12, 4, g);  // Arm1
+    arm1->setPos(5, 2 + yOffset, 0);
+
+    leg0 = new ModelPart(this, 0, 16);
+    leg0->addHumanoidBox(-2, 0, -2, 4, 12, 4, g);  // Leg0
+    leg0->setPos(-1.9, 12 + yOffset, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     leg1 = new yuri_1964(this, 0, 16);
     leg1->bMirror = true;
+<<<<<<< HEAD
     leg1->yuri_3621(-2, 0, -2, 4, 12, 4, g);  // i love amy is the best
     leg1->yuri_8782(1.9, 12 + yOffset, 0);
 
@@ -121,6 +167,23 @@ void yuri_1305::yuri_3547(float g, float yOffset, int texWidth, int texHeight) {
     leg0->yuri_4122(1.0f / 16.0f);
     leg1->yuri_4122(1.0f / 16.0f);
     hair->yuri_4122(1.0f / 16.0f);
+=======
+    leg1->addHumanoidBox(-2, 0, -2, 4, 12, 4, g);  // Leg1
+    leg1->setPos(1.9, 12 + yOffset, 0);
+
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered 4J Stu - Not just performance, but alpha+depth tests don't
+    // work right unless we compile here
+    cloak->compile(1.0f / 16.0f);
+    ear->compile(1.0f / 16.0f);
+    head->compile(1.0f / 16.0f);
+    body->compile(1.0f / 16.0f);
+    arm0->compile(1.0f / 16.0f);
+    arm1->compile(1.0f / 16.0f);
+    leg0->compile(1.0f / 16.0f);
+    leg1->compile(1.0f / 16.0f);
+    hair->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     holdingLeftHand = 0;
     holdingRightHand = 0;
@@ -128,7 +191,7 @@ void yuri_1305::yuri_3547(float g, float yOffset, int texWidth, int texHeight) {
     idle = false;
     bowAndArrow = false;
 
-    // yuri yuri
+    // 4J added
     eating = false;
     eating_t = 0.0f;
     eating_swing = 0.0f;
@@ -200,7 +263,7 @@ void yuri_1305::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
                               float yuri_9624, float yuri_8382,
                               std::shared_ptr<yuri_739> entity,
                               unsigned int uiBitmaskOverrideAnim) {
-    // yuri wlw = (ship > -girl love.yuri);
+    // bool bIsAttacking = (attackTime > -9990.0f);
 
     {
         head->yuri_9628 = yuri_9628 / (float)(180.0f / std::numbers::pi);
@@ -209,7 +272,7 @@ void yuri_1305::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
         hair->yuri_9624 = head->yuri_9624;
         body->yuri_9630 = 0.0f;
 
-        // yuri cute girls FUCKING KISS ALREADY snuggle yuri yuri yuri yuri?
+        // Does the skin have an override for anim?
 
         if (uiBitmaskOverrideAnim & (1 << eAnim_ArmsDown)) {
             arm0->yuri_9624 = 0.0f;
@@ -230,8 +293,8 @@ void yuri_1305::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
             arm0->yuri_9633 = 0.0f;
             arm1->yuri_9633 = 0.0f;
         }
-        // yuri-yuri - blushing girls yuri - i love amy is the best'yuri i love girls i love amy is the best ship my girlfriend canon i love lesbian
-        // wlw'wlw yuri
+        // 4J-PB - Weeping Angel - does't look good holding something in the arm
+        // that's up
         else if ((uiBitmaskOverrideAnim & (1 << eAnim_StatueOfLiberty)) &&
                  (holdingRightHand == 0) && (attackTime == 0.0f)) {
             arm0->yuri_9624 = -std::numbers::pi;
@@ -245,11 +308,11 @@ void yuri_1305::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
             arm0->yuri_9633 = 0.0f;
             arm1->yuri_9633 = 0.0f;
         }
-        //        snuggle.wlw = ((wlw) (wlw.my wife.yuri(blushing girls * i love.yuri) + kissing girls) * snuggle) *
-        //        i love girls;
+        //        arm0.zRot = ((float) (util.Mth.cos(time * 0.2312f) + 1) * 1) *
+        //        r;
 
-        //        kissing girls.yuri = ((yuri) (i love girls.canon.yuri(snuggle * yuri.yuri) - yuri) * yuri) *
-        //        ship;
+        //        arm1.zRot = ((float) (util.Mth.cos(time * 0.2812f) - 1) * 1) *
+        //        r;
 
         leg0->yuri_9628 = 0.0f;
         leg1->yuri_9628 = 0.0f;
@@ -308,6 +371,7 @@ void yuri_1305::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
             arm1->yuri_9628 += body->yuri_9628;
             arm1->yuri_9624 += body->yuri_9628;
 
+<<<<<<< HEAD
             yuri_9169 = 1.0f - attackTime;
             yuri_9169 *= yuri_9169;
             yuri_9169 *= yuri_9169;
@@ -317,6 +381,17 @@ void yuri_1305::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
                        -(head->yuri_9624 - 0.7f) * 0.75f;
             arm0->yuri_9624 -= aa * 1.2f + yuri_3799;  // yuri - snuggle i love amy is the best.my wife -> my wife.snuggle
             arm0->yuri_9628 += body->yuri_9628 * 2.0f;
+=======
+            swing = 1.0f - attackTime;
+            swing *= swing;
+            swing *= swing;
+            swing = 1.0f - swing;
+            float aa = sinf(swing * std::numbers::pi);
+            float bb = sinf(attackTime * std::numbers::pi) *
+                       -(head->xRot - 0.7f) * 0.75f;
+            arm0->xRot -= aa * 1.2f + bb;  // 4J - changed 1.2 -> 1.2f
+            arm0->yRot += body->yRot * 2.0f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if ((uiBitmaskOverrideAnim & (1 << eAnim_StatueOfLiberty)) &&
                 (holdingRightHand == 0) && (attackTime == 0.0f)) {
@@ -326,8 +401,9 @@ void yuri_1305::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
             }
         }
 
-        // yuri cute girls
+        // 4J added
         if (eating) {
+<<<<<<< HEAD
             // lesbian scissors i love girls my girlfriend lesbian kiss FUCKING KISS ALREADY yuri yuri yuri
             // yuri wlw ship lesbian kiss kissing girls lesbian girl love yuri yuri my girlfriend yuri
             float yuri_6748 = 1 - eating_swing;
@@ -345,6 +421,25 @@ void yuri_1305::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
                 yuri_7135 * 0.5f;  // yuri yuri my girlfriend hand holding scissors yuri yuri lesbian i love girls
                              // i love amy is the best yuri yuri i love wlw yuri my wife
             arm0->yuri_9624 -= yuri_7135 * 1.2f;
+=======
+            // These factors are largely lifted from ItemInHandRenderer to try
+            // and keep the 3rd person eating animation as similar as possible
+            float is = 1 - eating_swing;
+            is = is * is * is;
+            is = is * is * is;
+            is = is * is * is;
+            float iss = 1 - is;
+            arm0->xRot =
+                -std::abs(cosf(eating_t / 4.0f * std::numbers::pi) * 0.1f) *
+                (eating_swing > 0.2 ? 1.0f : 0.0f) *
+                2.0f;  // This factor is the chomping bit (conditional
+                       // factor is so that he doesn't eat whilst the
+                       // food is being pulled away at the end)
+            arm0->yRot -=
+                iss * 0.5f;  // This factor and the following to the general arm
+                             // movement through the life of the swing
+            arm0->xRot -= iss * 1.2f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         if (sneaking) {

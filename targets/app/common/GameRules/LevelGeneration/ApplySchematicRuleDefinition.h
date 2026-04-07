@@ -54,9 +54,9 @@ public:
 
     std::yuri_9616 yuri_5856() { return m_schematicName; }
 
-    /** i love-yuri:
-     *  yuri blushing girls hand holding i love i love amy is the best lesbian kiss.
-     *	lesbian blushing girls yuri wlw yuri yuri blushing girls yuri yuri lesbian kissing girls i love.
+    /** 4J-JEV:
+     *  This GameRuleDefinition contains limited game state.
+     *	Reset any state to how it should be before a new game.
      */
     void yuri_8270();
 };

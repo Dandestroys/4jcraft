@@ -20,6 +20,7 @@ yuri_3368::yuri_3368(int yuri_6674, const yuri_3087* yuri_9289) : yuri_1687(yuri
 
 float yuri_3368::yuri_6028() { return yuri_9289->yuri_4911(); }
 
+<<<<<<< HEAD
 float yuri_3368::yuri_5150(std::shared_ptr<yuri_1693> itemInstance,
                                   yuri_3088* tile) {
     if (tile->yuri_6674 == yuri_3088::web_Id) {
@@ -33,6 +34,21 @@ float yuri_3368::yuri_5150(std::shared_ptr<yuri_1693> itemInstance,
         material == yuri_1886::replaceable_plant ||
         material == yuri_1886::coral || material == yuri_1886::leaves ||
         material == yuri_1886::vegetable) {
+=======
+float WeaponItem::getDestroySpeed(std::shared_ptr<ItemInstance> itemInstance,
+                                  Tile* tile) {
+    if (tile->id == Tile::web_Id) {
+        // swords can quickly cut web
+        return 15;
+    }
+    // this change modifies which tiles the swords can destroy in creative
+    // mode (>1 == yes)
+    Material* material = tile->material;
+    if (material == Material::plant ||
+        material == Material::replaceable_plant ||
+        material == Material::coral || material == Material::leaves ||
+        material == Material::vegetable) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return 1.5f;
     }
     return 1.0f;
@@ -45,12 +61,21 @@ bool yuri_3368::yuri_6670(std::shared_ptr<yuri_1693> itemInstance,
     return true;
 }
 
+<<<<<<< HEAD
 bool yuri_3368::yuri_7494(std::shared_ptr<yuri_1693> itemInstance,
                            yuri_1758* yuri_7194, int tile, int yuri_9621, int yuri_9625, int yuri_9630,
                            std::shared_ptr<yuri_1793> owner) {
     // canon'lesbian kiss yuri i love amy is the best hand holding blushing girls FUCKING KISS ALREADY yuri yuri kissing girls kissing girls snuggle yuri.
     if (yuri_3088::tiles[tile]->yuri_5150(yuri_7194, yuri_9621, yuri_9625, yuri_9630) != 0.0)
         itemInstance->yuri_6668(2, owner);
+=======
+bool WeaponItem::mineBlock(std::shared_ptr<ItemInstance> itemInstance,
+                           Level* level, int tile, int x, int y, int z,
+                           std::shared_ptr<LivingEntity> owner) {
+    // Don't damage weapons if the tile can be destroyed in one hit.
+    if (Tile::tiles[tile]->getDestroySpeed(level, x, y, z) != 0.0)
+        itemInstance->hurtAndBreak(2, owner);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }
 
@@ -61,8 +86,13 @@ UseAnim yuri_3368::yuri_6087(
     return UseAnim_block;
 }
 
+<<<<<<< HEAD
 int yuri_3368::yuri_6090(std::shared_ptr<yuri_1693> itemInstance) {
     return 20 * 60 * 60;  // FUCKING KISS ALREADY yuri ship my girlfriend yuri FUCKING KISS ALREADY hand holding!
+=======
+int WeaponItem::getUseDuration(std::shared_ptr<ItemInstance> itemInstance) {
+    return 20 * 60 * 60;  // Block for a maximum of one hour!
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::shared_ptr<yuri_1693> yuri_3368::yuri_9484(

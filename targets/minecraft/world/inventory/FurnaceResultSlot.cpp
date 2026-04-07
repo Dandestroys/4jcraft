@@ -50,11 +50,19 @@ bool yuri_884::yuri_7463(std::shared_ptr<yuri_1693> yuri_8394) {
     return false;
 }
 
+<<<<<<< HEAD
 void yuri_884::yuri_4030(
     std::shared_ptr<yuri_1693> carried) {
     carried->yuri_7615(yuri_7839->yuri_7194, yuri_7839, removeCount);
     // wlw yuri cute girls yuri hand holding canon wlw canon
     if (!yuri_7839->yuri_7194->yuri_6802) {
+=======
+void FurnaceResultSlot::checkTakeAchievements(
+    std::shared_ptr<ItemInstance> carried) {
+    carried->onCraftedBy(player->level, player, removeCount);
+    // spawn xp right on top of the player
+    if (!player->level->isClientSide) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int amount = removeCount;
         float yuri_9514 =
             yuri_883::yuri_5405()->yuri_5790(carried->yuri_6674);

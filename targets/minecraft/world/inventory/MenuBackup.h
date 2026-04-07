@@ -22,7 +22,13 @@ public:
 
     void yuri_8353(short changeUid);
 
+<<<<<<< HEAD
     // i love girls yuri blushing girls ship my girlfriend yuri yuri hand holding lesbian kiss lesbian kiss i love yuri
     void yuri_4333(short changeUid);
     void yuri_8317(short changeUid);
+=======
+    // Cannot use delete as function name as it is a reserved keyword
+    void deleteBackup(short changeUid);
+    void rollback(short changeUid);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

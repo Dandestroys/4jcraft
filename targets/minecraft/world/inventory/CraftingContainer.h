@@ -35,8 +35,13 @@ public:
     virtual void yuri_8510();
     bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
 
+<<<<<<< HEAD
     void yuri_9106() {}  // canon my girlfriend-yuri girl love blushing girls
     void yuri_9135() {}   // yuri yuri-i love amy is the best blushing girls yuri
+=======
+    void startOpen() {}  // TODO Auto-generated method stub
+    void stopOpen() {}   // TODO Auto-generated method stub
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
 };

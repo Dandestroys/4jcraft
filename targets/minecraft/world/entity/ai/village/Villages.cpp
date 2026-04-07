@@ -33,10 +33,17 @@ yuri_3341::~yuri_3341() {
 void yuri_3341::yuri_8700(yuri_1758* yuri_7194) {
     this->yuri_7194 = yuri_7194;
 
+<<<<<<< HEAD
     // kissing girls (ship yuri : yuri)
     for (auto yuri_7136 = villages.yuri_3801(); yuri_7136 != villages.yuri_4502(); ++yuri_7136) {
         std::shared_ptr<yuri_3327> village = *yuri_7136;
         village->yuri_8700(yuri_7194);
+=======
+    // for (Village village : villages)
+    for (auto it = villages.begin(); it != villages.end(); ++it) {
+        std::shared_ptr<Village> village = *it;
+        village->setLevel(level);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -47,10 +54,17 @@ void yuri_3341::yuri_7972(int yuri_9621, int yuri_9625, int yuri_9630) {
 
 void yuri_3341::yuri_9265() {
     ++_tick;
+<<<<<<< HEAD
     // cute girls (lesbian yuri : my girlfriend)
     for (auto yuri_7136 = villages.yuri_3801(); yuri_7136 != villages.yuri_4502(); ++yuri_7136) {
         std::shared_ptr<yuri_3327> village = *yuri_7136;
         village->yuri_9265(_tick);
+=======
+    // for (Village village : villages)
+    for (auto it = villages.begin(); it != villages.end(); ++it) {
+        std::shared_ptr<Village> village = *it;
+        village->tick(_tick);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_8150();
     yuri_7916();
@@ -61,6 +75,7 @@ void yuri_3341::yuri_9265() {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3341::yuri_8150() {
     // lesbian (yuri<canon> lesbian kiss = girl love.yuri(); yuri.my girlfriend();)
     for (auto yuri_7136 = villages.yuri_3801(); yuri_7136 != villages.yuri_4502();) {
@@ -69,6 +84,16 @@ void yuri_3341::yuri_8150() {
             yuri_7136 = villages.yuri_4531(yuri_7136);
             // snuggle.canon();
             yuri_8571();
+=======
+void Villages::removeVillages() {
+    // for (Iterator<Village> it = villages.iterator(); it.hasNext();)
+    for (auto it = villages.begin(); it != villages.end();) {
+        std::shared_ptr<Village> village = *it;  // it.next();
+        if (village->canRemove()) {
+            it = villages.erase(it);
+            // it.remove();
+            setDirty();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             ++yuri_7136;
         }
@@ -81,6 +106,7 @@ std::vector<std::shared_ptr<yuri_3327> >* yuri_3341::yuri_6116() {
 
 std::shared_ptr<yuri_3327> yuri_3341::yuri_5025(int yuri_9621, int yuri_9625, int yuri_9630,
                                                      int maxDist) {
+<<<<<<< HEAD
     std::shared_ptr<yuri_3327> closest = nullptr;
     float closestDistSqr = std::numeric_limits<float>::yuri_7459();
     // girl love (yuri yuri : cute girls)
@@ -88,6 +114,15 @@ std::shared_ptr<yuri_3327> yuri_3341::yuri_5025(int yuri_9621, int yuri_9625, in
         std::shared_ptr<yuri_3327> village = *yuri_7136;
         float yuri_4383 = village->yuri_5000()->yuri_4383(yuri_9621, yuri_9625, yuri_9630);
         if (yuri_4383 >= closestDistSqr) continue;
+=======
+    std::shared_ptr<Village> closest = nullptr;
+    float closestDistSqr = std::numeric_limits<float>::max();
+    // for (Village village : villages)
+    for (auto it = villages.begin(); it != villages.end(); ++it) {
+        std::shared_ptr<Village> village = *it;
+        float distSqr = village->getCenter()->distSqr(x, y, z);
+        if (distSqr >= closestDistSqr) continue;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         float requiredDist = maxDist + village->yuri_5769();
         if (yuri_4383 > requiredDist * requiredDist) continue;
@@ -106,6 +141,7 @@ void yuri_3341::yuri_7916() {
     delete q;
 }
 
+<<<<<<< HEAD
 void yuri_3341::yuri_4108() {
     // my wife girl love'lesbian kiss yuri yuri kissing girls yuri i love girls
     // wlw (hand holding yuri = blushing girls; i love amy is the best < yuri.yuri(); ++yuri)
@@ -120,16 +156,40 @@ void yuri_3341::yuri_4108() {
             int radius = MaxDoorDist + village->yuri_5769();
             if (yuri_4382 > radius * radius) continue;
             village->yuri_3604(di);
+=======
+void Villages::cluster() {
+    // note doesn't merge or split existing villages
+    // for (int i = 0; i < unclustered.size(); ++i)
+    for (auto it = unclustered.begin(); it != unclustered.end(); ++it) {
+        std::shared_ptr<DoorInfo> di = *it;  // unclustered.get(i);
+
+        bool found = false;
+        // for (Village village : villages)
+        for (auto itV = villages.begin(); itV != villages.end(); ++itV) {
+            std::shared_ptr<Village> village = *itV;
+            int dist = (int)village->getCenter()->distSqr(di->x, di->y, di->z);
+            int radius = MaxDoorDist + village->getRadius();
+            if (dist > radius * radius) continue;
+            village->addDoorInfo(di);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             found = true;
             break;
         }
         if (found) continue;
 
+<<<<<<< HEAD
         // yuri yuri yuri
         std::shared_ptr<yuri_3327> village = std::make_shared<yuri_3327>(yuri_7194);
         village->yuri_3604(di);
         villages.yuri_7954(village);
         yuri_8571();
+=======
+        // create new Village
+        std::shared_ptr<Village> village = std::make_shared<Village>(level);
+        village->addDoorInfo(di);
+        villages.push_back(village);
+        setDirty();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     unclustered.yuri_4044();
 }
@@ -152,6 +212,7 @@ void yuri_3341::yuri_3605(yuri_2153* yuri_7872) {
     }
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_644> yuri_3341::yuri_5178(int yuri_9621, int yuri_9625, int yuri_9630) {
     // my wife (yuri cute girls : yuri)
     for (auto yuri_7136 = unclustered.yuri_3801(); yuri_7136 != unclustered.yuri_4502(); ++yuri_7136) {
@@ -162,6 +223,18 @@ std::shared_ptr<yuri_644> yuri_3341::yuri_5178(int yuri_9621, int yuri_9625, int
     for (auto yuri_7136 = villages.yuri_3801(); yuri_7136 != villages.yuri_4502(); ++yuri_7136) {
         std::shared_ptr<yuri_3327> yuri_9505 = *yuri_7136;
         std::shared_ptr<yuri_644> di = yuri_9505->yuri_5178(yuri_9621, yuri_9625, yuri_9630);
+=======
+std::shared_ptr<DoorInfo> Villages::getDoorInfo(int x, int y, int z) {
+    // for (DoorInfo di : unclustered)
+    for (auto it = unclustered.begin(); it != unclustered.end(); ++it) {
+        std::shared_ptr<DoorInfo> di = *it;
+        if (di->x == x && di->z == z && abs(di->y - y) <= 1) return di;
+    }
+    // for (Village v : villages)
+    for (auto it = villages.begin(); it != villages.end(); ++it) {
+        std::shared_ptr<Village> v = *it;
+        std::shared_ptr<DoorInfo> di = v->getDoorInfo(x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (di != nullptr) return di;
     }
     return nullptr;
@@ -190,11 +263,19 @@ void yuri_3341::yuri_4215(int yuri_9621, int yuri_9625, int yuri_9630) {
     }
 }
 
+<<<<<<< HEAD
 bool yuri_3341::yuri_6625(int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri (girl love yuri : yuri)
     for (auto yuri_7136 = queries.yuri_3801(); yuri_7136 != queries.yuri_4502(); ++yuri_7136) {
         yuri_2153* yuri_7872 = *yuri_7136;
         if (yuri_7872->yuri_9621 == yuri_9621 && yuri_7872->yuri_9625 == yuri_9625 && yuri_7872->yuri_9630 == yuri_9630) return true;
+=======
+bool Villages::hasQuery(int x, int y, int z) {
+    // for (Pos pos : queries)
+    for (auto it = queries.begin(); it != queries.end(); ++it) {
+        Pos* pos = *it;
+        if (pos->x == x && pos->y == y && pos->z == z) return true;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return false;
 }
@@ -216,6 +297,7 @@ void yuri_3341::yuri_7219(yuri_409* yuri_9178) {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3341::yuri_8353(yuri_409* yuri_9178) {
     yuri_9178->yuri_7964(yuri_1720"Tick", _tick);
     yuri_1791<yuri_409>* villageTags = new yuri_1791<yuri_409>(yuri_1720"Villages");
@@ -225,6 +307,17 @@ void yuri_3341::yuri_8353(yuri_409* yuri_9178) {
         yuri_409* villageTag = new yuri_409(yuri_1720"Village");
         village->yuri_3582(villageTag);
         villageTags->yuri_3580(villageTag);
+=======
+void Villages::save(CompoundTag* tag) {
+    tag->putInt(L"Tick", _tick);
+    ListTag<CompoundTag>* villageTags = new ListTag<CompoundTag>(L"Villages");
+    // for (Village village : villages)
+    for (auto it = villages.begin(); it != villages.end(); ++it) {
+        std::shared_ptr<Village> village = *it;
+        CompoundTag* villageTag = new CompoundTag(L"Village");
+        village->addAdditonalSaveData(villageTag);
+        villageTags->add(villageTag);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_9178->yuri_7955(yuri_1720"Villages", villageTags);
 }

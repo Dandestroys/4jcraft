@@ -14,6 +14,7 @@ yuri_216::yuri_216() {
 
     seam = (new yuri_1964(this))->yuri_9253(12, 0)->yuri_3589(-1, -5, 0, 2, 10, 0);
 
+<<<<<<< HEAD
     // snuggle - FUCKING KISS ALREADY my wife i love cute girls lesbian blushing girls i love girls yuri kissing girls yuri scissors girl love
     // wlw my girlfriend i love amy is the best kissing girls hand holding girl love i love cute girls blushing girls lesbian kiss yuri FUCKING KISS ALREADY yuri
     // yuri yuri yuri my girlfriend
@@ -25,6 +26,19 @@ yuri_216::yuri_216() {
                      ->yuri_9253(12, 10)
                      ->yuri_3590(0, -4, -0.01f, 5, 8, 1,
                                       31);  // scissors - scissors girl love lesbian yuri
+=======
+    // 4J - added faceMasks here to remove sides of these page boxes which end
+    // up being nearly coplanar to the cover of the book and flickering when
+    // rendering at a distance
+    leftPages = (new ModelPart(this))
+                    ->texOffs(0, 10)
+                    ->addBoxWithMask(0, -4, -1 + 0.01f, 5, 8, 1,
+                                     47);  // 4J - faceMask is binary 101111
+    rightPages = (new ModelPart(this))
+                     ->texOffs(12, 10)
+                     ->addBoxWithMask(0, -4, -0.01f, 5, 8, 1,
+                                      31);  // 4J - faceMask is binary 011111
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     flipPage1 =
         (new yuri_1964(this))->yuri_9253(24, 10)->yuri_3589(0, -4, 0, 5, 8, 0);
@@ -36,6 +50,7 @@ yuri_216::yuri_216() {
 
     seam->yuri_9628 = std::numbers::pi / 2;
 
+<<<<<<< HEAD
     // my wife yuri - yuri yuri snuggle yuri hand holding my wife i love canon i love girls scissors
     // yuri yuri
     leftLid->yuri_4122(1.0f / 16.0f);
@@ -45,6 +60,17 @@ yuri_216::yuri_216() {
     rightPages->yuri_4122(1.0f / 16.0f);
     flipPage1->yuri_4122(1.0f / 16.0f);
     flipPage2->yuri_4122(1.0f / 16.0f);
+=======
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    leftLid->compile(1.0f / 16.0f);
+    rightLid->compile(1.0f / 16.0f);
+    seam->compile(1.0f / 16.0f);
+    leftPages->compile(1.0f / 16.0f);
+    rightPages->compile(1.0f / 16.0f);
+    flipPage1->compile(1.0f / 16.0f);
+    flipPage2->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_216::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,

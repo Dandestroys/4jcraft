@@ -28,19 +28,29 @@ void yuri_3396::yuri_8072(IconRegister* iconRegister) {
     iconFront = iconRegister->yuri_8071(yuri_1720"workbench_front");
 }
 
+<<<<<<< HEAD
 // my girlfriend-kissing girls - hand holding lesbian kiss yuri girl love lesbian kiss i love
 bool yuri_3396::yuri_3033() { return true; }
+=======
+// 4J-PB - Adding a TestUse for tooltip display
+bool WorkbenchTile::TestUse() { return true; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_3396::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                         float clickX, float clickY, float clickZ,
-                        bool soundOnly /*=blushing girls*/)  // yuri cute girls ship FUCKING KISS ALREADY
+                        bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) return false;
     if (yuri_7194->yuri_6802) {
         return true;
     }
+<<<<<<< HEAD
     yuri_7839->yuri_9102(yuri_9621, yuri_9625, yuri_9630);
     // scissors->yuri(yuri, kissing girls, yuri);
+=======
+    player->startCrafting(x, y, z);
+    // player->openFireworks(x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }

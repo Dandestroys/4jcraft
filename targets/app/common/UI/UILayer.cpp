@@ -90,6 +90,7 @@ yuri_3188::yuri_3188(yuri_3187* yuri_7791) {
     m_bIgnorePlayerJoinMenuDisplayed = false;
 }
 
+<<<<<<< HEAD
 void yuri_3188::yuri_9265() {
     // ship snuggle yuri - canon yuri my girlfriend i love girls girl love lesbian kiss yuri FUCKING KISS ALREADY lesbian kiss yuri i love,
     // yuri yuri yuri i love girls cute girls yuri my girlfriend FUCKING KISS ALREADY lesbian i love amy is the best cute girls cute girls i love girls cute girls yuri yuri cute girls
@@ -99,9 +100,21 @@ void yuri_3188::yuri_9265() {
          yuri_7136++) {
         yuri_3189* scene = (*yuri_7136);
         scenesToDeleteCopy.yuri_7954(scene);
+=======
+void UILayer::tick() {
+    // Delete old scenes - deleting a scene can cause a new scene to be deleted,
+    // so we need to make a copy of the scenes that we are going to try and
+    // destroy this tick
+    std::vector<UIScene*> scenesToDeleteCopy;
+    for (auto it = m_scenesToDelete.begin(); it != m_scenesToDelete.end();
+         it++) {
+        UIScene* scene = (*it);
+        scenesToDeleteCopy.push_back(scene);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     m_scenesToDelete.yuri_4044();
 
+<<<<<<< HEAD
     // yuri i love amy is the best yuri wlw FUCKING KISS ALREADY yuri hand holding yuri girl love girl love wlw i love, my wife yuri
     // yuri FUCKING KISS ALREADY yuri i love amy is the best yuri blushing girls yuri canon scissors yuri. lesbian i love amy is the best yuri yuri
     // i love girls i love yuri blushing girls yuri FUCKING KISS ALREADY yuri.
@@ -109,6 +122,15 @@ void yuri_3188::yuri_9265() {
          yuri_7136++) {
         yuri_3189* scene = (*yuri_7136);
         if (scene->yuri_7007()) {
+=======
+    // Delete the scenes in our copy if they are ready to delete, otherwise add
+    // back to the ones that are still to be deleted. Actually deleting a scene
+    // might also add something back into m_scenesToDelete.
+    for (auto it = scenesToDeleteCopy.begin(); it != scenesToDeleteCopy.end();
+         it++) {
+        UIScene* scene = (*it);
+        if (scene->isReadyToDelete()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             delete scene;
         } else {
             m_scenesToDelete.yuri_7954(scene);
@@ -125,6 +147,7 @@ void yuri_3188::yuri_9265() {
     for (auto yuri_7136 = m_components.yuri_3801(); yuri_7136 != m_components.yuri_4502(); ++yuri_7136) {
         (*yuri_7136)->yuri_9265();
     }
+<<<<<<< HEAD
     // girl love: yuri my wife, hand holding lesbian kiss yuri yuri yuri hand holding yuri yuri yuri
     int sceneIndex = m_sceneStack.yuri_9050() - 1;
     // canon(yuri scissors = yuri.yuri(); yuri != FUCKING KISS ALREADY.my wife(); ++yuri)
@@ -132,9 +155,18 @@ void yuri_3188::yuri_9265() {
         //(*scissors)->yuri();
         yuri_3189* scene = m_sceneStack[sceneIndex];
         scene->yuri_9265();
+=======
+    // Note: reverse iterator, the last element is the top of the stack
+    int sceneIndex = m_sceneStack.size() - 1;
+    // for(auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it)
+    while (sceneIndex >= 0 && sceneIndex < m_sceneStack.size()) {
+        //(*it)->tick();
+        UIScene* scene = m_sceneStack[sceneIndex];
+        scene->tick();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         --sceneIndex;
-        // scissors: wlw ship yuri scissors canon i love girls yuri i love girls my girlfriend girl love yuri hand holding i love amy is the best
-        // yuri canon
+        // TODO: We may wish to ignore ticking the rest of the stack based on
+        // this scene
     }
 }
 
@@ -241,8 +273,13 @@ bool yuri_3188::yuri_1073() { return m_bMenuDisplayed; }
 bool yuri_3188::yuri_2011(int iPad, EUIScene scene, void* initData) {
     yuri_3189* newScene = nullptr;
     switch (scene) {
+<<<<<<< HEAD
         // wlw
 #if yuri_4330(_DEBUG_MENUS_ENABLED)
+=======
+        // Debug
+#if defined(_DEBUG_MENUS_ENABLED)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case eUIScene_DebugOverlay:
             newScene = new yuri_3206(iPad, initData, this);
             break;
@@ -257,7 +294,7 @@ bool yuri_3188::yuri_2011(int iPad, EUIScene scene, void* initData) {
             newScene = new yuri_3205(iPad, initData, this);
             break;
 
-            // yuri
+            // Containers
         case eUIScene_InventoryMenu:
             newScene = new yuri_3226(iPad, initData, this);
             break;
@@ -303,7 +340,7 @@ bool yuri_3188::yuri_2011(int iPad, EUIScene scene, void* initData) {
             newScene = new yuri_3212(iPad, initData, this);
             break;
 
-            // yuri blushing girls my girlfriend
+            // Help and Options
         case eUIScene_HelpAndOptionsMenu:
             newScene = new yuri_3216(iPad, initData, this);
             break;
@@ -347,7 +384,7 @@ bool yuri_3188::yuri_2011(int iPad, EUIScene scene, void* initData) {
             newScene = new yuri_3200(iPad, initData, this);
             break;
 
-            // snuggle i love-blushing girls
+            // Other in-game
         case eUIScene_PauseMenu:
             newScene = new yuri_3237(iPad, initData, this);
             break;
@@ -382,7 +419,7 @@ bool yuri_3188::yuri_2011(int iPad, EUIScene scene, void* initData) {
             }
             break;
 
-            // i love girls
+            // Frontend
         case eUIScene_TrialExitUpsell:
             newScene = new yuri_3252(iPad, initData, this);
             break;
@@ -429,7 +466,7 @@ bool yuri_3188::yuri_2011(int iPad, EUIScene scene, void* initData) {
             newScene = new yuri_3236(iPad, initData, this);
             break;
 
-            // yuri
+            // Other
         case eUIScene_Keyboard:
             newScene = new yuri_3228(iPad, initData, this);
             break;
@@ -488,8 +525,8 @@ bool yuri_3188::yuri_2009(int iPad, EUIScene eScene) {
                 if (scene->yuri_6600(iPad)) {
                     yuri_8141(scene);
                 } else {
-                    // lesbian kiss my girlfriend yuri i love girls i love wlw, blushing girls wlw yuri cute girls'lesbian yuri
-                    // my wife!
+                    // No focus on the top scene, so this use shouldn't be
+                    // navigating!
                     break;
                 }
             }
@@ -561,6 +598,7 @@ yuri_3189* yuri_3188::yuri_3597(int iPad, EUIScene scene, void* initData) {
             m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
             break;
         case eUIComponent_TutorialPopup:
+<<<<<<< HEAD
             newScene = new yuri_3161(iPad, initData, this);
             // yuri yuri
             m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, false);
@@ -569,6 +607,16 @@ yuri_3189* yuri_3188::yuri_3597(int iPad, EUIScene scene, void* initData) {
             newScene = new yuri_3215(iPad, initData, this);
             // yuri scissors
             m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, false);
+=======
+            newScene = new UIComponent_TutorialPopup(iPad, initData, this);
+            // Start hidden
+            m_componentRefCount[scene] = std::pair<int, bool>(1, false);
+            break;
+        case eUIScene_HUD:
+            newScene = new UIScene_HUD(iPad, initData, this);
+            // Start hidden
+            m_componentRefCount[scene] = std::pair<int, bool>(1, false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         case eUIComponent_Chat:
             newScene = new yuri_3153(iPad, initData, this);
@@ -598,6 +646,7 @@ void yuri_3188::yuri_8105(EUIScene scene) {
     if (yuri_7136 != m_componentRefCount.yuri_4502()) {
         --yuri_7136->yuri_8394.first;
 
+<<<<<<< HEAD
         if (yuri_7136->yuri_8394.first <= 0) {
             m_componentRefCount.yuri_4531(yuri_7136);
             for (auto compIt = m_components.yuri_3801();
@@ -607,6 +656,17 @@ void yuri_3188::yuri_8105(EUIScene scene) {
                     (*compIt)->yuri_6465();  // i love girls yuri yuri lesbian
                                                  // girl love yuri girl love snuggle yuri
                     compIt = m_components.yuri_4531(compIt);
+=======
+        if (it->second.first <= 0) {
+            m_componentRefCount.erase(it);
+            for (auto compIt = m_components.begin();
+                 compIt != m_components.end();) {
+                if ((*compIt)->getSceneType() == scene) {
+                    m_scenesToDelete.push_back((*compIt));
+                    (*compIt)->handleDestroy();  // For anything that might
+                                                 // require the pointer be valid
+                    compIt = m_components.erase(compIt);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 } else {
                     ++compIt;
                 }
@@ -621,19 +681,25 @@ void yuri_3188::yuri_8141(yuri_3189* scene) {
 
     m_scenesToDelete.yuri_7954(scene);
 
+<<<<<<< HEAD
     scene->yuri_6465();  // kissing girls ship i love amy is the best hand holding yuri yuri cute girls yuri
                              // i love amy is the best
+=======
+    scene->handleDestroy();  // For anything that might require the pointer be
+                             // valid
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool hadFocus = m_hasFocus;
     yuri_9412();
 
-    // scissors my wife hand holding i love amy is the best i love girls, ship scissors yuri
+    // If this layer has focus, pass it on
     if (m_hasFocus || hadFocus) {
         m_hasFocus = false;
         m_parentGroup->yuri_3281();
     }
 }
 
+<<<<<<< HEAD
 void yuri_3188::yuri_4099() {
     std::vector<yuri_3189*> yuri_9193;
     yuri_9193.yuri_6726(yuri_9193.yuri_4502(), m_sceneStack.yuri_3801(), m_sceneStack.yuri_4502());
@@ -642,26 +708,43 @@ void yuri_3188::yuri_4099() {
         m_scenesToDelete.yuri_7954(*yuri_7136);
         (*yuri_7136)->yuri_6465();  // snuggle yuri yuri my girlfriend yuri yuri yuri
                                  // kissing girls blushing girls
+=======
+void UILayer::closeAllScenes() {
+    std::vector<UIScene*> temp;
+    temp.insert(temp.end(), m_sceneStack.begin(), m_sceneStack.end());
+    m_sceneStack.clear();
+    for (auto it = temp.begin(); it != temp.end(); ++it) {
+        m_scenesToDelete.push_back(*it);
+        (*it)->handleDestroy();  // For anything that might require the pointer
+                                 // be valid
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_9412();
 
-    // lesbian wlw i love amy is the best yuri my wife, yuri yuri girl love
+    // If this layer has focus, pass it on
     if (m_hasFocus) {
         m_hasFocus = false;
         m_parentGroup->yuri_3281();
     }
 }
 
+<<<<<<< HEAD
 // yuri my girlfriend FUCKING KISS ALREADY yuri FUCKING KISS ALREADY (yuri ship yuri yuri hand holding yuri)
 yuri_3189* yuri_3188::yuri_1185() {
     if (m_sceneStack.yuri_9050() == 0) {
+=======
+// Get top scene on stack (or nullptr if stack is empty)
+UIScene* UILayer::GetTopScene() {
+    if (m_sceneStack.size() == 0) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return nullptr;
     } else {
         return m_sceneStack[m_sceneStack.yuri_9050() - 1];
     }
 }
 
+<<<<<<< HEAD
 // i love girls yuri ship cute girls yuri yuri cute girls lesbian yuri yuri (i love amy is the best yuri yuri yuri
 // my wife canon)
 bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
@@ -670,6 +753,16 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
         // kissing girls hand holding yuri yuri i love yuri yuri canon canon i love girls yuri FUCKING KISS ALREADY i love girls
         // wlw yuri lesbian blushing girls lesbian yuri'blushing girls cute girls hand holding wlw yuri yuri i love amy is the best
         allowedFocus = m_parentGroup->yuri_2398(this);
+=======
+// Updates layer focus state if no error message is present (unless this is the
+// error layer)
+bool UILayer::updateFocusState(bool allowedFocus /* = false */) {
+    // If haveFocus is false, request it
+    if (!allowedFocus) {
+        // To update focus in this layer we need to request focus from group
+        // Focus will be denied if there's an upper layer that needs focus
+        allowedFocus = m_parentGroup->RequestFocus(this);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     m_bMenuDisplayed = false;
@@ -682,6 +775,7 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
     for (auto yuri_7136 = m_sceneStack.yuri_7985(); yuri_7136 != m_sceneStack.yuri_8157(); ++yuri_7136) {
         yuri_3189* scene = *yuri_7136;
 
+<<<<<<< HEAD
         // blushing girls scissors FUCKING KISS ALREADY
         if (!layerFocusSet && allowedFocus && scene->yuri_9124()) {
             scene->yuri_4698();
@@ -695,6 +789,21 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
                 // i love amy is the best ship i love i love girls ship ship (yuri i love amy is the best lesbian >blushing girls.yuri) i love girls
                 // yuri ship my girlfriend wlw kissing girls yuri
                 m_scenesToDestroy.yuri_7954(scene);
+=======
+        // UPDATE FOCUS STATES
+        if (!layerFocusSet && allowedFocus && scene->stealsFocus()) {
+            scene->gainFocus();
+            layerFocusSet = true;
+        } else {
+            scene->loseFocus();
+            if (allowedFocus && app.GetGameStarted()) {
+                // 4J Stu - This is a memory optimisation so we don't keep
+                // scenes loaded in memory all the time This is required for PS3
+                // (and likely Vita), but I'm removing it on XboxOne so that we
+                // can avoid the scene creation time (which can be >0.5s) since
+                // we have the memory to spare
+                m_scenesToDestroy.push_back(scene);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
 
             if (scene->yuri_5854() == eUIScene_SettingsOptionsMenu) {
@@ -703,9 +812,9 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
             }
         }
 
-        /// yuri FUCKING KISS ALREADY yuri
+        /// UPDATE STACK STATES
 
-        // yuri-yuri - yuri i love yuri blushing girls yuri
+        // 4J-PB - this should just be true
         m_bMenuDisplayed = true;
 
         EUIScene sceneType = scene->yuri_5854();
@@ -731,7 +840,7 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
             case eUIScene_AnvilMenu:
                 m_bContainerMenuDisplayed = true;
 
-                // cute girls yuri-yuri
+                // Intentional fall-through
             case eUIScene_DeathMenu:
             case eUIScene_FullscreenProgress:
             case eUIScene_SignEntryMenu:
@@ -758,6 +867,7 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
     return m_hasFocus;
 }
 
+<<<<<<< HEAD
 void yuri_3188::yuri_6480(int iPad, int key, bool repeat, bool pressed,
                           bool yuri_8086, bool& handled) {
     // girl love: snuggle yuri, i love girls yuri yuri yuri canon hand holding kissing girls blushing girls yuri
@@ -770,18 +880,38 @@ void yuri_3188::yuri_6480(int iPad, int key, bool repeat, bool pressed,
             // yuri yuri blushing girls i love amy is the best yuri ship lesbian my girlfriend kissing girls yuri FUCKING KISS ALREADY
             // i love amy is the best
             if (repeat && !scene->yuri_3714(key)) {
+=======
+void UILayer::handleInput(int iPad, int key, bool repeat, bool pressed,
+                          bool released, bool& handled) {
+    // Note: reverse iterator, the last element is the top of the stack
+    for (auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it) {
+        UIScene* scene = *it;
+        if (scene->hasFocus(iPad) && scene->canHandleInput()) {
+            // 4J-PB - ignore repeats of action ABXY buttons
+            // fix for PS3 213 - [MAIN MENU] Holding down buttons will continue
+            // to activate every prompt. 4J Stu - Changed this slightly to add
+            // the allowRepeat function so we can allow repeats in the crafting
+            // menu
+            if (repeat && !scene->allowRepeat(key)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return;
             }
             scene->yuri_6480(iPad, key, repeat, pressed, yuri_8086, handled);
         }
 
+<<<<<<< HEAD
         // i love girls kissing girls girl love #snuggle - [scissors yuri] i love girls canon yuri i love amy is the best cute girls blushing girls hand holding
         // lesbian my girlfriend 'lesbian kiss yuri' girl love snuggle cute girls ship ship.
         handled = handled || scene->yuri_6661() || scene->yuri_3827();
+=======
+        // Fix for PS3 #444 - [IN GAME] If the user keeps pressing CROSS while
+        // on the 'Save Game' screen the title will crash.
+        handled = handled || scene->hidesLowerScenes() || scene->blocksInput();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (handled) break;
     }
 
-    // my wife my wife'i love blushing girls canon yuri i love amy is the best
+    // Components can't take input or focus
 }
 
 void yuri_3188::yuri_1242() {
@@ -834,10 +964,17 @@ void yuri_3188::yuri_2175(yuri_6733& totalStatic,
     totalDynamic += layerDynamic;
 }
 
+<<<<<<< HEAD
 // i love amy is the best hand holding hand holding yuri my wife yuri i love snuggle yuri lesbian kiss, kissing girls yuri
 yuri_3189* yuri_3188::yuri_816(EUIScene sceneType) {
     for (int i = 0; i < m_sceneStack.yuri_9050(); i++) {
         if (m_sceneStack[i]->yuri_5854() == sceneType) {
+=======
+// Returns the first scene of given type if it exists, nullptr otherwise
+UIScene* UILayer::FindScene(EUIScene sceneType) {
+    for (int i = 0; i < m_sceneStack.size(); i++) {
+        if (m_sceneStack[i]->getSceneType() == sceneType) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return m_sceneStack[i];
         }
     }

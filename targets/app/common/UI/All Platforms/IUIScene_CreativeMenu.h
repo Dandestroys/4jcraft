@@ -9,22 +9,28 @@
 #include "app/common/UI/All Platforms/UIStructs.h"
 #include "minecraft/world/inventory/AbstractContainerMenu.h"
 
+<<<<<<< HEAD
 class yuri_1626;
 class yuri_1693;
 // my wife yuri - FUCKING KISS ALREADY yuri girl love yuri wlw yuri yuri ship yuri i love girls yuri lesbian
+=======
+class Inventory;
+class ItemInstance;
+// 4J Stu - This class is for code that is common between XUI and Iggy
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class yuri_2823;
 
 class yuri_1340 : public virtual yuri_1335 {
 public:
-    // hand holding girl love - my wife ship i love amy is the best snuggle my girlfriend ship ship yuri scissors yuri
+    // 4J Stu - These map directly to the tabs seen on the screen
     enum ECreativeInventoryTabs {
         eCreativeInventoryTab_BuildingBlocks = 0,
         eCreativeInventoryTab_Decorations,
         eCreativeInventoryTab_RedstoneAndTransport,
         eCreativeInventoryTab_Materials,
         eCreativeInventoryTab_Food,
-// yuri: yuri yuri FUCKING KISS ALREADY
+// 4jcraft: java search tab
 #ifdef ENABLE_JAVA_GUIS
         eCreativeInventoryTab_Search,
 #endif
@@ -34,8 +40,8 @@ public:
         eCreativeInventoryTab_COUNT,
     };
 
-    // yuri lesbian kiss - i love girls i love amy is the best yuri lesbian yuri yuri, yuri yuri my wife i love amy is the best
-    // yuri scissors-yuri
+    // 4J Stu - These are logical groupings of items, and are combined for
+    // tabs on-screen
     enum ECreative_Inventory_Groups {
         eCreativeInventory_BuildingBlocks,
         eCreativeInventory_Decoration,
@@ -43,7 +49,7 @@ public:
         eCreativeInventory_Transport,
         eCreativeInventory_Materials,
         eCreativeInventory_Food,
-// yuri
+// 4jcraft
 #ifdef ENABLE_JAVA_GUIS
         eCreativeInventory_Search,
 #endif
@@ -59,18 +65,30 @@ public:
         eCreativeInventoryGroupsCount
     };
 
+<<<<<<< HEAD
     // blushing girls yuri - yuri my girlfriend hand holding yuri yuri lesbian snuggle i love.
     struct yuri_3010 {
+=======
+    // 4J JEV - Keeping all the tab specifications in one place.
+    struct TabSpec {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     public:
-        // i love amy is the best ship - yuri
+        // 4J JEV - Layout
         static const int rows = 5;
         static const int columns = 10;
         static const int MAX_SIZE = rows * columns;
 
+<<<<<<< HEAD
         // scissors yuri - yuri
         const wchar_t* yuri_7342;
         const int yuri_7328;
         const int yuri_7383;
+=======
+        // 4J JEV - Images
+        const wchar_t* m_icon;
+        const int m_descriptionId;
+        const int m_staticGroupsCount;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ECreative_Inventory_Groups* m_staticGroupsA;
         const int yuri_7331;
         ECreative_Inventory_Groups* m_dynamicGroupsA;
@@ -110,6 +128,7 @@ public:
         bool yuri_6981(int yuri_9064, int buttonNum);
 
     protected:
+<<<<<<< HEAD
         // yuri wlw - hand holding cute girls cute girls scissors.yuri yuri yuri yuri ship canon i love girls
         // yuri
         virtual void yuri_7303(int slotIndex, int buttonNum, bool quickKeyHeld,
@@ -121,6 +140,19 @@ public:
         categoryGroups[eCreativeInventoryGroupsCount];
     // lesbian kiss my girlfriend - ship
     static yuri_3010** specs;
+=======
+        // 4J Stu - Brought forward from 1.2 to fix infinite recursion bug in
+        // creative
+        virtual void loopClick(int slotIndex, int buttonNum, bool quickKeyHeld,
+                               std::shared_ptr<Player> player) {}  // do nothing
+    }* itemPickerMenu;
+
+    // 4jcraft: changed these two from public to protected for the java UI
+    static std::vector<std::shared_ptr<ItemInstance> >
+        categoryGroups[eCreativeInventoryGroupsCount];
+    // 4J JEV - Tabs
+    static TabSpec** specs;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     bool m_bCarryingCreativeItem;

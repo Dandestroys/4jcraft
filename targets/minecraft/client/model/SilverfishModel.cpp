@@ -45,10 +45,17 @@ yuri_2821::yuri_2821() {
                           BODY_SIZES[1][2]);
     bodyLayers[2]->yuri_8782(0, 24 - 5, zPlacement[1]);
 
+<<<<<<< HEAD
     // scissors i love girls - girl love yuri yuri yuri i love girls i love i love girls cute girls i love amy is the best yuri
     // scissors FUCKING KISS ALREADY
     for (unsigned int i = 0; i < bodyParts.yuri_9050(); i++) {
         bodyParts[i]->yuri_4122(1.0f / 16.0f);
+=======
+    // 4J added - compile now to avoid random performance hit first time cubes
+    // are rendered
+    for (unsigned int i = 0; i < bodyParts.size(); i++) {
+        bodyParts[i]->compile(1.0f / 16.0f);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     bodyLayers[0]->yuri_4122(1.0f / 16.0f);
     bodyLayers[1]->yuri_4122(1.0f / 16.0f);

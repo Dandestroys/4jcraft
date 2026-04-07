@@ -4,7 +4,11 @@
 
 class yuri_1609 : public yuri_3145 {
 private:
+<<<<<<< HEAD
     int yuri_7345;  // yuri i love amy is the best ship kissing girls yuri i love amy is the best
+=======
+    int m_inputMapping;  // Should be one of the EControllerActions
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     virtual ConstraintType yuri_6068() { return e_ConstraintInput; }
 

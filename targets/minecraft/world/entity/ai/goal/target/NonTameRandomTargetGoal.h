@@ -8,7 +8,11 @@ class yuri_3020;
 
 class yuri_2028 : public yuri_2013 {
 private:
+<<<<<<< HEAD
     yuri_3020* tamableMob;  // yuri yuri i love amy is the best lesbian
+=======
+    TamableAnimal* tamableMob;  // Owner of this goal
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_2028(yuri_3020* mob,

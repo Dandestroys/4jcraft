@@ -58,10 +58,17 @@ bool yuri_61::yuri_4494(
     std::shared_ptr<yuri_1693> item) {
     bool enchanted = false;
     if (item != nullptr) {
+<<<<<<< HEAD
         // i love amy is the best-kissing girls: yuri lesbian kiss yuri lesbian
         // my girlfriend hand holding snuggle lesbian lesbian kiss yuri i love amy is the best yuri cute girls lesbian kiss
         if (item->yuri_6674 == yuri_1687::enchantedBook_Id) {
             yuri_1687::enchantedBook->yuri_3609(
+=======
+        // 4J-JEV: Ripped code from enchantmenthelpers
+        // Maybe we want to add an addEnchantment method to EnchantmentHelpers
+        if (item->id == Item::enchantedBook_Id) {
+            Item::enchantedBook->addEnchantment(
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 item,
                 new yuri_705(m_enchantmentId, m_enchantmentLevel));
         } else if (item->yuri_6854()) {

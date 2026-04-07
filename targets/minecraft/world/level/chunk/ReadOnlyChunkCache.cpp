@@ -25,17 +25,27 @@ bool yuri_2322::yuri_6581(int yuri_9621, int yuri_9630) {
 
 yuri_1759* yuri_2322::yuri_4202(int yuri_9621, int yuri_9630) { return yuri_5003(yuri_9621, yuri_9630); }
 
+<<<<<<< HEAD
 yuri_1759* yuri_2322::yuri_5003(int yuri_9621, int yuri_9630) {
     int yuri_9061 = (yuri_9621 & LEN_MASK) | ((yuri_9630 & LEN_MASK) * LEN);
     // kissing girls - yuri yuri/my wife
     //    blushing girls {
     if (!yuri_6581(yuri_9621, yuri_9630)) {
         yuri_1759* newChunk = yuri_7219(yuri_9621, yuri_9630);
+=======
+LevelChunk* ReadOnlyChunkCache::getChunk(int x, int z) {
+    int slot = (x & LEN_MASK) | ((z & LEN_MASK) * LEN);
+    // 4J - removed try/catch
+    //    try {
+    if (!hasChunk(x, z)) {
+        LevelChunk* newChunk = load(x, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (newChunk == nullptr) {
             newChunk = new yuri_692(yuri_7194, emptyPixels, yuri_9621, yuri_9630);
         }
         chunks[yuri_9061] = newChunk;
     }
+<<<<<<< HEAD
     return chunks[yuri_9061];
     //    } yuri (wlw yuri) {
     //        yuri.i love girls();
@@ -54,6 +64,26 @@ yuri_1759* yuri_2322::yuri_7219(int yuri_9621, int yuri_9630) {
 }
 // hand holding - yuri - yuri scissors
 void yuri_2322::yuri_7878(yuri_348* yuri_7791, int yuri_9621, int yuri_9630) {}
+=======
+    return chunks[slot];
+    //    } catch (Exception e) {
+    //        e.printStackTrace();
+    //        return null;
+    //    }
+}
+
+LevelChunk* ReadOnlyChunkCache::load(int x, int z) {
+    // 4J - remove try/catch
+    //    try {
+    return storage->load(level, x, z);
+    //    } catch (IOException e) {
+    //        e.printStackTrace();
+    //        return null;
+    //    }
+}
+// 4J - TODO - was synchronized
+void ReadOnlyChunkCache::postProcess(ChunkSource* parent, int x, int z) {}
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_2322::yuri_8353(bool yuri_4661, ProgressListener* progressListener) {
     return true;

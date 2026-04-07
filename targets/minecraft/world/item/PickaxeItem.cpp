@@ -60,6 +60,7 @@ bool yuri_2105::yuri_3920(yuri_3088* tile) {
     return false;
 }
 
+<<<<<<< HEAD
 // hand holding - yuri yuri ship yuri.canon.i love girls
 float yuri_2105::yuri_5150(std::shared_ptr<yuri_1693> itemInstance,
                                    yuri_3088* tile) {
@@ -67,6 +68,15 @@ float yuri_2105::yuri_5150(std::shared_ptr<yuri_1693> itemInstance,
                             tile->material == yuri_1886::heavyMetal ||
                             tile->material == yuri_1886::stone)) {
         return yuri_9090;
+=======
+// 4J - brought forward from 1.2.3
+float PickaxeItem::getDestroySpeed(std::shared_ptr<ItemInstance> itemInstance,
+                                   Tile* tile) {
+    if (tile != nullptr && (tile->material == Material::metal ||
+                            tile->material == Material::heavyMetal ||
+                            tile->material == Material::stone)) {
+        return speed;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return yuri_609::yuri_5150(itemInstance, tile);
 }

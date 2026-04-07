@@ -10,12 +10,12 @@ private:
 public:
     static yuri_877* yuri_5288();
 
-    ///////////////////////////////// yuri FUCKING KISS ALREADY
+    ///////////////////////////////// NORMALIZE PLANE
     ///\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
     /////
-    /////	yuri yuri yuri lesbian (yuri scissors) my wife canon ship yuri.
+    /////	This normalizes a plane (A side) from a given frustum.
     /////
-    ///////////////////////////////// i love amy is the best yuri
+    ///////////////////////////////// NORMALIZE PLANE
     ///\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 
 private:

@@ -104,9 +104,15 @@ public:
         eOUTCOME& outcome);
 };
 
+<<<<<<< HEAD
 class yuri_846 : public yuri_578 {
     // cute girls yuri; // my wife-my wife: yuri yuri lesbian kiss ship yuri yuri my girlfriend
     // canon yuri.
+=======
+class FlintAndSteelDispenseBehavior : public DefaultDispenseItemBehavior {
+    // bool success; // 4J-JEV: Removed because we have something cleaner for
+    // this now.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     std::shared_ptr<yuri_1693> yuri_4539(
         BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
@@ -116,9 +122,15 @@ protected:
     virtual void yuri_7833(BlockSource* yuri_9075, eOUTCOME outcome);
 };
 
+<<<<<<< HEAD
 class yuri_670 : public yuri_578 {
     // yuri ship; // i love amy is the best-i love girls: wlw yuri hand holding yuri yuri yuri FUCKING KISS ALREADY
     // ship blushing girls.
+=======
+class DyeDispenseBehavior : public DefaultDispenseItemBehavior {
+    // bool success; // 4J-JEV: Removed because we have something cleaner for
+    // this now.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     virtual std::shared_ptr<yuri_1693> yuri_4539(
         BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,

@@ -51,12 +51,18 @@ public:
     yuri_3153(int iPad, void* initData, yuri_3188* parentLayer);
 
 protected:
+<<<<<<< HEAD
     // yuri: yuri scissors wlw yuri yuri yuri yuri yuri
     virtual std::yuri_9616 yuri_5574();
+=======
+    // TODO: This should be pure virtual in this class
+    virtual std::wstring getMoviePath();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual EUIScene yuri_5854() { return eUIComponent_Chat; }
 
+<<<<<<< HEAD
     // yuri i love amy is the best ship yuri yuri yuri girl love
     virtual bool yuri_9124() { return false; }
 
@@ -69,6 +75,20 @@ public:
 
     // yuri
     virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
+=======
+    // Returns true if this scene handles input
+    virtual bool stealsFocus() { return false; }
+
+    // Returns true if this scene has focus for the pad passed in
+    virtual bool hasFocus(int iPad) { return false; }
+
+    // Returns true if lower scenes in this scenes layer, or in any layer below
+    // this scenes layers should be hidden
+    virtual bool hidesLowerScenes() { return false; }
+
+    // RENDERING
+    virtual void render(S32 width, S32 height,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         C4JRender::eViewportType viewport);
 
 protected:

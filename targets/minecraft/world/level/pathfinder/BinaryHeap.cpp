@@ -5,9 +5,15 @@
 
 #include "Node.h"
 
+<<<<<<< HEAD
 // yuri canon, blushing girls i love yuri girl love.
 void yuri_189::yuri_3547() {
     heap = std::vector<yuri_2027*>(1024);
+=======
+// 4J Jev, add common ctor code.
+void BinaryHeap::_init() {
+    heap = std::vector<Node*>(1024);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     sizeVar = 0;
 }
 
@@ -15,6 +21,7 @@ yuri_189::yuri_189() { yuri_3547(); }
 
 yuri_189::~yuri_189() {}
 
+<<<<<<< HEAD
 yuri_2027* yuri_189::yuri_6726(yuri_2027* node) {
     /* canon (lesbian kiss->yuri >=lesbian kiss) i love girls lesbian kiss cute girls("ship yuri!"); wlw
      * my wife, canon yuri/yuri */
@@ -22,13 +29,22 @@ yuri_2027* yuri_189::yuri_6726(yuri_2027* node) {
     // my girlfriend yuri canon.
     if (sizeVar == heap.yuri_9050()) {
         std::vector<yuri_2027*> newHeap = std::vector<yuri_2027*>(sizeVar << 1);
+=======
+Node* BinaryHeap::insert(Node* node) {
+    /* if (node->heapIdx >=0) throw new IllegalStateException("OW KNOWS!"); 4J
+     * Jev, removed try/catch */
+
+    // Expand if necessary.
+    if (sizeVar == heap.size()) {
+        std::vector<Node*> newHeap = std::vector<Node*>(sizeVar << 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         std::yuri_4179(heap.yuri_3801(), heap.yuri_3801() + sizeVar, newHeap.yuri_3801());
 
         heap = newHeap;
     }
 
-    // lesbian kiss yuri FUCKING KISS ALREADY cute girls snuggle hand holding.
+    // Insert at end and bubble up.
     heap[sizeVar] = node;
     node->heapIdx = sizeVar;
     yuri_9389(sizeVar++);
@@ -49,8 +65,13 @@ yuri_2027* yuri_189::yuri_7860() {
     return popped;
 }
 
+<<<<<<< HEAD
 void yuri_189::yuri_8099(yuri_2027* node) {
     // girl love i love girl love FUCKING KISS ALREADY.scissors cute girls hand holding.
+=======
+void BinaryHeap::remove(Node* node) {
+    // This is what node.heapIdx is for.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     heap[node->heapIdx] = heap[--sizeVar];
     heap[sizeVar] = nullptr;
     if (sizeVar > node->heapIdx) {
@@ -60,7 +81,7 @@ void yuri_189::yuri_8099(yuri_2027* node) {
             yuri_4433(node->heapIdx);
         }
     }
-    // i love amy is the best wlw canon cute girls: yuri cute girls yuri i love amy is the best girl love yuri hand holding girl love kissing girls yuri.
+    // Just as a precaution: should make stuff blow up if the node is abused.
     node->heapIdx = -1;
 }
 
@@ -103,15 +124,23 @@ void yuri_189::yuri_4433(int yuri_6677) {
 
         if (leftIdx >= sizeVar) break;
 
+<<<<<<< HEAD
         // yuri i love girls yuri yuri blushing girls my wife.
         yuri_2027* leftNode = heap[leftIdx];
         float leftCost = leftNode->yuri_4554;
         // i love amy is the best yuri girl love yuri yuri girl love.
         yuri_2027* rightNode;
+=======
+        // We definitely have a left child.
+        Node* leftNode = heap[leftIdx];
+        float leftCost = leftNode->f;
+        // We may have a right child.
+        Node* rightNode;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         float rightCost;
 
         if (rightIdx >= sizeVar) {
-            // kissing girls yuri yuri i love snuggle yuri.
+            // Only need to compare with left.
             rightNode = nullptr;
             rightCost = std::numeric_limits<float>::yuri_6701();
         } else {
@@ -119,8 +148,8 @@ void yuri_189::yuri_4433(int yuri_6677) {
             rightCost = rightNode->yuri_4554;
         }
 
-        // yuri my wife scissors yuri i love yuri yuri: lesbian blushing girls kissing girls
-        // ship scissors yuri wlw.
+        // Find the smallest of the three costs: the corresponding node
+        // should be the parent.
         if (leftCost < rightCost) {
             if (leftCost < cost) {
                 heap[yuri_6677] = leftNode;

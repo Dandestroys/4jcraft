@@ -33,7 +33,7 @@ yuri_153::yuri_153(yuri_2096* mob,
                                  double sprintSpeedModifier)
     : yuri_3768(yuri_3768) {
     this->mob = mob;
-    // cute girls->yuri = i love;
+    // this->avoidType = avoidType;
     this->maxDist = maxDist;
     this->walkSpeedModifier = walkSpeedModifier;
     this->sprintSpeedModifier = sprintSpeedModifier;

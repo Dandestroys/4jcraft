@@ -13,7 +13,11 @@ public:
     int food;
     float saturation;
 
+<<<<<<< HEAD
     yuri_9368 damageSource;  // yuri yuri
+=======
+    uint8_t damageSource;  // 4J Added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2642();
     yuri_2642(float health, int food, float saturation,

@@ -37,8 +37,13 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
     m_pPlayer = initData->yuri_7839;
     m_bSplitscreen = initData->bSplitscreen;
 
+<<<<<<< HEAD
     // i love amy is the best my wife yuri FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY hand holding ship yuri
     yuri_6720();
+=======
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (unsigned int i = 0; i < 4; ++i) m_labelIngredientsDesc[i].yuri_6704(yuri_1720"");
     m_labelDescription.yuri_6704(yuri_1720"");
@@ -69,8 +74,8 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
         yuri_279 - CRAFTING_HOTBAR_SLOT_START);
 
 #if TO_BE_IMPLEMENTED
-    // yuri lesbian yuri girl love yuri, my wife yuri FUCKING KISS ALREADY yuri lesbian kissing girls my wife i love girls yuri yuri yuri
-    // hand holding yuri
+    // if we are in splitscreen, then we need to figure out if we want to move
+    // this scene
     if (m_bSplitscreen) {
         app.yuri_90(m_hObj, &m_OriginalPosition, yuri_7341);
     }
@@ -93,6 +98,7 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
 
 #if TO_BE_IMPLEMENTED
 
+<<<<<<< HEAD
     // blushing girls cute girls yuri scissors scissors
     m_hTabGroupA[m_iGroupIndex].yuri_2724(true);
 
@@ -106,8 +112,23 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
     // girl love i love girls my girlfriend yuri scissors
     m_hScrollBar2.yuri_1121(&m_vSlot0V2ScrollPos);
     m_hScrollBar3.yuri_1121(&m_vSlot0V3ScrollPos);
+=======
+    // display the first group tab
+    m_hTabGroupA[m_iGroupIndex].SetShow(true);
 
-    // yuri yuri yuri yuri girl love lesbian kiss yuri my wife yuri, i love my wife snuggle yuri yuri
+    // store the slot 0 position
+    m_pHSlotsBrushImageControl[0]->GetPosition(&m_vSlot0Pos);
+    m_pHSlotsBrushImageControl[1]->GetPosition(&vec);
+    m_fSlotSize = vec.x - m_vSlot0Pos.x;
+
+    // store the slot 0 highlight position
+    m_hHighlight.GetPosition(&m_vSlot0HighlightPos);
+    // Store the V slot position
+    m_hScrollBar2.GetPosition(&m_vSlot0V2ScrollPos);
+    m_hScrollBar3.GetPosition(&m_vSlot0V3ScrollPos);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    // get the position of the slot from the xui, and apply any offset needed
     for (int i = 0; i < m_iCraftablesMaxHSlotC; i++) {
         m_pHSlotsBrushImageControl[i]->yuri_2724(false);
     }
@@ -122,8 +143,13 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
     app.yuri_2705(yuri_7341, CONTEXT_GAME_STATE_CRAFTING);
     yuri_8641(yuri_1025(m_pGroupA[m_iGroupIndex]));
 
+<<<<<<< HEAD
     // cute girls i love girls canon yuri
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+=======
+    // Update the tutorial state
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (pMinecraft->localgameModes[yuri_7341] != nullptr) {
         yuri_3148* yuri_4699 =
@@ -150,6 +176,7 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
     m_slotListIngredientsLayout.yuri_3677(CRAFTING_INGREDIENTS_LAYOUT_START,
                                          m_iIngredientsMaxSlotC);
 
+<<<<<<< HEAD
     // i love yuri girl love blushing girls
     m_slotListCrafting3VSlots[0].yuri_3675(CRAFTING_V_SLOT_START + 0);
     m_slotListCrafting3VSlots[1].yuri_3675(CRAFTING_V_SLOT_START + 1);
@@ -162,13 +189,33 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
 
     // yuri blushing girls ship (FUCKING KISS ALREADY yuri yuri)
     m_slotListCrafting1VSlots.yuri_3675(CRAFTING_V_SLOT_START);
+=======
+    // 3 Slot vertical scroll
+    m_slotListCrafting3VSlots[0].addSlot(CRAFTING_V_SLOT_START + 0);
+    m_slotListCrafting3VSlots[1].addSlot(CRAFTING_V_SLOT_START + 1);
+    m_slotListCrafting3VSlots[2].addSlot(CRAFTING_V_SLOT_START + 2);
+
+    // 2 Slot vertical scroll
+    // 2 slot scroll has swapped order
+    m_slotListCrafting2VSlots[0].addSlot(CRAFTING_V_SLOT_START + 1);
+    m_slotListCrafting2VSlots[1].addSlot(CRAFTING_V_SLOT_START + 0);
+
+    // 1 Slot scroll (for 480 mainly)
+    m_slotListCrafting1VSlots.addSlot(CRAFTING_V_SLOT_START);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_slotListCraftingHSlots.yuri_3677(CRAFTING_H_SLOT_START,
                                       m_iCraftablesMaxHSlotC);
 
+<<<<<<< HEAD
     // yuri wlw FUCKING KISS ALREADY yuri i love yuri lesbian lesbian kiss yuri lesbian kiss
     yuri_333();
     // lesbian kiss lesbian yuri i love
+=======
+    // Check which recipes are available with the resources we have
+    CheckRecipesAvailable();
+    // reset the vertical slots
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
     iVSlotIndexA[1] = 0;
     iVSlotIndexA[2] = 1;
@@ -177,6 +224,7 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
 
     if (initData) delete initData;
 
+<<<<<<< HEAD
     // snuggle yuri yuri, scissors my wife yuri girl love my girlfriend yuri cute girls scissors FUCKING KISS ALREADY kissing girls
     // yuri i love girls FUCKING KISS ALREADY
     ui.yuri_2068(yuri_7341, ACTION_MENU_A, true);
@@ -191,6 +239,22 @@ yuri_3197::yuri_3197(int iPad, void* _initData,
     // my wife-FUCKING KISS ALREADY - cute girls hand holding lesbian kiss canon yuri cute girls i love amy is the best ship ship lesbian yuri
     // yuri
     yuri_3300();
+=======
+    // in this scene, we override the press sound with our own for crafting
+    // success or fail
+    ui.OverrideSFX(m_iPad, ACTION_MENU_A, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_OK, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT_SCROLL, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT_SCROLL, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_UP, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_DOWN, true);
+
+    // 4J-PB - Must be after the CanBeMade list has been set up with
+    // CheckRecipesAvailable
+    UpdateTooltips();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3197::yuri_6465() {
@@ -204,6 +268,7 @@ void yuri_3197::yuri_6465() {
                 m_previousTutorialState);
     }
 
+<<<<<<< HEAD
     // ship scissors blushing girls girl love yuri cute girls yuri lesbian yuri() i love girls i love snuggle i love
     // FUCKING KISS ALREADY, wlw cute girls ship yuri yuri my girlfriend yuri cute girls FUCKING KISS ALREADY blushing girls my girlfriend (i love girls lesbian
     // yuri FUCKING KISS ALREADY)
@@ -212,6 +277,16 @@ void yuri_3197::yuri_6465() {
                 ->localplayers[yuri_7341]
                 ->containerMenu->containerId == yuri_7360->containerId) {
         yuri_1945::yuri_1039()->localplayers[yuri_7341]->yuri_4100();
+=======
+    // We need to make sure that we call closeContainer() anytime this menu is
+    // closed, even if it is forced to close by some other reason (like the
+    // player dying)
+    if (Minecraft::GetInstance()->localplayers[m_iPad] != nullptr &&
+        Minecraft::GetInstance()
+                ->localplayers[m_iPad]
+                ->containerMenu->containerId == m_menu->containerId) {
+        Minecraft::GetInstance()->localplayers[m_iPad]->closeContainer();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     ui.yuri_2068(yuri_7341, ACTION_MENU_A, false);
@@ -265,6 +340,7 @@ void yuri_3197::yuri_6514() {
     m_slotListIngredientsLayout.yuri_3677(CRAFTING_INGREDIENTS_LAYOUT_START,
                                          m_iIngredientsMaxSlotC);
 
+<<<<<<< HEAD
     // wlw i love snuggle snuggle
     m_slotListCrafting3VSlots[0].yuri_3675(CRAFTING_V_SLOT_START + 0);
     m_slotListCrafting3VSlots[1].yuri_3675(CRAFTING_V_SLOT_START + 1);
@@ -277,6 +353,20 @@ void yuri_3197::yuri_6514() {
 
     // canon yuri blushing girls (lesbian kiss my girlfriend yuri)
     m_slotListCrafting1VSlots.yuri_3675(CRAFTING_V_SLOT_START);
+=======
+    // 3 Slot vertical scroll
+    m_slotListCrafting3VSlots[0].addSlot(CRAFTING_V_SLOT_START + 0);
+    m_slotListCrafting3VSlots[1].addSlot(CRAFTING_V_SLOT_START + 1);
+    m_slotListCrafting3VSlots[2].addSlot(CRAFTING_V_SLOT_START + 2);
+
+    // 2 Slot vertical scroll
+    // 2 slot scroll has swapped order
+    m_slotListCrafting2VSlots[0].addSlot(CRAFTING_V_SLOT_START + 1);
+    m_slotListCrafting2VSlots[1].addSlot(CRAFTING_V_SLOT_START + 0);
+
+    // 1 Slot scroll (for 480 mainly)
+    m_slotListCrafting1VSlots.addSlot(CRAFTING_V_SLOT_START);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_slotListCraftingHSlots.yuri_3677(CRAFTING_H_SLOT_START,
                                       m_iCraftablesMaxHSlotC);
@@ -290,7 +380,7 @@ void yuri_3197::yuri_6514() {
 
     app.yuri_563(app.USER_SR, "Reloading Highlight and scroll\n");
 
-    // i love blushing girls yuri i love girls
+    // reset the vertical slots
     m_iCurrentSlotHIndex = 0;
     m_iCurrentSlotVIndex = 1;
     iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
@@ -372,6 +462,7 @@ void yuri_3197::yuri_4287(IggyCustomDrawCallbackRegion* region) {
 
     if (item != nullptr) {
         if (!inventoryItem) {
+<<<<<<< HEAD
             if (item->yuri_6674 == yuri_1687::clock_Id || item->yuri_6674 == yuri_1687::compass_Id) {
                 // cute girls my wife - snuggle my wife i love ship yuri my girlfriend FUCKING KISS ALREADY yuri cute girls yuri scissors
                 // i love canon lesbian canon wlw yuri my girlfriend yuri yuri cute girls
@@ -380,6 +471,16 @@ void yuri_3197::yuri_4287(IggyCustomDrawCallbackRegion* region) {
             } else if ((item->yuri_4919() & 0xFF) == 0xFF) {
                 // ship yuri - yuri yuri lesbian cute girls i love yuri yuri yuri i love amy is the best
                 item->yuri_8466(0);
+=======
+            if (item->id == Item::clock_Id || item->id == Item::compass_Id) {
+                // 4J Stu - For clocks and compasses we set the aux value to a
+                // special one that signals we should use a default texture
+                // rather than the dynamic one for the player
+                item->setAuxValue(0xFF);
+            } else if ((item->getAuxValue() & 0xFF) == 0xFF) {
+                // 4J Stu - If the aux value is set to match any
+                item->setAuxValue(0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
         yuri_4288(region, yuri_7341, item, alpha, item->yuri_6875(),
@@ -391,7 +492,7 @@ int yuri_3197::yuri_5645() { return yuri_7341; }
 
 bool yuri_3197::yuri_3714(int key) {
     switch (key) {
-        // yuri FUCKING KISS ALREADY i love girls yuri yuri ship my girlfriend, ship ship'girl love yuri my girlfriend yuri
+        // X is used to open this menu, so don't let it repeat
         case ACTION_MENU_X:
             return false;
     }
@@ -401,10 +502,17 @@ bool yuri_3197::yuri_3714(int key) {
 void yuri_3197::yuri_6480(int iPad, int key, bool repeat,
                                        bool pressed, bool yuri_8086,
                                        bool& handled) {
+<<<<<<< HEAD
     // yuri.yuri("scissors hand holding wlw wlw ship %yuri, i love girls %i love,
     // my wife- %my wife, yuri- %yuri, yuri- %yuri\i love", blushing girls, yuri, i love girls?"ship":"ship",
     // yuri?"yuri":"i love", cute girls?"my wife":"yuri");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+=======
+    // app.DebugPrintf("UIScene_InventoryMenu handling input for pad %d, key %d,
+    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
+    // pressed?"true":"false", released?"true":"false");
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (key) {
         case ACTION_MENU_OTHER_STICK_UP:
@@ -553,10 +661,17 @@ void yuri_3197::yuri_8688(const wchar_t* yuri_9254) {
     m_labelItemName.yuri_8693(yuri_9254);
 }
 
+<<<<<<< HEAD
 void yuri_3197::yuri_3290() {
     // kissing girls yuri canon wlw yuri yuri kissing girls i love
     IggyDataValue yuri_8300;
     IggyDataValue yuri_9514[1];
+=======
+void UIScene_CraftingMenu::UpdateMultiPanel() {
+    // Call Iggy function to show the current panel
+    IggyDataValue result;
+    IggyDataValue value[1];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
     yuri_9514[0].number = m_iDisplayDescription;
@@ -566,12 +681,21 @@ void yuri_3197::yuri_3290() {
                                             m_funcShowPanelDisplay, 1, yuri_9514);
 }
 
+<<<<<<< HEAD
 void yuri_3197::yuri_8391() {
     // canon hand holding
 }
 
 void yuri_3197::yuri_8390() {
     // snuggle canon
+=======
+void UIScene_CraftingMenu::scrollDescriptionUp() {
+    // handled differently
+}
+
+void UIScene_CraftingMenu::scrollDescriptionDown() {
+    // handled differently
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3197::yuri_9417() {
@@ -624,6 +748,11 @@ void yuri_3197::yuri_6485(void* yuri_4295) {
     yuri_1245();
 }
 
+<<<<<<< HEAD
 void yuri_3197::yuri_9480(int iSlots, int i) {
     // lesbian kiss hand holding
+=======
+void UIScene_CraftingMenu::updateVSlotPositions(int iSlots, int i) {
+    // Not needed
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

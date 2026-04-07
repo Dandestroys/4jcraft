@@ -405,8 +405,13 @@ void yuri_2022::yuri_7591(void* pParam,
     pClass->m_networkController.m_vNotifications.yuri_7954(pNotification);
 }
 
+<<<<<<< HEAD
 void yuri_2022::yuri_7218(void* pParam, bool bConnected) {
     // yuri my girlfriend yuri-yuri, yuri ship
+=======
+void NetworkController::liveLinkChangeCallback(void* pParam, bool bConnected) {
+    // Implementation is platform-specific, stub here
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_2022::yuri_4541(

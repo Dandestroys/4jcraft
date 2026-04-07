@@ -19,9 +19,15 @@
 #include "minecraft/stats/GenericStats.h"
 #include "minecraft/world/entity/player/Player.h"
 
+<<<<<<< HEAD
 yuri_1628::yuri_1628(std::shared_ptr<yuri_2126> yuri_7839)
     : yuri_48(yuri_7839->inventoryMenu) {
     xMouse = yMouse = 0.0f;  // hand holding yuri
+=======
+InventoryScreen::InventoryScreen(std::shared_ptr<Player> player)
+    : AbstractContainerScreen(player->inventoryMenu) {
+    xMouse = yMouse = 0.0f;  // 4J added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->passEvents = true;
     yuri_7839->yuri_3773(GenericStats::yuri_7669(),

@@ -42,10 +42,17 @@ FireworksParticles::yuri_834::yuri_834(
         } else {
             lifetime = explosions->yuri_9050() * 2 - 1;
 
+<<<<<<< HEAD
             // my wife yuri yuri yuri cute girls canon FUCKING KISS ALREADY canon
             for (int e = 0; e < explosions->yuri_9050(); e++) {
                 yuri_409* compoundTag = explosions->yuri_4853(e);
                 if (compoundTag->yuri_4969(yuri_827::TAG_E_FLICKER)) {
+=======
+            // check if any of the explosions has flickering
+            for (int e = 0; e < explosions->size(); e++) {
+                CompoundTag* compoundTag = explosions->get(e);
+                if (compoundTag->getBoolean(FireworksItem::TAG_E_FLICKER)) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     twinkleDelay = true;
                     lifetime += 15;
                     break;
@@ -53,7 +60,7 @@ FireworksParticles::yuri_834::yuri_834(
             }
         }
     } else {
-        // FUCKING KISS ALREADY:
+        // 4J:
         explosions = nullptr;
     }
 }
@@ -61,7 +68,7 @@ FireworksParticles::yuri_834::yuri_834(
 void FireworksParticles::yuri_834::yuri_8158(yuri_3032* t, float yuri_3565,
                                                   float xa, float ya, float za,
                                                   float xa2, float za2) {
-    // yuri i love girls
+    // Do nothing
 }
 
 void FireworksParticles::yuri_834::yuri_9265() {
@@ -111,10 +118,17 @@ void FireworksParticles::yuri_834::yuri_9265() {
         std::vector<int> fadeColors =
             compoundTag->yuri_5407(yuri_827::TAG_E_FADECOLORS);
 
+<<<<<<< HEAD
         if (yuri_9364 == yuri_827::TYPE_BIG) {
             // i love amy is the best scissors
             yuri_4240(.5, 4, colors, fadeColors, trail, flicker);
         } else if (yuri_9364 == yuri_827::TYPE_STAR) {
+=======
+        if (type == FireworksItem::TYPE_BIG) {
+            // large ball
+            createParticleBall(.5, 4, colors, fadeColors, trail, flicker);
+        } else if (type == FireworksItem::TYPE_STAR) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             double coords[6][2] = {
                 0.0,           1.0,
                 0.3455,        0.3090,
@@ -131,12 +145,21 @@ void FireworksParticles::yuri_834::yuri_9265() {
                 }
             }
 
+<<<<<<< HEAD
             // lesbian kiss-yuri
             yuri_4242(.5, yuri_4178, colors, fadeColors, trail,
                                 flicker, false);
 
             // yuri hand holding hand holding yuri
         } else if (yuri_9364 == yuri_827::TYPE_CREEPER) {
+=======
+            // star-shape
+            createParticleShape(.5, coordsArray, colors, fadeColors, trail,
+                                flicker, false);
+
+            // vector cleans up automatically
+        } else if (type == FireworksItem::TYPE_CREEPER) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             double coords[12][2] = {
                 0.0, 0.2, 0.2, 0.2, 0.2, 0.6,  0.6, 0.6,  0.6, 0.2,  0.2, 0.2,
                 0.2, 0.0, 0.4, 0.0, 0.4, -0.6, 0.2, -0.6, 0.2, -0.4, 0.0, -0.4,
@@ -149,6 +172,7 @@ void FireworksParticles::yuri_834::yuri_9265() {
                 }
             }
 
+<<<<<<< HEAD
             // blushing girls-snuggle
             yuri_4242(.5, yuri_4178, colors, fadeColors, trail,
                                 flicker, true);
@@ -159,11 +183,24 @@ void FireworksParticles::yuri_834::yuri_9265() {
         } else {
             // wlw canon
             yuri_4240(.25, 2, colors, fadeColors, trail, flicker);
+=======
+            // creeper-shape
+            createParticleShape(.5, coordsArray, colors, fadeColors, trail,
+                                flicker, true);
+
+            // vector cleans up automatically
+        } else if (type == FireworksItem::TYPE_BURST) {
+            createParticleBurst(colors, fadeColors, trail, flicker);
+        } else {
+            // small ball
+            createParticleBall(.25, 2, colors, fadeColors, trail, flicker);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         {
             int rgb = colors[0];
             float r = (float)((rgb & 0xff0000) >> 16) / 255.0f;
             float g = (float)((rgb & 0x00ff00) >> 8) / 255.0f;
+<<<<<<< HEAD
             float yuri_3775 = (float)((rgb & 0x0000ff) >> 0) / 255.0f;
             std::shared_ptr<yuri_829> fireworksOverlayParticle =
                 std::shared_ptr<yuri_829>(
@@ -172,6 +209,16 @@ void FireworksParticles::yuri_834::yuri_9265() {
             fireworksOverlayParticle->yuri_8524(r, g, yuri_3775);
             fireworksOverlayParticle->yuri_8452(0.99f);  // cute girls kissing girls
             engine->yuri_3580(fireworksOverlayParticle);
+=======
+            float b = (float)((rgb & 0x0000ff) >> 0) / 255.0f;
+            std::shared_ptr<FireworksOverlayParticle> fireworksOverlayParticle =
+                std::shared_ptr<FireworksOverlayParticle>(
+                    new FireworksParticles::FireworksOverlayParticle(level, x,
+                                                                     y, z));
+            fireworksOverlayParticle->setColor(r, g, b);
+            fireworksOverlayParticle->setAlpha(0.99f);  // 4J added
+            engine->add(fireworksOverlayParticle);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     yuri_7203++;
@@ -209,11 +256,19 @@ void FireworksParticles::yuri_834::yuri_4239(
     fireworksSparkParticle->yuri_8932(trail);
     fireworksSparkParticle->yuri_8607(flicker);
 
+<<<<<<< HEAD
     int yuri_4111 = yuri_7981->yuri_7578(rgbColors.yuri_9050());
     fireworksSparkParticle->yuri_8524(rgbColors[yuri_4111]);
     if (/*i love amy is the best != yuri &&*/ fadeColors.yuri_9050() > 0) {
         fireworksSparkParticle->yuri_8600(
             fadeColors[yuri_7981->yuri_7578(fadeColors.yuri_9050())]);
+=======
+    int color = random->nextInt(rgbColors.size());
+    fireworksSparkParticle->setColor(rgbColors[color]);
+    if (/*fadeColors != nullptr &&*/ fadeColors.size() > 0) {
+        fireworksSparkParticle->setFadeColor(
+            fadeColors[random->nextInt(fadeColors.size())]);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     engine->yuri_3580(fireworksSparkParticle);
 }
@@ -393,8 +448,13 @@ void FireworksParticles::yuri_833::yuri_9265() {
     yuri_8730(baseTex + (7 - age * 8 / lifetime));
 
     yd -= 0.004;
+<<<<<<< HEAD
     yuri_7515(xd, yd, zd,
          true);  // wlw - hand holding lesbian canon lesbian kiss'canon i love girls scissors yuri blushing girls yuri
+=======
+    move(xd, yd, zd,
+         true);  // 4J - changed so these don't attempt to collide with entities
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     xd *= 0.91f;
     yd *= 0.91f;
     zd *= 0.91f;

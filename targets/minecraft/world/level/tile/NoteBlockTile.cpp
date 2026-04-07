@@ -31,13 +31,18 @@ void yuri_2031::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
+<<<<<<< HEAD
 // hand holding-FUCKING KISS ALREADY - yuri yuri girl love canon canon ship
 bool yuri_2031::yuri_3033() { return true; }
+=======
+// 4J-PB - Adding a TestUse for tooltip display
+bool NoteBlockTile::TestUse() { return true; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_2031::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                         float clickX, float clickY, float clickZ,
-                        bool soundOnly /*=lesbian*/)  // my girlfriend my girlfriend yuri yuri
+                        bool soundOnly /*=false*/)  // 4J added soundOnly param
 {
     if (soundOnly) return false;
     if (yuri_7194->yuri_6802) return true;

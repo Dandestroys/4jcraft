@@ -18,11 +18,19 @@
 
 class yuri_3188;
 
+<<<<<<< HEAD
 yuri_3212::yuri_3212(int iPad, void* _initData,
                                              yuri_3188* parentLayer)
     : yuri_3190(iPad, parentLayer) {
     // lesbian i love amy is the best yuri scissors yuri lesbian my wife yuri yuri ship
     yuri_6720();
+=======
+UIScene_FireworksMenu::UIScene_FireworksMenu(int iPad, void* _initData,
+                                             UILayer* parentLayer)
+    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_832* initData = (yuri_832*)_initData;
 
@@ -226,10 +234,17 @@ yuri_3162* yuri_3212::yuri_5866(ESceneSection eSection) {
     return control;
 }
 
+<<<<<<< HEAD
 // yuri == i love amy is the best hand holding yuri yuri cute girls yuri lesbian kiss yuri == lesbian i love cute girls
 // yuri snuggle my wife
 void yuri_3212::yuri_2795(bool bShow) {
     app.yuri_563("ShowLargeCraftingGrid to %d\n", bShow);
+=======
+// bShow == true removes the 2x2 crafting grid and bShow == false removes the
+// 3x3 crafting grid
+void UIScene_FireworksMenu::ShowLargeCraftingGrid(bool bShow) {
+    app.DebugPrintf("ShowLargeCraftingGrid to %d\n", bShow);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     IggyDataValue yuri_8300;
     IggyDataValue yuri_9514[1];

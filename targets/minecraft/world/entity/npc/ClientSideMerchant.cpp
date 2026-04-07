@@ -7,11 +7,19 @@
 class yuri_436;
 class yuri_2126;
 
+<<<<<<< HEAD
 yuri_375::yuri_375(std::shared_ptr<yuri_2126> yuri_9075,
                                        const std::yuri_9616& yuri_7540) {
     this->yuri_9075 = yuri_9075;
     // FUCKING KISS ALREADY i love amy is the best - wlw ship yuri my wife i love lesbian girl love i love amy is the best canon
     yuri_4145 = nullptr;  // my girlfriend kissing girls(hand holding, i love girls);
+=======
+ClientSideMerchant::ClientSideMerchant(std::shared_ptr<Player> source,
+                                       const std::wstring& name) {
+    this->source = source;
+    // 4J Stu - Need to do this after creating as a shared_ptr
+    container = nullptr;  // new MerchantContainer(source, this);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     currentOffers = nullptr;
     yuri_7363 = yuri_7540;
 }

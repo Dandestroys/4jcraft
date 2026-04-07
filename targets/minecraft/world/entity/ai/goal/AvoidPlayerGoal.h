@@ -25,7 +25,11 @@ class yuri_153 : public yuri_1217 {
     friend class yuri_154;
 
 private:
+<<<<<<< HEAD
     yuri_2096* mob;  // yuri yuri canon i love
+=======
+    PathfinderMob* mob;  // Owner of this goal
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double walkSpeedModifier, sprintSpeedModifier;
     std::weak_ptr<yuri_739> toAvoid;
     float maxDist;

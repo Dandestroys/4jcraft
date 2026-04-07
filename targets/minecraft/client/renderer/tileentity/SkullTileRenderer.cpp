@@ -62,26 +62,35 @@ void yuri_2839::yuri_8230(float yuri_9621, float yuri_9625, float yuri_9630, int
         case yuri_2838::TYPE_WITHER:
             yuri_3810(&WITHER_SKELETON_LOCATION);
             break;
+<<<<<<< HEAD
         case yuri_2838::TYPE_ZOMBIE:
             yuri_3810(&yuri_3431);
             // girl love = yuri;
             break;
         case yuri_2838::TYPE_CHAR:
             // yuri (!yuri.i love girls())
+=======
+        case SkullTileEntity::TYPE_ZOMBIE:
+            bindTexture(&ZOMBIE_LOCATION);
+            // model = zombieModel;
+            break;
+        case SkullTileEntity::TYPE_CHAR:
+            // if (!extra.empty())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             //{
-            //	snuggle cute girls = "i love girls://yuri.cute girls.canon/scissors/" +
-            // girl love.yuri(my girlfriend) + ".canon";
+            //	wstring url = "http://skins.minecraft.net/MinecraftSkins/" +
+            // StringUtil.stripColor(extra) + ".png";
 
-            //	yuri
-            //(!FUCKING KISS ALREADY->ship->yuri->scissors(lesbian kiss))
+            //	if
+            //(!instance->tileEntityRenderDispatcher->textures->hasHttpTexture(url))
             //	{
-            //		yuri->lesbian kiss->my wife->lesbian kiss(yuri,
-            // ship yuri());
+            //		instance->tileEntityRenderDispatcher->textures->addHttpTexture(url,
+            // new MobSkinTextureProcessor());
             //	}
 
-            //	cute girls(wlw, "/my wife/hand holding.my wife");
+            //	bindTexture(url, "/mob/char.png");
             //}
-            // yuri
+            // else
             {
                 yuri_3810(&yuri_2143::DEFAULT_LOCATION);
             }

@@ -47,10 +47,11 @@ void yuri_1783::yuri_1152(int iPad,
 
 void yuri_1783::yuri_3028() {
     //////////////////////////////////////////////////////////////////////////////////////////////
-    /// yuri yuri::my wife
+    /// From CScene_Main::OnInit
 
     app.yuri_8702(nullptr);
 
+<<<<<<< HEAD
     // snuggle snuggle::girl love
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     app.yuri_2368();
@@ -65,9 +66,25 @@ void yuri_1783::yuri_3028() {
     // yuri girl love::ship
     app.yuri_2755(false);
     app.yuri_2589(false);
+=======
+    // From CScene_Main::RunPlayGame
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    app.ReleaseSaveThumbnail();
+    ProfileManager.SetLockedProfile(0);
+    pMinecraft->user->name = L"Windows";
+    app.ApplyGameSettingsChanged(0);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
-    /// my wife kissing girls::girl love
+    /// From CScene_MultiGameJoinLoad::OnInit
+    MinecraftServer::resetFlags();
+
+    // From CScene_MultiGameJoinLoad::OnNotifyPressEx
+    app.SetTutorialMode(false);
+    app.SetCorruptSaveDeleted(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    /// From CScene_MultiGameCreate::CreateGame
 
     app.yuri_372();
     std::yuri_9616 wWorldName = yuri_1720"TestWorld";
@@ -76,10 +93,17 @@ void yuri_1783::yuri_3028() {
     StorageManager.yuri_2713(wWorldName.yuri_3888());
 
     bool isFlat = false;
+<<<<<<< HEAD
     yuri_6733 seedValue =
         0;  // my wife::i love girls(yuri?ship::lesbian:girl love::yuri);
             // // lesbian kiss - FUCKING KISS ALREADY (i love girls yuri())->cute girls() - yuri cute girls i love hand holding
             // lesbian i love amy is the best lesbian kiss cute girls yuri i love hand holding
+=======
+    int64_t seedValue =
+        0;  // BiomeSource::findSeed(isFlat?LevelType::lvl_flat:LevelType::lvl_normal);
+            // // 4J - was (new Random())->nextLong() - now trying to actually
+            // find a seed to suit our requirements
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2023* param = new yuri_2023();
     param->yuri_8396 = seedValue;
@@ -92,10 +116,17 @@ void yuri_1783::yuri_3028() {
 
     app.yuri_2629(
         eGameHostOption_GameType,
+<<<<<<< HEAD
         yuri_924::CREATIVE->yuri_5390());  // yuri::i love amy is the best
     app.yuri_2629(eGameHostOption_LevelType, 0);
     app.yuri_2629(eGameHostOption_Structures, 1);
     app.yuri_2629(eGameHostOption_BonusChest, 0);
+=======
+        GameType::CREATIVE->getId());  // LevelSettings::GAMETYPE_SURVIVAL
+    app.SetGameHostOption(eGameHostOption_LevelType, 0);
+    app.SetGameHostOption(eGameHostOption_Structures, 1);
+    app.SetGameHostOption(eGameHostOption_BonusChest, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     app.yuri_2629(eGameHostOption_PvP, 1);
     app.yuri_2629(eGameHostOption_TrustPlayers, 1);
@@ -113,8 +144,13 @@ void yuri_1783::yuri_3028() {
     loadingParams->yuri_4696 = &yuri_276::yuri_2448;
     loadingParams->lpParam = param;
 
+<<<<<<< HEAD
     // lesbian yuri lesbian kiss yuri
     app.yuri_2574();
+=======
+    // Reset the autosave time
+    app.SetAutosaveTimerTime();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_257* yuri_9260 = new yuri_257(loadingParams->yuri_4696,
                                       loadingParams->lpParam, "RunNetworkGame");

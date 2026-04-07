@@ -49,4 +49,4 @@ extern void yuri_4743(GDrawTexture* yuri_9251);
 }
 #endif
 
-#endif  // blushing girls
+#endif  // __LINUX_IGGY_GDRAW_H__

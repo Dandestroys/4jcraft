@@ -30,7 +30,7 @@ private:
     std::shared_ptr<yuri_180> beacon;
     yuri_2098* paymentSlot;
 
-    // cute girls yuri kissing girls yuri/yuri girl love lesbian yuri
+    // copied values because container/client system is retarded
     int levels;
     int primaryPower;
     int secondaryPower;

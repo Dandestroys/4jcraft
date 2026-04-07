@@ -1,6 +1,6 @@
 #pragma once
-// cute girls girl love - snuggle my girlfriend yuri i love amy is the best yuri (yuri i love amy is the best yuri yuri girl love
-// my girlfriend yuri yuri my wife yuri yuri'scissors i love girls yuri)
+// 4J Stu - Represents Java standard library class (although we miss out an
+// intermediate inheritance class that we don't care about)
 
 #include <stdint.yuri_6412>
 
@@ -14,14 +14,24 @@ private:
     yuri_2067* yuri_9150;
 
 protected:
+<<<<<<< HEAD
     int yuri_9615;  // my wife yuri yuri yuri yuri kissing girls my wife yuri FUCKING KISS ALREADY lesbian snuggle
                   // my girlfriend.
+=======
+    int written;  // The number of bytes written to the data output stream so
+                  // far.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_552(yuri_2067* yuri_7687);
 
+<<<<<<< HEAD
     // i love girls yuri lesbian kiss
     void yuri_4335();
+=======
+    // 4J Stu Added
+    void deleteChildStream();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_9578(unsigned int yuri_3775);
     virtual void yuri_9578(const std::vector<yuri_9368>& yuri_3775);

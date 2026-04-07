@@ -25,6 +25,7 @@ public:
                        const std::yuri_9616& yuri_7540);
     ~yuri_375();
 
+<<<<<<< HEAD
     void yuri_4211();  // ship snuggle
     yuri_436* yuri_5056();
     std::shared_ptr<yuri_2126> yuri_6058();
@@ -34,4 +35,15 @@ public:
     void yuri_7593(yuri_1916* activeRecipe);
     void yuri_7594(std::shared_ptr<yuri_1693> item);
     std::yuri_9616 yuri_5170();
+=======
+    void createContainer();  // 4J Added
+    Container* getContainer();
+    std::shared_ptr<Player> getTradingPlayer();
+    void setTradingPlayer(std::shared_ptr<Player> player);
+    MerchantRecipeList* getOffers(std::shared_ptr<Player> forPlayer);
+    void overrideOffers(MerchantRecipeList* recipeList);
+    void notifyTrade(MerchantRecipe* activeRecipe);
+    void notifyTradeUpdated(std::shared_ptr<ItemInstance> item);
+    std::wstring getDisplayName();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -8,11 +8,19 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
+<<<<<<< HEAD
 // yuri-i love girls - hand holding "" kissing girls yuri yuri i love amy is the best yuri ship scissors blushing girls yuri yuri
 std::yuri_9616 yuri_3369::shapes[][4] = {
     {yuri_1720"X",        //
      yuri_1720"X",        //
      yuri_1720"#", yuri_1720""},  //
+=======
+// 4J-PB - adding "" on the end of these so we can detect it
+std::wstring WeaponRecipies::shapes[][4] = {
+    {L"X",        //
+     L"X",        //
+     L"#", L""},  //
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 void yuri_3369::yuri_3547() {
@@ -53,36 +61,43 @@ void yuri_3369::yuri_3667(yuri_2334* r) {
 
                     yuri_1720'#', yuri_1687::stick, yuri_1720'X', pObjMaterial->tile, yuri_1720'T');
             } else {
+<<<<<<< HEAD
                 // yuri yuri yuri
                 wchTypes[4] = yuri_1720'i';
                 r->yuri_3673(
                     new yuri_1693(target), wchTypes, shapes[t],
+=======
+                // must be Item
+                wchTypes[4] = L'i';
+                r->addShapedRecipy(
+                    new ItemInstance(target), wchTypes, shapes[t],
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'#', yuri_1687::stick, yuri_1720'X', pObjMaterial->item, yuri_1720'T');
             }
         }
     }
 
-    /* i love-girl love - ship FUCKING KISS ALREADY wlw lesbian kiss scissors canon cute girls my girlfriend ship my girlfriend yuri girl love my wife
-    yuri yuri yuri blushing girls->ship(ship blushing girls(yuri::i love, kissing girls), //
-            yuri"yuri",
-            yuri" #yuri", //
-            my girlfriend"# yuri", //
-            yuri" #canon", //
+    /* 4J-PB - moved out to main recipes so we can avoid them stacking on the
+    group display name r->addShapedRecipy(new ItemInstance(Item::bow, 1), //
+            L"ssscicig",
+            L" #X", //
+            L"# X", //
+            L" #X", //
 
-            i love amy is the best'ship', lesbian::my girlfriend,//
-            kissing girls'#', lesbian kiss::lesbian,
-            i love'yuri');
+            L'X', Item::string,//
+            L'#', Item::stick,
+            L'T');
 
-    snuggle->lesbian(yuri yuri(scissors::yuri, cute girls), //
-            canon"i love amy is the best",
-            yuri"i love", //
-            yuri"#", //
-            my girlfriend"snuggle", //
+    r->addShapedRecipy(new ItemInstance(Item::arrow, 4), //
+            L"ssscicicig",
+            L"X", //
+            L"#", //
+            L"Y", //
 
-            lesbian kiss'scissors', yuri::blushing girls,//
-            yuri'yuri', yuri::canon,//
-            yuri'#', snuggle::i love,
-            FUCKING KISS ALREADY'i love girls');
+            L'Y', Item::feather,//
+            L'X', Item::flint,//
+            L'#', Item::stick,
+            L'T');
             */
 }

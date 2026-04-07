@@ -17,10 +17,17 @@ bool yuri_3182::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eTextInput);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // yuri my wife i love girls
     m_textName = yuri_8069(yuri_1720"text");
     m_funcChangeState = yuri_8069(yuri_1720"ChangeState");
     m_funcSetCharLimit = yuri_8069(yuri_1720"SetCharLimit");
+=======
+    // TextInput specific initialisers
+    m_textName = registerFastName(L"text");
+    m_funcChangeState = registerFastName(L"ChangeState");
+    m_funcSetCharLimit = registerFastName(L"SetCharLimit");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

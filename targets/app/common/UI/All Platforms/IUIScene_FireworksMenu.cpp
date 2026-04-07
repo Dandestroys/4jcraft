@@ -14,7 +14,7 @@ IUIScene_FireworksMenu::yuri_1154(ESceneSection eSection,
     int xOffset = 0;
     int yOffset = 0;
 
-    // i love amy is the best lesbian yuri cute girls canon yuri yuri i love girls
+    // Find the new section if there is one
     switch (eSection) {
         case eSectionFireworksIngredients:
             if (eTapDirection == eTapStateDown) {

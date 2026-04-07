@@ -9,12 +9,21 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/global/LightningBolt.h"
 
+<<<<<<< HEAD
 void yuri_1781::yuri_8158(std::shared_ptr<yuri_739> _bolt, double yuri_9621,
                                    double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // ship - snuggle ship yuri yuri yuri snuggle'hand holding yuri yuri/scissors my wife
     // yuri scissors
     std::shared_ptr<yuri_1780> bolt =
         std::dynamic_pointer_cast<yuri_1780>(_bolt);
+=======
+void LightningBoltRenderer::render(std::shared_ptr<Entity> _bolt, double x,
+                                   double y, double z, float rot, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<LightningBolt> bolt =
+        std::dynamic_pointer_cast<LightningBolt>(_bolt);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3032* t = yuri_3032::yuri_5405();
 

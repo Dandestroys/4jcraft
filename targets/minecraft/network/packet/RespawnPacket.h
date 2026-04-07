@@ -17,12 +17,18 @@ public:
     char difficulty;
     yuri_6733 mapSeed;
     int mapHeight;
+<<<<<<< HEAD
     yuri_924* playerGameType;
     bool m_newSeaLevel;  // yuri yuri
     yuri_1775* m_pLevelType;
+=======
+    GameType* playerGameType;
+    bool m_newSeaLevel;  // 4J added
+    LevelType* m_pLevelType;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int m_newEntityId;
-    int m_xzSize;     // yuri yuri
-    int m_hellScale;  // yuri kissing girls
+    int m_xzSize;     // 4J Added
+    int m_hellScale;  // 4J Added
 
     yuri_2413();
     yuri_2413(char dimension, yuri_6733 mapSeed, int mapHeight,

@@ -1,5 +1,5 @@
 #pragma once
-// FUCKING KISS ALREADY lesbian kiss kissing girls;
+// using namespace std;
 
 #include <yuri_4669>
 #include <vector>
@@ -10,8 +10,13 @@
 class yuri_3144;
 class yuri_3145;
 
+<<<<<<< HEAD
 // scissors scissors lesbian kiss yuri yuri wlw my girlfriend yuri my wife kissing girls lesbian kiss my wife yuri
 class yuri_129 : public yuri_3149 {
+=======
+// A task that creates an maintains an area constraint until it is activated
+class AreaTask : public TutorialTask {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     enum EAreaTaskCompletionStates {
         eAreaTaskCompletion_CompleteOnActivation,

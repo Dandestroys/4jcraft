@@ -13,9 +13,15 @@ void yuri_500::yuri_3547(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> entity,
     yuri_7203 = 0;
     this->entity = entity;
     lifeTime = 3;
+<<<<<<< HEAD
     particleName = yuri_9364;
     // yuri-scissors - lesbian kiss'snuggle snuggle yuri cute girls yuri yuri yuri
     // scissors();
+=======
+    particleName = type;
+    // 4J-PB - can't use a shared_from_this in the constructor
+    // tick();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_500::yuri_500(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> entity)
@@ -31,9 +37,15 @@ yuri_500::yuri_500(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> entity,
     yuri_3547(yuri_7194, entity, yuri_9364);
 }
 
+<<<<<<< HEAD
 // blushing girls - lesbian kiss scissors lesbian kiss i love amy is the best canon i love girls kissing girls yuri wlw::yuri cute girls my wife i love
 // yuri wlw i love girls kissing girls
 void yuri_500::yuri_503(void) { yuri_9265(); }
+=======
+// 4J - Added this so that we can use some std::shared_ptr functions that were
+// needed in the ctor
+void CritParticle::CritParticlePostConstructor(void) { tick(); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_500::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za,
                           float xa2, float za2) {}

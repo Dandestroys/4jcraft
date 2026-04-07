@@ -18,7 +18,7 @@ private:
 public:
     static const int UPSIDEDOWN_BIT = 4;
 
-    // yuri ship kissing girls girl love yuri yuri yuri (yuri wlw girl love-ship yuri)
+    // the direction is the way going up (for normal non-upsidedown stairs)
     static const int DIR_EAST = 0;
     static const int DIR_WEST = 1;
     static const int DIR_SOUTH = 2;
@@ -36,6 +36,7 @@ protected:
 public:
     void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      int forceData = -1,
+<<<<<<< HEAD
                      std::shared_ptr<yuri_3091> forceEntity =
                          std::shared_ptr<yuri_3091>());  // scissors my girlfriend yuri,
                                                           // my wife yuri
@@ -44,6 +45,16 @@ public:
     int yuri_5806();
     void yuri_8478(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     static bool yuri_7067(int yuri_6674);
+=======
+                     std::shared_ptr<TileEntity> forceEntity =
+                         std::shared_ptr<TileEntity>());  // 4J added forceData,
+                                                          // forceEntity param
+    bool isSolidRender(bool isServerLevel = false);
+    bool isCubeShaped();
+    int getRenderShape();
+    void setBaseShape(LevelSource* level, int x, int y, int z);
+    static bool isStairs(int id);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     bool yuri_6948(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
@@ -54,7 +65,7 @@ public:
     void yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
                   std::vector<yuri_0>* boxes, std::shared_ptr<yuri_739> yuri_9075);
 
-    /** canon: **/
+    /** DELEGATES: **/
 public:
     virtual void yuri_3635(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
@@ -83,6 +94,7 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
+<<<<<<< HEAD
                      bool soundOnly = false);  // i love wlw cute girls cute girls
     virtual void yuri_9554(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                              yuri_782* yuri_4550);
@@ -90,6 +102,15 @@ public:
                              std::shared_ptr<yuri_1793> by,
                              std::shared_ptr<yuri_1693> itemInstance);
     virtual int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+=======
+                     bool soundOnly = false);  // 4J added soundOnly param
+    virtual void wasExploded(Level* level, int x, int y, int z,
+                             Explosion* explosion);
+    virtual void setPlacedBy(Level* level, int x, int y, int z,
+                             std::shared_ptr<LivingEntity> by,
+                             std::shared_ptr<ItemInstance> itemInstance);
+    virtual int getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue);
     virtual yuri_1278* yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yuri_3322* yuri_3565,

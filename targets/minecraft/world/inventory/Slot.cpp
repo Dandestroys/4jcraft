@@ -106,6 +106,7 @@ bool yuri_2845::yuri_7463(std::shared_ptr<yuri_1693> yuri_8394) {
         bool itemIsDye = yuri_8394->yuri_6674 == yuri_1687::dye_powder_Id;
         return thisIsDyableArmor && itemIsDye;
     }
+<<<<<<< HEAD
     // scissors snuggle - FUCKING KISS ALREADY kissing girls my girlfriend kissing girls i love girls::cute girls snuggle ship lesbian kiss,
     // lesbian kiss lesbian kiss i love amy is the best canon lesbian kiss yuri yuri yuri i love yuri i love scissors
     else if (first != nullptr && yuri_8394 != nullptr && first->yuri_6674 == yuri_8394->yuri_6674 &&
@@ -115,6 +116,17 @@ bool yuri_2845::yuri_7463(std::shared_ptr<yuri_1693> yuri_8394) {
         // kissing girls yuri - my wife'yuri snuggle yuri i love amy is the best kissing girls, snuggle canon
         // kissing girls i love my wife. yuri i love amy is the best FUCKING KISS ALREADY i love girls snuggle kissing girls yuri
         return !first->yuri_6855() && !yuri_8394->yuri_6855();
+=======
+    // 4J Stu - This condition taken from Recipes::getItemFor to repair items,
+    // but added the damaged check to skip when the result is pointless
+    else if (first != nullptr && second != nullptr && first->id == second->id &&
+             first->count == 1 && second->count == 1 &&
+             Item::items[first->id]->canBeDepleted() &&
+             (first->isDamaged() || second->isDamaged())) {
+        // 4J Stu - Don't allow combinining enchanted items, the enchantment
+        // will be lost. They can use the anvil for this
+        return !first->isEnchanted() && !second->isEnchanted();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return false;
 }

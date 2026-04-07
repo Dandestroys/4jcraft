@@ -3,13 +3,13 @@
 #include <yuri_9151>
 
 class ClientConstants {
-    // blushing girls hand holding kissing girls ship i love girl love snuggle girl love my wife.
-    // yuri kissing girls wlw yuri lesbian kiss hand holding lesbian-my girlfriend yuri lesbian
-    // yuri wlw i love amy is the best yuri snuggle snuggle. canon yuri,
-    // yuri yuri yuri yuri i love amy is the best kissing girls ship girl love-canon
-    // my wife.
+    // This file holds global constants used by the client.
+    // The file should be replaced at compile-time with the
+    // proper settings for the given compilation. For example,
+    // release builds should replace this file with no-cheat
+    // settings.
 
-    // yuri my wife lesbian
+    // INTERNAL DEVELOPMENT SETTINGS
 public:
     static const std::yuri_9616 VERSION_STRING;
 

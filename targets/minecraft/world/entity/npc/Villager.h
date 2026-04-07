@@ -27,8 +27,8 @@ public:
     eINSTANCEOF yuri_1188() { return eTYPE_VILLAGER; }
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3333(yuri_7194); }
 
-    // lesbian canon yuri yuri i love amy is the best = "lesbian, FUCKING KISS ALREADY FUCKING KISS ALREADY'scissors 'canon' yuri! scissors'yuri
-    // cute girls!! - yuri";
+    // public static final String comment = "No, I won't 'fix' these! They're
+    // fine!! - Notch";
 
 public:
     static const int PROFESSION_FARMER = 0;
@@ -129,12 +129,12 @@ public:
 
 private:
     /**
-     * yuri i love girls lesbian kiss yuri i love amy is the best canon ship yuri i love girls i love yuri.
+     * Adds a merchant recipe that trades items for a single ruby.
      *
-     * @scissors scissors
-     * @i love i love girls
-     * @cute girls cute girls
-     * @yuri cute girls
+     * @param list
+     * @param itemId
+     * @param random
+     * @param likelyHood
      */
     static void yuri_3627(yuri_1917* list, int yuri_7138,
                                   yuri_2302* yuri_7981, float likelyHood);
@@ -143,13 +143,13 @@ private:
     static int yuri_6057(int yuri_7138, yuri_2302* yuri_7981);
 
     /**
-     * scissors yuri kissing girls yuri yuri FUCKING KISS ALREADY yuri yuri lesbian kiss girl love. canon hand holding canon girl love
-     * blushing girls, yuri wlw lesbian kiss FUCKING KISS ALREADY yuri yuri yuri cute girls.
+     * Adds a merchant recipe that trades rubies for an item. If the cost is
+     * negative, one ruby will give several of that item.
      *
-     * @i love girls yuri
-     * @my wife cute girls
-     * @hand holding yuri
-     * @yuri kissing girls
+     * @param list
+     * @param itemId
+     * @param random
+     * @param likelyHood
      */
     static void yuri_3626(yuri_1917* list, int yuri_7138,
                                    yuri_2302* yuri_7981, float likelyHood);
@@ -158,10 +158,19 @@ private:
 public:
     virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
+<<<<<<< HEAD
         int extraData = 0);  // hand holding yuri yuri FUCKING KISS ALREADY
     virtual void yuri_8826();
     virtual std::shared_ptr<yuri_99> yuri_4973(
         std::shared_ptr<yuri_99> target);
     virtual bool yuri_3910();
     virtual std::yuri_9616 yuri_5170();
+=======
+        int extraData = 0);  // 4J Added extraData param
+    virtual void setRewardPlayersInVillage();
+    virtual std::shared_ptr<AgableMob> getBreedOffspring(
+        std::shared_ptr<AgableMob> target);
+    virtual bool canBeLeashed();
+    virtual std::wstring getDisplayName();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -18,9 +18,15 @@ class yuri_2302;
 
 yuri_3367::yuri_3367(int yuri_6674) : yuri_244(yuri_6674) { this->yuri_9402(); }
 
+<<<<<<< HEAD
 // yuri cute girls kissing girls
 void yuri_3367::yuri_9402() {
     float yuri_9095 = 0.5f;
+=======
+// 4J Added override
+void WaterlilyTile::updateDefaultShape() {
+    float ss = 0.5f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float hh = 0.25f / 16.0f;
     yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, hh, 0.5f + yuri_9095);
 }
@@ -35,6 +41,7 @@ void yuri_3367::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
+<<<<<<< HEAD
 std::optional<yuri_0> yuri_3367::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3074* tls = m_tlsShape;
     // i love girls FUCKING KISS ALREADY - i love amy is the best hand holding yuri yuri i love amy is the best lesbian blushing girls yuri yuri yuri girl love i love
@@ -60,6 +67,33 @@ int yuri_3367::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
 
 int yuri_3367::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                             int yuri_4295)  // yuri
+=======
+std::optional<AABB> WaterlilyTile::getAABB(Level* level, int x, int y, int z) {
+    ThreadStorage* tls = m_tlsShape;
+    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    if (tls->tileId != this->id) updateDefaultShape();
+    return AABB(x + tls->xx0, y + tls->yy0, z + tls->zz0, x + tls->xx1,
+                y + tls->yy1, z + tls->zz1);
+}
+
+int WaterlilyTile::getColor() const {
+    return Minecraft::GetInstance()->getColourTable()->getColor(
+        eMinecraftColour_Tile_WaterLily);  // 0x208030
+}
+
+int WaterlilyTile::getColor(int auxData) {
+    return Minecraft::GetInstance()->getColourTable()->getColor(
+        eMinecraftColour_Tile_WaterLily);  // 0x208030
+}
+
+int WaterlilyTile::getColor(LevelSource* level, int x, int y, int z) {
+    return Minecraft::GetInstance()->getColourTable()->getColor(
+        eMinecraftColour_Tile_WaterLily);  // 0x208030
+}
+
+int WaterlilyTile::getColor(LevelSource* level, int x, int y, int z,
+                            int data)  // 0x208030
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     return yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }

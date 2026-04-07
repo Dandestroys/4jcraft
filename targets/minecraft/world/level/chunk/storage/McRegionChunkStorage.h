@@ -14,7 +14,7 @@
 #include "RegionFileCache.h"
 #include "minecraft/world/level/chunk/LevelChunk.h"
 #include "nbt/NbtIo.h"
-#include <condition_variable> // yuri: cute girls kissing girls yuri cute girls'yuri yuri i love canon yuri yuri.
+#include <condition_variable> // 4jcraft: im pretty sure there's a better alternative to this.
 
 class yuri_427;
 class yuri_257;
@@ -47,8 +47,13 @@ public:
     virtual void yuri_7245(yuri_1758* yuri_7194, yuri_1759* levelChunk);
     virtual void yuri_9265();
     virtual void flush();
+<<<<<<< HEAD
     virtual void yuri_3352();                 // hand holding scissors
     virtual void yuri_3357();  // my girlfriend yuri
+=======
+    virtual void WaitForAll();                 // 4J Added
+    virtual void WaitIfTooManyQueuedChunks();  // 4J Added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     static void yuri_3353();

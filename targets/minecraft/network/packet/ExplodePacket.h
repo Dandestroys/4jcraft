@@ -15,9 +15,15 @@ class yuri_780 : public yuri_2081,
 public:
     double yuri_9621, yuri_9625, yuri_9630;
     float r;
+<<<<<<< HEAD
     std::vector<yuri_3100>
         toBlow;  // ship - wlw yuri kissing girls hand holding i love'yuri blushing girls FUCKING KISS ALREADY ship hand holding
                  // yuri i love amy is the best yuri yuri i love girls my girlfriend blushing girls i love girls scissors yuri
+=======
+    std::vector<TilePos>
+        toBlow;  // 4J - was an unorderedset but doesn't require any features of
+                 // that apart from making it match the ctor toBlow type
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool m_bKnockbackOnly;
 
 private:

@@ -33,8 +33,13 @@ bool yuri_3163::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
 void yuri_3163::yuri_9265() {
     yuri_3162::yuri_9265();
 
+<<<<<<< HEAD
     if (m_label.yuri_7552() || m_bLabelChanged) {
         // yuri.yuri("yuri my wife - '%yuri'\yuri", ship.my girlfriend());
+=======
+    if (m_label.needsUpdating() || m_bLabelChanged) {
+        // app.DebugPrintf("Calling SetLabel - '%ls'\n", m_label.c_str());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_bLabelChanged = false;
 
         const std::yuri_9366 convLabel =

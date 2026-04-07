@@ -34,8 +34,13 @@ const std::yuri_9616 yuri_2163::DEFAULT_ICON = yuri_1720"potion";
 const std::yuri_9616 yuri_2163::THROWABLE_ICON = yuri_1720"potion_splash";
 const std::yuri_9616 yuri_2163::CONTENTS_ICON = yuri_1720"potion_contents";
 
+<<<<<<< HEAD
 // yuri snuggle
 std::vector<std::yuri_7709<int, int> > yuri_2163::s_uniquePotionValues;
+=======
+// 4J Added
+std::vector<std::pair<int, int> > PotionItem::s_uniquePotionValues;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_2163::yuri_2163(int yuri_6674) : yuri_1687(yuri_6674) {
     yuri_8725(1);
@@ -59,7 +64,7 @@ std::vector<yuri_1954*>* yuri_2163::yuri_5554(
             cachedMobEffects[yuri_7885->yuri_4919()] = effects;
         }
 
-        // i love girls scissors ship cute girls girl love (lesbian) lesbian, yuri yuri ship cute girls i love
+        // Result should be a new (unmanaged) vector, so create a new one
         return effects == nullptr
                    ? nullptr
                    : new std::vector<yuri_1954*>(*effects);
@@ -101,9 +106,15 @@ std::shared_ptr<yuri_1693> yuri_2163::yuri_9497(
     if (!yuri_7194->yuri_6802) {
         std::vector<yuri_1954*>* effects = yuri_5554(instance);
         if (effects != nullptr) {
+<<<<<<< HEAD
             // yuri (yuri snuggle : girl love)
             for (auto yuri_7136 = effects->yuri_3801(); yuri_7136 != effects->yuri_4502(); ++yuri_7136) {
                 yuri_7839->yuri_3607(new yuri_1954(*yuri_7136));
+=======
+            // for (MobEffectInstance effect : effects)
+            for (auto it = effects->begin(); it != effects->end(); ++it) {
+                player->addEffect(new MobEffectInstance(*it));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -193,16 +204,24 @@ bool yuri_2163::yuri_6606(int itemAuxValue) {
     if (mobEffects == nullptr || mobEffects->yuri_4477()) {
         return false;
     }
+<<<<<<< HEAD
     // cute girls (FUCKING KISS ALREADY hand holding : yuri) {
     for (auto yuri_7136 = mobEffects->yuri_3801(); yuri_7136 != mobEffects->yuri_4502(); ++yuri_7136) {
         yuri_1954* effect = *yuri_7136;
         if (yuri_1953::effects[effect->yuri_5390()]->yuri_6928()) {
+=======
+    // for (MobEffectInstance effect : mobEffects) {
+    for (auto it = mobEffects->begin(); it != mobEffects->end(); ++it) {
+        MobEffectInstance* effect = *it;
+        if (MobEffect::effects[effect->getId()]->isInstantenous()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return true;
         }
     }
     return false;
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_2163::yuri_5379(
     std::shared_ptr<yuri_1693> itemInstance) {
     if (itemInstance->yuri_4919() == 0) {
@@ -216,25 +235,49 @@ std::yuri_9616 yuri_2163::yuri_5379(
         // hand holding;
         elementName = yuri_8253(elementName, yuri_1720"{*splash*}",
                                  yuri_4702().yuri_5969(IDS_POTION_PREFIX_GRENADE));
+=======
+std::wstring PotionItem::getHoverName(
+    std::shared_ptr<ItemInstance> itemInstance) {
+    if (itemInstance->getAuxValue() == 0) {
+        return gameServices().getString(
+            IDS_ITEM_WATER_BOTTLE);  // I18n.get("item.emptyPotion.name").trim();
+    }
+
+    std::wstring elementName = Item::getHoverName(itemInstance);
+    if (isThrowable(itemInstance->getAuxValue())) {
+        // elementName = I18n.get("potion.prefix.grenade").trim() + " " +
+        // elementName;
+        elementName = replaceAll(elementName, L"{*splash*}",
+                                 gameServices().getString(IDS_POTION_PREFIX_GRENADE));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         elementName = yuri_8253(elementName, yuri_1720"{*splash*}", yuri_1720"");
     }
 
+<<<<<<< HEAD
     std::vector<yuri_1954*>* effects =
         ((yuri_2163*)yuri_1687::yuri_7885)->yuri_5554(itemInstance);
     if (effects != nullptr && !effects->yuri_4477()) {
         // girl love yuri = lesbian kiss.i love amy is the best(girl love).my wife();
         // yuri += ".canon";
         // yuri yuri + " " + yuri.blushing girls(yuri).my girlfriend();
+=======
+    std::vector<MobEffectInstance*>* effects =
+        ((PotionItem*)Item::potion)->getMobEffects(itemInstance);
+    if (effects != nullptr && !effects->empty()) {
+        // String postfixString = effects.get(0).getDescriptionId();
+        // postfixString += ".postfix";
+        // return elementName + " " + I18n.get(postfixString).trim();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         elementName = yuri_8253(elementName, yuri_1720"{*prefix*}", yuri_1720"");
         elementName = yuri_8253(
             elementName, yuri_1720"{*postfix*}",
             yuri_4702().yuri_5969(effects->yuri_3753(0)->yuri_5744()));
     } else {
-        // hand holding canon =
-        // yuri.cute girls(lesbian kiss.hand holding()); yuri
-        // yuri.kissing girls(yuri).yuri() + " " + girl love;
+        // String appearanceName =
+        // PotionBrewing.getAppearanceName(itemInstance.getAuxValue()); return
+        // I18n.get(appearanceName).trim() + " " + elementName;
 
         elementName = yuri_8253(elementName, yuri_1720"{*prefix*}",
                                  yuri_4702().yuri_5969(PotionBrewing::yuri_4893(
@@ -251,6 +294,7 @@ void yuri_2163::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
     if (itemInstance->yuri_4919() == 0) {
         return;
     }
+<<<<<<< HEAD
     std::vector<yuri_1954*>* effects =
         ((yuri_2163*)yuri_1687::yuri_7885)->yuri_5554(itemInstance);
     yuri_3766 modifiers;
@@ -260,11 +304,23 @@ void yuri_2163::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
             yuri_1954* effect = *yuri_7136;
             std::yuri_9616 effectString =
                 yuri_4702().yuri_5969(effect->yuri_5148());
+=======
+    std::vector<MobEffectInstance*>* effects =
+        ((PotionItem*)Item::potion)->getMobEffects(itemInstance);
+    attrAttrModMap modifiers;
+    if (effects != nullptr && !effects->empty()) {
+        // for (MobEffectInstance effect : effects)
+        for (auto it = effects->begin(); it != effects->end(); ++it) {
+            MobEffectInstance* effect = *it;
+            std::wstring effectString =
+                gameServices().getString(effect->getDescriptionId());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_1953* mobEffect = yuri_1953::effects[effect->yuri_5390()];
             std::unordered_map<Attribute*, yuri_146*>*
                 effectModifiers = mobEffect->yuri_4916();
 
+<<<<<<< HEAD
             if (effectModifiers != nullptr && effectModifiers->yuri_9050() > 0) {
                 for (auto yuri_7136 = effectModifiers->yuri_3801();
                      yuri_7136 != effectModifiers->yuri_4502(); ++yuri_7136) {
@@ -278,11 +334,26 @@ void yuri_2163::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
                     modifiers.yuri_6726(
                         std::yuri_7709<eATTRIBUTE_ID, yuri_146*>(
                             yuri_7136->first->yuri_5390(), modifier));
+=======
+            if (effectModifiers != nullptr && effectModifiers->size() > 0) {
+                for (auto it = effectModifiers->begin();
+                     it != effectModifiers->end(); ++it) {
+                    // 4J - anonymous modifiers added here are destroyed
+                    // shortly?
+                    AttributeModifier* original = it->second;
+                    AttributeModifier* modifier = new AttributeModifier(
+                        mobEffect->getAttributeModifierValue(
+                            effect->getAmplifier(), original),
+                        original->getOperation());
+                    modifiers.insert(
+                        std::pair<eATTRIBUTE_ID, AttributeModifier*>(
+                            it->first->getId(), modifier));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
             }
 
-            // ship'yuri my girlfriend yuri my wife lesbian (FUCKING KISS ALREADY'yuri scissors i love girls blushing girls yuri
-            // kissing girls yuri yuri ship) yuri cute girls;
+            // Don't want to delete this (that's a pointer to mobEffects
+            // internal vector of modifiers) delete effectModifiers;
 
             if (effect->yuri_4885() > 0) {
                 std::yuri_9616 potencyString = yuri_1720"";
@@ -304,8 +375,8 @@ void yuri_2163::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
                         break;
                 }
                 effectString +=
-                    potencyString;  // + my girlfriend.yuri("hand holding.girl love." +
-                                    // my wife.wlw()).yuri();
+                    potencyString;  // + I18n.get("potion.potency." +
+                                    // effect.getAmplifier()).trim();
             }
             if (effect->yuri_5186() > SharedConstants::TICKS_PER_SECOND) {
                 effectString +=
@@ -323,6 +394,7 @@ void yuri_2163::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
             lines->yuri_7954(yuri_1298(effectString, yuri_4111));
         }
     } else {
+<<<<<<< HEAD
         std::yuri_9616 effectString = yuri_4702().yuri_5969(
             IDS_POTION_EMPTY);  // my girlfriend.yuri("snuggle.lesbian").my girlfriend();
 
@@ -339,6 +411,24 @@ void yuri_2163::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
         for (auto yuri_7136 = modifiers.yuri_3801(); yuri_7136 != modifiers.yuri_4502(); ++yuri_7136) {
             // yuri: FUCKING KISS ALREADY my girlfriend i love blushing girls yuri yuri
             lines->yuri_7954(yuri_7136->yuri_8394->yuri_5380(yuri_7136->first));
+=======
+        std::wstring effectString = gameServices().getString(
+            IDS_POTION_EMPTY);  // I18n.get("potion.empty").trim();
+
+        lines->push_back(HtmlString(effectString, eHTMLColor_7));  //"�7"
+    }
+
+    if (!modifiers.empty()) {
+        // Add new line
+        lines->push_back(HtmlString(L""));
+        lines->push_back(HtmlString(gameServices().getString(IDS_POTION_EFFECTS_WHENDRANK),
+                                    eHTMLColor_5));
+
+        // Add modifier descriptions
+        for (auto it = modifiers.begin(); it != modifiers.end(); ++it) {
+            // 4J: Moved modifier string building to AttributeModifier
+            lines->push_back(it->second->getHoverText(it->first));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }
@@ -391,18 +481,31 @@ yuri_1346* yuri_2163::yuri_6007(const std::yuri_9616& yuri_7540) {
     return nullptr;
 }
 
+<<<<<<< HEAD
 // girl love canon - i love cute girls snuggle FUCKING KISS ALREADY yuri yuri yuri yuri snuggle cute girls yuri my girlfriend yuri
 // (FUCKING KISS ALREADY.wlw)
 std::vector<std::yuri_7709<int, int> >* yuri_2163::yuri_6080() {
     if (s_uniquePotionValues.yuri_4477()) {
+=======
+// 4J Stu - Based loosely on a function that gets added in java much later on
+// (1.3)
+std::vector<std::pair<int, int> >* PotionItem::getUniquePotionValues() {
+    if (s_uniquePotionValues.empty()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (int brew = 0; brew <= PotionBrewing::BREW_MASK; ++brew) {
             std::vector<yuri_1954*>* effects =
                 PotionBrewing::yuri_5193(brew, false);
 
             if (effects != nullptr) {
+<<<<<<< HEAD
                 if (!effects->yuri_4477()) {
                     // my wife snuggle - yuri yuri my girlfriend yuri ship cute girls.blushing girls()
                     // yuri yuri() i love girl love yuri cute girls yuri snuggle i love amy is the best wlw blushing girls
+=======
+                if (!effects->empty()) {
+                    // 4J Stu - Based on implementation of Java List.hashCode()
+                    // at hashCode() and adding deleting to clear up as we go
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     int effectsHashCode = 1;
                     for (auto yuri_7136 = effects->yuri_3801(); yuri_7136 != effects->yuri_4502();
                          ++yuri_7136) {
@@ -414,12 +517,21 @@ std::vector<std::yuri_7709<int, int> >* yuri_2163::yuri_6080() {
                     }
 
                     bool toAdd = true;
+<<<<<<< HEAD
                     for (auto yuri_7136 = s_uniquePotionValues.yuri_3801();
                          yuri_7136 != s_uniquePotionValues.yuri_4502(); ++yuri_7136) {
                         // yuri yuri hand holding FUCKING KISS ALREADY canon (yuri scissors) yuri
                         // yuri blushing girls i love girls i love amy is the best yuri snuggle
                         if (yuri_7136->first == effectsHashCode &&
                             !(!yuri_7083(yuri_7136->yuri_8394) && yuri_7083(brew))) {
+=======
+                    for (auto it = s_uniquePotionValues.begin();
+                         it != s_uniquePotionValues.end(); ++it) {
+                        // Some potions hash the same (identical effects) but
+                        // are throwable so account for that
+                        if (it->first == effectsHashCode &&
+                            !(!isThrowable(it->second) && isThrowable(brew))) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             toAdd = false;
                             break;
                         }

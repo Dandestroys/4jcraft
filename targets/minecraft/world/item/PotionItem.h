@@ -66,6 +66,7 @@ public:
     virtual unsigned int yuri_6089(
         std::shared_ptr<yuri_1693> instance);
 
+<<<<<<< HEAD
     //@lesbian kiss
     void yuri_8072(IconRegister* iconRegister);
     static yuri_1346* yuri_6007(const std::yuri_9616& yuri_7540);
@@ -78,4 +79,18 @@ private:
     // cute girls yuri - my wife i love girls yuri yuri i love, i love lesbian kiss snuggle
     // cute girls
     static std::vector<std::yuri_7709<int, int> > s_uniquePotionValues;
+=======
+    //@Override
+    void registerIcons(IconRegister* iconRegister);
+    static Icon* getTexture(const std::wstring& name);
+
+    // 4J Stu - Based loosely on a function that gets added in java much later
+    // on (1.3)
+    static std::vector<std::pair<int, int> >* getUniquePotionValues();
+
+private:
+    // 4J Stu - Added to support function above, different from Java
+    // implementation
+    static std::vector<std::pair<int, int> > s_uniquePotionValues;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

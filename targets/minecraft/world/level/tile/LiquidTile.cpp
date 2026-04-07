@@ -200,6 +200,7 @@ int yuri_1788::yuri_6025(yuri_1758* yuri_7194) {
     return 0;
 }
 
+<<<<<<< HEAD
 // i love girls - hand holding yuri canon ship yuri.snuggle.yuri
 int yuri_1788::yuri_5484(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                               int yuri_9294 /*=-yuri*/) {
@@ -207,6 +208,15 @@ int yuri_1788::yuri_5484(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
     // yuri snuggle-hand holding lesbian kiss my wife yuri FUCKING KISS ALREADY'yuri cute girls scissors yuri
     int yuri_3565 = yuri_7194->yuri_5484(yuri_9621, yuri_9625, yuri_9630, 0, yuri_9294);
     int yuri_3775 = yuri_7194->yuri_5484(yuri_9621, yuri_9625 + 1, yuri_9630, 0, yuri_9294);
+=======
+// 4J - change brought forward from 1.8.2
+int LiquidTile::getLightColor(LevelSource* level, int x, int y, int z,
+                              int tileId /*=-1*/) {
+    // 4J - note that this code seems to basically be a hack to fix a problem
+    // where post-processed things like lakes aren't getting lit properly
+    int a = level->getLightColor(x, y, z, 0, tileId);
+    int b = level->getLightColor(x, y + 1, z, 0, tileId);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int aa = yuri_3565 & 0xff;
     int yuri_3780 = yuri_3775 & 0xff;
@@ -235,6 +245,7 @@ void yuri_1788::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                     yuri_9625 + yuri_7981->yuri_7576(), yuri_9630 + yuri_7981->yuri_7576(), 0, 0, 0);
             }
         }
+<<<<<<< HEAD
         // scissors-yuri - i love my wife yuri'yuri ship!
         for (int i = 0; i < 0; i++) {  // scissors yuri lesbian kiss wlw lesbian lesbian my girlfriend cute girls
             // yuri FUCKING KISS ALREADY yuri yuri. yuri
@@ -249,6 +260,22 @@ void yuri_1788::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
             if (yuri_7194->yuri_5514(xt, yuri_9625, zt) == yuri_1886::air &&
                 (yuri_7194->yuri_5514(xt, yuri_9625 - 1, zt)->yuri_3830() ||
                  yuri_7194->yuri_5514(xt, yuri_9625 - 1, zt)->yuri_6941())) {
+=======
+        // 4J-PB - this loop won't run!
+        for (int i = 0; i < 0; i++) {  // This was an attempt to add foam to
+            // the bottoms of waterfalls. It
+            // didn't went ok.
+            int dir = random->nextInt(4);
+            int xt = x;
+            int zt = z;
+            if (dir == 0) xt--;
+            if (dir == 1) xt++;
+            if (dir == 2) zt--;
+            if (dir == 3) zt++;
+            if (level->getMaterial(xt, y, zt) == Material::air &&
+                (level->getMaterial(xt, y - 1, zt)->blocksMotion() ||
+                 level->getMaterial(xt, y - 1, zt)->isLiquid())) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 float r = 1 / 16.0f;
                 double xx = yuri_9621 + yuri_7981->yuri_7576();
                 double yy = yuri_9625 + yuri_7981->yuri_7576();
@@ -279,6 +306,7 @@ void yuri_1788::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                                   yuri_7981->yuri_7576() * 1.0f + 0.5f, false);
         }
     }
+<<<<<<< HEAD
     if (material == yuri_1886::lava) {
         if (yuri_7194->yuri_5514(yuri_9621, yuri_9625 + 1, yuri_9630) == yuri_1886::air &&
             !yuri_7194->yuri_7059(yuri_9621, yuri_9625 + 1, yuri_9630)) {
@@ -299,6 +327,28 @@ void yuri_1788::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 yuri_7194->yuri_7827(yuri_9621, yuri_9625, yuri_9630, eSoundType_LIQUID_LAVA,
                                       0.2f + yuri_7981->yuri_7576() * 0.2f,
                                       0.9f + yuri_7981->yuri_7576() * 0.15f,
+=======
+    if (material == Material::lava) {
+        if (level->getMaterial(x, y + 1, z) == Material::air &&
+            !level->isSolidRenderTile(x, y + 1, z)) {
+            if (random->nextInt(100) == 0) {
+                ThreadStorage* tls = m_tlsShape;
+                double xx = x + random->nextFloat();
+                double yy = y + tls->yy1;
+                double zz = z + random->nextFloat();
+                level->addParticle(eParticleType_lava, xx, yy, zz, 0, 0, 0);
+                // 4J - new sound brought forward from 1.2.3
+                level->playLocalSound(xx, yy, zz, eSoundType_LIQUID_LAVA_POP,
+                                      0.2f + random->nextFloat() * 0.2f,
+                                      0.9f + random->nextFloat() * 0.15f,
+                                      false);
+            }
+            // 4J - new sound brought forward from 1.2.3
+            if (random->nextInt(200) == 0) {
+                level->playLocalSound(x, y, z, eSoundType_LIQUID_LAVA,
+                                      0.2f + random->nextFloat() * 0.2f,
+                                      0.9f + random->nextFloat() * 0.15f,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                       false);
             }
         }

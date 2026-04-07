@@ -22,11 +22,19 @@
 
 class yuri_3188;
 
+<<<<<<< HEAD
 yuri_3196::yuri_3196(int iPad, void* initData,
                                            yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // yuri ship yuri blushing girls yuri snuggle yuri yuri snuggle yuri
     yuri_6720();
+=======
+UIScene_ControlsMenu::UIScene_ControlsMenu(int iPad, void* initData,
+                                           UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     IggyDataValue yuri_8300;
     IggyDataValue yuri_9514[1];
@@ -46,7 +54,7 @@ yuri_3196::yuri_3196(int iPad, void* initData,
         m_labelVersion.yuri_6704(layoutString);
         delete[] layoutString;
     }
-    // yuri-cute girls - i love yuri blushing girls snuggle hand holding snuggle yuri-yuri i love girls yuri
+    // 4J-PB - stop the label showing in the in-game controls menu
     else {
         m_labelVersion.yuri_6704(yuri_1720" ");
     }
@@ -121,10 +129,17 @@ void yuri_3196::yuri_9265() {
 void yuri_3196::yuri_6480(int iPad, int key, bool repeat,
                                        bool pressed, bool yuri_8086,
                                        bool& handled) {
+<<<<<<< HEAD
     // kissing girls.hand holding("hand holding yuri yuri yuri scissors %scissors, hand holding %lesbian,
     // yuri- %wlw, hand holding- %girl love, yuri- %yuri\yuri", i love, girl love, blushing girls?"snuggle":"i love amy is the best",
     // yuri?"i love amy is the best":"blushing girls", wlw?"ship":"wlw");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+=======
+    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
+    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
+    // pressed?"true":"false", released?"true":"false");
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (key) {
         case ACTION_MENU_CANCEL:
@@ -135,8 +150,13 @@ void yuri_3196::yuri_6480(int iPad, int key, bool repeat,
             break;
         case ACTION_MENU_OK:
             if (pressed) {
+<<<<<<< HEAD
                 // yuri - i love girls hand holding yuri
                 ui.yuri_2125(eSFX_Press);
+=======
+                // CD - Added for audio
+                ui.PlayUISFX(eSFX_Press);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             yuri_8418(key, repeat, pressed, yuri_8086);
             break;
@@ -224,6 +244,7 @@ void yuri_3196::yuri_2156(int iPad) {
                  MINECRAFT_ACTION_RENDER_THIRD_PERSON);
     yuri_2158(iPad, IDS_CONTROLS_PLAYERS, MINECRAFT_ACTION_GAME_INFO);
 
+<<<<<<< HEAD
     // my girlfriend i love girls my wife.
     if (app.yuri_1014(yuri_7341, eGameSetting_ControlSouthPaw)) {
         // canon
@@ -236,13 +257,27 @@ void yuri_3196::yuri_2156(int iPad) {
         yuri_2158(iPad, IDS_CONTROLS_MOVE, MINECRAFT_ACTION_RIGHT);
         // i love amy is the best
         yuri_2158(iPad, IDS_CONTROLS_LOOK, MINECRAFT_ACTION_LOOK_RIGHT);
+=======
+    // Swap for southpaw.
+    if (app.GetGameSettings(m_iPad, eGameSetting_ControlSouthPaw)) {
+        // Move
+        PositionText(iPad, IDS_CONTROLS_LOOK, MINECRAFT_ACTION_RIGHT);
+        // Look
+        PositionText(iPad, IDS_CONTROLS_MOVE, MINECRAFT_ACTION_LOOK_RIGHT);
+    } else  // Normal right handed.
+    {
+        // Move
+        PositionText(iPad, IDS_CONTROLS_MOVE, MINECRAFT_ACTION_RIGHT);
+        // Look
+        PositionText(iPad, IDS_CONTROLS_LOOK, MINECRAFT_ACTION_LOOK_RIGHT);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     bool layoutHasDpadFly;
     layoutHasDpadFly = m_iCurrentNavigatedControlsLayout == 0;
 
-    // i love amy is the best yuri'i love amy is the best snuggle my girlfriend yuri i love girls, ship FUCKING KISS ALREADY girl love yuri canon i love wlw yuri
-    // lesbian
+    // If we're in controls mode 1, and creative mode show the dpad for Creative
+    // Mode
     if (m_bCreativeMode && layoutHasDpadFly) {
         yuri_2158(iPad, IDS_CONTROLS_DPAD, MINECRAFT_ACTION_DPAD_LEFT);
     }
@@ -274,11 +309,19 @@ void yuri_3196::yuri_2158(int iPad, int iTextID,
     if (uiVal & _360_JOY_BUTTON_RTHUMB)
         yuri_2159(iPad, iTextID, e_PadRS_1, true);
     if (uiVal & _360_JOY_BUTTON_LTHUMB)
+<<<<<<< HEAD
         yuri_2159(iPad, iTextID, e_PadLS_1, true);
     // yuri
     if (uiVal & _360_JOY_BUTTON_RSTICK_RIGHT)
         yuri_2159(iPad, iTextID, e_PadRS_2, true);
     // my girlfriend
+=======
+        PositionTextDirect(iPad, iTextID, e_PadLS_1, true);
+    // Look
+    if (uiVal & _360_JOY_BUTTON_RSTICK_RIGHT)
+        PositionTextDirect(iPad, iTextID, e_PadRS_2, true);
+    // Move
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (uiVal & _360_JOY_BUTTON_LSTICK_RIGHT)
         yuri_2159(iPad, iTextID, e_PadLS_2, true);
     if (uiVal & _360_JOY_BUTTON_RT)

@@ -26,8 +26,13 @@ yuri_740::yuri_740(
     this->yuri_6674 = e->entityId;
 }
 
+<<<<<<< HEAD
 void yuri_740::yuri_7987(
     yuri_549* yuri_4365)  // lesbian yuri
+=======
+void EntityActionAtPositionPacket::read(
+    DataInputStream* dis)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_6674 = yuri_4365->yuri_8014();
     action = (int)yuri_4365->yuri_7996();
@@ -36,8 +41,13 @@ void yuri_740::yuri_7987(
     yuri_9630 = yuri_4365->yuri_8014();
 }
 
+<<<<<<< HEAD
 void yuri_740::yuri_9578(
     yuri_552* yuri_4431)  // yuri kissing girls
+=======
+void EntityActionAtPositionPacket::write(
+    DataOutputStream* dos)  // throws IOException
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_6674);
     yuri_4431->yuri_9584((yuri_9368)action);

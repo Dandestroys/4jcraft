@@ -12,7 +12,7 @@ IUIScene_DispenserMenu::yuri_1154(ESceneSection eSection,
     ESceneSection newSection = eSection;
     int xOffset = 0;
 
-    // snuggle scissors kissing girls kissing girls FUCKING KISS ALREADY i love hand holding i love
+    // Find the new section if there is one
     switch (eSection) {
         case eSectionTrapTrap:
             if (eTapDirection == eTapStateDown) {

@@ -27,11 +27,19 @@
 #yuri_4327 UPDATE_PLAYERS_TIMER_ID 0
 #yuri_4327 UPDATE_PLAYERS_TIMER_TIME 30000
 
+<<<<<<< HEAD
 yuri_3227::yuri_3227(int iPad, void* _initData,
                                    yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // i love yuri yuri snuggle wlw i love yuri yuri girl love wlw
     yuri_6720();
+=======
+UIScene_JoinMenu::UIScene_JoinMenu(int iPad, void* _initData,
+                                   UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1702* initData = (yuri_1702*)_initData;
     m_selectedSession = initData->selectedSession;
@@ -160,8 +168,13 @@ void yuri_3227::yuri_9265() {
 
         m_bIgnoreInput = false;
 
+<<<<<<< HEAD
         // FUCKING KISS ALREADY blushing girls snuggle FUCKING KISS ALREADY i love girls kissing girls i love yuri yuri cute girls yuri canon
         app.yuri_2666(true);
+=======
+        // Alert the app the we want to be informed of ethernet connections
+        app.SetLiveLinkRequired(true);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_3688(UPDATE_PLAYERS_TIMER_ID, UPDATE_PLAYERS_TIMER_TIME);
     }
@@ -200,9 +213,9 @@ void yuri_3227::yuri_9265() {
 
         m_friendInfoUpdatedERROR = false;
 
-        // snuggle my girlfriend yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, yuri yuri yuri my girlfriend my girlfriend i love girls
-        // my wife yuri i love amy is the best yuri yuri kissing girls i love girls yuri ship ship yuri
-        // canon i love girls FUCKING KISS ALREADY i love yuri lesbian yuri yuri ship my girlfriend
+        // Show a generic network error message, not always safe to assume the
+        // error was host quitting without bubbling more info up from the
+        // network manager so this is the best we can do
         unsigned int uiIDA[1];
         uiIDA[0] = IDS_CONFIRM_OK;
         ui.yuri_2397(IDS_ERROR_NETWORK_TITLE, IDS_ERROR_NETWORK,
@@ -271,8 +284,13 @@ void yuri_3227::yuri_6512(F64 controlId, F64 childId) {
         case eControl_JoinGame: {
             m_bIgnoreInput = true;
 
+<<<<<<< HEAD
             // yuri - FUCKING KISS ALREADY blushing girls yuri
             ui.yuri_2125(eSFX_Press);
+=======
+            // CD - Added for audio
+            ui.PlayUISFX(eSFX_Press);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_2909();
         } break;
@@ -293,12 +311,21 @@ void yuri_3227::yuri_2909() {
     if (!app.yuri_1659()) {
         yuri_1700(this);
     } else {
+<<<<<<< HEAD
         // yuri.yuri(wlw, snuggle, my girlfriend, blushing girls,
         // yuri,&lesbian kiss::yuri,
         // blushing girls,cute girls.yuri());
         SignInInfo yuri_6702;
         yuri_6702.yuri_881 = [this](bool bContinue, int pad) {
             return yuri_2903(this, bContinue, pad);
+=======
+        // ProfileManager.RequestSignInUI(false, false, false, true,
+        // false,&UIScene_JoinMenu::StartGame_SignInReturned,
+        // this,ProfileManager.GetPrimaryPad());
+        SignInInfo info;
+        info.Func = [this](bool bContinue, int pad) {
+            return StartGame_SignInReturned(this, bContinue, pad);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         };
         yuri_6702.requireOnline = true;
         ui.yuri_2011(ProfileManager.yuri_1125(),
@@ -326,9 +353,15 @@ int yuri_3227::yuri_2903(void* pParam, bool bContinue,
     return 0;
 }
 
+<<<<<<< HEAD
 // FUCKING KISS ALREADY yuri i love cute girls my girlfriend my girlfriend yuri yuri ship yuri i love girls yuri lesbian kiss girl love
 // ship-yuri yuri hand holding i love girls
 void yuri_3227::yuri_1700(yuri_3227* pClass) {
+=======
+// Shared function to join the game that is the same whether we used the
+// sign-in UI or not
+void UIScene_JoinMenu::JoinGame(UIScene_JoinMenu* pClass) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool noPrivileges = false;
     int signedInUsers = 0;
     int localUsersMask = 0;
@@ -336,6 +369,7 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
     bool isSignedInLive = true;
     int iPadNotSignedInLive = -1;
 
+<<<<<<< HEAD
     ProfileManager.yuri_2669(0);  // cute girls!
 
     // yuri yuri'yuri yuri blushing girls my wife, yuri scissors FUCKING KISS ALREADY yuri yuri my girlfriend yuri i love amy is the best
@@ -344,6 +378,16 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
             if (ProfileManager.yuri_1674(index)) {
                 if (isSignedInLive && !ProfileManager.yuri_1675(index)) {
                     // i love lesbian kissing girls lesbian canon wlw girl love cute girls
+=======
+    ProfileManager.SetLockedProfile(0);  // TEMP!
+
+    // If we're in SD mode, then only the primary player gets to play
+    if (app.IsLocalMultiplayerAvailable()) {
+        for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
+            if (ProfileManager.IsSignedIn(index)) {
+                if (isSignedInLive && !ProfileManager.IsSignedInLive(index)) {
+                    // Record the first non signed in live pad
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     iPadNotSignedInLive = index;
                 }
 
@@ -368,8 +412,8 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
         }
     }
 
-    // girl love lesbian kiss yuri canon kissing girls yuri canon hand holding yuri cute girls yuri yuri my wife wlw snuggle,
-    // FUCKING KISS ALREADY!
+    // If this is an online game but not all players are signed in to Live,
+    // stop!
     if (!isSignedInLive) {
         {
             pClass->m_bIgnoreInput = false;
@@ -382,8 +426,8 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
         return;
     }
 
-    // yuri yuri yuri-i love yuri snuggle scissors, yuri yuri i love i love
-    // my girlfriend girl love girl love'yuri ship
+    // Check if user-created content is allowed, as we cannot play
+    // multiplayer if it's not
     bool noUGC = false;
     bool pccAllowed = true;
     bool pccFriendsAllowed = true;
@@ -413,9 +457,15 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
         yuri_276::eJoinGameResult yuri_8300 = g_NetworkManager.yuri_1700(
             pClass->m_selectedSession, dwLocalUsersMask);
 
+<<<<<<< HEAD
         // canon girl love yuri lesbian kiss yuri canon yuri i love snuggle i love amy is the best yuri i love yuri
         // i love girls
         app.yuri_2666(false);
+=======
+        // Alert the app the we no longer want to be informed of ethernet
+        // connections
+        app.SetLiveLinkRequired(false);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (yuri_8300 != yuri_276::JOINGAME_SUCCESS) {
             int exitReasonStringId = -1;
@@ -476,7 +526,7 @@ void yuri_3227::yuri_6556(int yuri_6674) {
                                        .yuri_3888());
                         }
                     } else {
-                        // yuri scissors yuri lesbian kiss FUCKING KISS ALREADY girl love yuri FUCKING KISS ALREADY lesbian my girlfriend
+                        // Leave the loop when we hit the first nullptr player
                         break;
                     }
                 }

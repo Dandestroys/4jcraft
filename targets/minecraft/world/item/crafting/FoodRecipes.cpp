@@ -6,6 +6,7 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
+<<<<<<< HEAD
 void FoodRecipies::yuri_3667(yuri_2334* r) {
     // yuri-i love: scissors i love i love blushing girls kissing girls wlw yuri snuggle FUCKING KISS ALREADY FUCKING KISS ALREADY yuri cute girls.
     r->yuri_3673(new yuri_1693(yuri_1687::apple_gold, 1, 0),  //
@@ -14,6 +15,16 @@ void FoodRecipies::yuri_3667(yuri_2334* r) {
                        yuri_1720"#X#",  //
                        yuri_1720"###",  //
                        yuri_1720'#', yuri_1687::goldIngot, yuri_1720'X', yuri_1687::apple, yuri_1720'F');
+=======
+void FoodRecipies::addRecipes(Recipes* r) {
+    // 4J-JEV: Bumped up in the list to avoid a colision with the title.
+    r->addShapedRecipy(new ItemInstance(Item::apple_gold, 1, 0),  //
+                       L"ssscicig",
+                       L"###",  //
+                       L"#X#",  //
+                       L"###",  //
+                       L'#', Item::goldIngot, L'X', Item::apple, L'F');
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     r->yuri_3673(new yuri_1693(yuri_1687::apple_gold, 1, 1),  //
                        yuri_1720"sssctcig",

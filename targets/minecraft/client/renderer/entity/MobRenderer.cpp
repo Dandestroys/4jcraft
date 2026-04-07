@@ -38,10 +38,17 @@ bool yuri_1955::yuri_9018(std::shared_ptr<yuri_1793> mob) {
                 mob == entityRenderDispatcher->crosshairPickMob);
 }
 
+<<<<<<< HEAD
 void yuri_1955::yuri_8205(std::shared_ptr<yuri_1950> entity, double yuri_9621, double yuri_9625,
                               double yuri_9630, float rot, float yuri_3565) {
     std::shared_ptr<yuri_739> roper = entity->yuri_5459();
     // yuri = girl love.i love amy is the best;
+=======
+void MobRenderer::renderLeash(std::shared_ptr<Mob> entity, double x, double y,
+                              double z, float rot, float a) {
+    std::shared_ptr<Entity> roper = entity->getLeashHolder();
+    // roper = entityRenderDispatcher.cameraEntity;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (roper != nullptr) {
         yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
 

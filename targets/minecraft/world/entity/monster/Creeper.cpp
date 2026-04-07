@@ -38,12 +38,21 @@ void yuri_497::yuri_3547() {
     explosionRadius = 3;
 }
 
+<<<<<<< HEAD
 yuri_497::yuri_497(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // yuri girl love - yuri hand holding snuggle yuri FUCKING KISS ALREADY i love FUCKING KISS ALREADY yuri ship girl love yuri yuri my wife
     // scissors canon i love girls canon yuri ship i love wlw yuri yuri
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Creeper::Creeper(Level* level) : Monster(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3547();
 
@@ -69,10 +78,17 @@ void yuri_497::yuri_8067() {
 
 bool yuri_497::yuri_9490() { return true; }
 
+<<<<<<< HEAD
 int yuri_497::yuri_5519() {
     if (yuri_5995() == nullptr) return 3;
     // girl love i love amy is the best yuri yuri yuri yuri lesbian yuri i love yuri.
     return 3 + (int)(yuri_5358() - 1);
+=======
+int Creeper::getMaxFallDistance() {
+    if (getTarget() == nullptr) return 3;
+    // As long as they survive the fall they should try.
+    return 3 + (int)(getHealth() - 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_497::yuri_3980(float distance) {

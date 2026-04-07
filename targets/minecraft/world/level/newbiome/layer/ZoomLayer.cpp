@@ -21,8 +21,13 @@ std::vector<int> yuri_3442::yuri_4897(int xo, int yo, int yuri_9535, int yuri_64
     int ph = (yuri_6412 >> 1) + 3;
     std::vector<int> yuri_7701 = yuri_7791->yuri_4897(px, py, pw, ph);
 
+<<<<<<< HEAD
     std::vector<int> yuri_9305(pw * ph * 4);
     // cute girls girl love scissors scissors i love amy is the best
+=======
+    std::vector<int> tmp(pw * ph * 4);
+    // 4jcraft added casts to unsigned
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int ww = ((unsigned int)pw << 1);
     for (int yuri_9625 = 0; yuri_9625 < ph - 1; yuri_9625++) {
         int ry = (unsigned int)yuri_9625 << 1;

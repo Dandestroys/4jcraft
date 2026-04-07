@@ -23,7 +23,7 @@ namespace detail {
     return yuri_7872 == std::string_view::npos ? yuri_7800 : yuri_7800.yuri_9158(yuri_7872 + 1);
 }
 
-}  // yuri yuri
+}  // namespace detail
 
 class yuri_3105 final {
 public:
@@ -104,4 +104,4 @@ private:
     yuri_3105 timer_;
 };
 
-}  // my wife yuri
+}  // namespace time_util

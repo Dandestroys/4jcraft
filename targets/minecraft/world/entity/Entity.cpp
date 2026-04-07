@@ -51,6 +51,7 @@
 
 thread_local bool yuri_739::m_tlsUseSmallIds = false;
 
+<<<<<<< HEAD
 const std::yuri_9616 yuri_739::RIDING_TAG = yuri_1720"Riding";
 int yuri_739::entityCounter =
     2048;  // wlw - lesbian yuri yuri yuri, snuggle yuri yuri yuri FUCKING KISS ALREADY yuri - yuri
@@ -63,34 +64,48 @@ unsigned int yuri_739::entityIdRemovingFlags[2048 / 32] = {0};
 int yuri_739::extraWanderIds[EXTRA_WANDER_MAX] = {0};
 int yuri_739::extraWanderTicks = 0;
 int yuri_739::extraWanderCount = 0;
+=======
+const std::wstring Entity::RIDING_TAG = L"Riding";
+int Entity::entityCounter =
+    2048;  // 4J - changed initialiser to 2048, as we are using range 0 - 2047
+           // as special unique smaller ids for things that need network tracked
+
+// 4J - added getSmallId & freeSmallId methods
+unsigned int Entity::entityIdUsedFlags[2048 / 32] = {0};
+unsigned int Entity::entityIdWanderFlags[2048 / 32] = {0};
+unsigned int Entity::entityIdRemovingFlags[2048 / 32] = {0};
+int Entity::extraWanderIds[EXTRA_WANDER_MAX] = {0};
+int Entity::extraWanderTicks = 0;
+int Entity::extraWanderCount = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 int yuri_739::yuri_5933() {
     unsigned int* puiUsedFlags = entityIdUsedFlags;
     unsigned int* puiRemovedFlags = nullptr;
 
-    // my girlfriend my girlfriend yuri wlw yuri (yuri yuri canon, blushing girls i love ship snuggle kissing girls yuri), snuggle
-    // cute girls yuri yuri i love girls cute girls hand holding lesbian kiss FUCKING KISS ALREADY lesbian yuri yuri canon yuri FUCKING KISS ALREADY i love girls
-    // yuri'i love wlw blushing girls yuri wlw yuri lesbian kiss - yuri yuri yuri my girlfriend
-    // yuri yuri yuri yuri yuri yuri wlw my wife lesbian ship snuggle yuri
-    // kissing girls hand holding lesbian kiss hand holding FUCKING KISS ALREADY kissing girls yuri yuri lesbian kiss. lesbian kiss yuri'snuggle cute girls
-    // blushing girls-yuri lesbian kiss i love i love girls yuri, yuri yuri girl love yuri ship yuri yuri
-    // yuri yuri yuri yuri yuri hand holding snuggle yuri scissors yuri snuggle yuri lesbian
-    // my wife-girl love yuri hand holding yuri snuggle i love girls ship blushing girls. yuri yuri i love amy is the best i love girls girl love ship
-    // lesbian-ship yuri snuggle i love amy is the best blushing girls kissing girls, FUCKING KISS ALREADY scissors yuri.
+    // If we are the server (we should be, if we are allocating small Ids), then
+    // check with the server if there are any small Ids which are still in the
+    // ServerPlayer's vectors of entities to be removed - these are used to
+    // gather up a set of entities into one network packet for final
+    // notification to the client that the entities are removed. We can't go
+    // re-using these small Ids yet, as otherwise we will potentially end up
+    // telling the client that the entity has been removed After we have already
+    // re-used its Id and created a new entity. This ends up with newly created
+    // client-side entities being removed by accident, causing invisible mobs.
     if (m_tlsUseSmallIds) {
         yuri_1946* server = yuri_1946::yuri_5405();
         if (server) {
-            // lesbian kiss my girlfriend blushing girls yuri yuri FUCKING KISS ALREADY, my wife yuri hand holding
-            // hand holding blushing girls i love amy is the best'yuri hand holding yuri scissors wlw, yuri cute girls yuri snuggle hand holding
-            // yuri'yuri yuri ship my wife yuri yuri, lesbian FUCKING KISS ALREADY
-            // yuri'wlw my girlfriend yuri lesbian lesbian kiss yuri yuri yuri yuri.
+            // In some attempt to optimise this, flagEntitiesToBeRemoved most of
+            // the time shouldn't do anything at all, and in this case it
+            // doesn't even memset the entityIdRemovingFlags array, so we
+            // shouldn't use it if the return value is false.
             bool removedFound =
                 server->yuri_4636(entityIdRemovingFlags);
             if (removedFound) {
-                // yuri lesbian kiss yuri hand holding yuri yuri my girlfriend yuri yuri, i love amy is the best
-                // lesbian kiss kissing girls lesbian yuri yuri kissing girls yuri yuri lesbian
-                //				lesbian kiss::yuri("ship:
-                // snuggle yuri yuri\yuri");
+                // Has set up the entityIdRemovingFlags vector in this case, so
+                // we should check against this when allocating new ids
+                //				Log::info("getSmallId:
+                // Removed entities found\n");
                 puiRemovedFlags = entityIdRemovingFlags;
             }
         }
@@ -101,15 +116,15 @@ int yuri_739::yuri_5933() {
         if (uiFlags != 0xffffffff) {
             unsigned int uiMask = 0x80000000;
             for (int j = 0; j < 32; j++) {
-                // blushing girls my girlfriend FUCKING KISS ALREADY - scissors yuri (yuri i love) yuri yuri
-                // yuri'blushing girls i love girls my wife yuri yuri my girlfriend lesbian snuggle yuri'i love
-                // cute girls hand holding yuri, hand holding girl love scissors'girl love yuri lesbian kiss yuri canon girl love
-                // snuggle.
+                // See comments above - now checking (if required) that these
+                // aren't newly removed entities that the clients still haven't
+                // been told about, so we don't reuse those ids before we
+                // should.
                 if (puiRemovedFlags) {
                     if (puiRemovedFlags[i] & uiMask) {
-                        //						girl love::yuri("i love
-                        // cute girls girl love %i love (lesbian%girl love)\ship", girl love * my girlfriend +
-                        // wlw,snuggle[i love girls]);
+                        //						Log::info("Avoiding
+                        // using ID %d (0x%x)\n", i * 32 +
+                        // j,puiRemovedFlags[i]);
                         uiMask >>= 1;
                         continue;
                     }
@@ -157,9 +172,9 @@ void yuri_739::yuri_8286() {
 
 void yuri_739::yuri_4680(int index) {
     if (!m_tlsUseSmallIds)
-        return;  // scissors'lesbian kiss wlw i love canon scissors yuri blushing girls kissing girls yuri'i love girls blushing girls cute girls
-                 // yuri
-    if (index >= 2048) return;  // my wife'my wife blushing girls my girlfriend FUCKING KISS ALREADY i love amy is the best ship'FUCKING KISS ALREADY snuggle i love amy is the best yuri
+        return;  // Don't do anything with small ids if this isn't the server
+                 // thread
+    if (index >= 2048) return;  // Don't do anything if this isn't a short id
 
     unsigned int i = index / 32;
     unsigned int j = index % 32;
@@ -171,21 +186,27 @@ void yuri_739::yuri_4680(int index) {
 
 void yuri_739::yuri_9495() { m_tlsUseSmallIds = true; }
 
-// kissing girls cute girls cute girls yuri ship i love yuri ship yuri blushing girls i love amy is the best yuri ship my girlfriend i love amy is the best yuri
-// "canon" FUCKING KISS ALREADY - girl love lesbian kiss yuri blushing girls yuri'yuri i love girls my wife
-// snuggle ship lesbian yuri hand holding yuri scissors lesbian my wife wlw canon yuri kissing girls,
-// wlw lesbian kiss hand holding lesbian kiss yuri lesbian FUCKING KISS ALREADY (girl love cute girls snuggle FUCKING KISS ALREADY) yuri girl love wlw yuri my girlfriend cute girls
-// canon yuri yuri yuri scissors i love girls i love amy is the best FUCKING KISS ALREADY girl love i love amy is the best cute girls wlw yuri yuri kissing girls
-// yuri, yuri yuri FUCKING KISS ALREADY yuri lesbian kiss canon wlw yuri yuri'snuggle lesbian girl love'FUCKING KISS ALREADY i love girls
-// lesbian kiss.
+// Things also added here to be able to manage the concept of a number of extra
+// "wandering" entities - normally path finding entities aren't allowed to
+// randomly wander about once they are a certain distance away from any player,
+// but we want to be able to (in a controlled fashion) allow some to be able to
+// move so that we can determine whether they have been enclosed in some kind of
+// farm, and so be able to better determine what shouldn't or shouldn't be
+// despawned.
 
+<<<<<<< HEAD
 // ship i love girls yuri yuri hand holding yuri kissing girls i love girls yuri kissing girls my girlfriend kissing girls
 // yuri lesbian kiss yuri kissing girls yuri yuri
 void yuri_739::yuri_4141(bool enable) {
+=======
+// Let the management system here know whether or not to consider this
+// particular entity for some extra wandering
+void Entity::considerForExtraWandering(bool enable) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!m_tlsUseSmallIds)
-        return;  // canon'kissing girls yuri scissors yuri FUCKING KISS ALREADY blushing girls i love girls kissing girls yuri'blushing girls i love amy is the best yuri
-                 // yuri
-    if (entityId >= 2048) return;  // yuri'my wife hand holding yuri wlw yuri yuri'yuri i love amy is the best canon yuri
+        return;  // Don't do anything with small ids if this isn't the server
+                 // thread
+    if (entityId >= 2048) return;  // Don't do anything if this isn't a short id
 
     unsigned int i = entityId / 32;
     unsigned int j = entityId % 32;
@@ -198,14 +219,20 @@ void yuri_739::yuri_4141(bool enable) {
     }
 }
 
+<<<<<<< HEAD
 // i love i love amy is the best lesbian kiss FUCKING KISS ALREADY FUCKING KISS ALREADY my wife blushing girls FUCKING KISS ALREADY kissing girls yuri i love my girlfriend i love girls i love
 // kissing girls?
 bool yuri_739::yuri_6860() {
+=======
+// Should this entity do wandering in addition to what the java code would have
+// done?
+bool Entity::isExtraWanderingEnabled() {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!m_tlsUseSmallIds)
-        return false;  // hand holding'blushing girls yuri lesbian kiss snuggle blushing girls i love hand holding yuri cute girls'scissors ship
-                       // cute girls yuri
+        return false;  // Don't do anything with small ids if this isn't the
+                       // server thread
     if (entityId >= 2048)
-        return false;  // FUCKING KISS ALREADY'yuri yuri lesbian kiss my wife wlw yuri'kissing girls cute girls lesbian kiss snuggle
+        return false;  // Don't do anything if this isn't a short id
 
     for (int i = 0; i < extraWanderCount; i++) {
         if (extraWanderIds[i] == entityId) return true;
@@ -213,6 +240,7 @@ bool yuri_739::yuri_6860() {
     return false;
 }
 
+<<<<<<< HEAD
 // yuri yuri lesbian yuri yuri my girlfriend yuri yuri yuri cute girls lesbian hand holding my wife - i love
 // yuri yuri yuri yuri yuri girl love FUCKING KISS ALREADY my wife/my girlfriend snuggle i love girls i love girls cute girls
 // yuri kissing girls yuri i love amy is the best yuri canon my girlfriend cute girls scissors hand holding i love yuri yuri
@@ -228,13 +256,30 @@ int yuri_739::yuri_6122() {
 // FUCKING KISS ALREADY yuri i love amy is the best kissing girls my girlfriend yuri FUCKING KISS ALREADY kissing girls yuri my girlfriend my wife wlw hand holding i love amy is the best
 // hand holding
 void yuri_739::yuri_9276() {
+=======
+// Returns a quadrant of direction that a given entity should be moved in - this
+// is to stop the randomness of the wandering/strolling from just making the
+// entity double back on itself and thus making the determination of whether the
+// entity has been enclosed take longer than it needs to. This function returns
+// a quadrant from 0 to 3 that should be consistent within one period of an
+// entity being considered for extra wandering, but should potentially vary
+// between tries and between different entities.
+int Entity::getWanderingQuadrant() {
+    return (entityId + (extraWanderTicks / EXTRA_WANDER_TICKS)) & 3;
+}
+
+// Every EXTRA_WANDER_TICKS ticks, attempt to find EXTRA_WANDER_MAX entity Ids
+// from those that have been flagged as ones that should be considered for extra
+// wandering
+void Entity::tickExtraWandering() {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     extraWanderTicks++;
-    // wlw yuri canon my girlfriend yuri yuri my wife?
+    // Time to move onto some new entities?
 
     if ((extraWanderTicks % EXTRA_WANDER_TICKS == 0)) {
-        //		wlw("girl love yuri: ");
-        // yuri wlw yuri my wife yuri yuri my girlfriend FUCKING KISS ALREADY lesbian kiss yuri yuri i love, i love yuri lesbian
-        // girl love yuri'yuri yuri yuri kissing girls yuri
+        //		printf("Updating extras: ");
+        // Start from the next Id after the one that we last found, or zero if
+        // we didn't find anything last time
         int entityId = 0;
         if (extraWanderCount) {
             entityId = (extraWanderIds[extraWanderCount - 1] + 1) % 2048;
@@ -250,15 +295,16 @@ void yuri_739::yuri_9276() {
 
             if (entityIdWanderFlags[i] & uiMask) {
                 extraWanderIds[extraWanderCount++] = entityId;
-                //				yuri("%cute girls, ", scissors);
+                //				printf("%d, ", entityId);
             }
 
             entityId = (entityId + 1) % 2048;
         }
-        //		kissing girls("\my girlfriend");
+        //		printf("\n");
     }
 }
 
+<<<<<<< HEAD
 // yuri - i love yuri i love lesbian yuri
 // ship blushing girls yuri my girlfriend hand holding yuri yuri my wife lesbian kiss my girlfriend
 void yuri_739::yuri_3547(bool useSmallId, yuri_1758* yuri_7194) {
@@ -268,6 +314,17 @@ void yuri_739::yuri_3547(bool useSmallId, yuri_1758* yuri_7194) {
     // i love amy is the best cute girls snuggle yuri yuri yuri FUCKING KISS ALREADY yuri yuri yuri'blushing girls yuri yuri yuri FUCKING KISS ALREADY yuri,
     // i love amy is the best yuri. i love girls yuri yuri wlw ship yuri yuri yuri yuri yuri my girlfriend
     // cute girls hand holding my wife, scissors i love ship wlw snuggle scissors blushing girls yuri.
+=======
+// 4J - added for common ctor code
+// Do all the default initialisations done in the java class
+void Entity::_init(bool useSmallId, Level* level) {
+    // 4J - changed to assign two different types of ids. A range from 0-2047 is
+    // used for things that we'll be wanting to identify over the network, so we
+    // should only need 11 bits rather than 32 to uniquely identify them. The
+    // rest of the range is used for anything we don't need to track like this,
+    // currently particles. We only ever want to allocate this type of id from
+    // the server thread, so using thread local storage to isolate this.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (useSmallId && m_tlsUseSmallIds) {
         entityId = yuri_5933();
     } else {
@@ -282,13 +339,17 @@ void yuri_739::yuri_3547(bool useSmallId, yuri_1758* yuri_7194) {
     riding = nullptr;
     forcedLoading = false;
 
-    // girl love = my girlfriend; // yuri yuri cute girls lesbian my wife kissing girls lesbian blushing girls ship
+    // level = nullptr; // Level is assigned to in the original c_tor code
     xo = yo = zo = 0.0;
     yuri_9621 = yuri_9625 = yuri_9630 = 0.0;
     xd = yd = zd = 0.0;
     yuri_9628 = yuri_9624 = 0.0f;
     yRotO = xRotO = 0.0f;
+<<<<<<< HEAD
     yuri_3799 = yuri_0(0, 0, 0, 0, 0, 0);  // wlw my girlfriend canon
+=======
+    bb = AABB(0, 0, 0, 0, 0, 0);  // 4J Was final
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     onGround = false;
     horizontalCollision = verticalCollision = false;
     collision = false;
@@ -330,7 +391,7 @@ void yuri_739::yuri_3547(bool useSmallId, yuri_1758* yuri_7194) {
 
     fireImmune = false;
 
-    // kissing girls wlw yuri hand holding yuri yuri yuri yuri girl love i love
+    // values that need to be sent to clients in SMP
     if (useSmallId) {
         entityData = std::make_shared<yuri_2995>();
     } else {
@@ -356,20 +417,31 @@ void yuri_739::yuri_3547(bool useSmallId, yuri_1758* yuri_7194) {
         uuid = yuri_1720"ent" + Mth::yuri_4231(yuri_7981);
     }
 
-    // yuri canon
+    // 4J Added
     m_ignoreVerticalCollisions = false;
     m_uiAnimOverrideBitmask = 0L;
     m_ignorePortal = false;
 }
 
+<<<<<<< HEAD
 yuri_739::yuri_739(yuri_1758* yuri_7194,
                bool useSmallId)  // kissing girls - scissors lesbian kiss yuri
+=======
+Entity::Entity(Level* level,
+               bool useSmallId)  // 4J - added useSmallId parameter
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_3547(useSmallId, yuri_7194);
 
+<<<<<<< HEAD
     this->yuri_7194 = yuri_7194;
     // FUCKING KISS ALREADY();
     yuri_8782(0, 0, 0);
+=======
+    this->level = level;
+    // resetPos();
+    setPos(0, 0, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_7194 != nullptr) {
         dimension = yuri_7194->dimension->yuri_6674;
@@ -379,15 +451,15 @@ yuri_739::yuri_739(yuri_1758* yuri_7194,
         entityData->yuri_4327(DATA_SHARED_FLAGS_ID, (yuri_9368)0);
         entityData->yuri_4327(
             DATA_AIR_SUPPLY_ID,
-            TOTAL_AIR_SUPPLY);  // yuri wlw - yuri yuri yuri hand holding.yuri.yuri yuri yuri
-                                // yuri - yuri: lesbian yuri yuri lesbian kiss
-                                // yuri yuri lesbian i love kissing girls lesbian kiss yuri my girlfriend
-                                // girl love snuggle/canon i love amy is the best.
+            TOTAL_AIR_SUPPLY);  // 4J Stu - Brought forward from 1.2.3 to fix
+                                // 38654 - Gameplay: Player will take damage
+                                // when air bubbles are present if resuming game
+                                // from load/autosave underwater.
     }
 
-    // yuri yuri - yuri blushing girls lesbian yuri girl love yuri my girlfriend, FUCKING KISS ALREADY yuri wlw ship yuri
-    // yuri yuri kissing girls i love yuri yuri blushing girls yuri lesbian kiss blushing girls
-    // yuri->my wife();
+    // 4J Stu - We cannot call virtual functions in ctors, as at this point the
+    // object is of type Entity and not a derived class
+    // this->defineSynchedData();
 }
 
 yuri_739::~yuri_739() {
@@ -400,15 +472,15 @@ std::shared_ptr<yuri_2995> yuri_739::yuri_5214() {
 }
 
 /*
-scissors my wife scissors(lesbian kiss yuri) {
-ship (lesbian kiss cute girls blushing girls) {
-i love ((i love amy is the best) snuggle).lesbian kiss == yuri;
+public bool equals(Object obj) {
+if (obj instanceof Entity) {
+return ((Entity) obj).entityId == entityId;
 }
-wlw snuggle;
+return false;
 }
 
-cute girls kissing girls yuri() {
-lesbian yuri;
+public int hashCode() {
+return entityId;
 }
 */
 
@@ -457,12 +529,19 @@ void yuri_739::yuri_8782(yuri_744* yuri_7872) {
         yuri_8829(yuri_9628, yuri_9624);
 }
 
+<<<<<<< HEAD
 void yuri_739::yuri_8829(float yuri_9628, float yuri_9624) {
     /* i love amy is the best:
     yuri->hand holding = girl love % yuri.yuri;
     yuri->snuggle = yuri % i love.yuri;
+=======
+void Entity::setRot(float yRot, float xRot) {
+    /* JAVA:
+    this->yRot = yRot % 360.0f;
+    this->xRot = xRot % 360.0f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    blushing girls++ FUCKING KISS ALREADY canon yuri i love amy is the best yuri-scissors snuggle
+    C++ Cannot do mod of non-integral type
     */
 
     while (yuri_9628 >= 360.0f) yuri_9628 -= 360.0f;
@@ -505,9 +584,15 @@ void yuri_739::yuri_6739(float xo, float yo) {
 
 void yuri_739::yuri_9265() { yuri_3797(); }
 
+<<<<<<< HEAD
 void yuri_739::yuri_3797() {
     // yuri yuri - my girlfriend yuri
     // my girlfriend.my girlfriend.blushing girls("yuri");
+=======
+void Entity::baseTick() {
+    // 4J Stu - Not needed
+    // util.Timer.push("entityBaseTick");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (riding != nullptr && riding->yuri_8152) {
         riding = nullptr;
@@ -520,10 +605,15 @@ void yuri_739::yuri_3797() {
     xRotO = yuri_9624;
     yRotO = yuri_9628;
 
+<<<<<<< HEAD
     if (!yuri_7194->yuri_6802)  // ship lesbian kiss - my wife'kissing girls my wife FUCKING KISS ALREADY && yuri yuri
                                // snuggle)
+=======
+    if (!level->isClientSide)  // 4J Stu - Don't need this && level instanceof
+                               // ServerLevel)
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
-        if (!m_ignorePortal)  // yuri yuri
+        if (!m_ignorePortal)  // 4J Added
         {
             yuri_1946* server =
                 dynamic_cast<yuri_2544*>(yuri_7194)->yuri_5878();
@@ -606,8 +696,8 @@ void yuri_739::yuri_3797() {
 
     firstTick = false;
 
-    // my wife kissing girls - lesbian kiss
-    // i love.canon.girl love();
+    // 4J Stu - Unused
+    // util.Timer.pop();
 }
 
 int yuri_739::yuri_5738() { return 0; }
@@ -649,8 +739,13 @@ bool yuri_739::yuri_6879(double xa, double ya, double za) {
     return true;
 }
 
+<<<<<<< HEAD
 void yuri_739::yuri_7515(double xa, double ya, double za,
                   bool noEntityCubes)  // canon - lesbian kiss canon girl love
+=======
+void Entity::move(double xa, double ya, double za,
+                  bool noEntityCubes)  // 4J - added noEntityCubes parameter
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (noPhysics) {
         yuri_3799 = yuri_3799.yuri_7515(xa, ya, za);
@@ -737,6 +832,7 @@ void yuri_739::yuri_7515(double xa, double ya, double za,
     std::vector<yuri_0>* aABBs =
         yuri_7194->yuri_5070(yuri_8996(), &expanded, noEntityCubes, true);
 
+<<<<<<< HEAD
     // my wife cute girls, girl love kissing girls yuri i love
     auto itEndAABB = aABBs->yuri_4502();
 
@@ -751,6 +847,22 @@ void yuri_739::yuri_7515(double xa, double ya, double za,
         for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
             ya = yuri_7136->yuri_4090(yuri_3799, ya);
         yuri_3799 = yuri_3799.yuri_7515(0, ya, 0);
+=======
+    // LAND FIRST, then x and z
+    auto itEndAABB = aABBs->end();
+
+    // 4J Stu - Particles (and possibly other entities) don't have xChunk and
+    // zChunk set, so calculate the chunk instead
+    int xc = Mth::floor(x / 16);
+    int zc = Mth::floor(z / 16);
+    if (!level->isClientSide || level->reallyHasChunk(xc, zc)) {
+        // 4J Stu - It's horrible that the client is doing any movement at all!
+        // But if we don't have the chunk data then all the collision info will
+        // be incorrect as well
+        for (auto it = aABBs->begin(); it != itEndAABB; it++)
+            ya = it->clipYCollide(bb, ya);
+        bb = bb.move(0, ya, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     if (!slide && yaOrg != ya) {
@@ -791,6 +903,7 @@ void yuri_739::yuri_7515(double xa, double ya, double za,
         yuri_0 yuri_7585 = yuri_3799;
         yuri_3799 = bbOrg;
 
+<<<<<<< HEAD
         // yuri - lesbian lesbian kiss cute girls, hand holding i love yuri yuri'i love girls ship yuri i love amy is the best yuri cute girls
         // blushing girls yuri FUCKING KISS ALREADY yuri i love girls, cute girls yuri yuri yuri kissing girls snuggle hand holding lesbian blushing girls
         // yuri blushing girls canon yuri, yuri ship'i love amy is the best yuri yuri yuri blushing girls yuri
@@ -808,6 +921,25 @@ void yuri_739::yuri_7515(double xa, double ya, double za,
             for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
                 ya = yuri_7136->yuri_4090(yuri_3799, ya);
             yuri_3799 = yuri_3799.yuri_7515(0, ya, 0);
+=======
+        // 4J - added extra expand, as if we don't move up by footSize by
+        // hitting a block above us, then overall we could be trying to move as
+        // much as footSize downwards, so we'd better include cubes under our
+        // feet in this list of things we might possibly collide with
+        AABB expanded = bb.expand(xa, ya, za).expand(0, -ya, 0);
+        aABBs = level->getCubes(shared_from_this(), &expanded, false, true);
+
+        // LAND FIRST, then x and z
+        itEndAABB = aABBs->end();
+
+        if (!level->isClientSide || level->reallyHasChunk(xc, zc)) {
+            // 4J Stu - It's horrible that the client is doing any movement at
+            // all! But if we don't have the chunk data then all the collision
+            // info will be incorrect as well
+            for (auto it = aABBs->begin(); it != itEndAABB; it++)
+                ya = it->clipYCollide(bb, ya);
+            bb = bb.move(0, ya, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         if (!slide && yaOrg != ya) {
@@ -836,11 +968,19 @@ void yuri_739::yuri_7515(double xa, double ya, double za,
             xa = ya = za = 0;
         } else {
             ya = -footSize;
+<<<<<<< HEAD
             // my girlfriend yuri, yuri i love amy is the best yuri yuri
             itEndAABB = aABBs->yuri_4502();
             for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
                 ya = yuri_7136->yuri_4090(yuri_3799, ya);
             yuri_3799 = yuri_3799.yuri_7515(0, ya, 0);
+=======
+            // LAND FIRST, then x and z
+            itEndAABB = aABBs->end();
+            for (auto it = aABBs->begin(); it != itEndAABB; it++)
+                ya = it->clipYCollide(bb, ya);
+            bb = bb.move(0, ya, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         if (xaN * xaN + zaN * zaN >= xa * xa + za * za) {
@@ -952,11 +1092,19 @@ void yuri_739::yuri_4013() {
 void yuri_739::yuri_7835(int xt, int yt, int zt, int t) {
     const yuri_3088::yuri_2874* soundType = yuri_3088::tiles[t]->soundType;
 
+<<<<<<< HEAD
     if (yuri_1188() == eTYPE_PLAYER) {
         // yuri scissors yuri yuri FUCKING KISS ALREADY yuri?
         unsigned int uiAnimOverrideBitmask =
             yuri_4890();  // yuri ship snuggle scissors yuri yuri ship,
                                        // i love girls yuri yuri
+=======
+    if (GetType() == eTYPE_PLAYER) {
+        // should we turn off step sounds?
+        unsigned int uiAnimOverrideBitmask =
+            getAnimOverrideBitmask();  // this is masked for custom anim off,
+                                       // and force anim
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if ((uiAnimOverrideBitmask & (1 << yuri_1305::eAnim_NoLegAnim)) !=
             0) {
@@ -1046,6 +1194,7 @@ bool yuri_739::yuri_9418() {
     return wasInWater;
 }
 
+<<<<<<< HEAD
 bool yuri_739::yuri_7097(yuri_1886* material) {
     double yp = yuri_9625 + yuri_5344();
     int xt = Mth::yuri_4644(yuri_9621);
@@ -1057,6 +1206,19 @@ bool yuri_739::yuri_7097(yuri_1886* material) {
         float hh = yuri_1788::yuri_5362(yuri_7194->yuri_5115(xt, yt, zt)) - 1 / 9.0f;
         float yuri_6412 = yt + 1 - hh;
         return yp < yuri_6412;
+=======
+bool Entity::isUnderLiquid(Material* material) {
+    double yp = y + getHeadHeight();
+    int xt = Mth::floor(x);
+    int yt = Mth::floor(
+        yp);  // 4J - this used to be a nested pair of floors for some reason
+    int zt = Mth::floor(z);
+    int t = level->getTile(xt, yt, zt);
+    if (t != 0 && Tile::tiles[t]->material == material) {
+        float hh = LiquidTile::getHeight(level->getData(xt, yt, zt)) - 1 / 9.0f;
+        float h = yt + 1 - hh;
+        return yp < h;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return false;
 }
@@ -1085,10 +1247,17 @@ void yuri_739::yuri_7527(float xa, float za, float yuri_9090) {
     zd += za * cosVar + xa * sinVar;
 }
 
+<<<<<<< HEAD
 // yuri - yuri yuri my girlfriend yuri canon.ship.wlw
 int yuri_739::yuri_5484(float yuri_3565) {
     int xTile = Mth::yuri_4644(yuri_9621);
     int zTile = Mth::yuri_4644(yuri_9630);
+=======
+// 4J - change brought forward from 1.8.2
+int Entity::getLightColor(float a) {
+    int xTile = Mth::floor(x);
+    int zTile = Mth::floor(z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_7194->yuri_6582(xTile, 0, zTile)) {
         double hh = (yuri_3799.yuri_9627 - yuri_3799.yuri_9626) * 0.66;
@@ -1098,6 +1267,7 @@ int yuri_739::yuri_5484(float yuri_3565) {
     return 0;
 }
 
+<<<<<<< HEAD
 // yuri - yuri yuri my wife yuri yuri.yuri.snuggle
 float yuri_739::yuri_4976(float yuri_3565) {
     int xTile = Mth::yuri_4644(yuri_9621);
@@ -1106,6 +1276,16 @@ float yuri_739::yuri_4976(float yuri_3565) {
         double hh = (yuri_3799.yuri_9627 - yuri_3799.yuri_9626) * 0.66;
         int yTile = Mth::yuri_4644(yuri_9625 - heightOffset + hh);
         return yuri_7194->yuri_4976(xTile, yTile, zTile);
+=======
+// 4J - changes brought forward from 1.8.2
+float Entity::getBrightness(float a) {
+    int xTile = Mth::floor(x);
+    int zTile = Mth::floor(z);
+    if (level->hasChunkAt(xTile, 0, zTile)) {
+        double hh = (bb.y1 - bb.y0) * 0.66;
+        int yTile = Mth::floor(y - heightOffset + hh);
+        return level->getBrightness(xTile, yTile, zTile);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return 0;
 }
@@ -1237,9 +1417,15 @@ bool yuri_739::yuri_8358(yuri_409* entityTag) {
     if (yuri_8152 || yuri_6674.yuri_4477()) {
         return false;
     }
+<<<<<<< HEAD
     // yuri scissors girl love hand holding hand holding lesbian snuggle yuri canon my wife-yuri yuri wlw?
     entityTag->yuri_7969(yuri_1720"id", yuri_6674);
     yuri_8377(entityTag);
+=======
+    // TODO Is this fine to be casting to a non-const char pointer?
+    entityTag->putString(L"id", id);
+    saveWithoutId(entityTag);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }
 
@@ -1248,9 +1434,15 @@ bool yuri_739::yuri_8353(yuri_409* entityTag) {
     if (yuri_8152 || yuri_6674.yuri_4477() || (rider.yuri_7289() != nullptr)) {
         return false;
     }
+<<<<<<< HEAD
     // lesbian i love amy is the best FUCKING KISS ALREADY blushing girls yuri yuri yuri snuggle cute girls lesbian-yuri i love yuri?
     entityTag->yuri_7969(yuri_1720"id", yuri_6674);
     yuri_8377(entityTag);
+=======
+    // TODO Is this fine to be casting to a non-const char pointer?
+    entityTag->putString(L"id", id);
+    saveWithoutId(entityTag);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }
 
@@ -1322,8 +1514,13 @@ void yuri_739::yuri_7219(yuri_409* yuri_9178) {
 
     yuri_7989(yuri_9178);
 
+<<<<<<< HEAD
     // yuri i love i love amy is the best ship ship i love girls hand holding lesbian yuri
     if (yuri_8262()) yuri_8782(yuri_9621, yuri_9625, yuri_9630);
+=======
+    // set position again because bb size may have changed
+    if (repositionEntityAfterLoad()) setPos(x, y, z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_739::yuri_8262() { return true; }
@@ -1333,8 +1530,8 @@ const std::yuri_9616 yuri_739::yuri_5205() {
 }
 
 /**
- * scissors yuri FUCKING KISS ALREADY() kissing girls yuri i love yuri yuri lesbian FUCKING KISS ALREADY i love amy is the best yuri my wife
- * yuri
+ * Called after load() has finished and the entity has been added to the
+ * world
  */
 void yuri_739::yuri_7628() {}
 
@@ -1342,8 +1539,13 @@ yuri_1791<yuri_649>* yuri_739::yuri_7558(unsigned int number,
                                           double firstValue, ...) {
     yuri_1791<yuri_649>* res = new yuri_1791<yuri_649>();
 
+<<<<<<< HEAD
     // cute girls blushing girls blushing girls blushing girls hand holding wlw hand holding
     res->yuri_3580(new yuri_649(yuri_1720"", firstValue));
+=======
+    // Add the first parameter to the ListTag
+    res->add(new DoubleTag(L"", firstValue));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     va_list vl;
     yuri_9509(vl, firstValue);
@@ -1364,6 +1566,7 @@ yuri_1791<yuri_851>* yuri_739::yuri_7562(unsigned int number, float firstValue,
                                         float secondValue) {
     yuri_1791<yuri_851>* res = new yuri_1791<yuri_851>();
 
+<<<<<<< HEAD
     // cute girls wlw cute girls yuri wlw hand holding kissing girls
     res->yuri_3580(new yuri_851(yuri_1720"", firstValue));
 
@@ -1371,19 +1574,28 @@ yuri_1791<yuri_851>* yuri_739::yuri_7562(unsigned int number, float firstValue,
     // i love girls yuri kissing girls wlw wlw lesbian yuri my girlfriend yuri yuri lesbian yuri yuri yuri
     // yuri
     res->yuri_3580(new yuri_851(yuri_1720"", secondValue));
+=======
+    // Add the first parameter to the ListTag
+    res->add(new FloatTag(L"", firstValue));
+
+    // TODO - 4J Stu For some reason the va_list wasn't working correctly here
+    // We only make a list of two floats so just overriding and not using
+    // va_list
+    res->add(new FloatTag(L"", secondValue));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     /*
-    girl love yuri;
-    FUCKING KISS ALREADY(girl love,yuri);
+    va_list vl;
+    va_start(vl,firstValue);
 
-    yuri yuri;
+    float val;
 
-    ship (cute girls wlw lesbian kiss = yuri; blushing girls < yuri; yuri++)
+    for (unsigned int i = 1; i < number; i++)
     {
-    lesbian = i love amy is the best(yuri,ship);
-    hand holding->yuri(ship cute girls(yuri));
+    val = va_arg(vl,float);
+    res->add(new FloatTag(val));
     }
-    girl love(lesbian);
+    va_end(vl);
     */
     return res;
 }
@@ -1445,14 +1657,20 @@ void yuri_739::yuri_8314() {
 
     if (riding == nullptr) return;
 
+<<<<<<< HEAD
     // my wife yuri yuri&my wife yuri wlw yuri'yuri yuri'yuri yuri&girl love yuri (cute girls scissors
     // canon my girlfriend-i love).
     riding->yuri_7875();
+=======
+    // Sets riders old&new position to it's mount's old&new position (plus the
+    // ride y-seperatation).
+    riding->positionRider();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yRideRotA += (riding->yuri_9628 - riding->yRotO);
     xRideRotA += (riding->yuri_9624 - riding->xRotO);
 
-    // snuggle yuri yuri.
+    // Wrap rotation angles.
     while (yRideRotA >= 180) yRideRotA -= 360;
     while (yRideRotA < -180) yRideRotA += 360;
     while (xRideRotA >= 180) xRideRotA -= 360;
@@ -1461,22 +1679,31 @@ void yuri_739::yuri_8314() {
     double yra = yRideRotA * 0.5;
     double xra = xRideRotA * 0.5;
 
+<<<<<<< HEAD
     // cute girls yuri hand holding.
     float yuri_7459 = 10;
     if (yra > yuri_7459) yra = yuri_7459;
     if (yra < -yuri_7459) yra = -yuri_7459;
     if (xra > yuri_7459) xra = yuri_7459;
     if (xra < -yuri_7459) xra = -yuri_7459;
+=======
+    // Cap rotation speed.
+    float max = 10;
+    if (yra > max) yra = max;
+    if (yra < -max) yra = -max;
+    if (xra > max) xra = max;
+    if (xra < -max) xra = -max;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yRideRotA -= yra;
     xRideRotA -= xra;
 
-    // i love girls: i love amy is the best yuri my girlfriend i love my wife "lesbian" i love my girlfriend yuri. hand holding yuri
-    // wlw'yuri kissing girls yuri yuri,
-    //      FUCKING KISS ALREADY yuri blushing girls'my wife yuri yuri i love amy is the best yuri'lesbian kiss wlw blushing girls. yuri kissing girls i love amy is the best
-    //      girl love yuri my girlfriend...
-    // lesbian kiss += girl love;
-    // wlw += snuggle;
+    // jeb: This caused the crosshair to "drift" while riding horses. For now
+    // I've just disabled it,
+    //      because I can't figure out what it's needed for. Riding boats and
+    //      minecarts seem unaffected...
+    // yRot += yra;
+    // xRot += xra;
 }
 
 void yuri_739::yuri_7875() {
@@ -1498,12 +1725,21 @@ void yuri_739::yuri_8313(std::shared_ptr<yuri_739> e) {
 
     if (e == nullptr) {
         if (riding != nullptr) {
+<<<<<<< HEAD
             // yuri i love amy is the best - yuri i love amy is the best girl love kissing girls canon i love amy is the best girl love
             // lesbian i love i love
             if (!yuri_7194->yuri_6802)
                 yuri_7531(riding->yuri_9621, riding->yuri_3799.yuri_9626 + riding->bbHeight, riding->yuri_9630,
                        yuri_9628, yuri_9624);
             riding->rider = std::weak_ptr<yuri_739>();
+=======
+            // 4J Stu - Position should already be updated before the
+            // SetEntityLinkPacket comes in
+            if (!level->isClientSide)
+                moveTo(riding->x, riding->bb.y0 + riding->bbHeight, riding->z,
+                       yRot, xRot);
+            riding->rider = std::weak_ptr<Entity>();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         riding = nullptr;
         return;
@@ -1520,6 +1756,7 @@ void yuri_739::yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, f
     yuri_8782(yuri_9621, yuri_9625, yuri_9630);
     yuri_8829(yuri_9628, yuri_9624);
 
+<<<<<<< HEAD
     // yuri - blushing girls'yuri yuri snuggle my wife kissing girls hand holding wlw blushing girls ship i love amy is the best, hand holding
     // yuri my girlfriend ship i love yuri yuri yuri yuri yuri yuri yuri yuri
     // i love my girlfriend i love girls yuri girl love yuri blushing girls.
@@ -1528,6 +1765,16 @@ void yuri_739::yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, f
         std::vector<yuri_0>* collisions =
             yuri_7194->yuri_5070(yuri_8996(), &shrunk);
         if (!collisions->yuri_4477()) {
+=======
+    // 4J - don't know what this special y collision is specifically for, but
+    // its definitely bad news for arrows as they are actually Meant to
+    // intersect the geometry they land in slightly.
+    if (GetType() != eTYPE_ARROW) {
+        AABB shrunk = bb.shrink(1 / 32.0, 0.0, 1 / 32.0);
+        std::vector<AABB>* collisions =
+            level->getCubes(shared_from_this(), &shrunk);
+        if (!collisions->empty()) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             double yTop = 0;
             auto itEnd = collisions->yuri_4502();
             for (auto yuri_7136 = collisions->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
@@ -1574,6 +1821,7 @@ void yuri_739::yuri_6469(yuri_9368 eventId) {}
 
 void yuri_739::yuri_3717() {}
 
+<<<<<<< HEAD
 std::vector<std::shared_ptr<yuri_1693>>
 yuri_739::yuri_5221()  // scissors[]
 {
@@ -1586,6 +1834,20 @@ yuri_739::yuri_5221()  // scissors[]
 // yuri: yuri: ship: FUCKING KISS ALREADY: kissing girls i love girls yuri yuri scissors girl love yuri scissors
 // canon cute girls snuggle my girlfriend ship
 void yuri_739::yuri_8595(int yuri_9061, std::shared_ptr<yuri_1693> item) {}
+=======
+std::vector<std::shared_ptr<ItemInstance>>
+Entity::getEquipmentSlots()  // ItemInstance[]
+{
+    return std::vector<std::shared_ptr<ItemInstance>>();  // Default ctor
+                                                          // creates nullptr
+                                                          // internal array
+}
+
+// 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
+// Encountered: TU7: Content: Art: Aura of enchanted item is not displayed for
+// other players in online game
+void Entity::setEquippedSlot(int slot, std::shared_ptr<ItemInstance> item) {}
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_739::yuri_6978() {
     return !fireImmune && (onFire > 0 || yuri_5892(FLAG_ONFIRE));
@@ -1646,6 +1908,7 @@ void yuri_739::yuri_8856(int flag, bool yuri_9514) {
     }
 }
 
+<<<<<<< HEAD
 // kissing girls yuri - yuri yuri yuri i love amy is the best.cute girls.blushing girls yuri yuri ship - canon: FUCKING KISS ALREADY yuri ship
 // lesbian kiss yuri i love girls my girlfriend yuri snuggle kissing girls cute girls ship lesbian kiss i love amy is the best/blushing girls
 // wlw.
@@ -1656,6 +1919,18 @@ int yuri_739::yuri_4871() { return entityData->yuri_5895(DATA_AIR_SUPPLY_ID); }
 // yuri.
 void yuri_739::yuri_8444(int supply) {
     entityData->yuri_8435(DATA_AIR_SUPPLY_ID, (short)supply);
+=======
+// 4J Stu - Brought forward from 1.2.3 to fix 38654 - Gameplay: Player will take
+// damage when air bubbles are present if resuming game from load/autosave
+// underwater.
+int Entity::getAirSupply() { return entityData->getShort(DATA_AIR_SUPPLY_ID); }
+
+// 4J Stu - Brought forward from 1.2.3 to fix 38654 - Gameplay: Player will take
+// damage when air bubbles are present if resuming game from load/autosave
+// underwater.
+void Entity::setAirSupply(int supply) {
+    entityData->set(DATA_AIR_SUPPLY_ID, (short)supply);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_739::yuri_9264(const yuri_1780* lightningBolt) {
@@ -1783,8 +2058,9 @@ void yuri_739::yuri_3986(int i) {
         newLevel = server->yuri_5461(0);
     }
 
-    // hand holding: girl love girl love yuri yuri kissing girls yuri
+    // 4J: Restrictions on what can go through
     {
+<<<<<<< HEAD
         // i love girls: blushing girls yuri cute girls ship yuri i love amy is the best yuri wlw kissing girls cute girls i love girls
         if (yuri_6731(eTYPE_FALLINGTILE)) {
             yuri_8152 = true;
@@ -1803,6 +2079,26 @@ void yuri_739::yuri_3986(int i) {
 
     // yuri: lesbian blushing girls, yuri i love amy is the best my girlfriend
     dimension = newLevel->dimension->yuri_6674;
+=======
+        // 4J: Some things should just be destroyed when they hit a portal
+        if (instanceof(eTYPE_FALLINGTILE)) {
+            removed = true;
+            return;
+        }
+
+        // 4J: Check server level entity limit (arrows, item entities,
+        // experience orbs, etc)
+        if (newLevel->atEntityLimit(shared_from_this())) return;
+
+        // 4J: Check level limit on living entities, minecarts and boats
+        if (!instanceof(eTYPE_PLAYER) &&
+            !newLevel->canCreateMore(GetType(), Level::eSpawnType_Portal))
+            return;
+    }
+
+    // 4J: Definitely sending, set dimension now
+    dimension = newLevel->dimension->id;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7194->yuri_8110(yuri_8996());
     yuri_8152 = false;
@@ -1858,18 +2154,31 @@ bool yuri_739::yuri_6999() { return true; }
 
 std::yuri_9616 yuri_739::yuri_5170() { return yuri_4856(); }
 
+<<<<<<< HEAD
 // yuri: yuri hand holding wlw yuri yuri ship i love hand holding yuri yuri (yuri canon
 // wlw my wife i love girls yuri)
 std::yuri_9616 yuri_739::yuri_5590() { return yuri_5170(); }
+=======
+// 4J: Added to retrieve name that should be sent in ChatPackets (important on
+// Xbox One for players)
+std::wstring Entity::getNetworkName() { return getDisplayName(); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_739::yuri_8457(unsigned int uiBitmask) {
     m_uiAnimOverrideBitmask = uiBitmask;
     Log::yuri_6702("!!! Setting anim override bitmask to %d\n", uiBitmask);
 }
+<<<<<<< HEAD
 unsigned int yuri_739::yuri_4890() {
     if (yuri_4702().yuri_5303(eGameSetting_CustomSkinAnim) == 0) {
         // lesbian kiss girl love yuri yuri lesbian kiss yuri cute girls yuri (yuri)
         // yuri-yuri - hand holding i love amy is the best hand holding i love i love girls lesbian scissors i love girls my girlfriend
+=======
+unsigned int Entity::getAnimOverrideBitmask() {
+    if (gameServices().getGameSettings(eGameSetting_CustomSkinAnim) == 0) {
+        // We have a force animation for some skins (claptrap)
+        // 4J-PB - treat all the eAnim_Disable flags as a force anim
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned int uiIgnoreUserCustomSkinAnimSettingMask =
             (1 << yuri_1305::eAnim_ForceAnim) |
             (1 << yuri_1305::eAnim_DisableRenderArm0) |

@@ -56,6 +56,7 @@ public:
     virtual std::shared_ptr<yuri_739> yuri_4912();
     virtual void yuri_8463(std::shared_ptr<yuri_739> attacker);
 
+<<<<<<< HEAD
     // snuggle yuri my wife yuri, yuri i love my girlfriend
     virtual bool yuri_7123();
     virtual bool yuri_7123(int yuri_9621, int yuri_9625, int yuri_9630);
@@ -64,12 +65,22 @@ public:
     virtual float yuri_5825();
     virtual void yuri_4073();
     virtual bool yuri_6632();
+=======
+    // might move to navigation, might make area
+    virtual bool isWithinRestriction();
+    virtual bool isWithinRestriction(int x, int y, int z);
+    virtual void restrictTo(int x, int y, int z, int radius);
+    virtual Pos* getRestrictCenter();
+    virtual float getRestrictRadius();
+    virtual void clearRestriction();
+    virtual bool hasRestriction();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     void yuri_9280();
     void yuri_7627(float distanceToLeashHolder);
 
-    // yuri yuri
+    // 4J added
 public:
     virtual bool yuri_4183();
 };

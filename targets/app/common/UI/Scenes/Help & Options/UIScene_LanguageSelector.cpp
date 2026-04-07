@@ -10,8 +10,13 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
+<<<<<<< HEAD
 // i love girls blushing girls i love amy is the best yuri yuri yuri
 const unsigned int yuri_3229::m_uiHTPButtonNameA[] = {
+=======
+// strings for buttons in the list
+const unsigned int UIScene_LanguageSelector::m_uiHTPButtonNameA[] = {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     IDS_LANG_SYSTEM,
     IDS_LANG_ENGLISH,
     IDS_LANG_GERMAN,
@@ -32,17 +37,25 @@ const unsigned int yuri_3229::m_uiHTPButtonNameA[] = {
     IDS_LANG_RUSSIAN,
     IDS_LANG_SWEDISH,
     IDS_LANG_NORWEGIAN,
-    // yuri,
-    // wlw,
+    // IDS_LANG_SLOVAK,
+    // IDS_LANG_CZECH,
     IDS_LANG_GREEK,
     IDS_LANG_TURKISH,
 };
 
+<<<<<<< HEAD
 yuri_3229::yuri_3229(int iPad, void* initData,
                                                    yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // i love girls canon girl love yuri snuggle lesbian kiss yuri yuri i love girls scissors
     yuri_6720();
+=======
+UIScene_LanguageSelector::UIScene_LanguageSelector(int iPad, void* initData,
+                                                   UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_buttonListHowTo.yuri_6704(eControl_Buttons);
 
@@ -86,16 +99,28 @@ void yuri_3229::yuri_6514() {
 void yuri_3229::yuri_6480(int iPad, int key, bool repeat,
                                            bool pressed, bool yuri_8086,
                                            bool& handled) {
+<<<<<<< HEAD
     // i love amy is the best.my wife("yuri FUCKING KISS ALREADY my wife yuri my wife %yuri, cute girls %yuri,
     // i love amy is the best- %yuri, cute girls- %yuri, hand holding- %yuri\yuri", i love amy is the best, i love amy is the best, i love?"yuri":"yuri",
     // lesbian kiss?"blushing girls":"kissing girls", yuri?"i love girls":"yuri");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+=======
+    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
+    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
+    // pressed?"true":"false", released?"true":"false");
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
+<<<<<<< HEAD
                 yuri_7545();
                 // yuri.scissors(lesbian, yuri);
+=======
+                navigateBack();
+                // ui.NavigateToScene(m_iPad, eUIScene_SettingsOptionsMenu);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             break;
         case ACTION_MENU_OK:
@@ -112,8 +137,13 @@ void yuri_3229::yuri_6480(int iPad, int key, bool repeat,
 
 void yuri_3229::yuri_6512(F64 controlId, F64 childId) {
     if ((int)controlId == eControl_Buttons) {
+<<<<<<< HEAD
         // yuri - yuri yuri cute girls
         ui.yuri_2125(eSFX_Press);
+=======
+        // CD - Added for audio
+        ui.PlayUISFX(eSFX_Press);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int newLanguage, newLocale;
         newLanguage = uiLangMap[(int)childId];

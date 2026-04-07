@@ -1,8 +1,8 @@
 #pragma once
 
-// lesbian hand holding yuri lesbian kiss yuri blushing girls yuri yuri hand holding kissing girls i love girls hand holding, lesbian blushing girls
-// yuri i love yuri yuri hand holding kissing girls i love amy is the best i love girls "my girlfriend" scissors yuri, yuri yuri yuri
-// ship yuri yuri snuggle yuri yuri i love girls cute girls girl love
+// 4J Stu Richard has added the class like this to the stubs, although the
+// original Java code had an enum with a "surrounding" data member, which is set
+// to the value we are setting the enum to
 
 class LightLayer {
 public:

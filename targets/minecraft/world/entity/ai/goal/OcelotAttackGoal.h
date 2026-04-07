@@ -25,7 +25,13 @@ public:
     virtual void yuri_9133();
     virtual void yuri_9265();
 
+<<<<<<< HEAD
     // my girlfriend wlw canon blushing girls ship cute girls yuri canon yuri kissing girls hand holding
     // i love amy is the best
     virtual void yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
+=======
+    // 4J Added override to update ai elements when loading entity from
+    // schematics
+    virtual void setLevel(Level* level) { this->level = level; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

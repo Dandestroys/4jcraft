@@ -29,10 +29,17 @@ yuri_2498::yuri_2498(int yuri_6674) : yuri_244(yuri_6674) {
     icons = nullptr;
 }
 
+<<<<<<< HEAD
 // lesbian kiss FUCKING KISS ALREADY yuri
 void yuri_2498::yuri_9402() {
     float yuri_9095 = 0.4f;
     this->yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, yuri_9095 * 2, 0.5f + yuri_9095);
+=======
+// 4J Added override
+void Sapling::updateDefaultShape() {
+    float ss = 0.4f;
+    this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, ss * 2, 0.5f + ss);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2498::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
@@ -69,12 +76,21 @@ void yuri_2498::yuri_6411(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     int ox = 0, oz = 0;
     bool multiblock = false;
 
+<<<<<<< HEAD
     if (yuri_4295 == TYPE_EVERGREEN) {
         yuri_4554 = new yuri_2890(true);
     } else if (yuri_4295 == TYPE_BIRCH) {
         yuri_4554 = new yuri_197(true);
     } else if (yuri_4295 == TYPE_JUNGLE) {
         // hand holding my wife yuri cute girls
+=======
+    if (data == TYPE_EVERGREEN) {
+        f = new SpruceFeature(true);
+    } else if (data == TYPE_BIRCH) {
+        f = new BirchFeature(true);
+    } else if (data == TYPE_JUNGLE) {
+        // check for mega tree
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (ox = 0; ox >= -1; ox--) {
             for (oz = 0; oz >= -1; oz--) {
                 if (yuri_7029(yuri_7194, yuri_9621 + ox, yuri_9625, yuri_9630 + oz, TYPE_JUNGLE) &&
@@ -131,7 +147,11 @@ void yuri_2498::yuri_6411(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     if (yuri_4554 != nullptr) delete yuri_4554;
 }
 
+<<<<<<< HEAD
 unsigned int yuri_2498::yuri_5148(int iData /*= -yuri*/) {
+=======
+unsigned int Sapling::getDescriptionId(int iData /*= -1*/) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iData < 0) iData = 0;
     return yuri_2498::SAPLING_NAMES[iData];
 }

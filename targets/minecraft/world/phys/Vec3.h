@@ -32,8 +32,13 @@ public:
     void yuri_9628(float degs);
     void yuri_9633(float degs);
 
+<<<<<<< HEAD
     // cute girls canon
     double yuri_4385(yuri_0* yuri_3843);
+=======
+    // 4J Added
+    double distanceTo(AABB* box);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3322 yuri_4106(const yuri_3322& p1, const yuri_3322& p2) const;
     double yuri_4384(const yuri_3322& p1, const yuri_3322& p2) const;

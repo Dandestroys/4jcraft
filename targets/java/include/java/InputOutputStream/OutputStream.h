@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <vector>
 
-// kissing girls cute girls - FUCKING KISS ALREADY lesbian kiss my girlfriend hand holding yuri
+// 4J Stu - Represents Java standard lib abstract
 
 class yuri_2067 {
 public:

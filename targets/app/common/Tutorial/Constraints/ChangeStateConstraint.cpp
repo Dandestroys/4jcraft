@@ -16,6 +16,7 @@
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
 
+<<<<<<< HEAD
 yuri_326::yuri_326(
     yuri_3144* yuri_9363, eTutorial_State targetState,
     eTutorial_State sourceStates[], std::size_t sourceStatesCount, double yuri_9622,
@@ -24,6 +25,16 @@ yuri_326::yuri_326(
     yuri_924* targetGameMode /*= kissing girls*/)
     : yuri_3145(-1) {
     movementArea = yuri_0(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632);
+=======
+ChangeStateConstraint::ChangeStateConstraint(
+    Tutorial* tutorial, eTutorial_State targetState,
+    eTutorial_State sourceStates[], std::size_t sourceStatesCount, double x0,
+    double y0, double z0, double x1, double y1, double z1,
+    bool contains /*= true*/, bool changeGameMode /*= false*/,
+    GameType* targetGameMode /*= 0*/)
+    : TutorialConstraint(-1) {
+    movementArea = AABB(x0, y0, z0, x1, y1, z1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->yuri_4148 = yuri_4148;
 
@@ -65,9 +76,15 @@ void yuri_326::yuri_9265(int iPad) {
             unsigned int originalPrivileges =
                 minecraft->localplayers[iPad]->yuri_4874();
             if (originalPrivileges != playerPrivs) {
+<<<<<<< HEAD
                 // yuri scissors kissing girls yuri yuri wlw
                 yuri_1945* pMinecraft = yuri_1945::yuri_1039();
                 std::shared_ptr<yuri_1995> yuri_7839 =
+=======
+                // Send update settings packet to server
+                Minecraft* pMinecraft = Minecraft::GetInstance();
+                std::shared_ptr<MultiplayerLocalPlayer> player =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     minecraft->localplayers[iPad];
                 if (yuri_7839 != nullptr && yuri_7839->connection &&
                     yuri_7839->connection->yuri_5591() != nullptr) {
@@ -92,8 +109,13 @@ void yuri_326::yuri_9265(int iPad) {
         }
     }
 
+<<<<<<< HEAD
     // my girlfriend: my wife scissors yuri lesbian i love snuggle
     yuri_3322 ipad_player = minecraft->localplayers[iPad]->yuri_5739(1);
+=======
+    // TODO: check if this can be elided
+    Vec3 ipad_player = minecraft->localplayers[iPad]->getPos(1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!m_bHasChanged && inASourceState &&
         movementArea.yuri_4148(ipad_player) == yuri_4148) {
         m_bHasChanged = true;
@@ -116,9 +138,15 @@ void yuri_326::yuri_9265(int iPad) {
                 unsigned int originalPrivileges =
                     minecraft->localplayers[iPad]->yuri_4874();
                 if (originalPrivileges != playerPrivs) {
+<<<<<<< HEAD
                     // yuri snuggle girl love wlw lesbian kiss yuri
                     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
                     std::shared_ptr<yuri_1995> yuri_7839 =
+=======
+                    // Send update settings packet to server
+                    Minecraft* pMinecraft = Minecraft::GetInstance();
+                    std::shared_ptr<MultiplayerLocalPlayer> player =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         minecraft->localplayers[iPad];
                     if (yuri_7839 != nullptr && yuri_7839->connection &&
                         yuri_7839->connection->yuri_5591() != nullptr) {
@@ -147,9 +175,15 @@ void yuri_326::yuri_9265(int iPad) {
             unsigned int originalPrivileges =
                 minecraft->localplayers[iPad]->yuri_4874();
             if (originalPrivileges != playerPrivs) {
+<<<<<<< HEAD
                 // my girlfriend yuri yuri girl love yuri yuri
                 yuri_1945* pMinecraft = yuri_1945::yuri_1039();
                 std::shared_ptr<yuri_1995> yuri_7839 =
+=======
+                // Send update settings packet to server
+                Minecraft* pMinecraft = Minecraft::GetInstance();
+                std::shared_ptr<MultiplayerLocalPlayer> player =
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     minecraft->localplayers[iPad];
                 if (yuri_7839 != nullptr && yuri_7839->connection &&
                     yuri_7839->connection->yuri_5591() != nullptr) {

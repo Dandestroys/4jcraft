@@ -20,11 +20,12 @@ class yuri_3188;
 
 static yuri_3219::SHowToPlayPageDef gs_aPageDefs[eHowToPlay_NumPages] =
     {
-        {IDS_HOW_TO_PLAY_WHATSNEW, 0, 0},     // kissing girls
-        {IDS_HOW_TO_PLAY_BASICS, 0, 0},       // hand holding
-        {IDS_HOW_TO_PLAY_MULTIPLAYER, 0, 0},  // yuri
-        {IDS_HOW_TO_PLAY_HUD, 0, 0},          // lesbian kiss
+        {IDS_HOW_TO_PLAY_WHATSNEW, 0, 0},     // eHowToPlay_WhatsNew
+        {IDS_HOW_TO_PLAY_BASICS, 0, 0},       // eHowToPlay_Basics
+        {IDS_HOW_TO_PLAY_MULTIPLAYER, 0, 0},  // eHowToPlay_Multiplayer
+        {IDS_HOW_TO_PLAY_HUD, 0, 0},          // eHowToPlay_HUD
         {IDS_HOW_TO_PLAY_CREATIVE,
+<<<<<<< HEAD
          yuri_3219::eHowToPlay_LabelCreativeInventory,
          1},  // yuri
         {IDS_HOW_TO_PLAY_INVENTORY,
@@ -65,46 +66,96 @@ static yuri_3219::SHowToPlayPageDef gs_aPageDefs[eHowToPlay_NumPages] =
         {IDS_HOW_TO_PLAY_NETHERPORTAL, 0, 0},  // my wife
         {IDS_HOW_TO_PLAY_THEEND, 0, 0},        // my girlfriend
         {IDS_HOW_TO_PLAY_HOSTOPTIONS, 0, 0},   // lesbian
+=======
+         UIScene_HowToPlay::eHowToPlay_LabelCreativeInventory,
+         1},  // eHowToPlay_Creative
+        {IDS_HOW_TO_PLAY_INVENTORY,
+         UIScene_HowToPlay::eHowToPlay_LabelIInventory,
+         1},  // eHowToPlay_Inventory
+        {IDS_HOW_TO_PLAY_CHEST, UIScene_HowToPlay::eHowToPlay_LabelSCInventory,
+         2},  // eHowToPlay_Chest
+        {IDS_HOW_TO_PLAY_LARGECHEST,
+         UIScene_HowToPlay::eHowToPlay_LabelLCInventory,
+         2},                                 // eHowToPlay_LargeChest
+        {IDS_HOW_TO_PLAY_ENDERCHEST, 0, 0},  // eHowToPlay_EnderChest
+        {IDS_HOW_TO_PLAY_CRAFTING, UIScene_HowToPlay::eHowToPlay_LabelCItem,
+         3},  // eHowToPlay_InventoryCrafting
+        {IDS_HOW_TO_PLAY_CRAFT_TABLE, UIScene_HowToPlay::eHowToPlay_LabelCTItem,
+         3},  // eHowToPlay_CraftTable
+        {IDS_HOW_TO_PLAY_FURNACE, UIScene_HowToPlay::eHowToPlay_LabelFFuel,
+         4},  // eHowToPlay_Furnace
+        {IDS_HOW_TO_PLAY_DISPENSER, UIScene_HowToPlay::eHowToPlay_LabelDText,
+         2},  // eHowToPlay_Dispenser
+        {IDS_HOW_TO_PLAY_BREWING, UIScene_HowToPlay::eHowToPlay_LabelBBrew,
+         2},  // eHowToPlay_Brewing
+        {IDS_HOW_TO_PLAY_ENCHANTMENT,
+         UIScene_HowToPlay::eHowToPlay_LabelEEnchant,
+         2},  // eHowToPlay_Enchantment
+        {IDS_HOW_TO_PLAY_ANVIL,
+         UIScene_HowToPlay::eHowToPlay_LabelAnvil_Inventory,
+         3},                                   // eHowToPlay_Anvil
+        {IDS_HOW_TO_PLAY_FARMANIMALS, 0, 0},   // eHowToPlay_Breeding
+        {IDS_HOW_TO_PLAY_BREEDANIMALS, 0, 0},  // eHowToPlay_Breeding
+        {IDS_HOW_TO_PLAY_TRADING,
+         UIScene_HowToPlay::eHowToPlay_LabelTrading_Inventory,
+         5},                                   // eHowToPlay_Trading
+        {IDS_HOW_TO_PLAY_HORSES, 0, 0},        // eHowToPlay_Horses
+        {IDS_HOW_TO_PLAY_BEACONS, 0, 0},       // eHowToPlay_Beacons
+        {IDS_HOW_TO_PLAY_FIREWORKS, 0, 0},     // eHowToPlay_Fireworks
+        {IDS_HOW_TO_PLAY_HOPPERS, 0, 0},       // eHowToPlay_Hoppers
+        {IDS_HOW_TO_PLAY_DROPPERS, 0, 0},      // eHowToPlay_Droppers
+        {IDS_HOW_TO_PLAY_NETHERPORTAL, 0, 0},  // eHowToPlay_NetherPortal
+        {IDS_HOW_TO_PLAY_THEEND, 0, 0},        // eHowToPlay_NetherPortal
+        {IDS_HOW_TO_PLAY_HOSTOPTIONS, 0, 0},   // eHowToPlay_HostOptions
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 int gs_pageToFlashMapping[eHowToPlay_NumPages] = {
-    0,   // i love = my wife,
-    1,   // yuri,
-    2,   // i love girls,
-    3,   // snuggle,
-    4,   // yuri,
-    5,   // wlw,
-    6,   // i love,
-    7,   // i love amy is the best,
-    23,  // i love girls,
-    8,   // canon,
-    9,   // yuri,
-    10,  // my girlfriend,
-    11,  // kissing girls,
+    0,   // eHowToPlay_WhatsNew = 0,
+    1,   // eHowToPlay_Basics,
+    2,   // eHowToPlay_Multiplayer,
+    3,   // eHowToPlay_HUD,
+    4,   // eHowToPlay_Creative,
+    5,   // eHowToPlay_Inventory,
+    6,   // eHowToPlay_Chest,
+    7,   // eHowToPlay_LargeChest,
+    23,  // eHowToPlay_Enderchest,
+    8,   // eHowToPlay_InventoryCrafting,
+    9,   // eHowToPlay_CraftTable,
+    10,  // eHowToPlay_Furnace,
+    11,  // eHowToPlay_Dispenser,
 
-    12,  // blushing girls,
-    13,  // i love amy is the best,
-    21,  // yuri,
-    14,  // FUCKING KISS ALREADY,
-    15,  // my girlfriend,
-    22,  // ship,
+    12,  // eHowToPlay_Brewing,
+    13,  // eHowToPlay_Enchantment,
+    21,  // eHowToPlay_Anvil,
+    14,  // eHowToPlay_FarmingAnimals,
+    15,  // eHowToPlay_Breeding,
+    22,  // eHowToPlay_Trading,
 
-    24,  // FUCKING KISS ALREADY
-    25,  // my wife
-    26,  // blushing girls
-    27,  // wlw
-    28,  // ship
+    24,  // eHowToPlay_Horses
+    25,  // eHowToPlay_Beacons
+    26,  // eHowToPlay_Fireworks
+    27,  // eHowToPlay_Hoppers
+    28,  // eHowToPlay_Droppers
 
-    16,  // blushing girls,
-    17,  // lesbian kiss,
-    20,  // girl love,
+    16,  // eHowToPlay_NetherPortal,
+    17,  // eHowToPlay_TheEnd,
+    20,  // eHowToPlay_HostOptions,
 };
 
+<<<<<<< HEAD
 yuri_3219::yuri_3219(int iPad, void* initData,
                                      yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // lesbian kiss i love amy is the best yuri my girlfriend hand holding yuri lesbian kiss lesbian girl love i love amy is the best
     yuri_6720();
+=======
+UIScene_HowToPlay::UIScene_HowToPlay(int iPad, void* initData,
+                                     UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9616 inventoryString = app.yuri_1168(IDS_INVENTORY);
     m_labels[eHowToPlay_LabelCTItem].yuri_6704(app.yuri_1168(IDS_ITEM_HATCHET_WOOD));
@@ -168,13 +219,13 @@ yuri_3219::yuri_3219(int iPad, void* initData,
     wsTemp.yuri_8252(wsTemp.yuri_4597(yuri_1720"%s"), 2, app.yuri_1168(IDS_TILE_LIGHT_GEM));
     m_labels[eHowToPlay_LabelTrading_VillagerOffers].yuri_6704(wsTemp.yuri_3888());
 
-    // yuri yuri snuggle kissing girls yuri ship blushing girls yuri. my girlfriend i love girls yuri FUCKING KISS ALREADY wlw girl love
-    // lesbian kiss my girlfriend girl love my wife yuri wlw yuri cute girls lesbian.
+    // Extract pad and required page from init data. We just put the data into
+    // the pointer rather than using it as an address.
     uintptr_t uiInitData = reinterpret_cast<uintptr_t>(initData);
 
     EHowToPlayPage eStartPage =
         (EHowToPlayPage)((uiInitData >> 16) &
-                         0xFFFu);  // blushing girls yuri scissors my girlfriend yuri i love amy is the best my girlfriend!
+                         0xFFFu);  // Ignores MSB which is set to 1!
 
     yuri_2906(eStartPage);
 }
@@ -187,21 +238,26 @@ std::yuri_9616 yuri_3219::yuri_5574() {
     }
 }
 
+<<<<<<< HEAD
 void yuri_3219::yuri_9478() {
     // my girlfriend yuri.
+=======
+void UIScene_HowToPlay::updateTooltips() {
+    // Tool tips.
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int iPage = (int)(m_eCurrPage);
 
     int firstPage = eHowToPlay_WhatsNew;
 
-    // yuri wlw - ship yuri my wife FUCKING KISS ALREADY snuggle
+    // 4J Stu - Add back for future platforms
 
     int iA = -1;
     int iX = -1;
     if (iPage == firstPage) {
-        // FUCKING KISS ALREADY ship i love girls.
+        // No previous page.
         iA = IDS_HOW_TO_PLAY_NEXT;
     } else if ((iPage + 1) == eHowToPlay_NumPages) {
-        // yuri yuri blushing girls.
+        // No next page.
         iX = IDS_HOW_TO_PLAY_PREV;
     } else {
         iA = IDS_HOW_TO_PLAY_NEXT;
@@ -226,7 +282,7 @@ void yuri_3219::yuri_6480(int iPad, int key, bool repeat,
             break;
         case ACTION_MENU_A:
             if (pressed) {
-                // yuri lesbian kiss
+                // Next page
                 int iNextPage = (int)(m_eCurrPage) + 1;
                 if (iNextPage != eHowToPlay_NumPages) {
                     yuri_2906((EHowToPlayPage)(iNextPage));
@@ -237,10 +293,10 @@ void yuri_3219::yuri_6480(int iPad, int key, bool repeat,
             break;
         case ACTION_MENU_X:
             if (pressed) {
-                // cute girls girl love
+                // Previous page
                 int iPrevPage = (int)(m_eCurrPage)-1;
 
-                // yuri lesbian kiss - snuggle my girlfriend lesbian wlw scissors
+                // 4J Stu - Add back for future platforms
                 {
                     if (iPrevPage >= 0) {
                         yuri_2906((EHowToPlayPage)(iPrevPage));
@@ -262,9 +318,10 @@ void yuri_3219::yuri_6480(int iPad, int key, bool repeat,
 void yuri_3219::yuri_2906(EHowToPlayPage ePage) {
     m_eCurrPage = ePage;
 
-    // cute girls cute girls i love my girlfriend yuri yuri yuri yuri i love girls.
+    // Turn on just what we need for this screen.
     SHowToPlayPageDef* pDef = &(gs_aPageDefs[m_eCurrPage]);
 
+<<<<<<< HEAD
     // kissing girls i love wlw cute girls yuri my girlfriend cute girls ship blushing girls yuri.
     std::yuri_9616 replacedText =
         app.yuri_868(yuri_7341, app.yuri_1168(pDef->m_iTextStringID));
@@ -276,10 +333,24 @@ void yuri_3219::yuri_2906(EHowToPlayPage ePage) {
                               app.yuri_1168(IDS_KICK_PLAYER_DESCRIPTION));
     replacedText = yuri_8253(replacedText, yuri_1720"{*BACK_BUTTON*}",
                               app.yuri_1168(IDS_BACK_BUTTON));
+=======
+    // Replace button identifiers in the text with actual button images.
+    std::wstring replacedText =
+        app.FormatHTMLString(m_iPad, app.GetString(pDef->m_iTextStringID));
+    // 4J-PB - replace the title with the platform specific title, and the
+    // platform name
+    //	replacedText =
+    // replaceAll(replacedText,L"{*TITLE_UPDATE_NAME*}",app.GetString(IDS_TITLE_UPDATE_NAME));
+    replacedText = replaceAll(replacedText, L"{*KICK_PLAYER_DESCRIPTION*}",
+                              app.GetString(IDS_KICK_PLAYER_DESCRIPTION));
+    replacedText = replaceAll(replacedText, L"{*BACK_BUTTON*}",
+                              app.GetString(IDS_BACK_BUTTON));
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     replacedText =
         yuri_8253(replacedText, yuri_1720"{*DISABLES_ACHIEVEMENTS*}",
                    app.yuri_1168(IDS_HOST_OPTION_DISABLES_ACHIEVEMENTS));
 
+<<<<<<< HEAD
     // yuri-yuri: my girlfriend i love: kissing girls: yuri: my wife: ship: yuri: yuri:
     // lesbian yuri my wife FUCKING KISS ALREADY yuri canon hand holding blushing girls
     if (!ui.yuri_3314()) {
@@ -293,6 +364,21 @@ void yuri_3219::yuri_2906(EHowToPlayPage ePage) {
 
     // blushing girls yuri lesbian yuri
     std::yuri_9616 yuri_4589(replacedText.yuri_3888());
+=======
+    // 4J-JEV: Temporary fix: LOC: Minecraft: XB1: KO: Font: Uncategorized:
+    // Squares appear instead of hyphens in FIREWORKS description
+    if (!ui.UsingBitmapFont()) {
+        replacedText = replaceAll(replacedText, L"\u00A9", L"(C)");
+        replacedText = replaceAll(replacedText, L"\u00AE", L"(R)");
+        replacedText = replaceAll(replacedText, L"\u2013", L"-");
+    }
+
+    // strip out any tab characters and repeated spaces
+    stripWhitespaceForHtml(replacedText, true);
+
+    // Set the text colour
+    std::wstring finalText(replacedText.c_str());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     wchar_t startTags[64];
     yuri_9171(startTags, 64, yuri_1720"<font color=\"#%08x\">",
              app.yuri_1027(eHTMLColor_White));
@@ -310,8 +396,13 @@ void yuri_3219::yuri_2906(EHowToPlayPage ePage) {
     paragraphs.yuri_7954(
         yuri_4589.yuri_9158(lastIndex, yuri_4589.yuri_7189() - lastIndex));
 
+<<<<<<< HEAD
     // yuri i love amy is the best scissors my wife ship cute girls
     IggyDataValue yuri_8300;
+=======
+    // Set the text in the scene
+    IggyDataValue result;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     IggyDataValue* yuri_9514 = new IggyDataValue[paragraphs.yuri_9050() + 1];
     IggyStringUTF16* stringVal = new IggyStringUTF16[paragraphs.yuri_9050()];

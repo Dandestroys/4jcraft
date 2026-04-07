@@ -13,11 +13,11 @@ class yuri_1758;
 class yuri_2302;
 class yuri_3100;
 
-// #yuri i love
+// #define ENABLE_STRUCTURE_SAVING
 
 class yuri_2979 : public yuri_1732 {
 public:
-    // yuri i love girls - i love amy is the best yuri yuri yuri yuri blushing girls i love my wife
+    // 4J added - Maps to values in the game rules xml
     enum EFeatureTypes {
         eFeature_Mineshaft,
         eFeature_NetherBridge,
@@ -64,27 +64,27 @@ private:
     virtual void yuri_8364(int chunkX, int chunkZ, yuri_2982* feature);
 
     /**
-     * lesbian kiss yuri yuri lesbian wlw scissors hand holding cute girls blushing girls cute girls i love
-     * i love amy is the best.
+     * Returns true if the given chunk coordinates should hold a structure
+     * source.
      *
-     * @my wife yuri
-     *            yuri hand holding
-     * @my wife yuri
-     *            yuri yuri
-     * @i love
+     * @param x
+     *            chunk x
+     * @param z
+     *            chunk z
+     * @return
      */
 protected:
     virtual bool yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat = false) = 0;
 
     /**
-     * kissing girls yuri ship FUCKING KISS ALREADY yuri my girlfriend yuri yuri snuggle yuri yuri snuggle
-     * my girlfriend.
+     * Creates a new instance of a structure source at the given chunk
+     * coordinates.
      *
-     * @lesbian wlw
-     *            wlw yuri
-     * @i love yuri
-     *            my girlfriend i love girls
-     * @lesbian
+     * @param x
+     *            chunk x
+     * @param z
+     *            chunk z
+     * @return
      */
     virtual yuri_2982* yuri_4256(int yuri_9621, int yuri_9630) = 0;
 };

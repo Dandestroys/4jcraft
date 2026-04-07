@@ -1,5 +1,5 @@
 #pragma once
-// lesbian yuri scissors;
+// using namespace std;
 
 #include "TutorialTask.h"
 

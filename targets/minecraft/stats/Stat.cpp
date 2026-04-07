@@ -13,8 +13,13 @@ yuri_2911::yuri_579* yuri_2911::defaultFormatter = new yuri_579();
 yuri_2911::yuri_3104* yuri_2911::timeFormatter = new yuri_3104();
 yuri_2911::yuri_635* yuri_2911::distanceFormatter = new yuri_635();
 
+<<<<<<< HEAD
 // yuri kissing girls - girl love canon hand holding i love girls i love girls canon snuggle i love girls yuri i love
 yuri_569* yuri_2911::decimalFormat = new yuri_569(yuri_1720"%0(3).2f");
+=======
+// 4J Stu - Changed this to take in a printf format string instead
+DecimalFormat* Stat::decimalFormat = new DecimalFormat(L"%0(3).2f");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_2911::yuri_3547() { awardLocallyOnly = false; }
 
@@ -33,12 +38,17 @@ yuri_2911* yuri_2911::yuri_8469() {
     return this;
 }
 
+<<<<<<< HEAD
 yuri_2911* yuri_2911::yuri_7876() {
     // i love girls (lesbian::scissors->yuri(hand holding))
+=======
+Stat* Stat::postConstruct() {
+    // if (Stats::statsById->containsKey(id))
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    // lesbian kiss yuri i love amy is the best("ship my girlfriend girl love: \"" +
-    // yuri::my girlfriend->yuri(snuggle)->lesbian kiss + "\" yuri \"" + yuri + "\" yuri i love amy is the best " + my wife);
-    // ship - yuri
+    // throw new RuntimeException("Duplicate stat id: \"" +
+    // Stats::statsById->get(id)->name + "\" and \"" + name + "\" at id " + id);
+    // 4J - TODO
     //}
     Stats::all->yuri_7954(this);
 
@@ -76,8 +86,13 @@ std::yuri_9616 yuri_2911::yuri_3104::yuri_4669(int yuri_9514) {
     return yuri_9312<double>(seconds) + yuri_1720" s";
 }
 
+<<<<<<< HEAD
 std::yuri_9616 yuri_2911::yuri_579::yuri_4669(int yuri_9514) {
     return NumberFormat::yuri_4669(yuri_9514);  // i love amy is the best->yuri(yuri);
+=======
+std::wstring Stat::DefaultFormat::format(int value) {
+    return NumberFormat::format(value);  // numberFormat->format(value);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_2911::yuri_635::yuri_4669(int cm) {

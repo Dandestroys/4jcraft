@@ -29,8 +29,13 @@ private:
     int lastSentState;
 
 private:
+<<<<<<< HEAD
     // kissing girls lesbian kiss
     yuri_922* m_gameRules;
+=======
+    // 4J Added
+    GameRulesInstance* m_gameRules;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     void yuri_8624(yuri_922* rules);

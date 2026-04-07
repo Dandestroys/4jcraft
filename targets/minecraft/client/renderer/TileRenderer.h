@@ -52,8 +52,13 @@ public:
     float tileShapeZ1;
     bool fixedShape;
     bool smoothShapeLighting;
+<<<<<<< HEAD
     yuri_1945* minecraft;
     ///////////////////////////////////////// yuri i love girls
+=======
+    Minecraft* minecraft;
+    ///////////////////////////////////////// Data caching
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::unordered_map<int, int> getLightColorCount;
     int xMin, yMin, zMin;
     int xMin2, yMin2, zMin2;
@@ -87,6 +92,7 @@ public:
                        float yuri_9632);
     void yuri_4056();
 
+<<<<<<< HEAD
     void yuri_9221(
         yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630,
         yuri_1346*
@@ -99,6 +105,20 @@ public:
         yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
         std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
             yuri_3091>());  // ship yuri yuri, yuri lesbian kiss
+=======
+    void tesselateInWorldFixedTexture(
+        Tile* tile, int x, int y, int z,
+        Icon*
+            fixedTexture);  // 4J renamed to differentiate from tesselateInWorld
+    void tesselateInWorldNoCulling(
+        Tile* tile, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // 4J added forceData, forceEntity param
+    bool tesselateInWorld(
+        Tile* tt, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // 4J added forceData, forceEntity param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     bool yuri_9197(yuri_3068* tt, int yuri_9621, int yuri_9625,
@@ -138,23 +158,38 @@ private:
     int downFlip;
 
 public:
+<<<<<<< HEAD
     void yuri_9227(
         yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630,
         int forceData = -1);  // FUCKING KISS ALREADY lesbian yuri cute girls
+=======
+    void tesselatePistonBaseForceExtended(
+        Tile* tile, int x, int y, int z,
+        int forceData = -1);  // 4J added data param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     bool yuri_9228(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630,
                                     bool forceExtended,
+<<<<<<< HEAD
                                     int forceData = -1);  // i love cute girls i love girls scissors
     void yuri_8221(float yuri_9622, float yuri_9623, float yuri_9626, float yuri_9627, float yuri_9631,
                                float yuri_9632, float yuri_3844, float armLengthPixels);
     void yuri_8220(float yuri_9622, float yuri_9623, float yuri_9626, float yuri_9627,
                                    float yuri_9631, float yuri_9632, float yuri_3844,
+=======
+                                    int forceData = -1);  // 4J added data param
+    void renderPistonArmUpDown(float x0, float x1, float y0, float y1, float z0,
+                               float z1, float br, float armLengthPixels);
+    void renderPistonArmNorthSouth(float x0, float x1, float y0, float y1,
+                                   float z0, float z1, float br,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    float armLengthPixels);
     void yuri_8219(float yuri_9622, float yuri_9623, float yuri_9626, float yuri_9627,
                                  float yuri_9631, float yuri_9632, float yuri_3844,
                                  float armLengthPixels);
 
 public:
+<<<<<<< HEAD
     void yuri_9226(
         yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, bool fullArm,
         int forceData = -1);  // scissors snuggle cute girls blushing girls
@@ -162,6 +197,15 @@ private:
     bool yuri_9229(
         yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, bool fullArm,
         int forceData = -1);  // i love amy is the best yuri yuri lesbian kiss
+=======
+    void tesselatePistonArmNoCulling(
+        Tile* tile, int x, int y, int z, bool fullArm,
+        int forceData = -1);  // 4J added data param
+private:
+    bool tesselatePistonExtensionInWorld(
+        Tile* tt, int x, int y, int z, bool fullArm,
+        int forceData = -1);  // 4J added data param
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     bool yuri_9224(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
     bool yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -193,6 +237,7 @@ private:
     float yuri_6128(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1886* m);
 
 public:
+<<<<<<< HEAD
     void yuri_8166(yuri_3088* tt, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     void yuri_8166(yuri_3088* tt, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
     bool yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -201,6 +246,16 @@ public:
     bool yuri_9243(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
     bool yuri_9230(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
     bool yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9630);
+=======
+    void renderBlock(Tile* tt, Level* level, int x, int y, int z);
+    void renderBlock(Tile* tt, Level* level, int x, int y, int z, int data);
+    bool tesselateBlockInWorld(Tile* tt, int x, int y, int z);
+    // AP - added so we can cull earlier
+    bool tesselateBlockInWorld(Tile* tt, int x, int y, int z, int faceFlags);
+    bool tesselateTreeInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateQuartzInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     bool applyAmbienceOcclusion;
@@ -208,21 +263,28 @@ private:
     float llXyZ, llxYz, llxY0, llxYZ, ll0Yz, llXYz, llXY0;
     float ll0YZ, llXYZ, llx0z, llX0z, llx0Z, llX0Z;
 
-    // yuri - yuri girl love my girlfriend blushing girls yuri.lesbian kiss.scissors
+    // 4J - brought forward changes from 1.8.2
     int ccxyz, ccxy0, ccxyZ, cc0yz, cc0yZ, ccXyz, ccXy0;
     int ccXyZ, ccxYz, ccxY0, ccxYZ, cc0Yz, ccXYz, ccXY0;
     int cc0YZ, ccXYZ, ccx0z, ccX0z, ccx0Z, ccX0Z;
 
-    int tc1, tc2, tc3, tc4;  // snuggle - cute girls FUCKING KISS ALREADY my girlfriend hand holding cute girls.yuri.yuri
+    int tc1, tc2, tc3, tc4;  // 4J - brought forward changes from 1.8.2
     float c1r, c2r, c3r, c4r;
     float c1g, c2g, c3g, c4g;
     float c1b, c2b, c3b, c4b;
 
 public:
+<<<<<<< HEAD
     // i love amy is the best - hand holding yuri yuri lesbian i love.kissing girls.girl love
     // yuri - yuri lesbian snuggle yuri girl love yuri wlw
     bool yuri_9203(
         yuri_3088* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
+=======
+    // 4J - brought forward changes from 1.8.2
+    // AP - added faceFlags so we can cull earlier
+    bool tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
+        Tile* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         float pBaseBlue, int faceFlags, bool smoothShapeLighting);
 
 private:
@@ -231,6 +293,7 @@ private:
               double fd);
 
 public:
+<<<<<<< HEAD
     bool yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, float r, float g,
                                float yuri_3775);
     bool yuri_9200(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -257,6 +320,34 @@ public:
                     bool useCompiled = true);  // i love amy is the best ship wlw
     static bool yuri_3951(int renderShape);
     yuri_1346* yuri_6007(yuri_3088* tile, yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+=======
+    bool tesselateBlockInWorld(Tile* tt, int x, int y, int z, float r, float g,
+                               float b);
+    bool tesselateBeaconInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateCactusInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateCactusInWorld(Tile* tt, int x, int y, int z, float r, float g,
+                                float b);
+    bool tesselateFenceInWorld(FenceTile* tt, int x, int y, int z);
+    bool tesselateWallInWorld(WallTile* tt, int x, int y, int z);
+    bool tesselateEggInWorld(EggTile* tt, int x, int y, int z);
+    bool tesselateFenceGateInWorld(FenceGateTile* tt, int x, int y, int z);
+    bool tesselateHopperInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateHopperInWorld(Tile* tt, int x, int y, int z, int data,
+                                bool render);
+    bool tesselateStairsInWorld(StairTile* tt, int x, int y, int z);
+    bool tesselateDoorInWorld(Tile* tt, int x, int y, int z);
+    void renderFaceUp(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderFaceDown(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderNorth(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderSouth(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderWest(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderEast(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderCube(Tile* tile, float alpha);
+    void renderTile(Tile* tile, int data, float brightness, float fAlpha = 1.0f,
+                    bool useCompiled = true);  // 4J Added useCompiled
+    static bool canRender(int renderShape);
+    Icon* getTexture(Tile* tile, LevelSource* level, int x, int y, int z,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      int face);
 
     yuri_1346* yuri_6007(yuri_3088* tile, int face, int yuri_4295);

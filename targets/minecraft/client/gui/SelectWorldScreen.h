@@ -24,8 +24,8 @@ protected:
     static const int BUTTON_RENAME_ID = 6;
 
 private:
-    //	cute girls yuri my wife = my girlfriend scissors();		// canon -
-    // blushing girls
+    //	final DateFormat DATE_FORMAT = new SimpleDateFormat();		// 4J -
+    // removed
 
 protected:
     yuri_2524* lastScreen;
@@ -68,10 +68,17 @@ public:
 
     class yuri_3397 : public yuri_2528 {
     public:
+<<<<<<< HEAD
         yuri_2536* yuri_7791;
         // my wife - canon yuri my wife yuri scissors ship yuri, canon kissing girls kissing girls i love FUCKING KISS ALREADY
         // lesbian lesbian kiss cute girls yuri FUCKING KISS ALREADY yuri yuri yuri
         yuri_3397(yuri_2536* sws);
+=======
+        SelectWorldScreen* parent;
+        // 4J - had to add input parameters to ctor, original is a java subclass
+        // of the screen and can access its members
+        WorldSelectionList(SelectWorldScreen* sws);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     protected:
         virtual int yuri_5608();

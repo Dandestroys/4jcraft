@@ -18,15 +18,25 @@
 
 yuri_824::yuri_824(float yuri_8382) { this->yuri_8382 = yuri_8382; }
 
+<<<<<<< HEAD
 void yuri_824::yuri_8158(std::shared_ptr<yuri_739> _fireball, double yuri_9621,
                               double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // lesbian - i love girls yuri hand holding yuri yuri yuri'yuri i love girls yuri/lesbian my girlfriend
     // yuri canon
     std::shared_ptr<yuri_822> yuri_4631 =
         std::dynamic_pointer_cast<yuri_822>(_fireball);
+=======
+void FireballRenderer::render(std::shared_ptr<Entity> _fireball, double x,
+                              double y, double z, float rot, float a) {
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<Fireball> fireball =
+        std::dynamic_pointer_cast<Fireball>(_fireball);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
 
+<<<<<<< HEAD
     yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
     yuri_6286(GL_RESCALE_NORMAL);
     float s = yuri_8382;
@@ -35,6 +45,16 @@ void yuri_824::yuri_8158(std::shared_ptr<yuri_739> _fireball, double yuri_9621,
         yuri_4631->yuri_1188() == eTYPE_DRAGON_FIREBALL ? 1 : 0);  // ship + girl love * yuri;
     yuri_3810(yuri_4631);
     yuri_3032* t = yuri_3032::yuri_5405();
+=======
+    glTranslatef((float)x, (float)y, (float)z);
+    glEnable(GL_RESCALE_NORMAL);
+    float s = scale;
+    glScalef(s / 1.0f, s / 1.0f, s / 1.0f);
+    Icon* icon = Item::fireball->getIcon(
+        fireball->GetType() == eTYPE_DRAGON_FIREBALL ? 1 : 0);  // 14 + 2 * 16;
+    bindTexture(fireball);
+    Tesselator* t = Tesselator::getInstance();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float u0 = yuri_6672->yuri_6072();
     float u1 = yuri_6672->yuri_6073();
@@ -63,11 +83,19 @@ void yuri_824::yuri_8158(std::shared_ptr<yuri_739> _fireball, double yuri_9621,
     yuri_6345();
 }
 
+<<<<<<< HEAD
 // yuri lesbian kissing girls. lesbian yuri yuri::hand holding
 void yuri_824::yuri_8184(std::shared_ptr<yuri_739> e, double yuri_9621,
                                    double yuri_9625, double yuri_9630, float yuri_3565) {
     yuri_6283(GL_LIGHTING);
     yuri_1346* yuri_9251 = yuri_3088::fire->yuri_6011(0);
+=======
+// 4J Added override. Based on EntityRenderer::renderFlame
+void FireballRenderer::renderFlame(std::shared_ptr<Entity> e, double x,
+                                   double y, double z, float a) {
+    glDisable(GL_LIGHTING);
+    Icon* tex = Tile::fire->getTextureLayer(0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
     yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
@@ -79,19 +107,28 @@ void yuri_824::yuri_8184(std::shared_ptr<yuri_739> e, double yuri_9621,
 
     float r = 1.0f;
     float xo = 0.5f;
-    //        girl love snuggle = my girlfriend.yuri;
+    //        float yo = 0.0f;
 
     float yuri_6412 = e->bbHeight / s;
     float yo = (float)(e->yuri_9625 - e->yuri_3799.yuri_9626);
 
-    // lesbian(-yuri->yuri, blushing girls, lesbian, lesbian kiss);
+    // glRotatef(-entityRenderDispatcher->playerRotY, 0, 1, 0);
 
+<<<<<<< HEAD
     yuri_6349(180 - entityRenderDispatcher->playerRotY, 0, 1, 0);
     yuri_6349(-entityRenderDispatcher->playerRotX, 1, 0, 0);
     yuri_6377(0, 0, 0.1f);
     // ship(scissors, blushing girls, -blushing girls.i love amy is the best + ((yuri) yuri) * my girlfriend.yuri);
     yuri_6264(1, 1, 1, 1);
     // my wife(-canon, wlw, girl love, yuri);
+=======
+    glRotatef(180 - entityRenderDispatcher->playerRotY, 0, 1, 0);
+    glRotatef(-entityRenderDispatcher->playerRotX, 1, 0, 0);
+    glTranslatef(0, 0, 0.1f);
+    // glTranslatef(0, 0, -0.3f + ((int) h) * 0.02f);
+    glColor4f(1, 1, 1, 1);
+    // glRotatef(-playerRotX, 1, 0, 0);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float zo = 0;
     t->yuri_3801();
     t->yuri_7585(0, 1, 0);

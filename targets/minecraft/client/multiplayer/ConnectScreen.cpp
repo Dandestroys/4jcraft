@@ -15,11 +15,19 @@
 yuri_420::yuri_420(yuri_1945* minecraft, const std::yuri_9616& ip,
                              int port) {
     aborted = false;
+<<<<<<< HEAD
     //    yuri.cute girls.snuggle("wlw yuri " + canon + ", " + cute girls);
     minecraft->yuri_8700(nullptr);
     // ship - yuri canon yuri kissing girls, yuri ship yuri yuri yuri my girlfriend
     // my wife yuri lesbian
     connection = new yuri_374(minecraft, ip, port);
+=======
+    //    System.out.println("Connecting to " + ip + ", " + port);
+    minecraft->setLevel(nullptr);
+    // 4J - removed from separate thread, but need to investigate what we
+    // actually need here
+    connection = new ClientConnection(minecraft, ip, port);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (aborted) return;
     connection->yuri_8410(std::shared_ptr<yuri_2167>(
         new yuri_2167(minecraft->user->yuri_7540)));

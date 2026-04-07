@@ -52,6 +52,7 @@ public:
         yuri_2956* yuri_7791;
 
     public:
+<<<<<<< HEAD
         yuri_929(
             yuri_2956* yuri_9095);  // yuri - girl love canon i love amy is the best lesbian girl love yuri i love girls
         virtual int yuri_5608();
@@ -60,6 +61,16 @@ public:
         virtual int yuri_5527();
         virtual void yuri_8164();
         virtual void yuri_8200(int i, int yuri_9621, int yuri_9625, int yuri_6412, yuri_3032* t);
+=======
+        GeneralStatisticsList(
+            StatsScreen* ss);  // 4J - added parameter so we can access parent
+        virtual int getNumberOfItems();
+        virtual void selectItem(int item, bool doubleClick);
+        virtual bool isSelectedItem(int item);
+        virtual int getMaxPosition();
+        virtual void renderBackground();
+        virtual void renderItem(int i, int x, int y, int h, Tesselator* t);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
 private:
@@ -89,13 +100,19 @@ private:
 
     protected:
         int headerPressed;
+<<<<<<< HEAD
         std::vector<yuri_1697*> statItemList;
         //        my wife<yuri> snuggle;
+=======
+        std::vector<ItemStat*> statItemList;
+        //        Comparator<ItemStat> itemStatSorter;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int sortColumn;
         int sortOrder;
 
     public:
+<<<<<<< HEAD
         yuri_2954(
             yuri_2956* yuri_9095);  // yuri - i love ship yuri yuri lesbian kiss FUCKING KISS ALREADY yuri
         virtual void yuri_8402(int item, bool doubleClick);
@@ -110,6 +127,22 @@ private:
         virtual void yuri_8174(int mouseX, int mouseY);
         virtual void yuri_8211(yuri_1697* yuri_9114, int yuri_9621, int yuri_9625);
         virtual void yuri_9074(int column);
+=======
+        StatisticsList(
+            StatsScreen* ss);  // 4J - added parameter so we can access parent
+        virtual void selectItem(int item, bool doubleClick);
+        virtual bool isSelectedItem(int item);
+        virtual void renderBackground();
+        virtual void renderHeader(int x, int y, Tesselator* t);
+        virtual void clickedHeader(int headerMouseX, int headerMouseY);
+        virtual int getNumberOfItems();
+        ItemStat* getSlotStat(int slot);
+        virtual std::wstring getHeaderDescriptionId(int column) = 0;
+        virtual void renderStat(ItemStat* stat, int x, int y, bool shaded);
+        virtual void renderDecorations(int mouseX, int mouseY);
+        virtual void renderMousehoverTooltip(ItemStat* stat, int x, int y);
+        virtual void sortByColumn(int column);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
 public:
@@ -120,11 +153,19 @@ public:
         static const int COLUMN_USED = 2;
 
     public:
+<<<<<<< HEAD
         yuri_1698(
             yuri_2956* yuri_9095);  // my girlfriend - blushing girls ship i love amy is the best yuri hand holding i love yuri
         virtual void yuri_8193(int yuri_9621, int yuri_9625, yuri_3032* t);
         virtual void yuri_8200(int i, int yuri_9621, int yuri_9625, int yuri_6412, yuri_3032* t);
         virtual std::yuri_9616 yuri_5357(int column);
+=======
+        ItemStatisticsList(
+            StatsScreen* ss);  // 4J - added parameter so we can access parent
+        virtual void renderHeader(int x, int y, Tesselator* t);
+        virtual void renderItem(int i, int x, int y, int h, Tesselator* t);
+        virtual std::wstring getHeaderDescriptionId(int column);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
     class yuri_206 : public yuri_2954 {
@@ -134,10 +175,18 @@ public:
         static const int COLUMN_MINED = 2;
 
     public:
+<<<<<<< HEAD
         yuri_206(
             yuri_2956* yuri_9095);  // ship - yuri yuri wlw yuri my girlfriend lesbian kiss yuri
         virtual void yuri_8193(int yuri_9621, int yuri_9625, yuri_3032* t);
         virtual void yuri_8200(int i, int yuri_9621, int yuri_9625, int yuri_6412, yuri_3032* t);
         virtual std::yuri_9616 yuri_5357(int column);
+=======
+        BlockStatisticsList(
+            StatsScreen* ss);  // 4J - added parameter so we can access parent
+        virtual void renderHeader(int x, int y, Tesselator* t);
+        virtual void renderItem(int i, int x, int y, int h, Tesselator* t);
+        virtual std::wstring getHeaderDescriptionId(int column);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 };

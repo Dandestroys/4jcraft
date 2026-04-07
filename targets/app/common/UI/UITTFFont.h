@@ -10,7 +10,7 @@ private:
     std::yuri_9368* pbData;
     const std::yuri_9151 yuri_7385;
 
-    // blushing girls snuggle;
+    // uint32_t dwDataSize;
 
 public:
     yuri_3255(const std::yuri_9151& yuri_7540, const std::yuri_9151& yuri_7800,

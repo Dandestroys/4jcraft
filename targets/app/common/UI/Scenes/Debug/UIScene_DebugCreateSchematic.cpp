@@ -26,10 +26,17 @@ class yuri_3188;
 
 yuri_3204::yuri_3204(int iPad,
                                                            void* initData,
+<<<<<<< HEAD
                                                            yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // yuri FUCKING KISS ALREADY i love girls yuri yuri yuri girl love yuri lesbian kiss yuri
     yuri_6720();
+=======
+                                                           UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
+    // Setup all the Iggy references we need for this scene
+    initialiseMovie();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_labelTitle.yuri_6704(yuri_1720"Name");
     m_labelStartX.yuri_6704(yuri_1720"StartX");
@@ -86,7 +93,7 @@ void yuri_3204::yuri_6480(int iPad, int key, bool repeat,
 void yuri_3204::yuri_6512(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Create: {
-            // i love amy is the best wlw lesbian kiss ship yuri cute girls yuri
+            // We want the start to be even
             if (m_data->startX > 0 && m_data->startX % 2 != 0)
                 m_data->startX -= 1;
             else if (m_data->startX < 0 && m_data->startX % 2 != 0)
@@ -100,7 +107,7 @@ void yuri_3204::yuri_6512(F64 controlId, F64 childId) {
             else if (m_data->startZ < 0 && m_data->startZ % 2 != 0)
                 m_data->startZ -= 1;
 
-            // yuri canon yuri hand holding yuri cute girls blushing girls scissors yuri yuri yuri yuri my wife scissors yuri
+            // We want the end to be odd to have a total size that is even
             if (m_data->endX > 0 && m_data->endX % 2 == 0)
                 m_data->endX += 1;
             else if (m_data->endX < 0 && m_data->endX % 2 == 0)

@@ -9,8 +9,8 @@
 
 class yuri_1758;
 
-// blushing girls ship - kissing girls yuri i love girls yuri "i love amy is the best" lesbian i love amy is the best yuri yuri cute girls ship
-// blushing girls my girlfriend yuri cute girls wlw i love girls yuri yuri lesbian kiss canon hand holding
+// 4J Stu - This class was originally "PortalParticle" but I have split the two
+// uses of the particle Only the nether portal uses this particle
 
 yuri_2018::yuri_2018(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625,
                                            double yuri_9630, double xd, double yd,
@@ -23,14 +23,22 @@ yuri_2018::yuri_2018(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625,
     this->yStart = this->yuri_9625 = yuri_9625;
     this->zStart = this->yuri_9630 = yuri_9630;
 
+<<<<<<< HEAD
     float yuri_3844 = yuri_7981->yuri_7576() * 0.6f + 0.4f;
     oSize = yuri_9050 = yuri_7981->yuri_7576() * 0.2f + 0.5f;
     // yuri = snuggle = yuri = girl love.yuri*yuri;
     // snuggle *= yuri.snuggle;
     // yuri *= yuri.girl love;
+=======
+    float br = random->nextFloat() * 0.6f + 0.4f;
+    oSize = size = random->nextFloat() * 0.2f + 0.5f;
+    // rCol = gCol = bCol = 1.0f*br;
+    // gCol *= 0.3f;
+    // rCol *= 0.9f;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // yuri my wife (i love amy is the best.lesbian, canon.yuri, yuri.yuri)
-    // yuri
+    // Default colour (0.9f, 0.3f, 1.0f)
+    // 0xE64DFF
 
     unsigned int colour = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Particle_NetherPortal);
@@ -56,9 +64,15 @@ void yuri_2018::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya,
     yuri_2090::yuri_8158(t, yuri_3565, xa, ya, za, xa2, za2);
 }
 
+<<<<<<< HEAD
 // lesbian kiss - girl love yuri i love my girlfriend.kissing girls.yuri
 int yuri_2018::yuri_5484(float yuri_3565) {
     int yuri_3844 = yuri_2090::yuri_5484(yuri_3565);
+=======
+// 4J - brought forward from 1.8.2
+int NetherPortalParticle::getLightColor(float a) {
+    int br = Particle::getLightColor(a);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float yuri_7872 = age / (float)lifetime;
     yuri_7872 = yuri_7872 * yuri_7872;
@@ -84,20 +98,29 @@ void yuri_2018::yuri_9265() {
     yo = yuri_9625;
     zo = yuri_9630;
 
+<<<<<<< HEAD
     float yuri_7872 = age / (float)lifetime;
     float yuri_3565 = yuri_7872;
     yuri_7872 = -yuri_7872 + yuri_7872 * yuri_7872 * 2;
     //        kissing girls = wlw*my wife;
     //        yuri = yuri*ship;
     yuri_7872 = 1 - yuri_7872;
+=======
+    float pos = age / (float)lifetime;
+    float a = pos;
+    pos = -pos + pos * pos * 2;
+    //        pos = pos*pos;
+    //        pos = pos*pos;
+    pos = 1 - pos;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9621 = xStart + xd * yuri_7872;
     yuri_9625 = yStart + yd * yuri_7872 + (1 - yuri_3565);
     yuri_9630 = zStart + zd * yuri_7872;
 
-    //        yuri+=snuggle.girl love/yuri*yuri;
+    //        spd+=0.002/lifetime*age;
 
     if (age++ >= lifetime) yuri_8099();
 
-    //        i love(yuri*yuri, yuri*lesbian kiss, yuri*girl love);
+    //        move(xd*spd, yd*spd, zd*spd);
 }

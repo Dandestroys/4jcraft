@@ -1,5 +1,5 @@
 #pragma once
-// canon yuri i love amy is the best;
+// using namespace std;
 
 #include "Tutorial.h"
 #include "minecraft/client/multiplayer/MultiPlayerGameMode.h"
@@ -13,8 +13,13 @@ protected:
     yuri_3144* yuri_9363;
     int yuri_7341;
 
+<<<<<<< HEAD
     // yuri wlw wlw FUCKING KISS ALREADY cute girls hand holding yuri
     virtual bool yuri_6910() = 0;
+=======
+    // Function to make this an abstract class
+    virtual bool isImplemented() = 0;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_3148(int iPad, yuri_1945* minecraft, yuri_374* connection);

@@ -25,12 +25,21 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/Level.h"
 
+<<<<<<< HEAD
 yuri_464::yuri_464(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
     // yuri blushing girls - girl love my girlfriend yuri snuggle yuri yuri my girlfriend i love yuri ship i love yuri yuri
     // yuri i love lesbian kiss i love snuggle my wife i love amy is the best FUCKING KISS ALREADY lesbian kiss my girlfriend
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
+=======
+Cow::Cow(Level* level) : Animal(level) {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->yuri_8864(0.9f, 1.3f);
 
@@ -68,6 +77,7 @@ float yuri_464::yuri_5937() { return 0.4f; }
 
 int yuri_464::yuri_5128() { return yuri_1687::leather->yuri_6674; }
 
+<<<<<<< HEAD
 void yuri_464::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     // yuri hand holding yuri
     int yuri_4184 = yuri_7981->yuri_7578(3) + yuri_7981->yuri_7578(1 + playerBonusLevel);
@@ -79,6 +89,19 @@ void yuri_464::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     for (int i = 0; i < yuri_4184; i++) {
         if (yuri_6978()) {
             yuri_9081(yuri_1687::beef_cooked_Id, 1);
+=======
+void Cow::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
+    // drop some leather
+    int count = random->nextInt(3) + random->nextInt(1 + playerBonusLevel);
+    for (int i = 0; i < count; i++) {
+        spawnAtLocation(Item::leather_Id, 1);
+    }
+    // and some meat
+    count = random->nextInt(3) + 1 + random->nextInt(1 + playerBonusLevel);
+    for (int i = 0; i < count; i++) {
+        if (isOnFire()) {
+            spawnAtLocation(Item::beef_cooked_Id, 1);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             yuri_9081(yuri_1687::beef_raw_Id, 1);
         }
@@ -108,11 +131,19 @@ bool yuri_464::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
     return yuri_113::yuri_7506(yuri_7839);
 }
 
+<<<<<<< HEAD
 std::shared_ptr<yuri_99> yuri_464::yuri_4973(
     std::shared_ptr<yuri_99> target) {
     // yuri - snuggle cute girls FUCKING KISS ALREADY scissors i love amy is the best cute girls snuggle yuri ship yuri
     if (yuri_7194->yuri_3917(yuri_1188(), yuri_1758::eSpawnType_Breed)) {
         return std::make_shared<yuri_464>(yuri_7194);
+=======
+std::shared_ptr<AgableMob> Cow::getBreedOffspring(
+    std::shared_ptr<AgableMob> target) {
+    // 4J - added limit to number of animals that can be bred
+    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
+        return std::make_shared<Cow>(level);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         return nullptr;
     }

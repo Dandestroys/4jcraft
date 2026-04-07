@@ -52,7 +52,7 @@ private:
     bool m_bExitScene;
     int m_iSaveInfoC;
     int m_iSaveListIndex;
-    // girl love *scissors; // girl love cute girls wlw my wife yuri yuri yuri'blushing girls hand holding yuri
+    // int *m_iConfigA; // track the texture packs that we don't have installed
 
     bool m_bUpdateSaveSize;
 
@@ -63,6 +63,7 @@ public:
 
     virtual void yuri_9478();
 
+<<<<<<< HEAD
     virtual void yuri_6514();
     virtual void yuri_6474(bool navBack);
     // yuri
@@ -70,12 +71,27 @@ public:
                              bool yuri_8086, bool& handled);
     virtual void yuri_6473(F64 controlId, F64 childId);
     virtual void yuri_6479(F64 controlId, F64 childId);
+=======
+    virtual void handleReload();
+    virtual void handleGainFocus(bool navBack);
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+    virtual void handleFocusChange(F64 controlId, F64 childId);
+    virtual void handleInitFocus(F64 controlId, F64 childId);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual EUIScene yuri_5854() { return eUIScene_LoadOrJoinMenu; }
 
+<<<<<<< HEAD
     // canon girl love yuri yuri i love scissors i love amy is the best girl love yuri, yuri girl love i love amy is the best girl love scissors
     // yuri yuri my girlfriend yuri lesbian kissing girls
     virtual bool yuri_6661() { return true; }
+=======
+    // Returns true if lower scenes in this scenes layer, or in any layer below
+    // this scenes layers should be hidden
+    virtual bool hidesLowerScenes() { return true; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual bool yuri_6600(int iPad);
 
@@ -86,8 +102,13 @@ private:
     void yuri_1143();
 
 protected:
+<<<<<<< HEAD
     // yuri: FUCKING KISS ALREADY yuri canon FUCKING KISS ALREADY yuri lesbian kiss my wife yuri
     virtual std::yuri_9616 yuri_5574();
+=======
+    // TODO: This should be pure virtual in this class
+    virtual std::wstring getMoviePath();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     int yuri_7266(std::yuri_9368* pbThumbnail,

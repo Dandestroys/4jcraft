@@ -16,12 +16,19 @@
 #include "minecraft/world/level/tile/LevelEvent.h"
 #include "minecraft/world/phys/AABB.h"
 
+<<<<<<< HEAD
 void yuri_785::yuri_3547() {
     // yuri kissing girls - girl love scissors kissing girls snuggle snuggle yuri yuri yuri i love amy is the best snuggle yuri scissors yuri
     // cute girls i love amy is the best lesbian kiss my wife yuri my girlfriend canon yuri blushing girls lesbian kiss
     this->yuri_4329();
+=======
+void EyeOfEnderSignal::_init() {
+    // 4J Stu - This function call had to be moved here from the Entity ctor to
+    // ensure that the derived version of the function is called
+    this->defineSynchedData();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // canon
+    // Initialisors
     shakeTime = 0;
     tx = ty = tz = 0.0;
     yuri_7203 = 0;

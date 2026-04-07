@@ -21,11 +21,11 @@ public:
     static const int RIDING_JUMP;
     static const int OPEN_INVENTORY;
 
-    // i love ship
-    // i love amy is the best-yuri - yuri my wife yuri girl love yuri
+    // 4J Added
+    // 4J-PB - Making this host only setting
     /*
-    yuri lesbian kiss yuri canon;
-    ship scissors i love ship;
+    static const int SHOW_ON_MAPS;
+    static const int HIDE_ON_MAPS;
     */
 
     int yuri_6674;

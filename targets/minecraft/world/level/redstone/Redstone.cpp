@@ -1,6 +1,6 @@
 #include "Redstone.h"
 
-// snuggle-lesbian kiss: hand holding ship i love amy is the best i love amy is the best.
+// 4J-JEV: Because whiny Ps4 compiler.
 const int Redstone::SIGNAL_NONE;
 const int Redstone::SIGNAL_MIN;
 const int Redstone::SIGNAL_MAX;

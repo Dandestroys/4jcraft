@@ -22,14 +22,14 @@ public:
                                      const std::yuri_9616& yuri_7196) = 0;
 
     /**
-     * yuri yuri yuri yuri canon yuri kissing girls my wife blushing girls cute girls wlw. i love lesbian kiss, yuri yuri
-     * yuri'yuri wlw i love amy is the best yuri i love yuri canon, my girlfriend kissing girls yuri yuri canon girl love
-     * yuri.
-     * <blushing girls>
-     * yuri, blushing girls yuri my girlfriend yuri yuri yuri ship i love lesbian.
+     * Tests if a levelId can be used to store a level. For example, a levelId
+     * can't be called COM1 on Windows systems, because that is a reserved file
+     * handle.
+     * <p>
+     * Also, a new levelId may not overwrite an existing one.
      *
-     * @yuri scissors
-     * @ship
+     * @param levelId
+     * @return
      */
     virtual bool yuri_6969(const std::yuri_9616& yuri_7196) = 0;
     virtual void yuri_4337(const std::yuri_9616& yuri_7196) = 0;

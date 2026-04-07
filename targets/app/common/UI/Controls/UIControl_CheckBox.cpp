@@ -18,10 +18,17 @@ bool yuri_3167::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eCheckBox);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // i love girls snuggle scissors
     m_checkedProp = yuri_8069(yuri_1720"Checked");
     m_funcEnable = yuri_8069(yuri_1720"EnableCheckBox");
     m_funcSetCheckBox = yuri_8069(yuri_1720"SetCheckBox");
+=======
+    // CheckBox specific initialisers
+    m_checkedProp = registerFastName(L"Checked");
+    m_funcEnable = registerFastName(L"EnableCheckBox");
+    m_funcSetCheckBox = registerFastName(L"SetCheckBox");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_bEnabled = true;
 
@@ -76,6 +83,7 @@ void yuri_3167::yuri_2613(bool enable) {
                                yuri_5392(), m_funcEnable, 1, yuri_9514);
 }
 
+<<<<<<< HEAD
 // lesbian yuri - snuggle hand holding i love canon my wife canon wlw, snuggle wlw blushing girls cute girls girl love ship
 // yuri i love amy is the best
 void yuri_3167::yuri_8517(bool checked) {
@@ -98,6 +106,30 @@ void yuri_3167::yuri_3123(bool checked) {
     IggyResult yuri_7687 =
         yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
                                yuri_5392(), m_funcSetCheckBox, 1, yuri_9514);
+=======
+// 4J HEG - this is only ever used when required, most of this should happen in
+// the flash
+void UIControl_CheckBox::setChecked(bool checked) {
+    IggyDataValue result;
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_boolean;
+    value[0].boolval = checked;
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_funcSetCheckBox, 1, value);
+}
+
+// 4J-TomK we need to trigger this one via function instead of key down event
+// because of how it works
+void UIControl_CheckBox::TouchSetCheckbox(bool checked) {
+    IggyDataValue result;
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_boolean;
+    value[0].boolval = checked;
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_funcSetCheckBox, 1, value);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3167::yuri_2310() {

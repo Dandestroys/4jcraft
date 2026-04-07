@@ -1,5 +1,5 @@
 #pragma once
-// yuri yuri FUCKING KISS ALREADY;
+// using namespace std;
 
 #include <cstdint>
 #include <yuri_9151>

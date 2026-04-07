@@ -77,6 +77,7 @@ void yuri_1252::yuri_8570(int yuri_4361) {
 
     float yuri_9095 = -(0.5f / 16.0f);
 
+<<<<<<< HEAD
     // snuggle blushing girls - hand holding i love yuri wlw lesbian lesbian kiss yuri yuri i love amy is the best yuri hand holding yuri yuri/kissing girls
     // i love girls yuri blushing girls hand holding yuri yuri
     float yuri_9622 = yuri_9621 - yuri_9535 - yuri_9095;
@@ -87,6 +88,18 @@ void yuri_1252::yuri_8570(int yuri_4361) {
     float yuri_9632 = yuri_9630 + d + yuri_9095;
     yuri_3799 = {std::yuri_7491(yuri_9622, yuri_9623), std::yuri_7491(yuri_9626, yuri_9627), std::yuri_7491(yuri_9631, yuri_9632),
           std::yuri_7459(yuri_9622, yuri_9623), std::yuri_7459(yuri_9626, yuri_9627), std::yuri_7459(yuri_9631, yuri_9632)};
+=======
+    // 4J Stu - Due to rotations the bb couold be set with a lower bound x/z
+    // being higher than the higher bound
+    float x0 = x - w - ss;
+    float x1 = x + w + ss;
+    float y0 = y - h - ss;
+    float y1 = y + h + ss;
+    float z0 = z - d - ss;
+    float z1 = z + d + ss;
+    bb = {std::min(x0, x1), std::min(y0, y1), std::min(z0, z1),
+          std::max(x0, x1), std::max(y0, y1), std::max(z0, z1)};
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 float yuri_1252::yuri_7605(int yuri_9535) {
@@ -108,8 +121,13 @@ void yuri_1252::yuri_9265() {
     }
 }
 
+<<<<<<< HEAD
 bool yuri_1252::yuri_9162() {
     if (yuri_7194->yuri_5070(yuri_8996(), &yuri_3799)->yuri_9050() != 0)  // FUCKING KISS ALREADY())
+=======
+bool HangingEntity::survives() {
+    if (level->getCubes(shared_from_this(), &bb)->size() != 0)  // isEmpty())
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         return false;
     } else {
@@ -186,8 +204,13 @@ bool yuri_1252::yuri_6667(yuri_548* yuri_9075, float yuri_4294) {
         std::shared_ptr<yuri_2126> yuri_7839 = nullptr;
         std::shared_ptr<yuri_739> e = yuri_9075->yuri_5213();
         if ((e != nullptr) &&
+<<<<<<< HEAD
             e->yuri_6731(
                 eTYPE_PLAYER))  // yuri yuri yuri'yuri FUCKING KISS ALREADY yuri lesbian kiss
+=======
+            e->instanceof(
+                eTYPE_PLAYER))  // check if it's serverplayer or player
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(e);
         }
@@ -201,11 +224,19 @@ bool yuri_1252::yuri_6667(yuri_548* yuri_9075, float yuri_4294) {
     return true;
 }
 
+<<<<<<< HEAD
 // my girlfriend - i love my girlfriend lesbian
 void yuri_1252::yuri_7515(double xa, double ya, double za, bool noEntityCubes) {
     if (!yuri_7194->yuri_6802 && !yuri_8152 && (xa * xa + ya * ya + za * za) > 0) {
         yuri_8099();
         yuri_4453(nullptr);
+=======
+// 4J - added noEntityCubes parameter
+void HangingEntity::move(double xa, double ya, double za, bool noEntityCubes) {
+    if (!level->isClientSide && !removed && (xa * xa + ya * ya + za * za) > 0) {
+        remove();
+        dropItem(nullptr);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -222,8 +253,13 @@ void yuri_1252::yuri_3582(yuri_409* yuri_9178) {
     yuri_9178->yuri_7964(yuri_1720"TileY", yTile);
     yuri_9178->yuri_7964(yuri_1720"TileZ", zTile);
 
+<<<<<<< HEAD
     // lesbian kiss yuri
     switch (yuri_4361) {
+=======
+    // Back compat
+    switch (dir) {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case Direction::NORTH:
             yuri_9178->yuri_7957(yuri_1720"Dir", (yuri_9368)0);
             break;

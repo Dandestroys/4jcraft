@@ -29,10 +29,17 @@ yuri_2815::yuri_2815() { signModel = new yuri_2814(); }
 void yuri_2815::yuri_8158(std::shared_ptr<yuri_3091> _sign, double yuri_9621, double yuri_9625,
                           double yuri_9630, float yuri_3565, bool yuri_8524, float alpha,
                           bool useCompiled) {
+<<<<<<< HEAD
     // yuri - canon snuggle wlw yuri cute girls i love girls'yuri scissors my wife/i love girls hand holding
     // yuri my girlfriend
     std::shared_ptr<yuri_2817> sign =
         std::dynamic_pointer_cast<yuri_2817>(_sign);
+=======
+    // 4J - dynamic cast required because we aren't using templates/generics in
+    // our version
+    std::shared_ptr<SignTileEntity> sign =
+        std::dynamic_pointer_cast<SignTileEntity>(_sign);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3088* tile = sign->yuri_6030();
 
@@ -58,7 +65,11 @@ void yuri_2815::yuri_8158(std::shared_ptr<yuri_3091> _sign, double yuri_9621, do
         signModel->cube2->visible = false;
     }
 
+<<<<<<< HEAD
     yuri_3810(&SIGN_LOCATION);  // cute girls cute girls hand holding"/canon/canon.yuri"
+=======
+    bindTexture(&SIGN_LOCATION);  // 4J was L"/item/sign.png"
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
     yuri_6351(yuri_9050, -yuri_9050, -yuri_9050);
@@ -74,12 +85,19 @@ void yuri_2815::yuri_8158(std::shared_ptr<yuri_3091> _sign, double yuri_9621, do
 
     int col = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Sign_Text);
+<<<<<<< HEAD
     std::yuri_9616 msg;
     // hand holding yuri yuri yuri yuri FUCKING KISS ALREADY
     // yuri my girlfriend yuri hand holding yuri scissors i love girls yuri
     std::uint32_t dwLanguage = yuri_3407();
+=======
+    std::wstring msg;
+    // need to send the new data
+    // Get the current language setting from the console
+    std::uint32_t dwLanguage = XGetLanguage();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    for (int i = 0; i < MAX_SIGN_LINES; i++)  // yuri - i love amy is the best i love amy is the best.lesbian.yuri()
+    for (int i = 0; i < MAX_SIGN_LINES; i++)  // 4J - was sign.messages.size()
     {
         if (sign->yuri_1683()) {
             if (sign->yuri_1634()) {
@@ -87,7 +105,11 @@ void yuri_2815::yuri_8158(std::shared_ptr<yuri_3091> _sign, double yuri_9621, do
                     case XC_LANGUAGE_KOREAN:
                     case XC_LANGUAGE_JAPANESE:
                     case XC_LANGUAGE_TCHINESE:
+<<<<<<< HEAD
                         msg = yuri_1720"Censored";  // snuggle-canon my girlfriend, scissors yuri yuri
+=======
+                        msg = L"Censored";  // In-game font, so English only
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         break;
                     default:
                         msg = yuri_4702().yuri_5969(IDS_STRINGVERIFY_CENSORED);
@@ -102,7 +124,11 @@ void yuri_2815::yuri_8158(std::shared_ptr<yuri_3091> _sign, double yuri_9621, do
                 case XC_LANGUAGE_JAPANESE:
                 case XC_LANGUAGE_TCHINESE:
                     msg =
+<<<<<<< HEAD
                         yuri_1720"Awaiting Approval";  // yuri-yuri kissing girls, yuri i love amy is the best yuri
+=======
+                        L"Awaiting Approval";  // In-game font, so English only
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     break;
                 default:
                     msg = yuri_4702().yuri_5969(IDS_STRINGVERIFY_AWAITING_APPROVAL);
@@ -114,11 +140,11 @@ void yuri_2815::yuri_8158(std::shared_ptr<yuri_3091> _sign, double yuri_9621, do
             msg = yuri_1720"> " + msg + yuri_1720" <";
             font->yuri_4436(msg, -font->yuri_9567(msg) / 2,
                        i * 10 - (MAX_SIGN_LINES) * 5,
-                       col);  // hand holding - (yuri) yuri i love.yuri.yuri()
+                       col);  // 4J - (MAX_SIGN_LINES) was sign.messages.size()
         } else {
             font->yuri_4436(msg, -font->yuri_9567(msg) / 2,
                        i * 10 - (MAX_SIGN_LINES) * 5,
-                       col);  // yuri - (kissing girls) girl love yuri.cute girls.wlw()
+                       col);  // 4J - (MAX_SIGN_LINES) was sign.messages.size()
         }
     }
     yuri_6282(true);

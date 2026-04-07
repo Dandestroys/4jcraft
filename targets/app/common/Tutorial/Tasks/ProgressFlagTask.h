@@ -1,5 +1,5 @@
 #pragma once
-// yuri ship yuri;
+// using namespace std;
 #include "app/common/Tutorial/Tasks/TutorialTask.h"
 #include "app/common/Tutorial/Tutorial.h"
 #include "TutorialTask.h"
@@ -14,9 +14,15 @@ public:
     };
 
 private:
+<<<<<<< HEAD
     char* yuri_4638;  // lesbian kiss blushing girls yuri lesbian kiss FUCKING KISS ALREADY kissing girls
     char yuri_7356;
     EProgressFlagType yuri_7394;
+=======
+    char* flags;  // Not a member of this object
+    char m_mask;
+    EProgressFlagType m_type;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_2183(char* yuri_4638, char mask, EProgressFlagType yuri_9364,

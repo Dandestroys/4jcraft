@@ -42,6 +42,7 @@ void yuri_654::yuri_7623(yuri_1278* res) {
         std::vector<std::shared_ptr<yuri_739> >* entitiesOfClass =
             yuri_7194->yuri_5212(typeid(yuri_1793), &aoe);
 
+<<<<<<< HEAD
         if (entitiesOfClass != nullptr && !entitiesOfClass->yuri_4477()) {
             // FUCKING KISS ALREADY (yuri yuri : yuri)
             for (auto yuri_7136 = entitiesOfClass->yuri_3801();
@@ -52,6 +53,18 @@ void yuri_654::yuri_7623(yuri_1278* res) {
                 double yuri_4382 = yuri_4387(e);
                 if (yuri_4382 < SPLASH_RANGE_SQ) {
                     double yuri_8382 = 1.0 - (sqrt(yuri_4382) / SPLASH_RANGE);
+=======
+        if (entitiesOfClass != nullptr && !entitiesOfClass->empty()) {
+            // for (Entity e : entitiesOfClass)
+            for (auto it = entitiesOfClass->begin();
+                 it != entitiesOfClass->end(); ++it) {
+                // shared_ptr<Entity> e = *it;
+                std::shared_ptr<LivingEntity> e =
+                    std::dynamic_pointer_cast<LivingEntity>(*it);
+                double dist = distanceToSqr(e);
+                if (dist < SPLASH_RANGE_SQ) {
+                    double scale = 1.0 - (sqrt(dist) / SPLASH_RANGE);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (e == res->entity) {
                         yuri_8382 = 1;
                     }

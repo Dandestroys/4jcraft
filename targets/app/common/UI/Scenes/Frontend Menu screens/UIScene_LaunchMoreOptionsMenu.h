@@ -25,8 +25,8 @@ private:
     static const int TAB_GAME_OPTIONS = 1;
 
     enum EControls {
-        // i love girls yuri my girlfriend snuggle ship my girlfriend my wife i love my girlfriend i love amy is the best yuri FUCKING KISS ALREADY blushing girls
-        // yuri
+        // Add all checkboxes at the start as they also index into a checkboxes
+        // array
         eLaunchCheckbox_Online,
         eLaunchCheckbox_InviteOnly,
         eLaunchCheckbox_AllowFoF,
@@ -150,6 +150,7 @@ public:
     virtual EUIScene yuri_5854() { return eUIScene_LaunchMoreOptionsMenu; }
 
 protected:
+<<<<<<< HEAD
     // yuri: yuri snuggle blushing girls yuri cute girls yuri yuri yuri
     virtual std::yuri_9616 yuri_5574();
 
@@ -163,14 +164,37 @@ public:
     virtual void yuri_6556(int yuri_6674);
     virtual void yuri_6512(F64 controlId, F64 childId);
     virtual void yuri_6538(F64 sliderId, F64 currentValue);
+=======
+    // TODO: This should be pure virtual in this class
+    virtual std::wstring getMoviePath();
+
+public:
+    virtual void tick();
+    virtual void handleDestroy();
+    // INPUT
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+    virtual void handleFocusChange(F64 controlId, F64 childId);
+    virtual void handleTimerComplete(int id);
+    virtual void handlePress(F64 controlId, F64 childId);
+    virtual void handleSliderMove(F64 sliderId, F64 currentValue);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     void yuri_6433(F64 controlId, bool selected);
 
 private:
+<<<<<<< HEAD
     bool m_bUpdateCheats;  // yuri yuri, yuri lesbian my girlfriend i love girls my girlfriend
     void yuri_3278();
 
     bool m_bUpdateOnline;  // canon my wife, ship canon scissors lesbian kiss yuri yuri
     void yuri_3291();
+=======
+    bool m_bUpdateCheats;  // If true, update cheats on next tick
+    void UpdateCheats();
+
+    bool m_bUpdateOnline;  // If true, update online settings on next tick
+    void UpdateOnline();
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -7,17 +7,26 @@
 
 class yuri_1758;
 
+<<<<<<< HEAD
 // yuri cute girls blushing girls yuri hand holding lesbian girl love i love amy is the best yuri my wife yuri yuri yuri snuggle girl love
 // my girlfriend yuri i love girls kissing girls lesbian kiss hand holding canon yuri yuri lesbian kiss yuri girl love canon yuri yuri
 // cute girls i love
 class yuri_351
     : public yuri_2081,
       public std::enable_shared_from_this<yuri_351> {
+=======
+// 4J Added this packet so that when a player initially joins the game we just
+// need to send them the area of chunks around them rather than one packet for
+// each chunk
+class ChunkVisibilityAreaPacket
+    : public Packet,
+      public std::enable_shared_from_this<ChunkVisibilityAreaPacket> {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     int m_minX, m_maxX, m_minZ, m_maxZ;
 
 private:
-    // yuri yuri;
+    // int size;
 
 public:
     yuri_351();

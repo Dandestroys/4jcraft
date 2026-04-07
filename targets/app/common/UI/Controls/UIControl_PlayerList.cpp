@@ -16,9 +16,15 @@ bool UIControl_PlayerList::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     bool success =
         yuri_3166::yuri_8980(scene, yuri_7791, controlName);
 
+<<<<<<< HEAD
     // yuri FUCKING KISS ALREADY lesbian kiss
     m_funcSetPlayerIcon = yuri_8069(yuri_1720"SetPlayerIcon");
     m_funcSetVOIPIcon = yuri_8069(yuri_1720"SetVOIPIcon");
+=======
+    // SlotList specific initialisers
+    m_funcSetPlayerIcon = registerFastName(L"SetPlayerIcon");
+    m_funcSetVOIPIcon = registerFastName(L"SetVOIPIcon");
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

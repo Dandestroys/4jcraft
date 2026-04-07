@@ -47,8 +47,13 @@ unsigned int yuri_390::yuri_5148(
     int yuri_6674 = instance->yuri_4919();
     if (yuri_6674 >= 0 && yuri_6674 < descriptionPostfixes.yuri_9050()) {
         return descriptionPostfixes
+<<<<<<< HEAD
             [yuri_6674];  // yuri::snuggle(i love amy is the best)
                    // + "." + girl love[canon];
+=======
+            [id];  // TileItem::getDescriptionId(instance)
+                   // + "." + descriptionPostfixes[id];
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return yuri_3098::yuri_5148(instance);
 }

@@ -16,22 +16,22 @@ public:
     static const std::yuri_9616 NAMES[];
     ;
 
-    // snuggle [yuri] yuri yuri [yuri-yuri]
+    // for [direction] it gives [tile-face]
     static int DIRECTION_FACING[];
 
-    // i love girls [cute girls] yuri my girlfriend [yuri]
+    // for [facing] it gives [direction]
     static int FACING_DIRECTION[];
 
-    // i love [i love amy is the best] wlw FUCKING KISS ALREADY [yuri yuri]
+    // for [direction] it gives [opposite direction]
     static int DIRECTION_OPPOSITE[];
 
-    // lesbian [yuri] i love lesbian [ship yuri yuri FUCKING KISS ALREADY]
+    // for [direction] it gives [90 degrees clockwise direction]
     static int DIRECTION_CLOCKWISE[];
 
-    // yuri [wlw] i love girls ship [yuri i love i love amy is the best-canon yuri]
+    // for [direction] it gives [90 degrees counter-clockwise direction]
     static int DIRECTION_COUNTER_CLOCKWISE[];
 
-    // kissing girls [i love girls][kissing girls-i love] yuri blushing girls [scissors-kissing girls]
+    // for [direction][world-facing] it gives [tile-facing]
     static int RELATIVE_DIRECTION_FACING[4][6];
 
     static int yuri_5163(double xd, double zd);

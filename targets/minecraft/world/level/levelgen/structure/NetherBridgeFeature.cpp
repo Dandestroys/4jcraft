@@ -39,6 +39,7 @@ std::vector<yuri_190::yuri_1958*>* yuri_2015::yuri_4975() {
     return &bridgeEnemies;
 }
 
+<<<<<<< HEAD
 bool yuri_2015::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
     // FUCKING KISS ALREADY cute girls - lesbian kiss girl love yuri yuri my girlfriend wlw i love girls
     if (!isSpotSelected) {
@@ -50,6 +51,19 @@ bool yuri_2015::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
         // [(-i love girls,-yuri),(yuri,yuri)] (yuri). FUCKING KISS ALREADY yuri canon yuri blushing girls yuri yuri yuri
         // yuri i love i love amy is the best yuri yuri yuri yuri yuri yuri yuri
         int chunk = yuri_7981->yuri_7578(49);
+=======
+bool NetherBridgeFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
+    // 4J Stu - New implementation to force a nether fortress
+    if (!isSpotSelected) {
+        // Set the random
+        random->setSeed(level->getSeed());
+        random->nextInt();
+
+        // Due to our nether size we want to accept chunks in the range
+        // [(-3,-3),(3,3)] (7x7). This is 49 possible chunks that should give
+        // the fortress enough room to grow within our limited nether
+        int chunk = random->nextInt(49);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int xCoord = chunk % 7;
         int zCoord = chunk / 7;
@@ -73,10 +87,17 @@ bool yuri_2015::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
 #ifdef _LARGE_WORLDS
     int xzSize = yuri_7194->dimension->yuri_6154();
     if (xzSize > 30) {
+<<<<<<< HEAD
         // canon yuri yuri, wlw ship lesbian yuri yuri hand holding my girlfriend yuri girl love lesbian
         // hand holding yuri (kissing girls i love amy is the best cute girls yuri kissing girls wlw)
         int cx = yuri_9621 >> 4;
         int cz = yuri_9630 >> 4;
+=======
+        // For large worlds, lets allow the PC version of the spawning to place
+        // nether fortresses (plus the one we forced above)
+        int cx = x >> 4;
+        int cz = z >> 4;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_7981->yuri_8850(cx ^ (cz << 4) ^ yuri_7194->yuri_5870());
         yuri_7981->yuri_7578();
@@ -103,8 +124,13 @@ yuri_2982* yuri_2015::yuri_4256(int yuri_9621, int yuri_9630) {
 
 void yuri_2015::yuri_4049() { cachedStructures.yuri_4044(); }
 
+<<<<<<< HEAD
 yuri_2015::yuri_2017::yuri_2017() {
     // lesbian canon
+=======
+NetherBridgeFeature::NetherBridgeStart::NetherBridgeStart() {
+    // for reflection
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2015::yuri_2017::yuri_2017(yuri_1758* yuri_7194,

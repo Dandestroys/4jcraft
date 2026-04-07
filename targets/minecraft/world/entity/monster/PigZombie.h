@@ -10,8 +10,13 @@ class yuri_146;
 class yuri_739;
 class yuri_1758;
 
+<<<<<<< HEAD
 // FUCKING KISS ALREADY canon i love i love amy is the best yuri
 class yuri_2114 : public yuri_3435 {
+=======
+// SKIN BY XaPhobia Chris Beidler
+class PigZombie : public Zombie {
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     eINSTANCEOF yuri_1188() { return eTYPE_PIGZOMBIE; }
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2114(yuri_7194); }
@@ -64,5 +69,5 @@ protected:
 public:
     virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
-        int extraData = 0);  // yuri i love girls yuri i love girls
+        int extraData = 0);  // 4J Added extraData param
 };

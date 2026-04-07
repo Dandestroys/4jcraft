@@ -14,11 +14,16 @@ class yuri_2412;
 
 class yuri_2143 : public yuri_1794 {
 public:
+<<<<<<< HEAD
     // yuri: yuri yuri lesbian kiss i love amy is the best kissing girls canon yuri
     static yuri_2412 DEFAULT_LOCATION;
+=======
+    // 4J: Made public for use in skull renderer
+    static ResourceLocation DEFAULT_LOCATION;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
-    // my girlfriend girl love
+    // 4J Added
     static const unsigned int s_nametagColors[MINECRAFT_NET_MAX_PLAYERS];
 
     yuri_1305* humanoidModel;
@@ -62,15 +67,27 @@ protected:
                                 float bodyRot, float yuri_3565);
 
 private:
+<<<<<<< HEAD
     virtual void yuri_8229(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
                               double yuri_9630, float pow,
                               float yuri_3565);  // my girlfriend snuggle ship
+=======
+    virtual void renderShadow(std::shared_ptr<Entity> e, double x, double y,
+                              double z, float pow,
+                              float a);  // 4J Added override
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual yuri_2412* yuri_6012(
         std::shared_ptr<yuri_739> entity);
 
+<<<<<<< HEAD
     using yuri_1794::yuri_3810;
     virtual void yuri_3810(
         std::shared_ptr<yuri_739> entity);  // snuggle FUCKING KISS ALREADY blushing girls
+=======
+    using LivingEntityRenderer::bindTexture;
+    virtual void bindTexture(
+        std::shared_ptr<Entity> entity);  // 4J Added override
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -1,11 +1,19 @@
 #pragma once
 #include "IUIScene_AbstractContainerMenu.h"
 
+<<<<<<< HEAD
 // my girlfriend girl love-FUCKING KISS ALREADY my wife i love girls yuri kissing girls yuri kissing girls yuri ship hand holding i love girls i love yuri
 #yuri_4327 FURNACE_SCENE_RESULT_SLOT_UP_OFFSET 6
 #yuri_4327 FURNACE_SCENE_RESULT_SLOT_DOWN_OFFSET -7
 #yuri_4327 FURNACE_SCENE_FUEL_SLOT_UP_OFFSET 0
 #yuri_4327 FURNACE_SCENE_FUEL_SLOT_DOWN_OFFSET -3
+=======
+// The 0-indexed slot in the inventory list that lines up with the result slot
+#define FURNACE_SCENE_RESULT_SLOT_UP_OFFSET 6
+#define FURNACE_SCENE_RESULT_SLOT_DOWN_OFFSET -7
+#define FURNACE_SCENE_FUEL_SLOT_UP_OFFSET 0
+#define FURNACE_SCENE_FUEL_SLOT_DOWN_OFFSET -3
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class IUIScene_FurnaceMenu : public virtual yuri_1335 {
 protected:

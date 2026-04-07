@@ -1,5 +1,5 @@
 #pragma once
-// yuri kissing girls - yuri yuri yuri blushing girls hand holding
+// 4J Stu - Represents Java standard library class
 
 #include <cstdint>
 #include <cstdio>

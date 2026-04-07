@@ -34,6 +34,7 @@ class yuri_1793 : public yuri_739 {
     friend class yuri_1957;
 
 protected:
+<<<<<<< HEAD
     // lesbian - i love girls kissing girls my girlfriend my girlfriend scissors
     void yuri_3547();
 
@@ -41,6 +42,15 @@ public:
     // hand holding-snuggle - yuri yuri hand holding (i love hand holding wlw), i love amy is the best yuri i love
     eINSTANCEOF yuri_1188() { return eTYPE_LIVINGENTITY; }
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return nullptr; }
+=======
+    // 4J - added for common ctor code
+    void _init();
+
+public:
+    // 4J-PB - added to replace (e instanceof Type), avoiding dynamic casts
+    eINSTANCEOF GetType() { return eTYPE_LIVINGENTITY; }
+    static Entity* create(Level* level) { return nullptr; }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     static yuri_146* SPEED_MODIFIER_SPRINTING;
@@ -168,6 +178,7 @@ protected:
     virtual void yuri_9274();
 
 public:
+<<<<<<< HEAD
     virtual void yuri_8100();
     virtual std::vector<yuri_1954*>* yuri_4861();
     virtual bool yuri_6593(int yuri_6674);
@@ -179,6 +190,19 @@ public:
     virtual bool yuri_6932();
     virtual void yuri_8108(int effectId);
     virtual void yuri_8107(int effectId);
+=======
+    virtual void removeAllEffects();
+    virtual std::vector<MobEffectInstance*>* getActiveEffects();
+    virtual bool hasEffect(int id);
+    virtual bool hasEffect(MobEffect* effect);
+    virtual MobEffectInstance* getEffect(MobEffect* effect);
+    virtual void addEffect(MobEffectInstance* newEffect);
+    virtual void addEffectNoUpdate(MobEffectInstance* newEffect);  // 4J added
+    virtual bool canBeAffected(MobEffectInstance* newEffect);
+    virtual bool isInvertedHealAndHarm();
+    virtual void removeEffectNoUpdate(int effectId);
+    virtual void removeEffect(int effectId);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual void yuri_7617(yuri_1954* effect);
@@ -280,7 +304,11 @@ protected:
 public:
     virtual void yuri_9337(float xa, float ya);
 
+<<<<<<< HEAD
     virtual int yuri_5484(float yuri_3565);  // hand holding - my girlfriend
+=======
+    virtual int getLightColor(float a);  // 4J - added
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual bool yuri_9490();

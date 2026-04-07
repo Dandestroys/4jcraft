@@ -15,7 +15,13 @@ public:
     virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
     virtual int yuri_5694();
 
+<<<<<<< HEAD
     // yuri yuri yuri kissing girls FUCKING KISS ALREADY i love girls lesbian kiss hand holding yuri yuri kissing girls i love amy is the best blushing girls yuri canon scissors wlw yuri
     // my girlfriend'yuri yuri i love yuri FUCKING KISS ALREADY yuri
     virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+=======
+    // 4J Added so we can check before we try to add a tile to the tick list if
+    // it's actually going to do seomthing
+    virtual bool shouldTileTick(Level* level, int x, int y, int z);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

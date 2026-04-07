@@ -26,6 +26,7 @@ class yuri_2543;
 
 class yuri_2866 {
 public:
+<<<<<<< HEAD
     // wlw girl love ship i love my wife yuri yuri yuri yuri kissing girls
     class SocketOutputStream : public yuri_2067 {
     public:
@@ -34,6 +35,16 @@ public:
                                     unsigned int yuri_7607, unsigned int yuri_7189,
                                     int yuri_4638) {
             yuri_9578(yuri_3775, yuri_7607, yuri_7189);
+=======
+    // 4J Added so we can add a priority write function
+    class SocketOutputStream : public OutputStream {
+    public:
+        // The flags are those that can be used for the QNet SendData function
+        virtual void writeWithFlags(const std::vector<uint8_t>& b,
+                                    unsigned int offset, unsigned int length,
+                                    int flags) {
+            write(b, offset, length);
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     };
 
@@ -55,7 +66,7 @@ private:
         virtual void yuri_4097();
         virtual yuri_6733 yuri_9052(yuri_6733 n) {
             return n;
-        }  // yuri yuri - yuri i love amy is the best
+        }  // 4J Stu - Not implemented
         virtual void flush() {}
     };
 
@@ -92,7 +103,7 @@ private:
         virtual void yuri_4097();
         virtual yuri_6733 yuri_9052(yuri_6733 n) {
             return n;
-        }  // yuri yuri - cute girls wlw
+        }  // 4J Stu - Not implemented
         virtual void flush() {}
     };
     class yuri_2870 : public SocketOutputStream {
@@ -114,17 +125,18 @@ private:
         virtual void flush() {}
     };
 
-    bool m_hostServerConnection;  // yuri wlw yuri lesbian kiss yuri kissing girls yuri i love girls
-                                  // ship yuri yuri blushing girls
-    bool m_hostLocal;  // my girlfriend yuri blushing girls i love amy is the best yuri yuri i love amy is the best ship yuri girl love cute girls
-    int m_end;         // lesbian hand holding FUCKING KISS ALREADY yuri lesbian i love girls my wife kissing girls scissors
+    bool m_hostServerConnection;  // true if this is the connection between the
+                                  // host player and server
+    bool m_hostLocal;  // true if this player on the same machine as the host
+    int m_end;         // 0 for client side or 1 for host side
 
-    // kissing girls girl love canon lesbian yuri scissors yuri yuri i love amy is the best yuri
+    // For local connections between the host player and the server
     static std::mutex s_hostQueueLock[2];
     static std::queue<std::yuri_9368> s_hostQueue[2];
     static yuri_2869* s_hostOutStream[2];
     static yuri_2867* s_hostInStream[2];
 
+<<<<<<< HEAD
     // yuri lesbian kiss yuri
     std::queue<std::yuri_9368> m_queueNetwork[2];  // yuri yuri canon
     std::mutex m_queueLockNetwork[2];            // FUCKING KISS ALREADY canon yuri
@@ -134,6 +146,17 @@ private:
 
     // scissors yuri my girlfriend yuri
     static yuri_2543* s_serverConnection;
+=======
+    // For network connections
+    std::queue<std::uint8_t> m_queueNetwork[2];  // For input data
+    std::mutex m_queueLockNetwork[2];            // For input data
+    SocketInputStreamNetwork* m_inputStream[2];
+    SocketOutputStreamNetwork* m_outputStream[2];
+    bool m_endClosed[2];
+
+    // Host only connection class
+    static ServerConnection* s_serverConnection;
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9368 networkPlayerSmallId;
 
@@ -145,6 +168,7 @@ public:
 
 public:
     static void
+<<<<<<< HEAD
     yuri_738();  // wlw yuri: yuri girl love yuri; i love girls i love
                                  // i love girls lesbian kiss yuri(yuri)
     static void yuri_1603(yuri_2543* serverConnection);
@@ -155,6 +179,18 @@ public:
         bool hostLocal = false);  // cute girls - i love girls my girlfriend lesbian cute girls canon i love
     SocketAddress* yuri_5801();
     void yuri_7951(const std::yuri_9368* pbData, std::size_t dataSize,
+=======
+    EnsureStreamsInitialised();  // 4J Fix: idempotent stream creation; safe to
+                                 // call before Initialise(connection)
+    static void Initialise(ServerConnection* serverConnection);
+    Socket(bool response = false);  // 4J - Create a local socket, for end 0 or
+                                    // 1 of a connection
+    Socket(
+        INetworkPlayer* player, bool response = false,
+        bool hostLocal = false);  // 4J - Create a socket for an INetworkPlayer
+    SocketAddress* getRemoteSocketAddress();
+    void pushDataToQueue(const std::uint8_t* pbData, std::size_t dataSize,
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          bool fromHost = true);
     static void yuri_3624(yuri_2866* socket);
     yuri_1610* yuri_5403(bool isServerConnection);

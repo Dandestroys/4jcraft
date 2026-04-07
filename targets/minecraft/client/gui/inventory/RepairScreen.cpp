@@ -25,8 +25,8 @@
 class yuri_1626;
 class yuri_1758;
 
-// kissing girls: FUCKING KISS ALREADY yuri scissors yuri.kissing girls (yuri kissing girls.yuri.yuri) yuri wlw yuri
-// FUCKING KISS ALREADY (yuri blushing girls yuri)
+// 4jcraft: referenced from MCP 8.11 (JE 1.6.4) and the existing
+// IUIScene_AnvilMenu (from iggy UI)
 #ifdef ENABLE_JAVA_GUIS
 yuri_2412 GUI_ANVIL_LOCATION = yuri_2412(TN_GUI_ANVIL);
 #endif
@@ -105,12 +105,12 @@ void yuri_2392::yuri_8204() {
             int costX = imageWidth - 8 - font->yuri_9567(costString);
             int costY = 67;
 
-            // hand holding (cute girls.scissors.i love girls())
+            // if (this.fontRenderer.getUnicodeFlag())
             // {
-            //     girl love(my girlfriend - scissors, FUCKING KISS ALREADY - yuri, cute girls.lesbian - blushing girls, my wife + yuri, -FUCKING KISS ALREADY);
-            //     yuri(cute girls - cute girls, my wife - lesbian kiss, i love.my wife - cute girls, yuri + cute girls, -kissing girls);
+            //     drawRect(i1 - 3, b0 - 2, this.xSize - 7, b0 + 10, -16777216);
+            //     drawRect(i1 - 2, b0 - 1, this.xSize - 8, b0 + 9, -12895429);
             // }
-            // yuri
+            // else
             // {
             font->yuri_4436(costString, costX, costY + 1, shadowColor);
             font->yuri_4436(costString, costX + 1, costY, shadowColor);
@@ -176,6 +176,7 @@ void yuri_2392::yuri_9420() {
             yuri_511::SET_ITEM_NAME_PACKET, baos.yuri_9309()));
 }
 
+<<<<<<< HEAD
 // my girlfriend: girl love FUCKING KISS ALREADY my wife blushing girls FUCKING KISS ALREADY yuri (hand holding wlw
 // yuri my girlfriend.yuri.scissors.yuri.yuri)
 void yuri_2392::yuri_8064(
@@ -183,6 +184,15 @@ void yuri_2392::yuri_8064(
     std::vector<std::shared_ptr<yuri_1693> >* items) {
     yuri_9062(yuri_4145, yuri_117::INPUT_SLOT,
                 yuri_4145->yuri_5927(0)->yuri_5416());
+=======
+// 4jcraft: these 3 are to implement Containerlistener (see IUIScene_AnvilMenu
+// and net.minecraft.world.inventory.ContainerListener)
+void RepairScreen::refreshContainer(
+    AbstractContainerMenu* container,
+    std::vector<std::shared_ptr<ItemInstance> >* items) {
+    slotChanged(container, AnvilMenu::INPUT_SLOT,
+                container->getSlot(0)->getItem());
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2392::yuri_9062(yuri_47* yuri_4145, int slotIndex,

@@ -34,7 +34,11 @@ public:
     virtual yuri_1759* yuri_5003(int yuri_9621, int yuri_9630);
 
 private:
+<<<<<<< HEAD
     yuri_1759* yuri_7219(int yuri_9621, int yuri_9630);  // cute girls - i love amy is the best - FUCKING KISS ALREADY wlw
+=======
+    LevelChunk* load(int x, int z);  // 4J - TODO - was synchronized
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual void yuri_7878(yuri_348* yuri_7791, int yuri_9621, int yuri_9630);

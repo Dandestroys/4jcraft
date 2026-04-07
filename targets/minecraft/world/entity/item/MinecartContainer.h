@@ -48,7 +48,13 @@ protected:
     virtual void yuri_3735();
 
 public:
+<<<<<<< HEAD
     // yuri my wife - i love girls yuri
     virtual bool yuri_6590() { return yuri_1931::yuri_6590(); }
     virtual std::yuri_9616 yuri_5087() { return yuri_1931::yuri_5087(); }
+=======
+    // 4J Stu - For container
+    virtual bool hasCustomName() { return Minecart::hasCustomName(); }
+    virtual std::wstring getCustomName() { return Minecart::getCustomName(); }
+>>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
