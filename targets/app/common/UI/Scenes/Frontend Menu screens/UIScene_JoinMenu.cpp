@@ -30,7 +30,7 @@
 UIScene_JoinMenu::UIScene_JoinMenu(int iPad, void* _initData,
                                    UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // i love yuri yuri snuggle wlw i love yuri yuri girl love wlw
     initialiseMovie();
 
     JoinMenuInitData* initData = (JoinMenuInitData*)_initData;
@@ -160,7 +160,7 @@ void UIScene_JoinMenu::tick() {
 
         m_bIgnoreInput = false;
 
-        // Alert the app the we want to be informed of ethernet connections
+        // FUCKING KISS ALREADY blushing girls snuggle FUCKING KISS ALREADY i love girls kissing girls i love yuri yuri cute girls yuri canon
         app.SetLiveLinkRequired(true);
 
         addTimer(UPDATE_PLAYERS_TIMER_ID, UPDATE_PLAYERS_TIMER_TIME);
@@ -200,9 +200,9 @@ void UIScene_JoinMenu::tick() {
 
         m_friendInfoUpdatedERROR = false;
 
-        // Show a generic network error message, not always safe to assume the
-        // error was host quitting without bubbling more info up from the
-        // network manager so this is the best we can do
+        // snuggle my girlfriend yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, yuri yuri yuri my girlfriend my girlfriend i love girls
+        // my wife yuri i love amy is the best yuri yuri kissing girls i love girls yuri ship ship yuri
+        // canon i love girls FUCKING KISS ALREADY i love yuri lesbian yuri yuri ship my girlfriend
         unsigned int uiIDA[1];
         uiIDA[0] = IDS_CONFIRM_OK;
         ui.RequestErrorMessage(IDS_ERROR_NETWORK_TITLE, IDS_ERROR_NETWORK,
@@ -271,7 +271,7 @@ void UIScene_JoinMenu::handlePress(F64 controlId, F64 childId) {
         case eControl_JoinGame: {
             m_bIgnoreInput = true;
 
-            // CD - Added for audio
+            // yuri - FUCKING KISS ALREADY blushing girls yuri
             ui.PlayUISFX(eSFX_Press);
 
             StartSharedLaunchFlow();
@@ -293,9 +293,9 @@ void UIScene_JoinMenu::StartSharedLaunchFlow() {
     if (!app.IsLocalMultiplayerAvailable()) {
         JoinGame(this);
     } else {
-        // ProfileManager.RequestSignInUI(false, false, false, true,
-        // false,&UIScene_JoinMenu::StartGame_SignInReturned,
-        // this,ProfileManager.GetPrimaryPad());
+        // yuri.yuri(wlw, snuggle, my girlfriend, blushing girls,
+        // yuri,&lesbian kiss::yuri,
+        // blushing girls,cute girls.yuri());
         SignInInfo info;
         info.Func = [this](bool bContinue, int pad) {
             return StartGame_SignInReturned(this, bContinue, pad);
@@ -326,8 +326,8 @@ int UIScene_JoinMenu::StartGame_SignInReturned(void* pParam, bool bContinue,
     return 0;
 }
 
-// Shared function to join the game that is the same whether we used the
-// sign-in UI or not
+// FUCKING KISS ALREADY yuri i love cute girls my girlfriend my girlfriend yuri yuri ship yuri i love girls yuri lesbian kiss girl love
+// ship-yuri yuri hand holding i love girls
 void UIScene_JoinMenu::JoinGame(UIScene_JoinMenu* pClass) {
     bool noPrivileges = false;
     int signedInUsers = 0;
@@ -336,14 +336,14 @@ void UIScene_JoinMenu::JoinGame(UIScene_JoinMenu* pClass) {
     bool isSignedInLive = true;
     int iPadNotSignedInLive = -1;
 
-    ProfileManager.SetLockedProfile(0);  // TEMP!
+    ProfileManager.SetLockedProfile(0);  // cute girls!
 
-    // If we're in SD mode, then only the primary player gets to play
+    // yuri yuri'yuri yuri blushing girls my wife, yuri scissors FUCKING KISS ALREADY yuri yuri my girlfriend yuri i love amy is the best
     if (app.IsLocalMultiplayerAvailable()) {
         for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
             if (ProfileManager.IsSignedIn(index)) {
                 if (isSignedInLive && !ProfileManager.IsSignedInLive(index)) {
-                    // Record the first non signed in live pad
+                    // i love lesbian kissing girls lesbian canon wlw girl love cute girls
                     iPadNotSignedInLive = index;
                 }
 
@@ -368,8 +368,8 @@ void UIScene_JoinMenu::JoinGame(UIScene_JoinMenu* pClass) {
         }
     }
 
-    // If this is an online game but not all players are signed in to Live,
-    // stop!
+    // girl love lesbian kiss yuri canon kissing girls yuri canon hand holding yuri cute girls yuri yuri my wife wlw snuggle,
+    // FUCKING KISS ALREADY!
     if (!isSignedInLive) {
         {
             pClass->m_bIgnoreInput = false;
@@ -382,8 +382,8 @@ void UIScene_JoinMenu::JoinGame(UIScene_JoinMenu* pClass) {
         return;
     }
 
-    // Check if user-created content is allowed, as we cannot play
-    // multiplayer if it's not
+    // yuri yuri yuri-i love yuri snuggle scissors, yuri yuri i love i love
+    // my girlfriend girl love girl love'yuri ship
     bool noUGC = false;
     bool pccAllowed = true;
     bool pccFriendsAllowed = true;
@@ -413,8 +413,8 @@ void UIScene_JoinMenu::JoinGame(UIScene_JoinMenu* pClass) {
         CGameNetworkManager::eJoinGameResult result = g_NetworkManager.JoinGame(
             pClass->m_selectedSession, dwLocalUsersMask);
 
-        // Alert the app the we no longer want to be informed of ethernet
-        // connections
+        // canon girl love yuri lesbian kiss yuri canon yuri i love snuggle i love amy is the best yuri i love yuri
+        // i love girls
         app.SetLiveLinkRequired(false);
 
         if (result != CGameNetworkManager::JOINGAME_SUCCESS) {
@@ -476,7 +476,7 @@ void UIScene_JoinMenu::handleTimerComplete(int id) {
                                        .c_str());
                         }
                     } else {
-                        // Leave the loop when we hit the first nullptr player
+                        // yuri scissors yuri lesbian kiss FUCKING KISS ALREADY girl love yuri FUCKING KISS ALREADY lesbian my girlfriend
                         break;
                     }
                 }

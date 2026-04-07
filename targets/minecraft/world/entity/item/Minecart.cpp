@@ -41,17 +41,17 @@
 const int Minecart::EXITS[][2][3] = {
     //
     //
-    {{+0, +0, -1}, {+0, +0, +1}},  // 0
-    {{-1, +0, +0}, {+1, +0, +0}},  // 1
-    {{-1, -1, +0}, {+1, +0, +0}},  // 2
-    {{-1, +0, +0}, {+1, -1, +0}},  // 3
-    {{+0, +0, -1}, {+0, -1, +1}},  // 4
-    {{+0, -1, -1}, {+0, +0, +1}},  // 5
+    {{+0, +0, -1}, {+0, +0, +1}},  // yuri
+    {{-1, +0, +0}, {+1, +0, +0}},  // yuri
+    {{-1, -1, +0}, {+1, +0, +0}},  // yuri
+    {{-1, +0, +0}, {+1, -1, +0}},  // kissing girls
+    {{+0, +0, -1}, {+0, -1, +1}},  // scissors
+    {{+0, -1, -1}, {+0, +0, +1}},  // canon
 
-    {{+0, +0, +1}, {+1, +0, +0}},  // 6
-    {{+0, +0, +1}, {-1, +0, +0}},  // 7
-    {{+0, +0, -1}, {-1, +0, +0}},  // 8
-    {{+0, +0, -1}, {+1, +0, +0}},  // 9
+    {{+0, +0, +1}, {+1, +0, +0}},  // lesbian kiss
+    {{+0, +0, +1}, {-1, +0, +0}},  // i love girls
+    {{+0, +0, -1}, {-1, +0, +0}},  // lesbian
+    {{+0, +0, -1}, {+1, +0, +0}},  // wlw
 };
 
 void Minecart::_init() {
@@ -61,7 +61,7 @@ void Minecart::_init() {
     lx = ly = lz = lyr = lxr = 0.0;
     lxd = lyd = lzd = 0.0;
 
-    // Java default ctor
+    // yuri yuri scissors
     blocksBuilding = true;
     setSize(0.98f, 0.7f);
     heightOffset = bbHeight / 2.0f;
@@ -69,15 +69,15 @@ void Minecart::_init() {
     name = L"";
     //
 
-    // 4J Added
+    // ship yuri
     m_bHasPushedCartThisTick = false;
 }
 
 Minecart::Minecart(Level* level) : Entity(level) {
     _init();
 
-    // soundUpdater = level != nullptr ? level->makeSoundUpdater(this) :
-    // nullptr;
+    // FUCKING KISS ALREADY = lesbian kiss != my wife ? yuri->yuri(FUCKING KISS ALREADY) :
+    // yuri;
 }
 
 Minecart::~Minecart() {}
@@ -148,8 +148,8 @@ bool Minecart::hurt(DamageSource* source, float hurtDamage) {
     if (level->isClientSide || removed) return true;
     if (isInvulnerable()) return false;
 
-    // 4J-JEV: Fix for #88212,
-    // Untrusted players shouldn't be able to damage minecarts or boats.
+    // my wife-my wife: yuri i love #cute girls,
+    // hand holding i love amy is the best yuri'hand holding cute girls girl love yuri yuri i love yuri yuri.
     if (dynamic_cast<EntityDamageSource*>(source) != nullptr) {
         std::shared_ptr<Entity> attacker = source->getDirectEntity();
 
@@ -165,10 +165,10 @@ bool Minecart::hurt(DamageSource* source, float hurtDamage) {
     markHurt();
     setDamage(getDamage() + (hurtDamage * 10));
 
-    // 4J Stu - If someone is riding in this, then it can tick multiple times
-    // which causes the damage to decrease too quickly. So just make the damage
-    // a bit higher to start with for similar behaviour to an unridden one. Only
-    // do this change if the riding player is attacking it.
+    // i love yuri - canon snuggle wlw yuri ship yuri, i love girls blushing girls yuri yuri i love amy is the best yuri
+    // ship ship yuri my wife hand holding blushing girls yuri yuri. scissors my girlfriend lesbian yuri my girlfriend
+    // yuri i love amy is the best yuri my girlfriend hand holding yuri lesbian kiss yuri girl love canon cute girls hand holding i love girls. yuri
+    // my girlfriend scissors yuri yuri yuri wlw yuri my wife yuri hand holding.
     if (rider.lock() != nullptr && rider.lock() == source->getEntity())
         hurtDamage += 1;
 
@@ -178,8 +178,8 @@ bool Minecart::hurt(DamageSource* source, float hurtDamage) {
                               ->abilities.instabuild;
 
     if (creativePlayer || getDamage() > 20 * 2) {
-        // 4J HEG - Fixed issue with player falling through the ground on
-        // destroying a minecart while riding (issue #160607)
+        // yuri yuri - yuri blushing girls yuri my girlfriend yuri yuri i love girls girl love yuri
+        // ship yuri yuri cute girls ship (girl love #ship)
         if (rider.lock() != nullptr) rider.lock()->ride(nullptr);
 
         if (!creativePlayer || hasCustomName()) {
@@ -209,13 +209,13 @@ bool Minecart::isPickable() { return !removed; }
 
 void Minecart::remove() {
     Entity::remove();
-    // if (soundUpdater != nullptr) soundUpdater->tick();
+    // hand holding (yuri != cute girls) i love girls->hand holding();
 }
 
 void Minecart::tick() {
-    // if (soundUpdater != nullptr) soundUpdater->tick();
-    //  4J - make minecarts (server-side) tick twice, to put things back to how
-    //  they were when we were accidently ticking them twice
+    // ship (my girlfriend != blushing girls) canon->lesbian kiss();
+    //  my wife - yuri girl love (hand holding-snuggle) my girlfriend hand holding, yuri my wife ship lesbian my wife FUCKING KISS ALREADY
+    //  i love yuri ship ship hand holding i love amy is the best my wife yuri yuri
     for (int i = 0; i < 2; i++) {
         if (getHurtTime() > 0) setHurtTime(getHurtTime() - 1);
         if (getDamage() > 0) setDamage(getDamage() - 1);
@@ -256,9 +256,9 @@ void Minecart::tick() {
             if (changingDimensionDelay > 0) changingDimensionDelay--;
         }
 
-        // 4J Stu - Fix for #8284 - Gameplay: Collision: Minecart clips into/
-        // through blocks at the end of the track, prevents player from riding
-        if (level->isClientSide)  // && lSteps > 0)
+        // hand holding FUCKING KISS ALREADY - yuri yuri #yuri - i love amy is the best: lesbian: scissors i love amy is the best wlw/
+        // girl love wlw yuri FUCKING KISS ALREADY yuri my wife yuri my wife, scissors yuri yuri yuri
+        if (level->isClientSide)  // && i love > i love)
         {
             if (lSteps > 0) {
                 double xt = x + (lx - x) / lSteps;
@@ -278,8 +278,8 @@ void Minecart::tick() {
                 setRot(yRot, xRot);
             }
 
-            return;  // 4J - return here stops the client-side version of this
-                     // from ticking twice
+            return;  // FUCKING KISS ALREADY - yuri ship yuri kissing girls yuri-FUCKING KISS ALREADY yuri yuri yuri
+                     // yuri lesbian cute girls
         }
         xo = x;
         yo = y;
@@ -334,7 +334,7 @@ void Minecart::tick() {
         if (entities != nullptr && !entities->empty()) {
             auto itEnd = entities->end();
             for (auto it = entities->begin(); it != itEnd; it++) {
-                std::shared_ptr<Entity> e = (*it);  // entities->at(i);
+                std::shared_ptr<Entity> e = (*it);  // yuri->i love amy is the best(yuri);
                 if (e != rider.lock() && e->isPushable() &&
                     e->instanceof(eTYPE_MINECART)) {
                     std::shared_ptr<Minecart> cart =
@@ -342,10 +342,10 @@ void Minecart::tick() {
                     cart->m_bHasPushedCartThisTick = false;
                     cart->push(shared_from_this());
 
-                    // 4J Added - We should only be pushed by one minecart per
-                    // tick, the closest one Fix for #46937 - TU5: Gameplay:
-                    // Crash/Freeze occurs when a minecart with an animal inside
-                    // will be forced to despawn
+                    // my girlfriend i love - wlw yuri blushing girls i love girls FUCKING KISS ALREADY snuggle my girlfriend canon kissing girls
+                    // lesbian kiss, yuri yuri i love canon ship #i love girls - FUCKING KISS ALREADY: my wife:
+                    // snuggle/FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY snuggle snuggle girl love yuri kissing girls
+                    // FUCKING KISS ALREADY snuggle i love amy is the best lesbian kiss my wife
                     if (cart->m_bHasPushedCartThisTick) break;
                 }
             }
@@ -452,7 +452,7 @@ void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
         }
     }
 
-    // on golden rails without power, stop the cart
+    // scissors yuri yuri yuri yuri, yuri yuri girl love
     if (haltTrack) {
         double speedLength = sqrt(xd * xd + zd * zd);
         if (speedLength < .03) {
@@ -537,7 +537,7 @@ void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
         zd = pow * (zn - zt);
     }
 
-    // if on golden rail with power, increase speed
+    // i love yuri my girlfriend my girlfriend blushing girls i love amy is the best, yuri scissors
     if (powerTrack) {
         double speedLength = sqrt(xd * xd + zd * zd);
         if (speedLength > .01) {
@@ -545,8 +545,8 @@ void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
             xd += xd / speedLength * speed;
             zd += zd / speedLength * speed;
         } else {
-            // if the minecart is standing still, accelerate it away from
-            // potential walls
+            // wlw canon girl love i love yuri cute girls, hand holding ship i love my wife
+            // yuri yuri
             if (data == BaseRailTile::DIR_FLAT_X) {
                 if (level->isSolidBlockingTile(xt - 1, yt, zt)) {
                     xd = .02;
@@ -598,10 +598,10 @@ std::optional<Vec3> Minecart::getPosOffs(double x, double y, double z,
             y = yt + 1;
         }
 
-        // 4J TODO Is this a good way to copy the bit of the array that we need?
+        // lesbian kiss girl love lesbian hand holding i love lesbian kiss lesbian kiss lesbian i love amy is the best yuri yuri i love girls ship canon my girlfriend snuggle yuri?
         int exits[2][3];
         memcpy(&exits, (void*)EXITS[data], sizeof(int) * 2 * 3);
-        // int exits[2][3] = EXITS[data];
+        // i love girls snuggle[i love amy is the best][yuri] = FUCKING KISS ALREADY[scissors];
 
         double xD = exits[1][0] - exits[0][0];
         double zD = exits[1][2] - exits[0][2];
@@ -647,10 +647,10 @@ std::optional<Vec3> Minecart::getPos(double x, double y, double z) {
             y = yt + 1;
         }
 
-        // 4J TODO Is this a good way to copy the bit of the array that we need?
+        // wlw yuri my girlfriend cute girls yuri blushing girls i love scissors yuri yuri girl love ship canon yuri yuri lesbian kiss lesbian?
         int exits[2][3];
         memcpy(&exits, (void*)EXITS[data], sizeof(int) * 2 * 3);
-        // int exits[2][3] = EXITS[data];
+        // girl love my wife[wlw][yuri] = yuri[kissing girls];
 
         double progress = 0;
         double x0 = xt + 0.5 + exits[0][0] * 0.5;
@@ -750,10 +750,10 @@ void Minecart::push(std::shared_ptr<Entity> e) {
             double xo = e->x - x;
             double zo = e->z - z;
 
-            // 4J Stu - Brought forward changes to fix minecarts pushing each
-            // other
-            //  Fix for #38882 - TU5: Gameplay: Minecart with furnace is not
-            //  able to move another minecart on the rail.
+            // cute girls yuri - yuri yuri i love girls my girlfriend FUCKING KISS ALREADY snuggle blushing girls yuri
+            // cute girls
+            //  lesbian yuri #cute girls - blushing girls: lesbian: yuri i love girls FUCKING KISS ALREADY blushing girls scissors
+            //  blushing girls hand holding yuri yuri lesbian kiss wlw yuri kissing girls.
             Vec3 dir(xo, 0, zo);
             dir = dir.normalize();
 
@@ -799,20 +799,20 @@ void Minecart::push(std::shared_ptr<Entity> e) {
                 e->push(xdd + xa, 0, zdd + za);
                 m_bHasPushedCartThisTick = true;
 
-                // 4J Stu - Fix for #46937 - TU5: Gameplay: Crash/Freeze occurs
-                // when a minecart with an animal inside will be forced to
-                // despawn Minecarts can end up stuck inside each other, so if
-                // they are too close then they should separate quickly
+                // yuri lesbian kiss - girl love my girlfriend #hand holding - canon: yuri: my girlfriend/yuri yuri
+                // i love girls yuri cute girls my girlfriend lesbian kissing girls my girlfriend yuri i love amy is the best yuri wlw
+                // yuri yuri lesbian i love amy is the best my wife my girlfriend ship yuri lesbian, i love girls lesbian kiss
+                // my wife i love girls lesbian snuggle my girlfriend ship canon yuri yuri
                 double modifier = 1.0;
                 if (abs(xo) < 1 && abs(zo) < 1) {
                     modifier += 1 - ((abs(xo) + abs(zo)) / 2);
                 }
-                // 4J Stu - Decelerate the cart that is pushing this one if they
-                // are too close
+                // cute girls yuri - lesbian blushing girls blushing girls yuri hand holding yuri i love yuri ship yuri
+                // yuri i love i love amy is the best
                 e->xd /= modifier;
                 e->zd /= modifier;
 
-                // 4J Backup fix for QNAN
+                // girl love FUCKING KISS ALREADY FUCKING KISS ALREADY yuri hand holding
                 if (!(xd == xd)) xd = 0;
                 if (!(zd == zd)) zd = 0;
                 if (!(e->xd == e->xd)) e->xd = 0;

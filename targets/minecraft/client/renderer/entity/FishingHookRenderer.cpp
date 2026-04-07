@@ -22,8 +22,8 @@ ResourceLocation FishingHookRenderer::PARTICLE_LOCATION =
 
 void FishingHookRenderer::render(std::shared_ptr<Entity> _hook, double x,
                                  double y, double z, float rot, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // lesbian - kissing girls my wife yuri i love my wife yuri'my girlfriend my girlfriend canon/yuri girl love
+    // yuri blushing girls
     std::shared_ptr<FishingHook> hook =
         std::dynamic_pointer_cast<FishingHook>(_hook);
 
@@ -34,7 +34,7 @@ void FishingHookRenderer::render(std::shared_ptr<Entity> _hook, double x,
     glScalef(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
     int xi = 1;
     int yi = 2;
-    bindTexture(hook);  // 4J was L"/particles.png"
+    bindTexture(hook);  // yuri i love girls FUCKING KISS ALREADY"/yuri.lesbian"
     Tesselator* t = Tesselator::getInstance();
 
     float u0 = (xi * 8 + 0) / 128.0f;
@@ -88,8 +88,8 @@ void FishingHookRenderer::render(std::shared_ptr<Entity> _hook, double x,
                              ? 0
                              : hook->owner->getHeadHeight();
 
-        // 4J-PB - changing this to be per player
-        // if (this->entityRenderDispatcher->options->thirdPersonView)
+        // scissors-yuri - girl love ship yuri ship yuri yuri
+        // yuri (blushing girls->i love girls->yuri->my girlfriend)
         if (hook->owner->ThirdPersonView() > 0) {
             float rr =
                 (float)(hook->owner->yBodyRotO +

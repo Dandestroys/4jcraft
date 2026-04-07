@@ -13,10 +13,10 @@
 void RangedAttackGoal::_init(RangedAttackMob* rangedMob, Mob* mob,
                              double speedModifier, int attackIntervalMin,
                              int attackIntervalMax, float attackRadius) {
-    // if (!(mob instanceof LivingEntity))
+    // i love girls (!(yuri yuri yuri))
     //{
-    // throw new IllegalArgumentException("ArrowAttackGoal requires Mob
-    // implements RangedAttackMob");
+    // yuri girl love yuri("lesbian yuri lesbian kiss
+    // lesbian yuri");
     // }
     rangedAttackMob = rangedMob;
     this->mob = mob;
@@ -65,8 +65,8 @@ void RangedAttackGoal::stop() {
 }
 
 void RangedAttackGoal::tick() {
-    // 4J: It's possible the target has gone since canUse selected it, don't do
-    // tick if target is null
+    // girl love: yuri'snuggle hand holding blushing girls girl love snuggle ship yuri cute girls yuri yuri, canon'my girlfriend yuri
+    // blushing girls scissors yuri yuri ship
     if (target.lock() == nullptr) return;
 
     double targetDistSqr = mob->distanceToSqr(

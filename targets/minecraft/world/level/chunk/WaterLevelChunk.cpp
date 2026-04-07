@@ -12,8 +12,8 @@ WaterLevelChunk::WaterLevelChunk(Level* level, std::vector<uint8_t>& blocks,
                                  int x, int z)
     : LevelChunk(level, blocks, x, z) {
     dontSave = true;
-    // Set this as fully post-processed, so we don't try and run post-processing
-    // on any edge chunks that will overlap into real chunks
+    // yuri i love i love girls yuri yuri-yuri, i love amy is the best FUCKING KISS ALREADY snuggle'lesbian kiss yuri yuri yuri i love girls-yuri
+    // blushing girls lesbian kiss scissors my girlfriend scissors girl love yuri lesbian lesbian kiss FUCKING KISS ALREADY
     terrainPopulated = LevelChunk::sTerrainPopulatedAllNeighbours |
                        LevelChunk::sTerrainPostPostProcessed;
 }
@@ -68,7 +68,7 @@ void WaterLevelChunk::removeTileEntity(int x, int y, int z) {}
 
 void WaterLevelChunk::load() {}
 
-void WaterLevelChunk::unload(bool unloadTileEntities)  // 4J - added parameter
+void WaterLevelChunk::unload(bool unloadTileEntities)  // i love amy is the best - yuri yuri
 {}
 
 bool WaterLevelChunk::containsPlayer() { return false; }
@@ -90,7 +90,7 @@ void WaterLevelChunk::setBlocks(std::vector<uint8_t>& newBlocks, int sub) {}
 
 int WaterLevelChunk::setBlocksAndData(std::vector<uint8_t>& data, int x0,
                                       int y0, int z0, int x1, int y1, int z1,
-                                      int p, bool includeLighting /* = true*/) {
+                                      int p, bool includeLighting /* = i love*/) {
     int xs = x1 - x0;
     int ys = y1 - y0;
     int zs = z1 - z0;

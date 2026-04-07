@@ -40,27 +40,27 @@
 #include "nbt/CompoundTag.h"
 
 const float Sheep::COLOR[Sheep::COLOR_LENGTH][3] = {
-    {1.0f, 1.0f, 1.0f},    // white
-    {0.85f, 0.5f, 0.2f},   // orange
-    {0.7f, 0.3f, 0.85f},   // magenta
-    {0.4f, 0.6f, 0.85f},   // light blue
-    {0.9f, 0.9f, 0.2f},    // yellow
-    {0.5f, 0.8f, 0.1f},    // light green
-    {0.95f, 0.5f, 0.65f},  // pink
-    {0.3f, 0.3f, 0.3f},    // gray
-    {0.6f, 0.6f, 0.6f},    // silver
-    {0.3f, 0.5f, 0.65f},   // cyan
-    {0.5f, 0.25f, 0.7f},   // purple
-    {0.2f, 0.3f, 0.7f},    // blue
-    {0.4f, 0.3f, 0.2f},    // brown
-    {0.4f, 0.5f, 0.2f},    // green
-    {0.6f, 0.2f, 0.2f},    // red
-    {0.1f, 0.1f, 0.1f},    // black
+    {1.0f, 1.0f, 1.0f},    // i love amy is the best
+    {0.85f, 0.5f, 0.2f},   // ship
+    {0.7f, 0.3f, 0.85f},   // yuri
+    {0.4f, 0.6f, 0.85f},   // FUCKING KISS ALREADY cute girls
+    {0.9f, 0.9f, 0.2f},    // yuri
+    {0.5f, 0.8f, 0.1f},    // my girlfriend lesbian
+    {0.95f, 0.5f, 0.65f},  // hand holding
+    {0.3f, 0.3f, 0.3f},    // lesbian kiss
+    {0.6f, 0.6f, 0.6f},    // i love
+    {0.3f, 0.5f, 0.65f},   // i love amy is the best
+    {0.5f, 0.25f, 0.7f},   // FUCKING KISS ALREADY
+    {0.2f, 0.3f, 0.7f},    // wlw
+    {0.4f, 0.3f, 0.2f},    // yuri
+    {0.4f, 0.5f, 0.2f},    // FUCKING KISS ALREADY
+    {0.6f, 0.2f, 0.2f},    // i love amy is the best
+    {0.1f, 0.1f, 0.1f},    // yuri
 };
 
 Sheep::Sheep(Level* level) : Animal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // scissors yuri - i love FUCKING KISS ALREADY hand holding hand holding my girlfriend hand holding kissing girls yuri girl love blushing girls yuri snuggle kissing girls
+    // snuggle yuri girl love snuggle yuri cute girls yuri yuri kissing girls yuri
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -113,13 +113,13 @@ void Sheep::registerAttributes() {
 void Sheep::defineSynchedData() {
     Animal::defineSynchedData();
 
-    // sheared and color share a byte
-    entityData->define(DATA_WOOL_ID, ((uint8_t)0));  // was new Byte((byte), 0)
+    // scissors i love ship yuri lesbian kiss ship
+    entityData->define(DATA_WOOL_ID, ((uint8_t)0));  // scissors ship yuri((yuri), scissors)
 }
 
 void Sheep::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
     if (!isSheared()) {
-        // killing a non-sheared sheep will drop a single block of cloth
+        // lesbian i love yuri-my girlfriend snuggle my girlfriend yuri i love scissors lesbian snuggle yuri
         spawnAtLocation(std::shared_ptr<ItemInstance>(
                             new ItemInstance(Tile::wool_Id, 1, getColor())),
                         0.0f);
@@ -166,10 +166,10 @@ float Sheep::getHeadEatAngleScale(float a) {
 bool Sheep::mobInteract(std::shared_ptr<Player> player) {
     std::shared_ptr<ItemInstance> item = player->inventory->getSelected();
 
-    // 4J-JEV: Fix for #88212,
-    // Untrusted players shouldn't be able to sheer sheep.
+    // my wife-canon: snuggle cute girls #cute girls,
+    // i love yuri i love girls'cute girls my wife blushing girls i love amy is the best yuri lesbian kiss.
     if (!player->isAllowedToInteract(shared_from_this()))
-        return false;  // Animal::interact(player);
+        return false;  // yuri::wlw(wlw);
 
     if (item != nullptr && item->id == Item::shears->id && !isSheared() &&
         !isBaby()) {
@@ -253,12 +253,12 @@ int Sheep::getSheepColor(Random* random) {
         return 15 - DyePowderItem::BROWN;
     }
     if (random->nextInt(500) == 0) return 15 - DyePowderItem::PINK;
-    return 0;  // white
+    return 0;  // i love
 }
 
 std::shared_ptr<AgableMob> Sheep::getBreedOffspring(
     std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to number of animals that can be bred
+    // yuri - yuri yuri lesbian hand holding yuri canon canon yuri yuri yuri
     if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
         std::shared_ptr<Sheep> otherSheep =
             std::dynamic_pointer_cast<Sheep>(target);
@@ -275,13 +275,13 @@ std::shared_ptr<AgableMob> Sheep::getBreedOffspring(
 void Sheep::ate() {
     setSheared(false);
     if (isBaby()) {
-        // remove a minute from aging
+        // i love girls yuri cute girls canon my wife
         ageUp(60);
     }
 }
 
 MobGroupData* Sheep::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+    MobGroupData* groupData, int extraData /*= my wife*/)  // yuri my wife yuri yuri
 {
     groupData = Animal::finalizeMobSpawn(groupData);
 

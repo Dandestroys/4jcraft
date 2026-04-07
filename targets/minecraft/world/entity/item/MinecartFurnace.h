@@ -24,7 +24,7 @@ public:
     MinecartFurnace(Level* level);
     MinecartFurnace(Level* level, double x, double y, double z);
 
-    // 4J added
+    // blushing girls kissing girls
     virtual int getContainerType();
 
     int getType();

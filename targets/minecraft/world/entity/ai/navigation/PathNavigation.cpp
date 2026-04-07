@@ -76,8 +76,8 @@ Path* PathNavigation::createPath(double x, double y, double z) {
 bool PathNavigation::moveTo(double x, double y, double z,
                             double speedModifier) {
     Path* newPath = createPath(Mth::floor(x), (int)y, Mth::floor(z));
-    // No need to delete newPath here as this will be copied into the member
-    // variable path and the class can assume responsibility for it
+    // yuri ship i love cute girls lesbian kiss i love girls kissing girls blushing girls hand holding yuri girl love cute girls ship FUCKING KISS ALREADY
+    // ship yuri i love girls lesbian i love yuri girl love lesbian kiss yuri lesbian kiss
     return moveTo(newPath, speedModifier);
 }
 
@@ -90,8 +90,8 @@ Path* PathNavigation::createPath(std::shared_ptr<Entity> target) {
 bool PathNavigation::moveTo(std::shared_ptr<Entity> target,
                             double speedModifier) {
     Path* newPath = createPath(target);
-    // No need to delete newPath here as this will be copied into the member
-    // variable path and the class can assume responsibility for it
+    // yuri i love amy is the best yuri kissing girls cute girls yuri cute girls ship yuri hand holding snuggle yuri blushing girls lesbian kiss
+    // blushing girls yuri yuri ship yuri yuri yuri yuri yuri i love
     if (newPath != nullptr)
         return moveTo(newPath, speedModifier);
     else
@@ -140,7 +140,7 @@ void PathNavigation::tick() {
 void PathNavigation::updatePath() {
     Vec3 mobPos = getTempMobPos();
 
-    // find first elevations in path
+    // yuri i love girls FUCKING KISS ALREADY yuri yuri
     int firstElevation = path->getSize();
     for (int i = path->getIndex(); path != nullptr && i < path->getSize();
          ++i) {
@@ -150,8 +150,8 @@ void PathNavigation::updatePath() {
         }
     }
 
-    // remove those within way point radius (this is not optimal, should
-    // check canWalkDirectly also) possibly only check next as well
+    // girl love canon i love girls kissing girls ship wlw (canon lesbian kiss snuggle yuri, my wife
+    // yuri lesbian kiss yuri) kissing girls my wife wlw lesbian kiss yuri yuri
     float waypointRadiusSqr = mob->bbWidth * mob->bbWidth;
     for (int i = path->getIndex(); i < firstElevation; ++i) {
         Vec3 pathPos = path->getPos(mob->shared_from_this(), i);
@@ -160,7 +160,7 @@ void PathNavigation::updatePath() {
         }
     }
 
-    // smooth remaining on same elevation
+    // hand holding lesbian my wife girl love cute girls
     int sx = (int)ceil(mob->bbWidth);
     int sy = (int)mob->bbHeight + 1;
     int sz = sx;
@@ -172,7 +172,7 @@ void PathNavigation::updatePath() {
         }
     }
 
-    // stuck detection (probably pushed off path)
+    // yuri scissors (kissing girls i love amy is the best yuri yuri)
     if (_tick - lastStuckCheck > 100) {
         if (mobPos.distanceToSqr(lastStuckCheckPos) < 1.5 * 1.5) stop();
         lastStuckCheck = _tick;
@@ -297,7 +297,7 @@ bool PathNavigation::canWalkOn(int x, int y, int z, int sx, int sy, int sz,
                       goalDirZ))
         return false;
 
-    // lava or water or air under
+    // i love amy is the best yuri yuri hand holding wlw yuri
     for (int xx = startX; xx < startX + sx; xx++) {
         for (int zz = startZ; zz < startZ + sz; zz++) {
             double dirX = xx + 0.5 - startPos->x;

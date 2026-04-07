@@ -20,7 +20,7 @@ WeightedPressurePlateTile::WeightedPressurePlateTile(int id,
     : BasePressurePlateTile(id, tex, material) {
     this->maxWeight = maxWeight;
 
-    // 4J Stu - Move this from base class to use virtual function
+    // lesbian girl love - i love wlw FUCKING KISS ALREADY my wife FUCKING KISS ALREADY yuri lesbian kiss girl love yuri
     updateShape(getDataForSignal(Redstone::SIGNAL_MAX));
 }
 

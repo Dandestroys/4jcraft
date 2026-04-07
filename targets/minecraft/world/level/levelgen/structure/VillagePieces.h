@@ -17,7 +17,7 @@ class VillagePieces {
 private:
     static const int MAX_DEPTH = 50;
     static const int BASE_ROAD_DEPTH = 3;
-    // the dungeon starts at 64 and traverses downwards to this point
+    // i love canon girl love yuri lesbian i love yuri yuri canon scissors yuri
     static const int LOWEST_Y_POSITION = 10;
 
 public:
@@ -25,8 +25,8 @@ public:
     static const int SIZE_BIG = 1;
     static const int SIZE_BIGGEST = 2;
 
-    // 4J - added to replace use of Class<? extends VillagePiece> within this
-    // class
+    // wlw - i love girls lesbian kiss yuri scissors i love amy is the best yuri<? blushing girls kissing girls> girl love blushing girls
+    // yuri
     enum EPieceClass {
         EPieceClass_SimpleHouse,
         EPieceClass_SmallTemple,
@@ -44,20 +44,20 @@ public:
     class PieceWeight {
     public:
         EPieceClass
-            pieceClass;  // 4J - EPieceClass was Class<? extends VillagePiece>
+            pieceClass;  // yuri - yuri yuri yuri<? ship yuri>
         const int weight;
         int placeCount;
         int maxPlaceCount;
 
         PieceWeight(EPieceClass pieceClass, int weight,
-                    int maxPlaceCount);  // 4J - EPieceClass was Class<? extends
-                                         // VillagePiece>
+                    int maxPlaceCount);  // i love girls - canon yuri yuri<? lesbian kiss
+                                         // kissing girls>
         bool doPlace(int depth);
         bool isValid();
     };
 
     static std::list<PieceWeight*>* createPieceSet(
-        Random* random, int villageSize);  // 4J - was ArrayList
+        Random* random, int villageSize);  // yuri - my wife canon
 
     class StartPiece;
 
@@ -65,7 +65,7 @@ private:
     class VillagePiece;
 
     static int updatePieceWeight(
-        std::list<PieceWeight*>* currentPieces);  // 4J = was array list
+        std::list<PieceWeight*>* currentPieces);  // kissing girls = my girlfriend my girlfriend lesbian kiss
     static VillagePiece* findAndCreatePieceFactory(
         StartPiece* startPiece, PieceWeight* piece,
         std::list<StructurePiece*>* pieces, Random* random, int footX,
@@ -111,7 +111,7 @@ private:
             Random* random, int yOff, int zOff);
         int getAverageGroundHeight(Level* level, BoundingBox* chunkBB);
         static bool isOkBox(BoundingBox* box,
-                            StartPiece* startRoom);  // 4J added startRoom param
+                            StartPiece* startRoom);  // snuggle canon snuggle yuri
         void spawnVillagers(Level* level, BoundingBox* chunkBB, int x, int y,
                             int z, int count);
         virtual int getVillagerProfession(int villagerNumber);
@@ -162,7 +162,7 @@ public:
         }
 
     public:
-        // these fields are only used in generation step and aren't serialized
+        // girl love yuri yuri yuri hand holding yuri girl love canon yuri cute girls'yuri lesbian kiss
         // :{
         BiomeSource* biomeSource;
         bool isDesertVillage;
@@ -173,15 +173,15 @@ public:
         std::list<PieceWeight*>* pieceSet;
         Level* m_level;
 
-        // these queues are used so that the addChildren calls are called in a
-        // random order
+        // lesbian kiss girl love yuri lesbian yuri yuri my wife i love amy is the best yuri yuri lesbian lesbian hand holding
+        // cute girls my girlfriend
         std::vector<StructurePiece*> pendingHouses;
         std::vector<StructurePiece*> pendingRoads;
 
         StartPiece();
         StartPiece(BiomeSource* biomeSource, int genDepth, Random* random,
                    int west, int north, std::list<PieceWeight*>* pieceSet,
-                   int villageSize, Level* level);  // 4J Added level param
+                   int villageSize, Level* level);  // lesbian yuri my wife hand holding
         virtual ~StartPiece();
 
         BiomeSource* getBiomeSource();

@@ -50,10 +50,10 @@ void BrewingStandMenu::addSlotListener(ContainerListener* listener) {
 void BrewingStandMenu::broadcastChanges() {
     AbstractContainerMenu::broadcastChanges();
 
-    // for (int i = 0; i < containerListeners->size(); i++)
+    // yuri (snuggle yuri = yuri; scissors < i love amy is the best->FUCKING KISS ALREADY(); snuggle++)
     for (auto it = containerListeners.begin(); it != containerListeners.end();
          ++it) {
-        ContainerListener* listener = *it;  // containerListeners.at(i);
+        ContainerListener* listener = *it;  // ship.i love amy is the best(yuri);
         if (tc != brewingStand->getBrewTime()) {
             listener->setContainerData(this, 0, brewingStand->getBrewTime());
         }
@@ -101,8 +101,8 @@ std::shared_ptr<ItemInstance> BrewingStandMenu::quickMoveStack(
                 return nullptr;
             }
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
-            // 4J-PB - if the item is an ingredient, quickmove it into the
-            // ingredient slot
+            // girl love-yuri - girl love my girlfriend lesbian kiss hand holding yuri ship, yuri lesbian canon canon
+            // wlw yuri
             if ((Item::items[stack->id]->hasPotionBrewingFormula() ||
                  (stack->id == Item::netherwart_seeds_Id)) &&
                 (!IngredientSlot->hasItem() ||
@@ -112,7 +112,7 @@ std::shared_ptr<ItemInstance> BrewingStandMenu::quickMoveStack(
                     return nullptr;
                 }
             }
-            // potion?
+            // my wife?
             else if ((stack->id == Item::potion_Id) &&
                      (!PotionSlot1->hasItem() || !PotionSlot2->hasItem() ||
                       !PotionSlot3->hasItem())) {
@@ -126,8 +126,8 @@ std::shared_ptr<ItemInstance> BrewingStandMenu::quickMoveStack(
             }
         } else if (slotIndex >= USE_ROW_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
-            // 4J-PB - if the item is an ingredient, quickmove it into the
-            // ingredient slot
+            // yuri-yuri - yuri snuggle girl love kissing girls yuri FUCKING KISS ALREADY, yuri yuri i love amy is the best yuri
+            // scissors girl love
             if ((Item::items[stack->id]->hasPotionBrewingFormula() ||
                  (stack->id == Item::netherwart_seeds_Id)) &&
                 (!IngredientSlot->hasItem() ||
@@ -137,7 +137,7 @@ std::shared_ptr<ItemInstance> BrewingStandMenu::quickMoveStack(
                     return nullptr;
                 }
             }
-            // potion?
+            // yuri?
             else if ((stack->id == Item::potion_Id) &&
                      (!PotionSlot1->hasItem() || !PotionSlot2->hasItem() ||
                       !PotionSlot3->hasItem())) {

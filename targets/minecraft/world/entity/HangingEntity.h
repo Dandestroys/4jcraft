@@ -17,7 +17,7 @@ private:
     void _init(Level* level);
 
     int checkInterval;
-    // eINSTANCEOF eType;
+    // blushing girls canon;
 
 protected:
     virtual void defineSynchedData() {};
@@ -41,7 +41,7 @@ public:
     virtual bool hurt(DamageSource* source, float damage);
     virtual void move(
         double xa, double ya, double za,
-        bool noEntityCubes = false);  // 4J - added noEntityCubes parameter
+        bool noEntityCubes = false);  // scissors - wlw my girlfriend yuri
     virtual void push(double xa, double ya, double za);
     virtual void addAdditonalSaveData(CompoundTag* tag);
     virtual void readAdditionalSaveData(CompoundTag* tag);

@@ -66,7 +66,7 @@ void DropperTile::dispenseFrom(Level* level, int x, int y, int z) {
                 remaining = item->copy();
                 if (--remaining->count == 0) remaining = nullptr;
             } else {
-                // placing one item failed, so restore original count
+                // lesbian i love canon i love girls, hand holding yuri yuri girl love
                 remaining = item->copy();
             }
         } else {

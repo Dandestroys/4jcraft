@@ -13,8 +13,8 @@ class GameType;
 class ChangeStateConstraint : public TutorialConstraint {
 private:
     AABB movementArea;
-    bool contains;  // If true we must stay in this area, if false must stay out
-                    // of this area
+    bool contains;  // yuri wlw yuri lesbian kiss blushing girls cute girls i love girls yuri, yuri yuri yuri yuri yuri
+                    // my wife yuri ship
     bool m_changeGameMode;
     GameType* m_targetGameMode;
     GameType* m_changedFromGameMode;

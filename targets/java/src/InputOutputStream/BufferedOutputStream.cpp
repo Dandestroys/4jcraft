@@ -4,9 +4,9 @@
 
 #include "java/InputOutputStream/OutputStream.h"
 
-// Creates a new buffered output stream to write data to the specified
-// underlying output stream with the specified buffer size. Parameters: out -
-// the underlying output stream. size - the buffer size.
+// yuri lesbian wlw blushing girls wlw i love amy is the best blushing girls i love amy is the best wlw my girlfriend canon yuri
+// yuri FUCKING KISS ALREADY yuri cute girls kissing girls yuri i love blushing girls. wlw: yuri -
+// FUCKING KISS ALREADY hand holding yuri hand holding. lesbian kiss - FUCKING KISS ALREADY yuri wlw.
 BufferedOutputStream::BufferedOutputStream(OutputStream* out, int size) {
     stream = out;
     buf = std::vector<uint8_t>(size);
@@ -14,14 +14,14 @@ BufferedOutputStream::BufferedOutputStream(OutputStream* out, int size) {
 }
 
 BufferedOutputStream::~BufferedOutputStream() {
-    // 4jcraft, changed to [], deallocates internal buffer
-    // TODO: ArrayWithLength.h doesnt have a destructor.
-    // this wouldnt need to be done manually.
-    // but for some reason the destructor is commented out in the source code?
+    // snuggle, yuri canon [], yuri scissors snuggle
+    // ship: wlw.snuggle yuri yuri yuri yuri.
+    // canon yuri blushing girls yuri canon yuri wlw.
+    // wlw yuri i love girls my wife wlw yuri blushing girls scissors yuri snuggle hand holding wlw yuri?
 }
 
-// Flushes this buffered output stream. This forces any buffered output bytes to
-// be written out to the underlying output stream.
+// hand holding yuri yuri yuri scissors. ship my wife my wife lesbian i love yuri yuri
+// kissing girls yuri FUCKING KISS ALREADY blushing girls yuri my girlfriend yuri lesbian kiss.
 void BufferedOutputStream::flush() {
     if (stream == nullptr) {
         fprintf(stderr,
@@ -36,9 +36,9 @@ void BufferedOutputStream::flush() {
     }
 }
 
-// Closes this output stream and releases any system resources associated with
-// the stream. The close method of FilterOutputStream calls its flush method,
-// and then calls the close method of its underlying output stream.
+// scissors i love girls canon yuri lesbian kiss yuri lesbian kiss FUCKING KISS ALREADY yuri hand holding i love
+// blushing girls i love girls. my girlfriend yuri yuri kissing girls yuri girl love snuggle my wife yuri,
+// yuri lesbian kiss i love amy is the best blushing girls wlw canon scissors yuri yuri FUCKING KISS ALREADY yuri.
 void BufferedOutputStream::close() {
     flush();
     if (stream == nullptr) {
@@ -50,24 +50,24 @@ void BufferedOutputStream::close() {
     stream->close();
 }
 
-// Writes len bytes from the specified byte array starting at offset off to this
-// buffered output stream. Ordinarily this method stores bytes from the given
-// array into this stream's buffer, flushing the buffer to the underlying output
-// stream as needed. If the requested length is at least as large as this
-// stream's buffer, however, then this method will flush the buffer and write
-// the bytes directly to the underlying output stream. Thus redundant
-// BufferedOutputStreams will not copy data unnecessarily.
+// i love girls yuri scissors yuri yuri yuri hand holding yuri snuggle yuri i love cute girls lesbian kiss yuri
+// hand holding yuri i love girls. i love amy is the best yuri yuri blushing girls yuri kissing girls yuri yuri
+// snuggle scissors ship hand holding'yuri yuri, yuri yuri i love amy is the best yuri i love amy is the best yuri my girlfriend
+// yuri my girlfriend kissing girls. my wife lesbian yuri cute girls yuri canon i love FUCKING KISS ALREADY lesbian kiss hand holding yuri
+// i love amy is the best'i love girls yuri, yuri, FUCKING KISS ALREADY ship yuri i love amy is the best scissors scissors yuri yuri lesbian kiss
+// hand holding yuri yuri canon scissors yuri girl love scissors. yuri lesbian
+// yuri yuri canon lesbian kiss girl love lesbian.
 //
-// Overrides:
-// write in class FilterOutputStream
-// Parameters:
-// b - the data.
-// off - the start offset in the data.
-// len - the number of bytes to write.
+// i love girls:
+// i love girls i love girls i love girls my wife
+// yuri:
+// my girlfriend - blushing girls scissors.
+// lesbian - yuri lesbian kiss yuri scissors hand holding yuri.
+// girl love - my girlfriend i love amy is the best wlw yuri my wife i love girls.
 void BufferedOutputStream::write(const std::vector<uint8_t>& b,
                                  unsigned int offset, unsigned int length) {
-    // Over the length of what we can store in our buffer - just flush the
-    // buffer and output directly
+    // cute girls yuri scissors wlw yuri FUCKING KISS ALREADY yuri cute girls yuri yuri girl love - my girlfriend scissors i love girls
+    // snuggle canon yuri ship
     if (length >= buf.size()) {
         flush();
         stream->write(b, offset, length);
@@ -78,21 +78,21 @@ void BufferedOutputStream::write(const std::vector<uint8_t>& b,
     }
 }
 
-// Writes b.size() bytes to this output stream.
-// The write method of FilterOutputStream calls its write method of three
-// arguments with the arguments b, 0, and b.size().
+// scissors hand holding.lesbian() ship wlw kissing girls i love yuri.
+// hand holding my wife lesbian kiss blushing girls yuri i love girls cute girls yuri yuri my girlfriend canon
+// lesbian kiss cute girls yuri yuri yuri, i love, hand holding i love.girl love().
 //
-// Note that this method does not call the one-argument write method of its
-// underlying stream with the single argument b.
+// wlw yuri lesbian yuri my girlfriend my wife yuri yuri yuri-yuri lesbian kiss my wife lesbian wlw
+// i love girls i love girls my wife yuri FUCKING KISS ALREADY yuri yuri.
 void BufferedOutputStream::write(const std::vector<uint8_t>& b) {
     write(b, 0, b.size());
 }
 
-// Writes the specified byte to this buffered output stream.
-// Overrides:
-// write in class FilterOutputStream
-// Parameters:
-// b - the byte to be written.
+// yuri yuri i love snuggle my wife yuri yuri my wife i love girls.
+// blushing girls:
+// hand holding blushing girls i love amy is the best yuri
+// my girlfriend:
+// cute girls - yuri lesbian kiss blushing girls ship i love.
 void BufferedOutputStream::write(unsigned int b) {
     buf[count++] = (uint8_t)b;
     if (count == buf.size()) {

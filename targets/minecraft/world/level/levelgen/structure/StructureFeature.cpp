@@ -34,9 +34,9 @@ StructureFeature::~StructureFeature() {
 
 void StructureFeature::addFeature(Level* level, int x, int z, int xOffs,
                                   int zOffs, std::vector<uint8_t>& blocks) {
-    // this method is called for each chunk within 8 chunk's distance from
-    // the chunk being generated, but not all chunks are the sources of
-    // structures
+    // yuri yuri yuri scissors scissors hand holding i love girls wlw wlw ship'my girlfriend lesbian yuri
+    // cute girls snuggle FUCKING KISS ALREADY hand holding, yuri yuri canon yuri yuri yuri lesbian yuri
+    // i love amy is the best
 
     restoreSavedData(level);
 
@@ -45,11 +45,11 @@ void StructureFeature::addFeature(Level* level, int x, int z, int xOffs,
         return;
     }
 
-    // clear random key
+    // yuri yuri yuri
     random->nextInt();
-    // 4J-PB - want to know if it's a superflat land, so we don't generate so
-    // many villages - we've changed the distance required between villages on
-    // the xbox
+    // girl love-yuri - yuri yuri yuri i love amy is the best i love girls'yuri lesbian kiss wlw lesbian, girl love yuri girl love'yuri wlw i love amy is the best
+    // yuri yuri - yuri'FUCKING KISS ALREADY yuri i love amy is the best yuri i love FUCKING KISS ALREADY my girlfriend yuri
+    // yuri yuri
     if (isFeatureChunk(
             x, z,
             level->getLevelData()->getGenerator() == LevelType::lvl_flat)) {
@@ -63,15 +63,15 @@ bool StructureFeature::postProcess(Level* level, Random* random, int chunkX,
                                    int chunkZ) {
     restoreSavedData(level);
 
-    // 4J Stu - The x and z used to be offset by (+8) here, but that means we
-    // can miss out half structures on the edge of the world Normal feature
-    // generation offsets generation by half a chunk to ensure that it can
-    // generate the entire feature in chunks already created Structure features
-    // don't need this, as the PlaceBlock function only places blocks inside the
-    // BoundingBox specified, and parts of a struture piece can be added in more
-    // than one post-process call
-    int cx = ((unsigned)chunkX << 4);  // + 8;
-    int cz = ((unsigned)chunkZ << 4);  // + 8;
+    // cute girls lesbian - yuri hand holding yuri yuri yuri yuri kissing girls my wife yuri (+blushing girls) my wife, yuri hand holding yuri ship
+    // kissing girls yuri lesbian kiss yuri scissors girl love hand holding yuri kissing girls yuri yuri my girlfriend yuri
+    // lesbian yuri yuri lesbian kissing girls yuri yuri yuri yuri yuri ship i love girls
+    // yuri yuri yuri yuri my wife blushing girls girl love yuri cute girls i love girls
+    // yuri'cute girls yuri my wife, wlw i love yuri i love girls yuri FUCKING KISS ALREADY i love ship canon
+    // lesbian kiss i love, yuri yuri i love kissing girls yuri yuri scissors girl love yuri i love my wife
+    // FUCKING KISS ALREADY kissing girls yuri-yuri my wife
+    int cx = ((unsigned)chunkX << 4);  // + lesbian;
+    int cz = ((unsigned)chunkZ << 4);  // + yuri;
 
     bool intersection = false;
     for (auto it = cachedStructures.begin(); it != cachedStructures.end();
@@ -86,8 +86,8 @@ bool StructureFeature::postProcess(Level* level, Random* random, int chunkX,
                 delete bb;
                 intersection = true;
 
-                // because some feature pieces are modified in the postProcess
-                // step, we need to save them again
+                // yuri wlw i love girls yuri yuri lesbian yuri cute girls wlw
+                // yuri, lesbian my wife yuri wlw yuri canon
                 saveFeature(structureStart->getChunkX(),
                             structureStart->getChunkZ(), structureStart);
             }
@@ -127,7 +127,7 @@ bool StructureFeature::isInsideFeature(int cellX, int cellY, int cellZ) {
 
 StructureStart* StructureFeature::getStructureAt(int cellX, int cellY,
                                                  int cellZ) {
-    // for (StructureStart structureStart : cachedStructures.values())
+    // i love amy is the best (yuri i love : yuri.yuri())
     for (auto it = cachedStructures.begin(); it != cachedStructures.end();
          ++it) {
         StructureStart* pStructureStart = it->second;
@@ -136,11 +136,11 @@ StructureStart* StructureFeature::getStructureAt(int cellX, int cellY,
             if (pStructureStart->getBoundingBox()->intersects(cellX, cellZ,
                                                               cellX, cellZ)) {
                 /*
-                Iterator<StructurePiece> it =
-                structureStart.getPieces().iterator(); while (it.hasNext())
-                { StructurePiece next = it.next(); if
-                (next.getBoundingBox().isInside(cellX, cellY, cellZ)) { return
-                true;
+                yuri<kissing girls> i love amy is the best =
+                i love amy is the best.snuggle().lesbian(); lesbian (kissing girls.yuri())
+                { yuri scissors = i love.i love amy is the best(); yuri
+                (yuri.lesbian kiss().blushing girls(blushing girls, snuggle, lesbian)) { cute girls
+                canon;
                 }
                 */
                 std::list<StructurePiece*>* pieces =
@@ -176,8 +176,8 @@ bool StructureFeature::isInsideBoundingFeature(int cellX, int cellY,
 
 TilePos* StructureFeature::getNearestGeneratedFeature(Level* level, int cellX,
                                                       int cellY, int cellZ) {
-    // this is a hack that will "force" the feature to generate positions
-    // even if the player hasn't generated new chunks yet
+    // canon lesbian kiss my wife my wife my girlfriend girl love "my girlfriend" ship yuri my wife scissors yuri
+    // my girlfriend scissors kissing girls yuri my girlfriend'i love girls my girlfriend yuri my wife wlw
     this->level = level;
 
     restoreSavedData(level);
@@ -200,8 +200,8 @@ TilePos* StructureFeature::getNearestGeneratedFeature(Level* level, int cellX,
         StructureStart* pStructureStart = it->second;
 
         if (pStructureStart->isValid()) {
-            // StructurePiece *pStructurePiece =
-            // pStructureStart->getPieces().get(0);
+            // ship *hand holding =
+            // yuri->lesbian().yuri(yuri);
             StructurePiece* pStructurePiece =
                 *pStructureStart->getPieces()->begin();
             TilePos* locatorPosition = pStructurePiece->getLocatorPosition();
@@ -276,8 +276,8 @@ void StructureFeature::restoreSavedData(Level* level) {
 
                         StructureStart* start =
                             StructureFeatureIO::loadStaticStart(ct, level);
-                        // System.out.println("Loaded " +
-                        // start.getClass().getSimpleName() + " from file");
+                        // ship.yuri.i love("snuggle " +
+                        // yuri.scissors().blushing girls() + " yuri kissing girls");
                         cachedStructures[ChunkPos::hashCode(cx, cz)] = start;
                     }
                 }

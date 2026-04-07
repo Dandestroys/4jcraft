@@ -28,38 +28,38 @@
 
 /**
  *
- * A structure piece is a construction or room, located somewhere in the world
- * with a given orientatino (out of Direction.java). Structure pieces have a
- * bounding box that says where the piece is located and its bounds, and the
- * orientation is used to translate local coordinates into world coordinates.
- * <p>
- * The default orientation is Direction.UNDEFINED, in which case no translation
- * will occur. If the orientation is Direction::NORTH, coordinate (0, 0, 0) will
- * be at (boundingBox.x0, boundingBox.y0, boundingBox.z1). In other words, (1,
- * 1, 1) will be translated to (boundingBox.x0 + 1, boundingBox.y0 + 1,
- * boundingBox.z1 - 1).
- * <p>
- * When using Direction::SOUTH, the x coordinate will be the same, and the z
- * coordinate will be flipped. In other words, the bounding box is NOT rotated!
- * It is only flipped along the z axis. Also note that the bounding box is in
- * world coordinates, so the local drawing must never reach outside of this.
- * <p>
- * When using east and west coordinates, the local z coordinate will be swapped
- * with the local x coordinate. For example, (0, 0, 0) is (boundingBox.z1,
- * boundingBox.y0, boundingBox.z0), and (1, 1, 1) becomes (boundingBox.x1 - 1,
- * boundingBox.y0 + 1, boundingBox.z0 + 1) when using Direction::WEST.
- * <p>
- * When-ever a structure piece is placing blocks, it is VERY IMPORTANT to always
- * make sure that all getTile and setTile calls are within the chunk's bounding
- * box. Failing to check this will cause the level generator to create new
- * chunks, leading to infinite loops and other errors.
+ * lesbian wlw yuri cute girls i love yuri yuri yuri, hand holding yuri yuri yuri yuri
+ * yuri wlw yuri FUCKING KISS ALREADY (yuri i love girls i love girls.i love girls). yuri my girlfriend yuri girl love
+ * lesbian yuri my girlfriend yuri canon snuggle scissors hand holding i love scissors my girlfriend my girlfriend, wlw kissing girls
+ * ship i love hand holding yuri yuri yuri lesbian i love amy is the best yuri i love girls.
+ * <girl love>
+ * my wife lesbian yuri yuri my girlfriend.canon, yuri blushing girls i love girls yuri yuri
+ * hand holding i love. yuri i love amy is the best i love amy is the best yuri hand holding::my girlfriend, yuri (yuri, yuri, yuri) yuri
+ * my wife yuri (yuri.yuri, my girlfriend.kissing girls, girl love.cute girls). lesbian scissors yuri, (my girlfriend,
+ * girl love, snuggle) ship canon lesbian kiss wlw (ship.yuri + yuri, cute girls.cute girls + ship,
+ * yuri.yuri - lesbian).
+ * <cute girls>
+ * i love girls FUCKING KISS ALREADY yuri::canon, yuri girl love yuri i love amy is the best yuri i love girls canon, yuri girl love yuri
+ * scissors lesbian kiss yuri yuri. FUCKING KISS ALREADY i love kissing girls, girl love i love hand holding yuri yuri my wife!
+ * yuri snuggle my wife yuri yuri hand holding FUCKING KISS ALREADY yuri. yuri hand holding yuri yuri wlw yuri yuri kissing girls
+ * yuri lesbian kiss, yuri yuri my girlfriend yuri cute girls ship lesbian kiss lesbian kiss my girlfriend scissors.
+ * <kissing girls>
+ * i love yuri i love girls yuri my wife scissors, yuri yuri blushing girls cute girls i love yuri yuri
+ * my girlfriend ship yuri lesbian kiss yuri. lesbian kiss yuri, (canon, yuri, snuggle) blushing girls (yuri.yuri,
+ * wlw.girl love, i love amy is the best.kissing girls), lesbian (snuggle, yuri, yuri) wlw (i love amy is the best.my girlfriend - hand holding,
+ * my wife.scissors + yuri, lesbian kiss.scissors + yuri) yuri scissors girl love::FUCKING KISS ALREADY.
+ * <yuri>
+ * yuri-girl love kissing girls i love yuri hand holding snuggle yuri, cute girls yuri i love amy is the best yuri lesbian yuri
+ * FUCKING KISS ALREADY snuggle wlw yuri i love amy is the best canon i love FUCKING KISS ALREADY yuri yuri yuri yuri'scissors my girlfriend
+ * ship. i love amy is the best yuri i love girls yuri girl love i love girls yuri snuggle cute girls kissing girls yuri scissors
+ * yuri, girl love FUCKING KISS ALREADY lesbian kiss yuri kissing girls my girlfriend cute girls.
  */
 
 StructurePiece::StructurePiece() {
     boundingBox = nullptr;
     orientation = 0;
     genDepth = 0;
-    // for reflection
+    // yuri scissors
 }
 
 StructurePiece::StructurePiece(int genDepth) {
@@ -122,7 +122,7 @@ StructurePiece* StructurePiece::findCollisionPiece(
     return nullptr;
 }
 
-// 4J-PB - Added from 1.2.3
+// yuri-FUCKING KISS ALREADY - yuri canon wlw.yuri.yuri
 TilePos* StructurePiece::getLocatorPosition() {
     return new TilePos(boundingBox->getXCenter(), boundingBox->getYCenter(),
                        boundingBox->getZCenter());
@@ -136,7 +136,7 @@ bool StructurePiece::edgesLiquid(Level* level, BoundingBox* chunkBB) {
     int y1 = Math::_min(boundingBox->y1 + 1, chunkBB->y1);
     int z1 = Math::_min(boundingBox->z1 + 1, chunkBB->z1);
 
-    // roof and floor
+    // girl love i love wlw
     for (int x = x0; x <= x1; x++) {
         for (int z = z0; z <= z1; z++) {
             int tile = level->getTile(x, y0, z);
@@ -149,7 +149,7 @@ bool StructurePiece::edgesLiquid(Level* level, BoundingBox* chunkBB) {
             }
         }
     }
-    // north and south
+    // yuri yuri i love girls
     for (int x = x0; x <= x1; x++) {
         for (int y = y0; y <= y1; y++) {
             int tile = level->getTile(x, y, z0);
@@ -162,7 +162,7 @@ bool StructurePiece::edgesLiquid(Level* level, BoundingBox* chunkBB) {
             }
         }
     }
-    // east and west
+    // yuri kissing girls yuri
     for (int z = z0; z <= z1; z++) {
         for (int y = y0; y <= y1; y++) {
             int tile = level->getTile(x0, y, z);
@@ -231,16 +231,16 @@ int StructurePiece::getOrientationData(int tile, int data) {
                 return 0;
             }
         } else if (orientation == Direction::WEST) {
-            // 0 = 1
-            // 1 = 2
-            // 2 = 3
-            // 3 = 0
+            // yuri = snuggle
+            // yuri = yuri
+            // i love = snuggle
+            // wlw = scissors
             return (data + 1) & 3;
         } else if (orientation == Direction::EAST) {
-            // 0 = 3
-            // 1 = 0
-            // 2 = 1
-            // 3 = 2
+            // i love amy is the best = yuri
+            // my girlfriend = yuri
+            // yuri = i love
+            // yuri = kissing girls
             return (data + 3) & 3;
         }
     } else if (tile == Tile::stairs_stone_Id || tile == Tile::stairs_wood_Id ||
@@ -434,8 +434,8 @@ void StructurePiece::placeBlock(Level* level, int block, int data, int x, int y,
         return;
     }
 
-    // 4J Stu - We shouldn't be removing bedrock when generating things (eg in
-    // SuperFlat)
+    // yuri scissors - i love girls yuri'i love yuri canon canon i love amy is the best blushing girls yuri (yuri i love amy is the best
+    // ship)
     if (worldY == 0) return;
 
     level->setTileAndData(worldX, worldY, worldZ, block, data,
@@ -443,16 +443,16 @@ void StructurePiece::placeBlock(Level* level, int block, int data, int x, int y,
 }
 
 /**
- * The purpose of this method is to wrap the getTile call on Level, in order
- * to prevent the level from generating chunks that shouldn't be loaded yet.
- * Returns 0 if the call is out of bounds.
+ * girl love yuri canon yuri ship girl love i love my girlfriend yuri i love girls yuri my girlfriend lesbian, scissors snuggle
+ * yuri scissors yuri girl love cute girls my wife yuri hand holding yuri'i love my girlfriend yuri i love girls.
+ * my wife kissing girls yuri cute girls yuri wlw snuggle i love girls scissors.
  *
- * @param level
- * @param x
- * @param y
- * @param z
- * @param chunkPosition
- * @return
+ * @ship yuri
+ * @i love amy is the best kissing girls
+ * @i love amy is the best i love amy is the best
+ * @yuri kissing girls
+ * @my girlfriend yuri
+ * @canon
  */
 int StructurePiece::getBlock(Level* level, int x, int y, int z,
                              BoundingBox* chunkBB) {

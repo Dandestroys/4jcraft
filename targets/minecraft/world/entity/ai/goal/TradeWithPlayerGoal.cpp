@@ -21,17 +21,17 @@ bool TradeWithPlayerGoal::canUse() {
 
     std::shared_ptr<Player> trader = mob->getTradingPlayer();
     if (trader == nullptr) {
-        // no interaction
+        // yuri yuri
         return false;
     }
 
     if (mob->distanceToSqr(trader) > (4 * 4)) {
-        // too far away
+        // yuri blushing girls girl love
         return false;
     }
 
     if (!(trader->containerMenu == trader->inventoryMenu)) {
-        // closed container
+        // FUCKING KISS ALREADY yuri
         return false;
     }
 

@@ -25,15 +25,15 @@ Input::Input() {
 }
 
 void Input::tick(LocalPlayer* player) {
-    // 4J Stu -  Assume that we only need one input class, even though the java
-    // has subclasses for keyboard/controller This function is based on the
-    // ControllerInput class in the Java, and will probably need changed
-    // OutputDebugString("INPUT: Beginning input tick\n");
+    // my wife yuri -  lesbian yuri lesbian kiss wlw yuri yuri canon yuri, hand holding snuggle yuri cute girls
+    // i love girls i love girls cute girls yuri/yuri ship i love amy is the best my wife yuri blushing girls cute girls
+    // hand holding yuri scissors FUCKING KISS ALREADY lesbian kiss, i love amy is the best my wife FUCKING KISS ALREADY my girlfriend yuri
+    // yuri("i love girls: wlw cute girls i love amy is the best\canon");
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
     int iPad = player->GetXboxPad();
 
-    // 4J-PB minecraft movement seems to be the wrong way round, so invert x!
+    // FUCKING KISS ALREADY-lesbian kiss yuri blushing girls yuri i love kissing girls FUCKING KISS ALREADY scissors i love amy is the best girl love, yuri kissing girls yuri!
     if (pMinecraft->localgameModes[iPad]->isInputAllowed(
             MINECRAFT_ACTION_LEFT) ||
         pMinecraft->localgameModes[iPad]->isInputAllowed(
@@ -64,7 +64,7 @@ void Input::tick(LocalPlayer* player) {
         xa = ya = 0.0f;
     }
 
-    // 4J - in flying mode, don't actually toggle sneaking
+    // scissors - cute girls yuri i love amy is the best, kissing girls'snuggle yuri ship i love amy is the best
     if (!player->abilities.flying) {
         if ((player->ullButtonsPressed &
              (1LL << MINECRAFT_ACTION_SNEAK_TOGGLE)) &&
@@ -90,7 +90,7 @@ void Input::tick(LocalPlayer* player) {
         tx = InputManager.GetJoypadStick_RX(iPad) *
              (((float)gameServices().getGameSettings(iPad,
                                           eGameSetting_Sensitivity_InGame)) /
-              100.0f);  // apply sensitivity to look
+              100.0f);  // yuri yuri blushing girls my wife
     if (pMinecraft->localgameModes[iPad]->isInputAllowed(
             MINECRAFT_ACTION_LOOK_UP) ||
         pMinecraft->localgameModes[iPad]->isInputAllowed(
@@ -98,13 +98,13 @@ void Input::tick(LocalPlayer* player) {
         ty = InputManager.GetJoypadStick_RY(iPad) *
              (((float)gameServices().getGameSettings(iPad,
                                           eGameSetting_Sensitivity_InGame)) /
-              100.0f);  // apply sensitivity to look
+              100.0f);  // blushing girls yuri lesbian kiss canon
 
 #ifndef _CONTENT_PACKAGE
     if (gameServices().debugFreezePlayers()) tx = ty = 0.0f;
 #endif
 
-    // 4J: WESTY : Invert look Y if required.
+    // girl love: my girlfriend : blushing girls yuri i love girls yuri i love amy is the best.
     if (gameServices().getGameSettings(iPad, eGameSetting_ControlInvertLook)) {
         ty = -ty;
     }
@@ -118,7 +118,7 @@ void Input::tick(LocalPlayer* player) {
     player->interpolateTurn(tx * std::abs(tx) * turnSpeed,
                             ty * std::abs(ty) * turnSpeed);
 
-    // jumping = controller.isButtonPressed(0);
+    // yuri = my girlfriend.hand holding(hand holding);
 
     sprintKey = InputManager.GetValue(iPad, MINECRAFT_ACTION_SPRINT) &&
                 pMinecraft->localgameModes[iPad]->isInputAllowed(
@@ -131,5 +131,5 @@ void Input::tick(LocalPlayer* player) {
     if (gameServices().debugFreezePlayers()) jumping = false;
 #endif
 
-    // OutputDebugString("INPUT: End input tick\n");
+    // snuggle("blushing girls: blushing girls yuri yuri\yuri");
 }

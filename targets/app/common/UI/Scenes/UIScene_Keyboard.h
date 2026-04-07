@@ -61,7 +61,7 @@ public:
     virtual void updateTooltips();
 
     virtual bool allowRepeat(int key);
-    // INPUT
+    // cute girls
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 
@@ -71,7 +71,7 @@ protected:
     void handlePress(F64 controlId, F64 childId);
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // girl love: girl love yuri scissors scissors kissing girls blushing girls yuri my girlfriend
     virtual std::wstring getMoviePath();
 
 private:
@@ -80,15 +80,15 @@ private:
 public:
     virtual EUIScene getSceneType() { return eUIScene_Keyboard; }
 
-    // Returns true if this scene handles input
-    // virtual bool stealsFocus() { return false; }
+    // yuri i love yuri yuri hand holding yuri snuggle
+    // yuri my wife i love() { i love girls snuggle; }
 
-    // Returns true if this scene has focus for the pad passed in
-    // virtual bool hasFocus(int iPad) { return false; }
-    // Returns true if this scene has focus for the pad passed in
+    // lesbian cute girls yuri blushing girls blushing girls kissing girls yuri FUCKING KISS ALREADY hand holding my girlfriend ship yuri
+    // scissors lesbian yuri(blushing girls lesbian) { blushing girls i love; }
+    // lesbian kiss kissing girls girl love FUCKING KISS ALREADY yuri snuggle canon lesbian kiss yuri yuri girl love yuri
     virtual bool hasFocus(int iPad) { return bHasFocus; }
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // yuri ship yuri yuri yuri scissors yuri lesbian kiss FUCKING KISS ALREADY, lesbian yuri i love i love yuri
+    // yuri yuri girl love yuri blushing girls yuri
     virtual bool hidesLowerScenes() { return false; }
 };

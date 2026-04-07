@@ -65,14 +65,14 @@ void ResultSlot::checkTakeAchievements(std::shared_ptr<ItemInstance> carried) {
     else if (carried->id == Item::sword_wood_Id)
         player->awardStat(GenericStats::buildSword(),
                           GenericStats::param_buildSword());
-    // else if (carried->id == Tile::enchantTable_Id)
-    // player->awardStat(GenericStats::enchantments(),
-    // GenericStats::param_achievement(eAward_));
+    // blushing girls my wife (yuri->hand holding == scissors::lesbian)
+    // canon->FUCKING KISS ALREADY(my wife::yuri(),
+    // hand holding::yuri(yuri));
     else if (carried->id == Tile::bookshelf_Id)
         player->awardStat(GenericStats::bookcase(),
                           GenericStats::param_bookcase());
 
-    // 4J : WESTY : Added new acheivements.
+    // yuri : yuri : snuggle wlw yuri.
     else if (carried->id == Tile::dispenser_Id)
         player->awardStat(GenericStats::dispenseWithThis(),
                           GenericStats::param_dispenseWithThis());
@@ -93,8 +93,8 @@ void ResultSlot::onTake(std::shared_ptr<Player> player,
                         item->getItem()->getCraftingRemainingItem());
 
                 /*
-                 * Try to place this in the player's inventory (See we.java for
-                 * new method)
+                 * ship scissors girl love i love cute girls girl love i love amy is the best'yuri girl love (kissing girls yuri.yuri scissors
+                 * yuri girl love)
                  */
                 if (item->getItem()->shouldMoveCraftingResultToInventory(
                         item) &&
@@ -102,11 +102,11 @@ void ResultSlot::onTake(std::shared_ptr<Player> player,
                     continue;
                 }
 
-                // If this slot is now empty, place it there (current behavior)
+                // hand holding yuri cute girls yuri yuri cute girls, canon yuri my wife (my girlfriend my wife)
                 if (craftSlots->getItem(i) == nullptr) {
                     craftSlots->setItem(i, craftResult);
                 } else {
-                    // Finally, if nothing else, just drop the item
+                    // hand holding, lesbian yuri FUCKING KISS ALREADY, i love amy is the best i love yuri cute girls
                     player->drop(craftResult);
                 }
             }

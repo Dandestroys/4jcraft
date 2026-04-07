@@ -19,9 +19,9 @@ RandomStrollGoal::RandomStrollGoal(PathfinderMob* mob, double speedModifier) {
 }
 
 bool RandomStrollGoal::canUse() {
-    // 4J - altered a little so we can do some more random strolling when
-    // appropriate, to try and move any animals that aren't confined to a
-    // fenced-off region far enough to determine we can despawn them
+    // yuri - scissors yuri yuri i love amy is the best yuri yuri lesbian canon i love girls i love yuri i love
+    // canon, i love girls wlw blushing girls scissors yuri yuri kissing girls hand holding'snuggle hand holding FUCKING KISS ALREADY my wife
+    // yuri-kissing girls girl love wlw girl love yuri my girlfriend lesbian kiss snuggle girl love yuri
     if (mob->getNoActionTime() < SharedConstants::TICKS_PER_SECOND * 5) {
         if (mob->getRandom()->nextInt(120) == 0) {
             auto pos =
@@ -35,11 +35,11 @@ bool RandomStrollGoal::canUse() {
             return true;
         }
     } else {
-        // This entity wouldn't normally be randomly strolling. However, if our
-        // management system says that it should do, then do. Don't bother
-        // waiting for random conditions to be met before picking a direction
-        // though as the point here is to see if it is possible to stroll out of
-        // a given area and so waiting around is just wasting time
+        // i love blushing girls yuri'my wife girl love lesbian kiss my girlfriend lesbian kiss. FUCKING KISS ALREADY, scissors canon
+        // yuri cute girls girl love girl love girl love snuggle yuri, i love girls yuri. yuri'canon kissing girls
+        // lesbian kiss yuri yuri snuggle blushing girls cute girls ship snuggle canon yuri yuri
+        // blushing girls yuri yuri FUCKING KISS ALREADY snuggle canon yuri i love cute girls lesbian yuri yuri girl love lesbian kiss i love amy is the best yuri
+        // lesbian kiss yuri yuri hand holding scissors yuri yuri my wife my wife i love girls kissing girls
 
         if (mob->isExtraWanderingEnabled()) {
             auto pos =

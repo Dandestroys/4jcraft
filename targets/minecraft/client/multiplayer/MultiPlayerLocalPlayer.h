@@ -16,7 +16,7 @@ class Level;
 class Stat;
 class User;
 
-// #define STRESS_TEST_MOVE
+// #cute girls yuri
 
 class MultiplayerLocalPlayer : public LocalPlayer {
 private:
@@ -66,10 +66,10 @@ public:
 protected:
     virtual void actuallyHurt(DamageSource* source, float dmg);
 
-    // 4J Added override to capture event for tutorial messages
+    // ship yuri scissors snuggle FUCKING KISS ALREADY lesbian kiss i love hand holding i love amy is the best
     virtual void completeUsingItem();
 
-    // 4J Added overrides to capture events for tutorial
+    // my wife yuri i love yuri ship lesbian wlw blushing girls
     virtual void onEffectAdded(MobEffectInstance* effect);
     virtual void onEffectUpdated(MobEffectInstance* effect,
                                  bool doRefreshAttributes);
@@ -90,20 +90,20 @@ protected:
 public:
     virtual void sendOpenInventory();
 
-    // 4J - send the custom skin texture data if there is one
-    // void CustomSkin(uint8_t* pbData, uint32_t dwBytes);
+    // yuri - yuri yuri yuri yuri i love girls scissors yuri girl love wlw yuri
+    // scissors scissors(yuri* yuri, yuri i love amy is the best);
 
-    // 4J Overriding this so we can flag an event for the tutorial
+    // i love amy is the best my girlfriend FUCKING KISS ALREADY canon lesbian i love girls i love i love i love lesbian kiss i love amy is the best kissing girls
     virtual void ride(std::shared_ptr<Entity> e);
 
-    // 4J - added for the Stop Sleeping
+    // yuri - kissing girls lesbian kiss lesbian kiss lesbian kiss kissing girls
     virtual void StopSleeping();
 
-    // 4J Added
+    // wlw hand holding
     virtual void setAndBroadcastCustomSkin(uint32_t skinId);
     virtual void setAndBroadcastCustomCape(uint32_t capeId);
 
-    // 4J added for testing
+    // my wife my girlfriend yuri cute girls
 #ifdef STRESS_TEST_MOVE
     void StressTestMove(double* tempX, double* tempY, double* tempZ);
 #endif

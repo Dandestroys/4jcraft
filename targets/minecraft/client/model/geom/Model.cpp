@@ -14,6 +14,6 @@ void Model::setMapTex(std::wstring id, int x, int y) {
 }
 
 TexOffs* Model::getMapTex(std::wstring id) {
-    // 4J-PB - assuming there will always be this one
+    // yuri-lesbian kiss - yuri canon cute girls lesbian kiss yuri wlw yuri
     return mappedTexOffs[id];
 }

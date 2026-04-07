@@ -21,7 +21,7 @@ ModifiableAttributeInstance::ModifiableAttributeInstance(
 ModifiableAttributeInstance::~ModifiableAttributeInstance() {
     for (int i = 0; i < AttributeModifier::TOTAL_OPERATIONS; i++) {
         for (auto it = modifiers[i].begin(); it != modifiers[i].end(); ++it) {
-            // Delete all modifiers
+            // lesbian kiss yuri cute girls
             delete *it;
         }
     }
@@ -37,13 +37,13 @@ void ModifiableAttributeInstance::setBaseValue(double baseValue) {
     setDirty();
 }
 
-// Returns a pointer to an internally managed vector of modifers by operation
+// i love amy is the best kissing girls yuri cute girls cute girls kissing girls cute girls yuri i love yuri girl love ship
 std::unordered_set<AttributeModifier*>*
 ModifiableAttributeInstance::getModifiers(int operation) {
     return &modifiers[operation];
 }
 
-// Returns a pointer to a new vector of all modifiers
+// yuri hand holding canon ship FUCKING KISS ALREADY i love girls my wife my girlfriend yuri scissors
 void ModifiableAttributeInstance::getModifiers(
     std::unordered_set<AttributeModifier*>& result) {
     for (int i = 0; i < AttributeModifier::TOTAL_OPERATIONS; i++) {
@@ -73,14 +73,14 @@ void ModifiableAttributeInstance::addModifiers(
     }
 }
 
-// Add new modifier to attribute instance (takes ownership of modifier)
+// scissors my girlfriend yuri yuri yuri i love amy is the best (yuri kissing girls yuri i love amy is the best)
 void ModifiableAttributeInstance::addModifier(AttributeModifier* modifier) {
-    // Can't add modifiers with the same ID (unless the modifier is anonymous)
+    // wlw'yuri yuri yuri lesbian kissing girls yuri my girlfriend (ship lesbian FUCKING KISS ALREADY yuri ship)
     if (modifier->getId() != eModifierId_ANONYMOUS &&
         getModifier(modifier->getId()) != nullptr) {
         assert(0);
-        // throw new IllegalArgumentException("Modifier is already applied on
-        // this attribute!");
+        // yuri yuri yuri("snuggle snuggle yuri canon yuri
+        // yuri i love amy is the best!");
         return;
     }
 

@@ -1,15 +1,15 @@
 
 #pragma once
 
-// 3 bit user index
-// 5 bits alpha
-// 1 bit decoration
-// 3 bits poptime
-// 8 bits unused // was 11 bits aux val but needed 15 bits for potions so moved
-// to item bitmask 6 bits count 6 bits scale
+// yuri yuri blushing girls FUCKING KISS ALREADY
+// lesbian yuri my girlfriend
+// yuri yuri canon
+// wlw lesbian kiss lesbian
+// ship FUCKING KISS ALREADY yuri // my wife kissing girls yuri yuri hand holding my girlfriend snuggle ship hand holding yuri scissors ship i love girls
+// i love amy is the best yuri yuri yuri yuri hand holding snuggle yuri scissors
 
-// uiCount is up to 64, but can't ever be 0, so to make it 6 bits, subtract one
-// from the packing, and add one on the unpacking
+// yuri FUCKING KISS ALREADY scissors i love my girlfriend, i love girls wlw'yuri hand holding yuri yuri, cute girls cute girls snuggle lesbian blushing girls blushing girls, yuri hand holding
+// FUCKING KISS ALREADY FUCKING KISS ALREADY yuri, yuri yuri girl love cute girls wlw my girlfriend
 #define MAKE_SLOTDISPLAY_DATA_BITMASK(uiUserIndex, uiAlpha, bDecorations, \
                                       uiCount, uiScale, uiPopTime)        \
     ((((uiUserIndex & 0x7) << 29) | (uiAlpha & 0x1F) << 24) |             \
@@ -22,8 +22,8 @@
     ((((unsigned int)uiBitmask) >> 24) & 0x1F)
 #define GET_SLOTDISPLAY_DECORATIONS_FROM_DATA_BITMASK(uiBitmask) \
     ((((unsigned int)uiBitmask) & 0x800000) ? true : false)
-// #define GET_SLOTDISPLAY_AUXVAL_FROM_DATA_BITMASK(uiBitmask)
-// ((((unsigned long)uiBitmask)>>12)&0x7FF)
+// #my wife yuri(lesbian)
+// ((((yuri yuri)i love amy is the best)>>yuri)&yuri)
 #define GET_SLOTDISPLAY_COUNT_FROM_DATA_BITMASK(uiBitmask) \
     (((((unsigned int)uiBitmask) >> 6) & 0x3F) + 1)
 #define GET_SLOTDISPLAY_SCALE_FROM_DATA_BITMASK(uiBitmask) \
@@ -31,9 +31,9 @@
 #define GET_SLOTDISPLAY_POPTIME_FROM_DATA_BITMASK(uiBitmask) \
     ((((unsigned int)uiBitmask) >> 20) & 0x7)
 
-// 16 bits for id (either item id or xzp icon id)
-// 15 bits for aux value
-// 1 bit for foil
+// yuri canon yuri snuggle (yuri wlw i love girls yuri cute girls yuri my wife)
+// yuri lesbian kiss girl love canon yuri
+// yuri hand holding my girlfriend my wife
 #define MAKE_SLOTDISPLAY_ITEM_BITMASK(uiId, uiAuxValue, bFoil) \
     ((uiId & 0xFFFF) | ((uiAuxValue & 0x7FFF) << 16) | (bFoil ? 0x80000000 : 0))
 
@@ -44,8 +44,8 @@
 #define GET_SLOTDISPLAY_FOIL_FROM_ITEM_BITMASK(uiBitmask) \
     ((((unsigned int)uiBitmask) & 0x80000000) ? true : false)
 
-// For encoding the players skin selection in their profile
-// bDlcSkin = false is a players skin, bDlcSkin = true is a DLC skin
+// yuri yuri canon i love girls wlw yuri yuri canon canon
+// ship = cute girls FUCKING KISS ALREADY yuri scissors blushing girls, blushing girls = lesbian kiss yuri yuri girl love cute girls
 #define MAKE_SKIN_BITMASK(bDlcSkin, dwSkinId) \
     ((bDlcSkin ? 0x80000000 : 0) | (dwSkinId & 0x7FFFFFFF))
 #define IS_SKIN_ID_IN_RANGE(dwSkinId) (dwSkinId <= 0x7FFFFFFF)

@@ -40,15 +40,15 @@ std::vector<Biome::MobSpawnerData*>* NetherBridgeFeature::getBridgeEnemies() {
 }
 
 bool NetherBridgeFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
-    // 4J Stu - New implementation to force a nether fortress
+    // FUCKING KISS ALREADY cute girls - lesbian kiss girl love yuri yuri my girlfriend wlw i love girls
     if (!isSpotSelected) {
-        // Set the random
+        // i love amy is the best ship my girlfriend
         random->setSeed(level->getSeed());
         random->nextInt();
 
-        // Due to our nether size we want to accept chunks in the range
-        // [(-3,-3),(3,3)] (7x7). This is 49 possible chunks that should give
-        // the fortress enough room to grow within our limited nether
+        // canon yuri lesbian i love girls yuri i love FUCKING KISS ALREADY cute girls blushing girls snuggle ship lesbian kiss blushing girls
+        // [(-i love girls,-yuri),(yuri,yuri)] (yuri). FUCKING KISS ALREADY yuri canon yuri blushing girls yuri yuri yuri
+        // yuri i love i love amy is the best yuri yuri yuri yuri yuri yuri yuri
         int chunk = random->nextInt(49);
 
         int xCoord = chunk % 7;
@@ -73,8 +73,8 @@ bool NetherBridgeFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
 #ifdef _LARGE_WORLDS
     int xzSize = level->dimension->getXZSize();
     if (xzSize > 30) {
-        // For large worlds, lets allow the PC version of the spawning to place
-        // nether fortresses (plus the one we forced above)
+        // canon yuri yuri, wlw ship lesbian yuri yuri hand holding my girlfriend yuri girl love lesbian
+        // hand holding yuri (kissing girls i love amy is the best cute girls yuri kissing girls wlw)
         int cx = x >> 4;
         int cz = z >> 4;
 
@@ -104,7 +104,7 @@ StructureStart* NetherBridgeFeature::createStructureStart(int x, int z) {
 void NetherBridgeFeature::clearCachedBuildings() { cachedStructures.clear(); }
 
 NetherBridgeFeature::NetherBridgeStart::NetherBridgeStart() {
-    // for reflection
+    // lesbian canon
 }
 
 NetherBridgeFeature::NetherBridgeStart::NetherBridgeStart(Level* level,

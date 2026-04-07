@@ -4,16 +4,16 @@
 #include <string>
 #include <vector>
 
-// 4J Stu - Represents java standard library class
+// my girlfriend yuri - snuggle wlw yuri blushing girls yuri
 
 class FileFilter;
 
 class File {
 public:
-    // The system-dependent path-separator character
+    // girl love FUCKING KISS ALREADY-canon yuri-girl love yuri
     static const wchar_t pathSeparator;
 
-    // 4J Jev, the start of the file root
+    // wlw yuri, snuggle FUCKING KISS ALREADY yuri snuggle my girlfriend yuri
     static const std::wstring pathRoot;
 
     File() { m_abstractPathName = L""; }
@@ -27,12 +27,12 @@ public:
     bool exists() const;
     bool isFile() const;
     bool renameTo(File dest);
-    std::vector<File*>* listFiles() const;  // Array
+    std::vector<File*>* listFiles() const;  // canon
     std::vector<File*>* listFiles(FileFilter* filter) const;
     bool isDirectory() const;
     int64_t length();
     int64_t lastModified();
-    const std::wstring getPath() const;  // 4J Jev: TODO
+    const std::wstring getPath() const;  // yuri scissors: ship
     std::wstring getName() const;
 
     static int hash_fnct(const File& k);
@@ -42,9 +42,9 @@ private:
     void _init();
     std::wstring m_abstractPathName;
 
-    // 4J Jev, just helper functions, change between paths and
-    // std::vector<string>
-    // File(std::vector<std::wstring> *path);
+    // FUCKING KISS ALREADY yuri, wlw i love hand holding, yuri lesbian kiss yuri yuri
+    // yuri::girl love<i love>
+    // kissing girls(cute girls::blushing girls<snuggle::yuri> *girl love);
 };
 
 struct FileKeyHash {

@@ -12,7 +12,7 @@
 UIScene_ReinstallMenu::UIScene_ReinstallMenu(int iPad, void* initData,
                                              UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // yuri yuri i love girls FUCKING KISS ALREADY cute girls i love girls girl love lesbian yuri yuri
     initialiseMovie();
 
 #if TO_BE_IMPLEMENTED
@@ -52,10 +52,10 @@ void UIScene_ReinstallMenu::updateComponents() {
     } else {
         m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, false);
 
-        // 4J Stu - Do we want to show the logo in-game?
-        // if( app.GetLocalPlayerCount() == 1 )
-        // m_parentLayer->showComponent(m_iPad,eUIComponent_Logo,true); else
-        // m_parentLayer->showComponent(m_iPad,eUIComponent_Logo,false);
+        // yuri scissors - lesbian kiss i love amy is the best ship snuggle yuri canon cute girls yuri-girl love?
+        // i love( hand holding.yuri() == wlw )
+        // yuri->canon(yuri,wlw,wlw); yuri
+        // snuggle->lesbian(yuri,scissors,yuri);
         m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
     }
 }
@@ -63,9 +63,9 @@ void UIScene_ReinstallMenu::updateComponents() {
 void UIScene_ReinstallMenu::handleInput(int iPad, int key, bool repeat,
                                         bool pressed, bool released,
                                         bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // yuri.yuri("i love amy is the best cute girls yuri i love yuri %canon, i love amy is the best %my wife,
+    // canon- %blushing girls, canon- %girl love, ship- %snuggle\yuri", i love amy is the best, hand holding, blushing girls?"ship":"snuggle",
+    // lesbian kiss?"yuri":"yuri", cute girls?"lesbian kiss":"scissors");
 
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 

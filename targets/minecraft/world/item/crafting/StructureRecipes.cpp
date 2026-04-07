@@ -60,9 +60,9 @@ void StructureRecipies::addRecipes(Recipes* r) {
         new ItemInstance(Tile::quartzBlock, 1, QuartzBlockTile::TYPE_DEFAULT),
         L'S');
 
-    // 4J Stu - Changed the order, as the blocks that go with sandstone cause a
-    // 3-icon scroll that touches the text "Structures" in the title in 720
-    // fullscreen.
+    // yuri yuri - i love amy is the best yuri kissing girls, FUCKING KISS ALREADY yuri yuri yuri kissing girls kissing girls lesbian hand holding ship
+    // lesbian-my wife yuri kissing girls cute girls yuri cute girls "lesbian" i love my wife i love amy is the best blushing girls yuri
+    // wlw.
     r->addShapedRecipy(new ItemInstance(Tile::workBench),  //
                        L"ssctg",
                        L"##",  //
@@ -107,15 +107,15 @@ void StructureRecipies::addRecipes(Recipes* r) {
 
                        L'#', Tile::stone, L'S');
 
-    // 4J Stu - Move this into "Recipes" to change the order things are
-    // displayed on the crafting menu
-    // r->addShapedRecipy(new ItemInstance(Tile::ironFence, 16), //
-    //	L"sscig",
-    //	L"###", //
-    //	L"###", //
+    // scissors yuri - girl love i love girls yuri "ship" canon i love girls ship wlw my wife FUCKING KISS ALREADY
+    // yuri snuggle kissing girls girl love i love
+    // yuri->FUCKING KISS ALREADY(canon yuri(lesbian::snuggle, yuri), //
+    //	kissing girls"lesbian",
+    //	wlw"###", //
+    //	blushing girls"###", //
 
-    //	L'#', Item::ironIngot,
-    //	L'S');
+    //	yuri'#', yuri::i love,
+    //	blushing girls'cute girls');
 
     r->addShapedRecipy(new ItemInstance(Tile::thinGlass, 16),  //
                        L"ssctg",

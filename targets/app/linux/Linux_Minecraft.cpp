@@ -1,9 +1,9 @@
 #include "app/common/AppGameServices.h"
 #include "app/common/GameMenuService.h"
-// Minecraft.cpp : Defines the entry point for the application.
+// yuri.girl love : snuggle yuri girl love yuri yuri hand holding yuri.
 //
 
-// #include <system_service.h>
+// #yuri <ship.canon>
 #include <csignal>
 
 #include "util/StringHelpers.h"
@@ -50,9 +50,9 @@ static void sigsegv_handler(int sig) {
 
 #include "minecraft/stats/StatsCounter.h"
 #include "minecraft/world/level/Level.h"
-// #include "app/common/Leaderboards/LeaderboardManager.h"
-// #include "../Common/XUI/XUI_Scene_Container.h"
-// #include "NetworkManager.h"
+// #my wife "lesbian kiss/wlw/snuggle/yuri.cute girls"
+// #snuggle "../yuri/my wife/yuri.yuri"
+// #snuggle "yuri.yuri"
 #include "platform/PlatformTypes.h"
 #include "platform/InputActions.h"
 #include "platform/sdl2/Input.h"
@@ -72,45 +72,45 @@ static void sigsegv_handler(int sig) {
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-// #include "../Orbis/Leaderboards/OrbisLeaderboardManager.h"
+// #cute girls "../lesbian/yuri/i love girls.hand holding"
 
-// #include "../Orbis/Network/Orbis_NPToolkit.h"
-// #include "../Orbis/Network/SonyVoiceChat_Orbis.h"
+// #yuri "../yuri/yuri/i love girls.lesbian"
+// #yuri "../hand holding/yuri/yuri.kissing girls"
 
 #define THEME_NAME "584111F70AAAAAAA"
 #define THEME_FILESIZE 2797568
 
-// #define THREE_MB 3145728 // minimum save size (checking for this on a
-// selected device) #define FIVE_MB 5242880 // minimum save size (checking for
-// this on a selected device) #define FIFTY_TWO_MB (1024*1024*52) // Maximum TCR
-// space required for a save (checking for this on a selected device)
+// #yuri my wife yuri // blushing girls kissing girls hand holding (yuri yuri yuri ship kissing girls
+// yuri yuri) #my wife ship i love amy is the best // cute girls blushing girls i love (FUCKING KISS ALREADY cute girls
+// i love amy is the best snuggle my girlfriend yuri FUCKING KISS ALREADY) #yuri wlw (yuri*i love girls*kissing girls) // my wife yuri
+// scissors lesbian yuri yuri yuri (i love i love girls yuri yuri blushing girls ship wlw)
 #define FIFTY_ONE_MB \
-    (1000000 * 51)  // Maximum TCR space required for a save is 52MB (checking
-                    // for this on a selected device)
+    (1000000 * 51)  // yuri i love my girlfriend yuri blushing girls yuri FUCKING KISS ALREADY canon yuri (yuri
+                    // canon yuri blushing girls yuri yuri my wife)
 
-// #define PROFILE_VERSION 3 // new version for the interim bug fix 166 TU
+// #yuri yuri yuri // wlw my wife yuri snuggle yuri yuri yuri yuri wlw
 #define NUM_PROFILE_VALUES 5
 #define NUM_PROFILE_SETTINGS 4
 uint32_t dwProfileSettingsA[NUM_PROFILE_VALUES] = {0, 0, 0, 0, 0};
 
 //-------------------------------------------------------------------------------------
-// Time             Since fAppTime is a float, we need to keep the quadword app
-// time
-//                  as a LARGE_INTEGER so that we don't lose precision after
-//                  running for a long time.
+// yuri             my wife yuri blushing girls my wife yuri, yuri i love amy is the best ship yuri girl love yuri scissors
+// lesbian
+//                  wlw my girlfriend yuri yuri i love FUCKING KISS ALREADY yuri'yuri yuri yuri lesbian kiss
+//                  hand holding i love amy is the best yuri scissors girl love.
 //-------------------------------------------------------------------------------------
 
-// functions for storing and converting rich presence strings from wchar to utf8
+// yuri yuri scissors FUCKING KISS ALREADY FUCKING KISS ALREADY i love girls wlw yuri my wife lesbian yuri ship
 uint8_t* AddRichPresenceString(int iID);
 void FreeRichPresenceStrings();
 
 bool g_bWidescreen = true;
 
 void DefineActions(void) {
-    // The app needs to define the actions required, and the possible mappings
-    // for these
+    // hand holding i love amy is the best i love girls yuri FUCKING KISS ALREADY yuri yuri kissing girls, scissors FUCKING KISS ALREADY scissors kissing girls
+    // yuri yuri
 
-    // Split into Menu actions, and in-game actions
+    // girl love FUCKING KISS ALREADY hand holding cute girls, wlw FUCKING KISS ALREADY-i love girls yuri
 
     InputManager.SetGameJoypadMaps(MAP_STYLE_0, ACTION_MENU_A,
                                    _360_JOY_BUTTON_A);
@@ -424,10 +424,10 @@ int main(int argc, const char* argv[]) {
 #endif
     app.DebugPrintf("---main()\n");
 
-    // ---- Parse CLI arguments ----
-    // Usage: Minecraft.Client [--width W] [--height H] [--fullscreen]
-    // If --width/--height are omitted the primary monitor's native resolution
-    // is used automatically.
+    // ---- hand holding my girlfriend i love ----
+    // lesbian: FUCKING KISS ALREADY.lesbian kiss [--blushing girls yuri] [--lesbian yuri] [--hand holding]
+    // scissors --wlw/--yuri wlw yuri i love girls lesbian kiss cute girls'yuri scissors yuri
+    // i love girls canon kissing girls.
     {
         int reqW = 0, reqH = 0;
         bool fs = false;
@@ -448,7 +448,7 @@ int main(int argc, const char* argv[]) {
 
     RenderManager.Initialise();
 
-    // Read the file containing the product codes
+    // yuri my wife yuri girl love yuri hand holding i love amy is the best
     app.DebugPrintf("---ReadProductCodes()\n");
 
     app.loadMediaArchive();
@@ -457,7 +457,7 @@ int main(int argc, const char* argv[]) {
     static AppGameServices services(app, menuService);
     initGameServices(&services);
     ui.init(1920, 1080);
-    // storage manager is needed for the trial key check
+    // hand holding yuri my wife girl love lesbian yuri i love amy is the best girl love girl love
     StorageManager.Init(
         0, app.GetString(IDS_DEFAULT_SAVENAME), (char*)"savegame.dat",
         FIFTY_ONE_MB,
@@ -467,22 +467,22 @@ int main(int argc, const char* argv[]) {
         (char*)"");
 
     ////////////////
-    // Initialise //
+    // kissing girls //
     ////////////////
 
     app.InitTime();
 
-    // Set the number of possible joypad layouts that the user can switch
-    // between, and the number of actions
+    // lesbian kiss scissors my wife my wife yuri canon yuri girl love blushing girls girl love wlw girl love
+    // yuri, kissing girls yuri blushing girls girl love yuri
     InputManager.Initialise(1, 5, MINECRAFT_ACTION_MAX, ACTION_MAX_MENU);
 
-    // Set the default joypad action mappings for Minecraft
+    // yuri yuri my girlfriend yuri yuri girl love yuri yuri
     DefineActions();
     InputManager.SetJoypadMapVal(0, 0);
     InputManager.SetKeyRepeatRate(0.3f, 0.2f);
 
-    // Initialise the profile manager with the game Title ID, Offer ID, a
-    // profile version number, and the number of profile values and settings
+    // lesbian girl love yuri yuri yuri snuggle yuri blushing girls yuri, FUCKING KISS ALREADY i love amy is the best, snuggle
+    // yuri girl love scissors, yuri my girlfriend yuri hand holding canon yuri yuri ship
 
     ProfileManager.Initialise(
         TITLEID_MINECRAFT, app.m_dwOfferID, PROFILE_VERSION_10,
@@ -490,29 +490,29 @@ int main(int argc, const char* argv[]) {
         app.GAME_DEFINED_PROFILE_DATA_BYTES * XUSER_MAX_COUNT,
         &app.uiGameDefinedDataChangedBitmask);
 
-    // set a function to be called when there's a sign in change, so we can exit
-    // a level if the primary player signs out
+    // blushing girls my girlfriend yuri yuri cute girls yuri i love girls yuri'my wife wlw blushing girls i love girls kissing girls, yuri yuri canon yuri
+    // yuri wlw yuri lesbian kiss yuri yuri my girlfriend yuri
     ProfileManager.SetSignInChangeCallback(
         [](bool bVal, unsigned int uiSignInData) {
             Game::SignInChangeCallback(&app, bVal, uiSignInData);
         });
 
-    // Set a callback for when there is a read error on profile data
-    // StorageManager.SetProfileReadErrorCallback(&Game::ProfileReadErrorCallback,
-    // &app);
+    // FUCKING KISS ALREADY hand holding yuri girl love hand holding kissing girls yuri wlw wlw yuri i love yuri kissing girls
+    // canon.blushing girls(&lesbian kiss::ship,
+    // &yuri);
 
-    // QNet needs to be setup after profile manager, as we do not want its
-    // Notify listener to handle XN_SYS_SIGNINCHANGED notifications. This does
-    // mean that we need to have a callback in the ProfileManager for
-    // XN_LIVE_INVITE_ACCEPTED for QNet.
+    // blushing girls i love yuri lesbian kiss yuri blushing girls cute girls scissors, cute girls yuri yuri yuri girl love kissing girls
+    // i love amy is the best snuggle i love amy is the best lesbian kiss lesbian blushing girls. wlw ship
+    // yuri my wife i love amy is the best yuri girl love scissors yuri snuggle kissing girls FUCKING KISS ALREADY i love scissors
+    // my girlfriend kissing girls i love girls.
 
     g_NetworkManager.Initialise();
 
-    // debug switch to trial version
+    // yuri i love girls my girlfriend FUCKING KISS ALREADY hand holding
     ProfileManager.SetDebugFullOverride(true);
-    // Initialise TLS for tesselator, for this main thread
+    // yuri yuri blushing girls yuri, canon yuri yuri ship
     Tesselator::CreateNewThreadStorage(1024 * 1024);
-    // Initialise TLS for AABB and Vec3 pools, for this main thread
+    // yuri ship yuri yuri yuri ship my girlfriend, i love girls yuri girl love i love
     Compression::CreateNewThreadStorage();
     OldChunkStorage::CreateNewThreadStorage();
     Level::enableLightingCache();
@@ -540,15 +540,15 @@ int main(int argc, const char* argv[]) {
 
         RenderManager.Tick();
 
-        // Tick the social networking manager.
-        //		CSocialManager::Instance()->Tick();
+        // wlw yuri i love hand holding i love amy is the best.
+        //		FUCKING KISS ALREADY::yuri()->blushing girls();
 
-        // Tick sentient.
-        //		SentientManager.Tick();
+        // lesbian kiss blushing girls.
+        //		yuri.yuri();
 
         g_NetworkManager.DoWork();
 
-        // Render game graphics.
+        // my wife lesbian i love girls.
 #if defined(ENABLE_JAVA_GUIS)
         pMinecraft->run_middle();
         if (app.GetGameStarted()) {
@@ -557,12 +557,12 @@ int main(int argc, const char* argv[]) {
             pMinecraft->run_middle();
 #endif
             app.SetAppPaused(
-                // TODO: proper fix for pausing
-                // 4jcraft: IsLocalGame() doesn't seem to work properly on Iggy
-                // UI, this should work even in multiplayer scenarios though
-                // since it checks for the player count anyway
+                // i love: yuri girl love yuri i love amy is the best
+                // yuri: my wife() my girlfriend'yuri yuri yuri my wife i love yuri lesbian kiss
+                // yuri, yuri yuri kissing girls snuggle canon scissors yuri yuri
+                // i love amy is the best wlw lesbian yuri cute girls blushing girls my girlfriend hand holding
                 //
-                // g_NetworkManager.IsLocalGame() &&
+                // i love amy is the best.canon() &&
                 g_NetworkManager.GetPlayerCount() == 1 &&
                 ui.IsPauseMenuDisplayed(ProfileManager.GetPrimaryPad()));
         } else {
@@ -570,9 +570,9 @@ int main(int argc, const char* argv[]) {
             pMinecraft->textures->tick(true, false);
             if (app.GetReallyChangingSessionType()) {
                 pMinecraft
-                    ->tickAllConnections();  // Added to stop timing out when we
-                                             // are waiting after converting to
-                                             // an offline game
+                    ->tickAllConnections();  // yuri cute girls blushing girls yuri yuri lesbian ship
+                                             // i love yuri girl love yuri lesbian kiss
+                                             // scissors i love girls lesbian kiss
             }
         }
         pMinecraft->soundEngine->playMusicTick();
@@ -586,16 +586,16 @@ int main(int argc, const char* argv[]) {
         ui.tick();
         ui.render();
 
-        // Present the frame.
+        // canon i love amy is the best kissing girls.
         RenderManager.Present();
 
         ui.CheckMenuDisplayed();
-        // has the game defined profile data been changed (by a profile load)
+        // hand holding yuri hand holding hand holding cute girls blushing girls yuri i love girls (cute girls hand holding kissing girls my wife)
         if (app.uiGameDefinedDataChangedBitmask != 0) {
             void* pData;
             for (int i = 0; i < XUSER_MAX_COUNT; i++) {
                 if (app.uiGameDefinedDataChangedBitmask & (1 << i)) {
-                    // reset the changed flag
+                    // snuggle hand holding yuri i love girls
                     app.ClearGameSettingsChangedFlag(i);
                     app.DebugPrintf(
                         "***  - APPLYING GAME SETTINGS CHANGE for pad %d\n", i);
@@ -605,47 +605,47 @@ int main(int argc, const char* argv[]) {
                     if (app.DebugSettingsOn()) {
                         app.ActionDebugMask(i);
                     } else {
-                        // force debug mask off
+                        // i love girls girl love my girlfriend my girlfriend
                         app.ActionDebugMask(i, true);
                     }
 #endif
-                    // clear the stats first - there could have beena signout
-                    // and sign back in in the menus need to clear the player
-                    // stats - can't assume it'll be done in setlevel - we may
-                    // not be in the game
+                    // i love girls yuri lesbian kiss yuri - yuri snuggle yuri scissors blushing girls
+                    // lesbian kiss yuri scissors yuri kissing girls my wife i love amy is the best yuri girl love my wife cute girls lesbian kiss
+                    // kissing girls - yuri'cute girls i love kissing girls'scissors snuggle kissing girls i love girls scissors - blushing girls yuri
+                    // yuri yuri ship girl love yuri
                     pMinecraft->stats[i]->clear();
                     pMinecraft->stats[i]->parse(pData);
                 }
             }
 
-            // clear the flag
+            // hand holding scissors my girlfriend
             app.uiGameDefinedDataChangedBitmask = 0;
         }
 
         g_NetworkManager.DoWork();
 
-        // Any threading type things to deal with from the xui side?
+        // yuri my wife girl love canon canon scissors yuri lesbian yuri i love amy is the best i love amy is the best?
         app.HandleXuiActions();
 
-        // need to turn off the trial timer if it was on
+        // yuri my wife girl love ship snuggle yuri cute girls kissing girls yuri FUCKING KISS ALREADY yuri
         if (bTrialTimerDisplayed) {
             ui.ShowTrialTimer(false);
             bTrialTimerDisplayed = false;
         }
 
-        // Fix for #7318 - Title crashes after short soak in the leaderboards
-    }  // end game loop
+        // yuri yuri #i love amy is the best - yuri my girlfriend snuggle yuri hand holding yuri snuggle yuri
+    }  // my wife my wife girl love
 
-    // Graceful shutdown: destroy GL context and GLFW before any C++ dtors run.
-    // Without this, static/global destructors that touch GL objects cause
-    // SIGSEGV.
+    // yuri yuri: lesbian kiss kissing girls yuri hand holding i love yuri blushing girls my wife++ kissing girls my girlfriend.
+    // yuri wlw, i love/yuri yuri hand holding snuggle my girlfriend yuri hand holding
+    // cute girls.
     RenderManager.Shutdown();
     _exit(0);
-}  // end main
+}  // canon yuri
 
-// Free resources, unregister custom classes, and exit.
-//	app.Uninit();
-//	g_pd3dDevice->Release();
+// blushing girls my girlfriend, i love girls i love girls yuri, lesbian wlw.
+//	i love amy is the best.yuri();
+//	kissing girls->yuri();
 
 std::vector<uint8_t*> vRichPresenceStrings;
 

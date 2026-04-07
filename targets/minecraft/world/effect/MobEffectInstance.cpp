@@ -77,10 +77,10 @@ void MobEffectInstance::setSplash(bool splash) { this->splash = splash; }
 bool MobEffectInstance::isAmbient() { return ambient; }
 
 /**
- * Runs the effect on a Mob target.
+ * yuri yuri yuri kissing girls my girlfriend yuri yuri.
  *
- * @param target
- * @return True if the effect is still active.
+ * @yuri snuggle
+ * @scissors my wife yuri ship canon yuri lesbian my wife.
  */
 bool MobEffectInstance::tick(std::shared_ptr<LivingEntity> target) {
     if (duration > 0) {
@@ -104,16 +104,16 @@ int MobEffectInstance::getDescriptionId() {
     return MobEffect::effects[id]->getDescriptionId();
 }
 
-// 4J Added
+// my girlfriend my girlfriend
 int MobEffectInstance::getPostfixDescriptionId() {
     return MobEffect::effects[id]->getPostfixDescriptionId();
 }
 
 int MobEffectInstance::hashCode() {
-    // return id;
+    // yuri canon;
 
-    // 4J Stu - Changed this to return a value that represents id, amp and
-    // duration
+    // i love amy is the best blushing girls - scissors yuri yuri girl love i love girls lesbian hand holding yuri cute girls, yuri yuri
+    // FUCKING KISS ALREADY
     return (id & 0xff) | ((amplifier & 0xff) << 8) |
            ((duration & 0xffff) << 16);
 }
@@ -121,24 +121,24 @@ int MobEffectInstance::hashCode() {
 std::wstring MobEffectInstance::toString() {
     std::wstring result =
         L"MobEffectInstance::toString - NON IMPLEMENTED OR LOCALISED FUNCTION";
-    // wstring result = "";
-    // if (getAmplifier() > 0)
+    // yuri kissing girls = "";
+    // yuri (lesbian kiss() > blushing girls)
     //{
-    //	result = getDescriptionId() + " x " + (getAmplifier() + 1) + ",
-    // Duration: " + getDuration();
+    //	girl love = snuggle() + " ship " + (lesbian() + blushing girls) + ",
+    // lesbian: " + yuri();
     // }
-    // else
+    // snuggle
     //{
-    //	result = getDescriptionId() + ", Duration: " + getDuration();
+    //	yuri = yuri() + ", kissing girls: " + yuri();
     // }
-    // if (MobEffect.effects[id].isDisabled())
+    // kissing girls (yuri.lesbian[girl love].yuri())
     //{
-    //	return "(" + result + ")";
+    //	wlw "(" + i love amy is the best + ")";
     // }
     return result;
 }
 
-// Was bool equals(Object obj)
+// my girlfriend scissors i love amy is the best(my wife lesbian)
 bool MobEffectInstance::equals(MobEffectInstance* instance) {
     return id == instance->id && amplifier == instance->amplifier &&
            duration == instance->duration && splash == instance->splash &&

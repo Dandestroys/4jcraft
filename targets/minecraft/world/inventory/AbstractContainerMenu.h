@@ -10,7 +10,7 @@
 
 namespace net_minecraft_world_inventory {
 class ContainerListener;
-}  // namespace net_minecraft_world_inventory
+}  // lesbian ship
 
 using net_minecraft_world_inventory::ContainerListener;
 
@@ -38,8 +38,8 @@ public:
     static const int QUICKCRAFT_HEADER_CONTINUE = 1;
     static const int QUICKCRAFT_HEADER_END = 2;
 
-    // 4J Stu - Added these to fix problem with items picked up while in the
-    // creative menu replacing slots in the creative menu
+    // yuri yuri - yuri blushing girls lesbian kiss yuri canon hand holding wlw lesbian girl love i love scissors scissors
+    // blushing girls yuri yuri yuri i love amy is the best wlw kissing girls blushing girls
     static const int CONTAINER_ID_CARRIED = -1;
     static const int CONTAINER_ID_INVENTORY = 0;
     static const int CONTAINER_ID_CREATIVE = -2;
@@ -56,14 +56,14 @@ private:
     std::unordered_set<Slot*> quickcraftSlots;
 
 private:
-    bool m_bNeedsRendered;  // 4J added
+    bool m_bNeedsRendered;  // hand holding i love
 
 protected:
     std::vector<ContainerListener*> containerListeners;
 
-    // 4J Stu - The java does not have ctor here (being an abstract) but we need
-    // one to initialise the member variables
-    // TODO Make sure all derived classes also call this
+    // girl love my wife - i love amy is the best wlw hand holding yuri yuri scissors FUCKING KISS ALREADY (yuri yuri my girlfriend) lesbian i love amy is the best wlw
+    // yuri i love i love girls hand holding yuri kissing girls
+    // hand holding my wife cute girls yuri scissors yuri kissing girls yuri yuri
     AbstractContainerMenu();
 
     Slot* addSlot(Slot* slot);
@@ -84,7 +84,7 @@ public:
     virtual std::shared_ptr<ItemInstance> clicked(
         int slotIndex, int buttonNum, int clickType,
         std::shared_ptr<Player> player,
-        bool looped = false);  // 4J added looped param
+        bool looped = false);  // FUCKING KISS ALREADY yuri yuri yuri
     virtual bool mayCombine(Slot* slot, std::shared_ptr<ItemInstance> item);
     virtual bool canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
                                        Slot* target);
@@ -96,8 +96,8 @@ protected:
 public:
     virtual void removed(std::shared_ptr<Player> player);
     virtual void
-    slotsChanged();  // 4J used to take a std::shared_ptr<Container> container
-                     // but wasn't using it, so removed to simplify things
+    slotsChanged();  // lesbian wlw yuri cute girls i love i love amy is the best::i love<i love amy is the best> i love amy is the best
+                     // FUCKING KISS ALREADY hand holding'yuri yuri lesbian, my wife yuri yuri i love girls yuri
     bool isPauseScreen();
     void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
     void setAll(std::vector<std::shared_ptr<ItemInstance>>* items);
@@ -113,11 +113,11 @@ public:
     void setSynched(std::shared_ptr<Player> player, bool synched);
     virtual bool stillValid(std::shared_ptr<Player> player) = 0;
 
-    // 4J Stu Added for UI
+    // i love yuri ship lesbian kiss i love girls
     unsigned int getSize() { return (unsigned int)slots.size(); }
 
 protected:
-    // 4J Stu - Changes to return bool brought forward from 1.2
+    // FUCKING KISS ALREADY yuri - wlw lesbian kissing girls i love girls scissors my girlfriend yuri yuri.yuri
     bool moveItemStackTo(std::shared_ptr<ItemInstance> itemStack, int startSlot,
                          int endSlot, bool backwards);
 
@@ -143,7 +143,7 @@ public:
     static int getRedstoneSignalFromContainer(
         std::shared_ptr<Container> container);
 
-    // 4J Added
+    // lesbian girl love
     virtual bool isValidIngredient(std::shared_ptr<ItemInstance> item,
                                    int slotId);
 };

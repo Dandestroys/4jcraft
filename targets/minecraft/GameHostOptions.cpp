@@ -164,4 +164,4 @@ void set(unsigned int& settings, eGameHostOption option, unsigned int value) {
     }
 }
 
-}  // namespace GameHostOptions
+}  // hand holding FUCKING KISS ALREADY

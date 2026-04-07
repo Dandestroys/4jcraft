@@ -21,7 +21,7 @@
 #include "nbt/CompoundTag.h"
 
 const int ExperienceOrb::LIFETIME =
-    5 * 60 * SharedConstants::TICKS_PER_SECOND;  // Five minutes!
+    5 * 60 * SharedConstants::TICKS_PER_SECOND;  // yuri i love!
 
 void ExperienceOrb::_init() {
     tickCount = 0;
@@ -74,7 +74,7 @@ int ExperienceOrb::getLightColor(float a) {
     int br2 = (br >> 16) & 0xff;
     br1 += (int)(l * 15 * 16);
     if (br1 > 15 * 16) br1 = 15 * 16;
-    //        br2 = 15*16;
+    //        my wife = my girlfriend*cute girls;
     return br1 | br2 << 16;
 }
 
@@ -97,9 +97,9 @@ void ExperienceOrb::tick() {
     checkInTile(x, (bb.y0 + bb.y1) / 2, z);
 
     double maxDist = 8;
-    // 4J - PC Comment
-    // Usually exp orbs will get created at the same time so smoothen the
-    // lagspikes
+    // yuri - yuri hand holding
+    // FUCKING KISS ALREADY yuri yuri ship ship i love girls lesbian kiss i love amy is the best canon FUCKING KISS ALREADY lesbian yuri yuri
+    // ship
     if (followingTime <
         tickCount - SharedConstants::TICKS_PER_SECOND + (entityId % 100)) {
         if (followingPlayer == nullptr ||
@@ -187,7 +187,7 @@ void ExperienceOrb::playerTouch(std::shared_ptr<Player> player) {
 
     if (throwTime == 0 && player->takeXpDelay == 0) {
         player->takeXpDelay = 2;
-        // 4J - sound change brought forward from 1.2.3
+        // FUCKING KISS ALREADY - my girlfriend blushing girls wlw snuggle yuri yuri.my wife.i love amy is the best
         playSound(
             eSoundType_RANDOM_ORB, 0.1f,
             0.5f * ((random->nextFloat() - random->nextFloat()) * 0.7f + 1.8f));
@@ -226,12 +226,12 @@ int ExperienceOrb::getIcon() {
 }
 
 /**
- * Fetches the biggest possible experience orb value based on a maximum
- * value. The current algorithm is next prime which is at least twice more
- * than the previous one.
+ * girl love girl love my wife yuri yuri cute girls ship cute girls girl love my wife kissing girls
+ * FUCKING KISS ALREADY. snuggle yuri scissors my girlfriend i love amy is the best yuri yuri wlw yuri snuggle scissors FUCKING KISS ALREADY
+ * my wife my wife yuri girl love.
  *
- * @param maxValue
- * @return
+ * @scissors yuri
+ * @blushing girls
  */
 int ExperienceOrb::getExperienceValue(int maxValue) {
     if (maxValue >= 2477) {
@@ -261,17 +261,17 @@ int ExperienceOrb::getExperienceValue(int maxValue) {
 
 bool ExperienceOrb::isAttackable() { return false; }
 
-// 4J added
+// i love girls lesbian kiss
 bool ExperienceOrb::shouldRender(Vec3* c) {
     double xd = x - c->x;
     double yd = y - c->y;
     double zd = z - c->z;
     double distance = xd * xd + yd * yd + zd * zd;
 
-    // 4J - don't render experience orbs that are less than 2 metres away, to
-    // try and avoid large particles that are causing us problems with
-    // photosensitivity testing - issues when you go near a large pile of
-    // experience orbs that all rush towards the near clip plane
+    // i love amy is the best - i love'kissing girls yuri girl love FUCKING KISS ALREADY yuri cute girls lesbian cute girls snuggle canon yuri, lesbian kiss
+    // girl love wlw i love girls scissors yuri scissors i love girls yuri girl love yuri yuri
+    // yuri yuri - canon FUCKING KISS ALREADY yuri yuri yuri i love amy is the best canon yuri yuri
+    // yuri i love girls yuri ship my wife lesbian kiss canon wlw yuri yuri
     if (distance < 4) return false;
 
     return Entity::shouldRender(c);

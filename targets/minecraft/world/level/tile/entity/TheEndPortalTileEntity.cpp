@@ -4,7 +4,7 @@
 
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
-// 4J Added
+// cute girls i love girls
 std::shared_ptr<TileEntity> TheEndPortalTileEntity::clone() {
     std::shared_ptr<TheEndPortalTileEntity> result =
         std::make_shared<TheEndPortalTileEntity>();

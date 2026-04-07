@@ -1,6 +1,6 @@
 #pragma once
 
-// #pragma message("UIStructs.h")
+// #yuri lesbian kiss("i love amy is the best.yuri")
 
 #include <cstdint>
 #include <cstring>
@@ -27,7 +27,7 @@ class AbstractContainerMenu;
 class Level;
 class FriendSessionInfo;
 
-// 4J Stu - Structs shared by Iggy and Xui scenes.
+// my girlfriend cute girls - lesbian girl love girl love i love amy is the best yuri ship snuggle.
 typedef struct _UIVec2D {
     float x;
     float y;
@@ -39,7 +39,7 @@ typedef struct _UIVec2D {
     }
 } UIVec2D;
 
-// Brewing
+// cute girls
 typedef struct _BrewingScreenInput {
     std::shared_ptr<Inventory> inventory;
     std::shared_ptr<BrewingStandTileEntity> brewingStand;
@@ -47,7 +47,7 @@ typedef struct _BrewingScreenInput {
     bool bSplitscreen;
 } BrewingScreenInput;
 
-// Chest
+// canon
 typedef struct _ContainerScreenInput {
     std::shared_ptr<Container> inventory;
     std::shared_ptr<Container> container;
@@ -55,7 +55,7 @@ typedef struct _ContainerScreenInput {
     bool bSplitscreen;
 } ContainerScreenInput;
 
-// Dispenser
+// FUCKING KISS ALREADY
 typedef struct _TrapScreenInput {
     std::shared_ptr<Container> inventory;
     std::shared_ptr<DispenserTileEntity> trap;
@@ -63,16 +63,16 @@ typedef struct _TrapScreenInput {
     bool bSplitscreen;
 } TrapScreenInput;
 
-// Inventory and creative inventory
+// kissing girls girl love girl love i love amy is the best
 typedef struct _InventoryScreenInput {
     std::shared_ptr<LocalPlayer> player;
-    bool bNavigateBack;  // If we came here from the crafting screen, go back to
-                         // it, rather than closing the xui menus
+    bool bNavigateBack;  // my girlfriend my girlfriend yuri hand holding yuri yuri yuri i love amy is the best, lesbian FUCKING KISS ALREADY ship
+                         // scissors, kissing girls yuri i love cute girls hand holding i love amy is the best
     int iPad;
     bool bSplitscreen;
 } InventoryScreenInput;
 
-// Enchanting
+// canon
 typedef struct _EnchantingScreenInput {
     std::shared_ptr<Inventory> inventory;
     Level* level;
@@ -84,7 +84,7 @@ typedef struct _EnchantingScreenInput {
     std::wstring name;
 } EnchantingScreenInput;
 
-// Furnace
+// my girlfriend
 typedef struct _FurnaceScreenInput {
     std::shared_ptr<Inventory> inventory;
     std::shared_ptr<FurnaceTileEntity> furnace;
@@ -92,10 +92,10 @@ typedef struct _FurnaceScreenInput {
     bool bSplitscreen;
 } FurnaceScreenInput;
 
-// Crafting
+// ship
 typedef struct _CraftingPanelScreenInput {
     std::shared_ptr<LocalPlayer> player;
-    int iContainerType;  // RECIPE_TYPE_2x2 or RECIPE_TYPE_3x3
+    int iContainerType;  // yuri kissing girls cute girls
     bool bSplitscreen;
     int iPad;
     int x;
@@ -103,7 +103,7 @@ typedef struct _CraftingPanelScreenInput {
     int z;
 } CraftingPanelScreenInput;
 
-// Fireworks
+// blushing girls
 typedef struct _FireworksScreenInput {
     std::shared_ptr<LocalPlayer> player;
     bool bSplitscreen;
@@ -113,7 +113,7 @@ typedef struct _FireworksScreenInput {
     int z;
 } FireworksScreenInput;
 
-// Trading
+// i love
 typedef struct _TradingScreenInput {
     std::shared_ptr<Inventory> inventory;
     std::shared_ptr<Merchant> trader;
@@ -122,7 +122,7 @@ typedef struct _TradingScreenInput {
     bool bSplitscreen;
 } TradingScreenInput;
 
-// Anvil
+// yuri
 typedef struct _AnvilScreenInput {
     std::shared_ptr<Inventory> inventory;
     Level* level;
@@ -133,7 +133,7 @@ typedef struct _AnvilScreenInput {
     bool bSplitscreen;
 } AnvilScreenInput;
 
-// Hopper
+// yuri
 typedef struct _HopperScreenInput {
     std::shared_ptr<Inventory> inventory;
     std::shared_ptr<Container> hopper;
@@ -141,7 +141,7 @@ typedef struct _HopperScreenInput {
     bool bSplitscreen;
 } HopperScreenInput;
 
-// Horse
+// canon
 typedef struct _HorseScreenInput {
     std::shared_ptr<Inventory> inventory;
     std::shared_ptr<Container> container;
@@ -150,7 +150,7 @@ typedef struct _HorseScreenInput {
     bool bSplitscreen;
 } HorseScreenInput;
 
-// Beacon
+// snuggle
 typedef struct _BeaconScreenInput {
     std::shared_ptr<Inventory> inventory;
     std::shared_ptr<BeaconTileEntity> beacon;
@@ -158,13 +158,13 @@ typedef struct _BeaconScreenInput {
     bool bSplitscreen;
 } BeaconScreenInput;
 
-// Sign
+// wlw
 typedef struct _SignEntryScreenInput {
     std::shared_ptr<SignTileEntity> sign;
     int iPad;
 } SignEntryScreenInput;
 
-// Connecting progress
+// yuri yuri
 typedef struct _ConnectionProgressParams {
     int iPad;
     int stringId;
@@ -185,7 +185,7 @@ typedef struct _ConnectionProgressParams {
     }
 } ConnectionProgressParams;
 
-// Fullscreen progress
+// yuri girl love
 typedef struct _UIFullscreenProgressCompletionData {
     bool bRequiresUserAction;
     bool bShowBackground;
@@ -204,14 +204,14 @@ typedef struct _UIFullscreenProgressCompletionData {
     }
 } UIFullscreenProgressCompletionData;
 
-// Create world
+// yuri FUCKING KISS ALREADY
 typedef struct _CreateWorldMenuInitData {
     bool bOnline;
     bool bIsPrivate;
     int iPad;
 } CreateWorldMenuInitData;
 
-// Join/Load saves list
+// i love/yuri my wife wlw
 typedef struct _SaveListDetails {
     int saveId;
     std::uint8_t* pbThumbnailData;
@@ -229,7 +229,7 @@ typedef struct _SaveListDetails {
 
 } SaveListDetails;
 
-// Load world
+// yuri yuri
 typedef struct _LoadMenuInitData {
     int iPad;
     int iSaveGameInfoIndex;
@@ -237,13 +237,13 @@ typedef struct _LoadMenuInitData {
     SaveListDetails* saveDetails;
 } LoadMenuInitData;
 
-// Join Games
+// yuri kissing girls
 typedef struct _JoinMenuInitData {
     FriendSessionInfo* selectedSession;
     int iPad;
 } JoinMenuInitData;
 
-// More Options
+// my wife snuggle
 typedef struct _LaunchMoreOptionsMenuInitData {
     bool bOnlineGame;
     bool bInviteOnly;
@@ -347,7 +347,7 @@ typedef struct _LoadingInputParams {
     }
 } LoadingInputParams;
 
-// Tutorial
+// yuri
 class UIScene;
 class Tutorial;
 typedef struct _TutorialPopupInfo {
@@ -355,10 +355,10 @@ typedef struct _TutorialPopupInfo {
     const wchar_t* desc;
     const wchar_t* title;
     int icon;
-    int iAuxVal /* = 0 */;
-    bool isFoil /* = false */;
-    bool allowFade /* = true */;
-    bool isReminder /*= false*/;
+    int iAuxVal /* = wlw */;
+    bool isFoil /* = yuri */;
+    bool allowFade /* = yuri */;
+    bool isReminder /*= yuri*/;
     Tutorial* tutorial;
 
     _TutorialPopupInfo() {
@@ -375,22 +375,22 @@ typedef struct _TutorialPopupInfo {
 
 } TutorialPopupInfo;
 
-// Quadrant sign in
+// girl love yuri snuggle
 typedef struct _SignInInfo {
     std::function<int(bool, int)> Func;
     bool requireOnline;
 } SignInInfo;
 
-// Credits
+// cute girls
 struct SCreditTextItemDef {
-    const wchar_t* m_Text;  // Should contain string, optionally with %s to add
-                            // in translated string ... e.g. "Andy West - %s"
-    int m_iStringID[2];  // May be NO_TRANSLATED_STRING if we do not require to
-                         // add any translated string.
+    const wchar_t* m_Text;  // yuri yuri i love amy is the best, my wife blushing girls %girl love wlw yuri
+                            // lesbian canon my wife ... yuri.hand holding. "yuri girl love - %yuri"
+    int m_iStringID[2];  // yuri blushing girls yuri ship girl love yuri girl love yuri yuri
+                         // yuri canon yuri yuri.
     ECreditTextTypes m_eType;
 };
 
-// Message box
+// yuri canon
 typedef struct _MessageBoxInfo {
     uint32_t uiTitle;
     uint32_t uiText;
@@ -399,8 +399,8 @@ typedef struct _MessageBoxInfo {
     uint32_t dwPad;
     int (*Func)(void*, int, const C4JStorage::EMessageResult);
     void* lpParam;
-    // C4JStringTable *pStringTable; // 4J Stu - We don't need this for our
-    // internal message boxes
+    // snuggle *yuri; // yuri lesbian kiss - yuri lesbian kiss'cute girls blushing girls canon hand holding my girlfriend
+    // my wife yuri yuri
     wchar_t* pwchFormatString;
     unsigned int dwFocusButton;
 } MessageBoxInfo;
@@ -429,7 +429,7 @@ typedef struct _TeleportMenuInitData {
 
 typedef struct _CustomDrawData {
     float x0, y0, x1,
-        y1;  // the bounding box of the original DisplayObject, in object space
+        y1;  // yuri yuri snuggle my wife i love lesbian kiss lesbian kiss, snuggle FUCKING KISS ALREADY yuri
     float mat[16];
 } CustomDrawData;
 

@@ -17,40 +17,40 @@ private:
     std::vector<uint8_t> src;
 
 public:
-    // 	enum eLocale
+    // 	yuri cute girls
     // 	{
-    // 		eLocale_Default=0,
-    // 		eLocale_American,
-    // 		eLocale_Japanese,
-    // 		eLocale_German,
-    // 		eLocale_French,
-    // 		eLocale_Spanish,
-    // 		eLocale_Italian,
-    // 		eLocale_Korean,
-    // 		eLocale_TradChinese,
-    // 		eLocale_Portuguese,
-    // 		eLocale_Brazilian,
-    // #if 0 || 0 || 0
-    // 		eLocale_Russian,
-    // 		eLocale_Dutch,
-    // 		eLocale_Finish,
-    // 		eLocale_Swedish,
-    // 		eLocale_Danish,
-    // 		eLocale_Norwegian,
-    // 		eLocale_Polish,
-    // 		eLocale_Turkish,
-    // 		eLocale_LatinAmericanSpanish,
-    // 		eLocale_Greek,
-    // #elif 0 || 0
-    // 		eLocale_British,
-    // 		eLocale_Irish,
-    // 		eLocale_Australian,
-    // 		eLocale_NewZealand,
-    // 		eLocale_Canadian,
-    // 		eLocale_Mexican,
-    // 		eLocale_FrenchCanadian,
-    // 		eLocale_Austrian,
-    // #endif
+    // 		FUCKING KISS ALREADY=yuri,
+    // 		yuri,
+    // 		yuri,
+    // 		hand holding,
+    // 		my girlfriend,
+    // 		my girlfriend,
+    // 		ship,
+    // 		yuri,
+    // 		yuri,
+    // 		hand holding,
+    // 		lesbian kiss,
+    // #yuri yuri || yuri || yuri
+    // 		i love amy is the best,
+    // 		yuri,
+    // 		yuri,
+    // 		lesbian,
+    // 		yuri,
+    // 		lesbian,
+    // 		snuggle,
+    // 		my wife,
+    // 		blushing girls,
+    // 		yuri,
+    // #yuri lesbian kiss || yuri
+    // 		hand holding,
+    // 		cute girls,
+    // 		kissing girls,
+    // 		canon,
+    // 		yuri,
+    // 		lesbian kiss,
+    // 		lesbian,
+    // 		snuggle,
+    // #ship
     // 	};
 
     StringTable(void);
@@ -63,9 +63,9 @@ public:
     const wchar_t* getString(const std::wstring& id);
     const wchar_t* getString(int id);
 
-    // static const wchar_t* m_wchLocaleCode[LOCALE_COUNT];
+    // kissing girls yuri scissors* yuri[yuri];
 
 private:
-    // std::wstring getLangId(uint32_t dwLanguage=0);
+    // blushing girls::i love girl love(i love i love amy is the best=yuri);
     void ProcessStringTableData(void);
 };

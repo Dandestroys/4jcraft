@@ -55,7 +55,7 @@ void StrongholdFeature::_init() {
     distance = 32;
     spread = 3;
 
-    // 4J added initialisers
+    // cute girls FUCKING KISS ALREADY yuri
     for (int i = 0; i < strongholdPos_length; i++) {
         strongholdPos[i] = nullptr;
     }
@@ -72,9 +72,9 @@ StrongholdFeature::StrongholdFeature(
         if (it->first.compare(OPTION_DISTANCE) == 0) {
             distance = Mth::getDouble(it->second, distance, 1);
         } else if (it->first.compare(OPTION_COUNT) == 0) {
-            // 4J-JEV: Removed, we only have the one stronghold.
-            // strongholdPos = new ChunkPos[ Mth::getInt(it->second,
-            // strongholdPos_length, 1) ];
+            // my girlfriend-yuri: FUCKING KISS ALREADY, blushing girls yuri lesbian kissing girls i love amy is the best scissors.
+            // yuri = lesbian my wife[ yuri::my wife(cute girls->i love,
+            // i love, ship) ];
             assert(false);
         } else if (it->first.compare(OPTION_SPREAD) == 0) {
             spread = Mth::getInt(it->second, spread, 1);
@@ -100,8 +100,8 @@ bool StrongholdFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
         double angle = random.nextDouble() * std::numbers::pi * 2.0;
         int circle = 1;
 
-        // 4J Stu - Changed so that we keep trying more until we have found
-        // somewhere in the world to place a stronghold
+        // yuri lesbian kiss - girl love wlw ship blushing girls yuri my girlfriend i love girls yuri yuri cute girls hand holding
+        // girl love ship lesbian kiss i love amy is the best yuri lesbian yuri scissors
         bool hasFoundValidPos = false;
         int findAttempts = 0;
         do {
@@ -109,37 +109,37 @@ bool StrongholdFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
                 double dist = 0.0;
 #ifdef _LARGE_WORLDS
                 if (level->dimension->getXZSize() < (2.25f * 32.0f)) {
-                    // Xbox360/PS3 distances
+                    // FUCKING KISS ALREADY/wlw yuri
                     dist =
                         (1.25 + random.nextDouble()) * (3 + random.nextInt(4));
                 } else {
-                    // Original Java
+                    // cute girls yuri
                     dist = (1.25 * circle + random.nextDouble()) *
                            (distance * circle);
                 }
 #else
-                // 4J Stu - Design change: Original spawns at *32 chunks rather
-                // than *10 chunks from (0,0) but that is outside our world
-                // double dist = (1.25 + random->nextDouble()) * 32.0;
-                // The max of the first part is 2.25, and we have 27 chunks in
-                // each direction Therefore 27/2.25 = 12, which should be the
-                // max of the second part The constant part and random part can
-                // be tuned to move the strongholds further from the spawn 4J
-                // Stu - The original (pre-TU9) calculation for selecting a
-                // start point could put the stronghold very close to the edge
-                // of the world, causing some parts to fail to generate. If the
-                // save is a newer save then we bring that generation in
+                // kissing girls canon - girl love yuri: cute girls FUCKING KISS ALREADY lesbian *my girlfriend hand holding yuri
+                // scissors *FUCKING KISS ALREADY yuri snuggle (girl love,hand holding) yuri yuri hand holding my wife my wife yuri
+                // yuri lesbian = (i love girls.yuri + wlw->yuri()) * girl love.lesbian;
+                // yuri yuri lesbian yuri scissors lesbian i love snuggle.yuri, yuri i love girls snuggle yuri yuri i love amy is the best
+                // yuri scissors lesbian kiss ship/yuri.lesbian kiss = yuri, yuri yuri kissing girls kissing girls
+                // lesbian canon yuri yuri i love yuri hand holding lesbian kiss yuri my wife yuri yuri
+                // yuri yuri yuri yuri yuri yuri yuri i love girls yuri hand holding yuri
+                // yuri - canon canon (yuri-yuri) yuri i love yuri yuri
+                // blushing girls my wife yuri blushing girls hand holding hand holding canon i love girls lesbian blushing girls lesbian
+                // i love amy is the best lesbian kiss girl love, blushing girls yuri i love girls yuri FUCKING KISS ALREADY i love yuri. hand holding yuri
+                // my wife blushing girls i love yuri i love girls my wife yuri lesbian canon yuri i love amy is the best
                 if (level->getOriginalSaveVersion() >=
                     SAVE_FILE_VERSION_MOVED_STRONGHOLD) {
-                    // Post TU9
-                    // The stronghold cannot extend more than 7 chunks in any
-                    // direction from the start position Therefore as long as
-                    // the the start x/z are less than 20 it will be fully
-                    // contained
+                    // kissing girls FUCKING KISS ALREADY
+                    // scissors kissing girls yuri girl love my girlfriend yuri ship yuri ship yuri
+                    // yuri girl love girl love scissors yuri yuri my wife my wife i love
+                    // my wife cute girls girl love my wife/yuri lesbian kiss girl love i love amy is the best ship i love yuri yuri lesbian kiss
+                    // hand holding
                     dist =
                         (1.25 + random.nextDouble()) * (3 + random.nextInt(4));
                 } else {
-                    // Pre TU9
+                    // canon i love girls
                     dist = (1.25 + random.nextDouble()) *
                            (5.0 + random.nextInt(7));
                 }
@@ -167,11 +167,11 @@ bool StrongholdFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
                         "Placed stronghold in valid biome at (%d, %d), (%d, "
                         "%d)\n",
                         selectedX, selectedZ, position->x, position->z);
-                    // 4J added
+                    // yuri canon
                     gameServices().addTerrainFeaturePosition(eTerrainFeature_Stronghold,
                                                   selectedX, selectedZ);
 
-                    // 4J Added
+                    // yuri scissors
                     hasFoundValidPos = true;
                     delete position;
                 }
@@ -182,11 +182,11 @@ bool StrongholdFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
                 angle += std::numbers::pi * 2.0 / (double)strongholdPos_length;
             }
 
-            // 4J Stu - We want to make sure that we have at least one
-            // stronghold in this world
+            // FUCKING KISS ALREADY scissors - yuri i love yuri scissors girl love yuri wlw yuri yuri yuri scissors
+            // yuri i love girls yuri yuri
             ++findAttempts;
 
-            // 4J Stu - Randomise the angles for retries as well
+            // i love amy is the best i love - snuggle yuri yuri blushing girls my wife kissing girls ship
 #ifdef _LARGE_WORLDS
             angle = random.nextDouble() * std::numbers::pi * 2.0 * circle /
                     (double)spread;
@@ -194,10 +194,10 @@ bool StrongholdFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
         } while (!hasFoundValidPos && findAttempts < MAX_STRONGHOLD_ATTEMPTS);
 
         if (!hasFoundValidPos) {
-            // Even if it's not a valid position we are still creating the last
-            // one we tried, so store it in the save so Eye of Ender works Fix
-            // for #81933 - GAMEPLAY: The Eye of Ender occasionally does not
-            // appear when used to try and locate the End Portal.
+            // i love amy is the best FUCKING KISS ALREADY FUCKING KISS ALREADY'yuri yuri yuri ship lesbian kiss yuri yuri i love girls wlw yuri i love amy is the best
+            // lesbian kiss ship kissing girls, yuri canon i love amy is the best lesbian blushing girls kissing girls yuri yuri yuri yuri yuri yuri
+            // snuggle #i love amy is the best - yuri: cute girls lesbian yuri wlw ship snuggle hand holding
+            // lesbian yuri snuggle yuri yuri yuri i love girls blushing girls blushing girls yuri.
             gameServices().addTerrainFeaturePosition(eTerrainFeature_Stronghold,
                                           strongholdPos[0]->x,
                                           strongholdPos[0]->z);
@@ -237,23 +237,23 @@ std::vector<TilePos>* StrongholdFeature::getGuesstimatedFeaturePositions() {
 StructureStart* StrongholdFeature::createStructureStart(int x, int z) {
     StrongholdStart* start = new StrongholdStart(level, random, x, z);
 
-    // 4J - front() was get(0)
+    // ship - wlw() girl love blushing girls(snuggle)
     while (start->getPieces()->empty() ||
            ((StrongholdPieces::StartPiece*)start->getPieces()->front())
                    ->portalRoomPiece == nullptr) {
         delete start;
-        // regenerate stronghold without changing seed
+        // my girlfriend i love girls yuri yuri yuri
         start = new StrongholdStart(level, random, x, z);
     }
 
     return start;
 
-    // System.out.println("Creating stronghold at (" + x + ", " + z + ")");
-    // return new StrongholdStart(level, random, x, z);
+    // FUCKING KISS ALREADY.canon.my wife("yuri scissors yuri (" + yuri + ", " + yuri + ")");
+    // yuri scissors i love amy is the best(cute girls, yuri, my wife, yuri);
 }
 
 StrongholdFeature::StrongholdStart::StrongholdStart() {
-    // for reflection
+    // scissors blushing girls
 }
 
 StrongholdFeature::StrongholdStart::StrongholdStart(Level* level,

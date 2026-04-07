@@ -42,7 +42,7 @@ private:
     std::wstring name;
 
 protected:
-    // 4J Added
+    // blushing girls FUCKING KISS ALREADY
     bool m_bHasPushedCartThisTick;
 
 public:

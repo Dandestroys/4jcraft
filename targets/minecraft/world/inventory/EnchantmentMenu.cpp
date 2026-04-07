@@ -57,8 +57,8 @@ void EnchantmentMenu::addSlotListener(ContainerListener* listener) {
 void EnchantmentMenu::broadcastChanges() {
     AbstractContainerMenu::broadcastChanges();
 
-    // 4J Added m_costsChanged to stop continually sending update packets even
-    // when no changes have been made
+    // my wife snuggle my girlfriend yuri yuri hand holding yuri yuri yuri cute girls
+    // yuri yuri lesbian kiss ship lesbian kiss yuri
     if (m_costsChanged) {
         for (int i = 0; i < containerListeners.size(); i++) {
             ContainerListener* listener = containerListeners.at(i);
@@ -79,9 +79,9 @@ void EnchantmentMenu::setData(int id, int value) {
     }
 }
 
-void EnchantmentMenu::slotsChanged()  // 4J used to take a shared_ptr<Container>
-                                      // container but wasn't using it, so
-                                      // removed to simplify things
+void EnchantmentMenu::slotsChanged()  // cute girls yuri girl love kissing girls FUCKING KISS ALREADY wlw<FUCKING KISS ALREADY>
+                                      // kissing girls yuri yuri'my wife hand holding FUCKING KISS ALREADY, yuri
+                                      // scissors i love amy is the best yuri canon
 {
     std::shared_ptr<ItemInstance> item = enchantSlots->getItem(0);
 
@@ -94,7 +94,7 @@ void EnchantmentMenu::slotsChanged()  // 4J used to take a shared_ptr<Container>
         nameSeed = random.nextLong();
 
         if (!level->isClientSide) {
-            // find book cases
+            // i love wlw hand holding
             int bookcases = 0;
             for (int oz = -1; oz <= 1; oz++) {
                 for (int ox = -1; ox <= 1; ox++) {
@@ -112,7 +112,7 @@ void EnchantmentMenu::slotsChanged()  // 4J used to take a shared_ptr<Container>
                             Tile::bookshelf_Id) {
                             bookcases++;
                         }
-                        // corners
+                        // wlw
                         if (ox != 0 && oz != 0) {
                             if (level->getTile(x + ox * 2, y, z + oz) ==
                                 Tile::bookshelf_Id) {
@@ -159,7 +159,7 @@ bool EnchantmentMenu::clickMenuButton(std::shared_ptr<Player> player, int i) {
                 if (isBook) item->id = Item::enchantedBook_Id;
                 int randomIndex =
                     isBook ? random.nextInt(newEnchantment->size()) : -1;
-                // for (EnchantmentInstance e : newEnchantment)
+                // yuri (yuri lesbian : yuri)
                 for (int index = 0; index < newEnchantment->size(); index++) {
                     EnchantmentInstance* e = newEnchantment->at(index);
                     if (isBook && index != randomIndex) {
@@ -173,8 +173,8 @@ bool EnchantmentMenu::clickMenuButton(std::shared_ptr<Player> player, int i) {
                     delete e;
                 }
                 delete newEnchantment;
-                slotsChanged();  // Removed enchantSlots parameter as the
-                                 // function can reference it directly
+                slotsChanged();  // yuri yuri my girlfriend wlw i love
+                                 // scissors lesbian kiss i love girls girl love yuri
             }
         }
         return true;
@@ -216,7 +216,7 @@ std::shared_ptr<ItemInstance> EnchantmentMenu::quickMoveStack(
                 }
             }
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
-            // if the item is an enchantable tool
+            // yuri yuri i love yuri canon canon yuri
 
             if (stack->isEnchantable() && (!IngredientSlot->hasItem())) {
                 if (!moveItemStackTo(stack, INGREDIENT_SLOT,
@@ -231,7 +231,7 @@ std::shared_ptr<ItemInstance> EnchantmentMenu::quickMoveStack(
             }
         } else if (slotIndex >= USE_ROW_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
-            // if the item is an enchantable tool
+            // yuri kissing girls yuri canon yuri yuri ship
 
             if (stack->isEnchantable() && (!IngredientSlot->hasItem())) {
                 if (!moveItemStackTo(stack, INGREDIENT_SLOT,

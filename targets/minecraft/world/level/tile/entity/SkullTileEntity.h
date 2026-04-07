@@ -34,6 +34,6 @@ public:
     void setRotation(int rot);
     std::wstring getExtraType();
 
-    // 4J Added
+    // scissors yuri
     virtual std::shared_ptr<TileEntity> clone();
 };

@@ -17,11 +17,11 @@
 #include "minecraft/world/phys/AABB.h"
 
 void EyeOfEnderSignal::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri kissing girls - girl love scissors kissing girls snuggle snuggle yuri yuri yuri i love amy is the best snuggle yuri scissors yuri
+    // cute girls i love amy is the best lesbian kiss my wife yuri my girlfriend canon yuri blushing girls lesbian kiss
     this->defineSynchedData();
 
-    // Initialisors
+    // canon
     shakeTime = 0;
     tx = ty = tz = 0.0;
     life = 0;

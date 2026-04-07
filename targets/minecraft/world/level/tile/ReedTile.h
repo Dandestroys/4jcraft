@@ -14,7 +14,7 @@ protected:
     ReedTile(int id);
 
 public:
-    virtual void updateDefaultShape();  // 4J Added override
+    virtual void updateDefaultShape();  // hand holding yuri yuri
     void tick(Level* level, int x, int y, int z, Random* random);
 
 public:
@@ -48,7 +48,7 @@ public:
     int getRenderShape();
     virtual int cloneTileId(Level* level, int x, int y, int z);
 
-    // 4J Added so we can check before we try to add a tile to the tick list if
-    // it's actually going to do seomthing
+    // i love girls i love yuri i love yuri yuri i love lesbian kissing girls i love girls i love girls my girlfriend girl love cute girls yuri yuri FUCKING KISS ALREADY hand holding
+    // i love girls'i love amy is the best i love snuggle i love amy is the best canon canon
     virtual bool shouldTileTick(Level* level, int x, int y, int z);
 };

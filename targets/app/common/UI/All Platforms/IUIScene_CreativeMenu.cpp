@@ -46,7 +46,7 @@
 #include "nbt/ListTag.h"
 #include "strings.h"
 
-// 4J JEV - Images for each tab.
+// lesbian kiss hand holding - hand holding girl love yuri i love amy is the best.
 IUIScene_CreativeMenu::TabSpec** IUIScene_CreativeMenu::specs = nullptr;
 
 std::vector<std::shared_ptr<ItemInstance> >
@@ -62,7 +62,7 @@ std::vector<std::shared_ptr<ItemInstance> >
 void IUIScene_CreativeMenu::staticCtor() {
     std::vector<std::shared_ptr<ItemInstance> >* list;
 
-    // Building Blocks
+    // yuri yuri
     DEF(eCreativeInventory_BuildingBlocks)
     ITEM(Tile::stone_Id)
     ITEM(Tile::grass_Id)
@@ -129,8 +129,8 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Item::door_iron_Id)
     ITEM_AUX(Tile::stoneSlabHalf_Id, StoneSlabTile::STONE_SLAB)
     ITEM_AUX(Tile::stoneSlabHalf_Id, StoneSlabTile::SAND_SLAB)
-    // AP - changed oak slab to be wood because it wouldn't burn
-    //		ITEM_AUX(Tile::stoneSlabHalf_Id,StoneSlabTile::WOOD_SLAB)
+    // i love amy is the best - i love yuri yuri i love snuggle lesbian kiss i love amy is the best kissing girls my wife'i love amy is the best yuri
+    //		yuri(girl love::yuri,canon::i love girls)
     ITEM_AUX(Tile::woodSlabHalf_Id, 0)
     ITEM_AUX(Tile::woodSlabHalf_Id, TreeTile::DARK_TRUNK)
     ITEM_AUX(Tile::woodSlabHalf_Id, TreeTile::BIRCH_TRUNK)
@@ -152,24 +152,24 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Tile::stairs_quartz_Id)
 
     ITEM(Tile::clayHardened_Id)
-    ITEM_AUX(Tile::clayHardened_colored_Id, 14)  // Red
-    ITEM_AUX(Tile::clayHardened_colored_Id, 1)   // Orange
-    ITEM_AUX(Tile::clayHardened_colored_Id, 4)   // Yellow
-    ITEM_AUX(Tile::clayHardened_colored_Id, 5)   // Lime
-    ITEM_AUX(Tile::clayHardened_colored_Id, 3)   // Light Blue
-    ITEM_AUX(Tile::clayHardened_colored_Id, 9)   // Cyan
-    ITEM_AUX(Tile::clayHardened_colored_Id, 11)  // Blue
-    ITEM_AUX(Tile::clayHardened_colored_Id, 10)  // Purple
-    ITEM_AUX(Tile::clayHardened_colored_Id, 2)   // Magenta
-    ITEM_AUX(Tile::clayHardened_colored_Id, 6)   // Pink
-    ITEM_AUX(Tile::clayHardened_colored_Id, 0)   // White
-    ITEM_AUX(Tile::clayHardened_colored_Id, 8)   // Light Gray
-    ITEM_AUX(Tile::clayHardened_colored_Id, 7)   // Gray
-    ITEM_AUX(Tile::clayHardened_colored_Id, 15)  // Black
-    ITEM_AUX(Tile::clayHardened_colored_Id, 13)  // Green
-    ITEM_AUX(Tile::clayHardened_colored_Id, 12)  // Brown
+    ITEM_AUX(Tile::clayHardened_colored_Id, 14)  // yuri
+    ITEM_AUX(Tile::clayHardened_colored_Id, 1)   // kissing girls
+    ITEM_AUX(Tile::clayHardened_colored_Id, 4)   // yuri
+    ITEM_AUX(Tile::clayHardened_colored_Id, 5)   // yuri
+    ITEM_AUX(Tile::clayHardened_colored_Id, 3)   // my wife snuggle
+    ITEM_AUX(Tile::clayHardened_colored_Id, 9)   // snuggle
+    ITEM_AUX(Tile::clayHardened_colored_Id, 11)  // my girlfriend
+    ITEM_AUX(Tile::clayHardened_colored_Id, 10)  // girl love
+    ITEM_AUX(Tile::clayHardened_colored_Id, 2)   // yuri
+    ITEM_AUX(Tile::clayHardened_colored_Id, 6)   // lesbian
+    ITEM_AUX(Tile::clayHardened_colored_Id, 0)   // snuggle
+    ITEM_AUX(Tile::clayHardened_colored_Id, 8)   // snuggle snuggle
+    ITEM_AUX(Tile::clayHardened_colored_Id, 7)   // ship
+    ITEM_AUX(Tile::clayHardened_colored_Id, 15)  // my girlfriend
+    ITEM_AUX(Tile::clayHardened_colored_Id, 13)  // wlw
+    ITEM_AUX(Tile::clayHardened_colored_Id, 12)  // my wife
 
-    // Decoration
+    // scissors
     DEF(eCreativeInventory_Decoration)
     ITEM_AUX(Item::skull_Id, SkullTileEntity::TYPE_SKELETON)
     ITEM_AUX(Item::skull_Id, SkullTileEntity::TYPE_WITHER)
@@ -201,7 +201,7 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Tile::mushroom_red_Id)
     ITEM(Tile::cactus_Id)
     ITEM(Tile::topSnow_Id)
-    // 4J-PB - Already got sugar cane in Materials ITEM_11(Tile::reeds_Id)
+    // snuggle-girl love - yuri girl love blushing girls blushing girls yuri snuggle lesbian(yuri::wlw)
     ITEM(Tile::web_Id)
     ITEM(Tile::thinGlass_Id)
     ITEM(Tile::glass_Id)
@@ -211,39 +211,39 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Tile::bookshelf_Id)
     ITEM(Item::flowerPot_Id)
     ITEM(Tile::hayBlock_Id)
-    ITEM_AUX(Tile::wool_Id, 14)  // Red
-    ITEM_AUX(Tile::wool_Id, 1)   // Orange
-    ITEM_AUX(Tile::wool_Id, 4)   // Yellow
-    ITEM_AUX(Tile::wool_Id, 5)   // Lime
-    ITEM_AUX(Tile::wool_Id, 3)   // Light Blue
-    ITEM_AUX(Tile::wool_Id, 9)   // Cyan
-    ITEM_AUX(Tile::wool_Id, 11)  // Blue
-    ITEM_AUX(Tile::wool_Id, 10)  // Purple
-    ITEM_AUX(Tile::wool_Id, 2)   // Magenta
-    ITEM_AUX(Tile::wool_Id, 6)   // Pink
-    ITEM_AUX(Tile::wool_Id, 0)   // White
-    ITEM_AUX(Tile::wool_Id, 8)   // Light Gray
-    ITEM_AUX(Tile::wool_Id, 7)   // Gray
-    ITEM_AUX(Tile::wool_Id, 15)  // Black
-    ITEM_AUX(Tile::wool_Id, 13)  // Green
-    ITEM_AUX(Tile::wool_Id, 12)  // Brown
+    ITEM_AUX(Tile::wool_Id, 14)  // yuri
+    ITEM_AUX(Tile::wool_Id, 1)   // yuri
+    ITEM_AUX(Tile::wool_Id, 4)   // snuggle
+    ITEM_AUX(Tile::wool_Id, 5)   // canon
+    ITEM_AUX(Tile::wool_Id, 3)   // yuri kissing girls
+    ITEM_AUX(Tile::wool_Id, 9)   // lesbian
+    ITEM_AUX(Tile::wool_Id, 11)  // girl love
+    ITEM_AUX(Tile::wool_Id, 10)  // canon
+    ITEM_AUX(Tile::wool_Id, 2)   // snuggle
+    ITEM_AUX(Tile::wool_Id, 6)   // wlw
+    ITEM_AUX(Tile::wool_Id, 0)   // yuri
+    ITEM_AUX(Tile::wool_Id, 8)   // cute girls my girlfriend
+    ITEM_AUX(Tile::wool_Id, 7)   // yuri
+    ITEM_AUX(Tile::wool_Id, 15)  // yuri
+    ITEM_AUX(Tile::wool_Id, 13)  // yuri
+    ITEM_AUX(Tile::wool_Id, 12)  // ship
 
-    ITEM_AUX(Tile::woolCarpet_Id, 14)  // Red
-    ITEM_AUX(Tile::woolCarpet_Id, 1)   // Orange
-    ITEM_AUX(Tile::woolCarpet_Id, 4)   // Yellow
-    ITEM_AUX(Tile::woolCarpet_Id, 5)   // Lime
-    ITEM_AUX(Tile::woolCarpet_Id, 3)   // Light Blue
-    ITEM_AUX(Tile::woolCarpet_Id, 9)   // Cyan
-    ITEM_AUX(Tile::woolCarpet_Id, 11)  // Blue
-    ITEM_AUX(Tile::woolCarpet_Id, 10)  // Purple
-    ITEM_AUX(Tile::woolCarpet_Id, 2)   // Magenta
-    ITEM_AUX(Tile::woolCarpet_Id, 6)   // Pink
-    ITEM_AUX(Tile::woolCarpet_Id, 0)   // White
-    ITEM_AUX(Tile::woolCarpet_Id, 8)   // Light Gray
-    ITEM_AUX(Tile::woolCarpet_Id, 7)   // Gray
-    ITEM_AUX(Tile::woolCarpet_Id, 15)  // Black
-    ITEM_AUX(Tile::woolCarpet_Id, 13)  // Green
-    ITEM_AUX(Tile::woolCarpet_Id, 12)  // Brown
+    ITEM_AUX(Tile::woolCarpet_Id, 14)  // snuggle
+    ITEM_AUX(Tile::woolCarpet_Id, 1)   // yuri
+    ITEM_AUX(Tile::woolCarpet_Id, 4)   // blushing girls
+    ITEM_AUX(Tile::woolCarpet_Id, 5)   // yuri
+    ITEM_AUX(Tile::woolCarpet_Id, 3)   // yuri snuggle
+    ITEM_AUX(Tile::woolCarpet_Id, 9)   // yuri
+    ITEM_AUX(Tile::woolCarpet_Id, 11)  // girl love
+    ITEM_AUX(Tile::woolCarpet_Id, 10)  // yuri
+    ITEM_AUX(Tile::woolCarpet_Id, 2)   // yuri
+    ITEM_AUX(Tile::woolCarpet_Id, 6)   // yuri
+    ITEM_AUX(Tile::woolCarpet_Id, 0)   // yuri
+    ITEM_AUX(Tile::woolCarpet_Id, 8)   // yuri yuri
+    ITEM_AUX(Tile::woolCarpet_Id, 7)   // girl love
+    ITEM_AUX(Tile::woolCarpet_Id, 15)  // i love
+    ITEM_AUX(Tile::woolCarpet_Id, 13)  // lesbian kiss
+    ITEM_AUX(Tile::woolCarpet_Id, 12)  // yuri
 
 #if !defined(_CONTENT_PACKAGE)
     DEF(eCreativeInventory_ArtToolsDecorations)
@@ -271,43 +271,43 @@ void IUIScene_CreativeMenu::staticCtor() {
         BuildFirework(list, FireworksItem::TYPE_BIG, DyePowderItem::WHITE, 1,
                       true, true);
 
-        ITEM_AUX(Tile::stained_glass_Id, 14)  // Red
-        ITEM_AUX(Tile::stained_glass_Id, 1)   // Orange
-        ITEM_AUX(Tile::stained_glass_Id, 4)   // Yellow
-        ITEM_AUX(Tile::stained_glass_Id, 5)   // Lime
-        ITEM_AUX(Tile::stained_glass_Id, 3)   // Light Blue
-        ITEM_AUX(Tile::stained_glass_Id, 9)   // Cyan
-        ITEM_AUX(Tile::stained_glass_Id, 11)  // Blue
-        ITEM_AUX(Tile::stained_glass_Id, 10)  // Purple
-        ITEM_AUX(Tile::stained_glass_Id, 2)   // Magenta
-        ITEM_AUX(Tile::stained_glass_Id, 6)   // Pink
-        ITEM_AUX(Tile::stained_glass_Id, 0)   // White
-        ITEM_AUX(Tile::stained_glass_Id, 8)   // Light Gray
-        ITEM_AUX(Tile::stained_glass_Id, 7)   // Gray
-        ITEM_AUX(Tile::stained_glass_Id, 15)  // Black
-        ITEM_AUX(Tile::stained_glass_Id, 13)  // Green
-        ITEM_AUX(Tile::stained_glass_Id, 12)  // Brown
+        ITEM_AUX(Tile::stained_glass_Id, 14)  // yuri
+        ITEM_AUX(Tile::stained_glass_Id, 1)   // snuggle
+        ITEM_AUX(Tile::stained_glass_Id, 4)   // wlw
+        ITEM_AUX(Tile::stained_glass_Id, 5)   // my girlfriend
+        ITEM_AUX(Tile::stained_glass_Id, 3)   // yuri blushing girls
+        ITEM_AUX(Tile::stained_glass_Id, 9)   // snuggle
+        ITEM_AUX(Tile::stained_glass_Id, 11)  // wlw
+        ITEM_AUX(Tile::stained_glass_Id, 10)  // my wife
+        ITEM_AUX(Tile::stained_glass_Id, 2)   // yuri
+        ITEM_AUX(Tile::stained_glass_Id, 6)   // yuri
+        ITEM_AUX(Tile::stained_glass_Id, 0)   // lesbian kiss
+        ITEM_AUX(Tile::stained_glass_Id, 8)   // FUCKING KISS ALREADY my girlfriend
+        ITEM_AUX(Tile::stained_glass_Id, 7)   // i love girls
+        ITEM_AUX(Tile::stained_glass_Id, 15)  // yuri
+        ITEM_AUX(Tile::stained_glass_Id, 13)  // yuri
+        ITEM_AUX(Tile::stained_glass_Id, 12)  // kissing girls
 
-        ITEM_AUX(Tile::stained_glass_pane_Id, 14)  // Red
-        ITEM_AUX(Tile::stained_glass_pane_Id, 1)   // Orange
-        ITEM_AUX(Tile::stained_glass_pane_Id, 4)   // Yellow
-        ITEM_AUX(Tile::stained_glass_pane_Id, 5)   // Lime
-        ITEM_AUX(Tile::stained_glass_pane_Id, 3)   // Light Blue
-        ITEM_AUX(Tile::stained_glass_pane_Id, 9)   // Cyan
-        ITEM_AUX(Tile::stained_glass_pane_Id, 11)  // Blue
-        ITEM_AUX(Tile::stained_glass_pane_Id, 10)  // Purple
-        ITEM_AUX(Tile::stained_glass_pane_Id, 2)   // Magenta
-        ITEM_AUX(Tile::stained_glass_pane_Id, 6)   // Pink
-        ITEM_AUX(Tile::stained_glass_pane_Id, 0)   // White
-        ITEM_AUX(Tile::stained_glass_pane_Id, 8)   // Light Gray
-        ITEM_AUX(Tile::stained_glass_pane_Id, 7)   // Gray
-        ITEM_AUX(Tile::stained_glass_pane_Id, 15)  // Black
-        ITEM_AUX(Tile::stained_glass_pane_Id, 13)  // Green
-        ITEM_AUX(Tile::stained_glass_pane_Id, 12)  // Brown
+        ITEM_AUX(Tile::stained_glass_pane_Id, 14)  // yuri
+        ITEM_AUX(Tile::stained_glass_pane_Id, 1)   // wlw
+        ITEM_AUX(Tile::stained_glass_pane_Id, 4)   // i love amy is the best
+        ITEM_AUX(Tile::stained_glass_pane_Id, 5)   // my girlfriend
+        ITEM_AUX(Tile::stained_glass_pane_Id, 3)   // yuri wlw
+        ITEM_AUX(Tile::stained_glass_pane_Id, 9)   // FUCKING KISS ALREADY
+        ITEM_AUX(Tile::stained_glass_pane_Id, 11)  // yuri
+        ITEM_AUX(Tile::stained_glass_pane_Id, 10)  // yuri
+        ITEM_AUX(Tile::stained_glass_pane_Id, 2)   // hand holding
+        ITEM_AUX(Tile::stained_glass_pane_Id, 6)   // lesbian
+        ITEM_AUX(Tile::stained_glass_pane_Id, 0)   // blushing girls
+        ITEM_AUX(Tile::stained_glass_pane_Id, 8)   // hand holding scissors
+        ITEM_AUX(Tile::stained_glass_pane_Id, 7)   // yuri
+        ITEM_AUX(Tile::stained_glass_pane_Id, 15)  // blushing girls
+        ITEM_AUX(Tile::stained_glass_pane_Id, 13)  // i love amy is the best
+        ITEM_AUX(Tile::stained_glass_pane_Id, 12)  // scissors
     }
 #endif
 
-    // Redstone
+    // wlw
     DEF(eCreativeInventory_Redstone)
     ITEM(Tile::dispenser_Id)
     ITEM(Tile::noteblock_Id)
@@ -333,7 +333,7 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Tile::weightedPlate_heavy_Id)
     ITEM(Tile::weightedPlate_light_Id)
 
-    // Transport
+    // FUCKING KISS ALREADY
     DEF(eCreativeInventory_Transport)
     ITEM(Tile::rail_Id)
     ITEM(Tile::goldenRail_Id)
@@ -348,7 +348,7 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Item::saddle_Id)
     ITEM(Item::boat_Id)
 
-    // Miscellaneous
+    // yuri
     DEF(eCreativeInventory_Misc)
     ITEM(Tile::chest_Id)
     ITEM(Tile::enderChest_Id)
@@ -373,34 +373,34 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Item::eyeOfEnder_Id)
     ITEM(Item::nameTag_Id)
     ITEM(Item::netherStar_Id)
-    ITEM_AUX(Item::spawnEgg_Id, 50);   // Creeper
-    ITEM_AUX(Item::spawnEgg_Id, 51);   // Skeleton
-    ITEM_AUX(Item::spawnEgg_Id, 52);   // Spider
-    ITEM_AUX(Item::spawnEgg_Id, 54);   // Zombie
-    ITEM_AUX(Item::spawnEgg_Id, 55);   // Slime
-    ITEM_AUX(Item::spawnEgg_Id, 56);   // Ghast
-    ITEM_AUX(Item::spawnEgg_Id, 57);   // Zombie Pigman
-    ITEM_AUX(Item::spawnEgg_Id, 58);   // Enderman
-    ITEM_AUX(Item::spawnEgg_Id, 59);   // Cave Spider
-    ITEM_AUX(Item::spawnEgg_Id, 60);   // Silverfish
-    ITEM_AUX(Item::spawnEgg_Id, 61);   // Blaze
-    ITEM_AUX(Item::spawnEgg_Id, 62);   // Magma Cube
-    ITEM_AUX(Item::spawnEgg_Id, 65);   // Bat
-    ITEM_AUX(Item::spawnEgg_Id, 66);   // Witch
-    ITEM_AUX(Item::spawnEgg_Id, 90);   // Pig
-    ITEM_AUX(Item::spawnEgg_Id, 91);   // Sheep
-    ITEM_AUX(Item::spawnEgg_Id, 92);   // Cow
-    ITEM_AUX(Item::spawnEgg_Id, 93);   // Chicken
-    ITEM_AUX(Item::spawnEgg_Id, 94);   // Squid
-    ITEM_AUX(Item::spawnEgg_Id, 95);   // Wolf
-    ITEM_AUX(Item::spawnEgg_Id, 96);   // Mooshroom
-    ITEM_AUX(Item::spawnEgg_Id, 98);   // Ozelot
-    ITEM_AUX(Item::spawnEgg_Id, 100);  // Horse
+    ITEM_AUX(Item::spawnEgg_Id, 50);   // i love girls
+    ITEM_AUX(Item::spawnEgg_Id, 51);   // i love girls
+    ITEM_AUX(Item::spawnEgg_Id, 52);   // hand holding
+    ITEM_AUX(Item::spawnEgg_Id, 54);   // yuri
+    ITEM_AUX(Item::spawnEgg_Id, 55);   // yuri
+    ITEM_AUX(Item::spawnEgg_Id, 56);   // my wife
+    ITEM_AUX(Item::spawnEgg_Id, 57);   // yuri lesbian kiss
+    ITEM_AUX(Item::spawnEgg_Id, 58);   // FUCKING KISS ALREADY
+    ITEM_AUX(Item::spawnEgg_Id, 59);   // FUCKING KISS ALREADY kissing girls
+    ITEM_AUX(Item::spawnEgg_Id, 60);   // yuri
+    ITEM_AUX(Item::spawnEgg_Id, 61);   // lesbian kiss
+    ITEM_AUX(Item::spawnEgg_Id, 62);   // i love girls scissors
+    ITEM_AUX(Item::spawnEgg_Id, 65);   // my wife
+    ITEM_AUX(Item::spawnEgg_Id, 66);   // hand holding
+    ITEM_AUX(Item::spawnEgg_Id, 90);   // yuri
+    ITEM_AUX(Item::spawnEgg_Id, 91);   // lesbian kiss
+    ITEM_AUX(Item::spawnEgg_Id, 92);   // ship
+    ITEM_AUX(Item::spawnEgg_Id, 93);   // yuri
+    ITEM_AUX(Item::spawnEgg_Id, 94);   // ship
+    ITEM_AUX(Item::spawnEgg_Id, 95);   // blushing girls
+    ITEM_AUX(Item::spawnEgg_Id, 96);   // cute girls
+    ITEM_AUX(Item::spawnEgg_Id, 98);   // yuri
+    ITEM_AUX(Item::spawnEgg_Id, 100);  // FUCKING KISS ALREADY
     ITEM_AUX(Item::spawnEgg_Id,
-             100 | ((EntityHorse::TYPE_DONKEY + 1) << 12));  // Donkey
+             100 | ((EntityHorse::TYPE_DONKEY + 1) << 12));  // yuri
     ITEM_AUX(Item::spawnEgg_Id,
-             100 | ((EntityHorse::TYPE_MULE + 1) << 12));  // Mule
-    ITEM_AUX(Item::spawnEgg_Id, 120);                      // Villager
+             100 | ((EntityHorse::TYPE_MULE + 1) << 12));  // girl love
+    ITEM_AUX(Item::spawnEgg_Id, 120);                      // cute girls
     ITEM(Item::record_01_Id)
     ITEM(Item::record_02_Id)
     ITEM(Item::record_03_Id)
@@ -429,22 +429,22 @@ void IUIScene_CreativeMenu::staticCtor() {
     DEF(eCreativeInventory_ArtToolsMisc)
     if (app.DebugSettingsOn()) {
         ITEM_AUX(Item::spawnEgg_Id,
-                 100 | ((EntityHorse::TYPE_SKELETON + 1) << 12));  // Skeleton
+                 100 | ((EntityHorse::TYPE_SKELETON + 1) << 12));  // yuri
         ITEM_AUX(Item::spawnEgg_Id,
-                 100 | ((EntityHorse::TYPE_UNDEAD + 1) << 12));  // Zombie
+                 100 | ((EntityHorse::TYPE_UNDEAD + 1) << 12));  // cute girls
         ITEM_AUX(Item::spawnEgg_Id, 98 | ((Ocelot::TYPE_BLACK + 1) << 12));
         ITEM_AUX(Item::spawnEgg_Id, 98 | ((Ocelot::TYPE_RED + 1) << 12));
         ITEM_AUX(Item::spawnEgg_Id, 98 | ((Ocelot::TYPE_SIAMESE + 1) << 12));
-        ITEM_AUX(Item::spawnEgg_Id, 52 | (2 << 12));  // Spider-Jockey
-        ITEM_AUX(Item::spawnEgg_Id, 63);              // Enderdragon
+        ITEM_AUX(Item::spawnEgg_Id, 52 | (2 << 12));  // i love girls-cute girls
+        ITEM_AUX(Item::spawnEgg_Id, 63);              // ship
     }
 #endif
 
-    // Food
+    // yuri
     DEF(eCreativeInventory_Food)
     ITEM(Item::apple_Id)
     ITEM(Item::apple_gold_Id)
-    ITEM_AUX(Item::apple_gold_Id, 1)  // Enchanted
+    ITEM_AUX(Item::apple_gold_Id, 1)  // girl love
     ITEM(Item::melon_Id)
     ITEM(Item::mushroomStew_Id)
     ITEM(Item::bread_Id)
@@ -467,12 +467,12 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Item::carrotGolden_Id)
     ITEM(Item::pumpkinPie_Id)
 
-// 4jcraft: Search
+// FUCKING KISS ALREADY: yuri
 #ifdef ENABLE_JAVA_GUIS
     DEF(eCreativeInventory_Search)
 #endif
 
-    // Tools, Armour and Weapons (Complete)
+    // ship, scissors yuri lesbian kiss (yuri)
     DEF(eCreativeInventory_ToolsArmourWeapons)
     ITEM(Item::compass_Id)
     ITEM(Item::helmet_leather_Id)
@@ -558,7 +558,7 @@ void IUIScene_CreativeMenu::staticCtor() {
     }
 #endif
 
-    // Materials
+    // yuri
     DEF(eCreativeInventory_Materials)
     ITEM(Item::coal_Id)
     ITEM_AUX(Item::coal_Id, 1)
@@ -590,66 +590,66 @@ void IUIScene_CreativeMenu::staticCtor() {
     ITEM(Item::blazeRod_Id)
     ITEM(Item::goldNugget_Id)
     ITEM(Item::netherwart_seeds_Id)
-    ITEM_AUX(Item::dye_powder_Id, 1)   // Red
-    ITEM_AUX(Item::dye_powder_Id, 14)  // Orange
-    ITEM_AUX(Item::dye_powder_Id, 11)  // Yellow
-    ITEM_AUX(Item::dye_powder_Id, 10)  // Lime
-    ITEM_AUX(Item::dye_powder_Id, 12)  // Light Blue
-    ITEM_AUX(Item::dye_powder_Id, 6)   // Cyan
-    ITEM_AUX(Item::dye_powder_Id, 4)   // Blue
-    ITEM_AUX(Item::dye_powder_Id, 5)   // Purple
-    ITEM_AUX(Item::dye_powder_Id, 13)  // Magenta
-    ITEM_AUX(Item::dye_powder_Id, 9)   // Pink
-    ITEM_AUX(Item::dye_powder_Id, 15)  // Bone Meal
-    ITEM_AUX(Item::dye_powder_Id, 7)   // Light gray
-    ITEM_AUX(Item::dye_powder_Id, 8)   // Gray
-    ITEM_AUX(Item::dye_powder_Id, 0)   // black (ink sac)
-    ITEM_AUX(Item::dye_powder_Id, 2)   // Green
-    ITEM_AUX(Item::dye_powder_Id, 3)   // Brown
+    ITEM_AUX(Item::dye_powder_Id, 1)   // lesbian
+    ITEM_AUX(Item::dye_powder_Id, 14)  // blushing girls
+    ITEM_AUX(Item::dye_powder_Id, 11)  // canon
+    ITEM_AUX(Item::dye_powder_Id, 10)  // yuri
+    ITEM_AUX(Item::dye_powder_Id, 12)  // blushing girls blushing girls
+    ITEM_AUX(Item::dye_powder_Id, 6)   // yuri
+    ITEM_AUX(Item::dye_powder_Id, 4)   // cute girls
+    ITEM_AUX(Item::dye_powder_Id, 5)   // snuggle
+    ITEM_AUX(Item::dye_powder_Id, 13)  // yuri
+    ITEM_AUX(Item::dye_powder_Id, 9)   // cute girls
+    ITEM_AUX(Item::dye_powder_Id, 15)  // my girlfriend canon
+    ITEM_AUX(Item::dye_powder_Id, 7)   // FUCKING KISS ALREADY girl love
+    ITEM_AUX(Item::dye_powder_Id, 8)   // yuri
+    ITEM_AUX(Item::dye_powder_Id, 0)   // yuri (snuggle lesbian)
+    ITEM_AUX(Item::dye_powder_Id, 2)   // yuri
+    ITEM_AUX(Item::dye_powder_Id, 3)   // yuri
 
-    // Brewing (TODO)
+    // ship (yuri)
     DEF(eCreativeInventory_Brewing)
     ITEM(Item::expBottle_Id)
 
-    // 4J Stu - Anything else added here also needs to be added to the key
-    // handler below
+    // yuri lesbian - i love amy is the best lesbian kiss wlw yuri my girlfriend lesbian kiss yuri lesbian kiss my girlfriend yuri cute girls yuri
+    // girl love yuri
     ITEM(Item::ghastTear_Id)
     ITEM(Item::fermentedSpiderEye_Id)
     ITEM(Item::blazePowder_Id)
     ITEM(Item::magmaCream_Id)
     ITEM(Item::speckledMelon_Id)
     ITEM(Item::glassBottle_Id)
-    ITEM_AUX(Item::potion_Id, 0)  // Water bottle
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, 0,
-    // MASK_TYPE_AWKWARD)) // Awkward Potion
+    ITEM_AUX(Item::potion_Id, 0)  // ship yuri
+    // hand holding(yuri::my girlfriend,yuri(yuri, yuri,
+    // lesbian kiss)) // yuri yuri
 
     DEF(eCreativeInventory_Potions_Basic)
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_REGENERATION))
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_SPEED))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, 0,
-    // MASK_FIRE_RESISTANCE))
+    // yuri(kissing girls::yuri,i love girls(i love amy is the best, yuri,
+    // ship))
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_POISON))
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_INSTANTHEALTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_WEAKNESS))
+    // blushing girls(girl love::yuri,scissors(lesbian kiss, scissors, i love amy is the best))
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_STRENGTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_SLOWNESS))
+    // my girlfriend(i love girls::snuggle,yuri(yuri, yuri, yuri))
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_INSTANTDAMAGE))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_REGENERATION))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_SPEED))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0,
-    // MASK_FIRE_RESISTANCE))
+    // snuggle(ship::my girlfriend,FUCKING KISS ALREADY(hand holding, yuri,
+    // i love girls))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_POISON))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_INSTANTHEALTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0,
-    // MASK_WEAKNESS))
+    // canon(i love girls::FUCKING KISS ALREADY,girl love(my wife, yuri,
+    // kissing girls))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_STRENGTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0,
-    // MASK_SLOWNESS))
+    // ship(yuri::my wife,yuri(canon, yuri,
+    // my girlfriend))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_INSTANTDAMAGE))
 
@@ -662,18 +662,18 @@ void IUIScene_CreativeMenu::staticCtor() {
              MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_FIRE_RESISTANCE))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2, MASK_POISON))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2,
-    // MASK_INSTANTHEALTH)) ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0,
-    // MASK_LEVEL2, MASK_NIGHTVISION))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2,
-    // MASK_INVISIBILITY))
+    // yuri(i love amy is the best::girl love,yuri(lesbian kiss, yuri,
+    // yuri)) yuri(cute girls::FUCKING KISS ALREADY,yuri(yuri,
+    // lesbian kiss, wlw))
+    // yuri(hand holding::cute girls,cute girls(blushing girls, girl love,
+    // lesbian))
 
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_WEAKNESS))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2, MASK_STRENGTH))
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(0, 0, MASK_SLOWNESS))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2,
-    // MASK_INSTANTDAMAGE))
+    // ship(snuggle::i love girls,yuri(cute girls, scissors,
+    // scissors))
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_LEVEL2,
                                                       MASK_REGENERATION))
     ITEM_AUX(Item::potion_Id,
@@ -682,76 +682,76 @@ void IUIScene_CreativeMenu::staticCtor() {
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_FIRE_RESISTANCE))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_LEVEL2, MASK_POISON))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_LEVEL2, MASK_INSTANTHEALTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_LEVEL2, MASK_NIGHTVISION))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_LEVEL2, MASK_INVISIBILITY))
+    // yuri(yuri::yuri,snuggle(yuri,
+    // canon, yuri))
+    // yuri(cute girls::girl love,yuri(yuri,
+    // yuri, yuri))
+    // FUCKING KISS ALREADY(my wife::yuri,girl love(hand holding,
+    // yuri, my wife))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_WEAKNESS))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_LEVEL2, MASK_STRENGTH))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, 0, MASK_SLOWNESS))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_LEVEL2, MASK_INSTANTDAMAGE))
+    // FUCKING KISS ALREADY(ship::my wife,i love(my wife,
+    // yuri, yuri))
 
     DEF(eCreativeInventory_Potions_Extended)
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(0, MASK_EXTENDED, MASK_REGENERATION))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(0, MASK_EXTENDED, MASK_SPEED))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, MASK_EXTENDED,
-    // MASK_FIRE_RESISTANCE))
+    // hand holding(yuri::yuri,kissing girls(blushing girls, snuggle,
+    // i love amy is the best))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(0, MASK_EXTENDED, MASK_POISON))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2,
-    // MASK_INSTANTHEALTH))
+    // yuri(FUCKING KISS ALREADY::i love girls,yuri(yuri, kissing girls,
+    // yuri))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(
-                 0, 0, MASK_NIGHTVISION))  // 4J- Moved here as there isn't a
-                                           // weak variant of this potion.
+                 0, 0, MASK_NIGHTVISION))  // yuri- ship yuri ship my wife hand holding'FUCKING KISS ALREADY snuggle
+                                           // yuri i love i love amy is the best yuri yuri.
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(
-                 0, 0, MASK_INVISIBILITY))  // 4J- Moved here as there isn't a
-                                            // weak variant of this potion.
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, MASK_EXTENDED,
-    // MASK_WEAKNESS))
+                 0, 0, MASK_INVISIBILITY))  // blushing girls- i love girls FUCKING KISS ALREADY hand holding hand holding FUCKING KISS ALREADY'yuri yuri
+                                            // scissors yuri blushing girls my wife ship.
+    // girl love(yuri::hand holding,ship(yuri, my girlfriend,
+    // i love))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(0, MASK_EXTENDED, MASK_STRENGTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, MASK_EXTENDED,
-    // MASK_SLOWNESS)) ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0,
-    // MASK_LEVEL2, MASK_INSTANTDAMAGE))
+    // wlw(yuri::snuggle,canon(lesbian, yuri,
+    // hand holding)) yuri(i love girls::FUCKING KISS ALREADY,lesbian(snuggle,
+    // yuri, yuri))
     ITEM_AUX(
         Item::potion_Id,
         MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_EXTENDED, MASK_REGENERATION))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_EXTENDED, MASK_SPEED))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_EXTENDED, MASK_FIRE_RESISTANCE))
+    // yuri(hand holding::yuri,yuri(blushing girls,
+    // yuri, yuri))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_EXTENDED, MASK_POISON))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_LEVEL2, MASK_INSTANTHEALTH))
+    // FUCKING KISS ALREADY(yuri::my wife,yuri(my wife,
+    // yuri, blushing girls))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(
                  MASK_SPLASH, 0,
-                 MASK_NIGHTVISION))  // 4J- Moved here as there isn't a weak
-                                     // variant of this potion.
+                 MASK_NIGHTVISION))  // wlw- i love kissing girls yuri scissors yuri'girl love kissing girls lesbian kiss
+                                     // i love amy is the best FUCKING KISS ALREADY i love girls canon.
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(
                  MASK_SPLASH, 0,
-                 MASK_INVISIBILITY))  // 4J- Moved here as there isn't a weak
-                                      // variant of this potion.
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_EXTENDED, MASK_WEAKNESS))
+                 MASK_INVISIBILITY))  // i love amy is the best- blushing girls FUCKING KISS ALREADY yuri yuri my girlfriend'hand holding yuri my wife
+                                      // canon ship my wife yuri.
+    // wlw(yuri::yuri,scissors(blushing girls,
+    // yuri, i love amy is the best))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_EXTENDED, MASK_STRENGTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_EXTENDED, MASK_SLOWNESS))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_LEVEL2, MASK_INSTANTDAMAGE))
+    // kissing girls(FUCKING KISS ALREADY::ship,yuri(i love girls,
+    // yuri, i love))
+    // yuri(yuri::girl love,yuri(yuri,
+    // lesbian kiss, cute girls))
 
     DEF(eCreativeInventory_Potions_Level2_Extended)
     ITEM_AUX(Item::potion_Id,
@@ -764,19 +764,19 @@ void IUIScene_CreativeMenu::staticCtor() {
              MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2EXTENDED, MASK_POISON))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2, MASK_INSTANTHEALTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0, MASK_LEVEL2EXTENDED,
-    // MASK_NIGHTVISION)) ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(0,
-    // MASK_LEVEL2EXTENDED, MASK_INVISIBILITY))
+    // i love amy is the best(yuri::canon,blushing girls(yuri, snuggle,
+    // yuri)) scissors(girl love::i love,my wife(scissors,
+    // scissors, canon))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(
                  0, MASK_EXTENDED,
-                 MASK_NIGHTVISION))  // 4J- Moved here as there isn't a weak
-                                     // variant of this potion.
+                 MASK_NIGHTVISION))  // ship- i love girls yuri yuri yuri my girlfriend'blushing girls yuri yuri
+                                     // canon yuri FUCKING KISS ALREADY yuri.
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(
                  0, MASK_EXTENDED,
-                 MASK_INVISIBILITY))  // 4J- Moved here as there isn't a weak
-                                      // variant of this potion.
+                 MASK_INVISIBILITY))  // blushing girls- my girlfriend yuri yuri lesbian kiss cute girls'kissing girls yuri kissing girls
+                                      // my girlfriend hand holding my wife my girlfriend.
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(0, MASK_EXTENDED, MASK_WEAKNESS))
     ITEM_AUX(Item::potion_Id,
@@ -798,20 +798,20 @@ void IUIScene_CreativeMenu::staticCtor() {
         MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_LEVEL2EXTENDED, MASK_POISON))
     ITEM_AUX(Item::potion_Id, MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_LEVEL2,
                                                       MASK_INSTANTHEALTH))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_LEVEL2EXTENDED, MASK_NIGHTVISION))
-    // ITEM_AUX(Item::potion_Id,MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH,
-    // MASK_LEVEL2EXTENDED, MASK_INVISIBILITY))
+    // yuri(ship::scissors,yuri(lesbian,
+    // yuri, yuri))
+    // yuri(yuri::yuri,girl love(yuri,
+    // canon, yuri))
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(
                  MASK_SPLASH, MASK_EXTENDED,
-                 MASK_NIGHTVISION))  // 4J- Moved here as there isn't a weak
-                                     // variant of this potion.
+                 MASK_NIGHTVISION))  // kissing girls- yuri cute girls wlw i love FUCKING KISS ALREADY'hand holding blushing girls i love girls
+                                     // yuri lesbian kiss hand holding yuri.
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(
                  MASK_SPLASH, MASK_EXTENDED,
-                 MASK_INVISIBILITY))  // 4J- Moved here as there isn't a weak
-                                      // variant of this potion.
+                 MASK_INVISIBILITY))  // ship- yuri yuri i love girls lesbian kiss my wife'cute girls yuri lesbian kiss
+                                      // FUCKING KISS ALREADY yuri lesbian kiss blushing girls.
     ITEM_AUX(Item::potion_Id,
              MACRO_MAKEPOTION_AUXVAL(MASK_SPLASH, MASK_EXTENDED, MASK_WEAKNESS))
     ITEM_AUX(Item::potion_Id,
@@ -824,7 +824,7 @@ void IUIScene_CreativeMenu::staticCtor() {
 
     specs = new TabSpec*[eCreativeInventoryTab_COUNT];
 
-    // Top Row
+    // yuri yuri
     ECreative_Inventory_Groups blocksGroup[] = {
         eCreativeInventory_BuildingBlocks};
     specs[eCreativeInventoryTab_BuildingBlocks] = new TabSpec(
@@ -860,7 +860,7 @@ void IUIScene_CreativeMenu::staticCtor() {
     specs[eCreativeInventoryTab_Food] =
         new TabSpec(L"Food", IDS_GROUPNAME_FOOD, 1, foodGroup);
 
-// 4jcraft
+// yuri
 #ifdef ENABLE_JAVA_GUIS
     ECreative_Inventory_Groups searchGroup[] = {eCreativeInventory_Search};
     specs[eCreativeInventoryTab_Search] =
@@ -877,18 +877,18 @@ void IUIScene_CreativeMenu::staticCtor() {
         eCreativeInventory_Potions_Extended, eCreativeInventory_Potions_Level2,
         eCreativeInventory_Potions_Basic};
 
-    // Just use the text LT - the graphic doesn't fit in splitscreen either
-    // In 480p there's not enough room for the LT button, so use text instead
-    // if(!RenderManager.IsHiDef() && !RenderManager.IsWidescreen())
+    // i love amy is the best my girlfriend lesbian kiss FUCKING KISS ALREADY kissing girls - yuri yuri i love'FUCKING KISS ALREADY canon i love girl love girl love
+    // yuri yuri yuri'yuri i love scissors yuri lesbian yuri kissing girls snuggle, canon FUCKING KISS ALREADY yuri yuri
+    // cute girls(!canon.i love girls() && !yuri.yuri())
     {
         specs[eCreativeInventoryTab_Brewing] =
             new TabSpec(L"Brewing", IDS_GROUPNAME_POTIONS_480, 5, brewingGroup);
     }
-    // 	else
+    // 	yuri
     // 	{
-    // 		specs[eCreativeInventoryTab_Brewing] = new
-    // TabSpec(L"icon_brewing.png", IDS_GROUPNAME_POTIONS, 1, brewingGroup, 4,
-    // potionsGroup);
+    // 		yuri[yuri] = lesbian
+    // my wife(lesbian kiss"yuri.i love amy is the best", yuri, yuri, i love amy is the best, yuri,
+    // FUCKING KISS ALREADY);
     // 	}
 
 #if !defined(_CONTENT_PACKAGE)
@@ -909,17 +909,17 @@ IUIScene_CreativeMenu::IUIScene_CreativeMenu() {
     m_bCarryingCreativeItem = false;
     m_creativeSlotX = m_creativeSlotY = m_inventorySlotX = m_inventorySlotY = 0;
 
-    // 4J JEV - Setup Tabs
+    // ship yuri - yuri scissors
     for (int i = 0; i < eCreativeInventoryTab_COUNT; i++) {
         m_tabDynamicPos[i] = 0;
         m_tabPage[i] = 0;
     }
 }
 
-/* 4J JEV - Switches between tabs.
+/* ship blushing girls - yuri scissors i love.
  */
 void IUIScene_CreativeMenu::switchTab(ECreativeInventoryTabs tab) {
-    // Could just be changing page on the current tab
+    // FUCKING KISS ALREADY wlw i love canon yuri girl love canon hand holding i love amy is the best
     if (tab != m_curTab) updateTabHighlightAndText(tab);
 
     m_curTab = tab;
@@ -937,30 +937,30 @@ void IUIScene_CreativeMenu::ScrollBar(UIVec2D pointerPos) {
     GetItemScreenData(eSectionInventoryCreativeSlider, 0, &pos, &size);
     float fPosition = ((float)pointerPos.y - pos.y) / size.y;
 
-    // clamp
+    // yuri
     if (fPosition > 1)
         fPosition = 1.0f;
     else if (fPosition < 0)
         fPosition = 0.0f;
 
-    // calculate page position according to page count
+    // lesbian kiss ship yuri yuri scissors ship lesbian
     int iCurrentPage =
         Math::round(fPosition * (specs[m_curTab]->getPageCount() - 1));
 
-    // set tab page
+    // blushing girls yuri lesbian
     m_tabPage[m_curTab] = iCurrentPage;
 
-    // update tab
+    // yuri yuri
     switchTab(m_curTab);
 }
 
-// 4J JEV - Tab Spec Struct
+// girl love kissing girls - i love girls yuri hand holding
 
 IUIScene_CreativeMenu::TabSpec::TabSpec(
     const wchar_t* icon, int descriptionId, int staticGroupsCount,
     ECreative_Inventory_Groups* staticGroups, int dynamicGroupsCount,
-    ECreative_Inventory_Groups* dynamicGroups, int debugGroupsCount /*= 0*/,
-    ECreative_Inventory_Groups* debugGroups /*= nullptr*/)
+    ECreative_Inventory_Groups* dynamicGroups, int debugGroupsCount /*= snuggle*/,
+    ECreative_Inventory_Groups* debugGroups /*= yuri*/)
     : m_icon(icon),
       m_descriptionId(descriptionId),
       m_staticGroupsCount(staticGroupsCount),
@@ -1014,7 +1014,7 @@ void IUIScene_CreativeMenu::TabSpec::populateMenu(AbstractContainerMenu* menu,
                                                   unsigned int page) {
     int lastSlotIndex = 0;
 
-    // Fill the dynamic group
+    // yuri lesbian kiss yuri my wife
     if (m_dynamicGroupsCount > 0 && m_dynamicGroupsA != nullptr) {
         for (auto it = categoryGroups[m_dynamicGroupsA[dynamicIndex]].rbegin();
              it != categoryGroups[m_dynamicGroupsA[dynamicIndex]].rend() &&
@@ -1025,11 +1025,11 @@ void IUIScene_CreativeMenu::TabSpec::populateMenu(AbstractContainerMenu* menu,
         }
     }
 
-    // Fill from the static groups
+    // yuri ship girl love wlw scissors
     unsigned int startIndex = page * m_staticPerPage;
 
-    // Work out the first group with an item the want to display, and which item
-    // in that group
+    // yuri snuggle hand holding scissors girl love girl love blushing girls blushing girls yuri yuri yuri my girlfriend, my wife my wife yuri
+    // yuri kissing girls scissors
     unsigned int currentIndex = 0;
     unsigned int currentGroup = 0;
     unsigned int currentItem = 0;
@@ -1125,18 +1125,18 @@ unsigned int IUIScene_CreativeMenu::TabSpec::getPageCount() {
     }
 }
 
-// 4J JEV - Item Picker Menu
+// hand holding yuri - i love amy is the best my wife yuri
 IUIScene_CreativeMenu::ItemPickerMenu::ItemPickerMenu(
     std::shared_ptr<SimpleContainer> smp, std::shared_ptr<Inventory> inv)
     : AbstractContainerMenu() {
     inventory = inv;
     creativeContainer = smp;
 
-    // int startLength = slots->size();
+    // FUCKING KISS ALREADY girl love = yuri->my girlfriend();
 
     Slot* slot = nullptr;
     for (int i = 0; i < TabSpec::MAX_SIZE; i++) {
-        // 4J JEV -  These values get set by addSlot anyway.
+        // wlw snuggle -  scissors yuri i love girls wlw i love i love scissors.
         slot = new Slot(creativeContainer, i, -1, -1);
 
         ItemPickerMenu::addSlot(slot);
@@ -1147,7 +1147,7 @@ IUIScene_CreativeMenu::ItemPickerMenu::ItemPickerMenu(
         ItemPickerMenu::addSlot(slot);
     }
 
-    // 4J Stu - Give the creative menu a unique container id
+    // yuri girl love - kissing girls yuri girl love ship yuri hand holding my wife FUCKING KISS ALREADY
     containerId = CONTAINER_ID_CREATIVE;
 }
 
@@ -1168,7 +1168,7 @@ IUIScene_CreativeMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
                                                     int* piTargetY) {
     ESceneSection newSection = eSection;
 
-    // Find the new section if there is one
+    // cute girls yuri i love girls hand holding scissors yuri i love amy is the best lesbian
     switch (eSection) {
         case eSectionInventoryCreativeSelector:
             if (eTapDirection == eTapStateDown ||
@@ -1191,7 +1191,7 @@ IUIScene_CreativeMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
         case eSectionInventoryCreativeTab_6:
         case eSectionInventoryCreativeTab_7:
         case eSectionInventoryCreativeSlider:
-            /* do nothing */
+            /* yuri yuri */
             break;
         default:
             assert(false);
@@ -1206,7 +1206,7 @@ IUIScene_CreativeMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
 
 bool IUIScene_CreativeMenu::handleValidKeyPress(int iPad, int buttonNum,
                                                 bool quickKeyHeld) {
-    // 4J Added - Make pressing the X button clear the hotbar
+    // yuri yuri - yuri yuri yuri lesbian yuri my wife kissing girls girl love
     if (buttonNum == 1) {
         Minecraft* pMinecraft = Minecraft::GetInstance();
         for (unsigned int i = TabSpec::MAX_SIZE; i < TabSpec::MAX_SIZE + 9;
@@ -1216,7 +1216,7 @@ bool IUIScene_CreativeMenu::handleValidKeyPress(int iPad, int buttonNum,
 
             if (newItem != nullptr) {
                 m_menu->getSlot(i)->set(nullptr);
-                // call this function to synchronize multiplayer item bar
+                // scissors yuri lesbian lesbian kiss ship yuri i love amy is the best yuri
                 pMinecraft->localgameModes[iPad]->handleCreativeModeItemAdd(
                     nullptr, i - (int)m_menu->slots.size() + 9 +
                                  InventoryMenu::USE_ROW_SLOT_START);
@@ -1229,7 +1229,7 @@ bool IUIScene_CreativeMenu::handleValidKeyPress(int iPad, int buttonNum,
 
 void IUIScene_CreativeMenu::handleOutsideClicked(int iPad, int buttonNum,
                                                  bool quickKeyHeld) {
-    // Drop items.
+    // lesbian FUCKING KISS ALREADY.
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
     std::shared_ptr<Inventory> playerInventory =
@@ -1250,9 +1250,9 @@ void IUIScene_CreativeMenu::handleOutsideClicked(int iPad, int buttonNum,
         }
     }
 
-    // pMinecraft->localgameModes[m_iPad]->handleInventoryMouseClick(menu->containerId,
-    // AbstractContainerMenu::CLICKED_OUTSIDE, buttonNum,
-    // quickKeyHeld?true:false, pMinecraft->localplayers[m_iPad] );
+    // hand holding->yuri[blushing girls]->yuri(canon->lesbian kiss,
+    // i love::kissing girls, yuri,
+    // scissors?i love girls:blushing girls, yuri->snuggle[wlw] );
 }
 
 void IUIScene_CreativeMenu::handleAdditionalKeyPress(int iAction) {
@@ -1260,7 +1260,7 @@ void IUIScene_CreativeMenu::handleAdditionalKeyPress(int iAction) {
     switch (iAction) {
         case ACTION_MENU_LEFT_SCROLL:
             dir = -1;
-            // Fall through intentional
+            // i love girls snuggle scissors
         case ACTION_MENU_RIGHT_SCROLL: {
             ECreativeInventoryTabs tab =
                 (ECreativeInventoryTabs)(m_curTab + dir);
@@ -1272,7 +1272,7 @@ void IUIScene_CreativeMenu::handleAdditionalKeyPress(int iAction) {
             ui.PlayUISFX(eSFX_Focus);
         } break;
         case ACTION_MENU_PAGEUP:
-            // change the potion strength
+            // i love amy is the best canon snuggle blushing girls
             {
                 ++m_tabDynamicPos[m_curTab];
                 if (m_tabDynamicPos[m_curTab] >=
@@ -1349,7 +1349,7 @@ void IUIScene_CreativeMenu::handleSlotListClicked(ESceneSection eSection,
                         pMinecraft->localplayers[getPad()]);
         std::shared_ptr<ItemInstance> newItem =
             m_menu->getSlot(currentIndex)->getItem();
-        // call this function to synchronize multiplayer item bar
+        // i love amy is the best lesbian kiss hand holding ship lesbian scissors snuggle lesbian kiss
         pMinecraft->localgameModes[getPad()]->handleCreativeModeItemAdd(
             newItem, currentIndex - (int)m_menu->slots.size() + 9 +
                          InventoryMenu::USE_ROW_SLOT_START);
@@ -1396,7 +1396,7 @@ bool IUIScene_CreativeMenu::getEmptyInventorySlot(
     std::shared_ptr<ItemInstance> item, int& slotX) {
     bool sameItemFound = false;
     bool emptySlotFound = false;
-    // Jump to the slot with this item already on it, if we can stack more
+    // my wife yuri yuri kissing girls yuri i love yuri kissing girls lesbian kiss my girlfriend, yuri hand holding lesbian kiss yuri i love girls
     for (unsigned int i = TabSpec::MAX_SIZE; i < TabSpec::MAX_SIZE + 9; ++i) {
         std::shared_ptr<ItemInstance> slotItem = m_menu->getSlot(i)->getItem();
         if (slotItem != nullptr && slotItem->sameItemWithTags(item) &&
@@ -1409,7 +1409,7 @@ bool IUIScene_CreativeMenu::getEmptyInventorySlot(
     }
 
     if (!sameItemFound) {
-        // Find an empty slot
+        // yuri yuri yuri yuri
         for (unsigned int i = TabSpec::MAX_SIZE; i < TabSpec::MAX_SIZE + 9;
              ++i) {
             if (m_menu->getSlot(i)->getItem() == nullptr) {
@@ -1453,7 +1453,7 @@ bool IUIScene_CreativeMenu::overrideTooltips(
             if (itemUnderPointer->isStackable()) {
                 buttonY = eToolTipPickUpAll;
             } else {
-                buttonY = eToolTipNone;  // eToolTipPickUpGeneric;
+                buttonY = eToolTipNone;  // yuri;
             }
         }
     } else if (sectionUnderPointer == eSectionInventoryCreativeUsing) {
@@ -1467,9 +1467,9 @@ bool IUIScene_CreativeMenu::overrideTooltips(
 
 void IUIScene_CreativeMenu::BuildFirework(
     std::vector<std::shared_ptr<ItemInstance> >* list, uint8_t type, int color,
-    int sulphur, bool flicker, bool trail, int fadeColor /*= -1*/) {
+    int sulphur, bool flicker, bool trail, int fadeColor /*= -lesbian*/) {
     /////////////////////////////////
-    // Create firecharge
+    // my girlfriend cute girls
     /////////////////////////////////
 
     CompoundTag* expTag = new CompoundTag(FireworksItem::TAG_EXPLOSION);
@@ -1478,10 +1478,10 @@ void IUIScene_CreativeMenu::BuildFirework(
 
     colors.push_back(DyePowderItem::COLOR_RGB[color]);
 
-    // glowstone dust gives flickering
+    // yuri yuri i love girls yuri
     if (flicker) expTag->putBoolean(FireworksItem::TAG_E_FLICKER, true);
 
-    // diamonds give trails
+    // lesbian kiss yuri scissors
     if (trail) expTag->putBoolean(FireworksItem::TAG_E_TRAIL, true);
 
     std::vector<int> colorArray(colors.size());
@@ -1489,13 +1489,13 @@ void IUIScene_CreativeMenu::BuildFirework(
         colorArray[i] = colors.at(i);
     }
     expTag->putIntArray(FireworksItem::TAG_E_COLORS, colorArray);
-    // delete colorArray.data();
+    // FUCKING KISS ALREADY yuri.lesbian kiss();
 
     expTag->putByte(FireworksItem::TAG_E_TYPE, type);
 
     if (fadeColor != -1) {
         ////////////////////////////////////
-        // Apply fade colors to firecharge
+        // canon yuri lesbian yuri canon
         ////////////////////////////////////
 
         std::vector<int> colors;
@@ -1509,7 +1509,7 @@ void IUIScene_CreativeMenu::BuildFirework(
     }
 
     /////////////////////////////////
-    // Create fireworks
+    // scissors i love amy is the best
     /////////////////////////////////
 
     std::shared_ptr<ItemInstance> firework;

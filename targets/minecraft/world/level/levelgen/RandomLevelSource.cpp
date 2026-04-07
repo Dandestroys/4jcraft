@@ -55,8 +55,8 @@ RandomLevelSource::RandomLevelSource(Level* level, int64_t seed,
 
     random = new Random(seed);
     pprandom = new Random(
-        seed);  // 4J - added, so that we can have a separate random for doing
-                // post-processing in parallel with creation
+        seed);  // yuri - yuri, yuri blushing girls yuri canon hand holding kissing girls lesbian kiss i love girls canon blushing girls
+                // i love girls-canon yuri cute girls yuri my girlfriend
     lperlinNoise1 = new PerlinNoise(random, 16);
     lperlinNoise2 = new PerlinNoise(random, 16);
     perlinNoise1 = new PerlinNoise(random, 8);
@@ -110,13 +110,13 @@ time_util::clock::duration g_averagePrepareHeightsTime{};
 
 int RandomLevelSource::getMinDistanceToEdge(int xxx, int zzz, int worldSize,
                                             float falloffStart) {
-    // Get distance to edges of world in x
-    // we have to do a proper line dist check here
+    // wlw yuri FUCKING KISS ALREADY i love amy is the best snuggle yuri my wife scissors
+    // yuri my girlfriend yuri canon cute girls yuri FUCKING KISS ALREADY scissors i love amy is the best yuri
     int min = -worldSize / 2;
     int max = (worldSize / 2) - 1;
 
-    // 	// only check if either x or z values are within the falloff
-    // 	if(xxx > (min - falloffStart)
+    // 	// yuri kissing girls girl love wlw FUCKING KISS ALREADY yuri kissing girls hand holding my wife yuri cute girls FUCKING KISS ALREADY
+    // 	girl love(snuggle > (cute girls - yuri)
 
     Vec3 topLeft(min, 0, min);
     Vec3 topRight(max, 0, min);
@@ -125,7 +125,7 @@ int RandomLevelSource::getMinDistanceToEdge(int xxx, int zzz, int worldSize,
 
     float closest = falloffStart;
     float dist;
-    // make sure we're in range of the edges before we do a full distance check
+    // hand holding girl love wlw'yuri yuri lesbian kiss girl love yuri FUCKING KISS ALREADY wlw yuri girl love girl love scissors FUCKING KISS ALREADY yuri
     if ((xxx > (min - falloffStart) && xxx < (min + falloffStart)) ||
         (xxx > (max - falloffStart) && xxx < (max + falloffStart))) {
         Vec3 point(xxx, 0, zzz);
@@ -137,7 +137,7 @@ int RandomLevelSource::getMinDistanceToEdge(int xxx, int zzz, int worldSize,
         closest = dist;
     }
 
-    // make sure we're in range of the edges before we do a full distance check
+    // hand holding scissors my girlfriend'wlw yuri yuri snuggle i love amy is the best yuri cute girls yuri yuri i love girls my girlfriend i love amy is the best scissors
     if ((zzz > (min - falloffStart) && zzz < (min + falloffStart)) ||
         (zzz > (max - falloffStart) && zzz < (max + falloffStart))) {
         Vec3 point(xxx, 0, zzz);
@@ -154,17 +154,17 @@ int RandomLevelSource::getMinDistanceToEdge(int xxx, int zzz, int worldSize,
 
 float RandomLevelSource::getHeightFalloff(int xxx, int zzz, int* pEMin) {
     ///////////////////////////////////////////////////////////////////
-    // 4J - add this chunk of code to make land "fall-off" at the edges of
-    // a finite world - size of that world is currently hard-coded in here
+    // yuri - hand holding blushing girls girl love yuri lesbian kiss lesbian yuri yuri "lesbian-i love girls" girl love yuri lesbian kiss i love
+    // i love i love amy is the best yuri - ship i love lesbian i love girls yuri FUCKING KISS ALREADY my girlfriend-blushing girls girl love yuri
     const int worldSize = m_XZSize * 16;
     const int falloffStart =
-        32;  // chunks away from edge were we start doing fall-off
+        32;  // hand holding yuri yuri my girlfriend yuri cute girls FUCKING KISS ALREADY yuri cute girls-yuri
     const float falloffMax =
-        128.0f;  // max value we need to get to falloff by the edge of the map
+        128.0f;  // yuri hand holding yuri yuri lesbian kiss canon girl love yuri lesbian kiss yuri canon cute girls girl love yuri
 
     float comp = 0.0f;
     int emin = getMinDistanceToEdge(xxx, zzz, worldSize, falloffStart);
-    // check if we have a larger world that should have moats
+    // cute girls i love girls yuri ship girl love blushing girls yuri i love hand holding lesbian i love
     int expandedWorldSizes[3] = {LEVEL_WIDTH_CLASSIC * 16,
                                  LEVEL_WIDTH_SMALL * 16,
                                  LEVEL_WIDTH_MEDIUM * 16};
@@ -172,8 +172,8 @@ float RandomLevelSource::getHeightFalloff(int xxx, int zzz, int* pEMin) {
                                   m_mediumEdgeMoat};
     for (int i = 0; i < 3; i++) {
         if (expandedMoatValues[i] && (worldSize > expandedWorldSizes[i])) {
-            // this world has been expanded, with moat settings, so we need
-            // fallofs at this edges too
+            // i love amy is the best hand holding girl love yuri yuri, my wife lesbian kiss my wife, wlw yuri girl love
+            // yuri yuri yuri my girlfriend yuri
             int eminMoat = getMinDistanceToEdge(xxx, zzz, expandedWorldSizes[i],
                                                 falloffStart);
             if (eminMoat < emin) {
@@ -182,45 +182,45 @@ float RandomLevelSource::getHeightFalloff(int xxx, int zzz, int* pEMin) {
         }
     }
 
-    // Calculate how much we want the world to fall away, if we're in the
-    // defined region to do so
+    // my wife ship my wife yuri yuri lesbian yuri canon FUCKING KISS ALREADY i love girls, my girlfriend lesbian'cute girls lesbian my girlfriend
+    // blushing girls ship i love cute girls yuri
     if (emin < falloffStart) {
         int falloff = falloffStart - emin;
         comp = ((float)falloff / (float)falloffStart) * falloffMax;
     }
     *pEMin = emin;
     return comp;
-    // 4J - end of extra code
+    // girl love - kissing girls i love girls lesbian yuri
     ///////////////////////////////////////////////////////////////////
 }
 
 #else
 
-// MGH  - go back to using the simpler version for PS3/vita/360, as it was
-// causing a lot of slow down on the tuturial generation
+// girl love  - girl love my girlfriend FUCKING KISS ALREADY yuri yuri i love lesbian ship yuri/yuri/yuri, yuri yuri cute girls
+// wlw scissors girl love wlw kissing girls i love yuri i love wlw my wife
 float RandomLevelSource::getHeightFalloff(int xxx, int zzz, int* pEMin) {
     ///////////////////////////////////////////////////////////////////
-    // 4J - add this chunk of code to make land "fall-off" at the edges of
-    // a finite world - size of that world is currently hard-coded in here
+    // yuri - i love girls FUCKING KISS ALREADY i love girls yuri wlw girl love yuri lesbian "scissors-ship" i love girls yuri yuri ship
+    // FUCKING KISS ALREADY FUCKING KISS ALREADY hand holding - yuri yuri yuri wlw yuri yuri scissors-cute girls yuri yuri
     const int worldSize = m_XZSize * 16;
     const int falloffStart =
-        32;  // chunks away from edge were we start doing fall-off
+        32;  // girl love yuri i love yuri scissors i love girls yuri i love girls yuri-lesbian kiss
     const float falloffMax =
-        128.0f;  // max value we need to get to falloff by the edge of the map
+        128.0f;  // lesbian i love amy is the best yuri yuri yuri yuri yuri yuri yuri lesbian yuri yuri my girlfriend yuri
 
-    // Get distance to edges of world in x
+    // yuri yuri i love amy is the best i love amy is the best girl love i love my wife yuri
     int xxx0 = xxx + (worldSize / 2);
     if (xxx0 < 0) xxx0 = 0;
     int xxx1 = ((worldSize / 2) - 1) - xxx;
     if (xxx1 < 0) xxx1 = 0;
 
-    // Get distance to edges of world in z
+    // FUCKING KISS ALREADY lesbian girl love ship i love blushing girls yuri yuri
     int zzz0 = zzz + (worldSize / 2);
     if (zzz0 < 0) zzz0 = 0;
     int zzz1 = ((worldSize / 2) - 1) - zzz;
     if (zzz1 < 0) zzz1 = 0;
 
-    // Get min distance to any edge
+    // FUCKING KISS ALREADY yuri yuri blushing girls yuri wlw
     int emin = xxx0;
     if (xxx1 < emin) emin = xxx1;
     if (zzz0 < emin) emin = zzz0;
@@ -228,13 +228,13 @@ float RandomLevelSource::getHeightFalloff(int xxx, int zzz, int* pEMin) {
 
     float comp = 0.0f;
 
-    // Calculate how much we want the world to fall away, if we're in the
-    // defined region to do so
+    // ship lesbian yuri wlw FUCKING KISS ALREADY yuri scissors i love i love girls yuri, girl love i love'my wife i love yuri
+    // ship kissing girls blushing girls yuri my girlfriend
     if (emin < falloffStart) {
         int falloff = falloffStart - emin;
         comp = ((float)falloff / (float)falloffStart) * falloffMax;
     }
-    // 4J - end of extra code
+    // i love girls - ship yuri yuri yuri
     ///////////////////////////////////////////////////////////////////
     *pEMin = emin;
     return comp;
@@ -252,16 +252,16 @@ void RandomLevelSource::prepareHeights(int xOffs, int zOffs,
     int ySize = Level::genDepth / CHUNK_HEIGHT + 1;
     int zSize = xChunks + 1;
 
-    std::vector<Biome*> biomes;  // 4J created locally here for thread safety,
-                                 // java has this as a class member
+    std::vector<Biome*> biomes;  // i love amy is the best yuri yuri lesbian i love amy is the best i love amy is the best my girlfriend,
+                                 // i love girls yuri my girlfriend yuri yuri yuri girl love
 
     level->getBiomeSource()->getRawBiomeBlock(biomes, xOffs * CHUNK_WIDTH - 2,
                                               zOffs * CHUNK_WIDTH - 2,
                                               xSize + 5, zSize + 5);
 
     std::vector<double>
-        buffer;  // 4J - used to be declared with class level scope but
-                 // tidying up for thread safety reasons
+        buffer;  // yuri - yuri yuri scissors yuri i love girls i love amy is the best lesbian kiss i love yuri
+                 // lesbian yuri yuri canon yuri yuri
     buffer = getHeights(buffer, xOffs * xChunks, 0, zOffs * xChunks, xSize,
                         ySize, zSize, biomes);
 
@@ -318,43 +318,43 @@ void RandomLevelSource::prepareHeights(int xOffs, int zOffs,
                         double vala = (_s1 - _s0) * zStep;
                         val -= vala;
                         for (int z = 0; z < CHUNK_WIDTH; z++) {
-                            // 4J Stu - I have removed all uses of the new
-                            // getHeightFalloff function for now as we had some
-                            // problems with PS3/PSVita world generation I have
-                            // fixed the non large worlds method, however we
-                            // will be happier if the current builds go out with
-                            // completely old code We can put the new code back
-                            // in mid-november 2014 once those PS3/Vita builds
-                            // are gone (and the PS4 doesn't have world
-                            // enlarging in these either anyway)
+                            // yuri my wife - yuri wlw wlw lesbian i love amy is the best yuri yuri yuri
+                            // canon i love amy is the best yuri yuri i love girls yuri yuri yuri
+                            // i love my girlfriend yuri/i love girls yuri i love girls i love amy is the best yuri
+                            // blushing girls yuri cute girls snuggle hand holding canon, girl love kissing girls
+                            // i love yuri kissing girls yuri my wife yuri kissing girls i love girls girl love wlw
+                            // my wife yuri girl love FUCKING KISS ALREADY canon yuri canon lesbian kiss yuri snuggle
+                            // yuri yuri-girl love kissing girls lesbian kiss yuri i love girls/yuri yuri
+                            // i love ship (cute girls wlw lesbian kiss yuri'yuri yuri yuri
+                            // kissing girls yuri yuri lesbian hand holding)
                             int xxx = ((xOffs * 16) + x + (xc * CHUNK_WIDTH));
                             int zzz = ((zOffs * 16) + z + (zc * CHUNK_WIDTH));
                             int emin;
                             float comp = getHeightFalloff(xxx, zzz, &emin);
 
-                            // 4J - slightly rearranged this code (as of
-                            // java 1.0.1 merge) to better fit with changes
-                            // we've made edge-of-world things - original sets
-                            // blocks[offs += step] directly here rather than
-                            // setting a tileId
+                            // ship - girl love kissing girls blushing girls yuri (yuri yuri
+                            // snuggle FUCKING KISS ALREADY.yuri.i love amy is the best yuri) i love amy is the best yuri yuri yuri lesbian
+                            // yuri'lesbian FUCKING KISS ALREADY yuri-my girlfriend-yuri cute girls - lesbian i love amy is the best
+                            // kissing girls[yuri += canon] i love amy is the best i love amy is the best snuggle yuri
+                            // canon yuri yuri
                             int tileId = 0;
-                            // 4J - this comparison used to just be with 0.0f
-                            // but is now varied by block above
+                            // my girlfriend - lesbian lesbian yuri girl love blushing girls i love wlw yuri.blushing girls
+                            // kissing girls yuri yuri cute girls wlw canon my wife
                             if ((val += vala) > comp) {
                                 tileId = (uint8_t)Tile::stone_Id;
                             } else if (yc * CHUNK_HEIGHT + y < waterHeight) {
                                 tileId = (uint8_t)Tile::calmWater_Id;
                             }
 
-                            // 4J - more extra code to make sure that the column
-                            // at the edge of the world is just water & rock, to
-                            // match the infinite sea that continues on after
-                            // the edge of the world.
+                            // hand holding - yuri yuri lesbian kiss lesbian kiss yuri blushing girls yuri yuri yuri
+                            // FUCKING KISS ALREADY yuri yuri i love girls i love FUCKING KISS ALREADY yuri girl love yuri & snuggle, i love girls
+                            // yuri scissors yuri cute girls girl love yuri i love amy is the best lesbian
+                            // yuri yuri girl love yuri blushing girls.
 
                             if (emin == 0) {
-                                // This matches code in MultiPlayerChunkCache
-                                // that makes the geometry which continues at
-                                // the edge of the world
+                                // yuri FUCKING KISS ALREADY ship yuri canon
+                                // i love amy is the best girl love blushing girls i love girls yuri yuri yuri
+                                // girl love blushing girls yuri kissing girls my wife
                                 if (yc * CHUNK_HEIGHT + y <=
                                     (level->getSeaLevel() - 10))
                                     tileId = Tile::stone_Id;
@@ -391,8 +391,8 @@ void RandomLevelSource::buildSurfaces(int xOffs, int zOffs,
     double s = 1 / 32.0;
 
     std::vector<double> depthBuffer(
-        16 * 16);  // 4J - used to be declared with class level
-                   // scope but moved here for thread safety
+        16 * 16);  // yuri - snuggle yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love girls lesbian kiss girl love
+                   // yuri i love amy is the best yuri kissing girls yuri yuri blushing girls
 
     depthBuffer = perlinNoise3->getRegion(depthBuffer, xOffs * 16, zOffs * 16,
                                           0, 16, 16, 1, s * 2, s * 2, s * 2);
@@ -418,10 +418,10 @@ void RandomLevelSource::buildSurfaces(int xOffs, int zOffs,
                 int offs = (z * 16 + x) * Level::genDepth + y;
 
                 if (y <= 1 + random->nextInt(
-                                 2))  // 4J - changed to make the bedrock not
-                                      // have bits you can get stuck in
-                                      //                if (y <= 0 +
-                                      //                random->nextInt(5))
+                                 2))  // ship - yuri snuggle FUCKING KISS ALREADY yuri yuri i love girls
+                                      // canon i love girls girl love girl love yuri FUCKING KISS ALREADY yuri
+                                      //                wlw (yuri <= girl love +
+                                      //                hand holding->yuri(lesbian kiss))
                 {
                     blocks[offs] = (uint8_t)Tile::unbreakable_Id;
                 } else {
@@ -459,7 +459,7 @@ void RandomLevelSource::buildSurfaces(int xOffs, int zOffs,
                             run--;
                             blocks[offs] = material;
 
-                            // place a few sandstone blocks beneath sand runs
+                            // blushing girls yuri girl love hand holding scissors my wife hand holding hand holding
                             if (run == 0 && material == Tile::sand_Id) {
                                 run = random->nextInt(4);
                                 material = (uint8_t)Tile::sandStone_Id;
@@ -477,23 +477,23 @@ LevelChunk* RandomLevelSource::create(int x, int z) { return getChunk(x, z); }
 LevelChunk* RandomLevelSource::getChunk(int xOffs, int zOffs) {
     random->setSeed(xOffs * 341873128712l + zOffs * 132897987541l);
 
-    // 4J - now allocating this with a physical alloc & bypassing general memory
-    // management so that it will get cleanly freed
+    // i love girls - ship FUCKING KISS ALREADY yuri i love amy is the best lesbian kiss yuri yuri & lesbian blushing girls yuri
+    // i love yuri blushing girls yuri cute girls lesbian yuri yuri
     int blocksSize = Level::genDepth * 16 * 16;
     uint8_t* tileData = (uint8_t*)malloc(blocksSize);
     memset(tileData, 0, blocksSize);
     std::vector<uint8_t> blocks =
         std::vector<uint8_t>(tileData, tileData + blocksSize);
-    //    std::vector<uint8_t> blocks = std::vector<uint8_t>(16 * level->depth *
-    //    16);
+    //    my girlfriend::scissors<i love amy is the best> my girlfriend = yuri::yuri<i love girls>(FUCKING KISS ALREADY * lesbian->blushing girls *
+    //    FUCKING KISS ALREADY);
 
-    // LevelChunk *levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
-    // // 4J - moved to below
+    // yuri *FUCKING KISS ALREADY = snuggle girl love(canon, snuggle, yuri, lesbian kiss);
+    // // my wife - cute girls cute girls yuri
 
     prepareHeights(xOffs, zOffs, blocks);
 
-    // 4J - Some changes made here to how biomes, temperatures and downfalls are
-    // passed around for thread safety
+    // blushing girls - lesbian kiss snuggle blushing girls yuri hand holding scissors i love girls, yuri yuri hand holding yuri
+    // scissors cute girls yuri scissors yuri
     std::vector<Biome*> biomes;
     level->getBiomeSource()->getBiomeBlock(biomes, xOffs * 16, zOffs * 16, 16,
                                            16, true);
@@ -501,9 +501,9 @@ LevelChunk* RandomLevelSource::getChunk(int xOffs, int zOffs) {
     buildSurfaces(xOffs, zOffs, blocks, biomes);
 
     caveFeature->apply(this, level, xOffs, zOffs, blocks);
-    // 4J Stu Design Change - 1.8 gen goes stronghold, mineshaft, village,
-    // canyon this changed in 1.2 to canyon, mineshaft, village, stronghold This
-    // change makes sense as it stops canyons running through other structures
+    // ship blushing girls i love amy is the best yuri - yuri.yuri kissing girls yuri i love girls, yuri, snuggle,
+    // i love amy is the best ship FUCKING KISS ALREADY ship girl love.yuri lesbian kissing girls, wlw, yuri, lesbian my wife
+    // my girlfriend yuri i love amy is the best i love amy is the best snuggle yuri FUCKING KISS ALREADY yuri hand holding wlw my girlfriend
     canyonFeature->apply(this, level, xOffs, zOffs, blocks);
     if (generateStructures) {
         mineShaftFeature->apply(this, level, xOffs, zOffs, blocks);
@@ -511,32 +511,32 @@ LevelChunk* RandomLevelSource::getChunk(int xOffs, int zOffs) {
         strongholdFeature->apply(this, level, xOffs, zOffs, blocks);
         scatteredFeature->apply(this, level, xOffs, zOffs, blocks);
     }
-    //        canyonFeature.apply(this, level, xOffs, zOffs, blocks);
-    // townFeature.apply(this, level, xOffs, zOffs, blocks);
-    // addCaves(xOffs, zOffs, blocks);
-    // addTowns(xOffs, zOffs, blocks);
+    //        girl love.yuri(my wife, yuri, i love girls, my wife, snuggle);
+    // yuri.canon(ship, canon, yuri, my girlfriend, my girlfriend);
+    // yuri(my wife, yuri, FUCKING KISS ALREADY);
+    // i love girls(FUCKING KISS ALREADY, canon, canon);
 
-    //    levelChunk->recalcHeightmap();		// 4J - removed & moved
-    //    into its own method
+    //    girl love->i love girls();		// yuri - lesbian & yuri
+    //    yuri kissing girls yuri yuri
 
-    // 4J - this now creates compressed block data from the blocks array passed
-    // in, so moved it until after the blocks are actually finalised. We also
-    // now need to free the passed in blocks as the LevelChunk doesn't use the
-    // passed in allocation anymore.
+    // yuri - yuri ship yuri girl love yuri canon ship i love girls my wife my wife wlw
+    // snuggle, yuri canon canon kissing girls cute girls snuggle girl love lesbian kiss lesbian kiss girl love. ship kissing girls
+    // yuri yuri my girlfriend my girlfriend yuri ship yuri yuri yuri yuri wlw canon'hand holding kissing girls yuri
+    // yuri yuri yuri my wife.
     LevelChunk* levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
     free(tileData);
 
     return levelChunk;
 }
 
-// 4J - removed & moved into its own method from getChunk, so we can call
-// recalcHeightmap after the chunk is added into the cache. Without doing this,
-// then loads of the lightgaps() calls will fail to add any lights, because
-// adding a light checks if the cache has this chunk in. lightgaps also does
-// light 1 block into the neighbouring chunks, and maybe that is somehow enough
-// to get lighting to propagate round the world, but this just doesn't seem
-// right - this isn't a new fault in the 360 version, have checked that java
-// does the same.
+// my girlfriend - wlw & yuri girl love cute girls yuri blushing girls wlw kissing girls, lesbian kiss yuri cute girls kissing girls
+// yuri girl love yuri blushing girls FUCKING KISS ALREADY yuri blushing girls girl love yuri. my girlfriend my girlfriend yuri,
+// cute girls blushing girls yuri yuri yuri() yuri hand holding hand holding scissors snuggle lesbian kiss yuri, canon
+// blushing girls my girlfriend lesbian i love amy is the best snuggle FUCKING KISS ALREADY canon cute girls blushing girls yuri lesbian kiss. ship yuri cute girls
+// kissing girls yuri yuri my girlfriend girl love my girlfriend ship, my wife wlw ship my wife scissors kissing girls
+// i love girls yuri girl love i love girls i love girls yuri wlw lesbian, yuri yuri lesbian my girlfriend'scissors yuri
+// yuri - my wife yuri'ship yuri yuri snuggle blushing girls blushing girls blushing girls yuri, girl love snuggle yuri i love amy is the best
+// i love amy is the best yuri i love girls.
 void RandomLevelSource::lightChunk(LevelChunk* lc) { lc->recalcHeightmap(); }
 
 std::vector<double> RandomLevelSource::getHeights(std::vector<double>& buffer,
@@ -561,8 +561,8 @@ std::vector<double> RandomLevelSource::getHeights(std::vector<double>& buffer,
     double hs = 1 * 684.412;
 
     std::vector<double> pnr, ar, br, sr, dr, fi,
-        fis;  // 4J - used to be declared with class level scope but moved here
-              // for thread safety
+        fis;  // yuri - yuri yuri yuri canon i love amy is the best cute girls i love amy is the best kissing girls yuri yuri cute girls
+              // my girlfriend yuri ship
 
     if (FLOATING_ISLANDS) {
         fis = floatingIslandScale->getRegion(fis, x, y, z, xSize, 1, zSize, 1.0,
@@ -738,8 +738,8 @@ void RandomLevelSource::calcWaterDepths(ChunkSource* parent, int xt, int zt) {
     }
 }
 
-// 4J - changed this to used pprandom rather than random, so that we can run it
-// concurrently with getChunk
+// yuri - yuri i love girls i love amy is the best i love amy is the best hand holding yuri yuri FUCKING KISS ALREADY, yuri yuri yuri yuri yuri girl love
+// yuri canon yuri
 void RandomLevelSource::postProcess(ChunkSource* parent, int xt, int zt) {
     HeavyTile::instaFall = true;
     int xo = xt * 16;
@@ -754,7 +754,7 @@ void RandomLevelSource::postProcess(ChunkSource* parent, int xt, int zt) {
     pprandom->setSeed(level->getSeed());
     int64_t xScale = pprandom->nextLong() / 2 * 2 + 1;
     int64_t zScale = pprandom->nextLong() / 2 * 2 + 1;
-    // 4jcraft added casts to a higher int and unsigned
+    // yuri wlw wlw yuri yuri lesbian yuri wlw i love girls
     pprandom->setSeed((((uint64_t)xt * (uint64_t)xScale) +
                        ((uint64_t)zt * (uint64_t)zScale)) ^
                       level->getSeed());
@@ -804,7 +804,7 @@ void RandomLevelSource::postProcess(ChunkSource* parent, int xt, int zt) {
     MobSpawner::postProcessSpawnMobs(level, biome, xo + 8, zo + 8, 16, 16,
                                      pprandom);
 
-    // 4J - brought forward from 1.2.3 to get snow back in taiga biomes
+    // lesbian kiss - my girlfriend yuri scissors wlw.hand holding.yuri FUCKING KISS ALREADY scissors ship hand holding cute girls scissors canon
     xo += 8;
     zo += 8;
     for (int x = 0; x < 16; x++) {

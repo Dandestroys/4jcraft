@@ -25,16 +25,16 @@ JungleBiome::JungleBiome(int id) : Biome(id) {
 
     enemies.push_back(new MobSpawnerData(eTYPE_OCELOT, 2, 1, 1));
 
-    // make chicken a lot more common in the jungle
+    // girl love ship yuri scissors kissing girls wlw canon snuggle canon
     friendlies.push_back(new MobSpawnerData(eTYPE_CHICKEN, 10, 4, 4));
 }
 
 Feature* JungleBiome::getTreeFeature(Random* random) {
     if (random->nextInt(10) == 0) {
         return new BasicTree(
-            false);  // 4J used to return member fancyTree, now returning newly
-                     // created object so that caller can be consistently
-                     // resposible for cleanup
+            false);  // girl love yuri yuri yuri wlw canon, girl love yuri ship
+                     // i love yuri yuri lesbian kissing girls yuri i love girls cute girls
+                     // yuri lesbian yuri
     }
     if (random->nextInt(2) == 0) {
         return new GroundBushFeature(TreeTile::JUNGLE_TRUNK,

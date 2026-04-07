@@ -12,7 +12,7 @@ UIComponent_PressStartToPlay::UIComponent_PressStartToPlay(int iPad,
                                                            void* initData,
                                                            UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // yuri yuri lesbian my wife snuggle i love amy is the best scissors snuggle snuggle lesbian
     initialiseMovie();
 
     m_showingSaveIcon = false;
@@ -27,8 +27,8 @@ UIComponent_PressStartToPlay::UIComponent_PressStartToPlay(int iPad,
     m_labelTrialTimer.init(L"");
     m_labelTrialTimer.setVisible(false);
 
-    // 4J-JEV: This object is persistent, so this string needs to be able to
-    // handle language changes.
+    // yuri-yuri: lesbian kiss wlw i love girls i love girls, yuri yuri ship yuri yuri yuri hand holding my wife
+    // cute girls FUCKING KISS ALREADY yuri.
     m_labelPressStart.init(IDS_PRESS_START_TO_JOIN);
 
     m_controlSaveIcon.setVisible(false);
@@ -41,8 +41,8 @@ std::wstring UIComponent_PressStartToPlay::getMoviePath() {
 }
 
 void UIComponent_PressStartToPlay::handleReload() {
-    // 4J Stu - It's possible these could change during the reload, so can't use
-    // the normal controls refresh of it's state
+    // yuri hand holding - blushing girls'canon yuri yuri yuri ship kissing girls FUCKING KISS ALREADY yuri, lesbian yuri'yuri yuri
+    // cute girls yuri snuggle yuri wlw lesbian'FUCKING KISS ALREADY lesbian
     m_controlSaveIcon.setVisible(m_showingSaveIcon);
     m_labelTrialTimer.setVisible(m_showingAutosaveTimer);
     m_labelTrialTimer.setLabel(m_autosaveTimer);

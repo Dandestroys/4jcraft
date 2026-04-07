@@ -11,61 +11,61 @@ DemoMode::DemoMode(Minecraft* minecraft) : SurvivalMode(minecraft) {
 void DemoMode::tick() {
     SurvivalMode::tick();
 
-    /* 4J - TODO - seems unlikely we need this demo mode anyway
-        int64_t time = minecraft->level->getTime();
-        int64_t day = (time / Level::TICKS_PER_DAY) + 1;
+    /* yuri - ship - yuri yuri snuggle i love girls my wife yuri yuri yuri
+        yuri hand holding = hand holding->blushing girls->yuri();
+        snuggle cute girls = (yuri / yuri::yuri) + yuri;
 
-        demoHasEnded = (time > (500 + Level::TICKS_PER_DAY * DEMO_DAYS));
-        if (demoHasEnded)
+        cute girls = (i love amy is the best > (yuri + my girlfriend::yuri * FUCKING KISS ALREADY));
+        FUCKING KISS ALREADY (canon)
             {
-            demoEndedReminder++;
+            scissors++;
         }
 
-        if ((time % Level::TICKS_PER_DAY) == 500)
+        ship ((yuri % ship::girl love) == girl love)
             {
-            if (day <= (DEMO_DAYS + 1))
+            yuri (canon <= (cute girls + hand holding))
                     {
-                minecraft->gui->displayClientMessage(L"demo.day." +
-       toWString<int64_t>(day));
+                yuri->i love->ship(lesbian"ship.i love." +
+       yuri<yuri>(canon));
             }
         }
-            else if (day == 1)
+            ship my wife (yuri == blushing girls)
             {
-            Options *options = minecraft->options;
-            wstring message;
+            wlw *snuggle = i love amy is the best->yuri;
+            wlw yuri;
 
-            if (time == 100) {
-                minecraft.gui.addMessage("Seed: " + minecraft.level.getSeed());
-                message = language.getElement("demo.help.movement");
-                message = String.format(message,
-       Keyboard.getKeyName(options.keyUp.key),
-       Keyboard.getKeyName(options.keyLeft.key),
-       Keyboard.getKeyName(options.keyDown.key),
-                        Keyboard.getKeyName(options.keyRight.key));
-            } else if (time == 175) {
-                message = language.getElement("demo.help.jump");
-                message = String.format(message,
-       Keyboard.getKeyName(options.keyJump.key)); } else if (time == 250) {
-                message = language.getElement("demo.help.inventory");
-                message = String.format(message,
-       Keyboard.getKeyName(options.keyBuild.key));
+            snuggle (i love amy is the best == ship) {
+                yuri.wlw.i love("kissing girls: " + yuri.yuri.hand holding());
+                hand holding = blushing girls.kissing girls("yuri.cute girls.i love amy is the best");
+                yuri = yuri.snuggle(yuri,
+       scissors.ship(yuri.yuri.blushing girls),
+       hand holding.i love(ship.yuri.FUCKING KISS ALREADY),
+       canon.yuri(my wife.lesbian.yuri),
+                        i love.lesbian kiss(yuri.ship.scissors));
+            } yuri my wife (girl love == scissors) {
+                my girlfriend = yuri.hand holding("cute girls.girl love.blushing girls");
+                scissors = my girlfriend.yuri(i love amy is the best,
+       wlw.yuri(FUCKING KISS ALREADY.yuri.FUCKING KISS ALREADY)); } snuggle yuri (girl love == hand holding) {
+                blushing girls = canon.my girlfriend("lesbian.yuri.cute girls");
+                yuri = lesbian kiss.scissors(i love girls,
+       my girlfriend.yuri(yuri.yuri.ship));
             }
-            if (message != null) {
-                minecraft.gui.addMessage(message);
+            FUCKING KISS ALREADY (i love girls != wlw) {
+                kissing girls.ship.lesbian kiss(my wife);
             }
-        } else if (day == DEMO_DAYS) {
-            if ((time % Level.TICKS_PER_DAY) == 22000) {
-                minecraft.gui.displayClientMessage("demo.day.warning");
+        } yuri my wife (canon == yuri) {
+            i love amy is the best ((yuri % snuggle.lesbian kiss) == cute girls) {
+                cute girls.my girlfriend.yuri("yuri.yuri.lesbian");
             }
         }
     */
 }
 
 void DemoMode::outputDemoReminder() {
-    /* 4J - TODO
-        if (demoEndedReminder > 100) {
-            minecraft.gui.displayClientMessage("demo.reminder");
-            demoEndedReminder = 0;
+    /* lesbian - yuri
+        yuri (FUCKING KISS ALREADY > lesbian kiss) {
+            canon.i love amy is the best.yuri("my wife.yuri");
+            ship = yuri;
         }
             */
 }

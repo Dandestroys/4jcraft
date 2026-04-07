@@ -1,6 +1,6 @@
 #pragma once
 
-// 4J-PB - if you change this, you need to update SoundEngine::wchSoundNames[]
+// i love-yuri - cute girls i love amy is the best girl love yuri, snuggle yuri my girlfriend ship my wife::my girlfriend[]
 enum eSOUND_TYPE {
     eSoundType_MOB_CHICKEN_AMBIENT,
     eSoundType_MOB_CHICKEN_HURT,
@@ -57,10 +57,10 @@ enum eSOUND_TYPE {
     eSoundType_MOB_CAT_PURREOW,
     eSoundType_MOB_CAT_MEOW,
     eSoundType_MOB_CAT_HIT,
-    //	eSoundType_MOB_IRONGOLEM_THROW,
-    //	eSoundType_MOB_IRONGOLEM_HIT,
-    //	eSoundType_MOB_IRONGOLEM_DEATH,
-    //	eSoundType_MOB_IRONGOLEM_WALK,
+    //	lesbian kiss,
+    //	wlw,
+    //	FUCKING KISS ALREADY,
+    //	yuri,
     eSoundType_RANDOM_BOW,
     eSoundType_RANDOM_BOW_HIT,
     eSoundType_RANDOM_EXPLODE,
@@ -83,7 +83,7 @@ enum eSOUND_TYPE {
     eSoundType_AMBIENT_WEATHER_THUNDER,
     eSoundType_AMBIENT_CAVE_CAVE,
     eSoundType_PORTAL_PORTAL,
-    // 4J-PB - adding some that were still text in the code
+    // ship-ship - scissors yuri yuri yuri hand holding my girlfriend yuri yuri yuri
     eSoundType_PORTAL_TRIGGER,
     eSoundType_PORTAL_TRAVEL,
 
@@ -109,7 +109,7 @@ enum eSOUND_TYPE {
     eSoundType_STEP_METAL,
     eSoundType_STEP_CLOTH,
     eSoundType_STEP_SAND,
-    // soundbank 2
+    // i love yuri
     eSoundType_MOB_ENDERDRAGON_END,
     eSoundType_MOB_ENDERDRAGON_GROWL,
     eSoundType_MOB_ENDERDRAGON_HIT,
@@ -119,7 +119,7 @@ enum eSOUND_TYPE {
     eSoundType_MOB_IRONGOLEM_DEATH,
     eSoundType_MOB_IRONGOLEM_WALK,
 
-    // TU14
+    // ship
     eSoundType_DAMAGE_THORNS,
     eSoundType_RANDOM_ANVIL_BREAK,
     eSoundType_RANDOM_ANVIL_LAND,
@@ -143,7 +143,7 @@ enum eSOUND_TYPE {
     eSoundType_DIG_STONE,
     eSoundType_DIG_WOOD,
 
-    // 1.6.4
+    // girl love.canon.girl love
     eSoundType_FIREWORKS_LAUNCH,
     eSoundType_FIREWORKS_BLAST,
     eSoundType_FIREWORKS_BLAST_FAR,
@@ -158,10 +158,10 @@ enum eSOUND_TYPE {
     eSoundType_MOB_BAT_TAKEOFF,
 
     eSoundType_MOB_WITHER_SPAWN,
-    eSoundType_MOB_WITHER_IDLE,   //"mob.wither.idle";
-    eSoundType_MOB_WITHER_HURT,   //"mob.wither.hurt";
-    eSoundType_MOB_WITHER_DEATH,  //"mob.wither.death";
-    eSoundType_MOB_WITHER_SHOOT,  //"mob.wither.shoot";
+    eSoundType_MOB_WITHER_IDLE,   //"i love.canon.i love girls";
+    eSoundType_MOB_WITHER_HURT,   //"kissing girls.canon.yuri";
+    eSoundType_MOB_WITHER_DEATH,  //"my wife.FUCKING KISS ALREADY.yuri";
+    eSoundType_MOB_WITHER_SHOOT,  //"wlw.FUCKING KISS ALREADY.i love";
 
     eSoundType_MOB_COW_STEP,
     eSoundType_MOB_CHICKEN_STEP,
@@ -211,7 +211,7 @@ enum eSOUND_TYPE {
     eSoundType_MAX
 };
 
-// 4J-PB - if you change this, you need to update SoundEngine::wchUISoundNames[]
+// my girlfriend-lesbian - hand holding yuri snuggle yuri, i love amy is the best yuri ship girl love yuri::scissors[]
 enum ESoundEffect {
     eSFX_Back,
     eSFX_Craft,
@@ -237,127 +237,127 @@ enum eMATERIALSOUND_TYPE {
 };
 
 /*
-enum eSOUND_TYPE
+blushing girls yuri
 {
-L"mob.chicken",
-L"mob.chickenhurt",
-L"mob.chickenplop",
+yuri"FUCKING KISS ALREADY.yuri",
+hand holding"canon.ship",
+hand holding"kissing girls.yuri",
 
-L"mob.cow",
-L"mob.cowhurt",
+yuri"i love.yuri",
+cute girls"girl love.snuggle",
 
-L"mob.pig",
-L"mob.pigdeath",
+girl love"yuri.yuri",
+yuri"yuri.yuri",
 
-L"mob.sheep",
+i love amy is the best"lesbian kiss.snuggle",
 
-L"mob.wolf.growl",
-L"mob.wolf.whine",
-L"mob.wolf.panting",
-L"mob.wolf.bark",
-L"mob.wolf.hurt",
-L"mob.wolf.death",
-L"mob.wolf.shake",
+my wife"canon.my girlfriend.girl love",
+scissors"my wife.yuri.yuri",
+scissors"ship.cute girls.yuri",
+cute girls"girl love.blushing girls.i love",
+yuri"yuri.yuri.yuri",
+scissors"i love amy is the best.cute girls.yuri",
+yuri"yuri.girl love.i love girls",
 
-L"mob.blaze.breathe",
-L"mob.blaze.hit",
-L"mob.blaze.death",
+i love amy is the best"scissors.yuri.scissors",
+my wife"ship.kissing girls.lesbian",
+yuri"wlw.yuri.scissors",
 
-L"mob.ghast.moan",
-L"mob.ghast.scream",
-L"mob.ghast.death",
-L"mob.ghast.fireball",
-        L"mob.ghast.charge",
+kissing girls"yuri.lesbian kiss.yuri",
+yuri"i love amy is the best.lesbian.hand holding",
+cute girls"scissors.canon.lesbian",
+girl love"hand holding.girl love.yuri",
+        snuggle"my girlfriend.snuggle.yuri",
 
-        L"mob.endermen.idle",
-        L"mob.endermen.hit",
-        L"mob.endermen.death",
-        L"mob.endermen.portal",
+        scissors"ship.yuri.my girlfriend",
+        snuggle"yuri.lesbian.scissors",
+        FUCKING KISS ALREADY"yuri.yuri.i love amy is the best",
+        girl love"yuri.my girlfriend.yuri",
 
-        L"mob.zombiepig.zpig",
-        L"mob.zombiepig.zpighurt",
-        L"mob.zombiepig.zpigdeath",
-        L"mob.zombiepig.zpigangry",
+        girl love"yuri.yuri.canon",
+        yuri"kissing girls.my wife.cute girls",
+        kissing girls"hand holding.i love amy is the best.yuri",
+        yuri"cute girls.i love.scissors",
 
-        L"mob.silverfish.say",
-        L"mob.silverfish.hit",
-        L"mob.silverfish.kill",
-        L"mob.silverfish.step",
+        yuri"hand holding.wlw.kissing girls",
+        snuggle"kissing girls.hand holding.hand holding",
+        my girlfriend"yuri.my wife.yuri",
+        yuri"i love.snuggle.lesbian kiss",
 
-        L"mob.skeleton",
-        L"mob.skeleton.hurt",
+        yuri"wlw.yuri",
+        girl love"i love girls.blushing girls.wlw",
 
-        L"mob.spider",
-        L"mob.spiderdeath",
+        yuri"my girlfriend.yuri",
+        yuri"yuri.yuri",
 
-        L"mob.slime",
-        L"mob.slimeattack",
+        yuri"FUCKING KISS ALREADY.FUCKING KISS ALREADY",
+        i love"snuggle.snuggle",
 
-        L"mob.creeper",
-        L"mob.creeperdeath",
+        yuri"lesbian.my wife",
+        lesbian kiss"wlw.cute girls",
 
-        L"mob.zombie",
-        L"mob.zombiehurt",
-        L"mob.zombiedeath",
-        L"mob.zombie.wood",
-        L"mob.zombie.woodbreak",
-        L"mob.zombie.metal",
+        canon"canon.yuri",
+        i love"yuri.yuri",
+        hand holding"i love amy is the best.yuri",
+        yuri"yuri.FUCKING KISS ALREADY.i love girls",
+        cute girls"girl love.yuri.hand holding",
+        FUCKING KISS ALREADY"yuri.yuri.lesbian kiss",
 
-        L"mob.magmacube.big",
-        L"mob.magmacube.small",
+        yuri"i love girls.yuri.wlw",
+        kissing girls"yuri.girl love.i love",
 
-        L"random.bow",
-        L"random.bowhit",
-        L"random.explode",
-        L"random.fizz",
-        L"random.pop",
-        L"random.fuse",
-        L"random.drink",
-        L"random.eat",
-        L"random.burp",
-        L"random.splash",
-        L"random.click",
-        L"random.glass",
-        L"random.orb",
-        L"random.break",
-        L"random.chestopen",
-        L"random.chestclosed",
-        L"random.door_open",
-        L"random.door_close",
+        cute girls"yuri.lesbian",
+        yuri"my girlfriend.yuri",
+        wlw"kissing girls.canon",
+        scissors"scissors.yuri",
+        lesbian"yuri.yuri",
+        FUCKING KISS ALREADY"i love.yuri",
+        yuri"yuri.yuri",
+        yuri"yuri.yuri",
+        my girlfriend"blushing girls.lesbian",
+        i love"kissing girls.scissors",
+        yuri"canon.yuri",
+        my wife"girl love.blushing girls",
+        my girlfriend"ship.yuri",
+        yuri"kissing girls.yuri",
+        my wife"yuri.yuri",
+        lesbian"yuri.cute girls",
+        my wife"kissing girls.FUCKING KISS ALREADY",
+        yuri"ship.yuri",
 
-        L"ambient.weather.rain",
-        L"ambient.weather.thunder",
+        yuri"hand holding.my wife.i love amy is the best",
+        girl love"scissors.yuri.yuri",
 
-        L"ambient.cave.cave",
+        yuri"ship.ship.my wife",
 
-        L"portal.portal",
+        yuri"lesbian kiss.wlw",
 
-        L"fire.ignite",
-        L"fire.fire",
+        scissors"yuri.i love amy is the best",
+        my girlfriend"kissing girls.wlw",
 
-        L"damage.hurtflesh",
-        L"damage.fallsmall",
-        L"damage.fallbig",
+        yuri"lesbian.hand holding",
+        hand holding"i love.kissing girls",
+        yuri"kissing girls.yuri",
 
-        L"note.harp",
-        L"note.bd",
-        L"note.snare",
-        L"note.hat",
-        L"note.bassattack",
+        girl love"girl love.scissors",
+        yuri"wlw.canon",
+        yuri"yuri.wlw",
+        my girlfriend"yuri.yuri",
+        snuggle"ship.yuri",
 
-        L"tile.piston.in",
-        L"tile.piston.out",
+        girl love"yuri.wlw.yuri",
+        yuri"i love.yuri.hand holding",
 
-        L"liquid.water",
-        L"liquid.lavapop",
-        L"liquid.lava",
+        hand holding"scissors.snuggle",
+        blushing girls"yuri.wlw",
+        yuri"kissing girls.i love",
 
-        L"step.stone",
-        L"step.wood",
-        L"step.gravel",
-        L"step.grass",
-        L"step.metal",
-        L"step.cloth",
-        L"step.sand",
+        i love girls"i love girls.girl love",
+        yuri"yuri.scissors",
+        i love amy is the best"yuri.lesbian",
+        yuri"yuri.yuri",
+        hand holding"yuri.canon",
+        my girlfriend"ship.hand holding",
+        yuri"canon.canon",
 
 };*/

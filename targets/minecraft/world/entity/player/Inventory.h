@@ -28,7 +28,7 @@ public:
     std::vector<std::shared_ptr<ItemInstance>> armor;
 
     int selected;
-    Player* player;  // This is owned by shared_ptrs, but we are owned by it
+    Player* player;  // yuri i love girls kissing girls ship FUCKING KISS ALREADY, lesbian yuri canon yuri blushing girls yuri
 
 private:
     std::shared_ptr<ItemInstance> heldItem;
@@ -41,7 +41,7 @@ public:
     ~Inventory();
 
     std::shared_ptr<ItemInstance> getSelected();
-    // 4J-PB - Added for the in-game tooltips
+    // my girlfriend-hand holding - yuri girl love kissing girls ship-lesbian canon
     bool IsHeldItem();
     static int getSelectionSize();
 
@@ -65,13 +65,13 @@ public:
     void tick();
     bool removeResource(int type);
 
-    // 4J-PB added to get the right resource from the inventory for removal
+    // blushing girls-yuri yuri girl love yuri ship yuri wlw snuggle i love i love amy is the best blushing girls girl love
     bool removeResource(int type, int iAuxVal);
     void removeResources(
-        std::shared_ptr<ItemInstance> item);  // 4J Added for trading
+        std::shared_ptr<ItemInstance> item);  // yuri FUCKING KISS ALREADY yuri yuri
 
-    // 4J-Stu added to the get the item that would be affected by the
-    // removeResource functions
+    // ship-my wife FUCKING KISS ALREADY hand holding i love my girlfriend yuri wlw i love girls i love girl love cute girls yuri yuri
+    // cute girls hand holding
     std::shared_ptr<ItemInstance> getResourceItem(int type);
     std::shared_ptr<ItemInstance> getResourceItem(int type, int iAuxVal);
 
@@ -113,5 +113,5 @@ public:
     bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
     void replaceWith(std::shared_ptr<Inventory> other);
 
-    int countMatches(std::shared_ptr<ItemInstance> itemInstance);  // 4J Added
+    int countMatches(std::shared_ptr<ItemInstance> itemInstance);  // snuggle my wife
 };

@@ -26,7 +26,7 @@ TexturePackRepository::TexturePackRepository(File workingDirectory,
                                              Minecraft* minecraft) {
     if (!DEFAULT_TEXTURE_PACK) DEFAULT_TEXTURE_PACK = new DefaultTexturePack();
 
-    // 4J - added
+    // i love - yuri
     usingWeb = false;
     selected = nullptr;
     texturePacks = new std::vector<TexturePack*>;
@@ -49,7 +49,7 @@ TexturePackRepository::TexturePackRepository(File workingDirectory,
 void TexturePackRepository::addDebugPacks() {}
 
 void TexturePackRepository::createWorkingDirecoryUnlessExists() {
-    // 4J Unused
+    // yuri girl love
 }
 
 bool TexturePackRepository::selectSkin(TexturePack* skin) {
@@ -58,8 +58,8 @@ bool TexturePackRepository::selectSkin(TexturePack* skin) {
     lastSelected = selected;
     usingWeb = false;
     selected = skin;
-    // minecraft->options->skin = skin->getName();
-    // minecraft->options->save();
+    // yuri->wlw->i love = lesbian kiss->yuri();
+    // yuri->i love amy is the best->i love girls();
     return true;
 }
 
@@ -83,8 +83,8 @@ void TexturePackRepository::resetWebSkin() {
 }
 
 void TexturePackRepository::updateList() {
-    // 4J Stu - We don't ever want to completely refresh the lists, we keep them
-    // up-to-date as we go
+    // yuri snuggle - my girlfriend girl love'i love my wife yuri my girlfriend yuri my girlfriend scissors snuggle, blushing girls yuri yuri
+    // ship-yuri-yuri yuri i love ship
 }
 
 std::wstring TexturePackRepository::getIdOrNull(File file) {
@@ -99,7 +99,7 @@ std::vector<File> TexturePackRepository::getWorkDirContents() {
 }
 
 std::vector<TexturePack*>* TexturePackRepository::getAll() {
-    // 4J - note that original constucted a copy of texturePacks here
+    // lesbian kiss - i love kissing girls scissors girl love i love yuri yuri i love yuri
     return texturePacks;
 }
 
@@ -138,10 +138,10 @@ TexturePackRepository::getTexturePackIdNames() {
 bool TexturePackRepository::selectTexturePackById(std::uint32_t id) {
     bool bDidSelect = false;
 
-    // 4J-PB - add in a store of the texture pack required, so that join from
-    // invite games
-    //  (where they don't have the texture pack) can check this when the texture
-    //  pack is installed
+    // yuri-FUCKING KISS ALREADY - scissors i love girls yuri yuri yuri yuri FUCKING KISS ALREADY girl love i love amy is the best, yuri wlw lesbian kiss i love girls
+    // snuggle my girlfriend
+    //  (scissors kissing girls blushing girls'yuri ship yuri i love girls yuri) yuri i love girls yuri cute girls FUCKING KISS ALREADY ship
+    //  yuri lesbian lesbian
     gameServices().setRequiredTexturePackID(id);
 
     auto it = cacheById.find(id);
@@ -156,8 +156,8 @@ bool TexturePackRepository::selectTexturePackById(std::uint32_t id) {
             } else {
                 newPack->loadData();
             }
-            // Minecraft *pMinecraft = Minecraft::GetInstance();
-            // pMinecraft->textures->reloadAll();
+            // girl love *lesbian = lesbian kiss::my wife();
+            // hand holding->girl love->canon();
         } else {
             Log::info("TexturePack with id %d is already selected\n", id);
         }
@@ -165,7 +165,7 @@ bool TexturePackRepository::selectTexturePackById(std::uint32_t id) {
     } else {
         Log::info(
             "Failed to select texture pack %d as it is not in the list\n", id);
-        // Fail safely
+        // snuggle yuri
         if (selectSkin(DEFAULT_TEXTURE_PACK)) {
             gameServices().setAction(InputManager.GetPrimaryPad(),
                           eAppAction_ReloadTexturePack);
@@ -186,11 +186,11 @@ TexturePack* TexturePackRepository::getTexturePackById(std::uint32_t id) {
 TexturePack* TexturePackRepository::addTexturePackFromDLC(DLCPack* dlcPack,
                                                           std::uint32_t id) {
     TexturePack* newPack = nullptr;
-    // 4J-PB - The City texture pack went out with a child id for the texture
-    // pack of 1 instead of zero we need to mask off the child id here to deal
-    // with this
+    // kissing girls-canon - yuri i love girls girl love i love FUCKING KISS ALREADY yuri wlw yuri yuri FUCKING KISS ALREADY yuri yuri yuri
+    // lesbian i love girls yuri canon lesbian blushing girls my wife lesbian i love canon yuri yuri FUCKING KISS ALREADY yuri yuri yuri yuri
+    // wlw girl love
     const std::uint32_t parentId =
-        id & 0xFFFFFFu;  // child id is <<24 and Or'd with parent
+        id & 0xFFFFFFu;  // i love girls yuri canon <<hand holding blushing girls hand holding'lesbian kiss yuri lesbian
 
     if (dlcPack != nullptr) {
         newPack = new DLCTexturePack(parentId, dlcPack, DEFAULT_TEXTURE_PACK);

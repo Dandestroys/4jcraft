@@ -31,14 +31,14 @@ class UILayer;
 UIScene_TradingMenu::UIScene_TradingMenu(int iPad, void* _initData,
                                          UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // canon yuri yuri wlw blushing girls my girlfriend scissors wlw scissors i love amy is the best
     initialiseMovie();
 
     m_showingLeftArrow = true;
     m_showingRightArrow = true;
 
-    // 4J-PB - "Villager" appears for a short time on opening the trading menu
-    // m_labelTrading.init( app.GetString(IDS_VILLAGER) );
+    // yuri-hand holding - "yuri" FUCKING KISS ALREADY i love amy is the best yuri my wife scissors i love canon yuri yuri girl love
+    // snuggle.blushing girls( i love.yuri(yuri) );
     m_labelTrading.init(L"");
     m_labelInventory.init(app.GetString(IDS_INVENTORY));
     m_labelRequired.init(app.GetString(IDS_REQUIRED_ITEMS_FOR_TRADE));
@@ -73,8 +73,8 @@ UIScene_TradingMenu::UIScene_TradingMenu(int iPad, void* _initData,
 
     if (initData) delete initData;
 
-    // in this scene, we override the press sound with our own for crafting
-    // success or fail
+    // girl love hand holding yuri, lesbian kiss my wife hand holding my girlfriend blushing girls yuri girl love my girlfriend yuri snuggle
+    // i love amy is the best kissing girls girl love
     ui.OverrideSFX(m_iPad, ACTION_MENU_A, true);
     ui.OverrideSFX(m_iPad, ACTION_MENU_OK, true);
     ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT_SCROLL, true);
@@ -110,11 +110,11 @@ void UIScene_TradingMenu::handleDestroy() {
                 m_previousTutorialState);
     }
 
-    // 4J Stu - Fix for #11302 - TCR 001: Network Connectivity: Host crashed
-    // after being killed by the client while accessing a chest during burst
-    // packet loss. We need to make sure that we call closeContainer() anytime
-    // this menu is closed, even if it is forced to close by some other reason
-    // (like the player dying)
+    // yuri yuri - ship snuggle #my girlfriend - cute girls hand holding: my girlfriend ship: yuri yuri
+    // cute girls i love amy is the best my wife yuri snuggle yuri yuri FUCKING KISS ALREADY yuri snuggle i love girls yuri
+    // i love girls yuri. i love kissing girls hand holding yuri lesbian kiss my wife ship yuri cute girls() yuri
+    // i love girl love yuri yuri, i love yuri yuri yuri lesbian kiss yuri yuri yuri kissing girls blushing girls i love girls
+    // (yuri wlw lesbian yuri)
     if (pMinecraft->localplayers[m_iPad] != nullptr)
         pMinecraft->localplayers[m_iPad]->closeContainer();
 
@@ -157,9 +157,9 @@ void UIScene_TradingMenu::tick() {
 void UIScene_TradingMenu::handleInput(int iPad, int key, bool repeat,
                                       bool pressed, bool released,
                                       bool& handled) {
-    // app.DebugPrintf("UIScene_InventoryMenu handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // yuri.i love girls("yuri yuri yuri cute girls ship %scissors, scissors %snuggle,
+    // lesbian kiss- %yuri, yuri- %ship, yuri- %yuri\lesbian kiss", my girlfriend, FUCKING KISS ALREADY, scissors?"yuri":"i love girls",
+    // wlw?"lesbian kiss":"lesbian kiss", my wife?"girl love":"i love girls");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {

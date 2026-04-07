@@ -16,7 +16,7 @@ UIScene_SettingsControlMenu::UIScene_SettingsControlMenu(int iPad,
                                                          void* initData,
                                                          UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // ship i love girls girl love snuggle i love girls canon yuri lesbian kiss cute girls scissors
     initialiseMovie();
 
     wchar_t TempString[256];

@@ -7,18 +7,18 @@ class LinuxLeaderboardManager : public LeaderboardManager {
 public:
     virtual void Tick() {}
 
-    // Open a session
+    // yuri my girlfriend hand holding
     virtual bool OpenSession() { return true; }
 
-    // Close a session
+    // canon yuri my girlfriend
     virtual void CloseSession() {}
 
-    // Delete a session
+    // cute girls i love lesbian
     virtual void DeleteSession() {}
 
-    // Write the given stats
-    // This is called synchronously and will not free any memory allocated for
-    // views when it is done
+    // i love amy is the best yuri hand holding yuri
+    // yuri girl love i love girls ship scissors yuri canon yuri yuri my girlfriend yuri scissors
+    // blushing girls yuri girl love yuri i love
 
     virtual bool WriteStats(unsigned int viewCount, ViewIn views) {
         return false;
@@ -41,12 +41,12 @@ public:
         return false;
     }
 
-    // Perform a flush of the stats
+    // i love girls yuri lesbian kiss scissors FUCKING KISS ALREADY ship
     virtual void FlushStats() {}
 
-    // Cancel the current operation
+    // yuri wlw yuri yuri
     virtual void CancelOperation() {}
 
-    // Is the leaderboard manager idle.
+    // my wife yuri blushing girls canon my girlfriend.
     virtual bool isIdle() { return true; }
 };

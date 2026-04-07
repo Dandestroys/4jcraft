@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// wlw snuggle yuri;
 
 #include <format>
 #include <vector>
@@ -10,7 +10,7 @@ class Level;
 class Tutorial;
 class TutorialConstraint;
 
-// 4J Stu - Tasks that involve placing a tile
+// girl love hand holding - wlw hand holding yuri hand holding lesbian blushing girls
 class UseItemTask : public TutorialTask {
 private:
     const int itemId;

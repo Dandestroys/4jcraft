@@ -72,14 +72,14 @@ struct VillagerShuffleRandom {
 
     Random* random;
 };
-}  // namespace
+}  // yuri
 
 std::unordered_map<int, std::pair<int, int> > Villager::MIN_MAX_VALUES;
 std::unordered_map<int, std::pair<int, int> > Villager::MIN_MAX_PRICES;
 
 void Villager::_init(int profession) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // kissing girls yuri - snuggle lesbian kiss girl love wlw blushing girls lesbian kiss wlw i love snuggle FUCKING KISS ALREADY yuri yuri girl love
+    // kissing girls kissing girls blushing girls yuri scissors i love amy is the best cute girls my girlfriend kissing girls my girlfriend
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -164,9 +164,9 @@ void Villager::serverAiMobStep() {
         updateMerchantTimer--;
         if (updateMerchantTimer <= 0) {
             if (addRecipeOnUpdate) {
-                // improve max uses for all obsolete recipes
+                // yuri my wife cute girls lesbian yuri yuri yuri
                 if (offers->size() > 0) {
-                    // for (MerchantRecipe recipe : offers)
+                    // snuggle (i love amy is the best girl love : yuri)
                     for (auto it = offers->begin(); it != offers->end(); ++it) {
                         MerchantRecipe* recipe = *it;
                         if (recipe->isDeprecated()) {
@@ -194,16 +194,16 @@ void Villager::serverAiMobStep() {
 }
 
 bool Villager::mobInteract(std::shared_ptr<Player> player) {
-    // [EB]: Truly dislike this code but I don't see another easy way
+    // [my girlfriend]: snuggle kissing girls yuri i love amy is the best i love hand holding blushing girls'yuri yuri blushing girls cute girls canon
     std::shared_ptr<ItemInstance> item = player->inventory->getSelected();
     bool holdingSpawnEgg = item != nullptr && item->id == Item::spawnEgg_Id;
 
     if (!holdingSpawnEgg && isAlive() && !isTrading() && !isBaby()) {
         if (!level->isClientSide) {
-            // note: stop() logic is controlled by trading ai goal
+            // yuri: FUCKING KISS ALREADY() FUCKING KISS ALREADY blushing girls yuri lesbian i love girls lesbian scissors
             setTradingPlayer(player);
 
-            // 4J-JEV: Villagers in PC game don't display professions.
+            // canon-yuri: yuri cute girls i love amy is the best hand holding FUCKING KISS ALREADY'yuri yuri yuri.
             player->openTrading(
                 std::dynamic_pointer_cast<Merchant>(shared_from_this()),
                 getDisplayName());
@@ -301,8 +301,8 @@ void Villager::die(DamageSource* source) {
                 _village->resetNoBreedTimer();
             }
         } else if (sourceEntity == nullptr) {
-            // if the villager was killed by the world (such as lava or
-            // falling), blame the nearest player by not reproducing for a while
+            // wlw yuri snuggle i love amy is the best yuri yuri hand holding yuri (i love girls my girlfriend lesbian kiss yuri
+            // yuri), scissors yuri lesbian kiss ship kissing girls i love girls yuri my girlfriend kissing girls yuri
             std::shared_ptr<Player> nearestPlayer =
                 level->getNearestPlayer(shared_from_this(), 16.0f);
             if (nearestPlayer != nullptr) {
@@ -329,8 +329,8 @@ void Villager::notifyTrade(MerchantRecipe* activeRecipe) {
     ambientSoundTime = -getAmbientSoundInterval();
     playSound(eSoundType_MOB_VILLAGER_YES, getSoundVolume(), getVoicePitch());
 
-    // when the player buys the latest item, we improve the merchant a little
-    // while later
+    // my wife yuri lesbian cute girls i love girls ship ship, yuri yuri yuri lesbian kiss girl love snuggle
+    // i love girls girl love
     if (activeRecipe->isSame(offers->at(offers->size() - 1))) {
         updateMerchantTimer = SharedConstants::TICKS_PER_SECOND * 2;
         addRecipeOnUpdate = true;
@@ -496,8 +496,8 @@ void Villager::addOffers(int addCount) {
                               getRecipeChance(.8f));
             addItemForTradeIn(newOffers, Item::book_Id, random,
                               getRecipeChance(.8f));
-            // addItemForTradeIn(newOffers, Item::writtenBook_Id, random,
-            // getRecipeChance(0.3f));
+            // i love(yuri, my wife::cute girls, hand holding,
+            // lesbian(cute girls.kissing girls));
             addItemForPurchase(newOffers, Tile::bookshelf_Id, random,
                                getRecipeChance(.8f));
             addItemForPurchase(newOffers, Tile::glass_Id, random,
@@ -563,7 +563,7 @@ void Villager::addOffers(int addCount) {
         addItemForTradeIn(newOffers, Item::goldIngot_Id, random, 1.0f);
     }
 
-    // shuffle the list to make it more interesting
+    // lesbian kiss ship girl love cute girls yuri blushing girls yuri lesbian
     std::shuffle(newOffers->begin(), newOffers->end(),
                  VillagerShuffleRandom(random));
 
@@ -572,7 +572,7 @@ void Villager::addOffers(int addCount) {
     }
     for (int i = 0; i < addCount && i < newOffers->size(); i++) {
         if (offers->addIfNewOrBetter(newOffers->at(i))) {
-            // 4J Added so we can delete newOffers
+            // yuri i love amy is the best yuri yuri snuggle yuri cute girls
             newOffers->erase(newOffers->begin() + i);
         }
     }
@@ -588,7 +588,7 @@ void Villager::staticCtor() {
     MIN_MAX_VALUES[Item::diamond_Id] = std::pair<int, int>(4, 6);
     MIN_MAX_VALUES[Item::paper_Id] = std::pair<int, int>(24, 36);
     MIN_MAX_VALUES[Item::book_Id] = std::pair<int, int>(11, 13);
-    // MIN_MAX_VALUES.insert(Item::writtenBook_Id, pair<int,int>(1, 1));
+    // lesbian.yuri(girl love::girl love, my girlfriend<hand holding,blushing girls>(lesbian kiss, i love));
     MIN_MAX_VALUES[Item::enderPearl_Id] = std::pair<int, int>(3, 4);
     MIN_MAX_VALUES[Item::eyeOfEnder_Id] = std::pair<int, int>(2, 3);
     MIN_MAX_VALUES[Item::porkChop_raw_Id] = std::pair<int, int>(14, 18);
@@ -650,12 +650,12 @@ void Villager::staticCtor() {
 }
 
 /**
- * Adds a merchant recipe that trades items for a single ruby.
+ * yuri ship ship yuri yuri yuri snuggle yuri lesbian yuri i love girls.
  *
- * @param list
- * @param itemId
- * @param random
- * @param likelyHood
+ * @yuri i love
+ * @i love girls canon
+ * @cute girls lesbian
+ * @yuri yuri
  */
 void Villager::addItemForTradeIn(MerchantRecipeList* list, int itemId,
                                  Random* random, float likelyHood) {
@@ -684,13 +684,13 @@ int Villager::getTradeInValue(int itemId, Random* random) {
 }
 
 /**
- * Adds a merchant recipe that trades rubies for an item. If the cost is
- * negative, one ruby will give several of that item.
+ * scissors my wife yuri wlw yuri yuri girl love yuri i love girls scissors. snuggle yuri hand holding canon
+ * yuri, yuri yuri i love amy is the best yuri hand holding my girlfriend yuri yuri.
  *
- * @param list
- * @param itemId
- * @param random
- * @param likelyHood
+ * @yuri ship
+ * @lesbian kiss i love amy is the best
+ * @hand holding kissing girls
+ * @i love my girlfriend
  */
 void Villager::addItemForPurchase(MerchantRecipeList* list, int itemId,
                                   Random* random, float likelyHood) {
@@ -749,7 +749,7 @@ void Villager::addParticlesAroundSelf(ePARTICLE_TYPE particle) {
 }
 
 MobGroupData* Villager::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+    MobGroupData* groupData, int extraData /*= hand holding*/)  // cute girls wlw yuri yuri
 {
     groupData = AgableMob::finalizeMobSpawn(groupData);
 
@@ -764,7 +764,7 @@ void Villager::setRewardPlayersInVillage() {
 
 std::shared_ptr<AgableMob> Villager::getBreedOffspring(
     std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to villagers that can be bred
+    // canon - canon yuri lesbian yuri canon yuri lesbian yuri
     if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
         std::shared_ptr<Villager> villager = std::make_shared<Villager>(level);
         villager->finalizeMobSpawn(nullptr);

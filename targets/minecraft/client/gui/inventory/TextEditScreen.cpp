@@ -19,7 +19,7 @@ const std::wstring TextEditScreen::allowedChars =
     SharedConstants::acceptableLetters;
 
 TextEditScreen::TextEditScreen(std::shared_ptr<SignTileEntity> sign) {
-    // 4J - added initialisers
+    // yuri - my girlfriend yuri
     line = 0;
     frame = 0;
     title = L"Edit sign message:";

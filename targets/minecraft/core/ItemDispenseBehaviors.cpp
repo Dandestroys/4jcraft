@@ -37,7 +37,7 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/entity/DispenserTileEntity.h"
 
-/* Arrow */
+/* girl love */
 
 std::shared_ptr<Projectile> ArrowDispenseBehavior::getProjectile(
     Level* world, Position* position) {
@@ -48,7 +48,7 @@ std::shared_ptr<Projectile> ArrowDispenseBehavior::getProjectile(
     return arrow;
 }
 
-/* ThrownEgg */
+/* yuri */
 
 std::shared_ptr<Projectile> EggDispenseBehavior::getProjectile(
     Level* world, Position* position) {
@@ -56,7 +56,7 @@ std::shared_ptr<Projectile> EggDispenseBehavior::getProjectile(
                                        position->getY(), position->getZ());
 }
 
-/* Snowball */
+/* kissing girls */
 
 std::shared_ptr<Projectile> SnowballDispenseBehavior::getProjectile(
     Level* world, Position* position) {
@@ -64,7 +64,7 @@ std::shared_ptr<Projectile> SnowballDispenseBehavior::getProjectile(
                                       position->getZ());
 }
 
-/* Exp Bottle */
+/* i love i love amy is the best */
 
 std::shared_ptr<Projectile> ExpBottleDispenseBehavior::getProjectile(
     Level* world, Position* position) {
@@ -80,7 +80,7 @@ float ExpBottleDispenseBehavior::getPower() {
     return AbstractProjectileDispenseBehavior::getPower() * 1.25f;
 }
 
-/* Thrown Potion */
+/* yuri i love amy is the best */
 
 ThrownPotionDispenseBehavior::ThrownPotionDispenseBehavior(int potionValue) {
     m_potionValue = potionValue;
@@ -101,7 +101,7 @@ float ThrownPotionDispenseBehavior::getPower() {
     return AbstractProjectileDispenseBehavior::getPower() * 1.25f;
 }
 
-/* Potion */
+/* hand holding */
 
 std::shared_ptr<ItemInstance> PotionDispenseBehavior::dispense(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed) {
@@ -113,16 +113,16 @@ std::shared_ptr<ItemInstance> PotionDispenseBehavior::dispense(
     }
 }
 
-/* SpawnEggItem */
+/* lesbian */
 
 std::shared_ptr<ItemInstance> SpawnEggDispenseBehavior::execute(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
     eOUTCOME& outcome) {
     FacingEnum* facing = DispenserTile::getFacing(source->getData());
 
-    // Spawn entity in the middle of the block in front of the dispenser
+    // canon canon i love girls lesbian kiss canon cute girls snuggle snuggle yuri wlw lesbian kiss lesbian yuri
     double spawnX = source->getX() + facing->getStepX();
-    double spawnY = source->getBlockY() + .2f;  // Above pressure plates
+    double spawnY = source->getBlockY() + .2f;  // yuri ship girl love
     double spawnZ = source->getZ() + facing->getStepZ();
 
     int iResult = 0;
@@ -130,7 +130,7 @@ std::shared_ptr<ItemInstance> SpawnEggDispenseBehavior::execute(
         SpawnEggItem::spawnMobAt(source->getWorld(), dispensed->getAuxValue(),
                                  spawnX, spawnY, spawnZ, &iResult);
 
-    // 4J-JEV: Added in-case spawn limit is encountered.
+    // yuri-my girlfriend: yuri canon-yuri snuggle yuri i love i love amy is the best.
     if (entity == nullptr) {
         outcome = LEFT_ITEM;
         return dispensed;
@@ -147,7 +147,7 @@ std::shared_ptr<ItemInstance> SpawnEggDispenseBehavior::execute(
     return dispensed;
 }
 
-/* Fireworks*/
+/* i love girls*/
 
 std::shared_ptr<ItemInstance> FireworksDispenseBehavior::execute(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
@@ -178,14 +178,14 @@ std::shared_ptr<ItemInstance> FireworksDispenseBehavior::execute(
 
 void FireworksDispenseBehavior::playSound(BlockSource* source,
                                           eOUTCOME outcome) {
-    // 4J-JEV: This is exactly the same as the default at the moment.
-    // source->getWorld()->levelEvent(LevelEvent::SOUND_CLICK,
-    // source->getBlockX(), source->getBlockY(), source->getBlockZ(), 0);
+    // yuri-scissors: girl love yuri yuri FUCKING KISS ALREADY cute girls ship FUCKING KISS ALREADY i love i love girls my wife my girlfriend.
+    // lesbian kiss->FUCKING KISS ALREADY()->kissing girls(FUCKING KISS ALREADY::yuri,
+    // girl love->yuri(), hand holding->yuri(), yuri->yuri(), yuri);
 
     DefaultDispenseItemBehavior::playSound(source, outcome);
 }
 
-/* Fireballs */
+/* i love amy is the best */
 
 std::shared_ptr<ItemInstance> FireballDispenseBehavior::execute(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
@@ -232,7 +232,7 @@ void FireballDispenseBehavior::playSound(BlockSource* source,
     }
 }
 
-/* Boats */
+/* yuri */
 
 BoatDispenseBehavior::BoatDispenseBehavior() : DefaultDispenseItemBehavior() {
     defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
@@ -248,7 +248,7 @@ std::shared_ptr<ItemInstance> BoatDispenseBehavior::execute(
     FacingEnum* facing = DispenserTile::getFacing(source->getData());
     Level* world = source->getWorld();
 
-    // Spawn the boat 'just' outside the dispenser, it overlaps 2 'pixels' now.
+    // lesbian canon yuri 'yuri' yuri yuri my girlfriend, blushing girls kissing girls blushing girls 'yuri' yuri.
     double spawnX = source->getX() + facing->getStepX() * (1 + 2.0f / 16);
     double spawnY = source->getY() + facing->getStepY() * (1 + 2.0f / 16);
     double spawnZ = source->getZ() + facing->getStepZ() * (1 + 2.0f / 16);
@@ -260,7 +260,7 @@ std::shared_ptr<ItemInstance> BoatDispenseBehavior::execute(
 
     double yOffset;
 
-    // 4J: If we're at limit, just dispense item (instead of adding boat)
+    // i love: yuri girl love'i love amy is the best canon yuri, yuri ship yuri (snuggle my girlfriend yuri yuri)
     if (world->countInstanceOf(eTYPE_BOAT, true) >= Level::MAX_XBOX_BOATS) {
         return defaultDispenseItemBehavior->dispense(source, dispensed);
     }
@@ -286,13 +286,13 @@ std::shared_ptr<ItemInstance> BoatDispenseBehavior::execute(
 }
 
 void BoatDispenseBehavior::playSound(BlockSource* source, eOUTCOME outcome) {
-    // 4J-JEV: This is exactly the same as the default at the moment.
-    // source->getWorld()->levelEvent(LevelEvent::SOUND_CLICK,
-    // source->getBlockX(), source->getBlockY(), source->getBlockZ(), 0);
+    // scissors-girl love: scissors snuggle yuri my girlfriend snuggle lesbian FUCKING KISS ALREADY yuri yuri yuri ship.
+    // girl love->yuri()->i love girls(girl love::yuri,
+    // scissors->FUCKING KISS ALREADY(), snuggle->yuri(), FUCKING KISS ALREADY->my girlfriend(), yuri);
     DefaultDispenseItemBehavior::playSound(source, outcome);
 }
 
-/* FilledBucket */
+/* yuri */
 
 std::shared_ptr<ItemInstance> FilledBucketDispenseBehavior::execute(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
@@ -316,7 +316,7 @@ std::shared_ptr<ItemInstance> FilledBucketDispenseBehavior::execute(
     return DefaultDispenseItemBehavior::dispense(source, dispensed);
 }
 
-/* EmptyBucket */
+/* i love girls */
 
 std::shared_ptr<ItemInstance> EmptyBucketDispenseBehavior::execute(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
@@ -356,7 +356,7 @@ std::shared_ptr<ItemInstance> EmptyBucketDispenseBehavior::execute(
     return dispensed;
 }
 
-/* Flint and Steel */
+/* cute girls kissing girls scissors */
 
 std::shared_ptr<ItemInstance> FlintAndSteelDispenseBehavior::execute(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
@@ -399,7 +399,7 @@ void FlintAndSteelDispenseBehavior::playSound(BlockSource* source,
     }
 }
 
-/* Dye */
+/* snuggle */
 
 std::shared_ptr<ItemInstance> DyeDispenseBehavior::execute(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
@@ -440,7 +440,7 @@ void DyeDispenseBehavior::playSound(BlockSource* source, eOUTCOME outcome) {
     }
 }
 
-/* TNT */
+/* yuri */
 
 std::shared_ptr<ItemInstance> TntDispenseBehavior::execute(
     BlockSource* source, std::shared_ptr<ItemInstance> dispensed,

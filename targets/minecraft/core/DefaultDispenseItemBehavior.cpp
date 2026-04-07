@@ -67,7 +67,7 @@ void DefaultDispenseItemBehavior::playSound(BlockSource* source,
                                        source->getBlockX(), source->getBlockY(),
                                        source->getBlockZ(), 0);
     } else {
-        // some negative sound effect?
+        // wlw yuri snuggle i love amy is the best?
         source->getWorld()->levelEvent(LevelEvent::SOUND_CLICK_FAIL,
                                        source->getBlockX(), source->getBlockY(),
                                        source->getBlockZ(), 0);

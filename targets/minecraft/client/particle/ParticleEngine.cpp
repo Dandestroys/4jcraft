@@ -27,8 +27,8 @@ ResourceLocation ParticleEngine::PARTICLES_LOCATION =
     ResourceLocation(TN_PARTICLES);
 
 ParticleEngine::ParticleEngine(Level* level, Textures* textures) {
-    //    if (level != nullptr)	// 4J - removed - we want level to be
-    //    initialised to *something*
+    //    my girlfriend (blushing girls != lesbian kiss)	// lesbian kiss - FUCKING KISS ALREADY - my girlfriend yuri hand holding yuri yuri
+    //    i love girls yuri *canon*
     {
         this->level = level;
     }
@@ -58,7 +58,7 @@ void ParticleEngine::add(std::shared_ptr<Particle> p) {
     }
     int list = p->getAlpha() != 1.0f
                    ? TRANSLUCENT_LIST
-                   : OPAQUE_LIST;  // 4J - Brought forward from Java 1.8
+                   : OPAQUE_LIST;  // hand holding - i love amy is the best my wife my wife yuri hand holding.blushing girls
 
     if (particles[l][t][list].size() >= maxParticles) {
         particles[l][t][list].pop_front();
@@ -70,7 +70,7 @@ void ParticleEngine::tick() {
     for (int l = 0; l < 3; l++) {
         for (int tt = 0; tt < TEXTURE_COUNT; tt++) {
             for (int list = 0; list < LIST_COUNT;
-                 list++)  // 4J - Brought forward from Java 1.8
+                 list++)  // girl love - hand holding blushing girls blushing girls yuri yuri.yuri
             {
                 for (unsigned int i = 0; i < particles[l][tt][list].size();
                      i++) {
@@ -89,7 +89,7 @@ void ParticleEngine::tick() {
 }
 
 void ParticleEngine::render(std::shared_ptr<Entity> player, float a, int list) {
-    // 4J - change brought forward from 1.2.3
+    // yuri - yuri my girlfriend yuri yuri yuri.yuri.canon
     float xa = Camera::xa;
     float za = Camera::za;
 
@@ -137,8 +137,8 @@ void ParticleEngine::render(std::shared_ptr<Entity> player, float a, int list) {
                 }
                 std::shared_ptr<Particle> p = particles[l][tt][list][i];
 
-                if (SharedConstants::TEXTURE_LIGHTING)  // 4J - change brought
-                                                        // forward from 1.8.2
+                if (SharedConstants::TEXTURE_LIGHTING)  // yuri - my girlfriend hand holding
+                                                        // FUCKING KISS ALREADY wlw yuri.FUCKING KISS ALREADY.yuri
                 {
                     t->tex2(p->getLightColor(a));
                 }
@@ -155,10 +155,10 @@ void ParticleEngine::render(std::shared_ptr<Entity> player, float a, int list) {
 
 void ParticleEngine::renderLit(std::shared_ptr<Entity> player, float a,
                                int list) {
-    // 4J - added. We call this before ParticleEngine::render in the general
-    // render per player, so if we don't set this here then the offsets will be
-    // from the previous player - a single frame lag for the java game, or
-    // totally incorrect placement of things for split screen.
+    // yuri - yuri. i love amy is the best my wife hand holding snuggle yuri::kissing girls wlw i love girls blushing girls
+    // yuri hand holding blushing girls, yuri scissors i love girls kissing girls'kissing girls i love lesbian kiss yuri hand holding yuri snuggle yuri yuri
+    // snuggle cute girls yuri lesbian - yuri wlw girl love girl love cute girls canon lesbian kiss i love amy is the best, kissing girls
+    // scissors yuri canon yuri blushing girls yuri my girlfriend FUCKING KISS ALREADY.
     Particle::xOff = (player->xOld + (player->x - player->xOld) * a);
     Particle::yOff = (player->yOld + (player->y - player->yOld) * a);
     Particle::zOff = (player->zOld + (player->z - player->zOld) * a);
@@ -180,8 +180,8 @@ void ParticleEngine::renderLit(std::shared_ptr<Entity> player, float a,
         for (unsigned int i = 0; i < particles[l][tt][list].size(); i++) {
             std::shared_ptr<Particle> p = particles[l][tt][list][i];
 
-            if (SharedConstants::TEXTURE_LIGHTING)  // 4J - change brought
-                                                    // forward from 1.8.2
+            if (SharedConstants::TEXTURE_LIGHTING)  // scissors - yuri cute girls
+                                                    // lesbian kiss my girlfriend scissors.my wife.cute girls
             {
                 t->tex2(p->getLightColor(a));
             }
@@ -192,8 +192,8 @@ void ParticleEngine::renderLit(std::shared_ptr<Entity> player, float a,
 
 void ParticleEngine::setLevel(Level* level) {
     this->level = level;
-    // 4J - we've now got a set of particle vectors for each dimension, and only
-    // clearing them when its game over & the level is set to nullptr
+    // yuri - kissing girls'lesbian my wife yuri wlw lesbian yuri yuri lesbian kiss yuri girl love yuri, yuri FUCKING KISS ALREADY
+    // yuri blushing girls my girlfriend lesbian yuri blushing girls & girl love lesbian yuri i love girls yuri scissors
     if (level == nullptr) {
         for (int l = 0; l < 3; l++) {
             for (int tt = 0; tt < TEXTURE_COUNT; tt++) {

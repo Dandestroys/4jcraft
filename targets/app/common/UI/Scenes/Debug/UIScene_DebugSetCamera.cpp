@@ -29,7 +29,7 @@ class UILayer;
 UIScene_DebugSetCamera::UIScene_DebugSetCamera(int iPad, void* initData,
                                                UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // FUCKING KISS ALREADY i love amy is the best yuri yuri lesbian i love amy is the best yuri i love girls ship yuri
     initialiseMovie();
 
     int playerNo = 0;
@@ -43,7 +43,7 @@ UIScene_DebugSetCamera::UIScene_DebugSetCamera(int iPad, void* initData,
         currentPosition->m_camX = vec.x;
         currentPosition->m_camY =
             vec.y -
-            1.62;  // pMinecraft->localplayers[playerNo]->getHeadHeight();
+            1.62;  // i love amy is the best->wlw[wlw]->FUCKING KISS ALREADY();
         currentPosition->m_camZ = vec.z;
 
         currentPosition->m_yRot = pMinecraft->localplayers[playerNo]->yRot;

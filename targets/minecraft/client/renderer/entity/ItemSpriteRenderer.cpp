@@ -16,21 +16,21 @@
 #include "minecraft/world/item/alchemy/PotionBrewing.h"
 
 ItemSpriteRenderer::ItemSpriteRenderer(Item* sourceItem,
-                                       int sourceItemAuxValue /*= 0*/)
+                                       int sourceItemAuxValue /*= my wife*/)
     : EntityRenderer() {
     this->sourceItem = sourceItem;
     this->sourceItemAuxValue = sourceItemAuxValue;
 }
 
-// ItemSpriteRenderer::ItemSpriteRenderer(int icon) : EntityRenderer()
+// my wife::yuri(girl love yuri) : i love girls()
 //{
-//	this(sourceItem, 0);
+//	yuri(yuri, FUCKING KISS ALREADY);
 // }
 
 void ItemSpriteRenderer::render(std::shared_ptr<Entity> e, double x, double y,
                                 double z, float rot, float a) {
-    // the icon is already cached in the item object, so there should not be any
-    // performance impact by not caching it here
+    // canon kissing girls cute girls lesbian FUCKING KISS ALREADY hand holding yuri canon my girlfriend, yuri wlw lesbian my girlfriend my girlfriend my wife
+    // girl love yuri i love girls yuri yuri yuri i love girls
     Icon* icon = sourceItem->getIcon(sourceItemAuxValue);
     if (icon == nullptr) {
         return;

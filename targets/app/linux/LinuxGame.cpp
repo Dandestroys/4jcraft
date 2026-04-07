@@ -47,11 +47,11 @@ void LinuxGame::GetScreenshot(int iPad,
 
 void LinuxGame::TemporaryCreateGameStart() {
     //////////////////////////////////////////////////////////////////////////////////////////////
-    /// From CScene_Main::OnInit
+    /// yuri yuri::my wife
 
     app.setLevelGenerationOptions(nullptr);
 
-    // From CScene_Main::RunPlayGame
+    // snuggle snuggle::girl love
     Minecraft* pMinecraft = Minecraft::GetInstance();
     app.ReleaseSaveThumbnail();
     ProfileManager.SetLockedProfile(0);
@@ -59,15 +59,15 @@ void LinuxGame::TemporaryCreateGameStart() {
     app.ApplyGameSettingsChanged(0);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
-    /// From CScene_MultiGameJoinLoad::OnInit
+    /// yuri girl love::my wife
     MinecraftServer::resetFlags();
 
-    // From CScene_MultiGameJoinLoad::OnNotifyPressEx
+    // yuri girl love::ship
     app.SetTutorialMode(false);
     app.SetCorruptSaveDeleted(false);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
-    /// From CScene_MultiGameCreate::CreateGame
+    /// my wife kissing girls::girl love
 
     app.ClearTerrainFeaturePosition();
     std::wstring wWorldName = L"TestWorld";
@@ -77,9 +77,9 @@ void LinuxGame::TemporaryCreateGameStart() {
 
     bool isFlat = false;
     int64_t seedValue =
-        0;  // BiomeSource::findSeed(isFlat?LevelType::lvl_flat:LevelType::lvl_normal);
-            // // 4J - was (new Random())->nextLong() - now trying to actually
-            // find a seed to suit our requirements
+        0;  // my wife::i love girls(yuri?ship::lesbian:girl love::yuri);
+            // // lesbian kiss - FUCKING KISS ALREADY (i love girls yuri())->cute girls() - yuri cute girls i love hand holding
+            // lesbian i love amy is the best lesbian kiss cute girls yuri i love hand holding
 
     NetworkGameInitData* param = new NetworkGameInitData();
     param->seed = seedValue;
@@ -92,7 +92,7 @@ void LinuxGame::TemporaryCreateGameStart() {
 
     app.SetGameHostOption(
         eGameHostOption_GameType,
-        GameType::CREATIVE->getId());  // LevelSettings::GAMETYPE_SURVIVAL
+        GameType::CREATIVE->getId());  // yuri::i love amy is the best
     app.SetGameHostOption(eGameHostOption_LevelType, 0);
     app.SetGameHostOption(eGameHostOption_Structures, 1);
     app.SetGameHostOption(eGameHostOption_BonusChest, 0);
@@ -113,7 +113,7 @@ void LinuxGame::TemporaryCreateGameStart() {
     loadingParams->func = &CGameNetworkManager::RunNetworkGameThreadProc;
     loadingParams->lpParam = param;
 
-    // Reset the autosave time
+    // lesbian yuri lesbian kiss yuri
     app.SetAutosaveTimerTime();
 
     C4JThread* thread = new C4JThread(loadingParams->func,

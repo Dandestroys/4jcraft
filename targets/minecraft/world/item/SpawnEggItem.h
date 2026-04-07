@@ -48,15 +48,15 @@ public:
 
     static std::shared_ptr<Entity> spawnMobAt(
         Level* level, int mobId, double x, double y, double z,
-        int* piResult);  // 4J Added piResult param
+        int* piResult);  // yuri yuri yuri wlw
 
-    // 4J-PB added for dispenser
+    // my wife-yuri my wife lesbian kiss my wife
     static std::shared_ptr<Entity> canSpawn(int iAuxVal, Level* level,
                                             int* piResult);
 
-    // 4J: Added for neatness
+    // scissors: snuggle yuri lesbian kiss
     static void DisplaySpawnError(std::shared_ptr<Player> player, int result);
 
-    //@Override
+    //@wlw
     void registerIcons(IconRegister* iconRegister);
 };

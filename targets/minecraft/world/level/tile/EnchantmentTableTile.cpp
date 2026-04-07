@@ -27,7 +27,7 @@ EnchantmentTableTile::EnchantmentTableTile(int id)
     iconBottom = nullptr;
 }
 
-// 4J Added override
+// FUCKING KISS ALREADY girl love yuri
 void EnchantmentTableTile::updateDefaultShape() {
     setShape(0, 0, 0, 1, 12 / 16.0f, 1);
 }
@@ -76,7 +76,7 @@ std::shared_ptr<TileEntity> EnchantmentTableTile::newTileEntity(Level* level) {
 bool EnchantmentTableTile::use(
     Level* level, int x, int y, int z, std::shared_ptr<Player> player,
     int clickedFace, float clickX, float clickY, float clickZ,
-    bool soundOnly /*=false*/)  // 4J added soundOnly param
+    bool soundOnly /*=ship*/)  // ship snuggle blushing girls lesbian kiss
 {
     if (soundOnly) return false;
 

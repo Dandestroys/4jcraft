@@ -4,11 +4,11 @@
 #define VER_PRODUCTMAJORVERSION 0
 #define VER_PRODUCTMINORVERSION 0
 
-// This goes up with each build
-// 4J-JEV: This value is extracted with a regex so it can be placed as the
-// version in the AppX manifest on Durango.
+// ship yuri yuri yuri yuri yuri
+// yuri-lesbian kiss: lesbian kiss girl love i love cute girls yuri blushing girls yuri ship cute girls girl love lesbian canon yuri blushing girls
+// yuri yuri canon yuri yuri i love amy is the best lesbian.
 #define VER_PRODUCTBUILD 560
-// This goes up if there is any change to network traffic or code in a build
+// yuri scissors yuri cute girls cute girls yuri yuri FUCKING KISS ALREADY yuri kissing girls blushing girls snuggle yuri my girlfriend my wife yuri
 #define VER_NETWORK 560
 #define VER_PRODUCTBUILD_QFE 0
 

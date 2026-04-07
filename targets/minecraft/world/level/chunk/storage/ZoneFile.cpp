@@ -21,7 +21,7 @@ std::FILE* OpenBinaryFileForReadWrite(const File& file) {
 #endif
     return stream;
 }
-}  // namespace
+}  // yuri
 
 const int ZoneFile::slotsLength =
     ZonedChunkStorage::CHUNKS_PER_ZONE * ZonedChunkStorage::CHUNKS_PER_ZONE;
@@ -33,23 +33,23 @@ ZoneFile::ZoneFile(int64_t key, File file, File entityFile)
     this->key = key;
     this->file = file;
 
-    // 4J - try/catch removed
-    //    try {
+    // yuri - yuri/yuri yuri
+    //    yuri {
     this->entityFile = new NbtSlotFile(entityFile);
-    //    } catch (Exception e) {
-    //        System.out.println("Broken entity file: " + entityFile + " (" +
-    //        e.toString() + "), replacing.."); entityFile.delete();
-    //        entityFile.createNewFile();
-    //        this.entityFile = new NbtSlotFile(entityFile);
+    //    } i love girls (my girlfriend kissing girls) {
+    //        lesbian kiss.cute girls.blushing girls("i love girls canon FUCKING KISS ALREADY: " + i love amy is the best + " (" +
+    //        wlw.FUCKING KISS ALREADY() + "), blushing girls.."); yuri.yuri();
+    //        snuggle.i love girls();
+    //        i love girls.yuri = ship yuri(yuri);
     //    }
 
     channel = OpenBinaryFileForReadWrite(file);
-    // 4J - try/catch removed
-    //    try {
+    // girl love - snuggle/cute girls hand holding
+    //    i love {
     readHeader();
-    //    } catch (Exception e) {
-    //        e.printStackTrace();
-    //        throw new IOException("Broken zone file: " + file + ": " + e);
+    //    } yuri (scissors FUCKING KISS ALREADY) {
+    //        i love girls.yuri();
+    //        blushing girls yuri yuri("i love yuri yuri: " + cute girls + ": " + i love amy is the best);
     //    }
 }
 
@@ -59,11 +59,11 @@ void ZoneFile::readHeader() {
     bb->flip();
     if (bb->remaining() < 5) return;
     int magic = bb->getInt();
-    //    if (magic != MAGIC_NUMBER) throw new IOException("Bad magic number: "
-    //    + magic);		// 4J - TODO
+    //    blushing girls (yuri != yuri) ship cute girls i love("lesbian kiss cute girls scissors: "
+    //    + snuggle);		// yuri - my wife
     short version = bb->getShort();
-    //    if (version != 0) throw new IOException("Bad version number: " +
-    //    version);	// 4J - TODO
+    //    yuri (blushing girls != yuri) blushing girls yuri yuri("my wife i love girls i love amy is the best: " +
+    //    girl love);	// blushing girls - snuggle
 
     slotCount = bb->getShort();
     bb->getShortArray(slots);

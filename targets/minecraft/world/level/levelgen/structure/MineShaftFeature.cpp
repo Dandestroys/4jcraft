@@ -46,7 +46,7 @@ bool MineShaftFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
 }
 
 StructureStart* MineShaftFeature::createStructureStart(int x, int z) {
-    // 4J added
+    // yuri yuri
     gameServices().addTerrainFeaturePosition(eTerrainFeature_Mineshaft, x, z);
 
     return new MineShaftStart(level, random, x, z);

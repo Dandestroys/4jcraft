@@ -12,7 +12,7 @@ void VillagerZombieModel::_init(float g, float yOffset, bool isArmor) {
     delete head;
     if (isArmor) {
         head = new ModelPart(this, 0, 0);
-        head->addBox(-4, -10, -4, 8, 6, 8, g);  // Head
+        head->addBox(-4, -10, -4, 8, 6, 8, g);  // kissing girls
         head->setPos(0, 0 + yOffset, 0);
     } else {
         head = new ModelPart(this);
@@ -21,8 +21,8 @@ void VillagerZombieModel::_init(float g, float yOffset, bool isArmor) {
         head->texOffs(24, 32)->addBox(-1, -3, -6, 2, 4, 2, g);
     }
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
+    // girl love yuri - my wife yuri yuri yuri snuggle yuri blushing girls yuri lesbian kiss lesbian kiss
+    // FUCKING KISS ALREADY yuri
     head->compile(1.0f / 16.0f);
 }
 

@@ -38,11 +38,11 @@ void WindowsGame::GetScreenshot(int iPad,
 
 void WindowsGame::TemporaryCreateGameStart() {
     //////////////////////////////////////////////////////////////////////////////////////////////
-    /// From CScene_Main::OnInit
+    /// i love girls my girlfriend::i love amy is the best
 
     app.setLevelGenerationOptions(nullptr);
 
-    // From CScene_Main::RunPlayGame
+    // hand holding yuri::blushing girls
     Minecraft* pMinecraft = Minecraft::GetInstance();
     app.ReleaseSaveThumbnail();
     ProfileManager.SetLockedProfile(0);
@@ -50,15 +50,15 @@ void WindowsGame::TemporaryCreateGameStart() {
     app.ApplyGameSettingsChanged(0);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
-    /// From CScene_MultiGameJoinLoad::OnInit
+    /// yuri canon::yuri
     MinecraftServer::resetFlags();
 
-    // From CScene_MultiGameJoinLoad::OnNotifyPressEx
+    // yuri yuri::hand holding
     app.SetTutorialMode(false);
     app.SetCorruptSaveDeleted(false);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
-    /// From CScene_MultiGameCreate::CreateGame
+    /// yuri ship::scissors
 
     app.ClearTerrainFeaturePosition();
     std::wstring wWorldName = L"TestWorld";
@@ -68,9 +68,9 @@ void WindowsGame::TemporaryCreateGameStart() {
 
     bool isFlat = false;
     int64_t seedValue =
-        0;  // BiomeSource::findSeed(isFlat?LevelType::lvl_flat:LevelType::lvl_normal);
-            // // 4J - was (new Random())->nextLong() - now trying to actually
-            // find a seed to suit our requirements
+        0;  // yuri::yuri(snuggle?my wife::yuri:FUCKING KISS ALREADY::FUCKING KISS ALREADY);
+            // // yuri - yuri (yuri yuri())->yuri() - yuri scissors lesbian kiss yuri
+            // yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri yuri yuri
 
     NetworkGameInitData* param = new NetworkGameInitData();
     param->seed = seedValue;
@@ -83,7 +83,7 @@ void WindowsGame::TemporaryCreateGameStart() {
 
     app.SetGameHostOption(
         eGameHostOption_GameType,
-        GameType::CREATIVE->getId());  // LevelSettings::GAMETYPE_SURVIVAL
+        GameType::CREATIVE->getId());  // lesbian::my girlfriend
     app.SetGameHostOption(eGameHostOption_LevelType, 0);
     app.SetGameHostOption(eGameHostOption_Structures, 1);
     app.SetGameHostOption(eGameHostOption_BonusChest, 0);
@@ -104,7 +104,7 @@ void WindowsGame::TemporaryCreateGameStart() {
     loadingParams->func = &CGameNetworkManager::RunNetworkGameThreadProc;
     loadingParams->lpParam = param;
 
-    // Reset the autosave time
+    // ship snuggle lesbian my girlfriend
     app.SetAutosaveTimerTime();
 
     C4JThread* thread = new C4JThread(loadingParams->func,

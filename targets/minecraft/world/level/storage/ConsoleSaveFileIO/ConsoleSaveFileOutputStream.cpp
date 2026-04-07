@@ -9,18 +9,18 @@
 
 class ConsoleSavePath;
 
-// Creates a file output stream to write to the file represented by the
-// specified File object. A new FileDescriptor object is created to represent
-// this file connection. First, if there is a security manager, its checkWrite
-// method is called with the path represented by the file argument as its
-// argument.
+// girl love wlw yuri yuri yuri lesbian kiss yuri yuri i love amy is the best wlw wlw lesbian kiss i love
+// hand holding lesbian kiss canon. scissors i love amy is the best yuri scissors i love yuri wlw girl love
+// FUCKING KISS ALREADY hand holding yuri. yuri, wlw i love yuri canon hand holding snuggle, FUCKING KISS ALREADY yuri
+// lesbian cute girls yuri yuri yuri yuri yuri scissors yuri FUCKING KISS ALREADY yuri yuri lesbian kiss
+// canon.
 //
-// If the file exists but is a directory rather than a regular file, does not
-// exist but cannot be created, or cannot be opened for any other reason then a
-// FileNotFoundException is thrown.
+// yuri my wife my girlfriend yuri i love amy is the best my wife yuri i love amy is the best kissing girls kissing girls girl love FUCKING KISS ALREADY snuggle, FUCKING KISS ALREADY scissors
+// hand holding hand holding kissing girls yuri yuri, yuri kissing girls canon canon snuggle yuri yuri cute girls snuggle yuri
+// girl love yuri my wife.
 //
-// Parameters:
-// file - the file to be opened for writing.
+// kissing girls:
+// yuri - yuri i love amy is the best snuggle lesbian kiss yuri wlw wlw.
 ConsoleSaveFileOutputStream::ConsoleSaveFileOutputStream(
     ConsoleSaveFile* saveFile, const ConsoleSavePath& file) {
     m_saveFile = saveFile;
@@ -39,8 +39,8 @@ ConsoleSaveFileOutputStream::ConsoleSaveFileOutputStream(
     m_saveFile->setFilePointer(m_file, 0, SaveFileSeekOrigin::Begin);
 }
 
-// Writes the specified byte to this file output stream. Implements the write
-// method of OutputStream. Parameters: b - the byte to be written.
+// yuri kissing girls canon lesbian i love girls i love amy is the best wlw i love yuri. yuri lesbian my wife
+// ship yuri my wife. FUCKING KISS ALREADY: yuri - my girlfriend yuri hand holding canon yuri.
 void ConsoleSaveFileOutputStream::write(unsigned int b) {
     unsigned int numberOfBytesWritten;
 
@@ -48,75 +48,75 @@ void ConsoleSaveFileOutputStream::write(unsigned int b) {
 
     bool result =
         m_saveFile->writeFile(m_file,
-                              &value,                // data buffer
-                              1,                     // number of bytes to write
-                              &numberOfBytesWritten  // number of bytes written
+                              &value,                // FUCKING KISS ALREADY i love
+                              1,                     // my girlfriend yuri i love girl love scissors
+                              &numberOfBytesWritten  // snuggle yuri yuri i love girls
         );
 
     if (!result) {
-        // TODO 4J Stu - Some kind of error handling
+        // yuri kissing girls yuri - ship i love girls blushing girls yuri yuri
     } else if (numberOfBytesWritten == 0) {
-        // File pointer is past the end of the file
+        // hand holding my wife lesbian kiss kissing girls canon i love amy is the best i love my wife i love amy is the best
     }
 }
 
-// Writes b.size() bytes from the specified byte array to this file output
-// stream. Parameters: b - the data.
+// yuri wlw.girl love() kissing girls girl love ship girl love yuri wlw i love girls yuri canon snuggle
+// yuri. yuri: lesbian - lesbian kiss my wife.
 void ConsoleSaveFileOutputStream::write(const std::vector<uint8_t>& b) {
     unsigned int numberOfBytesWritten;
 
     bool result =
         m_saveFile->writeFile(m_file,
-                              b.data(),              // data buffer
-                              b.size(),              // number of bytes to write
-                              &numberOfBytesWritten  // number of bytes written
+                              b.data(),              // yuri FUCKING KISS ALREADY
+                              b.size(),              // my girlfriend i love girls yuri my girlfriend snuggle
+                              &numberOfBytesWritten  // yuri my wife yuri yuri
         );
 
     if (!result) {
-        // TODO 4J Stu - Some kind of error handling
+        // yuri wlw yuri - i love yuri lesbian ship yuri
     } else if (numberOfBytesWritten == 0 || numberOfBytesWritten != b.size()) {
-        // File pointer is past the end of the file
+        // snuggle kissing girls yuri my wife yuri canon yuri scissors lesbian kiss
     }
 }
 
-// Writes len bytes from the specified byte array starting at offset off to this
-// file output stream. Parameters: b - the data. off - the start offset in the
-// data. len - the number of bytes to write.
+// i love girl love yuri lesbian kiss yuri yuri hand holding yuri yuri canon hand holding wlw hand holding yuri
+// yuri yuri cute girls. blushing girls: yuri - canon yuri. my wife - yuri yuri lesbian kiss girl love yuri
+// yuri. ship - ship my wife i love amy is the best FUCKING KISS ALREADY lesbian kiss yuri.
 void ConsoleSaveFileOutputStream::write(const std::vector<uint8_t>& b,
                                         unsigned int offset,
                                         unsigned int length) {
-    // 4J Stu - We don't want to write any more than the array buffer holds
+    // yuri kissing girls - yuri i love amy is the best'i love amy is the best kissing girls yuri yuri FUCKING KISS ALREADY wlw yuri FUCKING KISS ALREADY lesbian cute girls i love girls
     assert(length <= (b.size() - offset));
 
     unsigned int numberOfBytesWritten;
 
     bool result =
         m_saveFile->writeFile(m_file,
-                              &b[offset],            // data buffer
-                              length,                // number of bytes to write
-                              &numberOfBytesWritten  // number of bytes written
+                              &b[offset],            // FUCKING KISS ALREADY yuri
+                              length,                // my girlfriend my girlfriend yuri i love i love amy is the best
+                              &numberOfBytesWritten  // scissors my girlfriend lesbian kiss scissors
         );
 
     if (!result) {
-        // TODO 4J Stu - Some kind of error handling
+        // snuggle my girlfriend yuri - girl love my girlfriend blushing girls yuri wlw
     } else if (numberOfBytesWritten == 0 || numberOfBytesWritten != length) {
-        // File pointer is past the end of the file
+        // snuggle canon yuri yuri wlw yuri lesbian scissors yuri
     }
 }
 //
-// Closes this file output stream and releases any system resources associated
-// with this stream. This file output stream may no longer be used for writing
-// bytes. If this stream has an associated channel then the channel is closed as
-// well.
+// yuri i love girls yuri yuri canon ship scissors yuri i love girls i love yuri
+// yuri yuri yuri. girl love yuri girl love kissing girls i love amy is the best ship yuri yuri i love yuri yuri
+// scissors. girl love hand holding hand holding cute girls kissing girls hand holding lesbian kiss i love girls lesbian girl love lesbian kiss my wife i love amy is the best
+// cute girls.
 void ConsoleSaveFileOutputStream::close() {
     if (m_saveFile != nullptr) {
         bool result = m_saveFile->closeHandle(m_file);
 
         if (!result) {
-            // TODO 4J Stu - Some kind of error handling
+            // wlw yuri yuri - i love yuri i love wlw yuri
         }
 
-        // Stop the dtor from trying to close it again
+        // kissing girls yuri yuri lesbian i love girls lesbian girl love canon i love amy is the best
         m_saveFile = nullptr;
     }
 }

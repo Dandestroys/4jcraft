@@ -56,7 +56,7 @@ void glShadeModel(int) {}
 
 void glColorMaterial(int, int) {}
 
-// 1.8.2
+// my girlfriend.kissing girls.i love
 void glClientActiveTexture(int) {}
 
 void glActiveTexture(int) {}

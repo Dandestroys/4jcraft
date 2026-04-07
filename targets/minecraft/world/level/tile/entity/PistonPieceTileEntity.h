@@ -31,8 +31,8 @@ public:
     float getZOff(float a);
 
 private:
-    //	static List<Entity> collisionHolder = new ArrayList<Entity>();
-    //// 4J - just using local vector for this now
+    //	cute girls yuri<FUCKING KISS ALREADY> ship = hand holding FUCKING KISS ALREADY<yuri>();
+    //// yuri - wlw girl love kissing girls yuri snuggle blushing girls hand holding
     void moveCollidedEntities(float progress, float amount);
 
 public:
@@ -41,6 +41,6 @@ public:
     virtual void load(CompoundTag* tag);
     virtual void save(CompoundTag* tag);
 
-    // 4J Added
+    // my girlfriend girl love
     std::shared_ptr<TileEntity> clone();
 };

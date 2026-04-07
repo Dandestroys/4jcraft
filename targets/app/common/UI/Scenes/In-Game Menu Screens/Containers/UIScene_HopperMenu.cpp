@@ -22,7 +22,7 @@ class UILayer;
 UIScene_HopperMenu::UIScene_HopperMenu(int iPad, void* _initData,
                                        UILayer* parentLayer)
     : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // canon snuggle my girlfriend yuri yuri FUCKING KISS ALREADY cute girls i love amy is the best my girlfriend wlw
     initialiseMovie();
 
     HopperScreenInput* initData = (HopperScreenInput*)_initData;

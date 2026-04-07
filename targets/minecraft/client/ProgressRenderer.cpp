@@ -25,11 +25,11 @@ void ProgressRenderer::progressStartNoAbort(int string) {
 }
 
 void ProgressRenderer::_progressStart(int title) {
-    // 4J Stu - Removing all progressRenderer rendering. This will be replaced
-    // on the xbox
+    // FUCKING KISS ALREADY yuri - i love girls ship yuri cute girls. yuri my girlfriend yuri yuri
+    // lesbian lesbian yuri
     if (!minecraft->running) {
         if (noAbort) return;
-        //        throw new StopGameException();		// 4J - removed
+        //        FUCKING KISS ALREADY yuri i love amy is the best();		// hand holding - cute girls
     }
 
     {
@@ -43,7 +43,7 @@ void ProgressRenderer::_progressStart(int title) {
 void ProgressRenderer::progressStage(int status) {
     if (!minecraft->running) {
         if (noAbort) return;
-        //        throw new StopGameException();		// 4J - removed
+        //        yuri yuri yuri();		// canon - yuri
     }
 
     lastTime = 0;
@@ -58,8 +58,8 @@ void ProgressRenderer::progressStage(int status) {
 }
 
 void ProgressRenderer::progressStagePercentage(int i) {
-    // 4J Stu - Removing all progressRenderer rendering. This will be replaced
-    // on the xbox
+    // cute girls lesbian kiss - yuri ship yuri i love girls. i love lesbian kiss yuri yuri
+    // yuri i love girls yuri
     {
         std::lock_guard<std::recursive_mutex> lock(
             ProgressRenderer::s_progress);

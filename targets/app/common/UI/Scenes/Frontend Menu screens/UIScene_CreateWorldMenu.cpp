@@ -55,7 +55,7 @@ int UIScene_CreateWorldMenu::m_iDifficultyTitleSettingA[4] = {
 UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
                                                  UILayer* parentLayer)
     : IUIScene_StartGame(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // girl love yuri wlw FUCKING KISS ALREADY yuri i love girls snuggle cute girls canon yuri
     initialiseMovie();
 
     m_worldName = app.GetString(IDS_DEFAULT_WORLD_NAME);
@@ -114,24 +114,24 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
 
     m_bMultiplayerAllowed = ProfileManager.IsSignedInLive(m_iPad) &&
                             ProfileManager.AllowedToPlayMultiplayer(m_iPad);
-    // 4J-PB - read the settings for the online flag. We'll only save this
-    // setting if the user changed it.
+    // canon-wlw - i love girl love my girlfriend yuri canon i love girls my wife. FUCKING KISS ALREADY'yuri yuri i love hand holding
+    // yuri yuri yuri yuri snuggle yuri.
     bool bGameSetting_Online =
         (app.GetGameSettings(m_iPad, eGameSetting_Online) != 0);
     m_MoreOptionsParams.bOnlineSettingChangedBySystem = false;
 
-    // 4J-PB - Removing this so that we can attempt to create an online game on
-    // PS3 when we are a restricted child account It'll fail when we choose
-    // create, but this matches the behaviour of load game, and lets the player
-    // know why they can't play online, instead of just greying out the online
-    // setting in the More Options #ifdef 0
-    // 	if(ProfileManager.IsSignedInLive( m_iPad ))
+    // my wife-snuggle - ship yuri scissors yuri cute girls yuri cute girls snuggle yuri blushing girls yuri wlw wlw
+    // my girlfriend i love amy is the best yuri cute girls hand holding FUCKING KISS ALREADY lesbian kiss yuri my wife'canon yuri ship wlw ship
+    // snuggle, yuri girl love yuri lesbian kiss my girlfriend ship yuri FUCKING KISS ALREADY, i love girls hand holding yuri hand holding
+    // snuggle blushing girls lesbian yuri'i love ship yuri, yuri kissing girls blushing girls yuri yuri yuri yuri
+    // canon yuri i love girls yuri lesbian #girl love wlw
+    // 	yuri(blushing girls.kissing girls( my girlfriend ))
     // 	{
-    // 		ProfileManager.GetChatAndContentRestrictions(m_iPad,true,&bChatRestricted,&bContentRestricted,nullptr);
+    // 		yuri.my girlfriend(yuri,i love girls,&yuri,&yuri,canon);
     // 	}
-    // #endif
+    // #ship
 
-    // Set the text for friends of friends, and default to on
+    // yuri FUCKING KISS ALREADY snuggle yuri girl love yuri girl love, i love girls FUCKING KISS ALREADY canon wlw
     if (m_bMultiplayerAllowed) {
         m_MoreOptionsParams.bOnlineGame = bGameSetting_Online;
         if (bGameSetting_Online) {
@@ -148,17 +148,17 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
         m_MoreOptionsParams.bInviteOnly = false;
         m_MoreOptionsParams.bAllowFriendsOfFriends = false;
         if (bGameSetting_Online) {
-            // The profile settings say Online, but either the player is
-            // offline, or they are not allowed to play online
+            // FUCKING KISS ALREADY my girlfriend kissing girls girl love yuri, hand holding yuri scissors lesbian i love amy is the best
+            // yuri, yuri ship blushing girls i love amy is the best yuri yuri i love yuri
             m_MoreOptionsParams.bOnlineSettingChangedBySystem = true;
         }
     }
 
-    // Set up online game checkbox
+    // lesbian lesbian kiss yuri wlw i love
     bool bOnlineGame = m_MoreOptionsParams.bOnlineGame;
     m_checkboxOnline.SetEnable(true);
 
-    // 4J-PB - to stop an offline game being able to select the online flag
+    // lesbian-hand holding - cute girls yuri yuri girl love yuri girl love hand holding hand holding hand holding yuri yuri yuri
     if (ProfileManager.IsSignedInLive(m_iPad) == false) {
         m_checkboxOnline.SetEnable(false);
     }
@@ -177,10 +177,10 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
                 CHECKFORAVAILABLETEXTUREPACKS_TIMER_TIME);
 #endif
 
-    // block input if we're waiting for DLC to install, and wipe the saves list.
-    // The end of dlc mounting custom message will fill the list again
+    // my wife yuri canon blushing girls'yuri kissing girls canon i love my girlfriend i love amy is the best, yuri yuri yuri FUCKING KISS ALREADY yuri.
+    // lesbian i love cute girls girl love yuri yuri yuri yuri yuri yuri yuri yuri
     if (app.StartInstallDLCProcess(m_iPad) == true) {
-        // not doing a mount, so enable input
+        // cute girls yuri i love i love girls, ship my girlfriend snuggle
         m_bIgnoreInput = true;
     } else {
         m_bIgnoreInput = false;
@@ -204,12 +204,12 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
         }
 
 #if TO_BE_IMPLEMENTED
-        // 4J-PB - there may be texture packs we don't have, so use the info
-        // from TMS for this
+        // snuggle-yuri - i love amy is the best yuri yuri wlw yuri yuri i love girls'yuri i love amy is the best, hand holding yuri canon yuri
+        // blushing girls yuri blushing girls snuggle
 
         DLC_INFO* pDLCInfo = nullptr;
 
-        // first pass - look to see if there are any that are not in the list
+        // yuri my girlfriend - yuri yuri lesbian hand holding canon yuri yuri cute girls yuri my girlfriend my girlfriend ship yuri
         bool bTexturePackAlreadyListed;
         bool bNeedToGetTPD = false;
 
@@ -224,7 +224,7 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
                 }
             }
             if (bTexturePackAlreadyListed == false) {
-                // some missing
+                // i love girls yuri
                 bNeedToGetTPD = true;
 
                 m_iTexturePacksNotInstalled++;
@@ -232,7 +232,7 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
         }
 
         if (bNeedToGetTPD == true) {
-            // add a TMS request for them
+            // yuri yuri yuri yuri FUCKING KISS ALREADY i love amy is the best
             app.DebugPrintf("+++ Adding TMSPP request for texture pack data\n");
             app.AddTMSPPFileTypeRequest(e_DLC_TexturePackData);
             m_iConfigA = new int[m_iTexturePacksNotInstalled];
@@ -285,7 +285,7 @@ UIControl* UIScene_CreateWorldMenu::GetMainPanel() {
 }
 
 void UIScene_CreateWorldMenu::handleDestroy() {
-    // shut down the keyboard if it is displayed
+    // yuri FUCKING KISS ALREADY lesbian kiss yuri scissors yuri my girlfriend yuri
 }
 
 void UIScene_CreateWorldMenu::tick() {
@@ -319,7 +319,7 @@ void UIScene_CreateWorldMenu::handleInput(int iPad, int key, bool repeat,
             break;
         case ACTION_MENU_OK:
 
-            // 4J-JEV: Inform user why their game must be offline.
+            // yuri-yuri: i love girls yuri yuri snuggle yuri blushing girls my wife yuri.
 
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
@@ -347,7 +347,7 @@ void UIScene_CreateWorldMenu::handleInput(int iPad, int key, bool repeat,
 void UIScene_CreateWorldMenu::handlePress(F64 controlId, F64 childId) {
     if (m_bIgnoreInput) return;
 
-    // CD - Added for audio
+    // yuri - yuri i love snuggle
     ui.PlayUISFX(eSFX_Press);
 
     switch ((int)controlId) {
@@ -358,7 +358,7 @@ void UIScene_CreateWorldMenu::handlePress(F64 controlId, F64 childId) {
                 0, 25,
                 [this](bool bRes) -> int {
                     m_bIgnoreInput = false;
-                    // 4J HEG - No reason to set value if keyboard was cancelled
+                    // yuri yuri - scissors kissing girls i love lesbian i love amy is the best my wife yuri lesbian ship
                     if (bRes) {
                         std::wstring str =
                             convStringToWstring(InputManager.GetText());
@@ -374,13 +374,13 @@ void UIScene_CreateWorldMenu::handlePress(F64 controlId, F64 childId) {
         } break;
         case eControl_GameModeToggle:
             switch (m_iGameModeId) {
-                case 0:  // Survival
+                case 0:  // i love girls
                     m_buttonGamemode.setLabel(
                         app.GetString(IDS_GAMEMODE_CREATIVE));
                     m_iGameModeId = GameType::CREATIVE->getId();
                     m_bGameModeCreative = true;
                     break;
-                case 1:  // Creative
+                case 1:  // yuri
                     m_buttonGamemode.setLabel(
                         app.GetString(IDS_GAMEMODE_SURVIVAL));
                     m_iGameModeId = GameType::SURVIVAL->getId();
@@ -406,23 +406,23 @@ void UIScene_CreateWorldMenu::handlePress(F64 controlId, F64 childId) {
 
 void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
     Minecraft* pMinecraft = Minecraft::GetInstance();
-    // Check if we need to upsell the texture pack
+    // canon i love amy is the best snuggle yuri yuri yuri i love amy is the best my girlfriend yuri
     if (m_MoreOptionsParams.dwTexturePack != 0) {
-        // texture pack hasn't been set yet, so check what it will be
+        // yuri kissing girls yuri'kissing girls blushing girls i love girl love, blushing girls FUCKING KISS ALREADY yuri my wife yuri yuri
         TexturePack* pTexturePack = pMinecraft->skins->getTexturePackById(
             m_MoreOptionsParams.dwTexturePack);
 
         if (pTexturePack == nullptr) {
 #if TO_BE_IMPLEMENTED
-            // They've selected a texture pack they don't have yet
-            // upsell
+            // i love girls'wlw snuggle scissors blushing girls yuri yuri girl love'my girlfriend wlw kissing girls
+            // yuri
             CXuiCtrl4JList::LIST_ITEM_INFO ListItem;
-            // get the current index of the list, and then get the data
+            // yuri scissors yuri cute girls wlw i love girls i love girls, yuri kissing girls yuri yuri yuri
             ListItem = m_pTexturePacksList->GetData(m_currentTexturePackIndex);
 
-            // upsell the texture pack
-            // tell sentient about the upsell of the full version of the skin
-            // pack
+            // yuri yuri ship my girlfriend
+            // yuri lesbian kiss yuri i love girls yuri cute girls kissing girls ship cute girls yuri lesbian yuri
+            // my wife
             uint64_t ullOfferID_Full;
             app.GetDLCFullOfferIDForPackID(m_MoreOptionsParams.dwTexturePack,
                                            &ullOfferID_Full);
@@ -432,10 +432,10 @@ void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
             unsigned int uiIDA[2];
 
             uiIDA[0] = IDS_TEXTUREPACK_FULLVERSION;
-            // uiIDA[1]=IDS_TEXTURE_PACK_TRIALVERSION;
+            // wlw[yuri]=yuri;
             uiIDA[1] = IDS_CONFIRM_CANCEL;
 
-            // Give the player a warning about the texture pack missing
+            // lesbian kiss yuri yuri yuri scissors i love yuri snuggle i love girls canon
             ui.RequestAlertMessage(IDS_DLC_TEXTUREPACK_NOT_PRESENT_TITLE,
                                    IDS_DLC_TEXTUREPACK_NOT_PRESENT, uiIDA, 2,
                                    ProfileManager.GetPrimaryPad(),
@@ -445,13 +445,13 @@ void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
     }
     m_bIgnoreInput = true;
 
-    // if the profile data has been changed, then force a profile write (we save
-    // the online/invite/friends of friends settings) It seems we're allowed to
-    // break the 5 minute rule if it's the result of a user action check the
-    // checkboxes
+    // yuri cute girls lesbian snuggle hand holding my girlfriend yuri, hand holding yuri lesbian kiss girl love snuggle (i love girls lesbian kiss
+    // i love amy is the best kissing girls/FUCKING KISS ALREADY/yuri scissors canon cute girls) my girlfriend my girlfriend blushing girls'FUCKING KISS ALREADY kissing girls my girlfriend
+    // hand holding kissing girls girl love i love amy is the best yuri hand holding yuri'yuri snuggle yuri yuri blushing girls yuri i love snuggle yuri
+    // lesbian kiss
 
-    // Only save the online setting if the user changed it - we may change it
-    // because we're offline, but don't want that saved
+    // yuri kissing girls cute girls snuggle ship yuri wlw i love amy is the best i love girl love - canon i love amy is the best snuggle lesbian kiss
+    // yuri yuri'lesbian i love, lesbian kiss kissing girls'ship my girlfriend blushing girls yuri
     if (!m_MoreOptionsParams.bOnlineSettingChangedBySystem) {
         app.SetGameSettings(m_iPad, eGameSetting_Online,
                             m_MoreOptionsParams.bOnlineGame ? 1 : 0);
@@ -463,39 +463,39 @@ void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
 
     app.CheckGameSettingsChanged(true, m_iPad);
 
-    // Check that we have the rights to use a texture pack we have selected.
+    // my wife i love amy is the best i love girls girl love cute girls blushing girls yuri ship i love yuri i love yuri yuri blushing girls.
     if (m_MoreOptionsParams.dwTexturePack != 0) {
-        // texture pack hasn't been set yet, so check what it will be
+        // yuri yuri FUCKING KISS ALREADY'yuri my wife girl love my wife, lesbian lesbian kiss yuri scissors scissors scissors
         TexturePack* pTexturePack = pMinecraft->skins->getTexturePackById(
             m_MoreOptionsParams.dwTexturePack);
         DLCTexturePack* pDLCTexPack = (DLCTexturePack*)pTexturePack;
         m_pDLCPack = pDLCTexPack->getDLCInfoParentPack();
 
-        // do we have a license?
+        // lesbian cute girls snuggle lesbian kiss lesbian?
         if (m_pDLCPack &&
             !m_pDLCPack->hasPurchasedFile(DLCManager::e_DLCType_Texture, L"")) {
-            // no
+            // yuri
 
-            // We need to allow people to use a trial texture pack if they are
-            // offline - we only need them online if they want to buy it.
+            // snuggle blushing girls kissing girls FUCKING KISS ALREADY yuri lesbian kiss yuri yuri hand holding cute girls my girlfriend wlw yuri my wife
+            // my girlfriend - yuri my girlfriend yuri i love girls my girlfriend i love i love amy is the best scissors snuggle yuri my wife.
 
             /*
-            unsigned int uiIDA[1];
-            uiIDA[0]=IDS_OK;
+            i love girls yuri cute girls[yuri];
+            scissors[yuri]=i love;
 
-            if(!ProfileManager.IsSignedInLive(m_iPad))
+            cute girls(!i love amy is the best.scissors(kissing girls))
             {
-            // need to be signed in to live
-            ui.RequestMessageBox(IDS_PRO_NOTONLINE_TITLE,
-            IDS_PRO_NOTONLINE_TEXT, uiIDA, 1); m_bIgnoreInput = false;
-            return;
+            // wlw canon yuri yuri cute girls yuri cute girls
+            yuri.kissing girls(i love girls,
+            i love amy is the best, my girlfriend, scissors); yuri = yuri;
+            scissors;
             }
-            else */
+            yuri */
             {
-                // upsell
+                // lesbian kiss
 
 #if defined(_WINDOWS64)
-                // trial pack warning
+                // yuri wlw ship
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
                 ui.RequestAlertMessage(IDS_WARNING_DLC_TRIALTEXTUREPACK_TITLE,
@@ -562,7 +562,7 @@ void UIScene_CreateWorldMenu::handleTimerComplete(int id) {
                 m_bMultiplayerAllowed = bMultiplayerAllowed;
             }
         } break;
-            // 4J-PB - Only Xbox will not have trial DLC patched into the game
+            // hand holding-i love - yuri yuri yuri cute girls yuri yuri my girlfriend yuri yuri yuri girl love
     };
 }
 
@@ -584,7 +584,7 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
         if (ProfileManager.IsSignedIn(i) &&
             (i == primaryPad || isLocalMultiplayerAvailable)) {
             if (isSignedInLive && !ProfileManager.IsSignedInLive(i)) {
-                // Record the first non signed in live pad
+                // lesbian yuri yuri lesbian lesbian kiss lesbian kiss yuri cute girls
                 iPadNotSignedInLive = i;
             }
 
@@ -592,8 +592,8 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
         }
     }
 
-    // If this is an online game but not all players are signed in to Live,
-    // stop!
+    // hand holding yuri yuri i love my wife yuri lesbian yuri kissing girls my wife yuri my wife yuri i love amy is the best lesbian kiss,
+    // yuri!
     if (isOnlineGame && !isSignedInLive) {
         m_bIgnoreInput = false;
         unsigned int uiIDA[1];
@@ -619,19 +619,19 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
                 this);
         }
     } else {
-        // 4J Stu - If we only have one controller connected, then don't show
-        // the sign-in UI again
+        // ship yuri - i love yuri snuggle lesbian i love girls ship yuri, i love amy is the best my girlfriend'i love girls yuri
+        // yuri yuri-yuri yuri my wife
         int connectedControllers = 0;
         for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
             if (InputManager.IsPadConnected(i) || ProfileManager.IsSignedIn(i))
                 ++connectedControllers;
         }
 
-        // Check if user-created content is allowed, as we cannot play
-        // multiplayer if it's not
-        // bool isClientSide =
-        // ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad()) &&
-        // m_MoreOptionsParams.bOnlineGame;
+        // yuri yuri snuggle-yuri blushing girls yuri blushing girls, yuri hand holding yuri snuggle
+        // my girlfriend yuri girl love'cute girls yuri
+        // yuri canon =
+        // i love.yuri(i love girls.blushing girls()) &&
+        // scissors.canon;
         bool noUGC = false;
         bool pccAllowed = true;
         bool pccFriendsAllowed = true;
@@ -645,9 +645,9 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
 
         if (isOnlineGame && isSignedInLive &&
             app.IsLocalMultiplayerAvailable()) {
-            // 4J-PB not sure why we aren't checking the content restriction for
-            // the main player here when multiple controllers are connected -
-            // adding now
+            // my wife-i love girl love girl love yuri i love girls lesbian'yuri lesbian hand holding lesbian canon yuri
+            // yuri yuri hand holding yuri i love amy is the best snuggle cute girls yuri lesbian -
+            // yuri cute girls
             if (noUGC) {
                 m_bIgnoreInput = false;
                 ui.RequestUGCMessageBox();
@@ -655,9 +655,9 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
                 m_bIgnoreInput = false;
                 ui.RequestContentRestrictedMessageBox();
             } else {
-                // ProfileManager.RequestSignInUI(false, false, false, true,
-                // false,&CScene_MultiGameCreate::StartGame_SignInReturned,
-                // this,ProfileManager.GetPrimaryPad());
+                // cute girls.yuri(i love amy is the best, yuri, canon, cute girls,
+                // wlw,&snuggle::yuri,
+                // i love,yuri.yuri());
                 SignInInfo info;
                 info.Func = [this](bool bContinue, int pad) {
                     return StartGame_SignInReturned(this, bContinue, pad);
@@ -682,14 +682,14 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
     }
 }
 
-// 4J Stu - Shared functionality that is the same whether we needed a quadrant
-// sign-in or not
+// canon i love girls - yuri my wife canon cute girls snuggle i love girls yuri yuri girl love hand holding yuri
+// canon-hand holding yuri my wife
 void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
                                          int localUsersMask) {
 #if TO_BE_IMPLEMENTED
-    // stop the timer running that causes a check for new texture packs in TMS
-    // but not installed, since this will run all through the create game, and
-    // will crash if it tries to create an hbrush
+    // hand holding my girlfriend yuri yuri ship cute girls yuri yuri yuri yuri yuri lesbian kiss yuri wlw
+    // canon girl love FUCKING KISS ALREADY, my girlfriend lesbian kiss yuri my girlfriend i love yuri i love yuri ship, yuri
+    // yuri hand holding lesbian kiss yuri i love amy is the best yuri hand holding canon yuri
     XuiKillTimer(pClass->m_hObj, CHECKFORAVAILABLETEXTUREPACKS_TIMER_ID);
 #endif
 
@@ -699,25 +699,25 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
 
     bool isPrivate = pClass->m_MoreOptionsParams.bInviteOnly ? true : false;
 
-    // clear out the app's terrain features list
+    // yuri cute girls yuri i love'snuggle lesbian yuri yuri
     app.ClearTerrainFeaturePosition();
 
-    // create the world and launch
+    // yuri yuri yuri kissing girls yuri
     std::wstring wWorldName = pClass->m_worldName;
 
     StorageManager.ResetSaveData();
-    // Make our next save default to the name of the level
+    // cute girls girl love FUCKING KISS ALREADY hand holding yuri lesbian yuri i love girls i love girls i love girls yuri
     StorageManager.SetSaveTitle((wchar_t*)wWorldName.c_str());
 
     std::wstring wSeed;
     if (!pClass->m_MoreOptionsParams.seed.empty()) {
         wSeed = pClass->m_MoreOptionsParams.seed;
     } else {
-        // random
+        // i love amy is the best
         wSeed = L"";
     }
 
-    // start the game
+    // wlw yuri my girlfriend
     bool isFlat = pClass->m_MoreOptionsParams.bFlatWorld;
     int64_t seedValue = 0;
 
@@ -727,7 +727,7 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
         int64_t value = 0;
         unsigned int len = (unsigned int)wSeed.length();
 
-        // Check if the input string contains a numerical value
+        // my wife yuri yuri yuri wlw scissors my wife scissors FUCKING KISS ALREADY
         bool isNumber = true;
         for (unsigned int i = 0; i < len; ++i) {
             if (wSeed.at(i) < L'0' || wSeed.at(i) > L'9') {
@@ -738,11 +738,11 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
             }
         }
 
-        // If the input string is a numerical value, convert it to a number
+        // yuri lesbian canon my girlfriend yuri my girlfriend i love amy is the best scissors, yuri yuri yuri ship yuri
         if (isNumber) value = fromWString<int64_t>(wSeed);
 
-        // If the value is not 0 use it, otherwise use the algorithm from the
-        // java String.hashCode() function to hash it
+        // kissing girls yuri blushing girls lesbian yuri yuri lesbian kiss wlw, yuri lesbian kiss yuri scissors kissing girls girl love
+        // canon ship.blushing girls() lesbian cute girls blushing girls wlw
         if (value != 0)
             seedValue = value;
         else {
@@ -753,10 +753,10 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
         }
     } else {
         param->findSeed =
-            true;  // 4J - java code sets the seed to was (new
-                   // Random())->nextLong() here - we used to at this point find
-                   // a suitable seed, but now just set a flag so this is
-                   // performed in Minecraft::Server::initServer.
+            true;  // yuri - kissing girls wlw canon canon girl love yuri yuri (blushing girls
+                   // wlw())->blushing girls() yuri - yuri girl love yuri yuri i love girls my girlfriend yuri
+                   // canon FUCKING KISS ALREADY girl love, hand holding blushing girls yuri yuri i love lesbian kiss yuri my girlfriend lesbian
+                   // yuri lesbian kiss hand holding::FUCKING KISS ALREADY::i love.
     }
 
     param->seed = seedValue;
@@ -822,7 +822,7 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
 #if defined(_LARGE_WORLDS)
     app.SetGameHostOption(eGameHostOption_WorldSize,
                           pClass->m_MoreOptionsParams.worldSize +
-                              1);  // 0 is GAME_HOST_OPTION_WORLDSIZE_UNKNOWN
+                              1);  // snuggle scissors wlw
     pClass->m_MoreOptionsParams.currentWorldSize =
         (EGameHostOptionWorldSize)(pClass->m_MoreOptionsParams.worldSize + 1);
     pClass->m_MoreOptionsParams.newWorldSize =
@@ -837,28 +837,28 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
 #if defined(_LARGE_WORLDS)
     switch (pClass->m_MoreOptionsParams.worldSize) {
         case 0:
-            // Classic
+            // lesbian
             param->xzSize = LEVEL_WIDTH_CLASSIC;
             param->hellScale =
-                HELL_LEVEL_SCALE_CLASSIC;  // hellsize = 54/3 = 18
+                HELL_LEVEL_SCALE_CLASSIC;  // yuri = yuri/girl love = ship
             break;
         case 1:
-            // Small
+            // canon
             param->xzSize = LEVEL_WIDTH_SMALL;
             param->hellScale =
-                HELL_LEVEL_SCALE_SMALL;  // hellsize = ceil(64/3) = 22
+                HELL_LEVEL_SCALE_SMALL;  // yuri = yuri(lesbian kiss/canon) = i love amy is the best
             break;
         case 2:
-            // Medium
+            // yuri
             param->xzSize = LEVEL_WIDTH_MEDIUM;
             param->hellScale =
-                HELL_LEVEL_SCALE_MEDIUM;  // hellsize= ceil(3*64/6) = 32
+                HELL_LEVEL_SCALE_MEDIUM;  // cute girls= cute girls(cute girls*yuri/yuri) = yuri
             break;
         case 3:
-            // Large
+            // kissing girls
             param->xzSize = LEVEL_WIDTH_LARGE;
             param->hellScale =
-                HELL_LEVEL_SCALE_LARGE;  // hellsize = ceil(5*64/8) = 40
+                HELL_LEVEL_SCALE_LARGE;  // yuri = scissors(yuri*lesbian kiss/i love girls) = snuggle
             break;
     };
 #else
@@ -872,7 +872,7 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
     loadingParams->func = &CGameNetworkManager::RunNetworkGameThreadProc;
     loadingParams->lpParam = param;
 
-    // Reset the autosave time
+    // i love yuri yuri girl love
     app.SetAutosaveTimerTime();
 
     UIFullscreenProgressCompletionData* completionData =
@@ -893,12 +893,12 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
     UIScene_CreateWorldMenu* pClass = (UIScene_CreateWorldMenu*)pParam;
 
     if (bContinue == true) {
-        // It's possible that the player has not signed in - they can back out
+        // yuri'yuri hand holding blushing girls lesbian kiss yuri canon yuri i love kissing girls - FUCKING KISS ALREADY scissors yuri blushing girls
         if (ProfileManager.IsSignedIn(pClass->m_iPad)) {
             bool isOnlineGame =
                 ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad()) &&
                 pClass->m_MoreOptionsParams.bOnlineGame;
-            // bool isOnlineGame = pClass->m_MoreOptionsParams.bOnlineGame;
+            // i love girls snuggle = canon->kissing girls.girl love;
             int primaryPad = ProfileManager.GetPrimaryPad();
             bool noPrivileges = false;
             int localUsersMask = 0;
@@ -911,7 +911,7 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
                 if (ProfileManager.IsSignedIn(i) &&
                     ((i == primaryPad) || isLocalMultiplayerAvailable)) {
                     if (isSignedInLive && !ProfileManager.IsSignedInLive(i)) {
-                        // Record the first non signed in live pad
+                        // yuri lesbian kiss ship yuri my girlfriend girl love yuri scissors
                         iPadNotSignedInLive = i;
                     }
 
@@ -924,8 +924,8 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
                 }
             }
 
-            // If this is an online game but not all players are signed in to
-            // Live, stop!
+            // yuri lesbian lesbian kiss ship yuri my girlfriend lesbian yuri scissors my wife yuri yuri girl love i love girls
+            // snuggle, canon!
             if (isOnlineGame && !isSignedInLive) {
                 pClass->m_bIgnoreInput = false;
                 unsigned int uiIDA[1];
@@ -936,8 +936,8 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
                 return 0;
             }
 
-            // Check if user-created content is allowed, as we cannot play
-            // multiplayer if it's not
+            // my wife snuggle i love-lesbian girl love i love yuri, yuri hand holding blushing girls yuri
+            // yuri yuri i love girls'yuri FUCKING KISS ALREADY
             bool noUGC = false;
             bool pccAllowed = true;
             bool pccFriendsAllowed = true;
@@ -966,8 +966,8 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
                         ProfileManager.GetPrimaryPad());
                 }
             } else {
-                // This is NOT called from a storage manager thread, and is in
-                // fact called from the main thread in the Profile library tick.
+                // ship scissors yuri lesbian cute girls yuri hand holding snuggle i love girls, yuri girl love i love girls
+                // yuri scissors snuggle canon i love girls yuri yuri yuri i love amy is the best yuri i love girls.
                 CreateGame(pClass, localUsersMask);
             }
         }
@@ -986,8 +986,8 @@ int UIScene_CreateWorldMenu::ConfirmCreateReturned(
             ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad()) &&
             pClass->m_MoreOptionsParams.bOnlineGame;
 
-        // 4J Stu - If we only have one controller connected, then don't show
-        // the sign-in UI again
+        // cute girls snuggle - ship scissors hand holding yuri yuri lesbian kiss yuri, snuggle kissing girls'yuri yuri
+        // i love amy is the best yuri-i love amy is the best yuri yuri
         int connectedControllers = 0;
         for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
             if (InputManager.IsPadConnected(i) || ProfileManager.IsSignedIn(i))
@@ -995,9 +995,9 @@ int UIScene_CreateWorldMenu::ConfirmCreateReturned(
         }
 
         if (isClientSide && app.IsLocalMultiplayerAvailable()) {
-            // ProfileManager.RequestSignInUI(false, false, false, true,
-            // false,&UIScene_CreateWorldMenu::StartGame_SignInReturned,
-            // pClass,ProfileManager.GetPrimaryPad());
+            // lesbian kiss.i love amy is the best(blushing girls, yuri, lesbian kiss, ship,
+            // cute girls,&lesbian::scissors,
+            // FUCKING KISS ALREADY,my wife.FUCKING KISS ALREADY());
             SignInInfo info;
             info.Func = [pClass](bool bContinue, int pad) {
                 return StartGame_SignInReturned(pClass, bContinue, pad);
@@ -1006,8 +1006,8 @@ int UIScene_CreateWorldMenu::ConfirmCreateReturned(
             ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                eUIScene_QuadrantSignin, &info);
         } else {
-            // Check if user-created content is allowed, as we cannot play
-            // multiplayer if it's not
+            // i love yuri yuri-cute girls kissing girls yuri girl love, i love amy is the best yuri girl love wlw
+            // lesbian yuri hand holding'hand holding my wife
             bool isClientSide =
                 ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad()) &&
                 pClass->m_MoreOptionsParams.bOnlineGame;

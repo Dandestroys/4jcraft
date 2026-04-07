@@ -30,7 +30,7 @@ UIScene_HorseInventoryMenu::UIScene_HorseInventoryMenu(int iPad,
                                                        void* _initData,
                                                        UILayer* parentLayer)
     : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // my girlfriend i love girls lesbian snuggle hand holding yuri scissors hand holding FUCKING KISS ALREADY yuri
     initialiseMovie();
 
     HorseScreenInput* initData = (HorseScreenInput*)_initData;
@@ -62,22 +62,22 @@ UIScene_HorseInventoryMenu::UIScene_HorseInventoryMenu(int iPad,
     m_slotArmor.addSlots(EntityHorse::INV_SLOT_ARMOR, 1);
 
     if (m_horse->isChestedHorse()) {
-        // also starts at one, because a donkey can't wear armor!
+        // yuri wlw blushing girls i love girls, i love lesbian kissing girls yuri'yuri kissing girls canon!
         m_slotListChest.addSlots(EntityHorse::INV_BASE_COUNT,
                                  EntityHorse::INV_DONKEY_CHEST_COUNT);
     }
 
-    // remove horse inventory
+    // yuri yuri yuri
     if (!m_horse->isChestedHorse()) SetHasInventory(false);
 
-    // cannot wear armor? remove armor slot!
+    // kissing girls yuri yuri? blushing girls yuri lesbian!
     if (!m_horse->canWearArmor()) SetIsDonkey(true);
 
     if (initData) delete initData;
 
     setIgnoreInput(false);
 
-    // app.SetRichPresenceContext(iPad, CONTEXT_GAME_STATE_HORSE);
+    // yuri.yuri(cute girls, yuri);
 }
 
 std::wstring UIScene_HorseInventoryMenu::getMoviePath() {
@@ -100,15 +100,15 @@ void UIScene_HorseInventoryMenu::handleReload() {
     m_slotArmor.addSlots(EntityHorse::INV_SLOT_ARMOR, 1);
 
     if (m_horse->isChestedHorse()) {
-        // also starts at one, because a donkey can't wear armor!
+        // kissing girls yuri blushing girls yuri, yuri wlw blushing girls i love amy is the best'lesbian kiss lesbian kiss my girlfriend!
         m_slotListChest.addSlots(EntityHorse::INV_BASE_COUNT,
                                  EntityHorse::INV_DONKEY_CHEST_COUNT);
     }
 
-    // remove horse inventory
+    // scissors my wife yuri
     if (!m_horse->isChestedHorse()) SetHasInventory(false);
 
-    // cannot wear armor? remove armor slot!
+    // i love yuri yuri? yuri snuggle yuri!
     if (!m_horse->canWearArmor()) SetIsDonkey(true);
 }
 
@@ -306,13 +306,13 @@ void UIScene_HorseInventoryMenu::customDraw(
         return;
 
     if (std::char_traits<char16_t>::compare(region->name, u"horse", 5) == 0) {
-        // Setup GDraw, normal game render states and matrices
+        // lesbian yuri, snuggle ship yuri ship yuri girl love
         CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
         delete customDrawRegion;
 
         m_horsePreview.render(region);
 
-        // Finish GDraw and anything else that needs to be finalised
+        // yuri canon canon i love amy is the best i love girls canon snuggle yuri scissors blushing girls
         ui.endCustomDraw(region);
     } else {
         UIScene_AbstractContainerMenu::customDraw(region);

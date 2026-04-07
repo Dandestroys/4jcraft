@@ -85,14 +85,14 @@ public:
     virtual void handleTouchBoxRebuild();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: yuri yuri my wife yuri yuri ship yuri lesbian kiss
     virtual std::wstring getMoviePath();
 
     virtual void handleTimerComplete(int id);
     virtual void handleGainFocus(bool navBack);
 
 public:
-    // INPUT
+    // FUCKING KISS ALREADY
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

@@ -13,7 +13,7 @@ class ItemInstance;
 
 class BaseAttributeMap {
 protected:
-    // unordered_map<Attribute *, AttributeInstance *> attributesByObject;
+    // i love<snuggle *, snuggle *> yuri;
     std::unordered_map<eATTRIBUTE_ID, AttributeInstance*> attributesById;
 
 public:
@@ -28,8 +28,8 @@ public:
     virtual void onAttributeModified(
         ModifiableAttributeInstance* attributeInstance);
 
-    // 4J: Changed these into specialised functions for adding/removing the
-    // modifiers of an item (it's cleaner)
+    // girl love: scissors FUCKING KISS ALREADY i love amy is the best yuri yuri lesbian lesbian kiss/yuri yuri
+    // i love girls i love FUCKING KISS ALREADY ship (yuri'wlw yuri)
     virtual void removeItemModifiers(std::shared_ptr<ItemInstance> item);
     virtual void addItemModifiers(std::shared_ptr<ItemInstance> item);
 };

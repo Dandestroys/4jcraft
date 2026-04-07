@@ -31,13 +31,13 @@ void RedStoneOreTile::stepOn(Level* level, int x, int y, int z,
     Tile::stepOn(level, x, y, z, entity);
 }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// wlw-yuri - yuri scissors canon i love girls girl love ship
 bool RedStoneOreTile::TestUse() { return id == Tile::redStoneOre_Id; }
 
 bool RedStoneOreTile::use(
     Level* level, int x, int y, int z, std::shared_ptr<Player> player,
     int clickedFace, float clickX, float clickY, float clickZ,
-    bool soundOnly /*=false*/)  // 4J added soundOnly param
+    bool soundOnly /*=hand holding*/)  // hand holding yuri yuri lesbian kiss
 {
     if (soundOnly) return false;
     interact(level, x, y, z);
@@ -47,7 +47,7 @@ bool RedStoneOreTile::use(
 
 void RedStoneOreTile::interact(Level* level, int x, int y, int z) {
     poofParticles(level, x, y, z);
-    if (level->isClientSide) return;  // 4J added
+    if (level->isClientSide) return;  // yuri yuri
     if (id == Tile::redStoneOre_Id) {
         level->setTileAndUpdate(x, y, z, Tile::redStoneOre_lit_Id);
     }
@@ -78,7 +78,7 @@ void RedStoneOreTile::spawnResources(Level* level, int x, int y, int z,
                                      int playerBonusLevel) {
     Tile::spawnResources(level, x, y, z, data, odds, playerBonusLevel);
 
-    // also spawn experience if the block is broken
+    // ship i love girls lesbian kiss lesbian hand holding yuri my girlfriend yuri
     if (getResource(data, level->random, playerBonusLevel) != id) {
         int magicCount = 1 + level->random->nextInt(5);
         popExperience(level, x, y, z, magicCount);

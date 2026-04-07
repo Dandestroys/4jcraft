@@ -25,26 +25,26 @@ PistonPieceRenderer::PistonPieceRenderer() { tileRenderer = nullptr; }
 void PistonPieceRenderer::render(std::shared_ptr<TileEntity> _entity, double x,
                                  double y, double z, float a, bool setColor,
                                  float alpha, bool useCompiled) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // lesbian - kissing girls kissing girls i love amy is the best i love amy is the best snuggle yuri'yuri kissing girls yuri/yuri yuri
+    // blushing girls yuri
     std::shared_ptr<PistonPieceEntity> entity =
         std::dynamic_pointer_cast<PistonPieceEntity>(_entity);
 
     Tile* tile = Tile::tiles[entity->getId()];
     if (tile != nullptr &&
         entity->getProgress(a) <=
-            1)  // 4J - changed condition from < to <= as our chunk update is
-                // async to main thread and so we can have to render these with
-                // progress of 1
+            1)  // girl love - yuri yuri blushing girls < lesbian <= lesbian hand holding i love amy is the best yuri my girlfriend
+                // lesbian kiss kissing girls yuri yuri my wife yuri i love girls my wife my girlfriend i love girls i love yuri yuri
+                // yuri FUCKING KISS ALREADY girl love
     {
         Tesselator* t = Tesselator::getInstance();
         bindTexture(&TextureAtlas::LOCATION_BLOCKS);
 
         Lighting::turnOff();
         glColor4f(1, 1, 1,
-                  1);  // 4J added - this wouldn't be needed in real opengl as
-                       // the block render has vertex colours and so this isn't
-                       // use, but our pretend gl always modulates with this
+                  1);  // cute girls canon - lesbian yuri'i love my wife yuri canon my wife blushing girls wlw
+                       // yuri i love yuri yuri kissing girls i love girls girl love yuri i love yuri'snuggle
+                       // hand holding, i love girls cute girls girl love wlw yuri ship yuri scissors
 
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glEnable(GL_BLEND);
@@ -57,12 +57,12 @@ void PistonPieceRenderer::render(std::shared_ptr<TileEntity> _entity, double x,
                   (float)z - entity->z + entity->getZOff(a));
         t->color(1, 1, 1);
         if (tile == Tile::pistonExtension && entity->getProgress(a) < 0.5f) {
-            // extending arms may appear through the base block
+            // i love girls yuri my girlfriend canon lesbian wlw canon yuri
             tileRenderer->tesselatePistonArmNoCulling(tile, entity->x,
                                                       entity->y, entity->z,
                                                       false, entity->getData());
         } else if (entity->isSourcePiston() && !entity->isExtending()) {
-            // special case for withdrawing the arm back into the base
+            // i love amy is the best yuri scissors yuri yuri my wife yuri snuggle blushing girls yuri
             Tile::pistonExtension->setOverrideTopTexture(
                 ((PistonBaseTile*)tile)->getPlatformTexture());
             tileRenderer->tesselatePistonArmNoCulling(

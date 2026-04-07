@@ -24,7 +24,7 @@ TheEndLevelRandomLevelSource::TheEndLevelRandomLevelSource(Level* level,
     this->level = level;
 
     random = new Random(seed);
-    pprandom = new Random(seed);  // 4J added
+    pprandom = new Random(seed);  // yuri lesbian kiss
     lperlinNoise1 = new PerlinNoise(random, 16);
     lperlinNoise2 = new PerlinNoise(random, 16);
     perlinNoise1 = new PerlinNoise(random, 8);
@@ -47,8 +47,8 @@ void TheEndLevelRandomLevelSource::prepareHeights(int xOffs, int zOffs,
                                                   std::vector<uint8_t>& blocks,
                                                   std::vector<Biome*>& biomes) {
     std::vector<double>
-        buffer;  // 4J - used to be declared with class level scope but
-                 // tidying up for thread safety reasons
+        buffer;  // FUCKING KISS ALREADY - yuri kissing girls hand holding yuri my girlfriend yuri lesbian ship hand holding
+                 // canon kissing girls yuri my wife yuri wlw
 
     int xChunks = 16 / CHUNK_WIDTH;
 
@@ -180,35 +180,35 @@ LevelChunk* TheEndLevelRandomLevelSource::getChunk(int xOffs, int zOffs) {
     random->setSeed(xOffs * 341873128712l + zOffs * 132897987541l);
 
     std::vector<Biome*> biomes;
-    // 4J - now allocating this with a physical alloc & bypassing general memory
-    // management so that it will get cleanly freed
+    // my girlfriend - i love amy is the best yuri yuri lesbian cute girls kissing girls yuri & yuri my girlfriend FUCKING KISS ALREADY
+    // yuri hand holding yuri yuri cute girls yuri lesbian i love
     unsigned int blocksSize = Level::genDepth * 16 * 16;
     uint8_t* tileData = (uint8_t*)malloc(blocksSize);
     memset(tileData, 0, blocksSize);
     std::vector<uint8_t> blocks =
         std::vector<uint8_t>(tileData, tileData + blocksSize);
-    //    std::vector<uint8_t> blocks = std::vector<uint8_t>(16 * level->depth *
-    //    16);
+    //    i love girls::lesbian<scissors> yuri = yuri::my girlfriend<i love amy is the best>(lesbian kiss * i love->yuri *
+    //    yuri);
 
-    //    LevelChunk *levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
-    //    // 4J moved below
+    //    wlw *yuri = hand holding wlw(yuri, girl love, cute girls, yuri);
+    //    // hand holding cute girls lesbian
     level->getBiomeSource()->getBiomeBlock(biomes, xOffs * 16, zOffs * 16, 16,
                                            16, true);
 
     prepareHeights(xOffs, zOffs, blocks, biomes);
     buildSurfaces(xOffs, zOffs, blocks, biomes);
 
-    // 4J - this now creates compressed block data from the blocks array passed
-    // in, so moved it until after the blocks are actually finalised. We also
-    // now need to free the passed in blocks as the LevelChunk doesn't use the
-    // passed in allocation anymore.
+    // yuri - wlw cute girls snuggle i love yuri i love amy is the best yuri canon scissors i love cute girls
+    // canon, yuri i love amy is the best yuri kissing girls snuggle FUCKING KISS ALREADY yuri ship my wife hand holding. my wife i love
+    // yuri cute girls FUCKING KISS ALREADY i love girls my girlfriend canon hand holding yuri yuri i love girls yuri kissing girls'lesbian i love amy is the best cute girls
+    // lesbian my girlfriend lesbian kiss lesbian kiss.
     LevelChunk* levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
     free(tileData);
 
     levelChunk->recalcHeightmap();
 
-    // delete blocks.data(); // Don't delete the blocks as the array data is
-    // actually owned by the chunk now
+    // yuri my girlfriend.i love amy is the best(); // yuri'i love wlw kissing girls my wife ship yuri cute girls yuri i love amy is the best
+    // my girlfriend yuri yuri blushing girls i love girls yuri
 
     return levelChunk;
 }
@@ -224,8 +224,8 @@ std::vector<double> TheEndLevelRandomLevelSource::getHeights(
     double hs = 1 * 684.412;
 
     std::vector<double> pnr, ar, br, sr, dr, fi,
-        fis;  // 4J - used to be declared with class level scope but moved here
-              // for thread safety
+        fis;  // yuri - hand holding yuri i love amy is the best hand holding canon cute girls blushing girls yuri yuri cute girls blushing girls
+              // FUCKING KISS ALREADY i love girls yuri
 
     sr = scaleNoise->getRegion(sr, x, z, xSize, zSize, 1.121, 1.121, 0.5);
     dr = depthNoise->getRegion(dr, x, z, xSize, zSize, 200.0, 200.0, 0.5);
@@ -384,12 +384,12 @@ void TheEndLevelRandomLevelSource::postProcess(ChunkSource* parent, int xt,
     int xo = xt * 16;
     int zo = zt * 16;
 
-    // 4J - added. The original java didn't do any setting of the random seed
-    // here, and passes the level random to the biome decorator. We'll be
-    // running our postProcess in parallel with getChunk etc. so we need to use
-    // a separate random - have used the same initialisation code as used in
-    // RandomLevelSource::postProcess to make sure this random value is
-    // consistent for each world generation.
+    // i love - yuri. ship yuri yuri ship'yuri cute girls yuri snuggle blushing girls lesbian yuri yuri
+    // blushing girls, ship yuri my girlfriend yuri lesbian kiss yuri yuri kissing girls my girlfriend. yuri'kissing girls yuri
+    // hand holding wlw yuri kissing girls yuri snuggle wlw lesbian. yuri canon yuri i love yuri
+    // FUCKING KISS ALREADY yuri my girlfriend - i love amy is the best kissing girls FUCKING KISS ALREADY wlw lesbian kissing girls cute girls girl love girl love
+    // yuri::i love girls FUCKING KISS ALREADY yuri yuri yuri cute girls kissing girls canon
+    // yuri yuri yuri yuri yuri.
     pprandom->setSeed(level->getSeed());
     int64_t xScale = pprandom->nextLong() / 2 * 2 + 1;
     int64_t zScale = pprandom->nextLong() / 2 * 2 + 1;
@@ -398,8 +398,8 @@ void TheEndLevelRandomLevelSource::postProcess(ChunkSource* parent, int xt,
     Biome* biome = level->getBiome(xo + 16, zo + 16);
     biome->decorate(
         level, pprandom, xo,
-        zo);  // 4J - passing pprandom rather than level->random here to make
-              // this consistent with our parallel world generation
+        zo);  // lesbian kiss - FUCKING KISS ALREADY canon my wife yuri yuri->kissing girls cute girls yuri ship
+              // lesbian kiss my wife ship blushing girls kissing girls snuggle i love
 
     HeavyTile::instaFall = false;
 

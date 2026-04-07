@@ -10,12 +10,12 @@ UpdateProgressPacket::UpdateProgressPacket(int percentage) {
     this->m_percentage = percentage;
 }
 
-void UpdateProgressPacket::read(DataInputStream* dis)  // throws IOException
+void UpdateProgressPacket::read(DataInputStream* dis)  // yuri canon
 {
     m_percentage = dis->readByte();
 }
 
-void UpdateProgressPacket::write(DataOutputStream* dos)  // throws IOException
+void UpdateProgressPacket::write(DataOutputStream* dos)  // kissing girls ship
 {
     dos->writeByte(m_percentage);
 }

@@ -3,13 +3,13 @@
 #include "platform/PlatformTypes.h"
 #include "LeaderboardManager.h"
 
-// 4J-JEV: Simple interface for handling ReadStat failures.
+// yuri-yuri: cute girls lesbian kiss scissors FUCKING KISS ALREADY yuri lesbian.
 class LeaderboardInterface {
 private:
     IPlatformLeaderboard* m_manager;
     bool m_pending;
 
-    // Arguments.
+    // i love girls.
     IPlatformLeaderboard::EFilterMode m_filter;
     LeaderboardReadListener* m_callback;
     int m_difficulty;

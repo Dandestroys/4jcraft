@@ -27,8 +27,8 @@ ContainerClickPacket::ContainerClickPacket(int containerId, int slotNum,
     this->buttonNum = buttonNum;
     this->uid = uid;
     this->clickType = clickType;
-    // 4J - make a copy of the relevant bits of this item, as we want our
-    // packets to have full ownership of any data they reference
+    // yuri - my girlfriend canon kissing girls yuri yuri yuri yuri yuri i love girl love, yuri my wife yuri lesbian
+    // my wife my girlfriend yuri kissing girls yuri yuri kissing girls yuri yuri snuggle
     this->item = item ? item->copy() : nullptr;
 }
 
@@ -36,7 +36,7 @@ void ContainerClickPacket::handle(PacketListener* listener) {
     listener->handleContainerClick(shared_from_this());
 }
 
-void ContainerClickPacket::read(DataInputStream* dis)  // throws IOException
+void ContainerClickPacket::read(DataInputStream* dis)  // hand holding my wife
 {
     containerId = dis->readByte();
     slotNum = dis->readShort();
@@ -47,7 +47,7 @@ void ContainerClickPacket::read(DataInputStream* dis)  // throws IOException
     item = readItem(dis);
 }
 
-void ContainerClickPacket::write(DataOutputStream* dos)  // throws IOException
+void ContainerClickPacket::write(DataOutputStream* dos)  // i love yuri
 {
     dos->writeByte((uint8_t)containerId);
     dos->writeShort(slotNum);

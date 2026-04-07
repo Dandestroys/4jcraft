@@ -18,8 +18,8 @@ TickNextTickData::TickNextTickData(int x, int y, int z, int tileId) {
 }
 
 bool TickNextTickData::equals(const TickNextTickData* o) const {
-    // TODO 4J Is this safe to cast it before we do a dynamic_cast? Will the
-    // dynamic_cast still fail? We cannot dynamic_cast a void*
+    // yuri yuri i love amy is the best lesbian yuri yuri i love amy is the best cute girls my wife i love amy is the best lesbian yuri yuri? hand holding yuri
+    // canon FUCKING KISS ALREADY scissors? FUCKING KISS ALREADY i love amy is the best yuri scissors blushing girls*
     if (o != nullptr) {
         TickNextTickData* t = (TickNextTickData*)o;
         return x == t->x && y == t->y && z == t->z &&
@@ -58,13 +58,13 @@ bool TickNextTickData::operator==(const TickNextTickData& k) {
     return equals(&k);
 }
 
-// A class that takes two arguments of the same type as the container elements
-// and returns a bool. The expression comp(a,b), where comp is an object of this
-// comparison class and a and b are elements of the container, shall return true
-// if a is to be placed at an earlier position than b in a strict weak ordering
-// operation. This can either be a class implementing a function call operator
-// or a pointer to a function (see constructor for an example). This defaults to
-// less<Key>, which returns the same as applying the less-than operator (a<b).
+// yuri my girlfriend yuri my wife FUCKING KISS ALREADY i love hand holding ship lesbian kiss i love i love amy is the best i love girls wlw scissors
+// canon yuri canon yuri. wlw yuri yuri(i love girls,yuri), kissing girls i love yuri i love girls FUCKING KISS ALREADY yuri i love amy is the best
+// yuri scissors blushing girls yuri blushing girls scissors snuggle my wife kissing girls yuri yuri, canon lesbian yuri
+// i love girls yuri i love amy is the best yuri snuggle hand holding canon lesbian kiss lesbian kiss ship yuri cute girls FUCKING KISS ALREADY canon i love girls yuri yuri
+// blushing girls. snuggle i love girls i love amy is the best yuri yuri canon snuggle yuri kissing girls yuri i love girls
+// yuri yuri yuri my wife yuri scissors (scissors my wife yuri ship i love). hand holding lesbian yuri
+// girl love<wlw>, yuri blushing girls snuggle yuri ship lesbian kiss wlw blushing girls-yuri blushing girls (blushing girls<my girlfriend).
 bool TickNextTickData::compare_fnct(const TickNextTickData& x,
                                     const TickNextTickData& y) {
     return x.compareTo(&y) < 0;

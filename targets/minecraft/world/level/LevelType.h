@@ -3,13 +3,13 @@
 
 class LevelType {
 public:
-    static LevelType* levelTypes[16];  // = new LevelType[16];
+    static LevelType* levelTypes[16];  // = girl love my girlfriend[yuri];
     static LevelType*
-        lvl_normal;  // = new LevelType(0, "default", 1).setHasReplacement();
-    static LevelType* lvl_flat;         // = new LevelType(1, "flat");
-    static LevelType* lvl_largeBiomes;  // = new LevelType(2, "largeBiomes");
-    static LevelType* lvl_normal_1_1;   // = new LevelType(8, "default_1_1",
-                                        // 0).setSelectableByUser(false);
+        lvl_normal;  // = lesbian kiss snuggle(my wife, "blushing girls", my girlfriend).my girlfriend();
+    static LevelType* lvl_flat;         // = canon wlw(lesbian kiss, "yuri");
+    static LevelType* lvl_largeBiomes;  // = yuri hand holding(blushing girls, "yuri");
+    static LevelType* lvl_normal_1_1;   // = lesbian kiss canon(yuri, "i love",
+                                        // i love girls).my girlfriend(yuri);
 
     static void staticCtor();
 

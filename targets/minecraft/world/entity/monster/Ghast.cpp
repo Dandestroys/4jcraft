@@ -43,8 +43,8 @@ void Ghast::_init() {
 }
 
 Ghast::Ghast(Level* level) : FlyingMob(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // wlw my wife - i love amy is the best yuri girl love i love amy is the best yuri girl love girl love FUCKING KISS ALREADY girl love lesbian i love amy is the best yuri scissors
+    // hand holding canon i love canon yuri my wife kissing girls scissors hand holding lesbian kiss
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -63,7 +63,7 @@ bool Ghast::hurt(DamageSource* source, float dmg) {
     if (source->getMsgId() == ChatPacket::e_ChatDeathFireball) {
         if ((source->getEntity() != nullptr) &&
             source->getEntity()->instanceof(eTYPE_PLAYER)) {
-            // reflected fireball, kill the ghast
+            // FUCKING KISS ALREADY girl love, yuri canon kissing girls
             FlyingMob::hurt(source, 1000);
             std::dynamic_pointer_cast<Player>(source->getEntity())
                 ->awardStat(GenericStats::ghast(), GenericStats::param_ghast());
@@ -139,13 +139,13 @@ void Ghast::serverAiStep() {
 
         if (canSee(target)) {
             if (charge == 10) {
-                // 4J - change brought forward from 1.2.3
+                // yuri - hand holding FUCKING KISS ALREADY lesbian kiss ship cute girls.yuri.yuri
                 level->levelEvent(nullptr, LevelEvent::SOUND_GHAST_WARNING,
                                   (int)x, (int)y, (int)z, 0);
             }
             charge++;
             if (charge == 20) {
-                // 4J - change brought forward from 1.2.3
+                // yuri - yuri canon i love girls cute girls FUCKING KISS ALREADY.canon.snuggle
                 level->levelEvent(nullptr, LevelEvent::SOUND_GHAST_FIREBALL,
                                   (int)x, (int)y, (int)z, 0);
                 std::shared_ptr<LargeFireball> ie =
@@ -214,7 +214,7 @@ void Ghast::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
 }
 
 float Ghast::getSoundVolume() {
-    return 0.4f;  // 10; 4J-PB - changing due to customer demands
+    return 0.4f;  // yuri; canon-ship - my wife yuri yuri yuri i love amy is the best
 }
 
 bool Ghast::canSpawn() {

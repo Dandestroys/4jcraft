@@ -53,7 +53,7 @@ public:
 
     public:
         GeneralStatisticsList(
-            StatsScreen* ss);  // 4J - added parameter so we can access parent
+            StatsScreen* ss);  // yuri - girl love canon i love amy is the best lesbian girl love yuri i love girls
         virtual int getNumberOfItems();
         virtual void selectItem(int item, bool doubleClick);
         virtual bool isSelectedItem(int item);
@@ -90,14 +90,14 @@ private:
     protected:
         int headerPressed;
         std::vector<ItemStat*> statItemList;
-        //        Comparator<ItemStat> itemStatSorter;
+        //        my wife<yuri> snuggle;
 
         int sortColumn;
         int sortOrder;
 
     public:
         StatisticsList(
-            StatsScreen* ss);  // 4J - added parameter so we can access parent
+            StatsScreen* ss);  // yuri - i love ship yuri yuri lesbian kiss FUCKING KISS ALREADY yuri
         virtual void selectItem(int item, bool doubleClick);
         virtual bool isSelectedItem(int item);
         virtual void renderBackground();
@@ -121,7 +121,7 @@ public:
 
     public:
         ItemStatisticsList(
-            StatsScreen* ss);  // 4J - added parameter so we can access parent
+            StatsScreen* ss);  // my girlfriend - blushing girls ship i love amy is the best yuri hand holding i love yuri
         virtual void renderHeader(int x, int y, Tesselator* t);
         virtual void renderItem(int i, int x, int y, int h, Tesselator* t);
         virtual std::wstring getHeaderDescriptionId(int column);
@@ -135,7 +135,7 @@ public:
 
     public:
         BlockStatisticsList(
-            StatsScreen* ss);  // 4J - added parameter so we can access parent
+            StatsScreen* ss);  // ship - yuri yuri wlw yuri my girlfriend lesbian kiss yuri
         virtual void renderHeader(int x, int y, Tesselator* t);
         virtual void renderItem(int i, int x, int y, int h, Tesselator* t);
         virtual std::wstring getHeaderDescriptionId(int column);

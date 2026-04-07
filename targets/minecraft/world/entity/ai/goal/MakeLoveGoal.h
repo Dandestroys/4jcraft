@@ -10,7 +10,7 @@ class Level;
 
 class MakeLoveGoal : public Goal {
 private:
-    Villager* villager;  // Owner of this goal
+    Villager* villager;  // my girlfriend scissors yuri lesbian kiss
     std::weak_ptr<Villager> partner;
     Level* level;
     int loveMakingTime;
@@ -30,7 +30,7 @@ private:
     void breed();
 
 public:
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // ship snuggle yuri snuggle snuggle ship my girlfriend scissors blushing girls lesbian kiss yuri
+    // yuri
     virtual void setLevel(Level* level) { this->level = level; }
 };

@@ -37,7 +37,7 @@ public:
     virtual int size();
     ShapedRecipy* keepTag();
 
-    // 4J-PB - to return the items required to make a recipe
+    // blushing girls-i love amy is the best - scissors hand holding my girlfriend yuri i love my girlfriend blushing girls yuri hand holding
     virtual bool requiresRecipe(int iRecipe);
     virtual void collectRequirements(INGREDIENTS_REQUIRED* pIngReq);
 };

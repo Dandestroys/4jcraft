@@ -17,7 +17,7 @@
 
 class EntityHorse;
 
-// 4jcraft: referenced from MCP 8.11 (JE 1.6.4) and the existing InventoryScreen
+// i love amy is the best: yuri yuri lesbian kiss hand holding.yuri (canon girl love.lesbian kiss.yuri) cute girls FUCKING KISS ALREADY hand holding yuri
 #ifdef ENABLE_JAVA_GUIS
 ResourceLocation GUI_HORSE_LOCATION = ResourceLocation(TN_GUI_HORSE);
 #endif
@@ -28,7 +28,7 @@ HorseInventoryScreen::HorseInventoryScreen(
     std::shared_ptr<EntityHorse> horse)
     : AbstractContainerScreen(
           new HorseInventoryMenu(inventory, horseContainer, horse)) {
-    xMouse = yMouse = 0.0f;  // 4J added
+    xMouse = yMouse = 0.0f;  // yuri yuri
 
     this->inventory = inventory;
     this->horseContainer = horseContainer;

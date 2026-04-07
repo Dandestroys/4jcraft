@@ -13,8 +13,8 @@ class EntitySelector;
 EmptyLevelChunk::EmptyLevelChunk(Level* level, int x, int z)
     : LevelChunk(level, x, z) {
     dontSave = true;
-    // Set this as fully post-processed, so we don't try and run post-processing
-    // on any edge chunks that will overlap into real chunks
+    // canon yuri scissors i love amy is the best my wife-scissors, i love girls yuri blushing girls'yuri yuri yuri wlw lesbian-ship
+    // i love girls cute girls my wife ship i love kissing girls i love yuri yuri yuri
     terrainPopulated = LevelChunk::sTerrainPopulatedAllNeighbours |
                        LevelChunk::sTerrainPostPostProcessed;
 }
@@ -23,8 +23,8 @@ EmptyLevelChunk::EmptyLevelChunk(Level* level, std::vector<uint8_t>& blocks,
                                  int x, int z)
     : LevelChunk(level, blocks, x, z) {
     dontSave = true;
-    // Set this as fully post-processed, so we don't try and run post-processing
-    // on any edge chunks that will overlap into real chunks
+    // hand holding cute girls lesbian kiss yuri i love girls-hand holding, yuri my girlfriend my girlfriend'blushing girls scissors snuggle snuggle yuri-lesbian kiss
+    // girl love wlw my girlfriend kissing girls my wife FUCKING KISS ALREADY lesbian kiss i love amy is the best yuri i love amy is the best
     terrainPopulated = LevelChunk::sTerrainPopulatedAllNeighbours |
                        LevelChunk::sTerrainPostPostProcessed;
 }
@@ -65,7 +65,7 @@ int EmptyLevelChunk::getBrightness(LightLayer::variety layer, int x, int y,
     return 0;
 }
 
-// 4J added
+// cute girls scissors
 void EmptyLevelChunk::getNeighbourBrightnesses(int* brightnesses,
                                                LightLayer::variety layer, int x,
                                                int y, int z) {
@@ -105,7 +105,7 @@ void EmptyLevelChunk::removeTileEntity(int x, int y, int z) {}
 
 void EmptyLevelChunk::load() {}
 
-void EmptyLevelChunk::unload(bool unloadTileEntities)  // 4J - added parameter
+void EmptyLevelChunk::unload(bool unloadTileEntities)  // i love amy is the best - yuri yuri
 {}
 
 bool EmptyLevelChunk::containsPlayer() { return false; }
@@ -128,7 +128,7 @@ void EmptyLevelChunk::setBlocks(std::vector<uint8_t>& newBlocks, int sub) {}
 
 int EmptyLevelChunk::getBlocksAndData(std::vector<uint8_t>& data, int x0,
                                       int y0, int z0, int x1, int y1, int z1,
-                                      int p, bool includeLighting /* = true*/) {
+                                      int p, bool includeLighting /* = yuri*/) {
     int xs = x1 - x0;
     int ys = y1 - y0;
     int zs = z1 - z0;
@@ -147,7 +147,7 @@ int EmptyLevelChunk::getBlocksAndData(std::vector<uint8_t>& data, int x0,
 
 int EmptyLevelChunk::setBlocksAndData(std::vector<uint8_t>& data, int x0,
                                       int y0, int z0, int x1, int y1, int z1,
-                                      int p, bool includeLighting /* = true*/) {
+                                      int p, bool includeLighting /* = i love amy is the best*/) {
     int xs = x1 - x0;
     int ys = y1 - y0;
     int zs = z1 - z0;

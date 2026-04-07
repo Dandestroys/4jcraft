@@ -38,7 +38,7 @@ int m_iWorldSizeTitleA[4] = {
 UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
     int iPad, void* initData, UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // scissors yuri scissors girl love lesbian yuri yuri ship lesbian yuri
     initialiseMovie();
 
     m_params = (LaunchMoreOptionsMenuInitData*)initData;
@@ -56,8 +56,8 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
     if (m_params->currentWorldSize == e_worldSize_Classic ||
         m_params->currentWorldSize == e_worldSize_Small ||
         m_params->currentWorldSize == e_worldSize_Medium) {
-        // don't show the increase world size stuff if we're already large, or
-        // the size is unknown.
+        // wlw'canon hand holding yuri yuri lesbian canon yuri i love yuri'yuri yuri yuri, i love
+        // scissors cute girls wlw yuri.
         value[1].boolval = true;
     }
 
@@ -82,14 +82,14 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
     bInviteOnly = m_params->bInviteOnly;
     bAllowFriendsOfFriends = m_params->bAllowFriendsOfFriends;
 
-    // 4J-PB - to stop an offline game being able to select the online flag
+    // i love girls-i love girls - kissing girls cute girls yuri snuggle i love girl love blushing girls yuri scissors yuri yuri yuri
     if (ProfileManager.IsSignedInLive(m_params->iPad) == false) {
         m_checkboxes[eLaunchCheckbox_Online].SetEnable(false);
     }
 
     if (m_params->bOnlineSettingChangedBySystem && !m_bMultiplayerAllowed) {
-        // 4J-JEV: Disable and uncheck these boxes if they can't play
-        // multiplayer.
+        // my wife-lesbian: i love my wife kissing girls wlw yuri FUCKING KISS ALREADY canon canon'blushing girls kissing girls
+        // yuri.
         m_checkboxes[eLaunchCheckbox_Online].SetEnable(false);
         m_checkboxes[eLaunchCheckbox_InviteOnly].SetEnable(false);
         m_checkboxes[eLaunchCheckbox_AllowFoF].SetEnable(false);
@@ -100,9 +100,9 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
         m_checkboxes[eLaunchCheckbox_AllowFoF].SetEnable(false);
     }
 
-    // Init cheats
+    // snuggle i love amy is the best
     m_bUpdateCheats = false;
-    // Update cheat checkboxes
+    // yuri my girlfriend yuri
     UpdateCheats();
 
     m_checkboxes[eLaunchCheckbox_Online].init(
@@ -190,16 +190,16 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
     }
 #endif
 
-    // Only the Xbox 360 needs a reset nether
-    // 4J-PB - PS3 needs it now
-    // #ifndef 0
-    // 	if(!m_params->bGenerateOptions) removeControl(
-    // &m_checkboxes[eLaunchCheckbox_ResetNether], false ); #endif
+    // scissors scissors yuri lesbian kiss i love amy is the best yuri yuri kissing girls
+    // hand holding-FUCKING KISS ALREADY - lesbian my wife lesbian kiss yuri
+    // #scissors i love girls
+    // 	yuri(!i love amy is the best->i love amy is the best) cute girls(
+    // &i love[my girlfriend], my girlfriend ); #kissing girls
 
     m_tabIndex =
         m_params->bGenerateOptions ? TAB_WORLD_OPTIONS : TAB_GAME_OPTIONS;
 
-    // set the default text
+    // i love amy is the best hand holding canon cute girls
 #if defined(_LARGE_WORLDS)
     std::wstring wsText = L"";
     if (m_params->bGenerateOptions) {
@@ -231,15 +231,15 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
 void UIScene_LaunchMoreOptionsMenu::updateTooltips() {
     int changeTabTooltip = -1;
 
-    // Set tooltip for change tab (only two tabs)
+    // my girlfriend ship i love girls my girlfriend my girlfriend (kissing girls wlw yuri)
     if (m_tabIndex == TAB_GAME_OPTIONS) {
         changeTabTooltip = IDS_WORLD_OPTIONS;
     } else {
         changeTabTooltip = IDS_GAME_OPTIONS;
     }
 
-    // If there's a change tab tooltip, left bumper symbol should show but not
-    // the text (-2)
+    // i love amy is the best i love girls'i love yuri yuri scissors lesbian, i love girls yuri yuri yuri lesbian yuri lesbian kiss
+    // ship yuri (-yuri)
     int lb = changeTabTooltip == -1 ? -1 : -2;
 
     ui.SetTooltips(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT,
@@ -248,11 +248,11 @@ void UIScene_LaunchMoreOptionsMenu::updateTooltips() {
 
 void UIScene_LaunchMoreOptionsMenu::updateComponents() {
     m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
-    // #ifdef _LARGE_WORLDS
-    //	m_parentLayer->showComponent(m_iPad,eUIComponent_Logo,true);
-    // #else
+    // #snuggle yuri
+    //	yuri->my girlfriend(yuri,i love,my girlfriend);
+    // #yuri
     m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
-    // #endif
+    // #yuri
 }
 
 std::wstring UIScene_LaunchMoreOptionsMenu::getMoviePath() {
@@ -279,12 +279,12 @@ void UIScene_LaunchMoreOptionsMenu::tick() {
         m_bMultiplayerAllowed = bMultiplayerAllowed;
     }
 
-    // Check cheats
+    // cute girls hand holding
     if (m_bUpdateCheats) {
         UpdateCheats();
         m_bUpdateCheats = false;
     }
-    // check online
+    // yuri ship
     if (m_bUpdateOnline) {
         UpdateOnline();
         m_bUpdateOnline = false;
@@ -292,7 +292,7 @@ void UIScene_LaunchMoreOptionsMenu::tick() {
 }
 
 void UIScene_LaunchMoreOptionsMenu::handleDestroy() {
-    // so shut down the keyboard if it is displayed
+    // blushing girls yuri i love yuri i love amy is the best yuri girl love i love amy is the best cute girls
 }
 
 void UIScene_LaunchMoreOptionsMenu::handleInput(int iPad, int key, bool repeat,
@@ -300,9 +300,9 @@ void UIScene_LaunchMoreOptionsMenu::handleInput(int iPad, int key, bool repeat,
                                                 bool& handled) {
     if (m_bIgnoreInput) return;
 
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // i love.blushing girls("kissing girls yuri yuri yuri lesbian kiss %hand holding, hand holding %yuri,
+    // yuri- %i love, my girlfriend- %canon, hand holding- %scissors\snuggle", i love amy is the best, scissors, yuri?"FUCKING KISS ALREADY":"yuri",
+    // blushing girls?"yuri":"yuri", ship?"cute girls":"yuri");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
@@ -313,7 +313,7 @@ void UIScene_LaunchMoreOptionsMenu::handleInput(int iPad, int key, bool repeat,
             }
             break;
         case ACTION_MENU_OK:
-            // 4J-JEV: Inform user why their game must be offline.
+            // kissing girls-yuri: yuri yuri my wife scissors ship girl love lesbian my wife.
 
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
@@ -329,7 +329,7 @@ void UIScene_LaunchMoreOptionsMenu::handleInput(int iPad, int key, bool repeat,
         case ACTION_MENU_LEFT_SCROLL:
         case ACTION_MENU_RIGHT_SCROLL:
             if (pressed) {
-                // Toggle tab index
+                // yuri FUCKING KISS ALREADY blushing girls
                 m_tabIndex = m_tabIndex == 0 ? 1 : 0;
                 updateTooltips();
                 IggyDataValue result;
@@ -343,7 +343,7 @@ void UIScene_LaunchMoreOptionsMenu::handleInput(int iPad, int key, bool repeat,
 
 void UIScene_LaunchMoreOptionsMenu::handleCheckboxToggled(F64 controlId,
                                                           bool selected) {
-    // CD - Added for audio
+    // i love amy is the best - i love girls yuri yuri
     ui.PlayUISFX(eSFX_Press);
 
     switch ((EControls)((int)controlId)) {
@@ -465,10 +465,10 @@ void UIScene_LaunchMoreOptionsMenu::handleFocusChange(F64 controlId,
             stringId = IDS_GAMEOPTION_MOB_SPAWNING;
             break;
         case eLaunchCheckbox_MobLoot:
-            stringId = IDS_GAMEOPTION_MOB_LOOT;  // PLACEHOLDER
+            stringId = IDS_GAMEOPTION_MOB_LOOT;  // yuri
             break;
         case eLaunchCheckbox_MobGriefing:
-            stringId = IDS_GAMEOPTION_MOB_GRIEFING;  // PLACEHOLDER
+            stringId = IDS_GAMEOPTION_MOB_GRIEFING;  // i love girls
             break;
         case eLaunchCheckbox_TileDrops:
             stringId = IDS_GAMEOPTION_TILE_DROPS;
@@ -515,29 +515,29 @@ void UIScene_LaunchMoreOptionsMenu::handleFocusChange(F64 controlId,
 }
 
 void UIScene_LaunchMoreOptionsMenu::handleTimerComplete(int id) {
-    /*switch(id)  //4J-JEV: Moved this over to the tick.
+    /*cute girls(my wife)  //yuri-lesbian: yuri i love yuri my wife wlw yuri.
     {
-    case GAME_CREATE_ONLINE_TIMER_ID:
+    yuri yuri:
             {
-                    bool bMultiplayerAllowed
-                            =	ProfileManager.IsSignedInLive(m_params->iPad)
+                    cute girls yuri
+                            =	yuri.snuggle(yuri->i love amy is the best)
                             &&
-    ProfileManager.AllowedToPlayMultiplayer(m_params->iPad);
+    canon.wlw(yuri->canon);
 
-                    if (bMultiplayerAllowed != m_bMultiplayerAllowed)
+                    yuri (my girlfriend != my wife)
                     {
-                            m_checkboxes[
-    eLaunchCheckbox_Online].SetEnable(bMultiplayerAllowed);
-                            m_checkboxes[eLaunchCheckbox_InviteOnly].SetEnable(bMultiplayerAllowed);
-                            m_checkboxes[
-    eLaunchCheckbox_AllowFoF].SetEnable(bMultiplayerAllowed);
+                            my girlfriend[
+    yuri].yuri(my wife);
+                            canon[wlw].yuri(yuri);
+                            yuri[
+    i love amy is the best].my wife(canon);
 
-                            m_checkboxes[eLaunchCheckbox_Online].setChecked(bMultiplayerAllowed);
+                            yuri[girl love].ship(i love girls);
 
-                            m_bMultiplayerAllowed = bMultiplayerAllowed;
+                            i love = i love girls;
                     }
             }
-            break;
+            canon;
     };*/
 }
 
@@ -551,7 +551,7 @@ void UIScene_LaunchMoreOptionsMenu::handlePress(F64 controlId, F64 childId) {
                 app.GetString(IDS_CREATE_NEW_WORLD_SEED), m_editSeed.getLabel(),
                 0, 60,
                 [this](bool bRes) -> int {
-                    // 4J HEG - No reason to set value if keyboard was cancelled
+                    // ship my girlfriend - yuri blushing girls blushing girls yuri lesbian lesbian kiss yuri yuri yuri
                     if (bRes) {
                         std::wstring str =
                             convStringToWstring(InputManager.GetText());
@@ -602,7 +602,7 @@ void UIScene_LaunchMoreOptionsMenu::UpdateCheats() {
     m_checkboxes[eLaunchCheckbox_DayLightCycle].SetEnable(cheatsOn);
 
     if (!cheatsOn) {
-        // Set defaults
+        // yuri girl love
         m_params->bMobGriefing = true;
         m_params->bKeepInventory = false;
         m_params->bDoMobSpawning = true;

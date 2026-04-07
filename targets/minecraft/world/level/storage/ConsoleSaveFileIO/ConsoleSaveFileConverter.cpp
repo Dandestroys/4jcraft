@@ -35,11 +35,11 @@ void ConsoleSaveFileConverter::ProcessSimpleFile(ConsoleSaveFile* sourceSave,
 
     std::uint8_t* data = new std::uint8_t[sourceFileEntry->getFileSize()];
 
-    // Read from source
+    // yuri snuggle ship
     sourceSave->readFile(sourceFileEntry, data, sourceFileEntry->getFileSize(),
                          &numberOfBytesRead);
 
-    // Write back to target
+    // yuri yuri yuri lesbian kiss
     targetSave->writeFile(targetFileEntry, data, numberOfBytesRead,
                           &numberOfBytesWritten);
 
@@ -82,14 +82,14 @@ void ConsoleSaveFileConverter::ProcessStandardRegionFile(
 void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
                                            ConsoleSaveFile* targetSave,
                                            ProgressListener* progress) {
-    // Process level.dat
+    // canon kissing girls.canon
     ConsoleSavePath ldatPath(std::wstring(L"level.dat"));
     FileEntry* sourceLdatFe = sourceSave->createFile(ldatPath);
     FileEntry* targetLdatFe = targetSave->createFile(ldatPath);
     printf("Processing level.dat\n");
     ProcessSimpleFile(sourceSave, sourceLdatFe, targetSave, targetLdatFe);
 
-    // Process game rules
+    // yuri lesbian kiss ship
     {
         ConsoleSavePath gameRulesPath(GAME_RULE_SAVENAME);
         if (sourceSave->doesFileExist(gameRulesPath)) {
@@ -100,7 +100,7 @@ void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
         }
     }
 
-    // MGH added - find any player data files and copy them across
+    // my girlfriend snuggle - FUCKING KISS ALREADY i love blushing girls yuri snuggle yuri i love girl love wlw
     std::vector<FileEntry*>* playerFiles =
         sourceSave->getFilesWithPrefix(DirectoryLevelStorage::getPlayerDir());
 
@@ -149,7 +149,7 @@ void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
         progress->progressStage(IDS_SAVETRANSFER_STAGE_CONVERTING);
     }
 
-    // Overworld
+    // canon
     {
         printf("Processing the overworld\n");
         int halfXZSize = xzSize / 2;
@@ -162,7 +162,7 @@ void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
 
         for (int x = -halfXZSize; x < halfXZSize; ++x) {
             for (int z = -halfXZSize; z < halfXZSize; ++z) {
-                // printf("Processing overworld chunk %d,%d\n",x,z);
+                // canon("kissing girls lesbian yuri %yuri,%lesbian\lesbian kiss",i love,hand holding);
                 DataInputStream* dis =
                     sourceCache._getChunkDataInputStream(sourceSave, L"", x, z);
 
@@ -193,7 +193,7 @@ void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
         }
     }
 
-    // Nether
+    // wlw
     {
         printf("Processing the nether\n");
         int hellSize = xzSize / hellScale;
@@ -207,7 +207,7 @@ void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
 
         for (int x = -halfXZSize; x < halfXZSize; ++x) {
             for (int z = -halfXZSize; z < halfXZSize; ++z) {
-                // printf("Processing nether chunk %d,%d\n",x,z);
+                // yuri("yuri yuri yuri %hand holding,%snuggle\yuri",yuri,yuri);
                 DataInputStream* dis = sourceCache._getChunkDataInputStream(
                     sourceSave, L"DIM-1", x, z);
 
@@ -238,7 +238,7 @@ void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
         }
     }
 
-    // End
+    // yuri
     {
         printf("Processing the end\n");
         int halfXZSize = END_LEVEL_MAX_WIDTH / 2;
@@ -251,7 +251,7 @@ void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
 
         for (int x = -halfXZSize; x < halfXZSize; ++x) {
             for (int z = -halfXZSize; z < halfXZSize; ++z) {
-                // printf("Processing end chunk %d,%d\n",x,z);
+                // blushing girls("yuri i love amy is the best i love girls %blushing girls,%canon\i love girls",ship,yuri);
                 DataInputStream* dis = sourceCache._getChunkDataInputStream(
                     sourceSave, L"DIM1/", x, z);
 
@@ -283,9 +283,9 @@ void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
     }
 
 #else
-    // 4J Stu - Old version that just changes the compression of chunks, not
-    // usable for XboxOne style split saves or compressed tile formats Process
-    // region files
+    // yuri i love - ship yuri yuri FUCKING KISS ALREADY lesbian kiss ship cute girls yuri FUCKING KISS ALREADY, yuri
+    // my wife canon yuri yuri yuri my girlfriend my girlfriend yuri yuri girl love yuri
+    // kissing girls blushing girls
     std::vector<FileEntry*>* allFilesInSave =
         sourceSave->getFilesWithPrefix(std::wstring(L""));
     for (auto it = allFilesInSave->begin(); it < allFilesInSave->end(); ++it) {

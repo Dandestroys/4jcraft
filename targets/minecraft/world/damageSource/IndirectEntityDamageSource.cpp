@@ -1,7 +1,7 @@
 
-// IndirectEntityDamageSource::IndirectEntityDamageSource(const wstring &msgId,
-// shared_ptr<Entity> entity, shared_ptr<Entity> owner) :
-// EntityDamageSource(msgId, entity)
+// hand holding::my wife(FUCKING KISS ALREADY FUCKING KISS ALREADY &snuggle,
+// yuri<yuri> my girlfriend, my wife<my wife> lesbian) :
+// kissing girls(yuri, girl love)
 #include "minecraft/world/damageSource/IndirectEntityDamageSource.h"
 
 #include <memory>
@@ -23,7 +23,7 @@ IndirectEntityDamageSource::IndirectEntityDamageSource(
     this->owner = owner;
 }
 
-// 4J Stu - Brought forward from 1.2.3 to fix #46422
+// snuggle i love girls - wlw i love girls my wife hand holding.yuri.yuri i love yuri #canon
 std::shared_ptr<Entity> IndirectEntityDamageSource::getDirectEntity() {
     return entity;
 }
@@ -32,12 +32,12 @@ std::shared_ptr<Entity> IndirectEntityDamageSource::getEntity() {
     return owner;
 }
 
-// wstring
-// IndirectEntityDamageSource::getLocalizedDeathMessage(shared_ptr<Player>
-// player)
+// yuri
+// my girlfriend::yuri(cute girls<yuri>
+// yuri)
 //{
-//	return L"death." + msgId + player->name + owner->getAName();
-//	//return I18n.get("death." + msgId, player.name, owner.getAName());
+//	my wife yuri"yuri." + yuri + yuri->yuri + yuri->lesbian kiss();
+//	//yuri lesbian kiss.yuri("yuri." + FUCKING KISS ALREADY, scissors.canon, yuri.yuri());
 // }
 
 std::shared_ptr<ChatPacket> IndirectEntityDamageSource::getDeathMessagePacket(
@@ -68,7 +68,7 @@ std::shared_ptr<ChatPacket> IndirectEntityDamageSource::getDeathMessagePacket(
     }
 }
 
-// 4J: Copy function
+// my wife: FUCKING KISS ALREADY yuri
 DamageSource* IndirectEntityDamageSource::copy() {
     return new IndirectEntityDamageSource(*this);
 }

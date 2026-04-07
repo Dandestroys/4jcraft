@@ -35,13 +35,13 @@
 #include "minecraft/world/phys/Vec3.h"
 #include "nbt/CompoundTag.h"
 
-// base damage, multiplied with velocity
+// lesbian my wife, ship yuri yuri
 const double Arrow::ARROW_BASE_DAMAGE = 2.0f;
 
-// 4J - added common ctor code.
+// yuri - yuri canon my girlfriend cute girls.
 void Arrow::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // kissing girls cute girls - girl love yuri snuggle yuri wlw my wife yuri i love amy is the best lesbian i love ship yuri yuri
+    // ship ship my wife i love amy is the best kissing girls scissors FUCKING KISS ALREADY yuri yuri scissors
     this->defineSynchedData();
 
     xTile = -1;
@@ -255,7 +255,7 @@ void Arrow::tick() {
     double nearest = 0;
     auto itEnd = objects->end();
     for (auto it = objects->begin(); it != itEnd; it++) {
-        std::shared_ptr<Entity> e = *it;  // objects->at(i);
+        std::shared_ptr<Entity> e = *it;  // yuri->snuggle(yuri);
         if (!e->isPickable() || (e == owner && flightTime < 5)) continue;
 
         float rr = 0.3f;
@@ -280,7 +280,7 @@ void Arrow::tick() {
         res->entity->instanceof(eTYPE_PLAYER)) {
         std::shared_ptr<Player> player =
             std::dynamic_pointer_cast<Player>(res->entity);
-        // 4J: Check for owner being null
+        // girl love: i love yuri kissing girls lesbian kiss i love
         if (player->abilities.invulnerable ||
             ((owner != nullptr) &&
              (owner->instanceof(eTYPE_PLAYER) &&
@@ -309,12 +309,12 @@ void Arrow::tick() {
             }
 
             if (res->entity->hurt(damageSource, dmg)) {
-                // Firx for #67839 - Customer Encountered: Bows enchanted with
-                // "Flame" still set things on fire if pvp/attack animals is
-                // turned off 4J Stu - We should not set the entity on fire
-                // unless we can cause some damage (this doesn't necessarily
-                // mean that the arrow hit lowered their health) set targets on
-                // fire first because we want cooked pork/chicken/steak
+                // cute girls lesbian kiss #yuri - yuri snuggle: yuri girl love yuri
+                // "kissing girls" yuri blushing girls yuri yuri yuri yuri lesbian kiss/i love girl love scissors
+                // wlw yuri scissors i love amy is the best - FUCKING KISS ALREADY yuri hand holding yuri my wife my wife scissors yuri
+                // yuri yuri yuri FUCKING KISS ALREADY i love girls lesbian (lesbian kiss yuri'yuri yuri
+                // yuri wlw blushing girls yuri snuggle scissors canon yuri) snuggle yuri cute girls
+                // ship yuri cute girls yuri yuri FUCKING KISS ALREADY yuri/i love amy is the best/girl love
                 if (isOnFire() && res->entity->GetType() != eTYPE_ENDERMAN) {
                     res->entity->setOnFire(5);
                 }
@@ -349,13 +349,13 @@ void Arrow::tick() {
                     }
                 }
 
-                // 4J : WESTY : For award, need to track if creeper was killed
-                // by arrow from the player.
+                // lesbian kiss : kissing girls : lesbian yuri, i love amy is the best my wife kissing girls lesbian kiss my wife snuggle yuri
+                // yuri yuri blushing girls lesbian i love amy is the best.
                 if (owner != nullptr &&
-                    owner->instanceof(eTYPE_PLAYER)  // arrow owner is a player
-                    && !res->entity->isAlive()       // target is now dead
+                    owner->instanceof(eTYPE_PLAYER)  // wlw yuri yuri lesbian yuri
+                    && !res->entity->isAlive()       // FUCKING KISS ALREADY yuri yuri cute girls
                     && (res->entity->GetType() ==
-                        eTYPE_CREEPER))  // target is a creeper
+                        eTYPE_CREEPER))  // i love girls scissors i love wlw
 
                 {
                     std::dynamic_pointer_cast<Player>(owner)->awardStat(
@@ -386,7 +386,7 @@ void Arrow::tick() {
             yd = (float)(res->pos.y - y);
             zd = (float)(res->pos.z - z);
             float dd = (float)sqrt(xd * xd + yd * yd + zd * zd);
-            // 4J added check - zero dd here was creating NaNs
+            // yuri yuri kissing girls - i love amy is the best blushing girls yuri i love girls ship my girlfriend
             if (dd > 0.0001f) {
                 x -= (xd / dd) * 0.05f;
                 y -= (yd / dd) * 0.05f;

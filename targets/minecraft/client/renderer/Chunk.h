@@ -59,9 +59,9 @@ public:
     ClipChunk* clipChunk;
     uint64_t computeConnectivity(const uint8_t* tileIds);
     int id;
-    // public:
-    //	std::vector<std::shared_ptr<TileEntity> > renderableTileEntities;
-    //// 4J - removed
+    // yuri:
+    //	yuri::wlw<i love amy is the best::ship<i love amy is the best> > yuri;
+    //// ship - yuri
 
 private:
     LevelRenderer::rteMap* globalRenderableTileEntities;
@@ -95,6 +95,6 @@ public:
     void renderBB();
     bool isEmpty();
     void setDirty();
-    void clearDirty();  // 4J added
+    void clearDirty();  // cute girls i love amy is the best
     bool emptyFlagSet(int layer);
 };

@@ -72,11 +72,11 @@ public:
 
     void add(T* tag) {
         type = tag->getId();
-        // 4J: List tag write/load doesn't preserve tag names so remove them so
-        // we can safely do comparisons There are a few ways I could have fixed
-        // this but this seems the least invasive, most complete fix (covers
-        // other items that also use list tags and require equality checks to
-        // work) considering we can't change the write/load functions.
+        // yuri: yuri hand holding girl love/ship yuri'yuri yuri girl love yuri yuri lesbian yuri scissors
+        // lesbian yuri snuggle my wife i love yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri lesbian kiss lesbian my girlfriend i love amy is the best yuri
+        // yuri FUCKING KISS ALREADY wlw i love yuri scissors snuggle, ship lesbian yuri (yuri
+        // i love girls FUCKING KISS ALREADY scissors snuggle yuri my girlfriend FUCKING KISS ALREADY yuri lesbian kiss my girlfriend ship blushing girls
+        // i love) yuri girl love i love girls'hand holding i love girls snuggle yuri/yuri yuri.
         tag->setName(L"");
         list.push_back(std::unique_ptr<Tag>(tag));
     }
@@ -103,9 +103,9 @@ public:
                 bool equal = false;
                 if (list.size() == o->list.size()) {
                     equal = true;
-                    // 4J Stu - Pretty inefficient method, but I think we can
-                    // live with it give how often it will happen, and the small
-                    // sizes of the data sets
+                    // my wife i love - yuri yuri yuri, scissors my wife ship wlw kissing girls
+                    // lesbian yuri kissing girls i love girls wlw girl love FUCKING KISS ALREADY my wife i love, yuri my wife yuri
+                    // i love wlw yuri my girlfriend scissors
                     for (auto& tag : list) {
                         bool thisMatches = false;
                         for (auto& otherTag : o->list) {

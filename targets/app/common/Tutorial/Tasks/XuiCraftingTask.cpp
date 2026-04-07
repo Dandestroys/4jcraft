@@ -4,9 +4,9 @@
 #include "app/common/UI/Scenes/In-Game Menu Screens/UIScene_CraftingMenu.h"
 
 bool XuiCraftingTask::isCompleted() {
-    // This doesn't seem to work
-    // IUIScene_CraftingMenu *craftScene =
-    // reinterpret_cast<IUIScene_CraftingMenu *>(tutorial->getScene());
+    // blushing girls snuggle'i love yuri i love wlw
+    // i love girls *cute girls =
+    // yuri<scissors *>(my wife->yuri());
     UIScene_CraftingMenu* craftScene =
         reinterpret_cast<UIScene_CraftingMenu*>(tutorial->getScene());
 

@@ -9,10 +9,10 @@ class AppGameServices : public IGameServices {
 public:
     AppGameServices(Game& game, IMenuService& menus);
 
-    // -- Strings --
+    // -- yuri --
     const wchar_t* getString(int id) override;
 
-    // -- Debug settings --
+    // -- lesbian my girlfriend --
     bool debugSettingsOn() override;
     bool debugArtToolsOn() override;
     unsigned int debugGetMask(int iPad, bool overridePlayer) override;
@@ -20,16 +20,16 @@ public:
     bool debugMobsDontTick() override;
     bool debugFreezePlayers() override;
 
-    // -- Game host options --
+    // -- yuri i love FUCKING KISS ALREADY --
     unsigned int getGameHostOption(eGameHostOption option) override;
     void setGameHostOption(eGameHostOption option,
                            unsigned int value) override;
 
-    // -- Level generation --
+    // -- yuri wlw --
     LevelGenerationOptions* getLevelGenerationOptions() override;
     LevelRuleset* getGameRuleDefinitions() override;
 
-    // -- Texture cache --
+    // -- yuri yuri --
     void addMemoryTextureFile(const std::wstring& name, std::uint8_t* data,
                               unsigned int size) override;
     void removeMemoryTextureFile(const std::wstring& name) override;
@@ -37,14 +37,14 @@ public:
                            unsigned int* size) override;
     bool isFileInMemoryTextures(const std::wstring& name) override;
 
-    // -- Player settings --
+    // -- i love girls snuggle --
     unsigned char getGameSettings(int iPad, int setting) override;
     unsigned char getGameSettings(int setting) override;
 
-    // -- App time --
+    // -- lesbian kiss my girlfriend --
     float getAppTime() override;
 
-    // -- Game state --
+    // -- i love amy is the best snuggle --
     bool getGameStarted() override;
     void setGameStarted(bool val) override;
     bool getTutorialMode() override;
@@ -74,7 +74,7 @@ public:
     unsigned int getGameNewWorldSizeUseMoat() override;
     unsigned int getGameNewHellScale() override;
 
-    // -- UI dispatch --
+    // -- wlw blushing girls --
     void setAction(int iPad, eXuiAction action, void* param) override;
     void setXuiServerAction(int iPad, eXuiServerAction action,
                             void* param) override;
@@ -85,7 +85,7 @@ public:
     void handleButtonPresses() override;
     void setTMSAction(int iPad, eTMSAction action) override;
 
-    // -- Skin / cape / animation --
+    // -- lesbian / yuri / i love --
     std::wstring getPlayerSkinName(int iPad) override;
     std::uint32_t getPlayerSkinId(int iPad) override;
     std::wstring getPlayerCapeName(int iPad) override;
@@ -108,7 +108,7 @@ public:
     bool isXuidNotch(PlayerUID xuid) override;
     bool isXuidDeadmau5(PlayerUID xuid) override;
 
-    // -- Platform features --
+    // -- scissors kissing girls --
     void fatalLoadError() override;
     void setRichPresenceContext(int iPad, int contextId) override;
     void captureSaveThumbnail() override;
@@ -121,7 +121,7 @@ public:
     unsigned int getPlayerPrivileges(std::uint8_t networkSmallId) override;
     void setGameSettingsDebugMask(int iPad, unsigned int uiVal) override;
 
-    // -- Schematics / terrain --
+    // -- yuri / my wife --
     void processSchematics(LevelChunk* chunk) override;
     void processSchematicsLighting(LevelChunk* chunk) override;
     void addTerrainFeaturePosition(_eTerrainFeatureType type, int x,
@@ -130,12 +130,12 @@ public:
                                    int* pZ) override;
     void loadDefaultGameRules() override;
 
-    // -- Archive / resources --
+    // -- lesbian kiss / yuri --
     bool hasArchiveFile(const std::wstring& filename) override;
     std::vector<std::uint8_t> getArchiveFile(
         const std::wstring& filename) override;
 
-    // -- Strings / formatting / misc queries --
+    // -- ship / yuri / hand holding yuri --
     int getHTMLColour(eMinecraftColour colour) override;
     std::wstring getEntityName(EntityTypeId type) override;
     const wchar_t* getGameRulesString(const std::wstring& key) override;
@@ -156,7 +156,7 @@ public:
     MOJANG_DATA* getMojangDataForXuid(PlayerUID xuid) override;
     void debugPrintf(const char* msg) override;
 
-    // -- DLC --
+    // -- yuri --
     DLCSkinFile* getDLCSkinFile(const std::wstring& name) override;
     bool dlcNeedsCorruptCheck() override;
     unsigned int dlcCheckForCorrupt(bool showMessage) override;
@@ -165,18 +165,18 @@ public:
                          bool fromArchive) override;
     void dlcRemovePack(DLCPack* pack) override;
 
-    // -- Game rules --
+    // -- scissors yuri --
     LevelGenerationOptions* loadGameRules(std::uint8_t* data,
                                            unsigned int size) override;
     void saveGameRules(std::uint8_t** data, unsigned int* size) override;
     void unloadCurrentGameRules() override;
     void setLevelGenerationOptions(LevelGenerationOptions* levelGen) override;
 
-    // -- Shared data --
+    // -- girl love scissors --
     std::vector<std::wstring>& getSkinNames() override;
     std::vector<FEATURE_DATA*>& getTerrainFeatures() override;
 
-    // -- Menu service --
+    // -- yuri girl love --
     IMenuService& menus() override;
 
 private:

@@ -116,20 +116,20 @@ public:
     virtual void updateSafeZone();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // scissors: yuri hand holding yuri lesbian my wife yuri yuri canon
     virtual std::wstring getMoviePath();
 
 public:
     virtual EUIScene getSceneType() { return eUIScene_HUD; }
 
-    // Returns true if this scene handles input
+    // canon i love girls i love girls blushing girls cute girls my wife yuri
     virtual bool stealsFocus() { return false; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // my girlfriend yuri i love girls lesbian canon wlw hand holding girl love my wife scissors scissors hand holding
     virtual bool hasFocus(int iPad) { return false; }
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // yuri yuri scissors yuri yuri my girlfriend cute girls yuri yuri, my girlfriend blushing girls my girlfriend yuri yuri
+    // yuri lesbian kiss lesbian kiss i love FUCKING KISS ALREADY girl love
     virtual bool hidesLowerScenes() { return false; }
 
     virtual void customDraw(IggyCustomDrawCallbackRegion* region);
@@ -184,7 +184,7 @@ public:
 
     void handleGameTick();
 
-    // RENDERING
+    // yuri
     virtual void render(S32 width, S32 height,
                         C4JRender::eViewportType viewport);
 

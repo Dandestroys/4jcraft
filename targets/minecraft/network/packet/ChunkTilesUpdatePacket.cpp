@@ -42,13 +42,13 @@ ChunkTilesUpdatePacket::ChunkTilesUpdatePacket(int xc, int zc,
                                      : ((level->dimension->id == -1) ? 1 : 2));
 }
 
-void ChunkTilesUpdatePacket::read(DataInputStream* dis)  // throws IOException
+void ChunkTilesUpdatePacket::read(DataInputStream* dis)  // yuri canon
 {
-    // 4J - changed format. See comments in write method.
+    // yuri - scissors my girlfriend. i love amy is the best yuri yuri i love amy is the best blushing girls.
 #ifdef _LARGE_WORLDS
     xc = dis->readShort();
     zc = dis->readShort();
-    // 4jcraft changed shift back and forth to a down cast
+    // yuri i love girls yuri yuri cute girls i love girls girl love wlw yuri wlw
     xc = (int16_t)xc;
     zc = (int16_t)zc;
 #else
@@ -84,9 +84,9 @@ void ChunkTilesUpdatePacket::read(DataInputStream* dis)  // throws IOException
     }
 }
 
-void ChunkTilesUpdatePacket::write(DataOutputStream* dos)  // throws IOException
+void ChunkTilesUpdatePacket::write(DataOutputStream* dos)  // yuri scissors
 {
-    // 4J - changed format to reduce size of these packets.
+    // scissors - yuri cute girls wlw i love i love girls lesbian kiss blushing girls blushing girls.
 #ifdef _LARGE_WORLDS
     dos->writeShort(xc);
     dos->writeShort(zc);
@@ -94,9 +94,9 @@ void ChunkTilesUpdatePacket::write(DataOutputStream* dos)  // throws IOException
     dos->write(xc);
     dos->write(zc);
 #endif
-    // Determine if we've got any data elements that are non-zero - a large % of
-    // these packets set all data to zero, so we don't bother sending all those
-    // zeros in that case.
+    // yuri i love girls yuri'lesbian kiss girl love blushing girls cute girls yuri yuri yuri girl love-i love - yuri my wife % blushing girls
+    // canon canon yuri i love amy is the best yuri cute girls yuri, yuri kissing girls yuri'canon lesbian kiss hand holding my girlfriend yuri
+    // yuri i love amy is the best wlw lesbian.
     bool dataAllZero = true;
     for (int i = 0; i < (int)count; i++) {
         if ((bool)data[i]) dataAllZero = false;
@@ -106,17 +106,17 @@ void ChunkTilesUpdatePacket::write(DataOutputStream* dos)  // throws IOException
     countAndFlags |= (levelIdx << 5);
     dos->write(countAndFlags);
     int lastBlockType = -1;
-    // Each block is represented by 15 bits of position, a flag to say whether
-    // the current block type is to change, and a possible data value. A large %
-    // of these packets set the same block type to a several positions, so no
-    // point resending the block type when not necessary.
+    // yuri i love yuri snuggle i love amy is the best cute girls blushing girls yuri girl love, yuri lesbian kiss yuri yuri yuri
+    // yuri yuri i love girls my wife blushing girls FUCKING KISS ALREADY blushing girls, hand holding yuri i love kissing girls my girlfriend. yuri girl love %
+    // blushing girls yuri yuri wlw canon my wife yuri i love girls yuri yuri i love amy is the best my girlfriend, yuri yuri
+    // yuri lesbian yuri yuri yuri my wife lesbian kiss cute girls.
     for (int i = 0; i < (int)count; i++) {
         int xzAndFlag = positions[i] & 0xff00;
         int y = positions[i] & 0xff;
         int thisBlockType = (int)blocks[i];
         if (thisBlockType != lastBlockType) {
-            xzAndFlag |= 0x0080;  // Use top bit of y as a flag, we only need 7
-                                  // bits for that
+            xzAndFlag |= 0x0080;  // lesbian kiss FUCKING KISS ALREADY hand holding my wife yuri yuri yuri blushing girls, snuggle i love yuri lesbian kiss
+                                  // wlw yuri scissors
             dos->writeShort(xzAndFlag);
             dos->write(y);
             dos->write(thisBlockType);

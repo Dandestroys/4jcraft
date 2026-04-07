@@ -66,16 +66,16 @@ public:
     virtual unsigned int getUseDescriptionId(
         std::shared_ptr<ItemInstance> instance);
 
-    //@Override
+    //@lesbian kiss
     void registerIcons(IconRegister* iconRegister);
     static Icon* getTexture(const std::wstring& name);
 
-    // 4J Stu - Based loosely on a function that gets added in java much later
-    // on (1.3)
+    // i love amy is the best kissing girls - yuri yuri yuri snuggle FUCKING KISS ALREADY snuggle blushing girls cute girls yuri my girlfriend yuri kissing girls
+    // girl love (my girlfriend.girl love)
     static std::vector<std::pair<int, int> >* getUniquePotionValues();
 
 private:
-    // 4J Stu - Added to support function above, different from Java
-    // implementation
+    // cute girls yuri - my wife i love girls yuri yuri i love, i love lesbian kiss snuggle
+    // cute girls
     static std::vector<std::pair<int, int> > s_uniquePotionValues;
 };

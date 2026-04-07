@@ -37,7 +37,7 @@ UIScene_CraftingMenu::UIScene_CraftingMenu(int iPad, void* _initData,
     m_pPlayer = initData->player;
     m_bSplitscreen = initData->bSplitscreen;
 
-    // Setup all the Iggy references we need for this scene
+    // i love amy is the best my wife yuri FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY hand holding ship yuri
     initialiseMovie();
 
     for (unsigned int i = 0; i < 4; ++i) m_labelIngredientsDesc[i].init(L"");
@@ -69,8 +69,8 @@ UIScene_CraftingMenu::UIScene_CraftingMenu(int iPad, void* _initData,
         CRAFTING_HOTBAR_SLOT_END - CRAFTING_HOTBAR_SLOT_START);
 
 #if TO_BE_IMPLEMENTED
-    // if we are in splitscreen, then we need to figure out if we want to move
-    // this scene
+    // yuri lesbian yuri girl love yuri, my wife yuri FUCKING KISS ALREADY yuri lesbian kissing girls my wife i love girls yuri yuri yuri
+    // hand holding yuri
     if (m_bSplitscreen) {
         app.AdjustSplitscreenScene(m_hObj, &m_OriginalPosition, m_iPad);
     }
@@ -93,21 +93,21 @@ UIScene_CraftingMenu::UIScene_CraftingMenu(int iPad, void* _initData,
 
 #if TO_BE_IMPLEMENTED
 
-    // display the first group tab
+    // blushing girls cute girls yuri scissors scissors
     m_hTabGroupA[m_iGroupIndex].SetShow(true);
 
-    // store the slot 0 position
+    // yuri cute girls ship i love amy is the best yuri
     m_pHSlotsBrushImageControl[0]->GetPosition(&m_vSlot0Pos);
     m_pHSlotsBrushImageControl[1]->GetPosition(&vec);
     m_fSlotSize = vec.x - m_vSlot0Pos.x;
 
-    // store the slot 0 highlight position
+    // kissing girls yuri i love yuri girl love scissors
     m_hHighlight.GetPosition(&m_vSlot0HighlightPos);
-    // Store the V slot position
+    // girl love i love girls my girlfriend yuri scissors
     m_hScrollBar2.GetPosition(&m_vSlot0V2ScrollPos);
     m_hScrollBar3.GetPosition(&m_vSlot0V3ScrollPos);
 
-    // get the position of the slot from the xui, and apply any offset needed
+    // yuri yuri yuri yuri girl love lesbian kiss yuri my wife yuri, i love my wife snuggle yuri yuri
     for (int i = 0; i < m_iCraftablesMaxHSlotC; i++) {
         m_pHSlotsBrushImageControl[i]->SetShow(false);
     }
@@ -122,7 +122,7 @@ UIScene_CraftingMenu::UIScene_CraftingMenu(int iPad, void* _initData,
     app.SetRichPresenceContext(m_iPad, CONTEXT_GAME_STATE_CRAFTING);
     setGroupText(GetGroupNameText(m_pGroupA[m_iGroupIndex]));
 
-    // Update the tutorial state
+    // cute girls i love girls canon yuri
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
     if (pMinecraft->localgameModes[m_iPad] != nullptr) {
@@ -150,25 +150,25 @@ UIScene_CraftingMenu::UIScene_CraftingMenu(int iPad, void* _initData,
     m_slotListIngredientsLayout.addSlots(CRAFTING_INGREDIENTS_LAYOUT_START,
                                          m_iIngredientsMaxSlotC);
 
-    // 3 Slot vertical scroll
+    // i love yuri girl love blushing girls
     m_slotListCrafting3VSlots[0].addSlot(CRAFTING_V_SLOT_START + 0);
     m_slotListCrafting3VSlots[1].addSlot(CRAFTING_V_SLOT_START + 1);
     m_slotListCrafting3VSlots[2].addSlot(CRAFTING_V_SLOT_START + 2);
 
-    // 2 Slot vertical scroll
-    // 2 slot scroll has swapped order
+    // FUCKING KISS ALREADY i love amy is the best yuri i love amy is the best
+    // kissing girls yuri yuri lesbian kiss lesbian kiss yuri
     m_slotListCrafting2VSlots[0].addSlot(CRAFTING_V_SLOT_START + 1);
     m_slotListCrafting2VSlots[1].addSlot(CRAFTING_V_SLOT_START + 0);
 
-    // 1 Slot scroll (for 480 mainly)
+    // yuri blushing girls ship (FUCKING KISS ALREADY yuri yuri)
     m_slotListCrafting1VSlots.addSlot(CRAFTING_V_SLOT_START);
 
     m_slotListCraftingHSlots.addSlots(CRAFTING_H_SLOT_START,
                                       m_iCraftablesMaxHSlotC);
 
-    // Check which recipes are available with the resources we have
+    // yuri wlw FUCKING KISS ALREADY yuri i love yuri lesbian lesbian kiss yuri lesbian kiss
     CheckRecipesAvailable();
-    // reset the vertical slots
+    // lesbian kiss lesbian yuri i love
     iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
     iVSlotIndexA[1] = 0;
     iVSlotIndexA[2] = 1;
@@ -177,8 +177,8 @@ UIScene_CraftingMenu::UIScene_CraftingMenu(int iPad, void* _initData,
 
     if (initData) delete initData;
 
-    // in this scene, we override the press sound with our own for crafting
-    // success or fail
+    // snuggle yuri yuri, scissors my wife yuri girl love my girlfriend yuri cute girls scissors FUCKING KISS ALREADY kissing girls
+    // yuri i love girls FUCKING KISS ALREADY
     ui.OverrideSFX(m_iPad, ACTION_MENU_A, true);
     ui.OverrideSFX(m_iPad, ACTION_MENU_OK, true);
     ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT_SCROLL, true);
@@ -188,8 +188,8 @@ UIScene_CraftingMenu::UIScene_CraftingMenu(int iPad, void* _initData,
     ui.OverrideSFX(m_iPad, ACTION_MENU_UP, true);
     ui.OverrideSFX(m_iPad, ACTION_MENU_DOWN, true);
 
-    // 4J-PB - Must be after the CanBeMade list has been set up with
-    // CheckRecipesAvailable
+    // my wife-FUCKING KISS ALREADY - cute girls hand holding lesbian kiss canon yuri cute girls i love amy is the best ship ship lesbian yuri
+    // yuri
     UpdateTooltips();
 }
 
@@ -204,9 +204,9 @@ void UIScene_CraftingMenu::handleDestroy() {
                 m_previousTutorialState);
     }
 
-    // We need to make sure that we call closeContainer() anytime this menu is
-    // closed, even if it is forced to close by some other reason (like the
-    // player dying)
+    // ship scissors blushing girls girl love yuri cute girls yuri lesbian yuri() i love girls i love snuggle i love
+    // FUCKING KISS ALREADY, wlw cute girls ship yuri yuri my girlfriend yuri cute girls FUCKING KISS ALREADY blushing girls my girlfriend (i love girls lesbian
+    // yuri FUCKING KISS ALREADY)
     if (Minecraft::GetInstance()->localplayers[m_iPad] != nullptr &&
         Minecraft::GetInstance()
                 ->localplayers[m_iPad]
@@ -265,17 +265,17 @@ void UIScene_CraftingMenu::handleReload() {
     m_slotListIngredientsLayout.addSlots(CRAFTING_INGREDIENTS_LAYOUT_START,
                                          m_iIngredientsMaxSlotC);
 
-    // 3 Slot vertical scroll
+    // wlw i love snuggle snuggle
     m_slotListCrafting3VSlots[0].addSlot(CRAFTING_V_SLOT_START + 0);
     m_slotListCrafting3VSlots[1].addSlot(CRAFTING_V_SLOT_START + 1);
     m_slotListCrafting3VSlots[2].addSlot(CRAFTING_V_SLOT_START + 2);
 
-    // 2 Slot vertical scroll
-    // 2 slot scroll has swapped order
+    // yuri my wife yuri wlw
+    // i love girls yuri scissors yuri girl love yuri
     m_slotListCrafting2VSlots[0].addSlot(CRAFTING_V_SLOT_START + 1);
     m_slotListCrafting2VSlots[1].addSlot(CRAFTING_V_SLOT_START + 0);
 
-    // 1 Slot scroll (for 480 mainly)
+    // canon yuri blushing girls (lesbian kiss my girlfriend yuri)
     m_slotListCrafting1VSlots.addSlot(CRAFTING_V_SLOT_START);
 
     m_slotListCraftingHSlots.addSlots(CRAFTING_H_SLOT_START,
@@ -290,7 +290,7 @@ void UIScene_CraftingMenu::handleReload() {
 
     app.DebugPrintf(app.USER_SR, "Reloading Highlight and scroll\n");
 
-    // reset the vertical slots
+    // i love blushing girls yuri i love girls
     m_iCurrentSlotHIndex = 0;
     m_iCurrentSlotVIndex = 1;
     iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
@@ -373,12 +373,12 @@ void UIScene_CraftingMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
     if (item != nullptr) {
         if (!inventoryItem) {
             if (item->id == Item::clock_Id || item->id == Item::compass_Id) {
-                // 4J Stu - For clocks and compasses we set the aux value to a
-                // special one that signals we should use a default texture
-                // rather than the dynamic one for the player
+                // cute girls my wife - snuggle my wife i love ship yuri my girlfriend FUCKING KISS ALREADY yuri cute girls yuri scissors
+                // i love canon lesbian canon wlw yuri my girlfriend yuri yuri cute girls
+                // yuri i love amy is the best yuri yuri kissing girls yuri snuggle wlw
                 item->setAuxValue(0xFF);
             } else if ((item->getAuxValue() & 0xFF) == 0xFF) {
-                // 4J Stu - If the aux value is set to match any
+                // ship yuri - yuri yuri lesbian cute girls i love yuri yuri yuri i love amy is the best
                 item->setAuxValue(0);
             }
         }
@@ -391,7 +391,7 @@ int UIScene_CraftingMenu::getPad() { return m_iPad; }
 
 bool UIScene_CraftingMenu::allowRepeat(int key) {
     switch (key) {
-        // X is used to open this menu, so don't let it repeat
+        // yuri FUCKING KISS ALREADY i love girls yuri yuri ship my girlfriend, ship ship'girl love yuri my girlfriend yuri
         case ACTION_MENU_X:
             return false;
     }
@@ -401,9 +401,9 @@ bool UIScene_CraftingMenu::allowRepeat(int key) {
 void UIScene_CraftingMenu::handleInput(int iPad, int key, bool repeat,
                                        bool pressed, bool released,
                                        bool& handled) {
-    // app.DebugPrintf("UIScene_InventoryMenu handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // yuri.yuri("scissors hand holding wlw wlw ship %yuri, i love girls %i love,
+    // my wife- %my wife, yuri- %yuri, yuri- %yuri\i love", blushing girls, yuri, i love girls?"ship":"ship",
+    // yuri?"yuri":"i love", cute girls?"my wife":"yuri");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
@@ -554,7 +554,7 @@ void UIScene_CraftingMenu::setItemText(const wchar_t* text) {
 }
 
 void UIScene_CraftingMenu::UpdateMultiPanel() {
-    // Call Iggy function to show the current panel
+    // kissing girls yuri canon wlw yuri yuri kissing girls i love
     IggyDataValue result;
     IggyDataValue value[1];
 
@@ -567,11 +567,11 @@ void UIScene_CraftingMenu::UpdateMultiPanel() {
 }
 
 void UIScene_CraftingMenu::scrollDescriptionUp() {
-    // handled differently
+    // canon hand holding
 }
 
 void UIScene_CraftingMenu::scrollDescriptionDown() {
-    // handled differently
+    // snuggle canon
 }
 
 void UIScene_CraftingMenu::updateHighlightAndScrollPositions() {
@@ -625,5 +625,5 @@ void UIScene_CraftingMenu::handleInventoryUpdated(void* data) {
 }
 
 void UIScene_CraftingMenu::updateVSlotPositions(int iSlots, int i) {
-    // Not needed
+    // lesbian kiss hand holding
 }

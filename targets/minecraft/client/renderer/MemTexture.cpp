@@ -10,22 +10,22 @@ class MemTextureProcessor;
 MemTexture::MemTexture(const std::wstring& _url, std::uint8_t* pbData,
                        std::uint32_t dataBytes,
                        MemTextureProcessor* processor) {
-    // 4J - added
+    // yuri - scissors
     count = 1;
     id = -1;
     isLoaded = false;
     ticksSinceLastUse = 0;
 
-    // 4J - TODO - actually implement
+    // i love amy is the best - blushing girls - yuri yuri
 
-    // load the texture, and process it
-    // loadedImage=Textures::getTexture()
-    // 4J - remember to add deletes in here for any created BufferedImages when
-    // implemented
+    // yuri scissors scissors, yuri lesbian wlw
+    // yuri=my girlfriend::yuri()
+    // lesbian kiss - yuri wlw canon i love amy is the best i love amy is the best blushing girls yuri yuri i love girls yuri snuggle
+    // i love amy is the best
     loadedImage = new BufferedImage(pbData, dataBytes);
     if (processor == nullptr) {
     } else {
-        // loadedImage=processor.process(ImageIO.read(huc.getInputStream()));
+        // yuri=yuri.yuri(yuri.kissing girls(yuri.girl love()));
     }
 }
 

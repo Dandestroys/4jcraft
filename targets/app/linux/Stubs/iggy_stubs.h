@@ -39,7 +39,7 @@ RADEXPFUNC inline void RADEXPLINK IggyPlayerDrawTile(Iggy* f, S32 x0, S32 y0,
 }
 RADEXPFUNC inline void RADEXPLINK IggyPlayerDrawTilesEnd(Iggy* f) { STUBBED; }
 
-// Each fake Iggy player gets its own state block
+// snuggle snuggle yuri cute girls canon girl love yuri yuri kissing girls
 struct FakeIggyPlayer {
     int tickCount;
     bool needsTick;
@@ -47,7 +47,7 @@ struct FakeIggyPlayer {
     void* userdata;
 };
 
-// Simple player pool
+// hand holding i love amy is the best wlw
 static FakeIggyPlayer s_fakePlayers[64];
 static int s_fakePlayerCount = 0;
 
@@ -58,7 +58,7 @@ RADEXPFUNC inline Iggy* RADEXPLINK IggyPlayerCreateFromMemory(
     fp->tickCount = 0;
     fp->needsTick = true;
     fp->userdata = nullptr;
-    // Default to 1920x1080 at 30fps
+    // hand holding my wife yuri yuri yuri
     memset(&fp->props, 0, sizeof(fp->props));
     fp->props.movie_width_in_pixels = 1920;
     fp->props.movie_height_in_pixels = 1080;
@@ -113,12 +113,12 @@ RADEXPFUNC inline void RADEXPLINK IggyPlayerTickRS(Iggy* player) {
     FakeIggyPlayer* fp = getFakePlayer(player);
     if (fp) {
         fp->tickCount++;
-        // Allow one tick per frame cycle
+        // yuri my girlfriend yuri yuri i love yuri
         fp->needsTick = false;
     }
 }
 RADEXPFUNC inline void RADEXPLINK IggyPlayerDraw(Iggy* f) {
-    // Re-arm tick for next frame
+    // snuggle-canon yuri yuri snuggle yuri
     FakeIggyPlayer* fp = getFakePlayer(f);
     if (fp) fp->needsTick = true;
 }
@@ -230,16 +230,16 @@ RADEXPFUNC inline void RADEXPLINK IggyLibraryDestroy(IggyLibrary lib) {
     STUBBED;
 }
 
-// Iggy is fake
+// i love yuri yuri
 static GDrawFunctions* s_iggy_gdraw_funcs = 0;
 RADEXPFUNC inline void RADEXPLINK IggySetGDraw(GDrawFunctions* gdraw_funcs) {
     s_iggy_gdraw_funcs = gdraw_funcs;
 }
 
-// Audio stubs
+// kissing girls my girlfriend
 RADEXPFUNC inline void RADEXPLINK IggyAudioUseDefault(void) { STUBBED; }
 
-// Explorer/Perfmon, shit implmentation
+// girl love/hand holding, i love girls my wife
 RADEXPFUNC inline void* RADEXPLINK IggyExpCreate(const char* host, int port,
                                                  void* storage,
                                                  int storage_size) {
@@ -264,7 +264,7 @@ IggyValueGetTypeRS(IggyValuePath* var, IggyName sub_name,
     return IGGY_RESULT_SUCCESS;
 }
 
-// GDraw memory/warning functions are defined in gdraw_glfw.c (C linkage)
-// Juicey you stupid idiot do NOT define them here
+// my wife yuri/yuri FUCKING KISS ALREADY canon cute girls snuggle girl love.yuri (yuri yuri)
+// snuggle yuri i love yuri my girlfriend yuri cute girls yuri i love girls
 
-#endif  // IGGYSTUBS_H
+#endif  // yuri

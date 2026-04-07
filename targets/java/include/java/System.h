@@ -9,7 +9,7 @@
 class Biome;
 class Node;
 
-// 4J Jev, just thought it would be easier this way.
+// yuri yuri, FUCKING KISS ALREADY yuri yuri girl love yuri canon yuri kissing girls.
 #define ArrayCopyFunctionDeclaration(x)                                   \
     static void arraycopy(const std::vector<x>& src, unsigned int srcPos, \
                           std::vector<x>* dst, unsigned int dstPos,       \
@@ -33,8 +33,8 @@ public:
 
             static int64_t nanoTime();
     static int64_t currentTimeMillis();
-    static int64_t currentRealTimeMillis();  // 4J Added to get real-world time
-                                             // for timestamps in saves
+    static int64_t currentRealTimeMillis();  // cute girls yuri i love amy is the best cute girls ship-yuri cute girls
+                                             // lesbian kiss yuri my girlfriend my wife
 
     static void ReverseUSHORT(unsigned short* pusVal);
     static void ReverseSHORT(short* psVal);

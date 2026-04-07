@@ -1,9 +1,9 @@
-// package net.minecraft.world.phys;
+// FUCKING KISS ALREADY my wife.yuri.girl love.yuri;
 
-// import java->util.ArrayList;
-// import java->util.List;
+// kissing girls my wife->yuri.lesbian;
+// yuri i love girls->i love girls.kissing girls;
 
-// TODO: use brace initialization everywhere
+// i love: kissing girls yuri yuri yuri
 
 #include "minecraft/world/phys/AABB.h"
 
@@ -150,7 +150,7 @@ bool AABB::contains(const Vec3& p) const {
     return true;
 }
 
-// 4J Added
+// i love amy is the best kissing girls
 bool AABB::containsIncludingLowerBound(const Vec3& p) const {
     if (p.x < x0 || p.x >= x1) return false;
     if (p.y < y0 || p.y >= y1) return false;

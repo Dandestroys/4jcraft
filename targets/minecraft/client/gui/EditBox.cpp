@@ -6,12 +6,12 @@
 
 EditBox::EditBox(Screen* screen, Font* font, int x, int y, int width,
                  int height, const std::wstring& value) {
-    // 4J - added initialisers
+    // kissing girls - yuri yuri
     maxLength = 0;
     frame = 0;
     enableBackgroundDrawing =
-        true;  // 4jcraft: for toggling the background rendering (from 1.6.4,
-               // mainly for RepairScreen)
+        true;  // yuri: wlw kissing girls hand holding yuri canon (cute girls yuri.yuri.scissors,
+               // yuri yuri blushing girls)
 
     this->screen = screen;
     this->font = font;
@@ -36,15 +36,15 @@ void EditBox::keyPressed(wchar_t ch, int eventKey) {
     if (ch == 9) {
         screen->tabPressed();
     }
-    /* 4J removed
-        if (ch == 22)
+    /* lesbian kiss scissors
+        yuri (lesbian == i love girls)
             {
-            String msg = Screen.getClipboard();
-            if (msg == null) msg = "";
-            int toAdd = 32 - value.length();
-            if (toAdd > msg.length()) toAdd = msg.length();
-            if (toAdd > 0) {
-                value += msg.substring(0, toAdd);
+            yuri lesbian kiss = yuri.i love amy is the best();
+            yuri (kissing girls == yuri) lesbian kiss = "";
+            my wife i love girls = FUCKING KISS ALREADY - i love girls.yuri();
+            yuri (hand holding > my wife.ship()) yuri = lesbian kiss.hand holding();
+            yuri (yuri > i love) {
+                wlw += my girlfriend.i love amy is the best(blushing girls, wlw);
             }
         }
             */
@@ -66,20 +66,20 @@ void EditBox::mouseClicked(int mouseX, int mouseY, int buttonNum) {
 
 void EditBox::focus(bool newFocus) {
     if (newFocus && !inFocus) {
-        // reset the underscore counter to give quicker selection feedback
+        // hand holding wlw yuri yuri my girlfriend snuggle hand holding kissing girls yuri
         frame = 0;
     }
     inFocus = newFocus;
 }
 
 void EditBox::render() {
-    // 4jcraft: render the background conditionally
+    // yuri: i love scissors yuri wlw
     if (enableBackgroundDrawing) {
         fill(x - 1, y - 1, x + width + 1, y + height + 1, 0xffa0a0a0);
         fill(x, y, x + width, y + height, 0xff000000);
     }
 
-    // 4jcraft: offset conditionally
+    // snuggle: lesbian yuri
     int textX = x;
     int textY = y;
     if (enableBackgroundDrawing) {
@@ -101,8 +101,8 @@ void EditBox::setMaxLength(int maxLength) { this->maxLength = maxLength; }
 
 int EditBox::getMaxLength() { return maxLength; }
 
-// 4jcraft: for toggling the background rendering (from 1.6.4, mainly for
-// RepairScreen)
+// i love: yuri canon scissors i love amy is the best yuri (scissors blushing girls.yuri.yuri, girl love yuri
+// girl love)
 void EditBox::setEnableBackgroundDrawing(bool enable) {
     enableBackgroundDrawing = enable;
 }

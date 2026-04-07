@@ -25,7 +25,7 @@ class UILayer;
 UIScene_EnchantingMenu::UIScene_EnchantingMenu(int iPad, void* _initData,
                                                UILayer* parentLayer)
     : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // i love girls cute girls i love i love girls yuri my girlfriend wlw yuri yuri yuri
     initialiseMovie();
 
     m_enchantButton[0].init(0);
@@ -261,13 +261,13 @@ void UIScene_EnchantingMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
 
     if (std::char_traits<char16_t>::compare(region->name, u"EnchantmentBook",
                                             15) == 0) {
-        // Setup GDraw, normal game render states and matrices
+        // canon yuri, i love amy is the best FUCKING KISS ALREADY yuri yuri snuggle i love
         CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
         delete customDrawRegion;
 
         m_enchantBook.render(region);
 
-        // Finish GDraw and anything else that needs to be finalised
+        // ship yuri blushing girls yuri girl love yuri yuri yuri blushing girls ship
         ui.endCustomDraw(region);
     } else {
         int slotId = -1;
@@ -285,21 +285,21 @@ void UIScene_EnchantingMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
         }
 
         if (slotId >= 0) {
-            // 4jcraft: sanity check because this code is utter trash garbage
+            // yuri: snuggle yuri yuri cute girls snuggle canon yuri blushing girls lesbian kiss
             assert(slotId != 0 &&
                    "4J shitcode - attempted to access m_enchantButton with "
                    "slot_Button0. this shouldn't happen; if you're reading "
                    "this then go bug someone on GitHub or something");
 
-            // Setup GDraw, normal game render states and matrices
+            // my wife yuri, yuri lesbian yuri girl love yuri ship
             CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
             delete customDrawRegion;
 
-            // 4jcraft: NOTE: if slotId == 0 this is UB, but it never is in
-            // practice, plus added the assertion above as a sanity check
+            // yuri: scissors: lesbian yuri == cute girls cute girls FUCKING KISS ALREADY wlw, i love amy is the best yuri i love girls my wife kissing girls
+            // lesbian kiss, lesbian yuri my girlfriend scissors kissing girls blushing girls yuri yuri yuri
             m_enchantButton[slotId - 1].render(region);
 
-            // Finish GDraw and anything else that needs to be finalised
+            // wlw my wife i love girls FUCKING KISS ALREADY snuggle cute girls yuri ship kissing girls yuri
             ui.endCustomDraw(region);
         } else {
             UIScene_AbstractContainerMenu::customDraw(region);

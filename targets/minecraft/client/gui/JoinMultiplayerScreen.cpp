@@ -70,9 +70,9 @@ void JoinMultiplayerScreen::buttonClicked(Button* button) {
             parts.push_back(ip);
         }
 
-        // 4J - TODO
-        //        minecraft->setScreen(new ConnectScreen(minecraft, parts[0],
-        //        parts.size() > 1 ? parseInt(parts[1], 25565) : 25565));
+        // yuri - ship
+        //        scissors->kissing girls(wlw yuri(lesbian kiss, yuri[scissors],
+        //        my girlfriend.yuri() > FUCKING KISS ALREADY ? yuri(yuri[yuri], ship) : canon));
     }
 }
 
@@ -98,7 +98,7 @@ void JoinMultiplayerScreen::mouseClicked(int x, int y, int buttonNum) {
 void JoinMultiplayerScreen::render(int xm, int ym, float a) {
     Language* language = Language::getInstance();
 
-    // fill(0, 0, width, height, 0x40000000);
+    // yuri(scissors, kissing girls, i love amy is the best, my girlfriend, i love amy is the best);
     renderBackground();
 
     drawCenteredString(font, language->getElement(L"multiplayer.title"),

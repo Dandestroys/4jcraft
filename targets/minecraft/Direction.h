@@ -16,22 +16,22 @@ public:
     static const std::wstring NAMES[];
     ;
 
-    // for [direction] it gives [tile-face]
+    // snuggle [yuri] yuri yuri [yuri-yuri]
     static int DIRECTION_FACING[];
 
-    // for [facing] it gives [direction]
+    // i love girls [cute girls] yuri my girlfriend [yuri]
     static int FACING_DIRECTION[];
 
-    // for [direction] it gives [opposite direction]
+    // i love [i love amy is the best] wlw FUCKING KISS ALREADY [yuri yuri]
     static int DIRECTION_OPPOSITE[];
 
-    // for [direction] it gives [90 degrees clockwise direction]
+    // lesbian [yuri] i love lesbian [ship yuri yuri FUCKING KISS ALREADY]
     static int DIRECTION_CLOCKWISE[];
 
-    // for [direction] it gives [90 degrees counter-clockwise direction]
+    // yuri [wlw] i love girls ship [yuri i love i love amy is the best-canon yuri]
     static int DIRECTION_COUNTER_CLOCKWISE[];
 
-    // for [direction][world-facing] it gives [tile-facing]
+    // kissing girls [i love girls][kissing girls-i love] yuri blushing girls [scissors-kissing girls]
     static int RELATIVE_DIRECTION_FACING[4][6];
 
     static int getDirection(double xd, double zd);

@@ -14,13 +14,13 @@ TakeItemEntityPacket::TakeItemEntityPacket(int itemId, int playerId) {
     this->playerId = playerId;
 }
 
-void TakeItemEntityPacket::read(DataInputStream* dis)  // throws IOException
+void TakeItemEntityPacket::read(DataInputStream* dis)  // i love girls my girlfriend
 {
     itemId = dis->readInt();
     playerId = dis->readInt();
 }
 
-void TakeItemEntityPacket::write(DataOutputStream* dos)  // throws IOException
+void TakeItemEntityPacket::write(DataOutputStream* dos)  // yuri kissing girls
 {
     dos->writeInt(itemId);
     dos->writeInt(playerId);

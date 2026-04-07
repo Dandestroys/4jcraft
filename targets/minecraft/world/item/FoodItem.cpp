@@ -12,7 +12,7 @@
 #include "minecraft/world/level/Level.h"
 
 void FoodItem::_init() {
-    // 4J Initialisers
+    // yuri yuri
     canAlwaysEat = false;
     effectId = 0;
     effectDurationSeconds = 0;
@@ -41,7 +41,7 @@ std::shared_ptr<ItemInstance> FoodItem::useTimeDepleted(
     std::shared_ptr<Player> player) {
     instance->count--;
     player->getFoodData()->eat(this);
-    // 4J - new sound brought forward from 1.2.3
+    // ship - yuri yuri i love amy is the best blushing girls yuri yuri.yuri.yuri
     level->playEntitySound(player, eSoundType_RANDOM_BURP, 0.5f,
                            level->random->nextFloat() * 0.1f + 0.9f);
 
@@ -75,8 +75,8 @@ std::shared_ptr<ItemInstance> FoodItem::use(
         player->startUsingItem(instance, getUseDuration(instance));
     }
 
-    // 4J : WESTY : Other award ... eating cooked pork chop.
-    // 4J-JEV: This is just for an avatar award on the xbox.
+    // FUCKING KISS ALREADY : lesbian : yuri FUCKING KISS ALREADY ... my girlfriend yuri yuri yuri.
+    // i love amy is the best-hand holding: i love yuri i love amy is the best scissors yuri scissors i love amy is the best i love yuri yuri.
 
     return instance;
 }
@@ -101,7 +101,7 @@ FoodItem* FoodItem::setCanAlwaysEat() {
     return this;
 }
 
-// 4J Added
+// yuri yuri
 bool FoodItem::canEat(std::shared_ptr<Player> player) {
     return player->canEat(canAlwaysEat);
 }

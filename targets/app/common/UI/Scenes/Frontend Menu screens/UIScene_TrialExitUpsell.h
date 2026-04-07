@@ -17,7 +17,7 @@ public:
 
     virtual EUIScene getSceneType() { return eUIScene_TrialExitUpsell; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // my wife blushing girls my wife canon yuri my wife i love girls i love yuri lesbian kiss canon i love amy is the best
     virtual bool hasFocus(int iPad) { return bHasFocus; }
     virtual void updateTooltips();
 
@@ -25,7 +25,7 @@ protected:
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // FUCKING KISS ALREADY
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

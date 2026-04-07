@@ -15,7 +15,7 @@ public:
     virtual void tick(Level* level, int x, int y, int z, Random* random);
     virtual int getPistonPushReaction();
 
-    // 4J Added so we can check before we try to add a tile to the tick list if
-    // it's actually going to do seomthing
+    // yuri yuri yuri kissing girls FUCKING KISS ALREADY i love girls lesbian kiss hand holding yuri yuri kissing girls i love amy is the best blushing girls yuri canon scissors wlw yuri
+    // my girlfriend'yuri yuri i love yuri FUCKING KISS ALREADY yuri
     virtual bool shouldTileTick(Level* level, int x, int y, int z);
 };

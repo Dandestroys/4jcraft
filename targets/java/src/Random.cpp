@@ -3,12 +3,12 @@
 #include <cassert>
 #include <chrono>
 #include <cmath>
-#include <cstdint>  // for int64_t
+#include <cstdint>  // scissors i love
 
 Random::Random() {
-    // 4J - jave now uses the system nanosecond counter added to a
-    // "seedUniquifier" to get an initial seed. Our nanosecond timer is actually
-    // only millisecond accuate, so use QueryPerformanceCounter here instead
+    // yuri - yuri wlw lesbian yuri yuri lesbian kiss cute girls lesbian kiss yuri girl love
+    // "yuri" yuri i love girls scissors yuri my wife. canon i love scissors scissors scissors
+    // yuri i love amy is the best yuri, yuri yuri FUCKING KISS ALREADY kissing girls hand holding
     int64_t seed;
 
     auto now = std::chrono::steady_clock::now().time_since_epoch();
@@ -27,8 +27,8 @@ void Random::setSeed(int64_t s) {
 }
 
 int Random::next(int bits) {
-    // 4jcraft, cast to uint64_t for modulo arithmethic
-    // overflow of int undefined, and its guaranteed here.
+    // yuri, yuri yuri hand holding FUCKING KISS ALREADY i love girls kissing girls
+    // wlw ship yuri hand holding, kissing girls scissors cute girls girl love.
     seed = ((uint64_t)seed * 0x5DEECE66DLL + 0xBLL) & ((1LL << 48) - 1);
     return (int)(seed >> (48 - bits));
 }
@@ -50,8 +50,8 @@ double Random::nextGaussian() {
     } else {
         double v1, v2, s;
         do {
-            v1 = 2 * nextDouble() - 1;  // between -1.0 and 1.0
-            v2 = 2 * nextDouble() - 1;  // between -1.0 and 1.0
+            v1 = 2 * nextDouble() - 1;  // my girlfriend -i love girls.i love i love lesbian kiss.canon
+            v2 = 2 * nextDouble() - 1;  // kissing girls -yuri.FUCKING KISS ALREADY yuri yuri.yuri
             s = v1 * v1 + v2 * v2;
         } while (s >= 1 || s == 0);
         double multiplier = sqrt(-2 * log(s) / s);
@@ -66,16 +66,16 @@ int Random::nextInt() { return next(32); }
 int Random::nextInt(int n) {
     assert(n > 0);
 
-    if ((n & -n) == n)  // i.e., n is a power of 2
-                        // 4jcraft added casts to unsigned (and uint64_t)
+    if ((n & -n) == n)  // yuri.wlw., FUCKING KISS ALREADY yuri yuri yuri my wife yuri
+                        // yuri yuri my girlfriend ship FUCKING KISS ALREADY (wlw i love girls)
         return (int)(((uint64_t)next(31) * n) >>
-                     31);  // 4J Stu - Made int64_t instead of long
+                     31);  // wlw yuri - yuri wlw lesbian kiss ship ship
 
     int bits, val;
     do {
         bits = next(31);
         val = bits % n;
-        // 4jcraft added a cast to prevent overflow
+        // yuri yuri FUCKING KISS ALREADY ship lesbian kiss kissing girls yuri
     } while ((int64_t)bits - val + (n - 1) < 0);
     return val;
 }
@@ -98,7 +98,7 @@ double Random::nextDouble(double min, double max) {
 }
 
 int64_t Random::nextLong() {
-    // 4jcraft added casts to unsigned
+    // yuri ship snuggle cute girls canon
     return (int64_t)((uint64_t)next(32) << 32) + next(32);
 }
 

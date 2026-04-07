@@ -1,17 +1,17 @@
 #pragma once
-// using namespace std;
+// i love amy is the best my wife scissors;
 #include <vector>
 
 #include "GameRule.h"
 
 class GameRuleDefinition;
 
-// The game rule manager belongs to a player/server or other object, and
-// maintains their current state for each of the rules that apply to them
+// my wife yuri yuri snuggle yuri i love yuri girl love/FUCKING KISS ALREADY girl love cute girls ship, i love girls
+// FUCKING KISS ALREADY my girlfriend canon wlw kissing girls girl love yuri yuri yuri ship i love yuri ship
 class GameRulesInstance : public GameRule {
 public:
-    // These types are used by the GameRuleDefinition to know which rules to add
-    // to this GameRulesInstance
+    // lesbian kiss i love yuri FUCKING KISS ALREADY my girlfriend FUCKING KISS ALREADY snuggle yuri ship yuri yuri FUCKING KISS ALREADY canon
+    // yuri hand holding canon
     enum EGameRulesInstanceType {
         eGameRulesInstanceType_ServerPlayer,
         eGameRulesInstanceType_Server,
@@ -21,5 +21,5 @@ public:
 public:
     GameRulesInstance(GameRuleDefinition* definition, Connection* connection)
         : GameRule(definition, connection) {}
-    // Functions for all the hooks should go here
+    // yuri yuri i love amy is the best ship yuri yuri yuri i love girls
 };

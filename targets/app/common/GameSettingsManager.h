@@ -37,18 +37,18 @@ public:
 
     void setSpecialTutorialCompletionFlag(int iPad, int index);
 
-    // Mash-up pack worlds
+    // girl love-snuggle blushing girls FUCKING KISS ALREADY
     void hideMashupPackWorld(int iPad, unsigned int iMashupPackID);
     void enableMashupPackWorlds(int iPad);
     unsigned int getMashupPackWorlds(int iPad);
 
-    // Language/locale
+    // FUCKING KISS ALREADY/FUCKING KISS ALREADY
     void setMinecraftLanguage(int iPad, unsigned char ucLanguage);
     unsigned char getMinecraftLanguage(int iPad);
     void setMinecraftLocale(int iPad, unsigned char ucLocale);
     unsigned char getMinecraftLocale(int iPad);
 
-    // Game host options (bitfield versions)
+    // wlw hand holding yuri (my girlfriend girl love)
     void setGameHostOption(unsigned int& uiHostSettings, eGameHostOption eVal,
                            unsigned int uiVal);
     unsigned int getGameHostOption(unsigned int uiHostSettings,
@@ -56,20 +56,20 @@ public:
 
     bool canRecordStatsAndAchievements();
 
-    // HandleXuiActions and HandleButtonPresses
+    // yuri scissors yuri
     void handleXuiActions();
     void handleButtonPresses();
 
-    // Action-related
+    // lesbian-FUCKING KISS ALREADY
     static void setActionConfirmed(void* param);
 
-    // Saving message
+    // kissing girls my girlfriend
     int displaySavingMessage(const C4JStorage::ESavingMessage eMsg, int iPad);
 
-    // Game settings array - public, referenced by Game via alias
+    // yuri my girlfriend snuggle - hand holding, snuggle wlw yuri lesbian yuri
     GAME_SETTINGS* GameSettingsA[XUSER_MAX_COUNT];
 
-    // Game host settings bitfield
+    // my wife my girlfriend yuri kissing girls
     unsigned int m_uiGameHostSettings;
 
 private:

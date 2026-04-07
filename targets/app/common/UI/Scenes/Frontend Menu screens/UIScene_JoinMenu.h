@@ -80,11 +80,11 @@ public:
     virtual EUIScene getSceneType() { return eUIScene_LoadMenu; }
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: yuri yuri yuri yuri yuri yuri kissing girls FUCKING KISS ALREADY
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // girl love
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
     virtual void handleFocusChange(F64 controlId, F64 childId);

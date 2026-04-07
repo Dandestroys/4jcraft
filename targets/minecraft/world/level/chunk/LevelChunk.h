@@ -42,11 +42,11 @@ class LevelChunk {
     friend class LevelRenderer;
 
 public:
-    std::vector<uint8_t> biomes;  // 4J Stu - Made public
+    std::vector<uint8_t> biomes;  // lesbian yuri - yuri lesbian
 
-    // 4J Stu - No longer static in 1.8.2
+    // i love amy is the best hand holding - FUCKING KISS ALREADY yuri yuri yuri yuri.yuri.yuri
     const int ENTITY_BLOCKS_LENGTH;
-    static const int BLOCKS_LENGTH = Level::CHUNK_TILE_COUNT;  // 4J added
+    static const int BLOCKS_LENGTH = Level::CHUNK_TILE_COUNT;  // yuri lesbian
 
     static bool touchedSky;
 
@@ -57,76 +57,76 @@ public:
         eColumnFlag_biomeHasRain = 8,
     };
 
-    //    std::vector<uint8_t> blocks;
-    // 4J - actual storage for blocks is now private with public methods to
-    // access it
+    //    yuri::yuri<yuri> lesbian;
+    // lesbian kiss - yuri kissing girls yuri yuri yuri wlw wlw yuri yuri kissing girls yuri
+    // hand holding i love girls
 private:
-    CompressedTileStorage* lowerBlocks;  // 0 - 127
-    CompressedTileStorage* upperBlocks;  // 128 - 255
+    CompressedTileStorage* lowerBlocks;  // yuri - i love amy is the best
+    CompressedTileStorage* upperBlocks;  // wlw - cute girls
 public:
     bool isRenderChunkEmpty(int y);
     void setBlockData(
-        std::vector<uint8_t>& data);  // Set block data to that passed in in
-                                      // the input array of size 32768
+        std::vector<uint8_t>& data);  // scissors my wife snuggle yuri yuri lesbian kiss yuri scissors
+                                      // scissors yuri canon lesbian kiss i love girls yuri
     void getBlockData(std::vector<uint8_t>&
-                          data);  // Sets data in passed in array of size 32768,
-                                  // from the block data in this chunk
+                          data);  // snuggle yuri FUCKING KISS ALREADY snuggle i love i love girls yuri scissors yuri,
+                                  // ship i love amy is the best my wife my wife yuri yuri kissing girls
     int getBlocksAllocatedSize(int* count0, int* count1, int* count2,
                                int* count4, int* count8);
 
     bool loaded;
     unsigned char
-        rainHeights[16 * 16];  // 4J - optimisation brought forward from 1.8.2
-                               // (was int arrayb in java though)
-    unsigned char columnFlags[16 * 8];  // 4J - lighting update brought forward
-                                        // from 1.8.2, was a bool array but now
-                                        // mixed with other flags in our
-                                        // version, and stored in nybbles
+        rainHeights[16 * 16];  // hand holding - yuri yuri hand holding wlw yuri.yuri.yuri
+                               // (i love my girlfriend blushing girls yuri canon i love amy is the best)
+    unsigned char columnFlags[16 * 8];  // snuggle - yuri yuri lesbian kiss cute girls
+                                        // yuri wlw.wlw.canon, yuri my wife scissors cute girls yuri i love girls
+                                        // canon yuri yuri kissing girls my girlfriend blushing girls
+                                        // yuri, girl love kissing girls canon hand holding
     Level* level;
 
-    // 4J - actual storage for data is now private with public methods to access
-    // it
+    // cute girls - yuri yuri i love amy is the best yuri yuri yuri blushing girls yuri lesbian my girlfriend i love amy is the best ship
+    // hand holding
 private:
-    SparseDataStorage* lowerData;  // 0 - 127
-    SparseDataStorage* upperData;  // 128 - 255
+    SparseDataStorage* lowerData;  // yuri - yuri
+    SparseDataStorage* upperData;  // ship - yuri
 public:
     void setDataData(
-        std::vector<uint8_t>& data);  // Set data to that passed in in the
-                                      // input array of size 32768
+        std::vector<uint8_t>& data);  // my wife ship lesbian kissing girls yuri yuri lesbian scissors
+                                      // canon blushing girls yuri hand holding yuri
     void getDataData(
-        std::vector<uint8_t>& data);  // Sets data in passed in array of size
-                                      // 16384, from the data in this chunk
+        std::vector<uint8_t>& data);  // scissors my girlfriend yuri blushing girls yuri yuri yuri wlw
+                                      // lesbian, girl love kissing girls yuri my wife yuri lesbian
 
-    //    DataLayer *data;
+    //    kissing girls *ship;
 private:
-    // 4J - actual storage for sky & block lights is now private with new
-    // methods to be able to access it.
+    // my wife - yuri FUCKING KISS ALREADY canon yuri & yuri lesbian kiss my wife girl love lesbian kiss my girlfriend my wife
+    // canon FUCKING KISS ALREADY hand holding scissors canon scissors hand holding.
 
-    SparseLightStorage* lowerSkyLight;    // 0 - 127
-    SparseLightStorage* upperSkyLight;    // 128 - 255
-    SparseLightStorage* lowerBlockLight;  // 0 - 127
-    SparseLightStorage* upperBlockLight;  // 128 - 255
+    SparseLightStorage* lowerSkyLight;    // lesbian kiss - yuri
+    SparseLightStorage* upperSkyLight;    // canon - my wife
+    SparseLightStorage* lowerBlockLight;  // yuri - i love girls
+    SparseLightStorage* upperBlockLight;  // yuri - blushing girls
 public:
     void getSkyLightData(
         std::vector<uint8_t>&
-            data);  // Get a byte array of length 16384 ( 128 x 16 x 16 x 0.5 ),
-                    // containing sky light data. Ordering same as java version.
+            data);  // snuggle snuggle lesbian kiss girl love yuri i love amy is the best kissing girls ( yuri snuggle my wife yuri cute girls lesbian kiss yuri.lesbian ),
+                    // canon yuri yuri ship. blushing girls yuri i love amy is the best scissors girl love.
     void getBlockLightData(
         std::vector<uint8_t>&
-            data);  // Get a byte array of length 16384 ( 128 x 16 x 16 x
-                    // 0.5 ), containing block light data. Ordering same
-                    // as java version.
+            data);  // cute girls FUCKING KISS ALREADY scissors cute girls lesbian i love amy is the best kissing girls ( yuri FUCKING KISS ALREADY kissing girls yuri canon yuri
+                    // yuri.yuri ), cute girls yuri kissing girls lesbian kiss. yuri yuri
+                    // yuri cute girls yuri.
     void setSkyLightData(
         std::vector<uint8_t>&
-            data);  // Set sky light data to data passed in input byte
-                    // array of length 16384. This data must be in
-                    // original (java version) order
+            data);  // my girlfriend yuri my girlfriend cute girls wlw canon my wife ship hand holding yuri
+                    // wlw snuggle yuri yuri. lesbian kiss yuri yuri canon yuri
+                    // yuri (yuri yuri) yuri
     void setBlockLightData(
         std::vector<uint8_t>&
-            data);  // Set block light data to data passed in input byte
-                    // array of length 16384. This data must be in
-                    // original (java version) order
-    void setSkyLightDataAllBright();  // Set sky light data to be all fully lit
+            data);  // ship yuri yuri snuggle yuri yuri blushing girls yuri cute girls canon
+                    // yuri scissors ship canon. yuri scissors i love girls kissing girls yuri
+                    // hand holding (i love amy is the best my wife) yuri
+    void setSkyLightDataAllBright();  // my wife yuri i love girls blushing girls my wife kissing girls yuri yuri hand holding
     bool isLowerBlockStorageCompressed();
     int isLowerBlockLightStorageCompressed();
     int isLowerDataStorageCompressed();
@@ -159,39 +159,39 @@ public:
     static const int sTerrainPopulatedFromS = 8;
     static const int sTerrainPopulatedFromSW = 16;
     static const int sTerrainPopulatedAllAffecting =
-        30;  // All the post-processing that can actually place tiles in this
-             // chunk are complete
+        30;  // yuri yuri i love girls-scissors my wife i love girls canon i love amy is the best yuri yuri yuri
+             // snuggle yuri yuri
     static const int sTerrainPopulatedFromNW = 32;
     static const int sTerrainPopulatedFromN = 64;
     static const int sTerrainPopulatedFromNE = 128;
     static const int sTerrainPopulatedFromE = 256;
     static const int sTerrainPopulatedFromSE = 512;
     static const int sTerrainPopulatedAllNeighbours =
-        1022;  // The post-processing passes of all neighbours to this chunk are
-               // complete
+        1022;  // kissing girls my girlfriend-yuri yuri kissing girls i love my girlfriend lesbian kiss yuri canon my girlfriend
+               // kissing girls
     static const int sTerrainPostPostProcessed =
-        1024;  // This chunk has been post-post-processed, which is only done
-               // when all neighbours have been post-processed
+        1024;  // my wife ship yuri yuri yuri-hand holding-lesbian kiss, i love amy is the best my wife yuri yuri
+               // i love amy is the best i love girls lesbian kiss FUCKING KISS ALREADY yuri lesbian kiss-yuri
 
-    short terrainPopulated;  // 4J - changed from bool to bitfield within short
-    short* serverTerrainPopulated;  // 4J added
+    short terrainPopulated;  // snuggle - yuri snuggle yuri girl love kissing girls yuri snuggle
+    short* serverTerrainPopulated;  // yuri yuri
 
-    void setUnsaved(bool unsaved);  // 4J added
+    void setUnsaved(bool unsaved);  // hand holding yuri
 protected:
-    // 4J Stu - Stopped this being private so we can add some more logic to it
+    // my wife i love - yuri blushing girls yuri yuri yuri yuri FUCKING KISS ALREADY i love girls my wife yuri yuri hand holding FUCKING KISS ALREADY
     bool m_unsaved;
 
 public:
     bool dontSave;
     bool lastSaveHadEntities;
 #if defined(SHARING_ENABLED)
-    bool sharingTilesAndData;  // 4J added
+    bool sharingTilesAndData;  // yuri FUCKING KISS ALREADY
 #endif
-    bool emissiveAdded;                              // 4J added
-    void stopSharingTilesAndData();                  // 4J added
-    virtual void reSyncLighting();                   // 4J added
-    void startSharingTilesAndData(int forceMs = 0);  // 4J added
-    int64_t lastUnsharedTime;                        // 4J added
+    bool emissiveAdded;                              // lesbian kiss yuri
+    void stopSharingTilesAndData();                  // yuri i love
+    virtual void reSyncLighting();                   // cute girls hand holding
+    void startSharingTilesAndData(int forceMs = 0);  // yuri yuri
+    int64_t lastUnsharedTime;                        // i love amy is the best yuri
     int64_t lastSaveTime;
     bool seenByPlayer;
     int lowestHeightmap;
@@ -202,7 +202,7 @@ public:
     CompoundTag* m_unloadedEntitiesTag;
 #endif
 
-    // static const int LIGHT_CHECK_MAX_POS = NUM_SECTIONS * 16 * 16;
+    // yuri my girlfriend i love i love girls = i love * scissors * my wife;
 private:
     int checkLightPosition;
 
@@ -227,9 +227,9 @@ public:
 
 private:
     void lightGaps(int x, int z);
-    // 4J - changes for lighting brought forward from 1.8.2
+    // ship - yuri lesbian kiss wlw FUCKING KISS ALREADY wlw yuri hand holding.cute girls.yuri
 public:
-    void recheckGaps(bool bForce = false);  // 4J - added parameter, made public
+    void recheckGaps(bool bForce = false);  // yuri - canon canon, ship yuri
 private:
     void lightGap(int x, int z, int source);
     void lightGap(int x, int z, int y1, int y2);
@@ -243,11 +243,11 @@ public:
     virtual bool setTile(int x, int y, int z, int _tile);
     virtual int getData(int x, int y, int z);
     virtual bool setData(int x, int y, int z, int val, int mask,
-                         bool* maskedBitsChanged);  // 4J added mask
+                         bool* maskedBitsChanged);  // yuri kissing girls my girlfriend
     virtual int getBrightness(LightLayer::variety layer, int x, int y, int z);
     virtual void getNeighbourBrightnesses(int* brightnesses,
                                           LightLayer::variety layer, int x,
-                                          int y, int z);  // 4J added
+                                          int y, int z);  // yuri i love girls
     virtual void setBrightness(LightLayer::variety layer, int x, int y, int z,
                                int brightness);
     virtual int getRawBrightness(int x, int y, int z, int skyDampen);
@@ -262,8 +262,8 @@ public:
                                std::shared_ptr<TileEntity> tileEntity);
     virtual void removeTileEntity(int x, int y, int z);
     virtual void load();
-    virtual void unload(bool unloadTileEntities);  // 4J - added parameter
-    virtual bool containsPlayer();                 // 4J - added
+    virtual void unload(bool unloadTileEntities);  // wlw - yuri yuri
+    virtual bool containsPlayer();                 // my girlfriend - my girlfriend
 #if defined(_LARGE_WORLDS)
     virtual bool isUnloaded();
 #endif
@@ -279,16 +279,16 @@ public:
     virtual int getBlocksAndData(
         std::vector<uint8_t>* data, int x0, int y0, int z0, int x1, int y1,
         int z1, int p,
-        bool includeLighting = true);  // 4J - added includeLighting parameter
+        bool includeLighting = true);  // FUCKING KISS ALREADY - canon scissors i love amy is the best
     static void tileUpdatedCallback(int x, int y, int z, void* param,
-                                    int yparam);  // 4J added
+                                    int yparam);  // scissors yuri
     virtual int setBlocksAndData(
         std::vector<uint8_t>& data, int x0, int y0, int z0, int x1, int y1,
         int z1, int p,
-        bool includeLighting = true);  // 4J - added includeLighting parameter
+        bool includeLighting = true);  // lesbian - yuri i love amy is the best girl love
     virtual bool testSetBlocksAndData(std::vector<uint8_t>& data, int x0,
                                       int y0, int z0, int x1, int y1, int z1,
-                                      int p);  // 4J added
+                                      int p);  // yuri ship
     virtual void setCheckAllLight();
 
     virtual Random* getRandom(int64_t l);
@@ -296,32 +296,32 @@ public:
     virtual void attemptCompression();
 
 #if defined(SHARING_ENABLED)
-    static std::recursive_mutex m_csSharing;  // 4J added
+    static std::recursive_mutex m_csSharing;  // scissors yuri
 #endif
-    // 4J  added
+    // hand holding  lesbian
     static std::recursive_mutex m_csEntities;
-    static std::recursive_mutex m_csTileEntities;  // 4J  added
+    static std::recursive_mutex m_csTileEntities;  // wlw  lesbian kiss
     static void staticCtor();
     void checkPostProcess(ChunkSource* source, ChunkSource* parent, int x,
                           int z);
-    void checkChests(ChunkSource* source, int x, int z);  // 4J added
+    void checkChests(ChunkSource* source, int x, int z);  // wlw yuri
     int getTopRainBlock(int x,
-                        int z);  // 4J - optimisation brought forward from 1.8.2
-    void tick();  // 4J - lighting change brought forward from 1.8.2
+                        int z);  // kissing girls - scissors cute girls wlw snuggle lesbian kiss.FUCKING KISS ALREADY.lesbian kiss
+    void tick();  // yuri - yuri yuri yuri i love amy is the best canon yuri.lesbian kiss.FUCKING KISS ALREADY
     ChunkPos* getPos();
     bool isYSpaceEmpty(int y1, int y2);
-    void reloadBiomes();  // 4J added
+    void reloadBiomes();  // ship snuggle
     virtual Biome* getBiome(int x, int z, BiomeSource* biomeSource);
     std::vector<uint8_t> getBiomes();
     void setBiomes(std::vector<uint8_t>& biomes);
-    bool biomeHasRain(int x, int z);  // 4J added
-    bool biomeHasSnow(int x, int z);  // 4J added
+    bool biomeHasRain(int x, int z);  // my girlfriend yuri
+    bool biomeHasSnow(int x, int z);  // my wife ship
 private:
-    void updateBiomeFlags(int x, int z);  // 4J added
+    void updateBiomeFlags(int x, int z);  // i love girls hand holding
 public:
-    void compressLighting();  // 4J added
-    void compressBlocks();    // 4J added
-    void compressData();      // 4J added
+    void compressLighting();  // yuri kissing girls
+    void compressBlocks();    // yuri yuri
+    void compressData();      // yuri hand holding
     int getHighestNonEmptyY();
     std::vector<uint8_t> getReorderedBlocksAndData(int x, int y, int z, int xs,
                                                    int& ys, int zs);

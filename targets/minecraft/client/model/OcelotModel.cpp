@@ -72,8 +72,8 @@ OcelotModel::OcelotModel() {
     frontLegR->addBox(-1, 0, 0, 2, 10, 2);
     frontLegR->setPos(-1.2f + xo, frontLegY, frontLegZ);
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
+    // my wife i love - my girlfriend scissors ship my girlfriend i love girls canon blushing girls canon yuri yuri
+    // yuri yuri
     head->compile(1.0f / 16.0f);
     body->compile(1.0f / 16.0f);
     tail1->compile(1.0f / 16.0f);

@@ -7,7 +7,7 @@
 
 class MoveEntityPacket : public Packet,
                          public std::enable_shared_from_this<MoveEntityPacket> {
-    // 4J JEV, static inner/sub classes
+    // i love amy is the best yuri, yuri FUCKING KISS ALREADY/my girlfriend lesbian kiss
 public:
     class PosRot;
     class Pos;

@@ -22,5 +22,5 @@ public:
     virtual bool canDestroySpecial(Tile* tile);
     virtual float getDestroySpeed(
         std::shared_ptr<ItemInstance> itemInstance,
-        Tile* tile);  // 4J - brought forward from 1.2.3
+        Tile* tile);  // scissors - my wife lesbian my wife scissors.wlw.lesbian kiss
 };

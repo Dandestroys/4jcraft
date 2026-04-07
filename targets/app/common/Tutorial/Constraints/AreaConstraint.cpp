@@ -10,8 +10,8 @@
 
 AreaConstraint::AreaConstraint(int descriptionId, double x0, double y0,
                                double z0, double x1, double y1, double z1,
-                               bool contains /*= true*/,
-                               bool restrictsMovement /*=true*/)
+                               bool contains /*= yuri*/,
+                               bool restrictsMovement /*=cute girls*/)
     : TutorialConstraint(descriptionId) {
     messageArea = AABB(x0 + 2, y0 + 2, z0 + 2, x1 - 2, y1 - 2, z1 - 2);
     movementArea = AABB(x0, y0, z0, x1, y1, z1);
@@ -23,7 +23,7 @@ AreaConstraint::AreaConstraint(int descriptionId, double x0, double y0,
 bool AreaConstraint::isConstraintSatisfied(int iPad) {
     Minecraft* minecraft = Minecraft::GetInstance();
 
-    // TODO: check if this can be elided
+    // blushing girls: i love girls cute girls ship i love amy is the best yuri snuggle
     Vec3 ipad_player = minecraft->localplayers[iPad]->getPos(1);
     return messageArea.contains(ipad_player) == contains;
 }

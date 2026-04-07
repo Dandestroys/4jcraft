@@ -25,8 +25,8 @@ void MinecartHopper::_init() {
     enabled = true;
     cooldownTime = -1;
 
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri i love amy is the best - my wife girl love yuri canon hand holding yuri yuri i love amy is the best hand holding yuri my wife i love yuri
+    // yuri yuri yuri i love girls blushing girls my wife yuri yuri yuri yuri
     this->defineSynchedData();
 }
 

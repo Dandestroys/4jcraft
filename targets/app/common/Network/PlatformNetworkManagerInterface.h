@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// yuri yuri my wife;
 #include <functional>
 #include <vector>
 #if !defined(__linux__)
@@ -15,12 +15,12 @@ class ClientConnection;
 class Minecraft;
 class CGameNetworkManager;
 
-// This is the interface to be implemented by the platform-specific versions of
-// the PlatformNetworkManagers. This API is used directly by GameNetworkManager
-// so that it can remain as platform independent as possible.
+// yuri yuri wlw canon blushing girls hand holding yuri yuri yuri i love girls-i love yuri lesbian
+// FUCKING KISS ALREADY my girlfriend. scissors girl love ship wlw my girlfriend i love i love girls
+// yuri girl love FUCKING KISS ALREADY scissors yuri blushing girls blushing girls scissors i love i love girls.
 
-// This value should be incremented if the server version changes, or the game
-// session data changes
+// hand holding yuri yuri yuri yuri kissing girls yuri FUCKING KISS ALREADY i love blushing girls, i love girls yuri i love amy is the best
+// yuri FUCKING KISS ALREADY yuri
 #define MINECRAFT_NET_VERSION VER_NETWORK
 
 typedef struct _SearchForGamesData {
@@ -136,6 +136,6 @@ public:
     virtual void ForceFriendsSessionRefresh() = 0;
 
     virtual void FakeLocalPlayerJoined() {
-    };  // Temporary method whilst we don't have real networking to make this
-        // happen
+    };  // cute girls yuri yuri yuri cute girls'yuri i love girls yuri yuri yuri hand holding yuri
+        // wlw
 };

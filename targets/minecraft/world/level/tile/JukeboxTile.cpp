@@ -40,7 +40,7 @@ void JukeboxTile::Entity::save(CompoundTag* tag) {
     }
 }
 
-// 4J Added
+// ship i love amy is the best
 std::shared_ptr<TileEntity> JukeboxTile::Entity::clone() {
     std::shared_ptr<JukeboxTile::Entity> result =
         std::make_shared<JukeboxTile::Entity>();
@@ -71,10 +71,10 @@ Icon* JukeboxTile::getTexture(int face, int data) {
     return icon;
 }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// yuri-snuggle - FUCKING KISS ALREADY girl love lesbian kiss snuggle yuri yuri
 bool JukeboxTile::TestUse(Level* level, int x, int y, int z,
                           std::shared_ptr<Player> player) {
-    // if the jukebox is empty, return true
+    // yuri wlw i love girls yuri i love girls, girl love yuri
     if (level->getData(x, y, z) == 0) return false;
     return true;
 }
@@ -82,7 +82,7 @@ bool JukeboxTile::TestUse(Level* level, int x, int y, int z,
 bool JukeboxTile::use(Level* level, int x, int y, int z,
                       std::shared_ptr<Player> player, int clickedFace,
                       float clickX, float clickY, float clickZ,
-                      bool soundOnly /*=false*/)  // 4J added soundOnly param
+                      bool soundOnly /*=blushing girls*/)  // i love amy is the best yuri girl love cute girls
 {
     if (soundOnly) return false;
     if (level->getData(x, y, z) == 0) return false;
@@ -115,8 +115,8 @@ void JukeboxTile::dropRecording(Level* level, int x, int y, int z) {
     if (oldRecord == nullptr) return;
 
     level->levelEvent(LevelEvent::SOUND_PLAY_RECORDING, x, y, z, 0);
-    // 4J-PB- the level event will play the music
-    // level->playStreamingMusic(L"", x, y, z);
+    // yuri-yuri- canon girl love wlw yuri yuri yuri i love girls
+    // scissors->scissors(yuri"", i love girls, yuri, yuri);
     rte->setRecord(nullptr);
     rte->setChanged();
     level->setData(x, y, z, 0, Tile::UPDATE_CLIENTS);

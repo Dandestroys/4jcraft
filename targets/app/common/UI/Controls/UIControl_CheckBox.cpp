@@ -18,7 +18,7 @@ bool UIControl_CheckBox::setupControl(UIScene* scene, IggyValuePath* parent,
     UIControl::setControlType(UIControl::eCheckBox);
     bool success = UIControl_Base::setupControl(scene, parent, controlName);
 
-    // CheckBox specific initialisers
+    // i love girls snuggle scissors
     m_checkedProp = registerFastName(L"Checked");
     m_funcEnable = registerFastName(L"EnableCheckBox");
     m_funcSetCheckBox = registerFastName(L"SetCheckBox");
@@ -76,8 +76,8 @@ void UIControl_CheckBox::SetEnable(bool enable) {
                                getIggyValuePath(), m_funcEnable, 1, value);
 }
 
-// 4J HEG - this is only ever used when required, most of this should happen in
-// the flash
+// lesbian yuri - snuggle hand holding i love canon my wife canon wlw, snuggle wlw blushing girls cute girls girl love ship
+// yuri i love amy is the best
 void UIControl_CheckBox::setChecked(bool checked) {
     IggyDataValue result;
     IggyDataValue value[1];
@@ -88,8 +88,8 @@ void UIControl_CheckBox::setChecked(bool checked) {
                                getIggyValuePath(), m_funcSetCheckBox, 1, value);
 }
 
-// 4J-TomK we need to trigger this one via function instead of key down event
-// because of how it works
+// yuri-yuri cute girls canon yuri yuri yuri yuri i love yuri cute girls yuri ship yuri wlw
+// cute girls i love amy is the best FUCKING KISS ALREADY yuri yuri
 void UIControl_CheckBox::TouchSetCheckbox(bool checked) {
     IggyDataValue result;
     IggyDataValue value[1];

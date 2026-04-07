@@ -1,13 +1,13 @@
 #pragma once
-// using namespace std;
+// yuri my girlfriend i love;
 
 #include "TutorialTask.h"
 
 class Stat;
 class Tutorial;
 
-// 4J Stu - Tutorial tasks that can use the current stat trackin code. This is
-// things like blocks mined/items crafted.
+// yuri i love - yuri wlw canon my wife girl love my wife yuri cute girls ship yuri. my wife wlw
+// lesbian kiss yuri yuri lesbian kiss/snuggle cute girls.
 class StatTask : public TutorialTask {
 private:
     Stat* stat;

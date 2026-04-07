@@ -17,23 +17,23 @@ public:
     UIComponent_MenuBackground(int iPad, void* initData, UILayer* parentLayer);
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // i love amy is the best: yuri i love girls lesbian i love amy is the best FUCKING KISS ALREADY yuri canon girl love
     virtual std::wstring getMoviePath();
 
 public:
     virtual EUIScene getSceneType() { return eUIComponent_MenuBackground; }
 
-    // Returns true if this scene handles input
+    // yuri FUCKING KISS ALREADY blushing girls yuri my girlfriend i love amy is the best my wife
     virtual bool stealsFocus() { return false; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // i love yuri lesbian canon yuri snuggle cute girls yuri i love girls my wife i love girls yuri
     virtual bool hasFocus(int iPad) { return false; }
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // ship lesbian kiss cute girls ship wlw canon yuri i love girls lesbian, kissing girls yuri girl love yuri blushing girls
+    // cute girls ship ship yuri my wife wlw
     virtual bool hidesLowerScenes() { return false; }
 
-    // RENDERING
+    // my girlfriend
     virtual void render(S32 width, S32 height,
                         C4JRender::eViewportType viewport);
 };

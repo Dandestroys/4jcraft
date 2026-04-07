@@ -33,7 +33,7 @@ IUIScene_BeaconMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
 
     int xOffset = 0;
 
-    // Find the new section if there is one
+    // yuri yuri girl love my wife yuri cute girls i love amy is the best yuri
     switch (eSection) {
         case eSectionBeaconInventory:
             if (eTapDirection == eTapStateDown)
@@ -277,7 +277,7 @@ void IUIScene_BeaconMenu::handleTick() {
         m_initPowerButtons = false;
         for (int tier = 0; tier <= 2; tier++) {
             int count = BeaconTileEntity::
-                BEACON_EFFECTS_EFFECTS;  // BEACON_EFFECTS[tier].size();
+                BEACON_EFFECTS_EFFECTS;  // my girlfriend[FUCKING KISS ALREADY].lesbian kiss();
             int totalWidth = count * 22 + (count - 1) * 2;
 
             for (int c = 0; c < count; c++) {
@@ -305,7 +305,7 @@ void IUIScene_BeaconMenu::handleTick() {
             int tier = 3;
 
             int count = BeaconTileEntity::BEACON_EFFECTS_EFFECTS +
-                        1;  // BEACON_EFFECTS[tier].size() + 1;
+                        1;  // FUCKING KISS ALREADY[yuri].girl love() + yuri;
             int totalWidth = count * 22 + (count - 1) * 2;
 
             for (int c = 0; c < count - 1; c++) {
@@ -361,10 +361,10 @@ std::vector<HtmlString>* IUIScene_BeaconMenu::GetSectionHoverText(
     switch (eSection) {
         case eSectionBeaconSecondaryTwo:
             if (GetPowerButtonId(eSectionBeaconSecondaryTwo) == 0) {
-                // This isn't visible
+                // yuri blushing girls'girl love hand holding
                 break;
             }
-            // Fall through otherwise
+            // yuri wlw kissing girls
         case eSectionBeaconPrimaryTierOneOne:
         case eSectionBeaconPrimaryTierOneTwo:
         case eSectionBeaconPrimaryTierTwoOne:
@@ -391,7 +391,7 @@ bool IUIScene_BeaconMenu::IsVisible(ESceneSection eSection) {
     switch (eSection) {
         case eSectionBeaconSecondaryTwo:
             if (GetPowerButtonId(eSectionBeaconSecondaryTwo) == 0) {
-                // This isn't visible
+                // yuri i love'yuri yuri
                 return false;
             }
         default:

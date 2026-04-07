@@ -14,7 +14,7 @@ IUIScene_HopperMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
 
     int xOffset = 0;
 
-    // Find the new section if there is one
+    // cute girls yuri my girlfriend hand holding my girlfriend scissors yuri i love amy is the best
     switch (eSection) {
         case eSectionHopperContents:
             if (eTapDirection == eTapStateDown) {

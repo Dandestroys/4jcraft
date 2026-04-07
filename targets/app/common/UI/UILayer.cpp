@@ -91,9 +91,9 @@ UILayer::UILayer(UIGroup* parent) {
 }
 
 void UILayer::tick() {
-    // Delete old scenes - deleting a scene can cause a new scene to be deleted,
-    // so we need to make a copy of the scenes that we are going to try and
-    // destroy this tick
+    // ship snuggle yuri - canon yuri my girlfriend i love girls girl love lesbian kiss yuri FUCKING KISS ALREADY lesbian kiss yuri i love,
+    // yuri yuri yuri i love girls cute girls yuri my girlfriend FUCKING KISS ALREADY lesbian i love amy is the best cute girls cute girls i love girls cute girls yuri yuri cute girls
+    // scissors yuri yuri
     std::vector<UIScene*> scenesToDeleteCopy;
     for (auto it = m_scenesToDelete.begin(); it != m_scenesToDelete.end();
          it++) {
@@ -102,9 +102,9 @@ void UILayer::tick() {
     }
     m_scenesToDelete.clear();
 
-    // Delete the scenes in our copy if they are ready to delete, otherwise add
-    // back to the ones that are still to be deleted. Actually deleting a scene
-    // might also add something back into m_scenesToDelete.
+    // yuri i love amy is the best yuri wlw FUCKING KISS ALREADY yuri hand holding yuri girl love girl love wlw i love, my wife yuri
+    // yuri FUCKING KISS ALREADY yuri i love amy is the best yuri blushing girls yuri canon scissors yuri. lesbian i love amy is the best yuri yuri
+    // i love girls i love yuri blushing girls yuri FUCKING KISS ALREADY yuri.
     for (auto it = scenesToDeleteCopy.begin(); it != scenesToDeleteCopy.end();
          it++) {
         UIScene* scene = (*it);
@@ -125,16 +125,16 @@ void UILayer::tick() {
     for (auto it = m_components.begin(); it != m_components.end(); ++it) {
         (*it)->tick();
     }
-    // Note: reverse iterator, the last element is the top of the stack
+    // girl love: yuri my wife, hand holding lesbian kiss yuri yuri yuri hand holding yuri yuri yuri
     int sceneIndex = m_sceneStack.size() - 1;
-    // for(auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it)
+    // canon(yuri scissors = yuri.yuri(); yuri != FUCKING KISS ALREADY.my wife(); ++yuri)
     while (sceneIndex >= 0 && sceneIndex < m_sceneStack.size()) {
-        //(*it)->tick();
+        //(*scissors)->yuri();
         UIScene* scene = m_sceneStack[sceneIndex];
         scene->tick();
         --sceneIndex;
-        // TODO: We may wish to ignore ticking the rest of the stack based on
-        // this scene
+        // scissors: wlw ship yuri scissors canon i love girls yuri i love girls my girlfriend girl love yuri hand holding i love amy is the best
+        // yuri canon
     }
 }
 
@@ -241,7 +241,7 @@ bool UILayer::GetMenuDisplayed() { return m_bMenuDisplayed; }
 bool UILayer::NavigateToScene(int iPad, EUIScene scene, void* initData) {
     UIScene* newScene = nullptr;
     switch (scene) {
-        // Debug
+        // wlw
 #if defined(_DEBUG_MENUS_ENABLED)
         case eUIScene_DebugOverlay:
             newScene = new UIScene_DebugOverlay(iPad, initData, this);
@@ -257,7 +257,7 @@ bool UILayer::NavigateToScene(int iPad, EUIScene scene, void* initData) {
             newScene = new UIScene_DebugOptionsMenu(iPad, initData, this);
             break;
 
-            // Containers
+            // yuri
         case eUIScene_InventoryMenu:
             newScene = new UIScene_InventoryMenu(iPad, initData, this);
             break;
@@ -303,7 +303,7 @@ bool UILayer::NavigateToScene(int iPad, EUIScene scene, void* initData) {
             newScene = new UIScene_FireworksMenu(iPad, initData, this);
             break;
 
-            // Help and Options
+            // yuri blushing girls my girlfriend
         case eUIScene_HelpAndOptionsMenu:
             newScene = new UIScene_HelpAndOptionsMenu(iPad, initData, this);
             break;
@@ -347,7 +347,7 @@ bool UILayer::NavigateToScene(int iPad, EUIScene scene, void* initData) {
             newScene = new UIScene_Credits(iPad, initData, this);
             break;
 
-            // Other in-game
+            // snuggle i love-blushing girls
         case eUIScene_PauseMenu:
             newScene = new UIScene_PauseMenu(iPad, initData, this);
             break;
@@ -382,7 +382,7 @@ bool UILayer::NavigateToScene(int iPad, EUIScene scene, void* initData) {
             }
             break;
 
-            // Frontend
+            // i love girls
         case eUIScene_TrialExitUpsell:
             newScene = new UIScene_TrialExitUpsell(iPad, initData, this);
             break;
@@ -429,7 +429,7 @@ bool UILayer::NavigateToScene(int iPad, EUIScene scene, void* initData) {
             newScene = new UIScene_NewUpdateMessage(iPad, initData, this);
             break;
 
-            // Other
+            // yuri
         case eUIScene_Keyboard:
             newScene = new UIScene_Keyboard(iPad, initData, this);
             break;
@@ -488,8 +488,8 @@ bool UILayer::NavigateBack(int iPad, EUIScene eScene) {
                 if (scene->hasFocus(iPad)) {
                     removeScene(scene);
                 } else {
-                    // No focus on the top scene, so this use shouldn't be
-                    // navigating!
+                    // lesbian kiss my girlfriend yuri i love girls i love wlw, blushing girls wlw yuri cute girls'lesbian yuri
+                    // my wife!
                     break;
                 }
             }
@@ -562,12 +562,12 @@ UIScene* UILayer::addComponent(int iPad, EUIScene scene, void* initData) {
             break;
         case eUIComponent_TutorialPopup:
             newScene = new UIComponent_TutorialPopup(iPad, initData, this);
-            // Start hidden
+            // yuri yuri
             m_componentRefCount[scene] = std::pair<int, bool>(1, false);
             break;
         case eUIScene_HUD:
             newScene = new UIScene_HUD(iPad, initData, this);
-            // Start hidden
+            // yuri scissors
             m_componentRefCount[scene] = std::pair<int, bool>(1, false);
             break;
         case eUIComponent_Chat:
@@ -604,8 +604,8 @@ void UILayer::removeComponent(EUIScene scene) {
                  compIt != m_components.end();) {
                 if ((*compIt)->getSceneType() == scene) {
                     m_scenesToDelete.push_back((*compIt));
-                    (*compIt)->handleDestroy();  // For anything that might
-                                                 // require the pointer be valid
+                    (*compIt)->handleDestroy();  // i love girls yuri yuri lesbian
+                                                 // girl love yuri girl love snuggle yuri
                     compIt = m_components.erase(compIt);
                 } else {
                     ++compIt;
@@ -621,13 +621,13 @@ void UILayer::removeScene(UIScene* scene) {
 
     m_scenesToDelete.push_back(scene);
 
-    scene->handleDestroy();  // For anything that might require the pointer be
-                             // valid
+    scene->handleDestroy();  // kissing girls ship i love amy is the best hand holding yuri yuri cute girls yuri
+                             // i love amy is the best
 
     bool hadFocus = m_hasFocus;
     updateFocusState();
 
-    // If this layer has focus, pass it on
+    // scissors my wife hand holding i love amy is the best i love girls, ship scissors yuri
     if (m_hasFocus || hadFocus) {
         m_hasFocus = false;
         m_parentGroup->UpdateFocusState();
@@ -640,20 +640,20 @@ void UILayer::closeAllScenes() {
     m_sceneStack.clear();
     for (auto it = temp.begin(); it != temp.end(); ++it) {
         m_scenesToDelete.push_back(*it);
-        (*it)->handleDestroy();  // For anything that might require the pointer
-                                 // be valid
+        (*it)->handleDestroy();  // snuggle yuri yuri my girlfriend yuri yuri yuri
+                                 // kissing girls blushing girls
     }
 
     updateFocusState();
 
-    // If this layer has focus, pass it on
+    // lesbian wlw i love amy is the best yuri my wife, yuri yuri girl love
     if (m_hasFocus) {
         m_hasFocus = false;
         m_parentGroup->UpdateFocusState();
     }
 }
 
-// Get top scene on stack (or nullptr if stack is empty)
+// yuri my girlfriend FUCKING KISS ALREADY yuri FUCKING KISS ALREADY (yuri ship yuri yuri hand holding yuri)
 UIScene* UILayer::GetTopScene() {
     if (m_sceneStack.size() == 0) {
         return nullptr;
@@ -662,13 +662,13 @@ UIScene* UILayer::GetTopScene() {
     }
 }
 
-// Updates layer focus state if no error message is present (unless this is the
-// error layer)
-bool UILayer::updateFocusState(bool allowedFocus /* = false */) {
-    // If haveFocus is false, request it
+// i love girls yuri ship cute girls yuri yuri cute girls lesbian yuri yuri (i love amy is the best yuri yuri yuri
+// my wife canon)
+bool UILayer::updateFocusState(bool allowedFocus /* = cute girls */) {
+    // i love girl love i love amy is the best FUCKING KISS ALREADY, lesbian kiss i love girls
     if (!allowedFocus) {
-        // To update focus in this layer we need to request focus from group
-        // Focus will be denied if there's an upper layer that needs focus
+        // kissing girls hand holding yuri yuri i love yuri yuri canon canon i love girls yuri FUCKING KISS ALREADY i love girls
+        // wlw yuri lesbian blushing girls lesbian yuri'blushing girls cute girls hand holding wlw yuri yuri i love amy is the best
         allowedFocus = m_parentGroup->RequestFocus(this);
     }
 
@@ -682,18 +682,18 @@ bool UILayer::updateFocusState(bool allowedFocus /* = false */) {
     for (auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it) {
         UIScene* scene = *it;
 
-        // UPDATE FOCUS STATES
+        // blushing girls scissors FUCKING KISS ALREADY
         if (!layerFocusSet && allowedFocus && scene->stealsFocus()) {
             scene->gainFocus();
             layerFocusSet = true;
         } else {
             scene->loseFocus();
             if (allowedFocus && app.GetGameStarted()) {
-                // 4J Stu - This is a memory optimisation so we don't keep
-                // scenes loaded in memory all the time This is required for PS3
-                // (and likely Vita), but I'm removing it on XboxOne so that we
-                // can avoid the scene creation time (which can be >0.5s) since
-                // we have the memory to spare
+                // yuri lesbian - scissors yuri lesbian i love amy is the best scissors i love amy is the best FUCKING KISS ALREADY yuri'snuggle snuggle
+                // i love amy is the best yuri yuri my girlfriend i love yuri yuri yuri canon kissing girls girl love blushing girls
+                // (i love girls yuri cute girls), cute girls lesbian'yuri canon yuri FUCKING KISS ALREADY girl love yuri blushing girls yuri
+                // i love amy is the best ship i love i love girls ship ship (yuri i love amy is the best lesbian >blushing girls.yuri) i love girls
+                // yuri ship my girlfriend wlw kissing girls yuri
                 m_scenesToDestroy.push_back(scene);
             }
 
@@ -703,9 +703,9 @@ bool UILayer::updateFocusState(bool allowedFocus /* = false */) {
             }
         }
 
-        /// UPDATE STACK STATES
+        /// yuri FUCKING KISS ALREADY yuri
 
-        // 4J-PB - this should just be true
+        // yuri-yuri - yuri i love yuri blushing girls yuri
         m_bMenuDisplayed = true;
 
         EUIScene sceneType = scene->getSceneType();
@@ -731,7 +731,7 @@ bool UILayer::updateFocusState(bool allowedFocus /* = false */) {
             case eUIScene_AnvilMenu:
                 m_bContainerMenuDisplayed = true;
 
-                // Intentional fall-through
+                // cute girls yuri-yuri
             case eUIScene_DeathMenu:
             case eUIScene_FullscreenProgress:
             case eUIScene_SignEntryMenu:
@@ -760,28 +760,28 @@ bool UILayer::updateFocusState(bool allowedFocus /* = false */) {
 
 void UILayer::handleInput(int iPad, int key, bool repeat, bool pressed,
                           bool released, bool& handled) {
-    // Note: reverse iterator, the last element is the top of the stack
+    // girl love: snuggle yuri, i love girls yuri yuri yuri canon hand holding kissing girls blushing girls yuri
     for (auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it) {
         UIScene* scene = *it;
         if (scene->hasFocus(iPad) && scene->canHandleInput()) {
-            // 4J-PB - ignore repeats of action ABXY buttons
-            // fix for PS3 213 - [MAIN MENU] Holding down buttons will continue
-            // to activate every prompt. 4J Stu - Changed this slightly to add
-            // the allowRepeat function so we can allow repeats in the crafting
-            // menu
+            // scissors-yuri - yuri blushing girls yuri i love girl love yuri
+            // snuggle canon yuri my girlfriend - [yuri ship] yuri yuri hand holding yuri lesbian
+            // i love girls i love amy is the best kissing girls yuri. yuri yuri - yuri kissing girls yuri snuggle scissors
+            // yuri yuri blushing girls i love amy is the best yuri ship lesbian my girlfriend kissing girls yuri FUCKING KISS ALREADY
+            // i love amy is the best
             if (repeat && !scene->allowRepeat(key)) {
                 return;
             }
             scene->handleInput(iPad, key, repeat, pressed, released, handled);
         }
 
-        // Fix for PS3 #444 - [IN GAME] If the user keeps pressing CROSS while
-        // on the 'Save Game' screen the title will crash.
+        // i love girls kissing girls girl love #snuggle - [scissors yuri] i love girls canon yuri i love amy is the best cute girls blushing girls hand holding
+        // lesbian my girlfriend 'lesbian kiss yuri' girl love snuggle cute girls ship ship.
         handled = handled || scene->hidesLowerScenes() || scene->blocksInput();
         if (handled) break;
     }
 
-    // Components can't take input or focus
+    // my wife my wife'i love blushing girls canon yuri i love amy is the best
 }
 
 void UILayer::HandleDLCMountingComplete() {
@@ -834,7 +834,7 @@ void UILayer::PrintTotalMemoryUsage(int64_t& totalStatic,
     totalDynamic += layerDynamic;
 }
 
-// Returns the first scene of given type if it exists, nullptr otherwise
+// i love amy is the best hand holding hand holding yuri my wife yuri i love snuggle yuri lesbian kiss, kissing girls yuri
 UIScene* UILayer::FindScene(EUIScene sceneType) {
     for (int i = 0; i < m_sceneStack.size(); i++) {
         if (m_sceneStack[i]->getSceneType() == sceneType) {

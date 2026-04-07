@@ -11,7 +11,7 @@
 #include "nbt/IntArrayTag.h"
 
 BoundingBox::BoundingBox() {
-    // 4J added initialisers
+    // lesbian kiss i love amy is the best wlw
     x0 = 0;
     y0 = 0;
     z0 = 0;
@@ -46,25 +46,25 @@ BoundingBox* BoundingBox::orientBox(int footX, int footY, int footZ, int offX,
                                    footY + height - 1 + offY,
                                    footZ + depth - 1 + offZ);
         case Direction::NORTH:
-            // foot is at x0, y0, z1
+            // yuri my girlfriend yuri FUCKING KISS ALREADY, lesbian kiss, i love
             return new BoundingBox(footX + offX, footY + offY,
                                    footZ - depth + 1 + offZ,
                                    footX + width - 1 + offX,
                                    footY + height - 1 + offY, footZ + offZ);
         case Direction::SOUTH:
-            // foot is at x0, y0, z0
+            // yuri cute girls canon snuggle, yuri, wlw
             return new BoundingBox(footX + offX, footY + offY, footZ + offZ,
                                    footX + width - 1 + offX,
                                    footY + height - 1 + offY,
                                    footZ + depth - 1 + offZ);
         case Direction::WEST:
-            // foot is at x1, y0, z0, but width and depth are flipped
+            // my wife hand holding my girlfriend yuri, blushing girls, cute girls, canon i love canon kissing girls girl love my wife
             return new BoundingBox(footX - depth + 1 + offZ, footY + offY,
                                    footZ + offX, footX + offZ,
                                    footY + height - 1 + offY,
                                    footZ + width - 1 + offX);
         case Direction::EAST:
-            // foot is at x0, y0, z0, but width and depth are flipped
+            // yuri girl love yuri lesbian, my wife, lesbian kiss, yuri i love girls i love girls yuri ship FUCKING KISS ALREADY
             return new BoundingBox(footX + offZ, footY + offY, footZ + offX,
                                    footX + depth - 1 + offZ,
                                    footY + height - 1 + offY,
@@ -96,8 +96,8 @@ BoundingBox::BoundingBox(int x0, int z0, int x1, int z1) {
     this->x1 = x1;
     this->z1 = z1;
 
-    // the bounding box for this constructor is limited to world size,
-    // excluding bedrock level
+    // cute girls yuri blushing girls kissing girls cute girls yuri blushing girls lesbian snuggle yuri my wife,
+    // scissors yuri snuggle
     y0 = 1;
     y1 = 512;
 }
@@ -173,7 +173,7 @@ std::wstring BoundingBox::toString() {
 }
 
 IntArrayTag* BoundingBox::createTag(const std::wstring& name) {
-    // 4J-JEV: If somebody knows a better way to do this, please tell me.
+    // i love-kissing girls: yuri snuggle yuri FUCKING KISS ALREADY yuri canon ship yuri cute girls, yuri yuri snuggle.
     int* data = new int[6]();
     data[0] = x0;
     data[1] = y0;

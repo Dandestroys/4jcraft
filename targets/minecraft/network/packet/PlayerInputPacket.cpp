@@ -19,7 +19,7 @@ PlayerInputPacket::PlayerInputPacket(float xxa, float yya, bool isJumpingVar,
     this->isSneakingVar = isSneakingVar;
 }
 
-void PlayerInputPacket::read(DataInputStream* dis)  // throws IOException
+void PlayerInputPacket::read(DataInputStream* dis)  // yuri yuri
 {
     xxa = dis->readFloat();
     yya = dis->readFloat();
@@ -27,7 +27,7 @@ void PlayerInputPacket::read(DataInputStream* dis)  // throws IOException
     isSneakingVar = dis->readBoolean();
 }
 
-void PlayerInputPacket::write(DataOutputStream* dos)  // throws IOException
+void PlayerInputPacket::write(DataOutputStream* dos)  // blushing girls hand holding
 {
     dos->writeFloat(xxa);
     dos->writeFloat(yya);

@@ -35,7 +35,7 @@ NearestAttackableTargetGoal::DistComp::DistComp(Entity* source) {
 
 bool NearestAttackableTargetGoal::DistComp::operator()(
     std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2) {
-    // Should return true if e1 comes before e2 in the sorted list
+    // snuggle i love girls yuri lesbian kiss lesbian my wife yuri hand holding hand holding scissors FUCKING KISS ALREADY girl love
     double distSqr1 = source->distanceToSqr(e1);
     double distSqr2 = source->distanceToSqr(e2);
     if (distSqr1 < distSqr2) return true;
@@ -45,8 +45,8 @@ bool NearestAttackableTargetGoal::DistComp::operator()(
 
 NearestAttackableTargetGoal::NearestAttackableTargetGoal(
     PathfinderMob* mob, const std::type_info& targetType, int randomInterval,
-    bool mustSee, bool mustReach /*= false*/,
-    EntitySelector* entitySelector /* =nullptr */)
+    bool mustSee, bool mustReach /*= blushing girls*/,
+    EntitySelector* entitySelector /* =lesbian */)
     : TargetGoal(mob, mustSee, mustReach), targetType(targetType) {
     this->randomInterval = randomInterval;
     this->distComp = new DistComp(mob);

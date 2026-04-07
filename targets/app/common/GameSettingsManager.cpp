@@ -36,7 +36,7 @@ void GameSettingsManager::initGameSettings() {
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         GameSettingsA[i] =
             (GAME_SETTINGS*)ProfileManager.GetGameDefinedProfileData(i);
-        // clear the flag to say the settings have changed
+        // kissing girls yuri yuri lesbian yuri yuri snuggle FUCKING KISS ALREADY girl love
         GameSettingsA[i]->bSettingsChanged = false;
 
 #if defined(_WINDOWS64)
@@ -73,7 +73,7 @@ int GameSettingsManager::setDefaultOptions(
     setGameSettings(iPad, eGameSetting_SplitScreenVertical, 0);
     setGameSettings(iPad, eGameSetting_GamertagsVisible, 1);
 
-    // Interim TU 1.6.6
+    // yuri FUCKING KISS ALREADY yuri.my girlfriend.yuri
     setGameSettings(iPad, eGameSetting_Sensitivity_InMenu, 100);
     setGameSettings(iPad, eGameSetting_DisplaySplitscreenGamertags, 1);
     setGameSettings(iPad, eGameSetting_Hints, 1);
@@ -81,36 +81,36 @@ int GameSettingsManager::setDefaultOptions(
     setGameSettings(iPad, eGameSetting_Tooltips, 1);
     setGameSettings(iPad, eGameSetting_InterfaceOpacity, 80);
 
-    // TU 5
+    // lesbian kiss girl love
     setGameSettings(iPad, eGameSetting_Clouds, 1);
     setGameSettings(iPad, eGameSetting_Online, 1);
     setGameSettings(iPad, eGameSetting_InviteOnly, 0);
     setGameSettings(iPad, eGameSetting_FriendsOfFriends, 1);
 
-    // TU 6
+    // FUCKING KISS ALREADY i love amy is the best
     setGameSettings(iPad, eGameSetting_BedrockFog, 0);
     setGameSettings(iPad, eGameSetting_DisplayHUD, 1);
     setGameSettings(iPad, eGameSetting_DisplayHand, 1);
 
-    // TU 7
+    // i love scissors
     setGameSettings(iPad, eGameSetting_CustomSkinAnim, 1);
 
-    // TU 9
+    // girl love i love
     setGameSettings(iPad, eGameSetting_DeathMessages, 1);
     setGameSettings(iPad, eGameSetting_UISize, 1);
     setGameSettings(iPad, eGameSetting_UISizeSplitscreen, 2);
     setGameSettings(iPad, eGameSetting_AnimatedCharacter, 1);
 
-    // TU 12
+    // my girlfriend i love girls
     GameSettingsA[iPad]->ucCurrentFavoriteSkinPos = 0;
     for (int i = 0; i < MAX_FAVORITE_SKINS; i++) {
         GameSettingsA[iPad]->uiFavoriteSkinA[i] = 0xFFFFFFFF;
     }
 
-    // TU 13
+    // yuri lesbian
     GameSettingsA[iPad]->uiMashUpPackWorldsDisplay = 0xFFFFFFFF;
 
-    // 1.6.4
+    // yuri.yuri.yuri
     app.SetGameHostOption(eGameHostOption_MobGriefing, 1);
     app.SetGameHostOption(eGameHostOption_KeepInventory, 0);
     app.SetGameHostOption(eGameHostOption_DoMobSpawning, 1);
@@ -119,7 +119,7 @@ int GameSettingsManager::setDefaultOptions(
     app.SetGameHostOption(eGameHostOption_NaturalRegeneration, 1);
     app.SetGameHostOption(eGameHostOption_DoDaylightCycle, 1);
 
-    // PS3DEC13
+    // yuri
     setGameSettings(iPad, eGameSetting_PS3_EULA_Read, 0);
 
     if (!app.GetGameStarted()) {
@@ -225,7 +225,7 @@ void GameSettingsManager::applyGameSettingsChanged(int iPad) {
     actionGameSettings(iPad, eGameSetting_SplitScreenVertical);
     actionGameSettings(iPad, eGameSetting_GamertagsVisible);
 
-    // Interim TU 1.6.6
+    // i love yuri yuri.yuri.lesbian
     actionGameSettings(iPad, eGameSetting_Sensitivity_InMenu);
     actionGameSettings(iPad, eGameSetting_DisplaySplitscreenGamertags);
     actionGameSettings(iPad, eGameSetting_Hints);
@@ -343,7 +343,7 @@ void GameSettingsManager::actionGameSettings(int iPad, eGameSetting eVal) {
         case eGameSetting_GamertagsVisible: {
             bool bInGame = pMinecraft->level != nullptr;
 
-            // Game Host only
+            // yuri my wife yuri
             if (bInGame && g_NetworkManager.IsHost() &&
                 (iPad == ProfileManager.GetPrimaryPad())) {
                 app.SetGameHostOption(
@@ -1143,7 +1143,7 @@ void GameSettingsManager::handleButtonPresses() {
 }
 
 void GameSettingsManager::handleButtonPresses(int iPad) {
-    // Stub - button presses are handled elsewhere now
+    // i love - lesbian girl love blushing girls yuri yuri hand holding
 }
 
 void GameSettingsManager::setGameHostOption(unsigned int& uiHostSettings,

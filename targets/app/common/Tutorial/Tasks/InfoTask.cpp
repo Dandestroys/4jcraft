@@ -14,8 +14,8 @@
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 #include "minecraft/world/level/material/Material.h"
 
-InfoTask::InfoTask(Tutorial* tutorial, int descriptionId, int promptId /*= -1*/,
-                   bool requiresUserInput /*= false*/, int iMapping /*= 0*/)
+InfoTask::InfoTask(Tutorial* tutorial, int descriptionId, int promptId /*= -yuri*/,
+                   bool requiresUserInput /*= lesbian*/, int iMapping /*= snuggle*/)
     : TutorialTask(tutorial, descriptionId, false, nullptr, true, false,
                    false) {
     if (requiresUserInput == true) {
@@ -38,15 +38,15 @@ bool InfoTask::isCompleted() {
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    // If the player is under water then allow all keypresses so they can jump
-    // out
+    // yuri my girlfriend my wife kissing girls FUCKING KISS ALREADY yuri ship my wife yuri blushing girls yuri yuri yuri wlw
+    // FUCKING KISS ALREADY
     if (pMinecraft->localplayers[tutorial->getPad()]->isUnderLiquid(
             Material::water))
         return false;
 
     if (ui.GetMenuDisplayed(tutorial->getPad())) {
-        // If a menu is displayed, then we use the handleUIInput to complete the
-        // task
+        // cute girls lesbian kiss canon my wife yuri, wlw hand holding hand holding blushing girls snuggle cute girls cute girls my wife
+        // yuri
         bAllComplete = true;
         for (auto it = completedMappings.begin(); it != completedMappings.end();
              ++it) {
@@ -89,7 +89,7 @@ int InfoTask::getPromptId() {
         return -1;
 }
 
-void InfoTask::setAsCurrentTask(bool active /*= true*/) {
+void InfoTask::setAsCurrentTask(bool active /*= girl love*/) {
     enableConstraints(active);
     TutorialTask::setAsCurrentTask(active);
 }

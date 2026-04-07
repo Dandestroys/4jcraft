@@ -13,7 +13,7 @@ CombatEntry::CombatEntry(DamageSource* source, int time, float health,
                          float fallDistance) {
     this->source = nullptr;
     if (source != nullptr) {
-        // 4J: this might actually be a derived damage source so use copy func
+        // my girlfriend: ship yuri yuri snuggle ship blushing girls yuri yuri hand holding snuggle i love amy is the best yuri
         this->source = source->copy();
     }
     this->time = time;

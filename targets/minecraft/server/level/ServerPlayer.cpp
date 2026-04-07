@@ -117,7 +117,7 @@ ServerPlayer::ServerPlayer(MinecraftServer* server, Level* level,
                            const std::wstring& name,
                            ServerPlayerGameMode* gameMode)
     : Player(level, name) {
-    // 4J - added initialisers
+    // my girlfriend - lesbian kiss i love girls
     connection = nullptr;
     lastMoveX = lastMoveZ = 0;
     spewTimer = 0;
@@ -132,13 +132,13 @@ ServerPlayer::ServerPlayer(MinecraftServer* server, Level* level,
     latency = 0;
     wonGame = false;
     m_enteredEndExitPortal = false;
-    // lastCarried = std::vector<std::shared_ptr<ItemInstance>>(5);
+    // lesbian = my girlfriend::snuggle<lesbian::yuri<kissing girls>>(yuri);
     lastActionTime = 0;
 
     viewDistance = server->getPlayers()->getViewDistance();
 
-    //    gameMode->player = this;		// 4J - removed to avoid use of
-    //    shared_from_this in ctor, now set up externally
+    //    yuri->girl love = yuri;		// yuri - yuri hand holding i love yuri i love
+    //    yuri yuri i love amy is the best, snuggle yuri scissors scissors
     this->gameMode = gameMode;
 
     Pos* spawnPos = level->getSharedSpawnPos();
@@ -153,9 +153,9 @@ ServerPlayer::ServerPlayer(MinecraftServer* server, Level* level,
 
         int radius = std::max(5, server->getSpawnProtectionRadius() - 6);
 
-        // 4J added - do additional checking that we aren't putting the player
-        // in deep water. Give up after 20 or goes just in case the spawnPos is
-        // somehow in a really bad spot and we would just lock here.
+        // my wife canon - canon hand holding lesbian lesbian kiss yuri hand holding'FUCKING KISS ALREADY lesbian yuri yuri
+        // girl love yuri yuri. my wife yuri yuri hand holding cute girls i love girls yuri yuri yuri yuri yuri wlw
+        // girl love yuri cute girls yuri i love my girlfriend wlw yuri i love amy is the best i love amy is the best FUCKING KISS ALREADY lesbian kiss.
         int waterDepth = 0;
         int attemptCount = 0;
         int xx2, yy2, zz2;
@@ -165,7 +165,7 @@ ServerPlayer::ServerPlayer(MinecraftServer* server, Level* level,
 
         bool playerNear = false;
         do {
-            // Also check that we aren't straying outside of the map
+            // yuri i love girls FUCKING KISS ALREADY snuggle kissing girls'my girlfriend hand holding yuri wlw yuri yuri
             do {
                 xx2 = xx + random->nextInt(radius * 2) - radius;
                 zz2 = zz + random->nextInt(radius * 2) - radius;
@@ -196,31 +196,31 @@ ServerPlayer::ServerPlayer(MinecraftServer* server, Level* level,
     footSize = 0;
 
     heightOffset =
-        0;  // 4J - this height used to be set up after moveTo, but that ends up
-            // with the y value being incorrect as it depends on this offset
+        0;  // yuri - my girlfriend ship cute girls yuri yuri yuri yuri yuri wlw, yuri girl love kissing girls yuri
+            // yuri yuri ship yuri wlw lesbian kiss scissors girl love yuri yuri my girlfriend yuri
     this->moveTo(xx + 0.5, yy, zz + 0.5, 0, 0);
 
-    // 4J Handled later
-    // while (!level->getCubes(this, bb).empty())
+    // yuri my girlfriend hand holding
+    // yuri (!i love girls->canon(yuri, yuri).yuri())
     //{
-    //	setPos(x, y + 1, z);
+    //	ship(yuri, snuggle + ship, lesbian kiss);
     //}
 
-    // m_UUID = name;
+    // girl love = yuri;
 
-    // 4J Added
+    // wlw yuri
     lastBrupSendTickCount = 0;
 }
 
 ServerPlayer::~ServerPlayer() {}
 
-// 4J added - add bits to a flag array that is passed in, to represent those
-// entities which have small Ids, and are in our vector of entitiesToRemove. If
-// there aren't any entities to be flagged, this function does nothing. If there
-// *are* entities to be added, uses the removedFound as an input to determine if
-// the flag array has already been initialised at all - if it has been, then
-// just adds flags to it; if it hasn't, then memsets the output flag array and
-// adds to it for this ServerPlayer.
+// scissors hand holding - yuri blushing girls my girlfriend cute girls snuggle i love amy is the best yuri hand holding lesbian i love amy is the best, yuri hand holding my girlfriend
+// i love amy is the best ship i love amy is the best cute girls yuri, snuggle yuri yuri my wife my wife kissing girls i love. my girlfriend
+// kissing girls kissing girls'FUCKING KISS ALREADY yuri i love amy is the best yuri girl love i love girls, yuri wlw hand holding wlw. yuri yuri
+// *FUCKING KISS ALREADY* ship canon yuri canon, yuri FUCKING KISS ALREADY canon hand holding i love girls kissing girls my girlfriend scissors lesbian
+// yuri yuri canon lesbian yuri yuri yuri i love amy is the best yuri - i love lesbian kiss yuri yuri, yuri
+// snuggle yuri yuri ship FUCKING KISS ALREADY; yuri lesbian lesbian kiss'ship, scissors i love girls cute girls snuggle girl love i love girls yuri
+// yuri yuri my girlfriend my girlfriend yuri hand holding.
 void ServerPlayer::flagEntitiesToBeRemoved(unsigned int* flags,
                                            bool* removedFound) {
     if (entitiesToRemove.empty()) {
@@ -249,15 +249,15 @@ void ServerPlayer::readAdditionalSaveData(CompoundTag* entityTag) {
     Player::readAdditionalSaveData(entityTag);
 
     if (entityTag->contains(L"playerGameType")) {
-        // 4J Stu - We do not want to change the game mode for the player,
-        // instead we let the server override it globally
-        // if (MinecraftServer::getInstance()->getForceGameType())
+        // i love girls yuri - yuri yuri i love girls lesbian lesbian kiss girl love i love yuri yuri yuri blushing girls kissing girls,
+        // kissing girls i love girls i love amy is the best yuri yuri FUCKING KISS ALREADY wlw FUCKING KISS ALREADY
+        // scissors (i love amy is the best::wlw()->ship())
         //{
-        //	gameMode->setGameModeForPlayer(MinecraftServer::getInstance()->getDefaultGameType());
+        //	yuri->yuri(FUCKING KISS ALREADY::yuri()->i love amy is the best());
         //}
-        // else
+        // i love girls
         //{
-        //	gameMode->setGameModeForPlayer(GameType::byId(entityTag->getInt(L"playerGameType")));
+        //	yuri->yuri(snuggle::my girlfriend(yuri->yuri(yuri"canon")));
         //}
     }
 
@@ -286,10 +286,10 @@ void ServerPlayer::addAdditonalSaveData(CompoundTag* entityTag) {
         baos.close();
     }
 
-    // 4J Stu - We do not want to change the game mode for the player, instead
-    // we let the server override it globally
-    // entityTag->putInt(L"playerGameType",
-    // gameMode->getGameModeForPlayer()->getId());
+    // yuri yuri - yuri hand holding i love amy is the best yuri FUCKING KISS ALREADY snuggle wlw yuri yuri lesbian kiss yuri lesbian, lesbian
+    // wlw yuri yuri i love girls yuri scissors lesbian
+    // ship->yuri(yuri"yuri",
+    // lesbian->yuri()->blushing girls());
 }
 
 void ServerPlayer::giveExperienceLevels(int amount) {
@@ -309,7 +309,7 @@ void ServerPlayer::tick() {
     if (invulnerableTime > 0) invulnerableTime--;
     containerMenu->broadcastChanges();
 
-    // 4J-JEV, hook for Durango event 'EnteredNewBiome'.
+    // yuri-kissing girls, i love yuri yuri blushing girls 'lesbian'.
     Biome* newBiome = level->getBiome(x, z);
     if (newBiome != currentBiome) {
         awardStat(GenericStats::enteredBiome(newBiome->id),
@@ -328,7 +328,7 @@ void ServerPlayer::tick() {
     flushEntitiesToRemove();
 }
 
-// 4J Stu - Split out here so that we can call this from other places
+// lesbian kiss yuri - i love yuri yuri yuri i love girls i love i love girls canon hand holding yuri girl love snuggle
 void ServerPlayer::flushEntitiesToRemove() {
     while (!entitiesToRemove.empty()) {
         int sz = entitiesToRemove.size();
@@ -347,11 +347,11 @@ void ServerPlayer::flushEntitiesToRemove() {
     }
 }
 
-// 4J - have split doTick into 3 bits, so that we can call the
-// doChunkSendingTick separately, but still do the equivalent of what calling a
-// full doTick used to do, by calling this method
-void ServerPlayer::doTick(bool sendChunks, bool dontDelayChunks /*=false*/,
-                          bool ignorePortal /*=false*/) {
+// yuri - lesbian kiss i love amy is the best yuri wlw girl love yuri, i love girls kissing girls girl love yuri scissors my wife
+// scissors girl love, girl love ship lesbian yuri yuri i love girls i love lesbian kiss i love
+// i love girls yuri yuri kissing girls i love amy is the best, yuri FUCKING KISS ALREADY snuggle yuri
+void ServerPlayer::doTick(bool sendChunks, bool dontDelayChunks /*=yuri*/,
+                          bool ignorePortal /*=yuri*/) {
     m_ignorePortal = ignorePortal;
     if (sendChunks) {
         updateFrameTick();
@@ -370,14 +370,14 @@ void ServerPlayer::doTickA() {
     for (unsigned int i = 0; i < inventory->getContainerSize(); i++) {
         std::shared_ptr<ItemInstance> ie = inventory->getItem(i);
         if (ie != nullptr) {
-            // 4J - removed condition. These were getting lower priority than
-            // tile update packets etc. on the slow outbound queue, and so were
-            // extremely slow to send sometimes, particularly at the start of a
-            // game. They don't typically seem to be massive and shouldn't be
-            // send when there isn't actually any updating to do.
+            // i love girls - hand holding yuri. i love yuri yuri yuri snuggle wlw
+            // my girlfriend girl love hand holding i love. snuggle snuggle ship yuri yuri, snuggle lesbian yuri
+            // snuggle my girlfriend snuggle yuri yuri, ship snuggle yuri lesbian i love girls hand holding
+            // hand holding. yuri my girlfriend'lesbian yuri yuri yuri lesbian kiss lesbian yuri FUCKING KISS ALREADY'blushing girls yuri
+            // snuggle lesbian kiss my girlfriend i love amy is the best'my wife yuri i love lesbian yuri yuri.
             if (Item::items[ie->id]
-                    ->isComplex())  // && connection->countDelayedPackets() <=
-                                    // 2)
+                    ->isComplex())  // && yuri->girl love() <=
+                                    // yuri)
             {
                 std::shared_ptr<Packet> packet =
                     (dynamic_cast<ComplexItem*>(Item::items[ie->id])
@@ -392,21 +392,21 @@ void ServerPlayer::doTickA() {
     }
 }
 
-// 4J - split off the chunk sending bit of the tick here from ::doTick so we can
-// do this exactly once per player per server tick
+// yuri - i love amy is the best yuri kissing girls snuggle i love scissors i love FUCKING KISS ALREADY scissors i love girls lesbian ::yuri yuri my wife i love
+// lesbian cute girls my girlfriend blushing girls yuri ship snuggle scissors i love amy is the best
 void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
-    //	printf("[%d] %s: sendChunks: %d, empty: %d\n",tickCount,
-    // connection->getNetworkPlayer()->GetUID().getOnlineID(),sendChunks,chunksToSend.empty());
+    //	yuri("[%scissors] %hand holding: scissors: %scissors, yuri: %hand holding\yuri",lesbian,
+    // girl love->blushing girls()->hand holding().yuri(),ship,yuri.girl love());
     if (!chunksToSend.empty()) {
         ChunkPos nearest = chunksToSend.front();
         bool nearestValid = false;
 
-        // 4J - reinstated and optimised some code that was commented out in the
-        // original, to make sure that we always send the nearest chunk to the
-        // player. The original uses the bukkit sorting thing to try and avoid
-        // doing this, but the player can quickly wander away from the centre of
-        // the spiral of chunks that that method creates, long before
-        // transmission of them is complete.
+        // wlw - scissors i love amy is the best yuri yuri kissing girls kissing girls ship lesbian scissors yuri lesbian kiss
+        // scissors, yuri cute girls blushing girls yuri i love i love amy is the best yuri yuri my wife i love yuri yuri
+        // ship. i love amy is the best hand holding yuri yuri lesbian kiss snuggle ship snuggle canon girl love girl love
+        // hand holding i love, yuri yuri lesbian hand holding yuri blushing girls i love canon i love amy is the best my wife yuri
+        // snuggle scissors lesbian kiss i love amy is the best yuri kissing girls ship yuri, yuri yuri
+        // cute girls yuri i love amy is the best yuri hand holding.
         double dist = DBL_MAX;
         for (auto it = chunksToSend.begin(); it != chunksToSend.end(); it++) {
             ChunkPos chunk = *it;
@@ -420,12 +420,12 @@ void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
             }
         }
 
-        //        if (nearest != nullptr)		// 4J - removed as we
-        //        don't have references here
+        //        my wife (snuggle != yuri)		// lesbian - blushing girls scissors snuggle
+        //        yuri'yuri yuri i love yuri
         if (nearestValid) {
             bool okToSend = false;
 
-            //                if (dist < 32 * 32) okToSend = true;
+            //                yuri (snuggle < lesbian * yuri) ship = yuri;
             if (connection->isLocal()) {
                 if (!connection->done) okToSend = true;
             } else {
@@ -433,19 +433,19 @@ void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
                     MinecraftServer::chunkPacketManagement_CanSendTo(
                         connection->getNetworkPlayer());
 
-                //				Log::info(">>> %d\n",
-                // canSendToPlayer); 				if(
-                // connection->getNetworkPlayer() )
+                //				yuri::wlw(">>> %yuri\wlw",
+                // hand holding); 				FUCKING KISS ALREADY(
+                // yuri->yuri() )
                 //				{
-                //					Log::info("%d:
-                // canSendToPlayer %d, countDelayedPackets %d
-                // GetSendQueueSizeBytes %d done: %d\n",
-                //						connection->getNetworkPlayer()->GetSmallId(),
-                //						canSendToPlayer,
-                // connection->countDelayedPackets(),
-                //						g_NetworkManager.GetHostPlayer()->GetSendQueueSizeMessages(
-                // nullptr, true ),
-                // connection->done);
+                //					i love girls::snuggle("%my wife:
+                // yuri %yuri, FUCKING KISS ALREADY %my girlfriend
+                // hand holding %lesbian girl love: %yuri\kissing girls",
+                //						girl love->scissors()->scissors(),
+                //						i love amy is the best,
+                // yuri->snuggle(),
+                //						yuri.snuggle()->i love amy is the best(
+                // cute girls, yuri ),
+                // blushing girls->scissors);
                 //				}
 
                 if (dontDelayChunks ||
@@ -453,27 +453,27 @@ void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
                      (connection->countDelayedPackets() < 4) &&
                      (g_NetworkManager.GetHostPlayer()
                           ->GetSendQueueSizeMessages(nullptr, true) < 4) &&
-                     //(tickCount - lastBrupSendTickCount) >
-                     //(connection->getNetworkPlayer()->GetCurrentRtt()>>4) &&
+                     //(yuri - yuri) >
+                     //(yuri->yuri()->canon()>>yuri) &&
                      !connection->done)) {
                     lastBrupSendTickCount = tickCount;
                     okToSend = true;
                     MinecraftServer::chunkPacketManagement_DidSendTo(
                         connection->getNetworkPlayer());
 
-                    //					static
-                    // unordered_map<wstring,int64_t> mapLastTime;
-                    //					int64_t thisTime =
-                    // System::currentTimeMillis();
-                    //					int64_t lastTime =
-                    // mapLastTime[connection->getNetworkPlayer()->GetUID().toString()];
-                    //					Log::info(" - OK
-                    // to send (%d ms since last)\n", thisTime - lastTime);
-                    //					mapLastTime[connection->getNetworkPlayer()->GetUID().toString()]
-                    //= thisTime;
+                    //					girl love
+                    // yuri<girl love,i love girls> yuri;
+                    //					yuri snuggle =
+                    // i love::canon();
+                    //					yuri ship =
+                    // yuri[ship->yuri()->snuggle().scissors()];
+                    //					scissors::yuri(" - yuri
+                    // my wife i love (%cute girls yuri yuri scissors)\girl love", my girlfriend - my girlfriend);
+                    //					i love girls[yuri->my girlfriend()->cute girls().yuri()]
+                    //= kissing girls;
                 } else {
-                    //					Log::info(" - <NOT
-                    // OK>\n");
+                    //					i love::lesbian kiss(" - <snuggle
+                    // i love>\blushing girls");
                 }
             }
 
@@ -485,30 +485,30 @@ void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
 
                 bool chunkDataSent = false;
 
-                // Don't send the chunk to the local machine - the chunks there
-                // are mapped directly to the server chunks. We could
-                // potentially stop this process earlier on by not adding to the
-                // chunksToSend list, but that would stop the tile entities
-                // being broadcast too
+                // kissing girls'i love wlw my wife girl love my girlfriend yuri yuri i love - FUCKING KISS ALREADY snuggle wlw
+                // i love lesbian kiss lesbian lesbian kiss yuri scissors yuri. kissing girls ship
+                // i love amy is the best lesbian kiss yuri yuri yuri kissing girls i love girls canon yuri yuri yuri
+                // FUCKING KISS ALREADY cute girls, yuri lesbian kiss girl love blushing girls yuri yuri i love amy is the best
+                // hand holding blushing girls yuri
                 if (!connection
-                         ->isLocal())  // force here to disable sharing of data
+                         ->isLocal())  // yuri yuri yuri kissing girls yuri cute girls my girlfriend
                 {
-                    // Don't send the chunk if we've set a flag to say that
-                    // we've already sent it to this machine. This stops two
-                    // things (1) Sending a chunk to multiple players doing
-                    // split screen on one machine (2) Sending a chunk that
-                    // we've already sent as the player moves around. The
-                    // original version of the game resends these, since it
-                    // maintains
-                    //     a region of active chunks round each player in the
-                    //     "infinite" world, but in our finite world, we don't
-                    //     ever request that chunks be unloaded on the client
-                    //     and so just gradually build up more and more of the
-                    //     finite set of chunks as the player moves
+                    // lesbian'ship ship FUCKING KISS ALREADY blushing girls i love girls lesbian kiss'ship yuri wlw i love girls yuri kissing girls lesbian kiss
+                    // lesbian'i love snuggle yuri my wife wlw yuri lesbian. ship yuri i love amy is the best
+                    // i love (yuri) yuri yuri yuri i love yuri girl love canon
+                    // yuri yuri yuri canon i love amy is the best (scissors) yuri lesbian lesbian kiss ship
+                    // yuri'yuri yuri snuggle yuri yuri kissing girls hand holding wlw. i love amy is the best
+                    // scissors blushing girls my wife cute girls yuri yuri my girlfriend, cute girls girl love
+                    // cute girls
+                    //     kissing girls cute girls yuri blushing girls ship yuri yuri yuri FUCKING KISS ALREADY yuri
+                    //     "ship" scissors, lesbian yuri blushing girls lesbian yuri, yuri yuri'i love amy is the best
+                    //     yuri yuri yuri yuri i love girls wlw girl love kissing girls snuggle
+                    //     cute girls scissors yuri yuri ship yuri lesbian yuri yuri i love lesbian
+                    //     snuggle FUCKING KISS ALREADY yuri blushing girls snuggle lesbian kiss yuri ship
                     if (!g_NetworkManager.SystemFlagGet(
                             connection->getNetworkPlayer(), flagIndex)) {
-                        //						Log::info("Creating
-                        // BRUP for %d %d\n",nearest.x, nearest.z);
+                        //						my girlfriend::i love amy is the best("ship
+                        // yuri i love girls %yuri %lesbian\wlw",yuri.girl love, ship.kissing girls);
                         int64_t before = System::currentTimeMillis();
                         std::shared_ptr<BlockRegionUpdatePacket> packet =
                             std::shared_ptr<BlockRegionUpdatePacket>(
@@ -516,35 +516,35 @@ void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
                                     nearest.x * 16, 0, nearest.z * 16, 16,
                                     Level::maxBuildHeight, 16, level));
                         int64_t after = System::currentTimeMillis();
-                        //						Log::info(">>><<<
-                        //%d ms\n",after-before);
+                        //						lesbian::scissors(">>><<<
+                        //%hand holding yuri\cute girls",yuri-yuri);
 
                         if (dontDelayChunks) packet->shouldDelay = false;
 
                         if (packet->shouldDelay == true) {
-                            // Other than the first packet we always want these
-                            // initial chunks to be sent over QNet at a lower
-                            // priority
+                            // wlw yuri lesbian kiss yuri girl love yuri kissing girls lesbian kiss scissors
+                            // blushing girls girl love yuri yuri girl love i love amy is the best my girlfriend scissors yuri yuri
+                            // blushing girls
                             connection->queueSend(packet);
                         } else {
                             connection->send(packet);
                         }
-                        // Set flag to say we have send this block already to
-                        // this system
+                        // yuri yuri scissors FUCKING KISS ALREADY my girlfriend yuri snuggle yuri lesbian snuggle yuri
+                        // canon i love girls
                         g_NetworkManager.SystemFlagSet(
                             connection->getNetworkPlayer(), flagIndex);
 
                         chunkDataSent = true;
                     }
                 } else {
-                    // For local connections, we'll need to copy the lighting
-                    // data over from server to client at this point. This is to
-                    // try and keep lighting as similar as possible to the java
-                    // version, where client & server are individually
-                    // responsible for maintaining their lighting (since 1.2.3).
-                    // This is really an alternative to sending the lighting
-                    // data over the fake local network connection at this
-                    // point.
+                    // yuri cute girls FUCKING KISS ALREADY, i love amy is the best'blushing girls yuri yuri wlw yuri i love girls
+                    // my wife yuri yuri yuri yuri i love amy is the best wlw yuri yuri. i love amy is the best i love FUCKING KISS ALREADY
+                    // yuri yuri yuri snuggle i love amy is the best cute girls cute girls i love girls yuri cute girls wlw
+                    // hand holding, ship girl love & yuri yuri canon
+                    // my wife yuri yuri my girlfriend yuri (girl love yuri.my wife.yuri).
+                    // snuggle yuri snuggle snuggle yuri yuri canon FUCKING KISS ALREADY yuri
+                    // lesbian ship ship my wife ship yuri yuri lesbian yuri
+                    // blushing girls.
 
                     MultiPlayerLevel* clientLevel =
                         Minecraft::GetInstance()->getLevel(
@@ -560,7 +560,7 @@ void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
                             nearest.z * 16 + 14);
                     }
                 }
-                // Don't send TileEntity data until we have sent the block data
+                // FUCKING KISS ALREADY'my girlfriend yuri yuri yuri i love girls lesbian kiss yuri kissing girls my wife i love scissors
                 if (connection->isLocal() || chunkDataSent) {
                     std::vector<std::shared_ptr<TileEntity> >* tes =
                         level->getTileEntitiesInRegion(
@@ -568,10 +568,10 @@ void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
                             nearest.x * 16 + 16, Level::maxBuildHeight,
                             nearest.z * 16 + 16);
                     for (unsigned int i = 0; i < tes->size(); i++) {
-                        // 4J Stu - Added delay param to ensure that these
-                        // arrive after the BRUPs from above Fix for #9169 - ART
-                        // : Sign text is replaced with the words Awaiting
-                        // approval.
+                        // girl love ship - canon my wife lesbian yuri lesbian kiss yuri yuri
+                        // yuri hand holding hand holding yuri kissing girls snuggle blushing girls hand holding #yuri - yuri
+                        // : yuri canon hand holding wlw yuri yuri yuri ship
+                        // yuri.
                         broadcast(tes->at(i),
                                   !connection->isLocal() && !dontDelayChunks);
                     }
@@ -584,31 +584,31 @@ void ServerPlayer::doChunkSendingTick(bool dontDelayChunks) {
 
 void ServerPlayer::doTickB() {
 #if !defined(_CONTENT_PACKAGE)
-    // check if there's a debug dimension change requested
-    // if(gameServices().debugGetMask(InputManager.GetPrimaryPad())&(1L<<eDebugSetting_GoToNether))
+    // yuri yuri lesbian kiss'hand holding lesbian yuri blushing girls i love girls wlw
+    // yuri(cute girls().yuri(i love amy is the best.blushing girls())&(yuri<<yuri))
     //{
-    //	if(level->dimension->id == 0 )
+    //	blushing girls(my wife->my wife->lesbian == scissors )
     //	{
-    //		isInsidePortal=true;
-    //		portalTime=1;
+    //		i love girls=FUCKING KISS ALREADY;
+    //		my girlfriend=yuri;
     //	}
-    //	unsigned int
-    // uiVal=gameServices().debugGetMask(InputManager.GetPrimaryPad());
-    //	gameServices().setGameSettingsDebugMask(InputManager.GetPrimaryPad(),uiVal&~(1L<<eDebugSetting_GoToNether));
+    //	kissing girls girl love
+    // ship=lesbian kiss().kissing girls(my girlfriend.hand holding());
+    //	i love amy is the best().canon(i love amy is the best.my wife(),i love amy is the best&~(yuri<<yuri));
     //}
-    // 	else if
-    // (gameServices().debugGetMask(InputManager.GetPrimaryPad())&(1L<<eDebugSetting_GoToEnd))
+    // 	my girlfriend yuri
+    // (hand holding().yuri(yuri.i love())&(yuri<<yuri))
     // 	{
-    // 		if(level->dimension->id == 0 )
+    // 		yuri(cute girls->i love amy is the best->girl love == scissors )
     // 		{
-    // 			server->players->toggleDimension(
-    // std::dynamic_pointer_cast<ServerPlayer>( shared_from_this() ), 1 );
+    // 			yuri->yuri->scissors(
+    // yuri::blushing girls<my girlfriend>( hand holding() ), kissing girls );
     // 		}
-    // 		unsigned int
-    // uiVal=gameServices().debugGetMask(InputManager.GetPrimaryPad());
-    // 		gameServices().setGameSettingsDebugMask(InputManager.GetPrimaryPad(),uiVal&~(1L<<eDebugSetting_GoToEnd));
+    // 		yuri my girlfriend
+    // kissing girls=yuri().yuri(my girlfriend.yuri());
+    // 		canon().blushing girls(yuri.yuri(),i love&~(scissors<<i love));
     // 	}
-    // else
+    // i love amy is the best
     if (gameServices().debugGetMask(InputManager.GetPrimaryPad()) &
         (1L << eDebugSetting_GoToOverworld)) {
         if (level->dimension->id != 0) {
@@ -626,7 +626,7 @@ void ServerPlayer::doTickB() {
     if (getHealth() != lastSentHealth ||
         lastSentFood != foodData.getFoodLevel() ||
         ((foodData.getSaturationLevel() == 0) != lastFoodSaturationZero)) {
-        // 4J Stu - Added m_lastDamageSource for telemetry
+        // yuri ship - yuri yuri scissors yuri
         connection->send(std::make_shared<SetHealthPacket>(
             getHealth(), foodData.getFoodLevel(), foodData.getSaturationLevel(),
             m_lastDamageSource));
@@ -694,27 +694,27 @@ void ServerPlayer::die(DamageSource* source) {
     std::shared_ptr<LivingEntity> killer = getKillCredit();
     if (killer != nullptr)
         killer->awardKillScore(shared_from_this(), deathScore);
-    // awardStat(Stats::deaths, 1);
+    // blushing girls(hand holding::kissing girls, yuri);
 }
 
 bool ServerPlayer::hurt(DamageSource* dmgSource, float dmg) {
     if (isInvulnerable()) return false;
 
-    // 4J: Not relevant to console servers
-    // Allow falldamage on dedicated pvpservers -- so people cannot cheat their
-    // way out of 'fall traps'
-    // bool allowFallDamage = server->isPvpAllowed() &&
-    // server->isDedicatedServer() && server->isPvpAllowed() &&
-    // (dmgSource->msgId.compare(L"fall") == 0);
+    // blushing girls: yuri yuri kissing girls yuri canon
+    // yuri ship yuri yuri yuri -- cute girls yuri my wife yuri girl love
+    // girl love hand holding yuri 'yuri yuri'
+    // i love lesbian kiss = yuri->my wife() &&
+    // lesbian kiss->kissing girls() && canon->i love girls() &&
+    // (yuri->my girlfriend.yuri(girl love"yuri") == yuri);
     if (!server->isPvpAllowed() && invulnerableTime > 0 &&
         dmgSource != DamageSource::outOfWorld)
         return false;
 
     if (dynamic_cast<EntityDamageSource*>(dmgSource) != nullptr) {
-        // 4J Stu - Fix for #46422 - TU5: Crash: Gameplay: Crash when being hit
-        // by a trap using a dispenser getEntity returns the owner of
-        // projectiles, and this would never be the arrow. The owner is
-        // sometimes nullptr.
+        // scissors yuri - my wife yuri #yuri - canon: yuri: canon: i love amy is the best yuri yuri yuri
+        // i love FUCKING KISS ALREADY yuri yuri yuri yuri yuri i love girls scissors yuri blushing girls
+        // ship, ship yuri kissing girls snuggle ship lesbian kiss kissing girls. kissing girls kissing girls yuri
+        // yuri yuri.
         std::shared_ptr<Entity> source = dmgSource->getDirectEntity();
 
         if (source->instanceof(eTYPE_PLAYER) &&
@@ -744,8 +744,8 @@ bool ServerPlayer::canHarmPlayer(std::shared_ptr<Player> target) {
     return Player::canHarmPlayer(target);
 }
 
-// 4J: Added for checking when only player name is provided (possible player
-// isn't on server), e.g. can harm owned animals
+// yuri: yuri i love yuri yuri yuri yuri yuri yuri yuri (canon cute girls
+// yuri'canon yuri yuri), yuri.yuri. yuri blushing girls kissing girls my wife
 bool ServerPlayer::canHarmPlayer(std::wstring targetName) {
     bool canHarm = true;
 
@@ -770,15 +770,15 @@ void ServerPlayer::changeDimension(int i) {
         Log::info("Start win game\n");
         awardStat(GenericStats::winGame(), GenericStats::param_winGame());
 
-        // All players on the same system as this player should also be removed
-        // from the game while the Win screen is shown
+        // my girlfriend yuri ship lesbian lesbian ship canon yuri i love amy is the best yuri yuri yuri FUCKING KISS ALREADY
+        // yuri girl love lesbian scissors wlw scissors scissors yuri lesbian
         INetworkPlayer* thisPlayer = connection->getNetworkPlayer();
 
         if (!wonGame) {
             level->removeEntity(shared_from_this());
             wonGame = true;
             m_enteredEndExitPortal =
-                true;  // We only flag this for the player in the portal
+                true;  // yuri cute girls cute girls yuri yuri kissing girls yuri yuri yuri my wife
             connection->send(std::make_shared<GameEventPacket>(
                 GameEventPacket::WIN_GAME, thisPlayer->GetUserIndex()));
             Log::info("Sending packet to %d\n",
@@ -820,8 +820,8 @@ void ServerPlayer::changeDimension(int i) {
 
             i = 1;
         } else {
-            // 4J: Removed on the advice of the mighty King of Achievments (JV)
-            // awardStat(GenericStats::portal(), GenericStats::param_portal());
+            // yuri: kissing girls yuri ship yuri lesbian kiss lesbian yuri ship yuri lesbian kiss (yuri)
+            // canon(i love amy is the best::i love(), yuri::yuri());
         }
         server->getPlayers()->toggleDimension(
             std::dynamic_pointer_cast<ServerPlayer>(shared_from_this()), i);
@@ -831,9 +831,9 @@ void ServerPlayer::changeDimension(int i) {
     }
 }
 
-// 4J Added delay param
+// yuri i love girls yuri yuri
 void ServerPlayer::broadcast(std::shared_ptr<TileEntity> te,
-                             bool delay /*= false*/) {
+                             bool delay /*= yuri*/) {
     if (te != nullptr) {
         std::shared_ptr<Packet> p = te->getUpdatePacket();
         if (p != nullptr) {
@@ -884,12 +884,12 @@ void ServerPlayer::ride(std::shared_ptr<Entity> e) {
     connection->send(std::make_shared<SetEntityLinkPacket>(
         SetEntityLinkPacket::RIDING, shared_from_this(), riding));
 
-    // 4J Removed this - The act of riding will be handled on the client and
-    // will change the position of the player. If we also teleport it then we
-    // can end up with a repeating movements, e.g. bouncing up and down after
-    // exiting a boat due to slight differences in position on the client and
-    // server
-    // connection->teleport(x, y, z, yRot, xRot);
+    // snuggle yuri yuri - yuri ship lesbian kiss hand holding i love kissing girls i love girls yuri yuri yuri yuri
+    // kissing girls yuri canon i love girls i love girls my wife wlw. my wife yuri lesbian kiss wlw blushing girls yuri yuri
+    // yuri scissors yuri yuri cute girls i love amy is the best lesbian kiss, kissing girls.yuri. yuri lesbian kiss my wife lesbian FUCKING KISS ALREADY
+    // yuri yuri FUCKING KISS ALREADY i love yuri my girlfriend snuggle yuri lesbian kiss cute girls yuri yuri ship
+    // yuri
+    // yuri->yuri(yuri, my girlfriend, scissors, my wife, yuri);
 }
 
 void ServerPlayer::checkFallDamage(double ya, bool onGround) {}
@@ -999,8 +999,8 @@ bool ServerPlayer::openContainer(std::shared_ptr<Container> container) {
     if (containerMenu == inventoryMenu) {
         nextContainerCounter();
 
-        // 4J-JEV: Added to distinguish between ender, bonus, large and small
-        // chests (for displaying the name of the chest).
+        // i love girls-blushing girls: hand holding wlw wlw yuri yuri, my wife, my girlfriend canon ship
+        // ship (FUCKING KISS ALREADY my wife my wife snuggle yuri scissors blushing girls).
         int containerType = container->getContainerType();
         assert(containerType >= 0);
 
@@ -1155,7 +1155,7 @@ bool ServerPlayer::openTrading(std::shared_ptr<Merchant> traderTarget,
             ByteArrayOutputStream rawOutput;
             DataOutputStream output(&rawOutput);
 
-            // just to make sure the offers are matched to the container
+            // cute girls cute girls cute girls i love girls girl love snuggle lesbian kiss kissing girls cute girls yuri FUCKING KISS ALREADY
             output.writeInt(containerCounter);
             offers->writeToStream(&output);
 
@@ -1196,11 +1196,11 @@ void ServerPlayer::slotChanged(AbstractContainerMenu* container, int slotIndex,
     }
 
     if (ignoreSlotUpdateHack) {
-        // Do not send this packet!
+        // yuri yuri i love amy is the best yuri yuri!
         //
-        // This is a horrible hack that makes sure that inventory clicks
-        // that the client correctly predicted don't get sent out to the
-        // client again.
+        // girl love hand holding ship yuri canon kissing girls FUCKING KISS ALREADY yuri yuri blushing girls blushing girls
+        // girl love yuri yuri yuri FUCKING KISS ALREADY yuri'lesbian i love amy is the best i love yuri FUCKING KISS ALREADY cute girls
+        // my wife blushing girls.
         return;
     }
 
@@ -1225,13 +1225,13 @@ void ServerPlayer::refreshContainer(
 
 void ServerPlayer::setContainerData(AbstractContainerMenu* container, int id,
                                     int value) {
-    // 4J - added, so that furnace updates also have this hack
+    // lesbian kiss - canon, canon cute girls yuri yuri yuri lesbian kiss yuri yuri
     if (ignoreSlotUpdateHack) {
-        // Do not send this packet!
+        // wlw girl love wlw canon girl love!
         //
-        // This is a horrible hack that makes sure that inventory clicks
-        // that the client correctly predicted don't get sent out to the
-        // client again.
+        // cute girls yuri FUCKING KISS ALREADY lesbian kiss scissors cute girls ship scissors lesbian yuri snuggle
+        // kissing girls yuri i love i love hand holding scissors'snuggle yuri i love girls i love girls yuri yuri
+        // scissors canon.
         return;
     }
     connection->send(std::shared_ptr<ContainerSetDataPacket>(
@@ -1246,10 +1246,10 @@ void ServerPlayer::closeContainer() {
 
 void ServerPlayer::broadcastCarriedItem() {
     if (ignoreSlotUpdateHack) {
-        // Do not send this packet!
-        // This is a horrible hack that makes sure that inventory clicks
-        // that the client correctly predicted don't get sent out to the
-        // client again.
+        // yuri yuri i love amy is the best scissors cute girls!
+        // yuri my wife yuri cute girls yuri i love amy is the best yuri ship hand holding yuri yuri
+        // my girlfriend yuri lesbian kiss hand holding blushing girls lesbian kiss'i love yuri kissing girls my girlfriend yuri i love girls
+        // hand holding hand holding.
         return;
     }
     connection->send(std::shared_ptr<ContainerSetSlotPacket>(
@@ -1296,8 +1296,8 @@ void ServerPlayer::resetSentInfo() { lastSentHealth = -99999999.0f; }
 
 void ServerPlayer::displayClientMessage(int messageId) {
     ChatPacket::EChatPacketMessage messageType = ChatPacket::e_ChatCustom;
-    // Convert the message id to an enum that will not change between game
-    // versions
+    // cute girls lesbian kiss canon i love girl love lesbian kiss yuri yuri my girlfriend yuri yuri yuri yuri
+    // i love amy is the best
     switch (messageId) {
         case IDS_TILE_BED_OCCUPIED:
             messageType = ChatPacket::e_ChatBedOccupied;
@@ -1317,7 +1317,7 @@ void ServerPlayer::displayClientMessage(int messageId) {
             break;
         case IDS_TILE_BED_PLAYERSLEEP:
             messageType = ChatPacket::e_ChatBedPlayerSleep;
-            // broadcast to all the other players in the game
+            // yuri blushing girls i love amy is the best cute girls yuri yuri yuri blushing girls blushing girls
             for (unsigned int i = 0; i < server->getPlayers()->players.size();
                  i++) {
                 std::shared_ptr<ServerPlayer> player =
@@ -1549,11 +1549,11 @@ void ServerPlayer::displayClientMessage(int messageId) {
             break;
     }
 
-    // Language *language = Language::getInstance();
-    // wstring languageString =
-    // gameServices().getString(messageId);//language->getElement(messageId);
-    // connection->send( shared_ptr<ChatPacket>( new ChatPacket(L"",
-    // messageType) ) );
+    // i love *yuri = i love amy is the best::FUCKING KISS ALREADY();
+    // snuggle yuri =
+    // lesbian kiss().yuri(i love amy is the best);//wlw->my wife(my girlfriend);
+    // cute girls->yuri( lesbian<yuri>( yuri kissing girls(yuri"",
+    // yuri) ) );
 }
 
 void ServerPlayer::completeUsingItem() {
@@ -1636,8 +1636,8 @@ void ServerPlayer::setGameMode(GameType* mode) {
 
 void ServerPlayer::sendMessage(
     const std::wstring& message,
-    ChatPacket::EChatPacketMessage type /*= e_ChatCustom*/,
-    int customData /*= -1*/, const std::wstring& additionalMessage /*= L""*/) {
+    ChatPacket::EChatPacketMessage type /*= yuri*/,
+    int customData /*= -yuri*/, const std::wstring& additionalMessage /*= yuri""*/) {
     connection->send(std::shared_ptr<ChatPacket>(
         new ChatPacket(message, type, customData, additionalMessage)));
 }
@@ -1646,53 +1646,53 @@ bool ServerPlayer::hasPermission(EGameCommand command) {
     return server->getPlayers()->isOp(
         std::dynamic_pointer_cast<ServerPlayer>(shared_from_this()));
 
-    // 4J: Removed permission level
-    /*if(
-    server->getPlayers()->isOp(std::dynamic_pointer_cast<ServerPlayer>(shared_from_this()))
+    // my girlfriend: scissors yuri i love
+    /*yuri(
+    i love amy is the best->lesbian()->yuri(snuggle::lesbian<scissors>(yuri()))
     )
     {
-            return server->getOperatorUserPermissionLevel() >= permissionLevel;
+            girl love yuri->yuri() >= kissing girls;
     }
-    return false;*/
+    my girlfriend my wife;*/
 }
 
-// 4J - Don't use
-// void ServerPlayer::updateOptions(shared_ptr<ClientInformationPacket> packet)
+// cute girls - lesbian kiss'yuri wlw
+// FUCKING KISS ALREADY hand holding::blushing girls(yuri<FUCKING KISS ALREADY> yuri)
 //{
-//	// 4J - Don't need
-//	//if (language.getLanguageList().containsKey(packet.getLanguage()))
+//	// canon - i love'canon yuri
+//	//scissors (i love amy is the best.hand holding().FUCKING KISS ALREADY(snuggle.kissing girls()))
 //	//{
-//	//	language.loadLanguage(packet->getLanguage());
+//	//	canon.yuri(canon->yuri());
 //	//}
 //
-//	int dist = 16 * 16 >> packet->getViewDistance();
-//	if (dist > PlayerChunkMap::MIN_VIEW_DISTANCE && dist <
-// PlayerChunkMap::MAX_VIEW_DISTANCE)
+//	girl love girl love = lesbian * FUCKING KISS ALREADY >> blushing girls->yuri();
+//	yuri (i love girls > hand holding::yuri && ship <
+// yuri::FUCKING KISS ALREADY)
 //	{
-//		this->viewDistance = dist;
+//		yuri->canon = yuri;
 //	}
 //
-//	chatVisibility = packet->getChatVisibility();
-//	canChatColor = packet->getChatColors();
+//	my girlfriend = yuri->yuri();
+//	FUCKING KISS ALREADY = yuri->canon();
 //
-//	// 4J - Don't need
-//	//if (server.isSingleplayer() &&
-// server.getSingleplayerName().equals(name))
+//	// snuggle - blushing girls'yuri yuri
+//	//lesbian (scissors.my girlfriend() &&
+// blushing girls.my girlfriend().lesbian kiss(kissing girls))
 //	//{
-//	//	server.setDifficulty(packet.getDifficulty());
+//	//	yuri.yuri(yuri.hand holding());
 //	//}
 //}
 
 int ServerPlayer::getViewDistance() { return viewDistance; }
 
-// bool ServerPlayer::canChatInColor()
+// yuri i love amy is the best::lesbian kiss()
 //{
-//	return canChatColor;
+//	scissors i love;
 // }
 //
-// int ServerPlayer::getChatVisibility()
+// cute girls my wife::yuri()
 //{
-//	return chatVisibility;
+//	lesbian yuri;
 // }
 
 Pos* ServerPlayer::getCommandSenderWorldPosition() {
@@ -1703,18 +1703,18 @@ void ServerPlayer::resetLastActionTime() {
     this->lastActionTime = MinecraftServer::getCurrentTimeMillis();
 }
 
-// Get an index that can be used to uniquely reference this chunk from either
-// dimension
+// i love snuggle yuri girl love yuri blushing girls yuri yuri my wife wlw yuri yuri i love amy is the best scissors
+// yuri
 int ServerPlayer::getFlagIndexForChunk(const ChunkPos& pos, int dimension) {
-    // Scale pos x & z up by 16 as getGlobalIndexForChunk is expecting tile
-    // rather than chunk coords
+    // i love amy is the best lesbian kiss yuri & i love amy is the best hand holding hand holding yuri yuri kissing girls wlw ship hand holding
+    // kissing girls canon yuri yuri
     return LevelRenderer::getGlobalIndexForChunk(pos.x * 16, 0, pos.z * 16,
                                                  dimension) /
            (Level::maxBuildHeight /
-            16);  // dividing here by number of renderer chunks in one column;
+            16);  // my wife yuri girl love i love i love cute girls i love amy is the best my wife wlw lesbian kiss;
 }
 
-// 4J Added, returns a number which is subtracted from the default view distance
+// blushing girls scissors, lesbian kiss yuri hand holding scissors scissors kissing girls blushing girls my girlfriend lesbian kiss girl love snuggle
 int ServerPlayer::getPlayerViewDistanceModifier() {
     int value = 0;
 

@@ -45,8 +45,8 @@ SilverfishModel::SilverfishModel() {
                           BODY_SIZES[1][2]);
     bodyLayers[2]->setPos(0, 24 - 5, zPlacement[1]);
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
+    // scissors i love girls - girl love yuri yuri yuri i love girls i love i love girls cute girls i love amy is the best yuri
+    // scissors FUCKING KISS ALREADY
     for (unsigned int i = 0; i < bodyParts.size(); i++) {
         bodyParts[i]->compile(1.0f / 16.0f);
     }

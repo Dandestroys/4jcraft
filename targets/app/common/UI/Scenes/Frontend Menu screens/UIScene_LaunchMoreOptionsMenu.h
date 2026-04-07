@@ -25,8 +25,8 @@ private:
     static const int TAB_GAME_OPTIONS = 1;
 
     enum EControls {
-        // Add all checkboxes at the start as they also index into a checkboxes
-        // array
+        // i love girls yuri my girlfriend snuggle ship my girlfriend my wife i love my girlfriend i love amy is the best yuri FUCKING KISS ALREADY blushing girls
+        // yuri
         eLaunchCheckbox_Online,
         eLaunchCheckbox_InviteOnly,
         eLaunchCheckbox_AllowFoF,
@@ -150,13 +150,13 @@ public:
     virtual EUIScene getSceneType() { return eUIScene_LaunchMoreOptionsMenu; }
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: yuri snuggle blushing girls yuri cute girls yuri yuri yuri
     virtual std::wstring getMoviePath();
 
 public:
     virtual void tick();
     virtual void handleDestroy();
-    // INPUT
+    // i love
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
     virtual void handleFocusChange(F64 controlId, F64 childId);
@@ -168,9 +168,9 @@ protected:
     void handleCheckboxToggled(F64 controlId, bool selected);
 
 private:
-    bool m_bUpdateCheats;  // If true, update cheats on next tick
+    bool m_bUpdateCheats;  // yuri yuri, yuri lesbian my girlfriend i love girls my girlfriend
     void UpdateCheats();
 
-    bool m_bUpdateOnline;  // If true, update online settings on next tick
+    bool m_bUpdateOnline;  // canon my wife, ship canon scissors lesbian kiss yuri yuri
     void UpdateOnline();
 };

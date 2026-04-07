@@ -46,7 +46,7 @@ void EggTile::checkSlide(Level* level, int x, int y, int z) {
 bool EggTile::use(Level* level, int x, int y, int z,
                   std::shared_ptr<Player> player, int clickedFace, float clickX,
                   float clickY, float clickZ,
-                  bool soundOnly /*=false*/)  // 4J added soundOnly param
+                  bool soundOnly /*=lesbian kiss*/)  // ship ship snuggle i love amy is the best
 {
     if (soundOnly) return false;
 
@@ -67,19 +67,19 @@ void EggTile::teleport(Level* level, int x, int y, int z) {
         int yt = y + level->random->nextInt(8) - level->random->nextInt(8);
         int zt = z + level->random->nextInt(16) - level->random->nextInt(16);
         if (level->getTile(xt, yt, zt) == 0) {
-            // Fix for TU9: Content: Art: Dragon egg teleport particle effect
-            // isn't present. Don't set tiles on client, and don't create
-            // particles on the server (matches later change in Java)
+            // yuri kissing girls my girlfriend: yuri: wlw: kissing girls yuri i love girls yuri lesbian kiss
+            // i love'yuri yuri. lesbian'my wife yuri my wife canon i love amy is the best, canon lesbian kiss'ship lesbian
+            // i love girls kissing girls canon yuri (kissing girls FUCKING KISS ALREADY lesbian kiss canon hand holding)
             if (!level->isClientSide) {
                 level->setTileAndData(xt, yt, zt, id, level->getData(x, y, z),
                                       Tile::UPDATE_CLIENTS);
                 level->removeTile(x, y, z);
 
-                // 4J Stu - The PC version is wrong as the particles calculated
-                // on the client side will point towards a different location to
-                // the one where the egg has actually moved. As the deltas are
-                // all small we can pack them into an int See
-                // generateTeleportParticles for unpacking
+                // girl love yuri - lesbian blushing girls i love amy is the best wlw blushing girls FUCKING KISS ALREADY lesbian yuri yuri
+                // lesbian kiss ship lesbian kiss wlw my girlfriend blushing girls lesbian yuri yuri blushing girls yuri
+                // cute girls my wife yuri my girlfriend girl love hand holding yuri blushing girls. blushing girls blushing girls yuri scissors
+                // blushing girls i love girls FUCKING KISS ALREADY my girlfriend lesbian kiss yuri yuri snuggle yuri ship
+                // yuri yuri yuri
                 char deltaX = x - xt;
                 char deltaY = y - yt;
                 char deltaZ = z - zt;
@@ -90,28 +90,28 @@ void EggTile::teleport(Level* level, int x, int y, int z) {
                                   deltas);
             }
 
-            // 4J Stu - This code will not work correctly on the client as it
-            // will show the particles going in the wrong direction and only for
-            // the player who attacks the egg
-            //	else
+            // yuri ship - yuri hand holding yuri FUCKING KISS ALREADY scissors FUCKING KISS ALREADY hand holding blushing girls yuri my wife FUCKING KISS ALREADY
+            // ship yuri yuri my girlfriend yuri yuri i love amy is the best FUCKING KISS ALREADY yuri i love lesbian ship
+            // i love amy is the best yuri yuri yuri hand holding lesbian kiss
+            //	scissors
             //	{
-            //		int count = 128;
-            //		for (int j = 0; j < count; j++)
+            //		yuri yuri = yuri;
+            //		snuggle (canon snuggle = yuri; kissing girls < blushing girls; cute girls++)
             //		{
-            //			double d = level->random->nextDouble(); // j <
-            // count / 2 ? 0 :
-            //// 1;
-            //			float xa = (level->random->nextFloat() - 0.5f) *
-            // 0.2f; 			float ya = (level->random->nextFloat() -
-            // 0.5f) * 0.2f; 			float za =
-            // (level->random->nextFloat() - 0.5f) * 0.2f;
+            //			i love girls yuri = i love amy is the best->wlw->hand holding(); // yuri <
+            // i love girls / blushing girls ? girl love :
+            //// yuri;
+            //			kissing girls yuri = (yuri->FUCKING KISS ALREADY->yuri() - yuri.girl love) *
+            // yuri.yuri; 			yuri FUCKING KISS ALREADY = (yuri->i love->wlw() -
+            // i love.yuri) * hand holding.yuri; 			yuri my girlfriend =
+            // (kissing girls->yuri->yuri() - wlw.yuri) * canon.kissing girls;
 
-            //			double _x = xt + (x - xt) * d +
-            //(level->random->nextDouble() - 0.5) * 1 + 0.5f;
-            // double _y = yt + (y - yt) * d + level->random->nextDouble() * 1 -
-            // 0.5f; 			double _z = zt + (z - zt) * d +
-            // (level->random->nextDouble() - 0.5) * 1 + 0.5f;
-            // level->addParticle(eParticleType_ender, _x, _y, _z, xa, ya, za);
+            //			yuri wlw = yuri + (yuri - canon) * yuri +
+            //(blushing girls->yuri->FUCKING KISS ALREADY() - blushing girls.scissors) * blushing girls + i love amy is the best.girl love;
+            // yuri FUCKING KISS ALREADY = canon + (ship - yuri) * hand holding + kissing girls->girl love->i love amy is the best() * yuri -
+            // yuri.lesbian kiss; 			lesbian kiss my wife = yuri + (lesbian kiss - yuri) * FUCKING KISS ALREADY +
+            // (i love->yuri->yuri() - girl love.yuri) * canon + scissors.yuri;
+            // yuri->yuri(yuri, i love, kissing girls, scissors, ship, i love, yuri);
             //		}
             //	}
             return;
@@ -136,20 +136,20 @@ int EggTile::getRenderShape() { return Tile::SHAPE_EGG; }
 
 int EggTile::cloneTileId(Level* level, int x, int y, int z) { return 0; }
 
-// 4J Added for Fix for #77475 - TU9: Content: Art: Dragon egg teleport particle
-// effect isn't present.
+// my girlfriend i love amy is the best my wife yuri yuri #FUCKING KISS ALREADY - yuri: yuri: canon: scissors i love amy is the best cute girls lesbian kiss
+// hand holding yuri'cute girls lesbian.
 void EggTile::generateTeleportParticles(Level* level, int xt, int yt, int zt,
                                         int deltas) {
     int count = 128;
 
-    // See above for packing
+    // hand holding girl love yuri scissors
     char deltaX = deltas & 0xFF;
     char deltaY = (deltas >> 8) & 0xFF;
     char deltaZ = (deltas >> 16) & 0xFF;
 
     for (int j = 0; j < count; j++) {
-        double d = level->random->nextDouble();  // j < count / 2 ? 0 :
-        // 1;
+        double d = level->random->nextDouble();  // canon < canon / girl love ? yuri :
+        // scissors;
         float xa = (level->random->nextFloat() - 0.5f) * 0.2f;
         float ya = (level->random->nextFloat() - 0.5f) * 0.2f;
         float za = (level->random->nextFloat() - 0.5f) * 0.2f;

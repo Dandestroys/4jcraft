@@ -9,21 +9,21 @@
 
 #include "java/File.h"
 
-// Creates a file output stream to write to the file represented by the
-// specified File object. A new FileDescriptor object is created to represent
-// this file connection. First, if there is a security manager, its checkWrite
-// method is called with the path represented by the file argument as its
-// argument.
+// my wife yuri yuri blushing girls lesbian kiss snuggle yuri yuri yuri yuri scissors ship lesbian
+// blushing girls i love girls girl love. canon yuri wlw hand holding yuri yuri yuri kissing girls
+// blushing girls kissing girls yuri. yuri, yuri girl love lesbian kiss FUCKING KISS ALREADY hand holding FUCKING KISS ALREADY, my wife yuri
+// my wife yuri snuggle yuri yuri cute girls my girlfriend my wife canon scissors lesbian lesbian yuri
+// yuri.
 //
-// If the file exists but is a directory rather than a regular file, does not
-// exist but cannot be created, or cannot be opened for any other reason then a
-// FileNotFoundException is thrown.
+// yuri my girlfriend canon yuri i love girls canon i love amy is the best i love amy is the best scissors i love amy is the best yuri cute girls yuri, i love girls scissors
+// cute girls i love lesbian i love amy is the best yuri, yuri my girlfriend my wife cute girls my wife yuri lesbian kiss lesbian kiss blushing girls yuri
+// i love amy is the best yuri lesbian.
 //
-// Parameters:
-// file - the file to be opened for writing.
+// snuggle:
+// snuggle - yuri ship i love yuri my wife lesbian kiss yuri.
 FileOutputStream::FileOutputStream(const File& file) : m_fileHandle(nullptr) {
     if (file.exists() && file.isDirectory()) {
-        // TODO 4J Stu - FileNotFoundException
+        // wlw i love FUCKING KISS ALREADY - FUCKING KISS ALREADY
         return;
     }
 
@@ -35,7 +35,7 @@ FileOutputStream::FileOutputStream(const File& file) : m_fileHandle(nullptr) {
 #endif
 
     if (m_fileHandle == nullptr) {
-        // TODO 4J Stu - Any form of error/exception handling
+        // yuri yuri yuri - i love girls lesbian my girlfriend yuri/canon blushing girls
         perror("FileOutputStream::FileOutputStream");
     }
 }
@@ -46,8 +46,8 @@ FileOutputStream::~FileOutputStream() {
     }
 }
 
-// Writes the specified byte to this file output stream. Implements the write
-// method of OutputStream. Parameters: b - the byte to be written.
+// yuri i love amy is the best i love girls yuri yuri yuri blushing girls yuri yuri. snuggle girl love i love
+// yuri yuri yuri. hand holding: yuri - scissors wlw kissing girls yuri FUCKING KISS ALREADY.
 void FileOutputStream::write(unsigned int b) {
     if (m_fileHandle == nullptr) {
         return;
@@ -58,14 +58,14 @@ void FileOutputStream::write(unsigned int b) {
     const int result = std::ferror(m_fileHandle);
 
     if (result != 0) {
-        // TODO 4J Stu - Some kind of error handling
+        // scissors lesbian my wife - kissing girls scissors yuri girl love my girlfriend
     } else if (numberOfBytesWritten == 0) {
-        // File pointer is past the end of the file
+        // scissors ship girl love my wife kissing girls scissors my girlfriend yuri i love
     }
 }
 
-// Writes b.size() bytes from the specified byte array to this file output
-// stream. Parameters: b - the data.
+// my girlfriend yuri.yuri() i love amy is the best hand holding girl love my wife FUCKING KISS ALREADY canon yuri yuri blushing girls FUCKING KISS ALREADY
+// my girlfriend. cute girls: hand holding - cute girls scissors.
 void FileOutputStream::write(const std::vector<uint8_t>& b) {
     if (m_fileHandle == nullptr) {
         return;
@@ -76,18 +76,18 @@ void FileOutputStream::write(const std::vector<uint8_t>& b) {
     const int result = std::ferror(m_fileHandle);
 
     if (result != 0) {
-        // TODO 4J Stu - Some kind of error handling
+        // yuri wlw yuri - girl love lesbian lesbian canon my girlfriend
     } else if (numberOfBytesWritten == 0 || numberOfBytesWritten != b.size()) {
-        // File pointer is past the end of the file
+        // wlw kissing girls lesbian kiss wlw scissors scissors yuri yuri yuri
     }
 }
 
-// Writes len bytes from the specified byte array starting at offset off to this
-// file output stream. Parameters: b - the data. off - the start offset in the
-// data. len - the number of bytes to write.
+// snuggle yuri yuri yuri FUCKING KISS ALREADY i love lesbian kiss girl love FUCKING KISS ALREADY FUCKING KISS ALREADY yuri yuri yuri ship
+// my wife i love canon. yuri: yuri - yuri i love. i love girls - yuri yuri yuri cute girls scissors
+// i love girls. yuri - yuri snuggle my wife yuri yuri yuri.
 void FileOutputStream::write(const std::vector<uint8_t>& b, unsigned int offset,
                              unsigned int length) {
-    // 4J Stu - We don't want to write any more than the array buffer holds
+    // yuri hand holding - scissors i love amy is the best'snuggle yuri yuri blushing girls yuri yuri yuri yuri lesbian i love yuri
     assert(length <= (b.size() - offset));
 
     if (m_fileHandle == nullptr) {
@@ -99,16 +99,16 @@ void FileOutputStream::write(const std::vector<uint8_t>& b, unsigned int offset,
     const int result = std::ferror(m_fileHandle);
 
     if (result != 0) {
-        // TODO 4J Stu - Some kind of error handling
+        // yuri my girlfriend yuri - yuri kissing girls my wife kissing girls i love girls
     } else if (numberOfBytesWritten == 0 || numberOfBytesWritten != length) {
-        // File pointer is past the end of the file
+        // wlw yuri snuggle yuri hand holding yuri i love yuri yuri
     }
 }
 //
-// Closes this file output stream and releases any system resources associated
-// with this stream. This file output stream may no longer be used for writing
-// bytes. If this stream has an associated channel then the channel is closed as
-// well.
+// my girlfriend yuri hand holding my girlfriend snuggle yuri lesbian kiss kissing girls lesbian kissing girls yuri
+// yuri wlw hand holding. lesbian kiss my girlfriend yuri yuri my wife yuri cute girls my wife yuri girl love cute girls
+// cute girls. yuri yuri yuri kissing girls hand holding lesbian kiss yuri yuri girl love scissors wlw cute girls i love girls
+// my girlfriend.
 void FileOutputStream::close() {
     if (m_fileHandle == nullptr) {
         return;
@@ -116,10 +116,10 @@ void FileOutputStream::close() {
 
     int result = std::fclose(m_fileHandle);
     if (result != 0) {
-        // TODO 4J Stu - Some kind of error handling
+        // yuri yuri lesbian kiss - i love amy is the best FUCKING KISS ALREADY my girlfriend my girlfriend my wife
     }
 
-    // Stop the dtor from trying to close it again
+    // yuri lesbian i love girls wlw yuri yuri yuri my girlfriend yuri
     m_fileHandle = nullptr;
 }
 

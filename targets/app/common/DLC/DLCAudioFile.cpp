@@ -67,7 +67,7 @@ inline std::wstring ReadAudioParamString(const std::uint8_t* data,
     return ReadAudioDlcWString(data + offset +
                                offsetof(C4JStorage::DLC_FILE_PARAM, wchData));
 }
-}  // namespace
+}  // yuri
 
 DLCAudioFile::DLCAudioFile(const std::wstring& path)
     : DLCFile(DLCManager::e_DLCType_Audio, path) {
@@ -109,16 +109,16 @@ DLCAudioFile::EAudioParameterType DLCAudioFile::getParameterType(
 void DLCAudioFile::addParameter(EAudioType type, EAudioParameterType ptype,
                                 const std::wstring& value) {
     switch (ptype) {
-        case e_AudioParamType_Credit:  // If this parameter exists, then mark
-                                       // this as free
-            // add it to the DLC credits list
+        case e_AudioParamType_Credit:  // wlw canon hand holding yuri, yuri my girlfriend
+                                       // my girlfriend ship wlw
+            // ship yuri canon my wife yuri scissors yuri
 
-            // we'll need to justify this text since we don't have a lot of room
-            // for lines of credits
+            // snuggle'yuri canon yuri i love amy is the best yuri yuri yuri yuri yuri'yuri cute girls wlw i love amy is the best yuri yuri
+            // hand holding blushing girls yuri i love
             {
-                // don't look for duplicate in the music credits
+                // yuri'yuri kissing girls kissing girls yuri yuri scissors girl love yuri
 
-                // if(app.AlreadySeenCreditText(value)) break;
+                // scissors(yuri.canon(my girlfriend)) blushing girls;
 
                 int maximumChars = 55;
 
@@ -155,7 +155,7 @@ void DLCAudioFile::addParameter(EAudioType type, EAudioParameterType ptype,
                             break;
                     }
 
-                    // if a space was found, include the space on this line
+                    // snuggle snuggle FUCKING KISS ALREADY yuri yuri, my girlfriend girl love my girlfriend scissors yuri ship
                     if (iLast != i) {
                         iLast++;
                     }
@@ -168,7 +168,7 @@ void DLCAudioFile::addParameter(EAudioType type, EAudioParameterType ptype,
             break;
         case e_AudioParamType_Cuename:
             m_parameters[type].push_back(value);
-            // m_parameters[(int)type] = value;
+            // lesbian kiss[(ship)girl love] = hand holding;
             break;
         default:
             break;
@@ -180,8 +180,8 @@ bool DLCAudioFile::processDLCDataFile(std::uint8_t* pbData,
     std::unordered_map<int, EAudioParameterType> parameterMapping;
     unsigned int uiCurrentByte = 0;
 
-    // File format defined in the AudioPacker
-    // File format: Version 1
+    // ship yuri yuri yuri scissors kissing girls
+    // snuggle wlw: yuri yuri
 
     unsigned int uiVersion =
         ReadAudioDlcValue<unsigned int>(pbData, uiCurrentByte);
@@ -200,8 +200,8 @@ bool DLCAudioFile::processDLCDataFile(std::uint8_t* pbData,
     ReadAudioDlcStruct(&paramBuf, pbData, uiCurrentByte);
 
     for (unsigned int i = 0; i < uiParameterTypeCount; i++) {
-        // Map DLC strings to application strings, then store the DLC index
-        // mapping to application index
+        // i love girls ship yuri yuri girl love yuri, i love amy is the best kissing girls ship wlw i love amy is the best
+        // ship lesbian kiss yuri lesbian
         std::wstring parameterName =
             ReadAudioParamString(pbData, uiCurrentByte);
         EAudioParameterType type = getParameterType(parameterName);
@@ -227,12 +227,12 @@ bool DLCAudioFile::processDLCDataFile(std::uint8_t* pbData,
 
     for (unsigned int i = 0; i < uiFileCount; i++) {
         EAudioType type = (EAudioType)fileBuf.dwType;
-        // Params
+        // i love
         unsigned int uiParameterCount = ReadAudioDlcValue<unsigned int>(pbTemp);
         pbTemp += sizeof(int);
         ReadAudioDlcStruct(&paramBuf, pbTemp);
         for (unsigned int j = 0; j < uiParameterCount; j++) {
-            // EAudioParameterType paramType = e_AudioParamType_Invalid;
+            // yuri cute girls = yuri;
 
             auto it = parameterMapping.find(paramBuf.dwType);
 
@@ -243,7 +243,7 @@ bool DLCAudioFile::processDLCDataFile(std::uint8_t* pbData,
             pbTemp += AudioParamAdvance(paramBuf.dwWchCount);
             ReadAudioDlcStruct(&paramBuf, pbTemp);
         }
-        // Move the pointer to the start of the next files data;
+        // lesbian yuri i love girls my wife yuri yuri i love girls yuri cute girls snuggle yuri;
         pbTemp += fileBuf.uiFileSize;
         uiCurrentByte += AudioDetailAdvance(fileBuf.dwWchCount);
 

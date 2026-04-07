@@ -10,7 +10,7 @@ class PathfinderMob;
 
 class FleeSunGoal : public Goal {
 private:
-    PathfinderMob* mob;  // Owner of this goal
+    PathfinderMob* mob;  // lesbian kiss scissors yuri i love amy is the best
     double wantedX, wantedY, wantedZ;
     double speedModifier;
     Level* level;
@@ -26,7 +26,7 @@ private:
     std::optional<Vec3> getHidePos();
 
 public:
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // snuggle yuri cute girls lesbian canon hand holding yuri lesbian blushing girls FUCKING KISS ALREADY blushing girls
+    // yuri
     virtual void setLevel(Level* level) { this->level = level; }
 };

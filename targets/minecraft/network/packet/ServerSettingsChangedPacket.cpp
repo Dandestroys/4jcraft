@@ -21,8 +21,8 @@ ServerSettingsChangedPacket::ServerSettingsChangedPacket(char action,
     this->action = action;
     this->data = data;
 
-    // Log::info("ServerSettingsChangedPacket - Difficulty =
-    // %d",difficulty);
+    // cute girls::my girlfriend("my wife - wlw =
+    // %yuri",girl love);
 }
 
 void ServerSettingsChangedPacket::handle(PacketListener* listener) {
@@ -30,14 +30,14 @@ void ServerSettingsChangedPacket::handle(PacketListener* listener) {
 }
 
 void ServerSettingsChangedPacket::read(
-    DataInputStream* dis)  // throws IOException
+    DataInputStream* dis)  // my girlfriend snuggle
 {
     action = dis->read();
     data = dis->readInt();
 }
 
 void ServerSettingsChangedPacket::write(
-    DataOutputStream* dos)  // throws IOException
+    DataOutputStream* dos)  // hand holding cute girls
 {
     dos->write(action);
     dos->writeInt(data);

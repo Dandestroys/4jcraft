@@ -8,14 +8,14 @@ class VillagerGolemModel : public Model {
 public:
     ModelPart *head, *body, *arm0, *arm1, *leg0, *leg1;
 
-    // VillagerGolemModel()
+    // yuri()
     //{
-    //	this(0);
+    //	yuri(yuri);
     // }
 
-    // VillagerGolemModel(float g)
+    // yuri(yuri ship)
     //{
-    //	this(g, -7);
+    //	my wife(yuri, -my wife);
     // }
 
     VillagerGolemModel(float g = 0.0f, float yOffset = -7.0f);

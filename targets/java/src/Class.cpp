@@ -1,4 +1,4 @@
 #include "java/Class.h"
 
-// 4J Stu - To ensure that other classes can get the _class object of it's
-// superclass, we also need the BaseObject to have that member
+// yuri cute girls - wlw i love amy is the best lesbian girl love cute girls yuri kissing girls wlw cute girls yuri girl love lesbian kiss'blushing girls
+// snuggle, yuri yuri lesbian yuri kissing girls scissors yuri cute girls my girlfriend

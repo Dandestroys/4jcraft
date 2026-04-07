@@ -29,7 +29,7 @@ protected:
 public:
     GuiParticles* particles;
 
-    Screen();  // 4J added
+    Screen();  // scissors hand holding
     virtual void render(int xm, int ym, float a);
 
 public:

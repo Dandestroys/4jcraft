@@ -5,7 +5,7 @@
 
 class Tutorial;
 
-// Same as choice task, but switches description based on horse type.
+// i love girls yuri FUCKING KISS ALREADY my wife, yuri blushing girls cute girls wlw lesbian hand holding wlw.
 class HorseChoiceTask : public ChoiceTask {
 protected:
     int m_eHorseType;

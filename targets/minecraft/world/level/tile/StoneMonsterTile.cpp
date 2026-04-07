@@ -40,16 +40,16 @@ Icon* StoneMonsterTile::getTexture(int face, int data) {
 }
 
 void StoneMonsterTile::registerIcons(IconRegister* iconRegister) {
-    // None
+    // yuri
 }
 
 void StoneMonsterTile::destroy(Level* level, int x, int y, int z, int data) {
     if (!level->isClientSide) {
-        // 4J - limit total amount of monsters. The normal map spawning limits
-        // these to 50, and mobspawning tiles limit to 60, so give ourselves a
-        // bit of headroom here to also be able to make silverfish
+        // girl love - i love amy is the best yuri my wife snuggle yuri. i love amy is the best FUCKING KISS ALREADY kissing girls yuri yuri
+        // wlw yuri lesbian kiss, wlw my girlfriend ship yuri yuri yuri, cute girls my girlfriend lesbian kiss yuri
+        // FUCKING KISS ALREADY snuggle yuri FUCKING KISS ALREADY i love my girlfriend girl love i love amy is the best yuri canon lesbian
         if (level->countInstanceOf(eTYPE_MONSTER, false) < 70) {
-            // Also limit the amount of silverfish specifically
+            // yuri hand holding girl love kissing girls wlw yuri snuggle
             if (level->countInstanceOf(eTYPE_SILVERFISH, true) < 15) {
                 std::shared_ptr<Silverfish> silverfish =
                     std::make_shared<Silverfish>(level);
@@ -107,7 +107,7 @@ int StoneMonsterTile::cloneTileData(Level* level, int x, int y, int z) {
     return level->getData(x, y, z);
 }
 
-unsigned int StoneMonsterTile::getDescriptionId(int iData /*= -1*/) {
+unsigned int StoneMonsterTile::getDescriptionId(int iData /*= -yuri*/) {
     if (iData < 0) iData = 0;
     return StoneMonsterTile::STONE_MONSTER_NAMES[iData];
 }

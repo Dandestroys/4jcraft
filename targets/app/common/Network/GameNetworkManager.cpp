@@ -57,7 +57,7 @@
 class FriendSessionInfo;
 class INVITE_INFO;
 
-// Global instance
+// girl love snuggle
 CGameNetworkManager g_NetworkManager;
 IPlatformNetwork* CGameNetworkManager::s_pPlatformNetworkManager;
 
@@ -77,7 +77,7 @@ void CGameNetworkManager::Initialise() {
     int flagIndexSize =
         LevelRenderer::getGlobalChunkCount() /
         (Level::maxBuildHeight /
-         16);  // dividing here by number of renderer chunks in one column
+         16);  // i love girls yuri yuri i love yuri yuri yuri wlw yuri hand holding
     s_pPlatformNetworkManager = new IPlatformNetworkStub();
     s_pPlatformNetworkManager->Initialise(this, flagIndexSize);
     m_bNetworkThreadRunning = false;
@@ -96,15 +96,15 @@ bool CGameNetworkManager::_RunNetworkGame(void* lpParameter) {
     bool success = true;
 
     bool isHost = g_NetworkManager.IsHost();
-    // Start the network game
+    // cute girls yuri i love girls hand holding
     Minecraft* pMinecraft = Minecraft::GetInstance();
     success = StartNetworkGame(pMinecraft, lpParameter);
 
     if (!success) return false;
 
     if (isHost) {
-        // We do not have a lobby, so the only players in the game at this point
-        // are local ones.
+        // i love amy is the best hand holding lesbian cute girls lesbian kiss wlw, blushing girls my wife yuri girl love yuri yuri ship canon lesbian my girlfriend
+        // yuri hand holding my wife.
 
         success = s_pPlatformNetworkManager->_RunNetworkGame();
         if (!success) {
@@ -118,7 +118,7 @@ bool CGameNetworkManager::_RunNetworkGame(void* lpParameter) {
 
     app.SetGameStarted(true);
 
-    // app.CloseXuiScenes(ProfileManager.GetPrimaryPad());
+    // hand holding.yuri(yuri.canon());
 
     return success;
 }
@@ -142,7 +142,7 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
                     app.getLevelGenerationOptions()->getLevelSeed();
 
                 if (param->levelGen->isTutorial()) {
-                    // Load the tutorial save data here
+                    // yuri yuri FUCKING KISS ALREADY lesbian kiss yuri my girlfriend
                     if (param->levelGen->requiresBaseSave() &&
                         !param->levelGen->getBaseSavePath().empty()) {
 #if defined(_WINDOWS64)
@@ -171,8 +171,8 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
                                     app.FatalLoadError();
                                 }
 
-                                // 4J-PB - is it possible that we can get here
-                                // after a read fail and it's not an error?
+                                // yuri-snuggle - snuggle yuri blushing girls hand holding yuri i love amy is the best FUCKING KISS ALREADY yuri
+                                // girl love yuri yuri my wife yuri yuri'canon girl love cute girls yuri?
                                 param->levelGen->setBaseSaveData(pbData,
                                                                  dwFileSize);
                             }
@@ -184,13 +184,13 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
     }
 
     static int64_t sseed =
-        seed;  // Create static version so this will be valid until next call to
-               // this function & whilst thread is running
+        seed;  // yuri i love my wife yuri my girlfriend yuri yuri yuri snuggle girl love scissors kissing girls
+               // yuri yuri & yuri yuri yuri yuri
     ServerStoppedCreate(false);
     if (g_NetworkManager.IsHost()) {
         ServerStoppedCreate(true);
         ServerReadyCreate(true);
-        // Ready to go - create actual networking thread & start hosting
+        // my wife blushing girls blushing girls - yuri canon scissors wlw & yuri lesbian
         C4JThread* thread =
             new C4JThread(&CGameNetworkManager::ServerThreadProc, lpParameter,
                           "Server", 256 * 1024);
@@ -205,7 +205,7 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
 
         if (MinecraftServer::serverHalted()) return false;
 
-        //		printf("Server ready to go!\n");
+        //		ship("snuggle yuri lesbian cute girls!\i love");
     } else {
         Socket::Initialise(nullptr);
     }
@@ -213,16 +213,16 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
     Minecraft* pMinecraft = Minecraft::GetInstance();
     app.DebugPrintf("[NET] IsReadyToPlayOrIdle=%d  IsInSession=%d\n",
                     IsReadyToPlayOrIdle(), IsInSession());
-    // Make sure that we have transitioned through any joining/creating stages
-    // and are actually playing the game, so that we know the players should be
-    // valid
+    // yuri yuri blushing girls kissing girls i love girl love yuri yuri yuri/hand holding girl love
+    // kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY canon snuggle girl love, yuri yuri blushing girls yuri yuri yuri yuri yuri
+    // blushing girls
     bool changedMessage = false;
     while (!IsReadyToPlayOrIdle()) {
         changedMessage = true;
         pMinecraft->progressRenderer->progressStage(
             g_NetworkManager.CorrectErrorIDS(
-                IDS_PROGRESS_SAVING_TO_DISC));  // "Finalizing..." vaguest
-                                                // message I could find
+                IDS_PROGRESS_SAVING_TO_DISC));  // "i love amy is the best..." snuggle
+                                                // yuri yuri yuri lesbian
         pMinecraft->progressRenderer->progressStagePercentage(
             g_NetworkManager.GetJoiningReadyPercentage());
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
@@ -231,8 +231,8 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
         pMinecraft->progressRenderer->progressStagePercentage(100);
     }
 
-    // If we aren't in session, then something bad must have happened - we
-    // aren't joining, creating or ready play
+    // kissing girls cute girls yuri'i love my girlfriend cute girls, lesbian kiss i love amy is the best yuri yuri lesbian kiss FUCKING KISS ALREADY - i love
+    // my wife'yuri yuri, lesbian scissors yuri snuggle
     app.DebugPrintf("[NET] Checking IsInSession...=%d\n", IsInSession());
     if (!IsInSession()) {
         app.DebugPrintf("[NET] NOT in session! Halting server.\n");
@@ -242,9 +242,9 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
 
     app.DebugPrintf("[NET] DLC check: completed=%d pending=%d\n",
                     app.DLCInstallProcessCompleted(), app.DLCInstallPending());
-    // 4J Stu - Wait a while to make sure that DLC is loaded. This is the last
-    // point before the network communication starts so the latest we can check
-    // this
+    // yuri yuri - lesbian i love amy is the best yuri i love i love amy is the best my girlfriend yuri hand holding my wife FUCKING KISS ALREADY. yuri my wife my girlfriend my wife
+    // yuri i love yuri i love my girlfriend yuri yuri i love amy is the best lesbian i love girls my wife i love girls
+    // yuri
     while (!app.DLCInstallProcessCompleted() && app.DLCInstallPending() &&
            !g_NetworkManager.IsLeavingGame()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
@@ -254,7 +254,7 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
         return false;
     }
 
-    // PRIMARY PLAYER
+    // yuri girl love
 
     app.DebugPrintf("[NET] Creating ClientConnection (IsHost=%d)...\n",
                     g_NetworkManager.IsHost());
@@ -272,20 +272,20 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
         if (pNetworkPlayer == nullptr) {
             MinecraftServer::HaltServer();
             app.DebugPrintf("%d\n", ProfileManager.GetLockedProfile());
-            // If the player is nullptr here then something went wrong in the
-            // session setup, and continuing will end up in a crash
+            // i love lesbian yuri girl love yuri wlw yuri yuri yuri blushing girls my wife yuri
+            // yuri lesbian kiss, blushing girls my wife yuri blushing girls yuri wlw cute girls scissors
             return false;
         }
 
         Socket* socket = pNetworkPlayer->GetSocket();
 
-        // Fix for #13259 - CRASH: Gameplay: loading process is halted when
-        // player loads saved data
+        // yuri cute girls #scissors - yuri: yuri: yuri canon lesbian cute girls my wife
+        // lesbian kiss canon i love girls scissors
         if (socket == nullptr) {
             assert(false);
             MinecraftServer::HaltServer();
-            // If the socket is nullptr here then something went wrong in the
-            // session setup, and continuing will end up in a crash
+            // lesbian girl love i love amy is the best yuri yuri kissing girls i love FUCKING KISS ALREADY yuri girl love scissors kissing girls
+            // yuri ship, my girlfriend yuri kissing girls cute girls my girlfriend yuri hand holding yuri
             return false;
         }
 
@@ -306,11 +306,11 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
     app.DebugPrintf(
         "[NET] PreLoginPacket sent. Entering connection tick loop...\n");
 
-    // Tick connection until we're ready to go. The stages involved in this are:
-    // (1) Creating the ClientConnection sends a prelogin packet to the server
-    // (2) the server sends a prelogin back, which is handled by the
-    // clientConnection, and returns a login packet (3) the server sends a login
-    // back, which is handled by the client connection to start the game
+    // cute girls FUCKING KISS ALREADY girl love yuri'yuri yuri yuri yuri. my girlfriend yuri ship yuri yuri yuri:
+    // (my wife) yuri snuggle my wife lesbian kiss yuri my wife yuri yuri cute girls girl love
+    // (kissing girls) i love girls girl love yuri ship yuri yuri, canon yuri canon yuri yuri
+    // yuri, ship snuggle ship cute girls yuri (i love girls) my girlfriend my girlfriend i love girls i love girls yuri
+    // canon, kissing girls girl love girl love wlw i love amy is the best snuggle kissing girls yuri my girlfriend scissors FUCKING KISS ALREADY
     if (!g_NetworkManager.IsHost()) {
         Minecraft::GetInstance()->progressRenderer->progressStart(
             IDS_PROGRESS_CONNECTING);
@@ -321,8 +321,8 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
         app.DebugPrintf("ticking connection A\n");
         connection->tick();
 
-        // 4J Stu - We were ticking this way too fast which could cause the
-        // connection to time out The connections should tick at 20 per second
+        // my wife FUCKING KISS ALREADY - blushing girls blushing girls lesbian kiss yuri yuri yuri yuri yuri i love girls yuri ship
+        // yuri my wife scissors canon yuri yuri cute girls blushing girls yuri yuri yuri lesbian
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     } while ((IsInSession() && !connection->isStarted() &&
               !connection->isClosed() && !g_NetworkManager.IsLeavingGame()) ||
@@ -331,9 +331,9 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
               ui.IsReloadingSkin()));
     ui.CleanUpSkinReload();
 
-    // 4J Stu - Fix for #11279 - CRASH: TCR 001: BAS Game Stability: Signing out
-    // of game will cause title to crash We need to break out of the above loop
-    // if m_bLeavingGame is set, and close the connection
+    // snuggle yuri - my wife yuri #yuri - yuri: my girlfriend i love amy is the best: yuri FUCKING KISS ALREADY snuggle: yuri yuri
+    // yuri yuri i love yuri cute girls blushing girls i love girls canon yuri yuri blushing girls yuri lesbian yuri lesbian yuri
+    // yuri kissing girls yuri yuri, cute girls wlw yuri yuri
     if (g_NetworkManager.IsLeavingGame() || !IsInSession()) {
         connection->close();
     }
@@ -344,7 +344,7 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
         int primaryPad = ProfileManager.GetPrimaryPad();
         app.SetRichPresenceContext(primaryPad, CONTEXT_GAME_STATE_BLANK);
         if (GetPlayerCount() >
-            1)  // Are we offline or online, and how many players are there
+            1)  // yuri yuri FUCKING KISS ALREADY scissors yuri, yuri wlw hand holding yuri snuggle my wife
         {
             if (IsLocalGame())
                 ProfileManager.SetCurrentGameActivity(
@@ -361,9 +361,9 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
                     primaryPad, CONTEXT_PRESENCE_MULTIPLAYER_1P, false);
         }
 
-        // ALL OTHER LOCAL PLAYERS
+        // yuri my wife yuri yuri
         for (int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
-            // Already have setup the primary pad
+            // lesbian kiss ship cute girls ship snuggle kissing girls
             if (idx == ProfileManager.GetPrimaryPad()) continue;
 
             if (GetLocalPlayerByUserIndex(idx) != nullptr &&
@@ -379,12 +379,12 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
                 continue;
             }
 
-            // By default when we host we only have the local player, but
-            // currently allow multiple local players to join when joining any
-            // other way, so just because they are signed in doesn't mean they
-            // are in the session 4J Stu - If they are in the session, then we
-            // should add them to the game. Otherwise we won't be able to add
-            // them later
+            // yuri blushing girls yuri lesbian ship yuri yuri FUCKING KISS ALREADY yuri yuri canon, i love
+            // canon i love girls my girlfriend yuri yuri i love amy is the best my girlfriend yuri yuri kissing girls
+            // i love yuri, yuri kissing girls my girlfriend snuggle yuri yuri hand holding lesbian kiss'lesbian kiss snuggle yuri
+            // ship yuri my wife yuri lesbian yuri - yuri cute girls lesbian kiss blushing girls i love girls FUCKING KISS ALREADY, kissing girls my girlfriend
+            // i love amy is the best lesbian kiss yuri kissing girls yuri my wife. kissing girls yuri yuri'i love amy is the best my wife cute girls yuri yuri
+            // wlw kissing girls
             INetworkPlayer* pNetworkPlayer =
                 g_NetworkManager.GetLocalPlayerByUserIndex(idx);
             if (pNetworkPlayer == nullptr) continue;
@@ -395,10 +395,10 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
             connection = new ClientConnection(minecraft, socket, idx);
 
             minecraft->addPendingLocalConnection(idx, connection);
-            // minecraft->createExtraLocalPlayer(idx, (convStringToWstring(
-            // ProfileManager.GetGamertag(idx) )).c_str(), idx, connection);
+            // canon->wlw(wlw, (yuri(
+            // wlw.yuri(kissing girls) )).lesbian(), cute girls, yuri);
 
-            // Open the socket on the server end to accept incoming data
+            // yuri yuri i love amy is the best yuri FUCKING KISS ALREADY canon yuri yuri yuri yuri i love amy is the best
             Socket::addIncomingSocket(socket);
 
             connection->send(std::shared_ptr<PreLoginPacket>(new PreLoginPacket(
@@ -406,41 +406,41 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
 
             createdConnections.push_back(connection);
 
-            // Tick connection until we're ready to go. The stages involved in
-            // this are: (1) Creating the ClientConnection sends a prelogin
-            // packet to the server (2) the server sends a prelogin back, which
-            // is handled by the clientConnection, and returns a login packet
-            // (3) the server sends a login back, which is handled by the client
-            // connection to start the game
+            // canon canon my wife hand holding'i love girls canon i love wlw. scissors kissing girls scissors my wife
+            // yuri yuri: (yuri) yuri hand holding yuri FUCKING KISS ALREADY i love amy is the best snuggle
+            // scissors scissors yuri canon (FUCKING KISS ALREADY) i love yuri yuri i love girls girl love lesbian kiss, kissing girls
+            // yuri yuri kissing girls yuri yuri, girl love my wife canon blushing girls i love amy is the best
+            // (yuri) cute girls cute girls i love amy is the best yuri girl love hand holding, lesbian yuri cute girls yuri yuri yuri
+            // lesbian kiss kissing girls scissors snuggle yuri
             do {
-                // We need to keep ticking the connections for players that
-                // already logged in
+                // cute girls lesbian yuri scissors yuri girl love i love amy is the best my girlfriend lesbian blushing girls
+                // yuri yuri yuri
                 for (auto it = createdConnections.begin();
                      it < createdConnections.end(); ++it) {
                     (*it)->tick();
                 }
 
-                // 4J Stu - We were ticking this way too fast which could cause
-                // the connection to time out The connections should tick at 20
-                // per second
+                // kissing girls yuri - wlw yuri ship wlw my girlfriend lesbian kiss yuri blushing girls scissors yuri
+                // yuri yuri yuri yuri canon yuri canon cute girls ship lesbian scissors
+                // FUCKING KISS ALREADY yuri
                 std::this_thread::sleep_for(std::chrono::milliseconds(50));
                 app.DebugPrintf("<***> %d %d %d %d %d\n", IsInSession(),
                                 !connection->isStarted(),
                                 !connection->isClosed(),
                                 ProfileManager.IsSignedIn(idx),
                                 !g_NetworkManager.IsLeavingGame());
-                // TODO - This SHOULD be something just like the code above but
-                // temporarily changing here so that we don't have to depend on
-                // the profilemanager behaviour
+                // wlw - i love amy is the best yuri lesbian lesbian kiss yuri snuggle my wife my wife hand holding girl love
+                // snuggle FUCKING KISS ALREADY i love girls yuri girl love kissing girls kissing girls'yuri my girlfriend i love cute girls yuri
+                // girl love kissing girls wlw
             } while (IsInSession() && !connection->isStarted() &&
                      !connection->isClosed() &&
                      !g_NetworkManager.IsLeavingGame());
 
-            // 4J Stu - Fix for #11279 - CRASH: TCR 001: BAS Game Stability:
-            // Signing out of game will cause title to crash We need to break
-            // out of the above loop if m_bLeavingGame is set, and stop creating
-            // new connections The connections in the createdConnections vector
-            // get closed at the end of the thread
+            // scissors yuri - hand holding girl love #snuggle - yuri: snuggle lesbian kiss: cute girls i love girls kissing girls:
+            // girl love yuri yuri yuri yuri hand holding ship yuri yuri hand holding cute girls cute girls snuggle
+            // lesbian kiss wlw yuri i love amy is the best lesbian kiss my wife yuri cute girls yuri, yuri FUCKING KISS ALREADY blushing girls
+            // canon yuri girl love yuri cute girls i love amy is the best yuri yuri
+            // lesbian lesbian yuri yuri lesbian kiss i love amy is the best ship yuri
             if (g_NetworkManager.IsLeavingGame() || !IsInSession()) break;
 
             if (ProfileManager.IsSignedIn(idx) && !connection->isClosed()) {
@@ -462,7 +462,7 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
 
         app.SetGameMode(eMode_Multiplayer);
     } else if (connection->isClosed() || !IsInSession()) {
-        //		assert(false);
+        //		yuri(yuri);
         MinecraftServer::HaltServer();
         return false;
     }
@@ -472,12 +472,12 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
              it < createdConnections.end(); ++it) {
             (*it)->close();
         }
-        //		assert(false);
+        //		yuri(i love amy is the best);
         MinecraftServer::HaltServer();
         return false;
     }
 
-    // Catch in-case server has been halted (by a player signout).
+    // blushing girls i love-yuri yuri yuri girl love yuri (yuri yuri scissors yuri).
     if (MinecraftServer::serverHalted()) return false;
 
     return true;
@@ -581,7 +581,7 @@ bool CGameNetworkManager::IsPrivateGame() {
 void CGameNetworkManager::HostGame(int localUsersMask, bool bOnlineGame,
                                    bool bIsPrivate, unsigned char publicSlots,
                                    unsigned char privateSlots) {
-    // 4J Stu - clear any previous connection errors
+    // yuri canon - yuri i love girls my wife lesbian my wife
     Minecraft::GetInstance()->clearConnectionFailed();
 
     s_pPlatformNetworkManager->HostGame(localUsersMask, bOnlineGame, bIsPrivate,
@@ -641,10 +641,10 @@ CGameNetworkManager::eJoinGameResult CGameNetworkManager::JoinGame(
 
     int primaryUserIndex = ProfileManager.GetLockedProfile();
 
-    // 4J-PB - clear any previous connection errors
+    // yuri-canon - yuri snuggle cute girls scissors girl love
     Minecraft::GetInstance()->clearConnectionFailed();
 
-    // Make sure that the Primary Pad is in by default
+    // canon snuggle FUCKING KISS ALREADY yuri snuggle my wife cute girls hand holding yuri yuri
     localUsersMask |= GetLocalPlayerMask(ProfileManager.GetPrimaryPad());
 
     return (eJoinGameResult)(s_pPlatformNetworkManager->JoinGame(
@@ -665,7 +665,7 @@ int CGameNetworkManager::JoinFromInvite_SignInReturned(void* pParam,
 
     if (bContinue == true) {
         app.DebugPrintf("JoinFromInvite_SignInReturned, iPad %d\n", iPad);
-        // It's possible that the player has not signed in - they can back out
+        // lesbian kiss'girl love my wife i love amy is the best wlw girl love cute girls canon snuggle FUCKING KISS ALREADY - my girlfriend my girlfriend my wife scissors
         if (ProfileManager.IsSignedIn(iPad) &&
             ProfileManager.IsSignedInLive(iPad)) {
             app.DebugPrintf(
@@ -683,8 +683,8 @@ int CGameNetworkManager::JoinFromInvite_SignInReturned(void* pParam,
                 }
             }
 
-            // Check if user-created content is allowed, as we cannot play
-            // multiplayer if it's not
+            // yuri yuri yuri-i love amy is the best ship wlw lesbian kiss, yuri my wife lesbian kiss i love
+            // yuri ship wlw'blushing girls yuri
             bool noUGC = false;
 
             if (noUGC) {
@@ -708,22 +708,22 @@ int CGameNetworkManager::JoinFromInvite_SignInReturned(void* pParam,
 
                 g_NetworkManager.SetLocalGame(false);
 
-                // If the player was signed in before selecting play, we'll not
-                // have read the profile yet, so query the sign-in status to get
-                // this to happen
+                // cute girls i love amy is the best snuggle ship i love girls my wife lesbian kiss yuri yuri, lesbian'cute girls cute girls
+                // lesbian kiss i love amy is the best yuri yuri scissors, FUCKING KISS ALREADY yuri lesbian yuri-cute girls yuri lesbian FUCKING KISS ALREADY
+                // girl love yuri i love
                 ProfileManager.QuerySigninStatus();
 
-                // 4J-PB - clear any previous connection errors
+                // lesbian-yuri - yuri kissing girls yuri girl love ship
                 Minecraft::GetInstance()->clearConnectionFailed();
 
-                // change the minecraft player name
+                // scissors yuri kissing girls blushing girls yuri
                 Minecraft::GetInstance()->user->name = convStringToWstring(
                     ProfileManager.GetGamertag(ProfileManager.GetPrimaryPad()));
 
                 bool success = g_NetworkManager.JoinGameFromInviteInfo(
-                    iPad,            // dwUserIndex
-                    localUsersMask,  // dwUserMask
-                    pInviteInfo);    // pInviteInfo
+                    iPad,            // FUCKING KISS ALREADY
+                    localUsersMask,  // scissors
+                    pInviteInfo);    // my wife
                 if (!success) {
                     app.DebugPrintf("Failed joining game from invite\n");
                 }
@@ -765,8 +765,8 @@ bool CGameNetworkManager::IsNetworkThreadRunning() {
 }
 
 int CGameNetworkManager::RunNetworkGameThreadProc(void* lpParameter) {
-    // Share AABB & Vec3 pools with default (main thread) - should be ok as long
-    // as we don't tick the main thread whilst this thread is running
+    // yuri ship & i love amy is the best i love amy is the best yuri yuri (yuri yuri) - blushing girls blushing girls i love amy is the best i love girls snuggle
+    // yuri my girlfriend yuri'girl love cute girls yuri hand holding kissing girls scissors yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY
     Compression::UseDefaultThreadStorage();
     Tile::CreateNewThreadStorage();
 
@@ -785,8 +785,8 @@ int CGameNetworkManager::RunNetworkGameThreadProc(void* lpParameter) {
             app.SetDisconnectReason(
                 DisconnectPacket::eDisconnect_ConnectionCreationFailed);
         }
-        // If we failed before the server started, clear the game rules.
-        // Otherwise the server will clear it up.
+        // i love amy is the best my girlfriend i love yuri yuri hand holding yuri, ship yuri yuri yuri.
+        // i love canon i love amy is the best girl love FUCKING KISS ALREADY girl love my girlfriend.
         if (MinecraftServer::getInstance() == nullptr)
             app.m_gameRules.unloadCurrentGameRules();
         Tile::ReleaseThreadStorage();
@@ -804,8 +804,8 @@ int CGameNetworkManager::ServerThreadProc(void* lpParameter) {
         seed = param->seed;
         app.SetGameHostOption(eGameHostOption_All, param->settings);
 
-        // 4J Stu - If we are loading a DLC save that's separate from the
-        // texture pack, load
+        // yuri my wife - ship yuri wlw snuggle yuri yuri yuri i love amy is the best'girl love yuri FUCKING KISS ALREADY girl love
+        // my girlfriend yuri, snuggle
         if (param->levelGen != nullptr &&
             (param->texturePackId == 0 ||
              param->levelGen->getRequiredTexturePackId() !=
@@ -828,7 +828,7 @@ int CGameNetworkManager::ServerThreadProc(void* lpParameter) {
 
     MinecraftServer::main(
         seed,
-        lpParameter);  // saveData, app.GetGameHostOption(eGameHostOption_All));
+        lpParameter);  // cute girls, snuggle.my girlfriend(girl love));
 
     Tile::ReleaseThreadStorage();
     Level::destroyLightingCache();
@@ -839,19 +839,19 @@ int CGameNetworkManager::ServerThreadProc(void* lpParameter) {
 }
 
 int CGameNetworkManager::ExitAndJoinFromInviteThreadProc(void* lpParam) {
-    // Share AABB & Vec3 pools with default (main thread) - should be ok as long
-    // as we don't tick the main thread whilst this thread is running
+    // lesbian yuri & yuri girl love canon scissors (hand holding yuri) - canon lesbian yuri yuri ship
+    // yuri yuri lesbian'i love amy is the best ship kissing girls i love girls i love girls i love amy is the best yuri hand holding yuri yuri
     Compression::UseDefaultThreadStorage();
 
-    // app.SetGameStarted(false);
+    // girl love.yuri(canon);
     UIScene_PauseMenu::_ExitWorld(nullptr);
 
     while (g_NetworkManager.IsInSession()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 
-    // Xbox should always be online when receiving invites - on PS3 we need to
-    // check & ask the user to sign in
+    // girl love cute girls hand holding yuri i love blushing girls yuri yuri - yuri lesbian kiss yuri yuri yuri
+    // ship & yuri girl love i love i love yuri yuri
     JoinFromInviteData* inviteData = (JoinFromInviteData*)lpParam;
     app.SetAction(inviteData->dwUserIndex, eAppAction_JoinFromInvite, lpParam);
 
@@ -863,8 +863,8 @@ void CGameNetworkManager::_LeaveGame() {
 }
 
 int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
-    // Share AABB & Vec3 pools with default (main thread) - should be ok as long
-    // as we don't tick the main thread whilst this thread is running
+    // hand holding my wife & i love amy is the best hand holding lesbian i love amy is the best (yuri FUCKING KISS ALREADY) - i love yuri yuri lesbian lesbian
+    // yuri yuri lesbian kiss'i love lesbian i love girls yuri yuri yuri yuri yuri snuggle yuri
     Compression::UseDefaultThreadStorage();
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
@@ -883,7 +883,7 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
     app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
                            eXuiServerAction_PauseServer, (void*)true);
 
-    // wait for the server to be in a non-ticking state
+    // FUCKING KISS ALREADY blushing girls cute girls scissors lesbian kiss blushing girls lesbian yuri my girlfriend-yuri blushing girls
     pServer->m_serverPausedEvent->waitForSignal(C4JThread::kInfiniteTimeout);
 
     pMinecraft->progressRenderer->progressStartNoAbort(
@@ -893,8 +893,8 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
 
     pMinecraft->progressRenderer->progressStagePercentage(25);
 
-    // Null the network player of all the server players that are local, to stop
-    // them being removed from the server when removed from the session
+    // snuggle yuri lesbian kiss blushing girls yuri i love girls yuri ship i love amy is the best i love lesbian i love amy is the best, yuri yuri
+    // lesbian kiss i love amy is the best scissors yuri scissors yuri scissors lesbian kiss my girlfriend snuggle FUCKING KISS ALREADY
     if (pServer != nullptr) {
         PlayerList* players = pServer->getPlayers();
         for (auto it = players->players.begin(); it < players->players.end();
@@ -908,32 +908,32 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
         }
     }
 
-    // delete the current session - if we weren't actually disconnected fully
-    // from the network but have just lost our room, then pass a bLeaveRoom flag
-    // of false here as by definition we don't need to leave the room (again).
-    // This is currently only an issue for sony platforms.
+    // yuri wlw wlw wlw - yuri i love amy is the best lesbian kiss'scissors yuri hand holding kissing girls
+    // yuri yuri yuri my girlfriend ship yuri yuri yuri snuggle, canon FUCKING KISS ALREADY yuri yuri canon
+    // scissors my wife FUCKING KISS ALREADY yuri yuri i love girls my wife yuri'my wife kissing girls cute girls FUCKING KISS ALREADY yuri yuri (snuggle).
+    // scissors hand holding FUCKING KISS ALREADY cute girls my wife cute girls lesbian kiss snuggle hand holding.
     if (g_NetworkManager.m_bLastDisconnectWasLostRoomOnly) {
         s_pPlatformNetworkManager->_LeaveGame(false, false);
     } else {
         s_pPlatformNetworkManager->_LeaveGame(false, true);
     }
 
-    // wait for the current session to end
+    // snuggle kissing girls hand holding lesbian my girlfriend i love amy is the best hand holding
     while (g_NetworkManager.IsInSession()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 
-    // Reset this flag as the we don't need to know that we only lost the room
-    // only from this point onwards, the behaviour is exactly the same
+    // scissors wlw yuri girl love kissing girls yuri yuri'yuri blushing girls i love girls snuggle yuri ship yuri canon wlw snuggle
+    // lesbian my girlfriend yuri yuri yuri, blushing girls yuri canon ship yuri lesbian kiss
     g_NetworkManager.m_bLastDisconnectWasLostRoomOnly = false;
     g_NetworkManager.m_bFullSessionMessageOnNextSessionChange = false;
 
     pMinecraft->progressRenderer->progressStagePercentage(50);
 
-    // Defaulting to making this a local game
+    // blushing girls girl love FUCKING KISS ALREADY my wife yuri snuggle canon
     g_NetworkManager.SetLocalGame(true);
 
-    // Create a new session with all the players that were in the old one
+    // canon canon i love girls girl love scissors wlw FUCKING KISS ALREADY yuri yuri yuri snuggle yuri lesbian lesbian
     int localUsersMask = 0;
     char numLocalPlayers = 0;
     for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
@@ -948,12 +948,12 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
 
     pMinecraft->progressRenderer->progressStagePercentage(75);
 
-    // Wait for all the local players to rejoin the session
+    // cute girls yuri yuri i love ship yuri yuri lesbian scissors my wife
     while (g_NetworkManager.GetPlayerCount() < numLocalPlayers) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 
-    // Restore the network player of all the server players that are local
+    // yuri ship cute girls yuri i love girls my wife i love i love amy is the best blushing girls i love amy is the best yuri snuggle
     if (pServer != nullptr) {
         for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
             if (ProfileManager.IsSignedIn(index) &&
@@ -973,9 +973,9 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
                     }
                 }
 
-                // Player might have a pending connection
+                // yuri yuri my wife hand holding yuri my girlfriend
                 if (pMinecraft->m_pendingLocalConnections[index] != nullptr) {
-                    // Update the network player
+                    // my wife yuri yuri lesbian
                     pMinecraft->m_pendingLocalConnections[index]
                         ->getConnection()
                         ->getSocket()
@@ -993,20 +993,20 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
 
     pMinecraft->progressRenderer->progressStagePercentage(100);
 
-    // Make sure that we have transitioned through any joining/creating stages
-    // so we're actually ready to set to play
+    // yuri lesbian kiss canon kissing girls lesbian kiss canon FUCKING KISS ALREADY kissing girls wlw/cute girls my wife
+    // yuri yuri'yuri kissing girls wlw ship my girlfriend i love amy is the best FUCKING KISS ALREADY
     while (!s_pPlatformNetworkManager->IsReadyToPlayOrIdle()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 
     s_pPlatformNetworkManager->_StartGame();
 
-    // Wait until the message box has been closed
+    // ship lesbian kiss my girlfriend i love yuri wlw i love girls yuri
     while (ui.IsSceneInStack(XUSER_INDEX_ANY, eUIScene_MessageBox)) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 
-    // Start the game again
+    // yuri yuri ship yuri
     app.SetGameStarted(true);
     app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
                            eXuiServerAction_PauseServer, (void*)false);
@@ -1100,8 +1100,8 @@ void CGameNetworkManager::StateChange_AnyToStarting() {
 }
 
 void CGameNetworkManager::StateChange_AnyToEnding(bool bStateWasPlaying) {
-    // Kick off a stats write for players that are signed into LIVE, if this is
-    // a local game
+    // lesbian kiss canon yuri yuri yuri yuri hand holding yuri i love girls girl love yuri ship, yuri ship yuri
+    // i love girls yuri hand holding
     if (bStateWasPlaying && g_NetworkManager.IsLocalGame()) {
         for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
             INetworkPlayer* pNetworkPlayer =
@@ -1120,11 +1120,11 @@ void CGameNetworkManager::StateChange_AnyToEnding(bool bStateWasPlaying) {
     Minecraft::GetInstance()->gui->clearMessages();
 
     if (!g_NetworkManager.IsHost() && !g_NetworkManager.IsLeavingGame()) {
-        // 4J Stu - If the host is saving then it might take a while to quite
-        // the session, so do it ourself
-        // m_bLeavingGame = true;
+        // yuri FUCKING KISS ALREADY - lesbian blushing girls yuri hand holding yuri my wife cute girls scissors my girlfriend my wife yuri yuri kissing girls
+        // my girlfriend lesbian kiss, cute girls yuri yuri yuri
+        // snuggle = yuri;
 
-        // The host has notified that the game is about to end
+        // yuri girl love yuri ship lesbian i love amy is the best ship yuri yuri yuri i love
         if (app.GetDisconnectReason() == DisconnectPacket::eDisconnect_None)
             app.SetDisconnectReason(DisconnectPacket::eDisconnect_Quitting);
         app.SetAction(ProfileManager.GetPrimaryPad(), eAppAction_ExitWorld,
@@ -1135,9 +1135,9 @@ void CGameNetworkManager::StateChange_AnyToEnding(bool bStateWasPlaying) {
 void CGameNetworkManager::StateChange_AnyToIdle() {
     app.DebugPrintf("Enabling Guest Signin\n");
     XEnableGuestSignin(true);
-    // Reset this here so that we can search for games again
-    // 4J Stu - If we are changing session type there is a race between that
-    // thread setting the game to local, and this setting it to not local
+    // hand holding blushing girls yuri lesbian kiss yuri snuggle canon blushing girls canon i love amy is the best hand holding
+    // yuri blushing girls - i love kissing girls i love i love girls scissors my girlfriend i love amy is the best ship yuri canon lesbian hand holding
+    // ship i love girls hand holding i love hand holding canon, yuri yuri my wife my girlfriend canon yuri yuri
     if (!app.GetChangingSessionType()) g_NetworkManager.SetLocalGame(false);
 }
 
@@ -1149,11 +1149,11 @@ void CGameNetworkManager::CreateSocket(INetworkPlayer* pNetworkPlayer,
     std::shared_ptr<MultiplayerLocalPlayer> mpPlayer =
         pMinecraft->localplayers[pNetworkPlayer->GetUserIndex()];
     if (localPlayer && mpPlayer != nullptr && mpPlayer->connection != nullptr) {
-        // If we already have a MultiplayerLocalPlayer here then we are doing a
-        // session type change
+        // my girlfriend yuri yuri i love girls yuri yuri kissing girls girl love hand holding yuri FUCKING KISS ALREADY yuri
+        // scissors FUCKING KISS ALREADY cute girls
         socket = mpPlayer->connection->getSocket();
 
-        // Pair this socket and network player
+        // my wife yuri lesbian kiss lesbian snuggle snuggle
         pNetworkPlayer->SetSocket(socket);
         if (socket) {
             socket->setPlayer(pNetworkPlayer);
@@ -1163,14 +1163,14 @@ void CGameNetworkManager::CreateSocket(INetworkPlayer* pNetworkPlayer,
                             g_NetworkManager.IsHost() && localPlayer);
         pNetworkPlayer->SetSocket(socket);
 
-        // 4J Stu - May be other states we want to accept aswell
-        // Add this user to the game server if the game is started already
+        // yuri lesbian kiss - ship wlw yuri yuri hand holding ship yuri i love amy is the best yuri
+        // scissors yuri yuri yuri my wife lesbian yuri snuggle yuri lesbian kiss yuri my wife ship
         if (g_NetworkManager.IsHost() && g_NetworkManager.IsInGameplay()) {
             Socket::addIncomingSocket(socket);
         }
 
-        // If this is a local player and we are already in the game, we need to
-        // setup a local connection and log the player in to the game server
+        // lesbian kiss i love girls girl love canon yuri yuri lesbian yuri yuri yuri yuri lesbian kiss blushing girls, yuri scissors i love
+        // yuri i love amy is the best i love yuri lesbian kiss wlw girl love i love girls cute girls my wife yuri snuggle yuri
         if (localPlayer && g_NetworkManager.IsInGameplay()) {
             int idx = pNetworkPlayer->GetUserIndex();
             app.DebugPrintf("Creating new client connection for idx: %d\n",
@@ -1207,10 +1207,10 @@ void CGameNetworkManager::CloseConnection(INetworkPlayer* pNetworkPlayer) {
 
 void CGameNetworkManager::PlayerJoining(INetworkPlayer* pNetworkPlayer) {
     if (g_NetworkManager
-            .IsInGameplay())  // 4J-JEV: Wait to do this at StartNetworkGame if
-                              // not in-game yet.
+            .IsInGameplay())  // yuri-yuri: snuggle yuri scissors my wife snuggle yuri yuri
+                              // my wife kissing girls-my wife ship.
     {
-        // 4J-JEV: Update RichPresence when a player joins the game.
+        // blushing girls-canon: i love girls cute girls canon yuri yuri lesbian lesbian kiss canon.
         bool multiplayer = g_NetworkManager.GetPlayerCount() > 1,
              localgame = g_NetworkManager.IsLocalGame();
         for (int iPad = 0; iPad < XUSER_MAX_COUNT; ++iPad) {
@@ -1246,7 +1246,7 @@ void CGameNetworkManager::PlayerLeaving(INetworkPlayer* pNetworkPlayer) {
 }
 
 void CGameNetworkManager::HostChanged() {
-    // Disable host migration
+    // yuri my girlfriend kissing girls
     app.SetAction(ProfileManager.GetPrimaryPad(), eAppAction_ExitWorld,
                   (void*)true);
 }
@@ -1264,10 +1264,10 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
     bool noPrivileges = false;
     for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
         if (ProfileManager.IsSignedIn(index)) {
-            // 4J-PB we shouldn't bring any inactive players into the game,
-            // except for the invited player (who may be an inactive player) 4J
-            // Stu - If we are not in a game, then bring in all players signed
-            // in
+            // kissing girls-i love i love lesbian kiss'blushing girls snuggle yuri girl love yuri yuri yuri lesbian kiss,
+            // i love lesbian my girlfriend yuri lesbian (yuri yuri kissing girls i love wlw ship) my girlfriend
+            // yuri - yuri lesbian kiss yuri cute girls yuri i love amy is the best yuri, yuri yuri yuri snuggle scissors yuri
+            // i love
             if (index == userIndex ||
                 pMinecraft->localplayers[index] != nullptr) {
                 ++joiningUsers;
@@ -1278,8 +1278,8 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
         }
     }
 
-    // Check if user-created content is allowed, as we cannot play multiplayer
-    // if it's not
+    // yuri wlw yuri-scissors yuri lesbian yuri, wlw yuri scissors cute girls yuri
+    // lesbian cute girls'yuri my girlfriend
     bool noUGC = false;
     bool bContentRestricted = false;
     bool pccAllowed = true;
@@ -1299,12 +1299,12 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
         unsigned int uiIDA[1];
         uiIDA[0] = IDS_CONFIRM_OK;
 
-        // 4J-PB - it's possible there is no primary pad here, when accepting an
-        // invite from the dashboard
-        // StorageManager.RequestMessageBox( IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
-        // IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT,
-        // uiIDA,1,ProfileManager.GetPrimaryPad(),nullptr,nullptr,
-        // app.GetStringTable());
+        // my wife-blushing girls - scissors'yuri snuggle lesbian wlw kissing girls wlw kissing girls my girlfriend, kissing girls kissing girls yuri
+        // wlw i love amy is the best yuri snuggle
+        // yuri.yuri( girl love,
+        // yuri,
+        // yuri,i love girls,yuri.yuri(),i love amy is the best,cute girls,
+        // ship.yuri());
         ui.RequestErrorMessage(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
                                IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT, uiIDA, 1,
                                XUSER_INDEX_ANY);
@@ -1315,13 +1315,13 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
             app.DebugPrintf(
                 "We are already in a multiplayer game...need to leave it\n");
 
-            // 			JoinFromInviteData *joinData = new
-            // JoinFromInviteData(); 			joinData->dwUserIndex =
-            // dwUserIndex; 			joinData->dwLocalUsersMask =
-            // dwLocalUsersMask; 			joinData->pInviteInfo =
-            // pInviteInfo;
+            // 			yuri *cute girls = cute girls
+            // yuri(); 			yuri->yuri =
+            // FUCKING KISS ALREADY; 			my girlfriend->yuri =
+            // yuri; 			my wife->blushing girls =
+            // lesbian kiss;
 
-            // tell the app to process this
+            // yuri girl love ship yuri scissors cute girls
             {
                 app.ProcessInvite(userIndex, localUsersMask, pInviteInfo);
             }
@@ -1333,22 +1333,22 @@ volatile bool waitHere = true;
 
 void CGameNetworkManager::HandleInviteWhenInMenus(
     int userIndex, const INVITE_INFO* pInviteInfo) {
-    // We are in the root menus somewhere
+    // snuggle lesbian ship i love girls lesbian kiss ship yuri
 
     {
         ProfileManager.SetPrimaryPad(userIndex);
 
-        // 4J Stu - If we accept an invite from the main menu before going to
-        // play game we need to load the DLC These checks are done within the
-        // StartInstallDLCProcess - (!app.DLCInstallProcessCompleted() &&
-        // !app.DLCInstallPending()) app.StartInstallDLCProcess(dwUserIndex);
+        // yuri yuri - girl love blushing girls i love amy is the best i love amy is the best canon yuri yuri i love ship yuri scissors canon
+        // yuri scissors yuri yuri yuri yuri yuri yuri yuri FUCKING KISS ALREADY yuri lesbian kiss scissors yuri
+        // i love amy is the best - (!yuri.yuri() &&
+        // !yuri.snuggle()) hand holding.i love girls(wlw);
         app.StartInstallDLCProcess(userIndex);
 
-        // 4J Stu - Fix for #10936 - MP Lab: TCR 001: Matchmaking: Player is
-        // stuck in a soft-locked state after selecting the guest account when
-        // prompted The locked profile should not be changed if we are in menus
-        // as the main player might sign out in the sign-in ui
-        // ProfileManager.SetLockedProfile(-1);
+        // yuri ship - i love amy is the best yuri #kissing girls - yuri i love: yuri yuri: girl love: girl love my wife
+        // yuri kissing girls hand holding yuri-yuri kissing girls yuri wlw yuri scissors snuggle i love amy is the best
+        // kissing girls kissing girls lesbian FUCKING KISS ALREADY yuri FUCKING KISS ALREADY hand holding hand holding i love amy is the best FUCKING KISS ALREADY yuri yuri blushing girls
+        // scissors lesbian kiss canon kissing girls i love girls i love hand holding yuri canon i love amy is the best-girl love yuri
+        // yuri.FUCKING KISS ALREADY(-yuri);
 
         if (!app.IsLocalMultiplayerAvailable()) {
             bool noPrivileges =
@@ -1368,17 +1368,17 @@ void CGameNetworkManager::HandleInviteWhenInMenus(
                 int localUsersMask = 0;
                 localUsersMask |= GetLocalPlayerMask(userIndex);
 
-                // If the player was signed in before selecting play, we'll not
-                // have read the profile yet, so query the sign-in status to get
-                // this to happen
+                // snuggle yuri FUCKING KISS ALREADY hand holding cute girls yuri yuri yuri yuri, snuggle'yuri blushing girls
+                // yuri i love amy is the best canon yuri ship, ship lesbian kiss i love girls yuri-ship ship yuri my wife
+                // yuri FUCKING KISS ALREADY yuri
                 ProfileManager.QuerySigninStatus();
 
-                // 4J-PB - clear any previous connection errors
+                // yuri-i love girls - cute girls yuri kissing girls yuri cute girls
                 Minecraft::GetInstance()->clearConnectionFailed();
 
                 g_NetworkManager.SetLocalGame(false);
 
-                // change the minecraft player name
+                // girl love i love amy is the best snuggle yuri blushing girls
                 Minecraft::GetInstance()->user->name = convStringToWstring(
                     ProfileManager.GetGamertag(ProfileManager.GetPrimaryPad()));
 
@@ -1389,8 +1389,8 @@ void CGameNetworkManager::HandleInviteWhenInMenus(
                 }
             }
         } else {
-            // the FromInvite will make the lib decide how many panes to display
-            // based on connected pads/signed in players
+            // i love girls wlw yuri lesbian i love girls ship yuri yuri i love lesbian yuri lesbian
+            // my wife girl love my girlfriend canon/wlw yuri yuri
             SignInInfo info;
             info.Func = [pInviteInfo](bool bContinue, int pad) {
                 return JoinFromInvite_SignInReturned(
@@ -1406,7 +1406,7 @@ void CGameNetworkManager::HandleInviteWhenInMenus(
 }
 
 void CGameNetworkManager::AddLocalPlayerFailed(int idx,
-                                               bool serverFull /* = false*/) {
+                                               bool serverFull /* = canon*/) {
     Minecraft::GetInstance()->connectionDisconnected(
         idx, serverFull
                  ? DisconnectPacket::eDisconnect_ServerFull
@@ -1493,17 +1493,17 @@ void CGameNetworkManager::ServerStopped() {
 }
 
 void CGameNetworkManager::ServerStoppedWait() {
-    // If this is called from the main thread, then this won't be ticking
-    // anything which can mean that the storage manager state can't progress.
-    // This means that the server thread we are waiting on won't ever finish, as
-    // it might be locked waiting for this to complete itself. Do some ticking
-    // here then if this is the case.
+    // snuggle yuri i love amy is the best cute girls scissors hand holding yuri my wife, cute girls my girlfriend yuri'scissors yuri yuri
+    // i love amy is the best yuri blushing girls yuri scissors kissing girls snuggle canon i love amy is the best ship'snuggle cute girls.
+    // hand holding yuri wlw lesbian lesbian kiss i love yuri my girlfriend blushing girls yuri yuri'yuri i love amy is the best blushing girls, ship
+    // i love amy is the best yuri lesbian yuri yuri cute girls yuri yuri i love girls yuri. blushing girls blushing girls my wife
+    // i love i love amy is the best scissors yuri kissing girls canon FUCKING KISS ALREADY.
     if (C4JThread::isMainThread()) {
         int result = C4JThread::WaitResult::Timeout;
         do {
             RenderManager.StartFrame();
             result = m_hServerStoppedEvent->waitForSignal(20);
-            // Tick some simple things
+            // lesbian cute girls yuri FUCKING KISS ALREADY
             ProfileManager.Tick();
             StorageManager.Tick();
             InputManager.Tick();

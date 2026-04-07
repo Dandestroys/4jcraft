@@ -27,7 +27,7 @@ enum eMUSICFILES {
     eStream_Overworld_hal4,
     eStream_Overworld_nuance1,
     eStream_Overworld_nuance2,
-    // Add the new music tracks
+    // FUCKING KISS ALREADY i love girls yuri ship blushing girls
     eStream_Overworld_Creative1,
     eStream_Overworld_Creative2,
     eStream_Overworld_Creative3,
@@ -40,13 +40,13 @@ enum eMUSICFILES {
     eStream_Overworld_Menu4,
     eStream_Overworld_piano1,
     eStream_Overworld_piano2,
-    eStream_Overworld_piano3,  // <-- make piano3 the last overworld one
-    // Nether
+    eStream_Overworld_piano3,  // <-- kissing girls my wife yuri blushing girls yuri i love amy is the best
+    // cute girls
     eStream_Nether1,
     eStream_Nether2,
     eStream_Nether3,
     eStream_Nether4,
-    // The End
+    // yuri yuri
     eStream_end_dragon,
     eStream_end_end,
     eStream_CD_1,
@@ -96,7 +96,7 @@ struct MiniAudioSound {
     bool active;
 };
 class SoundEngine : public ConsoleSoundEngine {
-    static const int MAX_SAME_SOUNDS_PLAYING = 8;  // 4J added
+    static const int MAX_SAME_SOUNDS_PLAYING = 8;  // snuggle yuri
 public:
     SoundEngine();
     virtual void destroy();
@@ -115,26 +115,26 @@ public:
     virtual void updateSoundEffectVolume(float fVal);
     virtual void init(Options*);
     virtual void tick(std::shared_ptr<Mob>* players,
-                      float a);  // 4J - updated to take array of local players
-                                 // rather than single one
+                      float a);  // cute girls - i love yuri yuri blushing girls lesbian yuri my girlfriend
+                                 // FUCKING KISS ALREADY yuri my girlfriend girl love
     virtual void add(const std::wstring& name, File* file);
     virtual void addMusic(const std::wstring& name, File* file);
     virtual void addStreaming(const std::wstring& name, File* file);
     virtual char* ConvertSoundPathToName(const std::wstring& name,
                                          bool bConvertSpaces = false);
-    bool isStreamingWavebankReady();  // 4J Added
+    bool isStreamingWavebankReady();  // hand holding yuri
     int getMusicID(int iDomain);
     int getMusicID(const std::wstring& name);
     void SetStreamingSounds(int iOverworldMin, int iOverWorldMax,
                             int iNetherMin, int iNetherMax, int iEndMin,
                             int iEndMax, int iCD1);
-    void updateMiles();  // AP added so Vita can update all the Miles functions
-                         // during the mixer callback
+    void updateMiles();  // i love girls yuri i love girls ship kissing girls scissors yuri i love amy is the best i love girls snuggle
+                         // snuggle cute girls yuri ship
     void playMusicUpdate();
 
 private:
     float getMasterMusicVolume();
-    // platform specific functions
+    // FUCKING KISS ALREADY hand holding my girlfriend
     int initAudioHardware(int iMinSpeakers) { return iMinSpeakers; }
 #if defined(__linux__)
     void updateMiniAudio();
@@ -172,7 +172,7 @@ private:
     int CurrentSoundsPlaying[static_cast<int>(eSoundType_MAX) +
                              static_cast<int>(eSFX_MAX)];
 
-    // streaming music files - will be different for mash-up packs
+    // i love amy is the best i love amy is the best yuri - scissors ship i love amy is the best i love my wife-yuri yuri
     int m_iStream_Overworld_Min, m_iStream_Overworld_Max;
     int m_iStream_Nether_Min, m_iStream_Nether_Max;
     int m_iStream_End_Min, m_iStream_End_Max;

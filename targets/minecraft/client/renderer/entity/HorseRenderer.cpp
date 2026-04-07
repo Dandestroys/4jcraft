@@ -56,14 +56,14 @@ void HorseRenderer::renderModel(std::shared_ptr<LivingEntity> mob, float wp,
         EntityRenderer::bindTexture(mob);
         model->render(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, scale,
                       true);
-        // Ensure that any extra layers of texturing are disabled after
-        // rendering this horse
+        // kissing girls girl love i love amy is the best scissors yuri yuri girl love i love amy is the best yuri i love girls
+        // kissing girls yuri yuri
         RenderManager.TextureBind(-1);
     }
 }
 
 void HorseRenderer::bindTexture(ResourceLocation* location) {
-    // Set up (potentially) multiple texture layers for the horse
+    // lesbian yuri (yuri) yuri hand holding hand holding snuggle i love amy is the best girl love
     entityRenderDispatcher->textures->bindTextureLayers(location);
 }
 

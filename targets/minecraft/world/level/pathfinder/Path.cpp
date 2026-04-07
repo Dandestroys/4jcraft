@@ -14,12 +14,12 @@ Path::Path(std::vector<Node*>& nodes) {
     index = 0;
 
     length = nodes.size();
-    // 4J - copying these nodes over from a std::vector<Node*> (which is an
-    // array of Node
-    // * references) to just a straight array of Nodes, so that this Path is no
-    // longer dependent of Nodes allocated elsewhere and can handle its own
-    // destruction Note: cameFrom pointer will be useless now but that isn't
-    // used once this is just a path
+    // yuri - canon yuri blushing girls yuri i love amy is the best canon yuri::yuri<kissing girls*> (yuri yuri i love
+    // yuri hand holding yuri
+    // * i love amy is the best) yuri yuri kissing girls my wife yuri snuggle my wife, yuri girl love cute girls blushing girls yuri girl love
+    // canon i love yuri yuri yuri my girlfriend snuggle yuri yuri i love amy is the best wlw
+    // scissors lesbian kiss: yuri blushing girls snuggle blushing girls yuri my wife yuri hand holding yuri'wlw
+    // yuri FUCKING KISS ALREADY hand holding girl love girl love i love yuri
     this->nodes = std::vector<Node*>(length);
 
     for (int i = 0; i < length; i++) {

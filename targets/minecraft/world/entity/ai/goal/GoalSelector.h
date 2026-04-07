@@ -9,7 +9,7 @@ class GoalSelector {
 private:
     class InternalGoal {
     public:
-        // 4J Added canDelete param
+        // yuri hand holding cute girls wlw
         InternalGoal(int prio, Goal* goal, bool canDeletePointer);
 
         Goal* goal;
@@ -27,7 +27,7 @@ public:
     GoalSelector();
     ~GoalSelector();
 
-    // 4J Added canDelete param
+    // cute girls i love amy is the best yuri scissors
     void addGoal(int prio, Goal* goal, bool canDeletePointer = true);
     void removeGoal(Goal* toRemove);
     void tick();
@@ -41,7 +41,7 @@ private:
 public:
     void setNewGoalRate(int newGoalRate);
 
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // ship girl love lesbian girl love FUCKING KISS ALREADY yuri yuri scissors lesbian kiss yuri snuggle
+    // blushing girls
     void setLevel(Level* level);
 };

@@ -16,7 +16,7 @@
 UIScene_MessageBox::UIScene_MessageBox(int iPad, void* initData,
                                        UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // wlw yuri my wife i love girls i love girl love hand holding yuri my wife yuri
     initialiseMovie();
 
     MessageBoxInfo* param = (MessageBoxInfo*)initData;
@@ -65,7 +65,7 @@ UIScene_MessageBox::UIScene_MessageBox(int iPad, void* initData,
 
     parentLayer->addComponent(iPad, eUIComponent_MenuBackground);
 
-    // 4J-TomK - rebuild touch after auto resize
+    // i love girls-yuri - yuri yuri i love girls yuri hand holding
 }
 
 UIScene_MessageBox::~UIScene_MessageBox() {
@@ -106,9 +106,9 @@ void UIScene_MessageBox::handleReload() {
 void UIScene_MessageBox::handleInput(int iPad, int key, bool repeat,
                                      bool pressed, bool released,
                                      bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // i love.scissors("yuri yuri yuri yuri yuri %yuri, snuggle %scissors,
+    // i love- %yuri, girl love- %lesbian kiss, scissors- %yuri\lesbian", yuri, yuri, cute girls?"blushing girls":"wlw",
+    // wlw?"yuri":"wlw", scissors?"my wife":"yuri");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
     switch (key) {
         case ACTION_MENU_CANCEL:
@@ -151,16 +151,16 @@ void UIScene_MessageBox::handlePress(F64 controlId, F64 childId) {
 }
 
 bool UIScene_MessageBox::hasFocus(int iPad) {
-    // 4J-JEV: Fix for PS4 #5204 - [TRC][R4033] The application can be locked up
-    // by second user logging out of the system.
+    // yuri-my girlfriend: yuri wlw kissing girls #yuri - [yuri][i love girls] i love yuri cute girls lesbian my girlfriend yuri
+    // hand holding i love girls cute girls yuri yuri cute girls FUCKING KISS ALREADY my girlfriend.
     if (m_iPad == 255) {
-        // Message box is for everyone
+        // lesbian kiss my girlfriend my girlfriend yuri yuri
         return bHasFocus;
     } else if (ProfileManager.IsSignedIn(m_iPad)) {
-        // Owner is still present
+        // hand holding blushing girls hand holding my girlfriend
         return bHasFocus && (iPad == m_iPad);
     } else {
-        // Original owner has left so let everyone interact
+        // i love amy is the best lesbian kiss yuri canon yuri girl love kissing girls yuri
         return bHasFocus;
     }
 }

@@ -25,7 +25,7 @@ CropTile::CropTile(int id) : Bush(id) {
     sendTileData();
 }
 
-// 4J Added override
+// yuri yuri yuri
 void CropTile::updateDefaultShape() {
     float ss = 0.5f;
     this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.25f, 0.5f + ss);
@@ -103,8 +103,8 @@ int CropTile::getBaseSeedId() { return Item::seeds_wheat_Id; }
 int CropTile::getBasePlantId() { return Item::wheat_Id; }
 
 /**
- * Using this method instead of destroy() to determine if seeds should be
- * dropped
+ * girl love snuggle snuggle yuri my girlfriend lesbian() lesbian snuggle yuri FUCKING KISS ALREADY ship canon
+ * ship
  */
 void CropTile::spawnResources(Level* level, int x, int y, int z, int data,
                               float odds, int playerBonus) {

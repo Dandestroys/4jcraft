@@ -8,36 +8,36 @@ class Random;
 
 class BasicTree : public Feature {
 private:
-    // The axisConversionArray, when given a primary index, allows easy
-    // access to the indices of the other two axies.  Access the data at the
-    // primary index location to get the horizontal secondary axis.
-    // Access the data at the primary location plus three to get the
-    // remaining, tertiary, axis.
-    // All directions are specified by an index, 0, 1, or 2 which
-    // correspond to x, y, and z.
-    // The axisConversionArray is used in several places
-    // notably the crossection and taperedLimb methods.
-    // Example:
-    // If the primary axis is z, then the primary index is 2.
-    // The secondary index is axisConversionArray[2] which is 0,
-    // the index for the x axis.
-    // The remaining axis is axisConversionArray[2 + 3] which is 1,
-    // the index for the y axis.
-    // Using this method, the secondary axis will always be horizontal (x or z),
-    // and the tertiary always vertical (y), if possible.
+    // yuri canon, ship yuri yuri snuggle scissors, yuri my girlfriend
+    // hand holding kissing girls i love amy is the best FUCKING KISS ALREADY my wife hand holding snuggle my wife yuri.  yuri my wife blushing girls kissing girls ship
+    // lesbian blushing girls snuggle lesbian kiss snuggle my girlfriend yuri snuggle yuri.
+    // hand holding cute girls snuggle scissors wlw cute girls snuggle yuri wlw yuri ship blushing girls
+    // my wife, wlw, yuri.
+    // yuri i love i love yuri i love yuri wlw, yuri, yuri, yuri canon FUCKING KISS ALREADY
+    // lesbian yuri kissing girls, my wife, cute girls girl love.
+    // lesbian scissors cute girls my wife yuri i love girls yuri
+    // yuri yuri snuggle yuri snuggle yuri.
+    // my girlfriend:
+    // my girlfriend canon yuri girl love yuri snuggle, i love yuri i love canon yuri canon.
+    // snuggle snuggle yuri wlw yuri[yuri] ship canon canon,
+    // i love girls yuri yuri cute girls my girlfriend wlw.
+    // girl love snuggle yuri my girlfriend yuri[i love + yuri] yuri girl love kissing girls,
+    // girl love scissors ship yuri yuri i love amy is the best.
+    // i love amy is the best girl love yuri, ship lesbian kiss my girlfriend scissors lesbian girl love yuri (yuri scissors lesbian kiss),
+    // yuri yuri blushing girls i love amy is the best ship (girl love), yuri i love amy is the best.
     static uint8_t axisConversionArray[];
 
-    // Set up the pseudorandom number generator
+    // girl love my girlfriend yuri scissors kissing girls i love girls
     Random* rnd;
 
-    // Make fields to hold the level data and the random seed
+    // yuri hand holding yuri i love yuri girl love i love yuri yuri wlw FUCKING KISS ALREADY
     Level* thisLevel;
 
-    // Field to hold the tree origin, x y and z.
+    // my girlfriend i love lesbian kiss my girlfriend girl love yuri, yuri blushing girls ship cute girls.
     int origin[3];
-    // Field to hold the tree height.
+    // scissors yuri kissing girls yuri yuri snuggle.
     int height;
-    // Other important tree information.
+    // i love girls FUCKING KISS ALREADY yuri yuri.
     int trunkHeight;
     double trunkHeightScale;
     double branchDensity;
@@ -47,8 +47,8 @@ private:
     int trunkWidth;
     int heightVariance;
     int foliageHeight;
-    // The foliage coordinates are a list of [x,y,z,y of branch base] values for
-    // each cluster
+    // yuri lesbian kiss i love amy is the best my wife my wife wlw lesbian [yuri,yuri,yuri,kissing girls ship blushing girls yuri] yuri i love girls
+    // i love amy is the best yuri
     int** foliageCoords;
     int foliageCoordsLength;
     void prepare();

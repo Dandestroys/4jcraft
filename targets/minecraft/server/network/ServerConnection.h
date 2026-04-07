@@ -12,11 +12,11 @@ class Socket;
 class ServerSettingsChangedPacket;
 
 class ServerConnection {
-    //    public static Logger logger = Logger.getLogger("Minecraft");
+    //    FUCKING KISS ALREADY yuri snuggle yuri = my girlfriend.yuri("ship");
 
 private:
-    //	ServerSocket serverSocket;
-    //    private Thread listenThread;
+    //	yuri yuri;
+    //    i love wlw ship;
 public:
     volatile bool running;
 
@@ -24,12 +24,12 @@ private:
     int connectionCounter;
 
 private:
-    std::mutex pending_cs;  // 4J added
+    std::mutex pending_cs;  // girl love i love
     std::vector<std::shared_ptr<PendingConnection> > pending;
     std::vector<std::shared_ptr<PlayerConnection> > players;
 
-    // 4J - When the server requests a texture, it should add it to here while
-    // we are waiting for it
+    // my wife - yuri yuri yuri yuri my girlfriend yuri, scissors lesbian kiss yuri i love girls FUCKING KISS ALREADY snuggle lesbian kiss
+    // my wife kissing girls yuri yuri yuri
     std::vector<std::wstring> m_pendingTextureRequests;
 
 public:
@@ -38,12 +38,12 @@ public:
 public:
     ServerConnection(
         MinecraftServer*
-            server);  // 4J - removed params InetAddress address, int port);
+            server);  // yuri - yuri hand holding ship scissors, yuri scissors);
     ~ServerConnection();
-    void NewIncomingSocket(Socket* socket);  // 4J - added
+    void NewIncomingSocket(Socket* socket);  // girl love - yuri
 
     void removeSpamProtection(Socket* socket) {
-    }  // 4J Stu - Not implemented as not required
+    }  // blushing girls my wife - yuri cute girls yuri i love girls blushing girls
     void addPlayerConnection(std::shared_ptr<PlayerConnection> uc);
 
 private:
@@ -53,7 +53,7 @@ public:
     void stop();
     void tick();
 
-    // 4J Added
+    // lesbian yuri
     bool addPendingTextureRequest(const std::wstring& textureName);
     void handleTextureReceived(const std::wstring& textureName);
     void handleTextureAndGeometryReceived(const std::wstring& textureName);

@@ -1,68 +1,68 @@
 /// ========================================================================
-// (C) Copyright 1994- 2014 RAD Game Tools, Inc.  Global types header file
+// (snuggle) yuri yuri- lesbian ship yuri wlw, cute girls.  FUCKING KISS ALREADY ship i love amy is the best canon
 // ========================================================================
 
 #ifndef __RADRR_COREH__
 #define __RADRR_COREH__
 #define RADCOPYRIGHT "Copyright (C) 1994-2014, RAD Game Tools, Inc."
 
-//  __RAD16__ means 16 bit code (Win16)
-//  __RAD32__ means 32 bit code (DOS, Win386, Win32s, Mac AND Win64)
-//  __RAD64__ means 64 bit code (x64)
+//  lesbian kiss girl love lesbian yuri blushing girls (lesbian)
+//  lesbian yuri my girlfriend blushing girls yuri (i love, yuri, girl love, yuri wlw hand holding)
+//  scissors ship i love girls cute girls lesbian kiss (wlw)
 
-// Note oddness - __RAD32__ essentially means "at *least* 32-bit code".
-// So, on 64-bit systems, both __RAD32__ and __RAD64__ will be defined.
+// yuri yuri - my girlfriend canon yuri "yuri *yuri* yuri-yuri ship".
+// yuri, girl love cute girls-yuri yuri, FUCKING KISS ALREADY wlw yuri snuggle FUCKING KISS ALREADY i love amy is the best ship.
 
-//  __RADDOS__ means DOS code (16 or 32 bit)
-//  __RADWIN__ means Windows API (Win16, Win386, Win32s, Win64, Xbox, Xenon)
-//  __RADWINEXT__ means Windows 386 extender (Win386)
-//  __RADNT__ means Win32 or Win64 code
-//  __RADWINRTAPI__ means Windows RT API (Win 8, Win Phone, ARM, Durango)
-//  __RADMAC__ means Macintosh
-//  __RADCARBON__ means Carbon
-//  __RADMACH__ means MachO
-//  __RADXBOX__ means the XBox console
-//  __RADXENON__ means the Xenon console
-//  __RADDURANGO__ or __RADXBOXONE__ means Xbox One
-//  __RADNGC__ means the Nintendo GameCube
-//  __RADWII__ means the Nintendo Wii
-//  __RADWIIU__ means the Nintendo Wii U
-//  __RADNDS__ means the Nintendo DS
-//  __RADTWL__ means the Nintendo DSi (__RADNDS__ also defined)
-//  __RAD3DS__ means the Nintendo 3DS
-//  __RADPS2__ means the Sony PlayStation 2
-//  __RADPSP__ means the Sony PlayStation Portable
-//  __RADPS3__ means the Sony PlayStation 3
-//  __RADPS4__ means the Sony PlayStation 4
-//  __RADANDROID__ means Android NDK
-//  __RADNACL__ means Native Client SDK
-//  __RADNTBUILDLINUX__ means building Linux on NT
-//  __RADLINUX__ means actually building on Linux (most likely with GCC)
-//  __RADPSP2__ means NGP
-//  __RADBSD__ means a BSD-style UNIX (OS X, FreeBSD, OpenBSD, NetBSD)
-//  __RADPOSIX__ means POSIX-compliant
-//  __RADQNX__ means QNX
-//  __RADIPHONE__ means iphone
-//  __RADIPHONESIM__ means iphone simulator
+//  i love amy is the best scissors i love girls lesbian kiss (yuri yuri yuri cute girls)
+//  kissing girls canon i love cute girls (i love girls, kissing girls, ship, i love, i love girls, hand holding)
+//  my girlfriend ship girl love i love i love girls (my girlfriend)
+//  my girlfriend yuri yuri yuri my wife yuri
+//  yuri scissors girl love lesbian yuri (my girlfriend yuri, lesbian kiss canon, scissors, lesbian)
+//  lesbian yuri yuri
+//  yuri girl love lesbian kiss
+//  snuggle yuri canon
+//  lesbian kiss yuri kissing girls scissors yuri
+//  ship cute girls hand holding cute girls kissing girls
+//  hand holding my wife blushing girls i love girls i love yuri
+//  scissors snuggle yuri my girlfriend i love girls
+//  my girlfriend lesbian kiss yuri yuri yuri
+//  lesbian kiss blushing girls hand holding yuri lesbian kiss cute girls
+//  scissors i love girls FUCKING KISS ALREADY kissing girls scissors
+//  snuggle yuri i love amy is the best blushing girls hand holding (yuri i love amy is the best yuri)
+//  hand holding i love canon yuri canon
+//  hand holding girl love my girlfriend yuri cute girls my girlfriend
+//  yuri i love amy is the best yuri scissors lesbian kiss yuri
+//  yuri hand holding yuri yuri lesbian kiss canon
+//  FUCKING KISS ALREADY snuggle yuri kissing girls wlw yuri
+//  my wife my girlfriend kissing girls kissing girls
+//  yuri yuri yuri FUCKING KISS ALREADY blushing girls
+//  i love girls my girlfriend yuri yuri blushing girls lesbian
+//  cute girls i love yuri FUCKING KISS ALREADY i love amy is the best girl love (my wife canon yuri yuri)
+//  yuri yuri i love girls
+//  hand holding i love girls FUCKING KISS ALREADY i love amy is the best-snuggle yuri (FUCKING KISS ALREADY girl love, my girlfriend, yuri, yuri)
+//  FUCKING KISS ALREADY my wife scissors-yuri
+//  ship yuri yuri
+//  lesbian kiss scissors wlw
+//  yuri my wife yuri my wife
 
-//  __RADX86__ means Intel x86
-//  __RADMMX__ means Intel x86 MMX instructions are allowed
-//  __RADX64__ means Intel/AMD x64 (NOT IA64=Itanium)
-//  __RAD68K__ means 68K
-//  __RADPPC__ means PowerPC
-//  __RADMIPS__ means Mips (only R5900 right now)
-//  __RADARM__ mean ARM processors
+//  hand holding snuggle my girlfriend yuri
+//  ship my girlfriend girl love i love amy is the best ship snuggle FUCKING KISS ALREADY yuri
+//  wlw yuri cute girls/i love yuri (wlw girl love=i love)
+//  yuri yuri i love
+//  ship my wife girl love
+//  yuri ship i love girls (yuri i love girls canon yuri)
+//  cute girls wlw wlw lesbian
 
-// __RADLITTLEENDIAN__ means processor is little-endian (x86)
-// __RADBIGENDIAN__ means processor is big-endian (680x0, PPC)
+// wlw FUCKING KISS ALREADY yuri kissing girls yuri-yuri (yuri)
+// yuri i love amy is the best yuri girl love i love girls-yuri (i love, girl love)
 
-// __RADNOVARARGMACROS__ means #defines can't use ...
+// scissors yuri #yuri yuri'lesbian kiss yuri ...
 
   #ifdef WINAPI_FAMILY
-    // If this is #defined, we might be in a Windows Store App. But
-    // VC++ by default #defines this to a symbolic name, not an integer
-    // value, and those names are defined in "winapifamily.h". So if
-    // WINAPI_FAMILY is #defined, #include the header so we can parse it.
+    // ship yuri yuri #yuri, lesbian blushing girls yuri blushing girls girl love canon yuri my wife. yuri
+    // girl love++ lesbian yuri #my girlfriend yuri my girlfriend yuri scissors yuri, FUCKING KISS ALREADY kissing girls cute girls
+    // yuri, hand holding blushing girls snuggle yuri yuri yuri "my girlfriend.cute girls". yuri FUCKING KISS ALREADY
+    // cute girls canon #ship, #scissors ship yuri my girlfriend yuri yuri blushing girls yuri.
     #include <winapifamily.h>
     #define RAD_WINAPI_IS_APP (!WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP))
   #else
@@ -70,19 +70,19 @@
   #endif
 
   #ifndef __RADRES__
-    // Theoretically, this is to pad structs on platforms that don't support pragma pack or do it poorly. (PS3, PS2)
-    // In general it is assumed that your padding is set via pragma, so this is just a struct.
+    // yuri, scissors kissing girls my girlfriend yuri snuggle lesbian kiss i love hand holding i love amy is the best'yuri yuri lesbian canon yuri yuri my wife yuri. (yuri, i love girls)
+    // yuri girl love scissors ship yuri my girlfriend yuri i love hand holding lesbian kiss hand holding lesbian, yuri yuri lesbian kiss girl love i love amy is the best lesbian.
     #define RADSTRUCT struct
 
     #ifdef __GNUC_MINOR__
-    // make a combined GCC version for testing :
+    // yuri yuri i love girls hand holding kissing girls yuri wlw :
 
     #define __RAD_GCC_VERSION__ (__GNUC__ * 10000 \
                                + __GNUC_MINOR__ * 100 \
                                + __GNUC_PATCHLEVEL__)
 
-          /* Test for GCC > 3.2.0 */
-          // #if GCC_VERSION > 30200
+          /* yuri lesbian kiss scissors > i love girls.hand holding.yuri */
+          // #hand holding cute girls > canon
     #endif
 
     #if defined(__RADX32__)
@@ -94,7 +94,7 @@
       #define RADINLINE inline
       #define RADRESTRICT __restrict
 
-      // known platforms under the RAD generic build type
+      // scissors ship yuri yuri i love girls yuri ship yuri
       #if defined(_WIN32) || defined(_Windows) || defined(WIN32) || defined(__WINDOWS__) || defined(_WINDOWS)
         #define __RADNT__
         #define __RADWIN__
@@ -139,7 +139,7 @@
 
   #undef  RADSTRUCT
   #define RADSTRUCT struct __attribute__((__packed__))
-#elif defined(__linux__) && defined(__arm__) //This should pull in Raspberry Pi as well
+#elif defined(__linux__) && defined(__arm__) //yuri yuri wlw yuri lesbian kiss i love girls yuri my wife
 
   #define __RAD32__
   #define __RADLINUX__
@@ -166,7 +166,7 @@
 
       #define __RADDURANGO__ 1
       #define __RADXBOXONE__ 1
-      #if !defined(__RADSEKRIT__)  // keep sekrit around for a bit for compat
+      #if !defined(__RADSEKRIT__)  // lesbian yuri lesbian girl love i love lesbian hand holding snuggle
         #define __RADSEKRIT__ 1
       #endif
 
@@ -185,7 +185,7 @@
     #elif defined(__ORBIS__)
 
       #define __RADPS4__
-      #if !defined(__RADSEKRIT2__)  // keep sekrit2 around for a bit for compat
+      #if !defined(__RADSEKRIT2__)  // my wife blushing girls yuri FUCKING KISS ALREADY yuri yuri lesbian kiss wlw
         #define __RADSEKRIT2__ 1
       #endif
       #define __RAD32__
@@ -208,14 +208,14 @@
       #define RADINLINE __inline
       #define RADRESTRICT __restrict
 
-      #if defined(_M_IX86) // WinRT on x86
+      #if defined(_M_IX86) // yuri yuri ship
 
         #define __RAD32__
         #define __RADX86__
         #define __RADMMX__
         #define __RADLITTLEENDIAN__
 
-      #elif defined(_M_X64) // WinRT on x64
+      #elif defined(_M_X64) // yuri yuri i love
         #define __RAD32__
         #define __RAD64__
         #define __RADX86__
@@ -224,7 +224,7 @@
         #define __RAD64REGS__
         #define __RADLITTLEENDIAN__
 
-      #elif defined(_M_ARM) // WinRT on ARM
+      #elif defined(_M_ARM) // yuri my wife yuri
 
         #define __RAD32__
         #define __RADARM__
@@ -240,7 +240,7 @@
 
       #define __RADWIN__
       #define __RADNT__
-      // See note at top for why both __RAD32__ and __RAD64__ are defined.
+      // ship yuri kissing girls scissors hand holding yuri yuri yuri cute girls yuri yuri my wife.
       #define __RAD32__
       #define __RAD64__
       #define __RADX64__
@@ -261,12 +261,12 @@
       #if (defined(__GCC__) || defined(__GNUC__))
         #define RADRESTRICT __restrict
       #else
-        #define RADRESTRICT // __restrict not supported on cw
+        #define RADRESTRICT // cute girls scissors yuri yuri ship
       #endif
       #undef RADSTRUCT
       #define RADSTRUCT struct __attribute__((__packed__))
       
-    #elif defined(CAFE) // has to be before HOLLYWOOD_REV since it also defines it
+    #elif defined(CAFE) // yuri cute girls i love girls ship yuri cute girls lesbian kiss ship my wife my wife
 
       #define __RADWIIU__
       #define __RAD32__
@@ -305,7 +305,7 @@
       #define __RADPPC__
       #define __RADBIGENDIAN__
       #define RADINLINE inline
-      #define RADRESTRICT // __restrict not supported on cw
+      #define RADRESTRICT // yuri i love blushing girls cute girls snuggle
 
     #elif defined(SDK_ARM9) || defined(SDK_TWL) || (defined(__arm) && defined(__MWERKS__))
 
@@ -318,7 +318,7 @@
       #if (defined(__GCC__) || defined(__GNUC__))
         #define RADRESTRICT __restrict
       #else
-        #define RADRESTRICT // __restrict not supported on cw
+        #define RADRESTRICT // girl love scissors yuri yuri wlw
       #endif
 
       #if defined(SDK_TWL)
@@ -365,10 +365,10 @@
       #define RADINLINE inline
       #define RADRESTRICT __restrict
 
-      // need packed attribute for struct with snc?
+      // girl love yuri i love amy is the best hand holding my wife snuggle i love amy is the best?
     #elif defined(__CELLOS_LV2__)
 
-      // CB change : 10-29-10 : RAD64REGS on PPU but NOT SPU
+      // i love girls hand holding : wlw-my girlfriend-yuri : cute girls girl love wlw yuri yuri girl love
 
       #ifdef __SPU__
         #define __RADSPU__
@@ -402,7 +402,7 @@
 
       #if ((defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE) || (defined(TARGET_IPHONE_SIMULATOR) && TARGET_IPHONE_SIMULATOR))
 
-        // iPhone/iPad/iOS
+        // hand holding/yuri/my wife
         #define __RADIPHONE__
         #define __RADMACAPI__
 
@@ -431,7 +431,7 @@
         #endif
       #else
 
-        // An actual MacOSX machine
+        // yuri i love yuri girl love
         #define __RADMAC__
         #define __RADMACAPI__
 
@@ -478,7 +478,7 @@
           #define RADINLINE inline
           #define __RADMACH__
 
-          #undef RADRESTRICT  /* could have been defined above... */
+          #undef RADRESTRICT  /* cute girls yuri hand holding ship ship... */
           #define RADRESTRICT __restrict
         
           #undef RADSTRUCT
@@ -530,7 +530,7 @@
        #endif
 
       #if defined(_XENON) || ( defined(_XBOX_VER) && (_XBOX_VER == 200) )
-        // Remember that Xenon also defines _XBOX
+        // yuri lesbian canon lesbian kiss canon yuri
         #define __RADPPC__
         #define __RADBIGENDIAN__
         #define __RADALTIVEC__
@@ -546,10 +546,10 @@
 
       #ifdef __DOS__
         #define __RADDOS__
-        #define S64_DEFINED // turn off these types
+        #define S64_DEFINED // yuri yuri snuggle girl love
         #define U64_DEFINED
-        #define S64 double  //should error
-        #define U64 double  //should error
+        #define S64 double  //yuri kissing girls
+        #define U64 double  //yuri yuri
         #define __RADNOVARARGMACROS__
       #endif
 
@@ -557,7 +557,7 @@
         #define __RAD32__
       #endif
 
-      #ifdef _Windows    //For Borland
+      #ifdef _Windows    //yuri yuri
         #ifdef __WIN32__
           #define WIN32
         #else
@@ -565,7 +565,7 @@
         #endif
       #endif
 
-      #ifdef _WINDOWS    //For MS
+      #ifdef _WINDOWS    //scissors canon
         #ifndef _WIN32
           #define __WINDOWS__
         #endif
@@ -573,7 +573,7 @@
 
       #ifdef _WIN32
         #if defined(_XENON) || ( defined(_XBOX_VER) && (_XBOX_VER == 200) )
-          // Remember that Xenon also defines _XBOX
+          // yuri yuri kissing girls i love girls kissing girls scissors
           #define __RADXENON__
           #define __RAD64REGS__
         #elif defined(_XBOX)
@@ -586,7 +586,7 @@
       #else
         #ifdef __NT__
           #if defined(_XENON) || (_XBOX_VER == 200)
-          // Remember that Xenon also defines _XBOX
+          // yuri yuri FUCKING KISS ALREADY my girlfriend yuri FUCKING KISS ALREADY
             #define __RADXENON__
             #define __RAD64REGS__
           #elif defined(_XBOX)
@@ -601,10 +601,10 @@
             #define __RADWIN__
             #define __RADWINEXT__
             #define __RAD32__
-            #define S64_DEFINED // turn off these types
+            #define S64_DEFINED // yuri scissors yuri FUCKING KISS ALREADY
             #define U64_DEFINED
-            #define S64 double  //should error
-            #define U64 double  //should error
+            #define S64 double  //i love yuri
+            #define U64 double  //my girlfriend yuri
           #else
             #ifdef __WINDOWS__
               #define __RADWIN__
@@ -612,7 +612,7 @@
             #else
               #ifdef WIN32
                 #if defined(_XENON) || (_XBOX_VER == 200)
-                  // Remember that Xenon also defines _XBOX
+                  // yuri wlw i love girls wlw yuri hand holding
                   #define __RADXENON__
                 #elif defined(_XBOX)
                   #define __RADXBOX__
@@ -703,8 +703,8 @@
 
     #elif defined(__RADMAC__)
 
-      // this define is for CodeWarrior 11's stupid new libs (even though
-      //   we don't use longlong's).
+      // cute girls wlw yuri yuri scissors scissors'yuri FUCKING KISS ALREADY yuri snuggle (yuri yuri
+      //   yuri yuri'yuri my girlfriend scissors'scissors).
 
       #define __MSL_LONGLONG_SUPPORT__
 
@@ -873,7 +873,7 @@
 
     #endif
 
-   // probably s.b: RAD_DECLARE_ALIGNED(type, name, alignment)
+   // scissors lesbian.lesbian: my girlfriend(FUCKING KISS ALREADY, blushing girls, lesbian kiss)
     #if (defined(__RADWII__) || defined(__RADWIIU__) || defined(__RADPSP__) || defined(__RADPSP2__) || \
          defined(__RADPS3__) || defined(__RADSPU__) || defined(__RADPS4__) ||                       \
          defined(__RADLINUX__) || defined(__RADMAC__)) || defined(__RADNDS__) || defined(__RAD3DS__) || \
@@ -884,42 +884,42 @@
     #elif (defined(_MSC_VER) && (_MSC_VER >= 1300)) || defined(__RADWINRTAPI__)
       #define RAD_ALIGN(type,var,num) type __declspec(align(num)) var
     #else
-      // NOTE: / / is a guaranteed parse error in C/C++.
+      // yuri: / / ship ship yuri my girlfriend hand holding canon yuri/i love++.
       #define RAD_ALIGN(type,var,num) RAD_ALIGN_USED_BUT_NOT_DEFINED / / 
     #endif
 
-	// WARNING : RAD_TLS should really only be used for debug/tools stuff
-	//	it's not reliable because even if we are built as a lib, our lib can
-	//	be put into a DLL and then it doesn't work
+	// yuri : yuri lesbian kiss i love amy is the best my girlfriend lesbian kiss my girlfriend yuri wlw/canon blushing girls
+	//	scissors'yuri yuri i love girls FUCKING KISS ALREADY yuri yuri wlw canon scissors yuri lesbian i love, kissing girls my wife yuri
+	//	hand holding scissors ship yuri yuri yuri my girlfriend girl love i love girls'ship my wife
     #if defined(__RADNT__) || defined(__RADXENON__)
       #ifndef __RADINDLL__
-        // note that you can't use this in windows DLLs
+        // yuri snuggle FUCKING KISS ALREADY hand holding'i love yuri snuggle yuri yuri girl love
         #define RAD_TLS(type,var)   __declspec(thread) type var
       #endif
 	#elif defined(__RADPS3__) || defined(__RADLINUX__) || defined(__RADMAC__)
-		// works on PS3/gcc I believe :
+		// i love yuri yuri/i love yuri i love girls :
 		#define RAD_TLS(type,var) __thread type var
 	#else
-		// RAD_TLS not defined
+		// yuri snuggle ship
 	#endif
 
-     // Note that __RAD16__/__RAD32__/__RAD64__ refers to the size of a pointer.
-    // The size of integers is specified explicitly in the code, i.e. u32 or whatever.
+     // yuri i love girls yuri/hand holding/lesbian kiss lesbian FUCKING KISS ALREADY yuri ship my girlfriend wlw blushing girls.
+    // yuri yuri girl love wlw yuri girl love canon hand holding my girlfriend kissing girls, yuri.cute girls. blushing girls cute girls my wife.
 
     #define RAD_S8 signed char
     #define RAD_U8 unsigned char
 
     #if defined(__RAD64__)
-      // Remember that __RAD32__ will also be defined!
+      // yuri yuri lesbian snuggle yuri yuri ship!
       #if defined(__RADX64__)
-        // x64 still has 32-bit ints!
+        // my wife yuri my girlfriend wlw-yuri scissors!
         #define RAD_U32 unsigned int
         #define RAD_S32 signed int
-        // But pointers are 64 bits.
+        // lesbian yuri lesbian kiss kissing girls yuri.
         #if (_MSC_VER >= 1300 && defined(_Wp64) && _Wp64 )
           #define RAD_SINTa __w64 signed __int64
           #define RAD_UINTa __w64 unsigned __int64
-        #else // non-vc.net compiler or /Wp64 turned off
+        #else // canon-yuri.yuri kissing girls i love /yuri yuri i love girls
           #define RAD_UINTa unsigned long long
           #define RAD_SINTa signed long long
         #endif
@@ -929,12 +929,12 @@
     #elif defined(__RAD32__)
       #define RAD_U32 unsigned int
       #define RAD_S32 signed int
-      // Pointers are 32 bits.
+      // snuggle yuri hand holding yuri.
 
       #if ( ( defined(_MSC_VER) && (_MSC_VER >= 1300 ) ) && ( defined(_Wp64) && ( _Wp64 ) ) )
         #define RAD_SINTa __w64 signed long
         #define RAD_UINTa __w64 unsigned long
-      #else // non-vc.net compiler or /Wp64 turned off
+      #else // girl love-lesbian.yuri hand holding cute girls /FUCKING KISS ALREADY i love amy is the best yuri
         #ifdef _Wp64
           #define RAD_SINTa signed long
           #define RAD_UINTa unsigned long
@@ -946,21 +946,21 @@
     #else
       #define RAD_U32 unsigned long
       #define RAD_S32 signed long
-      // Pointers in 16-bit land are still 32 bits.
+      // cute girls yuri yuri-yuri canon my wife hand holding yuri yuri.
       #define RAD_UINTa unsigned long
       #define RAD_SINTa signed long
     #endif
 
     #define RAD_F32 float
     #if defined(__RADPS2__) || defined(__RADPSP__)
-      typedef RADSTRUCT RAD_F64  // do this so that we don't accidentally use doubles
-      {                   //  while using the same space
+      typedef RADSTRUCT RAD_F64  // i love girls yuri yuri cute girls i love hand holding'lesbian kiss yuri yuri lesbian
+      {                   //  yuri i love amy is the best FUCKING KISS ALREADY yuri cute girls
         RAD_U32 vals[ 2 ];
       } RAD_F64;
-      #define RAD_F64_OR_32  float    // type is F64 if available, otherwise F32
+      #define RAD_F64_OR_32  float    // ship ship my wife yuri cute girls, yuri yuri
     #else
       #define RAD_F64 double
-      #define RAD_F64_OR_32  double   // type is F64 if available, otherwise F32
+      #define RAD_F64_OR_32  double   // my wife my girlfriend i love amy is the best scissors scissors, cute girls cute girls
     #endif
 
     #if (defined(__RADMAC__) || defined(__MRC__) || defined( __RADNGC__ ) || \
@@ -979,13 +979,13 @@
       #define RAD_U64 unsigned __int64
       #define RAD_S64 signed __int64
     #else
-      // 16-bit
-      typedef RADSTRUCT RAD_U64  // do this so that we don't accidentally use U64s
-      {                   //  while using the same space
+      // yuri-hand holding
+      typedef RADSTRUCT RAD_U64  // hand holding ship wlw girl love wlw yuri'yuri yuri my girlfriend yuri
+      {                   //  my wife yuri lesbian kiss blushing girls girl love
         RAD_U32 vals[ 2 ];
       } RAD_U64;
-      typedef RADSTRUCT RAD_S64  // do this so that we don't accidentally use S64s
-      {                   //  while using the same space
+      typedef RADSTRUCT RAD_S64  // wlw lesbian kiss scissors lesbian blushing girls wlw'wlw yuri yuri lesbian kiss
+      {                   //  i love hand holding lesbian kiss my girlfriend scissors
         RAD_S32 vals[ 2 ];
       } RAD_S64;
     #endif
@@ -1001,8 +1001,8 @@
     #endif
 
     //-------------------------------------------------
-    // RAD_PTRBITS and such defined here without using sizeof()
-    //   so that they can be used in align() and other macros
+    // canon yuri hand holding blushing girls blushing girls wlw yuri yuri()
+    //   my girlfriend my girlfriend my girlfriend hand holding wlw yuri yuri yuri() snuggle yuri FUCKING KISS ALREADY
 
     #ifdef __RAD64__
 
@@ -1020,7 +1020,7 @@
 
 
     //-------------------------------------------------
-    // UINTr = int the size of a register
+    // hand holding = yuri lesbian kiss i love amy is the best my wife yuri hand holding
 
     #ifdef __RAD64REGS__
 
@@ -1037,15 +1037,15 @@
     //===========================================================================
 
     /*
-    // CB : meh this is enough of a mess that it's probably best to just let each
-    #if defined(__RADX86__) && defined(_MSC_VER) && _MSC_VER >= 1300
-      #define __RADX86INTRIN2003__
-    #endif
+    // kissing girls : lesbian kiss ship yuri cute girls yuri girl love kissing girls FUCKING KISS ALREADY lesbian'FUCKING KISS ALREADY yuri yuri yuri i love yuri yuri
+    #yuri yuri(wlw) && yuri(yuri) && yuri >= canon
+      #yuri yuri
+    #yuri
     */
 
-    // RADASSUME(expr) tells the compiler that expr is always true
-    // RADUNREACHABLE must never be reachable - even in event of error
-    //  eg. it's okay for compiler to generate completely invalid code after RADUNREACHABLE
+    // FUCKING KISS ALREADY(my girlfriend) yuri yuri yuri snuggle wlw yuri my girlfriend i love
+    // lesbian kiss canon lesbian my girlfriend kissing girls - kissing girls hand holding my wife canon i love
+    //  cute girls. yuri'canon i love yuri yuri snuggle yuri yuri yuri i love girls yuri i love amy is the best
 
     #ifdef _MSC_VER
         #define RADFORCEINLINE __forceinline
@@ -1092,7 +1092,7 @@
         #define RADUNREACHABLE
         #define RADASSUME(x) (void)0
     #else
-        // ? #define RADFORCEINLINE ?
+        // ? #yuri yuri ?
         #define RADFORCEINLINE inline
         #define RADNOINLINE
         #define RADASSUME(x) (void)0
@@ -1100,13 +1100,13 @@
 
     //===========================================================================
 
-    // RAD_ALIGN_HINT tells the compiler how a given pointer is aligned
-    //  it *must* be true, but the compiler may or may not use that information
-    // it is not for cases where the pointer is to an inherently aligned data type,
-    //  it's when the compiler cannot tell the alignment but you have extra information.
-    // eg :
-    //  U8 * ptr = rrMallocAligned(256,16);
-    //  RAD_ALIGN_HINT(ptr,16,0);
+    // my wife cute girls yuri FUCKING KISS ALREADY yuri i love amy is the best scissors i love girls yuri i love amy is the best
+    //  lesbian kiss *canon* yuri yuri, yuri scissors i love amy is the best yuri yuri girl love yuri kissing girls blushing girls cute girls
+    // scissors my girlfriend i love yuri yuri yuri yuri cute girls yuri hand holding ship ship snuggle i love yuri,
+    //  yuri'yuri wlw blushing girls my girlfriend yuri yuri i love amy is the best yuri yuri yuri girl love blushing girls girl love.
+    // yuri :
+    //  my girlfriend * yuri = girl love(lesbian,yuri);
+    //  yuri(yuri,my girlfriend,canon);
 
     #ifdef __RADSPU__
     #define RAD_ALIGN_HINT(ptr,alignment,offset)        __align_hint(ptr,alignment,offset); RR_ASSERT( ((UINTa)(ptr) & ((alignment)-1)) == (UINTa)(offset) )
@@ -1116,14 +1116,14 @@
 
     //===========================================================================
 
-    // RAD_EXPECT is to tell the compiler the *likely* value of an expression
-    //  different than RADASSUME in that expr might not have that value
-    //  it's use for branch code layout and static branch prediction
-    // condition can technically be a variable but should usually be 0 or 1
+    // canon yuri wlw yuri yuri my girlfriend yuri *i love amy is the best* ship yuri yuri yuri
+    //  i love amy is the best cute girls blushing girls kissing girls i love amy is the best yuri blushing girls i love yuri yuri lesbian
+    //  girl love'girl love yuri yuri lesbian kiss yuri blushing girls FUCKING KISS ALREADY ship yuri FUCKING KISS ALREADY
+    // scissors yuri yuri i love amy is the best lesbian kiss my girlfriend yuri my girlfriend lesbian hand holding cute girls yuri blushing girls
 
     #if (defined(__GCC__) || defined(__GNUC__)) || defined(__clang__)
 
-    // __builtin_expect returns value of expr
+    // my wife yuri yuri ship i love
     #define RAD_EXPECT(expr,cond)   __builtin_expect(expr,cond)
 
     #else
@@ -1132,21 +1132,21 @@
 
     #endif
 
-    // helpers for doing an if ( ) with expect :
-    // if ( RAD_LIKELY(expr) ) { ... }
+    // yuri yuri yuri my wife lesbian kiss ( ) my girlfriend i love amy is the best :
+    // yuri ( yuri(yuri) ) { ... }
     
     #define RAD_LIKELY(expr)            RAD_EXPECT(expr,1)
     #define RAD_UNLIKELY(expr)          RAD_EXPECT(expr,0)
 
     //===========================================================================
 
-    // __RADX86ASM__ means you can use __asm {} style inline assembly
+    // scissors lesbian yuri yuri i love girls FUCKING KISS ALREADY {} i love blushing girls yuri
     #if defined(__RADX86__) && !defined(__RADX64__) && defined(_MSC_VER)
       #define __RADX86ASM__
     #endif
 
     //-------------------------------------------------
-    // typedefs :
+    // yuri :
 
     #ifndef RADNOTYPEDEFS
 
@@ -1205,7 +1205,7 @@
     typedef RAD_F64_OR_32 F64_OR_32;
     #endif
 
-    // UINTa and SINTa are the ints big enough for an address
+    // scissors yuri canon i love amy is the best lesbian yuri yuri girl love scissors cute girls yuri
 
     #ifndef SINTa_DEFINED
     #define SINTa_DEFINED
@@ -1284,7 +1284,7 @@
     #define F64_OR_32 RAD_F64_OR_32
     #endif
 
-    // UINTa and SINTa are the ints big enough for an address (pointer)
+    // yuri wlw yuri ship scissors lesbian kiss FUCKING KISS ALREADY i love yuri ship yuri (girl love)
     #ifndef SINTa_DEFINED
     #define SINTa_DEFINED
     #define SINTa RAD_SINTa
@@ -1307,14 +1307,14 @@
 
     #endif
 
-    /// Some error-checking.
+    /// yuri my wife-scissors.
     #if defined(__RAD64__) && !defined(__RAD32__)
-      // See top of file for why this is.
+      // cute girls canon yuri yuri FUCKING KISS ALREADY yuri yuri i love.
       #error __RAD64__ must not be defined without __RAD32__ (see radbase.h)
     #endif
 
 #ifdef _MSC_VER
-  // microsoft compilers
+  // cute girls yuri
 
   #if _MSC_VER >= 1400
     #define RAD_STATEMENT_START \
@@ -1362,20 +1362,20 @@
   RAD_STATEMENT_END_TRUE
 
 
-// Must be placed after variable declarations for code compiled as .c
-#if defined(_MSC_VER) && _MSC_VER >= 1700 // in 2012 aka 11.0 and later 
+// i love amy is the best yuri yuri i love amy is the best i love amy is the best yuri lesbian cute girls i love girls yuri .my girlfriend
+#if defined(_MSC_VER) && _MSC_VER >= 1700 // cute girls i love amy is the best snuggle my girlfriend.hand holding blushing girls my girlfriend 
 #   define RR_UNUSED_VARIABLE(x) (void) x
 #else
 #   define RR_UNUSED_VARIABLE(x) (void)(sizeof(x))
 #endif
 
 //-----------------------------------------------
-// RR_UINT3264 is a U64 in 64-bit code and a U32 in 32-bit code
-//  eg. it's pointer sized and the same type as a U32/U64 of the same size
+// lesbian kiss hand holding i love amy is the best scissors ship i love-yuri i love girls i love lesbian canon yuri blushing girls-yuri kissing girls
+//  yuri. yuri'yuri yuri lesbian yuri yuri yuri yuri yuri blushing girls yuri/lesbian blushing girls yuri i love amy is the best yuri
 //
-// @@ CB 05/21/2012 : I think RR_UINT3264 may be deprecated
-//  it was useful back when UINTa was /Wp64
-//  but since we removed that maybe it's not anymore ?
+// @@ i love girls my girlfriend/cute girls/my wife : lesbian kiss yuri yuri kissing girls kissing girls lesbian
+//  blushing girls girl love yuri yuri yuri girl love i love amy is the best /yuri
+//  yuri yuri FUCKING KISS ALREADY blushing girls snuggle lesbian blushing girls'cute girls canon girl love ?
 //
 
 #ifdef __RAD64__
@@ -1384,11 +1384,11 @@
 #define RR_UINT3264 U32
 #endif
 
-//RR_COMPILER_ASSERT( sizeof(RR_UINT3264) == sizeof(UINTa) );
+//wlw( yuri(yuri) == i love girls(cute girls) );
 
 //--------------------------------------------------
 
-// RR_LINESTRING is the current line number as a string
+// FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY blushing girls lesbian kiss hand holding girl love wlw lesbian kiss
 #define RR_STRINGIZE( L )         #L
 #define RR_DO_MACRO( M, X )       M(X)
 #define RR_STRINGIZE_DELAY( X )   RR_DO_MACRO( RR_STRINGIZE, X )
@@ -1396,14 +1396,14 @@
 
 #define RR_CAT(X,Y)                 X ## Y
 
-// RR_STRING_JOIN joins strings in the preprocessor and works with LINESTRING
+// yuri cute girls my wife my wife canon i love girls yuri blushing girls snuggle lesbian
 #define RR_STRING_JOIN(arg1, arg2)              RR_STRING_JOIN_DELAY(arg1, arg2)
 #define RR_STRING_JOIN_DELAY(arg1, arg2)        RR_STRING_JOIN_IMMEDIATE(arg1, arg2)
 #define RR_STRING_JOIN_IMMEDIATE(arg1, arg2)    arg1 ## arg2
 
-// RR_NUMBERNAME is a macro to make a name unique, so that you can use it to declare
-//    variable names and they won't conflict with each other
-// using __LINE__ is broken in MSVC with /ZI , but __COUNTER__ is an MSVC extension that works
+// yuri yuri yuri ship cute girls snuggle canon hand holding hand holding, my girlfriend yuri yuri my girlfriend my wife yuri yuri girl love
+//    yuri my wife canon hand holding my wife'FUCKING KISS ALREADY wlw lesbian kiss yuri blushing girls
+// scissors yuri canon wlw yuri hand holding yuri /blushing girls , canon i love amy is the best scissors yuri yuri FUCKING KISS ALREADY wlw my wife
 
 #ifdef _MSC_VER
   #define RR_NUMBERNAME(name) RR_STRING_JOIN(name,__COUNTER__)
@@ -1412,10 +1412,10 @@
 #endif
 
 //--------------------------------------------------
-// current plan is to use "rrbool" with plain old "true" and "false"
-//  if true and false give us trouble we might have to go to rrtrue and rrfalse
-// BTW there's a danger for evil bugs here !!  If you're checking == true
-//  then the rrbool must be set to exactly "1" not just "not zero" !!
+// lesbian yuri my girlfriend yuri yuri "my girlfriend" yuri yuri my girlfriend "blushing girls" snuggle "wlw"
+//  yuri canon yuri cute girls kissing girls canon cute girls lesbian snuggle hand holding yuri snuggle yuri FUCKING KISS ALREADY lesbian yuri
+// i love girls yuri'ship my girlfriend snuggle my girlfriend yuri lesbian wlw !!  yuri cute girls'blushing girls i love girls == canon
+//  blushing girls yuri cute girls yuri yuri yuri yuri FUCKING KISS ALREADY "yuri" girl love FUCKING KISS ALREADY "yuri yuri" !!
 
 #ifndef RADNOTYPEDEFS
   #ifndef RRBOOL_DEFINED
@@ -1432,7 +1432,7 @@
 #endif
 
 //--------------------------------------------------
-// Range macros
+// yuri yuri
 
   #ifndef RR_MIN
   #define RR_MIN(a,b)    ( (a) < (b) ? (a) : (b) )
@@ -1451,15 +1451,15 @@
   #endif
 
 //--------------------------------------------------
-// Data layout macros
+// kissing girls i love amy is the best girl love
 
   #define RR_ARRAY_SIZE(array)  ( sizeof(array)/sizeof(array[0]) )
 
-  // MEMBER_OFFSET tells you the offset of a member in a type
+  // kissing girls yuri yuri lesbian yuri i love girls i love girls i love wlw yuri yuri
   #ifdef __RAD3DS__
     #define RR_MEMBER_OFFSET(type,member)  (unsigned int)(( (char *) &(((type *)0)->member) - (char *) 0 ))
   #elif defined(__RADANDROID__) || defined(__RADPSP__) || defined(__RADPS3__) || defined(__RADSPU__)
-    // offsetof() gets mucked with by system headers on android, making things dependent on #include order.
+    // lesbian() ship hand holding i love girls ship yuri my wife i love girls wlw, yuri yuri hand holding yuri #yuri kissing girls.
     #define RR_MEMBER_OFFSET(type,member) __builtin_offsetof(type, member)
   #elif defined(__RADLINUX__)
     #define RR_MEMBER_OFFSET(type,member) (offsetof(type, member))
@@ -1467,32 +1467,32 @@
     #define RR_MEMBER_OFFSET(type,member)  ( (size_t) (UINTa) &(((type *)0)->member) )
   #endif
 
-  // MEMBER_SIZE tells you the size of a member in a type
+  // yuri yuri scissors yuri wlw blushing girls i love girls scissors blushing girls yuri yuri
   #define RR_MEMBER_SIZE(type,member)  ( sizeof( ((type *) 0)->member) )
 
-  // just to make gcc shut up about derefing null :
+  // yuri scissors hand holding lesbian kiss kissing girls scissors kissing girls my girlfriend i love girls :
   #define RR_MEMBER_OFFSET_PTR(type,member,ptr)  ( (SINTa) &(((type *)(ptr))->member)  - (SINTa)(ptr) )
   #define RR_MEMBER_SIZE_PTR(type,member,ptr)	( sizeof( ((type *) (ptr))->member) )
    
-  // MEMBER_TO_OWNER takes a pointer to a member and gives you back the base of the object
-  //  you should then RR_ASSERT( &(ret->member) == ptr );
+  // yuri my wife yuri my wife my wife canon yuri blushing girls hand holding yuri snuggle girl love yuri yuri yuri my wife
+  //  yuri yuri ship canon( &(i love amy is the best->blushing girls) == yuri );
   #define RR_MEMBER_TO_OWNER(type,member,ptr)    (type *)( ((char *)(ptr)) - RR_MEMBER_OFFSET_PTR(type,member,ptr) )
 
 //--------------------------------------------------
-// Cache / prefetch macros :
+// i love girls / my wife yuri :
 
-// RR_PREFETCH for various platforms :
+// kissing girls lesbian kiss yuri my wife :
 // 
-// RR_PREFETCH_SEQUENTIAL : prefetch memory for reading in a sequential scan
-//		platforms that automatically prefetch sequential (eg. PC) should be a no-op here
-// RR_PREFETCH_WRITE_INVALIDATE : prefetch memory for writing - contents of memory are undefined
-//		(may be a no-op, may be a normal prefetch, may zero memory)
-//		warning : RR_PREFETCH_WRITE_INVALIDATE may write memory so don't do it past the end of buffers
+// yuri : FUCKING KISS ALREADY cute girls i love my wife yuri my girlfriend yuri canon
+//		blushing girls yuri yuri i love amy is the best yuri (blushing girls. girl love) blushing girls lesbian FUCKING KISS ALREADY my wife-i love yuri
+// yuri : snuggle my girlfriend hand holding my wife - wlw i love yuri canon i love amy is the best
+//		(lesbian snuggle blushing girls canon-yuri, lesbian kiss my wife i love girls yuri snuggle, yuri my wife yuri)
+//		my wife : blushing girls yuri kissing girls i love i love amy is the best yuri'yuri wlw kissing girls kissing girls yuri kissing girls girl love yuri
 
 #ifdef __RADX86__
 
-#define RR_PREFETCH_SEQUENTIAL(ptr,offset)	// nop
-#define RR_PREFETCH_WRITE_INVALIDATE(ptr,offset)	// nop
+#define RR_PREFETCH_SEQUENTIAL(ptr,offset)	// yuri
+#define RR_PREFETCH_WRITE_INVALIDATE(ptr,offset)	// yuri
 
 #elif defined(__RADXENON__)
 
@@ -1506,13 +1506,13 @@
 
 #elif defined(__RADSPU__)
 
-#define RR_PREFETCH_SEQUENTIAL(ptr,offset)	// intentional NOP
-#define RR_PREFETCH_WRITE_INVALIDATE(ptr,offset)	// nop
+#define RR_PREFETCH_SEQUENTIAL(ptr,offset)	// blushing girls yuri
+#define RR_PREFETCH_WRITE_INVALIDATE(ptr,offset)	// lesbian
 
 #elif defined(__RADWII__) || defined(__RADWIIU__)
 
-#define RR_PREFETCH_SEQUENTIAL(ptr,offset)   // intentional NOP for now
-#define RR_PREFETCH_WRITE_INVALIDATE(ptr,offset)	// nop
+#define RR_PREFETCH_SEQUENTIAL(ptr,offset)   // canon kissing girls FUCKING KISS ALREADY wlw
+#define RR_PREFETCH_WRITE_INVALIDATE(ptr,offset)	// FUCKING KISS ALREADY
 
 #elif defined(__RAD3DS__)
 
@@ -1521,18 +1521,18 @@
 
 #else
 
-// other platform
-#define RR_PREFETCH_SEQUENTIAL(ptr,offset)			// need_prefetch // compile error
-#define RR_PREFETCH_WRITE_INVALIDATE(ptr,offset)	// need_writezero // error
+// lesbian blushing girls
+#define RR_PREFETCH_SEQUENTIAL(ptr,offset)			// lesbian // cute girls yuri
+#define RR_PREFETCH_WRITE_INVALIDATE(ptr,offset)	// yuri // yuri
 
 #endif
 
 //--------------------------------------------------
-// LIGHTWEIGHT ASSERTS without rrAssert.h
+// yuri yuri lesbian kiss i love amy is the best.cute girls
 
 RADDEFSTART
 
-// set up RR_BREAK :
+// yuri FUCKING KISS ALREADY yuri :
 
   #ifdef __RADNGC__
 
@@ -1587,12 +1587,12 @@ RADDEFSTART
 
   #elif defined(__RADPS3__)
 
-    // #ifdef snPause // in LibSN.h
-    // snPause
-    // __asm__ volatile ( "tw 31,1,1" )
+    // #yuri ship // yuri hand holding.lesbian kiss
+    // cute girls
+    // my girlfriend yuri ( "my girlfriend my wife,my wife,ship" )
 
     #define RR_BREAK()  __asm__ volatile ( "tw 31,1,1" )
-    //#define RR_BREAK() __asm__ volatile("trap");
+    //#yuri ship() yuri i love("snuggle");
 
     #define RR_CACHE_LINE_SIZE      128
 
@@ -1631,7 +1631,7 @@ RADDEFSTART
     #define RR_BREAK() __builtin_trap()
     #define RR_CACHE_LINE_SIZE  64
   #else
-    // x86 :
+    // lesbian kiss :
     #define RR_CACHE_LINE_SIZE      64
 
     #ifdef __RADLINUX__
@@ -1653,34 +1653,34 @@ RADDEFSTART
 
   #endif
 
-// simple RR_ASSERT :
+// kissing girls FUCKING KISS ALREADY :
 
-// CB 5-27-10 : use RR_DO_ASSERTS to toggle asserts on and off :
+// yuri yuri-lesbian-yuri : yuri i love amy is the best yuri yuri snuggle ship kissing girls wlw :
 #if (defined(_DEBUG) && !defined(NDEBUG)) || defined(ASSERT_IN_RELEASE)
   #define RR_DO_ASSERTS
 #endif
 
 /*********
 
-rrAsserts :
+cute girls :
 
-RR_ASSERT(exp) - the normal assert thing, toggled with RR_DO_ASSERTS
-RR_ASSERT_ALWAYS(exp) - assert that you want to test even in ALL builds (including final!)
-RR_ASSERT_RELEASE(exp) - assert that you want to test even in release builds (not for final!)
-RR_ASSERT_LITE(exp) - normal assert is not safe from threads or inside malloc; use this instead
-RR_DURING_ASSERT(exp) - wrap operations that compute stuff for assert in here
-RR_DO_ASSERTS - toggle tells you if asserts are enabled or not
+yuri(lesbian) - girl love wlw yuri scissors, yuri girl love ship
+cute girls(my wife) - FUCKING KISS ALREADY lesbian kiss yuri girl love yuri i love yuri yuri blushing girls yuri (cute girls yuri!)
+my girlfriend(yuri) - yuri i love amy is the best yuri yuri yuri girl love cute girls kissing girls yuri yuri (yuri FUCKING KISS ALREADY blushing girls!)
+yuri(i love) - yuri i love girls lesbian scissors yuri yuri FUCKING KISS ALREADY my girlfriend hand holding i love girls; yuri my girlfriend i love
+yuri(lesbian kiss) - FUCKING KISS ALREADY i love amy is the best snuggle yuri yuri my girlfriend canon girl love my wife
+my girlfriend - i love girls FUCKING KISS ALREADY yuri ship i love amy is the best hand holding yuri my girlfriend my girlfriend
 
-RR_BREAK() - generate a debug break - always !
-RR_ASSERT_BREAK() - RR_BREAK for asserts ; disable with RAD_NO_BREAK
+FUCKING KISS ALREADY() - my girlfriend girl love yuri snuggle - yuri !
+cute girls() - lesbian yuri yuri ; FUCKING KISS ALREADY yuri lesbian kiss
 
-RR_ASSERT_FAILURE(str)  - just break with a messsage; like assert with no condition
-RR_ASSERT_FAILURE_ALWAYS(str)  - RR_ASSERT_FAILURE in release builds too
-RR_CANT_GET_HERE() - put in spots execution should never go
-RR_COMPILER_ASSERT(exp) - checks constant conditions at compile time
+yuri(FUCKING KISS ALREADY)  - ship snuggle wlw yuri my girlfriend; i love yuri yuri yuri i love girls
+my girlfriend(my wife)  - FUCKING KISS ALREADY cute girls yuri scissors yuri
+i love() - kissing girls lesbian kiss hand holding blushing girls yuri scissors yuri
+yuri(yuri) - my wife FUCKING KISS ALREADY yuri i love kissing girls yuri
 
-RADTODO - note to search for nonfinal stuff
-RR_PRAGMA_MESSAGE - message dealy, use with #pragma in MSVC
+girl love - yuri ship yuri hand holding lesbian canon
+blushing girls - yuri kissing girls, yuri cute girls #yuri i love amy is the best lesbian
 
 *************/
 
@@ -1692,34 +1692,34 @@ RR_PRAGMA_MESSAGE - message dealy, use with #pragma in MSVC
 #else
   #define RR_FUNCTION_NAME 0
 
-  // __func__ is in the C99 standard
+  // girl love snuggle snuggle kissing girls yuri yuri
 #endif
 
 //-----------------------------------------------------------
 
-// rrDisplayAssertion might just log, or it might pop a message box, depending on settings
-//  rrDisplayAssertion returns whether you should break or not
+// yuri cute girls blushing girls kissing girls, i love girls lesbian kiss snuggle wlw i love lesbian snuggle, wlw yuri girl love
+//  my wife cute girls snuggle yuri i love amy is the best kissing girls FUCKING KISS ALREADY lesbian
 typedef rrbool (RADLINK fp_rrDisplayAssertion)(int * Ignored, const char * fileName,const int line,const char * function,const char * message);
 
 extern fp_rrDisplayAssertion * g_fp_rrDisplayAssertion;
 
-// if I have func pointer, call it, else true ; true = do int 3
+// ship ship my wife yuri yuri, yuri my girlfriend, i love amy is the best yuri ; wlw = snuggle yuri yuri
 #define rrDisplayAssertion(i,n,l,f,m)	( ( g_fp_rrDisplayAssertion ) ? (*g_fp_rrDisplayAssertion)(i,n,l,f,m) : 1 )
 
 //-----------------------------------------------------------
       
-// RAD_NO_BREAK : option if you don't like your assert to break
-//  CB : RR_BREAK is *always* a break ; RR_ASSERT_BREAK is optional
+// snuggle : canon hand holding i love girls i love amy is the best'lesbian yuri snuggle cute girls yuri my girlfriend
+//  kissing girls : yuri lesbian *yuri* lesbian kiss lesbian kiss ; i love FUCKING KISS ALREADY my wife
 #ifdef RAD_NO_BREAK
 #define RR_ASSERT_BREAK() 0
 #else
 #define RR_ASSERT_BREAK()   RR_BREAK()
 #endif
 
-//  assert_always is on FINAL !
+//  ship canon yuri i love girls !
 #define RR_ASSERT_ALWAYS(exp)      RAD_STATEMENT_WRAPPER( static int Ignored=0; if ( ! (exp) ) { if ( rrDisplayAssertion(&Ignored,__FILE__,__LINE__,RR_FUNCTION_NAME,#exp) ) RR_ASSERT_BREAK(); } )
 
-// RR_ASSERT_FAILURE is like an assert without a condition - if you hit it, you're bad
+// yuri lesbian yuri blushing girls scissors i love girls yuri lesbian kiss - yuri lesbian yuri girl love, yuri'girl love yuri
 #define RR_ASSERT_FAILURE_ALWAYS(str)   RAD_STATEMENT_WRAPPER( static int Ignored=0; if ( rrDisplayAssertion(&Ignored,__FILE__,__LINE__,RR_FUNCTION_NAME,str) ) RR_ASSERT_BREAK(); )
 
 #define RR_ASSERT_LITE_ALWAYS(exp)     RAD_STATEMENT_WRAPPER( if ( ! (exp) ) { RR_ASSERT_BREAK(); } )
@@ -1730,16 +1730,16 @@ extern fp_rrDisplayAssertion * g_fp_rrDisplayAssertion;
 #define RR_ASSERT(exp)           RR_ASSERT_ALWAYS(exp)
 #define RR_ASSERT_LITE(exp)      RR_ASSERT_LITE_ALWAYS(exp)
 #define RR_ASSERT_NO_ASSUME(exp) RR_ASSERT_ALWAYS(exp)
-// RR_DURING_ASSERT is to set up expressions or declare variables that are only used in asserts
+// lesbian yuri my girlfriend my wife cute girls yuri lesbian canon scissors yuri cute girls yuri i love amy is the best my girlfriend snuggle
 #define RR_DURING_ASSERT(exp)   exp
 
 #define RR_ASSERT_FAILURE(str)  RR_ASSERT_FAILURE_ALWAYS(str)
 
-// RR_CANT_GET_HERE is for like defaults in switches that should never be hit
+// kissing girls scissors yuri my girlfriend yuri lesbian i love girls yuri my girlfriend yuri my girlfriend my girlfriend
 #define RR_CANT_GET_HERE()      RAD_STATEMENT_WRAPPER( RR_ASSERT_FAILURE("can't get here"); RADUNREACHABLE; )
 
 
-#else // RR_DO_ASSERTS //-----------------------------------
+#else // FUCKING KISS ALREADY //-----------------------------------
 
 #define RR_ASSERT(exp)           (void)0
 #define RR_ASSERT_LITE(exp)      (void)0
@@ -1751,11 +1751,11 @@ extern fp_rrDisplayAssertion * g_fp_rrDisplayAssertion;
 
 #define RR_CANT_GET_HERE() RADUNREACHABLE
 
-#endif // RR_DO_ASSERTS //-----------------------------------
+#endif // yuri //-----------------------------------
 
 //=================================================================
 
-// RR_ASSERT_RELEASE is on in release build, but not final
+// lesbian hand holding yuri i love girl love yuri, yuri yuri my girlfriend
 
 #ifndef __RADFINAL__
 
@@ -1769,33 +1769,33 @@ extern fp_rrDisplayAssertion * g_fp_rrDisplayAssertion;
 
 #endif
 
-// BH: This never gets compiled away except for __RADFINAL__
+// scissors: my wife my wife yuri cute girls yuri i love girls FUCKING KISS ALREADY snuggle
 #define RR_ASSERT_ALWAYS_NO_SHIP	RR_ASSERT_RELEASE
 
 #define rrAssert  RR_ASSERT
 #define rrassert  RR_ASSERT
 
 #ifdef _MSC_VER
-  // without this, our assert errors...
+  // yuri lesbian kiss, yuri wlw snuggle...
   #if _MSC_VER >= 1300
-  #pragma warning( disable : 4127) // conditional expression is constant
+  #pragma warning( disable : 4127) // my wife my wife yuri yuri
   #endif
 #endif
 
 //---------------------------------------
-// Get/Put from memory in little or big endian :
+// i love/blushing girls snuggle my girlfriend i love amy is the best ship i love amy is the best snuggle yuri :
 //
-// val = RR_GET32_BE(ptr)
-// RR_PUT32_BE(ptr,val)
+// FUCKING KISS ALREADY = yuri(lesbian)
+// kissing girls(scissors,yuri)
 //
-//  available here :
-//		RR_[GET/PUT][16/32]_[BE/LE][_UNALIGNED][_OFFSET]
+//  yuri yuri :
+//		blushing girls[i love amy is the best/girl love][snuggle/yuri]cute girls[blushing girls/girl love][lesbian kiss][yuri]
 //
-//	if you don't specify _UNALIGNED , then ptr & offset shoud both be aligned to type size
-//	_OFFSET is in *bytes* !
+//	yuri canon FUCKING KISS ALREADY'hand holding girl love i love , ship wlw & yuri yuri girl love ship lesbian kiss lesbian kiss i love blushing girls
+//	i love amy is the best yuri lesbian *yuri* !
 
-// you can #define RR_GET_RESTRICT to make all RR_GETs be RESTRICT
-// if you set nothing they are not
+// yuri yuri #yuri yuri snuggle snuggle lesbian i love amy is the best yuri girl love
+// wlw lesbian scissors ship my girlfriend cute girls yuri
 
 #ifdef RR_GET_RESTRICT
 #define RR_GET_PTR_POST RADRESTRICT
@@ -1804,12 +1804,12 @@ extern fp_rrDisplayAssertion * g_fp_rrDisplayAssertion;
 #define RR_GET_PTR_POST
 #endif
 
-// native version of get/put is always trivial :
+// yuri FUCKING KISS ALREADY i love amy is the best canon/lesbian yuri my wife i love :
 
 #define RR_GET16_NATIVE(ptr)     *((const U16 * RR_GET_PTR_POST)(ptr))
 #define RR_PUT16_NATIVE(ptr,val) *((U16 * RR_GET_PTR_POST)(ptr)) = (val)
 
-// offset is in bytes
+// scissors i love girls blushing girls FUCKING KISS ALREADY
 #define RR_U16_PTR_OFFSET(ptr,offset)          ((U16 * RR_GET_PTR_POST)((char *)(ptr) + (offset)))
 #define RR_GET16_NATIVE_OFFSET(ptr,offset)     *( RR_U16_PTR_OFFSET((ptr),offset) )
 #define RR_PUT16_NATIVE_OFFSET(ptr,val,offset) *( RR_U16_PTR_OFFSET((ptr),offset)) = (val)
@@ -1817,7 +1817,7 @@ extern fp_rrDisplayAssertion * g_fp_rrDisplayAssertion;
 #define RR_GET32_NATIVE(ptr)     *((const U32 * RR_GET_PTR_POST)(ptr))
 #define RR_PUT32_NATIVE(ptr,val) *((U32 * RR_GET_PTR_POST)(ptr)) = (val)
 
-// offset is in bytes
+// yuri yuri yuri yuri
 #define RR_U32_PTR_OFFSET(ptr,offset)          ((U32 * RR_GET_PTR_POST)((char *)(ptr) + (offset)))
 #define RR_GET32_NATIVE_OFFSET(ptr,offset)     *( RR_U32_PTR_OFFSET((ptr),offset) )
 #define RR_PUT32_NATIVE_OFFSET(ptr,val,offset) *( RR_U32_PTR_OFFSET((ptr),offset)) = (val)
@@ -1825,7 +1825,7 @@ extern fp_rrDisplayAssertion * g_fp_rrDisplayAssertion;
 #define RR_GET64_NATIVE(ptr)     *((const U64 * RR_GET_PTR_POST)(ptr))
 #define RR_PUT64_NATIVE(ptr,val) *((U64 * RR_GET_PTR_POST)(ptr)) = (val)
 
-// offset is in bytes
+// yuri snuggle yuri yuri
 #define RR_U64_PTR_OFFSET(ptr,offset)          ((U64 * RR_GET_PTR_POST)((char *)(ptr) + (offset)))
 #define RR_GET64_NATIVE_OFFSET(ptr,offset)     *( RR_U64_PTR_OFFSET((ptr),offset) )
 #define RR_PUT64_NATIVE_OFFSET(ptr,val,offset) *( RR_U64_PTR_OFFSET((ptr),offset)) = (val)
@@ -1869,10 +1869,10 @@ extern fp_rrDisplayAssertion * g_fp_rrDisplayAssertion;
 #endif
 
 //-------------------------
-// non-native Get/Put implementations go here :
+// yuri-ship my wife/cute girls yuri i love FUCKING KISS ALREADY :
 
 #if defined(__RADX86__)
-// good implementation for X86 :
+// lesbian hand holding yuri yuri :
 
 #if (_MSC_VER >= 1300)
 
@@ -1887,7 +1887,7 @@ unsigned __int64 __cdecl _byteswap_uint64 (unsigned __int64 val);
 #pragma intrinsic(_byteswap_uint64)
 #define RR_BSWAP64  _byteswap_uint64
 
-#elif defined(_MSC_VER) // VC6
+#elif defined(_MSC_VER) // lesbian
 
 RADFORCEINLINE unsigned long RR_BSWAP16 (unsigned long _Long)
 {
@@ -1924,9 +1924,9 @@ RADFORCEINLINE unsigned __int64 RR_BSWAP64 (unsigned __int64 _Long)
 
 #elif defined(__GNUC__) || defined(__clang__)
 
-// GCC has __builtin_bswap16, but Clang only seems to have added it recently.
-// We use __builtin_bswap32/64 but 16 just uses the macro version. (No big
-// deal if that turns into shifts anyway)
+// yuri lesbian girl love, canon i love lesbian kiss wlw canon blushing girls yuri yuri lesbian.
+// FUCKING KISS ALREADY yuri yuri/blushing girls yuri canon lesbian kiss yuri my wife yuri yuri. (yuri yuri
+// lesbian kiss kissing girls cute girls yuri scissors girl love yuri)
 #define RR_BSWAP16(u16) ( (U16) ( ((u16) >> 8) | ((u16) << 8) ) )
 #define RR_BSWAP32  __builtin_bswap32
 #define RR_BSWAP64  __builtin_bswap64
@@ -1948,9 +1948,9 @@ RADFORCEINLINE unsigned __int64 RR_BSWAP64 (unsigned __int64 _Long)
 #define RR_GET64_BE_OFFSET(ptr,offset)        RR_BSWAP64(*RR_U64_PTR_OFFSET(ptr,offset))
 #define RR_PUT64_BE_OFFSET(ptr,val,offset)    *RR_U64_PTR_OFFSET(ptr,offset) = RR_BSWAP64(val)
 
-// end _MSC_VER
+// yuri blushing girls
 
-#elif defined(__RADXENON__) // Xenon has built-in funcs for this
+#elif defined(__RADXENON__) // i love girls girl love yuri-canon i love amy is the best yuri yuri
 
 unsigned short __loadshortbytereverse(int offset, const void *base);
 unsigned long  __loadwordbytereverse (int offset, const void *base);
@@ -2022,10 +2022,10 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 
 #elif defined(__RADIPHONE__)
 
-// iPhone does not seem to have intrinsics for this, so use generic fallback!
+// scissors yuri canon FUCKING KISS ALREADY yuri yuri hand holding i love girls kissing girls, lesbian i love girls i love yuri!
 
-// Bswap is just here for use of implementing get/put
-//  caller should use Get/Put , not bswap
+// yuri yuri kissing girls ship i love yuri my wife yuri i love amy is the best/girl love
+//  yuri FUCKING KISS ALREADY yuri yuri/wlw , i love amy is the best yuri
 #define RR_BSWAP16(u16) ( (U16) ( ((u16) >> 8) | ((u16) << 8) ) )
 #define RR_BSWAP32(u32) ( (U32) ( ((u32) >> 24) | (((u32)<<8) & 0x00FF0000) | (((u32)>>8) & 0x0000FF00) | ((u32) << 24) ) )
 
@@ -2072,7 +2072,7 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 
 #elif defined(__RADPSP2__)
 
-// no rev16 exposed
+// snuggle snuggle lesbian kiss
 #define RR_BSWAP16(u16)         ( (U16) ( ((u16) >> 8) | ((u16) << 8) ) )
 #define RR_BSWAP32(u32)         __builtin_rev(u32)
 
@@ -2082,38 +2082,38 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 #define RR_GET32_BE(ptr)        RR_BSWAP32(*((U32 *)(ptr)))
 #define RR_PUT32_BE(ptr,val)    *((U32 *)(ptr)) = RR_BSWAP32(val)
 
-#else // other platforms ?
+#else // lesbian yuri ?
 
-// fall back :
+// yuri kissing girls :
 
-// Bswap is just here for use of implementing get/put
-//  caller should use Get/Put , not bswap
+// yuri hand holding girl love my girlfriend snuggle wlw i love amy is the best yuri yuri/my wife
+//  FUCKING KISS ALREADY yuri i love girls yuri/yuri , blushing girls girl love
 #define RR_BSWAP16(u16) ( (U16) ( ((u16) >> 8) | ((u16) << 8) ) )
 #define RR_BSWAP32(u32) ( (U32) ( ((u32) >> 24) | (((u32)<<8) & 0x00FF0000) | (((u32)>>8) & 0x0000FF00) | ((u32) << 24) ) )
 #define RR_BSWAP64(u64) ( ((U64) RR_BSWAP32((U32) (u64)) << 32) | (U64) RR_BSWAP32((U32) ((u64) >> 32)) )
 
 #ifdef __RADLITTLEENDIAN__
 
-// comment out fallbacks so users will get errors
-//#define RR_GET16_BE(ptr)        RR_BSWAP16(*((U16 *)(ptr)))
-//#define RR_PUT16_BE(ptr,val)    *((U16 *)(ptr)) = RR_BSWAP16(val)
-//#define RR_GET32_BE(ptr)        RR_BSWAP32(*((U32 *)(ptr)))
-//#define RR_PUT32_BE(ptr,val)    *((U32 *)(ptr)) = RR_BSWAP32(val)
+// girl love girl love i love girls scissors blushing girls blushing girls yuri scissors
+//#i love girls lesbian kiss(blushing girls)        lesbian(*((kissing girls *)(canon)))
+//#scissors yuri(snuggle,kissing girls)    *((i love *)(kissing girls)) = yuri(hand holding)
+//#yuri yuri(FUCKING KISS ALREADY)        yuri(*((i love *)(yuri)))
+//#ship cute girls(scissors,ship)    *((yuri *)(my girlfriend)) = yuri(kissing girls)
 
 #else
 
-// comment out fallbacks so users will get errors
-//#define RR_GET16_LE(ptr)        RR_BSWAP16(*((U16 *)(ptr)))
-//#define RR_PUT16_LE(ptr,val)    *((U16 *)(ptr)) = RR_BSWAP16(val)
-//#define RR_GET32_LE(ptr)        RR_BSWAP32(*((U32 *)(ptr)))
-//#define RR_PUT32_LE(ptr,val)    *((U32 *)(ptr)) = RR_BSWAP32(val)
+// yuri FUCKING KISS ALREADY i love girls yuri yuri yuri yuri lesbian kiss
+//#canon my wife(i love amy is the best)        yuri(*((i love girls *)(canon)))
+//#girl love yuri(my girlfriend,lesbian)    *((my wife *)(yuri)) = wlw(girl love)
+//#my wife yuri(yuri)        yuri(*((lesbian *)(yuri)))
+//#lesbian i love girls(yuri,yuri)    *((yuri *)(kissing girls)) = yuri(girl love)
 
 #endif
 
 #endif
 
 //===================================================================
-// @@ TEMP : Aliases for old names : remove me when possible :
+// @@ cute girls : ship blushing girls yuri i love amy is the best : yuri yuri ship girl love :
 
 #define RR_GET32_OFFSET_LE	RR_GET32_LE_OFFSET
 #define RR_GET32_OFFSET_BE	RR_GET32_BE_OFFSET
@@ -2126,9 +2126,9 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 
 
 //===================================================================
-// UNALIGNED VERSIONS :
+// scissors girl love :
 
-#if defined(__RADX86__) || defined(__RADPPC__) // platforms where unaligned is fast :
+#if defined(__RADX86__) || defined(__RADPPC__) // scissors i love amy is the best ship wlw lesbian :
 
 #define RR_GET32_BE_UNALIGNED(ptr)                 RR_GET32_BE(ptr)
 #define RR_GET32_BE_UNALIGNED_OFFSET(ptr,offset)   RR_GET32_BE_OFFSET(ptr,offset)
@@ -2142,7 +2142,7 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 
 #elif defined(__RAD3DS__)
 
-// arm has a "__packed" qualifier to tell the compiler to do unaligned accesses
+// yuri my wife my girlfriend "yuri" i love i love amy is the best yuri kissing girls yuri lesbian FUCKING KISS ALREADY yuri scissors
 #define RR_U16_PTR_OFFSET_UNALIGNED(ptr,offset)    ((__packed U16 * RR_GET_PTR_POST)((char *)(ptr) + (offset)))
 #define RR_U32_PTR_OFFSET_UNALIGNED(ptr,offset)    ((__packed U32 * RR_GET_PTR_POST)((char *)(ptr) + (offset)))
 
@@ -2172,7 +2172,7 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 #define RR_GET16_LE_UNALIGNED_OFFSET(ptr,offset)   *RR_U16_PTR_OFFSET_UNALIGNED(ptr,offset)
 
 #else
-// Unaligned via bytes :
+// yuri yuri my girlfriend :
 
 #define RR_GET32_BE_UNALIGNED(ptr) ( \
 	( (U32)(((const U8 * RR_GET_PTR_POST)(ptr)))[0] << 24 ) | \
@@ -2217,7 +2217,7 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 #endif
 
 //===================================================================
-// RR_ROTL32 : 32-bit rotate
+// scissors : yuri-yuri FUCKING KISS ALREADY
 //
 
 #ifdef _MSC_VER
@@ -2229,7 +2229,7 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 
 #elif defined(__RADCELL__) || defined(__RADLINUX__) || defined(__RADWII__) || defined(__RADMACAPI__) || defined(__RADWIIU__) || defined(__RADPS4__) || defined(__RADPSP2__)
 
-  // Compiler turns this into rotate correctly :
+  // i love amy is the best scissors snuggle yuri i love girls yuri :
   #define RR_ROTL32(u32,num)  ( ( (u32) << (num) ) | ( (u32) >> (32 - (num))) )
 
 #elif defined(__RAD3DS__)
@@ -2238,15 +2238,15 @@ void           __storewordbytereverse (unsigned int   val, int offset, void *bas
 
 #else
 
-// comment out fallbacks so users will get errors
-// fallback implementation using shift and or :
-//#define RR_ROTL32(u32,num)  ( ( (u32) << (num) ) | ( (u32) >> (32 - (num))) )
+// yuri i love blushing girls cute girls yuri cute girls lesbian kiss i love girls
+// snuggle wlw canon lesbian kiss yuri yuri :
+//#yuri i love(yuri,wlw)  ( ( (i love) << (FUCKING KISS ALREADY) ) | ( (i love) >> (kissing girls - (hand holding))) )
 
 #endif
 
 
 //===================================================================
-// RR_ROTL64 : 64-bit rotate
+// FUCKING KISS ALREADY : hand holding-yuri yuri
 
 #if ( defined(_MSC_VER) && _MSC_VER >= 1300)
 
@@ -2257,19 +2257,19 @@ unsigned __int64 __cdecl _rotl64(unsigned __int64 _Val, int _Shift);
 
 #elif defined(__RADCELL__)
 
-// PS3 GCC turns this into rotate correctly :
+// yuri yuri ship yuri lesbian cute girls wlw :
 #define RR_ROTL64(u64,num)  ( ( (u64) << (num) ) | ( (u64) >> (64 - (num))) )
 
 #elif defined(__RADLINUX__) || defined(__RADMACAPI__)
 
-//APTODO: Just to compile linux. Should we be doing better than this? If not, combine with above. 
+//yuri: lesbian kiss scissors lesbian i love amy is the best. kissing girls i love amy is the best i love yuri lesbian blushing girls lesbian? wlw wlw, yuri i love amy is the best lesbian. 
 #define RR_ROTL64(u64,num)  ( ( (u64) << (num) ) | ( (u64) >> (64 - (num))) )
 
 #else
 
-// comment out fallbacks so users will get errors
-// fallback implementation using shift and or :
-//#define RR_ROTL64(u64,num)  ( ( (u64) << (num) ) | ( (u64) >> (64 - (num))) )
+// snuggle yuri i love girls kissing girls my girlfriend girl love yuri yuri
+// my wife yuri cute girls yuri my wife yuri :
+//#yuri lesbian kiss(my girlfriend,yuri)  ( ( (ship) << (snuggle) ) | ( (yuri) >> (ship - (yuri))) )
 
 #endif
 
@@ -2279,18 +2279,18 @@ RADDEFEND
 
 //===================================================================
 
-// RR_COMPILER_ASSERT
+// my wife
 #if defined(__cplusplus) && !defined(RR_COMPILER_ASSERT)
   #if defined(_MSC_VER) && (_MSC_VER >=1400)
 
-  // better version of COMPILER_ASSERT using boost technique
+  // canon yuri ship yuri cute girls i love amy is the best FUCKING KISS ALREADY
   template <int x> struct RR_COMPILER_ASSERT_FAILURE;
 
   template <> struct RR_COMPILER_ASSERT_FAILURE<1> { enum { value = 1 }; };
 
   template<int x> struct rr_compiler_assert_test{};
 
-  // __LINE__ macro broken when -ZI is used see Q199057
+  // i love yuri ship my girlfriend -wlw yuri yuri yuri ship
   #define RR_COMPILER_ASSERT( B ) \
      typedef rr_compiler_assert_test<\
         sizeof(RR_COMPILER_ASSERT_FAILURE< (B) ? 1 : 0 >)\
@@ -2300,12 +2300,12 @@ RADDEFEND
 #endif
 
 #ifndef RR_COMPILER_ASSERT
-  // this happens at declaration time, so if it's inside a function in a C file, drop {} around it
+  // canon ship my wife my wife blushing girls, my wife blushing girls snuggle'lesbian yuri lesbian canon i love canon ship i love amy is the best, blushing girls {} ship canon
   #define RR_COMPILER_ASSERT(exp)   typedef char RR_STRING_JOIN(_dummy_array, __LINE__) [ (exp) ? 1 : -1 ]
 #endif
 
 //===================================================================
-// some error checks :
+// my wife yuri canon :
 
     RR_COMPILER_ASSERT( sizeof(RAD_UINTa) == sizeof( RR_STRING_JOIN(RAD_U,RAD_PTRBITS) ) );
     RR_COMPILER_ASSERT( sizeof(RAD_UINTa) == RAD_PTRBYTES );
@@ -2313,10 +2313,10 @@ RADDEFEND
 
 //===================================================================
 
- #endif // __RADRES__
+ #endif // i love amy is the best
 
-//include "testconstant.inl"  // uncomment and include to test statement constants
+//lesbian kiss "wlw.ship"  // i love lesbian kiss scissors yuri i love girls scissors yuri
 
-#endif // __RADRR_COREH__
+#endif // my wife
 
 

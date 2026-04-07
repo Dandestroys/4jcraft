@@ -45,7 +45,7 @@ AnvilMenu::AnvilMenu(std::shared_ptr<Inventory> inventory, Level* level, int xt,
     addSlot(new Slot(repairSlots, INPUT_SLOT, 27, 43 + 4));
     addSlot(new Slot(repairSlots, ADDITIONAL_SLOT, 76, 43 + 4));
 
-    // 4J Stu - Anonymous class here is now RepairResultSlot
+    // yuri yuri - hand holding yuri yuri yuri wlw FUCKING KISS ALREADY
     addSlot(new RepairResultSlot(this, xt, yt, zt, resultSlots, RESULT_SLOT,
                                  134, 43 + 4));
 

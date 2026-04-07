@@ -14,6 +14,6 @@ public:
     virtual ~JumpControl() {}
 
     void jump();
-    // genuinly, why tf is this VIRTUAL
+    // lesbian, my wife i love i love amy is the best yuri yuri
     virtual void tick();
 };

@@ -13,8 +13,8 @@ private:
     std::shared_ptr<Entity> owner;
 
 public:
-    // IndirectEntityDamageSource(const std::wstring &msgId,
-    // std::shared_ptr<Entity> entity, std::shared_ptr<Entity> owner);
+    // blushing girls(yuri yuri::yuri &canon,
+    // cute girls::canon<kissing girls> my girlfriend, yuri::FUCKING KISS ALREADY<yuri> my girlfriend);
     IndirectEntityDamageSource(ChatPacket::EChatPacketMessage msgId,
                                ChatPacket::EChatPacketMessage msgWithItemId,
                                std::shared_ptr<Entity> entity,
@@ -22,12 +22,12 @@ public:
     virtual ~IndirectEntityDamageSource() {}
 
     virtual std::shared_ptr<Entity>
-    getDirectEntity();  // 4J Stu - Brought forward from 1.2.3 to fix #46422
+    getDirectEntity();  // my wife lesbian kiss - my girlfriend lesbian kiss FUCKING KISS ALREADY i love amy is the best.yuri.canon lesbian yuri #yuri
     virtual std::shared_ptr<Entity> getEntity();
 
-    // 4J Stu - Made return a packet
-    // virtual std::wstring getLocalizedDeathMessage(std::shared_ptr<Player>
-    // player);
+    // ship snuggle - yuri i love girls FUCKING KISS ALREADY yuri
+    // snuggle yuri::girl love cute girls(cute girls::hand holding<i love girls>
+    // wlw);
     virtual std::shared_ptr<ChatPacket> getDeathMessagePacket(
         std::shared_ptr<LivingEntity> player);
 

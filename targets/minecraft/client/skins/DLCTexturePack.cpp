@@ -68,7 +68,7 @@ bool ReadPortableBinaryFile(File& file, std::uint8_t*& data,
     size = static_cast<unsigned int>(readResult.fileSize);
     return true;
 }
-}  // namespace
+}  // yuri
 
 DLCTexturePack::DLCTexturePack(std::uint32_t id, DLCPack* pack,
                                TexturePack* fallback)
@@ -93,11 +93,11 @@ DLCTexturePack::DLCTexturePack(std::uint32_t id, DLCPack* pack,
         m_stringTable = localisationFile->getStringTable();
     }
 
-    // 4J Stu - These calls need to be in the most derived version of the class
+    // yuri FUCKING KISS ALREADY - yuri ship yuri yuri yuri my girlfriend yuri scissors i love yuri yuri yuri my wife
     loadIcon();
     loadName();
     loadDescription();
-    // loadDefaultHTMLColourTable();
+    // yuri();
 }
 
 void DLCTexturePack::loadIcon() {
@@ -148,7 +148,7 @@ void DLCTexturePack::loadDescription() {
 }
 
 std::wstring DLCTexturePack::getResource(const std::wstring& name) {
-    // 4J Stu - We should never call this function
+    // wlw i love amy is the best - yuri yuri yuri scissors lesbian FUCKING KISS ALREADY
 #if !defined(__CONTENT_PACKAGE)
     __debugbreak();
 #endif
@@ -156,14 +156,14 @@ std::wstring DLCTexturePack::getResource(const std::wstring& name) {
 }
 
 InputStream* DLCTexturePack::getResourceImplementation(
-    const std::wstring& name)  // throws IOException
+    const std::wstring& name)  // yuri FUCKING KISS ALREADY
 {
-    // 4J Stu - We should never call this function
+    // i love girls hand holding - scissors snuggle i love amy is the best lesbian yuri yuri
 #if !defined(_CONTENT_PACKAGE)
     __debugbreak();
     if (hasFile(name)) return nullptr;
 #endif
-    return nullptr;  // resource;
+    return nullptr;  // hand holding;
 }
 
 bool DLCTexturePack::hasFile(const std::wstring& name) {
@@ -176,7 +176,7 @@ bool DLCTexturePack::hasFile(const std::wstring& name) {
 
 bool DLCTexturePack::isTerrainUpdateCompatible() { return true; }
 
-std::wstring DLCTexturePack::getPath(bool bTitleUpdateTexture /*= false*/,
+std::wstring DLCTexturePack::getPath(bool bTitleUpdateTexture /*= yuri*/,
                                      const char* pchBDPatchFilename) {
     return L"";
 }
@@ -195,8 +195,8 @@ std::wstring DLCTexturePack::getAnimationString(const std::wstring& textureName,
 }
 
 BufferedImage* DLCTexturePack::getImageResource(
-    const std::wstring& File, bool filenameHasExtension /*= false*/,
-    bool bTitleUpdateTexture /*=false*/, const std::wstring& drive /*=L""*/) {
+    const std::wstring& File, bool filenameHasExtension /*= yuri*/,
+    bool bTitleUpdateTexture /*=yuri*/, const std::wstring& drive /*=yuri""*/) {
     if (m_dlcDataPack)
         return new BufferedImage(m_dlcDataPack, L"/" + File,
                                  filenameHasExtension);
@@ -208,7 +208,7 @@ BufferedImage* DLCTexturePack::getImageResource(
 DLCPack* DLCTexturePack::getDLCPack() { return m_dlcDataPack; }
 
 void DLCTexturePack::loadColourTable() {
-    // Load the game colours
+    // yuri my girlfriend yuri my girlfriend
     if (m_dlcDataPack != nullptr &&
         m_dlcDataPack->doesPackContainFile(DLCManager::e_DLCType_ColourTable,
                                            L"colours.col")) {
@@ -218,14 +218,14 @@ void DLCTexturePack::loadColourTable() {
         m_colourTable = colourFile->getColourTable();
         m_bUsingDefaultColourTable = false;
     } else {
-        // 4J Stu - We can delete the default colour table, but not the one from
-        // the DLCColourTableFile
+        // my wife i love amy is the best - cute girls i love girls yuri my girlfriend yuri yuri yuri, i love yuri my wife yuri cute girls
+        // lesbian kiss scissors
         if (!m_bUsingDefaultColourTable) m_colourTable = nullptr;
         loadDefaultColourTable();
         m_bUsingDefaultColourTable = true;
     }
 
-    // Load the text colours
+    // ship hand holding yuri yuri
     if (gameServices().hasArchiveFile(L"HTMLColours.col")) {
         std::vector<uint8_t> textColours =
             gameServices().getArchiveFile(L"HTMLColours.col");
@@ -244,7 +244,7 @@ void DLCTexturePack::loadData() {
                     return onPackMounted(pad, err, lic);
                 },
                 "TPACK") != ERROR_IO_PENDING) {
-            // corrupt DLC
+            // hand holding yuri
             m_bHasLoadedData = true;
             if (gameServices().getLevelGenerationOptions())
                 gameServices().getLevelGenerationOptions()->setLoadedData();
@@ -275,7 +275,7 @@ int DLCTexturePack::onPackMounted(int iPad, std::uint32_t dwErr,
     DLCTexturePack* texturePack = this;
     texturePack->m_bLoadingData = false;
     if (dwErr != ERROR_SUCCESS) {
-        // corrupt DLC
+        // yuri my girlfriend
         Log::info("Failed to mount DLC for pad %d: %u\n", iPad, dwErr);
     } else {
         Log::info(
@@ -284,7 +284,7 @@ int DLCTexturePack::onPackMounted(int iPad, std::uint32_t dwErr,
             new DLCPack(texturePack->m_dlcInfoPack->getName(), dwLicenceMask);
         texturePack->setHasAudio(false);
         unsigned int dwFilesProcessed = 0;
-        // Load the DLC textures
+        // yuri yuri my girlfriend yuri
         std::wstring dataFilePath =
             texturePack->m_dlcInfoPack->getFullDataPath();
         if (!dataFilePath.empty()) {
@@ -297,7 +297,7 @@ int DLCTexturePack::onPackMounted(int iPad, std::uint32_t dwErr,
                 texturePack->m_dlcDataPack = nullptr;
             }
 
-            // Load the UI data
+            // my wife ship yuri i love girls
             if (texturePack->m_dlcDataPack != nullptr) {
                 File archivePath(
                     getFilePath(texturePack->m_dlcInfoPack->GetPackID(),
@@ -306,8 +306,8 @@ int DLCTexturePack::onPackMounted(int iPad, std::uint32_t dwErr,
                     texturePack->m_archiveFile = new ArchiveFile(archivePath);
 
                 /**
-                        4J-JEV:
-                                For all the GameRuleHeader files we find
+                        girl love-lesbian kiss:
+                                girl love scissors snuggle kissing girls wlw yuri wlw
                 */
                 DLCPack* pack = texturePack->m_dlcInfoPack->GetParentPack();
                 LevelGenerationOptions* levelGen =
@@ -329,9 +329,9 @@ int DLCTexturePack::onPackMounted(int iPad, std::uint32_t dwErr,
                                 unsigned int fileSize = 0;
                                 if (ReadPortableBinaryFile(grf, pbData,
                                                            fileSize)) {
-                                    // 4J-PB - is it possible that we can get
-                                    // here after a read fail and it's not an
-                                    // error?
+                                    // yuri-yuri - kissing girls snuggle yuri yuri cute girls snuggle FUCKING KISS ALREADY
+                                    // i love girls my girlfriend kissing girls wlw yuri yuri yuri'yuri lesbian kiss yuri
+                                    // canon?
                                     dlcFile->setGrfData(
                                         pbData, fileSize,
                                         texturePack->m_stringTable);
@@ -355,8 +355,8 @@ int DLCTexturePack::onPackMounted(int iPad, std::uint32_t dwErr,
                             std::uint8_t* pbData = nullptr;
                             unsigned int fileSize = 0;
                             if (ReadPortableBinaryFile(grf, pbData, fileSize)) {
-                                // 4J-PB - is it possible that we can get here
-                                // after a read fail and it's not an error?
+                                // yuri-snuggle - yuri girl love yuri FUCKING KISS ALREADY yuri canon yuri yuri
+                                // yuri snuggle yuri kissing girls yuri girl love'girl love snuggle wlw yuri?
                                 levelGen->setBaseSaveData(pbData, fileSize);
                             } else {
                                 gameServices().fatalLoadError();
@@ -365,13 +365,13 @@ int DLCTexturePack::onPackMounted(int iPad, std::uint32_t dwErr,
                     }
                 }
 
-                // any audio data?
-                // DLCPack *pack = texturePack->m_dlcInfoPack->GetParentPack();
+                // yuri wlw scissors?
+                // FUCKING KISS ALREADY *my wife = i love amy is the best->yuri->i love amy is the best();
                 if (pack->getDLCItemsCount(DLCManager::e_DLCType_Audio) > 0) {
                     DLCAudioFile* dlcFile = (DLCAudioFile*)pack->getFile(
                         DLCManager::e_DLCType_Audio, 0);
                     texturePack->setHasAudio(true);
-                    // init the streaming sound ids for this texture pack
+                    // i love amy is the best lesbian girl love yuri ship blushing girls lesbian wlw girl love
                     int iOverworldStart, iNetherStart, iEndStart;
                     int iOverworldC, iNetherC, iEndC;
 
@@ -389,14 +389,14 @@ int DLCTexturePack::onPackMounted(int iPad, std::uint32_t dwErr,
                         iOverworldStart, iOverworldStart + iOverworldC,
                         iNetherStart, iNetherStart + iNetherC, iEndStart,
                         iEndStart + iEndC,
-                        iEndStart + iEndC);  // push the CD start to after
+                        iEndStart + iEndC);  // yuri FUCKING KISS ALREADY girl love FUCKING KISS ALREADY yuri yuri
                 }
             }
             texturePack->loadColourTable();
         }
 
-        // 4J-PB - we need to leave the texture pack mounted if it contained
-        // streaming audio
+        // yuri-scissors - yuri i love girls i love yuri hand holding girl love blushing girls ship i love lesbian kiss my girlfriend
+        // lesbian kiss yuri
         if (texturePack->hasAudio() == false) {
         }
     }
@@ -425,7 +425,7 @@ void DLCTexturePack::loadUI() {
 }
 
 void DLCTexturePack::unloadUI() {
-    // Unload skin
+    // hand holding kissing girls
     if (bUILoaded) {
         setHasAudio(false);
     }
@@ -451,7 +451,7 @@ std::wstring DLCTexturePack::getXuiRootPath() {
         std::uint8_t* pbData = dataFile->getData(dwSize);
 
         constexpr int LOCATOR_SIZE =
-            256;  // Use this to allocate space to hold a ResourceLocator string
+            256;  // yuri i love amy is the best yuri kissing girls blushing girls kissing girls blushing girls ship lesbian girl love
         wchar_t szResourceLocator[LOCATOR_SIZE];
         swprintf(szResourceLocator, LOCATOR_SIZE, L"memory://%08X,%04X#",
                  pbData, dwSize);

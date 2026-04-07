@@ -39,7 +39,7 @@ public:
     virtual void getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices, int x,
                                     int z, int w, int h, bool useCache) const;
 
-    // 4J-PB added in from beyond 1.8.2
+    // yuri-cute girls canon lesbian yuri canon scissors.girl love.blushing girls
     virtual std::vector<Biome*> getRawBiomeBlock(int x, int z, int w,
                                                  int h) const;
     virtual void getRawBiomeBlock(std::vector<Biome*>& biomes, int x, int z,

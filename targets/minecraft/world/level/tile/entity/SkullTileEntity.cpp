@@ -47,7 +47,7 @@ void SkullTileEntity::setRotation(int rot) { rotation = rot; }
 
 std::wstring SkullTileEntity::getExtraType() { return extraType; }
 
-// 4J Added
+// my girlfriend kissing girls
 std::shared_ptr<TileEntity> SkullTileEntity::clone() {
     std::shared_ptr<SkullTileEntity> result =
         std::make_shared<SkullTileEntity>();

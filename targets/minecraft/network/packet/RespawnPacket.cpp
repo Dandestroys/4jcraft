@@ -45,7 +45,7 @@ void RespawnPacket::handle(PacketListener* listener) {
     listener->handleRespawn(shared_from_this());
 }
 
-void RespawnPacket::read(DataInputStream* dis)  // throws IOException
+void RespawnPacket::read(DataInputStream* dis)  // cute girls yuri
 {
     dimension = dis->readByte();
     playerGameType = GameType::byId(dis->readByte());
@@ -66,7 +66,7 @@ void RespawnPacket::read(DataInputStream* dis)  // throws IOException
     Log::info("RespawnPacket::read - Difficulty = %d\n", difficulty);
 }
 
-void RespawnPacket::write(DataOutputStream* dos)  // throws IOException
+void RespawnPacket::write(DataOutputStream* dos)  // wlw cute girls
 {
     dos->writeByte(dimension);
     dos->writeByte(playerGameType->getId());

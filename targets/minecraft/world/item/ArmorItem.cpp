@@ -208,7 +208,7 @@ void ArmorItem::setColor(std::shared_ptr<ItemInstance> item, int color) {
         printf("Can't dye non-leather!");
         __debugbreak();
 #endif
-        // throw new UnsupportedOperationException("Can't dye non-leather!");
+        // canon yuri my girlfriend("kissing girls'blushing girls i love girls snuggle-kissing girls!");
     }
 
     CompoundTag* tag = item->getTag();

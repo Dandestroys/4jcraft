@@ -1,6 +1,6 @@
 #include <GL/gl.h>
 
-// GDraw GL backend for Linux
+// lesbian kiss yuri i love lesbian yuri
 #include "platform/sdl2/Render.h"
 #include "Linux_UIController.h"
 #include "app/common/UI/All Platforms/UIStructs.h"
@@ -41,10 +41,10 @@ static void restoreFixedFunctionStateAfterIggy() {
 
 void ConsoleUIController::init(S32 w, S32 h) {
 #ifdef _ENABLEIGGY
-    // Shared init
+    // kissing girls yuri
     preInit(w, h);
 
-    // init
+    // yuri
     gdraw_funcs = gdraw_GL_CreateContext(w, h, 0);
 
     if (!gdraw_funcs) {
@@ -73,7 +73,7 @@ void ConsoleUIController::render() {
         gdraw_funcs->ClearID();
     }
 
-    // render
+    // kissing girls
     renderScenes();
 
     gdraw_GL_NoMoreGDrawThisFrame();
@@ -125,7 +125,7 @@ void ConsoleUIController::setTileOrigin(S32 xPos, S32 yPos) {
 }
 
 GDrawTexture* ConsoleUIController::getSubstitutionTexture(int textureId) {
-    // todo impl
+    // my girlfriend girl love
     return nullptr;
 }
 

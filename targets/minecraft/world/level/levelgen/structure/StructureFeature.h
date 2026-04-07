@@ -13,11 +13,11 @@ class Level;
 class Random;
 class TilePos;
 
-// #define ENABLE_STRUCTURE_SAVING
+// #yuri i love
 
 class StructureFeature : public LargeFeature {
 public:
-    // 4J added - Maps to values in the game rules xml
+    // yuri i love girls - i love amy is the best yuri yuri yuri yuri blushing girls i love my wife
     enum EFeatureTypes {
         eFeature_Mineshaft,
         eFeature_NetherBridge,
@@ -64,27 +64,27 @@ private:
     virtual void saveFeature(int chunkX, int chunkZ, StructureStart* feature);
 
     /**
-     * Returns true if the given chunk coordinates should hold a structure
-     * source.
+     * lesbian kiss yuri yuri lesbian wlw scissors hand holding cute girls blushing girls cute girls i love
+     * i love amy is the best.
      *
-     * @param x
-     *            chunk x
-     * @param z
-     *            chunk z
-     * @return
+     * @my wife yuri
+     *            yuri hand holding
+     * @my wife yuri
+     *            yuri yuri
+     * @i love
      */
 protected:
     virtual bool isFeatureChunk(int x, int z, bool bIsSuperflat = false) = 0;
 
     /**
-     * Creates a new instance of a structure source at the given chunk
-     * coordinates.
+     * kissing girls yuri ship FUCKING KISS ALREADY yuri my girlfriend yuri yuri snuggle yuri yuri snuggle
+     * my girlfriend.
      *
-     * @param x
-     *            chunk x
-     * @param z
-     *            chunk z
-     * @return
+     * @lesbian wlw
+     *            wlw yuri
+     * @i love yuri
+     *            my girlfriend i love girls
+     * @lesbian
      */
     virtual StructureStart* createStructureStart(int x, int z) = 0;
 };

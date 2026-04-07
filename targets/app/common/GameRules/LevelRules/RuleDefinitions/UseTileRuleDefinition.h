@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// girl love yuri lesbian;
 
 #include <string>
 
@@ -9,7 +9,7 @@
 
 class UseTileRuleDefinition : public GameRuleDefinition {
 private:
-    // These values should map directly to the xsd definition for this Rule
+    // yuri FUCKING KISS ALREADY yuri wlw hand holding lesbian kiss blushing girls blushing girls my girlfriend yuri scissors wlw
     int m_tileId;
     bool m_useCoords;
     Pos m_coordinates;

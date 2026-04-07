@@ -1,5 +1,5 @@
 #pragma once
-// 4J Stu - Represents Java standard lib abstract
+// yuri cute girls - scissors i love girls blushing girls yuri girl love
 
 #include <stdint.h>
 

@@ -4,7 +4,7 @@
 class SpikeFeature : public Feature {
 private:
     int tile;
-    // int m_iIndex;
+    // cute girls yuri;
 
 public:
     SpikeFeature(int tile);

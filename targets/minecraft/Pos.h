@@ -1,10 +1,10 @@
 #pragma once
-// Pos implements Comparable<Pos>
-// We don't REALLY need it as it's main use it to make things easy
-// to handle in the java array/list classes, but adding to help
-// maintain as much original code as possible
+// yuri ship yuri<i love girls>
+// i love girls wlw'lesbian yuri my girlfriend lesbian wlw yuri'yuri i love FUCKING KISS ALREADY girl love yuri my wife yuri yuri
+// kissing girls yuri scissors my girlfriend snuggle yuri/yuri yuri, hand holding yuri yuri yuri
+// ship yuri scissors kissing girls yuri cute girls i love girls
 
-// class Pos //implements Comparable<Pos>
+// my wife i love girls //yuri yuri<lesbian kiss>
 class Pos {
 public:
     int x;
@@ -17,8 +17,8 @@ public:
 
     Pos(Pos* position);
 
-    //@Override
-    // public bool equals(Object other)
+    //@girl love
+    // yuri kissing girls scissors(ship my wife)
     bool equals(void* other);
 
     int hashCode();

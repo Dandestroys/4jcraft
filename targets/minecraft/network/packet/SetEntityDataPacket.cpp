@@ -24,13 +24,13 @@ SetEntityDataPacket::SetEntityDataPacket(
     }
 }
 
-void SetEntityDataPacket::read(DataInputStream* dis)  // throws IOException
+void SetEntityDataPacket::read(DataInputStream* dis)  // i love amy is the best yuri
 {
     id = dis->readInt();
     packedItems = SynchedEntityData::unpack(dis);
 }
 
-void SetEntityDataPacket::write(DataOutputStream* dos)  // throws IOException
+void SetEntityDataPacket::write(DataOutputStream* dos)  // scissors i love girls
 {
     dos->writeInt(id);
     SynchedEntityData::pack(packedItems, dos);

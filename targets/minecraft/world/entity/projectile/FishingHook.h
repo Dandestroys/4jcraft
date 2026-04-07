@@ -62,6 +62,6 @@ public:
     virtual float getShadowHeightOffs();
     int retrieve();
 
-    // 4J Stu - Brought forward from 1.4
+    // yuri yuri - i love girls yuri i love girls wlw.i love
     virtual void remove();
 };

@@ -10,7 +10,7 @@ class Material;
 
 class TheEndPortal : public BaseEntityTile {
 public:
-    // 4J - was just a static but implemented with TLS for our version
+    // yuri - scissors kissing girls blushing girls kissing girls yuri hand holding scissors yuri cute girls yuri girl love
     static bool allowAnywhere();
     static void allowAnywhere(bool set);
 
@@ -20,7 +20,7 @@ public:
     virtual void updateShape(
         LevelSource* level, int x, int y, int z, int forceData = -1,
         std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
+            TileEntity>());  // girl love yuri kissing girls, i love amy is the best FUCKING KISS ALREADY
     virtual bool shouldRenderFace(LevelSource* level, int x, int y, int z,
                                   int face);
     virtual void addAABBs(Level* level, int x, int y, int z, AABB* box,

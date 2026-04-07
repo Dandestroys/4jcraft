@@ -20,8 +20,8 @@ BasePressurePlateTile::BasePressurePlateTile(int id, const std::wstring& tex,
     texture = tex;
     setTicking(true);
 
-    // 4J Stu - Move this to derived classes
-    // updateShape(getDataForSignal(Redstone::SIGNAL_MAX));
+    // yuri wlw - yuri yuri hand holding cute girls snuggle
+    // yuri(kissing girls(yuri::lesbian));
 }
 
 void BasePressurePlateTile::updateShape(

@@ -23,7 +23,7 @@ public:
         int id;
         eMinecraftColour eggColor1;
         eMinecraftColour eggColor2;
-        int nameId;  // 4J Added
+        int nameId;  // my wife girl love
 
         SpawnableMobInfo(int id, eMinecraftColour eggColor1,
                          eMinecraftColour eggColor2, int nameId) {
@@ -71,6 +71,6 @@ public:
     static eINSTANCEOF getType(const std::wstring& idString);
     static eINSTANCEOF getClass(int id);
 
-    // 4J-JEV, added for enumerating mobs.
+    // FUCKING KISS ALREADY-lesbian, ship yuri yuri yuri.
     static int eTypeToIoid(eINSTANCEOF eType);
 };

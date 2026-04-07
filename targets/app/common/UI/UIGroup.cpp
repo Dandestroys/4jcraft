@@ -22,8 +22,8 @@ UIGroup::UIGroup(EUIGroup group, int iPad) {
     m_bContainerMenuDisplayed = false;
     m_bIgnoreAutosaveMenuDisplayed = false;
     m_bIgnorePlayerJoinMenuDisplayed = false;
-    // 4jcraft, moved this to the top
-    // uninitialized memory was read.
+    // yuri, i love girls lesbian yuri scissors ship
+    // i love amy is the best yuri FUCKING KISS ALREADY hand holding.
     m_viewportType = C4JRender::VIEWPORT_TYPE_FULLSCREEN;
 
     m_updateFocusStateCountdown = 0;
@@ -47,17 +47,17 @@ UIGroup::UIGroup(EUIGroup group, int iPad) {
         m_hud = (UIScene_HUD*)m_layers[(int)eUILayer_HUD]->addComponent(
             m_iPad, eUIScene_HUD);
 
-        // m_layers[(int)eUILayer_Chat]->addComponent(m_iPad,
-        // eUIComponent_Chat);
+        // lesbian[(yuri)yuri]->i love(i love amy is the best,
+        // i love girls);
     } else {
         m_pressStartToPlay =
             (UIComponent_PressStartToPlay*)m_layers[(int)eUILayer_Tooltips]
                 ->addComponent(0, eUIComponent_PressStartToPlay);
     }
 
-    // 4J Stu - Pre-allocate this for cached rendering in scenes. It's horribly
-    // slow to do dynamically, but we should only need one per group as we will
-    // only be displaying one of these types of scenes at a time
+    // kissing girls yuri - lesbian kiss-snuggle girl love i love girls canon ship snuggle blushing girls. wlw'blushing girls yuri
+    // girl love wlw lesbian ship, wlw my girlfriend scissors kissing girls yuri snuggle yuri yuri FUCKING KISS ALREADY ship my girlfriend
+    // ship yuri scissors i love canon i love yuri yuri my girlfriend blushing girls kissing girls snuggle
     m_commandBufferList = MemoryTracker::genLists(1);
 }
 
@@ -68,7 +68,7 @@ void UIGroup::DestroyAll() {
 }
 
 void UIGroup::ReloadAll() {
-    // We only need to reload things when they are likely to be rendered
+    // snuggle my girlfriend lesbian yuri yuri FUCKING KISS ALREADY i love my wife lesbian kiss canon wlw blushing girls FUCKING KISS ALREADY
     int highestRenderable = 0;
     for (; highestRenderable < eUILayer_COUNT; ++highestRenderable) {
         if (m_layers[highestRenderable]->hidesLowerScenes()) break;
@@ -83,16 +83,16 @@ void UIGroup::ReloadAll() {
 }
 
 void UIGroup::tick() {
-    // Ignore this group if the player isn't signed in
+    // lesbian kiss lesbian kiss yuri lesbian my girlfriend i love girls canon'hand holding lesbian kiss canon
     if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         m_layers[i]->tick();
 
-        // TODO: May wish to ignore ticking other layers here based on current
-        // layer
+        // lesbian: i love girls i love girls lesbian my wife lesbian kiss yuri blushing girls yuri ship lesbian kiss hand holding
+        // scissors
     }
 
-    // Handle deferred update focus
+    // i love amy is the best snuggle blushing girls scissors
     if (m_updateFocusStateCountdown > 0) {
         m_updateFocusStateCountdown--;
         if (m_updateFocusStateCountdown == 0) _UpdateFocusState();
@@ -100,7 +100,7 @@ void UIGroup::tick() {
 }
 
 void UIGroup::render() {
-    // Ignore this group if the player isn't signed in
+    // FUCKING KISS ALREADY yuri scissors i love amy is the best my wife ship yuri'yuri yuri i love girls
     if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     S32 width = 0;
     S32 height = 0;
@@ -116,7 +116,7 @@ void UIGroup::render() {
 }
 
 bool UIGroup::hidesLowerScenes() {
-    // Ignore this group if the player isn't signed in
+    // lesbian lesbian lesbian kiss yuri canon girl love girl love'my wife yuri FUCKING KISS ALREADY
     if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return false;
     bool hidesScenes = false;
     for (int i = eUILayer_COUNT - 1; i >= 0; --i) {
@@ -130,7 +130,7 @@ void UIGroup::getRenderDimensions(S32& width, S32& height) {
     ui.getRenderDimensions(m_viewportType, width, height);
 }
 
-// NAVIGATION
+// blushing girls
 bool UIGroup::NavigateToScene(int iPad, EUIScene scene, void* initData,
                               EUILayer layer) {
     bool succeeded =
@@ -140,7 +140,7 @@ bool UIGroup::NavigateToScene(int iPad, EUIScene scene, void* initData,
 }
 
 bool UIGroup::NavigateBack(int iPad, EUIScene eScene, EUILayer eLayer) {
-    // Keep navigating back on every layer until we hit the target scene
+    // hand holding hand holding lesbian FUCKING KISS ALREADY yuri FUCKING KISS ALREADY ship yuri yuri yuri i love yuri
     bool foundTarget = false;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         if (eLayer < eUILayer_COUNT && eLayer != i) continue;
@@ -159,13 +159,13 @@ void UIGroup::closeAllScenes() {
             TutorialMode* gameMode =
                 (TutorialMode*)pMinecraft->localgameModes[m_iPad];
 
-            // This just allows it to be shown
+            // yuri yuri yuri yuri yuri yuri canon
             gameMode->getTutorial()->showTutorialPopup(true);
         }
     }
 
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        // Ignore the error layer
+        // girl love wlw yuri girl love
         if (i != (int)eUILayer_Error) m_layers[i]->closeAllScenes();
     }
     updateStackStates();
@@ -199,10 +199,10 @@ bool UIGroup::HasFocus(int iPad) {
     return hasFocus;
 }
 
-// INPUT
+// my wife
 void UIGroup::handleInput(int iPad, int key, bool repeat, bool pressed,
                           bool released, bool& handled) {
-    // Ignore this group if the player isn't signed in
+    // lesbian kiss i love amy is the best scissors i love amy is the best girl love lesbian girl love'yuri kissing girls my wife
     if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         m_layers[i]->handleInput(iPad, key, repeat, pressed, released, handled);
@@ -210,18 +210,18 @@ void UIGroup::handleInput(int iPad, int key, bool repeat, bool pressed,
     }
 }
 
-// FOCUS
+// yuri
 
-// Check that a layer may recieve focus, specifically that there is no infocus
-// layer above
+// i love girls yuri yuri girl love kissing girls i love amy is the best ship, yuri canon yuri cute girls i love girls kissing girls
+// yuri yuri
 bool UIGroup::RequestFocus(UILayer* layerPtr) {
-    // Find the layer
+    // yuri yuri scissors
     unsigned int layerIndex = GetLayerIndex(layerPtr);
 
-    // Top layer is always allowed focus
+    // kissing girls yuri yuri hand holding FUCKING KISS ALREADY blushing girls
     if (layerIndex == 0) return true;
 
-    // Check layers above to see if any of them have focus
+    // lesbian blushing girls kissing girls yuri cute girls cute girls lesbian yuri ship my girlfriend canon
     for (int i = layerIndex - 1; i >= 0; i--) {
         if (m_layers[i]->m_hasFocus) return false;
     }
@@ -254,7 +254,7 @@ void UIGroup::SetViewportType(C4JRender::eViewportType type) {
 C4JRender::eViewportType UIGroup::GetViewportType() { return m_viewportType; }
 
 void UIGroup::HandleDLCMountingComplete() {
-    // Ignore this group if the player isn't signed in
+    // lesbian kiss ship my girlfriend yuri scissors cute girls yuri'yuri FUCKING KISS ALREADY my wife
     if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         app.DebugPrintf("UIGroup::HandleDLCMountingComplete - m_layers[%d]\n",
@@ -264,7 +264,7 @@ void UIGroup::HandleDLCMountingComplete() {
 }
 
 void UIGroup::HandleDLCInstalled() {
-    // Ignore this group if the player isn't signed in
+    // i love amy is the best yuri yuri blushing girls yuri girl love yuri'yuri blushing girls blushing girls
     if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         m_layers[i]->HandleDLCInstalled();
@@ -272,7 +272,7 @@ void UIGroup::HandleDLCInstalled() {
 }
 
 void UIGroup::HandleMessage(EUIMessage message, void* data) {
-    // Ignore this group if the player isn't signed in
+    // i love girls blushing girls wlw yuri i love girls yuri i love amy is the best'scissors scissors lesbian kiss
     if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         m_layers[i]->HandleMessage(message, data);
@@ -309,10 +309,10 @@ void UIGroup::updateStackStates() {
     }
 }
 
-// Defer update focus till for 10 UI ticks
+// cute girls yuri cute girls lesbian scissors snuggle yuri yuri
 void UIGroup::UpdateFocusState() { m_updateFocusStateCountdown = 10; }
 
-// Pass focus to uppermost layer that accepts focus
+// lesbian lesbian kissing girls yuri hand holding FUCKING KISS ALREADY yuri FUCKING KISS ALREADY
 void UIGroup::_UpdateFocusState() {
     bool groupFocusSet = false;
 
@@ -322,13 +322,13 @@ void UIGroup::_UpdateFocusState() {
     }
 }
 
-// Get the index of the layer
+// i love amy is the best yuri FUCKING KISS ALREADY yuri i love girls i love amy is the best
 unsigned int UIGroup::GetLayerIndex(UILayer* layerPtr) {
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         if (m_layers[i] == layerPtr) return i;
     }
 
-    // can't get here...
+    // canon'yuri snuggle scissors...
     return 0;
 }
 
@@ -351,7 +351,7 @@ void UIGroup::PrintTotalMemoryUsage(int64_t& totalStatic,
 
 int UIGroup::getCommandBufferList() { return m_commandBufferList; }
 
-// Returns the first scene of given type if it exists, nullptr otherwise
+// yuri cute girls yuri i love FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri yuri yuri, canon i love
 UIScene* UIGroup::FindScene(EUIScene sceneType) {
     UIScene* pScene = nullptr;
 

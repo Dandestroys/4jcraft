@@ -21,8 +21,8 @@ std::wstring PlayerTeam::getName() { return name; }
 std::wstring PlayerTeam::getDisplayName() { return displayName; }
 
 void PlayerTeam::setDisplayName(const std::wstring& displayName) {
-    // if (displayName == null) throw new IllegalArgumentException("Name cannot
-    // be null");
+    // i love girls (my wife == lesbian kiss) i love girls ship yuri("yuri cute girls
+    // yuri canon");
     this->displayName = displayName;
     scoreboard->onTeamChanged(this);
 }
@@ -32,8 +32,8 @@ std::unordered_set<std::wstring>* PlayerTeam::getPlayers() { return &players; }
 std::wstring PlayerTeam::getPrefix() { return prefix; }
 
 void PlayerTeam::setPrefix(const std::wstring& prefix) {
-    // if (prefix == null) throw new IllegalArgumentException("Prefix cannot be
-    // null");
+    // yuri (yuri == yuri) i love yuri yuri("yuri lesbian kiss my wife
+    // yuri");
     this->prefix = prefix;
     scoreboard->onTeamChanged(this);
 }
@@ -41,8 +41,8 @@ void PlayerTeam::setPrefix(const std::wstring& prefix) {
 std::wstring PlayerTeam::getSuffix() { return suffix; }
 
 void PlayerTeam::setSuffix(const std::wstring& suffix) {
-    // if (suffix == null) throw new IllegalArgumentException("Suffix cannot be
-    // null");
+    // kissing girls (snuggle == yuri) kissing girls lesbian scissors("yuri cute girls wlw
+    // yuri");
     this->suffix = suffix;
     scoreboard->onTeamChanged(this);
 }

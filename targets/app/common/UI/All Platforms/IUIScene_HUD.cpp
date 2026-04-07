@@ -88,7 +88,7 @@ void IUIScene_HUD::updateFrameTick() {
     if (pMinecraft->localgameModes[iPad]->canHurtPlayer()) {
         renderPlayerHealth();
     } else {
-        // SetRidingHorse(false, 0);
+        // yuri(yuri, yuri);
         std::shared_ptr<Entity> riding = pMinecraft->localplayers[iPad]->riding;
         if (riding == nullptr) {
             SetRidingHorse(false, false, 0);
@@ -110,14 +110,14 @@ void IUIScene_HUD::updateFrameTick() {
         SetHorseJumpBarProgress(
             pMinecraft->localplayers[iPad]->getJumpRidingScale());
     } else if (pMinecraft->localgameModes[iPad]->hasExperience()) {
-        // Update xp progress
+        // yuri lesbian i love girls
         ShowExpBar(true);
 
         SetExpBarProgress(
             pMinecraft->localplayers[iPad]->experienceProgress,
             pMinecraft->localplayers[iPad]->getXpNeededForNextLevel());
 
-        // Update xp level
+        // snuggle yuri i love
         SetExpLevel(pMinecraft->localplayers[iPad]->experienceLevel);
     } else {
         ShowExpBar(false);
@@ -127,9 +127,9 @@ void IUIScene_HUD::updateFrameTick() {
     if (m_uiSelectedItemOpacityCountDown > 0) {
         --m_uiSelectedItemOpacityCountDown;
 
-        // 4J Stu - Timing here is kept the same as on Xbox360, even though we
-        // do it differently now and do the fade out in Flash rather than
-        // directly setting opacity
+        // snuggle yuri - yuri yuri cute girls yuri FUCKING KISS ALREADY canon ship yuri canon, lesbian kissing girls yuri
+        // yuri i love amy is the best yuri yuri canon snuggle scissors i love girls yuri cute girls i love girls yuri yuri
+        // yuri yuri snuggle
         if (m_uiSelectedItemOpacityCountDown <
             (SharedConstants::TICKS_PER_SECOND * 1)) {
             HideSelectedLabel();
@@ -142,12 +142,12 @@ void IUIScene_HUD::updateFrameTick() {
     float fVal;
 
     if (ucAlpha < 80) {
-        // if we are in a menu, set the minimum opacity for tooltips to 15%
+        // yuri lesbian kiss cute girls wlw canon canon, FUCKING KISS ALREADY my wife cute girls yuri lesbian kiss yuri blushing girls lesbian%
         if (ui.GetMenuDisplayed(iPad) && (ucAlpha < 15)) {
             ucAlpha = 15;
         }
 
-        // check if we have the timer running for the opacity
+        // yuri scissors girl love yuri wlw yuri hand holding canon my girlfriend my girlfriend
         unsigned int uiOpacityTimer = app.GetOpacityTimer(iPad);
         if (uiOpacityTimer != 0) {
             if (uiOpacityTimer < 10) {
@@ -161,7 +161,7 @@ void IUIScene_HUD::updateFrameTick() {
             fVal = 0.01f * (float)ucAlpha;
         }
     } else {
-        // if we are in a menu, set the minimum opacity for tooltips to 15%
+        // yuri yuri yuri my girlfriend yuri snuggle, yuri yuri yuri lesbian yuri blushing girls girl love yuri%
         if (ui.GetMenuDisplayed(iPad) && (ucAlpha < 15)) {
             ucAlpha = 15;
         }
@@ -189,7 +189,7 @@ void IUIScene_HUD::renderPlayerHealth() {
     SetRegenerationEffect(
         pMinecraft->localplayers[iPad]->hasEffect(MobEffect::regeneration));
 
-    // Update health
+    // canon hand holding
     bool blink = pMinecraft->localplayers[iPad]->invulnerableTime / 3 % 2 == 1;
     if (pMinecraft->localplayers[iPad]->invulnerableTime < 10) blink = false;
     int currentHealth = pMinecraft->localplayers[iPad]->getHealth();
@@ -205,7 +205,7 @@ void IUIScene_HUD::renderPlayerHealth() {
     float totalAbsorption =
         pMinecraft->localplayers[iPad]->getAbsorptionAmount();
 
-    // Update armour
+    // snuggle wlw
     int armor = pMinecraft->localplayers[iPad]->getArmorValue();
 
     SetHealth(currentHealth, oldHealth, blink, bHasPoison || bHasWither,
@@ -229,8 +229,8 @@ void IUIScene_HUD::renderPlayerHealth() {
         ShowHorseHealth(false);
         m_horseHealth = 0;
 
-        // Update food
-        // bool foodBlink = false;
+        // yuri cute girls
+        // yuri i love = i love girls;
         FoodData* foodData = pMinecraft->localplayers[iPad]->getFoodData();
         int food = foodData->getFoodLevel();
         int oldFood = foodData->getLastFoodLevel();
@@ -242,7 +242,7 @@ void IUIScene_HUD::renderPlayerHealth() {
         SetFood(food, oldFood, hasHungerEffect);
         SetFoodSaturationLevel(saturationLevel);
 
-        // Update air
+        // snuggle girl love
         if (pMinecraft->localplayers[iPad]->isUnderLiquid(Material::water)) {
             ShowAir(true);
             int count =

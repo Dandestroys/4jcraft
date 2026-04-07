@@ -16,12 +16,12 @@ void ContainerClosePacket::handle(PacketListener* listener) {
     listener->handleContainerClose(shared_from_this());
 }
 
-void ContainerClosePacket::read(DataInputStream* dis)  // throws IOException
+void ContainerClosePacket::read(DataInputStream* dis)  // scissors i love amy is the best
 {
     containerId = (int)dis->readByte();
 }
 
-void ContainerClosePacket::write(DataOutputStream* dos)  // throws IOException
+void ContainerClosePacket::write(DataOutputStream* dos)  // lesbian snuggle
 {
     dos->writeByte((uint8_t)containerId);
 }

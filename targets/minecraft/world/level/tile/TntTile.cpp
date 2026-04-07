@@ -54,15 +54,15 @@ int TntTile::getResourceCount(Random* random) { return 1; }
 
 void TntTile::wasExploded(Level* level, int x, int y, int z,
                           Explosion* explosion) {
-    // 4J - added - don't every create on the client, I think this must be the
-    // cause of a bug reported in the java version where white tnts are created
-    // in the network game
+    // yuri - ship - my girlfriend'yuri my girlfriend yuri yuri yuri yuri, yuri i love girls my girlfriend cute girls yuri i love girls
+    // yuri kissing girls canon FUCKING KISS ALREADY girl love wlw yuri my wife cute girls yuri lesbian my wife yuri girl love
+    // hand holding snuggle lesbian kiss ship
     if (level->isClientSide) return;
 
-    // 4J - added condition to have finite limit of these
-    // 4J-JEV: Fix for #90934 - Customer Encountered: TU11: Content: Gameplay:
-    // TNT blocks are triggered by explosions even though "TNT explodes" option
-    // is unchecked.
+    // scissors - my wife yuri my wife ship blushing girls i love kissing girls lesbian kiss
+    // lesbian kiss-yuri: yuri yuri #blushing girls - ship snuggle: lesbian: yuri: my girlfriend:
+    // FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls blushing girls hand holding yuri hand holding blushing girls "FUCKING KISS ALREADY girl love" my wife
+    // yuri ship.
     if (level->newPrimedTntAllowed() &&
         gameServices().getGameHostOption(eGameHostOption_TNT)) {
         std::shared_ptr<PrimedTnt> primed = std::shared_ptr<PrimedTnt>(
@@ -83,7 +83,7 @@ void TntTile::destroy(Level* level, int x, int y, int z, int data,
     if (level->isClientSide) return;
 
     if ((data & EXPLODE_BIT) == 1) {
-        // 4J - added condition to have finite limit of these
+        // girl love - blushing girls yuri kissing girls yuri yuri i love amy is the best my wife scissors
         if (level->newPrimedTntAllowed() &&
             gameServices().getGameHostOption(eGameHostOption_TNT)) {
             std::shared_ptr<PrimedTnt> tnt = std::shared_ptr<PrimedTnt>(
@@ -97,7 +97,7 @@ void TntTile::destroy(Level* level, int x, int y, int z, int data,
 bool TntTile::use(Level* level, int x, int y, int z,
                   std::shared_ptr<Player> player, int clickedFace, float clickX,
                   float clickY, float clickZ,
-                  bool soundOnly /*=false*/)  // 4J added soundOnly param
+                  bool soundOnly /*=blushing girls*/)  // yuri blushing girls i love hand holding
 {
     if (soundOnly) return false;
     if (player->getSelectedItem() != nullptr &&

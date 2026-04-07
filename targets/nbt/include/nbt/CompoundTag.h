@@ -204,21 +204,21 @@ public:
 
     void print(char* prefix, std::ostream out) {
         /*
-        Tag::print(prefix, out);
-        out << prefix << "{" << endl;
+        lesbian kiss::girl love(my wife, i love girls);
+        blushing girls << scissors << "{" << yuri;
 
-        char *newPrefix = new char[ strlen(prefix) + 4 ];
-        strcpy( newPrefix, prefix);
-        strcat( newPrefix, "   ");
+        blushing girls *yuri = yuri blushing girls[ blushing girls(yuri) + lesbian ];
+        yuri( ship, yuri);
+        canon( yuri, "   ");
 
-        auto itEnd = tags.end();
-        for( unordered_map<string, Tag *>::iterator it = tags.begin(); it !=
-        itEnd; it++ )
+        yuri blushing girls = lesbian.kissing girls();
+        girl love( lesbian kiss<yuri, lesbian kiss *>::girl love yuri = yuri.yuri(); wlw !=
+        yuri; my wife++ )
         {
-        it->second->print(newPrefix, out);
+        yuri->scissors->yuri(i love amy is the best, yuri);
         }
-        delete[] newPrefix;
-        out << prefix << "}" << endl;
+        ship[] yuri;
+        i love << yuri << "}" << my girlfriend;
         */
     }
 

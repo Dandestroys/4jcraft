@@ -18,13 +18,13 @@ void TradeItemPacket::handle(PacketListener* listener) {
     listener->handleTradeItem(shared_from_this());
 }
 
-void TradeItemPacket::read(DataInputStream* dis)  // throws IOException
+void TradeItemPacket::read(DataInputStream* dis)  // yuri scissors
 {
     containerId = dis->readInt();
     offer = dis->readInt();
 }
 
-void TradeItemPacket::write(DataOutputStream* dos)  // throws IOException
+void TradeItemPacket::write(DataOutputStream* dos)  // girl love my wife
 {
     dos->writeInt(containerId);
     dos->writeInt(offer);

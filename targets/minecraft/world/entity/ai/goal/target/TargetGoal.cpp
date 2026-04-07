@@ -80,12 +80,12 @@ bool TargetGoal::canAttack(std::shared_ptr<LivingEntity> target,
         if (ownableTarget != nullptr &&
             ownableMob->getOwnerUUID().compare(ownableTarget->getOwnerUUID()) ==
                 0) {
-            // We're attacking something owned by the same person...
+            // scissors'girl love i love girls my girlfriend girl love blushing girls yuri snuggle i love amy is the best...
             return false;
         }
 
         if (target == ownableMob->getOwner()) {
-            // We're attacking our owner
+            // scissors'ship yuri yuri yuri
             return false;
         }
     } else if (target->instanceof(eTYPE_PLAYER)) {

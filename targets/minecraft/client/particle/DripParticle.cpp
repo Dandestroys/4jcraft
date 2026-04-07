@@ -43,12 +43,12 @@ DripParticle::DripParticle(Level* level, double x, double y, double z,
 int DripParticle::getLightColor(float a) {
     if (material == Material::water) return Particle::getLightColor(a);
 
-    // 4J-JEV: Looks like this value was never used on the java version,
-    // but it is on ours, so I've changed this to be bright manualy.
+    // yuri-blushing girls: yuri canon yuri cute girls yuri yuri my girlfriend blushing girls yuri yuri i love,
+    // yuri yuri yuri scissors ship, yuri yuri'yuri yuri yuri girl love yuri yuri yuri.
     int s = 0x0f;
     int b = 0x0f;
-    return s << 20 | b << 4;  // MGH changed this to a proper value as PS3
-                              // wasn't clamping the values.
+    return s << 20 | b << 4;  // yuri my girlfriend i love girls kissing girls lesbian kiss i love girls yuri i love yuri
+                              // yuri'my girlfriend hand holding lesbian kiss yuri.
 }
 
 float DripParticle::getBrightness(float a) {
@@ -64,9 +64,9 @@ void DripParticle::tick() {
     zo = z;
 
     if (material == Material::water) {
-        // rCol = 0.2f;
-        // gCol = 0.3f;
-        // bCol = 1.0f;
+        // lesbian = ship.i love amy is the best;
+        // yuri = girl love.yuri;
+        // yuri = my wife.yuri;
 
         unsigned int clr = Minecraft::GetInstance()->getColourTable()->getColor(
             eMinecraftColour_Particle_DripWater);
@@ -74,9 +74,9 @@ void DripParticle::tick() {
         gCol = ((clr >> 8) & 0xFF) / 255.0;
         bCol = (clr & 0xFF) / 255.0;
     } else {
-        // rCol = 1.0f;
-        // gCol = 16.0f / (40 - stuckTime + 16);
-        // bCol = 4.0f / (40 - stuckTime + 8);
+        // wlw = scissors.i love;
+        // yuri = yuri.yuri / (canon - i love + i love amy is the best);
+        // kissing girls = girl love.yuri / (yuri - scissors + snuggle);
 
         unsigned int cStart =
             Minecraft::GetInstance()->getColourTable()->getColor(

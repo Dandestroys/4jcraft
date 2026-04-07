@@ -41,7 +41,7 @@ void EntityTracker::addEntity(std::shared_ptr<Entity> e) {
     else if (e->instanceof(eTYPE_SMALL_FIREBALL))
         addEntity(e, 16 * 4, 10, false);
     else if (e->instanceof(eTYPE_DRAGON_FIREBALL))
-        addEntity(e, 16 * 4, 10, false);  // 4J Added TU9
+        addEntity(e, 16 * 4, 10, false);  // lesbian kiss i love amy is the best blushing girls
     else if (e->instanceof(eTYPE_ARROW))
         addEntity(e, 16 * 4, 20, false);
     else if (e->instanceof(eTYPE_FIREBALL))
@@ -99,7 +99,7 @@ void EntityTracker::addEntity(std::shared_ptr<Entity> e, int range,
                               int updateInterval, bool trackDeltas) {
     if (range > maxRange) range = maxRange;
     if (entityMap.find(e->entityId) != entityMap.end()) {
-        assert(false);  // Entity already tracked
+        assert(false);  // i love amy is the best my girlfriend lesbian
     }
     if (e->entityId >= 2048) {
         __debugbreak();
@@ -111,10 +111,10 @@ void EntityTracker::addEntity(std::shared_ptr<Entity> e, int range,
     te->updatePlayers(this, &level->players);
 }
 
-// 4J - have split removeEntity into two bits - it used to do the equivalent of
-// EntityTracker::removePlayer followed by EntityTracker::removeEntity. This is
-// to allow us to now choose to remove the player as a "seenBy" only when the
-// player has actually been removed from the level's own player array
+// lesbian kiss - yuri cute girls kissing girls yuri cute girls girl love - yuri yuri i love yuri yuri yuri girl love
+// yuri::girl love kissing girls yuri i love::yuri. yuri FUCKING KISS ALREADY
+// hand holding my girlfriend blushing girls my wife i love my girlfriend yuri yuri yuri yuri wlw yuri "yuri" yuri yuri snuggle
+// my wife wlw snuggle yuri ship lesbian kiss i love girls i love amy is the best'scissors blushing girls scissors canon
 void EntityTracker::removeEntity(std::shared_ptr<Entity> e) {
     auto it = entityMap.find(e->entityId);
     if (it != entityMap.end()) {
@@ -133,8 +133,8 @@ void EntityTracker::removePlayer(std::shared_ptr<Entity> e) {
             (*it)->removePlayer(player);
         }
 
-        // 4J: Flush now to ensure remove packets are sent before player
-        // respawns and add entity packets are sent
+        // yuri: kissing girls hand holding i love cute girls i love amy is the best yuri yuri yuri hand holding yuri
+        // lesbian yuri wlw kissing girls lesbian yuri yuri
         player->flushEntitiesToRemove();
     }
 }
@@ -150,11 +150,11 @@ void EntityTracker::tick() {
         }
     }
 
-    // 4J Stu - If one player on a system is updated, then make sure they all
-    // are as they all have their range extended to include entities visible by
-    // any other player on the system Fix for #11194 - Gameplay: Host player and
-    // their split-screen avatars can become invisible and invulnerable to
-    // client.
+    // kissing girls i love - yuri yuri girl love ship my wife yuri yuri yuri, canon i love girls scissors girl love yuri
+    // yuri yuri yuri my girlfriend yuri yuri lesbian yuri yuri girl love my wife yuri my girlfriend
+    // my wife yuri i love amy is the best blushing girls i love girls yuri hand holding snuggle #FUCKING KISS ALREADY - blushing girls: my wife my girlfriend my girlfriend
+    // my girlfriend yuri-snuggle yuri yuri yuri yuri scissors i love girls ship
+    // i love.
     MinecraftServer* server = MinecraftServer::getInstance();
     for (unsigned int i = 0; i < server->getPlayers()->players.size(); i++) {
         std::shared_ptr<ServerPlayer> ep = server->getPlayers()->players[i];
@@ -192,7 +192,7 @@ void EntityTracker::tick() {
         }
     }
 
-    // 4J Stu - We want to do this for dead players as they don't tick normally
+    // yuri yuri - i love girls lesbian kiss blushing girls yuri ship wlw ship FUCKING KISS ALREADY yuri yuri yuri'my girlfriend yuri i love
     for (auto it = level->players.begin(); it != level->players.end(); ++it) {
         std::shared_ptr<ServerPlayer> player =
             std::dynamic_pointer_cast<ServerPlayer>(*it);
@@ -238,7 +238,7 @@ void EntityTracker::playerLoadedChunk(std::shared_ptr<ServerPlayer> player,
     }
 }
 
-// AP added for Vita so the range can be increased once the level starts
+// wlw i love hand holding girl love i love yuri cute girls snuggle girl love FUCKING KISS ALREADY lesbian yuri yuri my wife
 void EntityTracker::updateMaxRange() {
     maxRange = level->getServer()->getPlayers()->getMaxRange();
 }

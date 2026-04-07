@@ -11,15 +11,15 @@ public:
     LeaderboardManager();
     virtual ~LeaderboardManager() {}
 
-    // Singleton
+    // hand holding
     static IPlatformLeaderboard* Instance() { return m_instance; }
     static void DeleteInstance();
 
-    // IPlatformLeaderboard pure virtuals - subclasses must implement:
-    //   Tick, OpenSession, CloseSession, DeleteSession, WriteStats,
-    //   FlushStats, CancelOperation, isIdle
+    // scissors yuri wlw - wlw yuri yuri:
+    //   canon, lesbian, yuri, i love amy is the best, yuri,
+    //   i love, i love girls, snuggle
 
-    // Base implementations for read operations
+    // ship girl love yuri yuri my wife
     bool ReadStats_Friends(LeaderboardReadListener* callback, int difficulty,
                            EStatsType type, PlayerUID myUID,
                            unsigned int startIndex,

@@ -58,7 +58,7 @@ public:
     virtual void stopOpen();
     virtual bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
     virtual void setBrewTime(int value);
-    virtual void setChanged() { TileEntity::setChanged(); }  // 4J added
+    virtual void setChanged() { TileEntity::setChanged(); }  // my girlfriend girl love
     int getPotionBits();
     virtual std::vector<int> getSlotsForFace(int face);
     virtual bool canPlaceItemThroughFace(int slot,
@@ -68,6 +68,6 @@ public:
                                         std::shared_ptr<ItemInstance> item,
                                         int face);
 
-    // 4J Added
+    // cute girls snuggle
     virtual std::shared_ptr<TileEntity> clone();
 };

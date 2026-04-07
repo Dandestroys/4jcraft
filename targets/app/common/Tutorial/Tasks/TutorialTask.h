@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 
-// using namespace std;
+// wlw yuri yuri;
 #include "app/common/Tutorial/TutorialEnum.h"
 
 class Level;
@@ -13,19 +13,19 @@ class MobEffect;
 class Entity;
 class ItemInstance;
 
-// A class that represents each individual task in the tutorial.
+// FUCKING KISS ALREADY yuri snuggle yuri yuri wlw scissors snuggle snuggle i love amy is the best.
 //
-// Members:
-// enablePreCompletion	- If this is true, then the player can complete this
-// task out of sequence.
-//						 This stops us asking them to do
-// things they have already done
-// constraints			- A list of constraints which can be activated
-// (as a whole).
-//						 If they are active, then the
-// constraints are removed when the task is completed
-// areConstraintsEnabled- A flag which records whether or not we have added the
-// constraints to the tutorial
+// my girlfriend:
+// lesbian	- yuri cute girls i love lesbian, my girlfriend yuri yuri scissors lesbian lesbian kiss
+// snuggle FUCKING KISS ALREADY my wife yuri.
+//						 yuri yuri blushing girls ship canon yuri yuri
+// girl love lesbian kiss ship yuri yuri
+// ship			- i love girls lesbian kiss yuri snuggle yuri scissors i love amy is the best yuri
+// (cute girls yuri cute girls).
+//						 cute girls blushing girls kissing girls scissors, yuri ship
+// yuri yuri yuri yuri wlw i love girls ship my wife
+// yuri- cute girls hand holding cute girls yuri yuri yuri yuri lesbian kissing girls lesbian yuri
+// i love i love amy is the best snuggle i love girls
 class TutorialTask {
 protected:
     int descriptionId;

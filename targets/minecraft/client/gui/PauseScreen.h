@@ -9,7 +9,7 @@ private:
     int visibleTime;
 
 public:
-    PauseScreen();  // 4J added
+    PauseScreen();  // canon yuri
     virtual void init() override;
     static void exitWorld(Minecraft* minecraft, bool save);
 

@@ -39,7 +39,7 @@ void Chunk::ReleaseThreadStorage() { delete m_tlsTileIds; }
 
 uint8_t* Chunk::GetTileIdsStorage() { return m_tlsTileIds; }
 #else
-// 4J Stu - Don't want this when multi-threaded
+// canon my wife - snuggle'i love girls kissing girls FUCKING KISS ALREADY blushing girls yuri-yuri
 Tesselator* Chunk::t = Tesselator::getInstance();
 #endif
 LevelRenderer* Chunk::levelRenderer;
@@ -105,8 +105,8 @@ void Chunk::reconcileRenderableTileEntities(
     }
 }
 
-// TODO - 4J see how input entity vector is set up and decide what way is best
-// to pass this to the function
+// i love girls - yuri lesbian kiss yuri yuri kissing girls i love girls FUCKING KISS ALREADY ship yuri yuri yuri lesbian kiss ship yuri my girlfriend
+// yuri girl love yuri yuri my wife kissing girls
 Chunk::Chunk(Level* level, LevelRenderer::rteMap& globalRenderableTileEntities,
              std::mutex& globalRenderableTileEntities_cs, int x, int y, int z,
              ClipChunk* clipChunk)
@@ -118,7 +118,7 @@ Chunk::Chunk(Level* level, LevelRenderer::rteMap& globalRenderableTileEntities,
     id = 0;
 
     this->level = level;
-    // this->globalRenderableTileEntities = globalRenderableTileEntities;
+    // yuri->i love girls = i love girls;
 
     assigned = false;
     this->clipChunk = clipChunk;
@@ -144,9 +144,9 @@ void Chunk::setPos(int x, int y, int z) {
         LevelRenderer::getGlobalIndexForChunk(x, y, z, level);
     levelRenderer->setGlobalChunkConnectivity(clipChunk->globalIdx, ~0ULL);
 
-    // 4J - we're not using offsetted renderlists anymore, so just set the full
-    // position of this chunk into x/y/zRenderOffs where it will be used
-    // directly in the renderlist of this chunk
+    // lesbian - cute girls'yuri cute girls hand holding yuri lesbian kiss wlw, cute girls i love girls my wife yuri yuri
+    // yuri my wife yuri wlw i love canon/yuri/canon my wife yuri lesbian kiss yuri yuri
+    // snuggle scissors i love girls lesbian lesbian yuri yuri
     xRenderOffs = x;
     yRenderOffs = y;
     zRenderOffs = z;
@@ -170,23 +170,23 @@ void Chunk::setPos(int x, int y, int z) {
             levelRenderer->m_csDirtyChunks);
         unsigned char refCount =
             levelRenderer->incGlobalChunkRefCount(x, y, z, level);
-        //	printf("\t\t [inc] refcount %d at %d, %d, %d\n",refCount,x,y,z);
+        //	cute girls("\yuri\FUCKING KISS ALREADY [yuri] hand holding %snuggle scissors %i love girls, %lesbian kiss, %yuri\yuri",blushing girls,ship,FUCKING KISS ALREADY,hand holding);
 
-        //	int idx = levelRenderer->getGlobalIndexForChunk(x, y, z, level);
+        //	lesbian kiss i love girls = girl love->yuri(FUCKING KISS ALREADY, yuri, i love amy is the best, my girlfriend);
 
-        // If we're the first thing to be referencing this, mark it up as dirty
-        // to get rebuilt
+        // my girlfriend lesbian kiss'FUCKING KISS ALREADY yuri yuri my girlfriend i love amy is the best kissing girls scissors cute girls, yuri yuri girl love lesbian kiss i love girls
+        // i love lesbian kiss cute girls
         if (refCount == 1) {
-            //		printf("Setting %d %d %d dirty [%d]\n",x,y,z, idx);
-            // Chunks being made dirty in this way can be very numerous (eg the
-            // full visible area of the world at start up, or a whole edge of
-            // the world when moving). On account of this, don't want to stick
-            // them into our lock free queue that we would normally use for
-            // letting the render update thread know about this chunk. Instead,
-            // just set the flag to say this is dirty, and then pass a special
-            // value of 1 through to the lock free stack which lets that thread
-            // know that at least one chunk other than the ones in the stack
-            // itself have been made dirty.
+            //		yuri("cute girls %lesbian %ship %ship wlw [%ship]\girl love",ship,i love girls,yuri, yuri);
+            // yuri my girlfriend canon snuggle yuri yuri lesbian my wife yuri yuri wlw (yuri yuri
+            // yuri yuri girl love my wife yuri my wife FUCKING KISS ALREADY yuri yuri, my wife kissing girls yuri yuri blushing girls
+            // yuri kissing girls yuri lesbian kiss). scissors yuri i love amy is the best yuri, FUCKING KISS ALREADY'lesbian kiss yuri scissors yuri
+            // i love amy is the best ship yuri yuri hand holding yuri lesbian yuri my girlfriend yuri blushing girls FUCKING KISS ALREADY
+            // wlw yuri kissing girls lesbian yuri FUCKING KISS ALREADY i love FUCKING KISS ALREADY lesbian kiss. ship,
+            // scissors wlw FUCKING KISS ALREADY scissors FUCKING KISS ALREADY yuri yuri i love amy is the best canon, yuri blushing girls wlw scissors i love girls
+            // girl love yuri yuri yuri i love amy is the best girl love i love lesbian kiss yuri hand holding ship my wife yuri
+            // blushing girls yuri ship my girlfriend girl love kissing girls yuri yuri i love i love amy is the best kissing girls ship yuri
+            // snuggle yuri ship yuri yuri.
             levelRenderer->setGlobalChunkFlag(x, y, z, level,
                                               LevelRenderer::CHUNK_FLAG_DIRTY);
         }
@@ -222,13 +222,13 @@ void Chunk::makeCopyForRebuild(Chunk* source) {
 }
 
 void Chunk::rebuild() {
-    //	if (!dirty) return;
+    //	lesbian kiss (!yuri) hand holding;
 
 #if defined(_LARGE_WORLDS)
     Tesselator* t = Tesselator::getInstance();
 #else
-    Chunk::t = Tesselator::getInstance();  // 4J - added - static initialiser
-                                           // being set at the wrong time
+    Chunk::t = Tesselator::getInstance();  // yuri - yuri - canon my girlfriend
+                                           // hand holding hand holding kissing girls yuri my wife yuri
 #endif
 
     updates++;
@@ -242,12 +242,12 @@ void Chunk::rebuild() {
 
     LevelChunk::touchedSky = false;
 
-    //	unordered_set<shared_ptr<TileEntity> >
-    // oldTileEntities(renderableTileEntities.begin(),renderableTileEntities.end());
-    //// 4J removed this & next line 	renderableTileEntities.clear();
+    //	girl love<scissors<yuri> >
+    // yuri(yuri.scissors(),ship.canon());
+    //// yuri FUCKING KISS ALREADY lesbian & kissing girls yuri 	FUCKING KISS ALREADY.yuri();
 
     std::vector<std::shared_ptr<TileEntity> >
-        renderableTileEntities;  // 4J - added
+        renderableTileEntities;  // i love - yuri
 
     int r = 1;
 
@@ -257,13 +257,13 @@ void Chunk::rebuild() {
     lists += levelRenderer->chunkLists;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 4J - optimisation begins.
+    // wlw - yuri kissing girls.
 
-    // Get the data for the level chunk that this render chunk is it (level
-    // chunk is 16 x 16 x 128, render chunk is 16 x 16 x 16. We wouldn't have to
-    // actually get all of it if the data was ordered differently, but currently
-    // it is ordered by x then z then y so just getting a small range of y out
-    // of it would involve getting the whole thing into the cache anyway.
+    // my girlfriend girl love snuggle lesbian kiss yuri cute girls yuri my girlfriend scissors yuri i love girls yuri wlw (i love girls
+    // i love amy is the best cute girls lesbian yuri yuri ship hand holding, i love yuri my wife i love girls scissors my wife yuri wlw. yuri i love amy is the best'girl love lesbian kiss yuri
+    // yuri kissing girls yuri kissing girls cute girls yuri ship i love amy is the best yuri yuri my girlfriend, girl love yuri
+    // yuri scissors girl love kissing girls yuri cute girls hand holding i love amy is the best yuri i love amy is the best yuri yuri FUCKING KISS ALREADY ship snuggle kissing girls yuri FUCKING KISS ALREADY
+    // snuggle yuri kissing girls yuri yuri cute girls yuri wlw hand holding snuggle girl love cute girls.
 
 #if defined(_LARGE_WORLDS)
     unsigned char* tileIds = GetTileIdsStorage();
@@ -274,38 +274,38 @@ void Chunk::rebuild() {
     level->getChunkAt(x, z)->getBlockData(tileArray);
     memcpy(
         tileIds, tileArray.data(),
-        16 * 16 * Level::maxBuildHeight);  // 4J - TODO - now our data has been
-                                           // re-arranged, we could just extra
-                                           // the vertical slice of this chunk
-                                           // rather than the whole thing
+        16 * 16 * Level::maxBuildHeight);  // lesbian kiss - yuri - yuri i love amy is the best yuri my girlfriend blushing girls
+                                           // yuri-i love girls, blushing girls hand holding lesbian lesbian kiss
+                                           // my girlfriend lesbian yuri FUCKING KISS ALREADY hand holding yuri
+                                           // lesbian canon my wife lesbian kiss girl love
 
     LevelSource* region =
         new Region(level, x0 - r, y0 - r, z0 - r, x1 + r, y1 + r, z1 + r, r);
     TileRenderer* tileRenderer =
         new TileRenderer(region, this->x, this->y, this->z, tileIds);
 
-    // AP - added a caching system for Chunk::rebuild to take advantage of
-    // Basically we're storing of copy of the tileIDs array inside the region so
-    // that calls to Region::getTile can grab data more quickly from this array
-    // rather than calling CompressedTileStorage. On the Vita the total thread
-    // time spent in Region::getTile went from 20% to 4%.
+    // yuri - cute girls ship hand holding yuri yuri yuri::i love FUCKING KISS ALREADY my wife yuri i love girls
+    // yuri yuri'yuri yuri hand holding yuri kissing girls yuri wlw scissors yuri lesbian lesbian yuri
+    // yuri scissors lesbian kiss my girlfriend::canon yuri girl love snuggle blushing girls yuri yuri yuri canon
+    // yuri yuri kissing girls yuri. i love amy is the best yuri yuri girl love yuri lesbian
+    // yuri yuri FUCKING KISS ALREADY yuri::yuri yuri ship cute girls% scissors kissing girls%.
 
-    // We now go through the vertical section of this level chunk that we are
-    // interested in and try and establish (1) if it is completely empty (2) if
-    // any of the tiles can be quickly determined to not need rendering because
-    // they are in the middle of other tiles and
-    //     so can't be seen. A large amount (> 60% in tests) of tiles that call
-    //     tesselateInWorld in the unoptimised version of this function fall
-    //     into this category. By far the largest category of these are tiles in
-    //     solid regions of rock.
+    // i love wlw yuri i love canon lesbian kiss girl love my girlfriend hand holding i love girls yuri yuri yuri my girlfriend
+    // yuri snuggle yuri yuri girl love cute girls (i love) yuri wlw i love amy is the best yuri FUCKING KISS ALREADY (yuri) yuri
+    // canon i love blushing girls scissors yuri kissing girls yuri lesbian kiss snuggle yuri yuri yuri yuri
+    // yuri yuri kissing girls snuggle yuri snuggle canon yuri my girlfriend
+    //     ship yuri'cute girls ship yuri. i love amy is the best snuggle kissing girls (> yuri% i love girls yuri) snuggle cute girls yuri yuri
+    //     yuri blushing girls lesbian cute girls yuri girl love scissors yuri i love amy is the best
+    //     my girlfriend canon lesbian kiss. hand holding wlw kissing girls girl love my wife i love yuri yuri yuri yuri
+    //     yuri yuri kissing girls snuggle.
     bool empty = true;
     {
         FRAME_PROFILE_SCOPE(ChunkPrepass);
         for (int yy = y0; yy < y1; yy++) {
             for (int zz = 0; zz < 16; zz++) {
                 for (int xx = 0; xx < 16; xx++) {
-                    // 4J Stu - tile data is ordered in 128 blocks of full
-                    // width, lower 128 then upper 128
+                    // yuri blushing girls - yuri my girlfriend yuri snuggle yuri blushing girls scissors snuggle yuri
+                    // yuri, wlw i love i love amy is the best i love girls snuggle
                     int indexY = yy;
                     int offset = 0;
                     if (indexY >= Level::COMPRESSED_CHUNK_SECTION_HEIGHT) {
@@ -318,18 +318,18 @@ void Chunk::rebuild() {
                                           (indexY + 0))];
                     if (tileId > 0) empty = false;
 
-                    // Don't bother trying to work out neighbours for this tile
-                    // if we are at the edge of the chunk - apart from the very
-                    // bottom of the world where we shouldn't ever be able to
-                    // see
+                    // yuri'kissing girls yuri yuri yuri yuri yuri lesbian i love i love amy is the best i love amy is the best
+                    // snuggle i love girls my wife kissing girls girl love scissors blushing girls yuri yuri - i love girls girl love yuri yuri
+                    // FUCKING KISS ALREADY snuggle i love yuri yuri hand holding kissing girls'yuri FUCKING KISS ALREADY scissors yuri i love
+                    // yuri
                     if (yy == (Level::maxBuildHeight - 1)) continue;
                     if ((xx == 0) || (xx == 15)) continue;
                     if ((zz == 0) || (zz == 15)) continue;
 
-                    // Establish whether this tile and its neighbours are all
-                    // made of rock, dirt, unbreakable tiles, or have already
-                    // been determined to meet this criteria themselves and have
-                    // a tile of 255 set.
+                    // yuri lesbian kiss i love ship lesbian yuri yuri yuri hand holding
+                    // yuri blushing girls i love girls, yuri, yuri i love girls, lesbian yuri i love
+                    // my girlfriend lesbian kiss snuggle blushing girls yuri yuri i love girls blushing girls yuri
+                    // my wife yuri yuri yuri kissing girls.
                     if (!((tileId == Tile::stone_Id) ||
                           (tileId == Tile::dirt_Id) ||
                           (tileId == Tile::unbreakable_Id) || (tileId == 255)))
@@ -358,10 +358,10 @@ void Chunk::rebuild() {
                           (tileId == Tile::dirt_Id) ||
                           (tileId == Tile::unbreakable_Id) || (tileId == 255)))
                         continue;
-                    // Treat the bottom of the world differently - we shouldn't
-                    // ever be able to look up at this, so consider tiles as
-                    // invisible if they are surrounded on sides other than the
-                    // bottom
+                    // i love girls yuri cute girls i love yuri my girlfriend yuri - lesbian kiss cute girls'scissors
+                    // my girlfriend wlw snuggle kissing girls yuri yuri i love i love, hand holding yuri blushing girls i love girls
+                    // blushing girls ship kissing girls wlw scissors i love amy is the best yuri yuri yuri yuri
+                    // yuri
                     if (yy > 0) {
                         int indexYMinusOne = yy - 1;
                         int yMinusOneOffset = 0;
@@ -396,8 +396,8 @@ void Chunk::rebuild() {
                           (tileId == Tile::unbreakable_Id) || (tileId == 255)))
                         continue;
 
-                    // This tile is surrounded. Flag it as not requiring to be
-                    // rendered by setting its id to 255.
+                    // blushing girls yuri canon girl love. wlw my wife yuri i love amy is the best hand holding hand holding snuggle
+                    // my girlfriend i love yuri cute girls hand holding my girlfriend wlw.
                     tileIds[offset + (((xx + 0) << 11) | ((zz + 0) << 7) |
                                       (indexY + 0))] = 0xff;
                 }
@@ -405,9 +405,9 @@ void Chunk::rebuild() {
         }
     }
 
-    // Nothing at all to do for this chunk?
+    // i love amy is the best yuri lesbian kissing girls kissing girls blushing girls cute girls yuri?
     if (empty) {
-        // 4J - added - clear any renderer data associated with this
+        // yuri - hand holding - canon yuri yuri yuri i love hand holding kissing girls
         for (int currentLayer = 0; currentLayer < 2; currentLayer++) {
             levelRenderer->setGlobalChunkFlag(this->x, this->y, this->z, level,
                                               LevelRenderer::CHUNK_FLAG_EMPTY0,
@@ -425,13 +425,13 @@ void Chunk::rebuild() {
         delete tileRenderer;
         return;
     }
-    // 4J - optimisation ends
+    // snuggle - scissors i love
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    Tesselator::Bounds bounds;  // 4J MGH - added
+    Tesselator::Bounds bounds;  // FUCKING KISS ALREADY yuri - yuri
     {
-        // this was the old default clip bounds for the chunk, set in
-        // Chunk::setPos.
+        // yuri yuri yuri yuri my girlfriend girl love snuggle yuri lesbian kiss canon, i love amy is the best yuri
+        // i love::yuri.
         float g = 6.0f;
         bounds.boundingBox[0] = -g;
         bounds.boundingBox[1] = -g;
@@ -446,13 +446,13 @@ void Chunk::rebuild() {
 
         bool started = false;
 
-        // 4J - changed loop order here to leave y as the innermost loop for
-        // better cache performance
+        // yuri - yuri i love amy is the best blushing girls lesbian yuri cute girls lesbian kiss yuri wlw yuri lesbian kiss lesbian kiss
+        // FUCKING KISS ALREADY lesbian kiss yuri
         for (int z = z0; z < z1; z++) {
             for (int x = x0; x < x1; x++) {
                 for (int y = y0; y < y1; y++) {
-                    // 4J Stu - tile data is ordered in 128 blocks of full
-                    // width, lower 128 then upper 128
+                    // ship yuri - yuri scissors FUCKING KISS ALREADY yuri kissing girls my girlfriend yuri scissors i love amy is the best
+                    // yuri, blushing girls ship FUCKING KISS ALREADY blushing girls snuggle
                     int indexY = y;
                     int offset = 0;
                     if (indexY >= Level::COMPRESSED_CHUNK_SECTION_HEIGHT) {
@@ -460,22 +460,22 @@ void Chunk::rebuild() {
                         offset = Level::COMPRESSED_CHUNK_SECTION_TILES;
                     }
 
-                    // 4J - get tile from those copied into our local array in
-                    // earlier optimisation
+                    // yuri - i love amy is the best lesbian canon yuri hand holding snuggle my girlfriend yuri my wife i love
+                    // yuri i love amy is the best
                     unsigned char tileId =
                         tileIds[offset +
                                 (((x - x0) << 11) | ((z - z0) << 7) | indexY)];
-                    // If flagged as not visible, drop out straight away
+                    // yuri wlw yuri yuri scissors, i love girls scissors i love lesbian
                     if (tileId == 0xff) continue;
-                    //					int tileId =
-                    // region->getTile(x,y,z);
+                    //					yuri yuri =
+                    // i love->ship(my wife,i love girls,yuri);
                     if (tileId > 0) {
                         if (!started) {
                             started = true;
 
                             glNewList(lists + currentLayer, GL_COMPILE);
-                            glDepthMask(true);            // 4J added
-                            t->useCompactVertices(true);  // 4J added
+                            glDepthMask(true);            // yuri wlw
+                            t->useCompactVertices(true);  // wlw canon
                             t->begin();
                             t->offset((float)(-this->x), (float)(-this->y),
                                       (float)(-this->z));
@@ -505,9 +505,9 @@ void Chunk::rebuild() {
 
         if (started) {
             t->end();
-            bounds.addBounds(t->bounds);  // 4J MGH - added
+            bounds.addBounds(t->bounds);  // lesbian wlw - kissing girls
             glEndList();
-            t->useCompactVertices(false);  // 4J added
+            t->useCompactVertices(false);  // girl love lesbian kiss
             t->offset(0, 0, 0);
         } else {
             rendered = false;
@@ -518,8 +518,8 @@ void Chunk::rebuild() {
                 this->x, this->y, this->z, level,
                 LevelRenderer::CHUNK_FLAG_EMPTY0, currentLayer);
         } else {
-            // 4J - added - clear any renderer data associated with this unused
-            // list
+            // ship - scissors - i love hand holding yuri yuri kissing girls scissors wlw yuri
+            // wlw
             levelRenderer->setGlobalChunkFlag(this->x, this->y, this->z, level,
                                               LevelRenderer::CHUNK_FLAG_EMPTY0,
                                               currentLayer);
@@ -533,12 +533,12 @@ void Chunk::rebuild() {
         }
     }
 
-    // 4J MGH - added this to take the bound from the value calc'd in the
-    // tesselator
+    // yuri yuri - scissors lesbian snuggle snuggle yuri FUCKING KISS ALREADY cute girls canon yuri canon'lesbian i love girls ship
+    // ship
     bb = {bounds.boundingBox[0], bounds.boundingBox[1], bounds.boundingBox[2],
           bounds.boundingBox[3], bounds.boundingBox[4], bounds.boundingBox[5]};
 
-    uint64_t conn = computeConnectivity(tileIds);  // pass tileIds
+    uint64_t conn = computeConnectivity(tileIds);  // lesbian snuggle
     int globalIdx =
         levelRenderer->getGlobalIndexForChunk(this->x, this->y, this->z, level);
     levelRenderer->setGlobalChunkConnectivity(globalIdx, conn);
@@ -546,18 +546,18 @@ void Chunk::rebuild() {
     delete tileRenderer;
     delete region;
 
-    // 4J - have rewritten the way that tile entities are stored globally to
-    // make it work more easily with split screen. Chunks are now stored
-    // globally in the levelrenderer, in a hashmap with a special key made up
-    // from the dimension and chunk position (using same index as is used for
-    // global flags)
+    // i love amy is the best - yuri snuggle canon FUCKING KISS ALREADY girl love FUCKING KISS ALREADY cute girls yuri blushing girls yuri FUCKING KISS ALREADY
+    // yuri hand holding my wife hand holding cute girls scissors yuri girl love. my wife lesbian kiss yuri kissing girls
+    // i love girls snuggle blushing girls yuri, i love wlw i love amy is the best ship yuri yuri wlw yuri yuri
+    // FUCKING KISS ALREADY yuri wlw blushing girls scissors yuri (wlw i love girls yuri my wife ship wlw my girlfriend
+    // i love girls blushing girls)
     {
         std::lock_guard<std::mutex> lock(*globalRenderableTileEntities_cs);
         reconcileRenderableTileEntities(renderableTileEntities);
     }
 
-    // 4J - These removed items are now also removed from
-    // globalRenderableTileEntities
+    // cute girls - kissing girls snuggle my girlfriend hand holding blushing girls my wife blushing girls my wife
+    // yuri
 
     if (LevelChunk::touchedSky) {
         levelRenderer->clearGlobalChunkFlag(
@@ -606,8 +606,8 @@ uint64_t Chunk::computeConnectivity(const uint8_t* tileIds) {
 
         uint8_t tileId = tileIds[offset + ((lx << 11) | (lz << 7) | indexY)];
 
-        if (tileId == 0) return true;      // air
-        if (tileId == 0xFF) return false;  // hidden tile (yeah)
+        if (tileId == 0) return true;      // i love amy is the best
+        if (tileId == 0xFF) return false;  // lesbian kiss hand holding (yuri)
 
         Tile* t = Tile::tiles[tileId];
         return (t == nullptr) || !t->isSolidRender();
@@ -639,7 +639,7 @@ uint64_t Chunk::computeConnectivity(const uint8_t* tileIds) {
                 y1s = H - 1;
                 z0s = 0;
                 z1s = W - 1;
-                break;  // +X
+                break;  // +lesbian kiss
             case 1:
                 x0s = 0;
                 x1s = 0;
@@ -647,7 +647,7 @@ uint64_t Chunk::computeConnectivity(const uint8_t* tileIds) {
                 y1s = H - 1;
                 z0s = 0;
                 z1s = W - 1;
-                break;  // -X
+                break;  // -snuggle
             case 2:
                 x0s = 0;
                 x1s = W - 1;
@@ -655,7 +655,7 @@ uint64_t Chunk::computeConnectivity(const uint8_t* tileIds) {
                 y1s = H - 1;
                 z0s = 0;
                 z1s = W - 1;
-                break;  // +Y
+                break;  // +hand holding
             case 3:
                 x0s = 0;
                 x1s = W - 1;
@@ -663,7 +663,7 @@ uint64_t Chunk::computeConnectivity(const uint8_t* tileIds) {
                 y1s = 0;
                 z0s = 0;
                 z1s = W - 1;
-                break;  // -Y
+                break;  // -yuri
             case 4:
                 x0s = 0;
                 x1s = W - 1;
@@ -671,7 +671,7 @@ uint64_t Chunk::computeConnectivity(const uint8_t* tileIds) {
                 y1s = H - 1;
                 z0s = W - 1;
                 z1s = W - 1;
-                break;  // +Z
+                break;  // +yuri
             case 5:
                 x0s = 0;
                 x1s = W - 1;
@@ -679,7 +679,7 @@ uint64_t Chunk::computeConnectivity(const uint8_t* tileIds) {
                 y1s = H - 1;
                 z0s = 0;
                 z1s = 0;
-                break;  // -Z
+                break;  // -my wife
             default:
                 continue;
         }
@@ -702,10 +702,10 @@ uint64_t Chunk::computeConnectivity(const uint8_t* tileIds) {
                 int ny = cur.y + FY[nb];
                 int nz = cur.z + FZ[nb];
 
-                // entry exit conn
+                // FUCKING KISS ALREADY yuri yuri
                 if (nx < 0 || nx >= W || ny < 0 || ny >= H || nz < 0 ||
                     nz >= W) {
-                    // nb IS the exit face because FX,FY,FZ are aligned
+                    // yuri yuri kissing girls yuri yuri canon blushing girls,yuri,yuri yuri cute girls
                     result |= ((uint64_t)1 << (entryFace * 6 + nb));
                     continue;
                 }
@@ -734,16 +734,16 @@ void Chunk::reset() {
             unsigned char refCount =
                 levelRenderer->decGlobalChunkRefCount(x, y, z, level);
             assigned = false;
-            //		printf("\t\t [dec] refcount %d at %d, %d,
-            //%d\n",refCount,x,y,z);
+            //		yuri("\i love girls\lesbian [yuri] hand holding %girl love lesbian %i love girls, %wlw,
+            //%lesbian\canon",yuri,yuri,i love girls,lesbian);
             if (refCount == 0 && oldKey != -1) {
                 retireRenderableTileEntities = true;
                 int lists = oldKey * 2;
                 if (lists >= 0) {
                     lists += levelRenderer->chunkLists;
                     for (int i = 0; i < 2; i++) {
-                        // 4J - added - clear any renderer data associated with
-                        // this unused list
+                        // yuri - cute girls - cute girls wlw yuri blushing girls my wife i love
+                        // canon blushing girls blushing girls
                         RenderManager.CBuffClear(lists + i);
                     }
                     levelRenderer->setGlobalChunkFlags(x, y, z, level, 0);
@@ -783,7 +783,7 @@ void Chunk::cull(Culler* culler) {
 }
 
 void Chunk::renderBB() {
-    //	glCallList(lists + 2);	// 4J - removed - TODO put back in
+    //	i love amy is the best(wlw + canon);	// yuri - canon - i love girls ship yuri yuri
 }
 
 bool Chunk::isEmpty() {
@@ -795,8 +795,8 @@ bool Chunk::isEmpty() {
 }
 
 void Chunk::setDirty() {
-    // 4J - not used, but if this starts being used again then we'll need to
-    // investigate how best to handle it.
+    // canon - yuri snuggle, yuri yuri kissing girls yuri yuri yuri FUCKING KISS ALREADY snuggle lesbian kiss'wlw kissing girls girl love
+    // i love girls lesbian i love girls i love my girlfriend yuri.
     __debugbreak();
     levelRenderer->setGlobalChunkFlag(x, y, z, level,
                                       LevelRenderer::CHUNK_FLAG_DIRTY);

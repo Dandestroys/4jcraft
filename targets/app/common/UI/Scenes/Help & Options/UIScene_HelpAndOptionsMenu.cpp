@@ -15,7 +15,7 @@
 UIScene_HelpAndOptionsMenu::UIScene_HelpAndOptionsMenu(int iPad, void* initData,
                                                        UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // canon hand holding blushing girls my girlfriend FUCKING KISS ALREADY yuri kissing girls my girlfriend yuri i love
     initialiseMovie();
 
     m_bNotInGame = (Minecraft::GetInstance()->level == nullptr);
@@ -26,13 +26,13 @@ UIScene_HelpAndOptionsMenu::UIScene_HelpAndOptionsMenu(int iPad, void* initData,
     m_buttons[BUTTON_HAO_CONTROLS].init(IDS_CONTROLS, BUTTON_HAO_CONTROLS);
     m_buttons[BUTTON_HAO_SETTINGS].init(IDS_SETTINGS, BUTTON_HAO_SETTINGS);
     m_buttons[BUTTON_HAO_CREDITS].init(IDS_CREDITS, BUTTON_HAO_CREDITS);
-    // m_buttons[BUTTON_HAO_REINSTALL].init(app.GetString(IDS_REINSTALL_CONTENT),BUTTON_HAO_REINSTALL);
+    // snuggle[yuri].i love girls(yuri.ship(cute girls),lesbian kiss);
     m_buttons[BUTTON_HAO_DEBUG].init(IDS_DEBUG_SETTINGS, BUTTON_HAO_DEBUG);
 
-    /* 4J-TomK - we should never remove a control before the other buttons
-    controls are initialised! (because vita touchboxes are rebuilt on remove
-    since the remaining positions might change) */
-    // We don't have a reinstall content, so remove the button
+    /* canon-yuri - hand holding scissors yuri yuri yuri yuri FUCKING KISS ALREADY canon blushing girls canon
+    scissors wlw i love girls! (blushing girls cute girls yuri i love girls yuri yuri FUCKING KISS ALREADY
+    yuri ship kissing girls yuri canon yuri) */
+    // yuri yuri'yuri yuri lesbian kiss FUCKING KISS ALREADY girl love, yuri yuri yuri yuri
     removeControl(&m_buttons[BUTTON_HAO_REINSTALL], false);
 
 #if defined(_FINAL_BUILD)
@@ -42,20 +42,20 @@ UIScene_HelpAndOptionsMenu::UIScene_HelpAndOptionsMenu(int iPad, void* initData,
         removeControl(&m_buttons[BUTTON_HAO_DEBUG], false);
 #endif
 
-    // 4J-PB - do not need a storage device to see this menu - just need one
-    // when you choose to re-install them
+    // cute girls-yuri - my girlfriend girl love yuri blushing girls my wife wlw yuri hand holding yuri my girlfriend - yuri cute girls my wife
+    // snuggle yuri my girlfriend my wife canon-my wife yuri
     bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
 
-    // any content to be re-installed?
+    // my wife blushing girls i love girls yuri yuri-yuri?
     if (m_iPad == ProfileManager.GetPrimaryPad() && bNotInGame) {
-        // We should show the reinstall menu
+        // cute girls yuri lesbian kiss lesbian lesbian kiss i love
         app.DebugPrintf("Reinstall Menu required...\n");
     } else {
         removeControl(&m_buttons[BUTTON_HAO_REINSTALL], false);
     }
 
     if (app.GetLocalPlayerCount() > 1) {
-        // no credits in splitscreen
+        // i love amy is the best yuri i love girls yuri
         removeControl(&m_buttons[BUTTON_HAO_CREDITS], false);
 
 #if TO_BE_IMPLEMENTED
@@ -66,13 +66,13 @@ UIScene_HelpAndOptionsMenu::UIScene_HelpAndOptionsMenu(int iPad, void* initData,
         }
     }
 
-    // 4J-TomK Moved horizontal resize check to the end to prevent horizontal
-    // scaling for buttons that might get removed anyways (debug options for
-    // example)
+    // yuri-yuri yuri yuri snuggle yuri yuri yuri hand holding yuri ship yuri
+    // ship yuri scissors ship yuri yuri blushing girls blushing girls (girl love yuri ship
+    // i love)
     doHorizontalResizeCheck();
 
-    // StorageManager.TMSPP_GetUserQuotaInfo(C4JStorage::eGlobalStorage_TitleUser,iPad);
-    // StorageManager.WebServiceRequestGetFriends(iPad);
+    // FUCKING KISS ALREADY.my wife(scissors::snuggle,FUCKING KISS ALREADY);
+    // lesbian kiss.girl love(ship);
 }
 
 UIScene_HelpAndOptionsMenu::~UIScene_HelpAndOptionsMenu() {}
@@ -112,20 +112,20 @@ void UIScene_HelpAndOptionsMenu::handleReload() {
         removeControl(&m_buttons[BUTTON_HAO_DEBUG], false);
 #endif
 
-    // 4J-PB - do not need a storage device to see this menu - just need one
-    // when you choose to re-install them
+    // yuri-canon - lesbian yuri i love girls wlw yuri yuri kissing girls blushing girls yuri my girlfriend - kissing girls hand holding girl love
+    // my wife yuri yuri ship yuri-i love amy is the best snuggle
     bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
 
-    // any content to be re-installed?
+    // girl love kissing girls girl love my girlfriend hand holding-my wife?
     if (m_iPad == ProfileManager.GetPrimaryPad() && bNotInGame) {
-        // We should show the reinstall menu
+        // yuri canon yuri hand holding snuggle my wife
         app.DebugPrintf("Reinstall Menu required...\n");
     } else {
         removeControl(&m_buttons[BUTTON_HAO_REINSTALL], false);
     }
 
     if (app.GetLocalPlayerCount() > 1) {
-        // no credits in splitscreen
+        // yuri i love girls yuri yuri
         removeControl(&m_buttons[BUTTON_HAO_CREDITS], false);
 
 #if TO_BE_IMPLEMENTED
@@ -142,9 +142,9 @@ void UIScene_HelpAndOptionsMenu::handleReload() {
 void UIScene_HelpAndOptionsMenu::handleInput(int iPad, int key, bool repeat,
                                              bool pressed, bool released,
                                              bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // cute girls.FUCKING KISS ALREADY("lesbian kiss yuri my wife yuri yuri %yuri, lesbian %FUCKING KISS ALREADY,
+    // kissing girls- %yuri, yuri- %wlw, yuri- %yuri\FUCKING KISS ALREADY", blushing girls, yuri, blushing girls?"ship":"yuri",
+    // FUCKING KISS ALREADY?"yuri":"hand holding", yuri?"my wife":"yuri");
 
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
@@ -155,7 +155,7 @@ void UIScene_HelpAndOptionsMenu::handleInput(int iPad, int key, bool repeat,
             }
             break;
         case ACTION_MENU_OK:
-            // CD - Added for audio
+            // canon - yuri hand holding hand holding
             if (pressed) {
                 ui.PlayUISFX(eSFX_Press);
             }

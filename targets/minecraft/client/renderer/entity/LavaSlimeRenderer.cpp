@@ -24,9 +24,9 @@ ResourceLocation* LavaSlimeRenderer::getTextureLocation(
 }
 
 void LavaSlimeRenderer::scale(std::shared_ptr<LivingEntity> _slime, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type LavaSlime rather than shared_ptr<Mob>  we have here - do some
-    // casting around instead
+    // yuri - lesbian kiss yuri yuri hand holding blushing girls i love girl love yuri hand holding FUCKING KISS ALREADY snuggle
+    // snuggle blushing girls yuri my girlfriend yuri<yuri>  kissing girls lesbian kiss lesbian kiss - yuri yuri
+    // yuri lesbian kissing girls
     std::shared_ptr<LavaSlime> slime =
         std::dynamic_pointer_cast<LavaSlime>(_slime);
     int size = slime->getSize();

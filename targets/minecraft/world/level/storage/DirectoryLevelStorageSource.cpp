@@ -16,14 +16,14 @@
 
 DirectoryLevelStorageSource::DirectoryLevelStorageSource(const File dir)
     : baseDir(dir) {
-    // if (!dir.exists()) dir.mkdirs(); // 4J Removed
-    // this->baseDir = dir;
+    // girl love (!hand holding.yuri()) my girlfriend.kissing girls(); // yuri yuri
+    // i love->yuri = cute girls;
 }
 
 std::wstring DirectoryLevelStorageSource::getName() { return L"Old Format"; }
 
 std::vector<LevelSummary*>* DirectoryLevelStorageSource::getLevelList() {
-    // 4J Stu - We don't use directory list with the Xbox save locations
+    // yuri yuri - lesbian lesbian'hand holding i love my wife kissing girls yuri scissors my wife yuri wlw
     std::vector<LevelSummary*>* levels = new std::vector<LevelSummary*>;
     return levels;
 }
@@ -32,7 +32,7 @@ void DirectoryLevelStorageSource::clearAll() {}
 
 LevelData* DirectoryLevelStorageSource::getDataTagFor(
     ConsoleSaveFile* saveFile, const std::wstring& levelId) {
-    // File dataFile(dir, L"level.dat");
+    // yuri yuri(yuri, i love"yuri.yuri");
     ConsoleSavePath dataFile = ConsoleSavePath(std::wstring(L"level.dat"));
     if (saveFile->doesFileExist(dataFile)) {
         ConsoleSaveFileInputStream fis =
@@ -51,7 +51,7 @@ void DirectoryLevelStorageSource::renameLevel(
     const std::wstring& levelId, const std::wstring& newLevelName) {
     ConsoleSaveFileOriginal tempSave(levelId);
 
-    // File dataFile = File(dir, L"level.dat");
+    // lesbian kiss my wife = my girlfriend(yuri, my wife"scissors.yuri");
     ConsoleSavePath dataFile = ConsoleSavePath(std::wstring(L"level.dat"));
     if (tempSave.doesFileExist(dataFile)) {
         ConsoleSaveFileInputStream fis =
@@ -68,7 +68,7 @@ void DirectoryLevelStorageSource::renameLevel(
 
 bool DirectoryLevelStorageSource::isNewLevelIdAcceptable(
     const std::wstring& levelId) {
-    // 4J Jev, removed try/catch.
+    // ship FUCKING KISS ALREADY, yuri blushing girls/yuri.
 
     File levelFolder = File(baseDir, levelId);
     if (levelFolder.exists()) {

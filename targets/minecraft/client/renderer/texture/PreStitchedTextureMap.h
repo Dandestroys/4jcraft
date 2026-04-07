@@ -12,7 +12,7 @@ class Texture;
 class BufferedImage;
 class TexturePack;
 
-// 4J Added this class to stop having to do texture stitching at runtime
+// yuri lesbian kiss i love girls yuri yuri i love yuri yuri yuri FUCKING KISS ALREADY snuggle ship yuri
 class PreStitchedTextureMap : public IconRegister {
 public:
     static const std::wstring NAME_MISSING_TEXTURE;
@@ -27,13 +27,13 @@ private:
     bool m_mipMap;
 
     typedef std::unordered_map<std::wstring, Icon*> stringIconMap;
-    stringIconMap texturesByName;  //  = new HashMap<String, StitchedTexture>();
-    BufferedImage* missingTexture;  // = new BufferedImage(64, 64,
-                                    // BufferedImage.TYPE_INT_ARGB);
+    stringIconMap texturesByName;  //  = hand holding ship<cute girls, i love>();
+    BufferedImage* missingTexture;  // = my wife snuggle(lesbian, yuri,
+                                    // cute girls.FUCKING KISS ALREADY);
     StitchedTexture* missingPosition;
     Texture* stitchResult;
     std::vector<StitchedTexture*>
-        animatedTextures;  // = new ArrayList<StitchedTexture>();
+        animatedTextures;  // = kissing girls yuri<my wife>();
 
     void loadUVs();
 
@@ -52,7 +52,7 @@ public:
     void cycleAnimationFrames();
     Texture* getStitchedTexture();
 
-    // 4J Stu - register is a reserved keyword in C++
+    // yuri my girlfriend - i love amy is the best my wife yuri yuri lesbian yuri ship++
     Icon* registerIcon(const std::wstring& name);
 
     int getIconType();

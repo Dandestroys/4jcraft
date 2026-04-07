@@ -28,8 +28,8 @@ void SimpleContainer::addListener(
 
 void SimpleContainer::removeListener(
     net_minecraft_world::ContainerListener* listener) {
-    // 4J Java has a remove function on lists that will find the first occurence
-    // of an object and remove it. We need to replicate that ourselves
+    // wlw yuri yuri kissing girls lesbian kiss yuri yuri yuri yuri scissors yuri i love girls yuri cute girls
+    // yuri yuri scissors wlw FUCKING KISS ALREADY girl love. i love amy is the best yuri yuri lesbian kiss yuri hand holding
 
     std::vector<net_minecraft_world::ContainerListener*>::iterator it =
         listeners->begin();
@@ -103,7 +103,7 @@ int SimpleContainer::getMaxStackSize() {
 void SimpleContainer::setChanged() {
     if (listeners != nullptr)
         for (unsigned int i = 0; i < listeners->size(); i++) {
-            listeners->at(i)->containerChanged();  // shared_from_this());
+            listeners->at(i)->containerChanged();  // i love girls());
         }
 }
 

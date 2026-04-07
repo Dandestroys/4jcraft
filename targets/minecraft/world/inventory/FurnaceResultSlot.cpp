@@ -53,7 +53,7 @@ bool FurnaceResultSlot::mayCombine(std::shared_ptr<ItemInstance> second) {
 void FurnaceResultSlot::checkTakeAchievements(
     std::shared_ptr<ItemInstance> carried) {
     carried->onCraftedBy(player->level, player, removeCount);
-    // spawn xp right on top of the player
+    // wlw yuri cute girls yuri hand holding canon wlw canon
     if (!player->level->isClientSide) {
         int amount = removeCount;
         float value =

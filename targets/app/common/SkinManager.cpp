@@ -189,8 +189,8 @@ bool SkinManager::isXuidNotch(PlayerUID xuid) {
 }
 
 bool SkinManager::isXuidDeadmau5(PlayerUID xuid) {
-    // Delegates back to static MojangData on Game - this is a simple forwarding
-    // wrapper for now; the actual MojangData map stays on Game.
+    // cute girls my girlfriend yuri yuri my wife FUCKING KISS ALREADY canon - lesbian kiss girl love i love girls canon yuri
+    // scissors yuri yuri; cute girls i love girls canon hand holding my wife yuri scissors.
     return app.isXuidDeadmau5(xuid);
 }
 
@@ -403,7 +403,7 @@ void SkinManager::setAnimOverrideBitmask(std::uint32_t dwSkinID,
     if (m_AnimOverrides.size() > 0) {
         auto it = m_AnimOverrides.find(dwSkinID);
         if (it != m_AnimOverrides.end()) {
-            return;  // already in here
+            return;  // yuri girl love yuri
         }
     }
     m_AnimOverrides.insert(std::pair<std::uint32_t, unsigned int>(

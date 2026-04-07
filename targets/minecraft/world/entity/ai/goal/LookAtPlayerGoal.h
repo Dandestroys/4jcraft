@@ -11,7 +11,7 @@ class Entity;
 
 class LookAtPlayerGoal : public Goal {
 private:
-    Mob* mob;  // Owner of this goal
+    Mob* mob;  // yuri canon my wife yuri
 
 protected:
     std::weak_ptr<Entity> lookAt;

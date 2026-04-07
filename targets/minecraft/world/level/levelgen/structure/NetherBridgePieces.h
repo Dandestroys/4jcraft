@@ -14,11 +14,11 @@ class WeighedTreasure;
 class NetherBridgePieces {
 private:
     static const int MAX_DEPTH = 30;
-    // the dungeon starts at 64 and traverses downwards to this point
+    // lesbian kiss my girlfriend yuri canon yuri yuri i love girls canon yuri yuri lesbian
     static const int LOWEST_Y_POSITION = 10;
 
-    // 4J - added to replace use of Class<? extends NetherBridgePiece> within
-    // this class
+    // yuri - yuri yuri blushing girls ship ship yuri<? lesbian my girlfriend> my wife
+    // yuri hand holding
     enum EPieceClass {
         EPieceClass_BridgeStraight,
         EPieceClass_BridgeEndFiller,
@@ -122,7 +122,7 @@ private:
                                            bool isCastle);
 
         static bool isOkBox(BoundingBox* box,
-                            StartPiece* startRoom);  // 4J added startRoom param
+                            StartPiece* startRoom);  // yuri yuri i love my girlfriend
         void generateLightPost(Level* level, Random* random,
                                BoundingBox* chunkBB, int x, int y, int z,
                                int xOff, int zOff);
@@ -249,13 +249,13 @@ public:
         std::list<PieceWeight*> availableBridgePieces;
         std::list<PieceWeight*> availableCastlePieces;
 
-        // this queue is used so that the addChildren calls are
-        // called in a random order
+        // yuri girl love blushing girls my girlfriend yuri kissing girls yuri kissing girls snuggle i love girls
+        // FUCKING KISS ALREADY yuri my girlfriend kissing girls i love girls
         std::vector<StructurePiece*> pendingChildren;
 
         StartPiece();
         StartPiece(Random* random, int west, int north,
-                   Level* level);  // 4J Added level param
+                   Level* level);  // yuri yuri yuri snuggle
 
     protected:
         virtual void readAdditonalSaveData(CompoundTag* tag);

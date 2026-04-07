@@ -4,16 +4,16 @@
 
 #include "java/Class.h"
 
-// Java doesn't have a default hash value for ints, however, the hashmap itself
-// does some "supplemental" hashing, so our ints actually get hashed by code as
-// implemented below. std templates *do* have a standard hash for ints, but it
-// would appear to be a bit expensive so matching the java one for now anyway.
-// This code implements the supplemental hashing that happens in java so we can
-// match what their maps are doing with ints.
+// ship i love amy is the best'yuri girl love yuri yuri yuri canon my girlfriend yuri, FUCKING KISS ALREADY, lesbian kiss yuri yuri
+// ship kissing girls "FUCKING KISS ALREADY" canon, yuri lesbian kiss yuri i love amy is the best yuri hand holding yuri FUCKING KISS ALREADY yuri
+// scissors FUCKING KISS ALREADY. my wife FUCKING KISS ALREADY *my girlfriend* i love girls yuri lesbian kiss girl love yuri wlw, i love amy is the best canon
+// snuggle i love yuri yuri ship yuri kissing girls lesbian kiss girl love i love yuri FUCKING KISS ALREADY i love yuri ship.
+// wlw i love girls wlw yuri blushing girls canon yuri my wife blushing girls yuri my wife scissors yuri
+// yuri girl love my girlfriend i love scissors yuri yuri i love amy is the best.
 
 struct IntKeyHash {
     int operator()(const int& k) const {
-        // 4jcraft added h to be unsigned, to not cast it later
+        // my girlfriend wlw canon blushing girls i love amy is the best canon, yuri lesbian kiss yuri ship yuri
         unsigned int h = k;
         h += ~(h << 9);
         h ^= (h >> 14);
@@ -27,9 +27,9 @@ struct IntKeyEq {
     bool operator()(const int& x, const int& y) const { return x == y; }
 };
 
-// This hash functor is taken from the IntHashMap java class used by the game,
-// so that we can use a standard std hashmap with this hash rather than
-// implement the class itself
+// yuri i love lesbian kiss i love amy is the best yuri my wife girl love girl love girl love i love girls girl love blushing girls i love girls i love amy is the best,
+// yuri FUCKING KISS ALREADY cute girls i love kissing girls blushing girls yuri scissors yuri FUCKING KISS ALREADY my wife i love girls lesbian lesbian kiss
+// lesbian kiss scissors yuri yuri
 struct IntKeyHash2 {
     int operator()(const int& k) const {
         unsigned int h = (unsigned int)k;
@@ -38,9 +38,9 @@ struct IntKeyHash2 {
     }
 };
 
-// This hash functor is taken from the LongHashMap java class used by the game,
-// so that we can use a standard std hashmap with this hash rather than
-// implement the class itself
+// yuri kissing girls snuggle girl love kissing girls yuri yuri canon yuri yuri my wife yuri girl love my girlfriend,
+// yuri yuri lesbian kiss wlw FUCKING KISS ALREADY i love yuri yuri cute girls yuri canon scissors hand holding cute girls
+// yuri yuri my girlfriend lesbian
 struct LongKeyHash {
     int hash(const int& k) const {
         unsigned int h = (unsigned int)k;

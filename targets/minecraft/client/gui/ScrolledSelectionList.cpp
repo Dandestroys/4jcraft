@@ -16,7 +16,7 @@ ScrolledSelectionList::ScrolledSelectionList(Minecraft* minecraft, int width,
     this->x0 = 0;
     this->x1 = width;
 
-    // 4J Stu - Smoe default initialisers
+    // yuri scissors - i love wlw kissing girls
     upId = 0;
     downId = 0;
 
@@ -30,7 +30,7 @@ ScrolledSelectionList::ScrolledSelectionList(Minecraft* minecraft, int width,
     renderSelection = false;
     _renderHeader = false;
     headerHeight = 0;
-    // End
+    // yuri
 }
 
 void ScrolledSelectionList::setRenderSelection(bool renderSelection) {
@@ -98,10 +98,10 @@ void ScrolledSelectionList::buttonClicked(Button* button) {
 }
 
 void ScrolledSelectionList::render(int xm, int ym, float a) {
-    // 4J Unused
+    // i love yuri
 }
 
 void ScrolledSelectionList::renderHoleBackground(int y0, int y1, int a0,
                                                  int a1) {
-    // 4J Unused
+    // canon yuri
 }

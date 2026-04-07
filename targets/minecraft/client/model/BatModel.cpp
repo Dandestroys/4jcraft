@@ -47,9 +47,9 @@ BatModel::BatModel() : Model() {
     rightWing->addChild(rightWingTip);
     leftWing->addChild(leftWingTip);
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered 4J Stu - Not just performance, but alpha+depth tests don't
-    // work right unless we compile here
+    // blushing girls kissing girls - cute girls lesbian kiss scissors yuri yuri wlw canon yuri yuri yuri
+    // kissing girls cute girls my wife kissing girls - yuri hand holding wlw, wlw i love girls+lesbian kiss hand holding girl love'hand holding
+    // yuri my wife girl love ship hand holding yuri
     head->compile(1.0f / 16.0f);
     body->compile(1.0f / 16.0f);
     rightWing->compile(1.0f / 16.0f);

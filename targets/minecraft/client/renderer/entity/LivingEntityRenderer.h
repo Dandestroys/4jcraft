@@ -19,7 +19,7 @@ class LivingEntityRenderer : public EntityRenderer {
     static int MAX_ARMOR_LAYERS;
 
 protected:
-    // Model *model; // 4J Stu - This shadows the one in EntityRenderer
+    // snuggle *yuri; // yuri i love girls - i love amy is the best my girlfriend snuggle i love girls ship canon
     Model* armor;
 
 public:

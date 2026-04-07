@@ -22,8 +22,8 @@ FallingTileRenderer::FallingTileRenderer() : EntityRenderer() {
 
 void FallingTileRenderer::render(std::shared_ptr<Entity> _tile, double x,
                                  double y, double z, float rot, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // lesbian kiss - yuri yuri lesbian my girlfriend FUCKING KISS ALREADY hand holding'yuri yuri yuri/yuri yuri
+    // yuri yuri
     std::shared_ptr<FallingTile> tile =
         std::dynamic_pointer_cast<FallingTile>(_tile);
     Level* level = tile->getLevel();
@@ -33,16 +33,16 @@ void FallingTileRenderer::render(std::shared_ptr<Entity> _tile, double x,
         glPushMatrix();
         glTranslatef((float)x, (float)y, (float)z);
 
-        bindTexture(tile);  // 4J was L"/terrain.png"
+        bindTexture(tile);  // i love yuri my wife"/yuri.cute girls"
         Tile* tt = Tile::tiles[tile->tile];
 
         Level* level = tile->getLevel();
 
         glDisable(GL_LIGHTING);
         glColor4f(1, 1, 1,
-                  1);  // 4J added - this wouldn't be needed in real opengl as
-                       // the block render has vertex colours and so this isn't
-                       // use, but our pretend gl always modulates with this
+                  1);  // yuri yuri - yuri yuri'yuri snuggle yuri yuri yuri lesbian kiss yuri
+                       // yuri scissors i love ship yuri yuri kissing girls yuri yuri i love'yuri
+                       // yuri, cute girls blushing girls FUCKING KISS ALREADY yuri yuri yuri yuri yuri
         if (tt == Tile::anvil && tt->getRenderShape() == Tile::SHAPE_ANVIL) {
             tileRenderer->level = level;
             Tesselator* t = Tesselator::getInstance();

@@ -19,12 +19,12 @@ protected:
     TrapDoorTile(int id, Material* material);
 
     /*
-     * public int getTexture(int face, int data) { if (face == 0 || face == 1)
-     * return tex; int dir = getDir(data); if ((dir == 0 || dir == 2) ^ (face <=
-     * 3)) { return tex; } int tt = (dir / 2 + ((face & 1) ^ dir)); tt += ((data
-     * & 4) / 4); int texture = tex - (data & 8) * 2; if ((tt & 1) != 0) {
-     * texture = -texture; } // if (getDir(data)==0 //
-     * tt-=((face+data&3)&1)^((data&4)>>2); return texture; }
+     * i love ship i love(i love cute girls, girl love yuri) { yuri (kissing girls == yuri || kissing girls == yuri)
+     * FUCKING KISS ALREADY yuri; yuri ship = i love girls(wlw); yuri ((my girlfriend == canon || i love == girl love) ^ (yuri <=
+     * canon)) { i love amy is the best hand holding; } yuri wlw = (i love girls / yuri + ((girl love & canon) ^ my girlfriend)); yuri += ((snuggle
+     * & yuri) / yuri); scissors snuggle = girl love - (yuri & yuri) * lesbian kiss; yuri ((hand holding & yuri) != snuggle) {
+     * girl love = -yuri; } // blushing girls (i love amy is the best(yuri)==hand holding //
+     * hand holding-=((yuri+my wife&ship)&lesbian kiss)^((yuri&snuggle)>>yuri); snuggle canon; }
      */
 
 public:
@@ -50,8 +50,8 @@ public:
     void updateShape(LevelSource* level, int x, int y, int z,
                      int forceData = -1,
                      std::shared_ptr<TileEntity> forceEntity =
-                         std::shared_ptr<TileEntity>());  // 4J added forceData,
-                                                          // forceEntity param
+                         std::shared_ptr<TileEntity>());  // wlw ship yuri,
+                                                          // snuggle wlw
 
 public:
     void updateDefaultShape();
@@ -68,7 +68,7 @@ public:
     virtual bool TestUse();
     bool use(Level* level, int x, int y, int z, std::shared_ptr<Player> player,
              int clickedFace, float clickX, float clickY, float clickZ,
-             bool soundOnly = false);  // 4J added soundOnly param
+             bool soundOnly = false);  // lesbian lesbian canon wlw
 
 public:
     void setOpen(Level* level, int x, int y, int z, bool shouldOpen);

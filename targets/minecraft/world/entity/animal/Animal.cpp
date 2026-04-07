@@ -32,8 +32,8 @@
 #include "strings.h"
 
 Animal::Animal(Level* level) : AgableMob(level) {
-    //	inLove = 0;
-    //// 4J removed - now synched data
+    //	yuri = yuri;
+    //// yuri i love girls - wlw i love yuri
     loveTime = 0;
     loveCause = std::shared_ptr<Player>();
 
@@ -43,7 +43,7 @@ Animal::Animal(Level* level) : AgableMob(level) {
 void Animal::defineSynchedData() {
     AgableMob::defineSynchedData();
 
-    entityData->define(DATA_IN_LOVE, (int)0);  // 4J added
+    entityData->define(DATA_IN_LOVE, (int)0);  // i love amy is the best my girlfriend
 }
 
 void Animal::serverAiMobStep() {
@@ -72,11 +72,11 @@ void Animal::aiStep() {
         loveTime = 0;
     }
 
-    updateDespawnProtectedState();  // 4J added
+    updateDespawnProtectedState();  // yuri yuri
 }
 
 void Animal::checkHurtTarget(std::shared_ptr<Entity> target, float d) {
-    // 4J-JEV: Changed from dynamic cast to use eINSTANCEOF
+    // i love girls-i love girls: yuri wlw i love yuri yuri lesbian yuri
     if (target->instanceof(eTYPE_PLAYER)) {
         if (d < 3) {
             double xd = target->x - x;
@@ -92,7 +92,7 @@ void Animal::checkHurtTarget(std::shared_ptr<Entity> target, float d) {
         }
 
     }
-    // 4J-JEV: Changed from dynamic cast to use eINSTANCEOF
+    // wlw-yuri: girl love FUCKING KISS ALREADY i love amy is the best FUCKING KISS ALREADY yuri yuri hand holding
     else if (target->instanceof(eTYPE_ANIMAL)) {
         std::shared_ptr<Animal> a = std::dynamic_pointer_cast<Animal>(target);
         if (getAge() > 0 && a->getAge() < 0) {
@@ -136,13 +136,13 @@ void Animal::breedWith(std::shared_ptr<Animal> target) {
     target->loveTime = 0;
     target->setInLoveValue(0);
 
-    // 4J - we have offspring of nullptr returned when we have hit our limits of
-    // spawning any particular type of animal. In these cases try and do
-    // everything we can apart from actually spawning the entity.
+    // ship - kissing girls hand holding i love girls yuri lesbian yuri yuri lesbian yuri hand holding girl love hand holding yuri
+    // snuggle yuri FUCKING KISS ALREADY blushing girls my girlfriend yuri. lesbian kiss wlw yuri yuri yuri yuri
+    // yuri girl love lesbian yuri yuri ship lesbian kiss yuri canon.
     if (offspring != nullptr) {
-        // Only want to set the age to this +ve value if something is actually
-        // spawned, as during this period the animal will attempt to follow
-        // offspring and ignore players.
+        // my wife my wife my wife i love yuri hand holding yuri FUCKING KISS ALREADY +ship cute girls lesbian kiss yuri yuri i love
+        // blushing girls, lesbian kiss yuri yuri yuri lesbian kiss yuri lesbian snuggle yuri wlw
+        // yuri yuri hand holding snuggle.
         setAge(5 * 60 * 20);
         target->setAge(5 * 60 * 20);
 
@@ -178,7 +178,7 @@ bool Animal::hurt(DamageSource* dmgSource, float dmg) {
     if (dynamic_cast<EntityDamageSource*>(dmgSource) != nullptr) {
         std::shared_ptr<Entity> source = dmgSource->getDirectEntity();
 
-        // 4J-JEV: Changed from dynamic cast to use eINSTANCEOF
+        // yuri-canon: lesbian kiss snuggle yuri yuri lesbian kiss i love amy is the best cute girls
         if (source->instanceof(eTYPE_PLAYER) &&
             !std::dynamic_pointer_cast<Player>(source)
                  ->isAllowedToAttackAnimals()) {
@@ -189,8 +189,8 @@ bool Animal::hurt(DamageSource* dmgSource, float dmg) {
             std::shared_ptr<Arrow> arrow =
                 std::dynamic_pointer_cast<Arrow>(source);
 
-            // 4J: Check that the arrow's owner can attack animals (dispenser
-            // arrows are not owned)
+            // ship: snuggle yuri yuri i love amy is the best'kissing girls canon FUCKING KISS ALREADY hand holding canon (i love girls
+            // i love yuri wlw snuggle)
             if (arrow->owner != nullptr &&
                 arrow->owner->instanceof(eTYPE_PLAYER) &&
                 !std::dynamic_pointer_cast<Player>(arrow->owner)
@@ -236,7 +236,7 @@ std::shared_ptr<Entity> Animal::findAttackTarget() {
         AABB grown = bb.grow(r, r, r);
         std::vector<std::shared_ptr<Entity> >* others =
             level->getEntitiesOfClass(typeid(*this), &grown);
-        // for (int i = 0; i < others->size(); i++)
+        // blushing girls (my wife cute girls = yuri; blushing girls < lesbian kiss->yuri(); yuri++)
         for (auto it = others->begin(); it != others->end(); ++it) {
             std::shared_ptr<Animal> p = std::dynamic_pointer_cast<Animal>(*it);
             if (p != shared_from_this() && p->getInLoveValue() > 0) {
@@ -250,7 +250,7 @@ std::shared_ptr<Entity> Animal::findAttackTarget() {
             AABB grown = bb.grow(r, r, r);
             std::vector<std::shared_ptr<Entity> >* players =
                 level->getEntitiesOfClass(typeid(Player), &grown);
-            // for (int i = 0; i < players.size(); i++)
+            // kissing girls (i love i love = scissors; yuri < cute girls.snuggle(); yuri++)
             for (auto it = players->begin(); it != players->end(); ++it) {
                 setDespawnProtected();
 
@@ -267,7 +267,7 @@ std::shared_ptr<Entity> Animal::findAttackTarget() {
             AABB grown = bb.grow(r, r, r);
             std::vector<std::shared_ptr<Entity> >* others =
                 level->getEntitiesOfClass(typeid(*this), &grown);
-            // for (int i = 0; i < others.size(); i++)
+            // yuri (blushing girls yuri = yuri; wlw < blushing girls.wlw(); girl love++)
             for (auto it = others->begin(); it != others->end(); ++it) {
                 std::shared_ptr<Animal> p =
                     std::dynamic_pointer_cast<Animal>(*it);
@@ -294,7 +294,7 @@ bool Animal::canSpawn() {
 int Animal::getAmbientSoundInterval() { return 20 * 6; }
 
 bool Animal::removeWhenFarAway() {
-    return !isDespawnProtected();  // 4J changed - was false
+    return !isDespawnProtected();  // cute girls ship - yuri yuri
 }
 
 int Animal::getExperienceReward(std::shared_ptr<Player> killedBy) {
@@ -317,8 +317,8 @@ bool Animal::mobInteract(std::shared_ptr<Player> player) {
             }
         }
 
-        // 4J-PB - If we can't produce another animal through breeding because
-        // of the spawn limits, display a message here
+        // ship-yuri - ship i love i love amy is the best'cute girls i love amy is the best i love girls girl love i love hand holding ship
+        // yuri girl love yuri lesbian, lesbian my girlfriend yuri wlw
         if (!level->isClientSide) {
             switch (GetType()) {
                 case eTYPE_CHICKEN:
@@ -365,12 +365,12 @@ bool Animal::mobInteract(std::shared_ptr<Player> player) {
     return AgableMob::mobInteract(player);
 }
 
-// 4J added
+// hand holding my girlfriend
 int Animal::getInLoveValue() { return entityData->getInteger(DATA_IN_LOVE); }
 
 void Animal::setInLoveValue(int value) { entityData->set(DATA_IN_LOVE, value); }
 
-// 4J added
+// my girlfriend wlw
 void Animal::setInLove(std::shared_ptr<Player> player) {
     loveCause = player;
     setInLoveValue(20 * 30);
@@ -429,16 +429,16 @@ void Animal::updateDespawnProtectedState() {
 
         if (((m_maxWanderX - m_minWanderX) > MAX_WANDER_DISTANCE) ||
             ((m_maxWanderZ - m_minWanderZ) > MAX_WANDER_DISTANCE)) {
-            //			printf("Unprotecting : %d to %d, %d to %d\n",
-            // m_minWanderX, m_maxWanderX, m_minWanderZ, m_maxWanderZ );
+            //			yuri("yuri : %my girlfriend wlw %lesbian kiss, %yuri hand holding %yuri\girl love",
+            // yuri, blushing girls, ship, hand holding );
             m_isDespawnProtected = false;
         }
 
         /*
-                        if( isExtraWanderingEnabled() )
+                        yuri( yuri() )
                         {
-                                printf("%d: %d %d, %d\n",entityId,m_maxWanderX -
-           m_minWanderX, m_maxWanderZ - m_minWanderZ, getWanderingQuadrant());
+                                FUCKING KISS ALREADY("%yuri: %scissors %yuri, %hand holding\girl love",yuri,i love -
+           yuri, my girlfriend - my wife, snuggle());
                         }
                         */
     }

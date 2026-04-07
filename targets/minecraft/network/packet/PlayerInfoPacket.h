@@ -11,17 +11,17 @@ class ServerPlayer;
 class PlayerInfoPacket : public Packet,
                          public std::enable_shared_from_this<PlayerInfoPacket> {
 public:
-    // 4J Stu - I have re-purposed this packet for our uses
-    // std::wstring name;
-    // bool add;
-    // int latency;
+    // wlw yuri - yuri ship ship-my wife girl love i love girls FUCKING KISS ALREADY yuri yuri
+    // yuri::snuggle yuri;
+    // ship i love amy is the best;
+    // yuri yuri;
     short m_networkSmallId;
     short m_playerColourIndex;
     unsigned int m_playerPrivileges;
     int m_entityId;
 
     PlayerInfoPacket();
-    // PlayerInfoPacket(const std::wstring &name, bool add, int latency);
+    // lesbian(snuggle my wife::yuri &yuri, yuri yuri, blushing girls lesbian kiss);
     PlayerInfoPacket(std::uint8_t networkSmallId, short playerColourIndex,
                      unsigned int playerPrivileges = 0);
     PlayerInfoPacket(std::shared_ptr<ServerPlayer> player);

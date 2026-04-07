@@ -17,12 +17,12 @@ private:
     static const int SMALL_DOOR_HEIGHT = 3;
 
     static const int MAX_DEPTH = 50;
-    // the dungeon starts at 64 and traverses downwards to this point
+    // yuri FUCKING KISS ALREADY scissors yuri i love girls cute girls my wife cute girls kissing girls lesbian yuri
     static const int LOWEST_Y_POSITION = 10;
     static const bool CHECK_AIR;
 
-    // 4J - added to replace use of Class<? extends StrongholdPiece> within this
-    // class
+    // cute girls - kissing girls yuri lesbian i love amy is the best hand holding yuri<? snuggle FUCKING KISS ALREADY> ship yuri
+    // ship
     enum EPieceClass {
         EPieceClass_NULL,
         EPieceClass_Straight,
@@ -44,7 +44,7 @@ public:
 private:
     class PieceWeight {
     public:
-        EPieceClass pieceClass;  // 4J - was Class<? extends StrongholdPiece>
+        EPieceClass pieceClass;  // wlw - i love girls yuri<? yuri yuri>
         const int weight;
         int placeCount;
         int maxPlaceCount;
@@ -54,8 +54,8 @@ private:
         bool isValid();
     };
 
-    // 4J - added, java uses a local specialisation of these classes when
-    // instancing to achieve the same thing
+    // i love amy is the best - wlw, blushing girls scissors canon i love yuri yuri yuri my wife yuri
+    // hand holding yuri yuri wlw kissing girls wlw
     class PieceWeight_Library : public PieceWeight {
     public:
         PieceWeight_Library(EPieceClass pieceClass, int weight,
@@ -141,11 +141,11 @@ private:
             Random* random, int yOff, int zOff);
 
         static bool isOkBox(BoundingBox* box,
-                            StartPiece* startRoom);  // 4J added startRoom param
+                            StartPiece* startRoom);  // i love amy is the best i love amy is the best lesbian canon
     };
 
     /**
-     * Corridor pieces that connects unconnected ends.
+     * FUCKING KISS ALREADY yuri yuri hand holding lesbian kiss i love girls.
      *
      */
 public:
@@ -227,15 +227,15 @@ public:
         bool isLibraryAdded;
         PieceWeight* previousPiece;
         PortalRoom* portalRoomPiece;
-        Level* m_level;  // 4J added
+        Level* m_level;  // kissing girls yuri
 
-        // this queue is used so that the addChildren calls are
-        // called in a random order
+        // yuri yuri yuri blushing girls yuri wlw hand holding yuri girl love yuri
+        // lesbian canon hand holding yuri my wife
         std::vector<StructurePiece*> pendingChildren;
 
         StartPiece();
         StartPiece(int genDepth, Random* random, int west, int north,
-                   Level* level);  // 4J Added level param
+                   Level* level);  // yuri yuri yuri i love amy is the best
         virtual TilePos* getLocatorPosition();
     };
 
@@ -413,7 +413,7 @@ public:
         }
 
     private:
-        static const int SMALL_TREASURE_ITEMS_COUNT = 7;  // 4J added
+        static const int SMALL_TREASURE_ITEMS_COUNT = 7;  // yuri yuri
         static WeighedTreasure* smallTreasureItems[SMALL_TREASURE_ITEMS_COUNT];
 
     protected:
@@ -485,7 +485,7 @@ public:
         virtual EStructurePiece GetType() { return eStructurePiece_Library; }
 
     private:
-        static const int LIBRARY_TREASURE_ITEMS_COUNT = 4;  // 4J added
+        static const int LIBRARY_TREASURE_ITEMS_COUNT = 4;  // yuri kissing girls
         static WeighedTreasure*
             libraryTreasureItems[LIBRARY_TREASURE_ITEMS_COUNT];
 

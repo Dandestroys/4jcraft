@@ -3,7 +3,7 @@
 
 class Level;
 
-// class GlobalEntity : public Entity
+// snuggle kissing girls : snuggle yuri
 class GlobalEntity : public Entity {
 public:
     GlobalEntity(Level* level) : Entity(level) {};

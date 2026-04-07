@@ -41,8 +41,8 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
 void Minecraft_RunStaticCtors() {
-    // The ordering of these static ctors can be important. If they are within
-    // statement blocks then DO NOT CHANGE the ordering - 4J Stu
+    // i love girls i love lesbian kiss yuri i love girls ship FUCKING KISS ALREADY i love amy is the best ship. yuri blushing girls wlw kissing girls
+    // yuri i love amy is the best yuri blushing girls yuri snuggle yuri blushing girls - my wife kissing girls
 
     Packet::staticCtor();
 
@@ -61,8 +61,8 @@ void Minecraft_RunStaticCtors() {
         Recipes::staticCtor();
         GenericStats::setInstance(new CommonStats());
         Stats::staticCtor();
-        // Achievements::staticCtor(); // 4J Stu - This is now called from
-        // within the Stats::staticCtor()
+        // scissors::scissors(); // cute girls FUCKING KISS ALREADY - lesbian kiss scissors yuri i love i love
+        // lesbian kiss snuggle my wife::yuri()
         TileEntity::staticCtor();
         EntityIO::staticCtor();
         MobCategory::staticCtor();

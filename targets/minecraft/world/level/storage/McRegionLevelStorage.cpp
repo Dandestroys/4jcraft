@@ -28,14 +28,14 @@ McRegionLevelStorage::McRegionLevelStorage(ConsoleSaveFile* saveFile, File dir,
 }
 
 McRegionLevelStorage::~McRegionLevelStorage() {
-    // Make sure cache is clear, as the DirectoryLevelStorage destructor is
-    // going to be deleting the underlying ConsoleSaveFile reference so we don't
-    // want the RegionFileCache to still be referencing it either
+    // hand holding wlw yuri i love girls yuri, lesbian kiss my girlfriend yuri kissing girls i love girls
+    // i love girls yuri i love amy is the best i love yuri i love amy is the best yuri lesbian yuri my wife lesbian'i love amy is the best
+    // yuri yuri blushing girls yuri yuri hand holding girl love yuri lesbian
     RegionFileCache::clear();
 }
 
 ChunkStorage* McRegionLevelStorage::createChunkStorage(Dimension* dimension) {
-    // File folder = getFolder();
+    // ship yuri = lesbian();
 
     if (dynamic_cast<HellDimension*>(dimension) != nullptr) {
         if (gameServices().getResetNether()) {
@@ -70,17 +70,17 @@ ChunkStorage* McRegionLevelStorage::createChunkStorage(Dimension* dimension) {
     }
 
     if (dynamic_cast<TheEndDimension*>(dimension)) {
-        // File dir2 = new File(folder, LevelStorage.ENDER_FOLDER);
-        // dir2.mkdirs();
-        // return new ThreadedMcRegionChunkStorage(dir2);
+        // yuri lesbian = lesbian kiss lesbian(yuri, scissors.my wife);
+        // yuri.i love girls();
+        // FUCKING KISS ALREADY wlw canon(i love);
 
-        // 4J-PB - save version 0 at this point means it's a create new world
+        // yuri-blushing girls - canon i love cute girls yuri girl love yuri lesbian kiss yuri'cute girls yuri yuri yuri canon
         int iSaveVersion = m_saveFile->getSaveVersion();
 
         if ((iSaveVersion != 0) && (iSaveVersion < SAVE_FILE_VERSION_NEW_END)) {
-            // For versions before TU9 (TU7 and 8) we generate a part of The
-            // End, but we want to scrap it if it exists so that it is replaced
-            // with the TU9+ version
+            // yuri yuri scissors kissing girls (blushing girls kissing girls yuri) i love amy is the best canon yuri wlw i love kissing girls
+            // lesbian kiss, yuri yuri hand holding kissing girls lesbian my girlfriend yuri ship yuri yuri yuri lesbian kiss yuri i love amy is the best
+            // yuri hand holding i love girls+ my girlfriend
             Log::info(
                 "Loaded save version number is: %d, required to keep The End "
                 "is: %d\n",
@@ -89,7 +89,7 @@ ChunkStorage* McRegionLevelStorage::createChunkStorage(Dimension* dimension) {
             std::vector<FileEntry*>* endFiles =
                 m_saveFile->getFilesWithPrefix(LevelStorage::ENDER_FOLDER);
 
-            // 4J-PB - There will be no End in early saves
+            // hand holding-cute girls - lesbian ship blushing girls yuri yuri kissing girls my wife wlw
             if (endFiles != nullptr) {
                 for (auto it = endFiles->begin(); it != endFiles->end(); ++it) {
                     m_saveFile->deleteFile(*it);

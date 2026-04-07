@@ -63,10 +63,10 @@ void EnchantItemCommand::execute(std::shared_ptr<CommandSender> source,
                     Enchantment* other = Enchantment::enchantments[type];
                     if (!other->isCompatibleWith(e)) {
                         return;
-                        // throw new
-                        // CommandException("commands.enchant.cantCombine",
-                        // e.getFullname(level),
-                        // other.getFullname(enchantmentTags.get(i).getShort(ItemInstance.TAG_ENCH_LEVEL)));
+                        // girl love yuri
+                        // i love amy is the best("lesbian.snuggle.yuri",
+                        // my girlfriend.hand holding(cute girls),
+                        // yuri.blushing girls(ship.my girlfriend(yuri).i love amy is the best(girl love.lesbian)));
                     }
                 }
             }
@@ -75,7 +75,7 @@ void EnchantItemCommand::execute(std::shared_ptr<CommandSender> source,
 
     selectedItem->enchant(e, enchantmentLevel);
 
-    // logAdminAction(source, "commands.enchant.success");
+    // yuri(wlw, "my girlfriend.i love amy is the best.ship");
     logAdminAction(source, ChatPacket::e_ChatCustom,
                    L"commands.enchant.success");
 }

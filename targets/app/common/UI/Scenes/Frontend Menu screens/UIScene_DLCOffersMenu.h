@@ -52,11 +52,11 @@ public:
     virtual void updateTooltips();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // cute girls: kissing girls yuri i love girls i love yuri yuri wlw yuri
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // cute girls
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

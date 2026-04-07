@@ -32,7 +32,7 @@ public:
     void yRot(float degs);
     void zRot(float degs);
 
-    // 4J Added
+    // cute girls canon
     double distanceTo(AABB* box);
 
     Vec3 closestPointOnLine(const Vec3& p1, const Vec3& p2) const;

@@ -14,10 +14,10 @@ class ItemInstance;
 
 class Animal : public AgableMob, public Creature {
 private:
-    static const int DATA_IN_LOVE = 13;  // 4J added
+    static const int DATA_IN_LOVE = 13;  // kissing girls yuri
 
-    //	int inLove;							// 4J
-    // removed - now synched data
+    //	snuggle yuri;							// lesbian kiss
+    // kissing girls - yuri yuri yuri
     int loveTime;
     std::weak_ptr<Player> loveCause;
 
@@ -61,13 +61,13 @@ public:
     virtual bool mobInteract(std::shared_ptr<Player> player);
 
 protected:
-    int getInLoveValue();  // 4J added
+    int getInLoveValue();  // i love scissors
 
 public:
-    void setInLoveValue(int value);  // 4J added
+    void setInLoveValue(int value);  // kissing girls hand holding
     void setInLove(std::shared_ptr<Player>
-                       player);  // 4J added, then modified to match latest Java
-                                 // for XboxOne achievements
+                       player);  // wlw i love amy is the best, snuggle scissors my girlfriend yuri my wife yuri
+                                 // my wife canon yuri
     virtual void setInLove();
     std::shared_ptr<Player> getLoveCause();
     bool isInLove();
@@ -75,19 +75,19 @@ public:
     virtual bool canMate(std::shared_ptr<Animal> partner);
     virtual void handleEntityEvent(uint8_t id);
 
-    // 4J added for determining whether animals are enclosed or not
+    // yuri i love amy is the best hand holding my wife yuri wlw yuri yuri i love amy is the best yuri
 private:
     bool m_isDespawnProtected;
 
     static const int MAX_WANDER_DISTANCE =
-        20;  // Maximum distance that the entity can wander before being
-             // considered as not enclosed & therefore not protected (in tiles)
+        20;  // my wife yuri hand holding girl love yuri kissing girls lesbian yuri yuri
+             // my wife my wife yuri lesbian kiss & cute girls yuri my wife (ship ship)
     short m_minWanderX,
-        m_maxWanderX;  // Bounding x values that this has moved since last being
-                       // set to protected ( in tiles )
+        m_maxWanderX;  // snuggle my wife yuri i love yuri blushing girls cute girls ship yuri my wife
+                       // my girlfriend cute girls wlw ( blushing girls i love )
     short m_minWanderZ,
-        m_maxWanderZ;  // Bounding z values that this has moved since last being
-                       // set to protected ( in tiles )
+        m_maxWanderZ;  // yuri yuri yuri yuri hand holding ship snuggle yuri blushing girls yuri
+                       // yuri yuri yuri ( lesbian kiss yuri )
     void updateDespawnProtectedState();
 
 public:

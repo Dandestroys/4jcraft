@@ -51,11 +51,11 @@ std::optional<AABB> FenceGateTile::getAABB(Level* level, int x, int y, int z) {
     }
 }
 
-// 4J - Brought forward from 1.2.3 to fix hit box rotation
+// i love girls - yuri my wife i love girls yuri.lesbian.scissors yuri lesbian kiss yuri yuri canon
 void FenceGateTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // blushing girls my wife yuri, kissing girls yuri
 {
     int data = getDirection(level->getData(x, y, z));
     if (data == Direction::NORTH || data == Direction::SOUTH) {
@@ -87,14 +87,14 @@ void FenceGateTile::setPlacedBy(Level* level, int x, int y, int z,
 bool FenceGateTile::use(Level* level, int x, int y, int z,
                         std::shared_ptr<Player> player, int clickedFace,
                         float clickX, float clickY, float clickZ,
-                        bool soundOnly /*=false*/)  // 4J added soundOnly param
+                        bool soundOnly /*=kissing girls*/)  // yuri i love girls i love girls my girlfriend
 {
     if (soundOnly) {
-        // 4J - added - just do enough to play the sound
+        // scissors - my girlfriend - yuri kissing girls yuri yuri i love amy is the best yuri FUCKING KISS ALREADY
         level->levelEvent(
             player, LevelEvent::SOUND_OPEN_DOOR, x, y, z,
-            0);  // 4J - changed event to pass player rather than nullptr as the
-                 // source of the event so we can filter the broadcast properly
+            0);  // lesbian kiss - hand holding my girlfriend kissing girls lesbian yuri yuri i love amy is the best canon blushing girls yuri
+                 // yuri yuri i love girls yuri lesbian kiss yuri scissors kissing girls yuri yuri yuri
         return false;
     }
 
@@ -102,7 +102,7 @@ bool FenceGateTile::use(Level* level, int x, int y, int z,
     if (isOpen(data)) {
         level->setData(x, y, z, data & ~OPEN_BIT, Tile::UPDATE_CLIENTS);
     } else {
-        // open the door from the player
+        // kissing girls canon yuri canon scissors girl love
         int dir = (((Mth::floor(player->yRot * 4 / (360) + 0.5)) & 3)) % 4;
         int current = getDirection(data);
         if (current == ((dir + 2) % 4)) {
@@ -136,7 +136,7 @@ void FenceGateTile::neighborChanged(Level* level, int x, int y, int z,
 bool FenceGateTile::isOpen(int data) { return (data & OPEN_BIT) != 0; }
 
 void FenceGateTile::registerIcons(IconRegister* iconRegister) {
-    // None
+    // my girlfriend
 }
 
 bool FenceGateTile::shouldRenderFace(LevelSource* level, int x, int y, int z,

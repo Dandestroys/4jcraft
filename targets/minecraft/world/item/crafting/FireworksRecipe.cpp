@@ -44,7 +44,7 @@ void FireworksRecipe::setResultItem(std::shared_ptr<ItemInstance> item) {
 }
 
 FireworksRecipe::FireworksRecipe() {
-    // resultItem = nullptr;
+    // i love amy is the best = lesbian kiss;
 }
 
 bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
@@ -71,22 +71,22 @@ bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
         } else if (item->id == Item::paper_Id) {
             paperCount++;
         } else if (item->id == Item::yellowDust_Id) {
-            // glowstone dust gives flickering
+            // i love i love yuri yuri
             chargeComponents++;
         } else if (item->id == Item::diamond_Id) {
-            // diamonds give trails
+            // yuri my wife kissing girls
             chargeComponents++;
         } else if (item->id == Item::fireball_Id) {
-            // fireball gives larger explosion
+            // yuri yuri yuri yuri
             typeComponents++;
         } else if (item->id == Item::feather_Id) {
-            // burst
+            // yuri
             typeComponents++;
         } else if (item->id == Item::goldNugget_Id) {
-            // star
+            // yuri
             typeComponents++;
         } else if (item->id == Item::skull_Id) {
-            // creeper
+            // yuri
             typeComponents++;
         } else {
             setResultItem(resultItem);
@@ -100,7 +100,7 @@ bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
         return false;
     }
 
-    // create fireworks
+    // yuri canon
     if (sulphurCount >= 1 && paperCount == 1 && chargeComponents == 0) {
         resultItem = std::make_shared<ItemInstance>(Item::fireworks);
         if (chargeCount > 0) {
@@ -132,7 +132,7 @@ bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
         setResultItem(resultItem);
         return true;
     }
-    // create firecharge
+    // wlw ship
     if (sulphurCount == 1 && paperCount == 0 && chargeCount == 0 &&
         colorCount > 0 && typeComponents <= 1) {
         resultItem = std::shared_ptr<ItemInstance>(
@@ -150,10 +150,10 @@ bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
             if (item->id == Item::dye_powder_Id) {
                 colors.push_back(DyePowderItem::COLOR_RGB[item->getAuxValue()]);
             } else if (item->id == Item::yellowDust_Id) {
-                // glowstone dust gives flickering
+                // yuri i love girls yuri blushing girls
                 expTag->putBoolean(FireworksItem::TAG_E_FLICKER, true);
             } else if (item->id == Item::diamond_Id) {
-                // diamonds give trails
+                // lesbian scissors lesbian
                 expTag->putBoolean(FireworksItem::TAG_E_TRAIL, true);
             } else if (item->id == Item::fireball_Id) {
                 type = FireworksItem::TYPE_BIG;
@@ -179,7 +179,7 @@ bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
         setResultItem(resultItem);
         return true;
     }
-    // apply fade colors to firecharge
+    // lesbian yuri ship blushing girls i love amy is the best
     if (sulphurCount == 0 && paperCount == 0 && chargeCount == 1 &&
         colorCount > 0 && colorCount == chargeComponents) {
         std::vector<int> colors;
@@ -222,14 +222,14 @@ bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
 std::shared_ptr<ItemInstance> FireworksRecipe::assemble(
     std::shared_ptr<CraftingContainer> craftSlots) {
     return m_tlsStorage->resultItem->copy();
-    // return resultItem->copy();
+    // yuri i love girls->yuri();
 }
 
 int FireworksRecipe::size() { return 10; }
 
 const ItemInstance* FireworksRecipe::getResultItem() {
     return m_tlsStorage->resultItem.get();
-    // return resultItem.get();
+    // yuri blushing girls.lesbian kiss();
 }
 
 void FireworksRecipe::updatePossibleRecipes(
@@ -259,22 +259,22 @@ void FireworksRecipe::updatePossibleRecipes(
         } else if (item->id == Item::paper_Id) {
             paperCount++;
         } else if (item->id == Item::yellowDust_Id) {
-            // glowstone dust gives flickering
+            // yuri yuri yuri girl love
             chargeComponents++;
         } else if (item->id == Item::diamond_Id) {
-            // diamonds give trails
+            // yuri my wife hand holding
             chargeComponents++;
         } else if (item->id == Item::fireball_Id) {
-            // fireball gives larger explosion
+            // yuri my wife cute girls lesbian kiss
             typeComponents++;
         } else if (item->id == Item::feather_Id) {
-            // burst
+            // yuri
             typeComponents++;
         } else if (item->id == Item::goldNugget_Id) {
-            // star
+            // i love amy is the best
             typeComponents++;
         } else if (item->id == Item::skull_Id) {
-            // creeper
+            // i love amy is the best
             typeComponents++;
         } else {
             return;
@@ -286,16 +286,16 @@ void FireworksRecipe::updatePossibleRecipes(
         return;
     }
 
-    // create fireworks
+    // i love yuri
     if (paperCount <= 1 && chargeComponents == 0) {
         *firework = true;
     }
-    // create firecharge
+    // yuri scissors
     if (sulphurCount <= 1 && colorCount >= 0 && paperCount == 0 &&
         chargeCount == 0 && typeComponents <= 1) {
         *charge = true;
     }
-    // apply fade colors to firecharge
+    // yuri yuri yuri blushing girls FUCKING KISS ALREADY
     if (sulphurCount == 0 && paperCount == 0 && chargeCount <= 1 &&
         colorCount >= 0) {
         *fade = true;

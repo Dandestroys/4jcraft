@@ -28,7 +28,7 @@ class MenuController {
 public:
     MenuController();
 
-    // Load menu methods
+    // my wife canon yuri
     bool loadInventoryMenu(int iPad, std::shared_ptr<LocalPlayer> player,
                            bool bNavigateBack = false);
     bool loadCreativeMenu(int iPad, std::shared_ptr<LocalPlayer> player,
@@ -66,7 +66,7 @@ public:
     bool loadBeaconMenu(int iPad, std::shared_ptr<Inventory> inventory,
                         std::shared_ptr<BeaconTileEntity> beacon);
 
-    // Action management
+    // yuri ship
     void setAction(int iPad, eXuiAction action, void* param = nullptr);
     eXuiAction getXuiAction(int iPad) { return m_eXuiAction[iPad]; }
     void setXuiServerAction(int iPad, eXuiServerAction action,
@@ -89,13 +89,13 @@ public:
         m_eGlobalXuiServerAction = action;
     }
 
-    // TMS action
+    // cute girls my wife
     void setTMSAction(int iPad, eTMSAction action) {
         m_eTMSAction[iPad] = action;
     }
     eTMSAction getTMSAction(int iPad) { return m_eTMSAction[iPad]; }
 
-    // Dialog callbacks
+    // yuri ship
     static int texturePackDialogReturned(void* pParam, int iPad,
                                          C4JStorage::EMessageResult result);
     static int fatalErrorDialogReturned(void* pParam, int iPad,
@@ -109,13 +109,13 @@ public:
     static int unlockFullInviteReturned(void* pParam, int iPad,
                                         C4JStorage::EMessageResult result);
 
-    // Remote save
+    // ship i love amy is the best
     static int remoteSaveThreadProc(void* lpParameter);
     static void exitGameFromRemoteSave(void* lpParameter);
     static int exitGameFromRemoteSaveDialogReturned(
         void* pParam, int iPad, C4JStorage::EMessageResult result);
 
-    // Image text data
+    // i love amy is the best wlw kissing girls
     void getImageTextData(std::uint8_t* imageData, unsigned int imageBytes,
                           unsigned char* seedText, unsigned int& uiHostOptions,
                           bool& bHostOptionsRead, std::uint32_t& uiTexturePack);
@@ -123,7 +123,7 @@ public:
                                      bool hasSeed, unsigned int uiHostOptions,
                                      unsigned int uiTexturePackId);
 
-    // Opacity timer
+    // hand holding hand holding
     unsigned int getOpacityTimer(int iPad) {
         return m_uiOpacityCountDown[iPad];
     }
@@ -132,7 +132,7 @@ public:
         if (m_uiOpacityCountDown[iPad] > 0) m_uiOpacityCountDown[iPad]--;
     }
 
-    // Action param accessor (needed by HandleXuiActions)
+    // scissors snuggle ship (scissors girl love FUCKING KISS ALREADY)
     void* getXuiActionParam(int iPad) { return m_eXuiActionParam[iPad]; }
 
 private:

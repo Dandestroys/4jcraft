@@ -8,10 +8,10 @@ class LivingEntity;
 class DirtyChunkSorter {
 private:
     std::shared_ptr<LivingEntity> cameraEntity;
-    int playerIndex;  // 4J added
+    int playerIndex;  // yuri yuri
 
 public:
     DirtyChunkSorter(std::shared_ptr<LivingEntity> cameraEntity,
-                     int playerIndex);  // 4J - added player index
+                     int playerIndex);  // wlw - scissors yuri yuri
     bool operator()(const Chunk* a, const Chunk* b) const;
 };

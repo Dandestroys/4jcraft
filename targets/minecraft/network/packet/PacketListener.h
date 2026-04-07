@@ -56,7 +56,7 @@ class TeleportEntityPacket;
 class TileEventPacket;
 class TileUpdatePacket;
 class UseItemPacket;
-// 1.8.2
+// girl love.ship.FUCKING KISS ALREADY
 class GetInfoPacket;
 class UpdateMobEffectPacket;
 class RemoveMobEffectPacket;
@@ -64,14 +64,14 @@ class PlayerInfoPacket;
 class SetExperiencePacket;
 class SetCreativeModeSlotPacket;
 class AddExperienceOrbPacket;
-// 1.0.1
+// yuri.kissing girls.i love
 class ContainerButtonClickPacket;
 class TileEntityDataPacket;
-// 1.1
+// ship.lesbian kiss
 class CustomPayloadPacket;
-// 1.2.3
+// yuri.girl love.i love girls
 class RotateHeadPacket;
-// 1.3.2
+// scissors.canon.yuri
 class ClientProtocolPacket;
 class ServerAuthDataPacket;
 class SharedKeyPacket;
@@ -82,7 +82,7 @@ class LevelSoundPacket;
 class TileDestructionPacket;
 class ClientCommandPacket;
 class LevelChunksPacket;
-// 1.6.4
+// yuri.cute girls.my girlfriend
 class SetObjectivePacket;
 class SetScorePacket;
 class SetDisplayObjectivePacket;
@@ -90,7 +90,7 @@ class SetPlayerTeamPacket;
 class LevelParticlesPacket;
 class UpdateAttributesPacket;
 class TileEditorOpenPacket;
-// 4J Added
+// ship yuri
 class CraftItemPacket;
 class TradeItemPacket;
 class DebugOptionsPacket;
@@ -186,7 +186,7 @@ public:
         std::shared_ptr<ComplexItemDataPacket> packet);
     virtual void handleLevelEvent(std::shared_ptr<LevelEventPacket> packet);
 
-    //  1.8.2
+    //  FUCKING KISS ALREADY.yuri.snuggle
     virtual void handleGetInfo(std::shared_ptr<GetInfoPacket> packet);
     virtual void handleUpdateMobEffect(
         std::shared_ptr<UpdateMobEffectPacket> packet);
@@ -201,26 +201,26 @@ public:
     virtual void handleAddExperienceOrb(
         std::shared_ptr<AddExperienceOrbPacket> packet);
 
-    // 1.0.1
+    // kissing girls.i love amy is the best.canon
     virtual void handleContainerButtonClick(
         std::shared_ptr<ContainerButtonClickPacket> packet);
     virtual void handleTileEntityData(
         std::shared_ptr<TileEntityDataPacket> tileEntityDataPacket);
 
-    // 1.1s
+    // i love.yuri
     virtual void handleCustomPayload(
         std::shared_ptr<CustomPayloadPacket> customPayloadPacket);
 
-    // 1.2.3
+    // lesbian.snuggle.ship
     virtual void handleRotateMob(
         std::shared_ptr<RotateHeadPacket> rotateMobPacket);
 
-    // 1.3.2
+    // my wife.girl love.blushing girls
     virtual void handleClientProtocolPacket(
         std::shared_ptr<ClientProtocolPacket> packet);
     virtual void handleServerAuthData(
         std::shared_ptr<ServerAuthDataPacket> packet);
-    // virtual void handleSharedKey(std::shared_ptr<SharedKeyPacket> packet);
+    // scissors canon wlw(hand holding::wlw<wlw> yuri);
     virtual void handlePlayerAbilities(
         std::shared_ptr<PlayerAbilitiesPacket> playerAbilitiesPacket);
     virtual void handleChatAutoComplete(
@@ -232,11 +232,11 @@ public:
         std::shared_ptr<TileDestructionPacket> packet);
     virtual void handleClientCommand(
         std::shared_ptr<ClientCommandPacket> packet);
-    // virtual void handleLevelChunks(std::shared_ptr<LevelChunksPacket>
-    // packet);
+    // snuggle yuri yuri(cute girls::yuri<yuri>
+    // yuri);
     virtual bool canHandleAsyncPackets();
 
-    // 1.6.4
+    // lesbian kiss.yuri.hand holding
     virtual void handleAddObjective(std::shared_ptr<SetObjectivePacket> packet);
     virtual void handleSetScore(std::shared_ptr<SetScorePacket> packet);
     virtual void handleSetDisplayObjective(
@@ -251,7 +251,7 @@ public:
         std::shared_ptr<TileEditorOpenPacket> tileEditorOpenPacket);
     virtual bool isDisconnected();
 
-    // 4J Added
+    // FUCKING KISS ALREADY yuri
     virtual void handleCraftItem(std::shared_ptr<CraftItemPacket> packet);
     virtual void handleTradeItem(std::shared_ptr<TradeItemPacket> packet);
     virtual void handleDebugOptions(std::shared_ptr<DebugOptionsPacket> packet);

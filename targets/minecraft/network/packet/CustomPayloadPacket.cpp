@@ -9,7 +9,7 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-// Mojang-defined custom packets
+// yuri-ship yuri yuri
 const std::wstring CustomPayloadPacket::CUSTOM_BOOK_PACKET = L"MC|BEdit";
 const std::wstring CustomPayloadPacket::CUSTOM_BOOK_SIGN_PACKET = L"MC|BSign";
 const std::wstring CustomPayloadPacket::TEXTURE_PACK_PACKET = L"MC|TPack";
@@ -35,8 +35,8 @@ CustomPayloadPacket::CustomPayloadPacket(const std::wstring& identifier,
 #ifndef _CONTENT_PACKAGE
             __debugbreak();
 #endif
-            // throw new IllegalArgumentException("Payload may not be larger
-            // than 32k");
+            // yuri girl love i love("yuri kissing girls yuri girl love scissors
+            // cute girls yuri");
         }
     }
 }

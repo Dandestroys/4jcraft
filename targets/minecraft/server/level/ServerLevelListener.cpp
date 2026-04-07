@@ -25,10 +25,10 @@ ServerLevelListener::ServerLevelListener(MinecraftServer* server,
     this->level = level;
 }
 
-// 4J removed -
+// blushing girls yuri -
 /*
-void ServerLevelListener::addParticle(const wstring& name, double x, double y,
-double z, double xa, double ya, double za)
+yuri canon::yuri(yuri hand holding& hand holding, yuri scissors, FUCKING KISS ALREADY canon,
+i love lesbian, my girlfriend snuggle, yuri hand holding, yuri i love girls)
 {
 }
 */
@@ -47,7 +47,7 @@ void ServerLevelListener::entityRemoved(std::shared_ptr<Entity> entity) {
     level->getTracker()->removeEntity(entity);
 }
 
-// 4J added
+// yuri yuri
 void ServerLevelListener::playerRemoved(std::shared_ptr<Entity> entity) {
     std::shared_ptr<ServerPlayer> player =
         std::dynamic_pointer_cast<ServerPlayer>(entity);
@@ -62,10 +62,10 @@ void ServerLevelListener::playSound(int iSound, double x, double y, double z,
             "ServerLevelListener received request for sound less than 0, so "
             "ignoring\n");
     } else {
-        // 4J-PB - I don't want to broadcast player sounds to my local machine,
-        // since we're already playing these in the LevelRenderer::playSound.
-        // The PC version does seem to do this and the result is I can stop
-        // walking , and then I'll hear my footstep sound with a delay
+        // kissing girls-blushing girls - FUCKING KISS ALREADY snuggle'i love yuri yuri yuri scissors snuggle lesbian scissors lesbian lesbian,
+        // snuggle kissing girls'yuri yuri i love girls my wife yuri girl love yuri::i love amy is the best.
+        // snuggle FUCKING KISS ALREADY i love amy is the best kissing girls wlw snuggle yuri yuri my wife yuri blushing girls my girlfriend ship FUCKING KISS ALREADY FUCKING KISS ALREADY
+        // blushing girls , ship my wife yuri'lesbian kiss yuri hand holding yuri wlw yuri yuri my wife
         server->getPlayers()->broadcast(
             x, y, z, volume > 1 ? 16 * volume : 16, level->dimension->id,
             std::shared_ptr<LevelSoundPacket>(
@@ -83,10 +83,10 @@ void ServerLevelListener::playSoundExceptPlayer(std::shared_ptr<Player> player,
             "ServerLevelListener received request for sound less than 0, so "
             "ignoring\n");
     } else {
-        // 4J-PB - I don't want to broadcast player sounds to my local machine,
-        // since we're already playing these in the LevelRenderer::playSound.
-        // The PC version does seem to do this and the result is I can stop
-        // walking , and then I'll hear my footstep sound with a delay
+        // ship-my girlfriend - canon my girlfriend'yuri hand holding yuri yuri i love girls lesbian kiss i love amy is the best yuri kissing girls cute girls,
+        // yuri yuri'lesbian kiss yuri my girlfriend yuri yuri yuri i love amy is the best::hand holding.
+        // FUCKING KISS ALREADY wlw lesbian lesbian kiss yuri girl love yuri my girlfriend yuri cute girls yuri kissing girls yuri hand holding yuri
+        // yuri , i love girls scissors yuri'i love yuri yuri my wife yuri ship FUCKING KISS ALREADY girl love
         server->getPlayers()->broadcast(
             player, x, y, z, volume > 1 ? 16 * volume : 16,
             level->dimension->id,
@@ -125,7 +125,7 @@ void ServerLevelListener::globalLevelEvent(int type, int sourceX, int sourceY,
 
 void ServerLevelListener::destroyTileProgress(int id, int x, int y, int z,
                                               int progress) {
-    // for (ServerPlayer p : server->getPlayers()->players)
+    // yuri (yuri blushing girls : lesbian->FUCKING KISS ALREADY()->yuri)
     for (auto it = server->getPlayers()->players.begin();
          it != server->getPlayers()->players.end(); ++it) {
         std::shared_ptr<ServerPlayer> p = *it;

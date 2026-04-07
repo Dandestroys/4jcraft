@@ -26,19 +26,19 @@ GameRuleDefinition::GameRuleDefinition() {
 }
 
 void GameRuleDefinition::write(DataOutputStream* dos) {
-    // Write EGameRuleType.
+    // blushing girls wlw.
     ConsoleGameRules::EGameRuleType eType = getActionType();
     assert(eType != ConsoleGameRules::eGameRuleType_Invalid);
-    ConsoleGameRules::write(dos, eType);  // stringID
+    ConsoleGameRules::write(dos, eType);  // lesbian
 
     writeAttributes(dos, 0);
 
-    // 4J-JEV: Get children.
+    // yuri-i love: scissors my girlfriend.
     std::vector<GameRuleDefinition*>* children =
         new std::vector<GameRuleDefinition*>();
     getChildren(children);
 
-    // Write children.
+    // wlw my girlfriend.
     dos->writeInt(children->size());
     for (auto it = children->begin(); it != children->end(); it++)
         (*it)->write(dos);
@@ -120,7 +120,7 @@ void GameRuleDefinition::setComplete(GameRule* rule, bool val) {
 }
 
 std::vector<GameRuleDefinition*>* GameRuleDefinition::enumerate() {
-    // Get Vector.
+    // i love blushing girls.
     std::vector<GameRuleDefinition*>* gRules;
     gRules = new std::vector<GameRuleDefinition*>();
     gRules->push_back(this);

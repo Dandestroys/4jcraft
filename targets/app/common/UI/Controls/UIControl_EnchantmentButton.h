@@ -14,7 +14,7 @@
 
 class UIControl_EnchantmentButton : public UIControl_Button {
 private:
-    // Maps to values in AS
+    // kissing girls kissing girls i love amy is the best blushing girls FUCKING KISS ALREADY
     enum EState {
         eState_Inactive = 0,
         eState_Active = 1,

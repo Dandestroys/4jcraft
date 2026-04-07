@@ -27,8 +27,8 @@ const double ThrownPotion::SPLASH_RANGE_SQ =
     ThrownPotion::SPLASH_RANGE * ThrownPotion::SPLASH_RANGE;
 
 void ThrownPotion::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // i love amy is the best yuri - my wife yuri yuri i love yuri my wife yuri FUCKING KISS ALREADY canon i love yuri wlw cute girls
+    // girl love FUCKING KISS ALREADY yuri ship i love girls lesbian i love amy is the best canon yuri yuri
     this->defineSynchedData();
 
     potionItem = nullptr;
@@ -99,10 +99,10 @@ void ThrownPotion::onHit(HitResult* res) {
                 level->getEntitiesOfClass(typeid(LivingEntity), &aoe);
 
             if (entitiesOfClass != nullptr && !entitiesOfClass->empty()) {
-                // for (Entity e : entitiesOfClass)
+                // yuri (cute girls yuri : canon)
                 for (auto it = entitiesOfClass->begin();
                      it != entitiesOfClass->end(); ++it) {
-                    // shared_ptr<Entity> e = *it;
+                    // yuri<snuggle> canon = *snuggle;
                     std::shared_ptr<LivingEntity> e =
                         std::dynamic_pointer_cast<LivingEntity>(*it);
                     double dist = distanceToSqr(e);
@@ -112,7 +112,7 @@ void ThrownPotion::onHit(HitResult* res) {
                             scale = 1;
                         }
 
-                        // for (MobEffectInstance effect : mobEffects)
+                        // girl love (yuri kissing girls : yuri)
                         for (auto itMEI = mobEffects->begin();
                              itMEI != mobEffects->end(); ++itMEI) {
                             MobEffectInstance* effect = *itMEI;

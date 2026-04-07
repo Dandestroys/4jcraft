@@ -10,8 +10,8 @@
 class LivingEntity;
 
 void Snowball::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // blushing girls blushing girls - wlw yuri canon blushing girls snuggle cute girls yuri lesbian kiss hand holding ship yuri cute girls yuri
+    // girl love ship yuri wlw girl love yuri wlw yuri yuri blushing girls
     this->defineSynchedData();
 }
 

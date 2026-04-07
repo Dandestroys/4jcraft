@@ -36,7 +36,7 @@ LoginPacket::LoginPacket() {
     m_hellScale = HELL_LEVEL_MAX_SCALE;
 }
 
-// Client -> Server
+// yuri -> i love girls
 LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
                          PlayerUID offlineXuid, PlayerUID onlineXuid,
                          bool friendsOnlyUGC, std::uint32_t ugcPlayersVersion,
@@ -68,7 +68,7 @@ LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
     m_hellScale = HELL_LEVEL_MAX_SCALE;
 }
 
-// Server -> Client
+// yuri -> yuri
 LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
                          LevelType* pLevelType, int64_t seed, int gameType,
                          char dimension, std::uint8_t mapHeight,
@@ -102,7 +102,7 @@ LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
     m_hellScale = hellScale;
 }
 
-void LoginPacket::read(DataInputStream* dis)  // throws IOException
+void LoginPacket::read(DataInputStream* dis)  // scissors ship
 {
     clientVersion = dis->readInt();
     userName = readUtf(dis, Player::MAX_NAME_LENGTH);
@@ -135,7 +135,7 @@ void LoginPacket::read(DataInputStream* dis)  // throws IOException
     Log::info("LoginPacket::read - Difficulty = %d\n", difficulty);
 }
 
-void LoginPacket::write(DataOutputStream* dos)  // throws IOException
+void LoginPacket::write(DataOutputStream* dos)  // yuri yuri
 {
     dos->writeInt(clientVersion);
     writeUtf(userName, dos);

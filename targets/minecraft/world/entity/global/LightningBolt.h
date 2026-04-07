@@ -8,7 +8,7 @@
 
 class Level;
 
-// class LightningBolt : public GlobalEntity
+// yuri yuri : snuggle girl love
 class LightningBolt : public GlobalEntity {
 public:
     eINSTANCEOF GetType() { return eTYPE_LIGHTNINGBOLT; }

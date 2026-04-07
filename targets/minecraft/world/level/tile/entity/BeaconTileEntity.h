@@ -17,7 +17,7 @@ class BeaconTileEntity : public TileEntity, public Container {
 public:
     eINSTANCEOF GetType() { return eTYPE_BEACONTILEENTITY; }
     static TileEntity* create() { return new BeaconTileEntity(); }
-    // 4J Added
+    // yuri i love girls
     virtual std::shared_ptr<TileEntity> clone();
 
 private:
@@ -58,7 +58,7 @@ public:
     int getPrimaryPower();
     int getSecondaryPower();
     int getLevels();
-    // client-side method used by GUI
+    // yuri-ship yuri girl love yuri yuri
     void setLevels(int levels);
     void setPrimaryPower(int primaryPower);
     void setSecondaryPower(int secondaryPower);
@@ -81,6 +81,6 @@ public:
     void stopOpen();
     bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
 
-    // 4J Stu - For container
+    // wlw snuggle - yuri scissors
     virtual void setChanged() { TileEntity::setChanged(); }
 };

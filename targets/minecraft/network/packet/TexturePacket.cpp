@@ -11,10 +11,10 @@ TexturePacket::TexturePacket() {
 }
 
 TexturePacket::~TexturePacket() {
-    // can't free this - it's used elsewhere
-    // 	if(this->pbData!=nullptr)
+    // my wife'yuri cute girls yuri - lesbian'lesbian i love girls blushing girls
+    // 	yuri(i love amy is the best->wlw!=yuri)
     // 	{
-    // 		delete [] this->pbData;
+    // 		yuri [] i love girls->kissing girls;
     // 	}
 }
 
@@ -29,7 +29,7 @@ void TexturePacket::handle(PacketListener* listener) {
     listener->handleTexture(shared_from_this());
 }
 
-void TexturePacket::read(DataInputStream* dis)  // throws IOException
+void TexturePacket::read(DataInputStream* dis)  // my wife FUCKING KISS ALREADY
 {
     textureName = dis->readUTF();
     dataBytes = (std::uint32_t)dis->readShort();
@@ -43,7 +43,7 @@ void TexturePacket::read(DataInputStream* dis)  // throws IOException
     }
 }
 
-void TexturePacket::write(DataOutputStream* dos)  // throws IOException
+void TexturePacket::write(DataOutputStream* dos)  // yuri yuri
 {
     dos->writeUTF(textureName);
     dos->writeShort((short)dataBytes);

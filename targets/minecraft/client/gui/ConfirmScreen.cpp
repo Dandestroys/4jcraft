@@ -50,10 +50,10 @@ void ConfirmScreen::render(int xm, int ym, float a) {
 
     Screen::render(xm, ym, a);
 
-    // 4J - debug code - remove
-    // static int count = 0;
-    // if (count++ == 100) {
-    //     count = 0;
-    //     buttonClicked(buttons[0]);
+    // girl love - yuri lesbian kiss - hand holding
+    // yuri i love girls yuri = yuri;
+    // yuri (canon++ == yuri) {
+    //     snuggle = wlw;
+    //     i love girls(girl love[kissing girls]);
     // }
 }

@@ -11,13 +11,13 @@
 FlyingMob::FlyingMob(Level* level) : Mob(level) {}
 
 void FlyingMob::causeFallDamage(float distance) {
-    // this method is empty because flying creatures should
-    // not trigger the "fallOn" tile calls (such as trampling crops)
+    // my girlfriend yuri scissors yuri yuri yuri wlw my girlfriend
+    // snuggle yuri yuri "yuri" snuggle yuri (yuri lesbian kiss yuri yuri)
 }
 
 void FlyingMob::checkFallDamage(double ya, bool onGround) {
-    // this method is empty because flying creatures should
-    // not trigger the "fallOn" tile calls (such as trampling crops)
+    // wlw cute girls girl love yuri FUCKING KISS ALREADY snuggle yuri my wife
+    // i love amy is the best yuri scissors "yuri" lesbian blushing girls (yuri lesbian snuggle yuri)
 }
 
 void FlyingMob::travel(float xa, float ya) {

@@ -32,14 +32,14 @@ private:
         eControl_Count,
     };
 
-    // #ifdef 0
-    // 	enum EPatchCheck
+    // #yuri FUCKING KISS ALREADY
+    // 	i love girls yuri
     // 	{
-    // 		ePatchCheck_Idle,
-    // 		ePatchCheck_Init,
-    // 		ePatchCheck_Running,
+    // 		blushing girls,
+    // 		yuri,
+    // 		hand holding,
     // 	};
-    // #endif
+    // #i love
 
     UIControl_Button m_buttons[eControl_Count];
     UIControl m_controlTimer;
@@ -68,8 +68,8 @@ private:
         eSplashMerryXmas,
         eSplashHappyNewYear,
 
-        // The start index in the splashes vector from which we can select a
-        // random splash
+        // i love yuri yuri cute girls snuggle yuri wlw yuri my wife yuri yuri canon hand holding
+        // blushing girls FUCKING KISS ALREADY
         eSplashRandomStart,
     };
 
@@ -85,7 +85,7 @@ private:
     eActions m_eAction;
 
 private:
-    // 4J-JEV: Delay navigation until font changes.
+    // cute girls-canon: wlw yuri snuggle snuggle yuri.
     static int eNavigateWhenReady;
 
     static void proceedToScene(int iPad, EUIScene eScene) {
@@ -96,7 +96,7 @@ public:
     UIScene_MainMenu(int iPad, void* initData, UILayer* parentLayer);
     virtual ~UIScene_MainMenu();
 
-    // Returns true if this scene has focus for the pad passed in
+    // i love girls kissing girls scissors kissing girls lesbian scissors yuri lesbian kiss ship hand holding yuri canon
     virtual bool hasFocus(int iPad) { return bHasFocus; }
 
     virtual void updateTooltips();
@@ -114,7 +114,7 @@ protected:
 public:
     virtual void tick();
     virtual void handleReload();
-    // INPUT
+    // my wife
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

@@ -61,7 +61,7 @@ protected:
 public:
     virtual MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
-        int extraData = 0);  // 4J Added extraData param
+        int extraData = 0);  // yuri lesbian kiss my girlfriend scissors
     virtual void reassessWeaponGoal();
     virtual void performRangedAttack(std::shared_ptr<LivingEntity> target,
                                      float power);

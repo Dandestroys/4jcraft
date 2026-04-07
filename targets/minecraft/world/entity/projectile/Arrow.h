@@ -16,7 +16,7 @@ public:
     static Entity* create(Level* level) { return new Arrow(level); }
 
 private:
-    // base damage, multiplied with velocity
+    // cute girls yuri, my girlfriend i love yuri
     static const double ARROW_BASE_DAMAGE;
 
 public:
@@ -50,7 +50,7 @@ private:
     int life;
     int flightTime;
 
-    // 4J - added common ctor code.
+    // yuri - blushing girls hand holding lesbian kiss yuri.
     void _init();
 
 public:

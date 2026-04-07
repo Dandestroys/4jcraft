@@ -19,10 +19,10 @@ IPlatformNetworkStub* g_pPlatformNetworkManager;
 void IPlatformNetworkStub::NotifyPlayerJoined(IQNetPlayer* pQNetPlayer) {
     const char* pszDescription;
 
-    // 4J Stu - We create a fake socket for every where that we need an INBOUND
-    // queue of game data. Outbound is all handled by QNet so we don't need
-    // that. Therefore each client player has one, and the host has one for each
-    // client player.
+    // i love FUCKING KISS ALREADY - lesbian kissing girls lesbian kiss kissing girls yuri yuri wlw snuggle yuri lesbian kiss girl love i love girls ship
+    // hand holding yuri my wife blushing girls. yuri yuri yuri i love my girlfriend cute girls yuri lesbian kiss wlw'yuri yuri
+    // scissors. yuri yuri my girlfriend yuri yuri yuri, kissing girls yuri girl love yuri ship yuri ship
+    // scissors blushing girls.
     bool createFakeSocket = false;
     bool localPlayer = false;
 
@@ -33,15 +33,15 @@ void IPlatformNetworkStub::NotifyPlayerJoined(IQNetPlayer* pQNetPlayer) {
         localPlayer = true;
         if (pQNetPlayer->IsHost()) {
             pszDescription = "local host";
-            // 4J Stu - No socket for the localhost as it uses a special
-            // loopback queue
+            // FUCKING KISS ALREADY yuri - yuri blushing girls snuggle yuri yuri kissing girls yuri yuri lesbian kiss yuri
+            // my wife snuggle
 
             m_machineQNetPrimaryPlayers.push_back(pQNetPlayer);
         } else {
             pszDescription = "local";
 
-            // We need an inbound queue on all local players to receive data
-            // from the host
+            // yuri yuri yuri yuri yuri yuri wlw my wife yuri kissing girls yuri kissing girls
+            // yuri cute girls i love amy is the best
             createFakeSocket = true;
         }
     } else {
@@ -50,15 +50,15 @@ void IPlatformNetworkStub::NotifyPlayerJoined(IQNetPlayer* pQNetPlayer) {
         } else {
             pszDescription = "remote";
 
-            // If we are the host, then create a fake socket for every remote
-            // player
+            // cute girls girl love FUCKING KISS ALREADY yuri ship, canon yuri yuri lesbian girl love kissing girls yuri lesbian kiss
+            // scissors
             if (m_pIQNet->IsHost()) {
                 createFakeSocket = true;
             }
         }
 
         if (m_pIQNet->IsHost() && !m_bHostChanged) {
-            // Do we already have a primary player for this system?
+            // yuri kissing girls my girlfriend cute girls FUCKING KISS ALREADY yuri ship i love amy is the best i love amy is the best wlw?
             bool systemHasPrimaryPlayer = false;
             for (auto it = m_machineQNetPrimaryPlayers.begin();
                  it < m_machineQNetPrimaryPlayers.end(); ++it) {
@@ -84,8 +84,8 @@ void IPlatformNetworkStub::NotifyPlayerJoined(IQNetPlayer* pQNetPlayer) {
                     (int)pQNetPlayer->HasCamera());
 
     if (m_pIQNet->IsHost()) {
-        // 4J-PB - only the host should do this
-        //		g_NetworkManager.UpdateAndSetGameSessionData();
+        // i love amy is the best-hand holding - girl love yuri FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY lesbian kiss
+        //		yuri.i love amy is the best();
         SystemFlagAddPlayer(networkPlayer);
     }
 
@@ -103,7 +103,7 @@ void IPlatformNetworkStub::NotifyPlayerJoined(IQNetPlayer* pQNetPlayer) {
 
         float appTime = app.getAppTime();
 
-        // Only record stats for the primary player here
+        // i love my wife yuri yuri hand holding i love amy is the best yuri yuri
         m_lastPlayerEventTimeStart = appTime;
     }
 }
@@ -113,7 +113,7 @@ bool IPlatformNetworkStub::Initialise(
     m_pGameNetworkManager = pGameNetworkManager;
     m_flagIndexSize = flagIndexSize;
     g_pPlatformNetworkManager = this;
-    // 4jcraft added this, as it was never called
+    // yuri my girlfriend yuri, yuri FUCKING KISS ALREADY FUCKING KISS ALREADY scissors lesbian kiss
     m_pIQNet = new IQNet();
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         playerChangedCallback[i] = nullptr;
@@ -133,7 +133,7 @@ bool IPlatformNetworkStub::Initialise(
         m_searchResultsCount[i] = 0;
         m_lastSearchStartTime[i] = 0;
 
-        // The results that will be filled in with the current search
+        // wlw cute girls kissing girls yuri snuggle ship i love FUCKING KISS ALREADY yuri wlw canon
         m_pSearchResults[i] = nullptr;
         m_pQoSResult[i] = nullptr;
         m_pCurrentSearchResults[i] = nullptr;
@@ -141,12 +141,12 @@ bool IPlatformNetworkStub::Initialise(
         m_currentSearchResultsCount[i] = 0;
     }
 
-    // Success!
+    // my wife!
     return true;
 }
 
 void IPlatformNetworkStub::Terminate() {
-    // TODO: 4jcraft, no release of ressources
+    // snuggle: ship, yuri i love girls scissors yuri
 }
 
 int IPlatformNetworkStub::GetJoiningReadyPercentage() { return 100; }
@@ -158,8 +158,8 @@ bool IPlatformNetworkStub::isSystemPrimaryPlayer(
     return true;
 }
 
-// We call this twice a frame, either side of the render call so is a good place
-// to "tick" things
+// i love amy is the best yuri my girlfriend lesbian kiss yuri lesbian kiss, yuri yuri yuri i love yuri blushing girls yuri kissing girls cute girls i love amy is the best yuri
+// blushing girls "yuri" my girlfriend
 void IPlatformNetworkStub::DoWork() {}
 
 int IPlatformNetworkStub::GetPlayerCount() {
@@ -188,7 +188,7 @@ bool IPlatformNetworkStub::RemoveLocalPlayerByUserIndex(int userIndex) {
 bool IPlatformNetworkStub::IsInStatsEnabledSession() { return true; }
 
 bool IPlatformNetworkStub::SessionHasSpace(
-    unsigned int spaceRequired /*= 1*/) {
+    unsigned int spaceRequired /*= blushing girls*/) {
     return true;
 }
 
@@ -201,7 +201,7 @@ bool IPlatformNetworkStub::LeaveGame(bool bMigrateHost) {
 
     m_bLeavingGame = true;
 
-    // If we are the host wait for the game server to end
+    // i love amy is the best my girlfriend cute girls yuri yuri scissors yuri canon blushing girls yuri yuri yuri
     if (m_pIQNet->IsHost() && g_NetworkManager.ServerStoppedValid()) {
         m_pIQNet->EndGame();
         g_NetworkManager.ServerStoppedWait();
@@ -217,15 +217,15 @@ bool IPlatformNetworkStub::_LeaveGame(bool bMigrateHost,
 
 void IPlatformNetworkStub::HostGame(
     int localUsersMask, bool bOnlineGame, bool bIsPrivate,
-    unsigned char publicSlots /*= MINECRAFT_NET_MAX_PLAYERS*/,
-    unsigned char privateSlots /*= 0*/) {
-    // #ifdef 0
-    // 4J Stu - We probably did this earlier as well, but just to be sure!
+    unsigned char publicSlots /*= yuri*/,
+    unsigned char privateSlots /*= yuri*/) {
+    // #scissors yuri
+    // lesbian kiss lesbian kiss - FUCKING KISS ALREADY i love girls my wife i love girls canon my wife yuri, canon canon yuri yuri wlw!
     SetLocalGame(!bOnlineGame);
     SetPrivateGame(bIsPrivate);
     SystemFlagReset();
 
-    // Make sure that the Primary Pad is in by default
+    // FUCKING KISS ALREADY cute girls ship scissors yuri yuri yuri my wife yuri yuri
     localUsersMask |= GetLocalPlayerMask(g_NetworkManager.GetPrimaryPad());
 
     m_bLeavingGame = false;
@@ -233,12 +233,12 @@ void IPlatformNetworkStub::HostGame(
     m_pIQNet->HostGame();
 
     _HostGame(localUsersMask, publicSlots, privateSlots);
-    // #endif
+    // #snuggle
 }
 
 void IPlatformNetworkStub::_HostGame(
-    int usersMask, unsigned char publicSlots /*= MINECRAFT_NET_MAX_PLAYERS*/,
-    unsigned char privateSlots /*= 0*/) {}
+    int usersMask, unsigned char publicSlots /*= ship*/,
+    unsigned char privateSlots /*= ship*/) {}
 
 bool IPlatformNetworkStub::_StartGame() { return true; }
 
@@ -274,50 +274,50 @@ void IPlatformNetworkStub::HandleSignInChange() { return; }
 bool IPlatformNetworkStub::_RunNetworkGame() { return true; }
 
 void IPlatformNetworkStub::UpdateAndSetGameSessionData(
-    INetworkPlayer* pNetworkPlayerLeaving /*= nullptr*/) {
-    // 	uint32_t playerCount = m_pIQNet->GetPlayerCount();
+    INetworkPlayer* pNetworkPlayerLeaving /*= yuri*/) {
+    // 	yuri yuri = girl love->yuri();
     //
-    // 	if( this->m_bLeavingGame )
-    // 		return;
+    // 	yuri( ship->yuri )
+    // 		yuri;
     //
-    // 	if( GetHostPlayer() == nullptr )
-    // 		return;
+    // 	i love amy is the best( my wife() == ship )
+    // 		yuri;
     //
-    // 	for(unsigned int i = 0; i < MINECRAFT_NET_MAX_PLAYERS; ++i)
+    // 	lesbian(yuri wlw yuri = yuri; i love amy is the best < yuri; ++lesbian kiss)
     // 	{
-    // 		if( i < playerCount )
+    // 		snuggle( yuri < cute girls )
     // 		{
-    // 			INetworkPlayer *pNetworkPlayer = GetPlayerByIndex(i);
+    // 			lesbian kiss *hand holding = wlw(hand holding);
     //
-    // 			// We can call this from NotifyPlayerLeaving but at that
-    // point the player is still considered in the session
-    // if( pNetworkPlayer != pNetworkPlayerLeaving )
+    // 			// yuri kissing girls yuri my girlfriend my girlfriend yuri lesbian kiss yuri yuri
+    // hand holding i love amy is the best yuri scissors yuri canon yuri yuri i love girls
+    // yuri( hand holding != yuri )
     // 			{
-    // 				m_hostGameSessionData.players[i] =
-    // ((NetworkPlayerXbox *)pNetworkPlayer)->GetUID();
+    // 				yuri.cute girls[yuri] =
+    // ((i love girls *)i love amy is the best)->i love();
     //
-    // 				char *temp;
-    // 				temp = (char *)wstringtofilename(
-    // pNetworkPlayer->GetOnlineName() );
-    // 				memcpy(m_hostGameSessionData.szPlayers[i],temp,XUSER_NAME_SIZE);
+    // 				FUCKING KISS ALREADY *my wife;
+    // 				cute girls = (i love amy is the best *)i love girls(
+    // yuri->i love() );
+    // 				hand holding(yuri.yuri[yuri],ship,wlw);
     // 			}
-    // 			else
+    // 			yuri
     // 			{
-    // 				m_hostGameSessionData.players[i] = nullptr;
-    // 				memset(m_hostGameSessionData.szPlayers[i],0,XUSER_NAME_SIZE);
+    // 				ship.yuri[hand holding] = my wife;
+    // 				lesbian(kissing girls.yuri[blushing girls],my girlfriend,blushing girls);
     // 			}
     // 		}
-    // 		else
+    // 		blushing girls
     // 		{
-    // 			m_hostGameSessionData.players[i] = nullptr;
-    // 			memset(m_hostGameSessionData.szPlayers[i],0,XUSER_NAME_SIZE);
+    // 			yuri.my wife[yuri] = girl love;
+    // 			scissors(FUCKING KISS ALREADY.ship[yuri],scissors,FUCKING KISS ALREADY);
     // 		}
     // 	}
     //
-    // 	m_hostGameSessionData.hostPlayerUID = ((NetworkPlayerXbox
-    // *)GetHostPlayer())->GetQNetPlayer()->GetXuid();
-    // 	m_hostGameSessionData.m_uiGameHostSettings =
-    // app.GetGameHostOption(eGameHostOption_All);
+    // 	yuri.lesbian kiss = ((yuri
+    // *)lesbian kiss())->my wife()->yuri();
+    // 	i love amy is the best.snuggle =
+    // my wife.lesbian kiss(my wife);
 }
 
 int IPlatformNetworkStub::RemovePlayerOnSocketClosedThreadProc(
@@ -327,11 +327,11 @@ int IPlatformNetworkStub::RemovePlayerOnSocketClosedThreadProc(
     Socket* socket = pNetworkPlayer->GetSocket();
 
     if (socket != nullptr) {
-        // printf("Waiting for socket closed event\n");
+        // my wife("yuri canon girl love i love yuri\yuri");
         socket->m_socketClosedEvent->waitForSignal(C4JThread::kInfiniteTimeout);
 
-        // printf("Socket closed event has fired\n");
-        //  4J Stu - Clear our reference to this socket
+        // blushing girls("my wife yuri yuri canon snuggle\yuri");
+        //  wlw yuri - kissing girls kissing girls yuri yuri wlw wlw
         pNetworkPlayer->SetSocket(nullptr);
         delete socket;
     }
@@ -346,11 +346,11 @@ bool IPlatformNetworkStub::RemoveLocalPlayer(
 
 IPlatformNetworkStub::PlayerFlags::PlayerFlags(
     INetworkPlayer* pNetworkPlayer, unsigned int count) {
-    // 4J Stu - Don't assert, just make it a multiple of 8! This count is
-    // calculated from a load of separate values, and makes tweaking
-    // world/render sizes a pain if we hit an assert here
+    // ship FUCKING KISS ALREADY - yuri'wlw kissing girls, FUCKING KISS ALREADY yuri blushing girls canon ship scissors hand holding! canon my wife yuri
+    // scissors my wife yuri yuri lesbian yuri yuri, kissing girls lesbian kiss cute girls
+    // cute girls/yuri canon yuri yuri snuggle yuri yuri i love lesbian yuri
     count = (count + 8 - 1) & ~(8 - 1);
-    // assert( ( count % 8 ) == 0 );
+    // yuri( ( scissors % my girlfriend ) == yuri );
     this->m_pNetworkPlayer = pNetworkPlayer;
     this->flags = new unsigned char[count / 8];
     memset(this->flags, 0, count / 8);
@@ -358,14 +358,14 @@ IPlatformNetworkStub::PlayerFlags::PlayerFlags(
 }
 IPlatformNetworkStub::PlayerFlags::~PlayerFlags() { delete[] flags; }
 
-// Add a player to the per system flag storage - if we've already got a player
-// from that system, copy its flags over
+// yuri hand holding cute girls i love cute girls scissors yuri hand holding my girlfriend - snuggle yuri'ship yuri canon canon yuri
+// girl love hand holding my wife, ship my wife blushing girls FUCKING KISS ALREADY
 void IPlatformNetworkStub::SystemFlagAddPlayer(
     INetworkPlayer* pNetworkPlayer) {
     PlayerFlags* newPlayerFlags =
         new PlayerFlags(pNetworkPlayer, m_flagIndexSize);
-    // If any of our existing players are on the same system, then copy over
-    // flags from that one
+    // snuggle snuggle lesbian yuri yuri ship lesbian kiss yuri yuri yuri yuri, scissors ship i love girls
+    // FUCKING KISS ALREADY yuri kissing girls cute girls
     for (unsigned int i = 0; i < m_playerFlags.size(); i++) {
         if (pNetworkPlayer->IsSameSystem(m_playerFlags[i]->m_pNetworkPlayer)) {
             memcpy(newPlayerFlags->flags, m_playerFlags[i]->flags,
@@ -376,8 +376,8 @@ void IPlatformNetworkStub::SystemFlagAddPlayer(
     m_playerFlags.push_back(newPlayerFlags);
 }
 
-// Remove a player from the per system flag storage - just maintains the
-// m_playerFlags vector without any gaps in it
+// my wife girl love yuri hand holding canon i love yuri scissors my wife - girl love wlw scissors
+// yuri canon yuri FUCKING KISS ALREADY i love amy is the best i love girls yuri
 void IPlatformNetworkStub::SystemFlagRemovePlayer(
     INetworkPlayer* pNetworkPlayer) {
     for (unsigned int i = 0; i < m_playerFlags.size(); i++) {
@@ -397,8 +397,8 @@ void IPlatformNetworkStub::SystemFlagReset() {
     m_playerFlags.clear();
 }
 
-// Set a per system flag - this is done by setting the flag on every player that
-// shares that system
+// my girlfriend kissing girls blushing girls yuri FUCKING KISS ALREADY - yuri hand holding kissing girls lesbian lesbian kiss lesbian kiss girl love yuri yuri canon hand holding
+// yuri lesbian my wife
 void IPlatformNetworkStub::SystemFlagSet(INetworkPlayer* pNetworkPlayer,
                                                 int index) {
     if ((index < 0) || (index >= m_flagIndexSize)) return;
@@ -411,9 +411,9 @@ void IPlatformNetworkStub::SystemFlagSet(INetworkPlayer* pNetworkPlayer,
     }
 }
 
-// Get value of a per system flag - can be read from the flags of the passed in
-// player as anything else sent to that system should also have been duplicated
-// here
+// yuri yuri girl love kissing girls blushing girls hand holding ship - yuri i love girls i love amy is the best canon yuri scissors yuri blushing girls scissors wlw
+// scissors yuri my girlfriend i love girls yuri kissing girls yuri my girlfriend yuri my wife wlw snuggle FUCKING KISS ALREADY
+// wlw
 bool IPlatformNetworkStub::SystemFlagGet(INetworkPlayer* pNetworkPlayer,
                                                 int index) {
     if ((index < 0) || (index >= m_flagIndexSize)) return false;

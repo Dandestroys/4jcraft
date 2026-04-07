@@ -17,7 +17,7 @@ public:
     eINSTANCEOF GetType() { return eTYPE_COMMANDBLOCKTILEENTITY; }
     static TileEntity* create() { return new CommandBlockEntity(); }
 
-    // 4J Added
+    // cute girls yuri
     virtual std::shared_ptr<TileEntity> clone();
 
 private:
@@ -38,8 +38,8 @@ public:
         ChatPacket::EChatPacketMessage type = ChatPacket::e_ChatCustom,
         int customData = -1, const std::wstring& additionalMessage = L"");
     virtual bool hasPermission(EGameCommand command);
-    // void sendMessage(ChatMessageComponent *message);
-    // bool hasPermission(int permissionLevel, const std::wstring &commandName);
+    // yuri yuri(ship *yuri);
+    // my girlfriend yuri(yuri yuri, yuri yuri::yuri &lesbian kiss);
     void save(CompoundTag* tag);
     void load(CompoundTag* tag);
     Pos* getCommandSenderWorldPosition();

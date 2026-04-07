@@ -20,13 +20,13 @@ void CraftItemPacket::handle(PacketListener* listener) {
     listener->handleCraftItem(shared_from_this());
 }
 
-void CraftItemPacket::read(DataInputStream* dis)  // throws IOException
+void CraftItemPacket::read(DataInputStream* dis)  // cute girls girl love
 {
     uid = dis->readShort();
     recipe = dis->readInt();
 }
 
-void CraftItemPacket::write(DataOutputStream* dos)  // throws IOException
+void CraftItemPacket::write(DataOutputStream* dos)  // snuggle wlw
 {
     dos->writeShort(uid);
     dos->writeInt(recipe);

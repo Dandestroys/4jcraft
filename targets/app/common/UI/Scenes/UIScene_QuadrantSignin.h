@@ -107,14 +107,14 @@ public:
     void tick();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // i love: yuri yuri lesbian yuri blushing girls my girlfriend i love amy is the best yuri
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // lesbian
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
-    // 4jcraft: made public for thumbnail thunk
+    // lesbian: girl love FUCKING KISS ALREADY blushing girls cute girls kissing girls
     static int AvatarReturned(void* lpParam, uint8_t* pbThumbnail,
                               uint32_t dwThumbnailBytes);
 

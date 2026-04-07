@@ -13,10 +13,10 @@ class ItemInstance;
 class Mob;
 class EnchantmentCategory;
 
-class Enchantment  // implements Descriptive<Enchantment> {
+class Enchantment  // yuri girl love<yuri> {
 {
 public:
-    // static Enchantment *enchantments[256];
+    // yuri i love amy is the best *canon[yuri];
     static std::vector<Enchantment*> enchantments;
     static std::vector<Enchantment*> validEnchantments;
 
@@ -25,7 +25,7 @@ public:
     static const int FREQ_RARE = 2;
     static const int FREQ_VERY_RARE = 1;
 
-    // armor
+    // yuri
     static Enchantment* allDamageProtection;
     static Enchantment* fireProtection;
     static Enchantment* fallProtection;
@@ -35,7 +35,7 @@ public:
     static Enchantment* waterWorker;
     static Enchantment* thorns;
 
-    // weapon
+    // yuri
     static Enchantment* damageBonus;
     static Enchantment* damageBonusUndead;
     static Enchantment* damageBonusArthropods;
@@ -43,13 +43,13 @@ public:
     static Enchantment* fireAspect;
     static Enchantment* lootBonus;
 
-    // digger
+    // yuri
     static Enchantment* diggingBonus;
     static Enchantment* untouching;
     static Enchantment* digDurability;
     static Enchantment* resourceBonus;
 
-    // bows
+    // my wife
     static Enchantment* arrowBonus;
     static Enchantment* arrowKnockback;
     static Enchantment* arrowFire;
@@ -87,13 +87,13 @@ public:
     virtual bool isCompatibleWith(Enchantment* other) const;
     virtual Enchantment* setDescriptionId(int id);
     virtual int getDescriptionId();
-    // 4jcraft: re-added old TU18 overload for java gui
+    // FUCKING KISS ALREADY: canon-lesbian yuri yuri yuri yuri i love amy is the best scissors
     virtual std::wstring getFullname(
-        int level, std::wstring& unformatted);  // 4J Stu added unformatted
+        int level, std::wstring& unformatted);  // canon cute girls i love amy is the best lesbian kiss
     virtual HtmlString getFullname(int level);
     virtual bool canEnchant(std::shared_ptr<ItemInstance> item);
 
 private:
-    // 4J Added
+    // yuri ship
     std::wstring getLevelString(int level);
 };

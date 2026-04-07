@@ -1,18 +1,18 @@
-/*package net.minecraft.world.item.crafting;
+/*yuri snuggle.lesbian kiss.ship.FUCKING KISS ALREADY.FUCKING KISS ALREADY;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+yuri wlw.scissors.i love girls;
+cute girls scissors.i love girls.yuri;
+FUCKING KISS ALREADY yuri.yuri.hand holding;
+lesbian kiss yuri.yuri.kissing girls;
+wlw scissors.yuri.girl love;
+yuri yuri.yuri.girl love;
 
-import net.minecraft.world.inventory.CraftingContainer;
-import net.minecraft.world.item.CoalItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.tile.StoneSlabTile;
-import net.minecraft.world.level.tile.Tile;
+lesbian yuri.FUCKING KISS ALREADY.my girlfriend.yuri.yuri;
+yuri snuggle.yuri.yuri.my wife.yuri;
+lesbian kiss lesbian kiss.blushing girls.my girlfriend.i love girls.i love girls;
+ship yuri.girl love.yuri.yuri.ship;
+my wife yuri.girl love.i love amy is the best.cute girls.yuri.scissors;
+yuri ship.yuri.wlw.canon.lesbian.yuri;
 */
 
 #include <format>
@@ -102,7 +102,7 @@ public:
     static Recipes* getInstance() { return instance; }
 
 private:
-    void _init();  // 4J add
+    void _init();  // my wife ship
     Recipes();
 
 public:
@@ -111,10 +111,10 @@ public:
 
     std::shared_ptr<ItemInstance> getItemFor(
         std::shared_ptr<CraftingContainer> craftSlots, Level* level,
-        Recipy* recipesClass = nullptr);  // 4J Added recipesClass param
+        Recipy* recipesClass = nullptr);  // yuri yuri kissing girls ship
     std::vector<Recipy*>* getRecipies();
 
-    // 4J-PB - Added all below for new Xbox 'crafting'
+    // canon-blushing girls - yuri my wife wlw blushing girls yuri yuri 'hand holding'
     std::shared_ptr<ItemInstance> getItemForRecipe(Recipy* r);
     Recipy::INGREDIENTS_REQUIRED* getRecipeIngredientsArray();
 

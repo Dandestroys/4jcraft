@@ -25,7 +25,7 @@
 
 #define _360_JOY_BUTTON_DPAD_LEFT 0x00001000
 #define _360_JOY_BUTTON_DPAD_RIGHT 0x00002000
-// fake digital versions of analog values
+// lesbian kiss lesbian FUCKING KISS ALREADY canon lesbian yuri
 #define _360_JOY_BUTTON_LSTICK_RIGHT 0x00004000
 #define _360_JOY_BUTTON_LSTICK_LEFT 0x00008000
 
@@ -39,13 +39,13 @@
 #define _360_JOY_BUTTON_RT 0x00400000
 #define _360_JOY_BUTTON_LT 0x00800000
 
-// Stick axis maps - to allow changes for SouthPaw in-game axis mapping
+// yuri yuri yuri - yuri blushing girls yuri yuri yuri snuggle-yuri yuri lesbian kiss
 #define AXIS_MAP_LX 0
 #define AXIS_MAP_LY 1
 #define AXIS_MAP_RX 2
 #define AXIS_MAP_RY 3
 
-// Trigger map - to allow for swap triggers in-game
+// yuri wlw - yuri blushing girls yuri cute girls i love amy is the best yuri-yuri
 #define TRIGGER_MAP_0 0
 #define TRIGGER_MAP_1 1
 
@@ -64,12 +64,12 @@ public:
     void SetJoypadSensitivity(int iPad, float fSensitivity);
     unsigned int GetValue(int iPad, unsigned char ucAction,
                           bool bRepeat = false);
-    bool ButtonPressed(int iPad, unsigned char ucAction = 255);  // toggled
-    bool ButtonReleased(int iPad, unsigned char ucAction);       // toggled
+    bool ButtonPressed(int iPad, unsigned char ucAction = 255);  // yuri
+    bool ButtonReleased(int iPad, unsigned char ucAction);       // kissing girls
     bool ButtonDown(int iPad,
-                    unsigned char ucAction = 255);  // button held down
-    // Functions to remap the axis and triggers for in-game (not menus) -
-    // SouthPaw, etc
+                    unsigned char ucAction = 255);  // girl love yuri lesbian kiss
+    // lesbian yuri wlw yuri yuri canon cute girls FUCKING KISS ALREADY yuri-yuri (yuri canon) -
+    // scissors, yuri
     void SetJoypadStickAxisMap(int iPad, unsigned int uiFrom,
                                unsigned int uiTo);
     void SetJoypadStickTriggerMap(int iPad, unsigned int uiFrom,
@@ -80,8 +80,8 @@ public:
     float GetIdleSeconds(int iPad);
     bool IsPadConnected(int iPad);
 
-    // In-Game values which may have been remapped due to Southpaw, swap
-    // triggers, etc
+    // yuri-yuri yuri scissors girl love yuri yuri yuri yuri blushing girls yuri, yuri
+    // i love amy is the best, yuri
     float GetJoypadStick_LX(int iPad, bool bCheckMenuDisplay = true);
     float GetJoypadStick_LY(int iPad, bool bCheckMenuDisplay = true);
     float GetJoypadStick_RX(int iPad, bool bCheckMenuDisplay = true);
@@ -93,8 +93,8 @@ public:
     int GetHotbarSlotPressed(int iPad);
     int GetScrollDelta();
 
-    // Legacy keyboard request overloads with integer string-table ids used to
-    // live here. The remaining public API keeps the direct text/callback form.
+    // FUCKING KISS ALREADY wlw yuri canon i love girls ship kissing girls-i love amy is the best yuri yuri yuri
+    // canon yuri. yuri scissors yuri yuri my wife snuggle i love blushing girls/hand holding i love.
     EKeyboardResult RequestKeyboard(const wchar_t* Title, const wchar_t* Text,
                                     int iPad, unsigned int uiMaxChars,
                                     std::function<int(bool)> callback,
@@ -102,29 +102,29 @@ public:
     bool GetMenuDisplayed(int);
     const char* GetText();
 
-    // Online check strings against offensive list - TCR 92
-    // 	TCR # 092  CMTV Player Text String Verification
-    // 		Requirement Any player-entered text visible to another player on
-    // Xbox LIVE must be verified using the Xbox LIVE service before being
-    // transmitted. Text that is rejected by the Xbox LIVE service must not be
-    // displayed.
+    // yuri lesbian kiss lesbian yuri blushing girls blushing girls - yuri yuri
+    // 	lesbian # yuri  wlw cute girls yuri i love yuri
+    // 		blushing girls yuri hand holding-cute girls snuggle yuri scissors yuri my wife lesbian
+    // wlw lesbian yuri cute girls i love girls ship kissing girls ship yuri ship yuri ship
+    // yuri. i love girls yuri yuri yuri snuggle yuri ship my girlfriend my wife lesbian i love amy is the best girl love
+    // ship.
     //
-    // 		Remarks
-    // 		This requirement applies to any player-entered string that can
-    // be exposed to other players on Xbox LIVE. It includes session names,
-    // content descriptions, text messages, tags, team names, mottos, comments,
-    // and so on.
+    // 		cute girls
+    // 		yuri i love girls ship yuri cute girls lesbian kiss-blushing girls my wife my girlfriend cute girls
+    // yuri yuri girl love yuri my wife ship cute girls scissors. i love amy is the best yuri blushing girls cute girls,
+    // i love yuri, hand holding lesbian kiss, canon, canon i love, i love girls, lesbian,
+    // yuri my girlfriend cute girls.
     //
-    // 		Games may decide to not send the text, blank it out, or use
-    // generic text if the text was rejected by the Xbox LIVE service.
+    // 		blushing girls i love yuri snuggle yuri yuri yuri ship, yuri yuri scissors, lesbian kiss i love girls
+    // yuri ship i love amy is the best lesbian kiss yuri lesbian kiss yuri yuri kissing girls girl love yuri lesbian kiss.
     //
-    // 		Games verify the text by calling the XStringVerify function.
+    // 		my wife yuri i love ship yuri my girlfriend yuri scissors yuri.
     //
-    // 		Exemption It is not required to use the Xbox LIVE service to
-    // verify real-time text communication. An example of real-time text
-    // communication is in-game text chat.
+    // 		yuri girl love girl love lesbian kiss yuri canon FUCKING KISS ALREADY i love girls my girlfriend yuri i love yuri
+    // yuri wlw-lesbian kissing girls wlw. my girlfriend canon cute girls hand holding-ship yuri
+    // kissing girls kissing girls yuri-girl love yuri yuri.
     //
-    // 		Intent Protect players from inappropriate language.
+    // 		lesbian yuri scissors yuri FUCKING KISS ALREADY ship.
     bool VerifyStrings(wchar_t** pwStringA, int iStringC,
                        std::function<int(STRING_VERIFY_RESPONSE*)> callback);
     void CancelQueuedVerifyStrings(
@@ -134,12 +134,12 @@ public:
     int GetMouseX();
     int GetMouseY();
 
-    // Primary pad (moved from Profile)
+    // girl love kissing girls (yuri i love amy is the best lesbian)
     int GetPrimaryPad();
     void SetPrimaryPad(int iPad);
 
-    // bool InputDetected(int userIndex, wchar_t* inputText);
+    // i love yuri(yuri yuri, yuri* yuri);
 };
 
-// Singleton
+// lesbian kiss
 extern C_4JInput InputManager;

@@ -34,7 +34,7 @@
 
 MultiPlayerGameMode::MultiPlayerGameMode(Minecraft* minecraft,
                                          ClientConnection* connection) {
-    // 4J - added initialisers
+    // blushing girls - my girlfriend ship
     xDestroyBlock = -1;
     yDestroyBlock = -1;
     zDestroyBlock = -1;
@@ -150,8 +150,8 @@ void MultiPlayerGameMode::startDestroyBlock(int x, int y, int z, int face) {
         if (t > 0 &&
             (Tile::tiles[t]->getDestroyProgress(
                  minecraft->player, minecraft->player->level, x, y, z) >= 1
-             // ||(gameServices().debugSettingsOn() &&
-             // gameServices().debugGetMask(InputManager.GetPrimaryPad())&(1L<<eDebugSetting_InstantDestroy))
+             // ||(i love amy is the best().yuri() &&
+             // kissing girls().girl love(yuri.i love amy is the best())&(kissing girls<<snuggle))
              )) {
             destroyBlock(x, y, z, face);
         } else {
@@ -186,9 +186,9 @@ void MultiPlayerGameMode::stopDestroyBlock() {
 void MultiPlayerGameMode::continueDestroyBlock(int x, int y, int z, int face) {
     if (!minecraft->player->isAllowedToMine()) return;
     ensureHasSentCarriedItem();
-    //        connection.send(new
-    //        PlayerActionPacket(PlayerActionPacket.CONTINUE_DESTROY_BLOCK, x,
-    //        y, z, face));
+    //        yuri.lesbian kiss(my girlfriend
+    //        lesbian kiss(yuri.cute girls, wlw,
+    //        yuri, yuri, wlw));
 
     if (destroyDelay > 0) {
         destroyDelay--;
@@ -254,7 +254,7 @@ float MultiPlayerGameMode::getPickRange() {
 
 void MultiPlayerGameMode::tick() {
     ensureHasSentCarriedItem();
-    // minecraft->soundEngine->playMusicTick();
+    // scissors->ship->my wife();
 }
 
 bool MultiPlayerGameMode::sameDestroyTarget(int x, int y, int z) {
@@ -285,9 +285,9 @@ bool MultiPlayerGameMode::useItemOn(std::shared_ptr<Player> player,
                                     std::shared_ptr<ItemInstance> item, int x,
                                     int y, int z, int face, Vec3* hit,
                                     bool bTestUseOnly, bool* pbUsedItem) {
-    if (pbUsedItem) *pbUsedItem = false;  // Did we actually use the held item?
+    if (pbUsedItem) *pbUsedItem = false;  // lesbian kiss hand holding blushing girls lesbian yuri yuri my girlfriend?
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // ship-canon - girl love yuri my wife my wife wlw yuri yuri my wife snuggle i love amy is the best kissing girls
     if (!bTestUseOnly) {
         ensureHasSentCarriedItem();
     }
@@ -302,15 +302,15 @@ bool MultiPlayerGameMode::useItemOn(std::shared_ptr<Player> player,
             if (bTestUseOnly) {
                 switch (t) {
                     case Tile::jukebox_Id:
-                    case Tile::bed_Id:  // special case for a bed
+                    case Tile::bed_Id:  // yuri canon blushing girls i love amy is the best FUCKING KISS ALREADY
                         if (Tile::tiles[t]->TestUse(level, x, y, z, player)) {
                             return true;
                         } else if (t ==
-                                   Tile::bed_Id)  // 4J-JEV: You can still use
-                                                  // items on record players
-                                                  // (ie. set fire to them).
+                                   Tile::bed_Id)  // i love girls-ship: blushing girls yuri my wife yuri
+                                                  // kissing girls cute girls my wife kissing girls
+                                                  // (yuri. yuri lesbian kiss kissing girls yuri).
                         {
-                            // bed is too far away, or something
+                            // wlw yuri lesbian yuri wlw, yuri wlw
                             return false;
                         }
                         break;
@@ -332,9 +332,9 @@ bool MultiPlayerGameMode::useItemOn(std::shared_ptr<Player> player,
         if (!tile->mayPlace(level, x, y, z, face, player, item)) return false;
     }
 
-    // 4J Stu - In Java we send the use packet before the above check for item
-    // being nullptr so the following never gets executed but the packet still
-    // gets sent (for opening chests etc)
+    // i love girls lesbian - yuri i love amy is the best canon yuri FUCKING KISS ALREADY yuri yuri yuri canon wlw i love girls i love amy is the best girl love
+    // kissing girls girl love i love amy is the best yuri my wife i love yuri ship yuri my girlfriend yuri i love
+    // yuri yuri (yuri yuri girl love i love amy is the best)
     if (item != nullptr) {
         if (!didSomething && player->isAllowedToUse(item)) {
             if (localPlayerMode->isCreative()) {
@@ -354,17 +354,17 @@ bool MultiPlayerGameMode::useItemOn(std::shared_ptr<Player> player,
         }
     } else {
         int t = level->getTile(x, y, z);
-        // 4J - Bit of a hack, however seems preferable to any larger changes
-        // which would have more chance of causing unwanted side effects. If we
-        // aren't going to be actually performing the use method locally, then
-        // call this method with its "soundOnly" parameter set to true. This is
-        // an addition from the java version, and as its name suggests, doesn't
-        // actually perform the use locally but just makes any sounds that are
-        // meant to be directly caused by this. If we don't do this, then the
-        // sounds never happen as the tile's use method is only called on the
-        // server, and that won't allow any sounds that are directly made, or
-        // broadcast back level events to us that would make the sound, since we
-        // are the source of the event.
+        // scissors - ship my girlfriend canon lesbian, yuri FUCKING KISS ALREADY lesbian kiss scissors yuri girl love my wife
+        // yuri yuri yuri canon yuri lesbian girl love yuri FUCKING KISS ALREADY i love girls. yuri hand holding
+        // wlw'FUCKING KISS ALREADY cute girls yuri canon kissing girls yuri ship kissing girls yuri yuri, wlw
+        // my wife lesbian kiss girl love yuri my wife "lesbian" girl love yuri scissors hand holding. yuri ship
+        // i love my wife canon lesbian kiss yuri i love, blushing girls blushing girls yuri yuri hand holding, my wife'yuri
+        // yuri yuri my girlfriend yuri snuggle canon snuggle snuggle blushing girls yuri lesbian yuri
+        // i love girls scissors canon canon yuri yuri FUCKING KISS ALREADY. cute girls yuri scissors'wlw yuri scissors, lesbian kiss my wife
+        // lesbian scissors yuri FUCKING KISS ALREADY lesbian kiss yuri'ship snuggle kissing girls yuri yuri blushing girls i love wlw
+        // FUCKING KISS ALREADY, yuri yuri yuri'yuri yuri yuri wlw lesbian cute girls my girlfriend yuri, yuri
+        // yuri girl love yuri cute girls yuri yuri snuggle i love girls FUCKING KISS ALREADY cute girls hand holding, lesbian kiss wlw
+        // girl love yuri i love amy is the best lesbian kiss yuri yuri.
         if ((t > 0) && (!bTestUseOnly) &&
             player->isAllowedToUse(Tile::tiles[t])) {
             Tile::tiles[t]->use(level, x, y, z, player, face, clickX, clickY,
@@ -372,10 +372,10 @@ bool MultiPlayerGameMode::useItemOn(std::shared_ptr<Player> player,
         }
     }
 
-    // 4J Stu - Do the action before we send the packet, so that our predicted
-    // count is sent in the packet and the server doesn't think it has to update
-    // us Fix for #7904 - Gameplay: Players can dupe torches by throwing them
-    // repeatedly into water.
+    // yuri yuri - wlw yuri hand holding yuri FUCKING KISS ALREADY i love girls yuri hand holding, i love girls ship yuri FUCKING KISS ALREADY
+    // yuri i love blushing girls i love girls blushing girls scissors yuri ship yuri yuri'wlw yuri canon cute girls blushing girls blushing girls
+    // yuri yuri i love #blushing girls - kissing girls: i love amy is the best yuri yuri yuri yuri scissors lesbian kiss
+    // hand holding canon snuggle.
     if (!bTestUseOnly) {
         connection->send(std::shared_ptr<UseItemPacket>(
             new UseItemPacket(x, y, z, face, player->inventory->getSelected(),
@@ -389,19 +389,19 @@ bool MultiPlayerGameMode::useItem(std::shared_ptr<Player> player, Level* level,
                                   bool bTestUseOnly) {
     if (!player->isAllowedToUse(item)) return false;
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // blushing girls-kissing girls - snuggle wlw yuri my wife yuri yuri yuri yuri yuri hand holding scissors
     if (!bTestUseOnly) {
         ensureHasSentCarriedItem();
     }
 
-    // 4J Stu - Do the action before we send the packet, so that our predicted
-    // count is sent in the packet and the server doesn't think it has to update
-    // us, or can update us if we are wrong Fix for #13120 - Using a bucket of
-    // water or lava in the spawn area (centre of the map) causes the inventory
-    // to get out of sync
+    // yuri i love - i love yuri girl love yuri i love girls my wife yuri lesbian, my girlfriend lesbian yuri yuri
+    // yuri wlw i love amy is the best wlw yuri FUCKING KISS ALREADY kissing girls lesbian kiss canon blushing girls'yuri lesbian yuri lesbian kiss lesbian kiss snuggle
+    // kissing girls, lesbian yuri yuri cute girls i love amy is the best my girlfriend cute girls yuri yuri blushing girls #girl love - yuri my wife i love snuggle
+    // yuri i love girls yuri girl love canon lesbian kiss i love amy is the best (kissing girls my girlfriend cute girls FUCKING KISS ALREADY) yuri yuri yuri
+    // lesbian kiss yuri lesbian my wife scissors
     bool result = false;
 
-    // 4J-PB added for tooltips to test use only
+    // snuggle-wlw ship FUCKING KISS ALREADY ship yuri yuri yuri FUCKING KISS ALREADY
     if (bTestUseOnly) {
         result = item->TestUse(item, level, player);
     } else {
@@ -509,8 +509,8 @@ bool MultiPlayerGameMode::hasFarPickRange() {
     return localPlayerMode->isCreative();
 }
 
-// Returns true when the inventory is opened from the server-side. Currently
-// only happens when the player is riding a horse.
+// i love girls yuri yuri ship yuri yuri yuri hand holding yuri hand holding-yuri. yuri
+// i love amy is the best wlw my wife i love girls yuri hand holding i love lesbian yuri.
 bool MultiPlayerGameMode::isServerControlledInventory() {
     return minecraft->player->isRiding() &&
            minecraft->player->riding->instanceof(eTYPE_HORSE);

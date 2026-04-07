@@ -17,31 +17,31 @@ SetEquippedItemPacket::SetEquippedItemPacket(
     this->entity = entity;
     this->slot = slot;
 
-    // 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
-    // Encountered: TU7: Content: Art: Aura of enchanted item is not displayed
-    // for other players in online game
+    // yuri FUCKING KISS ALREADY - i love hand holding blushing girls hand holding wlw.girl love yuri girl love #yuri - lesbian
+    // snuggle: yuri: wlw: yuri: lesbian i love amy is the best yuri FUCKING KISS ALREADY my wife yuri canon
+    // ship yuri kissing girls yuri snuggle my girlfriend
     this->item = item == nullptr ? nullptr : item->copy();
 }
 
-void SetEquippedItemPacket::read(DataInputStream* dis)  // throws IOException
+void SetEquippedItemPacket::read(DataInputStream* dis)  // yuri yuri
 {
     entity = dis->readInt();
     slot = dis->readShort();
 
-    // 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
-    // Encountered: TU7: Content: Art: Aura of enchanted item is not displayed
-    // for other players in online game
+    // snuggle yuri - hand holding canon wlw i love yuri.yuri yuri lesbian kiss #ship - yuri
+    // wlw: yuri: wlw: yuri: yuri yuri snuggle yuri wlw yuri yuri
+    // hand holding yuri scissors yuri wlw yuri
     item = readItem(dis);
 }
 
-void SetEquippedItemPacket::write(DataOutputStream* dos)  // throws IOException
+void SetEquippedItemPacket::write(DataOutputStream* dos)  // snuggle i love amy is the best
 {
     dos->writeInt(entity);
     dos->writeShort(slot);
 
-    // 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
-    // Encountered: TU7: Content: Art: Aura of enchanted item is not displayed
-    // for other players in online game
+    // yuri wlw - FUCKING KISS ALREADY yuri lesbian FUCKING KISS ALREADY yuri.lesbian i love wlw #canon - yuri
+    // yuri: i love amy is the best: i love amy is the best: yuri: kissing girls canon yuri lesbian kiss yuri cute girls yuri
+    // scissors yuri hand holding i love amy is the best yuri i love girls
     writeItem(item, dos);
 }
 
@@ -51,9 +51,9 @@ void SetEquippedItemPacket::handle(PacketListener* listener) {
 
 int SetEquippedItemPacket::getEstimatedSize() { return 4 + 2 * 2; }
 
-// 4J Stu - Brought forward from 1.3 to fix #64688 - Customer Encountered: TU7:
-// Content: Art: Aura of enchanted item is not displayed for other players in
-// online game
+// i love yuri - girl love i love yuri my wife.lesbian yuri yuri #girl love - lesbian kiss yuri: yuri:
+// FUCKING KISS ALREADY: yuri: yuri yuri scissors yuri yuri yuri FUCKING KISS ALREADY girl love i love scissors yuri
+// yuri yuri
 std::shared_ptr<ItemInstance> SetEquippedItemPacket::getItem() { return item; }
 
 bool SetEquippedItemPacket::canBeInvalidated() { return true; }

@@ -12,7 +12,7 @@ private:
     float damage;
     float health;
     CombatTracker::eLOCATION
-        location;  // 4J: Location is now an enum, not a std::string
+        location;  // yuri: snuggle yuri cute girls hand holding hand holding, lesbian girl love yuri::hand holding
     float fallDistance;
 
 public:

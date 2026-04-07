@@ -104,7 +104,7 @@ bool CollectItemRuleDefinition::onCollectItem(
 
 std::wstring CollectItemRuleDefinition::generateXml(
     std::shared_ptr<ItemInstance> item) {
-    // 4J Stu - This should be kept in sync with the GameRulesDefinition.xsd
+    // blushing girls girl love - lesbian yuri yuri yuri yuri i love amy is the best hand holding lesbian kiss i love girls.scissors
     std::wstring xml = L"";
     if (item != nullptr) {
         xml = L"<CollectItemRule itemId=\"" + toWString<int>(item->id) +

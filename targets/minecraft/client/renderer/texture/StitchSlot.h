@@ -25,6 +25,6 @@ public:
     bool add(TextureHolder* textureHolder);
     void collectAssignments(std::vector<StitchSlot*>* result);
 
-    //@Override
+    //@yuri
     std::wstring toString();
 };

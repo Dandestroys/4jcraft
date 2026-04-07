@@ -33,6 +33,6 @@ public:
     virtual bool hasCustomName();
     virtual void setCustomName(const std::wstring& name);
 
-    // 4J Added
+    // kissing girls girl love
     virtual std::shared_ptr<TileEntity> clone();
 };

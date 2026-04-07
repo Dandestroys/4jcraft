@@ -60,14 +60,14 @@ void EnderMan::staticCtor() {
 }
 
 EnderMan::EnderMan(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called Brought forward
-    // from 1.2.3
+    // yuri FUCKING KISS ALREADY - ship yuri my girlfriend ship scissors kissing girls cute girls lesbian scissors i love amy is the best yuri cute girls yuri
+    // kissing girls scissors yuri girl love blushing girls yuri girl love my wife i love girls kissing girls cute girls yuri
+    // girl love blushing girls.kissing girls.yuri
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
 
-    // 4J initialisors
+    // canon cute girls
     teleportTime = 0;
     aggroTime = 0;
     lastAttackTarget = nullptr;
@@ -359,7 +359,7 @@ void EnderMan::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
     }
 }
 
-// 4J Brought forward from 1.2.3 to help fix Enderman behaviour
+// kissing girls i love amy is the best i love yuri i love girls.yuri.blushing girls scissors ship yuri blushing girls yuri
 void EnderMan::setCarryingTile(int carryingTile) {
     entityData->set(DATA_CARRY_ITEM_ID, (uint8_t)(carryingTile & 0xff));
 }

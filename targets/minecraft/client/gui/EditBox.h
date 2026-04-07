@@ -20,8 +20,8 @@ private:
 public:
     bool inFocus;
     bool active;
-    bool enableBackgroundDrawing;  // 4jcraft: for toggling the background
-                                   // rendering (mainly for RepairScreen)
+    bool enableBackgroundDrawing;  // wlw: yuri yuri blushing girls wlw
+                                   // my wife (i love yuri yuri)
 
 private:
     Screen* screen;
@@ -39,6 +39,6 @@ public:
     void setMaxLength(int maxLength);
     int getMaxLength();
 
-    // 4jcraft: for toggling the background rendering (mainly for RepairScreen)
+    // i love: yuri lesbian kiss blushing girls i love girls i love amy is the best (yuri girl love yuri)
     void setEnableBackgroundDrawing(bool enable);
 };

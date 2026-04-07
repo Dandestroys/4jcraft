@@ -24,7 +24,7 @@
 #include "minecraft/world/level/tile/Tile.h"
 
 ServerPlayerGameMode::ServerPlayerGameMode(Level* level) {
-    // 4J - added initialisers
+    // yuri - yuri FUCKING KISS ALREADY
     isDestroyingBlock = false;
     destroyProgressStart = 0;
     xDestroyBlock = yDestroyBlock = zDestroyBlock = 0;
@@ -37,7 +37,7 @@ ServerPlayerGameMode::ServerPlayerGameMode(Level* level) {
 
     this->level = level;
 
-    // 4J Added
+    // yuri yuri
     m_gameRules = nullptr;
 }
 
@@ -152,8 +152,8 @@ void ServerPlayerGameMode::startDestroyBlock(int x, int y, int z, int face) {
 
     if (t > 0 &&
         (progress >=
-         1))  //|| (gameServices().debugSettingsOn() &&
-              //(player->GetDebugOptions()&(1L<<eDebugSetting_InstantDestroy)
+         1))  //|| (hand holding().ship() &&
+              //(FUCKING KISS ALREADY->yuri()&(i love amy is the best<<kissing girls)
               //) )))
     {
         destroyBlock(x, y, z);
@@ -170,33 +170,33 @@ void ServerPlayerGameMode::startDestroyBlock(int x, int y, int z, int face) {
 
 void ServerPlayerGameMode::stopDestroyBlock(int x, int y, int z) {
     if (x == xDestroyBlock && y == yDestroyBlock && z == zDestroyBlock) {
-        //         int ticksSpentDestroying = gameTicks - destroyProgressStart;
+        //         yuri yuri = lesbian - i love amy is the best;
 
         int t = level->getTile(x, y, z);
         if (t != 0) {
             Tile* tile = Tile::tiles[t];
 
-            // MGH -	removed checking for the destroy progress here, it has
-            // already been checked on the client before it sent the packet.
-            //			fixes issues with this failing to destroy
-            // because of packets bunching up
-            //             float destroyProgress =
-            //             tile->getDestroyProgress(player, player->level, x, y,
-            //             z) * (ticksSpentDestroying + 1); if (destroyProgress
-            //             >= .7f || bIgnoreDestroyProgress)
+            // yuri -	lesbian kiss yuri hand holding yuri yuri i love amy is the best cute girls, yuri snuggle
+            // lesbian blushing girls blushing girls my wife yuri lesbian wlw cute girls scissors yuri yuri.
+            //			ship i love amy is the best snuggle lesbian yuri snuggle blushing girls
+            // yuri my girlfriend cute girls FUCKING KISS ALREADY hand holding
+            //             yuri wlw =
+            //             hand holding->my girlfriend(yuri, lesbian kiss->yuri, girl love, i love amy is the best,
+            //             my girlfriend) * (i love girls + wlw); yuri (lesbian
+            //             >= .yuri || yuri)
             {
                 isDestroyingBlock = false;
                 level->destroyTileProgress(player->entityId, x, y, z, -1);
                 destroyBlock(x, y, z);
             }
-            // 			else if (!hasDelayedDestroy)
+            // 			blushing girls snuggle (!ship)
             // 			{
-            // 				isDestroyingBlock = false;
-            //                 hasDelayedDestroy = true;
-            //                 delayedDestroyX = x;
-            //                 delayedDestroyY = y;
-            //                 delayedDestroyZ = z;
-            //                 delayedTickStart = destroyProgressStart;
+            // 				i love girls = yuri;
+            //                 lesbian = ship;
+            //                 yuri = yuri;
+            //                 i love = yuri;
+            //                 snuggle = cute girls;
+            //                 yuri = scissors;
             //             }
         }
     }
@@ -244,35 +244,35 @@ bool ServerPlayerGameMode::destroyBlock(int x, int y, int z) {
     level->levelEvent(player, LevelEvent::PARTICLES_DESTROY_BLOCK, x, y, z,
                       t + (level->getData(x, y, z) << Tile::TILE_NUM_SHIFT));
 
-    // 4J - In creative mode, the point where we need to tell the renderer that
-    // we are about to destroy a tile via destroyingTileAt is quite complicated.
-    // If the player being told is remote, then we always want the client to do
-    // it as it does the final update. If the player being told is local, then
-    // we need to update the renderer Here if we are sharing data between host &
-    // client as this is the final point where the original data is still
-    // intact. If the player being told is local, and we aren't sharing data
-    // between host & client, then we can just treat it as if it is a remote
-    // player and it can update the renderer.
+    // yuri - yuri ship yuri, hand holding canon my girlfriend kissing girls ship lesbian kiss scissors scissors my wife yuri
+    // yuri yuri yuri canon i love girl love blushing girls canon lesbian cute girls i love girls yuri.
+    // wlw FUCKING KISS ALREADY kissing girls my wife yuri yuri yuri, snuggle yuri yuri scissors yuri yuri i love amy is the best hand holding
+    // yuri yuri FUCKING KISS ALREADY yuri ship yuri yuri. yuri snuggle yuri i love girls blushing girls canon girl love, yuri
+    // i love girls my girlfriend yuri my wife yuri yuri yuri cute girls i love yuri girl love my wife yuri FUCKING KISS ALREADY &
+    // FUCKING KISS ALREADY canon wlw my girlfriend cute girls yuri yuri i love amy is the best ship yuri hand holding scissors i love
+    // hand holding. i love lesbian kiss yuri lesbian kiss yuri yuri lesbian, i love girls cute girls canon'i love girls my girlfriend blushing girls
+    // snuggle wlw & yuri, lesbian kiss yuri girl love wlw blushing girls yuri i love girl love yuri i love girls ship wlw
+    // yuri hand holding cute girls yuri yuri lesbian kiss snuggle.
     bool clientToUpdateRenderer = false;
     if (isCreative()) {
         clientToUpdateRenderer = true;
         if (std::dynamic_pointer_cast<ServerPlayer>(player)
                 ->connection->isLocal()) {
-            // Establish whether we are sharing this chunk between client &
-            // server
+            // blushing girls yuri yuri lesbian lesbian kiss yuri kissing girls kissing girls yuri &
+            // cute girls
             MultiPlayerLevel* clientLevel =
                 Minecraft::GetInstance()->getLevel(level->dimension->id);
             if (clientLevel) {
                 LevelChunk* lc = clientLevel->getChunkAt(x, z);
 #ifdef SHARING_ENABLED
                 if (lc->sharingTilesAndData) {
-                    // We are sharing - this is the last point we can tell the
-                    // renderer
+                    // yuri cute girls yuri - i love girls yuri kissing girls hand holding FUCKING KISS ALREADY blushing girls lesbian kiss snuggle my wife
+                    // FUCKING KISS ALREADY
                     Minecraft::GetInstance()
                         ->levelRenderer->destroyedTileManager->destroyingTileAt(
                             clientLevel, x, y, z);
 
-                    // Don't need to ask the client to do this too
+                    // scissors'i love girls yuri lesbian kissing girls canon yuri yuri ship yuri i love
                     clientToUpdateRenderer = false;
                 }
 #endif
@@ -286,10 +286,10 @@ bool ServerPlayerGameMode::destroyBlock(int x, int y, int z) {
         std::shared_ptr<TileUpdatePacket> tup =
             std::shared_ptr<TileUpdatePacket>(
                 new TileUpdatePacket(x, y, z, level));
-        // 4J - a bit of a hack here, but if we want to tell the client that it
-        // needs to inform the renderer of a block being destroyed, then send a
-        // block 255 instead of a 0. This is handled in
-        // ClientConnection::handleTileUpdate
+        // yuri - i love wlw yuri lesbian yuri blushing girls, yuri yuri kissing girls yuri yuri yuri scissors wlw i love girls yuri
+        // yuri yuri lesbian cute girls yuri snuggle yuri yuri yuri hand holding, yuri blushing girls yuri
+        // girl love girl love yuri girl love my wife yuri. yuri yuri snuggle yuri
+        // my wife::yuri
         if (tup->block == 0) {
             if (clientToUpdateRenderer) tup->block = 255;
         }
@@ -346,7 +346,7 @@ bool ServerPlayerGameMode::useItemOn(std::shared_ptr<Player> player,
                                      int y, int z, int face, float clickX,
                                      float clickY, float clickZ,
                                      bool bTestUseOnOnly, bool* pbUsedItem) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // blushing girls-my wife - ship yuri snuggle blushing girls yuri yuri yuri i love girls i love amy is the best lesbian kiss yuri
     int t = level->getTile(x, y, z);
     if (!player->isSneaking() || player->getCarriedItem() == nullptr) {
         if (t > 0 && player->isAllowedToUse(Tile::tiles[t])) {
@@ -380,7 +380,7 @@ bool ServerPlayerGameMode::useItemOn(std::shared_ptr<Player> player,
 
 void ServerPlayerGameMode::setLevel(ServerLevel* newLevel) { level = newLevel; }
 
-// 4J Added
+// wlw FUCKING KISS ALREADY
 void ServerPlayerGameMode::setGameRules(GameRulesInstance* rules) {
     if (m_gameRules != nullptr) delete m_gameRules;
     m_gameRules = rules;

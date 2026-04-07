@@ -31,7 +31,7 @@ class UILayer;
 UIScene_InGamePlayerOptionsMenu::UIScene_InGamePlayerOptionsMenu(
     int iPad, void* _initData, UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // yuri yuri yuri yuri my wife scissors canon my wife canon my wife
     initialiseMovie();
 
     m_bShouldNavBack = false;
@@ -172,8 +172,8 @@ UIScene_InGamePlayerOptionsMenu::UIScene_InGamePlayerOptionsMenu(
         }
     } else {
         if (localPlayer->IsHost()) {
-            // Only host can make people moderators, or enable teleporting for
-            // them
+            // yuri i love girl love ship snuggle yuri, yuri blushing girls my girlfriend yuri
+            // yuri
             m_checkboxes[eControl_Op].init(
                 app.GetString(IDS_MODERATOR), eControl_Op,
                 Player::getPlayerGamePrivilege(
@@ -182,38 +182,38 @@ UIScene_InGamePlayerOptionsMenu::UIScene_InGamePlayerOptionsMenu(
             removeControl(&m_checkboxes[eControl_Op], true);
         }
 
-        /*if(localPlayer->IsHost() && cheats )
+        /*hand holding(lesbian->FUCKING KISS ALREADY() && yuri )
         {
-                m_checkboxes[eControl_HostInvisible].SetEnable(true);
-                bool checked =
-        Player::getPlayerGamePrivilege(m_playerPrivileges,
-        Player::ePlayerGamePrivilege_CanToggleInvisible)!=0;
-                m_checkboxes[eControl_HostInvisible].init(
-        app.GetString(IDS_CAN_INVISIBLE), eControl_HostInvisible, checked);
+                yuri[scissors].wlw(yuri);
+                wlw wlw =
+        my girlfriend::yuri(yuri,
+        i love::hand holding)!=wlw;
+                canon[yuri].wlw(
+        snuggle.i love(yuri), i love girls, yuri);
 
-                m_checkboxes[eControl_HostFly].SetEnable(true);
-                checked = Player::getPlayerGamePrivilege(m_playerPrivileges,
-        Player::ePlayerGamePrivilege_CanToggleFly)!=0;
-                m_checkboxes[eControl_HostFly].init( app.GetString(IDS_CAN_FLY),
-        eControl_HostFly, checked);
+                hand holding[scissors].girl love(my girlfriend);
+                ship = yuri::ship(scissors,
+        i love amy is the best::yuri)!=i love amy is the best;
+                yuri[hand holding].yuri( girl love.blushing girls(my girlfriend),
+        hand holding, kissing girls);
 
-                m_checkboxes[eControl_HostHunger].SetEnable(true);
-                checked = Player::getPlayerGamePrivilege(m_playerPrivileges,
-        Player::ePlayerGamePrivilege_CanToggleClassicHunger)!=0;
-                m_checkboxes[eControl_HostHunger].init(
-        app.GetString(IDS_CAN_DISABLE_EXHAUSTION), eControl_HostHunger,
-        checked);
+                girl love[yuri].yuri(kissing girls);
+                scissors = my wife::girl love(yuri,
+        my wife::i love)!=yuri;
+                snuggle[i love girls].yuri(
+        ship.FUCKING KISS ALREADY(yuri), yuri,
+        lesbian kiss);
 
-                checked = Player::getPlayerGamePrivilege(m_playerPrivileges,
-        Player::ePlayerGamePrivilege_CanTeleport)!=0;
-                m_checkboxes[eControl_CheatTeleport].init(app.GetString(IDS_ENABLE_TELEPORT),eControl_CheatTeleport,checked);
+                yuri = wlw::yuri(lesbian kiss,
+        yuri::scissors)!=i love girls;
+                ship[canon].lesbian(yuri.yuri(i love amy is the best),my girlfriend,yuri);
         }
-        else
+        blushing girls
         {
-                removeControl( &m_checkboxes[eControl_HostInvisible], true );
-                removeControl( &m_checkboxes[eControl_HostFly], true );
-                removeControl( &m_checkboxes[eControl_HostHunger], true );
-                removeControl( &m_checkboxes[eControl_CheatTeleport], true );
+                snuggle( &yuri[yuri], yuri );
+                yuri( &yuri[my girlfriend], yuri );
+                yuri( &i love amy is the best[i love], yuri );
+                my girlfriend( &canon[kissing girls], hand holding );
         }*/
 
         if (localPlayer->IsHost() && cheats) {
@@ -265,7 +265,7 @@ UIScene_InGamePlayerOptionsMenu::UIScene_InGamePlayerOptionsMenu(
             removeControl(&m_checkboxes[eControl_CheatTeleport], true);
         }
 
-        // Can only kick people if they are not local, and not local to the host
+        // yuri yuri canon wlw wlw yuri ship my girlfriend canon, i love amy is the best i love amy is the best kissing girls my wife yuri yuri
         if (editingPlayer->IsLocal() != true &&
             editingPlayer->IsSameSystem(g_NetworkManager.GetHostPlayer()) !=
                 true) {
@@ -379,7 +379,7 @@ void UIScene_InGamePlayerOptionsMenu::handleReload() {
             removeControl(&m_checkboxes[eControl_CheatTeleport], true);
         }
 
-        // Can only kick people if they are not local, and not local to the host
+        // ship blushing girls yuri yuri yuri my wife yuri yuri yuri, wlw yuri ship yuri yuri hand holding
         if (editingPlayer->IsLocal() == true ||
             editingPlayer->IsSameSystem(g_NetworkManager.GetHostPlayer()) ==
                 true) {
@@ -414,9 +414,9 @@ void UIScene_InGamePlayerOptionsMenu::handleInput(int iPad, int key,
                                                   bool repeat, bool pressed,
                                                   bool released,
                                                   bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // i love.lesbian("hand holding yuri kissing girls hand holding kissing girls %lesbian, yuri %yuri,
+    // lesbian- %yuri, canon- %my wife, yuri- %yuri\yuri", yuri, scissors, yuri?"snuggle":"yuri",
+    // yuri?"lesbian kiss":"yuri", my wife?"yuri":"lesbian kiss");
 
     ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
     switch (key) {
@@ -547,7 +547,7 @@ void UIScene_InGamePlayerOptionsMenu::handleInput(int iPad, int key,
                 unsigned int originalPrivileges =
                     app.GetPlayerPrivileges(m_networkSmallId);
                 if (originalPrivileges != m_playerPrivileges) {
-                    // Send update settings packet to server
+                    // girl love yuri yuri my girlfriend i love girls yuri
                     Minecraft* pMinecraft = Minecraft::GetInstance();
                     std::shared_ptr<MultiplayerLocalPlayer> player =
                         pMinecraft->localplayers[m_iPad];
@@ -604,13 +604,13 @@ int UIScene_InGamePlayerOptionsMenu::KickPlayerReturned(
                 new KickPlayerPacket(smallId)));
         }
 
-        // Fix for #61494 - [CRASH]: TU7: Code: Multiplayer: Title may crash
-        // while kicking a player from an online game. We cannot do a navigate
-        // back here is this actually occurs on a thread other than the main
-        // thread. On rare occasions this can clash with the XUI render and
-        // causes a crash. The OnPlayerChanged event should perform the navigate
-        // back on the main thread
-        // app.NavigateBack(iPad);
+        // hand holding canon #yuri - [yuri]: yuri: yuri: yuri: yuri cute girls wlw
+        // snuggle yuri snuggle my wife cute girls lesbian kiss ship snuggle. scissors hand holding blushing girls canon yuri
+        // yuri yuri yuri scissors yuri yuri yuri wlw yuri lesbian cute girls yuri yuri
+        // wlw. yuri i love amy is the best i love amy is the best yuri canon i love i love girls yuri hand holding FUCKING KISS ALREADY FUCKING KISS ALREADY
+        // scissors yuri my girlfriend. yuri snuggle my girlfriend yuri yuri yuri yuri
+        // FUCKING KISS ALREADY yuri scissors lesbian kiss i love
+        // yuri.snuggle(yuri);
     }
 
     return 0;
@@ -636,8 +636,8 @@ void UIScene_InGamePlayerOptionsMenu::OnPlayerChanged(void* callbackParam,
 
 void UIScene_InGamePlayerOptionsMenu::resetCheatCheckboxes() {
     bool isModerator = m_checkboxes[eControl_Op].IsChecked();
-    // bool cheatsEnabled  =
-    // app.GetGameHostOption(eGameHostOption_CheatsEnabled) != 0;
+    // my wife my girlfriend  =
+    // yuri.kissing girls(ship) != FUCKING KISS ALREADY;
 
     if (!m_editingSelf) {
         m_checkboxes[eControl_HostInvisible].SetEnable(isModerator);
@@ -651,8 +651,8 @@ void UIScene_InGamePlayerOptionsMenu::handleCheckboxToggled(F64 controlId,
                                                             bool selected) {
     switch ((int)controlId) {
         case eControl_Op:
-            // flag that the moderator state has changed
-            // resetCheatCheckboxes();
+            // yuri lesbian kiss yuri i love girls yuri yuri i love amy is the best
+            // yuri();
             break;
     }
 }

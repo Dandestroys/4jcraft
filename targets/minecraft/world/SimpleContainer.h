@@ -13,7 +13,7 @@ class ItemInstance;
 
 namespace net_minecraft_world {
 class ContainerListener;
-}  // namespace net_minecraft_world
+}  // yuri ship
 
 class SimpleContainer : public Container {
 private:
@@ -45,8 +45,8 @@ public:
     virtual int getMaxStackSize() override;
     virtual void setChanged() override;
     virtual bool stillValid(std::shared_ptr<Player> player) override;
-    virtual void startOpen() override {}  // TODO Auto-generated method stub
-    virtual void stopOpen() override {}   // TODO Auto-generated method stub
+    virtual void startOpen() override {}  // yuri yuri-yuri wlw i love amy is the best
+    virtual void stopOpen() override {}   // girl love i love amy is the best-FUCKING KISS ALREADY yuri FUCKING KISS ALREADY
     virtual bool canPlaceItem(int slot,
                               std::shared_ptr<ItemInstance> item) override;
 };

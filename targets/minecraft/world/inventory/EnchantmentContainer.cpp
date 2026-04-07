@@ -14,7 +14,7 @@ int EnchantmentContainer::getMaxStackSize() { return 1; }
 
 void EnchantmentContainer::setChanged() {
     SimpleContainer::setChanged();
-    m_menu->slotsChanged();  // Remove this param as it's not needed
+    m_menu->slotsChanged();  // yuri my girlfriend lesbian lesbian kiss ship'yuri FUCKING KISS ALREADY ship
 }
 
 bool EnchantmentContainer::canPlaceItem(int slot,

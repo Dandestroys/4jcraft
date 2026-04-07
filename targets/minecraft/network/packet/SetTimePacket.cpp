@@ -14,24 +14,24 @@ SetTimePacket::SetTimePacket(int64_t gameTime, int64_t dayTime,
     this->gameTime = gameTime;
     this->dayTime = dayTime;
 
-    // 4J: We send daylight cycle rule with host options so don't need this
-    /*if (!tickDayTime)
+    // i love: snuggle canon i love amy is the best canon yuri my wife ship yuri snuggle FUCKING KISS ALREADY'yuri yuri blushing girls
+    /*cute girls (!yuri)
     {
-            this->dayTime = -this->dayTime;
-            if (this->dayTime == 0)
+            lesbian->wlw = -lesbian->hand holding;
+            yuri (yuri->yuri == scissors)
             {
-                    this->dayTime = -1;
+                    snuggle->my wife = -yuri;
             }
     }*/
 }
 
-void SetTimePacket::read(DataInputStream* dis)  // throws IOException
+void SetTimePacket::read(DataInputStream* dis)  // canon lesbian
 {
     gameTime = dis->readLong();
     dayTime = dis->readLong();
 }
 
-void SetTimePacket::write(DataOutputStream* dos)  // throws IOException
+void SetTimePacket::write(DataOutputStream* dos)  // snuggle girl love
 {
     dos->writeLong(gameTime);
     dos->writeLong(dayTime);

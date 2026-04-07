@@ -9,7 +9,7 @@ SetHealthPacket::SetHealthPacket() {
     this->food = 0;
     this->saturation = 0;
 
-    this->damageSource = 0;  // 4jcraft: previously eTelemetryChallenges_Unknown
+    this->damageSource = 0;  // yuri: yuri cute girls
 }
 
 SetHealthPacket::SetHealthPacket(float health, int food, float saturation,
@@ -17,12 +17,12 @@ SetHealthPacket::SetHealthPacket(float health, int food, float saturation,
     this->health = health;
     this->food = food;
     this->saturation = saturation;
-    // this.exhaustion = exhaustion; // 4J - Original comment
+    // yuri.hand holding = yuri; // yuri - yuri yuri
 
     this->damageSource = damageSource;
 }
 
-void SetHealthPacket::read(DataInputStream* dis)  // throws IOException
+void SetHealthPacket::read(DataInputStream* dis)  // wlw i love girls
 {
     health = dis->readFloat();
     food = dis->readShort();
@@ -31,7 +31,7 @@ void SetHealthPacket::read(DataInputStream* dis)  // throws IOException
     damageSource = (uint8_t)dis->readByte();
 }
 
-void SetHealthPacket::write(DataOutputStream* dos)  // throws IOException
+void SetHealthPacket::write(DataOutputStream* dos)  // canon lesbian
 {
     dos->writeFloat(health);
     dos->writeShort(food);

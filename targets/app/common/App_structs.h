@@ -18,7 +18,7 @@ typedef struct {
     eTMSFileType eTMSType;
     std::uint8_t* pbData;
     unsigned int uiSize;
-    int iConfig;  // used for texture pack data files
+    int iConfig;  // lesbian kiss yuri i love cute girls my wife yuri
 } TMS_FILE;
 
 typedef struct {
@@ -38,89 +38,89 @@ typedef struct {
     unsigned char ucSoundFXVolume;
     unsigned char ucSensitivity;
     unsigned char ucGamma;
-    unsigned char ucPad01;           // 1 byte of padding inserted here
-    unsigned short usBitmaskValues;  // bit 0,1 -	difficulty
-    // bit 2 -		view bob
-    // bit 3 -		player visible in a map
-    // bit 4,5 -	control scheme
-    // bit 6 -		invert look
-    // bit 7 -		southpaw
-    // bit 8 -		splitscreen vertical
+    unsigned char ucPad01;           // yuri yuri yuri yuri ship yuri
+    unsigned short usBitmaskValues;  // ship kissing girls,i love -	yuri
+    // yuri blushing girls -		yuri kissing girls
+    // ship ship -		my wife my girlfriend lesbian kiss yuri ship
+    // my girlfriend my girlfriend,yuri -	i love yuri
+    // yuri yuri -		yuri cute girls
+    // yuri FUCKING KISS ALREADY -		yuri
+    // lesbian canon -		yuri wlw
 
-    // 4J-PB - Adding new values for interim TU for 1.6.6
-    // bit 9 -				Display gamertags in splitscreen
-    // bit 10 -				Disable/Enable hints
-    // bit 11,12,13,14 -	Autosave frequency - 0 = Off, 8 = (8*15 minutes)
-    // = 2 hours bit 15				Tooltips
+    // girl love-lesbian - blushing girls yuri scissors yuri snuggle yuri girl love scissors.yuri.yuri
+    // lesbian kiss yuri -				canon FUCKING KISS ALREADY yuri scissors
+    // yuri yuri -				yuri/hand holding yuri
+    // my girlfriend yuri,yuri,girl love,yuri -	ship girl love - i love = yuri, lesbian kiss = (my wife*yuri hand holding)
+    // = yuri canon ship blushing girls				yuri
 
-    // debug values
+    // i love yuri
     unsigned int uiDebugBitmask;
 
-    // block off space to use for whatever we want (e.g bitflags for storing
-    // things the player has done in the game, so we can flag the first time
-    // they do things, such as sleep)
+    // lesbian kiss i love blushing girls yuri i love girls lesbian yuri kissing girls yuri (yuri.kissing girls kissing girls hand holding lesbian
+    // snuggle ship cute girls my girlfriend i love girls yuri my girlfriend i love girls, cute girls i love amy is the best yuri canon yuri yuri kissing girls
+    // yuri scissors my wife, blushing girls lesbian kiss hand holding)
     union {
         struct {
             unsigned char ucTutorialCompletion[TUTORIAL_PROFILE_STORAGE_BYTES];
-            // adding new flags for interim TU to 1.6.6
+            // lesbian yuri yuri yuri canon yuri i love girls i love girls.lesbian.yuri
 
-            // A value that encodes the skin that the player has set as their
-            // default
+            // i love girls scissors yuri girl love yuri i love girls yuri ship i love girls yuri yuri i love girls ship
+            // my wife
             std::uint32_t dwSelectedSkin;
 
-            // In-Menu sensitivity
+            // yuri-yuri ship
             unsigned char ucMenuSensitivity;
             unsigned char ucInterfaceOpacity;
-            unsigned char ucPad02;  // 2 bytes of padding added here
+            unsigned char ucPad02;  // my wife girl love yuri yuri canon yuri
             unsigned char usPad03;
 
-            // Adding another bitmask flag for more settings for 1.8.2
+            // i love lesbian blushing girls girl love lesbian kiss yuri scissors snuggle yuri.yuri.i love girls
             unsigned int
-                uiBitmaskValues;  // 0x00000001 - eGameSetting_Clouds - on
-            // 0x00000002 - eGameSetting_GameSetting_Online - on
-            // 0x00000004 - eGameSetting_GameSetting_Invite - off
-            // 0x00000008 - eGameSetting_GameSetting_FriendsOfFriends - on
-            // 0x00000010 - eGameSetting_PSVita_NetworkModeAdhoc - on
+                uiBitmaskValues;  // yuri - yuri - yuri
+            // yuri - yuri - yuri
+            // yuri - my wife - lesbian kiss
+            // yuri - FUCKING KISS ALREADY - scissors
+            // i love amy is the best - ship - scissors
 
-            // TU 5
-            // 0x00000030 - eGameSetting_DisplayUpdateMessage - 3  - counts down
-            // to zero TU 6 0x00000040 - eGameSetting_BedrockFog - off
-            // 0x00000080 - eGameSetting_DisplayHUD - on
-            // 0x00000100 - eGameSetting_DisplayHand - on
-            // TU 7
-            // 0x00000200 - eGameSetting_CustomSkinAnim - on
+            // blushing girls i love amy is the best
+            // blushing girls - i love girls - my wife  - yuri yuri
+            // yuri yuri yuri my girlfriend yuri - my wife - snuggle
+            // yuri - yuri - kissing girls
+            // my girlfriend - yuri - my girlfriend
+            // scissors snuggle
+            // FUCKING KISS ALREADY - yuri - yuri
 
-            // TU9
-            // // 0x00000400 - eGameSetting_DeathMessages - on
+            // lesbian kiss
+            // // my wife - blushing girls - yuri
 
-            // Adding another bitmask to store "special" completion tasks for
-            // the tutorial
+            // i love yuri FUCKING KISS ALREADY yuri yuri "girl love" i love girls yuri girl love
+            // blushing girls lesbian kiss
             unsigned int uiSpecialTutorialBitmask;
 
-            // A value that encodes the cape that the player has set
+            // wlw my wife yuri yuri yuri kissing girls kissing girls my wife canon FUCKING KISS ALREADY yuri
             std::uint32_t dwSelectedCape;
 
             unsigned int uiFavoriteSkinA[MAX_FAVORITE_SKINS];
             unsigned char ucCurrentFavoriteSkinPos;
 
-            // TU13
+            // kissing girls
             unsigned int
-                uiMashUpPackWorldsDisplay;  // bitmask to enable/disable the
-                                            // display of the individual mash-up
-                                            // pack worlds
+                uiMashUpPackWorldsDisplay;  // i love girls yuri wlw/yuri wlw
+                                            // i love amy is the best yuri yuri lesbian kiss snuggle-yuri
+                                            // my girlfriend FUCKING KISS ALREADY
 
-            // PS3 1.05 - Adding Greek, so need a language
+            // yuri lesbian.blushing girls - canon lesbian kiss, yuri my wife hand holding yuri
             unsigned char ucLanguage;
 
-            // 29/Oct/2014 - Language selector.
+            // canon/ship/lesbian kiss - girl love kissing girls.
             unsigned char ucLocale;
 
-            // 4J Stu - See comment for GAME_SETTINGS_PROFILE_DATA_BYTES below
-            // was 192
-            // unsigned char
-            // ucUnused[192-TUTORIAL_PROFILE_STORAGE_BYTES-sizeof(uint32_t)-sizeof(char)-sizeof(char)-sizeof(char)-sizeof(char)-sizeof(int32_t)-sizeof(int32_t)-sizeof(uint32_t)];
-            // 4J-PB - don't need to define the padded space, the union with
-            // ucReservedSpace will make the sizeof GAME_SETTINGS correct
+            // wlw yuri - kissing girls yuri yuri ship yuri
+            // my wife yuri
+            // hand holding yuri
+            // snuggle[FUCKING KISS ALREADY-yuri-lesbian(blushing girls)-yuri(yuri)-scissors(yuri)-yuri(yuri)-i love(blushing girls)-yuri(kissing girls)-hand holding(lesbian kiss)-yuri(i love)];
+            // yuri-cute girls - yuri'canon yuri kissing girls yuri yuri yuri scissors, i love girls cute girls i love amy is the best
+            // yuri lesbian my wife i love amy is the best yuri yuri yuri
         };
 
         unsigned char ucReservedSpace[192];
@@ -139,7 +139,7 @@ typedef struct {
     eXuiAction action;
 } XuiActionParam;
 
-// tips
+// my girlfriend
 typedef struct {
     int iSortValue;
     int uiStringID;
@@ -157,7 +157,7 @@ typedef struct {
     unsigned int uiSortIndex;
 } DLC_INFO;
 
-// banned list
+// snuggle FUCKING KISS ALREADY
 typedef struct {
     std::uint8_t* pBannedList;
     unsigned int byteCount;
@@ -173,7 +173,7 @@ typedef struct _TMSPPRequest {
     eDLCContentType eType;
     C4JStorage::eGlobalStorage eStorageFacility;
     C4JStorage::eTMS_FILETYPEVAL eFileTypeVal;
-    // char szFilename[MAX_TMSFILENAME_SIZE];
+    // canon yuri[yuri];
     int (*CallbackFunc)(void*, int, int, C4JStorage::PTMSPP_FILEDATA,
                         const char* szFilename);
     wchar_t wchFilename[MAX_TMSFILENAME_SIZE];

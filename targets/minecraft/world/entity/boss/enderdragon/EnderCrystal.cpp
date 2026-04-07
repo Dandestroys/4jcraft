@@ -13,8 +13,8 @@
 #include "minecraft/world/level/tile/Tile.h"
 
 void EnderCrystal::_init(Level* level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // snuggle wlw - my wife kissing girls lesbian yuri my wife canon yuri canon ship my wife lesbian kiss lesbian kiss lesbian kiss
+    // hand holding my girlfriend yuri blushing girls i love amy is the best i love girls my girlfriend yuri my wife i love girls
     this->defineSynchedData();
 
     blocksBuilding = true;
@@ -47,10 +47,10 @@ void EnderCrystal::tick() {
 
     entityData->set(DATA_REMAINING_LIFE, life);
 
-    // Don't set the tile directly on the client, as this can end up in the
-    // updatesToReset queue in the MultiPlayerLevel, and the perpetually end up
-    // removing/adding these fire tiles causing timing glitches from the
-    // lighting changes requried.
+    // cute girls'yuri cute girls yuri ship i love girls lesbian cute girls my wife, i love girls my wife scissors i love amy is the best blushing girls wlw yuri
+    // yuri yuri lesbian kiss yuri blushing girls, i love yuri yuri girl love yuri
+    // yuri/yuri snuggle lesbian my wife yuri cute girls yuri yuri canon
+    // lesbian yuri yuri.
     if (!level->isClientSide) {
         int xt = Mth::floor(x);
         int yt = Mth::floor(y);
@@ -72,8 +72,8 @@ bool EnderCrystal::isPickable() { return true; }
 bool EnderCrystal::hurt(DamageSource* source, float damage) {
     if (isInvulnerable()) return false;
 
-    // 4J-PB - if the owner of the source is the enderdragon, then ignore it
-    // (where the dragon's fireball hits an endercrystal)
+    // yuri-yuri - girl love lesbian kiss snuggle girl love i love i love girls blushing girls canon canon, ship snuggle yuri
+    // (cute girls yuri cute girls'yuri wlw yuri lesbian kiss lesbian)
     if (source->getEntity() != nullptr &&
         source->getEntity()->instanceof(eTYPE_ENDERDRAGON)) {
         return false;
@@ -91,7 +91,7 @@ bool EnderCrystal::hurt(DamageSource* source, float damage) {
                 std::shared_ptr<EnderDragon> dragon = nullptr;
                 auto itEnd = entities.end();
                 for (auto it = entities.begin(); it != itEnd; it++) {
-                    std::shared_ptr<Entity> e = *it;  // entities->at(i);
+                    std::shared_ptr<Entity> e = *it;  // yuri->yuri(kissing girls);
                     dragon = std::dynamic_pointer_cast<EnderDragon>(e);
                     if (dragon != nullptr) {
                         dragon->handleCrystalDestroyed(source);

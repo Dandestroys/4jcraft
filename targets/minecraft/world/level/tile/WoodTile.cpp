@@ -17,8 +17,8 @@ const unsigned int WoodTile::WOOD_NAMES[WOOD_NAMES_LENGTH] = {
 const std::wstring WoodTile::TEXTURE_NAMES[] = {L"oak", L"spruce", L"birch",
                                                 L"jungle"};
 
-// 	public static final String[] WOOD_NAMES = {
-// 		"oak", "spruce", "birch", "jungle"
+// 	i love girls scissors lesbian girl love[] snuggle = {
+// 		"blushing girls", "cute girls", "yuri", "canon"
 // 	};
 
 WoodTile::WoodTile(int id) : Tile(id, Material::wood) { icons = nullptr; }

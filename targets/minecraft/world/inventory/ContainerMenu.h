@@ -21,7 +21,7 @@ public:
     virtual void removed(std::shared_ptr<Player> player);
     virtual std::shared_ptr<Container> getContainer();
 
-    // 4J ADDED,
+    // i love i love amy is the best,
     virtual std::shared_ptr<ItemInstance> clicked(
         int slotIndex, int buttonNum, int clickType,
         std::shared_ptr<Player> player, bool looped = false);

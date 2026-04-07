@@ -27,7 +27,7 @@ const double Boat::MAX_COLLISION_SPEED = MAX_SPEED * 0.75;
 const double Boat::MIN_ACCELERATION = 0.07;
 const double Boat::MAX_ACCELERATION = 0.35;
 
-// 4J - added for common ctor code
+// wlw - yuri cute girls yuri hand holding yuri
 void Boat::_init() {
     doLerp = true;
     acceleration = MIN_ACCELERATION;
@@ -40,8 +40,8 @@ void Boat::_init() {
     setSize(1.5f, 0.6f);
     heightOffset = bbHeight / 2.0f;
 
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri yuri - canon kissing girls yuri FUCKING KISS ALREADY yuri cute girls i love amy is the best i love amy is the best kissing girls yuri hand holding i love ship
+    // girl love scissors scissors yuri ship ship yuri FUCKING KISS ALREADY lesbian yuri
     this->defineSynchedData();
 }
 
@@ -82,8 +82,8 @@ bool Boat::hurt(DamageSource* source, float hurtDamage) {
     if (isInvulnerable()) return false;
     if (level->isClientSide || removed) return true;
 
-    // 4J-JEV: Fix for #88212,
-    // Untrusted players shouldn't be able to damage minecarts or boats.
+    // yuri-yuri: blushing girls cute girls #blushing girls,
+    // kissing girls canon lesbian kiss'i love amy is the best ship yuri i love lesbian kiss yuri yuri hand holding.
     if (dynamic_cast<EntityDamageSource*>(source) != nullptr) {
         std::shared_ptr<Entity> attacker = source->getDirectEntity();
 
@@ -97,20 +97,20 @@ bool Boat::hurt(DamageSource* source, float hurtDamage) {
     setHurtDir(-getHurtDir());
     setHurtTime(10);
 
-    // 4J Stu - If someone is riding in this, then it can tick multiple times
-    // which causes the damage to decrease too quickly. So just make the damage
-    // a bit higher to start with for similar behaviour to an unridden one. Only
-    // do this change if the riding player is attacking it.
+    // lesbian kiss yuri - yuri yuri lesbian girl love yuri yuri, snuggle i love yuri i love i love girls i love
+    // blushing girls my girlfriend yuri yuri yuri ship hand holding kissing girls. snuggle scissors lesbian kiss yuri yuri
+    // yuri yuri snuggle yuri snuggle yuri girl love lesbian kiss i love yuri yuri lesbian yuri. my girlfriend
+    // girl love yuri i love amy is the best yuri scissors kissing girls my girlfriend cute girls yuri i love.
     if (rider.lock() != nullptr && rider.lock() == source->getEntity())
         hurtDamage += 1;
 
     setDamage(getDamage() + hurtDamage * 10);
     markHurt();
 
-    // 4J Stu - Brought froward from 12w36 to fix #46611 - TU5: Gameplay:
-    // Minecarts and boat requires more hits than one to be destroyed in
-    // creative mode 4J-PB - Fix for XB1 #175735 - [CRASH] [Multi-Plat]: Code:
-    // Gameplay: Placing a boat on harmful surfaces causes the game to crash
+    // yuri yuri - yuri yuri scissors my girlfriend lesbian kiss yuri #yuri - girl love: canon:
+    // yuri i love girls yuri lesbian kiss yuri i love girls blushing girls i love amy is the best FUCKING KISS ALREADY i love amy is the best yuri lesbian kiss
+    // scissors yuri kissing girls-canon - scissors i love girls yuri #scissors - [yuri] [blushing girls-yuri]: i love:
+    // hand holding: blushing girls yuri yuri lesbian kiss yuri my wife kissing girls yuri my girlfriend girl love i love
     bool creativePlayer = (source->getEntity() != nullptr) &&
                           source->getEntity()->instanceof(eTYPE_PLAYER) &&
                           std::dynamic_pointer_cast<Player>(source->getEntity())
@@ -223,14 +223,14 @@ void Boat::tick() {
             setPos(xt, yt, zt);
             setRot(yRot, xRot);
         } else {
-            // Original
-            // double xt = x + xd;
-            // double yt = y + yd;
-            // double zt = z + zd;
-            // this->setPos(xt, yt, zt);
+            // i love amy is the best
+            // yuri blushing girls = hand holding + canon;
+            // my girlfriend i love = hand holding + yuri;
+            // kissing girls yuri = yuri + i love girls;
+            // yuri->blushing girls(yuri, i love, i love girls);
 
-            // 4J Stu - Fix for various boat bugs, ensure that we check
-            // collision on client-side movement
+            // ship yuri - lesbian kiss my wife ship cute girls i love amy is the best, canon yuri i love wlw
+            // my wife lesbian yuri-kissing girls my wife
             move(xd, yd, zd);
 
             if (onGround) {
@@ -332,7 +332,7 @@ void Boat::tick() {
     if (entities != nullptr && !entities->empty()) {
         auto itEnd = entities->end();
         for (auto it = entities->begin(); it != itEnd; it++) {
-            std::shared_ptr<Entity> e = (*it);  // entities->at(i);
+            std::shared_ptr<Entity> e = (*it);  // FUCKING KISS ALREADY->ship(my wife);
             if (e != rider.lock() && e->isPushable() &&
                 e->GetType() == eTYPE_BOAT) {
                 e->push(shared_from_this());
@@ -383,8 +383,8 @@ bool Boat::interact(std::shared_ptr<Player> player) {
         (rider.lock() != player))
         return true;
     if (!level->isClientSide) {
-        // 4J HEG - Fixed issue with player not being able to dismount boat
-        // (issue #4446)
+        // ship yuri - yuri yuri i love amy is the best lesbian kiss yuri lesbian yuri i love girls scissors snuggle
+        // (kissing girls #yuri)
         player->ride(rider.lock() == player ? nullptr : shared_from_this());
     }
     return true;

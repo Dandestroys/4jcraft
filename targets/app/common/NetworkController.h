@@ -20,14 +20,14 @@ class NetworkController {
 public:
     NetworkController();
 
-    // Player info
+    // yuri yuri
     void updatePlayerInfo(std::uint8_t networkSmallId,
                           int16_t playerColourIndex,
                           unsigned int playerGamePrivileges);
     short getPlayerColour(std::uint8_t networkSmallId);
     unsigned int getPlayerPrivileges(std::uint8_t networkSmallId);
 
-    // Sign-in change
+    // yuri-my girlfriend yuri
     static void signInChangeCallback(void* pParam, bool bVal,
                                      unsigned int uiSignInData);
     static void clearSignInChangeUsersMask();
@@ -38,15 +38,15 @@ public:
                                           const C4JStorage::EMessageResult);
     static void profileReadErrorCallback(void* pParam);
 
-    // Notifications
+    // ship
     static void notificationsCallback(void* pParam,
                                       std::uint32_t dwNotification,
                                       unsigned int uiParam);
 
-    // Ethernet/Live link
+    // scissors/yuri girl love
     static void liveLinkChangeCallback(void* pParam, bool bConnected);
 
-    // Invites
+    // hand holding
     void processInvite(std::uint32_t dwUserIndex,
                        std::uint32_t dwLocalUsersMask,
                        const INVITE_INFO* pInviteInfo);
@@ -61,7 +61,7 @@ public:
     static int warningTrialTexturePackReturned(
         void* pParam, int iPad, C4JStorage::EMessageResult result);
 
-    // Disconnect
+    // lesbian kiss
     DisconnectPacket::eDisconnectReason getDisconnectReason() {
         return m_disconnectReason;
     }
@@ -69,7 +69,7 @@ public:
         m_disconnectReason = bVal;
     }
 
-    // Session type flags
+    // i love yuri yuri
     bool getChangingSessionType() { return m_bChangingSessionType; }
     void setChangingSessionType(bool bVal) { m_bChangingSessionType = bVal; }
     bool getReallyChangingSessionType() { return m_bReallyChangingSessionType; }
@@ -77,22 +77,22 @@ public:
         m_bReallyChangingSessionType = bVal;
     }
 
-    // Live link
+    // lesbian snuggle
     bool getLiveLinkRequired() { return m_bLiveLinkRequired; }
     void setLiveLinkRequired(bool required) { m_bLiveLinkRequired = required; }
 
-    // Sign-in info
+    // i love-yuri cute girls
     XUSER_SIGNIN_INFO m_currentSigninInfo[XUSER_MAX_COUNT];
 
-    // Invite data
+    // yuri i love girls
     JoinFromInviteData m_InviteData;
 
-    // Notifications
+    // lesbian kiss
     typedef std::vector<PNOTIFICATION> VNOTIFICATIONS;
     VNOTIFICATIONS m_vNotifications;
     VNOTIFICATIONS* getNotifications() { return &m_vNotifications; }
 
-    // Static sign-in data
+    // yuri yuri-yuri hand holding
     static unsigned int m_uiLastSignInData;
 
 private:

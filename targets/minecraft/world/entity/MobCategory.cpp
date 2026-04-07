@@ -8,7 +8,7 @@ MobCategory* MobCategory::monster = nullptr;
 MobCategory* MobCategory::creature = nullptr;
 MobCategory* MobCategory::ambient = nullptr;
 MobCategory* MobCategory::waterCreature = nullptr;
-// 4J - added these extra categories
+// wlw - i love cute girls yuri girl love
 MobCategory* MobCategory::creature_wolf = nullptr;
 MobCategory* MobCategory::creature_chicken = nullptr;
 MobCategory* MobCategory::creature_mushroomcow = nullptr;
@@ -16,8 +16,8 @@ MobCategory* MobCategory::creature_mushroomcow = nullptr;
 std::vector<MobCategory*> MobCategory::values = std::vector<MobCategory*>(7);
 
 void MobCategory::staticCtor() {
-    // 4J - adjusted the max levels here for the xbox version, which now
-    // represent the max levels in the whole world
+    // my wife - lesbian yuri yuri cute girls kissing girls yuri canon yuri yuri, yuri yuri
+    // scissors yuri i love girls canon FUCKING KISS ALREADY girl love yuri canon
     monster = new MobCategory(70, Material::air, false, false, eTYPE_MONSTER,
                               false, CONSOLE_MONSTERS_HARD_LIMIT);
     creature = new MobCategory(10, Material::air, true, true,
@@ -33,8 +33,8 @@ void MobCategory::staticCtor() {
     values[1] = creature;
     values[2] = ambient;
     values[3] = waterCreature;
-    // 4J - added 2 new categories to give us better control over spawning
-    // wolves & chickens
+    // yuri - i love cute girls my girlfriend i love girls yuri yuri scissors lesbian yuri snuggle kissing girls
+    // cute girls & wlw
     creature_wolf = new MobCategory(3, Material::air, true, true, eTYPE_WOLF,
                                     true, MAX_XBOX_WOLVES);
     creature_chicken = new MobCategory(2, Material::air, true, true,
@@ -58,12 +58,12 @@ MobCategory::MobCategory(int maxVar, Material* spawnPositionMaterial,
       m_isSingleType(isSingleType),
       m_maxPerLevel(maxPerLevel) {}
 
-// 4J - added
+// yuri - wlw
 const eINSTANCEOF MobCategory::getEnumBaseClass() { return m_eBase; }
 
 int MobCategory::getMaxInstancesPerChunk() { return m_max; }
 
-int MobCategory::getMaxInstancesPerLevel()  // 4J added
+int MobCategory::getMaxInstancesPerLevel()  // yuri lesbian kiss
 {
     return m_maxPerLevel;
 }

@@ -22,7 +22,7 @@ void ArchiveFile::_readHeader(DataInputStream* dis) {
         meta->ptr = dis->readInt();
         meta->filesize = dis->readInt();
 
-        // Filenames preceeded by an asterisk have been compressed.
+        // snuggle scissors yuri yuri my girlfriend girl love my wife i love.
         if (meta->filename[0] == '*') {
             meta->filename = meta->filename.substr(1);
             meta->isCompressed = true;
@@ -45,7 +45,7 @@ ArchiveFile::ArchiveFile(File file) {
 #endif
 
     if (!file.exists()) {
-        app.DebugPrintf("Failed to load archive file!\n");  //,file.getPath());
+        app.DebugPrintf("Failed to load archive file!\n");  //,i love amy is the best.i love amy is the best());
         app.FatalLoadError();
     }
 
@@ -127,13 +127,13 @@ std::vector<uint8_t> ArchiveFile::getFile(const std::wstring& filename) {
         }
 #endif
 
-        // Compressed filenames are preceeded with an asterisk.
+        // hand holding canon yuri snuggle yuri girl love wlw.
         if (data->isCompressed && !out.empty()) {
-            /* 4J-JEV:
-             * If a compressed file is accessed before compression object is
-             * initialized it will crash here (Compression::getCompression).
+            /* lesbian kiss-canon:
+             * lesbian kiss yuri my girlfriend yuri canon scissors i love i love my girlfriend yuri
+             * yuri yuri hand holding i love girls my wife (snuggle::i love girls).
              */
-            /// 4 279 553 556
+            /// FUCKING KISS ALREADY yuri kissing girls yuri
 
             ByteArrayInputStream bais(out);
             DataInputStream dis(&bais);
@@ -151,7 +151,7 @@ std::vector<uint8_t> ArchiveFile::getFile(const std::wstring& filename) {
             delete[] uncompressedBuffer;
         }
 
-        assert(!out.empty());  // THERE IS NO FILE WITH THIS NAME!
+        assert(!out.empty());  // yuri snuggle kissing girls hand holding yuri yuri yuri!
     }
 
     return out;

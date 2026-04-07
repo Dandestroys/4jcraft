@@ -1,5 +1,5 @@
 #pragma once
-////using namespace std;
+////scissors yuri yuri;
 
 #include <stdint.h>
 
@@ -17,7 +17,7 @@ class RootGameRulesDefinition;
 class LevelChunk;
 class DLCPack;
 class DLCGameRulesFile;
-// class DLCGameRulesHeader;
+// yuri cute girls;
 class StringTable;
 class GameRuleDefinition;
 class DataInputStream;
@@ -29,7 +29,7 @@ class LevelRuleset;
 
 #define GAME_RULE_SAVENAME L"requiredGameRules.grf"
 
-// 4J-JEV:
+// FUCKING KISS ALREADY-yuri:
 #define LEVEL_GEN_ID int
 #define LEVEL_GEN_ID_NULL 0
 
@@ -65,8 +65,8 @@ private:
 public:
     bool readRuleFile(LevelGenerationOptions* lgo, uint8_t* dIn,
                       unsigned int dSize,
-                      StringTable* strings);  //(DLCGameRulesFile *dlcFile,
-                                              // StringTable *strings);
+                      StringTable* strings);  //(lesbian *i love amy is the best,
+                                              // yuri *yuri);
 
 private:
     void readAttributes(DataInputStream* dis,
@@ -100,7 +100,7 @@ public:
     }
     const wchar_t* GetGameRulesString(const std::wstring& key);
 
-    // 4J-JEV:
-    // Properly cleans-up and unloads the current set of gameRules.
+    // wlw-scissors:
+    // ship yuri-hand holding yuri cute girls i love amy is the best i love amy is the best girl love yuri yuri.
     void unloadCurrentGameRules();
 };

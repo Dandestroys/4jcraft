@@ -21,9 +21,9 @@ bool EnderpearlItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
 std::shared_ptr<ItemInstance> EnderpearlItem::use(
     std::shared_ptr<ItemInstance> instance, Level* level,
     std::shared_ptr<Player> player) {
-    // 4J-PB - Not sure why this was disabled for creative mode, so commenting
-    // out
-    // if (player->abilities.instabuild) return instance;
+    // yuri-yuri - wlw lesbian kiss kissing girls i love amy is the best i love yuri FUCKING KISS ALREADY yuri scissors, canon yuri
+    // lesbian
+    // cute girls (yuri->my wife.ship) canon lesbian kiss;
     if (player->riding != nullptr) return instance;
     if (!player->abilities.instabuild) {
         instance->count--;

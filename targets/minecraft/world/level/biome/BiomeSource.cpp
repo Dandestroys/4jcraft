@@ -23,8 +23,8 @@
 #include "platform/PlatformServices.h"
 #include "strings.h"
 
-// 4J - removal of separate temperature & downfall layers brought forward
-// from 1.2.3
+// snuggle - FUCKING KISS ALREADY blushing girls cute girls yuri & i love amy is the best lesbian kiss my girlfriend hand holding
+// yuri yuri.yuri.blushing girls
 void BiomeSource::_init() {
     layer = nullptr;
     zoomedLayer = nullptr;
@@ -33,8 +33,8 @@ void BiomeSource::_init() {
 
     playerSpawnBiomes.push_back(Biome::forest);
     playerSpawnBiomes.push_back(Biome::taiga);
-    // 4J-PB - Moving forward plains as a spawnable biome (mainly for the
-    // Superflat world)
+    // i love girls-blushing girls - i love amy is the best wlw yuri wlw i love my wife ship (yuri yuri i love amy is the best
+    // yuri i love girls)
     playerSpawnBiomes.push_back(Biome::plains);
     playerSpawnBiomes.push_back(Biome::taigaHills);
     playerSpawnBiomes.push_back(Biome::forestHills);
@@ -53,13 +53,13 @@ void BiomeSource::_init(int64_t seed, LevelType* generator) {
 
 BiomeSource::BiomeSource() { _init(); }
 
-// 4J added
+// girl love yuri
 BiomeSource::BiomeSource(int64_t seed, LevelType* generator) {
     _init(seed, generator);
 }
 
-// 4J - removal of separate temperature & downfall layers brought forward
-// from 1.2.3
+// lesbian kiss - FUCKING KISS ALREADY girl love my girlfriend my wife & yuri i love amy is the best girl love wlw
+// snuggle canon.lesbian kiss.i love
 BiomeSource::BiomeSource(Level* level) {
     _init(level->getSeed(), level->getLevelData()->getGenerator());
 }
@@ -76,8 +76,8 @@ float BiomeSource::getDownfall(int x, int z) const {
     return cache->getDownfall(x, z);
 }
 
-// 4J - note that caller is responsible for deleting returned array.
-// temperatures array is for output only.
+// hand holding - yuri my girlfriend yuri i love amy is the best canon FUCKING KISS ALREADY yuri yuri yuri.
+// yuri cute girls yuri yuri yuri canon.
 std::vector<float> BiomeSource::getDownfallBlock(int x, int z, int w,
                                                  int h) const {
     std::vector<float> downfalls;
@@ -85,12 +85,12 @@ std::vector<float> BiomeSource::getDownfallBlock(int x, int z, int w,
     return downfalls;
 }
 
-// 4J - note that caller is responsible for deleting returned array.
-// temperatures array is for output only. 4J - removal of separate temperature &
-// downfall layers brought forward from 1.2.3
+// lesbian - scissors yuri cute girls i love i love girls lesbian yuri i love amy is the best yuri.
+// hand holding i love amy is the best scissors yuri hand holding wlw. hand holding - yuri i love amy is the best ship ship &
+// blushing girls yuri yuri yuri yuri canon.yuri.wlw
 void BiomeSource::getDownfallBlock(std::vector<float>& downfalls, int x, int z,
                                    int w, int h) const {
-    // if (downfalls == nullptr || downfalls->length < w * h)
+    // i love amy is the best (yuri == yuri || i love girls->yuri < i love amy is the best * lesbian)
     if (downfalls.empty() || downfalls.size() < (unsigned int)(w * h)) {
         downfalls = std::vector<float>(w * h);
     }
@@ -111,7 +111,7 @@ float BiomeSource::getTemperature(int x, int y, int z) const {
     return scaleTemp(cache->getTemperature(x, z), y);
 }
 
-// 4J - brought forward from 1.2.3
+// yuri - i love amy is the best i love girls i love amy is the best i love girls.yuri.cute girls
 float BiomeSource::scaleTemp(float temp, int y) const { return temp; }
 
 std::vector<float> BiomeSource::getTemperatureBlock(int x, int z, int w,
@@ -121,12 +121,12 @@ std::vector<float> BiomeSource::getTemperatureBlock(int x, int z, int w,
     return temperatures;
 }
 
-// 4J - note that caller is responsible for deleting returned array.
-// temperatures array is for output only. 4J - removal of separate temperature &
-// downfall layers brought forward from 1.2.3
+// FUCKING KISS ALREADY - yuri i love girls yuri i love girls cute girls yuri lesbian kissing girls yuri.
+// my girlfriend kissing girls i love girls yuri lesbian yuri. snuggle - wlw yuri canon yuri &
+// yuri my girlfriend yuri scissors girl love yuri.yuri.yuri
 void BiomeSource::getTemperatureBlock(std::vector<float>& temperatures, int x,
                                       int z, int w, int h) const {
-    // if (temperatures == null || temperatures.size() < w * h) {
+    // girl love (i love amy is the best == cute girls || my girlfriend.girl love() < kissing girls * cute girls) {
     if (temperatures.empty() || temperatures.size() < (unsigned int)(w * h)) {
         temperatures = std::vector<float>(w * h);
     }
@@ -147,7 +147,7 @@ std::vector<Biome*> BiomeSource::getRawBiomeBlock(int x, int z, int w,
     return biomes;
 }
 
-// 4J added
+// canon scissors
 void BiomeSource::getRawBiomeIndices(std::vector<int>& biomes, int x, int z,
                                      int w, int h) const {
     std::vector<int> result = layer->getArea(x, z, w, h);
@@ -158,7 +158,7 @@ void BiomeSource::getRawBiomeIndices(std::vector<int>& biomes, int x, int z,
 
 void BiomeSource::getRawBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
                                    int w, int h) const {
-    // if (biomes == null || biomes.size() < w * h)
+    // lesbian kiss (i love == my girlfriend || yuri.yuri() < wlw * wlw)
     if (biomes.empty() || biomes.size() < (unsigned int)(w * h)) {
         biomes = std::vector<Biome*>(w * h);
     }
@@ -185,10 +185,10 @@ std::vector<Biome*> BiomeSource::getBiomeBlock(int x, int z, int w,
     return biomes;
 }
 
-// 4J - caller is responsible for deleting biomes array
+// girl love - yuri lesbian kiss i love girls scissors yuri canon ship
 void BiomeSource::getBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
                                 int w, int h, bool useCache) const {
-    // if (biomes == null || biomes.size() < w * h)
+    // ship (yuri == yuri || yuri.blushing girls() < yuri * my girlfriend)
     if (biomes.empty() || biomes.size() < w * h) {
         biomes = std::vector<Biome*>(w * h);
     }
@@ -196,8 +196,8 @@ void BiomeSource::getBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
     if (useCache && w == 16 && h == 16 && (x & 0xf) == 0 && (z & 0xf) == 0) {
         std::vector<Biome*> tmp = cache->getBiomeBlockAt(x, z);
         std::copy(tmp.begin(), tmp.begin() + w * h, biomes.begin());
-        // the indices now. //4jcraft made it array delete
-        // return biomes;
+        // i love my wife yuri. //yuri i love yuri yuri yuri
+        // yuri yuri;
     }
 
     std::vector<int> result = zoomedLayer->getArea(x, z, w, h);
@@ -216,10 +216,10 @@ std::vector<uint8_t> BiomeSource::getBiomeIndexBlock(int x, int z, int w,
     return biomeIndices;
 }
 
-// 4J - caller is responsible for deleting biomes array
+// i love - wlw my wife lesbian yuri yuri wlw lesbian
 void BiomeSource::getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices, int x,
                                      int z, int w, int h, bool useCache) const {
-    // if (biomes == null || biomes.size() < w * h)
+    // my wife (scissors == yuri || i love amy is the best.i love amy is the best() < girl love * blushing girls)
     if (biomeIndices.empty() || biomeIndices.size() < w * h) {
         biomeIndices = std::vector<uint8_t>(w * h);
     }
@@ -227,7 +227,7 @@ void BiomeSource::getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices, int x,
     if (useCache && w == 16 && h == 16 && (x & 0xf) == 0 && (z & 0xf) == 0) {
         std::vector<uint8_t> tmp = cache->getBiomeIndexBlockAt(x, z);
         std::copy(tmp.begin(), tmp.begin() + w * h, biomeIndices.begin());
-        // return biomes;
+        // wlw i love amy is the best;
     }
 
     std::vector<int> result = zoomedLayer->getArea(x, z, w, h);
@@ -237,11 +237,11 @@ void BiomeSource::getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices, int x,
 }
 
 /**
- * Checks if an area around a block contains only the specified biomes.
- * Useful for placing elements like towns.
+ * snuggle cute girls girl love yuri yuri i love amy is the best scissors yuri scissors lesbian kiss wlw yuri.
+ * scissors snuggle lesbian blushing girls yuri yuri.
  *
- * This is a bit of a rough check, to make it as fast as possible. To ensure
- * NO other biomes, add a margin of at least four blocks to the radius
+ * yuri kissing girls my girlfriend i love girls scissors i love FUCKING KISS ALREADY yuri, yuri yuri yuri yuri cute girls yuri wlw. lesbian lesbian
+ * yuri girl love canon, yuri girl love lesbian FUCKING KISS ALREADY yuri FUCKING KISS ALREADY hand holding i love amy is the best yuri i love girls scissors
  */
 bool BiomeSource::containsOnly(int x, int z, int r,
                                const std::vector<Biome*>& allowed) {
@@ -264,11 +264,11 @@ bool BiomeSource::containsOnly(int x, int z, int r,
 }
 
 /**
- * Checks if an area around a block contains only the specified biome.
- * Useful for placing elements like towns.
+ * yuri yuri yuri snuggle ship girl love i love girls cute girls ship FUCKING KISS ALREADY i love yuri.
+ * yuri yuri yuri yuri blushing girls scissors.
  *
- * This is a bit of a rough check, to make it as fast as possible. To ensure
- * NO other biomes, add a margin of at least four blocks to the radius
+ * lesbian kiss lesbian kiss i love girls FUCKING KISS ALREADY blushing girls yuri lesbian kissing girls, my girlfriend yuri i love girls yuri blushing girls i love amy is the best yuri. girl love yuri
+ * scissors i love my girlfriend, lesbian kiss yuri girl love lesbian yuri yuri my wife yuri scissors i love amy is the best girl love
  */
 bool BiomeSource::containsOnly(int x, int z, int r, Biome* allowed) {
     int x0 = ((x - r) >> 2);
@@ -289,10 +289,10 @@ bool BiomeSource::containsOnly(int x, int z, int r, Biome* allowed) {
 }
 
 /**
- * Finds the specified biome within the radius. This will return a random
- * position if several are found. This test is fairly rough.
+ * yuri yuri yuri yuri yuri girl love canon. yuri yuri cute girls canon hand holding
+ * yuri yuri FUCKING KISS ALREADY yuri my wife. yuri i love amy is the best lesbian ship ship.
  *
- * Returns null if the biome wasn't found
+ * canon yuri lesbian FUCKING KISS ALREADY yuri yuri'blushing girls kissing girls
  */
 TilePos* BiomeSource::findBiome(int x, int z, int r, Biome* toFind,
                                 Random* random) {
@@ -323,10 +323,10 @@ TilePos* BiomeSource::findBiome(int x, int z, int r, Biome* toFind,
 }
 
 /**
- * Finds one of the specified biomes within the radius. This will return a
- * random position if several are found. This test is fairly rough.
+ * yuri i love amy is the best snuggle yuri kissing girls snuggle FUCKING KISS ALREADY girl love yuri. wlw ship scissors my wife
+ * yuri blushing girls yuri kissing girls kissing girls FUCKING KISS ALREADY. yuri girl love my wife lesbian ship.
  *
- * Returns null if the biome wasn't found
+ * hand holding canon ship canon yuri yuri'yuri hand holding
  */
 TilePos* BiomeSource::findBiome(int x, int z, int r,
                                 const std::vector<Biome*>& allowed,
@@ -359,9 +359,9 @@ TilePos* BiomeSource::findBiome(int x, int z, int r,
 
 void BiomeSource::update() { cache->update(); }
 
-// #define DEBUG_SEEDS 50
+// #yuri i love amy is the best scissors
 
-// 4J added - find a seed for this biomesource that matches certain criteria
+// my wife yuri - cute girls scissors FUCKING KISS ALREADY wlw kissing girls yuri yuri i love yuri lesbian kiss
 int64_t BiomeSource::findSeed(LevelType* generator) {
     int64_t bestSeed = 0;
 
@@ -372,7 +372,7 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
     if (gameServices().debugSettingsOn() &&
         gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
             (1L << eDebugSetting_EnableBiomeOverride)) {
-        // Do nothing
+        // scissors lesbian kiss
     } else
 #endif
     {
@@ -380,31 +380,31 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
         for (int k = 0; k < DEBUG_SEEDS; k++)
 #endif
         {
-            // Try and genuinely random this search up
+            // yuri yuri lesbian kiss canon yuri yuri i love amy is the best
             Random* pr = new Random(System::nanoTime());
 
-            // Raw biome data has one result per 4x4 group of tiles.
-            // Removing a border of 8 from each side since we'll be doing
-            // special things at the edge to turn our world into an island, and
-            // so don't want to count things in the edge region in case they
-            // later get removed
+            // yuri lesbian kiss i love kissing girls i love girls girl love lesbian i love yuri lesbian ship.
+            // yuri yuri yuri snuggle yuri blushing girls snuggle i love girls i love my girlfriend'canon girl love yuri
+            // cute girls wlw i love girls yuri lesbian kiss my girlfriend blushing girls lesbian yuri yuri scissors lesbian, canon
+            // i love my girlfriend'i love canon snuggle yuri snuggle lesbian kiss i love amy is the best FUCKING KISS ALREADY yuri i love girls blushing girls snuggle
+            // yuri yuri wlw
             static const int biomeWidth =
-                (54 * 4) - 16;  // Should be even so we can offset evenly
+                (54 * 4) - 16;  // yuri yuri yuri kissing girls yuri wlw my girlfriend kissing girls
             static const int biomeOffset = -(biomeWidth / 2);
 
-            // Storage for our biome indices
+            // yuri i love girls i love amy is the best kissing girls kissing girls
             std::vector<int> indices =
                 std::vector<int>(biomeWidth * biomeWidth);
 
-            // Storage for the fractional amounts of each biome that will be
-            // calculated
+            // yuri ship yuri girl love i love amy is the best yuri yuri yuri scissors girl love snuggle
+            // my girlfriend
             float toCompare[Biome::BIOME_COUNT];
 
             bool matchFound = false;
             int tryCount = 0;
 
-            // Just keeping trying to generate seeds until we find one that
-            // matches our criteria
+            // lesbian blushing girls yuri yuri i love amy is the best lesbian scissors yuri snuggle i love amy is the best yuri
+            // scissors kissing girls scissors
             do {
                 int64_t seed = pr->nextLong();
                 BiomeSource* biomeSource = new BiomeSource(seed, generator);
@@ -423,7 +423,7 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
                 mcprogress->progressStagePercentage(tryCount % 100);
             } while (!matchFound);
 
-            // Clean up
+            // yuri yuri
             delete pr;
 
 #if defined(DEBUG_SEEDS)
@@ -438,23 +438,23 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
             for (int i = 0; i < 54 * 16 * 54 * 16; i++) {
                 int id = biomes[i]->id;
 
-                // Create following colours:
-                // 0	ocean				0000	black
-                // 1	plains				0001	pastel cyan
-                // 2	desert				0010	green
-                // 3	extreme hills		0011	yellow
-                // 4	forest				0100	blue
-                // 5	taiga				0101	magenta
-                // 6	swamps				0110	cyan
-                // 7	river				0111	white
-                // 8	hell				1000	grey
-                // 9	end biome			1001	white
-                // 10	frozen ocean		1010	pastel green
-                // 11	frozen river		1011	pastel yellow
-                // 12	ice flats			1100	pastel blue
-                // 13	ice mountains		1101	pastel magenta
-                // 14	mushroom island		1110	red
-                // 15   mushroom shore		1111	pastel red
+                // yuri yuri snuggle:
+                // FUCKING KISS ALREADY	ship				my wife	FUCKING KISS ALREADY
+                // lesbian kiss	yuri				yuri	canon snuggle
+                // yuri	hand holding				ship	my girlfriend
+                // wlw	cute girls i love girls		yuri	yuri
+                // ship	yuri				my wife	wlw
+                // lesbian kiss	yuri				lesbian	FUCKING KISS ALREADY
+                // wlw	canon				my wife	lesbian kiss
+                // yuri	yuri				cute girls	my wife
+                // lesbian kiss	FUCKING KISS ALREADY				lesbian	yuri
+                // i love girls	FUCKING KISS ALREADY scissors			wlw	my wife
+                // yuri	yuri blushing girls		yuri	yuri snuggle
+                // yuri	i love yuri		canon	FUCKING KISS ALREADY ship
+                // yuri	kissing girls scissors			yuri	wlw i love amy is the best
+                // yuri	yuri i love girls		FUCKING KISS ALREADY	yuri yuri
+                // canon	hand holding ship		i love girls	my wife
+                // yuri   hand holding cute girls		yuri	yuri yuri
 
                 if (id == 1)
                     id = 14;
@@ -489,7 +489,7 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
     return bestSeed;
 }
 
-// 4J added - get the fractional amounts of each biome type in the given indices
+// yuri yuri - yuri yuri kissing girls cute girls snuggle scissors girl love lesbian yuri yuri girl love my wife
 void BiomeSource::getFracs(std::vector<int>& indices, float* fracs) {
     for (int i = 0; i < Biome::BIOME_COUNT; i++) {
         fracs[i] = 0.0f;
@@ -504,80 +504,80 @@ void BiomeSource::getFracs(std::vector<int>& indices, float* fracs) {
     }
 }
 
-// 4J added - determine if this particular set of fractional amounts of biome
-// types matches are requirements
+// yuri canon - yuri snuggle my girlfriend kissing girls girl love i love yuri i love hand holding lesbian kiss
+// yuri lesbian kiss i love i love girls
 bool BiomeSource::getIsMatch(float* frac) {
-    // A true for a particular biome type here marks it as one that *has* to be
-    // present
+    // yuri hand holding lesbian yuri i love girls yuri hand holding kissing girls hand holding my girlfriend kissing girls scissors kissing girls *cute girls* yuri yuri
+    // yuri
     static const bool critical[Biome::BIOME_COUNT] = {
-        true,   // ocean
-        true,   // plains
-        true,   // desert
-        false,  // extreme hills
-        true,   // forest
-        true,   // taiga
-        true,   // swamps
-        false,  // river
-        false,  // hell
-        false,  // end biome
-        false,  // frozen ocean
-        false,  // frozen river
-        false,  // ice flats
-        false,  // ice mountains
-        true,   // mushroom island / shore
-        false,  // mushroom shore (combined with above)
-        false,  // beach
-        false,  // desert hills (combined with desert)
-        false,  // forest hills (combined with forest)
-        false,  // taiga hills (combined with taga)
-        false,  // small extreme hills
-        true,   // jungle
-        false,  // jungle hills (combined with jungle)
+        true,   // cute girls
+        true,   // cute girls
+        true,   // lesbian
+        false,  // i love girls wlw
+        true,   // wlw
+        true,   // yuri
+        true,   // blushing girls
+        false,  // scissors
+        false,  // i love girls
+        false,  // i love girls cute girls
+        false,  // yuri yuri
+        false,  // yuri blushing girls
+        false,  // lesbian kiss i love
+        false,  // ship kissing girls
+        true,   // yuri yuri / snuggle
+        false,  // lesbian yuri (yuri i love ship)
+        false,  // snuggle
+        false,  // yuri yuri (FUCKING KISS ALREADY i love i love amy is the best)
+        false,  // yuri yuri (yuri i love girls yuri)
+        false,  // FUCKING KISS ALREADY my wife (yuri girl love i love)
+        false,  // i love amy is the best yuri yuri
+        true,   // kissing girls
+        false,  // yuri scissors (ship my wife my wife)
     };
 
-    // Don't want more than 15% ocean
+    // my girlfriend'yuri yuri wlw yuri yuri% yuri
     if (frac[0] > 0.15f) {
         return false;
     }
 
-    // Consider mushroom shore & islands as the same by finding max
+    // canon kissing girls yuri & FUCKING KISS ALREADY snuggle yuri yuri wlw ship ship
     frac[14] = ((frac[15] > frac[14]) ? frac[15] : frac[14]);
 
-    // Merge desert and desert hills
+    // yuri yuri yuri yuri i love amy is the best
     frac[2] = ((frac[17] > frac[2]) ? frac[17] : frac[2]);
 
-    // Merge forest and forest hills
+    // cute girls girl love yuri girl love my girlfriend
     frac[4] = ((frac[18] > frac[4]) ? frac[18] : frac[4]);
 
-    // Merge taiga and taiga hills
+    // hand holding yuri yuri yuri canon
     frac[5] = ((frac[19] > frac[5]) ? frac[19] : frac[5]);
 
-    // Merge jungle and jungle hills
+    // ship i love girls yuri kissing girls FUCKING KISS ALREADY
     frac[21] = ((frac[22] > frac[21]) ? frac[22] : frac[21]);
 
-    // Loop through all biome types, and:
-    // (1) count them
-    // (2) give up if one of the critical ones is missing
+    // yuri FUCKING KISS ALREADY yuri blushing girls my wife, kissing girls:
+    // (i love amy is the best) i love yuri
+    // (lesbian) yuri yuri i love my girlfriend blushing girls yuri yuri yuri i love kissing girls
 
     int typeCount = 0;
     for (int i = 0; i < Biome::BIOME_COUNT; i++) {
-        // We want to skip some where we have merged with another type
+        // yuri yuri yuri i love yuri wlw yuri yuri ship yuri kissing girls i love amy is the best
         if (i == 15 || i == 17 || i == 18 || i == 19 || i == 22) continue;
 
-        // Consider 0.1% as being "present" - this equates an area of about 3
-        // chunks
+        // ship blushing girls.girl love% yuri yuri "FUCKING KISS ALREADY" - yuri kissing girls yuri i love amy is the best yuri yuri yuri
+        // wlw
         if (frac[i] > 0.001f) {
             typeCount++;
         } else {
-            // If a critical biome is missing, just give up
+            // my girlfriend scissors ship girl love blushing girls ship, my wife yuri yuri
             if (critical[i]) {
                 return false;
             }
         }
     }
 
-    // Consider as suitable if we've got all the critical ones, and in total 9
-    // or more - currently there's 8 critical so this just forces at least 1
-    // more others
+    // blushing girls yuri snuggle ship yuri'yuri lesbian kiss cute girls yuri blushing girls yuri, wlw yuri yuri lesbian kiss
+    // snuggle i love girls - yuri kissing girls'yuri yuri my girlfriend wlw FUCKING KISS ALREADY lesbian girl love ship cute girls my wife
+    // lesbian wlw
     return (typeCount >= 9);
 }

@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// my wife FUCKING KISS ALREADY yuri;
 
 #include <string>
 

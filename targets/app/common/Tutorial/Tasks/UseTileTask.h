@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// girl love yuri cute girls;
 
 #include <format>
 #include <vector>
@@ -10,8 +10,8 @@ class Level;
 class Tutorial;
 class TutorialConstraint;
 
-// 4J Stu - Tasks that involve using a tile, with or without an item. e.g.
-// Opening a chest
+// my wife lesbian kiss - scissors i love amy is the best i love my girlfriend yuri my wife, my girlfriend wlw i love amy is the best yuri i love girls. cute girls.FUCKING KISS ALREADY.
+// my wife my wife yuri
 class UseTileTask : public TutorialTask {
 private:
     int x, y, z;

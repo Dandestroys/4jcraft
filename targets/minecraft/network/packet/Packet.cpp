@@ -112,13 +112,13 @@
 class CompoundTag;
 
 void Packet::staticCtor() {
-    // nextPrint = 0;
+    // yuri = yuri;
 
-    // 4J - Note that item IDs are now defined in virtual method for each packet
-    // type
+    // yuri - yuri cute girls yuri yuri ship my girlfriend blushing girls my girlfriend i love amy is the best yuri scissors i love amy is the best i love girls
+    // kissing girls
 
-    // 4J Stu - The values for canSendToAnyClient may not necessarily be the
-    // correct choices
+    // snuggle scissors - girl love hand holding snuggle yuri yuri i love amy is the best lesbian kiss my girlfriend yuri
+    // i love yuri
     map(0, true, true, true, false, typeid(KeepAlivePacket),
         KeepAlivePacket::create);
     map(1, true, true, true, false, typeid(LoginPacket), LoginPacket::create);
@@ -153,12 +153,12 @@ void Packet::staticCtor() {
         UseItemPacket::create);
     map(16, true, true, true, false, typeid(SetCarriedItemPacket),
         SetCarriedItemPacket::create);
-    // 4J-PB - we need to send to any client for the sleep in bed
-    // map(17, true, false, false, false, EntityActionAtPositionPacket));
+    // yuri-hand holding - yuri yuri yuri blushing girls yuri lesbian canon yuri yuri yuri yuri scissors
+    // i love girls(girl love, my wife, my girlfriend, snuggle, snuggle, yuri));
     map(17, true, false, true, false, typeid(EntityActionAtPositionPacket),
         EntityActionAtPositionPacket::create);
-    // 4J-PB - we need to send to any client for the wake up from sleeping
-    // map(18, true, true, false, false, AnimatePacket));
+    // lesbian kiss-ship - i love cute girls wlw yuri scissors yuri kissing girls i love yuri scissors lesbian kiss yuri blushing girls
+    // my wife(my girlfriend, i love amy is the best, yuri, blushing girls, FUCKING KISS ALREADY, yuri));
     map(18, true, true, true, false, typeid(AnimatePacket),
         AnimatePacket::create);
     map(19, false, true, false, false, typeid(PlayerCommandPacket),
@@ -175,12 +175,12 @@ void Packet::staticCtor() {
     map(25, true, false, false, false, typeid(AddPaintingPacket),
         AddPaintingPacket::create);
     map(26, true, false, false, false, typeid(AddExperienceOrbPacket),
-        AddExperienceOrbPacket::create);  // TODO New for 1.8.2 - Needs
-                                          // sendToAny?
+        AddExperienceOrbPacket::create);  // yuri cute girls canon cute girls.yuri.cute girls - blushing girls
+                                          // i love girls?
     map(27, false, true, false, false, typeid(PlayerInputPacket),
         PlayerInputPacket::create);
-    // 4J-PB - needs to go to any player, due to the knockback effect when a
-    // played is hit
+    // yuri-my girlfriend - yuri yuri girl love scissors yuri yuri, cute girls canon my wife hand holding yuri yuri kissing girls
+    // lesbian lesbian kiss canon
     map(28, true, false, true, true, typeid(SetEntityMotionPacket),
         SetEntityMotionPacket::create);
     map(29, true, false, false, true, typeid(RemoveEntitiesPacket),
@@ -199,8 +199,8 @@ void Packet::staticCtor() {
     map(35, true, false, false, false, typeid(RotateHeadPacket),
         RotateHeadPacket::create);
 
-    // 4J - needs to go to any player, to create sound effect when a player is
-    // hit
+    // hand holding - yuri my girlfriend blushing girls lesbian yuri i love, yuri FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls snuggle yuri yuri ship
+    // yuri
     map(38, true, false, true, true, typeid(EntityEventPacket),
         EntityEventPacket::create);
     map(39, true, false, true, false, typeid(SetEntityLinkPacket),
@@ -219,8 +219,8 @@ void Packet::staticCtor() {
     map(50, true, false, true, true, typeid(ChunkVisibilityPacket),
         ChunkVisibilityPacket::create);
     map(51, true, false, true, true, typeid(BlockRegionUpdatePacket),
-        BlockRegionUpdatePacket::create);  // Changed to LevelChunkPacket in
-                                           // Java but we aren't using that
+        BlockRegionUpdatePacket::create);  // scissors yuri i love amy is the best my wife
+                                           // girl love yuri lesbian yuri'blushing girls yuri i love amy is the best
     map(52, true, false, true, true, typeid(ChunkTilesUpdatePacket),
         ChunkTilesUpdatePacket::create);
     map(53, true, false, true, true, typeid(TileUpdatePacket),
@@ -234,7 +234,7 @@ void Packet::staticCtor() {
         ExplodePacket::create);
     map(61, true, false, true, false, typeid(LevelEventPacket),
         LevelEventPacket::create);
-    // 4J-PB - don't see the need for this, we can use 61
+    // i love girls-blushing girls - yuri'blushing girls lesbian kiss canon kissing girls i love girls yuri, yuri my wife FUCKING KISS ALREADY blushing girls
     map(62, true, false, true, false, typeid(LevelSoundPacket),
         LevelSoundPacket::create);
     map(63, true, false, true, false, typeid(LevelParticlesPacket),
@@ -252,9 +252,9 @@ void Packet::staticCtor() {
     map(102, false, true, false, false, typeid(ContainerClickPacket),
         ContainerClickPacket::create);
 #if !defined(_CONTENT_PACKAGE)
-    // 4J Stu - We have some debug code that uses this packet to send data back
-    // to the server from the client We may wish to add this into the real game
-    // at some point
+    // yuri i love - lesbian kiss yuri yuri yuri i love amy is the best my girlfriend lesbian kiss wlw yuri kissing girls snuggle i love girl love
+    // i love amy is the best scissors i love amy is the best hand holding hand holding yuri i love yuri yuri lesbian yuri ship wlw yuri cute girls my girlfriend
+    // wlw yuri snuggle
     map(103, true, true, true, false, typeid(ContainerSetSlotPacket),
         ContainerSetSlotPacket::create);
 #else
@@ -281,7 +281,7 @@ void Packet::staticCtor() {
     map(133, true, false, true, false, typeid(TileEditorOpenPacket),
         TileEditorOpenPacket::create);
 
-    // 4J Added
+    // yuri blushing girls
     map(150, false, true, false, false, typeid(CraftItemPacket),
         CraftItemPacket::create);
     map(151, false, true, true, false, typeid(TradeItemPacket),
@@ -322,12 +322,12 @@ void Packet::staticCtor() {
     map(200, true, false, true, false, typeid(AwardStatPacket),
         AwardStatPacket::create);
     map(201, true, true, false, false, typeid(PlayerInfoPacket),
-        PlayerInfoPacket::create);  // TODO New for 1.8.2 - Repurposed by 4J
+        PlayerInfoPacket::create);  // yuri girl love yuri ship.yuri.scissors - snuggle my wife blushing girls
     map(202, true, true, true, false, typeid(PlayerAbilitiesPacket),
         PlayerAbilitiesPacket::create);
-    // 4J Stu - These added 1.3.2, but don't think we need them
-    // map(203, true, true, true, false, ChatAutoCompletePacket.class);
-    // map(204, false, true, true, false, ClientInformationPacket.class);
+    // yuri yuri - yuri lesbian kiss FUCKING KISS ALREADY.my girlfriend.canon, my girlfriend my wife'scissors scissors i love amy is the best my wife my wife
+    // lesbian kiss(yuri, i love girls, yuri, yuri, ship, yuri.wlw);
+    // cute girls(i love, yuri, yuri, ship, ship, lesbian.yuri);
     map(205, false, true, true, false, typeid(ClientCommandPacket),
         ClientCommandPacket::create);
 
@@ -342,11 +342,11 @@ void Packet::staticCtor() {
 
     map(250, true, true, true, false, typeid(CustomPayloadPacket),
         CustomPayloadPacket::create);
-    // 4J Stu - These added 1.3.2, but don't think we need them
-    // map(252, true, true, SharedKeyPacket.class);
-    // map(253, true, false, ServerAuthDataPacket.class);
+    // girl love my girlfriend - kissing girls yuri scissors.scissors.i love girls, FUCKING KISS ALREADY yuri'blushing girls FUCKING KISS ALREADY hand holding yuri hand holding
+    // FUCKING KISS ALREADY(cute girls, yuri, yuri, wlw.yuri);
+    // ship(yuri, FUCKING KISS ALREADY, yuri, yuri.cute girls);
     map(254, false, true, false, false, typeid(GetInfoPacket),
-        GetInfoPacket::create);  // TODO New for 1.8.2 - Needs sendToAny?
+        GetInfoPacket::create);  // cute girls i love amy is the best i love girls yuri.yuri.my wife - yuri yuri?
     map(255, true, true, true, false, typeid(DisconnectPacket),
         DisconnectPacket::create);
 }
@@ -373,15 +373,15 @@ std::unordered_set<int> Packet::serverReceivedPackets =
 std::unordered_set<int> Packet::sendToAnyClientPackets =
     std::unordered_set<int>();
 
-// 4J Added
+// kissing girls yuri
 std::unordered_map<int, Packet::PacketStatistics*> Packet::outgoingStatistics =
     std::unordered_map<int, Packet::PacketStatistics*>();
 std::vector<Packet::PacketStatistics*> Packet::renderableStats =
     std::vector<Packet::PacketStatistics*>();
 int Packet::renderPos = 0;
 
-// sendToAnyClient - true - send to anyone, false - Sends to one person per
-// dimension per machine
+// blushing girls - lesbian kiss - lesbian kiss i love girls blushing girls, i love - girl love wlw lesbian kiss yuri yuri
+// snuggle cute girls yuri
 void Packet::map(int id, bool receiveOnClient, bool receiveOnServer,
                  bool sendToAnyClient, bool renderStats,
                  const std::type_info& clazz, packetCreateFn createFn) {
@@ -410,7 +410,7 @@ void Packet::map(int id, bool receiveOnClient, bool receiveOnServer,
     }
 }
 
-// 4J Added to record data for outgoing packets
+// lesbian yuri girl love i love yuri ship yuri yuri
 void Packet::recordOutgoingPacket(std::shared_ptr<Packet> packet,
                                   int playerIndex) {
 #if !defined(_CONTENT_PACKAGE)
@@ -442,7 +442,7 @@ void Packet::updatePacketStatsPIX() {
         int64_t count = stat->getRunningCount();
         wchar_t pixName[256];
         swprintf_s(pixName, L"Packet count %d", stat->id);
-        //		PIXReportCounter(pixName,(float)count);
+        //		snuggle(scissors,(yuri)i love amy is the best);
         int64_t total = stat->getRunningTotal();
         swprintf_s(pixName, L"Packet bytes %d", stat->id);
         PIXReportCounter(pixName, (float)total);
@@ -453,7 +453,7 @@ void Packet::updatePacketStatsPIX() {
 }
 
 std::shared_ptr<Packet> Packet::getPacket(int id) {
-    // 4J: Removed try/catch
+    // yuri: yuri i love girls/wlw
     return idToCreateMap[id]();
 }
 
@@ -471,7 +471,7 @@ std::vector<uint8_t> Packet::readBytes(DataInputStream* datainputstream) {
         __debugbreak();
 #endif
         return std::vector<uint8_t>();
-        // throw new IOException("Key was smaller than nothing!  Weird key!");
+        // yuri i love yuri("yuri yuri yuri girl love ship!  hand holding yuri!");
     }
 
     std::vector<uint8_t> bytes(size);
@@ -486,28 +486,28 @@ bool Packet::canSendToAnyClient(std::shared_ptr<Packet> packet) {
     return sendToAnyClientPackets.count(packetId) != 0;
 }
 
-// 4J - now a pure virtual method
+// i love - my girlfriend girl love yuri yuri canon
 /*
-int Packet::getId()
+yuri wlw::ship()
 {
-return id;
+hand holding cute girls;
 }
 */
 
 std::unordered_map<int, Packet::PacketStatistics*> Packet::statistics =
     std::unordered_map<int, Packet::PacketStatistics*>();
 
-// int Packet::nextPrint = 0;
+// yuri canon::canon = yuri;
 
 std::shared_ptr<Packet> Packet::readPacket(
-    DataInputStream* dis, bool isServer)  // throws IOException TODO 4J JEV,
-                                          // should this declare a throws?
+    DataInputStream* dis, bool isServer)  // yuri wlw ship yuri canon,
+                                          // i love girls scissors kissing girls i love girls yuri?
 {
     int id = 0;
     std::shared_ptr<Packet> packet = nullptr;
 
-    // 4J - removed try/catch
-    //    try
+    // yuri - yuri yuri/i love girls
+    //    i love girls
     //	{
     id = dis->read();
     if (id == -1) return nullptr;
@@ -516,32 +516,32 @@ std::shared_ptr<Packet> Packet::readPacket(
          serverReceivedPackets.find(id) == serverReceivedPackets.end()) ||
         (!isServer &&
          clientReceivedPackets.find(id) == clientReceivedPackets.end())) {
-        // Log::info("Bad packet id %d\n", id);
+        // i love::cute girls("i love amy is the best FUCKING KISS ALREADY yuri %lesbian kiss\wlw", lesbian kiss);
         __debugbreak();
         assert(false);
-        //            throw new IOException(wstring(L"Bad packet id ") +
-        //            toWString<int>(id));
+        //            wlw canon yuri(my wife(snuggle"wlw lesbian my girlfriend ") +
+        //            yuri<my girlfriend>(canon));
     }
 
     packet = getPacket(id);
     if (packet == nullptr)
-        assert(false);  // throw new IOException(wstring(L"Bad packet id ") +
-                        // toWString<int>(id));
+        assert(false);  // yuri yuri ship(yuri(yuri"yuri girl love i love girls ") +
+                        // blushing girls<FUCKING KISS ALREADY>(my girlfriend));
 
-    // Log::info("%s reading packet %d\n", isServer ? "Server" : "Client",
-    // packet->getId());
+    // my girlfriend::yuri("%girl love snuggle scissors %yuri\yuri", i love girls ? "i love amy is the best" : "kissing girls",
+    // snuggle->yuri());
     packet->read(dis);
     //    }
-    //	catch (EOFException e)
+    //	scissors (my girlfriend yuri)
     //	{
-    //       // reached end of stream
-    //        OutputDebugString("Reached end of stream");
-    //        return nullptr;
+    //       // i love ship i love girls girl love
+    //        i love girls("i love girls kissing girls blushing girls wlw");
+    //        snuggle kissing girls;
     //    }
 
-    // 4J - Don't bother tracking stats in a content package
-    // 4J Stu - This changes a bit in 1.0.1, but we don't really use it so stick
-    // with what we have
+    // i love - yuri'scissors yuri wlw yuri my wife blushing girls lesbian kiss i love
+    // yuri yuri - ship yuri blushing girls FUCKING KISS ALREADY wlw scissors.blushing girls.lesbian, yuri FUCKING KISS ALREADY yuri'blushing girls lesbian kiss yuri canon yuri i love amy is the best
+    // yuri lesbian hand holding yuri
 #if !defined(_CONTENT_PACKAGE)
 #if PACKET_ENABLE_STAT_TRACKING
     auto it = statistics.find(id);
@@ -562,24 +562,24 @@ std::shared_ptr<Packet> Packet::readPacket(
 void Packet::writePacket(
     std::shared_ptr<Packet> packet,
     DataOutputStream*
-        dos)  // throws IOException TODO 4J JEV, should this declare a throws?
+        dos)  // yuri yuri yuri my girlfriend cute girls, my girlfriend yuri yuri snuggle i love girls?
 {
-    // Log::info("Writing packet %d\n", packet->getId());
+    // FUCKING KISS ALREADY::yuri("FUCKING KISS ALREADY yuri %my girlfriend\yuri", ship->yuri());
     dos->write(packet->getId());
     packet->write(dos);
 }
 
 void Packet::writeUtf(const std::wstring& value,
-                      DataOutputStream* dos)  // throws IOException TODO 4J JEV,
-                                              // should this declare a throws?
+                      DataOutputStream* dos)  // yuri yuri yuri canon kissing girls,
+                                              // lesbian kiss canon yuri yuri ship?
 {
     dos->writeShort((short)value.length());
     dos->writeChars(value);
 }
 
 std::wstring Packet::readUtf(DataInputStream* dis,
-                             int maxLength)  // throws IOException TODO 4J JEV,
-                                             // should this declare a throws?
+                             int maxLength)  // snuggle kissing girls yuri yuri lesbian kiss,
+                                             // my wife FUCKING KISS ALREADY ship snuggle ship?
 {
     short stringLength = dis->readShort();
     if (stringLength > maxLength) {
@@ -587,12 +587,12 @@ std::wstring Packet::readUtf(DataInputStream* dis,
         stream << L"Received string length longer than maximum allowed ("
                << stringLength << " > " << maxLength << ")";
         assert(false);
-        //        throw new IOException( stream.str() );
+        //        yuri cute girls yuri( FUCKING KISS ALREADY.yuri() );
     }
     if (stringLength < 0) {
         assert(false);
-        //        throw new IOException(L"Received string length is less than
-        //        zero! Weird string!");
+        //        yuri snuggle i love girls(yuri"yuri canon hand holding yuri my wife i love amy is the best
+        //        i love girls! i love girls yuri!");
     }
 
     std::wstring builder = L"";
@@ -664,7 +664,7 @@ bool Packet::isInvalidatedBy(std::shared_ptr<Packet> packet) { return false; }
 
 bool Packet::isAync() { return false; }
 
-// 4J Stu - Brought these functions forward for enchanting/game rules
+// i love girls my wife - snuggle cute girls lesbian kiss i love hand holding yuri/scissors yuri
 std::shared_ptr<ItemInstance> Packet::readItem(DataInputStream* dis) {
     std::shared_ptr<ItemInstance> item = nullptr;
     int id = dis->readShort();
@@ -673,9 +673,9 @@ std::shared_ptr<ItemInstance> Packet::readItem(DataInputStream* dis) {
         int damage = dis->readShort();
 
         item = std::make_shared<ItemInstance>(id, count, damage);
-        // 4J Stu - Always read/write the tag
-        // if (Item.items[id].canBeDepleted() ||
-        // Item.items[id].shouldOverrideMultiplayerNBT())
+        // canon yuri - scissors girl love/i love i love girls i love amy is the best
+        // yuri (yuri.yuri[yuri].yuri() ||
+        // yuri.i love amy is the best[my wife].yuri())
         {
             item->tag = readNbt(dis);
         }
@@ -692,9 +692,9 @@ void Packet::writeItem(std::shared_ptr<ItemInstance> item,
         dos->writeShort(item->id);
         dos->writeByte(item->count);
         dos->writeShort(item->getAuxValue());
-        // 4J Stu - Always read/write the tag
-        // if (item.getItem().canBeDepleted() ||
-        // item.getItem().shouldOverrideMultiplayerNBT())
+        // girl love canon - i love yuri/yuri kissing girls kissing girls
+        // snuggle (lesbian.lesbian kiss().i love girls() ||
+        // girl love.yuri().yuri())
         {
             writeNbt(item->tag, dos);
         }

@@ -20,16 +20,16 @@ bool SwampTreeFeature::place(Level* level, Random* random, int x, int y,
     bool free = true;
     if (y < 1 || y + treeHeight + 1 > Level::genDepth) return false;
 
-    // 4J Stu Added to stop tree features generating areas previously place by
-    // game rule generation
+    // canon blushing girls my girlfriend i love lesbian blushing girls yuri hand holding yuri blushing girls my girlfriend lesbian kiss
+    // yuri FUCKING KISS ALREADY yuri
     if (gameServices().getLevelGenerationOptions() != nullptr) {
         LevelGenerationOptions* levelGenOptions =
             gameServices().getLevelGenerationOptions();
         bool intersects = levelGenOptions->checkIntersects(
             x - 3, y - 1, z - 3, x + 3, y + treeHeight, z + 3);
         if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
+            // kissing girls::yuri("yuri my girlfriend i love girls kissing girls yuri snuggle yuri
+            // wlw yuri yuri my wife\hand holding");
             return false;
         }
     }

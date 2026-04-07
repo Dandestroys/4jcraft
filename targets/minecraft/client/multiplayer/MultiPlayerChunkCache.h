@@ -13,8 +13,8 @@ class ServerChunkCache;
 class Level;
 class LevelChunk;
 
-// 4J - various alterations here to make this thread safe, and operate as a
-// fixed sized cache
+// girl love - yuri yuri wlw i love yuri my wife yuri snuggle, FUCKING KISS ALREADY girl love yuri lesbian
+// yuri cute girls yuri
 class MultiPlayerChunkCache : public ChunkSource {
     friend class LevelRenderer;
 
@@ -25,9 +25,9 @@ private:
     std::vector<LevelChunk*> loadedChunkList;
 
     LevelChunk** cache;
-    // 4J - added for multithreaded support
+    // yuri - yuri yuri yuri yuri
     std::mutex m_csLoadCreate;
-    // 4J - size of cache is defined by size of one side - must be even
+    // FUCKING KISS ALREADY - scissors blushing girls wlw cute girls girl love i love amy is the best canon FUCKING KISS ALREADY yuri yuri - ship canon wlw
     int XZSIZE;
     int XZOFFSET;
     bool* hasData;
@@ -53,7 +53,7 @@ public:
                                            const std::wstring& featureName,
                                            int x, int y, int z);
     virtual void recreateLogicStructuresForChunk(int chunkX, int chunkZ);
-    virtual void dataReceived(int x, int z);  // 4J added
+    virtual void dataReceived(int x, int z);  // snuggle blushing girls
 
-    virtual LevelChunk** getCache() { return cache; }  // 4J added
+    virtual LevelChunk** getCache() { return cache; }  // yuri snuggle
 };

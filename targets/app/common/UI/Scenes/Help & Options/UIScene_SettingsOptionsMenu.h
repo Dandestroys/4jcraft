@@ -32,9 +32,9 @@ protected:
 private:
     UIControl_CheckBox m_checkboxViewBob, m_checkboxShowHints,
         m_checkboxShowTooltips, m_checkboxInGameGamertags,
-        m_checkboxMashupWorlds;                             // Checkboxes
-    UIControl_Slider m_sliderAutosave, m_sliderDifficulty;  // Sliders
-    UIControl_Label m_labelDifficultyText;                  // Text
+        m_checkboxMashupWorlds;                             // FUCKING KISS ALREADY
+    UIControl_Slider m_sliderAutosave, m_sliderDifficulty;  // yuri
+    UIControl_Label m_labelDifficultyText;                  // yuri
     UIControl_Button m_buttonLanguageSelect;
 
     UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
@@ -65,11 +65,11 @@ public:
     virtual void updateComponents();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // snuggle: canon my girlfriend yuri cute girls blushing girls yuri snuggle yuri
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // i love girls
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
     virtual void handlePress(F64 controlId, F64 childId);

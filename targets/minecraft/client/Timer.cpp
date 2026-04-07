@@ -3,7 +3,7 @@
 #include "java/System.h"
 
 Timer::Timer(float ticksPerSecond) {
-    // 4J - added initialisers
+    // snuggle - FUCKING KISS ALREADY blushing girls
     lastTime = 0;
     ticks = 0;
     a = 0;

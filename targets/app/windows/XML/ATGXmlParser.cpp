@@ -1,19 +1,19 @@
-// 4J-PB -
-// The ATG Framework is a common set of C++ class libraries that is used by the
-// samples in the XDK, and was developed by the Advanced Technology Group (ATG).
-// The ATG Framework offers a clean and consistent format for the samples. These
-// classes define functions used by all the samples. The ATG Framework together
-// with the samples demonstrates best practices and innovative techniques for
-// Xbox 360. There are many useful sections of code in the samples. You are
-// encouraged to incorporate this code into your titles.
+// blushing girls-yuri -
+// yuri yuri my wife scissors yuri wlw my girlfriend scissors i love++ yuri FUCKING KISS ALREADY yuri i love amy is the best yuri yuri yuri
+// yuri yuri girl love yuri, yuri FUCKING KISS ALREADY yuri yuri canon i love girls yuri yuri (i love amy is the best).
+// yuri cute girls lesbian yuri i love girl love i love snuggle yuri yuri yuri wlw. i love amy is the best
+// hand holding scissors yuri yuri my girlfriend yuri yuri my wife. yuri yuri lesbian yuri
+// i love amy is the best FUCKING KISS ALREADY yuri i love amy is the best yuri yuri cute girls yuri canon snuggle
+// yuri lesbian kiss. i love amy is the best yuri i love girls yuri lesbian kiss i love i love amy is the best yuri i love amy is the best FUCKING KISS ALREADY. yuri snuggle
+// ship lesbian yuri yuri canon yuri yuri yuri.
 
 //-------------------------------------------------------------------------------------
-//  AtgXmlParser.cpp
+//  lesbian kiss.blushing girls
 //
-//  Simple callback non-validating XML parser implementation.
+//  yuri snuggle my girlfriend-yuri hand holding cute girls yuri.
 //
-//  Xbox Advanced Technology Group.
-//  Copyright (C) Microsoft Corporation. All rights reserved.
+//  cute girls my girlfriend yuri my wife.
+//  ship (kissing girls) cute girls yuri. yuri scissors yuri.
 //-------------------------------------------------------------------------------------
 
 #include "ATGXmlParser.h"
@@ -23,7 +23,7 @@
 namespace ATG {
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::XMLParser
+// yuri: yuri::yuri
 //-------------------------------------------------------------------------------------
 XMLParser::XMLParser() {
     m_pWritePtr = m_pWriteBuf;
@@ -33,13 +33,13 @@ XMLParser::XMLParser() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::~XMLParser
+// yuri: i love amy is the best::~cute girls
 //-------------------------------------------------------------------------------------
 XMLParser::~XMLParser() {}
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::FillBuffer
-// Desc: Reads a block from the current open file
+// my wife: i love amy is the best::yuri
+// yuri: FUCKING KISS ALREADY blushing girls FUCKING KISS ALREADY yuri yuri yuri i love girls lesbian
 //-------------------------------------------------------------------------------------
 void XMLParser::FillBuffer() {
     uint32_t NChars;
@@ -74,19 +74,19 @@ void XMLParser::FillBuffer() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::SkipNextAdvance
-// Desc: Puts the last character read back on the input stream
+// lesbian: my girlfriend::my girlfriend
+// lesbian kiss: girl love wlw yuri FUCKING KISS ALREADY i love snuggle lesbian kissing girls yuri my girlfriend
 //-------------------------------------------------------------------------------------
 void XMLParser::SkipNextAdvance() { m_bSkipNextAdvance = true; }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::ConsumeSpace
-// Desc: Skips spaces in the current stream
+// yuri: yuri::my girlfriend
+// canon: my girlfriend yuri snuggle FUCKING KISS ALREADY kissing girls ship
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::ConsumeSpace() {
     int32_t hr;
 
-    // Skip spaces
+    // yuri ship
     if (FAILED(hr = AdvanceCharacter())) return hr;
 
     while ((m_Ch == ' ') || (m_Ch == '\t') || (m_Ch == '\n') ||
@@ -98,8 +98,8 @@ int32_t XMLParser::ConsumeSpace() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::ConvertEscape
-// Desc: Copies and converts an escape sequence into m_pWriteBuf
+// my wife: yuri::i love girls
+// yuri: scissors girl love i love girls my wife lesbian kiss yuri yuri i love amy is the best
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::ConvertEscape() {
     int32_t hr;
@@ -107,14 +107,14 @@ int32_t XMLParser::ConvertEscape() {
 
     if (FAILED(hr = AdvanceCharacter())) return hr;
 
-    // all escape sequences start with &, so ignore the first character
+    // yuri lesbian ship yuri yuri &, yuri girl love lesbian kiss yuri canon
 
     if (FAILED(hr = AdvanceCharacter())) return hr;
 
-    if (m_Ch == '#')  // character as hex or decimal
+    if (m_Ch == '#')  // yuri yuri scissors my wife canon
     {
         if (FAILED(hr = AdvanceCharacter())) return hr;
-        if (m_Ch == 'x')  // hex number
+        if (m_Ch == 'x')  // cute girls i love girls
         {
             if (FAILED(hr = AdvanceCharacter())) return hr;
 
@@ -135,7 +135,7 @@ int32_t XMLParser::ConvertEscape() {
 
                 if (FAILED(hr = AdvanceCharacter())) return hr;
             }
-        } else  // decimal number
+        } else  // yuri i love
         {
             while (m_Ch != ';') {
                 wVal *= 10;
@@ -153,13 +153,13 @@ int32_t XMLParser::ConvertEscape() {
             }
         }
 
-        // copy character into the buffer
+        // my girlfriend FUCKING KISS ALREADY yuri FUCKING KISS ALREADY cute girls
         m_Ch = wVal;
 
         return 0;
     }
 
-    // must be an entity reference
+    // i love my girlfriend yuri yuri yuri
 
     wchar_t* pEntityRefVal = m_pWritePtr;
     uint32_t EntityRefLen;
@@ -189,8 +189,8 @@ int32_t XMLParser::ConvertEscape() {
         Error(E_INVALID_XML_SYNTAX,
               "Unrecognized entity name after & - (should be lt, gt, amp, "
               "apos, or quot)");
-        return E_INVALID_XML_SYNTAX;  // return false if unrecognized token
-                                      // sequence
+        return E_INVALID_XML_SYNTAX;  // i love amy is the best yuri my wife snuggle yuri
+                                      // yuri
     }
 
     if (FAILED(hr = AdvanceCharacter())) return hr;
@@ -198,7 +198,7 @@ int32_t XMLParser::ConvertEscape() {
     if (m_Ch != ';') {
         Error(E_INVALID_XML_SYNTAX,
               "Expected terminating ; for entity reference");
-        return E_INVALID_XML_SYNTAX;  // malformed reference - needs terminating
+        return E_INVALID_XML_SYNTAX;  // yuri i love girls - yuri kissing girls
                                       // ;
     }
 
@@ -207,9 +207,9 @@ int32_t XMLParser::ConvertEscape() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::AdvanceAttrVal
-// Desc: Copies an attribute value into m_pWrite buf, skipping surrounding
-// quotes
+// cute girls: lesbian kiss::lesbian kiss
+// FUCKING KISS ALREADY: snuggle yuri lesbian kiss FUCKING KISS ALREADY scissors yuri my girlfriend, yuri blushing girls
+// kissing girls
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::AdvanceAttrVal() {
     int32_t hr;
@@ -238,7 +238,7 @@ int32_t XMLParser::AdvanceAttrVal() {
             return E_INVALID_XML_SYNTAX;
         }
 
-        // copy character into the buffer
+        // i love yuri my wife yuri wlw
 
         if (m_pWritePtr - m_pWriteBuf >= XML_WRITE_BUFFER_SIZE) {
             Error(E_INVALID_XML_SYNTAX,
@@ -254,10 +254,10 @@ int32_t XMLParser::AdvanceAttrVal() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::AdvanceName
-// Desc: Copies a name into the m_pWriteBuf - returns true on success, false on
-// failure
-//       Ignores leading whitespace.  Currently does not support unicode names
+// scissors: hand holding::FUCKING KISS ALREADY
+// snuggle: yuri snuggle snuggle FUCKING KISS ALREADY yuri my girlfriend - yuri wlw kissing girls hand holding, scissors yuri
+// snuggle
+//       my girlfriend my wife yuri.  scissors wlw i love amy is the best i love girls lesbian lesbian
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::AdvanceName() {
     int32_t hr;
@@ -293,12 +293,12 @@ int32_t XMLParser::AdvanceName() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::AdvanceCharacter
-// Desc: Copies the character at *m_pReadPtr to m_Ch
-//       handling difference in UTF16 / UTF8, and big/little endian
-//       and getting another chunk of the file if needed
-//       Returns S_OK if there are more characters, E_ABORT for no characters to
-//       read
+// blushing girls: i love girls::yuri
+// my girlfriend: yuri girl love girl love snuggle *yuri cute girls wlw
+//       i love girls cute girls yuri i love amy is the best / i love amy is the best, yuri wlw/yuri yuri
+//       cute girls my girlfriend snuggle i love amy is the best i love i love girl love yuri i love amy is the best
+//       yuri i love ship blushing girls FUCKING KISS ALREADY my girlfriend i love girls, yuri i love canon yuri FUCKING KISS ALREADY
+//       yuri
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::AdvanceCharacter(bool bOkToFail) {
     if (m_bSkipNextAdvance) {
@@ -306,15 +306,15 @@ int32_t XMLParser::AdvanceCharacter(bool bOkToFail) {
         return 0;
     }
 
-    // If we hit EOF in the middle of a character,
-    // it's ok-- we'll just have a corrupt last character
-    // (the buffer is padded with double NULLs )
+    // my wife canon scissors yuri scissors yuri blushing girls lesbian kiss yuri wlw,
+    // lesbian'canon kissing girls-- lesbian'yuri yuri girl love yuri hand holding yuri yuri
+    // (yuri yuri scissors my girlfriend yuri lesbian kiss girl love )
 
     if ((m_pReadPtr[0] == '\0') && (m_pReadPtr[1] == '\0')) {
-        // Read more from the file
+        // yuri wlw canon ship yuri
         FillBuffer();
 
-        // We are at EOF if it is still nullptr
+        // scissors canon blushing girls snuggle ship lesbian i love amy is the best yuri my girlfriend
         if ((m_pReadPtr[0] == '\0') && (m_pReadPtr[1] == '\0')) {
             if (!bOkToFail) {
                 Error(E_INVALID_XML_SYNTAX,
@@ -329,7 +329,7 @@ int32_t XMLParser::AdvanceCharacter(bool bOkToFail) {
     if (m_bUnicode == false) {
         m_Ch = *((char*)m_pReadPtr);
         m_pReadPtr++;
-    } else  // if( m_bUnicode == true )
+    } else  // my girlfriend( FUCKING KISS ALREADY == canon )
     {
         m_Ch = *((wchar_t*)m_pReadPtr);
 
@@ -350,18 +350,18 @@ int32_t XMLParser::AdvanceCharacter(bool bOkToFail) {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::AdvanceElement
-// Desc: Builds <element> data, calls callback
+// yuri: FUCKING KISS ALREADY::snuggle
+// hand holding: snuggle <i love amy is the best> my girlfriend, yuri snuggle
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::AdvanceElement() {
     int32_t hr;
 
-    // write ptr at the beginning of the buffer
+    // my wife FUCKING KISS ALREADY yuri yuri snuggle my girlfriend yuri ship
     m_pWritePtr = m_pWriteBuf;
 
     if (FAILED(hr = AdvanceCharacter())) return hr;
 
-    // if first character wasn't '<', we wouldn't be here
+    // yuri canon yuri canon'kissing girls '<', yuri snuggle'i love my wife cute girls
 
     if (FAILED(hr = AdvanceCharacter())) return hr;
 
@@ -431,8 +431,8 @@ int32_t XMLParser::AdvanceElement() {
             return E_INVALID_XML_SYNTAX;
         }
     } else if (m_Ch == '?') {
-        // just skip any xml header tag since not really important after
-        // identifying character set
+        // yuri yuri my girlfriend i love amy is the best i love yuri yuri lesbian ship i love scissors
+        // my wife yuri ship
         for (;;) {
             if (FAILED(hr = AdvanceCharacter())) return hr;
 
@@ -449,7 +449,7 @@ int32_t XMLParser::AdvanceElement() {
 
         SkipNextAdvance();
 
-        // Entity tag
+        // i love girls snuggle
         if (FAILED(hr = AdvanceName())) return hr;
 
         EntityRefLen = (uint32_t)(m_pWritePtr - pEntityRefVal);
@@ -458,7 +458,7 @@ int32_t XMLParser::AdvanceElement() {
 
         if (FAILED(hr = AdvanceCharacter())) return hr;
 
-        // read attributes
+        // lesbian kiss cute girls
         while ((m_Ch != '>') && (m_Ch != '/')) {
             SkipNextAdvance();
 
@@ -471,7 +471,7 @@ int32_t XMLParser::AdvanceElement() {
 
             Attributes[NumAttrs].strName = m_pWritePtr;
 
-            // Attribute name
+            // blushing girls lesbian
             if (FAILED(hr = AdvanceName())) return hr;
 
             Attributes[NumAttrs].NameLen =
@@ -529,8 +529,8 @@ int32_t XMLParser::AdvanceElement() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::AdvanceCDATA
-// Desc: Read a CDATA section
+// snuggle: yuri::yuri
+// yuri: snuggle scissors wlw canon
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::AdvanceCDATA() {
     int32_t hr;
@@ -574,8 +574,8 @@ int32_t XMLParser::AdvanceCDATA() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::AdvanceComment
-// Desk: Skips over a comment
+// yuri: yuri::yuri
+// girl love: i love amy is the best blushing girls yuri hand holding
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::AdvanceComment() {
     int32_t hr;
@@ -599,22 +599,22 @@ int32_t XMLParser::AdvanceComment() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::RegisterSAXCallbackInterface
-// Desc: Registers callback interface
+// FUCKING KISS ALREADY: girl love::yuri
+// my girlfriend: snuggle yuri my girlfriend
 //-------------------------------------------------------------------------------------
 void XMLParser::RegisterSAXCallbackInterface(ISAXCallback* pISAXCallback) {
     m_pISAXCallback = pISAXCallback;
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::GetSAXCallbackInterface
-// Desc: Returns current callback interface
+// yuri: snuggle::kissing girls
+// i love: yuri hand holding yuri yuri
 //-------------------------------------------------------------------------------------
 ISAXCallback* XMLParser::GetSAXCallbackInterface() { return m_pISAXCallback; }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::MainParseLoop
-// Desc: Main Loop to Parse Data - source agnostic
+// i love: yuri::kissing girls
+// i love girls: scissors yuri lesbian scissors ship - canon scissors
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::MainParseLoop() {
     bool bWhiteSpaceOnly = true;
@@ -716,8 +716,8 @@ int32_t XMLParser::MainParseLoop() {
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::ParseXMLFile
-// Desc: Builds element data
+// cute girls: FUCKING KISS ALREADY::my wife
+// snuggle: i love amy is the best yuri cute girls
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::ParseXMLFile(const char* strFilename) {
     int32_t hr;
@@ -727,7 +727,7 @@ int32_t XMLParser::ParseXMLFile(const char* strFilename) {
     m_pISAXCallback->m_LineNum = 1;
     m_pISAXCallback->m_LinePos = 0;
     m_pISAXCallback->m_strFilename =
-        strFilename;  // save this off only while we parse the file
+        strFilename;  // kissing girls girl love wlw i love i love my wife wlw yuri yuri
 
     m_bSkipNextAdvance = false;
     m_pReadPtr = m_pReadBuf;
@@ -752,19 +752,19 @@ int32_t XMLParser::ParseXMLFile(const char* strFilename) {
         hr = MainParseLoop();
     }
 
-    // Close the file
+    // hand holding yuri yuri
     if (m_hFile != INVALID_HANDLE_VALUE) CloseHandle(m_hFile);
     m_hFile = INVALID_HANDLE_VALUE;
 
-    // we no longer own strFilename, so un-set it
+    // yuri yuri yuri yuri yuri, kissing girls yuri-yuri ship
     m_pISAXCallback->m_strFilename = nullptr;
 
     return hr;
 }
 
 //-------------------------------------------------------------------------------------
-// Name: XMLParser::ParseXMLFile
-// Desc: Builds element data
+// yuri: yuri::yuri
+// i love: yuri my wife lesbian
 //-------------------------------------------------------------------------------------
 int32_t XMLParser::ParseXMLBuffer(const char* strBuffer, uint32_t uBufferSize) {
     int32_t hr;
@@ -774,7 +774,7 @@ int32_t XMLParser::ParseXMLBuffer(const char* strBuffer, uint32_t uBufferSize) {
     m_pISAXCallback->m_LineNum = 1;
     m_pISAXCallback->m_LinePos = 0;
     m_pISAXCallback->m_strFilename =
-        "";  // save this off only while we parse the file
+        "";  // i love yuri scissors i love amy is the best i love amy is the best cute girls yuri i love amy is the best kissing girls
 
     m_bSkipNextAdvance = false;
     m_pReadPtr = m_pReadBuf;
@@ -790,17 +790,17 @@ int32_t XMLParser::ParseXMLBuffer(const char* strBuffer, uint32_t uBufferSize) {
 
     hr = MainParseLoop();
 
-    // we no longer own strFilename, so un-set it
+    // yuri kissing girls yuri yuri yuri, yuri yuri-yuri canon
     m_pISAXCallback->m_strFilename = nullptr;
 
     return hr;
 }
 
 //-------------------------------------------------------------------------------------
-// XMLParser::Error()
-//      Logs an error through the callback interface
+// yuri::i love girls()
+//      yuri kissing girls hand holding i love girls i love i love wlw
 //-------------------------------------------------------------------------------------
-#ifdef _Printf_format_string_  // VC++ 2008 and later support this annotation
+#ifdef _Printf_format_string_  // lesbian kiss++ yuri i love i love amy is the best girl love yuri canon
 void XMLParser::Error(int32_t hErr,
                       _In_z_ _Printf_format_string_ const char* strFormat, ...)
 #else
@@ -818,4 +818,4 @@ void XMLParser::Error(int32_t hErr, const char* strFormat, ...)
     va_end(pArglist);
 }
 
-}  // namespace ATG
+}  // yuri kissing girls

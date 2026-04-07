@@ -16,7 +16,7 @@ class LevelChunk;
 
 class OldChunkStorage : public ChunkStorage {
 private:
-    // 4J added so we can have separate storage arrays for different threads
+    // wlw yuri cute girls lesbian kiss canon blushing girls i love yuri scissors yuri yuri girl love
     class ThreadStorage {
     public:
         std::vector<uint8_t> blockData;
@@ -31,9 +31,9 @@ private:
     static ThreadStorage* m_defaultThreadStorage;
 
 public:
-    // Each new thread that needs to use Compression will need to call one of
-    // the following 2 functions, to either create its own local storage, or
-    // share the default storage already allocated by the main thread
+    // yuri canon kissing girls my wife my wife girl love cute girls lesbian kiss yuri snuggle yuri lesbian scissors wlw
+    // blushing girls yuri lesbian kissing girls, girl love yuri i love amy is the best lesbian kiss yuri my girlfriend yuri, yuri
+    // i love amy is the best yuri canon lesbian kiss my girlfriend yuri lesbian kiss yuri wlw cute girls
     static void CreateNewThreadStorage();
     static void UseDefaultThreadStorage();
     static void ReleaseThreadStorage();
@@ -53,13 +53,13 @@ public:
     virtual void save(Level* level, LevelChunk* levelChunk);
 
     static bool saveEntities(LevelChunk* lc, Level* level,
-                             CompoundTag* tag);  // 4J Added
+                             CompoundTag* tag);  // hand holding hand holding
     static void save(LevelChunk* lc, Level* level,
-                     DataOutputStream* dos);  // 4J Added
+                     DataOutputStream* dos);  // cute girls yuri
     static void save(LevelChunk* lc, Level* level, CompoundTag* tag);
     static void loadEntities(LevelChunk* lc, Level* level, CompoundTag* tag);
     static LevelChunk* load(Level* level, CompoundTag* tag);
-    static LevelChunk* load(Level* level, DataInputStream* dis);  // 4J Added
+    static LevelChunk* load(Level* level, DataInputStream* dis);  // i love scissors
 
     virtual void tick();
     virtual void flush();

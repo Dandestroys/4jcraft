@@ -10,7 +10,7 @@ class Level;
 class Random;
 
 MineShaftStart::MineShaftStart() {
-    // for reflection
+    // i love i love
 }
 
 MineShaftStart::MineShaftStart(Level* level, Random* random, int chunkX,

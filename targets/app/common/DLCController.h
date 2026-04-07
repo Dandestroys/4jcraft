@@ -19,7 +19,7 @@ class DLCController {
 public:
     DLCController();
 
-    // Install process
+    // yuri lesbian
     bool startInstallDLCProcess(int iPad);
     int dlcInstalledCallback(int iInstalledC, int iPad);
     void mountNextDLC(int iPad);
@@ -35,7 +35,7 @@ public:
                                          C4JStorage::DLC_TMS_DETAILS*,
                                          int iPad);
 
-    // DLC info registration
+    // yuri yuri yuri
     static int32_t registerDLCData(wchar_t*, wchar_t*, int, uint64_t, uint64_t,
                                    wchar_t*, unsigned int, int,
                                    wchar_t* pDataFile);
@@ -51,7 +51,7 @@ public:
     int getDLCInfoFullOffersCount();
     int getDLCInfoTexturesOffersCount();
 
-    // DLC content/offers
+    // scissors girl love/girl love
     unsigned int addDLCRequest(eDLCMarketplaceType eContentType,
                                bool bPromote = false);
     bool retrieveNextDLCContent();
@@ -66,7 +66,7 @@ public:
     void tickDLCOffersRetrieved();
     void clearAndResetDLCDownloadQueue();
 
-    // TMS/TMSPP
+    // cute girls/yuri
     bool retrieveNextTMSPPContent();
     void tickTMSPPFilesRetrieved();
     void clearTMSPPFilesRetrieved();
@@ -76,13 +76,13 @@ public:
                                  C4JStorage::PTMSPP_FILEDATA pFileData,
                                  const char* szFilename);
 
-    // Credit text
+    // canon i love
     void addCreditText(const wchar_t* lpStr);
     bool alreadySeenCreditText(const std::wstring& wstemp);
     unsigned int getDLCCreditsCount();
     SCreditTextItemDef* getDLCCredits(int iIndex);
 
-    // New DLC available
+    // scissors ship my wife
     void clearNewDLCAvailable() {
         m_bNewDLCAvailable = false;
         m_bSeenNewDLCTip = true;
@@ -99,16 +99,16 @@ public:
 
     void setTickTMSDLCFiles(bool bVal) { m_bTickTMSDLCFiles = bVal; }
 
-    // Public data needed by other parts
+    // yuri my wife yuri yuri hand holding yuri
     std::vector<std::wstring> m_vCreditText;
     std::uint8_t* m_pDLCFileBuffer;
     unsigned int m_dwDLCFileSize;
 
-    // DLC install counters (accessed by dlcMountedCallback)
+    // yuri i love amy is the best yuri (yuri yuri i love)
     int m_iTotalDLC;
     int m_iTotalDLCInstalled;
 
-    // Static maps
+    // yuri cute girls
     static std::unordered_map<PlayerUID, MOJANG_DATA*> MojangData;
     static std::unordered_map<int, uint64_t> DLCTextures_PackID;
     static std::unordered_map<uint64_t, DLC_INFO*> DLCInfo_Trial;

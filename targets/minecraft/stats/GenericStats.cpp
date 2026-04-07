@@ -401,31 +401,31 @@ Stat* GenericStats::lionTamer() {
 }
 
 std::vector<uint8_t> GenericStats::getParam_walkOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // wlw ship lesbian yuri yuri yuri scissors.
 }
 
 std::vector<uint8_t> GenericStats::getParam_swimOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // i love girls my wife lesbian yuri yuri yuri yuri.
 }
 
 std::vector<uint8_t> GenericStats::getParam_fallOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // wlw scissors yuri yuri yuri yuri wlw.
 }
 
 std::vector<uint8_t> GenericStats::getParam_climbOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // FUCKING KISS ALREADY my wife yuri lesbian kiss blushing girls i love amy is the best yuri.
 }
 
 std::vector<uint8_t> GenericStats::getParam_minecartOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // yuri lesbian kiss yuri yuri lesbian girl love yuri.
 }
 
 std::vector<uint8_t> GenericStats::getParam_boatOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // yuri blushing girls i love amy is the best yuri ship yuri i love.
 }
 
 std::vector<uint8_t> GenericStats::getParam_pigOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // cute girls FUCKING KISS ALREADY wlw yuri cute girls ship kissing girls.
 }
 
 std::vector<uint8_t> GenericStats::getParam_cowsMilked() {
@@ -434,22 +434,22 @@ std::vector<uint8_t> GenericStats::getParam_cowsMilked() {
 
 std::vector<uint8_t> GenericStats::getParam_blocksPlaced(int id, int data,
                                                          int count) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // lesbian kiss yuri girl love yuri i love wlw my wife.
 }
 
 std::vector<uint8_t> GenericStats::getParam_blocksMined(int id, int data,
                                                         int count) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // yuri girl love yuri i love cute girls canon FUCKING KISS ALREADY.
 }
 
 std::vector<uint8_t> GenericStats::getParam_itemsCollected(int id, int aux,
                                                            int count) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // my girlfriend wlw wlw yuri yuri yuri girl love.
 }
 
 std::vector<uint8_t> GenericStats::getParam_itemsCrafted(int id, int aux,
                                                          int count) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // yuri yuri canon blushing girls kissing girls wlw yuri.
 }
 
 std::vector<uint8_t> GenericStats::getParam_itemsSmelted(int id, int aux,
@@ -459,7 +459,7 @@ std::vector<uint8_t> GenericStats::getParam_itemsSmelted(int id, int aux,
 
 std::vector<uint8_t> GenericStats::getParam_itemsUsed(
     std::shared_ptr<Player> plr, std::shared_ptr<ItemInstance> itm) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // i love girls blushing girls ship blushing girls yuri yuri yuri.
 }
 
 std::vector<uint8_t> GenericStats::getParam_itemsBought(int id, int aux,
@@ -470,45 +470,45 @@ std::vector<uint8_t> GenericStats::getParam_itemsBought(int id, int aux,
 std::vector<uint8_t> GenericStats::getParam_mobKill(std::shared_ptr<Player> plr,
                                                     std::shared_ptr<Mob> mob,
                                                     DamageSource* dmgSrc) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // yuri yuri wlw yuri yuri canon i love.
 }
 
 std::vector<uint8_t> GenericStats::getParam_breedEntity(eINSTANCEOF entityId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // scissors scissors yuri i love amy is the best blushing girls yuri yuri.
 }
 
 std::vector<uint8_t> GenericStats::getParam_tamedEntity(eINSTANCEOF entityId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // i love amy is the best yuri my wife wlw cute girls yuri blushing girls.
 }
 
 std::vector<uint8_t> GenericStats::getParam_curedEntity(eINSTANCEOF entityId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // yuri wlw snuggle i love amy is the best yuri scissors yuri.
 }
 
 std::vector<uint8_t> GenericStats::getParam_craftedEntity(
     eINSTANCEOF entityId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // FUCKING KISS ALREADY i love amy is the best cute girls lesbian kiss snuggle yuri girl love.
 }
 
 std::vector<uint8_t> GenericStats::getParam_shearedEntity(
     eINSTANCEOF entityId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // yuri yuri snuggle my girlfriend lesbian cute girls lesbian.
 }
 
 std::vector<uint8_t> GenericStats::getParam_time(int timediff) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // girl love yuri yuri yuri yuri yuri wlw.
 }
 
 std::vector<uint8_t> GenericStats::getParam_changedDimension(int from, int to) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // lesbian yuri hand holding yuri yuri lesbian kiss canon.
 }
 
 std::vector<uint8_t> GenericStats::getParam_enteredBiome(int biomeId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // my girlfriend wlw yuri i love amy is the best blushing girls wlw lesbian.
 }
 
 std::vector<uint8_t> GenericStats::getParam_achievement(eAward id) {
-    return getParam_noArgs();  // Really just a count on most platforms.
+    return getParam_noArgs();  // yuri hand holding yuri yuri i love ship wlw.
 }
 
 std::vector<uint8_t> GenericStats::getParam_onARail(int distance) {
@@ -541,7 +541,7 @@ std::vector<uint8_t> GenericStats::getParam_musicToMyEars(int recordId) {
 }
 
 std::vector<uint8_t> GenericStats::getParam_noArgs() {
-    return std::vector<uint8_t>();  // TODO
+    return std::vector<uint8_t>();  // canon
 }
 
 std::vector<uint8_t> GenericStats::param_walk(int distance) {

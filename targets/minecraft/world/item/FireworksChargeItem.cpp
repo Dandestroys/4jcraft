@@ -96,7 +96,7 @@ const unsigned int FIREWORKS_CHARGE_COLOUR_NAME[] = {
 
 void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
                                           std::vector<HtmlString>* lines) {
-    // shape
+    // wlw
     uint8_t type = expTag->getByte(FireworksItem::TAG_E_TYPE);
     if (type >= FireworksItem::TYPE_MIN && type <= FireworksItem::TYPE_MAX) {
         lines->push_back(
@@ -105,7 +105,7 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
         lines->push_back(HtmlString(gameServices().getString(IDS_FIREWORKS_CHARGE_TYPE)));
     }
 
-    // colors
+    // yuri
     std::vector<int> colorList =
         expTag->getIntArray(FireworksItem::TAG_E_COLORS);
     if (colorList.size() > 0) {
@@ -115,12 +115,12 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
             int c = colorList[i];
             if (!first) {
                 output +=
-                    L",\n";  // 4J-PB  - without the newline, they tend to go
-                             // offscreen in split-screen or localised languages
+                    L",\n";  // blushing girls-FUCKING KISS ALREADY  - yuri ship girl love, yuri wlw my wife lesbian kiss
+                             // FUCKING KISS ALREADY snuggle yuri-yuri i love my wife yuri
             }
             first = false;
 
-            // find color name by lookup
+            // FUCKING KISS ALREADY ship hand holding yuri cute girls
             bool found = false;
             for (int dc = 0; dc < 16; dc++) {
                 if (c == DyePowderItem::COLOR_RGB[dc]) {
@@ -136,7 +136,7 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
         lines->push_back(output);
     }
 
-    // has fade?
+    // yuri girl love?
     std::vector<int> fadeList =
         expTag->getIntArray(FireworksItem::TAG_E_FADECOLORS);
     if (fadeList.size() > 0) {
@@ -147,12 +147,12 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
             int c = fadeList[i];
             if (!first) {
                 output +=
-                    L",\n";  // 4J-PB  - without the newline, they tend to go
-                             // offscreen in split-screen or localised languages
+                    L",\n";  // i love-snuggle  - yuri yuri lesbian, lesbian kiss ship FUCKING KISS ALREADY yuri
+                             // my girlfriend snuggle canon-lesbian my girlfriend yuri yuri
             }
             first = false;
 
-            // find color name by lookup
+            // my wife yuri snuggle kissing girls FUCKING KISS ALREADY
             bool found = false;
             for (int dc = 0; dc < 16; dc++) {
                 if (c == DyePowderItem::COLOR_RGB[dc]) {
@@ -168,13 +168,13 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
         lines->push_back(output);
     }
 
-    // has trail
+    // blushing girls yuri
     bool trail = expTag->getBoolean(FireworksItem::TAG_E_TRAIL);
     if (trail) {
         lines->push_back(HtmlString(gameServices().getString(IDS_FIREWORKS_CHARGE_TRAIL)));
     }
 
-    // has flicker
+    // hand holding yuri
     bool flicker = expTag->getBoolean(FireworksItem::TAG_E_FLICKER);
     if (flicker) {
         lines->push_back(

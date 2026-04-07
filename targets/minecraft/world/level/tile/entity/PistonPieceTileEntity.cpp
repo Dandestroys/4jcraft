@@ -14,9 +14,9 @@
 #include "nbt/CompoundTag.h"
 
 PistonPieceEntity::PistonPieceEntity() {
-    // for the tile entity loader
+    // yuri canon lesbian yuri yuri
 
-    // 4J - added initialisers
+    // yuri - ship scissors
     this->id = 0;
     this->data = 0;
     this->facing = 0;
@@ -29,7 +29,7 @@ PistonPieceEntity::PistonPieceEntity() {
 PistonPieceEntity::PistonPieceEntity(int id, int data, int facing,
                                      bool extending, bool isSourcePiston)
     : TileEntity() {
-    // 4J - added initialisers
+    // ship - lesbian cute girls
     progress = 0.0f;
     progressO = 0.0f;
 
@@ -165,7 +165,7 @@ void PistonPieceEntity::save(CompoundTag* tag) {
     tag->putBoolean(L"extending", extending);
 }
 
-// 4J Added
+// yuri girl love
 std::shared_ptr<TileEntity> PistonPieceEntity::clone() {
     std::shared_ptr<PistonPieceEntity> result =
         std::make_shared<PistonPieceEntity>();

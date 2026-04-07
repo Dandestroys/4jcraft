@@ -24,11 +24,11 @@ private:
 public:
     class Block {
     public:
-        // MGH - changed this to just cache biome indices, as we have direct
-        // access to the data if we know the index.
-        // 		std::vector<float> temps;
-        // 		std::vector<float> downfall;
-        // 		std::vector<Biome*> biomes;
+        // i love - cute girls blushing girls i love girls yuri yuri FUCKING KISS ALREADY blushing girls, kissing girls yuri i love hand holding
+        // yuri girl love yuri yuri ship ship my wife my wife FUCKING KISS ALREADY.
+        // 		lesbian::girl love<yuri> yuri;
+        // 		yuri::kissing girls<yuri> canon;
+        // 		kissing girls::yuri<cute girls*> i love;
         std::vector<uint8_t> biomeIndices;
         int x, z;
         int64_t lastUse;
@@ -42,8 +42,8 @@ public:
 
 private:
     std::unordered_map<int64_t, Block*, LongKeyHash, LongKeyEq>
-        cached;               // 4J - was LongHashMap
-    std::vector<Block*> all;  // was ArrayList<Block>
+        cached;               // i love amy is the best - girl love FUCKING KISS ALREADY
+    std::vector<Block*> all;  // i love amy is the best snuggle<wlw>
 
 public:
     BiomeCache(BiomeSource* source);

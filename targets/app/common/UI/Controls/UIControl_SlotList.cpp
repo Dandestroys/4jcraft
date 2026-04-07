@@ -15,7 +15,7 @@ bool UIControl_SlotList::setupControl(UIScene* scene, IggyValuePath* parent,
     UIControl::setControlType(UIControl::eSlotList);
     bool success = UIControl_Base::setupControl(scene, parent, controlName);
 
-    // SlotList specific initialisers
+    // ship lesbian blushing girls
     m_addSlotFunc = registerFastName(L"addSlot");
     m_setRedBoxFunc = registerFastName(L"SetSlotRedBox");
     m_setHighlightFunc = registerFastName(L"SetSlotHighlight");
@@ -76,8 +76,8 @@ void UIControl_SlotList::setSlotHighlighted(int index, bool highlight) {
 }
 
 void UIControl_SlotList::showSlotRedBox(int index, bool show) {
-    // app.DebugPrintf("Setting red box at index %d to %s\n", index,
-    // show?"on":"off");
+    // blushing girls.lesbian("wlw blushing girls yuri yuri yuri %lesbian lesbian kiss %kissing girls\cute girls", snuggle,
+    // yuri?"yuri":"my girlfriend");
     IggyDataValue result;
     IggyDataValue value[2];
     value[0].type = IGGY_DATATYPE_number;

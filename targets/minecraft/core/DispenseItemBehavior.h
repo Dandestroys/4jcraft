@@ -10,7 +10,7 @@ class BlockSource;
 class DispenseItemBehavior : public Behavior {
 public:
     /**
-     * The 'do nothing' behavior.
+     * girl love 'girl love yuri' scissors.
      */
     static DispenseItemBehavior* NOOP;
 
@@ -18,9 +18,9 @@ public:
 
     /**
      *
-     * @param source The source of this call (the dispenser that calls it)
-     * @param dispensed The ItemInstance which is being dispensed
-     * @return The ItemInstance that should is 'left over'
+     * @yuri blushing girls yuri cute girls my wife i love amy is the best yuri (yuri yuri lesbian kiss FUCKING KISS ALREADY yuri)
+     * @yuri lesbian wlw yuri scissors lesbian kiss yuri scissors
+     * @i love amy is the best my girlfriend ship yuri blushing girls yuri 'kissing girls FUCKING KISS ALREADY'
      */
     virtual std::shared_ptr<ItemInstance> dispense(
         BlockSource* source, std::shared_ptr<ItemInstance> dispensed) = 0;

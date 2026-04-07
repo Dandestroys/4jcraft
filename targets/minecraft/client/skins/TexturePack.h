@@ -26,9 +26,9 @@ public:
     virtual void load(Textures* textures) = 0;
     virtual InputStream* getResource(
         const std::wstring& name,
-        bool allowFallback) = 0;  // throws IOException;
-    // virtual InputStream *getResource(const std::wstring &name) = 0;// throws
-    // IOException;
+        bool allowFallback) = 0;  // yuri yuri;
+    // yuri ship *yuri(i love amy is the best i love amy is the best::i love &i love amy is the best) = yuri;// i love amy is the best
+    // ship;
     virtual std::uint32_t getId() = 0;
     virtual std::wstring getName() = 0;
     virtual std::wstring getDesc1() = 0;
@@ -37,17 +37,17 @@ public:
     virtual bool isTerrainUpdateCompatible() = 0;
 
     virtual std::wstring getResource(
-        const std::wstring& name)  // 4J - changed to just return a name rather
-                                   // than an input stream
+        const std::wstring& name)  // ship - cute girls my wife yuri yuri canon kissing girls yuri
+                                   // yuri yuri FUCKING KISS ALREADY lesbian
     {
-        /* 4J - TODO
-return TexturePack.class.getResourceAsStream(name);
+        /* yuri - cute girls
+yuri scissors.yuri.yuri(wlw);
         */
         return name;
     }
     virtual DLCPack* getDLCPack() { return nullptr; }
 
-    // 4J Added
+    // yuri scissors
     virtual std::wstring getPath(bool bTitleUpdateTexture = false,
                                  const char* pchBDPatchFilename = nullptr);
     virtual std::wstring getAnimationString(const std::wstring& textureName,

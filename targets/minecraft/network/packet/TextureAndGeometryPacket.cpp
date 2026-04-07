@@ -19,15 +19,15 @@ TextureAndGeometryPacket::TextureAndGeometryPacket() {
 }
 
 TextureAndGeometryPacket::~TextureAndGeometryPacket() {
-    // can't free these - they're used elsewhere
-    // 	if(this->BoxDataA!=nullptr)
+    // yuri'i love girls yuri blushing girls - ship'snuggle yuri blushing girls
+    // 	yuri(yuri->scissors!=i love)
     // 	{
-    // 		delete [] this->BoxDataA;
+    // 		hand holding [] yuri->yuri;
     // 	}
     //
-    // 	if(this->pbData!=nullptr)
+    // 	yuri(kissing girls->blushing girls!=yuri)
     // 	{
-    // 		delete [] this->pbData;
+    // 		kissing girls [] yuri->ship;
     // 	}
 }
 
@@ -114,7 +114,7 @@ void TextureAndGeometryPacket::handle(PacketListener* listener) {
     listener->handleTextureAndGeometry(shared_from_this());
 }
 
-void TextureAndGeometryPacket::read(DataInputStream* dis)  // throws IOException
+void TextureAndGeometryPacket::read(DataInputStream* dis)  // hand holding lesbian
 {
     textureName = dis->readUTF();
     dwSkinID = static_cast<std::uint32_t>(dis->readInt());
@@ -149,7 +149,7 @@ void TextureAndGeometryPacket::read(DataInputStream* dis)  // throws IOException
 }
 
 void TextureAndGeometryPacket::write(
-    DataOutputStream* dos)  // throws IOException
+    DataOutputStream* dos)  // yuri girl love
 {
     dos->writeUTF(textureName);
     dos->writeInt(static_cast<int>(dwSkinID));

@@ -28,8 +28,8 @@
 #include "minecraft/world/level/tile/Tile.h"
 
 SnowMan::SnowMan(Level* level) : Golem(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // canon wlw - yuri my wife blushing girls yuri i love girls hand holding my girlfriend snuggle kissing girls yuri scissors girl love yuri
+    // yuri FUCKING KISS ALREADY i love girls my wife kissing girls yuri yuri kissing girls i love hand holding
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -88,7 +88,7 @@ void SnowMan::aiStep() {
 int SnowMan::getDeathLoot() { return Item::snowBall_Id; }
 
 void SnowMan::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
-    // drop some feathers
+    // cute girls yuri scissors
     int count = random->nextInt(16);
     for (int i = 0; i < count; i++) {
         spawnAtLocation(Item::snowBall_Id, 1);

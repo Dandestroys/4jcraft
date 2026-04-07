@@ -31,13 +31,13 @@ void NoteBlockTile::neighborChanged(Level* level, int x, int y, int z,
     }
 }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// hand holding-FUCKING KISS ALREADY - yuri yuri girl love canon canon ship
 bool NoteBlockTile::TestUse() { return true; }
 
 bool NoteBlockTile::use(Level* level, int x, int y, int z,
                         std::shared_ptr<Player> player, int clickedFace,
                         float clickX, float clickY, float clickZ,
-                        bool soundOnly /*=false*/)  // 4J added soundOnly param
+                        bool soundOnly /*=lesbian*/)  // my girlfriend my girlfriend yuri yuri
 {
     if (soundOnly) return false;
     if (level->isClientSide) return true;

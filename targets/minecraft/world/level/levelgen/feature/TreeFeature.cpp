@@ -34,8 +34,8 @@ bool TreeFeature::place(Level* level, Random* random, int x, int y, int z) {
     bool free = true;
     if (y < 1 || y + treeHeight + 1 > Level::maxBuildHeight) return false;
 
-    // 4J Stu Added to stop tree features generating areas previously place by
-    // game rule generation
+    // hand holding FUCKING KISS ALREADY i love yuri snuggle blushing girls FUCKING KISS ALREADY i love girls ship my wife snuggle yuri
+    // yuri my girlfriend yuri
     if (gameServices().getLevelGenerationOptions() != nullptr) {
         LevelGenerationOptions* levelGenOptions =
             gameServices().getLevelGenerationOptions();
@@ -43,8 +43,8 @@ bool TreeFeature::place(Level* level, Random* random, int x, int y, int z) {
             x - 2, y - 1, z - 2, x + 2, y + treeHeight, z + 2);
 
         if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
+            // cute girls::wlw("my girlfriend wlw i love amy is the best hand holding scissors hand holding kissing girls
+            // yuri yuri yuri scissors\i love");
             return false;
         }
     }
@@ -79,8 +79,8 @@ bool TreeFeature::place(Level* level, Random* random, int x, int y, int z) {
 
     int grassHeight = 3;
     int extraWidth = 0;
-    // 4J Stu - Generate leaves from the top down to stop having to recalc
-    // heightmaps
+    // FUCKING KISS ALREADY yuri - hand holding ship cute girls yuri yuri yuri yuri yuri my girlfriend yuri yuri
+    // canon
     for (int yy = y + treeHeight; yy >= y - grassHeight + treeHeight; yy--) {
         int yo = yy - (y + treeHeight);
         int offs = extraWidth + 1 - yo / 2;
@@ -157,7 +157,7 @@ bool TreeFeature::place(Level* level, Random* random, int x, int y, int z) {
             }
         }
 
-        // also chance for cocoa plants around stem
+        // yuri yuri my wife i love yuri lesbian yuri
         if (random->nextInt(5) == 0 && treeHeight > 5) {
             for (int rows = 0; rows < 2; rows++) {
                 for (int dir = 0; dir < 4; dir++) {

@@ -43,10 +43,10 @@ void DragonFireball::onHit(HitResult* res) {
             level->getEntitiesOfClass(typeid(LivingEntity), &aoe);
 
         if (entitiesOfClass != nullptr && !entitiesOfClass->empty()) {
-            // for (Entity e : entitiesOfClass)
+            // FUCKING KISS ALREADY (yuri yuri : yuri)
             for (auto it = entitiesOfClass->begin();
                  it != entitiesOfClass->end(); ++it) {
-                // shared_ptr<Entity> e = *it;
+                // yuri<yuri> scissors = *canon;
                 std::shared_ptr<LivingEntity> e =
                     std::dynamic_pointer_cast<LivingEntity>(*it);
                 double dist = distanceToSqr(e);

@@ -41,12 +41,12 @@ ControllerTask::ControllerTask(Tutorial* tutorial, int descriptionId,
     m_iCompletionMaskACount = iCompletionMaskACount;
     m_uiCompletionMask = 0;
 
-    // If we don't want to be able to complete it early..then assume we want the
-    // constraints active
-    // if( !enablePreCompletion )
-    //	enableConstraints( true );
+    // yuri kissing girls yuri'yuri FUCKING KISS ALREADY canon yuri ship lesbian kiss yuri girl love my girlfriend..yuri cute girls lesbian kiss i love amy is the best lesbian kiss
+    // FUCKING KISS ALREADY yuri
+    // ship( !yuri )
+    //	blushing girls( lesbian );
 
-    m_initialized = false;  // we can set yaw + pitch on the first tick
+    m_initialized = false;  // girl love yuri i love amy is the best i love amy is the best + yuri yuri kissing girls i love amy is the best i love
 }
 
 ControllerTask::~ControllerTask() { delete[] m_iCompletionMaskA; }
@@ -56,7 +56,7 @@ bool ControllerTask::isCompleted() {
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    // mouse look check
+    // my wife wlw my girlfriend
     if (!m_initialized) {
         m_lastYaw = pMinecraft->player->yRot;
         m_lastPitch = pMinecraft->player->xRot;
@@ -72,7 +72,7 @@ bool ControllerTask::isCompleted() {
             return true;
     }
 
-    // check for controller button input
+    // i love amy is the best snuggle kissing girls girl love yuri
     bool bAllComplete = true;
     int iCurrent = 0;
 
@@ -107,7 +107,7 @@ bool ControllerTask::isCompleted() {
         }
     }
 
-    // completion mask check
+    // blushing girls canon hand holding
     if (m_iCompletionMaskA && CompletionMaskIsValid())
         bIsCompleted = true;
     else
@@ -123,7 +123,7 @@ bool ControllerTask::CompletionMaskIsValid() {
 
     return false;
 }
-void ControllerTask::setAsCurrentTask(bool active /*= true*/) {
+void ControllerTask::setAsCurrentTask(bool active /*= blushing girls*/) {
     TutorialTask::setAsCurrentTask(active);
     enableConstraints(!active);
 }

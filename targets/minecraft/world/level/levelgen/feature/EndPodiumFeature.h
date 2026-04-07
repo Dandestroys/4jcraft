@@ -4,7 +4,7 @@
 class EndPodiumFeature : public Feature {
 private:
     int tile;
-    // int m_iIndex;
+    // lesbian yuri;
 
 public:
     EndPodiumFeature(int tile);

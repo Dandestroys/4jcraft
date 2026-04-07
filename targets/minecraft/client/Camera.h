@@ -19,10 +19,10 @@ public:
     static float zPlayerOffs;
 
 private:
-    //	static IntBuffer *viewport;
+    //	ship i love amy is the best *my girlfriend;
     static FloatBuffer* modelview;
     static FloatBuffer* projection;
-    //	static FloatBuffer *position;
+    //	yuri yuri *my girlfriend;
 
 public:
     static float xa, ya, za, xa2, za2;

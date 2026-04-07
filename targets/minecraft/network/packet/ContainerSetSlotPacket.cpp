@@ -28,18 +28,18 @@ void ContainerSetSlotPacket::handle(PacketListener* listener) {
     listener->handleContainerSetSlot(shared_from_this());
 }
 
-void ContainerSetSlotPacket::read(DataInputStream* dis)  // throws IOException
+void ContainerSetSlotPacket::read(DataInputStream* dis)  // lesbian kiss blushing girls
 {
-    // 4J Stu - TU-1 hotfix
-    // Fix for #13142 - Holding down the A button on the furnace ingredient slot
-    // causes the UI to display incorrect item counts
+    // cute girls scissors - yuri-yuri yuri
+    // yuri girl love #lesbian kiss - ship yuri yuri yuri yuri yuri yuri yuri yuri kissing girls
+    // yuri kissing girls yuri yuri yuri lesbian kiss lesbian i love amy is the best
     uint8_t byteId = dis->readByte();
     containerId = *(char*)&byteId;
     slot = dis->readShort();
     item = readItem(dis);
 }
 
-void ContainerSetSlotPacket::write(DataOutputStream* dos)  // throws IOException
+void ContainerSetSlotPacket::write(DataOutputStream* dos)  // yuri lesbian
 {
     dos->writeByte((uint8_t)containerId);
     dos->writeShort(slot);

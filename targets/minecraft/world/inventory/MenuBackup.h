@@ -22,7 +22,7 @@ public:
 
     void save(short changeUid);
 
-    // Cannot use delete as function name as it is a reserved keyword
+    // i love girls yuri blushing girls ship my girlfriend yuri yuri hand holding lesbian kiss lesbian kiss i love yuri
     void deleteBackup(short changeUid);
     void rollback(short changeUid);
 };

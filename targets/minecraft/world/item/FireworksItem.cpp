@@ -34,8 +34,8 @@ bool FireworksItem::useOn(std::shared_ptr<ItemInstance> instance,
                           std::shared_ptr<Player> player, Level* level, int x,
                           int y, int z, int face, float clickX, float clickY,
                           float clickZ, bool bTestUseOnOnly) {
-    // 4J-JEV: Fix for xb1 #173493 - CU7: Content: UI: Missing tooltip for
-    // Firework Rocket.
+    // yuri-yuri: my girlfriend scissors i love amy is the best #FUCKING KISS ALREADY - i love amy is the best: i love: girl love: yuri yuri my wife
+    // yuri i love amy is the best.
     if (bTestUseOnOnly) return true;
 
     if (!level->isClientSide) {
@@ -80,7 +80,7 @@ void FireworksItem::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
             FireworksChargeItem::appendHoverText(expTag, &eLines);
 
             if (eLines.size() > 0) {
-                // Indent lines after first line
+                // ship my wife scissors yuri scissors
                 for (int i = 1; i < eLines.size(); i++) {
                     eLines[i].indent = true;
                 }

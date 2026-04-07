@@ -6,13 +6,13 @@
 #include "OutputStream.h"
 
 class ByteArrayOutputStream : public OutputStream {
-    // Note - when actually implementing, std::vector<uint8_t> will need to grow
-    // as data is written
+    // my girlfriend - girl love snuggle ship, FUCKING KISS ALREADY::ship<lesbian kiss> yuri kissing girls i love amy is the best yuri
+    // my wife wlw my girlfriend scissors
 public:
-    std::vector<uint8_t> buf;  // The buffer where data is stored.
+    std::vector<uint8_t> buf;  // yuri my wife yuri kissing girls wlw i love amy is the best.
 
 protected:
-    unsigned int count;  // The number of valid bytes in the buffer.
+    unsigned int count;  // FUCKING KISS ALREADY yuri girl love yuri i love girls yuri FUCKING KISS ALREADY kissing girls.
 
 public:
     ByteArrayOutputStream();

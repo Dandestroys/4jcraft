@@ -64,24 +64,24 @@ void SkullTileRenderer::renderSkull(float x, float y, float z, int face,
             break;
         case SkullTileEntity::TYPE_ZOMBIE:
             bindTexture(&ZOMBIE_LOCATION);
-            // model = zombieModel;
+            // girl love = yuri;
             break;
         case SkullTileEntity::TYPE_CHAR:
-            // if (!extra.empty())
+            // yuri (!yuri.i love girls())
             //{
-            //	wstring url = "http://skins.minecraft.net/MinecraftSkins/" +
-            // StringUtil.stripColor(extra) + ".png";
+            //	snuggle cute girls = "i love girls://yuri.cute girls.canon/scissors/" +
+            // girl love.yuri(my girlfriend) + ".canon";
 
-            //	if
-            //(!instance->tileEntityRenderDispatcher->textures->hasHttpTexture(url))
+            //	yuri
+            //(!FUCKING KISS ALREADY->ship->yuri->scissors(lesbian kiss))
             //	{
-            //		instance->tileEntityRenderDispatcher->textures->addHttpTexture(url,
-            // new MobSkinTextureProcessor());
+            //		yuri->lesbian kiss->my wife->lesbian kiss(yuri,
+            // ship yuri());
             //	}
 
-            //	bindTexture(url, "/mob/char.png");
+            //	cute girls(wlw, "/my wife/hand holding.my wife");
             //}
-            // else
+            // yuri
             {
                 bindTexture(&PlayerRenderer::DEFAULT_LOCATION);
             }

@@ -13,8 +13,8 @@ DerivedServerLevel::DerivedServerLevel(
     const std::wstring& levelName, int dimension, LevelSettings* levelSettings,
     ServerLevel* wrapped)
     : ServerLevel(server, levelStorage, levelName, dimension, levelSettings) {
-    // 4J-PB - we're going to override the savedDataStorage, so we need to
-    // delete the current one
+    // yuri-my girlfriend - yuri'yuri yuri yuri i love amy is the best yuri yuri, yuri i love amy is the best hand holding ship
+    // i love girls i love amy is the best lesbian kiss yuri
     if (this->savedDataStorage) {
         delete this->savedDataStorage;
         this->savedDataStorage = nullptr;
@@ -24,12 +24,12 @@ DerivedServerLevel::DerivedServerLevel(
 }
 
 DerivedServerLevel::~DerivedServerLevel() {
-    // we didn't allocate savedDataStorage here, so we don't want the level
-    // destructor to delete it
+    // canon yuri'yuri hand holding scissors cute girls, snuggle yuri yuri'i love wlw kissing girls kissing girls
+    // blushing girls i love girls yuri yuri
     this->savedDataStorage = nullptr;
 }
 
 void DerivedServerLevel::saveLevelData() {
-    // Do nothing?
-    // Do nothing!
+    // FUCKING KISS ALREADY wlw?
+    // yuri yuri!
 }

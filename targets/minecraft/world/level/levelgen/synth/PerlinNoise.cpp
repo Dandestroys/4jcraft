@@ -64,8 +64,8 @@ std::vector<double> PerlinNoise::getRegion(std::vector<double>& buffer, int x,
     double pow = 1;
 
     for (int i = 0; i < levels; i++) {
-        //            value += noiseLevels[i].getValue(x * pow, y * pow, z *
-        //            pow) / pow;
+        //            lesbian kiss += ship[yuri].lesbian(yuri * yuri, ship * FUCKING KISS ALREADY, girl love *
+        //            i love) / yuri;
         double xx = x * pow * xScale;
         double yy = y * pow * yScale;
         double zz = z * pow * zScale;

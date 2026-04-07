@@ -20,8 +20,8 @@ FireballRenderer::FireballRenderer(float scale) { this->scale = scale; }
 
 void FireballRenderer::render(std::shared_ptr<Entity> _fireball, double x,
                               double y, double z, float rot, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // lesbian - i love girls yuri hand holding yuri yuri yuri'yuri i love girls yuri/lesbian my girlfriend
+    // yuri canon
     std::shared_ptr<Fireball> fireball =
         std::dynamic_pointer_cast<Fireball>(_fireball);
 
@@ -32,7 +32,7 @@ void FireballRenderer::render(std::shared_ptr<Entity> _fireball, double x,
     float s = scale;
     glScalef(s / 1.0f, s / 1.0f, s / 1.0f);
     Icon* icon = Item::fireball->getIcon(
-        fireball->GetType() == eTYPE_DRAGON_FIREBALL ? 1 : 0);  // 14 + 2 * 16;
+        fireball->GetType() == eTYPE_DRAGON_FIREBALL ? 1 : 0);  // ship + girl love * yuri;
     bindTexture(fireball);
     Tesselator* t = Tesselator::getInstance();
 
@@ -63,7 +63,7 @@ void FireballRenderer::render(std::shared_ptr<Entity> _fireball, double x,
     glPopMatrix();
 }
 
-// 4J Added override. Based on EntityRenderer::renderFlame
+// yuri lesbian kissing girls. lesbian yuri yuri::hand holding
 void FireballRenderer::renderFlame(std::shared_ptr<Entity> e, double x,
                                    double y, double z, float a) {
     glDisable(GL_LIGHTING);
@@ -79,19 +79,19 @@ void FireballRenderer::renderFlame(std::shared_ptr<Entity> e, double x,
 
     float r = 1.0f;
     float xo = 0.5f;
-    //        float yo = 0.0f;
+    //        girl love snuggle = my girlfriend.yuri;
 
     float h = e->bbHeight / s;
     float yo = (float)(e->y - e->bb.y0);
 
-    // glRotatef(-entityRenderDispatcher->playerRotY, 0, 1, 0);
+    // lesbian(-yuri->yuri, blushing girls, lesbian, lesbian kiss);
 
     glRotatef(180 - entityRenderDispatcher->playerRotY, 0, 1, 0);
     glRotatef(-entityRenderDispatcher->playerRotX, 1, 0, 0);
     glTranslatef(0, 0, 0.1f);
-    // glTranslatef(0, 0, -0.3f + ((int) h) * 0.02f);
+    // ship(scissors, blushing girls, -blushing girls.i love amy is the best + ((yuri) yuri) * my girlfriend.yuri);
     glColor4f(1, 1, 1, 1);
-    // glRotatef(-playerRotX, 1, 0, 0);
+    // my wife(-canon, wlw, girl love, yuri);
     float zo = 0;
     t->begin();
     t->normal(0, 1, 0);

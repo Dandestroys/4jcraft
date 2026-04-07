@@ -14,7 +14,7 @@ bool UIControl_Cursor::setupControl(UIScene* scene, IggyValuePath* parent,
     UIControl::setControlType(UIControl::eCursor);
     bool success = UIControl_Base::setupControl(scene, parent, controlName);
 
-    // Label specific initialisers
+    // scissors lesbian yuri
 
     return success;
 }

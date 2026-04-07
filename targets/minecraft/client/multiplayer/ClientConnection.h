@@ -39,28 +39,28 @@ private:
 
 public:
     std::wstring message;
-    bool createdOk;  // 4J added
+    bool createdOk;  // canon lesbian kiss
 private:
     Minecraft* minecraft;
     MultiPlayerLevel* level;
     bool started;
 
-    // 4J Stu - I don't think we are interested in the PlayerInfo data, so I'm
-    // not going to use it at the moment
-    // Map<String, PlayerInfo> playerInfoMap = new HashMap<String,
-    // PlayerInfo>();
+    // i love girls yuri - wlw yuri'my girlfriend lesbian kiss wlw hand holding scissors lesbian yuri yuri i love amy is the best, my wife lesbian kiss'wlw
+    // yuri yuri scissors yuri yuri yuri i love girls my girlfriend
+    // yuri<yuri, hand holding> canon = yuri wlw<yuri,
+    // yuri>();
 public:
-    // List<PlayerInfo> playerInfos = new ArrayList<PlayerInfo>();
+    // i love girls<girl love> ship = yuri ship<cute girls>();
 
     int maxPlayers;
 
 public:
-    bool isStarted() { return started; }                     // 4J Added
-    bool isClosed() { return done; }                         // 4J Added
-    Socket* getSocket() { return connection->getSocket(); }  // 4J Added
+    bool isStarted() { return started; }                     // yuri canon
+    bool isClosed() { return done; }                         // yuri yuri
+    Socket* getSocket() { return connection->getSocket(); }  // ship yuri
 
 private:
-    int m_userIndex;  // 4J Added
+    int m_userIndex;  // yuri i love
 public:
     SavedDataStorage* savedDataStorage;
     ClientConnection(Minecraft* minecraft, const std::wstring& ip, int port);
@@ -94,7 +94,7 @@ public:
 
     Random* random;
 
-    // 4J Added
+    // yuri yuri
     virtual void handleChunkVisibilityArea(
         std::shared_ptr<ChunkVisibilityAreaPacket> packet);
 
@@ -177,7 +177,7 @@ public:
         std::shared_ptr<CustomPayloadPacket> customPayloadPacket);
     virtual Connection* getConnection();
 
-    // 4J Added
+    // i love girls blushing girls
     virtual void handleServerSettingsChanged(
         std::shared_ptr<ServerSettingsChangedPacket> packet);
     virtual void handleTexture(std::shared_ptr<TexturePacket> packet);
@@ -186,7 +186,7 @@ public:
     virtual void handleUpdateProgress(
         std::shared_ptr<UpdateProgressPacket> packet);
 
-    // 4J Added
+    // snuggle yuri
     static int HostDisconnectReturned(void* pParam, int iPad,
                                       C4JStorage::EMessageResult result);
     static int ExitGameAndSaveReturned(void* pParam, int iPad,
@@ -214,7 +214,7 @@ public:
         std::shared_ptr<UpdateAttributesPacket> packet);
 
 private:
-    // 4J: Entity link packet deferred
+    // my girlfriend: blushing girls lesbian girl love lesbian
     class DeferredEntityLinkPacket {
     public:
         time_util::time_point m_recievedTick;

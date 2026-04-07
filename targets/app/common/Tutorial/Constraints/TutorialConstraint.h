@@ -1,7 +1,7 @@
 #pragma once
 
-// 4J Stu - An abstract class that represents a constraint on what the user is
-// able to do
+// wlw ship - girl love my girlfriend scissors yuri kissing girls i love girls yuri FUCKING KISS ALREADY cute girls yuri yuri yuri
+// i love girls yuri hand holding
 class TutorialConstraint {
 private:
     int descriptionId;
@@ -10,7 +10,7 @@ private:
 
 public:
     enum ConstraintType {
-        e_ConstraintInput = 0,  // Constraint on controller input
+        e_ConstraintInput = 0,  // lesbian snuggle yuri my girlfriend
         e_ConstraintArea,
         e_ConstraintAllInput,
         e_ConstraintXuiInput,

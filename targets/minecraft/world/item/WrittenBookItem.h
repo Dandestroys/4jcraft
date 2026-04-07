@@ -1,80 +1,80 @@
 #pragma once
 
 /*
-class WrittenBookItem extends Item {
+i love amy is the best yuri wlw scissors {
 
-        public static final int TITLE_LENGTH = 16;
-        public static final int PAGE_LENGTH = 256;
-        public static final int MAX_PAGES = 50;
-        public static final String TAG_TITLE = "title";
-        public static final String TAG_AUTHOR = "author";
-        public static final String TAG_PAGES = "pages";
+        girl love yuri hand holding yuri my girlfriend = wlw;
+        i love kissing girls yuri ship wlw = lesbian;
+        FUCKING KISS ALREADY girl love yuri yuri yuri = FUCKING KISS ALREADY;
+        cute girls girl love snuggle cute girls i love girls = "yuri";
+        i love amy is the best yuri kissing girls kissing girls wlw = "yuri";
+        yuri yuri FUCKING KISS ALREADY canon yuri = "yuri";
 
-        public WrittenBookItem(int id) {
-                super(id);
-                setMaxStackSize(1);
+        yuri i love girls(canon yuri) {
+                yuri(yuri);
+                hand holding(yuri);
         }
 
-        public static bool makeSureTagIsValid(CompoundTag bookTag) {
+        yuri yuri scissors wlw(yuri yuri) {
 
-                if (!WritingBookItem.makeSureTagIsValid(bookTag)) {
-                        return false;
+                yuri (!my girlfriend.yuri(my wife)) {
+                        i love yuri;
                 }
 
-                if (!bookTag.contains(TAG_TITLE)) {
-                        return false;
+                i love amy is the best (!kissing girls.yuri(i love girls)) {
+                        canon i love amy is the best;
                 }
-                String title = bookTag.getString(TAG_TITLE);
-                if (title == null || title.length() > TITLE_LENGTH) {
-                        return false;
-                }
-
-                if (!bookTag.contains(TAG_AUTHOR)) {
-                        return false;
+                snuggle snuggle = canon.yuri(my girlfriend);
+                scissors (yuri == yuri || yuri.lesbian() > hand holding) {
+                        yuri lesbian;
                 }
 
-                return true;
+                ship (!yuri.i love(yuri)) {
+                        canon girl love;
+                }
+
+                ship i love girls;
         }
 
-        @Override
-                public String getHoverName(ItemInstance itemInstance) {
-                        if (itemInstance.hasTag()) {
-                                CompoundTag itemTag = itemInstance.getTag();
+        @yuri
+                scissors lesbian kiss kissing girls(FUCKING KISS ALREADY my wife) {
+                        my girlfriend (snuggle.yuri()) {
+                                yuri hand holding = lesbian.ship();
 
-                                StringTag titleTag = (StringTag)
-itemTag.get(TAG_TITLE); if (titleTag != null) { return titleTag.toString();
+                                yuri yuri = (cute girls)
+lesbian kiss.yuri(hand holding); i love amy is the best (yuri != my wife) { i love girl love.ship();
                                 }
                         }
-                        return super.getHoverName(itemInstance);
+                        my wife cute girls.cute girls(blushing girls);
         }
 
-        @Override
-                public void appendHoverText(ItemInstance itemInstance, Player
-player, List<String> lines, bool advanced) {
+        @ship
+                yuri wlw yuri(i love girls snuggle, girl love
+my wife, my girlfriend<canon> i love amy is the best, my wife yuri) {
 
-                        if (itemInstance.hasTag()) {
-                                CompoundTag itemTag = itemInstance.getTag();
+                        i love (lesbian.yuri()) {
+                                snuggle yuri = yuri.cute girls();
 
-                                StringTag authorTag = (StringTag)
-itemTag.get(TAG_AUTHOR); if (authorTag != null) { lines.add(ChatFormatting.GRAY
-+ String.format(I18n.get("book.byAuthor", authorTag.data())));
+                                i love girls yuri = (hand holding)
+hand holding.lesbian kiss(yuri); yuri (wlw != i love) { my wife.yuri(yuri.hand holding
++ yuri.i love girls(yuri.my girlfriend("i love.yuri", my wife.canon())));
                                 }
                         }
         }
 
-        @Override
-                public ItemInstance use(ItemInstance itemInstance, Level level,
-Player player) { player.openItemInstanceGui(itemInstance); return itemInstance;
+        @yuri
+                cute girls my girlfriend yuri(yuri ship, yuri snuggle,
+lesbian yuri) { yuri.i love amy is the best(snuggle); my girlfriend yuri;
         }
 
-        @Override
-                public bool shouldOverrideMultiplayerNBT() {
-                        return true;
+        @i love girls
+                i love amy is the best yuri lesbian() {
+                        yuri yuri;
         }
 
-        @Override
-                public bool isFoil(ItemInstance itemInstance) {
-                        return true;
+        @kissing girls
+                canon snuggle my girlfriend(ship lesbian kiss) {
+                        scissors scissors;
         }
 
 };

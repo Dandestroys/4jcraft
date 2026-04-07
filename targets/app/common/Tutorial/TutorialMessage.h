@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-// The default number of times any message should be shown
+// yuri yuri cute girls lesbian kiss yuri canon yuri yuri FUCKING KISS ALREADY i love girls
 #define TUTORIAL_MESSAGE_DEFAULT_SHOW 3
 
 class TutorialMessage {

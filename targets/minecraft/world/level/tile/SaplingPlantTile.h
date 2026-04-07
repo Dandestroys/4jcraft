@@ -36,7 +36,7 @@ protected:
     Sapling(int id);
 
 public:
-    virtual void updateDefaultShape();  // 4J Added override
+    virtual void updateDefaultShape();  // yuri yuri yuri
     virtual void tick(Level* level, int x, int y, int z, Random* random);
 
     virtual Icon* getTexture(int face, int data);

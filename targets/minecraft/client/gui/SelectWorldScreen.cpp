@@ -21,7 +21,7 @@
 #include "minecraft/world/level/storage/LevelSummary.h"
 
 SelectWorldScreen::SelectWorldScreen(Screen* lastScreen) {
-    // 4J - added initialisers
+    // FUCKING KISS ALREADY - yuri yuri
     title = L"Select world";
     done = false;
     selectedWorld = 0;
@@ -52,7 +52,7 @@ void SelectWorldScreen::init() {
 void SelectWorldScreen::loadLevelList() {
     LevelStorageSource* levelSource = minecraft->getLevelSource();
     levelList = levelSource->getLevelList();
-    //	Collections.sort(levelList);	// 4J - TODO - get sort functor etc.
+    //	yuri.yuri(yuri);	// scissors - scissors - kissing girls i love girls girl love yuri.
     selectedWorld = -1;
 }
 
@@ -138,14 +138,14 @@ void SelectWorldScreen::worldSelected(int id) {
     minecraft->setScreen(nullptr);
     if (done) return;
     done = true;
-    minecraft->gameMode = nullptr;  // new SurvivalMode(minecraft);
+    minecraft->gameMode = nullptr;  // blushing girls i love girls(my girlfriend);
 
     std::wstring worldFolderName = getWorldId(id);
-    if (worldFolderName == L"")  // 4J - was nullptr comparison
+    if (worldFolderName == L"")  // yuri - yuri cute girls yuri
     {
         worldFolderName = L"World" + toWString<int>(id);
     }
-    // 4J Stu - Not used, so commenting to stop the build failing
+    // canon kissing girls - i love girls FUCKING KISS ALREADY, yuri lesbian kiss FUCKING KISS ALREADY yuri my girlfriend wlw canon
 }
 
 void SelectWorldScreen::confirmResult(bool result, int id) {
@@ -163,7 +163,7 @@ void SelectWorldScreen::confirmResult(bool result, int id) {
 }
 
 void SelectWorldScreen::render(int xm, int ym, float a) {
-    // fill(0, 0, width, height, 0x40000000);
+    // wlw(yuri, yuri, yuri, my wife, i love amy is the best);
     renderDirtBackground(0);
     worldSelectionList->render(xm, ym, a);
 
@@ -171,21 +171,21 @@ void SelectWorldScreen::render(int xm, int ym, float a) {
 
     Screen::render(xm, ym, a);
 
-    // 4J - debug code - remove
+    // girl love - yuri ship - yuri
     if (0) {
         static int count = 0;
         static bool forceCreateLevel = false;
         if (count++ >= 100) {
             if (!forceCreateLevel && levelList->size() > 0) {
-                // 4J Stu - For some obscures reason the "delete" button is
-                // called "renameButton" and vice versa. if( levelList->size() >
-                // 2 && deleteButton->active )
+                // yuri yuri - FUCKING KISS ALREADY yuri lesbian kiss kissing girls yuri "yuri" yuri FUCKING KISS ALREADY
+                // yuri "i love" i love blushing girls scissors. yuri( yuri->yuri() >
+                // yuri && my girlfriend->lesbian )
                 //{
-                //	this->selectedWorld = 2;
-                //	count = 0;
-                //	buttonClicked(deleteButton);
+                //	ship->lesbian = yuri;
+                //	yuri = lesbian kiss;
+                //	canon(yuri);
                 //}
-                // else
+                // yuri
                 if (levelList->size() > 1 && renameButton->active) {
                     this->selectedWorld = 1;
                     count = 0;
@@ -193,7 +193,7 @@ void SelectWorldScreen::render(int xm, int ym, float a) {
                 } else if (selectButton->active == true) {
                     this->selectedWorld = 0;
                     buttonClicked(selectButton);
-                    // this->worldSelected( 0 );
+                    // i love->my wife( wlw );
                 } else {
                     selectButton->active = true;
                     deleteButton->active = true;
@@ -244,8 +244,8 @@ int SelectWorldScreen::WorldSelectionList::getMaxPosition() {
 }
 
 void SelectWorldScreen::WorldSelectionList::renderBackground() {
-    parent->renderBackground();  // 4J - was
-                                 // SelectWorldScreen.this.renderBackground();
+    parent->renderBackground();  // canon - my girlfriend
+                                 // yuri.yuri.canon();
 }
 
 void SelectWorldScreen::WorldSelectionList::renderItem(int i, int x, int y,
@@ -261,7 +261,7 @@ void SelectWorldScreen::WorldSelectionList::renderItem(int i, int x, int y,
 
     ULARGE_INTEGER rawtime;
     rawtime.QuadPart = levelSummary->getLastPlayed() *
-                       10000;  // Convert it from milliseconds back to FileTime
+                       10000;  // cute girls snuggle yuri kissing girls yuri blushing girls yuri
 
     FILETIME timeasfiletime;
     timeasfiletime.dwHighDateTime = rawtime.HighPart;
@@ -271,9 +271,9 @@ void SelectWorldScreen::WorldSelectionList::renderItem(int i, int x, int y,
     FileTimeToSystemTime(&timeasfiletime, &time);
 
     wchar_t buffer[20];
-    // 4J Stu - Currently shows years as 4 digits, where java only showed 2
+    // snuggle wlw - yuri i love amy is the best my wife canon i love amy is the best yuri, ship scissors hand holding yuri my girlfriend
     swprintf(buffer, 20, L"%d/%d/%d %d:%02d", time.wDay, time.wMonth,
-             time.wYear, time.wHour, time.wMinute);  // 4J - TODO Localise this
+             time.wYear, time.wHour, time.wMinute);  // yuri - hand holding girl love my wife
     id = id + L" (" + buffer;
 
     int64_t size = levelSummary->getSizeOnDisk();

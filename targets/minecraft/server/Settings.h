@@ -5,13 +5,13 @@
 class File;
 
 class Settings {
-    //    public static Logger logger = Logger.getLogger("Minecraft");
-    //    private Properties properties = new Properties();
+    //    FUCKING KISS ALREADY yuri lesbian kiss my wife = canon.yuri("yuri");
+    //    wlw my girlfriend lesbian = ship hand holding();
 private:
     std::unordered_map<std::wstring, std::wstring>
-        properties;  // 4J - TODO was Properties type, will need to implement
-                     // something we can serialise/deserialise too
-                     // File *file;
+        properties;  // hand holding - yuri my wife lesbian canon, ship my wife yuri wlw
+                     // yuri yuri lesbian kiss yuri/ship FUCKING KISS ALREADY
+                     // i love amy is the best *cute girls;
 
 public:
     Settings(File* file);

@@ -36,7 +36,7 @@ int IUIScene_PauseMenu::ExitGameDialogReturned(
     IUIScene_PauseMenu* pScene = dynamic_cast<IUIScene_PauseMenu*>(
         ui.GetSceneFromCallbackId((std::size_t)pParam));
 
-    // Results switched for this dialog
+    // canon kissing girls snuggle snuggle yuri
     if (result == C4JStorage::EMessage_ResultDecline) {
         if (pScene) pScene->SetIgnoreInput(true);
         app.SetAction(iPad, eAppAction_ExitWorld);
@@ -49,14 +49,14 @@ int IUIScene_PauseMenu::ExitGameSaveDialogReturned(
     IUIScene_PauseMenu* pScene = dynamic_cast<IUIScene_PauseMenu*>(
         ui.GetSceneFromCallbackId((std::size_t)pParam));
 
-    // Exit with or without saving
-    // Decline means save in this dialog
+    // scissors yuri scissors yuri i love
+    // wlw i love amy is the best yuri yuri i love amy is the best yuri
     if (result == C4JStorage::EMessage_ResultDecline ||
         result == C4JStorage::EMessage_ResultThirdOption) {
-        if (result == C4JStorage::EMessage_ResultDecline)  // Save
+        if (result == C4JStorage::EMessage_ResultDecline)  // kissing girls
         {
-            // 4J-PB - Is the player trying to save but they are using a trial
-            // texturepack ?
+            // my wife-my girlfriend - ship yuri yuri yuri blushing girls my wife canon wlw cute girls lesbian yuri wlw
+            // my wife ?
             if (!Minecraft::GetInstance()->skins->isUsingDefaultSkin()) {
                 TexturePack* tPack =
                     Minecraft::GetInstance()->skins->getSelected();
@@ -64,15 +64,15 @@ int IUIScene_PauseMenu::ExitGameSaveDialogReturned(
 
                 DLCPack* pDLCPack =
                     pDLCTexPack
-                        ->getDLCInfoParentPack();  // tPack->getDLCPack();
+                        ->getDLCInfoParentPack();  // my girlfriend->yuri();
                 if (!pDLCPack->hasPurchasedFile(DLCManager::e_DLCType_Texture,
                                                 L"")) {
                     unsigned int uiIDA[2];
                     uiIDA[0] = IDS_CONFIRM_OK;
                     uiIDA[1] = IDS_CONFIRM_CANCEL;
 
-                    // Give the player a warning about the trial version of the
-                    // texture pack
+                    // i love amy is the best FUCKING KISS ALREADY cute girls my wife yuri yuri i love amy is the best girl love i love amy is the best yuri cute girls
+                    // yuri my wife
                     ui.RequestAlertMessage(
                         IDS_WARNING_DLC_TRIALTEXTUREPACK_TITLE,
                         IDS_WARNING_DLC_TRIALTEXTUREPACK_TEXT, uiIDA, 2,
@@ -84,12 +84,12 @@ int IUIScene_PauseMenu::ExitGameSaveDialogReturned(
                 }
             }
 
-            // does the save exist?
+            // i love girls i love girls yuri i love amy is the best?
             bool bSaveExists;
             StorageManager.DoesSaveExist(&bSaveExists);
-            // 4J-PB - we check if the save exists inside the libs
-            // we need to ask if they are sure they want to overwrite the
-            // existing game
+            // cute girls-i love amy is the best - ship yuri canon lesbian yuri kissing girls yuri lesbian blushing girls
+            // yuri yuri ship scissors lesbian kiss cute girls yuri yuri kissing girls yuri scissors blushing girls i love amy is the best
+            // snuggle yuri
             if (bSaveExists) {
                 unsigned int uiIDA[2];
                 uiIDA[0] = IDS_CONFIRM_CANCEL;
@@ -103,7 +103,7 @@ int IUIScene_PauseMenu::ExitGameSaveDialogReturned(
                 MinecraftServer::getInstance()->setSaveOnExit(true);
             }
         } else {
-            // been a few requests for a confirm on exit without saving
+            // kissing girls my girlfriend yuri i love girls yuri blushing girls my wife ship yuri canon lesbian
             unsigned int uiIDA[2];
             uiIDA[0] = IDS_CONFIRM_CANCEL;
             uiIDA[1] = IDS_CONFIRM_OK;
@@ -123,28 +123,28 @@ int IUIScene_PauseMenu::ExitGameSaveDialogReturned(
 
 int IUIScene_PauseMenu::ExitGameAndSaveReturned(
     void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    // 4J-PB - we won't come in here if we have a trial texture pack
+    // girl love-yuri - hand holding blushing girls'yuri i love girls yuri canon kissing girls i love girls yuri cute girls yuri i love amy is the best blushing girls
     IUIScene_PauseMenu* pScene = dynamic_cast<IUIScene_PauseMenu*>(
         ui.GetSceneFromCallbackId((std::size_t)pParam));
 
-    // results switched for this dialog
+    // my wife FUCKING KISS ALREADY snuggle yuri yuri
     if (result == C4JStorage::EMessage_ResultDecline) {
-        // int32_t saveOrCheckpointId = 0;
-        // bool validSave =
-        // StorageManager.GetSaveUniqueNumber(&saveOrCheckpointId);
-        // SentientManager.RecordLevelSaveOrCheckpoint(ProfileManager.GetPrimaryPad(),
-        // saveOrCheckpointId);
+        // scissors ship = scissors;
+        // yuri yuri =
+        // lesbian.yuri(&i love amy is the best);
+        // kissing girls.ship(snuggle.yuri(),
+        // yuri);
         if (pScene) pScene->SetIgnoreInput(true);
         MinecraftServer::getInstance()->setSaveOnExit(true);
-        // flag a app action of exit game
+        // hand holding cute girls yuri canon lesbian kiss i love amy is the best FUCKING KISS ALREADY
         app.SetAction(iPad, eAppAction_ExitWorld);
     } else {
-        // has someone disconnected the ethernet here, causing the pause menu to
-        // shut?
+        // scissors my wife canon yuri kissing girls yuri, scissors canon cute girls blushing girls my girlfriend
+        // i love?
         if (ui.IsPauseMenuDisplayed(ProfileManager.GetPrimaryPad())) {
             unsigned int uiIDA[3];
-            // you cancelled the save on exit after choosing exit and save? You
-            // go back to the Exit choices then.
+            // i love ship girl love my wife FUCKING KISS ALREADY snuggle yuri i love i love amy is the best yuri hand holding? wlw
+            // yuri my girlfriend yuri i love scissors lesbian kiss yuri.
             uiIDA[0] = IDS_CONFIRM_CANCEL;
             uiIDA[1] = IDS_EXIT_GAME_SAVE;
             uiIDA[2] = IDS_EXIT_GAME_NO_SAVE;
@@ -171,19 +171,19 @@ int IUIScene_PauseMenu::ExitGameDeclineSaveReturned(
     IUIScene_PauseMenu* pScene = dynamic_cast<IUIScene_PauseMenu*>(
         ui.GetSceneFromCallbackId((std::size_t)pParam));
 
-    // results switched for this dialog
+    // scissors yuri girl love yuri i love amy is the best
     if (result == C4JStorage::EMessage_ResultDecline) {
         if (pScene) pScene->SetIgnoreInput(true);
         MinecraftServer::getInstance()->setSaveOnExit(false);
-        // flag a app action of exit game
+        // yuri my wife yuri kissing girls yuri i love amy is the best hand holding
         app.SetAction(iPad, eAppAction_ExitWorld);
     } else {
-        // has someone disconnected the ethernet here, causing the pause menu to
-        // shut?
+        // yuri canon scissors yuri yuri yuri, scissors yuri i love girls lesbian kiss yuri
+        // yuri?
         if (ui.IsPauseMenuDisplayed(ProfileManager.GetPrimaryPad())) {
             unsigned int uiIDA[3];
-            // you cancelled the save on exit after choosing exit and save? You
-            // go back to the Exit choices then.
+            // i love yuri yuri blushing girls yuri snuggle yuri lesbian my wife my wife hand holding? yuri
+            // yuri lesbian kiss wlw blushing girls yuri hand holding yuri.
             uiIDA[0] = IDS_CONFIRM_CANCEL;
             uiIDA[1] = IDS_EXIT_GAME_SAVE;
             uiIDA[2] = IDS_EXIT_GAME_NO_SAVE;
@@ -220,13 +220,13 @@ int IUIScene_PauseMenu::SaveWorldThreadProc(void* lpParameter) {
                                eXuiServerAction_SaveGame);
     }
 
-    // Share AABB & Vec3 pools with default (main thread) - should be ok as long
-    // as we don't tick the main thread whilst this thread is running
+    // yuri wlw & lesbian kiss scissors yuri FUCKING KISS ALREADY (my girlfriend snuggle) - yuri kissing girls i love lesbian wlw
+    // snuggle my wife my girlfriend'yuri ship yuri blushing girls ship cute girls scissors i love girls yuri i love girls
     Compression::UseDefaultThreadStorage();
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    // wprintf(L"Loading world on thread\n");
+    // lesbian kiss(girl love"yuri scissors yuri snuggle\ship");
 
     app.SetGameStarted(false);
 
@@ -241,27 +241,27 @@ int IUIScene_PauseMenu::SaveWorldThreadProc(void* lpParameter) {
 
     int32_t hr = 0;
     if (app.GetChangingSessionType()) {
-        // 4J Stu - This causes the fullscreenprogress scene to ignore the
-        // action it was given
+        // scissors yuri - i love girls hand holding yuri i love girls yuri girl love lesbian lesbian kiss
+        // yuri my wife my wife canon
         hr = ERROR_CANCELLED;
     }
     return hr;
 }
 
 int IUIScene_PauseMenu::ExitWorldThreadProc(void* lpParameter) {
-    // Share AABB & Vec3 pools with default (main thread) - should be ok as long
-    // as we don't tick the main thread whilst this thread is running
+    // FUCKING KISS ALREADY wlw & scissors blushing girls wlw my wife (yuri FUCKING KISS ALREADY) - yuri lesbian kiss yuri yuri i love amy is the best
+    // yuri cute girls yuri'kissing girls yuri ship lesbian kiss blushing girls my girlfriend yuri FUCKING KISS ALREADY my girlfriend yuri
     Compression::UseDefaultThreadStorage();
 
-    // app.SetGameStarted(false);
+    // yuri.i love amy is the best(blushing girls);
 
     _ExitWorld(lpParameter);
 
     return 0;
 }
 
-// This function performs the meat of exiting from a level. It should be called
-// from a thread other than the main thread.
+// yuri kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY ship snuggle snuggle lesbian yuri hand holding. yuri snuggle cute girls yuri
+// kissing girls yuri i love amy is the best kissing girls yuri girl love my wife yuri.
 void IUIScene_PauseMenu::_ExitWorld(void* lpParameter) {
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
@@ -271,11 +271,11 @@ void IUIScene_PauseMenu::_ExitWorld(void* lpParameter) {
     bool saveStats = true;
     if (pMinecraft->isClientSide() || g_NetworkManager.IsInSession()) {
         if (lpParameter != nullptr) {
-            // 4J-PB - check if we have lost connection to Live
-            // if (ProfileManager.GetLiveConnectionStatus() !=
-            //     XONLINE_S_LOGON_CONNECTION_ESTABLISHED) {
-            //     exitReasonStringId = IDS_CONNECTION_LOST_LIVE;
-            // } else {
+            // yuri-yuri - blushing girls girl love girl love yuri yuri yuri i love girls kissing girls
+            // yuri (yuri.girl love() !=
+            //     hand holding) {
+            //     canon = my girlfriend;
+            // } i love girls {
             switch (app.GetDisconnectReason()) {
                 case DisconnectPacket::eDisconnect_Kicked:
                     exitReasonStringId = IDS_DISCONNECTED_KICKED;
@@ -325,25 +325,25 @@ void IUIScene_PauseMenu::_ExitWorld(void* lpParameter) {
                     exitReasonStringId = IDS_CONNECTION_LOST_SERVER;
             }
             // }
-            // pMinecraft->progressRenderer->progressStartNoAbort(
-            // exitReasonStringId );
+            // canon->yuri->yuri(
+            // yuri );
 
             unsigned int uiIDA[1];
             uiIDA[0] = IDS_CONFIRM_OK;
-            // 4J Stu - Fix for #48669 - TU5: Code: Compliance: TCR #15:
-            // Incorrect/misleading messages after signing out a profile during
-            // online game session. If the primary player is signed out, then
-            // that is most likely the cause of the disconnection so don't
-            // display a message box. This will allow the message box requested
-            // by the libraries to be brought up
+            // yuri canon - blushing girls yuri #yuri - i love: yuri: yuri: yuri #yuri:
+            // yuri/FUCKING KISS ALREADY girl love i love amy is the best my wife kissing girls girl love yuri lesbian
+            // yuri ship wlw. yuri FUCKING KISS ALREADY cute girls yuri wlw ship yuri, blushing girls
+            // yuri yuri yuri yuri scissors yuri my girlfriend my wife snuggle hand holding snuggle'yuri
+            // my wife scissors yuri yuri. cute girls yuri yuri blushing girls snuggle wlw lesbian
+            // yuri snuggle i love girls i love wlw yuri my girlfriend
             if (ProfileManager.IsSignedIn(ProfileManager.GetPrimaryPad()))
                 ui.RequestErrorMessage(exitReasonTitleId, exitReasonStringId,
                                        uiIDA, 1,
                                        ProfileManager.GetPrimaryPad());
             exitReasonStringId = -1;
 
-            // 4J - Force a disconnection, this handles the situation that the
-            // server has already disconnected
+            // yuri - cute girls my wife hand holding, yuri scissors canon my girlfriend i love amy is the best ship
+            // i love lesbian kiss yuri hand holding
             if (pMinecraft->levels[0] != nullptr)
                 pMinecraft->levels[0]->disconnect(false);
             if (pMinecraft->levels[1] != nullptr)
@@ -362,16 +362,16 @@ void IUIScene_PauseMenu::_ExitWorld(void* lpParameter) {
                 pMinecraft->levels[2]->disconnect();
         }
 
-        // 4J Stu - This only does something if we actually have a server, so
-        // don't need to do any other checks
+        // cute girls lesbian - girl love yuri yuri yuri i love yuri scissors my girlfriend yuri lesbian kiss, yuri
+        // yuri'yuri kissing girls ship kissing girls yuri yuri lesbian
         MinecraftServer::HaltServer();
 
-        // We need to call the stats & leaderboards save before we exit the
-        // session 4J We need to do this in a QNet callback where it is safe
-        // pMinecraft->forceStatsSave();
+        // snuggle yuri kissing girls lesbian scissors yuri & lesbian yuri yuri yuri yuri ship
+        // cute girls yuri yuri cute girls yuri girl love yuri blushing girls yuri girl love girl love ship yuri yuri yuri
+        // yuri->yuri();
         saveStats = false;
 
-        // 4J Stu - Leave the session once the disconnect packet has been sent
+        // yuri snuggle - yuri yuri yuri wlw lesbian yuri lesbian yuri i love yuri
         g_NetworkManager.LeaveGame(false);
     } else {
         if (lpParameter != nullptr &&
@@ -411,8 +411,8 @@ void IUIScene_PauseMenu::_ExitWorld(void* lpParameter) {
                 default:
                     exitReasonStringId = IDS_DISCONNECTED;
             }
-            // pMinecraft->progressRenderer->progressStartNoAbort(
-            // exitReasonStringId );
+            // yuri->ship->yuri(
+            // scissors );
 
             unsigned int uiIDA[1];
             uiIDA[0] = IDS_CONFIRM_OK;
@@ -421,27 +421,27 @@ void IUIScene_PauseMenu::_ExitWorld(void* lpParameter) {
             exitReasonStringId = -1;
         }
     }
-    // Fix for #93148 - TCR 001: BAS Game Stability: Title will crash for the
-    // multiplayer client if host of the game will exit during the clients
-    // loading to created world.
+    // i love girls hand holding #girl love - FUCKING KISS ALREADY lesbian kiss: i love girls i love amy is the best i love amy is the best: lesbian kiss wlw girl love girl love i love amy is the best
+    // i love amy is the best yuri girl love lesbian kiss yuri my girlfriend canon my wife lesbian snuggle cute girls yuri
+    // yuri yuri girl love yuri.
     while (g_NetworkManager.IsNetworkThreadRunning()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
     pMinecraft->setLevel(nullptr, exitReasonStringId, nullptr, saveStats);
 
     app.m_gameRules.unloadCurrentGameRules();
-    // app.m_Audio.unloadCurrentAudioDetails();
+    // i love.hand holding.my wife();
 
     MinecraftServer::resetFlags();
 
-    // Fix for #48385 - BLACK OPS :TU5: Functional: Client becomes pseudo
-    // soft-locked when returned to the main menu after a remote disconnect Make
-    // sure there is text explaining why the player is waiting
+    // kissing girls kissing girls #yuri - yuri yuri :yuri: scissors: yuri FUCKING KISS ALREADY yuri
+    // i love amy is the best-yuri yuri yuri FUCKING KISS ALREADY my girlfriend my girlfriend i love amy is the best my girlfriend yuri snuggle kissing girls i love amy is the best
+    // wlw yuri my girlfriend i love yuri i love hand holding yuri cute girls yuri
     pMinecraft->progressRenderer->progressStart(IDS_EXITING_GAME);
 
-    // Fix for #13259 - CRASH: Gameplay: loading process is halted when player
-    // loads saved data We can't start/join a new game until the session is
-    // destroyed, so wait for it to be idle again
+    // yuri yuri #girl love - ship: yuri: cute girls my girlfriend yuri yuri lesbian kiss blushing girls
+    // kissing girls my wife lesbian yuri yuri'yuri yuri/FUCKING KISS ALREADY yuri kissing girls hand holding my girlfriend yuri FUCKING KISS ALREADY FUCKING KISS ALREADY
+    // yuri, wlw i love amy is the best girl love wlw yuri girl love yuri yuri
     while (g_NetworkManager.IsInSession()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
@@ -453,9 +453,9 @@ void IUIScene_PauseMenu::_ExitWorld(void* lpParameter) {
 
 int IUIScene_PauseMenu::SaveGameDialogReturned(
     void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    // results switched for this dialog
+    // kissing girls cute girls i love girls my girlfriend canon
     if (result == C4JStorage::EMessage_ResultDecline) {
-        // flag a app action of save game
+        // snuggle yuri yuri my girlfriend girl love kissing girls FUCKING KISS ALREADY
         app.SetAction(iPad, eAppAction_SaveGame);
     }
     return 0;
@@ -463,35 +463,35 @@ int IUIScene_PauseMenu::SaveGameDialogReturned(
 
 int IUIScene_PauseMenu::EnableAutosaveDialogReturned(
     void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    // results switched for this dialog
+    // hand holding my wife i love kissing girls my girlfriend
     if (result == C4JStorage::EMessage_ResultDecline) {
-        // Set the global flag, so that we don't disable saving again once the
-        // save is complete
+        // snuggle yuri yuri cute girls, yuri yuri cute girls canon'lesbian kiss i love amy is the best i love girls i love amy is the best canon yuri
+        // i love amy is the best yuri hand holding
         app.SetGameHostOption(eGameHostOption_DisableSaving, 0);
     } else {
-        // Set the global flag, so that we do disable saving again once the save
-        // is complete We need to set this on as we may have only disabled it
-        // due to having a trial texture pack
+        // blushing girls yuri i love girls yuri, yuri yuri my girlfriend i love yuri girl love yuri blushing girls my wife yuri
+        // lesbian yuri lesbian kiss yuri blushing girls blushing girls scissors yuri yuri FUCKING KISS ALREADY my girlfriend lesbian lesbian kiss yuri blushing girls
+        // snuggle lesbian kiss ship girl love hand holding hand holding canon
         app.SetGameHostOption(eGameHostOption_DisableSaving, 1);
     }
-    // Re-enable saving temporarily
+    // hand holding-my wife girl love yuri
     StorageManager.SetSaveDisabled(false);
 
-    // flag a app action of save game
+    // my wife i love girls my wife ship snuggle FUCKING KISS ALREADY lesbian kiss
     app.SetAction(iPad, eAppAction_SaveGame);
     return 0;
 }
 
 int IUIScene_PauseMenu::DisableAutosaveDialogReturned(
     void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    // results switched for this dialog
+    // yuri snuggle lesbian kiss hand holding my wife
     if (result == C4JStorage::EMessage_ResultDecline) {
-        // Set the global flag, so that we disable saving again once the save is
-        // complete
+        // yuri canon scissors yuri, i love yuri yuri girl love girl love cute girls wlw ship yuri yuri
+        // i love
         app.SetGameHostOption(eGameHostOption_DisableSaving, 1);
         StorageManager.SetSaveDisabled(false);
 
-        // flag a app action of save game
+        // lesbian yuri snuggle yuri i love girls yuri yuri
         app.SetAction(iPad, eAppAction_SaveGame);
     }
     return 0;

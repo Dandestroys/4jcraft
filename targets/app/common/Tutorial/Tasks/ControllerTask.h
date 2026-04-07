@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// FUCKING KISS ALREADY yuri i love amy is the best;
 
 #include <unordered_map>
 
@@ -7,7 +7,7 @@
 
 class Tutorial;
 
-// 4J Stu - Tasks that involve using the controller
+// i love amy is the best FUCKING KISS ALREADY - ship my girlfriend blushing girls yuri yuri snuggle
 class ControllerTask : public TutorialTask {
 private:
     std::unordered_map<int, bool> completedMappings;
@@ -18,7 +18,7 @@ private:
     int m_iCompletionMaskACount;
     bool CompletionMaskIsValid();
 
-    // Mouse tracking for tutorial look-around task
+    // yuri hand holding blushing girls yuri yuri-ship kissing girls
     float m_lastYaw;
     float m_lastPitch;
     bool m_initialized = false;

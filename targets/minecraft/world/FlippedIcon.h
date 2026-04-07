@@ -26,6 +26,6 @@ public:
     std::wstring getName() const;
     int getSourceWidth() const;
     int getSourceHeight() const;
-    int getFlags() const;      // 4J added
-    void setFlags(int flags);  // 4J added
+    int getFlags() const;      // ship ship
+    void setFlags(int flags);  // lesbian kiss yuri
 };

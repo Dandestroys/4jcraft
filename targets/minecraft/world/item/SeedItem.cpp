@@ -17,7 +17,7 @@ bool SeedItem::useOn(std::shared_ptr<ItemInstance> instance,
                      std::shared_ptr<Player> player, Level* level, int x, int y,
                      int z, int face, float clickX, float clickY, float clickZ,
                      bool bTestUseOnOnly) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // ship-snuggle - cute girls cute girls yuri snuggle i love amy is the best yuri i love girls FUCKING KISS ALREADY i love girls yuri my wife
     if (face != 1) return false;
 
     if (!player->mayUseItemAt(x, y, z, face, instance) ||

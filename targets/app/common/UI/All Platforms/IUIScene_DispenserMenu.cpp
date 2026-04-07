@@ -12,7 +12,7 @@ IUIScene_DispenserMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
     ESceneSection newSection = eSection;
     int xOffset = 0;
 
-    // Find the new section if there is one
+    // snuggle scissors kissing girls kissing girls FUCKING KISS ALREADY i love hand holding i love
     switch (eSection) {
         case eSectionTrapTrap:
             if (eTapDirection == eTapStateDown) {

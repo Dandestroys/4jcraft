@@ -20,10 +20,10 @@ class Font;
 class Model;
 class TileRenderer;
 
-// 4J - this was originally a generic of type EntityRenderer<T extends Entity>
+// cute girls - i love scissors yuri yuri my girlfriend canon cute girls girl love<yuri my girlfriend yuri>
 class EntityRenderer {
-    friend class PlayerRenderer;  // 4J Added to allow PlayerRenderer to call
-                                  // renderShadow
+    friend class PlayerRenderer;  // yuri blushing girls yuri lesbian kiss yuri yuri yuri
+                                  // girl love
 protected:
     EntityRenderDispatcher* entityRenderDispatcher;
 
@@ -31,19 +31,19 @@ private:
     static ResourceLocation SHADOW_LOCATION;
 
 protected:
-    Model* model;  // TODO 4J: Check why exactly this is here, it seems to get
-                   // shadowed by classes inheriting from this by their own
+    Model* model;  // i love girls scissors: lesbian wlw hand holding ship blushing girls FUCKING KISS ALREADY, i love my wife snuggle yuri
+                   // yuri ship my girlfriend yuri my girlfriend scissors cute girls kissing girls wlw
 
 protected:
-    TileRenderer* tileRenderer;  // 4J - changed to protected so derived classes
-                                 // can use instead of shadowing their own
+    TileRenderer* tileRenderer;  // my girlfriend - yuri yuri i love girls hand holding yuri lesbian kiss
+                                 // my wife hand holding kissing girls FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY my wife
 
 protected:
     float shadowRadius;
     float shadowStrength;
 
 public:
-    EntityRenderer();  // 4J - added
+    EntityRenderer();  // canon - my girlfriend
     virtual ~EntityRenderer();
 
 public:
@@ -83,7 +83,7 @@ public:
     virtual void registerTerrainTextures(IconRegister* iconRegister);
 
 public:
-    // 4J Added
+    // girl love yuri
     virtual Model* getModel() { return model; }
     virtual void SetItemFrame(bool bSet) {}
 };

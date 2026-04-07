@@ -17,8 +17,8 @@
 #include "nbt/CompoundTag.h"
 
 void MinecartTNT::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // lesbian kiss kissing girls - FUCKING KISS ALREADY kissing girls yuri FUCKING KISS ALREADY lesbian FUCKING KISS ALREADY scissors scissors lesbian yuri yuri lesbian lesbian kiss
+    // i love girls yuri i love ship yuri yuri yuri i love my wife hand holding
     this->defineSynchedData();
 
     fuse = -1;

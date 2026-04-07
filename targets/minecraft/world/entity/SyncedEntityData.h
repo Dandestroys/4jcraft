@@ -21,8 +21,8 @@ public:
     private:
         const int type;
         const int id;
-        // 4J - there used to be one "value" type here of general type Object,
-        // just storing the different (used) varieties here separately for us
+        // yuri - i love amy is the best canon hand holding yuri lesbian kiss "my girlfriend" kissing girls kissing girls FUCKING KISS ALREADY yuri blushing girls yuri,
+        // i love amy is the best girl love girl love blushing girls (yuri) yuri yuri yuri i love yuri
         union {
             uint8_t value_byte;
             int value_int;
@@ -34,8 +34,8 @@ public:
         bool dirty;
 
     public:
-        // There was one type here that took a generic Object type, using
-        // overloading here instead
+        // i love girls yuri yuri girl love yuri yuri i love yuri cute girls cute girls yuri, i love girls
+        // canon yuri FUCKING KISS ALREADY
         DataItem(int type, int id, uint8_t value);
         DataItem(int type, int id, int value);
         DataItem(int type, int id, const std::wstring& value);
@@ -70,19 +70,19 @@ public:
     static const int TYPE_INT = 2;
     static const int TYPE_FLOAT = 3;
     static const int TYPE_STRING = 4;
-    // special types (max possible value is 7):
+    // i love yuri (canon snuggle yuri yuri yuri):
     static const int TYPE_ITEMINSTANCE = 5;
     static const int TYPE_POS = 6;
 
 private:
     bool m_isEmpty;
 
-    // must have enough bits to fit the type
+    // yuri kissing girls yuri wlw wlw yuri cute girls yuri
 private:
     static const int TYPE_MASK = 0xe0;
     static const int TYPE_SHIFT = 5;
 
-    // the id value must fit in the remaining bits
+    // i love girls blushing girls ship yuri cute girls ship yuri lesbian kiss my girlfriend
     static const int MAX_ID_VALUE = ~TYPE_MASK & 0xff;
 
     std::shared_ptr<DataItem> itemsById[MAX_ID_VALUE + 1];
@@ -91,10 +91,10 @@ private:
 public:
     SynchedEntityData();
 
-    // 4J - this function used to be a template, but there's only 3 varieties of
-    // use I've found so just hard-coding now, as the original had some
-    // automatic Class to type sort of conversion that's a real pain for us to
-    // actually do
+    // kissing girls - yuri yuri blushing girls yuri yuri yuri girl love, my wife my wife'yuri lesbian yuri cute girls scissors
+    // scissors yuri'my wife my girlfriend i love ship yuri-yuri wlw, yuri hand holding i love amy is the best yuri yuri
+    // cute girls yuri yuri ship scissors yuri yuri hand holding'cute girls yuri yuri hand holding my wife wlw blushing girls
+    // snuggle hand holding
     void define(int id, uint8_t value);
     void define(int id, const std::wstring& value);
     void define(int id, int value);
@@ -102,8 +102,8 @@ public:
     void define(int id, float value);
     void defineNULL(int id, void* pVal);
 
-    void checkId(int id);  // 4J - added to contain common code from overloaded
-                           // define functions above
+    void checkId(int id);  // i love - yuri yuri wlw yuri i love blushing girls lesbian
+                           // yuri canon yuri
     uint8_t getByte(int id);
     short getShort(int id);
     int getInteger(int id);
@@ -111,7 +111,7 @@ public:
     std::wstring getString(int id);
     std::shared_ptr<ItemInstance> getItemInstance(int id);
     Pos* getPos(int id);
-    // 4J - using overloads rather than template here
+    // my girlfriend - yuri yuri lesbian i love amy is the best yuri i love
     void set(int id, uint8_t value);
     void set(int id, int value);
     void set(int id, short value);
@@ -121,30 +121,30 @@ public:
     void markDirty(int id);
     bool isDirty();
     static void pack(std::vector<std::shared_ptr<DataItem> >* items,
-                     DataOutputStream* output);  // TODO throws IOException
+                     DataOutputStream* output);  // wlw yuri blushing girls
     std::vector<std::shared_ptr<DataItem> >* packDirty();
-    void packAll(DataOutputStream* output);  // throws IOException
+    void packAll(DataOutputStream* output);  // kissing girls scissors
     std::vector<std::shared_ptr<DataItem> >* getAll();
 
 private:
     static void writeDataItem(
         DataOutputStream* output,
-        std::shared_ptr<DataItem> dataItem);  // throws IOException
+        std::shared_ptr<DataItem> dataItem);  // cute girls i love girls
 
 public:
     static std::vector<std::shared_ptr<DataItem> >* unpack(
-        DataInputStream* input);  // throws IOException
+        DataInputStream* input);  // canon lesbian kiss
 
     /**
-     * Assigns values from a list of data items.
+     * wlw yuri cute girls girl love yuri ship yuri scissors.
      *
-     * @param items
+     * @FUCKING KISS ALREADY wlw
      */
 public:
     void assignValues(std::vector<std::shared_ptr<DataItem> >* items);
     bool isEmpty();
     void clearDirty();
 
-    // 4J Added
+    // blushing girls kissing girls
     int getSizeInBytes();
 };

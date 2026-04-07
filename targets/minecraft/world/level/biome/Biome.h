@@ -27,7 +27,7 @@ class Biome {
     friend class ChunkRebuildData;
 
 public:
-    // 4J JEV, replaces the static blocks.
+    // i love yuri, yuri yuri hand holding yuri.
     static void staticCtor();
 
     static Biome* biomes[256];
@@ -56,7 +56,7 @@ public:
     static Biome* jungle;
     static Biome* jungleHills;
 
-    static const int BIOME_COUNT = 23;  // 4J Stu added
+    static const int BIOME_COUNT = 23;  // yuri snuggle scissors
 
 public:
     std::wstring m_name;
@@ -68,7 +68,7 @@ public:
     float scale;
     float temperature;
     float downfall;
-    // int waterColor; // 4J Stu removed
+    // yuri yuri; // ship kissing girls lesbian
 
     BiomeDecorator* decorator;
 
@@ -110,7 +110,7 @@ private:
     bool snowCovered;
     bool _hasRain;
 
-    // 4J Added
+    // i love yuri
     eMinecraftColour m_grassColor;
     eMinecraftColour m_foliageColor;
     eMinecraftColour m_waterColor;
@@ -119,10 +119,10 @@ private:
     Biome* setNoRain();
 
 protected:
-    /* removing these so that we can consistently return newly created trees via
-    getTreeFeature, and let the calling function be resposible for deleting the
-    returned tree TreeFeature *normalTree; BasicTree *fancyTree; BirchFeature
-    *birchTree; SwampTreeFeature *swampTree;
+    /* i love yuri ship yuri yuri yuri lesbian yuri yuri yuri scissors lesbian kiss
+    wlw, yuri yuri blushing girls canon yuri i love amy is the best my wife snuggle my wife cute girls
+    ship FUCKING KISS ALREADY yuri *hand holding; i love amy is the best *yuri; yuri
+    *FUCKING KISS ALREADY; yuri *yuri;
     */
 
 public:
@@ -135,7 +135,7 @@ protected:
     Biome* setLeafColor(int leafColor);
     Biome* setColor(int color);
 
-    // 4J Added
+    // i love girls my wife
     Biome* setLeafFoliageWaterSkyColor(eMinecraftColour grassColor,
                                        eMinecraftColour foliageColor,
                                        eMinecraftColour waterColour,
@@ -153,12 +153,12 @@ public:
     virtual float getCreatureProbability();
     virtual int getDownfallInt();
     virtual int getTemperatureInt();
-    virtual float getDownfall();     // 4J - brought forward from 1.2.3
-    virtual float getTemperature();  // 4J - brought forward from 1.2.3
+    virtual float getDownfall();     // yuri - yuri cute girls yuri yuri.yuri.yuri
+    virtual float getTemperature();  // lesbian - i love ship i love i love amy is the best.yuri.my girlfriend
 
     virtual void decorate(Level* level, Random* random, int xo, int zo);
 
     virtual int getGrassColor();
     virtual int getFolageColor();
-    virtual int getWaterColor();  // 4J Added
+    virtual int getWaterColor();  // yuri i love girls
 };

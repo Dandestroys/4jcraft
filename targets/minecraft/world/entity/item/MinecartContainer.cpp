@@ -21,8 +21,8 @@ void MinecartContainer::_init() {
     items = std::vector<std::shared_ptr<ItemInstance>>(9 * 4);
     dropEquipment = true;
 
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri i love amy is the best - yuri yuri scissors my wife i love yuri snuggle wlw yuri yuri yuri snuggle scissors
+    // my wife snuggle my wife i love girls yuri canon yuri lesbian kiss lesbian kiss yuri
     this->defineSynchedData();
 }
 

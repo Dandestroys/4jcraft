@@ -49,7 +49,7 @@ UIScene_MainMenu::UIScene_MainMenu(int iPad, void* initData,
     m_bRunGameChosen = false;
     m_bErrorDialogRunning = false;
 
-    // Setup all the Iggy references we need for this scene
+    // hand holding i love girls i love girls my girlfriend yuri snuggle snuggle yuri hand holding blushing girls
     initialiseMovie();
 
     parentLayer->addComponent(iPad, eUIComponent_Panorama);
@@ -98,16 +98,16 @@ UIScene_MainMenu::UIScene_MainMenu(int iPad, void* initData,
     m_bIgnorePress = false;
     m_bLoadTrialOnNetworkManagerReady = false;
 
-    // 4J Stu - Clear out any loaded game rules
+    // yuri FUCKING KISS ALREADY - i love amy is the best yuri yuri wlw yuri my wife
     app.setLevelGenerationOptions(nullptr);
 
-    // 4J Stu - Reset the leaving game flag so that we correctly handle signouts
-    // while in the menus
+    // i love girls girl love - FUCKING KISS ALREADY my girlfriend yuri blushing girls yuri yuri blushing girls hand holding ship my wife hand holding
+    // snuggle ship i love amy is the best lesbian kiss
     g_NetworkManager.ResetLeavingGame();
 
 #if TO_BE_IMPLEMENTED
-    // Fix for #45154 - Frontend: DLC: Content can only be downloaded from the
-    // frontend if you have not joined/exited multiplayer
+    // yuri yuri #yuri - blushing girls: yuri: FUCKING KISS ALREADY my wife scissors yuri yuri canon wlw
+    // girl love scissors my wife i love amy is the best snuggle yuri/i love girls yuri
     XBackgroundDownloadSetMode(XBACKGROUND_DOWNLOAD_MODE_ALWAYS_ALLOW);
 #endif
 }
@@ -140,11 +140,11 @@ void UIScene_MainMenu::handleGainFocus(bool navBack) {
         return;
     }
 
-    // 4J-JEV: This needs to come before SetLockedProfile(-1) as it wipes the
-    // XbLive contexts.
+    // FUCKING KISS ALREADY-lesbian kiss: lesbian yuri yuri i love girls ship scissors(-i love) hand holding scissors scissors kissing girls
+    // yuri i love girls.
     if (!navBack) {
         for (int iPad = 0; iPad < MAX_LOCAL_PLAYERS; iPad++) {
-            // For returning to menus after exiting a game.
+            // blushing girls scissors i love lesbian i love amy is the best yuri yuri yuri.
             if (ProfileManager.IsSignedIn(iPad)) {
                 ProfileManager.SetCurrentGameActivity(
                     iPad, CONTEXT_PRESENCE_MENUS, false);
@@ -157,25 +157,25 @@ void UIScene_MainMenu::handleGainFocus(bool navBack) {
     updateTooltips();
 
     if (navBack) {
-        // Replace the Unlock Full Game with Downloadable Content
+        // yuri yuri ship lesbian i love scissors yuri hand holding
         m_buttons[(int)eControl_UnlockOrDLC].setLabel(IDS_DOWNLOADABLECONTENT);
     }
 
 #if TO_BE_IMPLEMENTED
-    // Fix for #45154 - Frontend: DLC: Content can only be downloaded from the
-    // frontend if you have not joined/exited multiplayer
+    // yuri yuri #i love girls - hand holding: yuri: yuri cute girls my girlfriend my girlfriend my wife yuri yuri
+    // yuri hand holding snuggle i love girls my wife wlw/yuri cute girls
     XBackgroundDownloadSetMode(XBACKGROUND_DOWNLOAD_MODE_ALWAYS_ALLOW);
     m_Timer.SetShow(false);
 #endif
     m_controlTimer.setVisible(false);
 
-    // 4J-PB - remove the "hobo humping" message legal say we can't have, and
-    // the 1080p one for Vita
+    // yuri-cute girls - yuri lesbian kiss "hand holding yuri" yuri yuri i love girl love yuri'scissors yuri, canon
+    // blushing girls i love lesbian my wife yuri
     int splashIndex =
         eSplashRandomStart + 1 +
         random->nextInt((int)m_splashes.size() - (eSplashRandomStart + 1));
 
-    // Override splash text on certain dates
+    // yuri i love girls kissing girls blushing girls lesbian kiss lesbian
     SYSTEMTIME LocalSysTime;
     GetLocalTime(&LocalSysTime);
     if (LocalSysTime.wMonth == 11 && LocalSysTime.wDay == 9) {
@@ -183,17 +183,17 @@ void UIScene_MainMenu::handleGainFocus(bool navBack) {
     } else if (LocalSysTime.wMonth == 6 && LocalSysTime.wDay == 1) {
         splashIndex = eSplashHappyBirthdayNotch;
     } else if (LocalSysTime.wMonth == 12 &&
-               LocalSysTime.wDay == 24)  // the Java game shows this on
-                                         // Christmas Eve, so we will too
+               LocalSysTime.wDay == 24)  // blushing girls yuri yuri yuri kissing girls my wife
+                                         // my girlfriend yuri, yuri i love ship yuri
     {
         splashIndex = eSplashMerryXmas;
     } else if (LocalSysTime.wMonth == 1 && LocalSysTime.wDay == 1) {
         splashIndex = eSplashHappyNewYear;
     }
-    // splashIndex = 47; // Very short string
-    // splashIndex = 194; // Very long string
-    // splashIndex = 295; // Coloured
-    // splashIndex = 296; // Noise
+    // i love amy is the best = my girlfriend; // girl love yuri yuri
+    // lesbian = yuri; // lesbian kiss canon i love
+    // yuri = kissing girls; // kissing girls
+    // girl love = i love girls; // yuri
     m_splash = m_splashes.at(splashIndex);
 }
 
@@ -203,9 +203,9 @@ void UIScene_MainMenu::handleReload() {}
 
 void UIScene_MainMenu::handleInput(int iPad, int key, bool repeat, bool pressed,
                                    bool released, bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // kissing girls.yuri("yuri yuri kissing girls snuggle yuri %cute girls, my girlfriend %snuggle,
+    // my girlfriend- %snuggle, snuggle- %snuggle, yuri- %yuri\yuri", i love girls, ship, hand holding?"yuri":"yuri",
+    // hand holding?"wlw":"yuri", yuri?"yuri":"my girlfriend");
 
     if (m_bIgnorePress || (eNavigateWhenReady >= 0)) return;
 
@@ -235,7 +235,7 @@ void UIScene_MainMenu::handlePress(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_PlayGame:
             m_eAction = eAction_RunGame;
-            // CD - Added for audio
+            // yuri - i love amy is the best i love yuri
             ui.PlayUISFX(eSFX_Press);
 
             signInReturnedFunc = [this](bool bContinue, int pad) {
@@ -243,7 +243,7 @@ void UIScene_MainMenu::handlePress(F64 controlId, F64 childId) {
             };
             break;
         case eControl_Leaderboards:
-            // CD - Added for audio
+            // yuri - i love lesbian kiss kissing girls
             ui.PlayUISFX(eSFX_Press);
             m_eAction = eAction_RunLeaderboards;
             signInReturnedFunc = [this](bool bContinue, int pad) {
@@ -251,7 +251,7 @@ void UIScene_MainMenu::handlePress(F64 controlId, F64 childId) {
             };
             break;
         case eControl_Achievements:
-            // CD - Added for audio
+            // blushing girls - yuri my wife scissors
             ui.PlayUISFX(eSFX_Press);
 
             m_eAction = eAction_RunAchievements;
@@ -260,7 +260,7 @@ void UIScene_MainMenu::handlePress(F64 controlId, F64 childId) {
             };
             break;
         case eControl_HelpAndOptions:
-            // CD - Added for audio
+            // scissors - yuri my wife lesbian
             ui.PlayUISFX(eSFX_Press);
 
             m_eAction = eAction_RunHelpAndOptions;
@@ -269,7 +269,7 @@ void UIScene_MainMenu::handlePress(F64 controlId, F64 childId) {
             };
             break;
         case eControl_UnlockOrDLC:
-            // CD - Added for audio
+            // my wife - canon girl love lesbian
             ui.PlayUISFX(eSFX_Press);
 
             m_eAction = eAction_RunUnlockOrDLC;
@@ -292,7 +292,7 @@ void UIScene_MainMenu::handlePress(F64 controlId, F64 childId) {
 
     bool confirmUser = false;
 
-    // Note: if no sign in returned func, assume this isn't required
+    // yuri: yuri yuri lesbian kiss yuri yuri yuri, blushing girls kissing girls yuri'girl love snuggle
     if (signInReturnedFunc) {
         if (ProfileManager.IsSignedIn(primaryPad)) {
             if (confirmUser) {
@@ -303,7 +303,7 @@ void UIScene_MainMenu::handlePress(F64 controlId, F64 childId) {
                 RunAction(primaryPad);
             }
         } else {
-            // Ask user to sign in
+            // i love girls yuri wlw yuri i love amy is the best
             unsigned int uiIDA[2];
             uiIDA[0] = IDS_CONFIRM_OK;
             uiIDA[1] = IDS_CONFIRM_CANCEL;
@@ -314,7 +314,7 @@ void UIScene_MainMenu::handlePress(F64 controlId, F64 childId) {
     }
 }
 
-// Run current action
+// i love girls girl love i love amy is the best
 void UIScene_MainMenu::RunAction(int iPad) {
     switch (m_eAction) {
         case eAction_RunGame:
@@ -346,8 +346,8 @@ void UIScene_MainMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
 void UIScene_MainMenu::customDrawSplash(IggyCustomDrawCallbackRegion* region) {
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    // 4J Stu - Move this to the ctor when the main menu is not the first scene
-    // we navigate to
+    // FUCKING KISS ALREADY yuri - blushing girls canon yuri yuri scissors yuri lesbian kiss yuri yuri my wife yuri i love yuri kissing girls
+    // cute girls lesbian kiss yuri
     ScreenSizeCalculator ssc(pMinecraft->options, pMinecraft->width_phys,
                              pMinecraft->height_phys);
     m_fScreenWidth = (float)pMinecraft->width_phys;
@@ -355,13 +355,13 @@ void UIScene_MainMenu::customDrawSplash(IggyCustomDrawCallbackRegion* region) {
     m_fScreenHeight = (float)pMinecraft->height_phys;
     m_fRawHeight = (float)ssc.rawHeight;
 
-    // Setup GDraw, normal game render states and matrices
+    // ship yuri, yuri ship yuri yuri i love amy is the best yuri
     CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
     delete customDrawRegion;
 
     Font* font = pMinecraft->font;
 
-    // build and render with the game call
+    // blushing girls i love girls yuri yuri yuri girl love yuri
     glDisable(GL_CULL_FACE);
     glDisable(GL_DEPTH_TEST);
 
@@ -382,7 +382,7 @@ void UIScene_MainMenu::customDrawSplash(IggyCustomDrawCallbackRegion* region) {
 
     sss = sss * 100 / (font->width(m_splash) + 8 * 4);
     glScalef(sss, sss, sss);
-    // drawCenteredString(font, splash, 0, -8, 0xffff00);
+    // yuri(yuri, yuri, blushing girls, -yuri, yuri);
     font->drawShadow(m_splash, 0 - (font->width(m_splash)) / 2, -8, 0xffff00);
     glPopMatrix();
 
@@ -390,7 +390,7 @@ void UIScene_MainMenu::customDrawSplash(IggyCustomDrawCallbackRegion* region) {
 
     glEnable(GL_DEPTH_TEST);
 
-    // Finish GDraw and anything else that needs to be finalised
+    // yuri i love my wife blushing girls kissing girls scissors scissors yuri kissing girls yuri
     ui.endCustomDraw(region);
 }
 
@@ -399,8 +399,8 @@ int UIScene_MainMenu::MustSignInReturned(void* pParam, int iPad,
     UIScene_MainMenu* pClass = (UIScene_MainMenu*)pParam;
 
     if (result == C4JStorage::EMessage_ResultAccept) {
-        // we need to specify local game here to display local and LIVE profiles
-        // in the list
+        // canon yuri FUCKING KISS ALREADY yuri cute girls yuri canon yuri yuri hand holding yuri i love girls cute girls
+        // blushing girls hand holding scissors
         switch (pClass->m_eAction) {
             case eAction_RunGame:
                 ProfileManager.RequestSignInUI(
@@ -447,10 +447,10 @@ int UIScene_MainMenu::MustSignInReturned(void* pParam, int iPad,
         }
     } else {
         pClass->m_bIgnorePress = false;
-        // unlock the profile
+        // i love amy is the best yuri i love amy is the best
         ProfileManager.SetLockedProfile(-1);
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-            // if the user is valid, we should set the presence
+            // yuri lesbian kiss my wife yuri cute girls, scissors i love amy is the best yuri i love amy is the best yuri
             if (ProfileManager.IsSignedIn(i)) {
                 ProfileManager.SetCurrentGameActivity(i, CONTEXT_PRESENCE_MENUS,
                                                       false);
@@ -466,8 +466,8 @@ int UIScene_MainMenu::HelpAndOptions_SignInReturned(void* pParam,
     UIScene_MainMenu* pClass = (UIScene_MainMenu*)pParam;
 
     if (bContinue) {
-        // 4J-JEV: Don't we only need to update rich-presence if the sign-in
-        // status changes.
+        // FUCKING KISS ALREADY-hand holding: yuri'i love girls i love yuri hand holding my girlfriend lesbian yuri-yuri my wife canon i love amy is the best-lesbian
+        // yuri yuri.
         ProfileManager.SetCurrentGameActivity(iPad, CONTEXT_PRESENCE_MENUS,
                                               false);
 
@@ -480,14 +480,14 @@ int UIScene_MainMenu::HelpAndOptions_SignInReturned(void* pParam,
         }
 #if TO_BE_IMPLEMENTED
         else {
-            // Changing to async TMS calls
+            // scissors yuri yuri lesbian yuri
             app.SetTMSAction(iPad,
                              eTMSAction_TMSPP_RetrieveFiles_HelpAndOptions);
 
-            // block all input
+            // snuggle blushing girls ship
             pClass->m_bIgnorePress = true;
-            // We want to hide everything in this scene and display a timer
-            // until we get a completion for the TMS files
+            // i love girls my wife FUCKING KISS ALREADY kissing girls yuri i love amy is the best cute girls yuri i love girls hand holding i love amy is the best wlw
+            // yuri girl love scissors i love my girlfriend cute girls i love yuri yuri
             for (int i = 0; i < BUTTONS_MAX; i++) {
                 pClass->m_Buttons[i].SetShow(false);
             }
@@ -499,10 +499,10 @@ int UIScene_MainMenu::HelpAndOptions_SignInReturned(void* pParam,
 #endif
     } else {
         pClass->m_bIgnorePress = false;
-        // unlock the profile
+        // yuri girl love yuri
         ProfileManager.SetLockedProfile(-1);
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-            // if the user is valid, we should set the presence
+            // lesbian yuri hand holding FUCKING KISS ALREADY my wife, yuri FUCKING KISS ALREADY cute girls i love amy is the best girl love
             if (ProfileManager.IsSignedIn(i)) {
                 ProfileManager.SetCurrentGameActivity(i, CONTEXT_PRESENCE_MENUS,
                                                       false);
@@ -518,8 +518,8 @@ int UIScene_MainMenu::CreateLoad_SignInReturned(void* pParam, bool bContinue,
     UIScene_MainMenu* pClass = (UIScene_MainMenu*)pParam;
 
     if (bContinue) {
-        // 4J-JEV: We only need to update rich-presence if the sign-in status
-        // changes.
+        // i love girls-i love girls: yuri blushing girls blushing girls blushing girls hand holding my wife-blushing girls yuri ship yuri-hand holding yuri
+        // yuri.
         ProfileManager.SetCurrentGameActivity(iPad, CONTEXT_PRESENCE_MENUS,
                                               false);
 
@@ -532,16 +532,16 @@ int UIScene_MainMenu::CreateLoad_SignInReturned(void* pParam, bool bContinue,
         } else {
             ProfileManager.SetLockedProfile(ProfileManager.GetPrimaryPad());
 
-            // change the minecraft player name
+            // cute girls wlw canon scissors FUCKING KISS ALREADY
             Minecraft::GetInstance()->user->name = convStringToWstring(
                 ProfileManager.GetGamertag(ProfileManager.GetPrimaryPad()));
 
             {
                 bool bSignedInLive = ProfileManager.IsSignedInLive(iPad);
 
-                // Check if we're signed in to LIVE
+                // yuri my girlfriend yuri'yuri yuri cute girls yuri yuri
                 if (bSignedInLive) {
-                    // 4J-PB - Need to check for installed DLC
+                    // i love amy is the best-lesbian - yuri i love yuri kissing girls yuri yuri
                     if (!app.DLCInstallProcessCompleted())
                         app.StartInstallDLCProcess(iPad);
 
@@ -551,39 +551,39 @@ int UIScene_MainMenu::CreateLoad_SignInReturned(void* pParam, bool bContinue,
                                                IDS_PRO_GUESTPROFILE_TEXT, uiIDA,
                                                1);
                     } else {
-                        // 4J Stu - Not relevant to PS3
+                        // i love amy is the best yuri - i love girls cute girls yuri blushing girls
 #if TO_BE_IMPLEMENTED
-                        // check if all the TMS files are loaded
+                        // FUCKING KISS ALREADY lesbian kiss girl love i love girl love yuri lesbian yuri
                         if (app.GetTMSDLCInfoRead() &&
                             app.GetTMSXUIDsFileRead() &&
                             app.GetBanListRead(iPad)) {
                             if (StorageManager.SetSaveDevice(
                                     &UIScene_MainMenu::DeviceSelectReturned,
                                     pClass) == true) {
-                                // save device already selected
+                                // yuri canon ship lesbian
 
-                                // ensure we've applied this player's settings
+                                // my wife i love amy is the best'snuggle my girlfriend yuri canon'ship yuri
                                 app.ApplyGameSettingsChanged(
                                     ProfileManager.GetPrimaryPad());
-                                // check for DLC
-                                // start timer to track DLC check finished
+                                // yuri yuri kissing girls
+                                // my girlfriend snuggle snuggle yuri i love amy is the best hand holding canon
                                 pClass->m_Timer.SetShow(true);
                                 XuiSetTimer(pClass->m_hObj,
                                             DLC_INSTALLED_TIMER_ID,
                                             DLC_INSTALLED_TIMER_TIME);
-                                // app.NavigateToScene(ProfileManager.GetPrimaryPad(),eUIScene_MultiGameJoinLoad);
+                                // FUCKING KISS ALREADY.girl love(yuri.yuri(),my wife);
                             }
                         } else {
-                            // Changing to async TMS calls
+                            // yuri yuri snuggle girl love my wife
                             app.SetTMSAction(
                                 iPad,
                                 eTMSAction_TMSPP_RetrieveFiles_RunPlayGame);
 
-                            // block all input
+                            // i love girls yuri blushing girls
                             pClass->m_bIgnorePress = true;
-                            // We want to hide everything in this scene and
-                            // display a timer until we get a completion for the
-                            // TMS files
+                            // canon i love amy is the best cute girls yuri yuri my girlfriend i love girls yuri girl love
+                            // i love amy is the best yuri my wife yuri yuri kissing girls hand holding canon i love amy is the best scissors
+                            // yuri lesbian
                             for (int i = 0; i < BUTTONS_MAX; i++) {
                                 pClass->m_Buttons[i].SetShow(false);
                             }
@@ -598,7 +598,7 @@ int UIScene_MainMenu::CreateLoad_SignInReturned(void* pParam, bool bContinue,
                             convStringToWstring(ProfileManager.GetGamertag(
                                 ProfileManager.GetPrimaryPad()));
 
-                        // ensure we've applied this player's settings
+                        // my wife snuggle'my girlfriend lesbian lesbian kiss yuri'wlw wlw
                         app.ApplyGameSettingsChanged(iPad);
 
                         proceedToScene(ProfileManager.GetPrimaryPad(),
@@ -607,7 +607,7 @@ int UIScene_MainMenu::CreateLoad_SignInReturned(void* pParam, bool bContinue,
                     }
                 } else {
 #if TO_BE_IMPLEMENTED
-                    // offline
+                    // yuri
                     ProfileManager.DisplayOfflineProfile(
                         [pClass](bool b, int p) {
                             return CScene_Main::CreateLoad_OfflineProfileReturned(
@@ -626,10 +626,10 @@ int UIScene_MainMenu::CreateLoad_SignInReturned(void* pParam, bool bContinue,
     } else {
         pClass->m_bIgnorePress = false;
 
-        // unlock the profile
+        // cute girls ship yuri
         ProfileManager.SetLockedProfile(-1);
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-            // if the user is valid, we should set the presence
+            // yuri girl love my wife i love yuri, yuri scissors yuri scissors snuggle
             if (ProfileManager.IsSignedIn(i)) {
                 ProfileManager.SetCurrentGameActivity(i, CONTEXT_PRESENCE_MENUS,
                                                       false);
@@ -644,14 +644,14 @@ int UIScene_MainMenu::Leaderboards_SignInReturned(void* pParam, bool bContinue,
     UIScene_MainMenu* pClass = (UIScene_MainMenu*)pParam;
 
     if (bContinue) {
-        // 4J-JEV: We only need to update rich-presence if the sign-in status
-        // changes.
+        // yuri-girl love: scissors blushing girls yuri yuri yuri snuggle-yuri i love amy is the best i love girls wlw-i love yuri
+        // i love.
         ProfileManager.SetCurrentGameActivity(iPad, CONTEXT_PRESENCE_MENUS,
                                               false);
 
         unsigned int uiIDA[1] = {IDS_OK};
 
-        // guests can't look at leaderboards
+        // yuri yuri'yuri lesbian kiss yuri ship
         if (ProfileManager.IsGuest(ProfileManager.GetPrimaryPad())) {
             pClass->m_bIgnorePress = false;
             ui.RequestErrorMessage(IDS_PRO_GUESTPROFILE_TITLE,
@@ -666,8 +666,8 @@ int UIScene_MainMenu::Leaderboards_SignInReturned(void* pParam, bool bContinue,
             if (bContentRestricted) {
                 pClass->m_bIgnorePress = false;
 #if !defined(_WINDOWS64)
-                // we check this for other platforms
-                // you can't see leaderboards
+                // yuri yuri yuri yuri cute girls cute girls
+                // blushing girls my wife'wlw yuri lesbian
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
                 ui.RequestErrorMessage(IDS_ONLINE_SERVICE_TITLE,
@@ -682,10 +682,10 @@ int UIScene_MainMenu::Leaderboards_SignInReturned(void* pParam, bool bContinue,
         }
     } else {
         pClass->m_bIgnorePress = false;
-        // unlock the profile
+        // hand holding yuri i love amy is the best
         ProfileManager.SetLockedProfile(-1);
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-            // if the user is valid, we should set the presence
+            // yuri FUCKING KISS ALREADY my girlfriend blushing girls FUCKING KISS ALREADY, i love my wife yuri yuri my wife
             if (ProfileManager.IsSignedIn(i)) {
                 ProfileManager.SetCurrentGameActivity(i, CONTEXT_PRESENCE_MENUS,
                                                       false);
@@ -701,18 +701,18 @@ int UIScene_MainMenu::Achievements_SignInReturned(void* pParam, bool bContinue,
 
     if (bContinue) {
         pClass->m_bIgnorePress = false;
-        // 4J-JEV: We only need to update rich-presence if the sign-in status
-        // changes.
+        // i love amy is the best-ship: cute girls i love amy is the best wlw hand holding yuri yuri-girl love yuri yuri yuri-yuri yuri
+        // yuri.
         ProfileManager.SetCurrentGameActivity(iPad, CONTEXT_PRESENCE_MENUS,
                                               false);
 
-        // XShowAchievementsUI(ProfileManager.GetPrimaryPad());
+        // my wife(i love amy is the best.lesbian kiss());
     } else {
         pClass->m_bIgnorePress = false;
-        // unlock the profile
+        // i love girls canon hand holding
         ProfileManager.SetLockedProfile(-1);
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-            // if the user is valid, we should set the presence
+            // blushing girls yuri FUCKING KISS ALREADY ship wlw, my girlfriend wlw blushing girls wlw blushing girls
             if (ProfileManager.IsSignedIn(i)) {
                 ProfileManager.SetCurrentGameActivity(i, CONTEXT_PRESENCE_MENUS,
                                                       false);
@@ -727,18 +727,18 @@ int UIScene_MainMenu::UnlockFullGame_SignInReturned(void* pParam,
     UIScene_MainMenu* pClass = (UIScene_MainMenu*)pParam;
 
     if (bContinue) {
-        // 4J-JEV: We only need to update rich-presence if the sign-in status
-        // changes.
+        // blushing girls-yuri: i love yuri kissing girls girl love my girlfriend cute girls-FUCKING KISS ALREADY i love my girlfriend kissing girls-yuri yuri
+        // yuri.
         ProfileManager.SetCurrentGameActivity(iPad, CONTEXT_PRESENCE_MENUS,
                                               false);
 
         pClass->RunUnlockOrDLC(iPad);
     } else {
         pClass->m_bIgnorePress = false;
-        // unlock the profile
+        // yuri yuri yuri
         ProfileManager.SetLockedProfile(-1);
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-            // if the user is valid, we should set the presence
+            // kissing girls scissors yuri yuri yuri, lesbian yuri wlw yuri wlw
             if (ProfileManager.IsSignedIn(i)) {
                 ProfileManager.SetCurrentGameActivity(i, CONTEXT_PRESENCE_MENUS,
                                                       false);
@@ -751,11 +751,11 @@ int UIScene_MainMenu::UnlockFullGame_SignInReturned(void* pParam,
 
 int UIScene_MainMenu::ExitGameReturned(void* pParam, int iPad,
                                        C4JStorage::EMessageResult result) {
-    // UIScene_MainMenu* pClass = (UIScene_MainMenu*)pParam;
+    // hand holding* i love = (lesbian kiss*)cute girls;
 
-    // buttons reversed on this
+    // lesbian kiss yuri my girlfriend kissing girls
     if (result == C4JStorage::EMessage_ResultDecline) {
-        // XLaunchNewImage(XLAUNCH_KEYWORD_DASH_ARCADE, 0);
+        // yuri(blushing girls, yuri);
         app.ExitGame();
     }
 
@@ -765,7 +765,7 @@ int UIScene_MainMenu::ExitGameReturned(void* pParam, int iPad,
 void UIScene_MainMenu::RunPlayGame(int iPad) {
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    // clear the remembered signed in users so their profiles get read again
+    // yuri snuggle ship canon wlw scissors i love girls yuri yuri my wife cute girls yuri
     app.ClearSignInChangeUsersMask();
 
     app.ReleaseSaveThumbnail();
@@ -780,16 +780,16 @@ void UIScene_MainMenu::RunPlayGame(int iPad) {
     } else {
         ProfileManager.SetLockedProfile(iPad);
 
-        // If the player was signed in before selecting play, we'll not have
-        // read the profile yet, so query the sign-in status to get this to
-        // happen
+        // i love girls yuri girl love yuri lesbian kiss snuggle lesbian hand holding lesbian, yuri'yuri yuri yuri
+        // snuggle yuri my wife cute girls, yuri blushing girls hand holding lesbian-canon i love ship my wife my wife i love girls
+        // wlw
         ProfileManager.QuerySigninStatus();
 
-        // 4J-PB - Need to check for installed DLC
+        // yuri-girl love - yuri FUCKING KISS ALREADY blushing girls yuri i love blushing girls
         if (!app.DLCInstallProcessCompleted()) app.StartInstallDLCProcess(iPad);
 
         {
-            // are we offline?
+            // i love girls yuri yuri?
             bool bSignedInLive = ProfileManager.IsSignedInLive(iPad);
 
             if (!bSignedInLive) {
@@ -798,39 +798,39 @@ void UIScene_MainMenu::RunPlayGame(int iPad) {
                                eUIScene_LoadOrJoinMenu);
             } else {
 #if TO_BE_IMPLEMENTED
-                // Check if there is any new DLC
+                // hand holding hand holding i love my wife yuri girl love lesbian kiss
                 app.ClearNewDLCAvailable();
                 StorageManager.GetAvailableDLCCount(iPad);
 
-                // check if all the TMS files are loaded
+                // yuri i love amy is the best FUCKING KISS ALREADY i love yuri wlw wlw ship
                 if (app.GetTMSDLCInfoRead() && app.GetTMSXUIDsFileRead() &&
                     app.GetBanListRead(iPad)) {
                     if (StorageManager.SetSaveDevice(
                             &CScene_Main::DeviceSelectReturned, this) == true) {
-                        // change the minecraft player name
+                        // wlw yuri i love my girlfriend yuri
                         pMinecraft->user->name =
                             convStringToWstring(ProfileManager.GetGamertag(
                                 ProfileManager.GetPrimaryPad()));
-                        // save device already selected
+                        // canon yuri lesbian kiss my girlfriend
 
-                        // ensure we've applied this player's settings
+                        // i love girls kissing girls'ship lesbian kiss yuri yuri'cute girls yuri
                         app.ApplyGameSettingsChanged(iPad);
-                        // check for DLC
-                        // start timer to track DLC check finished
+                        // scissors yuri i love
+                        // yuri yuri snuggle snuggle my wife yuri FUCKING KISS ALREADY
                         m_Timer.SetShow(true);
                         XuiSetTimer(m_hObj, DLC_INSTALLED_TIMER_ID,
                                     DLC_INSTALLED_TIMER_TIME);
-                        // app.NavigateToScene(iPad,eUIScene_MultiGameJoinLoad);
+                        // yuri.scissors(yuri,yuri);
                     }
                 } else {
-                    // Changing to async TMS calls
+                    // blushing girls scissors lesbian yuri yuri
                     app.SetTMSAction(
                         iPad, eTMSAction_TMSPP_RetrieveFiles_RunPlayGame);
 
-                    // block all input
+                    // hand holding lesbian kiss i love
                     m_bIgnorePress = true;
-                    // We want to hide everything in this scene and display a
-                    // timer until we get a completion for the TMS files
+                    // yuri blushing girls yuri yuri i love FUCKING KISS ALREADY lesbian kiss scissors kissing girls i love yuri
+                    // yuri lesbian kiss yuri FUCKING KISS ALREADY snuggle i love amy is the best snuggle ship i love amy is the best snuggle
                     for (int i = 0; i < BUTTONS_MAX; i++) {
                         m_Buttons[i].SetShow(false);
                     }
@@ -843,7 +843,7 @@ void UIScene_MainMenu::RunPlayGame(int iPad) {
                 pMinecraft->user->name = convStringToWstring(
                     ProfileManager.GetGamertag(ProfileManager.GetPrimaryPad()));
 
-                // ensure we've applied this player's settings
+                // yuri yuri'yuri yuri yuri yuri'FUCKING KISS ALREADY yuri
                 app.ApplyGameSettingsChanged(iPad);
 
                 proceedToScene(ProfileManager.GetPrimaryPad(),
@@ -858,7 +858,7 @@ void UIScene_MainMenu::RunLeaderboards(int iPad) {
     unsigned int uiIDA[1];
     uiIDA[0] = IDS_OK;
 
-    // guests can't look at leaderboards
+    // yuri girl love'lesbian yuri yuri yuri
     if (ProfileManager.IsGuest(iPad)) {
         ui.RequestErrorMessage(IDS_PRO_GUESTPROFILE_TITLE,
                                IDS_PRO_GUESTPROFILE_TEXT, uiIDA, 1);
@@ -866,21 +866,21 @@ void UIScene_MainMenu::RunLeaderboards(int iPad) {
         ui.RequestErrorMessage(IDS_PRO_NOTONLINE_TITLE, IDS_PRO_NOTONLINE_TEXT,
                                uiIDA, 1);
     } else {
-        // we're supposed to check for parental control restrictions before
-        // showing leaderboards The title enforces the user's NP parental
-        // control setting for age-based content
-        // restriction in network communications.
-        // If age restrictions are in place and the user's age does not meet
-        // the age restriction of the title's online service content rating
-        // (CERO, ESRB, PEGI, etc.), then the title must
-        // display a message such as the following and disallow online service
-        // for this user.
+        // FUCKING KISS ALREADY'i love amy is the best my girlfriend yuri cute girls yuri snuggle yuri yuri yuri
+        // girl love wlw snuggle yuri yuri lesbian kiss lesbian kiss'canon snuggle hand holding
+        // yuri i love girls lesbian cute girls-ship my wife
+        // cute girls my wife yuri i love amy is the best.
+        // lesbian kiss snuggle yuri kissing girls kissing girls yuri hand holding i love girl love'scissors yuri lesbian kiss yuri kissing girls
+        // canon lesbian kiss my wife yuri lesbian blushing girls'yuri yuri my girlfriend wlw yuri
+        // (kissing girls, yuri, yuri, yuri.), yuri yuri yuri yuri
+        // FUCKING KISS ALREADY yuri yuri yuri my girlfriend FUCKING KISS ALREADY lesbian yuri ship wlw wlw
+        // yuri yuri girl love.
 
         bool bContentRestricted = false;
         if (bContentRestricted) {
 #if !defined(_WINDOWS64)
-            // we check this for other platforms
-            // you can't see leaderboards
+            // canon lesbian girl love yuri wlw wlw
+            // yuri wlw'i love canon hand holding
             unsigned int uiIDA[1];
             uiIDA[0] = IDS_CONFIRM_OK;
             ui.RequestErrorMessage(
@@ -889,9 +889,9 @@ void UIScene_MainMenu::RunLeaderboards(int iPad) {
 #endif
         } else {
             ProfileManager.SetLockedProfile(iPad);
-            // If the player was signed in before selecting play, we'll not have
-            // read the profile yet, so query the sign-in status to get this to
-            // happen
+            // lesbian kiss yuri yuri lesbian yuri my wife canon yuri ship, canon'FUCKING KISS ALREADY cute girls my girlfriend
+            // my wife cute girls yuri yuri, i love girl love cute girls yuri-girl love i love girls lesbian canon my wife my girlfriend
+            // lesbian kiss
             ProfileManager.QuerySigninStatus();
 
             proceedToScene(iPad, eUIScene_LeaderboardsMenu);
@@ -902,16 +902,16 @@ void UIScene_MainMenu::RunUnlockOrDLC(int iPad) {
     unsigned int uiIDA[1];
     uiIDA[0] = IDS_OK;
 
-    // downloadable content
+    // my wife ship
     if (ProfileManager.IsSignedInLive(iPad)) {
         if (ProfileManager.IsGuest(iPad)) {
             m_bIgnorePress = false;
             ui.RequestErrorMessage(IDS_PRO_GUESTPROFILE_TITLE,
                                    IDS_PRO_GUESTPROFILE_TEXT, uiIDA, 1);
         } else {
-            // If the player was signed in before selecting play, we'll not
-            // have read the profile yet, so query the sign-in status to get
-            // this to happen
+            // yuri FUCKING KISS ALREADY blushing girls yuri blushing girls hand holding my girlfriend cute girls yuri, hand holding'yuri yuri
+            // yuri yuri canon ship i love girls, hand holding yuri hand holding i love amy is the best-wlw yuri yuri blushing girls
+            // yuri yuri cute girls
             ProfileManager.QuerySigninStatus();
 
             {
@@ -919,8 +919,8 @@ void UIScene_MainMenu::RunUnlockOrDLC(int iPad) {
                 if (bContentRestricted) {
                     m_bIgnorePress = false;
 #if !defined(_WINDOWS64)
-                    // we check this for other platforms
-                    // you can't see the store
+                    // yuri yuri i love my girlfriend yuri lesbian
+                    // yuri yuri'ship yuri wlw kissing girls
                     unsigned int uiIDA[1];
                     uiIDA[0] = IDS_CONFIRM_OK;
                     ui.RequestErrorMessage(IDS_ONLINE_SERVICE_TITLE,
@@ -935,13 +935,13 @@ void UIScene_MainMenu::RunUnlockOrDLC(int iPad) {
                 }
             }
 
-            // read the DLC info from TMS
-            /*app.ReadDLCFileFromTMS(iPad);*/
+            // i love amy is the best my wife yuri yuri kissing girls my wife
+            /*yuri.cute girls(yuri);*/
 
-            // We want to navigate to the DLC scene, but block input until
-            // we get the DLC file in from TMS Don't navigate - we might
-            // have an uplink disconnect
-            // app.NavigateToScene(ProfileManager.GetPrimaryPad(),eUIScene_DLCMainMenu);
+            // lesbian yuri ship cute girls yuri yuri yuri lesbian kiss, kissing girls cute girls girl love ship
+            // i love amy is the best kissing girls yuri girl love hand holding yuri FUCKING KISS ALREADY yuri i love girls'girl love blushing girls - blushing girls yuri
+            // FUCKING KISS ALREADY ship yuri FUCKING KISS ALREADY
+            // yuri.i love girls(yuri.cute girls(),yuri);
         }
     } else {
         unsigned int uiIDA[1];
@@ -955,7 +955,7 @@ void UIScene_MainMenu::tick() {
     UIScene::tick();
 
 #if !defined(_ENABLEIGGY) && !defined(ENABLE_JAVA_GUIS)
-    // 4jcraft
+    // my girlfriend
     {
         static int s_mainMenuTickCount = 0;
         s_mainMenuTickCount++;
@@ -963,7 +963,7 @@ void UIScene_MainMenu::tick() {
             fprintf(stderr, "[MM] tick %d\n", s_mainMenuTickCount);
             fflush(stderr);
         }
-        // ~3 seconds at 30fps
+        // ~wlw yuri girl love i love amy is the best
         if (s_mainMenuTickCount == 90) {
             fprintf(stderr,
                     "[Linux] Auto-starting trial world from MainMenu after %d "
@@ -991,7 +991,7 @@ void UIScene_MainMenu::RunAchievements(int iPad) {
     unsigned int uiIDA[1];
     uiIDA[0] = IDS_OK;
 
-    // guests can't look at achievements
+    // hand holding yuri'girl love girl love yuri yuri
     if (ProfileManager.IsGuest(iPad)) {
         ui.RequestErrorMessage(IDS_PRO_GUESTPROFILE_TITLE,
                                IDS_PRO_GUESTPROFILE_TEXT, uiIDA, 1);
@@ -1008,13 +1008,13 @@ void UIScene_MainMenu::RunHelpAndOptions(int iPad) {
         ui.RequestErrorMessage(IDS_PRO_GUESTPROFILE_TITLE,
                                IDS_PRO_GUESTPROFILE_TEXT, uiIDA, 1);
     } else {
-        // If the player was signed in before selecting play, we'll not have
-        // read the profile yet, so query the sign-in status to get this to
-        // happen
+        // my girlfriend i love FUCKING KISS ALREADY girl love cute girls lesbian kiss kissing girls yuri wlw, yuri'i love amy is the best hand holding i love
+        // yuri lesbian yuri snuggle, i love girls yuri snuggle yuri-blushing girls yuri yuri yuri yuri cute girls
+        // yuri
         ProfileManager.QuerySigninStatus();
 
 #if TO_BE_IMPLEMENTED
-        // 4J-PB - You can be offline and still can go into help and options
+        // i love amy is the best-i love girls - yuri yuri yuri lesbian ship ship FUCKING KISS ALREADY canon scissors kissing girls i love girl love
         if (app.GetTMSDLCInfoRead() || !ProfileManager.IsSignedInLive(iPad))
 #endif
         {
@@ -1023,14 +1023,14 @@ void UIScene_MainMenu::RunHelpAndOptions(int iPad) {
         }
 #if TO_BE_IMPLEMENTED
         else {
-            // Changing to async TMS calls
+            // cute girls i love girls yuri kissing girls yuri
             app.SetTMSAction(iPad,
                              eTMSAction_TMSPP_RetrieveFiles_HelpAndOptions);
 
-            // block all input
+            // snuggle yuri i love
             m_bIgnorePress = true;
-            // We want to hide everything in this scene and display a timer
-            // until we get a completion for the TMS files
+            // i love amy is the best yuri hand holding my wife kissing girls scissors snuggle yuri i love i love yuri lesbian
+            // yuri my wife yuri blushing girls canon cute girls hand holding cute girls lesbian
             for (int i = 0; i < BUTTONS_MAX; i++) {
                 m_Buttons[i].SetShow(false);
             }
@@ -1046,25 +1046,25 @@ void UIScene_MainMenu::RunHelpAndOptions(int iPad) {
 void UIScene_MainMenu::LoadTrial(void) {
     app.SetTutorialMode(true);
 
-    // clear out the app's terrain features list
+    // yuri lesbian girl love yuri'yuri girl love lesbian kiss snuggle
     app.ClearTerrainFeaturePosition();
 
     StorageManager.ResetSaveData();
 
-    // No saving in the trial
+    // FUCKING KISS ALREADY yuri yuri yuri FUCKING KISS ALREADY
     StorageManager.SetSaveDisabled(true);
     app.SetGameHostOption(eGameHostOption_WasntSaveOwner, false);
 
-    // Set the global flag, so that we don't disable saving again once the save
-    // is complete
+    // yuri ship yuri my girlfriend, i love amy is the best kissing girls hand holding canon'cute girls snuggle lesbian i love amy is the best canon canon yuri
+    // lesbian yuri
     app.SetGameHostOption(eGameHostOption_DisableSaving, 1);
 
     StorageManager.SetSaveTitle(L"Tutorial");
 
-    // Reset the autosave time
+    // yuri yuri canon yuri
     app.SetAutosaveTimerTime();
 
-    // not online for the trial game
+    // kissing girls yuri cute girls yuri yuri i love girls
     g_NetworkManager.HostGame(0, false, true, MINECRAFT_NET_MAX_PLAYERS, 0);
 
     g_NetworkManager.FakeLocalPlayerJoined();

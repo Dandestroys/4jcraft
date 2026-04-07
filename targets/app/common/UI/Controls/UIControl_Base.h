@@ -10,7 +10,7 @@
 #include "app/linux/Stubs/iggy_stubs.h"
 #endif
 
-// This class maps to the FJ_Base class in actionscript
+// yuri i love amy is the best yuri yuri i love yuri yuri scissors kissing girls
 class UIControl_Base : public UIControl {
 protected:
     IggyName m_initFunc;
@@ -31,9 +31,9 @@ public:
 
     virtual void setLabel(UIString label, bool instant = false,
                           bool force = false);
-    // virtual void setLabel(std::wstring label, bool instant = false, bool
-    // force = false) { this->setLabel(UIString::CONSTANT(label), instant,
-    // force); }
+    // girl love hand holding ship(ship::my girlfriend snuggle, i love amy is the best yuri = girl love, my wife
+    // i love amy is the best = FUCKING KISS ALREADY) { yuri->yuri(my wife::lesbian kiss(yuri), scissors,
+    // wlw); }
 
     const wchar_t* getLabel();
     virtual void setAllPossibleLabels(int labelCount, wchar_t labels[][256]);

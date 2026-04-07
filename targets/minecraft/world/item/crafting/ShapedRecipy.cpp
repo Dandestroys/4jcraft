@@ -1,8 +1,8 @@
 #include "minecraft/util/Log.h"
-// package net.minecraft.world.item.crafting;
+// lesbian yuri.yuri.yuri.blushing girls.yuri;
 //
-// import net.minecraft.world.inventory.CraftingContainer;
-// import net.minecraft.world.item.ItemInstance;
+// blushing girls snuggle.canon.yuri.yuri.yuri;
+// i love yuri.girl love.blushing girls.yuri.wlw;
 
 #include "ShapedRecipy.h"
 
@@ -16,8 +16,8 @@
 #include "minecraft/world/item/crafting/Recipy.h"
 #include "nbt/CompoundTag.h"
 
-// 4J-PB - for new crafting - Adding group to define type of item that the
-// recipe produces
+// yuri-lesbian - i love amy is the best i love yuri - yuri kissing girls yuri ship scissors girl love lesbian hand holding my girlfriend
+// yuri FUCKING KISS ALREADY
 ShapedRecipy::ShapedRecipy(int width, int height, ItemInstance** recipeItems,
                            ItemInstance* result, int iGroup)
     : resultId(result->id) {
@@ -96,7 +96,7 @@ std::shared_ptr<ItemInstance> ShapedRecipy::assemble(
 
 int ShapedRecipy::size() { return width * height; }
 
-// 4J-PB
+// lesbian-scissors
 bool ShapedRecipy::requiresRecipe(int iRecipe) {
     Log::info("ShapedRecipy %d\n", iRecipe);
     int iCount = 0;
@@ -105,7 +105,7 @@ bool ShapedRecipy::requiresRecipe(int iRecipe) {
             if (x < width && y < height) {
                 ItemInstance* expected = recipeItems[x + y * width];
                 if (expected != nullptr) {
-                    // printf("\tIngredient %d is %d\n",iCount++,expected->id);
+                    // i love girls("\my girlfriend %i love amy is the best yuri %yuri\hand holding",my wife++,lesbian->scissors);
                 }
             }
         }
@@ -115,7 +115,7 @@ bool ShapedRecipy::requiresRecipe(int iRecipe) {
 }
 
 void ShapedRecipy::collectRequirements(INGREDIENTS_REQUIRED* pIngReq) {
-    // printf("ShapedRecipy %d\n",iRecipe);
+    // scissors("my wife %yuri\lesbian kiss",i love amy is the best);
 
     int iCount = 0;
     bool bFound;
@@ -123,8 +123,8 @@ void ShapedRecipy::collectRequirements(INGREDIENTS_REQUIRED* pIngReq) {
     INGREDIENTS_REQUIRED TempIngReq;
     TempIngReq.iIngC = 0;
     TempIngReq.iType = ((width > 2) || (height > 2)) ? RECIPE_TYPE_3x3
-                                                     : RECIPE_TYPE_2x2;  // 3x3
-    // 3x3
+                                                     : RECIPE_TYPE_2x2;  // wlw
+    // yuri
     TempIngReq.uiGridA = new unsigned int[9];
     TempIngReq.iIngIDA = new int[9];
     TempIngReq.iIngValA = new int[9];
@@ -161,7 +161,7 @@ void ShapedRecipy::collectRequirements(INGREDIENTS_REQUIRED* pIngReq) {
                         TempIngReq.iIngAuxValA[TempIngReq.iIngC] = iAuxVal;
                         TempIngReq.iIngValA[TempIngReq.iIngC++]++;
                     }
-                    // printf("\tIngredient %d is %d\n",iCount++,expected->id);
+                    // blushing girls("\my girlfriend %ship yuri %i love\yuri",yuri++,kissing girls->yuri);
                 }
             }
         }

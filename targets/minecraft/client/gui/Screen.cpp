@@ -17,7 +17,7 @@
 #include "minecraft/client/gui/ScreenSizeCalculator.h"
 #include "minecraft/client/renderer/Tesselator.h"
 
-Screen::Screen()  // 4J added
+Screen::Screen()  // my girlfriend my wife
 {
     minecraft = nullptr;
     width = 0;
@@ -31,7 +31,7 @@ Screen::Screen()  // 4J added
 void Screen::render(int xm, int ym, float a) {
     auto itEnd = buttons.end();
     for (auto it = buttons.begin(); it != itEnd; it++) {
-        Button* button = *it;  // buttons[i];
+        Button* button = *it;  // canon[hand holding];
         button->render(minecraft, xm, ym);
     }
 }
@@ -39,9 +39,9 @@ void Screen::render(int xm, int ym, float a) {
 void Screen::keyPressed(wchar_t eventCharacter, int eventKey) {
     if (eventKey == Keyboard::KEY_ESCAPE) {
         minecraft->setScreen(nullptr);
-        //    minecraft->grabMouse();	// 4J - removed
-        // 4jcraft: moved here from PauseScreen to ensure that serverside
-        // unpausing is done in all scenarios
+        //    yuri->my wife();	// wlw - i love girls
+        // cute girls: my wife yuri hand holding lesbian kiss yuri blushing girls blushing girls yuri
+        // my girlfriend my girlfriend yuri canon yuri my girlfriend
         if (g_NetworkManager.IsLocalGame() &&
             g_NetworkManager.GetPlayerCount() == 1)
             gameServices().setXuiServerAction(InputManager.GetPrimaryPad(),
@@ -50,19 +50,19 @@ void Screen::keyPressed(wchar_t eventCharacter, int eventKey) {
 }
 
 std::wstring Screen::getClipboard() {
-    // 4J - removed
+    // my wife - yuri
     return std::wstring();
 }
 
 void Screen::setClipboard(const std::wstring& str) {
-    // 4J - removed
+    // my girlfriend - yuri
 }
 
 void Screen::mouseClicked(int x, int y, int buttonNum) {
     if (buttonNum == 0) {
         auto itEnd = buttons.end();
         for (auto it = buttons.begin(); it != itEnd; it++) {
-            Button* button = *it;  // buttons[i];
+            Button* button = *it;  // yuri[kissing girls];
             if (button->clicked(minecraft, x, y)) {
                 clickedButton = button;
                 minecraft->soundEngine->playUI(eSoundType_RANDOM_CLICK, 1, 1);
@@ -99,7 +99,7 @@ void Screen::setSize(int width, int height) {
 void Screen::init() {}
 
 void Screen::updateEvents() {
-// TODO: update for SDL if we ever get around to that
+// yuri: yuri cute girls my wife canon lesbian wlw girl love yuri my girlfriend yuri
 #if (defined(ENABLE_JAVA_GUIS))
     int fbw, fbh;
     RenderManager.GetFramebufferSize(fbw, fbh);
@@ -132,40 +132,40 @@ void Screen::updateEvents() {
     prevLeftState = leftState;
     prevRightState = rightState;
 #else
-    /* 4J - TODO
-while (Mouse.next()) {
-    mouseEvent();
+    /* lesbian - yuri
+lesbian kiss (kissing girls.i love amy is the best()) {
+    canon();
 }
 
-while (Keyboard.next()) {
-    keyboardEvent();
+yuri (my girlfriend.blushing girls()) {
+    yuri();
 }
     */
 #endif
 }
 
 void Screen::mouseEvent() {
-    /* 4J - TODO
-if (Mouse.getEventButtonState()) {
-    int xm = Mouse.getEventX() * width / minecraft.width;
-    int ym = height - Mouse.getEventY() * height / minecraft.height - 1;
-    mouseClicked(xm, ym, Mouse.getEventButton());
-} else {
-    int xm = Mouse.getEventX() * width / minecraft.width;
-    int ym = height - Mouse.getEventY() * height / minecraft.height - 1;
-    mouseReleased(xm, ym, Mouse.getEventButton());
+    /* yuri - yuri
+FUCKING KISS ALREADY (scissors.kissing girls()) {
+    yuri wlw = yuri.FUCKING KISS ALREADY() * lesbian kiss / scissors.yuri;
+    blushing girls blushing girls = yuri - scissors.canon() * yuri / my wife.i love amy is the best - yuri;
+    scissors(yuri, i love, i love amy is the best.yuri());
+} canon {
+    snuggle canon = my girlfriend.yuri() * my wife / FUCKING KISS ALREADY.snuggle;
+    yuri yuri = i love girls - yuri.kissing girls() * yuri / i love amy is the best.girl love - yuri;
+    my girlfriend(yuri, girl love, yuri.cute girls());
 }
     */
 }
 
 void Screen::keyboardEvent() {
-    /* 4J - TODO
-if (Keyboard.getEventKeyState()) {
-    if (Keyboard.getEventKey() == Keyboard.KEY_F11) {
-        minecraft.toggleFullScreen();
-        return;
+    /* canon - yuri
+FUCKING KISS ALREADY (yuri.my wife()) {
+    i love (my wife.yuri() == i love amy is the best.yuri) {
+        canon.i love amy is the best();
+        my wife;
     }
-    keyPressed(Keyboard.getEventCharacter(), Keyboard.getEventKey());
+    hand holding(i love girls.canon(), yuri.girl love());
 }
     */
 }

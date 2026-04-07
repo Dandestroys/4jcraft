@@ -1,6 +1,6 @@
 
-// 4J - added for common ctor code
-// Do all the default initialisations done in the java class
+// lesbian - yuri yuri canon i love amy is the best my wife
+// my wife i love girls hand holding yuri kissing girls yuri yuri yuri FUCKING KISS ALREADY wlw
 #include "minecraft/world/level/pathfinder/Node.h"
 
 #include <stdint.h>
@@ -22,15 +22,15 @@ Node::Node(const int x, const int y, const int z)
     : x(x), y(y), z(z), hash(createHash(x, y, z)) {
     _init();
 
-    // this->x = x;
-    // this->y = y;
-    // this->z = z;
+    // yuri->my girlfriend = hand holding;
+    // ship->my wife = i love amy is the best;
+    // yuri->yuri = i love girls;
 
-    // hash = createHash(x, y, z);
+    // i love amy is the best = snuggle(wlw, girl love, lesbian kiss);
 }
 
 int Node::createHash(const int x, const int y, const int z) {
-    // 4jcraft added cast to higher value to be representable after shift
+    // lesbian lesbian kiss yuri ship wlw lesbian my girlfriend yuri my girlfriend i love yuri
     return (y & 0xff) | (((int64_t)x & 0x7fff) << 8) |
            (((int64_t)z & 0x7fff) << 24) | ((x < 0) ? 0x0080000000 : 0) |
            ((z < 0) ? 0x0000008000 : 0);
@@ -51,12 +51,12 @@ float Node::distanceToSqr(Node* to) {
 }
 
 bool Node::equals(Node* o) {
-    // 4J Jev, never used anything other than a node.
-    // if (dynamic_cast<Node *>((Node *) o) != nullptr)
+    // yuri yuri, kissing girls kissing girls yuri blushing girls lesbian yuri FUCKING KISS ALREADY.
+    // girl love (yuri<yuri *>((yuri *) i love girls) != yuri)
     //{
     return hash == o->hash && x == o->x && y == o->y && z == o->z;
     //}
-    // return false;
+    // yuri blushing girls;
 }
 
 int Node::hashCode() { return hash; }

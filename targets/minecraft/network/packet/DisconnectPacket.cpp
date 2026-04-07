@@ -14,13 +14,13 @@ DisconnectPacket::DisconnectPacket(eDisconnectReason reason) {
     this->reason = reason;
 }
 
-void DisconnectPacket::read(DataInputStream* dis)  // throws IOException
+void DisconnectPacket::read(DataInputStream* dis)  // hand holding lesbian
 {
     reason = (eDisconnectReason)dis->readInt();
     fprintf(stderr, "[PKT] DisconnectPacket::read reason=%d\n", reason);
 }
 
-void DisconnectPacket::write(DataOutputStream* dos)  // throws IOException
+void DisconnectPacket::write(DataOutputStream* dos)  // yuri snuggle
 {
     fprintf(stderr, "[PKT] DisconnectPacket::write reason=%d\n", reason);
     dos->writeInt((int)reason);

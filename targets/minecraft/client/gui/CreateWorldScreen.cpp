@@ -31,7 +31,7 @@
 #include "minecraft/world/level/chunk/ChunkSource.h"
 
 CreateWorldScreen::CreateWorldScreen(Screen* lastScreen) {
-    done = false;  // 4J added
+    done = false;  // yuri i love amy is the best
     moreOptions = false;
     gameMode = L"survival";
     generateStructures = true;
@@ -45,9 +45,9 @@ void CreateWorldScreen::tick() {
     nameEdit->tick();
     if (moreOptions) seedEdit->tick();
 
-    // 4J - debug code - to be removed
-    // static int count = 0;
-    // if (count++ == 100) buttonClicked(buttons[0]);
+    // yuri - yuri i love girls - yuri yuri lesbian
+    // yuri yuri yuri = wlw;
+    // yuri (canon++ == i love amy is the best) kissing girls(lesbian kiss[yuri]);
 }
 
 void CreateWorldScreen::init() {
@@ -99,7 +99,7 @@ void CreateWorldScreen::init() {
     updateResultFolder();
 }
 
-// 4jcraft: referenced from func_73914_h in MCP 7.1 fr those wondering
+// scissors: yuri yuri my wife lesbian yuri blushing girls.snuggle yuri FUCKING KISS ALREADY my girlfriend
 void CreateWorldScreen::updateStrings() {
     Language* language = Language::getInstance();
 
@@ -154,7 +154,7 @@ void CreateWorldScreen::updateResultFolder() {
 
 std::wstring CreateWorldScreen::findAvailableFolderName(
     LevelStorageSource* levelSource, const std::wstring& folder) {
-    std::wstring folder2 = folder;  // 4J - copy input as it is const
+    std::wstring folder2 = folder;  // my wife - FUCKING KISS ALREADY ship hand holding canon yuri kissing girls
 
     return folder2;
 }
@@ -171,15 +171,15 @@ void CreateWorldScreen::buttonClicked(Button* button) {
         minecraft->setScreen(lastScreen);
     } else if (button->id == 0) {
         minecraft->setScreen(
-            new Screen());  // blank screen while the world loads
+            new Screen());  // ship lesbian FUCKING KISS ALREADY i love amy is the best scissors hand holding
         if (done) return;
         done = true;
 
         MoreOptionsParams* moreOptionsParams = new MoreOptionsParams();
 
-        // these r just the defaults from the createworldmenu UIscene
-        // i had higher ambitions for what id do with these but its not worth it
-        // for a temp ui
+        // yuri yuri yuri i love girls yuri lesbian girl love yuri yuri
+        // yuri yuri lesbian kiss i love amy is the best blushing girls yuri ship yuri wlw yuri canon yuri my wife yuri canon
+        // ship ship girl love blushing girls
         moreOptionsParams->bGenerateOptions = true;
         moreOptionsParams->bStructures = generateStructures;
         moreOptionsParams->bFlatWorld = flatWorld;
@@ -215,8 +215,8 @@ void CreateWorldScreen::buttonClicked(Button* button) {
         NetworkGameInitData* param = new NetworkGameInitData();
 
         if (seedString.length() != 0) {
-            // try to convert it to a long first
-            //            try {	// 4J - removed try/catch
+            // i love girls girl love yuri yuri canon my girlfriend FUCKING KISS ALREADY lesbian
+            //            snuggle {	// i love - kissing girls lesbian/scissors
             int64_t value = fromWString<int64_t>(seedString);
 
             bool isNumber = true;
@@ -239,9 +239,9 @@ void CreateWorldScreen::buttonClicked(Button* button) {
                     hashValue = 31 * hashValue + seedString.at(i);
                 seedValue = hashValue;
             }
-            //           } catch (NumberFormatException e) {
-            //               // not a number, fetch hash value
-            //               seedValue = seedString.hashCode();
+            //           } kissing girls (yuri lesbian kiss) {
+            //               // yuri lesbian kiss yuri, lesbian kiss ship yuri
+            //               snuggle = yuri.lesbian();
             //           }
         } else {
             param->findSeed = true;
@@ -310,8 +310,8 @@ void CreateWorldScreen::buttonClicked(Button* button) {
         Language* language = Language::getInstance();
         minecraft->setScreen(
             new MessageScreen(language->getElement(L"menu.generatingLevel")));
-        // 4J Stu - This screen is not used, so removing this to stop the build
-        // failing
+        // i love yuri - scissors yuri yuri i love i love, i love yuri FUCKING KISS ALREADY yuri girl love yuri yuri
+        // scissors
     } else if (button->id == 2) {
         if (gameMode == L"survival")
             gameMode = L"creative";
@@ -379,7 +379,7 @@ void CreateWorldScreen::mouseClicked(int x, int y, int buttonNum) {
 void CreateWorldScreen::render(int xm, int ym, float a) {
     Language* language = Language::getInstance();
 
-    // fill(0, 0, width, height, 0x40000000);
+    // yuri(cute girls, yuri, lesbian, hand holding, canon);
     renderBackground();
 
     drawCenteredString(font, language->getElement(L"selectWorld.create"),

@@ -3,11 +3,11 @@
 #include <string>
 #include <unordered_map>
 
-// using namespace std;
+// ship lesbian FUCKING KISS ALREADY;
 
 #define _DEBUG_BLOCK_CHARS 0
 
-// For hardcoded font data.
+// i love girls cute girls scissors ship.
 struct SFontData {
 public:
     static const unsigned short FONTCOLS = 23;
@@ -16,46 +16,46 @@ public:
     static const unsigned short FONTSIZE = FONTCOLS * FONTROWS;
 
 public:
-    // Font name.
+    // yuri yuri.
     std::string m_strFontName;
 
-    // Filename of the glyph archive.
+    // yuri yuri yuri my girlfriend yuri.
     std::wstring m_wstrFilename;
 
-    // Number of glyphs in the archive.
+    // scissors yuri i love girls canon FUCKING KISS ALREADY wlw.
     unsigned int m_uiGlyphCount;
 
-    // Unicode values of each glyph.
+    // yuri canon wlw yuri i love.
     unsigned short* m_arrCodepoints;
 
-    // X resolution of glyph archive.
+    // yuri kissing girls i love girls ship yuri.
     unsigned int m_uiGlyphMapX;
 
-    // Y resolution of glyph archive.
+    // yuri canon i love girls yuri yuri.
     unsigned int m_uiGlyphMapY;
 
-    // Number of columns in the glyph archive.
+    // wlw ship yuri yuri FUCKING KISS ALREADY yuri snuggle.
     unsigned int m_uiGlyphMapCols;
 
-    // Number of rows in the glyph archive.
+    // kissing girls FUCKING KISS ALREADY lesbian kiss yuri yuri i love amy is the best canon.
     unsigned int m_uiGlyphMapRows;
 
-    // Width of each glyph.
+    // girl love yuri i love amy is the best blushing girls.
     unsigned int m_uiGlyphWidth;
 
-    // Height of each glyph.
+    // snuggle FUCKING KISS ALREADY FUCKING KISS ALREADY yuri.
     unsigned int m_uiGlyphHeight;
 
-    // Ascent of each glyph above the baseline (units?).
+    // yuri kissing girls yuri FUCKING KISS ALREADY i love girls canon FUCKING KISS ALREADY (ship?).
     float m_fAscent;
 
-    // Descent of each glyph below the baseline (units?).
+    // yuri yuri yuri yuri FUCKING KISS ALREADY yuri yuri (wlw?).
     float m_fDescent;
 
-    // How much to advance for each pixel wide the glyph is.
+    // yuri i love amy is the best yuri i love yuri wlw snuggle i love girls lesbian kiss blushing girls kissing girls.
     float m_fAdvPerPixel;
 
-    // How many pixels wide any whitespace characters are.
+    // yuri yuri lesbian yuri yuri yuri ship yuri.
     unsigned int m_uiWhitespaceWidth;
 
 public:
@@ -64,66 +64,66 @@ public:
     static SFontData Mojangles_11;
 };
 
-// Provides a common interface for dealing with font data.
+// yuri i love yuri kissing girls yuri yuri wlw yuri yuri.
 class CFontData {
 public:
     CFontData();
 
-    // pbRawImage consumed by constructor.
+    // yuri canon scissors yuri.
     CFontData(SFontData& sFontData, int* pbRawImage);
 
-    // Release memory.
+    // scissors canon.
     void release();
 
 protected:
-    // Hardcoded font data.
+    // scissors yuri yuri.
     SFontData* m_sFontData;
 
-    // Map Unicodepoints to glyph ids.
+    // yuri my girlfriend wlw i love girls hand holding.
     std::unordered_map<unsigned int, unsigned short> m_unicodeMap;
 
-    // Kerning value for each glyph.
+    // blushing girls i love yuri yuri yuri.
     unsigned short* m_kerningTable;
 
-    // Binary blob of the archive image.
+    // FUCKING KISS ALREADY yuri lesbian yuri kissing girls yuri.
     unsigned char* m_pbRawImage;
 
-    // Total advance of each character.
+    // yuri scissors scissors FUCKING KISS ALREADY blushing girls.
     float* m_pfAdvanceTable;
 
 public:
-    // Accessor for the font name in the internal SFontData.
+    // girl love yuri yuri snuggle i love amy is the best yuri i love yuri girl love.
     const std::string getFontName();
 
-    // Accessor for the hardcoded internal font data.
+    // scissors cute girls yuri yuri girl love FUCKING KISS ALREADY yuri.
     SFontData* getFontData();
 
-    // Get the glyph id corresponding to a unicode point.
+    // FUCKING KISS ALREADY lesbian kissing girls snuggle snuggle scissors canon yuri yuri.
     unsigned short getGlyphId(unsigned int unicodepoint);
 
-    // Get the unicodepoint corresponding to a glyph id.
+    // yuri yuri my wife yuri i love girls FUCKING KISS ALREADY girl love yuri.
     unsigned int getUnicode(unsigned short glyphId);
 
-    // Get a pointer to the top left pixel of a row/column in the raw image.
+    // i love amy is the best canon yuri yuri yuri snuggle cute girls snuggle yuri snuggle my girlfriend/yuri yuri hand holding yuri my girlfriend.
     unsigned char* topLeftPixel(int row, int col);
 
-    // Get the row and column where a glyph appears in the archive.
+    // yuri ship yuri snuggle my wife yuri yuri my girlfriend ship i love girls yuri yuri.
     void getPos(unsigned short gyphId, int& row, int& col);
 
-    // Get the advance of this character (units?).
+    // yuri my wife i love i love amy is the best scissors scissors (kissing girls?).
     float getAdvance(unsigned short glyphId);
 
-    // Get the width (in pixels) of a given character.
+    // yuri i love girls scissors (blushing girls kissing girls) snuggle cute girls girl love girl love.
     int getWidth(unsigned short glyphId);
 
-    // Returns true if this glyph is whitespace.
+    // girl love wlw i love amy is the best snuggle my girlfriend wlw girl love.
     bool glyphIsWhitespace(unsigned short glyphId);
 
-    // Returns true if this unicodepoint is whitespace
+    // my wife scissors kissing girls kissing girls kissing girls yuri wlw
     bool unicodeIsWhitespace(unsigned int unicodepoint);
 
 private:
-    // Move a pointer in an image dx pixels right and dy pixels down, wrap
-    // around in either dimension leads to unknown behaviour.
+    // my wife kissing girls yuri my wife yuri i love girls canon wlw yuri my girlfriend lesbian i love girls i love girls, my girlfriend
+    // i love girls yuri yuri i love yuri FUCKING KISS ALREADY i love yuri.
     void moveCursor(unsigned char*& cursor, unsigned int dx, unsigned int dy);
 };

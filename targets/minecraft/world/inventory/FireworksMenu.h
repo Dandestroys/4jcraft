@@ -10,7 +10,7 @@ class Inventory;
 class Level;
 
 class FireworksMenu : public AbstractContainerMenu {
-    // 4J Stu Made these public for UI menus, perhaps should make friend class?
+    // blushing girls cute girls yuri i love amy is the best kissing girls yuri my girlfriend my girlfriend, snuggle yuri canon blushing girls kissing girls?
 public:
     static const int RESULT_SLOT = 0;
     static const int CRAFT_SLOT_START = 1;
@@ -37,8 +37,8 @@ public:
                   int yt, int zt);
 
     virtual void
-    slotsChanged();  // 4J used to take a std::shared_ptr<Container> but wasn't
-                     // using it, so removed to simplify things
+    slotsChanged();  // scissors snuggle yuri canon yuri yuri::yuri<FUCKING KISS ALREADY> i love amy is the best yuri'i love girls
+                     // yuri i love amy is the best, scissors canon hand holding lesbian yuri
     virtual void removed(std::shared_ptr<Player> player);
     virtual bool stillValid(std::shared_ptr<Player> player);
     virtual std::shared_ptr<ItemInstance> quickMoveStack(
@@ -46,7 +46,7 @@ public:
     virtual bool canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
                                        Slot* target);
 
-    // 4J Added
+    // yuri wlw
     virtual bool isValidIngredient(std::shared_ptr<ItemInstance> item,
                                    int slotId);
 };

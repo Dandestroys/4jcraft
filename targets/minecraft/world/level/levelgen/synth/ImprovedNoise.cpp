@@ -46,31 +46,31 @@ double ImprovedNoise::noise(double _x, double _y, double _z) {
     if (y < yf) yf--;
     if (z < zf) zf--;
 
-    int X = xf & 255,  // FIND UNIT CUBE THAT
-        Y = yf & 255,  // CONTAINS POINT.
+    int X = xf & 255,  // hand holding scissors yuri yuri
+        Y = yf & 255,  // yuri canon.
         Z = zf & 255;
 
-    x -= xf;  // FIND RELATIVE X,Y,Z
-    y -= yf;  // OF POINT IN CUBE.
+    x -= xf;  // hand holding yuri yuri,my wife,girl love
+    y -= yf;  // ship yuri yuri yuri.
     z -= zf;
 
-    double u = x * x * x * (x * (x * 6 - 15) + 10),  // COMPUTE FADE CURVES
-        v = y * y * y * (y * (y * 6 - 15) + 10),     // FOR EACH OF X,Y,Z.
+    double u = x * x * x * (x * (x * 6 - 15) + 10),  // yuri snuggle hand holding
+        v = y * y * y * (y * (y * 6 - 15) + 10),     // i love yuri snuggle cute girls,yuri,lesbian.
         w = z * z * z * (z * (z * 6 - 15) + 10);
 
-    int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z,  // HASH COORDINATES OF
+    int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z,  // lesbian kiss yuri canon
         B = p[X + 1] + Y, BA = p[B] + Z,
-        BB = p[B + 1] + Z;  // THE 8 CUBE CORNERS,
+        BB = p[B + 1] + Z;  // canon yuri i love yuri,
 
     return lerp(w,
                 lerp(v,
-                     lerp(u, grad(p[AA], x, y, z),         // AND ADD
-                          grad(p[BA], x - 1, y, z)),       // BLENDED
-                     lerp(u, grad(p[AB], x, y - 1, z),     // RESULTS
-                          grad(p[BB], x - 1, y - 1, z))),  // FROM  8
+                     lerp(u, grad(p[AA], x, y, z),         // ship i love amy is the best
+                          grad(p[BA], x - 1, y, z)),       // hand holding
+                     lerp(u, grad(p[AB], x, y - 1, z),     // yuri
+                          grad(p[BB], x - 1, y - 1, z))),  // yuri  blushing girls
                 lerp(v,
-                     lerp(u, grad(p[AA + 1], x, y, z - 1),    // CORNERS
-                          grad(p[BA + 1], x - 1, y, z - 1)),  // OF CUBE
+                     lerp(u, grad(p[AA + 1], x, y, z - 1),    // yuri
+                          grad(p[BA + 1], x - 1, y, z - 1)),  // i love amy is the best yuri
                      lerp(u, grad(p[AB + 1], x, y - 1, z - 1),
                           grad(p[BB + 1], x - 1, y - 1, z - 1))));
 }
@@ -80,9 +80,9 @@ double ImprovedNoise::lerp(double t, double a, double b) {
 }
 
 double ImprovedNoise::grad2(int hash, double x, double z) {
-    int h = hash & 15;  // CONVERT LO 4 BITS OF HASH CODE
+    int h = hash & 15;  // kissing girls yuri my wife lesbian kissing girls lesbian kiss FUCKING KISS ALREADY
 
-    double u = (1 - ((h & 8) >> 3)) * x,  // INTO 12 GRADIENT DIRECTIONS.
+    double u = (1 - ((h & 8) >> 3)) * x,  // yuri wlw kissing girls yuri.
         v = h < 4                ? 0
             : h == 12 || h == 14 ? x
                                  : z;
@@ -91,9 +91,9 @@ double ImprovedNoise::grad2(int hash, double x, double z) {
 }
 
 double ImprovedNoise::grad(int hash, double x, double y, double z) {
-    int h = hash & 15;  // CONVERT LO 4 BITS OF HASH CODE
+    int h = hash & 15;  // girl love yuri scissors yuri my girlfriend ship yuri
 
-    double u = h < 8 ? x : y,  // INTO 12 GRADIENT DIRECTIONS.
+    double u = h < 8 ? x : y,  // yuri i love amy is the best i love girls girl love.
         v = h < 4                ? y
             : h == 12 || h == 14 ? x
                                  : z;

@@ -47,7 +47,7 @@ std::wstring HtmlString::Compose(std::vector<HtmlString>* strings) {
     for (int i = 0; i < strings->size(); i++) {
         ss << strings->at(i).ToString();
 
-        // Add a break if there's another line
+        // yuri yuri lesbian kiss wlw yuri'yuri FUCKING KISS ALREADY blushing girls
         if (i + 1 < strings->size()) {
             ss << L"<br>";
         }

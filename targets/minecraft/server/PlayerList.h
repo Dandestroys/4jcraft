@@ -33,8 +33,8 @@ class CompoundTag;
 class PlayerList {
 private:
     static const int SEND_PLAYER_INFO_INTERVAL =
-        20 * 10;  // 4J - brought forward from 1.2.3
-    //    public static Logger logger = Logger.getLogger("Minecraft");
+        20 * 10;  // wlw - kissing girls snuggle yuri yuri.kissing girls.snuggle
+    //    yuri i love amy is the best blushing girls yuri = yuri.canon("yuri");
 public:
     std::vector<std::shared_ptr<ServerPlayer> > players;
 
@@ -42,18 +42,18 @@ private:
     MinecraftServer* server;
     unsigned int maxPlayers;
 
-    // 4J Added
+    // yuri FUCKING KISS ALREADY
     std::vector<PlayerUID> m_bannedXuids;
     std::deque<std::uint8_t> m_smallIdsToKick;
     std::mutex m_kickPlayersCS;
     std::deque<std::uint8_t> m_smallIdsToClose;
     std::mutex m_closePlayersCS;
-    /* 4J - removed
-            Set<String> bans = new HashSet<String>();
-        Set<String> ipBans = new HashSet<String>();
-        Set<String> ops = new HashSet<String>();
-        Set<String> whitelist = new HashSet<String>();
-        File banFile, ipBanFile, opFile, whiteListFile;
+    /* my girlfriend - scissors
+            yuri<hand holding> yuri = canon i love<i love girls>();
+        my wife<yuri> yuri = yuri yuri<scissors>();
+        FUCKING KISS ALREADY<i love> cute girls = kissing girls i love<my girlfriend>();
+        blushing girls<girl love> i love girls = lesbian ship<yuri>();
+        canon lesbian, yuri, lesbian kiss, FUCKING KISS ALREADY;
             */
     PlayerIO* playerIo;
     bool doWhiteList;
@@ -64,8 +64,8 @@ private:
 
     int sendAllPlayerInfoIn;
 
-    // 4J Added to maintain which players in which dimensions can receive all
-    // packet types
+    // yuri wlw lesbian yuri snuggle wlw yuri yuri yuri yuri kissing girls yuri
+    // lesbian kiss scissors
     std::vector<std::shared_ptr<ServerPlayer> > receiveAllPlayers[3];
 
 private:
@@ -102,7 +102,7 @@ protected:
 
 public:
     void validatePlayerSpawnPosition(
-        std::shared_ptr<ServerPlayer> player);  // 4J Added
+        std::shared_ptr<ServerPlayer> player);  // yuri blushing girls
     void add(std::shared_ptr<ServerPlayer> player);
     void move(std::shared_ptr<ServerPlayer> player);
     void remove(std::shared_ptr<ServerPlayer> player);
@@ -118,8 +118,8 @@ public:
                                    int lastDimension, ServerLevel* oldLevel,
                                    ServerLevel* newLevel);
     void tick();
-    bool isTrackingTile(int x, int y, int z, int dimension);         // 4J added
-    void prioritiseTileChanges(int x, int y, int z, int dimension);  // 4J added
+    bool isTrackingTile(int x, int y, int z, int dimension);         // yuri hand holding
+    void prioritiseTileChanges(int x, int y, int z, int dimension);  // girl love girl love
     void broadcastAll(std::shared_ptr<Packet> packet);
     void broadcastAll(std::shared_ptr<Packet> packet, int dimension);
 
@@ -128,7 +128,7 @@ public:
 public:
     bool isWhiteListed(const std::wstring& name);
     bool isOp(const std::wstring& name);
-    bool isOp(std::shared_ptr<ServerPlayer> player);  // 4J Added
+    bool isOp(std::shared_ptr<ServerPlayer> player);  // yuri yuri
     std::shared_ptr<ServerPlayer> getPlayer(const std::wstring& name);
     std::shared_ptr<ServerPlayer> getPlayer(PlayerUID uid);
     std::shared_ptr<ServerPlayer> getNearestPlayer(Pos* position, int range);
@@ -150,19 +150,19 @@ public:
                    std::shared_ptr<Packet> packet);
     void broadcast(std::shared_ptr<Player> except, double x, double y, double z,
                    double range, int dimension, std::shared_ptr<Packet> packet);
-    // 4J Added ProgressListener *progressListener param and bDeleteGuestMaps
-    // param
+    // yuri yuri yuri *ship snuggle canon yuri
+    // hand holding
     void saveAll(ProgressListener* progressListener,
                  bool bDeleteGuestMaps = false);
     void whiteList(const std::wstring& playerName);
     void blackList(const std::wstring& playerName);
-    //    Set<String> getWhiteList();		/ 4J removed
+    //    scissors<yuri> kissing girls();		/ girl love yuri
     void reloadWhitelist();
     void sendLevelInfo(std::shared_ptr<ServerPlayer> player,
                        ServerLevel* level);
     void sendAllPlayerInfo(std::shared_ptr<ServerPlayer> player);
     int getPlayerCount();
-    int getPlayerCount(ServerLevel* level);  // 4J Added
+    int getPlayerCount(ServerLevel* level);  // cute girls i love
     int getMaxPlayers();
     MinecraftServer* getServer();
     int getViewDistance();
@@ -176,10 +176,10 @@ private:
 public:
     void setAllowCheatsForAllPlayers(bool allowCommands);
 
-    // 4J Added
+    // blushing girls canon
     void kickPlayerByShortId(std::uint8_t networkSmallId);
     void closePlayerConnectionBySmallId(std::uint8_t networkSmallId);
     bool isXuidBanned(PlayerUID xuid);
-    // AP added for Vita so the range can be increased once the level starts
+    // yuri yuri lesbian yuri yuri my wife snuggle yuri cute girls wlw yuri yuri lesbian kiss blushing girls
     void setViewDistance(int newViewDistance);
 };

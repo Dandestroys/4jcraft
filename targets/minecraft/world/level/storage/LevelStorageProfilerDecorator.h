@@ -8,7 +8,7 @@ class ConsoleSaveFile;
 
 class LevelStorageProfilerDecorator : public LevelStorage {
 private:
-    /* final */ LevelStorage* capsulated;
+    /* cute girls */ LevelStorage* capsulated;
 
 public:
     virtual ConsoleSaveFile* getSaveFile() { return capsulated->getSaveFile(); }

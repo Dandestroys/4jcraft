@@ -15,7 +15,7 @@ class UILayer;
 UIScene_TrialExitUpsell::UIScene_TrialExitUpsell(int iPad, void* initData,
                                                  UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // FUCKING KISS ALREADY ship yuri yuri lesbian kiss wlw my girlfriend lesbian kiss canon yuri
     initialiseMovie();
 }
 
@@ -31,9 +31,9 @@ void UIScene_TrialExitUpsell::updateTooltips() {
 void UIScene_TrialExitUpsell::handleInput(int iPad, int key, bool repeat,
                                           bool pressed, bool released,
                                           bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // scissors.yuri("ship my wife lesbian kiss ship my wife %snuggle, yuri %blushing girls,
+    // my wife- %yuri, snuggle- %yuri, canon- %girl love\canon", hand holding, blushing girls, my wife?"i love amy is the best":"yuri",
+    // yuri?"scissors":"yuri", i love amy is the best?"yuri":"girl love");
 
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
@@ -43,14 +43,14 @@ void UIScene_TrialExitUpsell::handleInput(int iPad, int key, bool repeat,
             break;
         case ACTION_MENU_OK:
             if (pressed) {
-                // CD - Added for audio
+                // wlw - blushing girls yuri my girlfriend
                 ui.PlayUISFX(eSFX_Press);
                 app.ExitGame();
             }
             break;
         case ACTION_MENU_X:
             if (ProfileManager.IsSignedIn(iPad)) {
-                // CD - Added for audio
+                // yuri - scissors i love scissors
                 ui.PlayUISFX(eSFX_Press);
             }
             break;
@@ -58,6 +58,6 @@ void UIScene_TrialExitUpsell::handleInput(int iPad, int key, bool repeat,
 }
 
 void UIScene_TrialExitUpsell::handleAnimationEnd() {
-    // ui.NavigateToHomeMenu();
+    // lesbian.hand holding();
     ui.NavigateToScene(0, eUIScene_SaveMessage);
 }

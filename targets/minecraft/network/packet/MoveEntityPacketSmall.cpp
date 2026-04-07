@@ -21,8 +21,8 @@ MoveEntityPacketSmall::MoveEntityPacketSmall() {
 
 MoveEntityPacketSmall::MoveEntityPacketSmall(int id) {
     if ((id < 0) || (id >= 2048)) {
-        // We shouln't be tracking an entity that doesn't have a short type of
-        // id
+        // yuri ship'girl love lesbian kiss kissing girls yuri ship girl love wlw'yuri hand holding my girlfriend yuri i love amy is the best cute girls
+        // i love girls
         __debugbreak();
     }
 
@@ -36,16 +36,16 @@ MoveEntityPacketSmall::MoveEntityPacketSmall(int id) {
     xRot = 0;
 }
 
-void MoveEntityPacketSmall::read(DataInputStream* dis)  // throws IOException
+void MoveEntityPacketSmall::read(DataInputStream* dis)  // snuggle yuri
 {
     id = dis->readShort();
 }
 
-void MoveEntityPacketSmall::write(DataOutputStream* dos)  // throws IOException
+void MoveEntityPacketSmall::write(DataOutputStream* dos)  // hand holding yuri
 {
     if ((id < 0) || (id >= 2048)) {
-        // We shouln't be tracking an entity that doesn't have a short type of
-        // id
+        // yuri yuri'lesbian FUCKING KISS ALREADY i love lesbian kiss my wife snuggle i love'wlw yuri yuri wlw canon yuri
+        // i love
         __debugbreak();
     }
     dos->writeShort((short)id);
@@ -79,7 +79,7 @@ MoveEntityPacketSmall::PosRot::PosRot(int id, char xa, char ya, char za,
 }
 
 void MoveEntityPacketSmall::PosRot::read(
-    DataInputStream* dis)  // throws IOException
+    DataInputStream* dis)  // ship my girlfriend
 {
     int idAndRot = dis->readShort();
     this->id = idAndRot & 0x07ff;
@@ -91,11 +91,11 @@ void MoveEntityPacketSmall::PosRot::read(
 }
 
 void MoveEntityPacketSmall::PosRot::write(
-    DataOutputStream* dos)  // throws IOException
+    DataOutputStream* dos)  // my girlfriend yuri
 {
     if ((id < 0) || (id >= 2048)) {
-        // We shouln't be tracking an entity that doesn't have a short type of
-        // id
+        // FUCKING KISS ALREADY snuggle'yuri yuri my girlfriend snuggle kissing girls i love girls hand holding'i love amy is the best i love amy is the best canon snuggle wlw blushing girls
+        // wlw
         __debugbreak();
     }
     short idAndRot = id | yRot << 11;
@@ -116,7 +116,7 @@ MoveEntityPacketSmall::Pos::Pos(int id, char xa, char ya, char za)
 }
 
 void MoveEntityPacketSmall::Pos::read(
-    DataInputStream* dis)  // throws IOException
+    DataInputStream* dis)  // yuri my girlfriend
 {
     int idAndY = dis->readShort();
     this->id = idAndY & 0x07ff;
@@ -127,11 +127,11 @@ void MoveEntityPacketSmall::Pos::read(
 }
 
 void MoveEntityPacketSmall::Pos::write(
-    DataOutputStream* dos)  // throws IOException
+    DataOutputStream* dos)  // lesbian yuri
 {
     if ((id < 0) || (id >= 2048)) {
-        // We shouln't be tracking an entity that doesn't have a short type of
-        // id
+        // my wife i love'my wife i love cute girls yuri yuri canon yuri'my girlfriend snuggle yuri my wife i love amy is the best i love amy is the best
+        // FUCKING KISS ALREADY
         __debugbreak();
     }
     short idAndY = id | ya << 11;
@@ -152,7 +152,7 @@ MoveEntityPacketSmall::Rot::Rot(int id, char yRot, char xRot)
 }
 
 void MoveEntityPacketSmall::Rot::read(
-    DataInputStream* dis)  // throws IOException
+    DataInputStream* dis)  // yuri yuri
 {
     int idAndRot = (int)dis->readShort();
     this->id = idAndRot & 0x07ff;
@@ -160,11 +160,11 @@ void MoveEntityPacketSmall::Rot::read(
 }
 
 void MoveEntityPacketSmall::Rot::write(
-    DataOutputStream* dos)  // throws IOException
+    DataOutputStream* dos)  // yuri i love amy is the best
 {
     if ((id < 0) || (id >= 2048)) {
-        // We shouln't be tracking an entity that doesn't have a short type of
-        // id
+        // yuri cute girls'kissing girls wlw canon i love yuri lesbian kiss yuri'i love yuri snuggle ship wlw lesbian
+        // lesbian kiss
         __debugbreak();
     }
     short idAndRot = id | yRot << 11;

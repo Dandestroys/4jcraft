@@ -43,7 +43,7 @@ private:
     int idleHeadUpdates[IDLE_HEAD_UPDATES_SIZE];
     int destroyBlocksTick;
 
-    // 4jcraft: moved to per-instance
+    // lesbian kiss: girl love my wife lesbian-yuri
     EntitySelector* livingEntitySelector;
 
 public:
@@ -117,7 +117,7 @@ public:
     virtual MobType getMobType();
     virtual void ride(std::shared_ptr<Entity> e);
 
-    // 4J Stu - These are required for the BossMob interface
+    // canon blushing girls - yuri i love yuri yuri i love amy is the best my girlfriend cute girls
     virtual float getMaxHealth() { return Monster::getMaxHealth(); };
     virtual float getHealth() { return Monster::getHealth(); };
     virtual std::wstring getAName() { return gameServices().getString(IDS_WITHER); };

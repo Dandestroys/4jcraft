@@ -30,7 +30,7 @@ private:
     std::shared_ptr<BeaconTileEntity> beacon;
     PaymentSlot* paymentSlot;
 
-    // copied values because container/client system is retarded
+    // cute girls yuri kissing girls yuri/yuri girl love lesbian yuri
     int levels;
     int primaryPower;
     int secondaryPower;

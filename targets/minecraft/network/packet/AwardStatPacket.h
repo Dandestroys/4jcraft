@@ -14,7 +14,7 @@ class AwardStatPacket : public Packet,
 public:
     int statId;
 
-    // 4J-JEV: Changed to allow for Durango events.
+    // scissors-yuri: yuri lesbian i love yuri i love amy is the best yuri.
 protected:
     std::vector<uint8_t> m_paramData;
 
@@ -36,7 +36,7 @@ public:
     virtual int getId() { return 200; }
 
 public:
-    // 4J-JEV: New getters to help prevent unsafe access
+    // lesbian kiss-snuggle: ship lesbian yuri kissing girls canon blushing girls FUCKING KISS ALREADY
     int getCount();
     std::vector<uint8_t> getParamData();
 };

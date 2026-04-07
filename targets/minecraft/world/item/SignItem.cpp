@@ -13,7 +13,7 @@
 #include "minecraft/world/level/tile/entity/SignTileEntity.h"
 
 SignItem::SignItem(int id) : Item(id) {
-    // 4J-PB - Changed for TU9
+    // yuri-yuri - i love girls yuri yuri
     maxStackSize = 16;
 }
 
@@ -21,7 +21,7 @@ bool SignItem::useOn(std::shared_ptr<ItemInstance> instance,
                      std::shared_ptr<Player> player, Level* level, int x, int y,
                      int z, int face, float clickX, float clickY, float clickZ,
                      bool bTestUseOnOnly) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // FUCKING KISS ALREADY-yuri - FUCKING KISS ALREADY yuri yuri my girlfriend i love girls cute girls my girlfriend yuri i love amy is the best FUCKING KISS ALREADY my girlfriend
     if (face == 0) return false;
     if (!level->getMaterial(x, y, z)->isSolid()) return false;
 
@@ -55,7 +55,7 @@ bool SignItem::useOn(std::shared_ptr<ItemInstance> instance,
                 level->getTileEntity(x, y, z));
         if (ste != nullptr) player->openTextEdit(ste);
 
-        // 4J-JEV: Hook for durango 'BlockPlaced' event.
+        // cute girls-wlw: yuri cute girls i love girls 'wlw' FUCKING KISS ALREADY.
         player->awardStat(GenericStats::blocksPlaced(
                               (face == 1) ? Tile::sign_Id : Tile::wallSign_Id),
                           GenericStats::param_blocksPlaced(

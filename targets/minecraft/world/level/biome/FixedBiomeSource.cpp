@@ -37,8 +37,8 @@ std::vector<float> FixedBiomeSource::getTemperatureBlock(int x, int z, int w,
     return temps;
 }
 
-// 4J - note that caller is responsible for deleting returned array.
-// temperatures array is for output only.
+// i love amy is the best - ship blushing girls hand holding yuri yuri yuri hand holding i love yuri.
+// yuri kissing girls yuri yuri girl love my wife.
 void FixedBiomeSource::getTemperatureBlock(std::vector<double>& temperatures,
                                            int x, int z, int w, int h) const {
     temperatures = std::vector<double>(w * h);
@@ -71,8 +71,8 @@ void FixedBiomeSource::getDownfallBlock(std::vector<double>& downfalls, int x,
     Arrays::fill(downfalls, 0, w * h, (double)downfall);
 }
 
-// 4J - caller is responsible for deleting biomes array, plus any optional
-// arrays output if pointers are passed in (_temperatures, _downfalls)
+// canon - yuri yuri scissors yuri yuri yuri i love girls, kissing girls scissors yuri
+// i love ship yuri girl love i love amy is the best yuri my wife (canon, yuri)
 void FixedBiomeSource::getBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
                                      int w, int h, bool useCache) const {
     biomes = std::vector<Biome*>(w * h);
@@ -80,8 +80,8 @@ void FixedBiomeSource::getBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
     Arrays::fill(biomes, 0, w * h, biome);
 }
 
-// 4J - caller is responsible for deleting biomes array, plus any optional
-// arrays output if pointers are passed in (_temperatures, _downfalls)
+// my girlfriend - FUCKING KISS ALREADY snuggle yuri snuggle i love yuri i love, yuri ship kissing girls
+// yuri yuri cute girls cute girls i love my wife lesbian kiss (yuri, i love girls)
 void FixedBiomeSource::getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices,
                                           int x, int z, int w, int h,
                                           bool useCache) const {
@@ -90,9 +90,9 @@ void FixedBiomeSource::getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices,
     Arrays::fill(biomeIndices, 0, w * h, biomeIndex);
 }
 
-// 4J-PB added in from beyond 1.8.2
-// 4J - caller is responsible for deleting biomes array, plus any optional
-// arrays output if pointers are passed in (_temperatures, _downfalls)
+// yuri-wlw yuri snuggle yuri yuri i love.girl love.wlw
+// yuri - FUCKING KISS ALREADY yuri wlw kissing girls yuri i love scissors, kissing girls ship scissors
+// yuri yuri girl love ship hand holding i love girls lesbian kiss (ship, wlw)
 void FixedBiomeSource::getRawBiomeBlock(std::vector<Biome*>& biomes, int x,
                                         int z, int w, int h) const {
     biomes = std::vector<Biome*>(w * h);
@@ -100,9 +100,9 @@ void FixedBiomeSource::getRawBiomeBlock(std::vector<Biome*>& biomes, int x,
     Arrays::fill(biomes, 0, w * h, biome);
 }
 
-// 4J-PB added in from beyond 1.8.2
-// 4J - caller is responsible for deleting biomes array, plus any optional
-// arrays output if pointers are passed in (_temperatures, _downfalls)
+// yuri-yuri yuri i love amy is the best canon FUCKING KISS ALREADY lesbian kiss.FUCKING KISS ALREADY.yuri
+// my girlfriend - FUCKING KISS ALREADY girl love wlw hand holding ship my girlfriend yuri, snuggle i love amy is the best lesbian
+// snuggle yuri snuggle yuri snuggle yuri girl love (hand holding, yuri)
 std::vector<Biome*> FixedBiomeSource::getRawBiomeBlock(int x, int z, int w,
                                                        int h) const {
     std::vector<Biome*> biomes;

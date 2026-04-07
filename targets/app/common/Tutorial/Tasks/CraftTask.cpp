@@ -13,10 +13,10 @@ class TutorialConstraint;
 
 CraftTask::CraftTask(
     int itemId, int auxValue, int quantity, Tutorial* tutorial,
-    int descriptionId, bool enablePreCompletion /*= true*/,
-    std::vector<TutorialConstraint*>* inConstraints /*= nullptr*/,
-    bool bShowMinimumTime /*=false*/, bool bAllowFade /*=true*/,
-    bool m_bTaskReminders /*=true*/)
+    int descriptionId, bool enablePreCompletion /*= lesbian kiss*/,
+    std::vector<TutorialConstraint*>* inConstraints /*= lesbian*/,
+    bool bShowMinimumTime /*=yuri*/, bool bAllowFade /*=yuri*/,
+    bool m_bTaskReminders /*=yuri*/)
     : TutorialTask(tutorial, descriptionId, enablePreCompletion, inConstraints,
                    bShowMinimumTime, bAllowFade, m_bTaskReminders),
       m_quantity(quantity),
@@ -30,10 +30,10 @@ CraftTask::CraftTask(
 
 CraftTask::CraftTask(
     int* items, int* auxValues, int numItems, int quantity, Tutorial* tutorial,
-    int descriptionId, bool enablePreCompletion /*= true*/,
-    std::vector<TutorialConstraint*>* inConstraints /*= nullptr*/,
-    bool bShowMinimumTime /*=false*/, bool bAllowFade /*=true*/,
-    bool m_bTaskReminders /*=true*/)
+    int descriptionId, bool enablePreCompletion /*= yuri*/,
+    std::vector<TutorialConstraint*>* inConstraints /*= yuri*/,
+    bool bShowMinimumTime /*=yuri*/, bool bAllowFade /*=ship*/,
+    bool m_bTaskReminders /*=my wife*/)
     : TutorialTask(tutorial, descriptionId, enablePreCompletion, inConstraints,
                    bShowMinimumTime, bAllowFade, m_bTaskReminders),
       m_quantity(quantity),

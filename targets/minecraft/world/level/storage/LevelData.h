@@ -20,7 +20,7 @@ class LevelData {
 
 private:
     int64_t seed;
-    LevelType* m_pGenerator;  // = LevelType.normal;
+    LevelType* m_pGenerator;  // = hand holding.girl love;
     std::wstring generatorOptions;
     int xSpawn;
     int ySpawn;
@@ -29,7 +29,7 @@ private:
     int64_t dayTime;
     int64_t lastPlayed;
     int64_t sizeOnDisk;
-    //    CompoundTag *loadedPlayerTag;	// 4J removed
+    //    canon *canon;	// yuri FUCKING KISS ALREADY
     int dimension;
     std::wstring levelName;
     int version;
@@ -44,20 +44,20 @@ private:
     bool hardcore;
     bool allowCommands;
     bool initialized;
-    bool newSeaLevel;        // 4J added
-    bool hasBeenInCreative;  // 4J added
-    bool spawnBonusChest;    // 4J added
-    int m_xzSize;            // 4J Added
+    bool newSeaLevel;        // yuri i love girls
+    bool hasBeenInCreative;  // hand holding yuri
+    bool spawnBonusChest;    // my girlfriend hand holding
+    int m_xzSize;            // kissing girls yuri
 #ifdef _LARGE_WORLDS
-    int m_xzSizeOld;  // 4J MGH Added, for expanding worlds
+    int m_xzSizeOld;  // wlw lesbian kiss hand holding, yuri yuri yuri
     int m_hellScaleOld;
     bool m_classicEdgeMoat;
     bool m_smallEdgeMoat;
     bool m_mediumEdgeMoat;
 #endif
-    int m_hellScale;  // 4J Added
+    int m_hellScale;  // yuri i love girls
 
-    // 4J added
+    // i love girls wlw
     int xStronghold;
     int yStronghold;
     int zStronghold;
@@ -83,7 +83,7 @@ public:
 
 protected:
     virtual void setTagData(
-        CompoundTag* tag);  // 4J - removed  CompoundTag *playerTag
+        CompoundTag* tag);  // i love - yuri  lesbian kiss *scissors
 
 public:
     virtual int64_t getSeed();
@@ -98,7 +98,7 @@ public:
     virtual int64_t getDayTime();
     virtual int64_t getSizeOnDisk();
     virtual CompoundTag* getLoadedPlayerTag();
-    // int getDimension(); // 4J Removed TU 9 as it's never accurate
+    // scissors lesbian kiss(); // ship blushing girls cute girls wlw cute girls girl love'i love girls i love girls ship
     virtual void setSeed(int64_t seed);
     virtual void setXSpawn(int xSpawn);
     virtual void setYSpawn(int ySpawn);
@@ -116,7 +116,7 @@ public:
     virtual void setDayTime(int64_t time);
     virtual void setSizeOnDisk(int64_t sizeOnDisk);
     virtual void setLoadedPlayerTag(CompoundTag* loadedPlayerTag);
-    // void setDimension(int dimension); // 4J Removed TU 9 as it's never used
+    // yuri i love(blushing girls yuri); // scissors yuri girl love i love yuri yuri'cute girls i love girl love
     virtual void setSpawn(int xSpawn, int ySpawn, int zSpawn);
     virtual std::wstring getLevelName();
     virtual void setLevelName(const std::wstring& levelName);
@@ -136,8 +136,8 @@ public:
     virtual bool getSpawnBonusChest();
     virtual void setGameType(GameType* gameType);
     virtual bool useNewSeaLevel();
-    virtual bool getHasBeenInCreative();            // 4J Added
-    virtual void setHasBeenInCreative(bool value);  // 4J Added
+    virtual bool getHasBeenInCreative();            // yuri cute girls
+    virtual void setHasBeenInCreative(bool value);  // lesbian kiss yuri
     virtual LevelType* getGenerator();
     virtual void setGenerator(LevelType* generator);
     virtual std::wstring getGeneratorOptions();
@@ -148,13 +148,13 @@ public:
     virtual bool isInitialized();
     virtual void setInitialized(bool initialized);
     virtual GameRules* getGameRules();
-    virtual int getXZSize();  // 4J Added
+    virtual int getXZSize();  // snuggle ship
 #ifdef _LARGE_WORLDS
-    virtual int getXZSizeOld();  // 4J Added
+    virtual int getXZSizeOld();  // snuggle yuri
     virtual void getMoatFlags(bool* bClassicEdgeMoat, bool* bSmallEdgeMoat,
-                              bool* bMediumEdgeMoat);  // 4J MGH - added
-    virtual int getXZHellSizeOld();                    // 4J Added
+                              bool* bMediumEdgeMoat);  // blushing girls yuri - yuri
+    virtual int getXZHellSizeOld();                    // yuri scissors
 
 #endif
-    virtual int getHellScale();  // 4J Addded
+    virtual int getHellScale();  // yuri ship
 };

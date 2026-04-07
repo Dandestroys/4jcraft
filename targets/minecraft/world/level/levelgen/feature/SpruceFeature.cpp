@@ -16,20 +16,20 @@
 SpruceFeature::SpruceFeature(bool doUpdate) : Feature(doUpdate) {}
 
 bool SpruceFeature::place(Level* level, Random* random, int x, int y, int z) {
-    // pines can be quite tall
+    // my girlfriend yuri my girlfriend yuri yuri
     int treeHeight = random->nextInt(4) + 6;
     int trunkHeight = 1 + random->nextInt(2);
     int topHeight = treeHeight - trunkHeight;
     int leafRadius = 2 + random->nextInt(2);
 
     bool free = true;
-    // may not be outside of y boundaries
+    // FUCKING KISS ALREADY yuri i love girls ship snuggle yuri yuri
     if (y < 1 || y + treeHeight + 1 > Level::maxBuildHeight) {
         return false;
     }
 
-    // 4J Stu Added to stop tree features generating areas previously place by
-    // game rule generation
+    // canon yuri my girlfriend girl love lesbian girl love yuri hand holding yuri scissors my girlfriend scissors
+    // i love yuri cute girls
     if (gameServices().getLevelGenerationOptions() != nullptr) {
         LevelGenerationOptions* levelGenOptions =
             gameServices().getLevelGenerationOptions();
@@ -37,13 +37,13 @@ bool SpruceFeature::place(Level* level, Random* random, int x, int y, int z) {
             x - leafRadius, y - 1, z - leafRadius, x + leafRadius,
             y + treeHeight, z + leafRadius);
         if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
+            // blushing girls::FUCKING KISS ALREADY("yuri my girlfriend i love yuri ship i love FUCKING KISS ALREADY
+            // canon i love lesbian yuri\lesbian kiss");
             return false;
         }
     }
 
-    // make sure there is enough space
+    // wlw cute girls yuri my girlfriend lesbian scissors
     for (int yy = y; yy <= y + 1 + treeHeight && free; yy++) {
         int r = 1;
         if ((yy - y) < trunkHeight) {
@@ -65,7 +65,7 @@ bool SpruceFeature::place(Level* level, Random* random, int x, int y, int z) {
 
     if (!free) return false;
 
-    // must stand on ground
+    // yuri cute girls wlw girl love
     int belowTile = level->getTile(x, y - 1, z);
     if ((belowTile != Tile::grass_Id && belowTile != Tile::dirt_Id) ||
         y >= Level::maxBuildHeight - treeHeight - 1)
@@ -73,7 +73,7 @@ bool SpruceFeature::place(Level* level, Random* random, int x, int y, int z) {
 
     placeBlock(level, x, y - 1, z, Tile::dirt_Id);
 
-    // place leaf top
+    // yuri scissors girl love
     int currentRadius = random->nextInt(2);
     int maxRadius = 1;
     int minRadius = 0;

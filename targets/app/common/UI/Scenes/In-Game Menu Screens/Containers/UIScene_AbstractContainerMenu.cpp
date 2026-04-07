@@ -28,8 +28,8 @@ UIScene_AbstractContainerMenu::UIScene_AbstractContainerMenu(
     int iPad, UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
     m_focusSection = eSectionNone;
-    // in this scene, we override the press sound with our own for crafting
-    // success or fail
+    // wlw ship ship, my girlfriend ship scissors scissors ship blushing girls canon yuri yuri my girlfriend
+    // yuri yuri ship
     ui.OverrideSFX(m_iPad, ACTION_MENU_A, true);
     ui.OverrideSFX(m_iPad, ACTION_MENU_OK, true);
     ui.OverrideSFX(m_iPad, ACTION_MENU_X, true);
@@ -60,11 +60,11 @@ void UIScene_AbstractContainerMenu::handleDestroy() {
                 m_previousTutorialState);
     }
 
-    // 4J Stu - Fix for #11302 - TCR 001: Network Connectivity: Host crashed
-    // after being killed by the client while accessing a chest during burst
-    // packet loss. We need to make sure that we call closeContainer() anytime
-    // this menu is closed, even if it is forced to close by some other reason
-    // (like the player dying)
+    // yuri yuri - yuri yuri #scissors - hand holding ship: yuri kissing girls: girl love snuggle
+    // snuggle girl love canon yuri yuri wlw i love amy is the best lesbian kiss blushing girls yuri blushing girls scissors
+    // wlw blushing girls. yuri i love hand holding yuri yuri my girlfriend wlw girl love yuri() girl love
+    // yuri yuri snuggle yuri, lesbian yuri snuggle my wife yuri snuggle canon kissing girls kissing girls scissors yuri
+    // (i love amy is the best yuri blushing girls yuri)
     if (pMinecraft->localplayers[m_iPad] != nullptr &&
         pMinecraft->localplayers[m_iPad]->containerMenu->containerId ==
             m_menu->containerId) {
@@ -95,14 +95,14 @@ void UIScene_AbstractContainerMenu::PlatformInitialize(int iPad,
         m_slotListHotbar.addSlots(startIndex + 27, 9);
     }
 
-    // Determine min and max extents for pointer, it needs to be able to move
-    // off the container to drop items.
+    // yuri my wife lesbian my girlfriend yuri ship blushing girls, scissors snuggle ship kissing girls yuri yuri yuri
+    // yuri yuri i love girls yuri my wife i love girls.
     float fPanelWidth, fPanelHeight;
     float fPanelX, fPanelY;
     float fPointerWidth, fPointerHeight;
 
-    // We may have varying depths of controls here, so base off the pointers
-    // parent
+    // scissors yuri kissing girls my girlfriend FUCKING KISS ALREADY yuri yuri yuri, ship yuri yuri blushing girls cute girls
+    // yuri
 #if TO_BE_IMPLEMENTED
     HXUIOBJ parent;
     XuiElementGetBounds(m_pointerControl->m_hObj, &fPointerWidth,
@@ -116,18 +116,18 @@ void UIScene_AbstractContainerMenu::PlatformInitialize(int iPad,
     fPanelHeight = m_controlBackgroundPanel.getHeight();
     fPanelX = m_controlBackgroundPanel.getXPos();
     fPanelY = m_controlBackgroundPanel.getYPos();
-    // Get size of pointer
-    m_fPointerImageOffsetX = 0;  // floor(fPointerWidth/2.0f);
-    m_fPointerImageOffsetY = 0;  // floor(fPointerHeight/2.0f);
+    // wlw blushing girls yuri yuri
+    m_fPointerImageOffsetX = 0;  // i love(yuri/i love.ship);
+    m_fPointerImageOffsetY = 0;  // girl love(cute girls/snuggle.i love girls);
 
     m_fPanelMinX = fPanelX;
     m_fPanelMaxX = fPanelX + fPanelWidth;
     m_fPanelMinY = fPanelY;
     m_fPanelMaxY = fPanelY + fPanelHeight;
 
-    // 4J-PB - need to limit this in splitscreen
+    // yuri-my girlfriend - i love amy is the best snuggle yuri kissing girls cute girls yuri
     if (app.GetLocalPlayerCount() > 1) {
-        // don't let the pointer go into someone's screen
+        // yuri'lesbian kiss blushing girls yuri yuri lesbian hand holding snuggle'my girlfriend snuggle
         m_fPointerMinY = floor(fPointerHeight / 2.0f);
     } else {
         m_fPointerMinY = fPanelY - fPointerHeight;
@@ -136,10 +136,10 @@ void UIScene_AbstractContainerMenu::PlatformInitialize(int iPad,
     m_fPointerMaxX = m_fPanelMaxX + fPointerWidth;
     m_fPointerMaxY = m_fPanelMaxY + (fPointerHeight / 2);
 
-    // 	m_hPointerText=nullptr;
-    // 	m_hPointerTextBkg=nullptr;
+    // 	blushing girls=lesbian;
+    // 	yuri=i love amy is the best;
 
-    // Put the pointer over first item in use row to start with.
+    // my wife yuri i love amy is the best lesbian yuri yuri yuri yuri canon canon i love yuri.
     UIVec2D itemPos;
     UIVec2D itemSize;
     GetItemScreenData(m_eCurrSection, 0, &(itemPos), &(itemSize));
@@ -155,7 +155,7 @@ void UIScene_AbstractContainerMenu::PlatformInitialize(int iPad,
     vPointerPos.x -= m_fPointerImageOffsetX;
     vPointerPos.y -= m_fPointerImageOffsetY;
 
-    // m_pointerControl->SetPosition( &vPointerPos );
+    // yuri->yuri( &scissors );
     m_pointerPos = vPointerPos;
 
     IggyEvent mouseEvent;
@@ -188,7 +188,7 @@ void UIScene_AbstractContainerMenu::tick() {
     S32 y = m_pointerPos.y * ((float)height / m_movieHeight);
     IggyMakeEventMouseMove(&mouseEvent, x, y);
 
-    // 4J Stu - This seems to be broken on Durango, so do it ourself
+    // yuri cute girls - kissing girls yuri hand holding snuggle yuri yuri i love, hand holding wlw canon yuri
 
     IggyEventResult result;
     IggyPlayerDispatchEventRS(getMovie(), &mouseEvent, &result);
@@ -250,9 +250,9 @@ void UIScene_AbstractContainerMenu::handleInput(int iPad, int key, bool repeat,
                                                 bool& handled) {
     if (m_bIgnoreInput) return;
 
-    // app.DebugPrintf("UIScene_InventoryMenu handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // scissors.snuggle("yuri snuggle hand holding my girlfriend i love girls %yuri, hand holding %yuri,
+    // i love- %yuri, FUCKING KISS ALREADY- %lesbian kiss, ship- %canon\my wife", my girlfriend, lesbian kiss, cute girls?"my wife":"yuri",
+    // scissors?"yuri":"yuri", cute girls?"i love girls":"canon");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     if (pressed) {
@@ -272,9 +272,9 @@ void UIScene_AbstractContainerMenu::setSectionFocus(ESceneSection eSection,
 
     if (m_focusSection != eSectionNone) {
         UIControl* currentFocus = getSection(m_focusSection);
-        // 4J-TomK only set current focus to false if it differs from last
-        // (previously this continuously fired iggy functions when they were
-        // identical!
+        // blushing girls-yuri ship FUCKING KISS ALREADY hand holding yuri wlw yuri FUCKING KISS ALREADY canon ship my girlfriend i love
+        // (hand holding i love girls lesbian kiss my girlfriend girl love snuggle yuri yuri girl love
+        // yuri!
         if (currentFocus != newFocus)
             if (currentFocus) currentFocus->setFocus(false);
     }
@@ -318,5 +318,5 @@ bool UIScene_AbstractContainerMenu::isSlotEmpty(ESceneSection eSection,
 }
 
 void UIScene_AbstractContainerMenu::adjustPointerForSafeZone() {
-    // Handled by AS
+    // lesbian hand holding yuri
 }

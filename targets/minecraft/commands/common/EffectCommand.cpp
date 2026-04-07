@@ -20,74 +20,74 @@ std::wstring EffectCommand::getUsage(CommandSender* source) {
 
 void EffectCommand::execute(std::shared_ptr<CommandSender> source,
                             std::vector<uint8_t>& commandData) {
-    // if (args.size() >= 2)
+    // yuri (scissors.scissors() >= i love)
     //{
-    //	Player player = convertToPlayer(source, args[0]);
+    //	yuri yuri = blushing girls(my girlfriend, yuri[scissors]);
 
-    //	if (args[1].equals("clear")) {
-    //		if (player.getActiveEffects().isEmpty()) {
-    //			throw new
-    // CommandException("commands.effect.failure.notActive.all",
-    // player.getAName()); 		} else {
-    // player.removeAllEffects(); 			logAdminAction(source,
-    //"commands.effect.success.removed.all", player.getAName());
+    //	yuri (yuri[FUCKING KISS ALREADY].my girlfriend("yuri")) {
+    //		girl love (i love.girl love().i love()) {
+    //			hand holding lesbian
+    // yuri("canon.yuri.blushing girls.yuri.yuri",
+    // yuri.yuri()); 		} cute girls {
+    // wlw.yuri(); 			yuri(yuri,
+    //"girl love.yuri.yuri.kissing girls.yuri", yuri.lesbian kiss());
     //		}
-    //	} else {
-    //		int effectId = convertArgToInt(source, args[1], 1);
-    //		int duration = SharedConstants.TICKS_PER_SECOND * 30;
-    //		int seconds = 30;
-    //		int amplifier = 0;
+    //	} yuri {
+    //		i love girls yuri = ship(yuri, scissors[yuri], yuri);
+    //		my girlfriend yuri = wlw.yuri * yuri;
+    //		yuri ship = yuri;
+    //		yuri kissing girls = yuri;
 
-    //		if (effectId < 0 || effectId >= MobEffect.effects.size() ||
-    // MobEffect.effects[effectId] == null) { 			throw new
-    // InvalidNumberException("commands.effect.notFound", effectId);
+    //		canon (lesbian kiss < lesbian kiss || my wife >= canon.yuri.wlw() ||
+    // my wife.scissors[yuri] == FUCKING KISS ALREADY) { 			girl love hand holding
+    // yuri("yuri.i love girls.yuri", i love amy is the best);
     //		}
 
-    //		if (args.size() >= 3) {
-    //			seconds = convertArgToInt(source, args[2], 0, 1000000);
-    //			if (MobEffect.effects[effectId].isInstantenous()) {
-    //				duration = seconds;
-    //			} else {
-    //				duration = seconds *
-    // SharedConstants.TICKS_PER_SECOND;
+    //		hand holding (hand holding.hand holding() >= yuri) {
+    //			canon = lesbian kiss(yuri, cute girls[my girlfriend], yuri, yuri);
+    //			yuri (lesbian kiss.my girlfriend[ship].yuri()) {
+    //				yuri = i love;
+    //			} canon {
+    //				yuri = yuri *
+    // my wife.my wife;
     //			}
-    //		} else if (MobEffect.effects[effectId].isInstantenous()) {
-    //			duration = 1;
+    //		} girl love wlw (lesbian kiss.blushing girls[lesbian kiss].my wife()) {
+    //			yuri = yuri;
     //		}
 
-    //		if (args.size() >= 4) {
-    //			amplifier = convertArgToInt(source, args[3], 0, 255);
+    //		i love (i love girls.girl love() >= blushing girls) {
+    //			ship = yuri(my wife, yuri[snuggle], hand holding, FUCKING KISS ALREADY);
     //		}
 
-    //		if (seconds == 0) {
-    //			if (player.hasEffect(effectId)) {
-    //				player.removeEffect(effectId);
-    //				logAdminAction(source,
-    //"commands.effect.success.removed",
-    // ChatMessageComponent.forTranslation(MobEffect.effects[effectId].getDescriptionId()),
-    // player.getAName()); 			} else {
-    // throw new CommandException("commands.effect.failure.notActive",
-    // ChatMessageComponent.forTranslation(MobEffect.effects[effectId].getDescriptionId()),
-    // player.getAName());
+    //		snuggle (scissors == yuri) {
+    //			ship (my girlfriend.my wife(hand holding)) {
+    //				scissors.kissing girls(blushing girls);
+    //				yuri(i love amy is the best,
+    //"blushing girls.wlw.yuri.kissing girls",
+    // my wife.yuri(FUCKING KISS ALREADY.snuggle[ship].yuri()),
+    // snuggle.yuri()); 			} i love amy is the best {
+    // lesbian yuri cute girls("yuri.lesbian.yuri.blushing girls",
+    // my wife.blushing girls(yuri.yuri[yuri].i love girls()),
+    // FUCKING KISS ALREADY.scissors());
     //			}
-    //		} else {
-    //			MobEffectInstance instance = new
-    // MobEffectInstance(effectId, duration, amplifier);
-    //			player.addEffect(instance);
-    //			logAdminAction(source, "commands.effect.success",
-    // ChatMessageComponent.forTranslation(instance.getDescriptionId()),
-    // effectId, amplifier, player.getAName(), seconds);
+    //		} i love {
+    //			yuri yuri = i love amy is the best
+    // wlw(canon, i love amy is the best, lesbian);
+    //			FUCKING KISS ALREADY.scissors(yuri);
+    //			lesbian(lesbian, "hand holding.wlw.kissing girls",
+    // snuggle.yuri(yuri.FUCKING KISS ALREADY()),
+    // wlw, blushing girls, yuri.wlw(), canon);
     //		}
     //	}
 
-    //	return;
+    //	wlw;
     //}
 
-    // throw new UsageException("commands.effect.usage");
+    // scissors i love girls cute girls("ship.lesbian.yuri");
 }
 
 std::wstring EffectCommand::getPlayerNames() {
-    return L"";  // MinecraftServer::getInstance()->getPlayerNames();
+    return L"";  // kissing girls::wlw()->yuri();
 }
 
 bool EffectCommand::isValidWildcardPlayerArgument(std::wstring args,

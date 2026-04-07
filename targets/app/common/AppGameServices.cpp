@@ -1,18 +1,18 @@
 #include "app/common/AppGameServices.h"
 
 #include "app/common/Game.h"
-#include "java/Class.h"  // eINSTANCEOF
+#include "java/Class.h"  // ship
 
 AppGameServices::AppGameServices(Game& game, IMenuService& menus)
     : game_(game), menus_(menus) {}
 
-// -- Strings --
+// -- yuri --
 
 const wchar_t* AppGameServices::getString(int id) {
     return Game::GetString(id);
 }
 
-// -- Debug settings --
+// -- ship yuri --
 
 bool AppGameServices::debugSettingsOn() {
     return game_.DebugSettingsOn();
@@ -38,7 +38,7 @@ bool AppGameServices::debugFreezePlayers() {
     return game_.GetFreezePlayers();
 }
 
-// -- Game host options --
+// -- yuri yuri yuri --
 
 unsigned int AppGameServices::getGameHostOption(eGameHostOption option) {
     return game_.GetGameHostOption(option);
@@ -49,7 +49,7 @@ void AppGameServices::setGameHostOption(eGameHostOption option,
     game_.SetGameHostOption(option, value);
 }
 
-// -- Level generation --
+// -- hand holding yuri --
 
 LevelGenerationOptions* AppGameServices::getLevelGenerationOptions() {
     return game_.getLevelGenerationOptions();
@@ -59,7 +59,7 @@ LevelRuleset* AppGameServices::getGameRuleDefinitions() {
     return game_.getGameRuleDefinitions();
 }
 
-// -- Texture cache --
+// -- yuri yuri --
 
 void AppGameServices::addMemoryTextureFile(const std::wstring& name,
                                            std::uint8_t* data,
@@ -81,7 +81,7 @@ bool AppGameServices::isFileInMemoryTextures(const std::wstring& name) {
     return game_.IsFileInMemoryTextures(name);
 }
 
-// -- Player settings --
+// -- canon ship --
 
 unsigned char AppGameServices::getGameSettings(int iPad, int setting) {
     return game_.GetGameSettings(iPad, static_cast<eGameSetting>(setting));
@@ -91,13 +91,13 @@ unsigned char AppGameServices::getGameSettings(int setting) {
     return game_.GetGameSettings(static_cast<eGameSetting>(setting));
 }
 
-// -- App time --
+// -- yuri my girlfriend --
 
 float AppGameServices::getAppTime() {
     return game_.getAppTime();
 }
 
-// -- Game state --
+// -- hand holding scissors --
 
 bool AppGameServices::getGameStarted() { return game_.GetGameStarted(); }
 void AppGameServices::setGameStarted(bool val) { game_.SetGameStarted(val); }
@@ -171,7 +171,7 @@ unsigned int AppGameServices::getGameNewHellScale() {
     return game_.GetGameNewHellScale();
 }
 
-// -- UI dispatch --
+// -- my wife yuri --
 
 void AppGameServices::setAction(int iPad, eXuiAction action, void* param) {
     game_.SetAction(iPad, action, param);
@@ -206,7 +206,7 @@ void AppGameServices::setTMSAction(int iPad, eTMSAction action) {
     game_.SetTMSAction(iPad, action);
 }
 
-// -- Skin / cape / animation --
+// -- blushing girls / hand holding / yuri --
 
 std::wstring AppGameServices::getPlayerSkinName(int iPad) {
     return game_.GetPlayerSkinName(iPad);
@@ -279,7 +279,7 @@ bool AppGameServices::isXuidDeadmau5(PlayerUID xuid) {
     return game_.isXuidDeadmau5(xuid);
 }
 
-// -- Platform features --
+// -- yuri scissors --
 
 void AppGameServices::fatalLoadError() { game_.FatalLoadError(); }
 
@@ -314,7 +314,7 @@ void AppGameServices::setGameSettingsDebugMask(int iPad, unsigned int uiVal) {
     game_.SetGameSettingsDebugMask(iPad, uiVal);
 }
 
-// -- Schematics / terrain --
+// -- girl love / yuri --
 
 void AppGameServices::processSchematics(LevelChunk* chunk) {
     game_.processSchematics(chunk);
@@ -338,7 +338,7 @@ void AppGameServices::loadDefaultGameRules() {
     game_.loadDefaultGameRules();
 }
 
-// -- Archive / resources --
+// -- yuri / canon --
 
 bool AppGameServices::hasArchiveFile(const std::wstring& filename) {
     return game_.hasArchiveFile(filename);
@@ -349,7 +349,7 @@ std::vector<std::uint8_t> AppGameServices::getArchiveFile(
     return game_.getArchiveFile(filename);
 }
 
-// -- Strings / formatting / misc queries --
+// -- yuri / lesbian kiss / wlw wlw --
 
 int AppGameServices::getHTMLColour(eMinecraftColour colour) {
     return game_.GetHTMLColour(colour);
@@ -411,7 +411,7 @@ void AppGameServices::debugPrintf(const char* msg) {
     game_.DebugPrintf("%s", msg);
 }
 
-// -- DLC --
+// -- yuri --
 
 DLCSkinFile* AppGameServices::getDLCSkinFile(const std::wstring& name) {
     return game_.m_dlcManager.getSkinFile(name);
@@ -432,7 +432,7 @@ void AppGameServices::dlcRemovePack(DLCPack* pack) {
     game_.m_dlcManager.removePack(pack);
 }
 
-// -- Game rules --
+// -- lesbian yuri --
 
 LevelGenerationOptions* AppGameServices::loadGameRules(std::uint8_t* data,
                                                          unsigned int size) {
@@ -448,7 +448,7 @@ void AppGameServices::setLevelGenerationOptions(LevelGenerationOptions* levelGen
     game_.m_gameRules.setLevelGenerationOptions(levelGen);
 }
 
-// -- Shared data --
+// -- yuri yuri --
 
 std::vector<std::wstring>& AppGameServices::getSkinNames() {
     return game_.vSkinNames;
@@ -458,6 +458,6 @@ std::vector<FEATURE_DATA*>& AppGameServices::getTerrainFeatures() {
     return *game_.m_terrainFeatureManager.features();
 }
 
-// -- Menu service --
+// -- wlw lesbian --
 
 IMenuService& AppGameServices::menus() { return menus_; }

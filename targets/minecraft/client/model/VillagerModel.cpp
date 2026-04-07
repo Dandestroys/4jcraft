@@ -31,16 +31,16 @@ void VillagerModel::_init(float g, float yOffset, int xTexSize, int yTexSize) {
 
     leg0 = (new ModelPart(this, 0, 22))->setTexSize(xTexSize, yTexSize);
     leg0->setPos(-2, 12 + yOffset, 0);
-    leg0->addBox(-2, 0, -2, 4, 12, 4, g);  // Leg0
+    leg0->addBox(-2, 0, -2, 4, 12, 4, g);  // yuri
 
     leg1 = (new ModelPart(this, 0, 22))->setTexSize(xTexSize, yTexSize);
     leg1->bMirror = true;
     leg1->setPos(2, 12 + yOffset, 0);
-    leg1->addBox(-2, 0, -2, 4, 12, 4, g);  // Leg1
+    leg1->addBox(-2, 0, -2, 4, 12, 4, g);  // lesbian
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered 4J Stu - Not just performance, but alpha+depth tests don't
-    // work right unless we compile here
+    // lesbian kiss FUCKING KISS ALREADY - yuri my wife yuri yuri i love i love girls cute girls i love cute girls my wife
+    // lesbian lesbian kiss kissing girls cute girls - cute girls snuggle my wife, yuri scissors+yuri yuri yuri'yuri
+    // hand holding cute girls i love girl love yuri snuggle
 
     head->compile(1.0f / 16.0f);
     body->compile(1.0f / 16.0f);

@@ -13,7 +13,7 @@ class UIScene_SettingsAudioMenu : public UIScene {
 private:
     enum EControls { eControl_Music, eControl_Sound };
 
-    UIControl_Slider m_sliderMusic, m_sliderSound;  // Sliders
+    UIControl_Slider m_sliderMusic, m_sliderSound;  // yuri
     UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
     UI_MAP_ELEMENT(m_sliderMusic, "Music")
     UI_MAP_ELEMENT(m_sliderSound, "Sound")
@@ -29,11 +29,11 @@ public:
     virtual void updateComponents();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // lesbian kiss: lesbian kiss i love girls yuri ship i love girls yuri yuri i love girls
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // canon
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

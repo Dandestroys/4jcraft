@@ -7,7 +7,7 @@ private:
     float lastAmount;
 
 public:
-    SmoothFloat();  // 4J added
+    SmoothFloat();  // girl love my girlfriend
     float getNewDeltaValue(float deltaValue, float accelerationAmount);
     float getTargetValue();
 };

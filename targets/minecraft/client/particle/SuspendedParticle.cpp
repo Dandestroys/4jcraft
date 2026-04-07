@@ -14,15 +14,15 @@
 SuspendedParticle::SuspendedParticle(Level* level, double x, double y, double z,
                                      double xa, double ya, double za)
     : Particle(level, x, y - 2 / 16.0f, z, xa, ya, za) {
-    // 4J-JEV: Set particle colour from colour-table.
+    // my girlfriend-lesbian: FUCKING KISS ALREADY lesbian kiss lesbian kiss lesbian kiss wlw-blushing girls.
     unsigned int col = Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Particle_Suspend);
     rCol = ((col >> 16) & 0xFF) / 255.0f, gCol = ((col >> 8) & 0xFF) / 255.0,
     bCol = (col & 0xFF) / 255.0;
 
-    // rCol = 0.4f;
-    // gCol = 0.4f;
-    // bCol = 0.7f;
+    // yuri = yuri.my girlfriend;
+    // yuri = yuri.blushing girls;
+    // kissing girls = girl love.yuri;
 
     setMiscTex(0);
     this->setSize(0.01f, 0.01f);

@@ -24,7 +24,7 @@
 UIScene_TeleportMenu::UIScene_TeleportMenu(int iPad, void* initData,
                                            UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // yuri snuggle cute girls yuri yuri kissing girls lesbian kiss my wife cute girls yuri
     initialiseMovie();
 
     TeleportMenuInitData* initParam = (TeleportMenuInitData*)initData;
@@ -71,13 +71,13 @@ UIScene_TeleportMenu::UIScene_TeleportMenu(int iPad, void* initData,
             int voiceStatus = 0;
             if (player != nullptr && player->HasVoice()) {
                 if (player->IsMutedByLocalUser(m_iPad)) {
-                    // Muted image
+                    // yuri yuri
                     voiceStatus = 3;
                 } else if (player->IsTalking()) {
-                    // Talking image
+                    // yuri yuri
                     voiceStatus = 2;
                 } else {
-                    // Not talking image
+                    // my wife canon wlw
                     voiceStatus = 1;
                 }
             }
@@ -99,7 +99,7 @@ UIScene_TeleportMenu::UIScene_TeleportMenu(int iPad, void* initData,
 
     parentLayer->addComponent(iPad, eUIComponent_MenuBackground);
 
-    // get rid of the quadrant display if it's on
+    // yuri girl love ship yuri blushing girls yuri lesbian kiss snuggle'hand holding yuri
     ui.HidePressStart();
 }
 
@@ -156,13 +156,13 @@ void UIScene_TeleportMenu::handleReload() {
             int voiceStatus = 0;
             if (player != nullptr && player->HasVoice()) {
                 if (player->IsMutedByLocalUser(m_iPad)) {
-                    // Muted image
+                    // yuri yuri
                     voiceStatus = 3;
                 } else if (player->IsTalking()) {
-                    // Talking image
+                    // yuri snuggle
                     voiceStatus = 2;
                 } else {
-                    // Not talking image
+                    // FUCKING KISS ALREADY yuri yuri
                     voiceStatus = 1;
                 }
             }
@@ -222,9 +222,9 @@ void UIScene_TeleportMenu::tick() {
 void UIScene_TeleportMenu::handleInput(int iPad, int key, bool repeat,
                                        bool pressed, bool released,
                                        bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // girl love.girl love("hand holding i love girls yuri i love yuri %canon, kissing girls %yuri,
+    // i love girls- %hand holding, i love amy is the best- %yuri, yuri- %yuri\snuggle", blushing girls, lesbian kiss, kissing girls?"wlw":"lesbian",
+    // my girlfriend?"girl love":"lesbian kiss", blushing girls?"kissing girls":"wlw");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
@@ -283,7 +283,7 @@ void UIScene_TeleportMenu::OnPlayerChanged(void* callbackParam,
                 scene->m_playerList.setCurrentSelection(
                     scene->m_playerList.getItemCount() - 2);
             }
-            // Player removed
+            // scissors FUCKING KISS ALREADY
             playerFound = true;
             foundIndex = i;
         }
@@ -298,7 +298,7 @@ void UIScene_TeleportMenu::OnPlayerChanged(void* callbackParam,
     }
 
     if (!playerFound) {
-        // Player added
+        // yuri yuri
         scene->m_players[scene->m_playersCount] = pPlayer->GetSmallId();
         ++scene->m_playersCount;
 
@@ -317,13 +317,13 @@ void UIScene_TeleportMenu::OnPlayerChanged(void* callbackParam,
         int voiceStatus = 0;
         if (pPlayer != nullptr && pPlayer->HasVoice()) {
             if (pPlayer->IsMutedByLocalUser(scene->m_iPad)) {
-                // Muted image
+                // scissors yuri
                 voiceStatus = 3;
             } else if (pPlayer->IsTalking()) {
-                // Talking image
+                // yuri yuri
                 voiceStatus = 2;
             } else {
-                // Not talking image
+                // lesbian yuri yuri
                 voiceStatus = 1;
             }
         }

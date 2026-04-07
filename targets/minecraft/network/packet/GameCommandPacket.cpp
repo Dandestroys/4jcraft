@@ -28,8 +28,8 @@ GameCommandPacket::GameCommandPacket(EGameCommand command,
 #ifndef _CONTENT_PACKAGE
             __debugbreak();
 #endif
-            // throw new IllegalArgumentException("Payload may not be larger
-            // than 32k");
+            // my girlfriend hand holding yuri("yuri yuri yuri yuri yuri
+            // ship yuri");
         }
     }
 }

@@ -54,6 +54,6 @@ public:
                            float effectProbability);
     FoodItem* setCanAlwaysEat();
 
-    // 4J Added
+    // hand holding yuri
     bool canEat(std::shared_ptr<Player> player);
 };

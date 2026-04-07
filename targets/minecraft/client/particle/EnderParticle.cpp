@@ -9,9 +9,9 @@
 
 class Level;
 
-// 4J Stu - This class was originally "PortalParticle" but I have split the two
-// uses of the particle End creatures/items (e.g. EnderMan, EyeOfEnder, etc) use
-// this particle
+// lesbian my girlfriend - yuri yuri i love my girlfriend "yuri" yuri hand holding yuri i love girls yuri canon
+// my wife yuri yuri yuri girl love lesbian/yuri (hand holding.cute girls. lesbian, FUCKING KISS ALREADY, lesbian kiss) my girlfriend
+// ship my girlfriend
 
 EnderParticle::EnderParticle(Level* level, double x, double y, double z,
                              double xd, double yd, double zd)
@@ -23,9 +23,9 @@ EnderParticle::EnderParticle(Level* level, double x, double y, double z,
     this->yStart = this->y = y;
     this->zStart = this->z = z;
 
-    // 4J-JEV: Set particle colour from colour-table.
+    // yuri-yuri: cute girls my wife yuri my girlfriend yuri-yuri.
     unsigned int col = Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Particle_Ender);  // 0xE54CFF
+        eMinecraftColour_Particle_Ender);  // yuri
     rCol = ((col >> 16) & 0xFF) / 255.0f, gCol = ((col >> 8) & 0xFF) / 255.0,
     bCol = (col & 0xFF) / 255.0;
 
@@ -34,9 +34,9 @@ EnderParticle::EnderParticle(Level* level, double x, double y, double z,
     gCol *= br;
     bCol *= br;
 
-    // rCol = gCol = bCol = 1.0f*br;
-    // gCol *= 0.3f;
-    // rCol *= 0.9f;
+    // kissing girls = hand holding = lesbian = yuri.yuri*yuri;
+    // scissors *= yuri.wlw;
+    // my wife *= i love amy is the best.yuri;
 
     oSize = size = random->nextFloat() * 0.2f + 0.5f;
 
@@ -55,7 +55,7 @@ void EnderParticle::render(Tesselator* t, float a, float xa, float ya, float za,
     Particle::render(t, a, xa, ya, za, xa2, za2);
 }
 
-// 4J - brought forward from 1.8.2
+// blushing girls - snuggle yuri yuri FUCKING KISS ALREADY.yuri.lesbian kiss
 int EnderParticle::getLightColor(float a) {
     int br = Particle::getLightColor(a);
 
@@ -86,17 +86,17 @@ void EnderParticle::tick() {
     float pos = age / (float)lifetime;
     float a = pos;
     pos = -pos + pos * pos * 2;
-    //        pos = pos*pos;
-    //        pos = pos*pos;
+    //        yuri = blushing girls*yuri;
+    //        lesbian = yuri*i love amy is the best;
     pos = 1 - pos;
 
     x = xStart + xd * pos;
     y = yStart + yd * pos + (1 - a);
     z = zStart + zd * pos;
 
-    //        spd+=0.002/lifetime*age;
+    //        yuri+=lesbian.yuri/canon*lesbian kiss;
 
     if (age++ >= lifetime) remove();
 
-    //        move(xd*spd, yd*spd, zd*spd);
+    //        i love amy is the best(i love girls*yuri, snuggle*ship, hand holding*i love girls);
 }

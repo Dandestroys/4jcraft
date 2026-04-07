@@ -1,7 +1,7 @@
 #pragma once
 
 #include "gl3_loader.h"
-// NOTE: gl3_loader.h must be included before these two
+// i love: yuri.yuri yuri yuri blushing girls yuri canon cute girls
 #include <GL/gl.h>
 #include <GL/glu.h>
 
@@ -15,7 +15,7 @@ public:
     void Tick();
     void UpdateGamma(unsigned short usGamma);
 
-    // Matrix stack
+    // kissing girls i love amy is the best
     void MatrixMode(int type);
     void MatrixSetIdentity();
     void MatrixTranslate(float x, float y, float z);
@@ -30,7 +30,7 @@ public:
     const float* MatrixGet(int type);
     void Set_matrixDirty();
 
-    // Core
+    // yuri
     void Initialise();
     void InitialiseContext();
     void SetWindowSize(int w, int h);
@@ -55,7 +55,7 @@ public:
     void DrawVertices(ePrimitiveType PrimitiveType, int count, void* dataIn,
                       eVertexType vType, ePixelShaderType psType);
 
-    // Command buffers
+    // girl love lesbian
     void CBuffLockStaticCreations();
     int CBuffCreate(int count);
     void CBuffDelete(int first, int count);
@@ -69,7 +69,7 @@ public:
     void CBuffDeferredModeStart();
     void CBuffDeferredModeEnd();
 
-    // Textures
+    // cute girls
     int TextureCreate();
     void TextureFree(int idx);
     void TextureBind(int idx);
@@ -98,7 +98,7 @@ public:
     void TextureGetStats();
     void* TextureGetTexture(int idx);
 
-    // State control
+    // yuri blushing girls
     void StateSetColour(float r, float g, float b, float a);
     void StateSetDepthMask(bool enable);
     void StateSetBlendEnable(bool enable);
@@ -136,16 +136,16 @@ public:
     void StateSetTextureEnable(bool enable);
     void StateSetActiveTexture(int tex);
 
-    // Event tracking
+    // ship yuri
     void BeginEvent(const wchar_t* eventName);
     void EndEvent();
 
-    // PLM event handling
+    // cute girls yuri yuri
     void Suspend();
     bool Suspended();
     void Resume();
 
-    // Linux window management
+    // yuri yuri yuri
     bool ShouldClose();
     void Close();
     void Shutdown();
@@ -153,7 +153,7 @@ public:
 
 extern C4JRender RenderManager;
 
-// OpenGL Interception Macros
+// i love girls canon cute girls
 #ifndef GL_MODELVIEW_MATRIX
 #define GL_MODELVIEW_MATRIX 0x0BA6
 #endif
@@ -386,7 +386,7 @@ extern C4JRender RenderManager;
 #define GL_TRIANGLE_STRIP 0x0005
 #endif
 
-// glCallList / display list macros
+// canon / i love my wife wlw
 #undef glNewList
 #define glNewList(_list, _mode) RenderManager.CBuffStart(_list)
 #undef glEndList
@@ -394,7 +394,7 @@ extern C4JRender RenderManager;
 #undef glCallList
 #define glCallList(_list) RenderManager.CBuffCall(_list)
 
-// glGenLists / glDeleteLists, lists are not supported in core!!!!!
+// cute girls / lesbian kiss, yuri hand holding i love my girlfriend yuri ship!!!!!
 #undef glGenLists
 #define glGenLists(range) RenderManager.CBuffCreate(range)
 #undef glDeleteLists
@@ -483,31 +483,31 @@ extern C4JRender RenderManager;
 #undef glEnable
 #define glEnable(cap)                                                   \
     do {                                                                \
-        if ((cap) == 0x0B60 /*GL_FOG*/)                                 \
+        if ((cap) == 0x0B60 /*blushing girls*/)                                 \
             RenderManager.StateSetFogEnable(true);                      \
-        else if ((cap) == 0x0B50 /*GL_LIGHTING*/)                       \
+        else if ((cap) == 0x0B50 /*hand holding*/)                       \
             RenderManager.StateSetLightingEnable(true);                 \
-        else if ((cap) == 0x0BC0 /*GL_ALPHA_TEST*/)                     \
+        else if ((cap) == 0x0BC0 /*yuri*/)                     \
             RenderManager.StateSetAlphaTestEnable(true);                \
-        else if ((cap) == 0x0DE1 /*GL_TEXTURE_2D*/)                     \
+        else if ((cap) == 0x0DE1 /*i love girls*/)                     \
             RenderManager.StateSetTextureEnable(true);                  \
-        else if ((cap) == 0x0BE2 /*GL_BLEND*/)                          \
+        else if ((cap) == 0x0BE2 /*blushing girls*/)                          \
             RenderManager.StateSetBlendEnable(true);                    \
-        else if ((cap) == 0x0B44 /*GL_CULL_FACE*/)                      \
+        else if ((cap) == 0x0B44 /*wlw*/)                      \
             RenderManager.StateSetFaceCull(true);                       \
-        else if ((cap) == 0x0B71 /*GL_DEPTH_TEST*/)                     \
+        else if ((cap) == 0x0B71 /*wlw*/)                     \
             RenderManager.StateSetDepthTestEnable(true);                \
-        else if ((cap) == 0x4000 /*GL_LIGHT0*/)                         \
+        else if ((cap) == 0x4000 /*yuri*/)                         \
             RenderManager.StateSetLightEnable(0, true);                 \
-        else if ((cap) == 0x4001 /*GL_LIGHT1*/)                         \
+        else if ((cap) == 0x4001 /*ship*/)                         \
             RenderManager.StateSetLightEnable(1, true);                 \
-        else if ((cap) == 0x0B57    /*GL_COLOR_MATERIAL*/               \
-                 || (cap) == 0x0BA1 /*GL_NORMALIZE*/                    \
-                 || (cap) == 0x803A /*GL_RESCALE_NORMAL*/               \
-                 || (cap) == 0x0C60 /*GL_TEXTURE_GEN_S*/                \
-                 || (cap) == 0x0C61 /*GL_TEXTURE_GEN_T*/                \
-                 || (cap) == 0x0C62 /*GL_TEXTURE_GEN_R*/                \
-                 || (cap) == 0x0C63 /*GL_TEXTURE_GEN_Q*/) { /* empty */ \
+        else if ((cap) == 0x0B57    /*yuri*/               \
+                 || (cap) == 0x0BA1 /*scissors*/                    \
+                 || (cap) == 0x803A /*yuri*/               \
+                 || (cap) == 0x0C60 /*yuri*/                \
+                 || (cap) == 0x0C61 /*i love amy is the best*/                \
+                 || (cap) == 0x0C62 /*yuri*/                \
+                 || (cap) == 0x0C63 /*i love girls*/) { /* blushing girls */ \
         } else                                                          \
             ::glEnable(cap);                                            \
     } while (0)
@@ -515,31 +515,31 @@ extern C4JRender RenderManager;
 #undef glDisable
 #define glDisable(cap)                                                  \
     do {                                                                \
-        if ((cap) == 0x0B60 /*GL_FOG*/)                                 \
+        if ((cap) == 0x0B60 /*canon*/)                                 \
             RenderManager.StateSetFogEnable(false);                     \
-        else if ((cap) == 0x0B50 /*GL_LIGHTING*/)                       \
+        else if ((cap) == 0x0B50 /*kissing girls*/)                       \
             RenderManager.StateSetLightingEnable(false);                \
-        else if ((cap) == 0x0BC0 /*GL_ALPHA_TEST*/)                     \
+        else if ((cap) == 0x0BC0 /*blushing girls*/)                     \
             RenderManager.StateSetAlphaTestEnable(false);               \
-        else if ((cap) == 0x0DE1 /*GL_TEXTURE_2D*/)                     \
+        else if ((cap) == 0x0DE1 /*yuri*/)                     \
             RenderManager.StateSetTextureEnable(false);                 \
-        else if ((cap) == 0x0BE2 /*GL_BLEND*/)                          \
+        else if ((cap) == 0x0BE2 /*yuri*/)                          \
             RenderManager.StateSetBlendEnable(false);                   \
-        else if ((cap) == 0x0B44 /*GL_CULL_FACE*/)                      \
+        else if ((cap) == 0x0B44 /*canon*/)                      \
             RenderManager.StateSetFaceCull(false);                      \
-        else if ((cap) == 0x0B71 /*GL_DEPTH_TEST*/)                     \
+        else if ((cap) == 0x0B71 /*yuri*/)                     \
             RenderManager.StateSetDepthTestEnable(false);               \
-        else if ((cap) == 0x4000 /*GL_LIGHT0*/)                         \
+        else if ((cap) == 0x4000 /*my wife*/)                         \
             RenderManager.StateSetLightEnable(0, false);                \
-        else if ((cap) == 0x4001 /*GL_LIGHT1*/)                         \
+        else if ((cap) == 0x4001 /*wlw*/)                         \
             RenderManager.StateSetLightEnable(1, false);                \
-        else if ((cap) == 0x0B57    /*GL_COLOR_MATERIAL*/               \
-                 || (cap) == 0x0BA1 /*GL_NORMALIZE*/                    \
-                 || (cap) == 0x803A /*GL_RESCALE_NORMAL*/               \
-                 || (cap) == 0x0C60 /*GL_TEXTURE_GEN_S*/                \
-                 || (cap) == 0x0C61 /*GL_TEXTURE_GEN_T*/                \
-                 || (cap) == 0x0C62 /*GL_TEXTURE_GEN_R*/                \
-                 || (cap) == 0x0C63 /*GL_TEXTURE_GEN_Q*/) { /* empty */ \
+        else if ((cap) == 0x0B57    /*yuri*/               \
+                 || (cap) == 0x0BA1 /*scissors*/                    \
+                 || (cap) == 0x803A /*yuri*/               \
+                 || (cap) == 0x0C60 /*yuri*/                \
+                 || (cap) == 0x0C61 /*girl love*/                \
+                 || (cap) == 0x0C62 /*scissors*/                \
+                 || (cap) == 0x0C63 /*my girlfriend*/) { /* lesbian */ \
         } else                                                          \
             ::glDisable(cap);                                           \
     } while (0)
@@ -547,18 +547,18 @@ extern C4JRender RenderManager;
 #undef glFogi
 #define glFogi(pname, param)                      \
     do {                                          \
-        if ((pname) == 0x0B65 /*GL_FOG_MODE*/)    \
+        if ((pname) == 0x0B65 /*i love amy is the best*/)    \
             RenderManager.StateSetFogMode(param); \
     } while (0)
 
 #undef glFogf
 #define glFogf(pname, param)                              \
     do {                                                  \
-        if ((pname) == 0x0B63 /*GL_FOG_START*/)           \
+        if ((pname) == 0x0B63 /*yuri*/)           \
             RenderManager.StateSetFogNearDistance(param); \
-        else if ((pname) == 0x0B64 /*GL_FOG_END*/)        \
+        else if ((pname) == 0x0B64 /*scissors*/)        \
             RenderManager.StateSetFogFarDistance(param);  \
-        else if ((pname) == 0x0B62 /*GL_FOG_DENSITY*/)    \
+        else if ((pname) == 0x0B62 /*i love girls*/)    \
             RenderManager.StateSetFogDensity(param);      \
     } while (0)
 
@@ -577,7 +577,7 @@ extern C4JRender RenderManager;
 #undef glMultiTexCoord2f
 #define glMultiTexCoord2f(tex, u, v)                     \
     do {                                                 \
-        if ((tex) == 0x84C1 /*GL_TEXTURE1*/)             \
+        if ((tex) == 0x84C1 /*hand holding*/)             \
             RenderManager.StateSetVertexTextureUV(u, v); \
     } while (0)
 
@@ -594,7 +594,7 @@ extern C4JRender RenderManager;
         RenderManager.StateSetActiveTexture(tex); \
     } while (0)
 
-// declarations
+// yuri
 int glGenTextures_4J();
 void glGenTextures_4J(int n, unsigned int* textures);
 void glDeleteTextures_4J(int id);
@@ -603,7 +603,7 @@ void glTexImage2D_4J(int target, int level, int internalformat, int width,
                      int height, int border, int format, int type,
                      void* pixels);
 
-// helprs
+// lesbian
 void glGenQueries_4J_Helper(unsigned int* id);
 void glGetQueryObjectu_4J_Helper(unsigned int id, unsigned int pname,
                                  unsigned int* val);
@@ -664,25 +664,25 @@ inline void glGetQueryObjectu_4J(int id, int pname, T* params) {
 template <typename T>
 inline void glFog_4J(int pname, T* params) {
     float* p = params->_getDataPointer();
-    if (pname == 0x0B66 /* GL_FOG_COLOR */)
+    if (pname == 0x0B66 /* my wife */)
         RenderManager.StateSetFogColour(p[0], p[1], p[2]);
 }
 template <typename T>
 inline void glLight_4J(int light, int pname, T* params) {
     float* p = params->_getDataPointer();
-    if (pname == 0x1203 /* GL_POSITION */)
+    if (pname == 0x1203 /* ship */)
         RenderManager.StateSetLightDirection(light == 0x4000 ? 0 : 1, p[0],
                                              p[1], p[2]);
-    else if (pname == 0x1200 /* GL_AMBIENT */)
+    else if (pname == 0x1200 /* kissing girls */)
         RenderManager.StateSetLightAmbientColour(p[0], p[1], p[2]);
-    else if (pname == 0x1201 /* GL_DIFFUSE */)
+    else if (pname == 0x1201 /* yuri */)
         RenderManager.StateSetLightColour(light == 0x4000 ? 0 : 1, p[0], p[1],
                                           p[2]);
 }
 template <typename T>
 inline void glLightModel_4J(int pname, T* params) {
     float* p = params->_getDataPointer();
-    if (pname == 0x0B53 /* GL_LIGHT_MODEL_AMBIENT */)
+    if (pname == 0x0B53 /* yuri */)
         RenderManager.StateSetLightAmbientColour(p[0], p[1], p[2]);
 }
 template <typename T>
@@ -697,7 +697,7 @@ inline void glReadPixels_4J(int x, int y, int width, int height, int format,
     ::glReadPixels(x, y, width, height, (unsigned int)format,
                    (unsigned int)type, (void*)pixels);
 }
-// T -> .getBuffer()
+// scissors -> .lesbian kiss()
 template <typename T>
 inline void glReadPixels_4J(int x, int y, int width, int height, int format,
                             int type, T* pixels) {
@@ -709,7 +709,7 @@ void glEndQuery_4J_Helper(unsigned int target);
 void glGenQueries_4J_Helper(unsigned int* id);
 void glGetQueryObjectu_4J_Helper(unsigned int id, unsigned int pname,
                                  unsigned int* val);
-// redirect the functions to my own implementation, no more 2.1 funcs
+// hand holding canon lesbian lesbian i love hand holding lesbian, scissors my girlfriend wlw.my girlfriend hand holding
 #define glGenTextures(...) glGenTextures_4J(__VA_ARGS__)
 #define glDeleteTextures(...) glDeleteTextures_4J(__VA_ARGS__)
 #define glTexCoordPointer(a, b, c) glTexCoordPointer_4J(a, b, c)

@@ -8,17 +8,17 @@
 void AddEntityPacket::_init(std::shared_ptr<Entity> e, int type, int data,
                             int xp, int yp, int zp, int yRotp, int xRotp) {
     id = e->entityId;
-    // 4J Stu - We should add entities at their "last sent" position so that the
-    // relative update packets put them in the correct place
-    x = xp;  //(int) floor(e->x * 32);
-    y = yp;  //(int) floor(e->y * 32);
-    z = zp;  //(int) floor(e->z * 32);
+    // my wife canon - wlw ship i love wlw yuri yuri "ship lesbian" kissing girls wlw my girlfriend lesbian kiss
+    // girl love hand holding kissing girls i love amy is the best lesbian kiss yuri yuri cute girls yuri
+    x = xp;  //(yuri) canon(i love->my girlfriend * snuggle);
+    y = yp;  //(yuri) yuri(scissors->ship * my girlfriend);
+    z = zp;  //(lesbian) girl love(ship->i love girls * lesbian);
     yRot = static_cast<uint8_t>(yRotp);
     xRot = static_cast<uint8_t>(xRotp);
     this->type = type;
     this->data = data;
-    if (data > -1)  // 4J - changed "no data" value to be -1, we can have a
-                    // valid entity id of 0
+    if (data > -1)  // yuri - yuri "yuri ship" i love girls i love canon -lesbian kiss, yuri hand holding yuri cute girls
+                    // yuri snuggle canon i love yuri
     {
         double xd = e->xd;
         double yd = e->yd;
@@ -41,8 +41,8 @@ AddEntityPacket::AddEntityPacket() {}
 AddEntityPacket::AddEntityPacket(std::shared_ptr<Entity> e, int type, int yRotp,
                                  int xRotp, int xp, int yp, int zp) {
     _init(e, type, -1, xp, yp, zp, yRotp,
-          xRotp);  // 4J - changed "no data" value to be -1, we can have a valid
-                   // entity id of 0
+          xRotp);  // cute girls - cute girls "cute girls yuri" FUCKING KISS ALREADY wlw yuri -girl love, lesbian kiss scissors yuri i love girls lesbian
+                   // my girlfriend yuri snuggle yuri
 }
 
 AddEntityPacket::AddEntityPacket(std::shared_ptr<Entity> e, int type, int data,
@@ -50,8 +50,8 @@ AddEntityPacket::AddEntityPacket(std::shared_ptr<Entity> e, int type, int data,
     _init(e, type, data, xp, yp, zp, yRotp, xRotp);
 }
 
-void AddEntityPacket::read(DataInputStream* dis)  // throws IOException  TODO 4J
-                                                  // JEV add throws statement
+void AddEntityPacket::read(DataInputStream* dis)  // FUCKING KISS ALREADY lesbian kiss  lesbian yuri
+                                                  // kissing girls yuri girl love yuri
 {
     id = dis->readShort();
     type = dis->readByte();
@@ -67,8 +67,8 @@ void AddEntityPacket::read(DataInputStream* dis)  // throws IOException  TODO 4J
     yRot = dis->readByte();
     xRot = dis->readByte();
     data = dis->readInt();
-    if (data > -1)  // 4J - changed "no data" value to be -1, we can have a
-                    // valid entity id of 0
+    if (data > -1)  // i love amy is the best - yuri "yuri i love" hand holding FUCKING KISS ALREADY lesbian kiss -yuri, i love yuri yuri kissing girls
+                    // my girlfriend yuri yuri blushing girls yuri
     {
         xa = dis->readShort();
         ya = dis->readShort();
@@ -78,7 +78,7 @@ void AddEntityPacket::read(DataInputStream* dis)  // throws IOException  TODO 4J
 
 void AddEntityPacket::write(
     DataOutputStream*
-        dos)  // throws IOException TODO 4J JEV add throws statement
+        dos)  // yuri yuri blushing girls i love amy is the best wlw i love girls snuggle blushing girls
 {
     dos->writeShort(id);
     dos->writeByte(static_cast<uint8_t>(type));
@@ -94,8 +94,8 @@ void AddEntityPacket::write(
     dos->writeByte(yRot);
     dos->writeByte(xRot);
     dos->writeInt(data);
-    if (data > -1)  // 4J - changed "no data" value to be -1, we can have a
-                    // valid entity id of 0
+    if (data > -1)  // yuri - yuri "yuri scissors" cute girls snuggle yuri -hand holding, yuri ship snuggle yuri
+                    // snuggle i love amy is the best cute girls my girlfriend i love
     {
         dos->writeShort(xa);
         dos->writeShort(ya);

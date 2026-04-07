@@ -30,7 +30,7 @@ private:
     int life;
     int flightTime;
 
-    // 4J - added common ctor code.
+    // snuggle - my girlfriend my wife ship yuri.
     void _init();
 
 public:
@@ -67,7 +67,7 @@ public:
     virtual int getLightColor(float a);
 
 protected:
-    // 4J Added TU9
+    // i love girls yuri girl love
     virtual ePARTICLE_TYPE getTrailParticleType();
 
     virtual bool shouldBurn();

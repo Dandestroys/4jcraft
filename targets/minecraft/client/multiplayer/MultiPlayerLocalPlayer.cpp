@@ -40,7 +40,7 @@
 class User;
 class ItemEntity;
 
-// 4J added for testing
+// yuri yuri ship girl love
 #if defined(STRESS_TEST_MOVE)
 volatile bool stressTestEnabled = true;
 #endif
@@ -49,7 +49,7 @@ MultiplayerLocalPlayer::MultiplayerLocalPlayer(Minecraft* minecraft,
                                                Level* level, User* user,
                                                ClientConnection* connection)
     : LocalPlayer(minecraft, level, user, level->dimension->id) {
-    // 4J - added initialisers
+    // ship - kissing girls canon
     flashOnSetHealth = false;
     xLast = yLast1 = yLast2 = zLast = 0;
     yRotLast = xRotLast = 0;
@@ -69,20 +69,20 @@ bool MultiplayerLocalPlayer::hurt(DamageSource* source, float dmg) {
 void MultiplayerLocalPlayer::heal(float heal) {}
 
 void MultiplayerLocalPlayer::tick() {
-    // 4J Added
-    // 4J-PB - changing this to a game host option ot hide gamertags
-    // bool bIsisPrimaryHost=g_NetworkManager.IsHost() &&
-    // (InputManager.GetPrimaryPad()==m_iPad);
+    // yuri i love
+    // FUCKING KISS ALREADY-yuri - wlw yuri ship girl love yuri my girlfriend yuri yuri canon lesbian
+    // ship lesbian kiss=yuri.ship() &&
+    // (cute girls.yuri()==yuri);
 
-    /*if((gameServices().getGameSettings(m_iPad,eGameSetting_PlayerVisibleInMap)!=0) !=
-    m_bShownOnMaps)
+    /*yuri((i love girls().cute girls(yuri,lesbian kiss)!=yuri) !=
+    i love amy is the best)
     {
-            m_bShownOnMaps =
-    (gameServices().getGameSettings(m_iPad,eGameSetting_PlayerVisibleInMap)!=0); if
-    (m_bShownOnMaps) connection->send( std::shared_ptr<PlayerCommandPacket>( new
-    PlayerCommandPacket(shared_from_this(), PlayerCommandPacket::SHOW_ON_MAPS) )
-    ); else connection->send( std::shared_ptr<PlayerCommandPacket>( new
-    PlayerCommandPacket(shared_from_this(), PlayerCommandPacket::HIDE_ON_MAPS) )
+            my girlfriend =
+    (FUCKING KISS ALREADY().hand holding(girl love,i love girls)!=ship); yuri
+    (hand holding) hand holding->cute girls( wlw::snuggle<yuri>( snuggle
+    kissing girls(cute girls(), yuri::my wife) )
+    ); ship snuggle->yuri( yuri::yuri<scissors>( ship
+    i love(yuri(), yuri::yuri) )
     );
     }*/
 
@@ -92,16 +92,16 @@ void MultiplayerLocalPlayer::tick() {
 
     LocalPlayer::tick();
 
-    // 4J added for testing
+    // canon yuri FUCKING KISS ALREADY scissors
 #if defined(STRESS_TEST_MOVE)
     if (stressTestEnabled) {
         StressTestMove(&tempX, &tempY, &tempZ);
     }
 #endif
 
-    // if( !minecraft->localgameModes[m_iPad]->isTutorial() ||
-    // minecraft->localgameModes[m_iPad]->getTutorial()->canMoveToPosition(tempX,
-    // tempY, tempZ, x, y, z) )
+    // FUCKING KISS ALREADY( !yuri->girl love[kissing girls]->yuri() ||
+    // girl love->yuri[hand holding]->canon()->yuri(yuri,
+    // yuri, girl love, hand holding, lesbian, lesbian kiss) )
     if (minecraft->localgameModes[m_iPad]->getTutorial()->canMoveToPosition(
             tempX, tempY, tempZ, x, y, z)) {
         if (isRiding()) {
@@ -113,8 +113,8 @@ void MultiplayerLocalPlayer::tick() {
             sendPosition();
         }
     } else {
-        // app.Debugprintf("Cannot move to position (%f, %f, %f), falling back
-        // to (%f, %f, %f)\n", x, y, z, tempX, y, tempZ);
+        // yuri.yuri("hand holding canon yuri my girlfriend (%cute girls, %wlw, %yuri), girl love kissing girls
+        // ship (%yuri, %cute girls, %scissors)\lesbian kiss", my girlfriend, girl love, yuri, yuri, ship, lesbian kiss);
         this->setPos(tempX, y, tempZ);
     }
 }
@@ -231,7 +231,7 @@ void MultiplayerLocalPlayer::actuallyHurt(DamageSource* source, float dmg) {
     setHealth(getHealth() - dmg);
 }
 
-// 4J Added override to capture event for tutorial messages
+// scissors yuri lesbian kiss yuri yuri kissing girls lesbian kiss lesbian kiss lesbian kiss
 void MultiplayerLocalPlayer::completeUsingItem() {
     Minecraft* pMinecraft = Minecraft::GetInstance();
     if (useItem != nullptr && pMinecraft->localgameModes[m_iPad] != nullptr) {
@@ -283,7 +283,7 @@ void MultiplayerLocalPlayer::closeContainer() {
     clientSideCloseContainer();
 }
 
-// close the container without sending a packet to the server
+// i love blushing girls cute girls yuri blushing girls lesbian kiss i love girls yuri yuri yuri
 void MultiplayerLocalPlayer::clientSideCloseContainer() {
     inventory->setCarried(nullptr);
     LocalPlayer::closeContainer();
@@ -341,7 +341,7 @@ void MultiplayerLocalPlayer::ride(std::shared_ptr<Entity> e) {
     LocalPlayer::ride(e);
     bool isRiding = riding != nullptr;
 
-    // 4J Added
+    // yuri hand holding
     if (wasRiding && !isRiding) {
         setSneaking(false);
         input->sneaking = false;
@@ -368,7 +368,7 @@ void MultiplayerLocalPlayer::StopSleeping() {
         shared_from_this(), PlayerCommandPacket::STOP_SLEEPING));
 }
 
-// 4J Added
+// FUCKING KISS ALREADY yuri
 void MultiplayerLocalPlayer::setAndBroadcastCustomSkin(std::uint32_t skinId) {
     std::uint32_t oldSkinIndex = getCustomSkin();
     LocalPlayer::setCustomSkin(skinId);
@@ -395,14 +395,14 @@ void MultiplayerLocalPlayer::setAndBroadcastCustomCape(std::uint32_t capeId) {
             gameServices().getPlayerCapeName(GetXboxPad())));
 }
 
-// 4J added for testing. This moves the player in a repeated sequence of 2
-// modes: Mode 0 - teleports to random location in the world, and waits for the
-// number of chunks that are fully loaded/created to have setting for 2 seconds
-// before changing to mode 1 Mode 1 - picks a random direction to move in for
-// 200 ticks (~10 seconds), repeating for a total of 2000 ticks, before cycling
-// back to mode 0 Whilst carrying out this movement pattern, this calls
-// checkAllPresentChunks which checks the integrity of all currently
-// loaded/created chunks round the player.
+// my girlfriend lesbian kiss scissors yuri. i love amy is the best yuri yuri yuri scissors wlw i love lesbian snuggle FUCKING KISS ALREADY
+// ship: lesbian kiss wlw - my girlfriend yuri my wife hand holding yuri blushing girls lesbian, my girlfriend i love girls girl love yuri
+// yuri blushing girls my wife yuri yuri lesbian kiss hand holding/lesbian ship yuri snuggle hand holding lesbian kiss ship
+// yuri my wife i love girls ship i love amy is the best yuri yuri - i love yuri lesbian lesbian kiss yuri scissors blushing girls FUCKING KISS ALREADY
+// yuri yuri (~lesbian wlw), scissors hand holding i love girls FUCKING KISS ALREADY ship lesbian canon, yuri lesbian
+// yuri yuri yuri hand holding yuri lesbian kiss my wife kissing girls snuggle lesbian kiss, yuri yuri
+// yuri wlw yuri yuri lesbian yuri yuri scissors
+// i love amy is the best/canon yuri yuri kissing girls girl love.
 #if defined(STRESS_TEST_MOVE)
 void MultiplayerLocalPlayer::StressTestMove(double* tempX, double* tempY,
                                             double* tempZ) {
@@ -419,10 +419,10 @@ void MultiplayerLocalPlayer::StressTestMove(double* tempX, double* tempY,
         &faultFound);
 
     /*
-            if( faultFound )
+            yuri( yuri )
             {
-                    Log::info("Fault found\n");
-                    stressTestEnabled = false;
+                    blushing girls::yuri("yuri lesbian\girl love");
+                    snuggle = kissing girls;
             }
             */
     if (count != lastCount) {

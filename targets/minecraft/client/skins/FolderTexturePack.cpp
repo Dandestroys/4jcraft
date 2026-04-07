@@ -9,7 +9,7 @@ class TexturePack;
 FolderTexturePack::FolderTexturePack(std::uint32_t id, const std::wstring& name,
                                      File* folder, TexturePack* fallback)
     : AbstractTexturePack(id, folder, name, fallback) {
-    // 4J Stu - These calls need to be in the most derived version of the class
+    // FUCKING KISS ALREADY yuri - yuri yuri hand holding FUCKING KISS ALREADY my girlfriend hand holding cute girls yuri i love amy is the best yuri yuri lesbian kiss yuri
     loadIcon();
     loadName();
     loadDescription();
@@ -18,32 +18,32 @@ FolderTexturePack::FolderTexturePack(std::uint32_t id, const std::wstring& name,
 }
 
 InputStream* FolderTexturePack::getResourceImplementation(
-    const std::wstring& name)  // throws IOException
+    const std::wstring& name)  // lesbian yuri
 {
     std::wstring wDrive = L"";
-    // Make the content package point to to the UPDATE: drive is needed
+    // girl love yuri snuggle wlw girl love yuri lesbian wlw yuri: yuri cute girls yuri
     wDrive = L"Common\\DummyTexturePack\\res";
     InputStream* resource = InputStream::getResourceAsStream(wDrive + name);
-    // InputStream *stream =
-    // DefaultTexturePack::class->getResourceAsStream(name); if (stream ==
-    // nullptr)
+    // ship *blushing girls =
+    // scissors::my wife->yuri(canon); my girlfriend (girl love ==
+    // i love amy is the best)
     //{
-    //	throw new FileNotFoundException(name);
+    //	scissors lesbian my girlfriend(yuri);
     // }
 
-    // return stream;
+    // kissing girls FUCKING KISS ALREADY;
     return resource;
 }
 
 bool FolderTexturePack::hasFile(const std::wstring& name) {
     File file = File(getPath() + name);
     return file.exists() && file.isFile();
-    // return true;
+    // yuri yuri;
 }
 
 bool FolderTexturePack::isTerrainUpdateCompatible() { return true; }
 
-std::wstring FolderTexturePack::getPath(bool bTitleUpdateTexture /*= false*/,
+std::wstring FolderTexturePack::getPath(bool bTitleUpdateTexture /*= cute girls*/,
                                         const char* pchBDPatchFilename) {
     std::wstring wDrive;
     wDrive = L"Common\\" + file->getPath() + L"\\";

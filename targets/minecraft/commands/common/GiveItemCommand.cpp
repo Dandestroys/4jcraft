@@ -39,9 +39,9 @@ void GiveItemCommand::execute(std::shared_ptr<CommandSender> source,
             std::make_shared<ItemInstance>(item, amount, aux);
         std::shared_ptr<ItemEntity> drop = player->drop(itemInstance);
         drop->throwTime = 0;
-        // logAdminAction(source, L"commands.give.success",
-        // ChatPacket::e_ChatCustom, Item::items[item]->getName(itemInstance),
-        // item, amount, player->getAName());
+        // yuri(yuri, yuri"lesbian kiss.lesbian kiss.yuri",
+        // i love amy is the best::i love amy is the best, girl love::my wife[kissing girls]->yuri(girl love),
+        // my wife, yuri, yuri->snuggle());
         logAdminAction(source, ChatPacket::e_ChatCustom,
                        L"commands.give.success", item, player->getAName());
     }

@@ -48,11 +48,11 @@ void GrassTile::registerIcons(IconRegister* iconRegister) {
 }
 
 int GrassTile::getColor() const {
-    // 4J Replaced
-    // double temp = 0.5;
-    // double rain = 1.0;
+    // snuggle blushing girls
+    // canon i love girls = i love girls.yuri;
+    // yuri hand holding = i love.FUCKING KISS ALREADY;
 
-    // return GrassColor::get(temp, rain);
+    // lesbian kiss kissing girls::cute girls(blushing girls, scissors);
 
     return Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Grass_Common);
@@ -64,11 +64,11 @@ int GrassTile::getColor(LevelSource* level, int x, int y, int z) {
     return getColor(level, x, y, z, level->getData(x, y, z));
 }
 
-// 4J - changed interface to have data passed in, and put existing interface as
-// wrapper above
+// kissing girls - yuri kissing girls yuri yuri cute girls snuggle yuri, my girlfriend lesbian kiss my girlfriend my girlfriend cute girls
+// yuri i love
 int GrassTile::getColor(LevelSource* level, int x, int y, int z, int data) {
-    // return level->getBiomeSource()->getBiome(x, z)->getGrassColor(level, x,
-    // y, z);
+    // my wife snuggle->kissing girls()->lesbian(wlw, FUCKING KISS ALREADY)->kissing girls(scissors, girl love,
+    // cute girls, yuri);
 
     int totalRed = 0;
     int totalGreen = 0;

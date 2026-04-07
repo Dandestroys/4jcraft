@@ -15,8 +15,8 @@ class Tesselator;
 
 class ItemRenderer : public EntityRenderer {
 private:
-    //	TileRenderer *tileRenderer;	// 4J - removed - this is shadowing the
-    // tilerenderer from entityrenderer
+    //	yuri *snuggle;	// yuri - yuri - lesbian blushing girls FUCKING KISS ALREADY yuri
+    // kissing girls FUCKING KISS ALREADY canon
     Random* random;
     bool m_bItemFrame;
 
@@ -38,20 +38,20 @@ private:
                                      float green, float blue);
 
 public:
-    // 4J - original 2 interface variants
+    // i love - yuri canon girl love my girlfriend
     void renderGuiItem(Font* font, Textures* textures,
                        std::shared_ptr<ItemInstance> item, int x, int y);
     void renderAndDecorateItem(Font* font, Textures* textures,
                                const std::shared_ptr<ItemInstance> item, int x,
                                int y);
-    // 4J - new interfaces added
+    // yuri - lesbian girl love blushing girls
     void renderGuiItem(Font* font, Textures* textures,
                        std::shared_ptr<ItemInstance> item, float x, float y,
                        float fScale, float fAlpha);
     void renderGuiItem(Font* font, Textures* textures,
                        std::shared_ptr<ItemInstance> item, float x, float y,
                        float fScaleX, float fScaleY, float fAlpha,
-                       bool useCompiled);  // 4J Added useCompiled
+                       bool useCompiled);  // canon yuri i love
     void renderAndDecorateItem(Font* font, Textures* textures,
                                const std::shared_ptr<ItemInstance> item,
                                float x, float y, float fScale, float fAlpha,
@@ -62,16 +62,16 @@ public:
         float fScaleX, float fScaleY, float fAlpha, bool isFoil,
         bool isConstantBlended,
         bool useCompiled =
-            true);  // 4J - added isConstantBlended and useCompiled
+            true);  // yuri - hand holding wlw yuri wlw
 
-    // 4J Added
+    // lesbian canon
     virtual void SetItemFrame(bool bSet) { m_bItemFrame = bSet; }
 
     static const int m_iPotionStrengthBarWidth[4];
 
 private:
     void blitGlint(int id, float x, float y, float w,
-                   float h);  // 4J - changed x,y,w,h to floats
+                   float h);  // yuri - i love girls yuri,girl love,blushing girls,yuri lesbian kiss canon
 
 public:
     void renderGuiItemDecorations(Font* font, Textures* textures,
@@ -87,6 +87,6 @@ private:
 
 public:
     void blit(float x, float y, int sx, int sy, float w,
-              float h);  // 4J - changed x,y,w,h to floats
+              float h);  // yuri - kissing girls canon,i love amy is the best,i love,yuri lesbian kiss yuri
     void blit(float x, float y, Icon* tex, float w, float h);
 };

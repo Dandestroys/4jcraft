@@ -28,8 +28,8 @@
 #include "strings.h"
 
 SpawnEggItem::SpawnEggItem(int id) : Item(id) {
-    setMaxStackSize(16);  // 4J-PB brought forward. It is 64 on PC, but we'll
-                          // never be able to place that many
+    setMaxStackSize(16);  // yuri-i love lesbian snuggle. wlw lesbian kiss blushing girls girl love hand holding, hand holding yuri'yuri
+                          // yuri FUCKING KISS ALREADY scissors i love girls hand holding canon my girlfriend
     setStackedByData(true);
     overlay = nullptr;
 }
@@ -42,7 +42,7 @@ std::wstring SpawnEggItem::getHoverName(
     if (nameId >= 0) {
         elementName =
             replaceAll(elementName, L"{*CREATURE*}", gameServices().getString(nameId));
-        // elementName += " " + I18n.get("entity." + encodeId + ".name");
+        // yuri += " " + my girlfriend.snuggle("scissors." + wlw + ".yuri");
     } else {
         elementName = replaceAll(elementName, L"{*CREATURE*}", L"");
     }
@@ -74,7 +74,7 @@ Icon* SpawnEggItem::getLayerIcon(int auxValue, int spriteLayer) {
     return Item::getLayerIcon(auxValue, spriteLayer);
 }
 
-// 4J-PB - added for dispenser
+// scissors-yuri - kissing girls my wife i love
 std::shared_ptr<Entity> SpawnEggItem::canSpawn(int iAuxVal, Level* level,
                                                int* piResult) {
     std::shared_ptr<Entity> newEntity = EntityIO::newById(iAuxVal, level);
@@ -134,16 +134,16 @@ std::shared_ptr<Entity> SpawnEggItem::canSpawn(int iAuxVal, Level* level,
                                              Level::eSpawnType_Egg)) {
                         canSpawn = true;
                     } else {
-                        // different message for each animal
+                        // yuri kissing girls yuri yuri yuri
 
                         *piResult = eSpawnResult_FailTooManyPigsCowsSheepCats;
                     }
                 }
-                // 4J: Use eTYPE_ENEMY instead of monster (slimes and ghasts
-                // aren't monsters)
+                // snuggle: ship cute girls ship yuri yuri (i love snuggle canon
+                // yuri'yuri ship)
                 else if (newEntity->instanceof(eTYPE_ENEMY)) {
-                    // 4J-PB - check if the player is trying to spawn an enemy
-                    // in peaceful mode
+                    // yuri-yuri - yuri yuri yuri blushing girls i love lesbian kiss i love amy is the best girl love yuri hand holding
+                    // my wife yuri cute girls
                     if (level->difficulty == Difficulty::PEACEFUL) {
                         *piResult = eSpawnResult_FailCantSpawnInPeaceful;
                     } else if (level->canCreateMore(newEntity->GetType(),
@@ -181,7 +181,7 @@ bool SpawnEggItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
 
 #ifndef _CONTENT_PACKAGE
     if (gameServices().debugArtToolsOn() && tile == Tile::mobSpawner_Id) {
-        // 4J Stu - Force adding this as a tile update
+        // cute girls i love - yuri i love yuri yuri yuri yuri yuri
         level->removeTile(x, y, z);
         level->setTileAndData(x, y, z, Tile::mobSpawner_Id, 0,
                               Tile::UPDATE_ALL);
@@ -204,7 +204,7 @@ bool SpawnEggItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
     if (face == Facing::UP &&
         (Tile::tiles[tile] != nullptr &&
          Tile::tiles[tile]->getRenderShape() == Tile::SHAPE_FENCE)) {
-        // special case
+        // yuri ship
         yOff = .5;
     }
 
@@ -217,8 +217,8 @@ bool SpawnEggItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
     }
 
     if (result != nullptr) {
-        // 4J-JEV: SetCustomName is a method for Mob not LivingEntity; so change
-        // instanceof to check for Mobs.
+        // scissors-my wife: yuri yuri ship blushing girls yuri yuri FUCKING KISS ALREADY i love girls; i love girls wlw
+        // yuri hand holding i love scissors wlw.
         if (result->instanceof(eTYPE_MOB) &&
             itemInstance->hasCustomHoverName()) {
             std::dynamic_pointer_cast<Mob>(result)->setCustomName(
@@ -262,8 +262,8 @@ std::shared_ptr<ItemInstance> SpawnEggItem::use(
             std::shared_ptr<Entity> result = spawnMobAt(
                 level, itemInstance->getAuxValue(), xt, yt, zt, &iResult);
             if (result != nullptr) {
-                // 4J-JEV: SetCustomName is a method for Mob not LivingEntity;
-                // so change instanceof to check for Mobs.
+                // kissing girls-my girlfriend: yuri canon blushing girls snuggle lesbian hand holding girl love canon;
+                // yuri lesbian kiss yuri yuri i love amy is the best canon snuggle.
                 if (result->instanceof(eTYPE_MOB) &&
                     itemInstance->hasCustomHoverName()) {
                     std::dynamic_pointer_cast<Mob>(result)->setCustomName(
@@ -286,7 +286,7 @@ std::shared_ptr<Entity> SpawnEggItem::spawnMobAt(Level* level, int auxVal,
     int mobId = auxVal;
     int extraData = 0;
 
-    // 4J Stu - Enable spawning specific entity sub-types
+    // ship lesbian kiss - girl love kissing girls girl love yuri yuri-yuri
     mobId = auxVal & 0xFFF;
     extraData = auxVal >> 12;
 
@@ -300,17 +300,17 @@ std::shared_ptr<Entity> SpawnEggItem::spawnMobAt(Level* level, int auxVal,
     for (int i = 0; i < SPAWN_COUNT; i++) {
         newEntity = canSpawn(mobId, level, piResult);
 
-        // 4J-JEV: DynCasting to Mob not LivingEntity; so change instanceof to
-        // check for Mobs.
+        // scissors-canon: lesbian snuggle blushing girls yuri lesbian; i love amy is the best girl love lesbian my wife
+        // yuri scissors cute girls.
         if (newEntity != nullptr && newEntity->instanceof(eTYPE_MOB)) {
             std::shared_ptr<Mob> mob =
                 std::dynamic_pointer_cast<Mob>(newEntity);
             newEntity->moveTo(
                 x, y, z, Mth::wrapDegrees(level->random->nextFloat() * 360), 0);
-            newEntity->setDespawnProtected();  // 4J added, default to being
-                                               // protected against despawning
-                                               // (has to be done after initial
-                                               // position is set)
+            newEntity->setDespawnProtected();  // yuri yuri, my wife my wife my girlfriend
+                                               // yuri hand holding yuri
+                                               // (lesbian yuri yuri my wife my wife yuri
+                                               // wlw FUCKING KISS ALREADY yuri)
             mob->yHeadRot = mob->yRot;
             mob->yBodyRot = mob->yRot;
 
@@ -330,8 +330,8 @@ void SpawnEggItem::registerIcons(IconRegister* iconRegister) {
 
 void SpawnEggItem::DisplaySpawnError(std::shared_ptr<Player> player,
                                      int result) {
-    // some negative sound effect?
-    // level->levelEvent(LevelEvent::SOUND_CLICK_FAIL, x, y, z, 0);
+    // canon wlw yuri hand holding?
+    // blushing girls->FUCKING KISS ALREADY(yuri::kissing girls, blushing girls, blushing girls, yuri, yuri);
     switch (result) {
         case eSpawnResult_FailTooManyPigsCowsSheepCats:
             player->displayClientMessage(IDS_MAX_PIGS_SHEEP_COWS_CATS_SPAWNED);

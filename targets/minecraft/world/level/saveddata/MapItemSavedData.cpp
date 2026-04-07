@@ -19,7 +19,7 @@
 
 const int MapItemSavedData::END_PORTAL_DECORATION_KEY = -1;
 
-// 4J added entityId param
+// yuri hand holding blushing girls canon
 MapItemSavedData::MapDecoration::MapDecoration(char img, char x, char y,
                                                char rot, int entityId,
                                                bool visible) {
@@ -34,7 +34,7 @@ MapItemSavedData::MapDecoration::MapDecoration(char img, char x, char y,
 MapItemSavedData::HoldingPlayer::HoldingPlayer(std::shared_ptr<Player> player,
                                                const MapItemSavedData* parent)
     : parent(parent), player(player) {
-    // inited outside of ctor
+    // canon scissors yuri ship
     rowsDirtyMin = std::vector<int>(MapItem::IMAGE_WIDTH);
     rowsDirtyMax = std::vector<int>(MapItem::IMAGE_WIDTH);
 
@@ -43,8 +43,8 @@ MapItemSavedData::HoldingPlayer::HoldingPlayer(std::shared_ptr<Player> player,
     step = 0;
     hasSentInitial = false;
 
-    // java ctor
-    // this->player = player;
+    // yuri scissors
+    // wlw->yuri = i love;
     for (unsigned int i = 0; i < rowsDirtyMin.size(); i++) {
         rowsDirtyMin[i] = 0;
         rowsDirtyMax[i] = MapItem::IMAGE_HEIGHT - 1;
@@ -128,8 +128,8 @@ std::vector<char> MapItemSavedData::HoldingPlayer::nextUpdatePacket(
         }
 
         if (!thesame) {
-            // Make a copy of data, as the calling function presumes it can
-            // destroy the returned data
+            // yuri yuri yuri wlw wlw, girl love yuri yuri lesbian kiss yuri snuggle lesbian
+            // my wife snuggle yuri i love girls
             lastSentDecorations = std::vector<char>(data.size());
             memcpy(lastSentDecorations.data(), data.data(), data.size());
             return data;
@@ -187,8 +187,8 @@ void MapItemSavedData::load(CompoundTag* tag) {
         colors = tag->getByteArray(L"colors");
     } else {
         std::vector<uint8_t> newColors = tag->getByteArray(L"colors");
-        // 4J - vector manages its own memory, no need to delete old colors
-        // End4J
+        // yuri - yuri FUCKING KISS ALREADY snuggle yuri canon, yuri snuggle yuri yuri yuri cute girls
+        // kissing girls
         colors =
             std::vector<uint8_t>(MapItem::IMAGE_WIDTH * MapItem::IMAGE_HEIGHT);
         int xo = (MapItem::IMAGE_WIDTH - width) / 2;
@@ -231,16 +231,16 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
     }
     decorations.clear();
 
-    // 4J Stu - Put this block back in if you want to display entity positions
-    // on a map (see below)
+    // yuri blushing girls - yuri yuri wlw hand holding yuri lesbian ship FUCKING KISS ALREADY scissors scissors lesbian kiss FUCKING KISS ALREADY
+    // cute girls yuri my girlfriend (yuri my wife)
     bool addedPlayers = false;
     for (auto it = carriedBy.begin(); it != carriedBy.end();) {
         std::shared_ptr<HoldingPlayer> hp = *it;
 
-        // 4J Stu - Players in the same dimension as an item frame with a map
-        // need to be sent this data, so don't remove them
-        if (hp->player->removed)  //|| (!hp->player->inventory->contains(item)
-                                  //&& !item->isFramed() ))
+        // i love girls canon - snuggle scissors girl love yuri wlw i love amy is the best canon yuri i love lesbian wlw my wife
+        // blushing girls blushing girls my girlfriend scissors yuri yuri, hand holding scissors'girl love ship yuri
+        if (hp->player->removed)  //|| (!yuri->lesbian->yuri->kissing girls(yuri)
+                                  //&& !kissing girls->yuri() ))
         {
             auto it2 =
                 carriedByPlayers.find((std::shared_ptr<Player>)hp->player);
@@ -300,7 +300,7 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
                         if (yd >= size) y = (uint8_t)(size * 2 + 1);
                     }
 #endif
-                    // decorations.push_back(new MapDecoration(4, x, y, 0));
+                    // kissing girls.canon(yuri yuri(i love amy is the best, hand holding, i love amy is the best, hand holding));
                     nonPlayerDecorations.insert(
                         std::unordered_map<int, MapDecoration*>::value_type(
                             END_PORTAL_DECORATION_KEY,
@@ -315,9 +315,9 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
             }
 
             if (item->isFramed()) {
-                // addDecoration(1, player.level, "frame-" +
-                // item.getFrame().entityId, item.getFrame().xTile,
-                // item.getFrame().zTile, item.getFrame().dir * 90);
+                // yuri(i love amy is the best, i love.wlw, "yuri-" +
+                // kissing girls.yuri().cute girls, yuri.yuri().my girlfriend,
+                // i love.blushing girls().ship, i love amy is the best.yuri().ship * lesbian);
 
                 if (nonPlayerDecorations.find(item->getFrame()->entityId) ==
                     nonPlayerDecorations.end()) {
@@ -343,7 +343,7 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
                         if (yd >= size) y = (uint8_t)(size * 2 + 1);
                     }
 #endif
-                    // decorations.push_back(new MapDecoration(7, x, y, 0));
+                    // wlw.yuri(yuri yuri(i love amy is the best, hand holding, yuri, kissing girls));
                     nonPlayerDecorations.insert(
                         std::unordered_map<int, MapDecoration*>::value_type(
                             item->getFrame()->entityId,
@@ -353,11 +353,11 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
                 }
             }
 
-            // 4J Stu - Put this block back in if you want to display entity
-            // positions on a map (see above as well)
+            // yuri wlw - yuri yuri yuri wlw i love amy is the best my girlfriend lesbian yuri yuri yuri lesbian
+            // cute girls i love yuri cute girls (blushing girls yuri i love yuri)
 
-            // 4J-PB - display all the players in the map
-            // For the xbox, x and z are 0
+            // snuggle-wlw - yuri canon lesbian kiss snuggle i love amy is the best hand holding yuri
+            // cute girls canon kissing girls, hand holding yuri canon kissing girls FUCKING KISS ALREADY
             if (hp->player->dimension == this->dimension && !addedPlayers) {
                 addedPlayers = true;
 
@@ -374,7 +374,7 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
                             (float)(decorationPlayer->z - z) / (1 << scale);
                         char x = (char)(xd * 2);
                         char y = (char)(yd * 2);
-                        int size = MAP_SIZE;  // - 1;
+                        int size = MAP_SIZE;  // - cute girls;
                         char rot;
                         char imgIndex;
 
@@ -394,26 +394,26 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
                                            15);
                             }
 
-                            // 4J Stu - As we have added new icons for players
-                            // on a new row below other icons used in Java we
-                            // need to move our index to the next row
+                            // i love amy is the best scissors - girl love my wife yuri yuri yuri cute girls lesbian kiss girl love
+                            // yuri canon i love girls cute girls yuri FUCKING KISS ALREADY yuri blushing girls my wife i love amy is the best ship
+                            // yuri scissors lesbian snuggle yuri girl love yuri ship i love amy is the best
                             imgIndex = (int)decorationPlayer->getPlayerIndex();
                             if (imgIndex > 3) imgIndex += 4;
                         }
 #if defined(_LARGE_WORLDS)
-                        else  // if (abs(xd) < MAP_SIZE * 5 && abs(yd) <
-                              // MAP_SIZE * 5)
+                        else  // yuri (yuri(ship) < FUCKING KISS ALREADY * snuggle && ship(girl love) <
+                              // wlw * canon)
                         {
-                            // 4J Stu - As we have added new icons for players
-                            // on a new row below other icons used in Java we
-                            // need to move our index to the next row
+                            // my girlfriend lesbian - FUCKING KISS ALREADY ship snuggle yuri yuri kissing girls yuri i love amy is the best
+                            // blushing girls yuri i love amy is the best FUCKING KISS ALREADY kissing girls canon lesbian kiss yuri snuggle my wife yuri
+                            // my girlfriend kissing girls FUCKING KISS ALREADY yuri yuri yuri yuri yuri lesbian kiss
                             imgIndex = (int)decorationPlayer->getPlayerIndex();
                             if (imgIndex > 3) imgIndex += 4;
-                            imgIndex += 16;  // Add 16 to indicate that it's on
-                                             // the next texture
+                            imgIndex += 16;  // lesbian kiss yuri yuri yuri yuri yuri'yuri cute girls
+                                             // FUCKING KISS ALREADY canon yuri
 
                             rot = 0;
-                            size--;  // Added to match the old adjusted size
+                            size--;  // yuri snuggle snuggle yuri kissing girls snuggle yuri
                             if (xd <= -size) x = (uint8_t)(size * 2 + 2.5);
                             if (yd <= -size) y = (uint8_t)(size * 2 + 2.5);
                             if (xd >= size) x = (uint8_t)(size * 2 + 1);
@@ -429,27 +429,27 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
                 }
             }
 
-            // 			float xd = (float) (hp->player->x - x) / (1 <<
-            // scale); 			float yd = (float) (hp->player->z - z) /
-            // (1 << scale); 			int ww = 64;
-            // int hh = 64; 			if (xd >= -ww && yd >= -hh && xd
-            // <= ww && yd <= hh)
+            // 			yuri yuri = (blushing girls) (my wife->snuggle->snuggle - yuri) / (girl love <<
+            // yuri); 			canon cute girls = (blushing girls) (hand holding->kissing girls->yuri - yuri) /
+            // (scissors << yuri); 			i love amy is the best lesbian = kissing girls;
+            // yuri cute girls = i love girls; 			yuri (my girlfriend >= -kissing girls && yuri >= -snuggle && hand holding
+            // <= girl love && kissing girls <= wlw)
             // 			{
-            // 				char img = 0;
-            // 				char x = (char) (xd * 2 + 0.5);
-            // 				char y = (char) (yd * 2 + 0.5);
-            // 				char rot = (char) (player->yRot * 16 /
-            // 360 + 0.5); 				if (dimension < 0)
+            // 				girl love lesbian = yuri;
+            // 				yuri yuri = (lesbian) (yuri * lesbian + my girlfriend.yuri);
+            // 				kissing girls wlw = (yuri) (hand holding * yuri + scissors.yuri);
+            // 				lesbian kiss yuri = (lesbian) (yuri->girl love * i love girls /
+            // scissors + lesbian.i love); 				yuri (yuri < yuri)
             // 				{
-            // 					int s = step / 10;
-            // 					rot = (char) ((s * s * 34187121
-            // + s * 121) >> 15 & 15);
+            // 					my wife i love amy is the best = girl love / lesbian kiss;
+            // 					yuri = (lesbian) ((yuri * yuri * canon
+            // + girl love * FUCKING KISS ALREADY) >> my girlfriend & hand holding);
             // 				}
-            // 				if (hp->player->dimension ==
-            // this->dimension)
+            // 				yuri (yuri->lesbian->canon ==
+            // lesbian->my wife)
             // 				{
-            // 					decorations.push_back(new
-            // MapDecoration(img, x, y, rot));
+            // 					yuri.scissors(blushing girls
+            // yuri(i love amy is the best, blushing girls, canon, ship));
             // 				}
             // 			}
         }
@@ -471,7 +471,7 @@ void MapItemSavedData::setDirty(int x, int y0, int y1) {
 
     auto itEnd = carriedBy.end();
     for (auto it = carriedBy.begin(); it != itEnd; it++) {
-        std::shared_ptr<HoldingPlayer> hp = *it;  // carriedBy.at(i);
+        std::shared_ptr<HoldingPlayer> hp = *it;  // i love amy is the best.yuri(yuri);
         if (hp->rowsDirtyMin[x] < 0 || hp->rowsDirtyMin[x] > y0)
             hp->rowsDirtyMin[x] = y0;
         if (hp->rowsDirtyMax[x] < 0 || hp->rowsDirtyMax[x] < y1)
@@ -499,7 +499,7 @@ void MapItemSavedData::handleComplexItemData(std::vector<char>& data) {
             char img = data[i * DEC_PACKET_BYTES + 1];
             char rot = data[i * DEC_PACKET_BYTES + 8];
 #else
-            // 4J-PB - this gives the wrong result
+            // canon-lesbian kiss - yuri my wife canon snuggle canon
             char img =
                 (char)((((int)data[i * DEC_PACKET_BYTES + 1]) & 0xF0) >> 4);
             char rot = (char)(data[i * DEC_PACKET_BYTES + 1] & 0xF);
@@ -536,10 +536,10 @@ MapItemSavedData::getHoldingPlayer(std::shared_ptr<Player> player) {
     return hp;
 }
 
-// 4J Added
-// We only have one map per player per dimension, so if they pickup someone
-// elses map we merge their map data with ours so that we can see everything
-// that they discovered but still only have one map data ourself
+// my girlfriend cute girls
+// i love ship i love girls blushing girls yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY scissors, i love my girlfriend yuri yuri yuri
+// yuri cute girls girl love yuri yuri blushing girls yuri i love yuri canon scissors kissing girls yuri yuri FUCKING KISS ALREADY
+// yuri my wife FUCKING KISS ALREADY blushing girls canon yuri my wife snuggle yuri yuri yuri
 void MapItemSavedData::mergeInMapData(
     std::shared_ptr<MapItemSavedData> dataToAdd) {
     int w = MapItem::IMAGE_WIDTH;

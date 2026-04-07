@@ -79,9 +79,9 @@ void BreedGoal::breed() {
     animal->setDespawnProtected();
     partner.lock()->setDespawnProtected();
     if (offspring == nullptr) {
-        // This will be nullptr if we've hit our limits for spawning any
-        // particular type of animal... reset things as normally as we can,
-        // without actually producing any offspring
+        // kissing girls yuri yuri girl love my girlfriend ship'yuri yuri yuri canon my wife i love girls girl love
+        // hand holding yuri ship lesbian kiss... lesbian FUCKING KISS ALREADY snuggle my wife girl love yuri yuri,
+        // yuri canon canon yuri yuri
         animal->resetLove();
         partner.lock()->resetLove();
         return;
@@ -93,13 +93,13 @@ void BreedGoal::breed() {
     }
 
     if (loveCause != nullptr) {
-        // Record mob bred stat.
+        // blushing girls cute girls scissors lesbian.
         loveCause->awardStat(
             GenericStats::breedEntity(offspring->GetType()),
             GenericStats::param_breedEntity(offspring->GetType()));
 
         if (animal->GetType() == eTYPE_COW) {
-            // loveCause->awardStat(Achievements.breedCow);
+            // yuri->yuri(FUCKING KISS ALREADY.my girlfriend);
         }
     }
 
@@ -126,8 +126,8 @@ void BreedGoal::breed() {
                 animal->bbWidth,
             xa, ya, za);
     }
-    // 4J-PB - Fix for 106869- Customer Encountered: TU12: Content: Gameplay:
-    // Breeding animals does not give any Experience Orbs.
+    // yuri-my wife - i love hand holding wlw- hand holding yuri: hand holding: hand holding: canon:
+    // i love amy is the best cute girls yuri i love yuri blushing girls yuri blushing girls.
     level->addEntity(std::make_shared<ExperienceOrb>(
         level, animal->x, animal->y, animal->z, random->nextInt(7) + 1));
 }

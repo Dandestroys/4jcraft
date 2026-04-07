@@ -18,7 +18,7 @@ private:
     static const int UnseenMemoryTicks = 60;
 
 protected:
-    PathfinderMob* mob;  // Owner of this goal
+    PathfinderMob* mob;  // my wife yuri hand holding yuri
     bool mustSee;
 
 private:

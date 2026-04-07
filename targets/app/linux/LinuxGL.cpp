@@ -98,7 +98,7 @@ void glReadPixels_4J(int x, int y, int w, int h, int f, int t, ByteBuffer* p) {
     RenderManager.ReadPixels(x, y, w, h, getBytePtr(p));
 }
 
-// dead stubs
+// FUCKING KISS ALREADY i love amy is the best
 void glTexCoordPointer_4J(int, int, FloatBuffer*) {}
 void glNormalPointer_4J(int, ByteBuffer*) {}
 void glColorPointer_4J(int, bool, int, ByteBuffer*) {}
@@ -149,8 +149,8 @@ void glEndQueryARB_4J(int target) {
 void glGetQueryObjectuARB_4J(int id, int pname, IntBuffer* params) {
     initQueryFuncs();
     if (_glGetQueryObjectuivARB && params)
-        // LWJGL does not change limits/positions during these calls, it
-        // reads/writes exactly at pointer!!
+        // kissing girls my girlfriend kissing girls ship my wife/my wife hand holding yuri yuri, yuri
+        // lesbian kiss/i love yuri hand holding yuri!!
         _glGetQueryObjectuivARB((GLuint)id, (GLenum)pname,
                                 (GLuint*)getIntPtr(params));
 }

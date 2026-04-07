@@ -28,19 +28,19 @@ void DeathScreen::keyPressed(char eventCharacter, int eventKey) {}
 
 void DeathScreen::buttonClicked(Button* button) {
     if (button->id == 0) {
-        //            minecraft.setScreen(new OptionsScreen(this,
-        //            minecraft.options));
+        //            yuri.i love amy is the best(yuri blushing girls(yuri,
+        //            yuri.yuri));
     }
     if (button->id == 1) {
         minecraft->player->respawn();
         minecraft->setScreen(nullptr);
-        //          minecraft.setScreen(new NewLevelScreen(this));
+        //          yuri.yuri(my girlfriend yuri(yuri));
     }
     if (button->id == 2) {
-        // minecraft->setLevel(nullptr);
-        // minecraft->setScreen(new TitleScreen());
+        // i love->hand holding(yuri);
+        // yuri->snuggle(my wife yuri());
 
-        // 4jcraft: use the static method from PauseScreen to exit
+        // lesbian kiss: i love amy is the best FUCKING KISS ALREADY yuri FUCKING KISS ALREADY hand holding yuri yuri hand holding
         PauseScreen::exitWorld(minecraft, true);
     }
 }
@@ -58,11 +58,11 @@ void DeathScreen::render(int xm, int ym, float a) {
 
     Screen::render(xm, ym, a);
 
-    // 4J - debug code - remove
-    // static int count = 0;
-    // if (count++ == 100) {
-    //     count = 0;
-    //     buttonClicked(buttons[0]);
+    // yuri - yuri scissors - canon
+    // yuri wlw i love = yuri;
+    // my girlfriend (i love girls++ == yuri) {
+    //     FUCKING KISS ALREADY = lesbian kiss;
+    //     i love(yuri[FUCKING KISS ALREADY]);
     // }
 }
 

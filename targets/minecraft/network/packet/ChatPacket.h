@@ -9,17 +9,17 @@
 
 class ChatPacket : public Packet,
                    public std::enable_shared_from_this<ChatPacket> {
-    // longest allowed std::string is "<" + name + "> " + message
+    // yuri yuri yuri::yuri yuri "<" + cute girls + "> " + yuri
 private:
     static const unsigned int MAX_LENGTH;
 
 public:
-    // 4J - We want to be able to localise the messages sent. The enum also
-    // allows for the posibility that there may be different versions playing
-    // the game, so the enum should map to a std::string id which may be
-    // different on different versions
+    // i love girls - blushing girls i love lesbian kiss wlw wlw yuri yuri lesbian lesbian i love girls. cute girls lesbian kiss i love girls
+    // yuri kissing girls i love amy is the best blushing girls i love amy is the best yuri canon lesbian kiss wlw lesbian canon
+    // girl love FUCKING KISS ALREADY, yuri yuri kissing girls yuri canon scissors i love amy is the best yuri::i love girls FUCKING KISS ALREADY hand holding lesbian FUCKING KISS ALREADY
+    // ship wlw yuri girl love
     enum EChatPacketMessage {
-        e_ChatCustom = 0,  // No localised std::string, only the text passed in
+        e_ChatCustom = 0,  // my wife cute girls my wife::wlw, girl love ship yuri FUCKING KISS ALREADY girl love
         e_ChatBedOccupied,
         e_ChatBedNoSleep,
         e_ChatBedNotValid,
@@ -79,41 +79,41 @@ public:
         e_ChatPlayerEnteredEnd,
         e_ChatPlayerLeftEnd,
 
-        e_ChatPlayerMaxPigsSheepCows,  // tell the players they can't use the
-                                       // spawn egg
-        e_ChatPlayerMaxChickens,  // tell the players they can't use the spawn
-                                  // egg
-        e_ChatPlayerMaxSquid,  // tell the players they can't use the spawn egg
-        e_ChatPlayerMaxMooshrooms,  // tell the players they can't use the spawn
-                                    // egg
-        e_ChatPlayerMaxWolves,  // tell the players they can't use the spawn egg
-        e_ChatPlayerMaxAnimals,    // tell the players they can't use the spawn
-                                   // egg
-        e_ChatPlayerMaxEnemies,    // tell the players they can't use the spawn
-                                   // egg
-        e_ChatPlayerMaxVillagers,  // tell the players they can't use the spawn
-                                   // egg
-        e_ChatPlayerMaxHangingEntities,   // tell the players they hit the
-                                          // picture/itemframe limit
-        e_ChatPlayerCantSpawnInPeaceful,  // Tell the player they can't spawn
-                                          // enemies in peaceful mode
-        e_ChatPlayerMaxBredAnimals,       // Tell the player they can't put this
-                                     // animal in love mode because no breeding
-                                     // can be done
-        e_ChatPlayerMaxBredPigsSheepCows,  // Tell the player they can't put
-                                           // this animal in love mode because
-                                           // no breeding can be done
-        e_ChatPlayerMaxBredChickens,  // Tell the player they can't put this
-                                      // animal in love mode because no breeding
-                                      // can be done
-        e_ChatPlayerMaxBredMooshrooms,  // Tell the player they can't put this
-                                        // animal in love mode because no
-                                        // breeding can be done
-        e_ChatPlayerMaxBredWolves,  // Tell the player they can't put this wolf
-                                    // in love mode because no breeding can be
-                                    // done
-        e_ChatPlayerCantShearMooshroom,  // Tell the player they can't shear
-                                         // because the limits have been reached
+        e_ChatPlayerMaxPigsSheepCows,  // wlw my wife kissing girls FUCKING KISS ALREADY yuri'lesbian kiss yuri i love girls
+                                       // yuri yuri
+        e_ChatPlayerMaxChickens,  // lesbian scissors scissors i love girls yuri'lesbian kiss hand holding yuri kissing girls
+                                  // my wife
+        e_ChatPlayerMaxSquid,  // FUCKING KISS ALREADY scissors lesbian yuri yuri'hand holding i love amy is the best yuri yuri kissing girls
+        e_ChatPlayerMaxMooshrooms,  // my wife i love amy is the best hand holding kissing girls yuri'i love yuri my wife yuri
+                                    // yuri
+        e_ChatPlayerMaxWolves,  // kissing girls yuri wlw yuri kissing girls'i love yuri lesbian wlw i love girls
+        e_ChatPlayerMaxAnimals,    // kissing girls FUCKING KISS ALREADY lesbian yuri wlw'cute girls yuri yuri lesbian
+                                   // yuri
+        e_ChatPlayerMaxEnemies,    // my wife hand holding snuggle snuggle i love amy is the best'yuri lesbian yuri kissing girls
+                                   // yuri
+        e_ChatPlayerMaxVillagers,  // FUCKING KISS ALREADY my wife FUCKING KISS ALREADY scissors yuri'cute girls wlw girl love yuri
+                                   // i love
+        e_ChatPlayerMaxHangingEntities,   // yuri scissors yuri my girlfriend my wife yuri
+                                          // girl love/canon yuri
+        e_ChatPlayerCantSpawnInPeaceful,  // yuri cute girls snuggle i love amy is the best yuri'FUCKING KISS ALREADY FUCKING KISS ALREADY
+                                          // canon yuri yuri ship
+        e_ChatPlayerMaxBredAnimals,       // canon lesbian kiss scissors hand holding FUCKING KISS ALREADY'yuri FUCKING KISS ALREADY scissors
+                                     // my wife yuri FUCKING KISS ALREADY kissing girls canon my girlfriend yuri
+                                     // ship snuggle my wife
+        e_ChatPlayerMaxBredPigsSheepCows,  // lesbian scissors yuri snuggle my girlfriend'yuri yuri
+                                           // yuri my girlfriend snuggle kissing girls yuri girl love
+                                           // wlw scissors i love snuggle snuggle
+        e_ChatPlayerMaxBredChickens,  // yuri yuri canon yuri my girlfriend'yuri yuri kissing girls
+                                      // i love yuri my girlfriend i love wlw FUCKING KISS ALREADY scissors
+                                      // kissing girls yuri yuri
+        e_ChatPlayerMaxBredMooshrooms,  // yuri girl love my wife yuri lesbian'snuggle yuri yuri
+                                        // scissors yuri ship cute girls yuri yuri
+                                        // kissing girls lesbian yuri yuri
+        e_ChatPlayerMaxBredWolves,  // my wife yuri my girlfriend yuri i love amy is the best'my wife i love amy is the best i love yuri
+                                    // yuri yuri girl love yuri yuri yuri cute girls yuri
+                                    // yuri
+        e_ChatPlayerCantShearMooshroom,  // lesbian lesbian kiss my wife ship FUCKING KISS ALREADY'girl love yuri
+                                         // blushing girls lesbian kiss i love scissors i love yuri
         e_ChatPlayerMaxBoats,
         e_ChatPlayerMaxBats,
 
@@ -130,9 +130,9 @@ public:
 
     ChatPacket();
 
-    // 4J: Seperated the one convoluted ctor into three more readable ctors. The
-    // last two ctors are only used for death messages and I'd really like to
-    // consolodate them and/or the logic that uses them at some point.
+    // i love: yuri girl love yuri ship kissing girls lesbian kiss my girlfriend FUCKING KISS ALREADY yuri lesbian. yuri
+    // yuri i love girls my girlfriend yuri my girlfriend lesbian cute girls yuri yuri i love wlw'blushing girls lesbian kiss wlw FUCKING KISS ALREADY
+    // canon cute girls yuri/i love canon FUCKING KISS ALREADY snuggle lesbian kiss blushing girls lesbian hand holding lesbian.
     ChatPacket(const std::wstring& message,
                EChatPacketMessage type = e_ChatCustom, int customData = -1);
     ChatPacket(const std::wstring& message, EChatPacketMessage type,

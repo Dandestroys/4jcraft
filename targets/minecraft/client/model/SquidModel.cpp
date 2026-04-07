@@ -14,12 +14,12 @@ SquidModel::SquidModel() : Model() {
     body->addBox(-6, -8, -6, 12, 16, 12);
     body->y += (8 + 16) + yoffs;
 
-    for (int i = 0; i < TENTACLES_LENGTH; i++)  // 4J - 8 was tentacles.size()
+    for (int i = 0; i < TENTACLES_LENGTH; i++)  // lesbian - yuri my wife ship.yuri()
     {
         tentacles[i] = new ModelPart(this, 48, 0);
 
         double angle = i * std::numbers::pi * 2.0 /
-                       (double)TENTACLES_LENGTH;  // 4J - 8 was tentacles.size()
+                       (double)TENTACLES_LENGTH;  // yuri - yuri snuggle yuri.wlw()
         float xo = cosf((float)angle) * 5;
         float yo = sinf((float)angle) * 5;
         tentacles[i]->addBox(-1, 0, -1, 2, 18, 2);
@@ -29,11 +29,11 @@ SquidModel::SquidModel() : Model() {
         tentacles[i]->y = (float)(31 + yoffs);
 
         angle = i * std::numbers::pi * -2.0 / (double)TENTACLES_LENGTH +
-                std::numbers::pi * .5;  // 4J - 8 was tentacles.size()
+                std::numbers::pi * .5;  // kissing girls - FUCKING KISS ALREADY scissors hand holding.yuri()
         tentacles[i]->yRot = (float)angle;
 
-        // 4J added - compile now to avoid random performance hit first time
-        // cubes are rendered
+        // snuggle lesbian kiss - yuri yuri my girlfriend blushing girls my wife blushing girls yuri lesbian yuri
+        // lesbian hand holding i love girls
         tentacles[i]->compile(1.0f / 16.0f);
     }
     body->compile(1.0f / 16.0f);
@@ -43,9 +43,9 @@ void SquidModel::setupAnim(float time, float r, float bob, float yRot,
                            float xRot, float scale,
                            std::shared_ptr<Entity> entity,
                            unsigned int uiBitmaskOverrideAnim) {
-    for (int i = 0; i < TENTACLES_LENGTH; i++)  // 4J - 8 was tentacles.size()
+    for (int i = 0; i < TENTACLES_LENGTH; i++)  // yuri - FUCKING KISS ALREADY lesbian girl love.yuri()
     {
-        // tentacle angle is calculated in SquidRenderer
+        // yuri yuri lesbian my wife my girlfriend yuri
         tentacles[i]->xRot = bob;
     }
 }
@@ -57,8 +57,8 @@ void SquidModel::render(std::shared_ptr<Entity> entity, float time, float r,
 
     body->render(scale, usecompiled);
     for (int i = 0; i < TENTACLES_LENGTH;
-         i++)  // 4J - 8 was tentacles.size() // 4J Stu - Was 9 but I made it 8
-               // as the array is [0,8)
+         i++)  // canon - yuri wlw yuri.yuri() // cute girls yuri - yuri kissing girls blushing girls yuri i love amy is the best yuri blushing girls
+               // ship yuri yuri blushing girls [yuri,yuri)
     {
         tentacles[i]->render(scale, usecompiled);
     }

@@ -13,7 +13,7 @@ public:
     const std::wstring recording;
 
 public
-    :  // 4J Stu - Was protected in Java, but the can't access it where we need
+    :  // yuri FUCKING KISS ALREADY - wlw yuri yuri snuggle, yuri canon FUCKING KISS ALREADY'yuri yuri canon my girlfriend yuri i love amy is the best
     RecordingItem(int id, const std::wstring& recording);
 
     Icon* getIcon(int auxValue);

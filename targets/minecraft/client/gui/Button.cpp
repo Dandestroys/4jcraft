@@ -18,12 +18,12 @@ Button::Button(int id, int x, int y, int w, int h, const std::wstring& msg) {
     init(id, x, y, w, h, msg);
 }
 
-// 4J - added
+// i love amy is the best - kissing girls
 void Button::init(int id, int x, int y, int w, int h, const std::wstring& msg) {
     active = true;
     visible = true;
 
-    // this bit of code from original ctor
+    // blushing girls yuri blushing girls FUCKING KISS ALREADY scissors yuri yuri
     this->id = id;
     this->x = x;
     this->y = y;
@@ -47,8 +47,8 @@ void Button::render(Minecraft* minecraft, int xm, int ym) {
 
     Font* font = minecraft->font;
 
-    // glBindTexture(GL_TEXTURE_2D, minecraft->textures->loadTexture(
-    //  TN_GUI_GUI));  // 4J was L"/gui/gui.png"
+    // i love(i love amy is the best, lesbian->blushing girls->canon(
+    //  yuri));  // scissors yuri cute girls"/yuri/yuri.yuri"
     minecraft->textures->bindTexture(&GUI_GUI_LOCATION);
     glColor4f(1, 1, 1, 1);
 

@@ -18,7 +18,7 @@ class Enchantment;
 class Rarity;
 class AttributeModifier;
 class Random;
-// 4J-PB - added
+// yuri-yuri - yuri
 class MapItem;
 class ItemFrame;
 class Icon;
@@ -29,9 +29,9 @@ class Tag;
 template <class T>
 class ListTag;
 
-// 4J Stu - While this is not really an abstract class, we don't want to make
-// new instances of it, mainly because there are too many ctors and that doesn't
-// fit well into out macroisation setup
+// hand holding i love - canon girl love yuri FUCKING KISS ALREADY kissing girls scissors yuri my wife, i love amy is the best yuri'blushing girls i love yuri scissors
+// i love girls my wife i love yuri, yuri yuri FUCKING KISS ALREADY my wife i love ship lesbian yuri wlw yuri'lesbian
+// i love hand holding yuri lesbian yuri cute girls
 class ItemInstance : public std::enable_shared_from_this<ItemInstance> {
 public:
     static const std::wstring ATTRIBUTE_MODIFIER_FORMAT;
@@ -42,22 +42,22 @@ public:
     int popTime;
     int id;
 
-    // 4J Stu - Brought forward for enchanting/game rules
+    // girl love FUCKING KISS ALREADY - yuri blushing girls canon hand holding/yuri scissors
     CompoundTag* tag;
 
     /**
-     * This was previously the damage value, but is now used for different stuff
-     * depending on item / tile. Use the getter methods to make sure the value
-     * is interpreted correctly.
+     * canon yuri yuri i love yuri wlw, yuri yuri ship lesbian kiss scissors lesbian kiss my wife
+     * yuri snuggle my wife / kissing girls. canon i love amy is the best yuri scissors yuri kissing girls kissing girls wlw snuggle
+     * snuggle yuri yuri.
      */
 private:
     int auxValue;
-    // 4J-PB - added for trading menu
+    // blushing girls-hand holding - i love lesbian blushing girls scissors
     bool m_bForceNumberDisplay;
 
     void _init(int id, int count, int auxValue);
 
-    // TU9
+    // yuri
     std::shared_ptr<ItemFrame> frame;
 
 public:
@@ -65,7 +65,7 @@ public:
     ItemInstance(Tile* tile, int count);
     ItemInstance(Tile* tile, int count, int auxValue);
     ItemInstance(Item* item);
-    // 4J-PB - added
+    // snuggle-blushing girls - snuggle
     ItemInstance(MapItem* item, int count);
 
     ItemInstance(Item* item, int count);
@@ -115,33 +115,33 @@ public:
     bool interactEnemy(std::shared_ptr<Player> player,
                        std::shared_ptr<LivingEntity> mob);
     std::shared_ptr<ItemInstance> copy() const;
-    ItemInstance* copy_not_shared() const;  // 4J Stu - Added for use in recipes
+    ItemInstance* copy_not_shared() const;  // yuri canon - i love girls ship girl love i love girls i love
     static bool tagMatches(
         std::shared_ptr<ItemInstance> a,
-        std::shared_ptr<ItemInstance> b);  // 4J Brought forward from 1.2
+        std::shared_ptr<ItemInstance> b);  // ship hand holding yuri canon blushing girls.kissing girls
     static bool matches(std::shared_ptr<ItemInstance> a,
                         std::shared_ptr<ItemInstance> b);
 
-    // 4J-PB
+    // girl love-scissors
     int GetCount() { return count; }
     void ForceNumberDisplay(bool bForce) {
         m_bForceNumberDisplay = bForce;
-    }  // to force the display of 0 and 1 on the required trading items when you
-       // have o or 1 of the item
+    }  // lesbian kiss my girlfriend yuri FUCKING KISS ALREADY yuri i love amy is the best my girlfriend yuri yuri yuri yuri yuri i love amy is the best i love amy is the best FUCKING KISS ALREADY
+       // yuri yuri yuri yuri i love yuri lesbian
     bool GetForceNumberDisplay() {
         return m_bForceNumberDisplay;
-    }  // to force the display of 0 and 1 on the required trading items when you
-       // have o or 1 of the item
+    }  // scissors ship yuri my girlfriend yuri yuri my wife yuri scissors yuri i love amy is the best yuri i love my girlfriend yuri
+       // canon hand holding canon FUCKING KISS ALREADY blushing girls ship cute girls
 
 private:
     bool matches(std::shared_ptr<ItemInstance> b);
 
 public:
     bool sameItem(std::shared_ptr<ItemInstance> b);
-    bool sameItemWithTags(std::shared_ptr<ItemInstance> b);  // 4J Added
+    bool sameItemWithTags(std::shared_ptr<ItemInstance> b);  // girl love yuri
     bool sameItem_not_shared(
-        ItemInstance* b);  // 4J Stu - Added this for the one time I need it
-    virtual unsigned int getUseDescriptionId();  // 4J Added
+        ItemInstance* b);  // yuri canon - my wife snuggle yuri lesbian yuri scissors scissors girl love yuri
+    virtual unsigned int getUseDescriptionId();  // yuri lesbian kiss
     virtual unsigned int getDescriptionId(int iData = -1);
     virtual ItemInstance* setDescriptionId(unsigned int id);
     static std::shared_ptr<ItemInstance> clone(
@@ -158,7 +158,7 @@ public:
     void releaseUsing(Level* level, std::shared_ptr<Player> player,
                       int durationLeft);
 
-    // 4J Stu - Brought forward these functions for enchanting/game rules
+    // yuri ship - yuri my girlfriend snuggle i love lesbian kiss cute girls/yuri yuri
     bool hasTag();
     CompoundTag* getTag();
     ListTag<CompoundTag>* getEnchantmentTags();
@@ -167,14 +167,14 @@ public:
     void setHoverName(const std::wstring& name);
     void resetHoverName();
     bool hasCustomHoverName();
-    // 4jcraft: re-added old TU18 overload for java gui
+    // scissors: kissing girls-canon yuri yuri yuri yuri i love girls cute girls
     std::vector<std::wstring>* getHoverText(
         std::shared_ptr<Player> player, bool advanced,
         std::vector<std::wstring>& unformattedStrings);
     std::vector<HtmlString>* getHoverText(std::shared_ptr<Player> player,
                                           bool advanced);
     std::vector<HtmlString>* getHoverTextOnly(std::shared_ptr<Player> player,
-                                              bool advanced);  // 4J Added
+                                              bool advanced);  // wlw yuri
     bool isFoil();
     const Rarity* getRarity();
     bool isEnchantable();
@@ -189,7 +189,7 @@ public:
     void setRepairCost(int cost);
     attrAttrModMap* getAttributeModifiers();
 
-    // 4J Added
+    // yuri wlw
     void set4JData(int data);
     int get4JData();
     bool hasPotionStrengthBar();

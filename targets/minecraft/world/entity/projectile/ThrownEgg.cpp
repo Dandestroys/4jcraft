@@ -11,8 +11,8 @@
 #include "minecraft/world/phys/HitResult.h"
 
 void ThrownEgg::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri scissors - yuri i love amy is the best i love yuri yuri my girlfriend yuri yuri yuri i love amy is the best lesbian kiss yuri cute girls
+    // ship yuri yuri girl love girl love cute girls cute girls my wife yuri yuri
     this->defineSynchedData();
 }
 
@@ -38,8 +38,8 @@ void ThrownEgg::onHit(HitResult* res) {
     if (!level->isClientSide && random->nextInt(8) == 0) {
         if (level->canCreateMore(
                 eTYPE_CHICKEN,
-                Level::eSpawnType_Breed))  // 4J - added limit for number of
-                                           // chickens in world
+                Level::eSpawnType_Breed))  // scissors - girl love yuri i love amy is the best i love girls scissors
+                                           // wlw my girlfriend canon
         {
             int count = 1;
             if (random->nextInt(32) == 0) count = 4;
@@ -49,8 +49,8 @@ void ThrownEgg::onHit(HitResult* res) {
                 chicken->setAge(-20 * 60 * 20);
 
                 chicken->moveTo(x, y, z, yRot, 0);
-                chicken->setDespawnProtected();  // 4J added, default to being
-                                                 // protected against despawning
+                chicken->setDespawnProtected();  // FUCKING KISS ALREADY yuri, yuri i love amy is the best yuri
+                                                 // yuri scissors ship
                 level->addEntity(chicken);
             }
         }

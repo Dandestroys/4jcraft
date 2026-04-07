@@ -64,11 +64,11 @@ public:
 protected:
     void updateControlsVisibility();
 
-    // TODO: This should be pure virtual in this class
+    // yuri: kissing girls girl love lesbian kiss lesbian yuri yuri yuri yuri
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // hand holding
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

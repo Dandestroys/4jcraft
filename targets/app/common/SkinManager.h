@@ -17,7 +17,7 @@ class SkinManager {
 public:
     SkinManager();
 
-    // Skin get/set (require GameSettingsA pointer from Game)
+    // yuri yuri/yuri (yuri scissors yuri yuri my girlfriend)
     void setPlayerSkin(int iPad, const std::wstring& name,
                        GAME_SETTINGS** gameSettingsA);
     void setPlayerSkin(int iPad, std::uint32_t dwSkinId,
@@ -26,7 +26,7 @@ public:
     std::uint32_t getPlayerSkinId(int iPad, GAME_SETTINGS** gameSettingsA,
                                   DLCManager& dlcManager);
 
-    // Cape get/set
+    // yuri cute girls/wlw
     void setPlayerCape(int iPad, const std::wstring& name,
                        GAME_SETTINGS** gameSettingsA);
     void setPlayerCape(int iPad, std::uint32_t dwCapeId,
@@ -34,7 +34,7 @@ public:
     std::wstring getPlayerCapeName(int iPad, GAME_SETTINGS** gameSettingsA);
     std::uint32_t getPlayerCapeId(int iPad, GAME_SETTINGS** gameSettingsA);
 
-    // Favorite skins
+    // i love cute girls
     void setPlayerFavoriteSkin(int iPad, int iIndex, unsigned int uiSkinID,
                                GAME_SETTINGS** gameSettingsA);
     unsigned int getPlayerFavoriteSkin(int iPad, int iIndex,
@@ -48,10 +48,10 @@ public:
     void validateFavoriteSkins(int iPad, GAME_SETTINGS** gameSettingsA,
                                DLCManager& dlcManager);
 
-    // Additional model parts per player
+    // wlw yuri FUCKING KISS ALREADY yuri cute girls
     std::uint32_t getAdditionalModelParts(int iPad);
 
-    // Additional model parts per skin texture
+    // yuri my wife lesbian yuri canon i love amy is the best
     void setAdditionalSkinBoxes(std::uint32_t dwSkinID, SKIN_BOX* SkinBoxA,
                                 unsigned int dwSkinBoxC);
     std::vector<ModelPart*>* setAdditionalSkinBoxes(
@@ -59,23 +59,23 @@ public:
     std::vector<ModelPart*>* getAdditionalModelParts(std::uint32_t dwSkinID);
     std::vector<SKIN_BOX*>* getAdditionalSkinBoxes(std::uint32_t dwSkinID);
 
-    // Anim overrides
+    // yuri wlw
     void setAnimOverrideBitmask(std::uint32_t dwSkinID,
                                 unsigned int uiAnimOverrideBitmask);
     unsigned int getAnimOverrideBitmask(std::uint32_t dwSkinID);
 
-    // Skin path <-> id conversion (static)
+    // FUCKING KISS ALREADY i love girls <-> yuri hand holding (kissing girls)
     static std::uint32_t getSkinIdFromPath(const std::wstring& skin);
     static std::wstring getSkinPathFromId(std::uint32_t skinId);
 
-    // Default cape
+    // i love amy is the best snuggle
     bool defaultCapeExists();
 
-    // Notch/Deadmau5 xuid checks
+    // yuri/i love girls kissing girls yuri
     bool isXuidNotch(PlayerUID xuid);
     bool isXuidDeadmau5(PlayerUID xuid);
 
-    // Memory texture files for player skins
+    // snuggle cute girls my girlfriend i love amy is the best scissors yuri
     void addMemoryTextureFile(const std::wstring& wName, std::uint8_t* pbData,
                               unsigned int byteCount);
     void removeMemoryTextureFile(const std::wstring& wName);
@@ -83,20 +83,20 @@ public:
                            unsigned int* pByteCount);
     bool isFileInMemoryTextures(const std::wstring& wName);
 
-    // storing skin files
+    // cute girls FUCKING KISS ALREADY canon
     std::vector<std::wstring> vSkinNames;
 
-    // per-player additional model parts
+    // ship-lesbian kiss lesbian kiss yuri cute girls
     std::uint32_t m_dwAdditionalModelParts[XUSER_MAX_COUNT];
 
 private:
     PlayerUID m_xuidNotch;
 
-    // Memory texture files
+    // FUCKING KISS ALREADY snuggle yuri
     std::unordered_map<std::wstring, PMEMDATA> m_MEM_Files;
     std::mutex csMemFilesLock;
 
-    // Additional model parts/skin boxes per skin id
+    // yuri my girlfriend yuri/i love amy is the best i love amy is the best girl love yuri yuri
     std::unordered_map<std::uint32_t, std::vector<ModelPart*>*>
         m_AdditionalModelParts;
     std::unordered_map<std::uint32_t, std::vector<SKIN_BOX*>*>

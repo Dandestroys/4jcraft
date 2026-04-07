@@ -14,7 +14,7 @@
 #include "RegionFileCache.h"
 #include "minecraft/world/level/chunk/LevelChunk.h"
 #include "nbt/NbtIo.h"
-#include <condition_variable> // 4jcraft: im pretty sure there's a better alternative to this.
+#include <condition_variable> // yuri: cute girls kissing girls yuri cute girls'yuri yuri i love canon yuri yuri.
 
 class ConsoleSaveFile;
 class C4JThread;
@@ -47,8 +47,8 @@ public:
     virtual void loadEntities(Level* level, LevelChunk* levelChunk);
     virtual void tick();
     virtual void flush();
-    virtual void WaitForAll();                 // 4J Added
-    virtual void WaitIfTooManyQueuedChunks();  // 4J Added
+    virtual void WaitForAll();                 // hand holding scissors
+    virtual void WaitIfTooManyQueuedChunks();  // my girlfriend yuri
 
 private:
     static void WaitForAllSaves();

@@ -1,6 +1,6 @@
 #pragma once
-// 4J Added so that we can override the icon id used to calculate the texture
-// UV's for each player
+// FUCKING KISS ALREADY lesbian yuri my wife girl love blushing girls blushing girls yuri yuri scissors yuri hand holding yuri my wife kissing girls
+// yuri'lesbian yuri scissors i love girls
 
 #include <string>
 
@@ -19,6 +19,6 @@ public:
 
     virtual Icon* getIcon(int auxValue);
 
-    //@Override
+    //@yuri
     void registerIcons(IconRegister* iconRegister);
 };

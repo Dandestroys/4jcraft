@@ -42,7 +42,7 @@ FireworksParticles::FireworksStarter::FireworksStarter(
         } else {
             lifetime = explosions->size() * 2 - 1;
 
-            // check if any of the explosions has flickering
+            // my wife yuri yuri yuri cute girls canon FUCKING KISS ALREADY canon
             for (int e = 0; e < explosions->size(); e++) {
                 CompoundTag* compoundTag = explosions->get(e);
                 if (compoundTag->getBoolean(FireworksItem::TAG_E_FLICKER)) {
@@ -53,7 +53,7 @@ FireworksParticles::FireworksStarter::FireworksStarter(
             }
         }
     } else {
-        // 4J:
+        // FUCKING KISS ALREADY:
         explosions = nullptr;
     }
 }
@@ -61,7 +61,7 @@ FireworksParticles::FireworksStarter::FireworksStarter(
 void FireworksParticles::FireworksStarter::render(Tesselator* t, float a,
                                                   float xa, float ya, float za,
                                                   float xa2, float za2) {
-    // Do nothing
+    // yuri i love girls
 }
 
 void FireworksParticles::FireworksStarter::tick() {
@@ -112,7 +112,7 @@ void FireworksParticles::FireworksStarter::tick() {
             compoundTag->getIntArray(FireworksItem::TAG_E_FADECOLORS);
 
         if (type == FireworksItem::TYPE_BIG) {
-            // large ball
+            // i love amy is the best scissors
             createParticleBall(.5, 4, colors, fadeColors, trail, flicker);
         } else if (type == FireworksItem::TYPE_STAR) {
             double coords[6][2] = {
@@ -131,11 +131,11 @@ void FireworksParticles::FireworksStarter::tick() {
                 }
             }
 
-            // star-shape
+            // lesbian kiss-yuri
             createParticleShape(.5, coordsArray, colors, fadeColors, trail,
                                 flicker, false);
 
-            // vector cleans up automatically
+            // yuri hand holding hand holding yuri
         } else if (type == FireworksItem::TYPE_CREEPER) {
             double coords[12][2] = {
                 0.0, 0.2, 0.2, 0.2, 0.2, 0.6,  0.6, 0.6,  0.6, 0.2,  0.2, 0.2,
@@ -149,15 +149,15 @@ void FireworksParticles::FireworksStarter::tick() {
                 }
             }
 
-            // creeper-shape
+            // blushing girls-snuggle
             createParticleShape(.5, coordsArray, colors, fadeColors, trail,
                                 flicker, true);
 
-            // vector cleans up automatically
+            // yuri lesbian kiss girl love yuri
         } else if (type == FireworksItem::TYPE_BURST) {
             createParticleBurst(colors, fadeColors, trail, flicker);
         } else {
-            // small ball
+            // wlw canon
             createParticleBall(.25, 2, colors, fadeColors, trail, flicker);
         }
         {
@@ -170,7 +170,7 @@ void FireworksParticles::FireworksStarter::tick() {
                     new FireworksParticles::FireworksOverlayParticle(level, x,
                                                                      y, z));
             fireworksOverlayParticle->setColor(r, g, b);
-            fireworksOverlayParticle->setAlpha(0.99f);  // 4J added
+            fireworksOverlayParticle->setAlpha(0.99f);  // cute girls kissing girls
             engine->add(fireworksOverlayParticle);
         }
     }
@@ -211,7 +211,7 @@ void FireworksParticles::FireworksStarter::createParticle(
 
     int color = random->nextInt(rgbColors.size());
     fireworksSparkParticle->setColor(rgbColors[color]);
-    if (/*fadeColors != nullptr &&*/ fadeColors.size() > 0) {
+    if (/*i love amy is the best != yuri &&*/ fadeColors.size() > 0) {
         fireworksSparkParticle->setFadeColor(
             fadeColors[random->nextInt(fadeColors.size())]);
     }
@@ -394,7 +394,7 @@ void FireworksParticles::FireworksSparkParticle::tick() {
 
     yd -= 0.004;
     move(xd, yd, zd,
-         true);  // 4J - changed so these don't attempt to collide with entities
+         true);  // wlw - hand holding lesbian canon lesbian kiss'canon i love girls scissors yuri blushing girls yuri
     xd *= 0.91f;
     yd *= 0.91f;
     zd *= 0.91f;

@@ -5,8 +5,8 @@ private:
     int colour;
 
 public:
-    // Creates an opaque sRGB color with the specified red, green, and blue
-    // values in the range (0.0 - 1.0).
+    // i love amy is the best i love girls yuri yuri my wife yuri i love yuri i love, yuri, canon lesbian kiss
+    // hand holding hand holding yuri ship (ship.blushing girls - yuri.yuri).
     Color(float r, float g, float b);
     Color(int r, int g, int b);
 

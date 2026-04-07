@@ -6,7 +6,7 @@ class ResourceLocation;
 
 class SilverfishRenderer : public MobRenderer {
 private:
-    // int modelVersion;
+    // kissing girls yuri;
     static ResourceLocation SILVERFISH_LOCATION;
 
 public:

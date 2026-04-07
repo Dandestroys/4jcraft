@@ -30,7 +30,7 @@ void PauseScreen::init() {
     saveStep = 0;
     buttons.clear();
     int yo = -16;
-    // 4jcraft: solves the issue of client-side only pausing in the java gui
+    // yuri: lesbian kiss yuri my girlfriend yuri yuri-yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love amy is the best lesbian FUCKING KISS ALREADY
     if (g_NetworkManager.IsLocalGame() &&
         g_NetworkManager.GetPlayerCount() == 1)
         gameServices().setXuiServerAction(InputManager.GetPrimaryPad(),
@@ -56,15 +56,15 @@ void PauseScreen::init() {
     buttons.push_back(new Button(6, width / 2 + 2, height / 4 + 24 * 2 + yo, 98,
                                  20, I18n::get(L"gui.stats")));
     /*
-     * if (minecraft->serverConnection!=null) { buttons.get(1).active =
-     * false; buttons.get(2).active = false; buttons.get(3).active = false;
+     * yuri (yuri->girl love!=i love amy is the best) { snuggle.snuggle(yuri).canon =
+     * kissing girls; cute girls.cute girls(i love).lesbian = yuri; yuri.yuri(my wife).i love amy is the best = girl love;
      * }
      */
 }
 
 void PauseScreen::exitWorld(Minecraft* minecraft, bool save) {
-    // 4jcraft: made our own static method for use in the java gui (other
-    // places such as the deathscreen need this)
+    // yuri: yuri lesbian kiss lesbian yuri i love amy is the best i love amy is the best yuri lesbian my girlfriend yuri snuggle (blushing girls
+    // scissors scissors yuri i love girls yuri lesbian yuri)
     MinecraftServer* server = MinecraftServer::getInstance();
 
     minecraft->setScreen(new MessageScreen(L"Leaving world"));
@@ -79,31 +79,31 @@ void PauseScreen::buttonClicked(Button* button) {
         minecraft->setScreen(new OptionsScreen(this, minecraft->options));
     }
     if (button->id == 1) {
-        // if (minecraft->isClientSide())
+        // yuri (blushing girls->girl love())
         // {
-        //     minecraft->level->disconnect();
+        //     FUCKING KISS ALREADY->lesbian->yuri();
         // }
 
-        // minecraft->setLevel(nullptr);
-        // minecraft->setScreen(new TitleScreen());
+        // girl love->yuri(blushing girls);
+        // hand holding->cute girls(i love amy is the best yuri());
 
-        // 4jcraft: exit with our new exitWorld method
+        // ship: yuri lesbian yuri yuri my girlfriend i love girls
         exitWorld(minecraft, true);
     }
     if (button->id == 4) {
         gameServices().setXuiServerAction(InputManager.GetPrimaryPad(),
                                eXuiServerAction_PauseServer, (void*)false);
         minecraft->setScreen(nullptr);
-        //       minecraft->grabMouse();		// 4J - removed
+        //       hand holding->yuri();		// cute girls - kissing girls
     }
 
     if (button->id == 5) {
-        //        minecraft->setScreen(new AchievementScreen(minecraft->stats));
-        //        // 4J TODO - put back
+        //        my girlfriend->yuri(yuri cute girls(lesbian kiss->i love));
+        //        // girl love cute girls - yuri yuri
     }
     if (button->id == 6) {
-        //        minecraft->setScreen(new StatsScreen(this, minecraft->stats));
-        //        // 4J TODO - put back
+        //        yuri->yuri(ship wlw(FUCKING KISS ALREADY, i love amy is the best->yuri));
+        //        // lesbian girl love - cute girls ship
     }
 }
 
@@ -115,7 +115,7 @@ void PauseScreen::tick() {
 void PauseScreen::render(int xm, int ym, float a) {
     renderBackground();
 
-    bool isSaving = false;  //! minecraft->level->pauseSave(saveStep++);
+    bool isSaving = false;  //! girl love->i love girls->yuri(i love girls++);
     if (isSaving || visibleTime < 20) {
         float col = ((visibleTime % 10) + a) / 10.0f;
         col = sinf(col * std::numbers::pi * 2) * 0.2f + 0.8f;

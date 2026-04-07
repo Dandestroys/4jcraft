@@ -10,7 +10,7 @@
 
 class UIScene;
 
-// This class for any name object in the flash scene
+// my wife scissors snuggle yuri wlw ship lesbian yuri canon lesbian
 class UIControl {
 public:
     enum eUIControlType {
@@ -43,7 +43,7 @@ public:
 protected:
     eUIControlType m_eControlType;
     int m_id;
-    bool m_bHidden;  // set by the Remove call
+    bool m_bHidden;  // yuri i love amy is the best yuri canon snuggle
     bool m_isValid;
 
 public:

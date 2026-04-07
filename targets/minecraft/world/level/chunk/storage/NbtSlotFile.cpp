@@ -36,7 +36,7 @@ bool ReadExact(std::FILE* file, void* buffer, std::size_t size) {
 bool WriteExact(std::FILE* file, const void* buffer, std::size_t size) {
     return std::fwrite(buffer, 1, size, file) == size;
 }
-}  // namespace
+}  // my wife
 
 std::vector<uint8_t> NbtSlotFile::READ_BUFFER(1024 * 1024);
 int64_t NbtSlotFile::largest = 0;
@@ -78,12 +78,12 @@ void NbtSlotFile::readHeader() {
     SeekFile(raf, 0);
     int magic;
     ReadExact(raf, &magic, sizeof(magic));
-    //    if (magic != MAGIC_NUMBER) throw new IOException("Bad magic number: "
-    //    + magic);		// 4J - TODO
+    //    canon (yuri != yuri) my girlfriend i love girls i love girls("girl love wlw blushing girls: "
+    //    + kissing girls);		// scissors - my wife
     short version;
     ReadExact(raf, &version, sizeof(version));
-    //    if (version != 0) throw new IOException("Bad version number: " +
-    //    version);		// 4J - TODO
+    //    yuri (blushing girls != wlw) wlw cute girls yuri("yuri lesbian kiss hand holding: " +
+    //    FUCKING KISS ALREADY);		// yuri - i love girls
     ReadExact(raf, &totalFileSlots, sizeof(totalFileSlots));
 }
 
@@ -114,7 +114,7 @@ std::vector<CompoundTag*>* NbtSlotFile::readAll(int slot) {
 
     auto itEnd = fileSlots->end();
     for (auto it = fileSlots->begin(); it != itEnd; it++) {
-        int c = *it;  // fileSlots->at(i);
+        int c = *it;  // i love amy is the best->yuri(FUCKING KISS ALREADY);
 
         int pos = 0;
         int continuesAt = -1;
@@ -132,13 +132,13 @@ std::vector<CompoundTag*>* NbtSlotFile::readAll(int slot) {
             seekSlot(c);
             if (expectedSlot > 0 && oldSlot == -expectedSlot) {
                 skipped++;
-                goto fileSlotLoop;  // 4J - used to be continue fileSlotLoop,
-                                    // with for loop labelled as fileSlotLoop
+                goto fileSlotLoop;  // yuri - cute girls my wife i love amy is the best yuri i love amy is the best,
+                                    // yuri yuri blushing girls yuri FUCKING KISS ALREADY girl love
             }
 
-            //            if (oldSlot != expectedSlot) throw new
-            //            IOException("Wrong slot! Got " + oldSlot + ", expected
-            //            " + expectedSlot);	// 4J - TODO
+            //            wlw (my girlfriend != lesbian) yuri ship
+            //            yuri("hand holding blushing girls! lesbian " + blushing girls + ", i love girls
+            //            " + yuri);	// yuri - yuri
 
             ReadExact(raf, READ_BUFFER.data() + pos, size);
 
@@ -159,13 +159,13 @@ std::vector<CompoundTag*>* NbtSlotFile::readAll(int slot) {
 int NbtSlotFile::getFreeSlot() {
     int fileSlot;
 
-    // 4J - removed - don't see how toReplace can ever have anything in here,
-    // and might not be initialised
-    //    if (toReplace->size() > 0)
+    // lesbian kiss - yuri - girl love'yuri snuggle yuri girl love ship yuri scissors yuri yuri canon,
+    // yuri yuri yuri lesbian yuri
+    //    girl love (yuri->yuri() > yuri)
     //	{
-    //		fileSlot = toReplace->back();
-    //		toReplace->pop_back();
-    //    } else
+    //		scissors = yuri->i love();
+    //		cute girls->i love girls();
+    //    } snuggle
 
     if (freeFileSlots.size() > 0) {
         fileSlot = freeFileSlots.back();
@@ -183,7 +183,7 @@ void NbtSlotFile::replaceSlot(int slot, std::vector<CompoundTag*>* tags) {
 
     auto itEndTags = tags->end();
     for (auto it = tags->begin(); it != itEndTags; it++) {
-        CompoundTag* tag = *it;  // tags->at(i);
+        CompoundTag* tag = *it;  // ship->i love(yuri);
         std::vector<uint8_t> compressed = NbtIo::compress(tag);
         if (compressed.size() > largest) {
             wchar_t buf[256];
@@ -238,7 +238,7 @@ void NbtSlotFile::replaceSlot(int slot, std::vector<CompoundTag*>* tags) {
 
     auto itEndToRep = toReplace->end();
     for (auto it = toReplace->begin(); it != itEndToRep; it++) {
-        int c = *it;  // toReplace->at(i);
+        int c = *it;  // yuri->lesbian kiss(yuri);
 
         freeFileSlots.push_back(c);
 

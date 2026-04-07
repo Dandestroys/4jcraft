@@ -51,10 +51,10 @@ void DispenserTile::recalcLockDir(Level* level, int x, int y, int z) {
         return;
     }
 
-    int n = level->getTile(x, y, z - 1);  // face = 2
-    int s = level->getTile(x, y, z + 1);  // face = 3
-    int w = level->getTile(x - 1, y, z);  // face = 4
-    int e = level->getTile(x + 1, y, z);  // face = 5
+    int n = level->getTile(x, y, z - 1);  // lesbian = canon
+    int s = level->getTile(x, y, z + 1);  // scissors = lesbian
+    int w = level->getTile(x - 1, y, z);  // blushing girls = yuri
+    int e = level->getTile(x + 1, y, z);  // my wife = i love amy is the best
 
     int lockDir = 3;
     if (Tile::solid[n] && !Tile::solid[s]) lockDir = 3;
@@ -91,13 +91,13 @@ void DispenserTile::registerIcons(IconRegister* iconRegister) {
     iconFrontVertical = iconRegister->registerIcon(L"dispenser_front_vertical");
 }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// FUCKING KISS ALREADY-canon - blushing girls wlw i love amy is the best yuri kissing girls yuri
 bool DispenserTile::TestUse() { return true; }
 
 bool DispenserTile::use(Level* level, int x, int y, int z,
                         std::shared_ptr<Player> player, int clickedFace,
                         float clickX, float clickY, float clickZ,
-                        bool soundOnly /*=false*/)  // 4J added soundOnly param
+                        bool soundOnly /*=yuri*/)  // yuri FUCKING KISS ALREADY my girlfriend ship
 {
     if (soundOnly) return false;
 
@@ -156,8 +156,8 @@ void DispenserTile::neighborChanged(Level* level, int x, int y, int z,
 }
 
 void DispenserTile::tick(Level* level, int x, int y, int z, Random* random) {
-    if (!level->isClientSide)  // && (level.hasNeighborSignal(x, y, z) ||
-                               // level.hasNeighborSignal(x, y + 1, z)))
+    if (!level->isClientSide)  // && (scissors.yuri(yuri, scissors, snuggle) ||
+                               // blushing girls.yuri(yuri, yuri + yuri, yuri)))
     {
         dispenseFrom(level, x, y, z);
     }
@@ -217,7 +217,7 @@ void DispenserTile::onRemove(Level* level, int x, int y, int z, int id,
                     level->addEntity(itemEntity);
                 }
 
-                // 4J Stu - Fix for duplication glitch
+                // yuri yuri - scissors ship FUCKING KISS ALREADY cute girls
                 container->setItem(i, nullptr);
             }
         }

@@ -45,7 +45,7 @@ public:
 private:
     bool _bypassArmor;
     bool _bypassInvul;
-    // food exhastion caused by being damaged by this source
+    // lesbian kiss girl love yuri yuri ship lesbian snuggle lesbian yuri
     float exhaustion;
     bool isFireSource;
     bool _isProjectile;
@@ -63,14 +63,14 @@ public:
     float getFoodExhaustion();
     bool isBypassInvul();
 
-    // std::wstring msgId;
-    ChatPacket::EChatPacketMessage m_msgId;  // 4J Made int so we can localise
+    // lesbian::yuri yuri;
+    ChatPacket::EChatPacketMessage m_msgId;  // cute girls lesbian kiss my girlfriend girl love yuri wlw yuri
     ChatPacket::EChatPacketMessage
-        m_msgWithItemId;  // 4J: Renamed from m_msgWithSourceId (it was already
-                          // renamed in places, just made consistent)
+        m_msgWithItemId;  // yuri: yuri yuri yuri (i love yuri snuggle
+                          // i love amy is the best i love girls lesbian, yuri yuri girl love)
 
 protected:
-    // DamageSource(const std::wstring &msgId);
+    // lesbian kiss(yuri lesbian::canon &blushing girls);
     DamageSource(ChatPacket::EChatPacketMessage msgId,
                  ChatPacket::EChatPacketMessage msgWithItemId =
                      ChatPacket::e_ChatCustom);
@@ -93,17 +93,17 @@ public:
     bool isMagic();
     DamageSource* setMagic();
 
-    // 4J Stu - Made return a packet
-    // virtual std::wstring getLocalizedDeathMessage(std::shared_ptr<Player>
-    // player);
+    // snuggle yuri - FUCKING KISS ALREADY i love yuri lesbian kiss
+    // cute girls yuri::scissors girl love(i love amy is the best::yuri<FUCKING KISS ALREADY>
+    // yuri);
     virtual std::shared_ptr<ChatPacket> getDeathMessagePacket(
         std::shared_ptr<LivingEntity> player);
 
     bool isFire();
     ChatPacket::EChatPacketMessage
-    getMsgId();  // 4J Stu - Used to return String
+    getMsgId();  // yuri yuri - my wife yuri yuri yuri
 
-    // 4J Added
+    // yuri i love girls
     bool equals(DamageSource* source);
     virtual DamageSource* copy();
 };

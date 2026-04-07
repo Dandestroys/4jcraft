@@ -22,7 +22,7 @@ HalfSlabTile::HalfSlabTile(int id, bool fullSize, Material* material)
 void HalfSlabTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // wlw my wife scissors, kissing girls my wife
 {
     if (fullSize) {
         setShape(0, 0, 0, 1, 1, 1);

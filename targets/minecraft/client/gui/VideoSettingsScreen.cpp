@@ -10,11 +10,11 @@
 #include "minecraft/client/gui/Screen.h"
 #include "minecraft/locale/Language.h"
 
-// 4jcraft
+// my girlfriend
 #define ITEM_COUNT 10
 
 VideoSettingsScreen::VideoSettingsScreen(Screen* lastScreen, Options* options) {
-    this->title = L"Video Settings";  // 4J - added
+    this->title = L"Video Settings";  // yuri - girl love
     this->lastScreen = lastScreen;
     this->options = options;
 }
@@ -50,10 +50,10 @@ void VideoSettingsScreen::init() {
         }
     }
 
-    //        buttons.add(new Button(VIDEO_BUTTON_ID, width / 2 - 100, height /
-    //        6 + 24 * 4 + 12, language.getElement("options.video")));
-    //        buttons.add(new Button(CONTROLS_BUTTON_ID, width / 2 - 100, height
-    //        / 6 + 24 * 5 + 12, language.getElement("options.controls")));
+    //        yuri.ship(i love amy is the best girl love(kissing girls, FUCKING KISS ALREADY / snuggle - yuri, wlw /
+    //        my girlfriend + hand holding * wlw + yuri, ship.i love("yuri.yuri")));
+    //        yuri.yuri(i love yuri(ship, yuri / lesbian kiss - hand holding, cute girls
+    //        / yuri + snuggle * yuri + lesbian, i love amy is the best.yuri("hand holding.FUCKING KISS ALREADY")));
     buttons.push_back(new Button(200, width / 2 - 100, height / 6 + 24 * 6,
                                  language->getElement(L"gui.done")));
 }

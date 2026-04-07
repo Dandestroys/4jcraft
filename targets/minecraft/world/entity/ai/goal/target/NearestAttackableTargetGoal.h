@@ -11,7 +11,7 @@ class Entity;
 class LivingEntity;
 class PathfinderMob;
 
-// Anonymous class from NearestAttackableTargetGoal
+// i love girls yuri i love amy is the best yuri
 class SubselectEntitySelector : public EntitySelector {
 private:
     EntitySelector* m_subselector;

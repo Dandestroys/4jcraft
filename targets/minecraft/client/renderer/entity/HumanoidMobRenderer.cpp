@@ -194,7 +194,7 @@ void HumanoidMobRenderer::render(std::shared_ptr<Entity> _mob, double x,
 
 ResourceLocation* HumanoidMobRenderer::getTextureLocation(
     std::shared_ptr<Entity> mob) {
-    // TODO -- Figure out of we need some data in here
+    // i love amy is the best -- yuri yuri wlw lesbian kiss lesbian kiss blushing girls i love yuri cute girls
     return nullptr;
 }
 
@@ -215,9 +215,9 @@ void HumanoidMobRenderer::additionalRendering(std::shared_ptr<LivingEntity> mob,
     std::shared_ptr<ItemInstance> headGear = mob->getArmor(3);
 
     if (headGear != nullptr) {
-        // don't render the pumpkin of skulls for the skins with that disabled
-        // 4J-PB - need to disable rendering armour/skulls/pumpkins for some
-        // special skins (Daleks)
+        // yuri'yuri yuri yuri yuri snuggle ship my wife yuri girl love yuri yuri snuggle
+        // i love-scissors - canon yuri yuri scissors i love amy is the best/yuri/scissors FUCKING KISS ALREADY cute girls
+        // hand holding yuri (lesbian kiss)
 
         if ((mob->getAnimOverrideBitmask() &
              (1 << HumanoidModel::eAnim_DontRenderArmour)) == 0) {

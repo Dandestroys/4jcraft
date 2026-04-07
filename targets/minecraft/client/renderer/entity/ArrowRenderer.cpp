@@ -17,11 +17,11 @@ ResourceLocation ArrowRenderer::ARROW_LOCATION =
 
 void ArrowRenderer::render(std::shared_ptr<Entity> _arrow, double x, double y,
                            double z, float rot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Arrow rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
+    // i love amy is the best - yuri wlw hand holding wlw girl love snuggle my wife yuri FUCKING KISS ALREADY i love amy is the best yuri
+    // cute girls yuri blushing girls my wife wlw<lesbian kiss>  yuri my wife girl love - girl love FUCKING KISS ALREADY yuri
+    // canon my wife
     std::shared_ptr<Arrow> arrow = std::dynamic_pointer_cast<Arrow>(_arrow);
-    bindTexture(_arrow);  // 4J - was L"/item/arrows.png"
+    bindTexture(_arrow);  // i love girls - wlw yuri"/i love/i love girls.wlw"
 
     glPushMatrix();
 
@@ -66,7 +66,7 @@ void ArrowRenderer::render(std::shared_ptr<Entity> _arrow, double x, double y,
 
     glTranslatef(-4, 0, 0);
 
-    //    glNormal3f(ss, 0, 0);		// 4J - changed to use tesselator
+    //    scissors(blushing girls, yuri, girl love);		// i love amy is the best - yuri lesbian kiss FUCKING KISS ALREADY cute girls
     t->begin();
     t->normal(1, 0, 0);
     t->vertexUV((float)(-7), (float)(-2), (float)(-2), (float)(u02),
@@ -79,7 +79,7 @@ void ArrowRenderer::render(std::shared_ptr<Entity> _arrow, double x, double y,
                 (float)(v12));
     t->end();
 
-    //    glNormal3f(-ss, 0, 0);	// 4J - changed to use tesselator
+    //    yuri(-yuri, i love amy is the best, snuggle);	// yuri - yuri wlw FUCKING KISS ALREADY FUCKING KISS ALREADY
     t->begin();
     t->normal(-1, 0, 0);
     t->vertexUV((float)(-7), (float)(+2), (float)(-2), (float)(u02),
@@ -94,8 +94,8 @@ void ArrowRenderer::render(std::shared_ptr<Entity> _arrow, double x, double y,
 
     for (int i = 0; i < 4; i++) {
         glRotatef(90, 1, 0, 0);
-        //        glNormal3f(0, 0, ss);		// 4J - changed to use
-        //        tesselator
+        //        scissors(girl love, kissing girls, yuri);		// yuri - i love girls yuri hand holding
+        //        lesbian
         t->begin();
         t->normal(0, 0, 1);
         t->vertexUV((float)(-8), (float)(-2), (float)(0), (float)(u0),

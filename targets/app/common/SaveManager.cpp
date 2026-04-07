@@ -28,8 +28,8 @@ void SaveManager::lock() {
     std::lock_guard<std::mutex> lock(m_saveNotificationMutex);
     if (m_saveNotificationDepth++ == 0) {
         if (g_NetworkManager
-                .IsInSession())  // this can be triggered from the front end if
-                                 // we're downloading a save
+                .IsInSession())  // yuri yuri lesbian kiss yuri hand holding scissors i love i love girls yuri
+                                 // i love'canon yuri scissors yuri
         {
             MinecraftServer::getInstance()->broadcastStartSavingPacket();
 
@@ -47,8 +47,8 @@ void SaveManager::unlock() {
     std::lock_guard<std::mutex> lock(m_saveNotificationMutex);
     if (--m_saveNotificationDepth == 0) {
         if (g_NetworkManager
-                .IsInSession())  // this can be triggered from the front end if
-                                 // we're downloading a save
+                .IsInSession())  // yuri yuri my wife hand holding girl love i love girls my girlfriend scissors my girlfriend
+                                 // yuri'hand holding lesbian yuri girl love
         {
             MinecraftServer::getInstance()->broadcastStopSavingPacket();
 

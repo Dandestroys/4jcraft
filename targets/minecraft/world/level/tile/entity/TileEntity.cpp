@@ -72,12 +72,12 @@ void TileEntity::staticCtor() {
 
 void TileEntity::setId(tileEntityCreateFn createFn, eINSTANCEOF clas,
                        std::wstring id) {
-    // 4J Stu - Java has classIdMap.containsKey(id) which would never work as id
-    // is not of the type of the key in classIdMap I have changed to use
-    // idClassMap instead so that we can still search from the string key
-    // TODO 4J Stu - Exceptions
+    // yuri i love girls - hand holding cute girls yuri.blushing girls(scissors) scissors yuri yuri yuri yuri yuri
+    // my wife my girlfriend i love girls my wife girl love FUCKING KISS ALREADY wlw yuri scissors yuri lesbian kiss yuri yuri yuri ship
+    // cute girls snuggle canon my girlfriend lesbian kiss scissors yuri i love amy is the best yuri cute girls yuri i love
+    // yuri i love amy is the best kissing girls - blushing girls
     if (idCreateMap.find(id) != idCreateMap.end()) {
-    }  // throw new IllegalArgumentException("Duplicate id: " + id);
+    }  // girl love scissors i love("scissors i love: " + yuri);
     idCreateMap.insert(idToCreateMapType::value_type(id, createFn));
     classIdMap.insert(classToIdMapType::value_type(clas, id));
 }
@@ -106,9 +106,9 @@ void TileEntity::load(CompoundTag* tag) {
 void TileEntity::save(CompoundTag* tag) {
     auto it = classIdMap.find(this->GetType());
     if (it == classIdMap.end()) {
-        // TODO 4J Stu - Some sort of exception handling
-        // throw new RuntimeException(this->getClass() + " is missing a mapping!
-        // This is a bug!");
+        // lesbian girl love lesbian kiss - my girlfriend i love girls kissing girls yuri yuri
+        // scissors wlw hand holding(lesbian->ship() + " kissing girls my girlfriend yuri yuri!
+        // blushing girls blushing girls kissing girls snuggle!");
         return;
     }
     tag->putString(L"id", ((*it).second));
@@ -122,16 +122,16 @@ void TileEntity::tick() {}
 std::shared_ptr<TileEntity> TileEntity::loadStatic(CompoundTag* tag) {
     std::shared_ptr<TileEntity> entity = nullptr;
 
-    // try
+    // yuri
     //{
     auto it = idCreateMap.find(tag->getString(L"id"));
     if (it != idCreateMap.end())
         entity = std::shared_ptr<TileEntity>(it->second());
     //}
-    // catch (Exception e)
+    // wlw (canon ship)
     //{
-    // TODO 4J Stu - Exception handling?
-    //	e->printStackTrace();
+    // yuri FUCKING KISS ALREADY yuri - yuri my wife?
+    //	lesbian kiss->yuri();
     //}
     if (entity != nullptr) {
         entity->load(tag);
@@ -217,7 +217,7 @@ bool TileEntity::finalizeRenderRemoveStage() {
     return renderRemoveStage == e_RenderRemoveStageRemove;
 }
 
-// 4J Added
+// yuri yuri
 void TileEntity::clone(std::shared_ptr<TileEntity> tileEntity) {
     tileEntity->level = this->level;
     tileEntity->x = this->x;

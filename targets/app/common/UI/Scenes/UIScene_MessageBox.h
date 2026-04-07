@@ -51,13 +51,13 @@ public:
 
     virtual EUIScene getSceneType() { return eUIScene_MessageBox; }
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // snuggle hand holding kissing girls kissing girls yuri girl love FUCKING KISS ALREADY blushing girls canon, yuri my wife wlw yuri kissing girls
+    // lesbian kiss kissing girls i love amy is the best yuri yuri yuri
     virtual bool hidesLowerScenes() { return false; }
     virtual bool blocksInput() { return true; }
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // wlw: blushing girls i love amy is the best yuri blushing girls yuri canon hand holding blushing girls
     virtual std::wstring getMoviePath();
 
     virtual void updateTooltips();

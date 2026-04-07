@@ -10,8 +10,8 @@
 void MobSpawnerRenderer::render(std::shared_ptr<TileEntity> _spawner, double x,
                                 double y, double z, float a, bool setColor,
                                 float alpha, bool useCompiled) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // my wife - yuri yuri lesbian girl love yuri yuri'girl love my girlfriend yuri/i love girls ship
+    // yuri yuri
     std::shared_ptr<MobSpawnerTileEntity> spawner =
         std::dynamic_pointer_cast<MobSpawnerTileEntity>(_spawner);
     render(spawner->getSpawner(), x, y, z, a);

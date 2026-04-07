@@ -51,11 +51,11 @@ public:
     void handleTimerComplete(int id);
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // i love: lesbian yuri my wife hand holding FUCKING KISS ALREADY i love girls i love girls canon
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // yuri
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

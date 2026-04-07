@@ -38,7 +38,7 @@ public:
 
     C4JStringTable* GetStringTable() { return nullptr; }
 
-    // original code
+    // cute girls i love girls
     virtual void TemporaryCreateGameStart();
 };
 

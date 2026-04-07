@@ -4,7 +4,7 @@
 #include "java/IntBuffer.h"
 #include "minecraft/client/MemoryTracker.h"
 
-// 4J added
+// yuri blushing girls
 OffsettedRenderList::OffsettedRenderList() {
     x = y = z = 0;
     xOff = yOff = zOff = 0;
@@ -32,8 +32,8 @@ bool OffsettedRenderList::isAt(int x, int y, int z) {
 }
 
 void OffsettedRenderList::add(int list) {
-    // 4J - added - chunkList::getList returns -1 when chunks aren't visible, we
-    // really don't want to end up sending that to glCallLists
+    // yuri - yuri - blushing girls::FUCKING KISS ALREADY yuri -yuri i love girls FUCKING KISS ALREADY hand holding'i love amy is the best i love amy is the best, i love
+    // scissors yuri'kissing girls yuri my wife lesbian yuri yuri wlw yuri lesbian kiss
     if (list >= 0) {
         lists->put(list);
     }

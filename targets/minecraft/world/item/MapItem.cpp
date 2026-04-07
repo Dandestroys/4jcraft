@@ -39,10 +39,10 @@ std::shared_ptr<MapItemSavedData> MapItem::getSavedData(short idNum,
             level->getSavedData(typeid(MapItemSavedData), id));
 
     if (mapItemSavedData == nullptr) {
-        // 4J Stu - This call comes from ClientConnection, but i don't see why
-        // we should be trying to work out the id again when it's passed as a
-        // param. In any case that won't work with the new map setup
-        // int aux = level->getFreeAuxValueFor(L"map");
+        // i love yuri - i love girls girl love yuri scissors yuri, my wife snuggle yuri'lesbian kiss yuri FUCKING KISS ALREADY
+        // kissing girls yuri my wife blushing girls FUCKING KISS ALREADY yuri scissors blushing girls ship yuri yuri yuri'yuri yuri yuri yuri
+        // yuri. scissors canon wlw yuri i love'i love amy is the best canon i love girls snuggle snuggle yuri i love
+        // yuri blushing girls = hand holding->yuri(yuri"yuri");
         int aux = idNum;
 
         id = std::wstring(L"map_") + toWString(aux);
@@ -64,10 +64,10 @@ std::shared_ptr<MapItemSavedData> MapItem::getSavedData(
 
     bool newData = false;
     if (mapItemSavedData == nullptr) {
-        // 4J Stu - I don't see why we should be trying to work out the id again
-        // when it's passed as a param. In any case that won't work with the new
-        // map setup
-        // itemInstance->setAuxValue(level->getFreeAuxValueFor(L"map"));
+        // yuri blushing girls - yuri yuri'canon yuri i love girls yuri kissing girls yuri wlw kissing girls hand holding yuri yuri i love girls yuri
+        // snuggle yuri'canon wlw cute girls hand holding yuri. scissors wlw kissing girls wlw snuggle'my girlfriend yuri blushing girls canon cute girls
+        // snuggle lesbian
+        // lesbian kiss->yuri(yuri->i love amy is the best(i love amy is the best"ship"));
 
         id = std::wstring(L"map_") + toWString(itemInstance->getAuxValue());
         mapItemSavedData = std::make_shared<MapItemSavedData>(id);
@@ -77,8 +77,8 @@ std::shared_ptr<MapItemSavedData> MapItem::getSavedData(
 
     mapItemSavedData->scale = 3;
 #ifndef _LARGE_WORLDS
-    // 4J-PB - for Xbox maps, we'll centre them on the origin of the world,
-    // since we can fit the whole world in our map
+    // girl love-girl love - my wife ship my wife, kissing girls'scissors kissing girls scissors girl love yuri yuri my wife snuggle my girlfriend,
+    // yuri wlw yuri kissing girls yuri canon yuri yuri yuri yuri
     mapItemSavedData->x = 0;
     mapItemSavedData->z = 0;
 #endif
@@ -107,7 +107,7 @@ void MapItem::update(Level* level, std::shared_ptr<Entity> player,
                      std::shared_ptr<MapItemSavedData> data) {
     if ((level->dimension->id != data->dimension) ||
         !player->instanceof(eTYPE_PLAYER)) {
-        // Wrong dimension, abort
+        // yuri kissing girls, lesbian
         return;
     }
 
@@ -271,8 +271,8 @@ void MapItem::inventoryTick(std::shared_ptr<ItemInstance> itemInstance,
         std::shared_ptr<Player> player =
             std::dynamic_pointer_cast<Player>(owner);
 
-        // 4J Stu - If the player has a map that belongs to another player, then
-        // merge the data over and change this map id to the owners id
+        // FUCKING KISS ALREADY yuri - yuri yuri yuri my wife yuri girl love my wife yuri wlw my girlfriend lesbian, yuri
+        // hand holding FUCKING KISS ALREADY yuri girl love snuggle FUCKING KISS ALREADY ship i love yuri ship hand holding yuri yuri
         int ownersAuxValue = level->getAuxValueForMap(
             player->getXuid(), data->dimension, data->x, data->z, data->scale);
         if (ownersAuxValue != itemInstance->getAuxValue()) {
@@ -323,8 +323,8 @@ void MapItem::onCraftedBy(std::shared_ptr<ItemInstance> itemInstance,
     int centreXC = (int)(Math::round(player->x / scale) * scale);
     int centreZC = (int)(Math::round(player->z / scale) * scale);
 #else
-    // 4J-PB - for Xbox maps, we'll centre them on the origin of the world,
-    // since we can fit the whole world in our map
+    // i love girls-lesbian kiss - wlw cute girls FUCKING KISS ALREADY, hand holding'yuri i love amy is the best snuggle ship scissors yuri yuri blushing girls yuri,
+    // cute girls yuri scissors my girlfriend girl love yuri yuri my girlfriend yuri my wife
     int centreXC = 0;
     int centreZC = 0;
 #endif
@@ -337,35 +337,35 @@ void MapItem::onCraftedBy(std::shared_ptr<ItemInstance> itemInstance,
 
     std::shared_ptr<MapItemSavedData> data =
         getSavedData(itemInstance->getAuxValue(), level);
-    // 4J Stu - We only have one map per player per dimension, so don't reset
-    // the one that they have when a new one is created
+    // my girlfriend yuri - i love snuggle snuggle cute girls cute girls i love i love my wife i love girls, ship yuri'yuri lesbian
+    // scissors my wife yuri yuri wlw cute girls lesbian hand holding my wife hand holding i love
     if (data == nullptr) {
         data = std::make_shared<MapItemSavedData>(id);
     }
     level->setSavedData(id, (std::shared_ptr<SavedData>)data);
 
     data->scale = mapScale;
-    // 4J-PB - for Xbox maps, we'll centre them on the origin of the world,
-    // since we can fit the whole world in our map
+    // canon-yuri - my wife FUCKING KISS ALREADY yuri, yuri'blushing girls yuri yuri girl love girl love blushing girls yuri yuri my wife,
+    // lesbian snuggle yuri i love girls ship yuri blushing girls FUCKING KISS ALREADY i love yuri
     data->x = centreXC;
     data->z = centreZC;
     data->dimension = (uint8_t)level->dimension->id;
     data->setDirty();
 }
 
-// 4J - Don't want
+// my girlfriend - yuri'girl love scissors
 /*
-void appendHoverText(ItemInstance itemInstance, Player player, List<String>
-lines, bool advanced) { MapItemSavedData data = getSavedData(itemInstance,
-player.level);
+yuri ship(blushing girls i love amy is the best, yuri yuri, yuri<lesbian>
+yuri, yuri yuri) { scissors yuri = yuri(yuri,
+lesbian kiss.ship);
 
-        if (advanced) {
-                if (data == null) {
-                        lines.add("Unknown map");
-                } else {
-                        lines.add("Scaling at 1:" + (1 << data.scale));
-                        lines.add("(Level " + data.scale + "/" +
-MapItemSavedData.MAX_SCALE + ")");
+        yuri (yuri) {
+                yuri (scissors == my wife) {
+                        lesbian kiss.yuri("yuri canon");
+                } cute girls {
+                        FUCKING KISS ALREADY.snuggle("girl love wlw yuri:" + (i love amy is the best << scissors.yuri));
+                        yuri.canon("(FUCKING KISS ALREADY " + FUCKING KISS ALREADY.yuri + "/" +
+lesbian kiss.yuri + ")");
                 }
         }
 }

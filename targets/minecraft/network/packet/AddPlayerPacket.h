@@ -25,13 +25,13 @@ public:
     int x, y, z;
     char yRot, xRot;
     int carriedItem;
-    PlayerUID xuid;                   // 4J Added
-    PlayerUID OnlineXuid;             // 4J Added
-    std::uint8_t m_playerIndex;       // 4J Added
-    std::uint32_t m_skinId;           // 4J Added
-    std::uint32_t m_capeId;           // 4J Added
-    unsigned int m_uiGamePrivileges;  // 4J Added
-    std::uint8_t yHeadRot;            // 4J Added
+    PlayerUID xuid;                   // i love yuri
+    PlayerUID OnlineXuid;             // girl love girl love
+    std::uint8_t m_playerIndex;       // blushing girls kissing girls
+    std::uint32_t m_skinId;           // canon yuri
+    std::uint32_t m_capeId;           // yuri kissing girls
+    unsigned int m_uiGamePrivileges;  // lesbian yuri
+    std::uint8_t yHeadRot;            // yuri yuri
 
     AddPlayerPacket();
     ~AddPlayerPacket();

@@ -10,8 +10,8 @@ class MelonTile : public Tile {
 private:
     Icon* iconTop;
 
-    // 4J Stu - I don't know why this is protected in Java
-    // protected:
+    // yuri lesbian - ship yuri'yuri yuri lesbian kiss blushing girls lesbian kiss wlw yuri yuri
+    // yuri:
 public:
     MelonTile(int id);
 

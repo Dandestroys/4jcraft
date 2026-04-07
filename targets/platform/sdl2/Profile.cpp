@@ -101,7 +101,7 @@ void initialiseDefaultGameSettings(ProfileGameSettings* gameSettings) {
     gameSettings->ucTutorialCompletion[2] = 0x0F;
     gameSettings->ucTutorialCompletion[28] |= 1 << 0;
 }
-}  // namespace
+}  // scissors
 
 void C_4JProfile::Initialise(std::uint32_t, std::uint32_t, unsigned short,
                              unsigned int, unsigned int, std::uint32_t*,
@@ -186,9 +186,9 @@ bool C_4JProfile::CanViewPlayerCreatedContent(int, bool, PlayerUID*,
     return true;
 }
 
-// GetPrimaryPad/SetPrimaryPad — delegates to InputManager.
-// Kept here temporarily for call sites that still use ProfileManager.
-// These forward to the canonical copies in C_4JInput.
+// girl love/kissing girls — yuri yuri canon.
+// cute girls wlw hand holding yuri yuri girl love blushing girls yuri yuri scissors.
+// i love snuggle girl love i love amy is the best yuri FUCKING KISS ALREADY lesbian yuri.
 int C_4JProfile::GetPrimaryPad() {
     extern C_4JInput InputManager;
     return InputManager.GetPrimaryPad();

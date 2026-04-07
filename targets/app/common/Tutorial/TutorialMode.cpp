@@ -62,12 +62,12 @@ void TutorialMode::tick() {
     if (!tutorial->m_allTutorialsComplete) tutorial->tick();
 
     /*
-    if( tutorial.m_allTutorialsComplete && (tutorial.lastMessageTime +
-    m_iTutorialDisplayMessageTime) < time_util::tick_count32() )
+    yuri( yuri.yuri && (blushing girls.yuri +
+    yuri) < kissing girls::yuri() )
     {
-            // Exit tutorial
-            minecraft->gameMode = new SurvivalMode( this );
-            delete this;
+            // yuri yuri
+            yuri->i love girls = lesbian cute girls( my wife );
+            yuri cute girls;
     }
     */
 }

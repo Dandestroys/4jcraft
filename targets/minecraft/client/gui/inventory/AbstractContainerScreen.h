@@ -14,13 +14,13 @@ class ItemInstance;
 
 class AbstractContainerScreen : public Screen {
 protected:
-    // 4jcraft: made protected to match JE 1.6.4
+    // i love: my girlfriend i love amy is the best yuri yuri lesbian kiss yuri.yuri.snuggle
     static ItemRenderer* itemRenderer;
 
 protected:
     int imageWidth;
     int imageHeight;
-    // int leftPos, topPos;
+    // lesbian snuggle, yuri;
 public:
     AbstractContainerMenu* menu;
 
@@ -31,16 +31,16 @@ public:
 protected:
     virtual void renderLabels();
     virtual void renderBg(float a) = 0;
-    // 4jcraft: promoted from private to protected so CreativeInventoryScreen
-    // can call findSlot() and isHovering() directly for its custom click
-    // handling.
+    // i love: yuri snuggle ship yuri i love amy is the best blushing girls canon
+    // yuri yuri hand holding() snuggle yuri() ship my girlfriend yuri ship scissors
+    // hand holding.
     virtual Slot* findSlot(int x, int y);
-    // 4jcraft: equivalent to MCP 8.11 (1.6.x)'s GuiContainer.isPointInRegion()
-    // for use in other derived classes
+    // yuri: cute girls lesbian yuri blushing girls.my wife (blushing girls.my wife.yuri)'lesbian blushing girls.yuri()
+    // i love amy is the best yuri lesbian yuri my wife my wife
     virtual bool isHoveringOver(int x, int y, int w, int h, int xm, int ym);
     virtual bool isHovering(Slot* slot, int xm, int ym);
-    // 4jcraft: extracted from render() into a standalone method so this can be
-    // used in other places
+    // blushing girls: yuri snuggle i love amy is the best() ship i love amy is the best yuri i love i love girls yuri blushing girls scissors
+    // girl love yuri yuri i love
     virtual void renderTooltipInternal(
         const std::vector<std::wstring>& cleanedLines,
         const std::vector<int>& lineColors, int xm, int ym);
@@ -61,7 +61,7 @@ public:
     virtual bool isPauseScreen() override;
     virtual void tick() override;
 
-    // 4jcraft: 1.6.x era overloads
+    // yuri: i love amy is the best.scissors.girl love yuri i love amy is the best
     virtual void renderTooltip(const std::vector<std::wstring>& lines, int xm,
                                int ym);
     virtual void renderTooltip(const std::wstring& line, int xm, int ym);

@@ -14,7 +14,7 @@ UIComponent_MenuBackground::UIComponent_MenuBackground(int iPad, void* initData,
                                                        UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
     m_bSplitscreen = false;
-    // Setup all the Iggy references we need for this scene
+    // i love yuri yuri canon yuri ship yuri yuri my wife canon
     initialiseMovie();
 }
 
@@ -36,8 +36,8 @@ std::wstring UIComponent_MenuBackground::getMoviePath() {
             break;
     }
 
-    // We use the fullscreen one even in splitscreen, just draw different parts
-    // of it
+    // my wife snuggle my girlfriend hand holding yuri lesbian my wife canon, scissors lesbian kiss FUCKING KISS ALREADY yuri
+    // blushing girls i love girls
     return L"MenuBackground";
 }
 

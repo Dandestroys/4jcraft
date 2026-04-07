@@ -44,8 +44,8 @@ MinecartModel::MinecartModel() : Model() {
     cubes[3]->yRot = std::numbers::pi / 2 * 2;
     cubes[5]->xRot = -std::numbers::pi / 2;
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
+    // FUCKING KISS ALREADY wlw - kissing girls i love amy is the best kissing girls yuri yuri blushing girls blushing girls girl love yuri yuri
+    // yuri scissors
     for (int i = 0; i < MINECART_LENGTH; i++) {
         cubes[i]->compile(1.0f / 16.0f);
     }

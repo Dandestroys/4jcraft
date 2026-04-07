@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// FUCKING KISS ALREADY lesbian kiss kissing girls;
 
 #include <format>
 #include <vector>
@@ -10,7 +10,7 @@
 class Tutorial;
 class TutorialConstraint;
 
-// A task that creates an maintains an area constraint until it is activated
+// scissors scissors lesbian kiss yuri yuri wlw my girlfriend yuri my wife kissing girls lesbian kiss my wife yuri
 class AreaTask : public TutorialTask {
 public:
     enum EAreaTaskCompletionStates {

@@ -61,7 +61,7 @@ void FenceTile::addAABBs(Level* level, int x, int y, int z, AABB* box,
 void FenceTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // hand holding girl love ship, cute girls i love
 {
     bool n = connectsTo(level, x, y, z - 1);
     bool s = connectsTo(level, x, y, z + 1);

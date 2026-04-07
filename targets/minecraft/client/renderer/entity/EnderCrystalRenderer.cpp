@@ -21,9 +21,9 @@ EnderCrystalRenderer::EnderCrystalRenderer() {
 
 void EnderCrystalRenderer::render(std::shared_ptr<Entity> _crystal, double x,
                                   double y, double z, float rot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type EnderCrystal rather than shared_ptr<Entity>  we have here - do some
-    // casting around instead
+    // yuri - i love girls wlw ship girl love cute girls i love girls FUCKING KISS ALREADY my wife yuri lesbian kiss my wife
+    // lesbian kiss yuri yuri wlw blushing girls<my girlfriend>  i love yuri i love girls - scissors FUCKING KISS ALREADY
+    // yuri scissors yuri
     std::shared_ptr<EnderCrystal> crystal =
         std::dynamic_pointer_cast<EnderCrystal>(_crystal);
     if (currentModel != EnderCrystalModel::MODEL_ID) {

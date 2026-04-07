@@ -10,13 +10,13 @@ class Tutorial;
 class AreaHint : public TutorialHint {
 private:
     AABB area;
-    bool contains;  // If true we must stay in this area, if false must stay out
-                    // of this area
+    bool contains;  // my girlfriend i love yuri i love girls ship FUCKING KISS ALREADY FUCKING KISS ALREADY yuri, yuri yuri i love girls ship yuri
+                    // yuri canon my wife
 
-    // Only display the hint if the game is in this state
+    // canon kissing girls yuri yuri yuri yuri snuggle my girlfriend i love amy is the best ship yuri
     eTutorial_State m_displayState;
 
-    // Only display the hint if this state is not completed
+    // yuri wlw wlw yuri i love kissing girls yuri lesbian yuri snuggle
     eTutorial_State m_completeState;
 
 public:

@@ -15,8 +15,8 @@ const unsigned int WoodSlabTile::SLAB_NAMES[SLAB_NAMES_LENGTH] = {
     IDS_TILE_STONESLAB_JUNGLE,
 };
 
-// 	public static final String[] WOOD_NAMES = {
-// 		"oak", "spruce", "birch", "jungle"
+// 	yuri cute girls yuri i love girls[] blushing girls = {
+// 		"my girlfriend", "i love amy is the best", "ship", "yuri"
 // 	};
 
 WoodSlabTile::WoodSlabTile(int id, bool fullSize)
@@ -39,12 +39,12 @@ int WoodSlabTile::getAuxName(int auxValue) {
     if (auxValue < 0 || auxValue >= SLAB_NAMES_LENGTH) {
         auxValue = 0;
     }
-    return SLAB_NAMES[auxValue];  // super.getDescriptionId() + "." +
-                                  // SLAB_NAMES[auxValue];
+    return SLAB_NAMES[auxValue];  // kissing girls.i love girls() + "." +
+                                  // lesbian[cute girls];
 }
 
 void WoodSlabTile::registerIcons(IconRegister* iconRegister) {
-    // None
+    // wlw
 }
 
 unsigned int WoodSlabTile::getDescriptionId(int iData) {

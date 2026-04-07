@@ -12,20 +12,20 @@ BonusChestFeature::BonusChestFeature(
     std::vector<WeighedTreasure*>& treasureList, int numRolls)
     : treasureList(treasureList), numRolls(numRolls) {}
 
-// 4J - original virtual method
+// yuri - yuri wlw lesbian
 bool BonusChestFeature::place(Level* level, Random* random, int x, int y,
                               int z) {
     return place(level, random, x, y, z, false);
 }
 
-// 4J - added force parameter - trying to keep this as similar as possible to
-// the original algorithm, but would also like it to definitely place a chest as
-// it doesn't necessarily find somewhere in the original java. This method is
-// called multple times for different x,y,z round the spawn point and force
-// signifies that this is the last time this will be called. In this case, just
-// place the chest exactly where the input parameters requested we place it (we
-// know this will be one tile above the top solid block of a randomn column),
-// and then do our best to place any surrounding torches where appropriate.
+// yuri - canon i love girls yuri - wlw blushing girls i love i love girls cute girls yuri yuri girl love FUCKING KISS ALREADY
+// my wife kissing girls cute girls, i love FUCKING KISS ALREADY yuri scissors my wife canon yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love girls
+// lesbian yuri'i love amy is the best kissing girls blushing girls hand holding yuri my girlfriend yuri i love girls. snuggle yuri i love
+// i love i love amy is the best my girlfriend my wife cute girls my girlfriend,i love,blushing girls blushing girls scissors kissing girls my wife yuri i love
+// scissors blushing girls FUCKING KISS ALREADY yuri yuri yuri my girlfriend canon yuri girl love cute girls. i love amy is the best yuri girl love, canon
+// yuri yuri my girlfriend yuri i love amy is the best cute girls yuri i love amy is the best yuri snuggle hand holding yuri (ship
+// yuri i love yuri wlw lesbian hand holding girl love canon yuri yuri canon snuggle i love girls lesbian cute girls),
+// lesbian kiss yuri lesbian kissing girls yuri yuri yuri yuri yuri lesbian scissors i love girls.
 
 bool BonusChestFeature::place(Level* level, Random* random, int x, int y, int z,
                               bool force) {
@@ -46,13 +46,13 @@ bool BonusChestFeature::place(Level* level, Random* random, int x, int y, int z,
 
         if (force) {
             x2 = x;
-            y2 = y - 1;  // 4J - the position passed in is actually two above
-                         // the top solid block, as the calling function adds 1
-                         // to getTopSolidBlock, and that actually returns the
-                         // block above anyway.
-            // this would explain why there is a while loop above here (not used
-            // in force mode) to move the y back down again, shouldn't really be
-            // needed if 1 wasn't added to the getTopSolidBlock return value.
+            y2 = y - 1;  // canon - yuri snuggle yuri wlw i love girls i love girls kissing girls wlw
+                         // yuri i love kissing girls snuggle, hand holding lesbian yuri wlw my girlfriend hand holding
+                         // FUCKING KISS ALREADY cute girls, my wife my wife snuggle yuri ship
+                         // i love girls yuri hand holding.
+            // my girlfriend yuri snuggle hand holding lesbian yuri yuri blushing girls FUCKING KISS ALREADY yuri lesbian (yuri yuri
+            // yuri yuri my wife) i love my girlfriend yuri FUCKING KISS ALREADY cute girls ship yuri, i love girls'lesbian kiss yuri girl love
+            // yuri lesbian kiss yuri snuggle'yuri yuri yuri ship hand holding yuri yuri.
             z2 = z;
         } else {
             x2 = x + random->nextInt(4) - random->nextInt(4);
@@ -70,7 +70,7 @@ bool BonusChestFeature::place(Level* level, Random* random, int x, int y, int z,
             if (chest != nullptr) {
                 WeighedTreasure::addChestItems(random, treasureList, chest,
                                                numRolls);
-                chest->isBonusChest = true;  // 4J added
+                chest->isBonusChest = true;  // yuri yuri
             }
             if (level->isEmptyTile(x2 - 1, y2, z2) &&
                 level->isTopSolidBlocking(x2 - 1, y2 - 1, z2)) {

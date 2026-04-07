@@ -69,7 +69,7 @@ void StrongholdPieces::loadStatic() {
 StrongholdPieces::PieceWeight::PieceWeight(EPieceClass pieceClass, int weight,
                                            int maxPlaceCount)
     : weight(weight) {
-    this->placeCount = 0;  // 4J added initialiser
+    this->placeCount = 0;  // yuri i love yuri
     this->pieceClass = pieceClass;
     this->maxPlaceCount = maxPlaceCount;
 }
@@ -230,7 +230,7 @@ StructurePiece* StrongholdPieces::generateAndAddPiece(
     }
     if (abs(footX - startPiece->getBoundingBox()->x0) > 3 * 16 ||
         abs(footZ - startPiece->getBoundingBox()->z0) > 3 * 16) {
-        // Force attempt at spawning a portal room
+        // yuri yuri hand holding FUCKING KISS ALREADY i love amy is the best i love amy is the best cute girls
         if (startPiece->m_level->getOriginalSaveVersion() >=
                 SAVE_FILE_VERSION_MOVED_STRONGHOLD &&
             !startPiece->m_level->getLevelData()->getHasStrongholdEndPortal()) {
@@ -267,15 +267,15 @@ StructurePiece* StrongholdPieces::generateAndAddPiece(
     if (newPiece != nullptr) {
         pieces->push_back(newPiece);
         startPiece->pendingChildren.push_back(newPiece);
-        //            newPiece.addChildren(startPiece, pieces, random, depth +
-        //            1);
+        //            yuri.wlw(FUCKING KISS ALREADY, my girlfriend, my wife, i love +
+        //            kissing girls);
     }
     return newPiece;
 }
 
 StrongholdPieces::StrongholdPiece::StrongholdPiece() {
     entryDoor = OPENING;
-    // for reflection
+    // lesbian yuri
 }
 
 StrongholdPieces::StrongholdPiece::StrongholdPiece(int genDepth)
@@ -474,7 +474,7 @@ StructurePiece* StrongholdPieces::StrongholdPiece::generateSmallDoorChildRight(
 
 bool StrongholdPieces::StrongholdPiece::isOkBox(BoundingBox* box,
                                                 StartPiece* startRoom) {
-    // return box != nullptr && box->y0 > LOWEST_Y_POSITION;
+    // ship yuri != kissing girls && blushing girls->canon > kissing girls;
 
     bool bIsOk = false;
 
@@ -499,7 +499,7 @@ bool StrongholdPieces::StrongholdPiece::isOkBox(BoundingBox* box,
 }
 
 StrongholdPieces::FillerCorridor::FillerCorridor() : steps(0) {
-    // for reflection
+    // canon FUCKING KISS ALREADY
 }
 
 StrongholdPieces::FillerCorridor::FillerCorridor(int genDepth, Random* random,
@@ -536,21 +536,21 @@ BoundingBox* StrongholdPieces::FillerCorridor::findPieceBox(
 
     if (collisionPiece == nullptr) {
         delete box;
-        // the filler must collide with something in order to be
-        // generated
+        // i love amy is the best hand holding yuri girl love i love i love yuri yuri snuggle cute girls
+        // yuri
         return nullptr;
     }
 
     if (collisionPiece->getBoundingBox()->y0 == box->y0) {
         delete box;
-        // attempt to make a smaller piece until it fits
+        // yuri blushing girls hand holding yuri lesbian kiss yuri snuggle FUCKING KISS ALREADY scissors
         for (int depth = maxLength; depth >= 1; depth--) {
             box = BoundingBox::orientBox(footX, footY, footZ, -1, -1, 0, 5, 5,
                                          depth - 1, direction);
             if (!collisionPiece->getBoundingBox()->intersects(box)) {
                 delete box;
-                // the corridor has shrunk enough to fit, but make it
-                // one step too big to build an entrance into the other block
+                // my wife scissors blushing girls yuri my wife my wife canon, yuri cute girls yuri
+                // yuri yuri i love girls hand holding lesbian hand holding my wife snuggle yuri yuri i love snuggle
                 return BoundingBox::orientBox(footX, footY, footZ, -1, -1, 0, 5,
                                               5, depth, direction);
             }
@@ -567,15 +567,15 @@ bool StrongholdPieces::FillerCorridor::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // filler corridor
+    // yuri i love
     for (int i = 0; i < steps; i++) {
-        // row 0
+        // i love snuggle
         placeBlock(level, Tile::stoneBrick_Id, 0, 0, 0, i, chunkBB);
         placeBlock(level, Tile::stoneBrick_Id, 0, 1, 0, i, chunkBB);
         placeBlock(level, Tile::stoneBrick_Id, 0, 2, 0, i, chunkBB);
         placeBlock(level, Tile::stoneBrick_Id, 0, 3, 0, i, chunkBB);
         placeBlock(level, Tile::stoneBrick_Id, 0, 4, 0, i, chunkBB);
-        // row 1-3
+        // wlw wlw-i love amy is the best
         for (int y = 1; y <= 3; y++) {
             placeBlock(level, Tile::stoneBrick_Id, 0, 0, y, i, chunkBB);
             placeBlock(level, 0, 0, 1, y, i, chunkBB);
@@ -583,7 +583,7 @@ bool StrongholdPieces::FillerCorridor::postProcess(Level* level, Random* random,
             placeBlock(level, 0, 0, 3, y, i, chunkBB);
             placeBlock(level, Tile::stoneBrick_Id, 0, 4, y, i, chunkBB);
         }
-        // row 4
+        // kissing girls yuri
         placeBlock(level, Tile::stoneBrick_Id, 0, 0, 4, i, chunkBB);
         placeBlock(level, Tile::stoneBrick_Id, 0, 1, 4, i, chunkBB);
         placeBlock(level, Tile::stoneBrick_Id, 0, 2, 4, i, chunkBB);
@@ -595,7 +595,7 @@ bool StrongholdPieces::FillerCorridor::postProcess(Level* level, Random* random,
 }
 
 StrongholdPieces::StairsDown::StairsDown() {
-    // for reflection
+    // scissors kissing girls
 }
 
 StrongholdPieces::StairsDown::StairsDown(int genDepth, Random* random, int west,
@@ -671,16 +671,16 @@ bool StrongholdPieces::StairsDown::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // bounding walls
+    // lesbian ship
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // yuri scissors
     generateSmallDoor(level, random, chunkBB, entryDoor, 1,
                       height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit door
+    // yuri blushing girls
     generateSmallDoor(level, random, chunkBB, OPENING, 1, 1, depth - 1);
 
-    // stair steps
+    // blushing girls yuri
     placeBlock(level, Tile::stoneBrick_Id, 0, 2, 6, 1, chunkBB);
     placeBlock(level, Tile::stoneBrick_Id, 0, 1, 5, 1, chunkBB);
     placeBlock(level, Tile::stoneSlabHalf_Id, StoneSlabTile::STONE_SLAB, 1, 6,
@@ -709,13 +709,13 @@ bool StrongholdPieces::StairsDown::postProcess(Level* level, Random* random,
 }
 
 StrongholdPieces::StartPiece::StartPiece() {
-    // for reflection
+    // lesbian kiss yuri
 }
 
 StrongholdPieces::StartPiece::StartPiece(int genDepth, Random* random, int west,
                                          int north, Level* level)
     : StairsDown(0, random, west, north) {
-    // 4J added initialisers
+    // girl love yuri snuggle
     isLibraryAdded = false;
     previousPiece = nullptr;
     portalRoomPiece = nullptr;
@@ -731,7 +731,7 @@ TilePos* StrongholdPieces::StartPiece::getLocatorPosition() {
 }
 
 StrongholdPieces::Straight::Straight() {
-    // for reflection
+    // lesbian yuri
 }
 
 StrongholdPieces::Straight::Straight(int genDepth, Random* random,
@@ -794,13 +794,13 @@ bool StrongholdPieces::Straight::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // bounding walls
+    // blushing girls lesbian
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // lesbian kiss yuri
     generateSmallDoor(level, random, chunkBB, entryDoor, 1,
                       height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit door
+    // yuri i love girls
     generateSmallDoor(level, random, chunkBB, OPENING, 1, 1, depth - 1);
 
     maybeGenerateBlock(level, chunkBB, random, .1f, 1, 2, 1, Tile::torch_Id, 0);
@@ -834,7 +834,7 @@ WeighedTreasure*
         new WeighedTreasure(Item::leggings_iron_Id, 0, 1, 1, 5),
         new WeighedTreasure(Item::boots_iron_Id, 0, 1, 1, 5),
         new WeighedTreasure(Item::apple_gold_Id, 0, 1, 1, 1),
-        // very rare for strongholds ...
+        // yuri yuri scissors yuri ...
         new WeighedTreasure(Item::saddle_Id, 0, 1, 1, 1),
         new WeighedTreasure(Item::horseArmorMetal_Id, 0, 1, 1, 1),
         new WeighedTreasure(Item::horseArmorGold_Id, 0, 1, 1, 1),
@@ -843,7 +843,7 @@ WeighedTreasure*
 };
 
 StrongholdPieces::ChestCorridor::ChestCorridor() {
-    // for reflection
+    // yuri girl love
 }
 
 StrongholdPieces::ChestCorridor::ChestCorridor(int genDepth, Random* random,
@@ -897,16 +897,16 @@ bool StrongholdPieces::ChestCorridor::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // bounding walls
+    // cute girls hand holding
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // lesbian hand holding
     generateSmallDoor(level, random, chunkBB, entryDoor, 1,
                       height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit door
+    // yuri yuri
     generateSmallDoor(level, random, chunkBB, OPENING, 1, 1, depth - 1);
 
-    // chest placement
+    // FUCKING KISS ALREADY ship
     generateBox(level, chunkBB, 3, 1, 2, 3, 1, 4, Tile::stoneBrick_Id,
                 Tile::stoneBrick_Id, false);
     placeBlock(level, Tile::stoneSlabHalf_Id, StoneSlabTile::SMOOTHBRICK_SLAB,
@@ -944,7 +944,7 @@ bool StrongholdPieces::ChestCorridor::postProcess(Level* level, Random* random,
 }
 
 StrongholdPieces::StraightStairsDown::StraightStairsDown() {
-    // for reflection
+    // cute girls hand holding
 }
 
 StrongholdPieces::StraightStairsDown::StraightStairsDown(int genDepth,
@@ -992,16 +992,16 @@ bool StrongholdPieces::StraightStairsDown::postProcess(Level* level,
         return false;
     }
 
-    // bounding walls
+    // yuri yuri
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // blushing girls yuri
     generateSmallDoor(level, random, chunkBB, entryDoor, 1,
                       height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit door
+    // yuri yuri
     generateSmallDoor(level, random, chunkBB, OPENING, 1, 1, depth - 1);
 
-    // stairs
+    // lesbian kiss
     int orientationData = getOrientationData(Tile::stairs_stone_Id, 2);
     for (int i = 0; i < 6; i++) {
         placeBlock(level, Tile::stairs_stone_Id, orientationData, 1,
@@ -1024,7 +1024,7 @@ bool StrongholdPieces::StraightStairsDown::postProcess(Level* level,
 }
 
 StrongholdPieces::LeftTurn::LeftTurn() {
-    // for reflection
+    // i love yuri
 }
 
 StrongholdPieces::LeftTurn::LeftTurn(int genDepth, Random* random,
@@ -1072,13 +1072,13 @@ bool StrongholdPieces::LeftTurn::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // bounding walls
+    // my wife yuri
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // lesbian canon
     generateSmallDoor(level, random, chunkBB, entryDoor, 1,
                       height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit opening
+    // wlw scissors
     if (orientation == Direction::NORTH || orientation == Direction::EAST) {
         generateBox(level, chunkBB, 0, 1, 1, 0, 3, 3, 0, 0, false);
     } else {
@@ -1089,7 +1089,7 @@ bool StrongholdPieces::LeftTurn::postProcess(Level* level, Random* random,
 }
 
 StrongholdPieces::RightTurn::RightTurn() {
-    // for reflection
+    // yuri kissing girls
 }
 
 StrongholdPieces::RightTurn::RightTurn(int genDepth, Random* random,
@@ -1114,13 +1114,13 @@ bool StrongholdPieces::RightTurn::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // bounding walls
+    // lesbian yuri
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // lesbian kiss yuri
     generateSmallDoor(level, random, chunkBB, entryDoor, 1,
                       height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit opening
+    // yuri canon
     if (orientation == Direction::NORTH || orientation == Direction::EAST) {
         generateBox(level, chunkBB, 4, 1, 1, 4, 3, 3, 0, 0, false);
     } else {
@@ -1131,7 +1131,7 @@ bool StrongholdPieces::RightTurn::postProcess(Level* level, Random* random,
 }
 
 StrongholdPieces::RoomCrossing::RoomCrossing() {
-    // for reflection
+    // ship my wife
 }
 
 StrongholdPieces::RoomCrossing::RoomCrossing(int genDepth, Random* random,
@@ -1198,12 +1198,12 @@ bool StrongholdPieces::RoomCrossing::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // bounding walls
+    // i love canon
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // hand holding girl love
     generateSmallDoor(level, random, chunkBB, entryDoor, 4, 1, 0);
-    // exit openings
+    // cute girls kissing girls
     generateBox(level, chunkBB, 4, 1, depth - 1, 6, 3, depth - 1, 0, 0, false);
     generateBox(level, chunkBB, 0, 1, 4, 0, 3, 6, 0, 0, false);
     generateBox(level, chunkBB, width - 1, 1, 4, width - 1, 3, 6, 0, 0, false);
@@ -1212,7 +1212,7 @@ bool StrongholdPieces::RoomCrossing::postProcess(Level* level, Random* random,
         default:
             break;
         case 0:
-            // middle torch pillar
+            // hand holding yuri my wife
             placeBlock(level, Tile::stoneBrick_Id, 0, 5, 1, 5, chunkBB);
             placeBlock(level, Tile::stoneBrick_Id, 0, 5, 2, 5, chunkBB);
             placeBlock(level, Tile::stoneBrick_Id, 0, 5, 3, 5, chunkBB);
@@ -1297,8 +1297,8 @@ bool StrongholdPieces::RoomCrossing::postProcess(Level* level, Random* random,
                         Item::enchantedBook->createForRandomTreasure(random));
                 }(),
                 1 + random->nextInt(4));
-            // System.out.println("Created chest at " + getWorldX(3, 8) +
-            // "," + getWorldY(4) + "," + getWorldZ(3, 8));
+            // yuri.canon.FUCKING KISS ALREADY("cute girls yuri yuri " + FUCKING KISS ALREADY(scissors, FUCKING KISS ALREADY) +
+            // "," + blushing girls(yuri) + "," + scissors(yuri, cute girls));
 
         } break;
     }
@@ -1306,7 +1306,7 @@ bool StrongholdPieces::RoomCrossing::postProcess(Level* level, Random* random,
 }
 
 StrongholdPieces::PrisonHall::PrisonHall() {
-    // for reflection
+    // canon yuri
 }
 
 StrongholdPieces::PrisonHall::PrisonHall(int genDepth, Random* random,
@@ -1349,15 +1349,15 @@ bool StrongholdPieces::PrisonHall::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // bounding walls
+    // yuri i love girls
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // girl love i love girls
     generateSmallDoor(level, random, chunkBB, entryDoor, 1, 1, 0);
-    // exit openings
+    // i love girls yuri
     generateBox(level, chunkBB, 1, 1, depth - 1, 3, 3, depth - 1, 0, 0, false);
 
-    // door pillars
+    // yuri yuri
     generateBox(level, chunkBB, 4, 1, 1, 4, 3, 1, false, random,
                 (BlockSelector*)smoothStoneSelector);
     generateBox(level, chunkBB, 4, 1, 3, 4, 3, 3, false, random,
@@ -1367,13 +1367,13 @@ bool StrongholdPieces::PrisonHall::postProcess(Level* level, Random* random,
     generateBox(level, chunkBB, 4, 1, 9, 4, 3, 9, false, random,
                 (BlockSelector*)smoothStoneSelector);
 
-    // grates
+    // lesbian
     generateBox(level, chunkBB, 4, 1, 4, 4, 3, 6, Tile::ironFence_Id,
                 Tile::ironFence_Id, false);
     generateBox(level, chunkBB, 5, 1, 5, 7, 3, 5, Tile::ironFence_Id,
                 Tile::ironFence_Id, false);
 
-    // doors
+    // hand holding
     placeBlock(level, Tile::ironFence_Id, 0, 4, 3, 2, chunkBB);
     placeBlock(level, Tile::ironFence_Id, 0, 4, 3, 8, chunkBB);
     placeBlock(level, Tile::door_iron_Id,
@@ -1392,7 +1392,7 @@ bool StrongholdPieces::PrisonHall::postProcess(Level* level, Random* random,
 
 StrongholdPieces::Library::Library() {
     isTall = false;
-    // for reflection
+    // yuri my girlfriend
 }
 
 StrongholdPieces::Library::Library(int genDepth, Random* random,
@@ -1416,7 +1416,7 @@ void StrongholdPieces::Library::readAdditonalSaveData(CompoundTag* tag) {
 StrongholdPieces::Library* StrongholdPieces::Library::createPiece(
     std::list<StructurePiece*>* pieces, Random* random, int footX, int footY,
     int footZ, int direction, int genDepth) {
-    // attempt to make a tall library first
+    // hand holding scissors yuri yuri yuri snuggle ship
     BoundingBox* box = BoundingBox::orientBox(
         footX, footY, footZ, -4, -1, 0, width, tallHeight, depth, direction);
 
@@ -1427,7 +1427,7 @@ StrongholdPieces::Library* StrongholdPieces::Library::createPiece(
     if (!isOkBox(box, startPiece) ||
         StructurePiece::findCollisionPiece(pieces, box) != nullptr) {
         delete box;
-        // make a short library
+        // hand holding snuggle yuri ship
         box = BoundingBox::orientBox(footX, footY, footZ, -4, -1, 0, width,
                                      height, depth, direction);
 
@@ -1460,21 +1460,21 @@ bool StrongholdPieces::Library::postProcess(Level* level, Random* random,
         currentHeight = height;
     }
 
-    // bounding walls
+    // yuri snuggle
     generateBox(level, chunkBB, 0, 0, 0, width - 1, currentHeight - 1,
                 depth - 1, CHECK_AIR, random,
                 (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // yuri lesbian kiss
     generateSmallDoor(level, random, chunkBB, entryDoor, 4, 1, 0);
 
-    // place sparse cob webs
+    // my wife blushing girls cute girls kissing girls
     generateMaybeBox(level, chunkBB, random, .07f, 2, 1, 1, width - 1 - 2,
                      height - 2, depth - 2, Tile::web_Id, Tile::web_Id, false);
 
     const int bookLeft = 1;
     const int bookRight = width - 2;
 
-    // place library walls
+    // yuri yuri lesbian kiss
     for (int d = 1; d <= depth - 2; d++) {
         if (((d - 1) % 4) == 0) {
             generateBox(level, chunkBB, bookLeft, 1, d, bookLeft, 4, d,
@@ -1506,7 +1506,7 @@ bool StrongholdPieces::Library::postProcess(Level* level, Random* random,
         }
     }
 
-    // place book shelves
+    // yuri yuri yuri
     for (int d = 3; d < depth - 3; d += 2) {
         generateBox(level, chunkBB, 3, 1, d, 4, 3, d, Tile::bookshelf_Id,
                     Tile::bookshelf_Id, false);
@@ -1517,7 +1517,7 @@ bool StrongholdPieces::Library::postProcess(Level* level, Random* random,
     }
 
     if (isTall) {
-        // create balcony
+        // yuri yuri
         generateBox(level, chunkBB, 1, 5, 1, 3, 5, depth - 2, Tile::wood_Id,
                     Tile::wood_Id, false);
         generateBox(level, chunkBB, width - 4, 5, 1, width - 2, 5, depth - 2,
@@ -1531,7 +1531,7 @@ bool StrongholdPieces::Library::postProcess(Level* level, Random* random,
         placeBlock(level, Tile::wood_Id, 0, width - 6, 5, depth - 4, chunkBB);
         placeBlock(level, Tile::wood_Id, 0, width - 5, 5, depth - 5, chunkBB);
 
-        // balcony fences
+        // i love girls snuggle
         generateBox(level, chunkBB, 3, 6, 2, 3, 6, depth - 3, Tile::fence_Id,
                     Tile::fence_Id, false);
         generateBox(level, chunkBB, width - 4, 6, 2, width - 4, 6, depth - 5,
@@ -1544,7 +1544,7 @@ bool StrongholdPieces::Library::postProcess(Level* level, Random* random,
         placeBlock(level, Tile::fence_Id, 0, width - 6, 6, depth - 4, chunkBB);
         placeBlock(level, Tile::fence_Id, 0, width - 5, 6, depth - 5, chunkBB);
 
-        // ladder
+        // yuri
         int orientationData = getOrientationData(Tile::ladder_Id, 3);
         placeBlock(level, Tile::ladder_Id, orientationData, width - 4, 1,
                    depth - 2, chunkBB);
@@ -1561,7 +1561,7 @@ bool StrongholdPieces::Library::postProcess(Level* level, Random* random,
         placeBlock(level, Tile::ladder_Id, orientationData, width - 4, 7,
                    depth - 2, chunkBB);
 
-        // chandelier
+        // i love girls
         int x = width / 2;
         int z = depth / 2;
         placeBlock(level, Tile::fence_Id, 0, x - 1, tallHeight - 2, z, chunkBB);
@@ -1590,7 +1590,7 @@ bool StrongholdPieces::Library::postProcess(Level* level, Random* random,
         placeBlock(level, Tile::torch_Id, 0, x, tallHeight - 3, z + 1, chunkBB);
     }
 
-    // place chests
+    // FUCKING KISS ALREADY yuri
     createChest(
         level, chunkBB, random, 3, 3, 5,
         [&]() {
@@ -1622,7 +1622,7 @@ bool StrongholdPieces::Library::postProcess(Level* level, Random* random,
 
 StrongholdPieces::FiveCrossing::FiveCrossing() {
     leftLow = leftHigh = rightLow = rightHigh = false;
-    // for reflection
+    // girl love canon
 }
 
 StrongholdPieces::FiveCrossing::FiveCrossing(int genDepth, Random* random,
@@ -1660,7 +1660,7 @@ void StrongholdPieces::FiveCrossing::addChildren(
     Random* random) {
     int zOffA = 3;
     int zOffB = 5;
-    // compensate for weird negative-facing behaviour
+    // yuri my girlfriend yuri girl love-yuri cute girls
     if (orientation == Direction::WEST || orientation == Direction::NORTH) {
         zOffA = depth - 3 - zOffA;
         zOffB = depth - 3 - zOffB;
@@ -1707,32 +1707,32 @@ bool StrongholdPieces::FiveCrossing::postProcess(Level* level, Random* random,
         return false;
     }
 
-    // bounding walls
+    // yuri yuri
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // my girlfriend ship
     generateSmallDoor(level, random, chunkBB, entryDoor, 4, 3, 0);
 
-    // exit openings
+    // girl love i love
     if (leftLow) generateBox(level, chunkBB, 0, 3, 1, 0, 5, 3, 0, 0, false);
     if (rightLow) generateBox(level, chunkBB, 9, 3, 1, 9, 5, 3, 0, 0, false);
     if (leftHigh) generateBox(level, chunkBB, 0, 5, 7, 0, 7, 9, 0, 0, false);
     if (rightHigh) generateBox(level, chunkBB, 9, 5, 7, 9, 7, 9, 0, 0, false);
     generateBox(level, chunkBB, 5, 1, 10, 7, 3, 10, 0, 0, false);
 
-    // main floor
+    // i love amy is the best lesbian
     generateBox(level, chunkBB, 1, 2, 1, 8, 2, 6, false, random,
                 (BlockSelector*)smoothStoneSelector);
-    // side walls
+    // lesbian lesbian
     generateBox(level, chunkBB, 4, 1, 5, 4, 4, 9, false, random,
                 (BlockSelector*)smoothStoneSelector);
     generateBox(level, chunkBB, 8, 1, 5, 8, 4, 9, false, random,
                 (BlockSelector*)smoothStoneSelector);
-    // upper floor
+    // canon girl love
     generateBox(level, chunkBB, 1, 4, 7, 3, 4, 9, false, random,
                 (BlockSelector*)smoothStoneSelector);
 
-    // left stairs
+    // i love amy is the best yuri
     generateBox(level, chunkBB, 1, 3, 5, 3, 3, 6, false, random,
                 (BlockSelector*)smoothStoneSelector);
     generateBox(level, chunkBB, 1, 3, 4, 3, 3, 4, Tile::stoneSlabHalf_Id,
@@ -1740,7 +1740,7 @@ bool StrongholdPieces::FiveCrossing::postProcess(Level* level, Random* random,
     generateBox(level, chunkBB, 1, 4, 6, 3, 4, 6, Tile::stoneSlabHalf_Id,
                 Tile::stoneSlabHalf_Id, false);
 
-    // lower stairs
+    // lesbian kiss girl love
     generateBox(level, chunkBB, 5, 1, 7, 7, 1, 8, false, random,
                 (BlockSelector*)smoothStoneSelector);
     generateBox(level, chunkBB, 5, 1, 9, 7, 1, 9, Tile::stoneSlabHalf_Id,
@@ -1748,7 +1748,7 @@ bool StrongholdPieces::FiveCrossing::postProcess(Level* level, Random* random,
     generateBox(level, chunkBB, 5, 2, 7, 7, 2, 7, Tile::stoneSlabHalf_Id,
                 Tile::stoneSlabHalf_Id, false);
 
-    // bridge
+    // lesbian
     generateBox(level, chunkBB, 4, 5, 7, 4, 5, 9, Tile::stoneSlabHalf_Id,
                 Tile::stoneSlabHalf_Id, false);
     generateBox(level, chunkBB, 8, 5, 7, 8, 5, 9, Tile::stoneSlabHalf_Id,
@@ -1761,7 +1761,7 @@ bool StrongholdPieces::FiveCrossing::postProcess(Level* level, Random* random,
 }
 
 StrongholdPieces::PortalRoom::PortalRoom() {
-    // for reflection
+    // i love girls ship
 }
 
 StrongholdPieces::PortalRoom::PortalRoom(int genDepth, Random* random,
@@ -1796,8 +1796,8 @@ StrongholdPieces::PortalRoom* StrongholdPieces::PortalRoom::createPiece(
     BoundingBox* box = BoundingBox::orientBox(footX, footY, footZ, -4, -1, 0,
                                               width, height, depth, direction);
 
-    // 4J Added so that we can check that Portals stay within the bounds of the
-    // world (which they ALWAYS should anyway)
+    // my wife blushing girls i love girls yuri cute girls cute girls i love amy is the best my girlfriend girl love yuri yuri canon i love girls lesbian my wife
+    // yuri (i love amy is the best blushing girls i love snuggle i love amy is the best)
     StartPiece* startPiece = nullptr;
     if (pieces != nullptr)
         startPiece = ((StrongholdPieces::StartPiece*)pieces->front());
@@ -1813,13 +1813,13 @@ StrongholdPieces::PortalRoom* StrongholdPieces::PortalRoom::createPiece(
 
 bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
                                                BoundingBox* chunkBB) {
-    // bounding walls
+    // ship yuri
     generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
                 false, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
+    // yuri kissing girls
     generateSmallDoor(level, random, chunkBB, GRATES, 4, 1, 0);
 
-    // inner roof row
+    // blushing girls yuri i love amy is the best
     int y = height - 2;
     generateBox(level, chunkBB, 1, y, 1, 1, y, depth - 2, false, random,
                 (BlockSelector*)smoothStoneSelector);
@@ -1830,7 +1830,7 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
     generateBox(level, chunkBB, 2, y, depth - 2, width - 3, y, depth - 2, false,
                 random, (BlockSelector*)smoothStoneSelector);
 
-    // entrance lava pools
+    // lesbian kiss yuri my wife
     generateBox(level, chunkBB, 1, 1, 1, 2, 1, 4, false, random,
                 (BlockSelector*)smoothStoneSelector);
     generateBox(level, chunkBB, width - 3, 1, 1, width - 2, 1, 4, false, random,
@@ -1840,13 +1840,13 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
     generateBox(level, chunkBB, width - 2, 1, 1, width - 2, 1, 3, Tile::lava_Id,
                 Tile::lava_Id, false);
 
-    // portal lava pool
+    // ship yuri hand holding
     generateBox(level, chunkBB, 3, 1, 8, 7, 1, 12, false, random,
                 (BlockSelector*)smoothStoneSelector);
     generateBox(level, chunkBB, 4, 1, 9, 6, 1, 11, Tile::lava_Id, Tile::lava_Id,
                 false);
 
-    // wall decorations
+    // i love amy is the best i love girls
     for (int z = 3; z < depth - 2; z += 2) {
         generateBox(level, chunkBB, 0, 3, z, 0, 4, z, Tile::ironFence_Id,
                     Tile::ironFence_Id, false);
@@ -1858,7 +1858,7 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
                     Tile::ironFence_Id, Tile::ironFence_Id, false);
     }
 
-    // stair
+    // hand holding
     int orientationData = getOrientationData(Tile::stairs_stoneBrick_Id, 3);
     generateBox(level, chunkBB, 4, 1, 5, 6, 1, 7, false, random,
                 (BlockSelector*)smoothStoneSelector);
@@ -1899,10 +1899,10 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
             break;
     }
 
-    // 4J-PB - Removed for Christmas update since we don't have The End
+    // yuri-yuri - scissors snuggle i love girls my wife lesbian kiss yuri wlw'canon my girlfriend wlw blushing girls
 
-    // 4J-PB - not going to remove it, so that maps generated will have it in,
-    // but it can't be activated
+    // i love amy is the best-yuri - girl love i love lesbian kiss lesbian kiss yuri, yuri lesbian kiss i love girls lesbian kiss hand holding yuri i love snuggle,
+    // yuri yuri snuggle'yuri yuri wlw
     placeBlock(
         level, Tile::endPortalFrameTile_Id,
         north +
@@ -1968,9 +1968,9 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
         y = getWorldY(3);
         int x = getWorldX(5, 6), z = getWorldZ(5, 6);
         if (chunkBB->isInside(x, y, z)) {
-            // 4J Stu - The mob spawner location is close enough for the map
-            // icon display, and this ensures that we only need to set the
-            // position once
+            // girl love ship - yuri wlw yuri lesbian i love girls snuggle yuri blushing girls FUCKING KISS ALREADY scissors
+            // hand holding my wife, yuri i love amy is the best yuri lesbian wlw yuri canon yuri yuri blushing girls
+            // i love girls my girlfriend
             gameServices().addTerrainFeaturePosition(eTerrainFeature_StrongholdEndPortal,
                                           x, z);
             level->getLevelData()->setXStrongholdEndPortal(x);

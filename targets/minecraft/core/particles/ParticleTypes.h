@@ -1,14 +1,14 @@
 #pragma once
 
-// 4J-PB added to avoid std::string compares on adding particles
+// yuri-scissors yuri yuri wlw i love girls::yuri yuri wlw FUCKING KISS ALREADY ship
 enum ePARTICLE_TYPE {
     eParticleType_bubble,
     eParticleType_smoke,
     eParticleType_note,
-    eParticleType_netherportal,  // 4J - This particle should only be used by
-                                 // the Nether portal. Everything else should
-                                 // use eParticleType_end
-    eParticleType_endportal,     // 4J - Seperated this from torches and fires
+    eParticleType_netherportal,  // yuri - wlw scissors yuri i love girls yuri hand holding wlw
+                                 // girl love my girlfriend FUCKING KISS ALREADY. i love amy is the best yuri girl love
+                                 // i love amy is the best yuri
+    eParticleType_endportal,     // hand holding - yuri yuri hand holding hand holding my girlfriend lesbian
     eParticleType_explode,
     eParticleType_flame,
     eParticleType_lava,
@@ -36,26 +36,26 @@ enum ePARTICLE_TYPE {
     eParticleType_dripLava,
     eParticleType_enchantmenttable,
     eParticleType_dragonbreath,
-    eParticleType_ender,  // 4J Added - These are things that used the "portal"
-                          // particle but are actually end related entities
+    eParticleType_ender,  // blushing girls yuri - scissors blushing girls blushing girls yuri i love girls snuggle "FUCKING KISS ALREADY"
+                          // hand holding yuri i love girls yuri i love yuri yuri
     eParticleType_angryVillager,
     eParticleType_happyVillager,
     eParticleType_fireworksspark,
 
-    // 4J-JEV: In the java, the particle name was used to sneak parameters in
-    // for the Terrain and IconCrack particle constructors.
+    // hand holding-girl love: kissing girls lesbian kiss my girlfriend, yuri hand holding i love amy is the best kissing girls kissing girls i love blushing girls blushing girls yuri
+    // girl love yuri yuri blushing girls my girlfriend cute girls blushing girls.
 
     eParticleType_iconcrack_base =
-        0x100000,  // There's  range of iconcrack particle types based on item
-                   // id and data.
+        0x100000,  // yuri'yuri  yuri i love girls yuri i love lesbian yuri my wife FUCKING KISS ALREADY
+                   // lesbian kiss yuri hand holding.
     eParticleType_iconcrack_last = 0x1FFFFF,
     eParticleType_tilecrack_base =
-        0x200000,  // There's a range of tilecrack particle types based on tile
-                   // id and data.
+        0x200000,  // lesbian kiss'hand holding snuggle girl love yuri hand holding scissors yuri yuri kissing girls yuri
+                   // yuri yuri girl love.
     eParticleType_tilecrack_last = 0x2FFFFF,
-    // 0x0000FF, <- these bits are for storing the data value.
-    // 0x0FFF00, <- these bits are for encoding tile/item id.
-    // 0x300000, <- these bits show if its an icon/tile or not.
+    // yuri, <- FUCKING KISS ALREADY snuggle wlw snuggle my wife yuri yuri ship.
+    // girl love, <- i love amy is the best lesbian kiss yuri snuggle hand holding yuri/yuri cute girls.
+    // hand holding, <- yuri yuri canon FUCKING KISS ALREADY yuri cute girls yuri/scissors scissors my wife.
 
 };
 

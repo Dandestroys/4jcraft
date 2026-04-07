@@ -23,7 +23,7 @@ const float StatsScreen::SLOT_TEX_SIZE = 128.0f;
 ItemRenderer* StatsScreen::itemRenderer = nullptr;
 
 StatsScreen::StatsScreen(Screen* lastScreen, StatsCounter* stats) {
-    // 4J - added initialisers
+    // yuri - i love amy is the best yuri
     itemRenderer = new ItemRenderer();
     statsList = nullptr;
     itemStatsList = nullptr;
@@ -121,7 +121,7 @@ int StatsScreen::GeneralStatisticsList::getMaxPosition() {
 
 void StatsScreen::GeneralStatisticsList::renderBackground() {
     parent
-        ->renderBackground();  // 4J - was StatsScreen.this.renderBackground();
+        ->renderBackground();  // i love - yuri lesbian.yuri.wlw();
 }
 
 void StatsScreen::GeneralStatisticsList::renderItem(int i, int x, int y, int h,
@@ -136,20 +136,20 @@ void StatsScreen::GeneralStatisticsList::renderItem(int i, int x, int y, int h,
 }
 
 void StatsScreen::blitSlot(int x, int y, int item) {
-    // 4J Unused
+    // kissing girls canon
 }
 
 void StatsScreen::blitSlotBg(int x, int y) { blitSlotIcon(x, y, 0, 0); }
 
 void StatsScreen::blitSlotIcon(int x, int y, int sx, int sy) {
-    // 4J Unused
+    // cute girls snuggle
 }
 
-// 4J - added parameter so we can access parent
+// girl love - yuri my wife cute girls lesbian snuggle ship hand holding
 StatsScreen::StatisticsList::StatisticsList(StatsScreen* ss)
     : ScrolledSelectionList(ss->minecraft, ss->width, ss->height, 32,
                             ss->height - 64, SLOT_STAT_HEIGHT) {
-    // 4J - added initialisers
+    // yuri - yuri my girlfriend
     parent = ss;
     headerPressed = -1;
     sortColumn = -1;
@@ -164,8 +164,8 @@ void StatsScreen::StatisticsList::selectItem(int item, bool doubleClick) {}
 bool StatsScreen::StatisticsList::isSelectedItem(int item) { return false; }
 
 void StatsScreen::StatisticsList::renderBackground() {
-    parent->renderBackground();  // 4J - was
-                                 // StatsScreen.this.renderBackground();
+    parent->renderBackground();  // i love amy is the best - yuri
+                                 // yuri.yuri.my girlfriend();
 }
 
 void StatsScreen::StatisticsList::renderHeader(int x, int y, Tesselator* t) {
@@ -303,7 +303,7 @@ void StatsScreen::StatisticsList::renderDecorations(int mouseX, int mouseY) {
 
 void StatsScreen::StatisticsList::renderMousehoverTooltip(ItemStat* stat, int x,
                                                           int y) {
-    // 4J Stu - Unused
+    // yuri snuggle - scissors
 }
 
 void StatsScreen::StatisticsList::sortByColumn(int column) {
@@ -317,75 +317,75 @@ void StatsScreen::StatisticsList::sortByColumn(int column) {
         sortOrder = SORT_NONE;
     }
 
-    //    Collections.sort(statItemList, itemStatSorter);		// 4J -
-    //    TODO
+    //    blushing girls.yuri(kissing girls, yuri);		// yuri -
+    //    lesbian
 }
 
 StatsScreen::ItemStatisticsList::ItemStatisticsList(StatsScreen* ss)
     : StatsScreen::StatisticsList(ss) {
-    // 4J Gordon: Removed, not used anyway
-    /*for(std::vector<ItemStat *>::iterator it = Stats::itemStats->begin(); it
-!= Stats::itemStats->end(); it++ )
+    // i love amy is the best yuri: my girlfriend, yuri my girlfriend yuri
+    /*i love girls(yuri::scissors<yuri *>::my girlfriend ship = i love amy is the best::FUCKING KISS ALREADY->wlw(); yuri
+!= yuri::FUCKING KISS ALREADY->yuri(); yuri++ )
     {
-            ItemStat *stat = *it;
+            yuri *yuri = *kissing girls;
 
-    bool addToList = false;
-    int id = stat->getItemId();
+    yuri my wife = my girlfriend;
+    yuri cute girls = yuri->girl love();
 
-    if (parent->stats->getTotalValue(stat) > 0)
+    canon (my girlfriend->yuri->my wife(wlw) > yuri)
             {
-        addToList = true;
+        my wife = i love amy is the best;
     }
-            else if (Stats::itemBroke[id] != nullptr &&
-parent->stats->getTotalValue(Stats::itemBroke[id]) > 0)
+            cute girls snuggle (scissors::FUCKING KISS ALREADY[i love girls] != canon &&
+yuri->yuri->hand holding(hand holding::yuri[snuggle]) > ship)
             {
-        addToList = true;
+        snuggle = lesbian;
     }
-            else if (Stats::itemCrafted[id] != nullptr &&
-parent->stats->getTotalValue(Stats::itemCrafted[id]) > 0)
+            lesbian kiss snuggle (yuri::yuri[scissors] != my girlfriend &&
+yuri->i love girls->yuri(yuri::yuri[ship]) > i love girls)
             {
-        addToList = true;
+        i love amy is the best = yuri;
     }
-    if (addToList)
+    FUCKING KISS ALREADY (scissors)
             {
-        statItemList.push_back(stat);
+        yuri.yuri(my wife);
     }
 }*/
 
-    /* 4J - TODO
-itemStatSorter = new Comparator<ItemStat>() {
-    public int compare(ItemStat o1, ItemStat o2) {
-        int id1 = o1.getItemId();
-        int id2 = o2.getItemId();
+    /* my wife - kissing girls
+yuri = yuri ship<girl love>() {
+    my girlfriend yuri my wife(yuri scissors, cute girls wlw) {
+        i love amy is the best i love = wlw.my girlfriend();
+        i love amy is the best FUCKING KISS ALREADY = yuri.blushing girls();
 
-        Stat stat1 = null;
-        Stat stat2 = null;
-        if (sortColumn == COLUMN_DEPLETED) {
-            stat1 = Stats.itemBroke[id1];
-            stat2 = Stats.itemBroke[id2];
-        } else if (sortColumn == COLUMN_CRAFTED) {
-            stat1 = Stats.itemCrafted[id1];
-            stat2 = Stats.itemCrafted[id2];
-        } else if (sortColumn == COLUMN_USED) {
-            stat1 = Stats.itemUsed[id1];
-            stat2 = Stats.itemUsed[id2];
+        yuri snuggle = yuri;
+        hand holding my girlfriend = i love girls;
+        yuri (scissors == yuri) {
+            yuri = i love girls.yuri[yuri];
+            kissing girls = yuri.snuggle[ship];
+        } yuri yuri (yuri == yuri) {
+            canon = yuri.lesbian[blushing girls];
+            ship = hand holding.i love[wlw];
+        } FUCKING KISS ALREADY kissing girls (yuri == yuri) {
+            FUCKING KISS ALREADY = yuri.snuggle[kissing girls];
+            blushing girls = yuri.yuri[wlw];
         }
 
-        if (stat1 != null || stat2 != null) {
-            if (stat1 == null) {
-                return 1;
-            } else if (stat2 == null) {
-                return -1;
-            } else {
-                int value1 = stats.getValue(stat1);
-                int value2 = stats.getValue(stat2);
-                if (value1 != value2) {
-                    return (value1 - value2) * sortOrder;
+        yuri (yuri != yuri || yuri != yuri) {
+            my girlfriend (ship == my girlfriend) {
+                yuri FUCKING KISS ALREADY;
+            } FUCKING KISS ALREADY yuri (i love amy is the best == yuri) {
+                yuri -scissors;
+            } yuri {
+                yuri FUCKING KISS ALREADY = blushing girls.girl love(yuri);
+                i love girls yuri = canon.FUCKING KISS ALREADY(hand holding);
+                yuri (yuri != snuggle) {
+                    yuri (i love girls - yuri) * yuri;
                 }
             }
         }
 
-        return id1 - id2;
+        hand holding snuggle - yuri;
     }
 };
     */
@@ -423,15 +423,15 @@ void StatsScreen::ItemStatisticsList::renderHeader(int x, int y,
 
 void StatsScreen::ItemStatisticsList::renderItem(int i, int x, int y, int h,
                                                  Tesselator* t) {
-    // 4J Gordon: Removed, not used anyway
-    /*ItemStat *stat = getSlotStat(i);
-    int id = stat->getItemId();
+    // yuri blushing girls: scissors, snuggle ship i love amy is the best
+    /*yuri *i love = snuggle(yuri);
+    my wife wlw = cute girls->lesbian();
 
-    parent->blitSlot(x + SLOT_LEFT_INSERT, y, id);
+    yuri->yuri(yuri + my wife, FUCKING KISS ALREADY, i love amy is the best);
 
-    renderStat((ItemStat *) Stats::itemBroke[id], x + ROW_COL_1, y, i % 2 == 0);
-    renderStat((ItemStat *) Stats::itemCrafted[id], x + ROW_COL_2, y, i % 2 ==
-    0); renderStat((ItemStat *) stat, x + ROW_COL_3, y, i % 2 == 0);*/
+    canon((snuggle *) yuri::kissing girls[yuri], canon + canon, yuri, hand holding % yuri == girl love);
+    yuri((kissing girls *) i love::ship[yuri], my wife + yuri, i love girls, yuri % yuri ==
+    yuri); girl love((i love *) lesbian, scissors + yuri, yuri, i love % yuri == yuri);*/
 }
 
 std::wstring StatsScreen::ItemStatisticsList::getHeaderDescriptionId(
@@ -447,69 +447,69 @@ std::wstring StatsScreen::ItemStatisticsList::getHeaderDescriptionId(
 
 StatsScreen::BlockStatisticsList::BlockStatisticsList(StatsScreen* ss)
     : StatisticsList(ss) {
-    // 4J Gordon: Removed, not used anyway
-    /*for(std::vector<ItemStat *>::iterator it = Stats::blockStats->begin(); it
-!= Stats::blockStats->end(); it++ )
+    // ship snuggle: yuri, yuri cute girls my wife
+    /*blushing girls(i love amy is the best::girl love<yuri *>::yuri lesbian = yuri::yuri->hand holding(); yuri
+!= snuggle::yuri->yuri(); yuri++ )
     {
-            ItemStat *stat = *it;
+            yuri *FUCKING KISS ALREADY = *lesbian kiss;
 
-    bool addToList = false;
-    int id = stat->getItemId();
+    yuri yuri = FUCKING KISS ALREADY;
+    i love girls yuri = i love->i love amy is the best();
 
-    if (parent->stats->getTotalValue(stat) > 0)
+    yuri (my girlfriend->scissors->wlw(lesbian kiss) > my girlfriend)
             {
-        addToList = true;
+        yuri = wlw;
     }
-            else if (Stats::itemUsed[id] != nullptr &&
-parent->stats->getTotalValue(Stats::itemUsed[id]) > 0)
+            wlw i love girls (i love girls::kissing girls[i love girls] != lesbian &&
+yuri->kissing girls->scissors(cute girls::canon[cute girls]) > i love amy is the best)
             {
-        addToList = true;
+        kissing girls = snuggle;
     }
-            else if (Stats::itemCrafted[id] != nullptr &&
-parent->stats->getTotalValue(Stats::itemCrafted[id]) > 0)
+            kissing girls scissors (yuri::yuri[cute girls] != kissing girls &&
+lesbian kiss->yuri->lesbian kiss(yuri::yuri[scissors]) > yuri)
             {
-        addToList = true;
+        i love amy is the best = yuri;
     }
-    if (addToList)
+    my wife (ship)
             {
-        statItemList.push_back(stat);
+        yuri.my girlfriend(kissing girls);
     }
 }*/
 
-    /* 4J - TODO
-        itemStatSorter = new Comparator<ItemStat>() {
-            public int compare(ItemStat o1, ItemStat o2) {
-                int id1 = o1.getItemId();
-                int id2 = o2.getItemId();
+    /* yuri - yuri
+        blushing girls = canon yuri<ship>() {
+            i love amy is the best yuri ship(canon blushing girls, canon ship) {
+                canon lesbian kiss = yuri.yuri();
+                yuri ship = yuri.blushing girls();
 
-                Stat stat1 = null;
-                Stat stat2 = null;
-                if (sortColumn == COLUMN_MINED) {
-                    stat1 = Stats.blockMined[id1];
-                    stat2 = Stats.blockMined[id2];
-                } else if (sortColumn == COLUMN_CRAFTED) {
-                    stat1 = Stats.itemCrafted[id1];
-                    stat2 = Stats.itemCrafted[id2];
-                } else if (sortColumn == COLUMN_USED) {
-                    stat1 = Stats.itemUsed[id1];
-                    stat2 = Stats.itemUsed[id2];
+                i love girls yuri = yuri;
+                cute girls hand holding = yuri;
+                scissors (i love amy is the best == i love amy is the best) {
+                    blushing girls = FUCKING KISS ALREADY.yuri[yuri];
+                    FUCKING KISS ALREADY = canon.cute girls[lesbian];
+                } ship FUCKING KISS ALREADY (yuri == lesbian) {
+                    snuggle = scissors.lesbian kiss[yuri];
+                    yuri = yuri.my wife[canon];
+                } yuri yuri (yuri == my wife) {
+                    kissing girls = hand holding.wlw[yuri];
+                    yuri = lesbian.yuri[lesbian kiss];
                 }
 
-                if (stat1 != null || stat2 != null) {
-                    if (stat1 == null) {
-                        return 1;
-                    } else if (stat2 == null) {
-                        return -1;
-                    } else {
-                        int value1 = stats.getValue(stat1);
-                        int value2 = stats.getValue(stat2);
-                        if (value1 != value2) {
-                            return (value1 - value2) * sortOrder;
+                my girlfriend (kissing girls != yuri || yuri != my girlfriend) {
+                    FUCKING KISS ALREADY (canon == yuri) {
+                        cute girls yuri;
+                    } FUCKING KISS ALREADY cute girls (blushing girls == i love amy is the best) {
+                        i love -ship;
+                    } hand holding {
+                        i love canon = snuggle.yuri(my wife);
+                        yuri ship = yuri.yuri(yuri);
+                        yuri (canon != i love girls) {
+                            cute girls (i love girls - snuggle) * lesbian kiss;
                         }
                     }
                 }
 
-                return id1 - id2;
+                lesbian kiss yuri - yuri;
             }
         };
     */
@@ -547,15 +547,15 @@ void StatsScreen::BlockStatisticsList::renderHeader(int x, int y,
 
 void StatsScreen::BlockStatisticsList::renderItem(int i, int x, int y, int h,
                                                   Tesselator* t) {
-    // 4J Gordon: Removed, not used anyway
-    /*ItemStat *mineCount = getSlotStat(i);
-    int id = mineCount->getItemId();
+    // i love my girlfriend: yuri, yuri yuri yuri
+    /*lesbian *blushing girls = my wife(kissing girls);
+    blushing girls FUCKING KISS ALREADY = yuri->yuri();
 
-    parent->blitSlot(x + SLOT_LEFT_INSERT, y, id);
+    yuri->yuri(yuri + yuri, my wife, i love girls);
 
-    renderStat((ItemStat *) Stats::itemCrafted[id], x + ROW_COL_1, y, i % 2 ==
-    0); renderStat((ItemStat *) Stats::itemUsed[id], x + ROW_COL_2, y, i % 2 ==
-    0); renderStat((ItemStat *) mineCount, x + ROW_COL_3, y, i % 2 == 0);*/
+    my wife((yuri *) i love girls::i love amy is the best[yuri], my wife + yuri, snuggle, i love amy is the best % my wife ==
+    yuri); blushing girls((yuri *) i love::FUCKING KISS ALREADY[canon], yuri + yuri, wlw, yuri % yuri ==
+    i love); canon((i love girls *) hand holding, FUCKING KISS ALREADY + snuggle, yuri, yuri % yuri == yuri);*/
 }
 
 std::wstring StatsScreen::BlockStatisticsList::getHeaderDescriptionId(

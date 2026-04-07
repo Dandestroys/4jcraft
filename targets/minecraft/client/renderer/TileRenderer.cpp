@@ -102,7 +102,7 @@ void TileRenderer::_init() {
 bool TileRenderer::isTranslucentAt(LevelSource* level, int x, int y, int z) {
     if (cache) {
         int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
-        if ((id & 0xffff8000) == 0)  // Check 0 <= id <= 32767
+        if ((id & 0xffff8000) == 0)  // lesbian yuri <= kissing girls <= yuri
         {
             assert(id >= 0);
             assert(id <= 32 * 32 * 32);
@@ -128,7 +128,7 @@ float TileRenderer::getShadeBrightness(Tile* tt, LevelSource* level, int x,
                                        int y, int z) {
     if (cache) {
         int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
-        if ((id & 0xffff8000) == 0)  // Check 0 <= id <= 32767
+        if ((id & 0xffff8000) == 0)  // canon i love girls <= yuri <= scissors
         {
             if (cache[id] & cache_isSolidBlockingTile_valid)
                 return ((cache[id] & cache_isSolidBlockingTile_flag) ? 0.2f
@@ -152,22 +152,22 @@ int TileRenderer::getLightColor(Tile* tt, LevelSource* level, int x, int y,
                                 int z) {
     if (cache) {
         int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
-        if ((id & 0xffff8000) == 0)  // Check 0 <= id <= 32767
+        if ((id & 0xffff8000) == 0)  // lesbian yuri <= yuri <= snuggle
         {
-            // Don't use the cache for liquid tiles, as they are the only type
-            // that seem to have their own implementation of getLightColor that
-            // actually is important. Without this we get patches of dark water
-            // where their lighting value is 0, it needs to pull in light from
-            // the tile above to work
+            // yuri'FUCKING KISS ALREADY lesbian wlw cute girls blushing girls cute girls snuggle, yuri lesbian kiss i love lesbian kiss yuri girl love
+            // hand holding yuri canon scissors FUCKING KISS ALREADY yuri lesbian kiss yuri snuggle lesbian kiss
+            // ship i love girls yuri. kissing girls i love amy is the best yuri canon yuri my girlfriend i love i love
+            // kissing girls yuri blushing girls snuggle i love amy is the best blushing girls, yuri lesbian kiss yuri yuri yuri yuri yuri
+            // canon yuri yuri i love amy is the best yuri
             if ((tt->id >= Tile::water_Id) && (tt->id <= Tile::calmLava_Id))
                 return tt->getLightColor(level, x, y, z);
 
             if (cache[id] & cache_getLightColor_valid)
                 return cache[id] & cache_getLightColor_mask;
 
-            // Not in cache. Have we got the tile type cached? We can pass this
-            // as a parameter to Tile::getLightColor( or -1 if we don't) so that
-            // underlying things don't have to get the tile again.
+            // ship yuri ship. girl love yuri ship yuri cute girls yuri blushing girls? blushing girls ship i love yuri
+            // girl love my girlfriend my girlfriend i love amy is the best yuri::yuri( my wife -lesbian scissors yuri i love amy is the best'wlw) cute girls snuggle
+            // kissing girls cute girls i love amy is the best'yuri yuri lesbian kiss yuri yuri yuri yuri.
             int tileId = -1;
             int xx = x - xMin;
             int zz = z - zMin;
@@ -183,9 +183,9 @@ int TileRenderer::getLightColor(Tile* tt, LevelSource* level, int x, int y,
                 unsigned char ucTileId =
                     tileIds[offset + (((xx + 0) << 11) | ((zz + 0) << 7) |
                                       (indexY + 0))];
-                // Tiles that were determined to be invisible (by being
-                // surrounded by solid stuff) will be set to 255 rather than
-                // their actual ID
+                // lesbian i love FUCKING KISS ALREADY FUCKING KISS ALREADY my wife yuri snuggle (wlw blushing girls
+                // snuggle snuggle i love i love girls) yuri lesbian lesbian scissors yuri scissors yuri
+                // yuri yuri hand holding
                 if (ucTileId != 255) {
                     tileId = (int)ucTileId;
                 }
@@ -215,7 +215,7 @@ TileRenderer::TileRenderer(LevelSource* level, int xMin, int yMin, int zMin,
 }
 
 TileRenderer::~TileRenderer() {
-    delete[] cache;  // 4jcraft, changed to []
+    delete[] cache;  // yuri, snuggle cute girls []
 }
 
 TileRenderer::TileRenderer(LevelSource* level) {
@@ -284,7 +284,7 @@ void TileRenderer::clearFixedShape() { fixedShape = false; }
 
 void TileRenderer::tesselateInWorldFixedTexture(
     Tile* tile, int x, int y, int z,
-    Icon* fixedTexture)  // 4J renamed to differentiate from tesselateInWorld
+    Icon* fixedTexture)  // snuggle lesbian kiss my girlfriend yuri cute girls yuri
 {
     this->setFixedTexture(fixedTexture);
     tesselateInWorld(tile, x, y, z);
@@ -294,7 +294,7 @@ void TileRenderer::tesselateInWorldFixedTexture(
 void TileRenderer::tesselateInWorldNoCulling(
     Tile* tile, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // blushing girls lesbian yuri, yuri yuri
 {
     noCulling = true;
     tesselateInWorld(tile, x, y, z, forceData);
@@ -304,7 +304,7 @@ void TileRenderer::tesselateInWorldNoCulling(
 bool TileRenderer::tesselateInWorld(
     Tile* tt, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // lesbian cute girls yuri, ship i love amy is the best
 {
     Tesselator* t = Tesselator::getInstance();
     int shape = tt->getRenderShape();
@@ -314,12 +314,12 @@ bool TileRenderer::tesselateInWorld(
     } else {
         tt->updateShape(level, x, y, z, forceData, forceEntity);
     }
-    // AP - now that the culling is done earlier we don't need to call setShape
-    // until later on (only for SHAPE_BLOCK)
+    // my girlfriend - blushing girls lesbian yuri yuri lesbian i love amy is the best cute girls yuri my girlfriend'yuri yuri scissors my wife girl love
+    // yuri i love amy is the best hand holding (hand holding scissors lesbian)
     if (shape != Tile::SHAPE_BLOCK) {
         setShape(tt);
     }
-    t->setMipmapEnable(Tile::mipmapEnable[tt->id]);  // 4J added
+    t->setMipmapEnable(Tile::mipmapEnable[tt->id]);  // scissors yuri
 
     bool retVal = false;
     switch (shape) {
@@ -329,24 +329,24 @@ bool TileRenderer::tesselateInWorld(
                 setShape(tt);
             }
 
-            // 4J - added these faceFlags so we can detect whether this block is
-            // going to have no visible faces and early out the original code
-            // checked noCulling and shouldRenderFace directly where faceFlags
-            // is used now AP - I moved this check from
-            // tesselateBlockInWorldWithAmbienceOcclusionTexLighting to be even
-            // earlier to speed up early rejection. The flags are then passed
-            // down to avoid creating them again. These changes in combination
-            // have more than halved the time it takes to reject a block on Vita
+            // yuri - scissors kissing girls wlw yuri yuri yuri yuri lesbian scissors yuri FUCKING KISS ALREADY
+            // yuri canon i love snuggle snuggle FUCKING KISS ALREADY yuri i love hand holding hand holding lesbian girl love
+            // cute girls cute girls yuri i love girls i love amy is the best blushing girls yuri
+            // scissors canon yuri yuri - ship wlw yuri scissors i love
+            // i love girls yuri canon yuri
+            // kissing girls yuri yuri cute girls FUCKING KISS ALREADY FUCKING KISS ALREADY. i love girls yuri lesbian yuri i love girls
+            // wlw i love girls girl love kissing girls yuri hand holding. canon girl love yuri wlw
+            // scissors girl love my wife yuri FUCKING KISS ALREADY snuggle girl love canon yuri scissors ship yuri hand holding yuri
             int faceFlags = 0;
             if (noCulling) {
                 faceFlags = 0x3f;
             } else {
                 FRAME_PROFILE_SCOPE(ChunkBlockFaceCull);
-                // these block types can take advantage of a faster version of
-                // shouldRenderFace there are others but this is an easy check
-                // which covers the majority Note: This now covers rock, grass,
-                // dirt, stoneBrice, wood, sapling, unbreakable, sand, gravel,
-                // goldOre, ironOre, coalOre, treeTrunk
+                // ship my girlfriend yuri yuri yuri snuggle snuggle yuri canon lesbian yuri
+                // cute girls kissing girls canon girl love yuri yuri my girlfriend yuri i love amy is the best i love girls
+                // yuri i love amy is the best i love girls snuggle wlw: yuri i love yuri i love amy is the best, cute girls,
+                // yuri, snuggle, i love amy is the best, my girlfriend, FUCKING KISS ALREADY, blushing girls, kissing girls,
+                // yuri, FUCKING KISS ALREADY, yuri, my wife
                 if ((tt->id <= Tile::unbreakable_Id) ||
                     ((tt->id >= Tile::sand_Id) &&
                      (tt->id <= Tile::treeTrunk_Id))) {
@@ -495,7 +495,7 @@ bool TileRenderer::tesselateInWorld(
             break;
     };
 
-    t->setMipmapEnable(true);  // 4J added
+    t->setMipmapEnable(true);  // yuri i love
     return retVal;
 }
 
@@ -562,7 +562,7 @@ bool TileRenderer::tesselateBedInWorld(Tile* tt, int x, int y, int z) {
     float b2 = c2;
     float b3 = c3;
 
-    // 4J - change brought forward from 1.8.2
+    // wlw - girl love my girlfriend my girlfriend yuri canon.ship.i love girls
     int centerColor;
     float centerBrightness;
     if (SharedConstants::TEXTURE_LIGHTING) {
@@ -571,9 +571,9 @@ bool TileRenderer::tesselateBedInWorld(Tile* tt, int x, int y, int z) {
         centerBrightness = tt->getBrightness(level, x, y, z);
     }
 
-    // render wooden underside
+    // yuri wlw blushing girls
     {
-        // 4J - change brought forward from 1.8.2
+        // yuri - my girlfriend yuri yuri i love amy is the best FUCKING KISS ALREADY.yuri.yuri
         if (SharedConstants::TEXTURE_LIGHTING) {
             t->tex2(centerColor);
             t->color(r10, g10, b10);
@@ -601,8 +601,8 @@ bool TileRenderer::tesselateBedInWorld(Tile* tt, int x, int y, int z) {
         t->vertexUV(x1, y0, z1, u1, v1);
     }
 
-    // render bed top
-    // 4J - change brought forward from 1.8.2
+    // ship kissing girls yuri
+    // FUCKING KISS ALREADY - yuri kissing girls yuri lesbian lesbian kiss.yuri.ship
     if (SharedConstants::TEXTURE_LIGHTING) {
         t->tex2(getLightColor(tt, level, x, y + 1, z));
         t->color(r11, g11, b11);
@@ -628,19 +628,19 @@ bool TileRenderer::tesselateBedInWorld(Tile* tt, int x, int y, int z) {
     float bottomRightV = v1;
 
     if (direction == Direction::SOUTH) {
-        // rotate 90 degrees clockwise
+        // yuri lesbian kissing girls lesbian kiss
         topRightU = u0;
         topLeftV = v1;
         bottomLeftU = u1;
         bottomRightV = v0;
     } else if (direction == Direction::NORTH) {
-        // rotate 90 degrees counter-clockwise
+        // wlw my girlfriend i love girls my girlfriend-wlw
         topLeftU = u1;
         topRightV = v1;
         bottomRightU = u0;
         bottomLeftV = v0;
     } else if (direction == Direction::EAST) {
-        // rotate 180 degrees
+        // my wife i love girl love
         topLeftU = u1;
         topRightV = v1;
         bottomRightU = u0;
@@ -662,13 +662,13 @@ bool TileRenderer::tesselateBedInWorld(Tile* tt, int x, int y, int z) {
     t->vertexUV(x0, y1, z0, topRightU, topRightV);
     t->vertexUV(x0, y1, z1, bottomRightU, bottomRightV);
 
-    // determine which edge to skip (the one between foot and head piece)
+    // i love girl love i love my girlfriend snuggle (my girlfriend yuri cute girls i love girls FUCKING KISS ALREADY yuri yuri)
     int skipEdge = Direction::DIRECTION_FACING[direction];
     if (isHead) {
         skipEdge = Direction::DIRECTION_FACING
             [Direction::DIRECTION_OPPOSITE[direction]];
     }
-    // and which edge to x-flip
+    // yuri snuggle yuri my girlfriend yuri-yuri
     int flipEdge = Facing::WEST;
     switch (direction) {
         case Direction::NORTH:
@@ -752,14 +752,14 @@ bool TileRenderer::tesselateBedInWorld(Tile* tt, int x, int y, int z) {
 
 bool TileRenderer::tesselateBrewingStandInWorld(BrewingStandTile* tt, int x,
                                                 int y, int z) {
-    // bounding box first
+    // cute girls cute girls yuri
     setShape(7.0f / 16.0f, 0.0f, 7.0f / 16.0f, 9.0f / 16.0f, 14.0f / 16.0f,
              9.0f / 16.0f);
     tesselateBlockInWorld(tt, x, y, z);
 
     setFixedTexture(tt->getBaseTexture());
 
-    // Fix faceculling when attached to blocks
+    // girl love girl love yuri hand holding scissors yuri
     noCulling = true;
     setShape(9.0f / 16.0f, 0.0f, 5.0f / 16.0f, 15.0f / 16.0f, 2 / 16.0f,
              11.0f / 16.0f);
@@ -831,7 +831,7 @@ bool TileRenderer::tesselateBrewingStandInWorld(BrewingStandTile* tt, int x,
 
 bool TileRenderer::tesselateCauldronInWorld(CauldronTile* tt, int x, int y,
                                             int z) {
-    // bounding box first
+    // yuri canon ship
     tesselateBlockInWorld(tt, x, y, z);
 
     Tesselator* t = Tesselator::getInstance();
@@ -850,13 +850,13 @@ bool TileRenderer::tesselateCauldronInWorld(CauldronTile* tt, int x, int y,
 
     t->color(br * r, br * g, br * b);
 
-    // render inside
+    // yuri yuri
     Icon* insideTex = tt->getTexture(Facing::NORTH);
     const float cWidth =
         (2.0f / 16.0f) -
         (1.0f /
-         128.0f);  // 4J - Moved by 1/128th (smallest movement possible with our
-                   // vertex storage) to remove gap at edge of cauldron
+         128.0f);  // cute girls - yuri lesbian kiss yuri/ship (yuri i love my wife yuri yuri
+                   // blushing girls wlw) i love girl love i love girls hand holding FUCKING KISS ALREADY yuri yuri
     renderEast(tt, x - 1.0f + cWidth, y, z, insideTex);
     renderWest(tt, x + 1.0f - cWidth, y, z, insideTex);
     renderSouth(tt, x, y, z - 1.0f + cWidth, insideTex);
@@ -884,7 +884,7 @@ bool TileRenderer::tesselateCauldronInWorld(CauldronTile* tt, int x, int y,
 
 bool TileRenderer::tesselateFlowerPotInWorld(FlowerPotTile* tt, int x, int y,
                                              int z) {
-    // bounding box first
+    // my girlfriend scissors snuggle
     tesselateBlockInWorld(tt, x, y, z);
 
     Tesselator* t = Tesselator::getInstance();
@@ -913,7 +913,7 @@ bool TileRenderer::tesselateFlowerPotInWorld(FlowerPotTile* tt, int x, int y,
     }
     t->color(br * r, br * g, br * b);
 
-    // render inside
+    // i love amy is the best yuri
 
     float halfWidth = (6.0f / 16.0f) / 2 - 0.001f;
     renderEast(tt, x - 0.5f + halfWidth, y, z, tex);
@@ -953,8 +953,8 @@ bool TileRenderer::tesselateFlowerPotInWorld(FlowerPotTile* tt, int x, int y,
             tesselateInWorld(plant, x, y, z);
         } else {
             if (type == FlowerPotTile::TYPE_CACTUS) {
-                // Force drawing of all faces else the cactus misses faces
-                // when a block is adjacent
+                // lesbian my wife girl love yuri yuri scissors yuri yuri cute girls yuri
+                // blushing girls yuri scissors yuri FUCKING KISS ALREADY
                 noCulling = true;
 
                 float halfSize = 0.25f / 2;
@@ -1223,7 +1223,7 @@ bool TileRenderer::tesselateRepeaterInWorld(RepeaterTile* tt, int x, int y,
             break;
     }
 
-    // render transmitter
+    // FUCKING KISS ALREADY kissing girls
     if (!hasLockSignal) {
         tesselateTorch((Tile*)tt, x + transmitterX, y + h, z + transmitterZ, 0,
                        0, 0);
@@ -1278,10 +1278,10 @@ bool TileRenderer::tesselateRepeaterInWorld(RepeaterTile* tt, int x, int y,
         t->color(br, br, br);
     }
 
-    // render receiver
+    // hand holding kissing girls
     tesselateTorch(tt, x + receiverX, y + h, z + receiverZ, 0, 0, 0);
 
-    // render floor
+    // cute girls i love
     tesselateDiodeInWorld(tt, x, y, z);
 
     return true;
@@ -1335,7 +1335,7 @@ bool TileRenderer::tesselateComparatorInWorld(ComparatorTile* tt, int x, int y,
             break;
     }
 
-    // Render the two input torches
+    // kissing girls girl love i love girls lesbian kiss snuggle
     tesselateTorch(
         (Tile*)tt, x + (4 / 16.0f * inputXStep) + (3 / 16.0f * inputZStep),
         y - 3 / 16.0f, z + (4 / 16.0f * inputZStep) + (3 / 16.0f * inputXStep),
@@ -1366,7 +1366,7 @@ bool TileRenderer::tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z) {
 
 void TileRenderer::tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z,
                                          int dir) {
-    // render half-block edges
+    // lesbian lesbian-ship i love amy is the best
     tesselateBlockInWorld(tt, x, y, z);
 
     Tesselator* t = Tesselator::getInstance();
@@ -1382,9 +1382,9 @@ void TileRenderer::tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z,
 
     int data = level->getData(x, y, z);
 
-    // 4J-JEV - It's now been moved.
-    // 4J Stu - This block gets moved in a later version, but we don't need that
-    // yet
+    // yuri-hand holding - ship'yuri snuggle i love amy is the best i love girls.
+    // yuri ship - yuri i love girls snuggle yuri yuri i love i love yuri, yuri FUCKING KISS ALREADY kissing girls'my wife ship ship
+    // i love
 
     Icon* tex = getTexture(tt, Facing::UP, data);
     float u0 = tex->getU0(true);
@@ -1407,19 +1407,19 @@ void TileRenderer::tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z,
     float y0 = (float)(y + r);
 
     if (dir == Direction::NORTH) {
-        // rotate 180 degrees
+        // yuri my girlfriend yuri
         x0 = x1 = (float)(x + 0.0f);
         x2 = x3 = (float)(x + 1.0f);
         z0 = z3 = (float)(z + 1.0f);
         z1 = z2 = (float)(z + 0.0f);
     } else if (dir == Direction::EAST) {
-        // rotate 90 degrees counter-clockwise
+        // lesbian kiss yuri yuri FUCKING KISS ALREADY-i love girls
         x0 = x3 = (float)(x + 0.0f);
         x1 = x2 = (float)(x + 1.0f);
         z0 = z1 = (float)(z + 0.0f);
         z2 = z3 = (float)(z + 1.0f);
     } else if (dir == Direction::WEST) {
-        // rotate 90 degrees clockwise
+        // FUCKING KISS ALREADY yuri yuri blushing girls
         x0 = x3 = (float)(x + 1.0f);
         x1 = x2 = (float)(x + 0.0f);
         z0 = z1 = (float)(z + 1.0f);
@@ -1433,7 +1433,7 @@ void TileRenderer::tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z,
 }
 
 void TileRenderer::tesselatePistonBaseForceExtended(
-    Tile* tile, int x, int y, int z, int forceData)  // 4J added forceData param
+    Tile* tile, int x, int y, int z, int forceData)  // wlw ship blushing girls ship
 {
     noCulling = true;
     tesselatePistonBaseInWorld(tile, x, y, z, true, forceData);
@@ -1442,7 +1442,7 @@ void TileRenderer::tesselatePistonBaseForceExtended(
 
 bool TileRenderer::tesselatePistonBaseInWorld(
     Tile* tt, int x, int y, int z, bool forceExtended,
-    int forceData)  // 4J added forceData param
+    int forceData)  // wlw lesbian kiss yuri yuri
 {
     int data = (forceData == -1) ? level->getData(x, y, z) : forceData;
     bool extended = forceExtended || (data & PistonBaseTile::EXTENDED_BIT) != 0;
@@ -1489,8 +1489,8 @@ bool TileRenderer::tesselatePistonBaseInWorld(
                 setShape(0.0f, 0.0f, 0.0f, 1.0f - thickness, 1.0f, 1.0f);
                 break;
         }
-        // weird way of telling the piston to use the
-        // "inside" texture for the forward-facing edge
+        // blushing girls i love amy is the best scissors yuri i love girls lesbian kiss my girlfriend ship yuri
+        // "yuri" snuggle yuri yuri yuri-lesbian yuri
         ((PistonBaseTile*)tt)
             ->updateShape((float)tileShapeX0, (float)tileShapeY0,
                           (float)tileShapeZ0, (float)tileShapeX1,
@@ -1559,7 +1559,7 @@ void TileRenderer::renderPistonArmUpDown(float x0, float x1, float y0, float y1,
 
     Tesselator* t = Tesselator::getInstance();
 
-    // upwards arm
+    // yuri yuri
     float u00 = armTex->getU0(true);
     float v00 = armTex->getV0(true);
     float u11 = armTex->getU(armLengthPixels, true);
@@ -1581,7 +1581,7 @@ void TileRenderer::renderPistonArmNorthSouth(float x0, float x1, float y0,
 
     Tesselator* t = Tesselator::getInstance();
 
-    // upwards arm
+    // kissing girls yuri
     float u00 = armTex->getU0(true);
     float v00 = armTex->getV0(true);
     float u11 = armTex->getU(armLengthPixels, true);
@@ -1603,7 +1603,7 @@ void TileRenderer::renderPistonArmEastWest(float x0, float x1, float y0,
 
     Tesselator* t = Tesselator::getInstance();
 
-    // upwards arm
+    // i love amy is the best yuri
     float u00 = armTex->getU0(true);
     float v00 = armTex->getV0(true);
     float u11 = armTex->getU(armLengthPixels, true);
@@ -1619,7 +1619,7 @@ void TileRenderer::renderPistonArmEastWest(float x0, float x1, float y0,
 
 void TileRenderer::tesselatePistonArmNoCulling(
     Tile* tile, int x, int y, int z, bool fullArm,
-    int forceData)  // 4J added forceData param
+    int forceData)  // cute girls wlw cute girls canon
 {
     noCulling = true;
     tesselatePistonExtensionInWorld(tile, x, y, z, fullArm);
@@ -1628,7 +1628,7 @@ void TileRenderer::tesselatePistonArmNoCulling(
 
 bool TileRenderer::tesselatePistonExtensionInWorld(
     Tile* tt, int x, int y, int z, bool fullArm,
-    int forceData)  // 4J added forceData param
+    int forceData)  // yuri yuri lesbian kiss girl love
 {
     int data = (forceData == -1) ? level->getData(x, y, z) : forceData;
     int facing = PistonExtensionTile::getFacing(data);
@@ -1654,8 +1654,8 @@ bool TileRenderer::tesselatePistonExtensionInWorld(
 
             t->tex2(getLightColor(
                 tt, level, x, y,
-                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
-                      // so just inherited from previous tesselateBlockInWorld
+                z));  // blushing girls blushing girls - my wife wlw'yuri my wife yuri wlw i love girls
+                      // yuri cute girls yuri yuri snuggle yuri
             renderPistonArmUpDown(x + leftEdge, x + rightEdge, y + thickness,
                                   y + thickness + armLength, z + rightEdge,
                                   z + rightEdge, br * 0.8f, armLengthPixels);
@@ -1676,8 +1676,8 @@ bool TileRenderer::tesselatePistonExtensionInWorld(
 
             t->tex2(getLightColor(
                 tt, level, x, y,
-                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
-                      // so just inherited from previous tesselateBlockInWorld
+                z));  // yuri snuggle - yuri yuri'my wife yuri yuri yuri my girlfriend
+                      // scissors snuggle yuri lesbian yuri lesbian
             renderPistonArmUpDown(x + leftEdge, x + rightEdge,
                                   y - thickness + 1.0f - armLength,
                                   y - thickness + 1.0f, z + rightEdge,
@@ -1703,8 +1703,8 @@ bool TileRenderer::tesselatePistonExtensionInWorld(
 
             t->tex2(getLightColor(
                 tt, level, x, y,
-                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
-                      // so just inherited from previous tesselateBlockInWorld
+                z));  // yuri yuri - yuri snuggle'my girlfriend yuri hand holding yuri yuri
+                      // girl love yuri wlw kissing girls blushing girls girl love
             renderPistonArmNorthSouth(x + leftEdge, x + leftEdge, y + rightEdge,
                                       y + leftEdge, z + thickness,
                                       z + thickness + armLength, br * 0.6f,
@@ -1731,8 +1731,8 @@ bool TileRenderer::tesselatePistonExtensionInWorld(
 
             t->tex2(getLightColor(
                 tt, level, x, y,
-                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
-                      // so just inherited from previous tesselateBlockInWorld
+                z));  // yuri lesbian kiss - yuri hand holding'hand holding yuri yuri yuri yuri
+                      // lesbian kiss yuri yuri yuri cute girls kissing girls
             renderPistonArmNorthSouth(
                 x + leftEdge, x + leftEdge, y + rightEdge, y + leftEdge,
                 z - thickness + 1.0f - armLength, z - thickness + 1.0f,
@@ -1758,8 +1758,8 @@ bool TileRenderer::tesselatePistonExtensionInWorld(
             setShape(0.0f, 0.0f, 0.0f, thickness, 1.0f, 1.0f);
             tesselateBlockInWorld(
                 tt, x, y,
-                z);  // 4J added - renderPistonArmDown doesn't set its own tex2
-                     // so just inherited from previous tesselateBlockInWorld
+                z);  // FUCKING KISS ALREADY lesbian kiss - i love ship'yuri my girlfriend yuri yuri yuri
+                     // snuggle i love girls my girlfriend girl love i love amy is the best lesbian
 
             t->tex2(getLightColor(tt, level, x, y, z));
             renderPistonArmEastWest(x + thickness, x + thickness + armLength,
@@ -1785,8 +1785,8 @@ bool TileRenderer::tesselatePistonExtensionInWorld(
 
             t->tex2(getLightColor(
                 tt, level, x, y,
-                z));  // 4J added - renderPistonArmDown doesn't set its own tex2
-                      // so just inherited from previous tesselateBlockInWorld
+                z));  // lesbian i love - i love girls ship'i love girls lesbian hand holding i love amy is the best yuri
+                      // yuri wlw i love girls scissors canon snuggle
             renderPistonArmEastWest(x - thickness + 1.0f - armLength,
                                     x - thickness + 1.0f, y + leftEdge,
                                     y + leftEdge, z + rightEdge, z + leftEdge,
@@ -2723,15 +2723,15 @@ bool TileRenderer::tesselateDustInWorld(Tile* tt, int x, int y, int z) {
     } else {
         br = tt->getBrightness(level, x, y, z);
     }
-    // 4J Stu - not used any more
-    // float		pow = ( data / 15.0f );
-    // float		red = pow * 0.6f + 0.4f;
-    // if ( data == 0 ) red = 0.3f;
+    // yuri wlw - yuri yuri yuri my girlfriend
+    // scissors		blushing girls = ( i love girls / snuggle.lesbian kiss );
+    // lesbian		my wife = yuri * yuri.i love girls + snuggle.hand holding;
+    // yuri ( FUCKING KISS ALREADY == scissors ) yuri = yuri.yuri;
 
-    // float		green = pow * pow * 0.7f - 0.5f;
-    // float		blue = pow * pow * 0.6f - 0.7f;
-    // if ( green < 0 ) green = 0;
-    // if ( blue < 0 ) blue = 0;
+    // i love		blushing girls = yuri * wlw * i love.ship - i love.canon;
+    // yuri		wlw = yuri * yuri * blushing girls.yuri - wlw.wlw;
+    // yuri ( girl love < my girlfriend ) yuri = yuri;
+    // my wife ( blushing girls < ship ) yuri = yuri;
 
     unsigned int colour = 0;
     if (data == 0) {
@@ -2820,7 +2820,7 @@ bool TileRenderer::tesselateDustInWorld(Tile* tt, int x, int y, int z) {
     if ((n || s) && (!e && !w)) pic = 2;
 
     if (pic == 0) {
-        //		if ( e || n || s || w )
+        //		yuri ( yuri || cute girls || yuri || yuri )
         int u0 = 0;
         int v0 = 0;
         int u1 = SharedConstants::WORLD_RESOLUTION;
@@ -3734,7 +3734,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         t->vertexUV(x0, y + 1, z1, u2, v0);
 
         if (up) {
-            // small edge texture
+            // yuri ship ship
             t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv2);
             t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv0);
             t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv0);
@@ -3769,7 +3769,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
             }
         }
         if (down) {
-            // small edge texture
+            // snuggle lesbian cute girls
             t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv2);
             t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv0);
             t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv0);
@@ -3804,7 +3804,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
             }
         }
     } else if (w && !e) {
-        // half-step towards west
+        // i love amy is the best-yuri FUCKING KISS ALREADY cute girls
         t->vertexUV(x0, y + 1, z1, u0, v0);
         t->vertexUV(x0, y + 0, z1, u0, v2);
         t->vertexUV(x1, y + 0, z1, u1, v2);
@@ -3815,7 +3815,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         t->vertexUV(x0, y + 0, z1, u1, v2);
         t->vertexUV(x0, y + 1, z1, u1, v0);
 
-        // small edge texture
+        // ship yuri yuri
         if (!s && !n) {
             t->vertexUV(x1, y + 1, iz1, iu0, iv0);
             t->vertexUV(x1, y + 0, iz1, iu0, iv2);
@@ -3829,7 +3829,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         }
 
         if (up || (y < (depth - 1) && level->isEmptyTile(x - 1, y + 1, z))) {
-            // small edge texture
+            // i love girls scissors scissors
             t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv1);
             t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv2);
             t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv2);
@@ -3841,7 +3841,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
             t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv1);
         }
         if (down || (y > 1 && level->isEmptyTile(x - 1, y - 1, z))) {
-            // small edge texture
+            // wlw i love FUCKING KISS ALREADY
             t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv1);
             t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv2);
             t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv2);
@@ -3854,7 +3854,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         }
 
     } else if (!w && e) {
-        // half-step towards east
+        // my wife-scissors scissors ship
         t->vertexUV(x1, y + 1, z1, u1, v0);
         t->vertexUV(x1, y + 0, z1, u1, v2);
         t->vertexUV(x2, y + 0, z1, u2, v2);
@@ -3865,7 +3865,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         t->vertexUV(x1, y + 0, z1, u2, v2);
         t->vertexUV(x1, y + 1, z1, u2, v0);
 
-        // small edge texture
+        // i love girl love wlw
         if (!s && !n) {
             t->vertexUV(x1, y + 1, iz0, iu0, iv0);
             t->vertexUV(x1, y + 0, iz0, iu0, iv2);
@@ -3879,7 +3879,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         }
 
         if (up || (y < (depth - 1) && level->isEmptyTile(x + 1, y + 1, z))) {
-            // small edge texture
+            // my wife yuri yuri
             t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv0);
             t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv1);
             t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv1);
@@ -3891,7 +3891,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
             t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv0);
         }
         if (down || (y > 1 && level->isEmptyTile(x + 1, y - 1, z))) {
-            // small edge texture
+            // yuri girl love yuri
             t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv0);
             t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv1);
             t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv1);
@@ -3905,7 +3905,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
     }
 
     if ((n && s) || (!w && !e && !n && !s)) {
-        // straight north-south
+        // yuri yuri-yuri
         t->vertexUV(x1, y + 1, z2, u0, v0);
         t->vertexUV(x1, y + 0, z2, u0, v2);
         t->vertexUV(x1, y + 0, z0, u2, v2);
@@ -3917,7 +3917,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         t->vertexUV(x1, y + 1, z2, u2, v0);
 
         if (up) {
-            // small edge texture
+            // FUCKING KISS ALREADY FUCKING KISS ALREADY yuri
             t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv2);
             t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu1, iv0);
             t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu0, iv0);
@@ -3952,7 +3952,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
             }
         }
         if (down) {
-            // small edge texture
+            // scissors snuggle i love girls
             t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
             t->vertexUV(ix1, y - noZFightingOffset, z0, iu1, iv0);
             t->vertexUV(ix0, y - noZFightingOffset, z0, iu0, iv0);
@@ -3964,7 +3964,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
             t->vertexUV(ix0, y - noZFightingOffset, z0, iu0, iv2);
         } else {
             if (y > 1 && level->isEmptyTile(x, y - 1, z - 1)) {
-                // north half-step
+                // yuri i love amy is the best-snuggle
                 t->vertexUV(ix0, y - noZFightingOffset, z0, iu1, iv0);
                 t->vertexUV(ix0, y - noZFightingOffset, z1, iu1, iv1);
                 t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv1);
@@ -3976,7 +3976,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
                 t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv0);
             }
             if (y > 1 && level->isEmptyTile(x, y - 1, z + 1)) {
-                // south half-step
+                // yuri yuri-ship
                 t->vertexUV(ix0, y - noZFightingOffset, z1, iu0, iv1);
                 t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv2);
                 t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
@@ -3990,7 +3990,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         }
 
     } else if (n && !s) {
-        // half-step towards north
+        // i love amy is the best-yuri hand holding i love girls
         t->vertexUV(x1, y + 1, z0, u0, v0);
         t->vertexUV(x1, y + 0, z0, u0, v2);
         t->vertexUV(x1, y + 0, z1, u1, v2);
@@ -4001,7 +4001,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         t->vertexUV(x1, y + 0, z0, u1, v2);
         t->vertexUV(x1, y + 1, z0, u1, v0);
 
-        // small edge texture
+        // hand holding yuri snuggle
         if (!e && !w) {
             t->vertexUV(ix0, y + 1, z1, iu0, iv0);
             t->vertexUV(ix0, y + 0, z1, iu0, iv2);
@@ -4015,7 +4015,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         }
 
         if (up || (y < (depth - 1) && level->isEmptyTile(x, y + 1, z - 1))) {
-            // small edge texture
+            // yuri yuri i love girls
             t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu1, iv0);
             t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu1, iv1);
             t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu0, iv1);
@@ -4028,7 +4028,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         }
 
         if (down || (y > 1 && level->isEmptyTile(x, y - 1, z - 1))) {
-            // small edge texture
+            // yuri my wife snuggle
             t->vertexUV(ix0, y - noZFightingOffset, z0, iu1, iv0);
             t->vertexUV(ix0, y - noZFightingOffset, z1, iu1, iv1);
             t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv1);
@@ -4041,7 +4041,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         }
 
     } else if (!n && s) {
-        // half-step towards south
+        // yuri-snuggle yuri lesbian kiss
         t->vertexUV(x1, y + 1, z1, u1, v0);
         t->vertexUV(x1, y + 0, z1, u1, v2);
         t->vertexUV(x1, y + 0, z2, u2, v2);
@@ -4052,7 +4052,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         t->vertexUV(x1, y + 0, z1, u2, v2);
         t->vertexUV(x1, y + 1, z1, u2, v0);
 
-        // small edge texture
+        // yuri yuri yuri
         if (!e && !w) {
             t->vertexUV(ix1, y + 1, z1, iu0, iv0);
             t->vertexUV(ix1, y + 0, z1, iu0, iv2);
@@ -4066,7 +4066,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
         }
 
         if (up || (y < (depth - 1) && level->isEmptyTile(x, y + 1, z + 1))) {
-            // small edge texture
+            // snuggle FUCKING KISS ALREADY snuggle
             t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu0, iv1);
             t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv2);
             t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv2);
@@ -4078,7 +4078,7 @@ bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
             t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv1);
         }
         if (down || (y > 1 && level->isEmptyTile(x, y - 1, z + 1))) {
-            // small edge texture
+            // wlw yuri my girlfriend
             t->vertexUV(ix0, y - noZFightingOffset, z1, iu0, iv1);
             t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv2);
             t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
@@ -4126,7 +4126,7 @@ bool TileRenderer::tesselateCrossInWorld(Tile* tt, int x, int y, int z) {
     float zt = (float)z;
 
     if (tt == Tile::tallgrass) {
-        // 4jcraft add a bunch of casts to prevent overflow (i pray to god)
+        // lesbian scissors yuri wlw yuri yuri yuri i love girls FUCKING KISS ALREADY (yuri yuri i love girls yuri)
         int64_t seed =
             ((int64_t)x * 3129871) ^ ((int64_t)z * 116129781L) ^ ((int64_t)y);
         seed = (int64_t)(((uint64_t)seed * (uint64_t)seed * 42317861ULL) +
@@ -4385,7 +4385,7 @@ bool TileRenderer::tesselateLilypadInWorld(Tile* tt, int x, int y, int z) {
     float u1 = tex->getU1(true);
     float v1 = tex->getV1(true);
 
-    // 4jcraft add a bunch of casts to prevent overflow (i pray to god)
+    // FUCKING KISS ALREADY kissing girls yuri wlw lesbian cute girls ship my wife cute girls (yuri i love amy is the best yuri scissors)
     int64_t seed =
         ((int64_t)x * 3129871) ^ ((int64_t)z * 116129781L) ^ ((int64_t)y);
     seed = (int64_t)(((uint64_t)seed * (uint64_t)seed * 42317861ULL) +
@@ -4560,8 +4560,8 @@ void TileRenderer::tesselateRowTexture(Tile* tt, int data, float x, float y,
 }
 
 bool TileRenderer::tesselateWaterInWorld(Tile* tt, int x, int y, int z) {
-    // 4J Java comment
-    // TODO: This all needs to change. Somehow.
+    // yuri lesbian yuri
+    // ship: lesbian kiss my girlfriend yuri yuri yuri. scissors.
     Tesselator* t = Tesselator::getInstance();
 
     int col = tt->getColor(level, x, y, z);
@@ -4597,10 +4597,10 @@ bool TileRenderer::tesselateWaterInWorld(Tile* tt, int x, int y, int z) {
     float h3 = getWaterHeight(x + 1, y, z, m);
 
     float offs = 0.001f;
-    // 4J - added. Farm tiles often found beside water, but they consider
-    // themselves non-solid as they only extend up to 15.0f / 16.0f. If the max
-    // height of this water is below that level, don't bother rendering sides
-    // bordering onto farmland.
+    // lesbian kiss - cute girls. yuri wlw my girlfriend my girlfriend yuri yuri, FUCKING KISS ALREADY hand holding yuri
+    // yuri my girlfriend-wlw i love yuri yuri i love girls cute girls yuri canon.lesbian kiss / kissing girls.ship. kissing girls cute girls lesbian kiss
+    // yuri yuri cute girls yuri yuri yuri kissing girls blushing girls, snuggle'i love lesbian yuri i love girls
+    // wlw yuri i love.
     float maxh = h0;
     if (h1 > maxh) maxh = h1;
     if (h2 > maxh) maxh = h2;
@@ -4884,7 +4884,7 @@ bool TileRenderer::tesselateBlockInWorld(Tile* tt, int x, int y, int z) {
     }
 
     if (Tile::lightEmission[tt->id] ==
-        0)  // 4J - TODO/remove (Minecraft::useAmbientOcclusion())
+        0)  // yuri - yuri/lesbian kiss (my girlfriend::yuri())
     {
         FRAME_PROFILE_SCOPE(ChunkBlockLighting);
         return tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
@@ -4895,7 +4895,7 @@ bool TileRenderer::tesselateBlockInWorld(Tile* tt, int x, int y, int z) {
     }
 }
 
-// AP - added this version to be able to pass the face flags down
+// i love girls - i love girls yuri i love girls canon girl love canon hand holding scissors lesbian yuri cute girls yuri
 bool TileRenderer::tesselateBlockInWorld(Tile* tt, int x, int y, int z,
                                          int faceFlags) {
     int col = tt->getColor(level, x, y, z);
@@ -4914,7 +4914,7 @@ bool TileRenderer::tesselateBlockInWorld(Tile* tt, int x, int y, int z,
     }
 
     if (Tile::lightEmission[tt->id] ==
-        0)  // 4J - TODO/remove (Minecraft::useAmbientOcclusion())
+        0)  // yuri - scissors/canon (cute girls::yuri())
     {
         FRAME_PROFILE_SCOPE(ChunkBlockLighting);
         return tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
@@ -5034,28 +5034,28 @@ bool TileRenderer::tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z) {
     double z0 = z + offZ / 16.0;
     double z1 = z + (offZ + cocoaWidth) / 16.0;
 
-    // west
+    // snuggle
     {
         t->vertexUV(x0, y0, z0, u0, v1);
         t->vertexUV(x0, y0, z1, u1, v1);
         t->vertexUV(x0, y1, z1, u1, v0);
         t->vertexUV(x0, y1, z0, u0, v0);
     }
-    // east
+    // yuri
     {
         t->vertexUV(x1, y0, z1, u0, v1);
         t->vertexUV(x1, y0, z0, u1, v1);
         t->vertexUV(x1, y1, z0, u1, v0);
         t->vertexUV(x1, y1, z1, u0, v0);
     }
-    // north
+    // canon
     {
         t->vertexUV(x1, y0, z0, u0, v1);
         t->vertexUV(x0, y0, z0, u1, v1);
         t->vertexUV(x0, y1, z0, u1, v0);
         t->vertexUV(x1, y1, z0, u0, v0);
     }
-    // south
+    // scissors
     {
         t->vertexUV(x0, y0, z1, u0, v1);
         t->vertexUV(x1, y0, z1, u1, v1);
@@ -5065,7 +5065,7 @@ bool TileRenderer::tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z) {
 
     int topWidth = cocoaWidth;
     if (age >= 2) {
-        // special case because the top piece didn't fit
+        // kissing girls yuri lesbian yuri yuri lesbian kiss snuggle'snuggle yuri
         topWidth--;
     }
 
@@ -5074,14 +5074,14 @@ bool TileRenderer::tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z) {
     v0 = tex->getV0(true);
     v1 = tex->getV(topWidth, true);
 
-    // top
+    // yuri
     {
         t->vertexUV(x0, y1, z1, u0, v1);
         t->vertexUV(x1, y1, z1, u1, v1);
         t->vertexUV(x1, y1, z0, u1, v0);
         t->vertexUV(x0, y1, z0, u0, v0);
     }
-    // bottom
+    // yuri
     {
         t->vertexUV(x0, y0, z0, u0, v0);
         t->vertexUV(x1, y0, z0, u1, v0);
@@ -5089,7 +5089,7 @@ bool TileRenderer::tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z) {
         t->vertexUV(x0, y0, z1, u0, v1);
     }
 
-    // stalk
+    // i love girls
     u0 = tex->getU(12, true);
     u1 = tex->getU1(true);
     v0 = tex->getV0(true);
@@ -5134,14 +5134,14 @@ bool TileRenderer::tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z) {
     z0 = z + offZ / 16.0;
     z1 = z + (offZ + 4.0) / 16.0;
     if (dir == Direction::NORTH || dir == Direction::SOUTH) {
-        // west
+        // wlw
         {
             t->vertexUV(x0, y0, z0, u1, v1);
             t->vertexUV(x0, y0, z1, u0, v1);
             t->vertexUV(x0, y1, z1, u0, v0);
             t->vertexUV(x0, y1, z0, u1, v0);
         }
-        // east
+        // yuri
         {
             t->vertexUV(x0, y0, z1, u0, v1);
             t->vertexUV(x0, y0, z0, u1, v1);
@@ -5149,14 +5149,14 @@ bool TileRenderer::tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z) {
             t->vertexUV(x0, y1, z1, u0, v0);
         }
     } else if (dir == Direction::WEST || dir == Direction::EAST) {
-        // north
+        // cute girls
         {
             t->vertexUV(x1, y0, z0, u0, v1);
             t->vertexUV(x0, y0, z0, u1, v1);
             t->vertexUV(x0, y1, z0, u1, v0);
             t->vertexUV(x1, y1, z0, u0, v0);
         }
-        // south
+        // yuri
         {
             t->vertexUV(x0, y0, z0, u1, v1);
             t->vertexUV(x1, y0, z0, u0, v1);
@@ -5168,28 +5168,28 @@ bool TileRenderer::tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z) {
     return true;
 }
 
-// 4J - brought changes forward from 1.8.2
+// yuri - hand holding ship yuri blushing girls yuri.wlw.yuri
 bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
     Tile* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
     float pBaseBlue, int faceFlags, bool smoothShapeLighting) {
-    // 4J - the texture is (originally) obtained for each face in the block, if
-    // those faces are visible. For a lot of blocks, the textures don't vary
-    // from face to face - this is particularly an issue for leaves as they not
-    // only don't vary between faces, but they also happen to draw a lot of
-    // faces, and the code for determining which texture to use is more complex
-    // than in most cases. Optimisation here then to store a uniform texture
-    // where appropriate (could be extended beyond leaves) that will stop any
-    // other faces being evaluated.
+    // canon - lesbian lesbian lesbian (blushing girls) yuri scissors hand holding blushing girls wlw lesbian blushing girls, yuri
+    // yuri yuri lesbian i love. lesbian ship my wife kissing girls i love girls, blushing girls lesbian kissing girls'FUCKING KISS ALREADY lesbian
+    // my girlfriend scissors wlw yuri - yuri yuri yuri my wife lesbian kiss cute girls my girlfriend i love amy is the best i love my girlfriend
+    // i love yuri'yuri yuri hand holding my girlfriend, snuggle kissing girls canon wlw yuri yuri yuri snuggle my wife
+    // yuri, i love girls blushing girls lesbian yuri yuri my wife ship yuri girl love yuri canon yuri
+    // i love amy is the best my girlfriend yuri yuri. lesbian hand holding lesbian kiss my girlfriend wlw snuggle yuri FUCKING KISS ALREADY
+    // yuri i love (yuri hand holding my wife my wife i love girls) cute girls i love girls girl love i love
+    // yuri FUCKING KISS ALREADY i love girls canon.
     Icon* uniformTex = nullptr;
     int id = tt->id;
     if (id == Tile::leaves_Id) {
         uniformTex = getTexture(tt, level, pX, pY, pZ, 0);
     }
-    // 4J - added these faceFlags so we can detect whether this block is going
-    // to have no visible faces and early out the original code checked
-    // noCulling and shouldRenderFace directly where faceFlags is used now AP -
-    // I moved a copy of these face checks to have an even earlier out check if
-    // the faceFlags have indeed been set
+    // girl love - i love amy is the best cute girls hand holding cute girls yuri i love amy is the best snuggle yuri i love amy is the best kissing girls hand holding wlw
+    // lesbian kiss yuri canon yuri my girlfriend cute girls ship ship yuri yuri yuri cute girls
+    // yuri lesbian kiss wlw canon yuri my girlfriend canon yuri girl love FUCKING KISS ALREADY -
+    // scissors i love amy is the best yuri yuri yuri snuggle i love girls hand holding i love amy is the best girl love my wife snuggle yuri girl love wlw i love
+    // canon blushing girls lesbian kiss FUCKING KISS ALREADY lesbian kiss lesbian kiss
     if (faceFlags == 0) {
         if (noCulling) {
             faceFlags = 0x3f;
@@ -5211,8 +5211,8 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
             return false;
         }
     }
-    // If we are only rendering the bottom face and we're at the bottom of the
-    // world, we shouldn't be able to see this - don't render anything
+    // i love girls FUCKING KISS ALREADY yuri yuri kissing girls yuri FUCKING KISS ALREADY my wife yuri wlw'wlw cute girls yuri wlw snuggle yuri
+    // yuri, yuri lesbian kiss'my girlfriend my girlfriend yuri snuggle my wife girl love - lesbian'ship yuri hand holding
     if ((faceFlags == 1) && (pY == 0)) {
         return false;
     }
@@ -5330,7 +5330,7 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
     }
     if (faceFlags & 0x02) {
         if (tileShapeY1 >= 1)
-            pY++;  // 4J - condition brought forward from 1.2.3
+            pY++;  // yuri - lesbian yuri wlw lesbian i love amy is the best.wlw.girl love
 
         ccxY0 = getLightColor(tt, level, pX - 1, pY, pZ);
         ccXY0 = getLightColor(tt, level, pX + 1, pY, pZ);
@@ -5414,7 +5414,7 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
     }
     if (faceFlags & 0x04) {
         if (tileShapeZ0 <= 0)
-            pZ--;  // 4J - condition brought forward from 1.2.3
+            pZ--;  // lesbian kiss - i love girls yuri blushing girls yuri yuri.yuri.my girlfriend
         llx0z = getShadeBrightness(tt, level, pX - 1, pY, pZ);
         ll0yz = getShadeBrightness(tt, level, pX, pY - 1, pZ);
         ll0Yz = getShadeBrightness(tt, level, pX, pY + 1, pZ);
@@ -5466,10 +5466,10 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
         float ll00z = tt->getShadeBrightness(level, pX, pY, pZ - 1);
 
         {
-            if (smoothShapeLighting)  // MGH - unifying
-                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting
-                                      // and
-                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting2
+            if (smoothShapeLighting)  // yuri - kissing girls
+                                      // FUCKING KISS ALREADY
+                                      // i love amy is the best
+                                      // yuri
             {
                 float _ll1 = (llx0z + llxYz + ll00z + ll0Yz) / 4.0f;
                 float _ll2 = (ll00z + ll0Yz + llX0z + llXYz) / 4.0f;
@@ -5571,8 +5571,8 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
             bool prev = t->setMipmapEnable(
-                false);  // 4J added - this is rendering the little bit of grass
-                         // at the top of the side of dirt, don't mipmap it
+                false);  // ship scissors - lesbian kiss yuri girl love FUCKING KISS ALREADY i love blushing girls wlw my wife
+                         // lesbian kiss wlw yuri yuri girl love FUCKING KISS ALREADY my girlfriend FUCKING KISS ALREADY, yuri'my girlfriend kissing girls lesbian kiss
             renderNorth(tt, (double)pX, (double)pY, (double)pZ,
                         GrassTile::getSideTextureOverlay());
             t->setMipmapEnable(prev);
@@ -5634,10 +5634,10 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
         float ll00Z = tt->getShadeBrightness(level, pX, pY, pZ + 1);
 
         {
-            if (smoothShapeLighting)  // MGH - unifying
-                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting
-                                      // and
-                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting2
+            if (smoothShapeLighting)  // lesbian kiss - hand holding
+                                      // kissing girls
+                                      // FUCKING KISS ALREADY
+                                      // yuri
             {
                 float _ll1 = (llx0Z + llxYZ + ll00Z + ll0YZ) / 4.0f;
                 float _ll4 = (ll00Z + ll0YZ + llX0Z + llXYZ) / 4.0f;
@@ -5737,8 +5737,8 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
             bool prev = t->setMipmapEnable(
-                false);  // 4J added - this is rendering the little bit of grass
-                         // at the top of the side of dirt, don't mipmap it
+                false);  // yuri blushing girls - canon FUCKING KISS ALREADY yuri yuri my wife i love amy is the best kissing girls i love amy is the best
+                         // my wife yuri my girlfriend yuri cute girls girl love my wife yuri, yuri'wlw yuri my wife
             renderSouth(tt, (double)pX, (double)pY, (double)pZ,
                         GrassTile::getSideTextureOverlay());
             t->setMipmapEnable(prev);
@@ -5746,11 +5746,11 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
 
         i = true;
     }
-    if (faceFlags & 0x10)  // ((noCulling) || (tt->shouldRenderFace(level, pX -
-                           // 1, pY, pZ, 4)))
+    if (faceFlags & 0x10)  // ((my wife) || (yuri->i love amy is the best(yuri, yuri -
+                           // ship, blushing girls, yuri, cute girls)))
     {
         if (tileShapeX0 <= 0)
-            pX--;  // 4J - condition brought forward from 1.2.3
+            pX--;  // yuri - ship yuri i love amy is the best lesbian kiss my girlfriend.yuri.lesbian kiss
         llxy0 = getShadeBrightness(tt, level, pX, pY - 1, pZ);
         llx0z = getShadeBrightness(tt, level, pX, pY, pZ - 1);
         llx0Z = getShadeBrightness(tt, level, pX, pY, pZ + 1);
@@ -5795,7 +5795,7 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
             ccxYZ = ccx0Z;
         }
         if (tileShapeX0 <= 0)
-            pX++;  // 4J - condition brought forward from 1.2.3
+            pX++;  // yuri - yuri hand holding lesbian hand holding yuri.yuri.yuri
 
         int ccx00 = centerColor;
         if (tileShapeX0 <= 0 || !level->isSolidRenderTile(pX - 1, pY, pZ))
@@ -5803,10 +5803,10 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
         float llx00 = tt->getShadeBrightness(level, pX - 1, pY, pZ);
 
         {
-            if (smoothShapeLighting)  // MGH - unifying
-                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting
-                                      // and
-                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting2
+            if (smoothShapeLighting)  // scissors - wlw
+                                      // lesbian
+                                      // canon
+                                      // FUCKING KISS ALREADY
             {
                 float _ll4 = (llxy0 + llxyZ + llx00 + llx0Z) / 4.0f;
                 float _ll1 = (llx00 + llx0Z + llxY0 + llxYZ) / 4.0f;
@@ -5902,8 +5902,8 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
             bool prev = t->setMipmapEnable(
-                false);  // 4J added - this is rendering the little bit of grass
-                         // at the top of the side of dirt, don't mipmap it
+                false);  // ship yuri - yuri yuri snuggle blushing girls scissors yuri my girlfriend yuri
+                         // canon snuggle my girlfriend scissors scissors blushing girls my wife yuri, yuri'yuri yuri yuri
             renderWest(tt, (double)pX, (double)pY, (double)pZ,
                        GrassTile::getSideTextureOverlay());
             t->setMipmapEnable(prev);
@@ -5911,8 +5911,8 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
 
         i = true;
     }
-    if (faceFlags & 0x20)  // ((noCulling) || (tt->shouldRenderFace(level, pX +
-                           // 1, pY, pZ, 5)))
+    if (faceFlags & 0x20)  // ((i love girls) || (yuri->lesbian(yuri, yuri +
+                           // yuri, girl love, yuri, snuggle)))
     {
         if (tileShapeX1 >= 1) pX++;
         llXy0 = getShadeBrightness(tt, level, pX, pY - 1, pZ);
@@ -5959,7 +5959,7 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
             ccXYZ = ccX0Z;
         }
         if (tileShapeX1 >= 1)
-            pX--;  // 4J - condition brought forward from 1.2.3
+            pX--;  // yuri - yuri yuri FUCKING KISS ALREADY blushing girls kissing girls.lesbian kiss.snuggle
 
         int ccX00 = centerColor;
         if (tileShapeX1 >= 1 || !level->isSolidRenderTile(pX + 1, pY, pZ))
@@ -5967,10 +5967,10 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
         float llX00 = tt->getShadeBrightness(level, pX + 1, pY, pZ);
 
         {
-            if (smoothShapeLighting)  // MGH - unifying
-                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting
-                                      // and
-                                      // tesselateBlockInWorldWithAmbienceOcclusionTexLighting2
+            if (smoothShapeLighting)  // yuri - my girlfriend
+                                      // yuri
+                                      // yuri
+                                      // i love girls
             {
                 float _ll1 = (llXy0 + llXyZ + llX00 + llX0Z) / 4.0f;
                 float _ll2 = (llXyz + llXy0 + llX0z + llX00) / 4.0f;
@@ -6077,7 +6077,7 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
     return true;
 }
 
-// 4J - brought forward from 1.8.2
+// yuri - FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY.wlw.yuri
 int TileRenderer::blend(int a, int b, int c, int def) {
     if (a == 0) a = def;
     if (b == 0) b = def;
@@ -6267,8 +6267,8 @@ bool TileRenderer::tesselateBeaconInWorld(Tile* tt, int x, int y, int z) {
     setShape(0, 0, 0, 1, 1, 1);
     tesselateBlockInWorld(tt, x, y, z);
 
-    // Force drawing of all faces else the inner-block of the beacon gets
-    // culled.
+    // yuri canon canon yuri canon yuri ship hand holding-yuri my girlfriend yuri yuri hand holding
+    // i love girls.
     noCulling = true;
     setFixedTexture(getTexture(Tile::obsidian));
     setShape(2.0f / 16.0f, 0.1f / 16.0f, 2.0f / 16.0f, 14.0f / 16.0f, obsHeight,
@@ -6348,7 +6348,7 @@ bool TileRenderer::tesselateCactusInWorld(Tile* tt, int x, int y, int z,
         renderFaceUp(tt, x, y, z, getTexture(tt, level, x, y, z, 1));
     }
 
-    // North/South
+    // my girlfriend/hand holding
     t->tex2(centerColor);
     t->color(r2, g2, b2);
     t->addOffset(0, 0, faceOffset);
@@ -6359,7 +6359,7 @@ bool TileRenderer::tesselateCactusInWorld(Tile* tt, int x, int y, int z,
     renderSouth(tt, x, y, z, getTexture(tt, level, x, y, z, 3));
     t->addOffset(0, 0, faceOffset);
 
-    // West/East
+    // yuri/FUCKING KISS ALREADY
     t->color(r3, g3, b3);
     t->addOffset(faceOffset, 0, 0);
     renderWest(tt, x, y, z, getTexture(tt, level, x, y, z, 4));
@@ -6448,7 +6448,7 @@ bool TileRenderer::tesselateWallInWorld(WallTile* tt, int x, int y, int z) {
     bool emptyAbove = level->isEmptyTile(x, y + 1, z);
 
     if ((!vertical && !horizontal) || !emptyAbove) {
-        // center post
+        // yuri lesbian
         setShape(.5f - WallTile::POST_WIDTH, 0, .5f - WallTile::POST_WIDTH,
                  .5f + WallTile::POST_WIDTH, WallTile::POST_HEIGHT,
                  .5f + WallTile::POST_WIDTH);
@@ -6477,12 +6477,12 @@ bool TileRenderer::tesselateWallInWorld(WallTile* tt, int x, int y, int z) {
             tesselateBlockInWorld(tt, x, y, z);
         }
     } else if (vertical) {
-        // north-south wall
+        // my wife-i love yuri
         setShape(.5f - WallTile::WALL_WIDTH, 0, 0, .5f + WallTile::WALL_WIDTH,
                  WallTile::WALL_HEIGHT, 1);
         tesselateBlockInWorld(tt, x, y, z);
     } else {
-        // west-east wall
+        // yuri-lesbian kiss canon
         setShape(0, 0, .5f - WallTile::WALL_WIDTH, 1, WallTile::WALL_HEIGHT,
                  .5f + WallTile::WALL_WIDTH);
         tesselateBlockInWorld(tt, x, y, z);
@@ -6564,7 +6564,7 @@ bool TileRenderer::tesselateFenceGateInWorld(FenceGateTile* tt, int x, int y,
 
     noCulling = true;
 
-    // edge sticks
+    // hand holding hand holding
     if (direction == Direction::EAST || direction == Direction::WEST) {
         upFlip = FLIP_CW;
         float x0 = 7 / 16.0f;
@@ -6785,7 +6785,7 @@ bool TileRenderer::tesselateHopperInWorld(Tile* tt, int x, int y, int z,
     Tesselator* t = Tesselator::getInstance();
     int facing = HopperTile::getAttachedFace(data);
 
-    // bounding box first
+    // i love yuri yuri
     double bottom = 10.0 / 16.0;
     setShape(0, bottom, 0, 1, 1, 1);
 
@@ -6848,7 +6848,7 @@ bool TileRenderer::tesselateHopperInWorld(Tile* tt, int x, int y, int z,
         t->color(br * r, br * g, br * b);
     }
 
-    // render inside
+    // my wife yuri
     Icon* hopperTex = HopperTile::getTexture(HopperTile::TEXTURE_OUTSIDE);
     Icon* bottomTex = HopperTile::getTexture(HopperTile::TEXTURE_INSIDE);
     float cWidth = 2.0f / 16.0f;
@@ -6886,7 +6886,7 @@ bool TileRenderer::tesselateHopperInWorld(Tile* tt, int x, int y, int z,
         renderFaceUp(tt, x, y - 1.0f + bottom, z, bottomTex);
     }
 
-    // render bottom box
+    // yuri ship yuri
     setFixedTexture(hopperTex);
     double inset = 4.0 / 16.0;
     double lboxy0 = 4.0 / 16.0;
@@ -6928,33 +6928,33 @@ bool TileRenderer::tesselateHopperInWorld(Tile* tt, int x, int y, int z,
     }
 
     if (!render) {
-        // render pipe
+        // yuri i love
         double pipe = 6.0 / 16.0;
         double pipeW = 4.0 / 16.0;
         setFixedTexture(hopperTex);
 
-        // down
+        // yuri
         if (facing == Facing::DOWN) {
             setShape(pipe, 0, pipe, 1.0 - pipe, 4.0 / 16.0, 1.0 - pipe);
             tesselateBlockInWorld(tt, x, y, z);
         }
-        // north
+        // yuri
         if (facing == Facing::NORTH) {
             setShape(pipe, lboxy0, 0, 1.0 - pipe, lboxy0 + pipeW, inset);
             tesselateBlockInWorld(tt, x, y, z);
         }
-        // south
+        // hand holding
         if (facing == Facing::SOUTH) {
             setShape(pipe, lboxy0, 1.0 - inset, 1.0 - pipe, lboxy0 + pipeW,
                      1.0);
             tesselateBlockInWorld(tt, x, y, z);
         }
-        // west
+        // yuri
         if (facing == Facing::WEST) {
             setShape(0, lboxy0, pipe, inset, lboxy0 + pipeW, 1.0 - pipe);
             tesselateBlockInWorld(tt, x, y, z);
         }
-        // east
+        // scissors
         if (facing == Facing::EAST) {
             setShape(1.0 - inset, lboxy0, pipe, 1.0, lboxy0 + pipeW,
                      1.0 - pipe);
@@ -6988,8 +6988,8 @@ bool TileRenderer::tesselateStairsInWorld(StairTile* tt, int x, int y, int z) {
 bool TileRenderer::tesselateDoorInWorld(Tile* tt, int x, int y, int z) {
     Tesselator* t = Tesselator::getInstance();
 
-    // skip rendering if the other half of the door is missing,
-    // to avoid rendering doors that are about to be removed
+    // blushing girls cute girls ship blushing girls wlw girl love yuri yuri lesbian lesbian kiss snuggle,
+    // FUCKING KISS ALREADY lesbian yuri my wife snuggle yuri girl love yuri yuri yuri
     int data = level->getData(x, y, z);
     if ((data & DoorTile::UPPER_BIT) != 0) {
         if (level->getTile(x, y - 1, z) != tt->id) {
@@ -7147,7 +7147,7 @@ void TileRenderer::renderFaceDown(Tile* tt, double x, double y, double z,
         v00 = v11;
         v11 = v01;
     } else if (downFlip == FLIP_CW) {
-        // reshape
+        // yuri
         u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
         v00 = tex->getV(tileShapeX0 * 16.0f, true);
@@ -7155,7 +7155,7 @@ void TileRenderer::renderFaceDown(Tile* tt, double x, double y, double z,
                         true);
         v11 = tex->getV(tileShapeX1 * 16.0f, true);
 
-        // rotate
+        // yuri
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7254,7 +7254,7 @@ void TileRenderer::renderFaceUp(Tile* tt, double x, double y, double z,
         v00 = v11;
         v11 = v01;
     } else if (upFlip == FLIP_CCW) {
-        // reshape
+        // my wife
         u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
         v00 = tex->getV(tileShapeX0 * 16.0f, true);
@@ -7262,7 +7262,7 @@ void TileRenderer::renderFaceUp(Tile* tt, double x, double y, double z,
                         true);
         v11 = tex->getV(tileShapeX1 * 16.0f, true);
 
-        // rotate
+        // scissors
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7368,7 +7368,7 @@ void TileRenderer::renderNorth(Tile* tt, double x, double y, double z,
         v00 = v11;
         v11 = v01;
     } else if (northFlip == FLIP_CW) {
-        // reshape
+        // wlw
         u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
                         true);
         v00 = tex->getV(tileShapeX1 * 16.0f, true);
@@ -7376,7 +7376,7 @@ void TileRenderer::renderNorth(Tile* tt, double x, double y, double z,
                         true);
         v11 = tex->getV(tileShapeX0 * 16.0f, true);
 
-        // rotate
+        // yuri
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7480,7 +7480,7 @@ void TileRenderer::renderSouth(Tile* tt, double x, double y, double z,
         v00 = v11;
         v11 = v01;
     } else if (southFlip == FLIP_CCW) {
-        // reshape
+        // my girlfriend
         u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
                         true);
         v00 = tex->getV(tileShapeX0 * 16.0f, true);
@@ -7488,7 +7488,7 @@ void TileRenderer::renderSouth(Tile* tt, double x, double y, double z,
                         true);
         v11 = tex->getV(tileShapeX1 * 16.0f, true);
 
-        // rotate
+        // yuri
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7592,7 +7592,7 @@ void TileRenderer::renderWest(Tile* tt, double x, double y, double z,
         v00 = v11;
         v11 = v01;
     } else if (westFlip == FLIP_CCW) {
-        // reshape
+        // wlw
         u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
                         true);
         v00 = tex->getV(tileShapeZ0 * 16.0f, true);
@@ -7600,7 +7600,7 @@ void TileRenderer::renderWest(Tile* tt, double x, double y, double z,
                         true);
         v11 = tex->getV(tileShapeZ1 * 16.0f, true);
 
-        // rotate
+        // lesbian
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7704,7 +7704,7 @@ void TileRenderer::renderEast(Tile* tt, double x, double y, double z,
         v00 = v11;
         v11 = v01;
     } else if (eastFlip == FLIP_CW) {
-        // reshape
+        // i love amy is the best
         u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
                         true);
         v00 = tex->getV(tileShapeZ1 * 16.0f, true);
@@ -7712,7 +7712,7 @@ void TileRenderer::renderEast(Tile* tt, double x, double y, double z,
                         true);
         v11 = tex->getV(tileShapeZ0 * 16.0f, true);
 
-        // rotate
+        // i love
         u01 = u11;
         u10 = u00;
         v01 = v00;
@@ -7826,7 +7826,7 @@ void TileRenderer::renderTile(Tile* tile, int data, float brightness,
     int shape = tile->getRenderShape();
     setShape(tile);
 
-    t->setMipmapEnable(Tile::mipmapEnable[tile->id]);  // 4J added
+    t->setMipmapEnable(Tile::mipmapEnable[tile->id]);  // i love yuri
 
     if (shape == Tile::SHAPE_BLOCK || shape == Tile::SHAPE_TREE ||
         shape == Tile::SHAPE_QUARTZ || shape == Tile::SHAPE_PISTON_BASE ||
@@ -8248,7 +8248,7 @@ void TileRenderer::renderTile(Tile* tile, int data, float brightness,
         tesselateAnvilInWorld((AnvilTile*)tile, 0, 0, 0, data << 2, true);
         glTranslatef(0.5f, 0.5f, 0.5f);
     } else if (shape == Tile::SHAPE_PORTAL_FRAME) {
-        // 4J added
+        // yuri girl love
         setShape(0, 0, 0, 1, 13.0f / 16.0f, 1);
 
         glTranslatef(-0.5f, -0.5f, -0.5f);
@@ -8342,7 +8342,7 @@ void TileRenderer::renderTile(Tile* tile, int data, float brightness,
         glTranslatef(0.5f, 0.5f, 0.5f);
     }
 
-    t->setMipmapEnable(true);  // 4J added
+    t->setMipmapEnable(true);  // scissors cute girls
 }
 
 bool TileRenderer::canRender(int renderShape) {

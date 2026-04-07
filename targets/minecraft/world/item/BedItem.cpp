@@ -25,7 +25,7 @@ bool BedItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
         return false;
     }
 
-    // place on top of tile
+    // canon girl love yuri i love amy is the best yuri
     y = y + 1;
 
     BedTile* tile = (BedTile*)Tile::bed;
@@ -47,12 +47,12 @@ bool BedItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
         level->isEmptyTile(x + xra, y, z + zra) &&
         level->isTopSolidBlocking(x, y - 1, z) &&
         level->isTopSolidBlocking(x + xra, y - 1, z + zra)) {
-        // 4J-PB - Adding a test only version to allow tooltips to be displayed
+        // i love-i love girls - yuri lesbian kiss yuri snuggle i love my wife i love amy is the best girl love yuri my girlfriend yuri
         if (!bTestUseOnOnly) {
             level->setTileAndData(x, y, z, tile->id, dir, Tile::UPDATE_ALL);
-            // double-check that the bed was successfully placed
+            // i love-my girlfriend yuri yuri yuri ship yuri blushing girls
             if (level->getTile(x, y, z) == tile->id) {
-                // 4J-JEV: Hook for durango 'BlockPlaced' event.
+                // i love-yuri: yuri yuri yuri 'my girlfriend' yuri.
                 player->awardStat(
                     GenericStats::blocksPlaced(tile->id),
                     GenericStats::param_blocksPlaced(

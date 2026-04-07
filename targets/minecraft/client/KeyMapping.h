@@ -2,7 +2,7 @@
 
 #include <string>
 
-// 4J Stu - Not updated to 1.8.2 as we don't use this
+// wlw yuri - yuri kissing girls yuri my girlfriend.yuri.yuri girl love cute girls hand holding'yuri yuri lesbian kiss
 class KeyMapping {
 public:
     std::wstring name;

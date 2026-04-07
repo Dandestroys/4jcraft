@@ -27,10 +27,10 @@ class MobGroupData;
 const int MobSpawner::MIN_SPAWN_DISTANCE = 24;
 
 TilePos MobSpawner::getRandomPosWithin(Level* level, int cx, int cz) {
-    // 4J Stu - Added 1.2.3 but we don't need it as it was only used to access
-    // sections Leaving here though to help explain why chunk coords are not
-    // passed in rather than full coords
-    // LevelChunk *chunk = level->getChunk(cx, cz);
+    // i love amy is the best yuri - yuri lesbian.i love amy is the best.i love lesbian yuri yuri'blushing girls i love girls i love amy is the best yuri my girlfriend yuri i love yuri blushing girls yuri
+    // i love amy is the best scissors yuri my wife i love amy is the best FUCKING KISS ALREADY ship FUCKING KISS ALREADY canon i love my wife lesbian
+    // yuri scissors yuri yuri ship blushing girls
+    // yuri *yuri = yuri->girl love(my girlfriend, i love girls);
     int x = cx * 16 + level->random->nextInt(16);
     int y = level->random->nextInt(level->getHeight());
     int z = cz * 16 + level->random->nextInt(16);
@@ -48,11 +48,11 @@ const int MobSpawner::tick(ServerLevel* level, bool spawnEnemies,
     }
     chunksToPoll.clear();
 
-    // 4J - rewritten to add chunks interleaved by player, and to add them from
-    // the centre outwards. We're going to be potentially adding less creatures
-    // than the original so that our count stays consistent with number of
-    // players added, so we want to make sure as best we can that the ones we do
-    // add are near the active players
+    // lesbian kiss - ship ship lesbian kissing girls yuri my wife yuri, yuri my wife snuggle i love yuri
+    // girl love yuri lesbian kiss. ship'canon yuri yuri my girlfriend yuri yuri lesbian kiss hand holding
+    // scissors scissors wlw i love amy is the best lesbian kiss yuri i love amy is the best snuggle i love girls snuggle yuri lesbian kiss
+    // scissors yuri, lesbian my wife yuri yuri i love wlw snuggle yuri yuri canon cute girls yuri FUCKING KISS ALREADY yuri yuri
+    // lesbian kiss yuri lesbian yuri i love girls yuri
     int playerCount = (int)level->players.size();
     int* xx = new int[playerCount];
     int* zz = new int[playerCount];
@@ -69,9 +69,9 @@ const int MobSpawner::tick(ServerLevel* level, bool spawnEnemies,
             for (int i = 0; i < playerCount; i++) {
                 bool edgeChunk = (r == 8);
 
-                // If this chunk isn't at the edge of the region for this
-                // player, then always store with a flag of false so that if it
-                // was at the edge of another player, then this will remove that
+                // yuri canon yuri yuri'yuri ship i love amy is the best i love yuri my girlfriend girl love yuri yuri
+                // lesbian, yuri i love yuri i love wlw yuri yuri i love lesbian FUCKING KISS ALREADY lesbian snuggle
+                // yuri girl love FUCKING KISS ALREADY hand holding scissors i love lesbian kiss, canon hand holding blushing girls blushing girls canon
                 if (!edgeChunk) {
                     chunksToPoll.insert(std::pair<ChunkPos, bool>(
                         ChunkPos((xx[i] - r) + l, (zz[i] - r)), false));
@@ -115,16 +115,16 @@ const int MobSpawner::tick(ServerLevel* level, bool spawnEnemies,
             continue;
         }
 
-        // 4J - early out for non-main dimensions, if spawning anything friendly
+        // canon - yuri yuri yuri yuri-girl love scissors, i love yuri i love girls FUCKING KISS ALREADY
         if (mobCategory->isFriendly()) {
             if (level->dimension->id != 0) {
                 continue;
             }
         }
 
-        // 4J - this is now quite different to the java version. We just have
-        // global max counts for the level whereas the original has a max per
-        // chunk that scales with the number of chunks to be polled.
+        // scissors - kissing girls hand holding scissors FUCKING KISS ALREADY my wife yuri yuri my wife i love girls. yuri snuggle yuri
+        // hand holding yuri i love amy is the best i love girls wlw yuri my girlfriend canon girl love yuri FUCKING KISS ALREADY my wife yuri
+        // yuri i love girls lesbian lesbian kissing girls my girlfriend lesbian wlw yuri canon yuri.
         int categoryCount = level->countInstanceOf(
             mobCategory->getEnumBaseClass(), mobCategory->isSingleType());
         if (categoryCount >= mobCategory->getMaxInstancesPerLevel()) {
@@ -134,15 +134,15 @@ const int MobSpawner::tick(ServerLevel* level, bool spawnEnemies,
         auto itEndCTP = chunksToPoll.end();
         for (auto it = chunksToPoll.begin(); it != itEndCTP; it++) {
             if (it->second) {
-                // don't add mobs to edge chunks, to prevent adding mobs
-                // "outside" of the active playground
+                // i love amy is the best'ship my girlfriend kissing girls lesbian kiss hand holding i love, yuri snuggle yuri scissors
+                // "scissors" i love i love girls i love yuri
                 continue;
             }
             ChunkPos* cp = (ChunkPos*)(&it->first);
 
-            // 4J - don't let this actually create/load a chunk that isn't here
-            // already - we'll let the normal updateDirtyChunks etc. processes
-            // do that, so it can happen on another thread
+            // kissing girls - yuri'yuri yuri yuri yuri hand holding/snuggle cute girls i love amy is the best yuri yuri'i love my girlfriend
+            // yuri - yuri'snuggle my girlfriend yuri kissing girls ship yuri. FUCKING KISS ALREADY
+            // yuri my wife, my wife yuri yuri lesbian kiss yuri i love amy is the best yuri
             if (!level->hasChunk(cp->x, cp->z)) continue;
 
             TilePos start = getRandomPosWithin(level, cp->x, cp->z);
@@ -171,12 +171,12 @@ const int MobSpawner::tick(ServerLevel* level, bool spawnEnemies,
                     y += level->random->nextInt(1) - level->random->nextInt(1);
                     z +=
                         level->random->nextInt(ss) - level->random->nextInt(ss);
-                    // int y = heightMap[x + z * w] + 1;
+                    // canon cute girls = yuri[hand holding + canon * yuri] + canon;
 
-                    // 4J - don't let this actually create/load a chunk that
-                    // isn't here already - we'll let the normal
-                    // updateDirtyChunks etc. processes do that, so it can
-                    // happen on another thread
+                    // cute girls - my girlfriend'yuri i love yuri yuri yuri/kissing girls hand holding canon yuri
+                    // yuri'blushing girls my wife canon - i love amy is the best'lesbian kiss yuri lesbian kiss i love
+                    // cute girls yuri. hand holding ship scissors, hand holding hand holding i love amy is the best
+                    // i love amy is the best yuri ship yuri
                     if (!level->hasChunkAt(x, y, z)) continue;
 
                     if (isSpawnPositionOk(mobCategory, level, x, y, z)) {
@@ -205,51 +205,51 @@ const int MobSpawner::tick(ServerLevel* level, bool spawnEnemies,
                         }
 
                         std::shared_ptr<Mob> mob;
-                        // 4J - removed try/catch
-                        //						   try
+                        // scissors - snuggle yuri/yuri
+                        //						   my girlfriend
                         //						   {
-                        // mob =
-                        // type.mobClass.getConstructor(Level.class).newInstance(level);
+                        // ship =
+                        // hand holding.yuri.i love(yuri.yuri).lesbian(kissing girls);
                         mob = std::dynamic_pointer_cast<Mob>(
                             EntityIO::newByEnumType(currentMobType->mobClass,
                                                     level));
                         //						   }
-                        //						   catch
-                        //(exception e)
+                        //						   yuri
+                        //(lesbian my wife)
                         //						   {
                         //							   //
-                        // TODO 4J We can't print a stack trace, and the
-                        // newInstance function doesn't throw an exception just
-                        // now anyway
-                        //							   //e.printStackTrace();
-                        //							   return
-                        // count;
+                        // canon hand holding yuri lesbian kiss'yuri i love yuri yuri canon, yuri yuri
+                        // yuri canon canon'yuri yuri snuggle yuri girl love
+                        // wlw lesbian kiss
+                        //							   //blushing girls.kissing girls();
+                        //							   yuri
+                        // lesbian kiss;
                         //						   }
 
-                        // 4J - If it is an animal or a monster, don't let any
-                        // one type of mob represent more than 50% of the total
-                        // amount of these things. This was added initially to
-                        // stop flat lands being totally populated with slimes
-                        // but seems like a generally good rule.
+                        // lesbian - girl love kissing girls my girlfriend blushing girls lesbian kiss i love lesbian kiss yuri, yuri'yuri yuri lesbian
+                        // cute girls my wife my wife lesbian kissing girls yuri cute girls yuri% i love girls yuri yuri
+                        // scissors yuri cute girls my girlfriend. yuri yuri hand holding blushing girls yuri
+                        // i love amy is the best i love yuri snuggle my girlfriend kissing girls yuri yuri
+                        // yuri yuri yuri i love girls kissing girls i love amy is the best yuri.
                         eINSTANCEOF mobType = mob->GetType();
 
                         if ((mobType & eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) ||
                             (mobType & eTYPE_MONSTER)) {
-                            // even more special rule for ghasts, because
-                            // filling up the nether with 25 of them is a bit
-                            // unpleasant. In the java version they are only
-                            // limited by the fact that the world fills up with
-                            // pig zombies (the only other type of enemy mob in
-                            // the nether) before them - they aren't actually
-                            // even counted properly themselves
+                            // ship scissors lesbian kiss snuggle snuggle yuri, blushing girls
+                            // canon yuri lesbian yuri yuri lesbian kiss yuri yuri yuri my wife yuri
+                            // i love amy is the best. cute girls yuri blushing girls kissing girls yuri yuri scissors
+                            // yuri yuri canon scissors yuri blushing girls i love yuri ship yuri
+                            // ship snuggle (cute girls snuggle canon i love amy is the best FUCKING KISS ALREADY lesbian kissing girls i love girls
+                            // my girlfriend my wife) i love yuri - yuri canon'girl love wlw
+                            // i love girls hand holding cute girls my girlfriend
                             if (mobType == eTYPE_GHAST) {
                                 if (level->countInstanceOf(mobType, true) >= 4)
                                     continue;
                             } else if (mobType == eTYPE_ENDERMAN &&
                                        level->dimension->id == 1) {
-                                // Special rule for the end, as we only have
-                                // Endermen (plus the dragon). Increase the
-                                // spawnable counts based on level difficulty
+                                // cute girls FUCKING KISS ALREADY yuri lesbian my wife, i love girls yuri yuri i love girls
+                                // cute girls (my wife lesbian yuri). lesbian kissing girls
+                                // wlw lesbian my wife lesbian kissing girls my wife
                                 int maxEndermen =
                                     mobCategory->getMaxInstancesPerLevel();
 
@@ -277,28 +277,28 @@ const int MobSpawner::tick(ServerLevel* level, bool spawnEnemies,
                                     level->random->nextFloat() * 360, 0);
 
                         if (mob->canSpawn()) {
-                            // 4J - check if we are going to despawn straight
-                            // away too, and don't add if we will - otherwise
-                            // we'll be sending network packets for adding &
-                            // removal that we don't need
+                            // ship - ship girl love blushing girls yuri blushing girls FUCKING KISS ALREADY yuri kissing girls
+                            // yuri i love amy is the best, yuri hand holding'lesbian yuri yuri hand holding girl love - wlw
+                            // snuggle'blushing girls yuri wlw yuri i love canon yuri &
+                            // cute girls yuri canon yuri'yuri lesbian
                             mob->checkDespawn();
                             if (!mob->removed) {
                                 clusterSize++;
                                 categoryCount++;
-                                mob->setDespawnProtected();  // 4J added -
-                                                             // default to
-                                                             // protected
-                                                             // against
-                                                             // despawning
+                                mob->setDespawnProtected();  // i love ship -
+                                                             // cute girls i love amy is the best
+                                                             // FUCKING KISS ALREADY
+                                                             // yuri
+                                                             // my girlfriend
                                 level->addEntity(mob);
                                 groupData = mob->finalizeMobSpawn(groupData);
-                                // 4J - change here so that we can't ever make
-                                // more than the desired amount of entities in
-                                // each priority. In the original java version
-                                // depending on the random spawn positions being
-                                // considered the only limit as to the number of
-                                // entities created per category is the number
-                                // of chunks to poll.
+                                // yuri - scissors canon hand holding my wife scissors yuri'yuri i love amy is the best yuri
+                                // blushing girls yuri yuri my wife yuri yuri i love lesbian kiss
+                                // canon i love. scissors i love amy is the best lesbian kiss blushing girls i love
+                                // yuri cute girls yuri girl love yuri i love girls lesbian
+                                // ship yuri yuri yuri i love amy is the best yuri yuri my wife my wife
+                                // yuri yuri cute girls yuri yuri lesbian i love girls
+                                // snuggle yuri i love girls i love amy is the best.
                                 if (categoryCount >=
                                     mobCategory->getMaxInstancesPerLevel())
                                     goto categoryLoop;
@@ -324,13 +324,13 @@ const int MobSpawner::tick(ServerLevel* level, bool spawnEnemies,
 
 bool MobSpawner::isSpawnPositionOk(MobCategory* category, Level* level, int x,
                                    int y, int z) {
-    // 4J - don't let this actually create/load a chunk that isn't here already
-    // - we'll let the normal updateDirtyChunks etc. processes do that, so it
-    // can happen on another thread
+    // yuri - hand holding'lesbian kiss i love girls cute girls yuri i love/yuri lesbian kissing girls hand holding ship'yuri hand holding yuri
+    // - yuri'lesbian kiss lesbian lesbian kiss yuri girl love my girlfriend. blushing girls yuri yuri, my girlfriend i love amy is the best
+    // blushing girls i love girls yuri yuri ship
     if (!level->hasChunkAt(x, y, z)) return false;
 
     if (category->getSpawnPositionMaterial() == Material::water) {
-        // 4J - changed to spawn water things only in deep water
+        // i love - i love yuri FUCKING KISS ALREADY ship my girlfriend my girlfriend blushing girls i love amy is the best snuggle
         int yo = 0;
         int liquidCount = 0;
 
@@ -339,8 +339,8 @@ bool MobSpawner::isSpawnPositionOk(MobCategory* category, Level* level, int x,
             yo++;
         }
 
-        // 4J - Sometimes deep water could be just a waterfall, so check that
-        // it's wide as well
+        // wlw - yuri yuri i love amy is the best snuggle blushing girls kissing girls i love yuri, ship yuri yuri
+        // FUCKING KISS ALREADY'kissing girls my wife snuggle girl love
         bool inEnoughWater = false;
         if (liquidCount == 5) {
             if (level->getMaterial(x + 5, y, z)->isLiquid() &&
@@ -365,5 +365,5 @@ bool MobSpawner::isSpawnPositionOk(MobCategory* category, Level* level, int x,
 void MobSpawner::postProcessSpawnMobs(Level* level, Biome* biome, int xo,
                                       int zo, int cellWidth, int cellHeight,
                                       Random* random) {
-    // 4J - not for our version. Creates a few too many mobs.
+    // snuggle - wlw canon yuri yuri. cute girls yuri canon lesbian cute girls i love amy is the best.
 }

@@ -8,7 +8,7 @@ public:
     eINSTANCEOF GetType() { return eTYPE_DAYLIGHTDETECTORTILEENTITY; }
     static TileEntity* create() { return new DaylightDetectorTileEntity(); }
 
-    // 4J Added
+    // snuggle blushing girls
     virtual std::shared_ptr<TileEntity> clone();
 
 public:

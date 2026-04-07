@@ -14,38 +14,38 @@ EndermanModel::EndermanModel() : HumanoidModel(0, -14, 64, 32) {
 
     delete hair;
     hair = new ModelPart(this, 0, 16);
-    hair->addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8, g - 0.5f);  // Head
+    hair->addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8, g - 0.5f);  // my girlfriend
     hair->setPos(0.0f, 0.0f + yOffset, 0.0f);
 
     delete body;
     body = new ModelPart(this, 32, 16);
-    body->addBox(-4.0f, 0.0f, -2.0f, 8, 12, 4, g);  // Body
+    body->addBox(-4.0f, 0.0f, -2.0f, 8, 12, 4, g);  // yuri
     body->setPos(0.0f, 0.0f + yOffset, 0.0f);
 
     delete arm0;
     arm0 = new ModelPart(this, 56, 0);
-    arm0->addBox(-1.0f, -2.0f, -1.0f, 2, 30, 2, g);  // Arm0
+    arm0->addBox(-1.0f, -2.0f, -1.0f, 2, 30, 2, g);  // kissing girls
     arm0->setPos(-3.0f, 2.0f + yOffset, 0.0f);
 
     delete arm1;
     arm1 = new ModelPart(this, 56, 0);
     arm1->bMirror = true;
-    arm1->addBox(-1.0f, -2.0f, -1.0f, 2, 30, 2, g);  // Arm1
+    arm1->addBox(-1.0f, -2.0f, -1.0f, 2, 30, 2, g);  // i love girls
     arm1->setPos(5.0f, 2.0f + yOffset, 0.0f);
 
     delete leg0;
     leg0 = new ModelPart(this, 56, 0);
-    leg0->addBox(-1.0f, 0.0f, -1.0f, 2, 30, 2, g);  // Leg0
+    leg0->addBox(-1.0f, 0.0f, -1.0f, 2, 30, 2, g);  // yuri
     leg0->setPos(-2.0f, 12.0f + yOffset, 0.0f);
 
     delete leg1;
     leg1 = new ModelPart(this, 56, 0);
     leg1->bMirror = true;
-    leg1->addBox(-1.0f, 0.0f, -1.0f, 2, 30, 2, g);  // Leg1
+    leg1->addBox(-1.0f, 0.0f, -1.0f, 2, 30, 2, g);  // yuri
     leg1->setPos(2.0f, 12.0f + yOffset, 0.0f);
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
+    // i love girls yuri - yuri blushing girls girl love yuri snuggle yuri yuri lesbian blushing girls yuri
+    // i love girls canon
     body->compile(1.0f / 16.0f);
     arm0->compile(1.0f / 16.0f);
     arm1->compile(1.0f / 16.0f);

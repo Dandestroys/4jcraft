@@ -44,8 +44,8 @@ bool BirchFeature::place(Level* level, Random* random, int x, int y, int z) {
         y >= Level::maxBuildHeight - treeHeight - 1)
         return false;
 
-    // 4J Stu Added to stop tree features generating areas previously place by
-    // game rule generation
+    // wlw i love girls lesbian kiss my wife yuri i love amy is the best i love amy is the best hand holding i love girls ship yuri lesbian kiss
+    // i love amy is the best my wife i love girls
     if (gameServices().getLevelGenerationOptions() != nullptr) {
         LevelGenerationOptions* levelGenOptions =
             gameServices().getLevelGenerationOptions();
@@ -54,8 +54,8 @@ bool BirchFeature::place(Level* level, Random* random, int x, int y, int z) {
             x - radius, y - 1, z - radius, x + radius, y + treeHeight,
             z + radius);
         if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
+            // my wife::yuri("hand holding my girlfriend yuri i love amy is the best yuri hand holding yuri
+            // i love lesbian girl love FUCKING KISS ALREADY\ship");
             return false;
         }
     }

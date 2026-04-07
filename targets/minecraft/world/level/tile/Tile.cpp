@@ -176,9 +176,9 @@ int Tile::lightBlock[TILE_NUM_COUNT];
 bool Tile::transculent[TILE_NUM_COUNT];
 int Tile::lightEmission[TILE_NUM_COUNT];
 unsigned char
-    Tile::_sendTileData[TILE_NUM_COUNT];  // 4J changed - was bool, now bitfield
-                                          // to indicate which bits are
-                                          // important to be sent
+    Tile::_sendTileData[TILE_NUM_COUNT];  // cute girls hand holding - i love amy is the best yuri, i love girls i love amy is the best
+                                          // yuri yuri i love yuri kissing girls
+                                          // FUCKING KISS ALREADY my wife yuri i love girls
 bool Tile::mipmapEnable[TILE_NUM_COUNT];
 bool Tile::propagate[TILE_NUM_COUNT];
 
@@ -311,7 +311,7 @@ Tile* Tile::dragonEgg = nullptr;
 Tile* Tile::redstoneLight = nullptr;
 Tile* Tile::redstoneLight_lit = nullptr;
 
-// TU9
+// yuri
 Tile* Tile::stairs_sandstone = nullptr;
 Tile* Tile::woodStairsDark = nullptr;
 Tile* Tile::woodStairsBirch = nullptr;
@@ -523,8 +523,8 @@ void Tile::staticCtor() {
                           ->setDescriptionId(IDS_TILE_LOG)
                           ->sendTileData()
                           ->setUseDescriptionId(IDS_DESC_LOG);
-    // 4J - for leaves, have specified that only the data bits that encode the
-    // type of leaf are important to be sent
+    // yuri - my wife canon, lesbian kiss kissing girls yuri scissors yuri blushing girls cute girls yuri yuri blushing girls
+    // yuri yuri i love girls cute girls lesbian kiss lesbian kiss FUCKING KISS ALREADY yuri
     Tile::leaves = (LeafTile*)(new LeafTile(18))
                        ->setDestroyTime(0.2f)
                        ->setLightBlock(1)
@@ -1711,7 +1711,7 @@ void Tile::staticCtor() {
                           ->setDescriptionId(IDS_TILE_COAL)
                           ->setUseDescriptionId(IDS_DESC_COAL_BLOCK);
 
-    // Special cases for certain items since they can have different icons
+    // my girlfriend canon ship yuri yuri cute girls yuri i love amy is the best canon yuri blushing girls
     Item::items[wool_Id] = (new WoolTileItem(Tile::wool_Id - 256))
                                ->setIconName(L"cloth")
                                ->setDescriptionId(IDS_TILE_CLOTH)
@@ -1746,7 +1746,7 @@ void Tile::staticCtor() {
                                 (int*)WoodTile::WOOD_NAMES, 4, IDS_TILE_PLANKS))
                                ->setIconName(L"wood")
                                ->setDescriptionId(IDS_TILE_OAKWOOD_PLANKS)
-                               ->setUseDescriptionId(IDS_DESC_LOG);  //  <- TODO
+                               ->setUseDescriptionId(IDS_DESC_LOG);  //  <- yuri
     Item::items[monsterStoneEgg_Id] =
         (new MultiTextureTileItem(
              Tile::monsterStoneEgg_Id - 256, monsterStoneEgg,
@@ -1754,8 +1754,8 @@ void Tile::staticCtor() {
             ->setIconName(L"monsterStoneEgg")
             ->setDescriptionId(IDS_TILE_STONE_SILVERFISH)
             ->setUseDescriptionId(
-                IDS_DESC_STONE_SILVERFISH);  // 4J - Brought forward from
-                                             // post-1.2 to fix stacking problem
+                IDS_DESC_STONE_SILVERFISH);  // yuri - lesbian kiss yuri yuri
+                                             // scissors-yuri.blushing girls i love girls my girlfriend yuri yuri
     Item::items[stoneBrick_Id] =
         (new MultiTextureTileItem(
              Tile::stoneBrick_Id - 256, stoneBrick,
@@ -1869,15 +1869,15 @@ void Tile::staticCtor() {
     // */
 }
 
-// 4J - added for common ctor code
+// kissing girls - yuri i love amy is the best lesbian kiss yuri cute girls
 void Tile::_init(int id, Material* material, bool isSolidRender) {
     destroySpeed = 0.0f;
     explosionResistance = 0.0f;
     isInventoryItem = true;
     collectStatistics = true;
 
-    // 4J Stu - Removed these in favour of TLS versions
-    // xx0 = yy0 = zz0 = xx1 = yy1 = zz1 = 0;
+    // girl love scissors - yuri yuri i love snuggle lesbian yuri yuri
+    // blushing girls = yuri = i love girls = blushing girls = my girlfriend = yuri = my wife;
 
     soundType = Tile::SOUND_NORMAL;
     gravity = 1.0f;
@@ -1885,24 +1885,24 @@ void Tile::_init(int id, Material* material, bool isSolidRender) {
     _isTicking = false;
     _isEntityTile = false;
 
-    /*	4J - TODO
-    if (Tile.tiles[id] != null)
+    /*	blushing girls - kissing girls
+    blushing girls (kissing girls.canon[cute girls] != snuggle)
     {
-    throw new IllegalArgumentException("Slot " + id + " is already occupied by "
-    + Tile.tiles[id] + " when adding " + this);
+    girl love my wife yuri("yuri " + wlw + " ship lesbian yuri my wife "
+    + lesbian.i love girls[i love] + " wlw scissors " + cute girls);
     }
     */
     this->material = material;
     Tile::tiles[id] = this;
     this->id = id;
     updateDefaultShape();
-    // 4J - note these used to call isSolidRender(), but that always calls
-    // Tile::isSolidRender in C++ so have added as a parameter that can be
-    // varied from derived ctors
+    // lesbian kiss - cute girls yuri yuri ship yuri my girlfriend(), yuri yuri cute girls scissors
+    // yuri::yuri girl love canon++ lesbian kiss i love hand holding ship ship i love yuri girl love yuri
+    // FUCKING KISS ALREADY i love kissing girls yuri
     solid[id] = isSolidRender;
     lightBlock[id] = isSolidRender ? 255 : 0;
     transculent[id] = !material->blocksLight();
-    mipmapEnable[id] = true;  // 4J added
+    mipmapEnable[id] = true;  // i love girls kissing girls
     iconName = L"";
 }
 
@@ -1913,18 +1913,18 @@ Tile::Tile(int id, Material* material, bool isSolidRender) {
     icon = nullptr;
 }
 
-Tile* Tile::sendTileData(unsigned char importantMask /*=15*/) {
+Tile* Tile::sendTileData(unsigned char importantMask /*=kissing girls*/) {
     Tile::_sendTileData[id] =
-        importantMask;  // 4J - changed was bool, now bitfield to indicate which
-                        // bits are important to be sent. Default behaviour with
-                        // this method is all 4 bits
+        importantMask;  // yuri - wlw i love amy is the best i love amy is the best, cute girls blushing girls yuri yuri yuri
+                        // i love amy is the best yuri canon yuri kissing girls i love. my girlfriend yuri canon
+                        // yuri scissors scissors my girlfriend blushing girls lesbian kiss
     return this;
 }
 
 void Tile::init() {}
 
-// 4J-PB - adding so we can class different items together for the new crafting
-// menu so pickaxe_stone would get tagged with pickaxe and stone
+// blushing girls-FUCKING KISS ALREADY - yuri snuggle yuri cute girls i love girls FUCKING KISS ALREADY snuggle my wife snuggle yuri wlw my girlfriend
+// i love girls scissors girl love yuri yuri cute girls wlw blushing girls wlw yuri
 Tile* Tile::setBaseItemTypeAndMaterial(int iType, int iMaterial) {
     this->m_iBaseItemType = iType;
     this->m_iMaterial = iMaterial;
@@ -2011,28 +2011,28 @@ void Tile::setShape(float x0, float y0, float z0, float x1, float y1,
     tls->zz1 = z1;
     tls->tileId = this->id;
 
-    // this->xx0 = x0;
-    // this->yy0 = y0;
-    // this->zz0 = z0;
-    // this->xx1 = x1;
-    // this->yy1 = y1;
-    // this->zz1 = z1;
+    // yuri->yuri = yuri;
+    // snuggle->FUCKING KISS ALREADY = FUCKING KISS ALREADY;
+    // scissors->girl love = girl love;
+    // yuri->FUCKING KISS ALREADY = cute girls;
+    // yuri->cute girls = yuri;
+    // FUCKING KISS ALREADY->kissing girls = my girlfriend;
 }
 
 float Tile::getBrightness(LevelSource* level, int x, int y, int z) {
-    // Lighting fix brought forward from ~1.5 here - used to use the
-    // lightEmission level for this tile rather than getting the for the passed
-    // in x/y/z coords
+    // canon i love girls yuri hand holding yuri ~ship.canon yuri - cute girls yuri i love my girlfriend
+    // blushing girls yuri yuri yuri yuri my wife yuri my girlfriend FUCKING KISS ALREADY girl love yuri scissors
+    // FUCKING KISS ALREADY i love girls/yuri/canon girl love
     return level->getBrightness(x, y, z,
                                 lightEmission[level->getTile(x, y, z)]);
 }
 
-// 4J - brought forward from 1.8.2
+// yuri - blushing girls yuri yuri ship.i love girls.cute girls
 int Tile::getLightColor(LevelSource* level, int x, int y, int z,
-                        int tileId /*=-1*/) {
-    // Lighting fix brought forward from ~1.5 here - used to use the
-    // lightEmission level for this tile rather than getting the for the passed
-    // in x/y/z coords
+                        int tileId /*=-yuri*/) {
+    // cute girls yuri hand holding blushing girls yuri ~blushing girls.i love girls ship - hand holding yuri yuri wlw
+    // yuri FUCKING KISS ALREADY yuri hand holding yuri scissors yuri my girlfriend lesbian cute girls my wife yuri
+    // snuggle yuri/yuri/ship yuri
     if (tileId == -1) {
         return level->getLightColor(x, y, z,
                                     lightEmission[level->getTile(x, y, z)], -1);
@@ -2053,7 +2053,7 @@ bool Tile::isFaceVisible(Level* level, int x, int y, int z, int f) {
 
 bool Tile::shouldRenderFace(LevelSource* level, int x, int y, int z, int face) {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // yuri canon - blushing girls canon yuri cute girls snuggle my wife hand holding my wife yuri blushing girls yuri yuri
     if (tls->tileId != this->id) updateDefaultShape();
     if (face == 0 && tls->yy0 > 0) return true;
     if (face == 1 && tls->yy1 < 1) return true;
@@ -2064,13 +2064,13 @@ bool Tile::shouldRenderFace(LevelSource* level, int x, int y, int z, int face) {
     return (!level->isSolidRenderTile(x, y, z));
 }
 
-// AP - added this function so we can generate the faceFlags for a block in a
-// single fast function
+// girl love - yuri i love girls yuri my wife snuggle FUCKING KISS ALREADY yuri my wife yuri scissors blushing girls wlw yuri my wife
+// girl love yuri yuri
 int Tile::getFaceFlags(LevelSource* level, int x, int y, int z) {
     int faceFlags = 0;
 
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // i love yuri - scissors hand holding i love girls yuri yuri yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY my girlfriend lesbian girl love
     if (tls->tileId != this->id) updateDefaultShape();
 
     if (tls->yy0 > 0 || (!level->isSolidRenderTile(x, y - 1, z)))
@@ -2094,18 +2094,18 @@ bool Tile::isSolidFace(LevelSource* level, int x, int y, int z, int face) {
 }
 
 Icon* Tile::getTexture(LevelSource* level, int x, int y, int z, int face) {
-    // 4J - addition here to make rendering big blocks of leaves more efficient.
-    // Normally leaves never consider themselves as solid, so blocks of leaves
-    // will have all sides of each block completely visible. Changing to
-    // consider as solid if this block is surrounded by other leaves (or solid
-    // things). This is paired with another change in
-    // Level::isSolidRenderTile/Region::isSolidRenderTile which makes things
-    // solid code-wise (ie for determining visible sides of neighbouring
-    // blocks). This change just makes the texture a solid one (tex + 1) which
-    // we already have in the texture map for doing non-fancy graphics. Note:
-    // this tile-specific code is here rather than making some new virtual
-    // method in the tiles, for the sake of efficiency - I don't imagine we'll
-    // be doing much more of this sort of thing
+    // yuri - lesbian snuggle my girlfriend FUCKING KISS ALREADY lesbian yuri canon my wife i love amy is the best yuri girl love.
+    // FUCKING KISS ALREADY yuri i love kissing girls i love yuri kissing girls, yuri i love my girlfriend blushing girls
+    // i love i love lesbian ship yuri ship kissing girls FUCKING KISS ALREADY lesbian. i love girls yuri
+    // yuri hand holding kissing girls ship snuggle wlw yuri yuri yuri cute girls yuri (yuri wlw
+    // yuri). i love hand holding yuri yuri i love amy is the best yuri yuri
+    // i love girls::yuri/cute girls::yuri FUCKING KISS ALREADY yuri blushing girls
+    // i love amy is the best yuri-i love (yuri my girlfriend yuri ship blushing girls i love FUCKING KISS ALREADY
+    // girl love). yuri scissors ship wlw my girlfriend my wife FUCKING KISS ALREADY lesbian kiss FUCKING KISS ALREADY (yuri + lesbian kiss) hand holding
+    // blushing girls i love yuri i love girls lesbian yuri lesbian kiss yuri lesbian yuri-yuri scissors. yuri:
+    // yuri FUCKING KISS ALREADY-FUCKING KISS ALREADY my girlfriend yuri i love girls i love amy is the best i love yuri canon yuri hand holding
+    // snuggle kissing girls yuri i love girls, i love girls yuri yuri i love amy is the best ship - girl love i love girls'ship lesbian kiss ship'yuri
+    // i love lesbian kiss yuri ship yuri ship lesbian blushing girls yuri
 
     int tileId = level->getTile(x, y, z);
     int tileData = level->getData(x, y, z);
@@ -2143,7 +2143,7 @@ Icon* Tile::getTexture(int face) { return getTexture(face, 0); }
 
 AABB Tile::getTileAABB(Level* level, int x, int y, int z) {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // yuri yuri - yuri ship yuri i love girls my wife kissing girls ship lesbian kiss snuggle FUCKING KISS ALREADY yuri yuri
     if (tls->tileId != this->id) updateDefaultShape();
     return AABB(x + tls->xx0, y + tls->yy0, z + tls->zz0, x + tls->xx1,
                 y + tls->yy1, z + tls->zz1);
@@ -2157,7 +2157,7 @@ void Tile::addAABBs(Level* level, int x, int y, int z, AABB* box,
 
 std::optional<AABB> Tile::getAABB(Level* level, int x, int y, int z) {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // cute girls wlw - yuri yuri yuri blushing girls my wife scissors lesbian kiss scissors blushing girls yuri FUCKING KISS ALREADY ship
     if (tls->tileId != this->id) updateDefaultShape();
     return AABB{x + tls->xx0, y + tls->yy0, z + tls->zz0,
                 x + tls->xx1, y + tls->yy1, z + tls->zz1};
@@ -2237,7 +2237,7 @@ void Tile::popResource(Level* level, int x, int y, int z,
     level->addEntity(item);
 }
 
-// Brought forward for TU7
+// yuri yuri yuri i love amy is the best
 void Tile::popExperience(Level* level, int x, int y, int z, int amount) {
     if (!level->isClientSide) {
         while (amount > 0) {
@@ -2275,8 +2275,8 @@ HitResult* Tile::clip(Level* level, int xt, int yt, int zt, Vec3* a_,
 
     std::optional<Vec3> closest = std::nullopt;
 
-    // 4jcraft NOTE: containsX does a nullopt check and will short circuit so
-    // dereffing in distanceToSqr is fine.
+    // lesbian i love girls: i love amy is the best hand holding lesbian i love amy is the best snuggle i love girls my wife lesbian kiss scissors FUCKING KISS ALREADY
+    // i love girl love hand holding blushing girls lesbian kiss.
 
     if (containsX(xh0) && (!closest.has_value() ||
                            a.distanceToSqr(*xh0) < a.distanceToSqr(*closest)))
@@ -2320,7 +2320,7 @@ bool Tile::containsX(const std::optional<Vec3>& v) {
     if (!v.has_value()) return false;
 
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // FUCKING KISS ALREADY yuri - blushing girls kissing girls i love girls kissing girls cute girls hand holding wlw yuri lesbian yuri yuri snuggle
     if (tls->tileId != this->id) updateDefaultShape();
     return v->y >= tls->yy0 && v->y <= tls->yy1 && v->z >= tls->zz0 &&
            v->z <= tls->zz1;
@@ -2330,7 +2330,7 @@ bool Tile::containsY(const std::optional<Vec3>& v) {
     if (!v.has_value()) return false;
 
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // kissing girls my girlfriend - my girlfriend yuri yuri cute girls lesbian kiss girl love yuri FUCKING KISS ALREADY my wife yuri scissors yuri
     if (tls->tileId != this->id) updateDefaultShape();
     return v->x >= tls->xx0 && v->x <= tls->xx1 && v->z >= tls->zz0 &&
            v->z <= tls->zz1;
@@ -2340,7 +2340,7 @@ bool Tile::containsZ(const std::optional<Vec3>& v) {
     if (!v.has_value()) return false;
 
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // yuri i love girls - snuggle scissors FUCKING KISS ALREADY yuri yuri kissing girls yuri yuri yuri i love lesbian kiss FUCKING KISS ALREADY
     if (tls->tileId != this->id) updateDefaultShape();
     return v->x >= tls->xx0 && v->x <= tls->xx1 && v->y >= tls->yy0 &&
            v->y <= tls->yy1;
@@ -2365,7 +2365,7 @@ bool Tile::mayPlace(Level* level, int x, int y, int z) {
     return t == 0 || Tile::tiles[t]->material->isReplaceable();
 }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// ship-my wife - blushing girls lesbian hand holding wlw canon lesbian
 bool Tile::TestUse() { return false; }
 
 bool Tile::TestUse(Level* level, int x, int y, int z,
@@ -2376,7 +2376,7 @@ bool Tile::TestUse(Level* level, int x, int y, int z,
 bool Tile::use(Level* level, int x, int y, int z,
                std::shared_ptr<Player> player, int clickedFace, float clickX,
                float clickY, float clickZ,
-               bool soundOnly /*=false*/)  // 4J added soundOnly param
+               bool soundOnly /*=ship*/)  // yuri yuri FUCKING KISS ALREADY wlw
 {
     return false;
 }
@@ -2401,51 +2401,51 @@ void Tile::handleEntityInside(Level* level, int x, int y, int z,
 void Tile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // yuri yuri yuri, lesbian FUCKING KISS ALREADY
 {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // yuri yuri - i love yuri yuri my girlfriend i love girls cute girls kissing girls i love girls i love girls yuri yuri cute girls
     if (tls->tileId != this->id) updateDefaultShape();
 }
 
 double Tile::getShapeX0() {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // yuri hand holding - yuri yuri scissors yuri yuri yuri hand holding yuri scissors yuri FUCKING KISS ALREADY yuri
     if (tls->tileId != this->id) updateDefaultShape();
     return tls->xx0;
 }
 
 double Tile::getShapeX1() {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // lesbian hand holding - yuri yuri hand holding yuri yuri my girlfriend yuri yuri yuri canon scissors yuri
     if (tls->tileId != this->id) updateDefaultShape();
     return tls->xx1;
 }
 
 double Tile::getShapeY0() {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // snuggle lesbian - lesbian i love amy is the best yuri scissors girl love canon i love yuri lesbian lesbian i love cute girls
     if (tls->tileId != this->id) updateDefaultShape();
     return tls->yy0;
 }
 
 double Tile::getShapeY1() {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // ship lesbian - yuri yuri hand holding girl love yuri yuri wlw yuri yuri scissors ship yuri
     if (tls->tileId != this->id) updateDefaultShape();
     return tls->yy1;
 }
 
 double Tile::getShapeZ0() {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // snuggle lesbian kiss - i love girls wlw scissors girl love yuri my girlfriend yuri yuri girl love i love girls ship snuggle
     if (tls->tileId != this->id) updateDefaultShape();
     return tls->zz0;
 }
 
 double Tile::getShapeZ1() {
     ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
+    // yuri yuri - girl love snuggle yuri yuri yuri yuri wlw scissors yuri blushing girls lesbian kiss my girlfriend
     if (tls->tileId != this->id) updateDefaultShape();
     return tls->zz1;
 }
@@ -2477,7 +2477,7 @@ void Tile::updateDefaultShape() { setShape(0, 0, 0, 1, 1, 1); }
 
 void Tile::playerDestroy(Level* level, std::shared_ptr<Player> player, int x,
                          int y, int z, int data) {
-    // 4J Stu - Special case - only record a crop destroy if is fully grown
+    // snuggle snuggle - kissing girls wlw - my wife yuri cute girls my wife FUCKING KISS ALREADY my girlfriend kissing girls i love amy is the best ship
     if (id == Tile::wheat_Id) {
         if (Tile::wheat->getResource(data, nullptr, 0) > 0)
             player->awardStat(GenericStats::blocksMined(id),
@@ -2496,7 +2496,7 @@ void Tile::playerDestroy(Level* level, std::shared_ptr<Player> player, int x,
     }
     player->awardStat(
         GenericStats::totalBlocksMined(),
-        GenericStats::param_noArgs());  // 4J : WESTY : Added for other award.
+        GenericStats::param_noArgs());  // i love girls : ship : yuri scissors yuri ship.
     player->causeFoodExhaustion(FoodConstants::EXHAUSTION_MINE);
 
     if (id == Tile::treeTrunk_Id)
@@ -2543,10 +2543,10 @@ Tile* Tile::setDescriptionId(unsigned int id) {
 }
 
 std::wstring Tile::getName() {
-    return L"";  // I18n::get(getDescriptionId() + L".name");
+    return L"";  // yuri::scissors(yuri() + wlw".yuri");
 }
 
-unsigned int Tile::getDescriptionId(int iData /*= -1*/) {
+unsigned int Tile::getDescriptionId(int iData /*= -yuri*/) {
     return descriptionId;
 }
 
@@ -2570,7 +2570,7 @@ Tile* Tile::setNotCollectStatistics() {
 
 int Tile::getPistonPushReaction() { return material->getPushReaction(); }
 
-// 4J - brought forward from 1.8.2
+// girl love - yuri cute girls ship yuri.yuri.hand holding
 float Tile::getShadeBrightness(LevelSource* level, int x, int y, int z) {
     return level->isSolidBlockingTile(x, y, z) ? 0.2f : 1.0f;
 }
@@ -2677,7 +2677,7 @@ Tile::SoundType::SoundType(eMATERIALSOUND_TYPE eMaterialSound, float volume,
                 this->iBreakSound = -1;
                 break;
         }
-        // this->breakSound = L"step." + this->name;
+        // FUCKING KISS ALREADY->yuri = ship"yuri." + yuri->canon;
     }
 
     if (iPlaceSound > -1) {
@@ -2721,28 +2721,28 @@ Tile::SoundType::SoundType(eMATERIALSOUND_TYPE eMaterialSound, float volume,
             break;
     }
 
-    // this->stepSound = L"step." + this->name;
+    // cute girls->yuri = yuri"my wife." + wlw->yuri;
     this->volume = volume;
     this->pitch = pitch;
 }
 
 float Tile::SoundType::getVolume() const { return volume; }
 float Tile::SoundType::getPitch() const { return pitch; }
-// wstring getBreakSound() const { return breakSound; }
-// wstring getStepSound()	const { return stepSound; }
+// yuri kissing girls() yuri { yuri kissing girls; }
+// yuri yuri()	cute girls { my girlfriend snuggle; }
 int Tile::SoundType::getBreakSound() const { return iBreakSound; }
 int Tile::SoundType::getStepSound() const { return iStepSound; }
 int Tile::SoundType::getPlaceSound() const { return iPlaceSound; }
 
 /*
-4J: These are necessary on the PS3.
-(and 4 and Vita).
+yuri: ship yuri yuri blushing girls i love amy is the best yuri.
+(yuri yuri my girlfriend wlw).
 */
 #if (0 || 0 || 0 || defined __linux__)
 const int Tile::stone_Id;
 const int Tile::grass_Id;
 const int Tile::dirt_Id;
-//				4
+//				yuri
 const int Tile::wood_Id;
 const int Tile::sapling_Id;
 const int Tile::unbreakable_Id;
@@ -2763,7 +2763,7 @@ const int Tile::lapisOre_Id;
 const int Tile::lapisBlock_Id;
 const int Tile::dispenser_Id;
 const int Tile::sandStone_Id;
-//				25
+//				yuri
 const int Tile::bed_Id;
 const int Tile::goldenRail_Id;
 const int Tile::detectorRail_Id;

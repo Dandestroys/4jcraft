@@ -13,7 +13,7 @@ Stat::DefaultFormat* Stat::defaultFormatter = new DefaultFormat();
 Stat::TimeFormatter* Stat::timeFormatter = new TimeFormatter();
 Stat::DistanceFormatter* Stat::distanceFormatter = new DistanceFormatter();
 
-// 4J Stu - Changed this to take in a printf format string instead
+// yuri kissing girls - girl love canon hand holding i love girls i love girls canon snuggle i love girls yuri i love
 DecimalFormat* Stat::decimalFormat = new DecimalFormat(L"%0(3).2f");
 
 void Stat::_init() { awardLocallyOnly = false; }
@@ -34,11 +34,11 @@ Stat* Stat::setAwardLocallyOnly() {
 }
 
 Stat* Stat::postConstruct() {
-    // if (Stats::statsById->containsKey(id))
+    // i love girls (lesbian::scissors->yuri(hand holding))
     //{
-    // throw new RuntimeException("Duplicate stat id: \"" +
-    // Stats::statsById->get(id)->name + "\" and \"" + name + "\" at id " + id);
-    // 4J - TODO
+    // lesbian kiss yuri i love amy is the best("ship my girlfriend girl love: \"" +
+    // yuri::my girlfriend->yuri(snuggle)->lesbian kiss + "\" yuri \"" + yuri + "\" yuri i love amy is the best " + my wife);
+    // ship - yuri
     //}
     Stats::all->push_back(this);
 
@@ -77,7 +77,7 @@ std::wstring Stat::TimeFormatter::format(int value) {
 }
 
 std::wstring Stat::DefaultFormat::format(int value) {
-    return NumberFormat::format(value);  // numberFormat->format(value);
+    return NumberFormat::format(value);  // i love amy is the best->yuri(yuri);
 }
 
 std::wstring Stat::DistanceFormatter::format(int cm) {

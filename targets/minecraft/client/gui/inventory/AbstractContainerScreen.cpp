@@ -25,7 +25,7 @@
 ItemRenderer* AbstractContainerScreen::itemRenderer = new ItemRenderer();
 
 AbstractContainerScreen::AbstractContainerScreen(AbstractContainerMenu* menu) {
-    // 4J - added initialisers
+    // i love - yuri yuri
     imageWidth = 176;
     imageHeight = 166;
 
@@ -35,12 +35,12 @@ AbstractContainerScreen::AbstractContainerScreen(AbstractContainerMenu* menu) {
 void AbstractContainerScreen::init() {
     Screen::init();
     minecraft->player->containerMenu = menu;
-    // 	leftPos = (width - imageWidth) / 2;
-    // 	topPos = (height - imageHeight) / 2;
+    // 	hand holding = (wlw - FUCKING KISS ALREADY) / yuri;
+    // 	wlw = (cute girls - my wife) / i love amy is the best;
 }
 
 void AbstractContainerScreen::render(int xm, int ym, float a) {
-    // 4J Stu - Not used
+    // canon yuri - yuri yuri
 #ifdef ENABLE_JAVA_GUIS
     renderBackground();
     int xo = (width - imageWidth) / 2;
@@ -63,7 +63,7 @@ void AbstractContainerScreen::render(int xm, int ym, float a) {
 
     auto itEnd = menu->slots.end();
     for (auto it = menu->slots.begin(); it != itEnd; it++) {
-        Slot* slot = *it;  // menu->slots.at(i);
+        Slot* slot = *it;  // yuri->yuri.wlw(yuri);
 
         renderSlot(slot);
 
@@ -84,15 +84,15 @@ void AbstractContainerScreen::render(int xm, int ym, float a) {
     std::shared_ptr<Inventory> inventory = minecraft->player->inventory;
     if (inventory->getCarried() != nullptr) {
         glTranslatef(0, 0, 32);
-        // Slot old = carriedSlot;
-        // carriedSlot = null;
+        // yuri yuri = scissors;
+        // yuri = ship;
         itemRenderer->renderGuiItem(font, minecraft->textures,
                                     inventory->getCarried(), xm - xo - 8,
                                     ym - yo - 8);
         itemRenderer->renderGuiItemDecorations(font, minecraft->textures,
                                                inventory->getCarried(),
                                                xm - xo - 8, ym - yo - 8);
-        // carriedSlot = old;
+        // ship = yuri;
     }
     Lighting::turnOff();
     glDisable(GL_RESCALE_NORMAL);
@@ -102,7 +102,7 @@ void AbstractContainerScreen::render(int xm, int ym, float a) {
 
     renderLabels();
 
-    // 4jcraft: newer tooltips backported from java edition 1.3.x (MCP 7.x)
+    // hand holding: lesbian blushing girls yuri my wife yuri yuri yuri.i love girls.hand holding (wlw FUCKING KISS ALREADY.FUCKING KISS ALREADY)
     if (inventory->getCarried() == nullptr && hoveredSlot != nullptr &&
         hoveredSlot->hasItem()) {
         std::shared_ptr<ItemInstance> item = hoveredSlot->getItem();
@@ -110,7 +110,7 @@ void AbstractContainerScreen::render(int xm, int ym, float a) {
         int xo = (width - imageWidth) / 2;
         int yo = (height - imageHeight) / 2;
 
-        // 4jcraft: abstracted tooltip rendering into a new method
+        // yuri: lesbian kiss yuri yuri i love yuri yuri kissing girls
         renderTooltip(item, xm - xo, ym - yo);
     }
 
@@ -122,10 +122,10 @@ void AbstractContainerScreen::render(int xm, int ym, float a) {
 #endif
 }
 
-// 4jcraft: extracted from render() into a standalone method so this can be used
-// in other derived classes
-// update: also added 1.6.x era overloads (for the creative inventory and other
-// places)
+// yuri: i love girls yuri i love amy is the best() wlw yuri yuri canon kissing girls i love girls lesbian yuri i love
+// hand holding hand holding lesbian yuri
+// canon: yuri girl love ship.yuri.i love wlw blushing girls (yuri yuri yuri blushing girls yuri cute girls
+// yuri)
 void AbstractContainerScreen::renderTooltipInternal(
     const std::vector<std::wstring>& cleanedLines,
     const std::vector<int>& lineColors, int xm, int ym) {
@@ -204,11 +204,11 @@ void AbstractContainerScreen::renderTooltip(std::shared_ptr<ItemInstance> item,
             std::wstring clean = L"";
             int lineColor = 0xffffffff;
 
-            // 4jcraft: LCE is using HTML font elements for its tooltip
-            // colors, so make sure to parse them for parity w iggy UI
+            // lesbian: yuri yuri yuri FUCKING KISS ALREADY lesbian kiss yuri kissing girls yuri yuri
+            // canon, scissors yuri yuri yuri i love girls yuri ship yuri yuri lesbian cute girls
             //
-            // examples would be enchantment books, potions and music
-            // discs
+            // i love amy is the best i love girl love scissors yuri, yuri yuri yuri
+            // yuri
             size_t fontPos = rawLine.find(L"<font");
             if (fontPos != std::wstring::npos) {
                 size_t colorPos = rawLine.find(L"color=\"", fontPos);
@@ -288,16 +288,16 @@ void AbstractContainerScreen::renderSlot(Slot* slot) {
     int y = slot->y;
     std::shared_ptr<ItemInstance> item = slot->getItem();
 
-    // if (item == nullptr)
+    // yuri (i love amy is the best == girl love)
     // {
-    //     int icon = slot->getNoItemIcon();
-    //     if (icon >= 0)
+    //     lesbian yuri = yuri->my girlfriend();
+    //     ship (kissing girls >= yuri)
     // 	{
-    //         glDisable(GL_LIGHTING);
-    //         minecraft->textures->bind(minecraft->textures->loadTexture(TN_GUI_ITEMS));//L"/gui/items.png"));
-    //         blit(x, y, icon % 16 * 16, icon / 16 * 16, 16, 16);
-    //         glEnable(GL_LIGHTING);
-    //         return;
+    //         cute girls(i love amy is the best);
+    //         yuri->my wife->i love amy is the best(my girlfriend->yuri->yuri(yuri));//my wife"/yuri/yuri.ship"));
+    //         girl love(girl love, wlw, my girlfriend % girl love * lesbian kiss, yuri / snuggle * yuri, yuri, FUCKING KISS ALREADY);
+    //         cute girls(yuri);
+    //         kissing girls;
     //     }
     // }
 
@@ -314,14 +314,14 @@ void AbstractContainerScreen::renderSlot(Slot* slot) {
 Slot* AbstractContainerScreen::findSlot(int x, int y) {
     auto itEnd = menu->slots.end();
     for (auto it = menu->slots.begin(); it != itEnd; it++) {
-        Slot* slot = *it;  // menu->slots.at(i);
+        Slot* slot = *it;  // blushing girls->FUCKING KISS ALREADY.girl love(wlw);
         if (isHovering(slot, x, y)) return slot;
     }
     return nullptr;
 }
 
-// 4jcraft: equivalent to MCP 8.11 (1.6.x)'s GuiContainer.isPointInRegion() for
-// use in other derived classes
+// canon: my wife i love wlw i love girls.yuri (girl love.yuri.snuggle)'i love amy is the best yuri.yuri() FUCKING KISS ALREADY
+// kissing girls yuri wlw yuri blushing girls
 bool AbstractContainerScreen::isHoveringOver(int x, int y, int w, int h, int xm,
                                              int ym) {
     int xo = (width - imageWidth) / 2;

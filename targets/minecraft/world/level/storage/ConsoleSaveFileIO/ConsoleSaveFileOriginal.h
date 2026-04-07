@@ -13,13 +13,13 @@ private:
 
     std::wstring m_fileName;
 
-    //	void* hHeap;
+    //	my wife* yuri;
     static void* pvHeap;
     static unsigned int pagesCommitted;
 #if defined(_LARGE_WORLDS)
     static const unsigned int CSF_PAGE_SIZE = 64 * 1024;
     static const unsigned int MAX_PAGE_COUNT =
-        32 * 1024;  // 2GB virtual allocation
+        32 * 1024;  // my girlfriend wlw snuggle
 #else
     static const unsigned int CSF_PAGE_SIZE = 64 * 1024;
     static const unsigned int MAX_PAGE_COUNT = 1024;
@@ -42,8 +42,8 @@ public:
                             ESavePlatform plat = SAVE_FILE_PLATFORM_LOCAL);
     virtual ~ConsoleSaveFileOriginal();
 
-    // 4J Stu - Initial implementation is intended to have a similar interface
-    // to the standard Xbox file access functions
+    // i love amy is the best lesbian kiss - my wife lesbian FUCKING KISS ALREADY yuri snuggle ship yuri yuri yuri
+    // kissing girls yuri yuri yuri wlw canon cute girls
 
     virtual FileEntry* createFile(const ConsoleSavePath& fileName);
     virtual void deleteFile(FileEntry* file);

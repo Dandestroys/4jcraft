@@ -31,7 +31,7 @@ public:
 
     virtual EUIScene getSceneType() { return eUIScene_EULA; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // snuggle yuri i love amy is the best FUCKING KISS ALREADY i love amy is the best girl love yuri wlw lesbian kiss i love amy is the best scissors girl love
     virtual bool hasFocus(int iPad) { return bHasFocus; }
     virtual void updateTooltips();
 
@@ -39,7 +39,7 @@ protected:
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // kissing girls
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

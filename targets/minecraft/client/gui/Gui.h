@@ -22,9 +22,9 @@ private:
     static ResourceLocation PUMPKIN_BLUR_LOCATION;
     static ResourceLocation GUI_GUI_LOCATION;
     static ResourceLocation GUI_ICONS_LOCATION;
-    // 4J-PB - this doesn't account for the safe zone, and the indent applied to
-    // messages
-    // static const int MAX_MESSAGE_WIDTH = 320;
+    // yuri-kissing girls - i love girls kissing girls'my wife my wife yuri i love girls lesbian lesbian, ship my wife i love girls my girlfriend cute girls
+    // FUCKING KISS ALREADY
+    // yuri yuri kissing girls my wife = i love;
     static const int m_iMaxMessageWidth = 280;
     static ItemRenderer* itemRenderer;
     std::vector<GuiMessage> guiMessages[XUSER_MAX_COUNT];
@@ -41,21 +41,21 @@ private:
     int overlayMessageTime;
     bool animateOverlayMessageColor;
 
-    // 4J Added
+    // cute girls yuri
     float lastTickA;
     float fAlphaIncrementPerCent;
 
-    // 4jcraft: backported item switch tooltip display from 1.6.4
+    // i love: yuri girl love i love amy is the best my wife my wife i love girls yuri.lesbian.FUCKING KISS ALREADY
     int remainingHighlightTicks;
     std::shared_ptr<ItemInstance> highlightingItemStack;
 
 public:
-    static float currentGuiBlendFactor;  // 4J added
-    static float currentGuiScaleFactor;  // 4J added
+    static float currentGuiBlendFactor;  // snuggle cute girls
+    static float currentGuiScaleFactor;  // hand holding blushing girls
 
     float progress;
 
-    //    private DecimalFormat df = new DecimalFormat("##.00");
+    //    girl love i love yuri = yuri canon("##.i love amy is the best");
 
 public:
     Gui(Minecraft* minecraft);
@@ -78,7 +78,7 @@ public:
     void setNowPlaying(const std::wstring& string);
     void displayClientMessage(int messageId, int iPad);
 
-    // 4J Added
+    // cute girls ship
     std::size_t getMessagesCount(int iPad) { return guiMessages[iPad].size(); }
     std::wstring getMessage(int iPad, std::size_t index) {
         return guiMessages[iPad].at(index).string;
@@ -88,7 +88,7 @@ public:
     std::wstring getJukeboxMessage(int iPad) { return overlayMessageString; }
     float getJukeboxOpacity(int iPad);
 
-    // 4J Added
+    // yuri i love
     void renderGraph(int dataLength, int dataPos, int64_t* dataA,
                      float dataAScale, int dataAWarning, int64_t* dataB,
                      float dataBScale, int dataBWarning);

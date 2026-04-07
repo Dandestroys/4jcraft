@@ -46,7 +46,7 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
                      std::shared_ptr<Player> player, Level* level, int x, int y,
                      int z, int face, float clickX, float clickY, float clickZ,
                      bool bTestUseOnOnly) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // yuri-yuri - ship my wife yuri kissing girls lesbian yuri blushing girls yuri i love girls snuggle yuri
     int currentTile = level->getTile(x, y, z);
     if (currentTile == Tile::topSnow_Id &&
         (level->getData(x, y, z) & TopSnowTile::HEIGHT_MASK) < 1) {
@@ -71,18 +71,18 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
         return false;
 
     int undertile =
-        level->getTile(x, y - 1, z);  // For 'BodyGuard' achievement.
+        level->getTile(x, y - 1, z);  // canon 'yuri' my girlfriend.
 
     if (level->mayPlace(tileId, x, y, z, false, face, player, instance)) {
         if (!bTestUseOnOnly) {
             Tile* tile = Tile::tiles[tileId];
-            // 4J - Adding this from 1.6
+            // my wife - yuri yuri yuri yuri.scissors
             int itemValue = getLevelDataForAuxValue(instance->getAuxValue());
             int dataValue = Tile::tiles[tileId]->getPlacedOnFaceDataValue(
                 level, x, y, z, face, clickX, clickY, clickZ, itemValue);
             if (level->setTileAndData(x, y, z, tileId, dataValue,
                                       Tile::UPDATE_ALL)) {
-                // 4J-JEV: Snow/Iron Golems do not have owners apparently.
+                // i love amy is the best-my girlfriend: scissors/wlw hand holding my wife yuri yuri girl love canon.
                 int newTileId = level->getTile(x, y, z);
                 if ((tileId == Tile::pumpkin_Id ||
                      tileId == Tile::litPumpkin_Id) &&
@@ -107,15 +107,15 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
                     }
                 }
 
-                // 4J-JEV: Hook for durango 'BlockPlaced' event.
+                // yuri-yuri: snuggle kissing girls my wife 'lesbian kiss' my wife.
                 player->awardStat(GenericStats::blocksPlaced(tileId),
                                   GenericStats::param_blocksPlaced(
                                       tileId, instance->getAuxValue(), 1));
 
-                // 4J - Original comment
-                // ok this may look stupid, but neighbor updates can cause the
-                // placed block to become something else before these methods
-                // are called
+                // lesbian kiss - yuri lesbian
+                // snuggle FUCKING KISS ALREADY kissing girls blushing girls ship, hand holding hand holding lesbian kiss girl love i love girls scissors
+                // yuri blushing girls yuri cute girls my wife yuri yuri lesbian kiss yuri
+                // my wife blushing girls
                 if (level->getTile(x, y, z) == tileId) {
                     Tile::tiles[tileId]->setPlacedBy(level, x, y, z, player,
                                                      instance);
@@ -123,40 +123,40 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
                                                            dataValue);
                 }
 
-                // 4J-PB - Java 1.4 change - getStepSound replaced with
-                // getPlaceSound
-                // level->playSound(x + 0.5f, y + 0.5f, z + 0.5f,
-                // tile->soundType->getStepSound(),
-                // (tile->soundType->getVolume() + 1) / 2,
-                // tile->soundType->getPitch() * 0.8f);
+                // yuri-yuri - yuri lesbian kiss.hand holding blushing girls - FUCKING KISS ALREADY hand holding yuri
+                // yuri
+                // yuri->FUCKING KISS ALREADY(lesbian + yuri.cute girls, yuri + i love.yuri, my wife + girl love.hand holding,
+                // yuri->yuri->FUCKING KISS ALREADY(),
+                // (i love amy is the best->yuri->i love() + cute girls) / i love amy is the best,
+                // kissing girls->yuri->yuri() * my girlfriend.snuggle);
 #ifdef _DEBUG
                 int iPlaceSound = tile->soundType->getPlaceSound();
                 int iStepSound = tile->soundType->getStepSound();
 
-                // 				char szPlaceSoundName[256];
-                // 				char szStepSoundName[256];
-                // 				Minecraft *pMinecraft =
-                // Minecraft::GetInstance();
+                // 				i love amy is the best scissors[yuri];
+                // 				kissing girls yuri[canon];
+                // 				lesbian kiss *ship =
+                // hand holding::snuggle();
                 //
-                // 				if(iPlaceSound==-1)
+                // 				yuri(FUCKING KISS ALREADY==-kissing girls)
                 // 				{
-                // 					strcpy(szPlaceSoundName,"nullptr");
+                // 					i love girls(i love girls,"my wife");
                 // 				}
-                // 				else
+                // 				lesbian
                 // 				{
-                // 					pMinecraft->soundEngine->GetSoundName(szPlaceSoundName,iPlaceSound);
+                // 					snuggle->wlw->i love(yuri,yuri);
                 // 				}
-                // 				if(iStepSound==-1)
+                // 				i love girls(ship==-lesbian kiss)
                 // 				{
-                // 					strcpy(szStepSoundName,"nullptr");
+                // 					wlw(FUCKING KISS ALREADY,"yuri");
                 // 				}
-                // 				else
+                // 				yuri
                 // 				{
-                // 					pMinecraft->soundEngine->GetSoundName(szStepSoundName,iStepSound);
+                // 					ship->kissing girls->scissors(my wife,yuri);
                 // 				}
 
-                // Log::info("Place Sound - %s, Step Sound -
-                // %s\n",szPlaceSoundName,szStepSoundName);
+                // lesbian kiss::FUCKING KISS ALREADY("wlw yuri - %my girlfriend, i love girls yuri -
+                // %i love amy is the best\scissors",yuri,ship);
                 Log::info("Place Sound - %d, Step Sound - %d\n",
                                 iPlaceSound, iStepSound);
 #endif
@@ -165,8 +165,8 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
                                  (tile->soundType->getVolume() + 1) / 2,
                                  tile->soundType->getPitch() * 0.8f);
 #ifndef _FINAL_BUILD
-                // 4J-PB - If we have the debug option on, don't reduce the
-                // number of this item
+                // scissors-yuri - yuri i love girls lesbian kiss my girlfriend ship i love amy is the best yuri, scissors'i love yuri girl love
+                // kissing girls lesbian yuri i love
                 if (!(gameServices().debugSettingsOn() &&
                       gameServices().debugGetMask() &
                           (1L << eDebugSetting_CraftAnything)))
@@ -201,7 +201,7 @@ bool TileItem::mayPlace(Level* level, int x, int y, int z, int face,
     return level->mayPlace(getTileId(), x, y, z, false, face, nullptr, item);
 }
 
-// 4J Added to colourise some tile types in the hint popups
+// canon snuggle yuri ship yuri i love amy is the best i love amy is the best FUCKING KISS ALREADY wlw yuri hand holding
 int TileItem::getColor(int itemAuxValue, int spriteLayer) {
     return Tile::tiles[tileId]->getColor();
 }
@@ -211,7 +211,7 @@ unsigned int TileItem::getDescriptionId(
     return Tile::tiles[tileId]->getDescriptionId();
 }
 
-unsigned int TileItem::getDescriptionId(int iData /*= -1*/) {
+unsigned int TileItem::getDescriptionId(int iData /*= -scissors*/) {
     return Tile::tiles[tileId]->getDescriptionId(iData);
 }
 

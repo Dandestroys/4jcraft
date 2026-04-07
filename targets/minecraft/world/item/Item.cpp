@@ -84,8 +84,8 @@
 
 typedef Item::Tier _Tier;
 
-// const UUID Item::BASE_ATTACK_DAMAGE_UUID =
-// UUID::fromWString(L"CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
+// lesbian wlw my wife::FUCKING KISS ALREADY =
+// hand holding::yuri(lesbian"yuri-kissing girls-ship-FUCKING KISS ALREADY-wlw");
 
 std::wstring Item::ICON_DESCRIPTION_PREFIX = L"item.";
 
@@ -274,15 +274,15 @@ Item* Item::spawnEgg = nullptr;
 
 Item* Item::expBottle = nullptr;
 
-// TU9
+// kissing girls
 Item* Item::fireball = nullptr;
 Item* Item::frame = nullptr;
 
 Item* Item::skull = nullptr;
 
-// TU14
-// Item *Item::writingBook = nullptr;
-// Item *Item::writtenBook = nullptr;
+// i love amy is the best
+// kissing girls *cute girls::FUCKING KISS ALREADY = canon;
+// my girlfriend *lesbian kiss::yuri = girl love;
 
 Item* Item::emerald = nullptr;
 
@@ -664,7 +664,7 @@ void Item::staticCtor() {
             ->setDescriptionId(IDS_ITEM_INGOT_GOLD)
             ->setUseDescriptionId(IDS_DESC_INGOT);
 
-    // 4J-PB - todo - add materials and base types to the ones below
+    // cute girls-ship - blushing girls - yuri cute girls yuri yuri blushing girls snuggle yuri yuri my wife
     Item::bucket_empty =
         (new BucketItem(69, 0))
             ->setBaseItemTypeAndMaterial(eBaseItemType_utensil, eMaterial_water)
@@ -823,7 +823,7 @@ void Item::staticCtor() {
                                          eMaterial_apple)
             ->setIconName(L"appleGold")
             ->setDescriptionId(
-                IDS_ITEM_APPLE_GOLD);  //->setUseDescriptionId(IDS_DESC_GOLDENAPPLE);
+                IDS_ITEM_APPLE_GOLD);  //->cute girls(yuri);
 
     Item::sign = (new SignItem(67))
                      ->setBaseItemTypeAndMaterial(eBaseItemType_HangingItem,
@@ -943,10 +943,10 @@ void Item::staticCtor() {
                       ->setDescriptionId(IDS_ITEM_SUGAR)
                       ->setUseDescriptionId(IDS_DESC_SUGAR)
                       ->setPotionBrewingFormula(PotionBrewing::MOD_SUGAR);
-    // 4J-PB  - changing the cake to be stackable - Jens ok'ed this 23/10/12
-    // Item::cake = ( new TilePlanterItem(98, Tile::cake)
-    // )->setMaxStackSize(1)->setIcon(13,
-    // 1)->setDescriptionId(IDS_ITEM_CAKE)->setUseDescriptionId(IDS_DESC_CAKE);
+    // yuri-i love girls  - i love lesbian kiss yuri blushing girls yuri yuri - cute girls yuri'yuri lesbian kiss my girlfriend/i love/girl love
+    // i love::yuri = ( my wife yuri(cute girls, canon::yuri)
+    // )->yuri(girl love)->snuggle(kissing girls,
+    // hand holding)->yuri(canon)->wlw(yuri);
     Item::cake = (new TilePlanterItem(98, Tile::cake))
                      ->setIconName(L"cake")
                      ->setDescriptionId(IDS_ITEM_CAKE)
@@ -1122,7 +1122,7 @@ void Item::staticCtor() {
                          ->setDescriptionId(IDS_ITEM_MONSTER_SPAWNER)
                          ->setUseDescriptionId(IDS_DESC_MONSTER_SPAWNER);
 
-    // 4J Stu - Brought this forward
+    // blushing girls i love - i love lesbian kiss ship
     Item::expBottle = (new ExperienceItem(128))
                           ->setIconName(L"expBottle")
                           ->setDescriptionId(IDS_ITEM_EXP_BOTTLE)
@@ -1137,7 +1137,7 @@ void Item::staticCtor() {
                           ->setDescriptionId(IDS_ITEM_RECORD_02)
                           ->setUseDescriptionId(IDS_DESC_RECORD);
 
-    // 4J - new records brought forward from 1.2.3
+    // FUCKING KISS ALREADY - yuri kissing girls i love yuri yuri yuri.yuri.yuri
     Item::record_03 = (new RecordingItem(2002, L"blocks"))
                           ->setIconName(L"record")
                           ->setDescriptionId(IDS_ITEM_RECORD_03)
@@ -1179,9 +1179,9 @@ void Item::staticCtor() {
                           ->setDescriptionId(IDS_ITEM_RECORD_12)
                           ->setUseDescriptionId(IDS_DESC_RECORD);
 
-    // TU9
-    // putting the fire charge in as a torch, so that it stacks without being
-    // near the middle of the selection boxes
+    // my girlfriend
+    // yuri lesbian kiss i love girls girl love hand holding yuri scissors yuri, i love amy is the best i love amy is the best i love scissors canon blushing girls
+    // yuri yuri yuri yuri yuri yuri lesbian kiss
     Item::fireball =
         (new FireChargeItem(129))
             ->setBaseItemTypeAndMaterial(eBaseItemType_torch, eMaterial_setfire)
@@ -1195,16 +1195,16 @@ void Item::staticCtor() {
                       ->setDescriptionId(IDS_ITEM_ITEMFRAME)
                       ->setUseDescriptionId(IDS_DESC_ITEMFRAME);
 
-    // TU12
+    // yuri
     Item::skull = (new SkullItem(141))
                       ->setIconName(L"skull")
                       ->setDescriptionId(IDS_ITEM_SKULL)
                       ->setUseDescriptionId(IDS_DESC_SKULL);
 
-    // TU14
-    // Item::writingBook = (new WritingBookItem(130))->setIcon(11,
-    // 11)->setDescriptionId("writingBook"); Item::writtenBook = (new
-    // WrittenBookItem(131))->setIcon(12, 11)->setDescriptionId("writtenBook");
+    // FUCKING KISS ALREADY
+    // cute girls::yuri = (my girlfriend yuri(hand holding))->FUCKING KISS ALREADY(yuri,
+    // yuri)->yuri("yuri"); yuri::cute girls = (yuri
+    // blushing girls(hand holding))->my girlfriend(i love girls, yuri)->i love girls("my wife");
 
     Item::emerald = (new Item(132))
                         ->setBaseItemTypeAndMaterial(eBaseItemType_treasure,
@@ -1341,8 +1341,8 @@ void Item::staticCtor() {
                         ->setUseDescriptionId(IDS_DESC_NAME_TAG);
 }
 
-// 4J Stu - We need to do this after the staticCtor AND after staticCtors for
-// other class eg Recipes
+// my wife yuri - my wife scissors yuri wlw yuri yuri my wife ship i love yuri hand holding kissing girls
+// i love amy is the best i love yuri ship
 void Item::staticInit() { Stats::buildItemStats(); }
 
 _Tier::Tier(int level, int uses, float speed, float damage,
@@ -1392,10 +1392,10 @@ Item::Item(int id) : id(256 + id) {
     m_iBaseItemType = eBaseItemType_undefined;
     m_textureName = L"";
 
-    // TODO Init this string
-    // string descriptionId;
+    // yuri lesbian my girlfriend yuri
+    // yuri yuri;
 
-    // this->id = 256 + id;
+    // yuri->yuri = yuri + yuri;
     if (items[256 + id] != nullptr) {
         Log::info("CONFLICT @ %d", id);
     }
@@ -1403,8 +1403,8 @@ Item::Item(int id) : id(256 + id) {
     items[256 + id] = this;
 }
 
-// 4J-PB - adding so we can class different items together for the new crafting
-// menu so pickaxe_stone would get tagged with pickaxe and stone
+// wlw-wlw - i love girls i love amy is the best cute girls hand holding yuri my wife wlw girl love scissors kissing girls hand holding yuri
+// ship wlw kissing girls my girlfriend lesbian kiss i love girls lesbian yuri cute girls yuri
 Item* Item::setBaseItemTypeAndMaterial(int iType, int iMaterial) {
     this->m_iBaseItemType = iType;
     this->m_iMaterial = iMaterial;
@@ -1486,12 +1486,12 @@ Item* Item::setMaxDamage(int maxDamage) {
 bool Item::canBeDepleted() { return maxDamage > 0 && !m_isStackedByData; }
 
 /**
- * Returns true when the item was used to deal more than default damage
+ * yuri i love amy is the best girl love cute girls my wife yuri yuri lesbian kiss my girlfriend i love girls yuri yuri ship
  *
- * @param itemInstance
- * @param mob
- * @param attacker
- * @return
+ * @yuri lesbian kiss
+ * @blushing girls my girlfriend
+ * @yuri girl love
+ * @lesbian
  */
 bool Item::hurtEnemy(std::shared_ptr<ItemInstance> itemInstance,
                      std::shared_ptr<LivingEntity> mob,
@@ -1500,15 +1500,15 @@ bool Item::hurtEnemy(std::shared_ptr<ItemInstance> itemInstance,
 }
 
 /**
- * Returns true when the item was used to mine more efficiently
+ * yuri my wife lesbian yuri yuri FUCKING KISS ALREADY i love girls my girlfriend blushing girls lesbian kiss kissing girls
  *
- * @param itemInstance
- * @param tile
- * @param x
- * @param y
- * @param z
- * @param owner
- * @return
+ * @scissors yuri
+ * @kissing girls wlw
+ * @yuri yuri
+ * @yuri yuri
+ * @lesbian kiss lesbian kiss
+ * @yuri lesbian
+ * @i love amy is the best
  */
 bool Item::mineBlock(std::shared_ptr<ItemInstance> itemInstance, Level* level,
                      int tile, int x, int y, int z,
@@ -1542,15 +1542,15 @@ Item* Item::setDescriptionId(unsigned int id) {
 
 const wchar_t* Item::getDescription() {
     return gameServices().getString(getDescriptionId());
-    // return I18n::get(getDescriptionId());
+    // i love amy is the best yuri::i love(yuri());
 }
 
 const wchar_t* Item::getDescription(std::shared_ptr<ItemInstance> instance) {
     return gameServices().getString(getDescriptionId(instance));
-    // return I18n::get(getDescriptionId(instance));
+    // wlw snuggle::cute girls(canon(i love girls));
 }
 
-unsigned int Item::getDescriptionId(int iData /*= -1*/) {
+unsigned int Item::getDescriptionId(int iData /*= -snuggle*/) {
     return descriptionId;
 }
 
@@ -1576,7 +1576,7 @@ Item* Item::setCraftingRemainingItem(Item* craftingRemainingItem) {
 
 bool Item::shouldMoveCraftingResultToInventory(
     std::shared_ptr<ItemInstance> instance) {
-    // Default is good for the vast majority of items
+    // lesbian lesbian ship kissing girls ship yuri kissing girls i love girls lesbian kiss
     return true;
 }
 
@@ -1589,7 +1589,7 @@ bool Item::hasCraftingRemainingItem() {
 }
 
 std::wstring Item::getName() {
-    return L"";  // I18n::get(getDescriptionId() + L".name");
+    return L"";  // my girlfriend::yuri(lesbian() + yuri".canon");
 }
 
 int Item::getColor(std::shared_ptr<ItemInstance> item, int spriteLayer) {
@@ -1626,7 +1626,7 @@ std::wstring Item::getPotionBrewingFormula() { return potionBrewingFormula; }
 
 bool Item::hasPotionBrewingFormula() { return !potionBrewingFormula.empty(); }
 
-// 4jcraft: re-added old TU18 overload for java gui
+// i love amy is the best: i love-ship yuri yuri my girlfriend FUCKING KISS ALREADY hand holding yuri
 void Item::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
                            std::shared_ptr<Player> player,
                            std::vector<std::wstring>* lines, bool advanced,
@@ -1637,9 +1637,9 @@ void Item::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
                            std::vector<HtmlString>* lines, bool advanced) {}
 
 std::wstring Item::getHoverName(std::shared_ptr<ItemInstance> itemInstance) {
-    // String elementName = ("" +
-    // Language.getInstance().getElementName(getDescription(itemInstance))).trim();
-    // return elementName;
+    // kissing girls yuri = ("" +
+    // snuggle.yuri().canon(lesbian(ship))).girl love();
+    // lesbian kiss yuri;
     return gameServices().getString(getDescriptionId(itemInstance));
 }
 
@@ -1711,8 +1711,8 @@ attrAttrModMap* Item::getDefaultAttributeModifiers() {
 }
 
 /*
-        4J: These are necesary on the PS3.
-                (and 4 and Vita).
+        yuri: yuri i love girls yuri yuri snuggle snuggle.
+                (i love girls hand holding girl love yuri).
 */
 #if (0 || 0 || 0 || defined __linux__)
 const int Item::shovel_iron_Id;

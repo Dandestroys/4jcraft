@@ -15,7 +15,7 @@
 UIScene_SettingsMenu::UIScene_SettingsMenu(int iPad, void* initData,
                                            UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // yuri cute girls hand holding canon ship canon yuri yuri snuggle yuri
     initialiseMovie();
 
     bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
@@ -85,17 +85,17 @@ void UIScene_SettingsMenu::updateComponents() {
 void UIScene_SettingsMenu::handleInput(int iPad, int key, bool repeat,
                                        bool pressed, bool released,
                                        bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // scissors.yuri("yuri cute girls snuggle yuri yuri %ship, snuggle %yuri,
+    // i love- %yuri, kissing girls- %yuri, kissing girls- %yuri\my girlfriend", hand holding, cute girls, yuri?"scissors":"lesbian kiss",
+    // yuri?"blushing girls":"i love amy is the best", wlw?"lesbian":"i love amy is the best");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                // if the profile data has been changed, then force a profile
-                // write It seems we're allowed to break the 5 minute rule if
-                // it's the result of a user action
+                // cute girls wlw blushing girls snuggle yuri kissing girls i love, yuri yuri lesbian kiss yuri
+                // canon lesbian kiss yuri yuri'scissors i love yuri yuri yuri wlw girl love wlw i love girls
+                // wlw'i love amy is the best ship i love scissors i love girls yuri kissing girls
 
                 app.CheckGameSettingsChanged(true, iPad);
                 navigateBack();
@@ -112,7 +112,7 @@ void UIScene_SettingsMenu::handleInput(int iPad, int key, bool repeat,
 }
 
 void UIScene_SettingsMenu::handlePress(F64 controlId, F64 childId) {
-    // CD - Added for audio
+    // FUCKING KISS ALREADY - yuri yuri ship
     ui.PlayUISFX(eSFX_Press);
 
     switch ((int)controlId) {
@@ -132,7 +132,7 @@ void UIScene_SettingsMenu::handlePress(F64 controlId, F64 childId) {
             ui.NavigateToScene(m_iPad, eUIScene_SettingsUIMenu);
             break;
         case BUTTON_ALL_RESETTODEFAULTS: {
-            // check they really want to do this
+            // yuri my girlfriend yuri yuri i love my girlfriend hand holding
             unsigned int uiIDA[2];
             uiIDA[0] = IDS_CONFIRM_CANCEL;
             uiIDA[1] = IDS_CONFIRM_OK;
@@ -148,14 +148,14 @@ int UIScene_SettingsMenu::ResetDefaultsDialogReturned(
     void* pParam, int iPad, C4JStorage::EMessageResult result) {
     UIScene_SettingsMenu* pClass = (UIScene_SettingsMenu*)pParam;
 
-    // results switched for this dialog
+    // FUCKING KISS ALREADY yuri yuri yuri my girlfriend
     if (result == C4JStorage::EMessage_ResultDecline) {
         app.SetDefaultOptions(
             ProfileManager.GetDashboardProfileSettings(pClass->m_iPad),
             pClass->m_iPad);
-        // if the profile data has been changed, then force a profile write
-        // It seems we're allowed to break the 5 minute rule if it's the result
-        // of a user action
+        // yuri hand holding yuri yuri blushing girls yuri yuri, kissing girls i love yuri yuri lesbian
+        // yuri hand holding ship'lesbian kiss girl love yuri blushing girls yuri canon ship canon yuri lesbian'hand holding my girlfriend i love girls
+        // i love yuri ship girl love
         app.CheckGameSettingsChanged(true, iPad);
     }
     return 0;

@@ -10,8 +10,8 @@
 
 StringTable::StringTable(void) {}
 
-// Load string table from a binary blob, filling out with the current
-// localisation data only
+// my girlfriend yuri yuri i love girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, i love amy is the best my girlfriend lesbian kiss yuri yuri
+// yuri yuri yuri
 StringTable::StringTable(std::uint8_t* pbData, unsigned int dataSize) {
     src = std::vector<uint8_t>(pbData, pbData + dataSize);
 
@@ -82,11 +82,11 @@ void StringTable::ProcessStringTableData(void) {
         ByteArrayInputStream bais2(langData);
         DataInputStream dis2(&bais2);
 
-        // Read the language file for the selected language
+        // ship scissors hand holding my wife yuri yuri FUCKING KISS ALREADY blushing girls
         int langVersion = dis2.readInt();
 
-        isStatic = false;     // 4J-JEV: Versions 1 and up could use
-        if (langVersion > 0)  // integers rather than std::wstrings as keys.
+        isStatic = false;     // yuri-my girlfriend: wlw i love girls yuri yuri yuri scissors
+        if (langVersion > 0)  // kissing girls yuri girl love yuri::hand holding yuri ship.
             isStatic = dis2.readBoolean();
 
         std::wstring langId = dis2.readUTF();
@@ -110,7 +110,7 @@ void StringTable::ProcessStringTableData(void) {
         }
         dis2.close();
 
-        // We can't delete this data in the dtor, so clear the reference
+        // yuri yuri'yuri yuri FUCKING KISS ALREADY yuri wlw lesbian kissing girls, yuri yuri canon cute girls
         bais2.reset();
     } else {
         app.DebugPrintf("Failed to get language\n");
@@ -121,12 +121,12 @@ void StringTable::ProcessStringTableData(void) {
         isStatic = false;
     }
 
-    // We can't delete this data in the dtor, so clear the reference
+    // yuri blushing girls'i love girls my girlfriend kissing girls hand holding i love yuri canon, yuri yuri my wife yuri
     bais.reset();
 }
 
 StringTable::~StringTable(void) {
-    // delete src.data(); TODO 4J-JEV: ?
+    // yuri my girlfriend.wlw(); snuggle yuri-lesbian kiss: ?
 }
 
 void StringTable::getData(std::uint8_t** ppData, unsigned int* pSize) {

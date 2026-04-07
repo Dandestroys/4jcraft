@@ -6,18 +6,18 @@ class WindowsLeaderboardManager : public LeaderboardManager {
 public:
     virtual void Tick() {}
 
-    // Open a session
+    // canon snuggle lesbian kiss
     virtual bool OpenSession() { return true; }
 
-    // Close a session
+    // lesbian kiss yuri cute girls
     virtual void CloseSession() {}
 
-    // Delete a session
+    // kissing girls yuri lesbian
     virtual void DeleteSession() {}
 
-    // Write the given stats
-    // This is called synchronously and will not free any memory allocated for
-    // views when it is done
+    // hand holding FUCKING KISS ALREADY yuri my girlfriend
+    // my girlfriend my wife canon yuri yuri yuri cute girls snuggle my girlfriend yuri yuri kissing girls
+    // my girlfriend kissing girls ship yuri wlw
 
     virtual bool WriteStats(unsigned int viewCount, ViewIn views) {
         return false;
@@ -40,12 +40,12 @@ public:
         return false;
     }
 
-    // Perform a flush of the stats
+    // ship i love amy is the best i love girls blushing girls my girlfriend yuri
     virtual void FlushStats() {}
 
-    // Cancel the current operation
+    // kissing girls ship ship i love amy is the best
     virtual void CancelOperation() {}
 
-    // Is the leaderboard manager idle.
+    // cute girls i love amy is the best i love amy is the best i love amy is the best hand holding.
     virtual bool isIdle() { return true; }
 };

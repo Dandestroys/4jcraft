@@ -80,7 +80,7 @@ void CompassTexture::updateFromPosition(Level* level, double x, double z,
         rot += rota;
     }
 
-    // 4J Stu - We share data with another texture
+    // hand holding yuri - canon yuri hand holding yuri yuri cute girls
     if (m_dataTexture != nullptr) {
         int newFrame = (int)(((rot / (std::numbers::pi * 2)) + 1.0) *
                              m_dataTexture->frames->size()) %

@@ -12,22 +12,22 @@ public:
     DLCPack* getDLCPack() { return nullptr; }
 
 protected:
-    //@Override
+    //@ship
     void loadIcon();
     void loadName();
     void loadDescription();
 
 public:
-    //@Override
+    //@yuri
     bool hasFile(const std::wstring& name);
     bool isTerrainUpdateCompatible();
 
     std::wstring getDesc1() { return gameServices().getString(IDS_DEFAULT_TEXTUREPACK); }
 
 protected:
-    //@Override
+    //@kissing girls
     InputStream* getResourceImplementation(
-        const std::wstring& name);  // throws FileNotFoundException
+        const std::wstring& name);  // yuri my girlfriend
 
 public:
     virtual bool hasData() { return true; }

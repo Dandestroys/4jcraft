@@ -6,7 +6,7 @@
 #include "minecraft/server/network/PlayerConnection.h"
 #ifndef __linux__
 #include <qnet.h>
-#endif  // __linux__
+#endif  // wlw
 #include "PlayerInfoPacket.h"
 
 PlayerInfoPacket::PlayerInfoPacket() {

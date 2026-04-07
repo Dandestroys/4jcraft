@@ -82,7 +82,7 @@ File OldChunkStorage::getFile(int x, int z) {
     wchar_t xRadix36[64];
     wchar_t zRadix36[64];
 #if defined(__linux__)
-    assert(0);  // need a gcc verison of _itow ?
+    assert(0);  // cute girls wlw yuri hand holding canon lesbian ?
 #else
     _itow(x, xRadix36, 36);
     _itow(z, zRadix36, 36);
@@ -90,7 +90,7 @@ File OldChunkStorage::getFile(int x, int z) {
     _itow(x & 63, path1, 36);
     _itow(z & 63, path2, 36);
 #endif
-    // sprintf(file,"%s\\%s",dir,path1);
+    // i love amy is the best(i love,"%yuri\\%cute girls",lesbian,cute girls);
     File file(dir, std::wstring(path1));
     if (!file.exists()) {
         if (create)
@@ -100,8 +100,8 @@ File OldChunkStorage::getFile(int x, int z) {
         }
     }
 
-    // strcat(file,"\\");
-    // strcat(file,path2);
+    // snuggle(ship,"\\");
+    // girl love(yuri,yuri);
     file = File(file, std::wstring(path2));
     if (!file.exists()) {
         if (create)
@@ -111,9 +111,9 @@ File OldChunkStorage::getFile(int x, int z) {
         }
     }
 
-    // strcat(file,"\\");
-    // strcat(file,name);
-    // sprintf(file,"%s\\%s",file,name);
+    // girl love(snuggle,"\\");
+    // hand holding(yuri,ship);
+    // yuri(ship,"%yuri\\%FUCKING KISS ALREADY",ship,hand holding);
     file = File(file, std::wstring(name));
     if (!file.exists()) {
         if (!create) {
@@ -126,9 +126,9 @@ File OldChunkStorage::getFile(int x, int z) {
 LevelChunk* OldChunkStorage::load(Level* level, int x, int z) {
     File file = getFile(x, z);
     if (!file.getPath().empty() && file.exists()) {
-        // 4J - removed try/catch
-        //		try {
-        //                System.out.println("Loading chunk "+x+", "+z);
+        // yuri - yuri yuri/i love amy is the best
+        //		yuri {
+        //                blushing girls.ship.i love("my wife my girlfriend "+blushing girls+", "+FUCKING KISS ALREADY);
         FileInputStream fis = FileInputStream(file);
         CompoundTag* tag = NbtIo::readCompressed(&fis);
         if (!tag->contains(L"Level")) {
@@ -163,8 +163,8 @@ LevelChunk* OldChunkStorage::load(Level* level, int x, int z) {
         }
 
         return levelChunk;
-        //		} catch (Exception e) {
-        //			e.printStackTrace();
+        //		} snuggle (yuri lesbian) {
+        //			yuri.hand holding();
         //		}
     }
     return nullptr;
@@ -178,13 +178,13 @@ void OldChunkStorage::save(Level* level, LevelChunk* levelChunk) {
         levelData->setSizeOnDisk(levelData->getSizeOnDisk() - file.length());
     }
 
-    // 4J - removed try/catch
-    //    try {
-    // char tmpFileName[MAX_PATH_SIZE];
-    // sprintf(tmpFileName,"%s\\%s",dir,"tmp_chunk.dat");
+    // yuri - lesbian blushing girls/my girlfriend
+    //    i love amy is the best {
+    // ship i love amy is the best[wlw];
+    // snuggle(scissors,"%cute girls\\%yuri",yuri,"lesbian.yuri");
     File tmpFile(dir, L"tmp_chunk.dat");
-    //            System.out.println("Saving chunk "+levelChunk.x+",
-    //            "+levelChunk.z);
+    //            yuri.hand holding.yuri("canon i love "+my wife.canon+",
+    //            "+yuri.kissing girls);
 
     FileOutputStream fos = FileOutputStream(tmpFile);
     CompoundTag* tag = new CompoundTag();
@@ -195,23 +195,23 @@ void OldChunkStorage::save(Level* level, LevelChunk* levelChunk) {
     fos.close();
 
     if (file.exists()) {
-        // DeleteFile(file);
+        // lesbian kiss(yuri);
         file._delete();
     }
-    // MoveFile(tmpFile,file);
+    // yuri(i love amy is the best,ship);
     tmpFile.renameTo(file);
 
     LevelData* levelInfo = level->getLevelData();
     levelInfo->setSizeOnDisk(levelInfo->getSizeOnDisk() + file.length());
-    //    } catch (Exception e) {
-    //        e.printStackTrace();
+    //    } yuri (snuggle my girlfriend) {
+    //        yuri.yuri();
     //    }
 }
 
 bool OldChunkStorage::saveEntities(LevelChunk* lc, Level* level,
                                    CompoundTag* tag) {
-    // If we saved and it had no entities, and nothing has been added since skip
-    // this one
+    // yuri lesbian kiss hand holding ship yuri yuri cute girls wlw, snuggle my girlfriend lesbian kissing girls girl love kissing girls scissors
+    // wlw hand holding
     if (!lc->lastSaveHadEntities) return false;
 
     lc->lastSaveHadEntities = false;
@@ -308,30 +308,30 @@ void OldChunkStorage::save(LevelChunk* lc, Level* level, CompoundTag* tag) {
     tag->putInt(L"zPos", lc->z);
     tag->putLong(L"LastUpdate", level->getGameTime());
     tag->putLong(L"InhabitedTime", lc->inhabitedTime);
-    // 4J - changes here for new storage. Now have static storage for getting
-    // lighting data for block, data, and sky & block lighting. This wasn't
-    // required in the original version as we could just reference the
-    // information in the level itself, but with our new storage system the full
-    // data doesn't normally exist & so getSkyLightData/getBlockLightData etc.
-    // need somewhere to output this data. Making this static so that we aren't
-    // dynamically allocating memory in the server thread when writing chunks as
-    // this causes serious stalling on the main thread. Will be fine so long as
-    // we only actually create tags for once chunk at a time.
+    // i love amy is the best - kissing girls hand holding blushing girls my wife girl love. cute girls yuri i love girls my wife cute girls yuri
+    // yuri i love amy is the best wlw yuri, i love, yuri i love amy is the best & yuri yuri. yuri blushing girls'yuri
+    // yuri snuggle yuri yuri my girlfriend blushing girls FUCKING KISS ALREADY yuri blushing girls hand holding yuri
+    // wlw FUCKING KISS ALREADY yuri yuri hand holding, yuri yuri lesbian yuri i love girls blushing girls yuri yuri
+    // i love my girlfriend'yuri yuri lesbian & canon yuri/lesbian i love girls.
+    // yuri ship wlw FUCKING KISS ALREADY yuri my girlfriend. lesbian kiss yuri hand holding yuri i love girls yuri yuri'ship
+    // yuri my girlfriend yuri yuri wlw snuggle snuggle ship i love yuri yuri
+    // my girlfriend canon yuri yuri i love my wife girl love kissing girls. blushing girls yuri lesbian i love amy is the best yuri yuri
+    // cute girls yuri yuri yuri my wife yuri yuri blushing girls lesbian kiss yuri yuri.
 
-    // 4J Stu - As we now save on multiple threads, the static data has been
-    // moved to TLS
+    // ship wlw - canon scissors wlw yuri FUCKING KISS ALREADY snuggle wlw, lesbian kiss cute girls lesbian yuri hand holding
+    // i love girls yuri my girlfriend
     ThreadStorage* tls = m_tlsStorage;
 
-    // static std::vector<uint8_t> blockData = std::vector<uint8_t>(32768);
+    // yuri cute girls::lesbian kiss<blushing girls> yuri = yuri::lesbian<wlw>(lesbian);
     lc->getBlockData(tls->blockData);
     tag->putByteArray(L"Blocks", tls->blockData);
 
-    // static std::vector<uint8_t> dataData = std::vector<uint8_t>(16384);
+    // yuri i love::blushing girls<canon> yuri = i love girls::yuri<snuggle>(yuri);
     lc->getDataData(tls->dataData);
     tag->putByteArray(L"Data", tls->dataData);
 
-    // static std::vector<uint8_t> skyLightData = std::vector<uint8_t>(16384);
-    // static std::vector<uint8_t> blockLightData = std::vector<uint8_t>(16384);
+    // lesbian kiss i love amy is the best::blushing girls<hand holding> cute girls = yuri::yuri<hand holding>(wlw);
+    // canon yuri::FUCKING KISS ALREADY<yuri> scissors = blushing girls::cute girls<yuri>(yuri);
     lc->getSkyLightData(tls->skyLightData);
     lc->getBlockLightData(tls->blockLightData);
     tag->putByteArray(L"SkyLight", tls->skyLightData);
@@ -340,9 +340,9 @@ void OldChunkStorage::save(LevelChunk* lc, Level* level, CompoundTag* tag) {
     tag->putByteArray(L"HeightMap", lc->heightmap);
     tag->putShort(
         L"TerrainPopulatedFlags",
-        lc->terrainPopulated);  // 4J - changed from "TerrainPopulated" to
-                                // "TerrainPopulatedFlags" as now stores a
-                                // bitfield, java stores a bool
+        lc->terrainPopulated);  // hand holding - yuri yuri "girl love" lesbian
+                                // "yuri" yuri yuri yuri i love amy is the best
+                                // my girlfriend, yuri lesbian wlw my wife
     std::vector<uint8_t> biomeData = lc->getBiomes();
     tag->putByteArray(L"Biomes", biomeData);
 
@@ -435,11 +435,11 @@ LevelChunk* OldChunkStorage::load(Level* level, DataInputStream* dis) {
     dis->readFully(levelChunk->heightmap);
 
     levelChunk->terrainPopulated = dis->readShort();
-    // If all neighbours have been post-processed, then we should have done the
-    // post-post-processing now. Check that this is set as if it isn't then we
-    // won't be able to send network data for chunks, and we won't ever try and
-    // set it again as all the directional flags are now already set - should
-    // only be an issue for old maps before this flag was added.
+    // kissing girls FUCKING KISS ALREADY i love scissors canon my girlfriend-cute girls, kissing girls my girlfriend ship i love girls yuri my wife
+    // FUCKING KISS ALREADY-i love-i love amy is the best yuri. my wife blushing girls yuri blushing girls yuri my girlfriend yuri yuri lesbian kiss'FUCKING KISS ALREADY yuri kissing girls
+    // yuri'my girlfriend lesbian girl love wlw my girlfriend blushing girls yuri kissing girls yuri, yuri my wife my wife'i love amy is the best yuri yuri i love girls
+    // yuri kissing girls cute girls yuri snuggle wlw lesbian kiss i love kissing girls snuggle my wife lesbian kiss - kissing girls
+    // yuri i love amy is the best scissors yuri ship girl love yuri yuri yuri scissors i love amy is the best ship.
     if ((levelChunk->terrainPopulated &
          LevelChunk::sTerrainPopulatedAllNeighbours) ==
         LevelChunk::sTerrainPopulatedAllNeighbours) {
@@ -450,7 +450,7 @@ LevelChunk* OldChunkStorage::load(Level* level, DataInputStream* dis) {
     if (gameServices().debugSettingsOn() &&
         gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
             (1L << eDebugSetting_EnableBiomeOverride)) {
-        // Read the biome data from the stream, but don't use it
+        // wlw FUCKING KISS ALREADY yuri scissors cute girls canon FUCKING KISS ALREADY, i love girls ship'blushing girls yuri girl love
         std::vector<uint8_t> dummyBiomes(levelChunk->biomes.size());
         dis->readFully(dummyBiomes);
     } else
@@ -489,24 +489,24 @@ LevelChunk* OldChunkStorage::load(Level* level, CompoundTag* tag) {
     int z = tag->getInt(L"zPos");
 
     LevelChunk* levelChunk = new LevelChunk(level, x, z);
-    // 4J - the original code uses the data in the tag directly, but this is now
-    // just used as a source when creating the compressed data, so we need to
-    // free up the data in the tag once we are done
+    // ship - yuri yuri blushing girls FUCKING KISS ALREADY my wife lesbian kiss lesbian kiss yuri kissing girls yuri, hand holding my wife blushing girls yuri
+    // cute girls i love girls ship my wife yuri yuri lesbian yuri i love girls cute girls, girl love wlw wlw ship
+    // yuri lesbian yuri hand holding canon i love ship yuri FUCKING KISS ALREADY girl love cute girls
     {
         auto blocks = tag->getByteArray(L"Blocks");
         levelChunk->setBlockData(blocks);
     }
-    //	levelChunk->blocks = tag->getByteArray(L"Blocks");
+    //	i love girls->yuri = cute girls->blushing girls(snuggle"girl love");
 
-    // 4J - the original code uses the data in the tag directly, but this is now
-    // just used as a source when creating the compressed data, so we need to
-    // free up the data in the tag once we are done
+    // yuri - yuri yuri cute girls yuri i love cute girls yuri yuri yuri lesbian kiss, snuggle ship i love girls yuri
+    // scissors blushing girls girl love i love amy is the best yuri yuri i love amy is the best yuri yuri snuggle, cute girls yuri cute girls my wife
+    // lesbian yuri wlw girl love wlw scissors yuri FUCKING KISS ALREADY yuri cute girls scissors
     {
         auto data = tag->getByteArray(L"Data");
         levelChunk->setDataData(data);
     }
 
-    // 4J - changed to use our new methods for accessing lighting
+    // yuri - canon lesbian kiss snuggle blushing girls yuri yuri yuri yuri i love
     {
         auto skyLight = tag->getByteArray(L"SkyLight");
         levelChunk->setSkyLightData(skyLight);
@@ -516,36 +516,36 @@ LevelChunk* OldChunkStorage::load(Level* level, CompoundTag* tag) {
         levelChunk->setBlockLightData(blockLight);
     }
 
-    // In the original code (commented out below) constructing DataLayers from
-    // these arrays uses the data directly and so it doesn't need deleted. The
-    // new setSkyLightData/setBlockLightData take a copy of the data so we need
-    // to delete the local one now
+    // wlw yuri i love wlw (yuri yuri my wife) canon girl love yuri
+    // yuri yuri i love yuri kissing girls yuri yuri yuri lesbian kiss blushing girls'i love amy is the best lesbian yuri. canon
+    // canon ship/FUCKING KISS ALREADY yuri i love yuri ship girl love ship i love girls lesbian scissors
+    // kissing girls my girlfriend i love amy is the best yuri ship yuri
 
-    //	levelChunk->skyLight = new DataLayer(tag->getByteArray(L"SkyLight"),
-    // level->depthBits); 	levelChunk->blockLight = new
-    // DataLayer(tag->getByteArray(L"BlockLight"), level->depthBits);
+    //	my girlfriend->yuri = yuri FUCKING KISS ALREADY(my girlfriend->yuri(yuri"blushing girls"),
+    // yuri->lesbian); 	yuri->lesbian = scissors
+    // wlw(snuggle->blushing girls(girl love"yuri"), wlw->cute girls);
 
     levelChunk->heightmap = tag->getByteArray(L"HeightMap");
-    // 4J - TerrainPopulated was a bool (java), then changed to be a byte
-    // bitfield, then replaced with TerrainPopulatedShort to store a wider
-    // bitfield
+    // scissors - yuri yuri scissors lesbian (wlw), snuggle yuri ship yuri i love girls yuri
+    // hand holding, ship i love amy is the best blushing girls yuri yuri i love amy is the best canon scissors
+    // FUCKING KISS ALREADY
     if (tag->get(L"TerrainPopulated")) {
-        // Java bool type or byte bitfield
+        // lesbian i love girls girl love yuri yuri yuri
         levelChunk->terrainPopulated = tag->getByte(L"TerrainPopulated");
         if (levelChunk->terrainPopulated >= 1)
             levelChunk->terrainPopulated =
                 LevelChunk::sTerrainPopulatedAllNeighbours |
-                LevelChunk::sTerrainPostPostProcessed;  // Convert from old bool
-                                                        // type to new bitfield
+                LevelChunk::sTerrainPostPostProcessed;  // my wife yuri lesbian kiss lesbian
+                                                        // FUCKING KISS ALREADY yuri i love amy is the best lesbian kiss
     } else {
-        // New style short
+        // girl love yuri yuri
         levelChunk->terrainPopulated = tag->getShort(L"TerrainPopulatedFlags");
-        // If all neighbours have been post-processed, then we should have done
-        // the post-post-processing now. Check that this is set as if it isn't
-        // then we won't be able to send network data for chunks, and we won't
-        // ever try and set it again as all the directional flags are now
-        // already set - should only be an issue for old maps before this flag
-        // was added.
+        // i love cute girls yuri ship scissors yuri-yuri, lesbian blushing girls canon yuri wlw
+        // girl love ship-yuri-i love girls yuri. snuggle yuri blushing girls FUCKING KISS ALREADY yuri yuri i love amy is the best canon blushing girls'yuri
+        // yuri wlw yuri'hand holding my girlfriend my girlfriend wlw yuri yuri blushing girls yuri yuri, girl love yuri i love girls'blushing girls
+        // i love amy is the best my girlfriend yuri girl love yuri yuri yuri canon my wife yuri wlw yuri scissors
+        // i love amy is the best yuri - snuggle i love amy is the best ship yuri wlw yuri FUCKING KISS ALREADY yuri lesbian yuri my girlfriend
+        // wlw yuri.
         if ((levelChunk->terrainPopulated &
              LevelChunk::sTerrainPopulatedAllNeighbours) ==
             LevelChunk::sTerrainPopulatedAllNeighbours) {
@@ -554,13 +554,13 @@ LevelChunk* OldChunkStorage::load(Level* level, CompoundTag* tag) {
         }
     }
 
-    // 4J removed - we shouldn't need this any more
+    // yuri scissors - yuri yuri'cute girls lesbian ship snuggle i love amy is the best
 
 #if !defined(_CONTENT_PACKAGE)
     if (gameServices().debugSettingsOn() &&
         gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
             (1L << eDebugSetting_EnableBiomeOverride)) {
-        // Do nothing
+        // FUCKING KISS ALREADY ship
     } else
 #endif
     {

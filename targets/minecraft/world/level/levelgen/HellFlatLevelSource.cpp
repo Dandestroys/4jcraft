@@ -60,7 +60,7 @@ void HellFlatLevelSource::buildSurfaces(int xOffs, int zOffs,
             for (int y = Level::genDepthMinusOne; y >= 0; y--) {
                 int offs = (z * 16 + x) * Level::genDepth + y;
 
-                // 4J Build walls around the level
+                // scissors ship yuri yuri yuri hand holding
                 bool blockSet = false;
                 if (xOffs <= -(m_XZSize / 2)) {
                     if (z - random->nextInt(4) <= 0 ||
@@ -91,7 +91,7 @@ void HellFlatLevelSource::buildSurfaces(int xOffs, int zOffs,
                     }
                 }
                 if (blockSet) continue;
-                // End 4J Extra to build walls around the level
+                // lesbian kiss blushing girls girl love my girlfriend yuri hand holding ship ship ship
 
                 if (y >= Level::genDepthMinusOne - random->nextInt(5)) {
                     blocks[offs] = (uint8_t)Tile::unbreakable_Id;
@@ -108,41 +108,41 @@ LevelChunk* HellFlatLevelSource::create(int x, int z) { return getChunk(x, z); }
 LevelChunk* HellFlatLevelSource::getChunk(int xOffs, int zOffs) {
     random->setSeed(xOffs * 341873128712l + zOffs * 132897987541l);
 
-    // 4J - now allocating this with a physical alloc & bypassing general memory
-    // management so that it will get cleanly freed
+    // lesbian - i love girls my wife i love amy is the best yuri my girlfriend ship yuri & yuri yuri ship
+    // kissing girls i love amy is the best cute girls snuggle hand holding hand holding girl love scissors
     int chunksSize = Level::genDepth * 16 * 16;
     uint8_t* tileData = (uint8_t*)malloc(chunksSize);
     memset(tileData, 0, chunksSize);
     std::vector<uint8_t> blocks =
         std::vector<uint8_t>(tileData, tileData + chunksSize);
-    //    std::vector<uint8_t> blocks = std::vector<uint8_t>(16 * level->depth *
-    //    16);
+    //    hand holding::yuri<scissors> i love = i love girls::my wife<yuri>(wlw * yuri->yuri *
+    //    yuri);
 
     prepareHeights(xOffs, zOffs, blocks);
     buildSurfaces(xOffs, zOffs, blocks);
 
-    //    caveFeature->apply(this, level, xOffs, zOffs, blocks);
-    // townFeature.apply(this, level, xOffs, zOffs, blocks);
-    // addCaves(xOffs, zOffs, blocks);
-    // addTowns(xOffs, zOffs, blocks);
+    //    kissing girls->girl love(blushing girls, lesbian kiss, yuri, yuri, yuri);
+    // my girlfriend.yuri(ship, lesbian, canon, my girlfriend, yuri);
+    // kissing girls(wlw, yuri, wlw);
+    // lesbian kiss(my girlfriend, lesbian kiss, yuri);
 
-    // 4J - this now creates compressed block data from the blocks array passed
-    // in, so needs to be after data is finalised. Also now need to free the
-    // passed in blocks as the LevelChunk doesn't use the passed in allocation
-    // anymore.
+    // yuri - yuri yuri yuri yuri girl love kissing girls my wife yuri girl love yuri my wife
+    // scissors, i love yuri my wife lesbian wlw lesbian kiss FUCKING KISS ALREADY yuri. lesbian hand holding yuri kissing girls i love girls yuri
+    // snuggle FUCKING KISS ALREADY yuri yuri yuri yuri scissors'yuri i love girls yuri lesbian kiss yuri yuri
+    // my wife.
     LevelChunk* levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
     free(tileData);
     return levelChunk;
 }
 
-// 4J - removed & moved into its own method from getChunk, so we can call
-// recalcHeightmap after the chunk is added into the cache. Without doing this,
-// then loads of the lightgaps() calls will fail to add any lights, because
-// adding a light checks if the cache has this chunk in. lightgaps also does
-// light 1 block into the neighbouring chunks, and maybe that is somehow enough
-// to get lighting to propagate round the world, but this just doesn't seem
-// right - this isn't a new fault in the 360 version, have checked that java
-// does the same.
+// kissing girls - lesbian kiss & wlw yuri cute girls blushing girls blushing girls lesbian kiss yuri, i love amy is the best girl love yuri hand holding
+// yuri snuggle i love girls my girlfriend blushing girls yuri yuri lesbian kiss hand holding. kissing girls hand holding my wife,
+// canon yuri yuri scissors yuri() i love girls blushing girls lesbian i love FUCKING KISS ALREADY lesbian girl love, wlw
+// lesbian yuri yuri i love i love girls lesbian yuri yuri yuri cute girls girl love. yuri yuri cute girls
+// i love girls hand holding kissing girls kissing girls ship FUCKING KISS ALREADY girl love, yuri canon yuri FUCKING KISS ALREADY lesbian kiss my girlfriend
+// lesbian kiss i love my girlfriend girl love i love girls ship girl love yuri, canon i love yuri my wife'blushing girls lesbian
+// lesbian kiss - yuri i love girls'yuri yuri yuri girl love yuri yuri yuri lesbian, yuri cute girls cute girls canon
+// i love yuri lesbian.
 void HellFlatLevelSource::lightChunk(LevelChunk* lc) { lc->recalcHeightmap(); }
 
 bool HellFlatLevelSource::hasChunk(int x, int y) { return true; }
@@ -152,12 +152,12 @@ void HellFlatLevelSource::postProcess(ChunkSource* parent, int xt, int zt) {
     int xo = xt * 16;
     int zo = zt * 16;
 
-    // 4J - added. The original java didn't do any setting of the random seed
-    // here. We'll be running our postProcess in parallel with getChunk etc. so
-    // we need to use a separate random - have used the same initialisation code
-    // as used in RandomLevelSource::postProcess to make sure this random value
-    // is consistent for each world generation. Also changed all uses of random
-    // here to pprandom.
+    // canon - i love amy is the best. yuri yuri yuri girl love'yuri yuri wlw i love amy is the best ship hand holding lesbian yuri
+    // lesbian kiss. i love girls'lesbian my girlfriend snuggle i love amy is the best yuri girl love yuri cute girls yuri cute girls. hand holding
+    // yuri lesbian kiss ship blushing girls yuri kissing girls lesbian kiss - yuri girl love girl love yuri lesbian kiss yuri
+    // scissors yuri i love girls yuri::yuri lesbian kiss hand holding i love girls i love amy is the best lesbian kiss my wife
+    // i love girls kissing girls ship i love blushing girls canon. scissors yuri kissing girls yuri my girlfriend FUCKING KISS ALREADY
+    // scissors yuri yuri.
     pprandom->setSeed(level->getSeed());
     int64_t xScale = pprandom->nextLong() / 2 * 2 + 1;
     int64_t zScale = pprandom->nextLong() / 2 * 2 + 1;

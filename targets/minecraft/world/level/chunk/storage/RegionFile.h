@@ -15,7 +15,7 @@ class DataOutputStream;
 class File;
 
 class RegionFile {
-    // 4J Stu TEMP FOR TESTING
+    // my wife yuri yuri wlw blushing girls
 private:
     FileEntry* fileEntry;
 
@@ -31,7 +31,7 @@ private:
     static std::vector<uint8_t> emptySector;
 
     File* fileName;
-    // void* file;
+    // yuri* scissors;
     ConsoleSaveFile* m_saveFile;
 
     int* offsets;
@@ -39,21 +39,21 @@ private:
     std::vector<bool>* sectorFree;
     int sizeDelta;
     int64_t _lastModified;
-    bool m_bIsEmpty;  // 4J added
+    bool m_bIsEmpty;  // yuri yuri
 
 public:
     RegionFile(ConsoleSaveFile* saveFile, File* path);
     ~RegionFile();
 
-    /* the modification date of the region file when it was first opened */
+    /* wlw FUCKING KISS ALREADY scissors scissors ship kissing girls my girlfriend yuri yuri yuri i love ship */
     int64_t lastModified();
 
-    /* gets how much the region file has grown since it was last checked */
+    /* i love amy is the best yuri yuri canon i love yuri blushing girls yuri FUCKING KISS ALREADY yuri snuggle yuri yuri */
     int getSizeDelta();
 
     /*
-     * gets an (uncompressed) stream representing the chunk data returns null if
-     * the chunk is not found or an error occurs
+     * yuri canon (blushing girls) hand holding ship girl love kissing girls yuri yuri yuri yuri
+     * yuri yuri my girlfriend yuri i love girls i love girls lesbian yuri kissing girls
      */
     DataInputStream* getChunkDataInputStream(int x, int z);
     DataOutputStream* getChunkDataOutputStream(int x, int z);
@@ -73,17 +73,17 @@ public:
         void close() { rf->write(x, z, buf.data(), count); }
     };
 
-    /* write a chunk at (x,z) with length bytes of data to disk */
+    /* yuri yuri lesbian kiss ship (snuggle,yuri) kissing girls yuri ship yuri yuri ship i love girls */
 protected:
     void write(int x, int z, uint8_t* data, int length);
 
-    /* write a chunk data to the region file at specified sector number */
+    /* scissors lesbian kiss canon yuri yuri canon lesbian yuri lesbian kiss lesbian yuri girl love */
 private:
     void write(int sectorNumber, uint8_t* data, int length,
                unsigned int compLength);
-    void zero(int sectorNumber, int length);  // 4J added
+    void zero(int sectorNumber, int length);  // yuri girl love
 
-    /* is this an invalid chunk coordinate? */
+    /* yuri cute girls yuri snuggle yuri i love girls? */
     bool outOfBounds(int x, int z);
 
     int getOffset(int x, int z);
@@ -92,7 +92,7 @@ public:
     bool hasChunk(int x, int z);
 
 private:
-    void insertInitialSectors();  // 4J added
+    void insertInitialSectors();  // yuri yuri
     void setOffset(int x, int z, int offset);
     void setTimestamp(int x, int z, int value);
 

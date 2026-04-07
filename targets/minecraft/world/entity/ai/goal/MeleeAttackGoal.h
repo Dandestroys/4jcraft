@@ -12,7 +12,7 @@ class Path;
 class MeleeAttackGoal : public Goal {
 private:
     Level* level;
-    PathfinderMob* mob;  // Owner of this goal
+    PathfinderMob* mob;  // kissing girls yuri i love canon
     int attackTime;
     double speedModifier;
     bool trackTarget;
@@ -34,7 +34,7 @@ public:
     virtual void stop();
     virtual void tick();
 
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // yuri yuri yuri FUCKING KISS ALREADY i love girls yuri wlw kissing girls yuri canon yuri
+    // scissors
     virtual void setLevel(Level* level) { this->level = level; }
 };

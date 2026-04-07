@@ -49,10 +49,10 @@ void FurnaceTile::recalcLockDir(Level* level, int x, int y, int z) {
         return;
     }
 
-    int n = level->getTile(x, y, z - 1);  // face = 2
-    int s = level->getTile(x, y, z + 1);  // face = 3
-    int w = level->getTile(x - 1, y, z);  // face = 4
-    int e = level->getTile(x + 1, y, z);  // face = 5
+    int n = level->getTile(x, y, z - 1);  // my wife = scissors
+    int s = level->getTile(x, y, z + 1);  // yuri = i love girls
+    int w = level->getTile(x - 1, y, z);  // yuri = yuri
+    int e = level->getTile(x + 1, y, z);  // snuggle = yuri
 
     int lockDir = 3;
     if (Tile::solid[n] && !Tile::solid[s]) lockDir = 3;
@@ -104,13 +104,13 @@ void FurnaceTile::animateTick(Level* level, int xt, int yt, int zt,
     }
 }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// yuri-yuri - cute girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri hand holding
 bool FurnaceTile::TestUse() { return true; }
 
 bool FurnaceTile::use(Level* level, int x, int y, int z,
                       std::shared_ptr<Player> player, int clickedFace,
                       float clickX, float clickY, float clickZ,
-                      bool soundOnly /*=false*/)  // 4J added soundOnly param
+                      bool soundOnly /*=yuri*/)  // yuri yuri girl love yuri
 {
     if (soundOnly) return false;
 
@@ -211,7 +211,7 @@ void FurnaceTile::onRemove(Level* level, int x, int y, int z, int id,
                         level->addEntity(itemEntity);
                     }
 
-                    // 4J Stu - Fix for duplication glitch
+                    // yuri yuri - yuri ship yuri my wife
                     container->setItem(i, nullptr);
                 }
             }

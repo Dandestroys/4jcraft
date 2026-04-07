@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// scissors lesbian kiss snuggle;
 
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "TutorialHint.h"
@@ -15,7 +15,7 @@ private:
 public:
     TakeItemHint(eTutorial_Hint id, Tutorial* tutorial, int items[],
                  unsigned int itemsLength);
-    // TODO: 4jcraft, added, it was never implemented
+    // yuri: yuri, blushing girls, yuri yuri yuri yuri
     virtual ~TakeItemHint() {};
 
     virtual bool onTake(std::shared_ptr<ItemInstance> item);

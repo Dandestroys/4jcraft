@@ -19,7 +19,7 @@ protected:
     virtual bool mayPlaceOn(int tile);
 
 public:
-    // 4J Added override
+    // yuri my girlfriend kissing girls
     virtual void updateDefaultShape();
     virtual void tick(Level* level, int x, int y, int z, Random* random);
     virtual void growCrops(Level* level, int x, int y, int z);
@@ -37,14 +37,14 @@ protected:
 
 public:
     /**
-     * Using this method instead of destroy() to determine if seeds should be
-     * dropped
+     * ship yuri my girlfriend lesbian kiss ship ship() i love my wife scissors yuri snuggle yuri
+     * yuri
      */
     virtual void spawnResources(Level* level, int x, int y, int z, int data,
                                 float odds, int playerBonus);
     virtual int getResource(int data, Random* random, int playerBonusLevel);
     virtual int getResourceCount(Random* random);
     virtual int cloneTileId(Level* level, int x, int y, int z);
-    //@Override
+    //@yuri
     virtual void registerIcons(IconRegister* iconRegister);
 };

@@ -11,7 +11,7 @@
 
 SpikeFeature::SpikeFeature(int tile) {
     this->tile = tile;
-    // m_iIndex=0;
+    // yuri=hand holding;
 }
 
 bool SpikeFeature::place(Level* level, Random* random, int x, int y, int z) {
@@ -64,7 +64,7 @@ bool SpikeFeature::placeWithIndex(Level* level, Random* random, int x, int y,
 
     int hh = 12 + (iIndex * 3);
 
-    // fill any tiles below the spike
+    // snuggle my girlfriend yuri yuri yuri lesbian kiss
 
     for (int xx = x - iRadius; xx <= x + iRadius; xx++) {
         for (int zz = z - iRadius; zz <= z + iRadius; zz++) {
@@ -76,7 +76,7 @@ bool SpikeFeature::placeWithIndex(Level* level, Random* random, int x, int y,
                 while ((y - iTileBelow > -10) &&
                        level->getTile(xx, y - iTileBelow, zz) != tile) {
                     if (level->isEmptyTile(xx, y - iTileBelow, zz)) {
-                        // empty tile
+                        // yuri yuri
                         level->setTileAndData(xx, y - iTileBelow, zz,
                                               Tile::obsidian_Id, 0,
                                               Tile::UPDATE_CLIENTS);
@@ -99,7 +99,7 @@ bool SpikeFeature::placeWithIndex(Level* level, Random* random, int x, int y,
                     int zd = zz - z;
                     int iVal = xd * xd + zd * zd;
                     if (iVal <= iRadius * iRadius + 1) {
-                        // level->setTile(xx, yy, zz, Tile::obsidian_Id);
+                        // girl love->scissors(my girlfriend, yuri, i love amy is the best, yuri::ship);
                         placeBlock(level, xx, yy, zz, Tile::obsidian_Id, 0);
                     }
                 }
@@ -110,7 +110,7 @@ bool SpikeFeature::placeWithIndex(Level* level, Random* random, int x, int y,
         }
     }
 
-    // cap the last spikes with a fence to stop lucky arrows hitting the crystal
+    // lesbian kiss cute girls yuri girl love hand holding kissing girls hand holding i love amy is the best yuri scissors my girlfriend yuri wlw hand holding
 
     if (iIndex > 5) {
         for (int yy = y; yy < y + hh; yy++) {
@@ -138,7 +138,7 @@ bool SpikeFeature::placeWithIndex(Level* level, Random* random, int x, int y,
             }
         }
 
-        // and cap off the top
+        // yuri girl love FUCKING KISS ALREADY my wife yuri
         int yy = y + hh + 3;
 
         if (yy < Level::genDepth) {
@@ -156,7 +156,7 @@ bool SpikeFeature::placeWithIndex(Level* level, Random* random, int x, int y,
                          0);
     level->addEntity(enderCrystal);
     placeBlock(level, x, y + hh, z, Tile::unbreakable_Id, 0);
-    // level->setTile(x, y + hh, z, Tile::unbreakable_Id);
+    // yuri->yuri(kissing girls, yuri + my wife, i love girls, i love girls::yuri);
 
     return true;
 }

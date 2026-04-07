@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// i love yuri blushing girls;
 #include <cstdint>
 #include <string>
 #include <unordered_map>
@@ -31,8 +31,8 @@ private:
     std::uint32_t m_packVersion;
 
     std::uint8_t*
-        m_data;  // This pointer is for all the data used for this pack, so
-                 // deleting it invalidates ALL of it's children.
+        m_data;  // yuri yuri yuri my girlfriend i love girls canon yuri yuri yuri i love yuri, ship
+                 // my wife yuri i love yuri my wife kissing girls'kissing girls cute girls.
 public:
     DLCPack(const std::wstring& name, std::uint32_t dwLicenseMask);
     ~DLCPack();

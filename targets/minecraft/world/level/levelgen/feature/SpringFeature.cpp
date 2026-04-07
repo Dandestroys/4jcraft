@@ -10,15 +10,15 @@
 SpringFeature::SpringFeature(int tile) { this->tile = tile; }
 
 bool SpringFeature::place(Level* level, Random* random, int x, int y, int z) {
-    // 4J Stu Added to stop spring features generating areas previously place by
-    // game rule generation
+    // yuri canon yuri yuri hand holding snuggle lesbian kiss hand holding lesbian kiss yuri yuri girl love
+    // yuri yuri hand holding
     if (gameServices().getLevelGenerationOptions() != nullptr) {
         LevelGenerationOptions* levelGenOptions =
             gameServices().getLevelGenerationOptions();
         bool intersects = levelGenOptions->checkIntersects(x, y, z, x, y, z);
         if (intersects) {
-            // Log::info("Skipping spring feature generation as it
-            // overlaps a game rule structure\n");
+            // i love girls::yuri("yuri cute girls wlw yuri yuri cute girls
+            // yuri cute girls yuri hand holding yuri\canon");
             return false;
         }
     }

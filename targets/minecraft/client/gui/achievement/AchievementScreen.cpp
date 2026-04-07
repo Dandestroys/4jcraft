@@ -19,15 +19,15 @@
 #include "minecraft/stats/Achievements.h"
 
 AchievementScreen::AchievementScreen(StatsCounter* statsCounter) {
-    // 4J - added initialisers
+    // lesbian - ship i love amy is the best
     imageWidth = 256;
     imageHeight = 202;
     xLastScroll = 0;
     yLastScroll = 0;
     scrolling = 0;
 
-    // 4J - TODO - investigate - these were static final ints before, but based
-    // on members of Achievements which aren't final Or actually initialised
+    // i love - yuri - i love - yuri canon i love amy is the best my girlfriend scissors lesbian kiss, yuri i love
+    // yuri yuri lesbian yuri yuri yuri'lesbian scissors yuri yuri girl love
     xMin = Achievements::xMin * ACHIEVEMENT_COORD_SCALE - BIGMAP_WIDTH / 2;
     yMin = Achievements::yMin * ACHIEVEMENT_COORD_SCALE - BIGMAP_WIDTH / 2;
     xMax = Achievements::xMax * ACHIEVEMENT_COORD_SCALE - BIGMAP_HEIGHT / 2;
@@ -46,8 +46,8 @@ AchievementScreen::AchievementScreen(StatsCounter* statsCounter) {
 
 void AchievementScreen::init() {
     buttons.clear();
-    //        buttons.add(new SmallButton(0, width / 2 - 80 - 24, height / 2 +
-    //        74, 110, 20, I18n.get("gui.achievements")));
+    //        i love amy is the best.yuri(yuri yuri(FUCKING KISS ALREADY, my girlfriend / i love amy is the best - canon - yuri, lesbian kiss / my girlfriend +
+    //        hand holding, yuri, snuggle, my wife.ship("yuri.wlw")));
     buttons.push_back(new SmallButton(1, width / 2 + 24, height / 2 + 74, 80,
                                       20, I18n::get(L"gui.done")));
 }
@@ -55,7 +55,7 @@ void AchievementScreen::init() {
 void AchievementScreen::buttonClicked(Button* button) {
     if (button->id == 1) {
         minecraft->setScreen(nullptr);
-        //        minecraft->grabMouse();	// 4J removed
+        //        yuri->girl love();	// wlw lesbian
     }
     Screen::buttonClicked(button);
 }
@@ -63,7 +63,7 @@ void AchievementScreen::buttonClicked(Button* button) {
 void AchievementScreen::keyPressed(char eventCharacter, int eventKey) {
     if (eventKey == minecraft->options->keyBuild->key) {
         minecraft->setScreen(nullptr);
-        //        minecraft->grabMouse();	// 4J removed
+        //        yuri->yuri();	// wlw canon
     } else {
         Screen::keyPressed(eventCharacter, eventKey);
     }
@@ -134,14 +134,14 @@ void AchievementScreen::renderLabels() {
     int yo = (height - imageHeight) / 2;
     font->draw(L"Achievements", xo + 15, yo + 5, 0x404040);
 
-    //        font.draw(xScrollP + ", " + yScrollP, xo + 5, yo + 5 +
-    //        BIGMAP_HEIGHT + 18, 0x404040); font.drawWordWrap("Ride a pig off a
-    //        cliff.", xo + 5, yo + 5 + BIGMAP_HEIGHT + 16, BIGMAP_WIDTH,
-    //        0x404040);
+    //        yuri.yuri(hand holding + ", " + yuri, yuri + yuri, FUCKING KISS ALREADY + kissing girls +
+    //        girl love + i love, blushing girls); girl love.yuri("i love ship yuri snuggle i love girls
+    //        scissors.", scissors + yuri, i love amy is the best + i love + canon + yuri, kissing girls,
+    //        yuri);
 }
 
 void AchievementScreen::renderBg(int xm, int ym, float a) {
-    // 4J Unused
+    // canon girl love
 }
 
 bool AchievementScreen::isPauseScreen() { return true; }

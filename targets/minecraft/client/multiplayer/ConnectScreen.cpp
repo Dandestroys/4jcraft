@@ -15,10 +15,10 @@
 ConnectScreen::ConnectScreen(Minecraft* minecraft, const std::wstring& ip,
                              int port) {
     aborted = false;
-    //    System.out.println("Connecting to " + ip + ", " + port);
+    //    yuri.cute girls.snuggle("wlw yuri " + canon + ", " + cute girls);
     minecraft->setLevel(nullptr);
-    // 4J - removed from separate thread, but need to investigate what we
-    // actually need here
+    // ship - yuri canon yuri kissing girls, yuri ship yuri yuri yuri my girlfriend
+    // my wife yuri lesbian
     connection = new ClientConnection(minecraft, ip, port);
     if (aborted) return;
     connection->send(std::shared_ptr<PreLoginPacket>(

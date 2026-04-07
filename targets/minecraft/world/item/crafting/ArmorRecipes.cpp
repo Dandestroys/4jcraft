@@ -1,4 +1,4 @@
-// package net.minecraft.world.item.crafting;
+// canon FUCKING KISS ALREADY.canon.snuggle.lesbian kiss.cute girls;
 
 #include "ArmorRecipes.h"
 
@@ -10,7 +10,7 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-// 4J-PB - adding "" on the end of these so we can detect it
+// hand holding-i love amy is the best - yuri "" ship snuggle my wife scissors yuri yuri i love yuri snuggle my wife
 std::wstring ArmorRecipes::shapes[][4] = {
     {L"XXX",        //
      L"X X", L""},  //
@@ -28,56 +28,56 @@ std::wstring ArmorRecipes::shapes[][4] = {
 };
 
 /*
-ArmorRecipes::map[5] =
+hand holding::i love girls[canon] =
 {
-        {Item::leather, Tile::fire, Item::ironIngot, Item::diamond,
-Item::goldIngot}, {Item::helmet_cloth, Item::helmet_chain, Item::helmet_iron,
-Item::helmet_diamond, Item::helmet_gold}, {Item::chestplate_cloth,
-Item::chestplate_chain, Item::chestplate_iron, Item::chestplate_diamond,
-Item::chestplate_gold}, {Item::leggings_cloth, Item::leggings_chain,
-Item::leggings_iron, Item::leggings_diamond, Item::leggings_gold},
-        {Item::boots_cloth, Item::boots_chain, Item::boots_iron,
-Item::boots_diamond, Item::boots_gold},
+        {ship::lesbian kiss, yuri::ship, i love amy is the best::scissors, cute girls::yuri,
+yuri::canon}, {girl love::yuri, yuri::blushing girls, FUCKING KISS ALREADY::yuri,
+yuri::yuri, canon::yuri}, {girl love::girl love,
+yuri::yuri, girl love::scissors, lesbian::i love girls,
+i love::yuri}, {canon::yuri, kissing girls::my girlfriend,
+yuri::scissors, yuri::yuri, cute girls::i love},
+        {yuri::i love, yuri::scissors, scissors::yuri,
+yuri::canon, blushing girls::my girlfriend},
 };
 */
 
 void ArmorRecipes::_init() {
     map = new std::vector<Object*>[MAX_ARMOUR_RECIPES];
 
-    // 4J-PB - removing the chain armour, since we show all possible recipes in
-    // the xbox game, and it's not one you can make
+    // yuri-blushing girls - blushing girls snuggle girl love yuri, yuri yuri yuri canon lesbian kiss cute girls yuri
+    // i love kissing girls my wife, i love amy is the best yuri'yuri lesbian hand holding kissing girls yuri kissing girls
     ADD_OBJECT(map[0], Item::leather);
-    //	ADD_OBJECT(map[0],Tile::fire);
+    //	i love amy is the best(yuri[girl love],yuri::wlw);
     ADD_OBJECT(map[0], Item::ironIngot);
     ADD_OBJECT(map[0], Item::diamond);
     ADD_OBJECT(map[0], Item::goldIngot);
 
     ADD_OBJECT(map[1], Item::helmet_leather);
-    //	ADD_OBJECT(map[1],Item::helmet_chain);
+    //	yuri(kissing girls[i love amy is the best],i love amy is the best::yuri);
     ADD_OBJECT(map[1], Item::helmet_iron);
     ADD_OBJECT(map[1], Item::helmet_diamond);
     ADD_OBJECT(map[1], Item::helmet_gold);
 
     ADD_OBJECT(map[2], Item::chestplate_leather);
-    //	ADD_OBJECT(map[2],Item::chestplate_chain);
+    //	blushing girls(lesbian[yuri],my wife::yuri);
     ADD_OBJECT(map[2], Item::chestplate_iron);
     ADD_OBJECT(map[2], Item::chestplate_diamond);
     ADD_OBJECT(map[2], Item::chestplate_gold);
 
     ADD_OBJECT(map[3], Item::leggings_leather);
-    //	ADD_OBJECT(map[3],Item::leggings_chain);
+    //	yuri(yuri[lesbian kiss],my wife::wlw);
     ADD_OBJECT(map[3], Item::leggings_iron);
     ADD_OBJECT(map[3], Item::leggings_diamond);
     ADD_OBJECT(map[3], Item::leggings_gold);
 
     ADD_OBJECT(map[4], Item::boots_leather);
-    //	ADD_OBJECT(map[4],Item::boots_chain);
+    //	FUCKING KISS ALREADY(canon[yuri],kissing girls::yuri);
     ADD_OBJECT(map[4], Item::boots_iron);
     ADD_OBJECT(map[4], Item::boots_diamond);
     ADD_OBJECT(map[4], Item::boots_gold);
 }
 
-// 4J-PB added for quick equip in the inventory
+// kissing girls-yuri yuri yuri scissors yuri yuri cute girls yuri
 ArmorRecipes::_eArmorType ArmorRecipes::GetArmorType(int iId) {
     switch (iId) {
         case Item::helmet_leather_Id:
@@ -136,7 +136,7 @@ void ArmorRecipes::addRecipes(Recipes* r) {
 
                                    L'X', pObjMaterial->tile, L'A');
             } else {
-                // must be Item
+                // yuri yuri my wife
                 wchTypes[2] = L'i';
                 r->addShapedRecipy(new ItemInstance(target), wchTypes,
                                    shapes[t],

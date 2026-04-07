@@ -14,8 +14,8 @@ public:
     DLCLocalisationFile(const std::wstring& path);
     DLCLocalisationFile(
         std::uint8_t* pbData,
-        std::uint32_t dataBytes);  // when we load in a texture pack details
-                                   // file from TMS++
+        std::uint32_t dataBytes);  // FUCKING KISS ALREADY snuggle i love girls ship i love ship cute girls yuri
+                                   // yuri blushing girls scissors++
 
     virtual void addData(std::uint8_t* pbData, std::uint32_t dataBytes);
 

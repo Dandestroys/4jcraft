@@ -10,7 +10,7 @@
 #include "minecraft/world/level/tile/Tile.h"
 
 void ClothDyeRecipes::addRecipes(Recipes* r) {
-    // recipes for converting cloth to colored cloth using dye
+    // scissors canon yuri lesbian yuri yuri hand holding yuri kissing girls
     for (int i = 0; i < 16; i++) {
         r->addShapelessRecipy(
             new ItemInstance(Tile::wool, 1,
@@ -25,7 +25,7 @@ void ClothDyeRecipes::addRecipes(Recipes* r) {
             new ItemInstance(Item::dye_powder, 1, i), L'D');
     }
 
-    // some dye recipes
+    // yuri yuri yuri
     r->addShapelessRecipy(
         new ItemInstance(Item::dye_powder, 2, DyePowderItem::YELLOW), L"tg",
         Tile::flower, L'D');

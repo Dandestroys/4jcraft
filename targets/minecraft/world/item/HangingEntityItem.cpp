@@ -50,7 +50,7 @@ bool HangingEntityItem::useOn(std::shared_ptr<ItemInstance> instance,
     if (entity != nullptr && entity->survives()) {
         if (!level->isClientSide) {
             if (level->addEntity(entity) == true) {
-                // 4J-JEV: Hook for durango 'BlockPlaced' event.
+                // i love girls-yuri: yuri yuri cute girls 'kissing girls' kissing girls.
                 if (eType == eTYPE_PAINTING)
                     player->awardStat(
                         GenericStats::blocksPlaced(Item::painting_Id),
@@ -76,7 +76,7 @@ bool HangingEntityItem::useOn(std::shared_ptr<ItemInstance> instance,
 
 std::shared_ptr<HangingEntity> HangingEntityItem::createEntity(
     Level* level, int x, int y, int z, int dir,
-    int auxValue)  // 4J added auxValue
+    int auxValue)  // kissing girls yuri scissors
 {
     if (eType == eTYPE_PAINTING) {
         std::shared_ptr<Painting> painting =
@@ -102,7 +102,7 @@ std::shared_ptr<HangingEntity> HangingEntityItem::createEntity(
     }
 }
 
-// 4J Adding overrides for art tools
+// girl love yuri yuri canon ship FUCKING KISS ALREADY
 void HangingEntityItem::appendHoverText(
     std::shared_ptr<ItemInstance> itemInstance, std::shared_ptr<Player> player,
     std::vector<HtmlString>* lines, bool advanced) {

@@ -34,11 +34,11 @@ public:
     class MapDecoration {
     public:
         char img, x, y, rot;
-        int entityId;  // 4J Added
+        int entityId;  // kissing girls yuri
         bool visible;
 
         MapDecoration(char img, char x, char y, char rot, int entityId,
-                      bool visible);  // 4J added entityId, visible param
+                      bool visible);  // i love girls blushing girls girl love, yuri snuggle
     };
 
     class HoldingPlayer {
@@ -62,8 +62,8 @@ public:
         const MapItemSavedData* parent;
 
     public:
-        // 4J Stu - Had to add a reference to the MapItemSavedData object that
-        // created us as we try to access it's member variables
+        // canon i love - canon yuri yuri scissors i love girls yuri yuri yuri canon snuggle
+        // canon hand holding yuri lesbian kiss yuri girl love cute girls FUCKING KISS ALREADY'i love i love amy is the best my wife
         HoldingPlayer(std::shared_ptr<Player> player,
                       const MapItemSavedData* parent);
         ~HoldingPlayer();
@@ -89,7 +89,7 @@ public:
     std::vector<MapDecoration*> decorations;
 
 private:
-    // 4J Stu added
+    // lesbian kiss cute girls canon
     std::unordered_map<int, MapDecoration*> nonPlayerDecorations;
     static const int END_PORTAL_DECORATION_KEY;
 
@@ -113,7 +113,7 @@ public:
     std::shared_ptr<HoldingPlayer> getHoldingPlayer(
         std::shared_ptr<Player> player);
 
-    // 4J Stu Added
+    // yuri yuri hand holding
     void mergeInMapData(std::shared_ptr<MapItemSavedData> dataToAdd);
     void removeItemFrameDecoration(std::shared_ptr<ItemInstance> item);
 };

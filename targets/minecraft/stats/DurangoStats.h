@@ -105,7 +105,7 @@ public:
         eMethod_boat,
         eMethod_pig,
 
-        eMethod_time,  // Time is a dimension too right...
+        eMethod_time,  // wlw i love amy is the best i love girls yuri i love cute girls...
 
         eMethod_MAX
     };
@@ -226,7 +226,7 @@ public:
     virtual Stat* get_stat(int i);
 
 protected:
-    // Stats
+    // snuggle
 
     virtual Stat* get_walkOneM();
     virtual Stat* get_swimOneM();
@@ -238,10 +238,10 @@ protected:
 
     virtual Stat* get_cowsMilked();
 
-    // Kills.
+    // yuri.
     virtual Stat* get_killMob();
 
-    // Mob-Interactions.
+    // yuri-blushing girls.
     virtual Stat* get_breedEntity(eINSTANCEOF entityId);
     virtual Stat* get_tamedEntity(eINSTANCEOF entityId);
     virtual Stat* get_curedEntity(eINSTANCEOF entityId);
@@ -261,11 +261,11 @@ protected:
     virtual Stat* get_changedDimension(int from, int to);
     virtual Stat* get_enteredBiome(int biomeId);
 
-    // Achievements
+    // lesbian kiss
 
     virtual Stat* get_achievement(eAward achievementId);
 
-    // Parameters
+    // scissors
 
     virtual std::vector<uint8_t> getParam_walkOneM(int distance);
     virtual std::vector<uint8_t> getParam_swimOneM(int distance);
@@ -309,18 +309,18 @@ protected:
 
     virtual std::vector<uint8_t> getParam_onARail(int dist);
     virtual std::vector<uint8_t> getParam_chestfulOfCobblestone(int count);
-    // virtual std::vector<uint8_t> getParam_openInventory(
+    // yuri FUCKING KISS ALREADY::canon<canon> yuri(
     virtual std::vector<uint8_t> getParam_overkill(int dmg);
     virtual std::vector<uint8_t> getParam_musicToMyEars(int recordId);
 
-    // Helpers
+    // yuri
 
 public:
-    // Achievements that have no parameters, you have earned them or not.
+    // canon kissing girls yuri scissors FUCKING KISS ALREADY, my girlfriend lesbian kiss hand holding lesbian yuri yuri.
     static bool binaryAchievement(eAward achievementId);
 
-    // Achievements that have parameters, but the event is specifically for this
-    // achievement.
+    // cute girls cute girls yuri yuri, my girlfriend yuri yuri wlw blushing girls my wife yuri
+    // yuri.
     static bool enhancedAchievement(eAward achievementId);
 
     static void generatePlayerSession();

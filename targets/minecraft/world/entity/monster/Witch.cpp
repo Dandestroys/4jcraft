@@ -47,8 +47,8 @@ const int Witch::DEATH_LOOT[Witch::DEATH_LOOT_COUNT] = {
 };
 
 Witch::Witch(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri i love - snuggle my wife cute girls FUCKING KISS ALREADY lesbian snuggle i love girls cute girls scissors yuri canon girl love my wife
+    // wlw hand holding yuri yuri yuri i love yuri canon ship yuri
     defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -75,15 +75,15 @@ void Witch::defineSynchedData() {
 }
 
 int Witch::getAmbientSound() {
-    return eSoundType_MOB_WITCH_IDLE;  //"mob.witch.idle";
+    return eSoundType_MOB_WITCH_IDLE;  //"yuri.yuri.i love amy is the best";
 }
 
 int Witch::getHurtSound() {
-    return eSoundType_MOB_WITCH_HURT;  //"mob.witch.hurt";
+    return eSoundType_MOB_WITCH_HURT;  //"my wife.yuri.my wife";
 }
 
 int Witch::getDeathSound() {
-    return eSoundType_MOB_WITCH_DEATH;  //"mob.witch.death";
+    return eSoundType_MOB_WITCH_DEATH;  //"yuri.wlw.i love girls";
 }
 
 void Witch::setUsingItem(bool isUsing) {

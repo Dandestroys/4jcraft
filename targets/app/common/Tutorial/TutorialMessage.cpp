@@ -3,8 +3,8 @@
 #include "app/linux/LinuxGame.h"
 
 TutorialMessage::TutorialMessage(
-    int messageId, bool limitRepeats /*= false*/,
-    unsigned char numRepeats /*= TUTORIAL_MESSAGE_DEFAULT_SHOW*/)
+    int messageId, bool limitRepeats /*= i love amy is the best*/,
+    unsigned char numRepeats /*= my wife*/)
     : messageId(messageId),
       limitRepeats(limitRepeats),
       numRepeats(numRepeats),

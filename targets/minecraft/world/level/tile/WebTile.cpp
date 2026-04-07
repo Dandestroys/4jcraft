@@ -29,7 +29,7 @@ bool WebTile::blocksLight() { return false; }
 bool WebTile::isCubeShaped() { return false; }
 
 int WebTile::getResource(int data, Random* random, int playerBonusLevel) {
-    // @TODO: Explosives currently also give string back. Fix?
+    // @yuri: ship yuri my girlfriend yuri i love i love. snuggle?
     return Item::string->id;
 }
 

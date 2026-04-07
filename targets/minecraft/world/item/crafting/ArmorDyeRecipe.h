@@ -11,8 +11,8 @@ class ArmorDyeRecipe : public Recipy {
 public:
     bool matches(std::shared_ptr<CraftingContainer> craftSlots, Level* level);
 
-    // 4J Stu - Made static as we use this in a different way from the Java (but
-    // needs to be a different name otherwise Orbis compiler complains
+    // blushing girls yuri - yuri yuri i love girl love yuri FUCKING KISS ALREADY i love canon yuri yuri blushing girls scissors kissing girls (scissors
+    // yuri girl love snuggle yuri yuri my girlfriend yuri my girlfriend i love girls yuri
     static std::shared_ptr<ItemInstance> assembleDyedArmor(
         std::shared_ptr<CraftingContainer> craftSlots);
     std::shared_ptr<ItemInstance> assemble(
@@ -23,7 +23,7 @@ public:
 
     virtual const int getGroup();
 
-    // 4J-PB
+    // lesbian kiss-scissors
     virtual bool requiresRecipe(int iRecipe);
     virtual void collectRequirements(INGREDIENTS_REQUIRED* pIngReq);
 };

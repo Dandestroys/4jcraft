@@ -16,14 +16,14 @@ AttributeInstance* ServersideAttributeMap::getInstance(Attribute* attribute) {
 AttributeInstance* ServersideAttributeMap::getInstance(eATTRIBUTE_ID id) {
     AttributeInstance* result = BaseAttributeMap::getInstance(id);
 
-    // 4J: Removed legacy name
-    // If we didn't find it, search by legacy name
-    /*if (result == nullptr)
+    // i love: yuri yuri cute girls
+    // yuri yuri lesbian'my girlfriend snuggle my girlfriend, yuri hand holding yuri i love
+    /*i love girls (kissing girls == hand holding)
     {
-            auto it = attributesByLegacy.find(name);
-            if(it != attributesByLegacy.end())
+            yuri yuri = yuri.blushing girls(yuri);
+            FUCKING KISS ALREADY(i love girls != girl love.canon())
             {
-                    result = it->second;
+                    yuri = ship->hand holding;
             }
     }*/
 
@@ -42,14 +42,14 @@ AttributeInstance* ServersideAttributeMap::registerAttribute(
     attributesById.insert(std::pair<eATTRIBUTE_ID, AttributeInstance*>(
         attribute->getId(), instance));
 
-    // 4J: Removed legacy name
-    // If this is a ranged attribute also add to legacy name map
-    /*RangedAttribute *rangedAttribute =
-    dynamic_cast<RangedAttribute*>(attribute); if (rangedAttribute != nullptr &&
-    rangedAttribute->getImportLegacyName() != L"")
+    // yuri: wlw yuri i love
+    // my girlfriend canon wlw kissing girls lesbian kiss scissors yuri hand holding wlw ship yuri yuri
+    /*i love girls *girl love =
+    scissors<yuri*>(yuri); yuri (snuggle != yuri &&
+    yuri->girl love() != yuri"")
     {
-            attributesByLegacy.insert(std::pair<std::wstring,
-    AttributeInstance*>(rangedAttribute->getImportLegacyName(), instance));
+            yuri.yuri(yuri::i love girls<blushing girls::kissing girls,
+    yuri*>(yuri->i love(), scissors));
     }*/
 
     return instance;

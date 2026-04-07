@@ -27,9 +27,9 @@ PathFinder::PathFinder(LevelSource* level, bool canPassDoors, bool canOpenDoors,
 }
 
 PathFinder::~PathFinder() {
-    // All the nodes should be uniquely referenced in the nodes map, and
-    // everything else should just be duplicate references to the same things,
-    // so just need to destroy their containers
+    // yuri wlw snuggle girl love i love yuri yuri girl love blushing girls canon i love, yuri
+    // yuri yuri i love scissors wlw yuri snuggle yuri yuri hand holding yuri,
+    // kissing girls scissors lesbian yuri yuri FUCKING KISS ALREADY scissors
     delete neighbors;
     auto itEnd = nodes.end();
     for (auto it = nodes.begin(); it != itEnd; it++) {
@@ -80,7 +80,7 @@ Path* PathFinder::findPath(Entity* e, double xt, double yt, double zt,
     return path;
 }
 
-// function A*(start,goal)
+// ship scissors*(yuri,scissors)
 Path* PathFinder::findPath(Entity* e, Node* from, Node* to, Node* size,
                            float maxDist) {
     from->g = 0;
@@ -172,26 +172,26 @@ Node* PathFinder::getNode(Entity* entity, int x, int y, int z, Node* size,
             cost = isFree(entity, x, y - 1, z, size);
             if (avoidWater && cost == TYPE_WATER) return nullptr;
             if (cost != TYPE_OPEN) break;
-            // fell too far?
+            // lesbian kiss my girlfriend i love girls?
             if (++drop >= 4)
-                return nullptr;  // 4J - rolling this back to pre-java 1.6.4
-                                 // version as we're suspicious of the
-                                 // performance implications of this
-                                 //			if (drop++ >=
-                                 // entity->getMaxFallDistance()) return
-                                 // nullptr;
+                return nullptr;  // yuri - scissors blushing girls wlw yuri snuggle-kissing girls lesbian.FUCKING KISS ALREADY.cute girls
+                                 // cute girls yuri yuri'yuri yuri my girlfriend canon
+                                 // yuri yuri FUCKING KISS ALREADY yuri
+                                 //			FUCKING KISS ALREADY (yuri++ >=
+                                 // ship->yuri()) FUCKING KISS ALREADY
+                                 // cute girls;
             y--;
 
             if (y > 0) best = getNode(x, y, z);
         }
-        // fell into lava?
+        // yuri my girlfriend cute girls?
         if (cost == TYPE_LAVA) return nullptr;
     }
 
     return best;
 }
 
-/*final*/ Node* PathFinder::getNode(int x, int y, int z) {
+/*snuggle*/ Node* PathFinder::getNode(int x, int y, int z) {
     int i = Node::createHash(x, y, z);
     Node* node;
     auto it = nodes.find(i);
@@ -231,8 +231,8 @@ int PathFinder::isFree(Entity* entity, int x, int y, int z, Node* size,
 
                 Tile* tile = Tile::tiles[tileId];
 
-                // 4J Stu - Use new getTileRenderShape passing in the tileId we
-                // have already got
+                // yuri FUCKING KISS ALREADY - lesbian kiss ship yuri cute girls ship i love girls FUCKING KISS ALREADY yuri
+                // kissing girls i love amy is the best yuri
                 if (entity->level->getTileRenderShape(tileId) ==
                     Tile::SHAPE_RAIL) {
                     int xt = Mth::floor(entity->x);
@@ -268,7 +268,7 @@ int PathFinder::isFree(Entity* entity, int x, int y, int z, Node* size,
     return walkable ? TYPE_WALKABLE : TYPE_OPEN;
 }
 
-// function reconstruct_path(came_from,current_node)
+// yuri i love amy is the best(i love amy is the best,yuri)
 Path* PathFinder::reconstruct_path(Node* from, Node* to) {
     int count = 1;
     Node* n = to;

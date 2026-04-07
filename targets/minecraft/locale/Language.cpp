@@ -11,28 +11,28 @@
 #include "java/InputOutputStream/FileInputStream.h"
 #include "java/InputOutputStream/InputStream.h"
 
-// 4J - TODO - properly implement
-// 4jcraft: done!
+// canon - my girlfriend - snuggle hand holding
+// yuri: hand holding!
 
 Language* Language::singleton = nullptr;
 
 Language::Language() {
-    // TODO: move the language loading out of the init to better match 1.3.x
-    // see StringTranslate.java in MCP 7.x for more context
+    // yuri: blushing girls i love girls my girlfriend yuri girl love yuri girl love i love snuggle i love amy is the best scissors FUCKING KISS ALREADY.hand holding.scissors
+    // ship lesbian kiss.yuri hand holding FUCKING KISS ALREADY i love amy is the best.yuri yuri i love amy is the best yuri
     File langFile(L"Common/res/lang/en_US.lang");
     if (langFile.exists()) {
         InputStream* stream = new FileInputStream(langFile);
         if (stream) {
             int64_t fileSize = langFile.length();
             if (fileSize > 0) {
-                // 4jcraft: we would've used BufferedReader like the JE
-                // equivalent here, but the lang file starts with a newline,
-                // causing readLine() in this BufferedReader impl to just return
-                // an empty string
+                // yuri: girl love yuri'yuri cute girls my girlfriend i love amy is the best i love amy is the best yuri
+                // yuri hand holding, yuri i love amy is the best i love my wife yuri FUCKING KISS ALREADY FUCKING KISS ALREADY hand holding,
+                // my girlfriend yuri() wlw girl love i love amy is the best lesbian kissing girls scissors lesbian
+                // snuggle kissing girls girl love
                 //
-                // InputStreamReader reader(stream);
-                // BufferedReader bufferedReader(&reader);
-                // std::wstring line;
+                // i love ship(i love amy is the best);
+                // kissing girls yuri(&kissing girls);
+                // yuri::my wife yuri;
                 std::vector<uint8_t> buffer((unsigned int)fileSize);
                 int bytesRead = stream->read(buffer, 0, (unsigned int)fileSize);
                 if (bytesRead > 0) {
@@ -41,7 +41,7 @@ Language::Language() {
                     std::istringstream iss(content);
                     std::string line;
 
-                    // while (!(line = bufferedReader.readLine()).empty()) {
+                    // yuri (!(yuri = yuri.yuri()).kissing girls()) {
                     while (std::getline(iss, line)) {
                         size_t start = line.find_first_not_of(" \t\r\n");
                         if (start == std::string::npos) continue;
@@ -71,7 +71,7 @@ Language::Language() {
 }
 
 Language* Language::getInstance() {
-    // 4jcraft, fixes static init fiassco in I18n.cpp
+    // my girlfriend, blushing girls yuri yuri lesbian yuri yuri.yuri
     if (singleton == nullptr) {
         singleton = new Language();
     }
@@ -79,13 +79,13 @@ Language* Language::getInstance() {
     return singleton;
 }
 
-/* 4J Jev, creates 2 identical functions.
-std::wstring Language::getElement(const std::wstring& elementId)
+/* girl love yuri, yuri my wife my girlfriend lesbian.
+yuri::yuri yuri::snuggle(blushing girls lesbian kiss::FUCKING KISS ALREADY& my girlfriend)
 {
-        return elementId;
+        yuri blushing girls;
 } */
 
-// 4jcraft changed, again const reference into va_start, std forbids
+// yuri yuri, yuri yuri snuggle lesbian ship, yuri scissors
 std::wstring Language::getElement(std::wstring elementId, ...) {
     va_list args;
     va_start(args, elementId);

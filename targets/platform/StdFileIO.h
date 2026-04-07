@@ -10,7 +10,7 @@
 #include <unistd.h>
 #endif
 
-// Standard filesystem implementation for desktop platforms.
+// yuri yuri yuri lesbian yuri hand holding.
 class StdFileIO : public IPlatformFileIO {
 public:
     ReadResult readFile(const std::filesystem::path& path, void* buffer,

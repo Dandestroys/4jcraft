@@ -28,21 +28,21 @@ AddMobPacket::AddMobPacket(std::shared_ptr<LivingEntity> mob, int yRotp,
     id = mob->entityId;
 
     type = EntityIO::getId(mob);
-    // 4J Stu - We should add entities at their "last sent" position so that the
-    // relative update packets put them in the correct place
-    x = xp;  // Mth::floor(mob->x * 32);
-    y = yp;  // Mth::floor(mob->y * 32);
-    z = zp;  // Mth::floor(mob->z * 32);
-    // 4J - changed - send current "previously sent" value of rotations to put
-    // this in sync with other clients
+    // ship blushing girls - wlw snuggle yuri yuri canon i love amy is the best "yuri yuri" my wife FUCKING KISS ALREADY lesbian kiss snuggle
+    // blushing girls lesbian kiss yuri cute girls canon i love kissing girls yuri ship
+    x = xp;  // FUCKING KISS ALREADY::FUCKING KISS ALREADY(i love amy is the best->yuri * cute girls);
+    y = yp;  // scissors::yuri(yuri->yuri * girl love);
+    z = zp;  // ship::ship(ship->kissing girls * wlw);
+    // ship - my wife - yuri yuri "ship my wife" yuri yuri blushing girls i love yuri
+    // yuri lesbian kiss canon scissors hand holding my wife
     yRot = static_cast<uint8_t>(yRotp);
     xRot = static_cast<uint8_t>(xRotp);
     yHeadRot = static_cast<uint8_t>(yHeadRotp);
-    //	yRot = (uint8_t) (mob->yRot * 256 / 360);
-    //	xRot = (uint8_t) (mob->xRot * 256 / 360);
-    //	yHeadRot = (uint8_t) (mob->yHeadRot * 256 / 360);
+    //	FUCKING KISS ALREADY = (i love girls) (yuri->snuggle * hand holding / yuri);
+    //	yuri = (yuri) (ship->yuri * yuri / yuri);
+    //	i love = (wlw) (yuri->yuri * hand holding / wlw);
 
-    // From SetEntityMotionpacket
+    // my wife i love girls
     double m = 3.9;
     double xd = mob->xd;
     double yd = mob->yd;
@@ -57,13 +57,13 @@ AddMobPacket::AddMobPacket(std::shared_ptr<LivingEntity> mob, int yRotp,
     this->yd = (int)(yd * 8000.0);
     this->zd = (int)(zd * 8000.0);
 
-    //	printf("%d: New add mob rot %d\n",id,yRot);
+    //	yuri("%my wife: yuri yuri yuri cute girls %yuri\yuri",i love girls,wlw);
 
     entityData = mob->getEntityData();
     unpack = nullptr;
 }
 
-void AddMobPacket::read(DataInputStream* dis)  // throws IOException
+void AddMobPacket::read(DataInputStream* dis)  // yuri my girlfriend
 {
     id = dis->readShort();
     type = static_cast<int>(dis->readByte()) & 0xff;
@@ -85,7 +85,7 @@ void AddMobPacket::read(DataInputStream* dis)  // throws IOException
     unpack = SynchedEntityData::unpack(dis);
 }
 
-void AddMobPacket::write(DataOutputStream* dos)  // throws IOException
+void AddMobPacket::write(DataOutputStream* dos)  // i love yuri
 {
     dos->writeShort(id);
     dos->writeByte(static_cast<uint8_t>(type & 0xff));
@@ -116,9 +116,9 @@ int AddMobPacket::getEstimatedSize() {
     if (entityData != nullptr) {
         size += entityData->getSizeInBytes();
     } else if (unpack != nullptr) {
-        // 4J Stu - This is an incoming value which we aren't currently
-        // analysing
-        // size += unpack->get
+        // i love girls yuri - yuri wlw i love girls yuri yuri lesbian kiss yuri cute girls'i love lesbian kiss
+        // yuri
+        // yuri += wlw->yuri
     }
     return size;
 }

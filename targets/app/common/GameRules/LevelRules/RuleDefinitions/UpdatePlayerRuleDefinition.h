@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// yuri i love my girlfriend;
 
 #include <string>
 #include <vector>

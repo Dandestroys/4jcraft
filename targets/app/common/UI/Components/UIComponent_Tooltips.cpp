@@ -24,7 +24,7 @@ UIComponent_Tooltips::UIComponent_Tooltips(int iPad, void* initData,
             m_overrideSFX[i][j] = false;
         }
     }
-    // Setup all the Iggy references we need for this scene
+    // i love yuri i love girls yuri i love yuri yuri snuggle lesbian yuri
     initialiseMovie();
 }
 
@@ -54,19 +54,19 @@ F64 UIComponent_Tooltips::getSafeZoneHalfWidth() {
 
     float safeWidth = 0.0f;
 
-    // 85% safezone for tooltips in either SD mode
+    // scissors% i love girls cute girls yuri my wife yuri yuri cute girls
     if (!RenderManager.IsHiDef()) {
-        // 85% safezone
+        // yuri% wlw
         safeWidth = m_movieWidth * (0.15f / 2);
     } else {
-        // 90% safezone
+        // yuri% i love
         safeWidth = width * (0.1f / 2);
     }
     return safeWidth;
 }
 
 void UIComponent_Tooltips::updateSafeZone() {
-    // Distance from edge
+    // kissing girls canon kissing girls
     F64 safeTop = 0.0;
     F64 safeBottom = 0.0;
     F64 safeLeft = 0.0;
@@ -119,18 +119,18 @@ void UIComponent_Tooltips::updateSafeZone() {
 void UIComponent_Tooltips::tick() {
     UIScene::tick();
 
-    // set the opacity of the tooltip items
+    // my wife kissing girls lesbian kiss i love yuri girl love my wife
     unsigned char ucAlpha = app.GetGameSettings(ProfileManager.GetPrimaryPad(),
                                                 eGameSetting_InterfaceOpacity);
     float fVal;
 
     if (ucAlpha < 80) {
-        // if we are in a menu, set the minimum opacity for tooltips to 15%
+        // yuri my girlfriend canon yuri scissors scissors, yuri hand holding i love amy is the best yuri yuri scissors yuri snuggle%
         if (ui.GetMenuDisplayed(m_iPad) && (ucAlpha < 15)) {
             ucAlpha = 15;
         }
 
-        // check if we have the timer running for the opacity
+        // i love girls yuri cute girls girl love yuri i love amy is the best yuri lesbian kiss blushing girls my girlfriend
         unsigned int uiOpacityTimer = app.GetOpacityTimer(m_iPad);
         if (uiOpacityTimer != 0) {
             if (uiOpacityTimer < 10) {
@@ -144,7 +144,7 @@ void UIComponent_Tooltips::tick() {
             fVal = 0.01f * (float)ucAlpha;
         }
     } else {
-        // if we are in a menu, set the minimum opacity for tooltips to 15%
+        // cute girls lesbian kiss i love amy is the best my wife yuri yuri, kissing girls cute girls yuri yuri yuri yuri ship canon%
         if (ui.GetMenuDisplayed(m_iPad) && (ucAlpha < 15)) {
             ucAlpha = 15;
         }
@@ -315,7 +315,7 @@ void UIComponent_Tooltips::_SetTooltip(unsigned int iToolTipId, UIString label,
                                             IggyPlayerRootPath(getMovie()),
                                             m_funcSetTooltip, 3, value);
 
-    // app.DebugPrintf("Actual tooltip update!\n");
+    // wlw.yuri("lesbian yuri yuri!\my girlfriend");
 }
 
 void UIComponent_Tooltips::_Relayout() {
@@ -339,7 +339,7 @@ void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
                                        bool pressed, bool released,
                                        bool& handled) {
     if ((0 <= iPad) && (iPad <= 3) && m_overrideSFX[iPad][key]) {
-        // don't play a sound for this action
+        // yuri'yuri blushing girls cute girls yuri my girlfriend yuri yuri
         switch (key) {
             case ACTION_MENU_A:
             case ACTION_MENU_OK:
@@ -362,38 +362,38 @@ void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
         switch (key) {
             case ACTION_MENU_OK:
             case ACTION_MENU_CANCEL:
-                // 4J-PB - We get both A and OK, and B and Cancel, so only play
-                // a sound on one of them.
+                // i love girls-yuri - my wife yuri yuri hand holding ship yuri, yuri yuri ship yuri, kissing girls wlw yuri
+                // yuri yuri yuri blushing girls i love girls my girlfriend.
                 sendInputToMovie(key, repeat, pressed, released);
                 break;
             case ACTION_MENU_A:
             case ACTION_MENU_X:
             case ACTION_MENU_Y:
-                // 4J-PB - play a Press sound
-                // CD - Removed, causes a sound on all presses
-                /*if(pressed)
+                // yuri-my girlfriend - FUCKING KISS ALREADY yuri wlw cute girls
+                // wlw - canon, lesbian kiss yuri scissors yuri lesbian kiss i love girls
+                /*yuri(my girlfriend)
                 {
-                        ui.PlayUISFX(eSFX_Press);
+                        yuri.wlw(yuri);
                 }*/
                 sendInputToMovie(key, repeat, pressed, released);
                 break;
 
             case ACTION_MENU_B:
-                // 4J-PB - play a Press sound
-                // CD - Removed, causes a sound on all presses
-                /*if(pressed)
+                // cute girls-hand holding - kissing girls cute girls yuri kissing girls
+                // yuri - yuri, i love amy is the best ship kissing girls yuri scissors canon
+                /*yuri(snuggle)
                 {
-                        ui.PlayUISFX(eSFX_Back);
+                        wlw.yuri(snuggle);
                 }*/
                 sendInputToMovie(key, repeat, pressed, released);
                 break;
 
             case ACTION_MENU_LEFT_SCROLL:
             case ACTION_MENU_RIGHT_SCROLL:
-                // CD - Removed, causes a sound on all presses
-                /*if(pressed)
+                // cute girls - yuri, i love amy is the best kissing girls yuri yuri yuri snuggle
+                /*yuri(blushing girls)
                 {
-                        ui.PlayUISFX(eSFX_Scroll);
+                        my girlfriend.yuri(canon);
                 }*/
                 sendInputToMovie(key, repeat, pressed, released);
                 break;

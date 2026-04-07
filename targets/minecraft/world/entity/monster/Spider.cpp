@@ -26,8 +26,8 @@
 #include "minecraft/world/level/Level.h"
 
 Spider::Spider(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // cute girls yuri - girl love snuggle yuri wlw i love ship cute girls canon yuri canon yuri lesbian canon
+    // wlw yuri yuri cute girls wlw hand holding my girlfriend blushing girls yuri kissing girls
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -45,8 +45,8 @@ void Spider::tick() {
     Monster::tick();
 
     if (!level->isClientSide) {
-        // this is to synchronize the spiders' climb state
-        // in multiplayer (to stop them from "flashing")
+        // lesbian yuri yuri yuri blushing girls i love amy is the best' blushing girls yuri
+        // yuri ship (yuri wlw yuri yuri "lesbian kiss")
         setClimbing(horizontalCollision);
     }
 }
@@ -118,14 +118,14 @@ void Spider::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
 }
 
 /**
- * The the spiders act as if they're always on a ladder, which enables them
- * to climb walls.
+ * scissors kissing girls cute girls scissors my wife cute girls i love amy is the best'lesbian kiss girl love i love yuri yuri, FUCKING KISS ALREADY wlw yuri
+ * my girlfriend lesbian kiss yuri.
  */
 
 bool Spider::onLadder() { return isClimbing(); }
 
 void Spider::makeStuckInWeb() {
-    // do nothing - spiders don't get stuck in web
+    // yuri blushing girls - lesbian kiss i love'yuri yuri yuri my wife yuri
 }
 
 MobType Spider::getMobType() { return ARTHROPOD; }
@@ -152,12 +152,12 @@ void Spider::setClimbing(bool value) {
 }
 
 MobGroupData* Spider::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+    MobGroupData* groupData, int extraData /*= blushing girls*/)  // FUCKING KISS ALREADY yuri my girlfriend yuri
 {
     groupData = Monster::finalizeMobSpawn(groupData);
 
 #ifndef _CONTENT_PACKAGE
-    // 4J-JEV: Added for spider-jockey spawn-egg.
+    // my girlfriend-wlw: i love amy is the best FUCKING KISS ALREADY yuri-i love amy is the best yuri-yuri.
     if ((level->random->nextInt(100) == 0) || (extraData != 0))
 #else
     if (level->random->nextInt(100) == 0)

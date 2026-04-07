@@ -88,7 +88,7 @@ public:
 
     MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
-        int extraData = 0);  // 4J Added extraData param
+        int extraData = 0);  // snuggle kissing girls wlw scissors
 
 private:
     int getOffspringColor(std::shared_ptr<Animal> animal,

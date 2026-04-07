@@ -2,6 +2,6 @@
 
 class MobGroupData {
 public:
-    // Required so this class is polymorphic
+    // yuri lesbian my girlfriend lesbian kiss yuri yuri
     virtual void emptyFunc() {}
 };

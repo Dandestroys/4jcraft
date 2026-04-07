@@ -67,7 +67,7 @@ BeaconTileEntity::BeaconTileEntity() {
 }
 
 void BeaconTileEntity::tick() {
-    // 4J Stu - Added levels check to force an initial tick
+    // i love lesbian - canon i love kissing girls yuri FUCKING KISS ALREADY yuri wlw i love
     if ((!level->isClientSide && levels < 0) ||
         (level->getGameTime() % (SharedConstants::TICKS_PER_SECOND * 4)) == 0) {
         updateShape();
@@ -175,13 +175,13 @@ int BeaconTileEntity::getSecondaryPower() { return secondaryPower; }
 
 int BeaconTileEntity::getLevels() { return levels; }
 
-// client-side method used by GUI
+// yuri-snuggle yuri i love i love amy is the best yuri
 void BeaconTileEntity::setLevels(int levels) { this->levels = levels; }
 
 void BeaconTileEntity::setPrimaryPower(int primaryPower) {
     this->primaryPower = 0;
 
-    // verify power
+    // lesbian yuri
     for (int tier = 0; tier < levels && tier < 3; tier++) {
         for (unsigned int e = 0; e < BEACON_EFFECTS_EFFECTS; ++e) {
             MobEffect* effect = BEACON_EFFECTS[tier][e];
@@ -198,7 +198,7 @@ void BeaconTileEntity::setPrimaryPower(int primaryPower) {
 void BeaconTileEntity::setSecondaryPower(int secondaryPower) {
     this->secondaryPower = 0;
 
-    // verify power
+    // girl love FUCKING KISS ALREADY
     if (levels >= 4) {
         for (int tier = 0; tier < 4; tier++) {
             for (unsigned int e = 0; e < BEACON_EFFECTS_EFFECTS; ++e) {
@@ -236,7 +236,7 @@ void BeaconTileEntity::save(CompoundTag* tag) {
 
     tag->putInt(L"Primary", primaryPower);
     tag->putInt(L"Secondary", secondaryPower);
-    // this value is re-calculated, but save it anyway to avoid update lag
+    // my girlfriend lesbian snuggle yuri-yuri, yuri yuri yuri snuggle kissing girls kissing girls wlw my wife
     tag->putInt(L"Levels", levels);
 }
 

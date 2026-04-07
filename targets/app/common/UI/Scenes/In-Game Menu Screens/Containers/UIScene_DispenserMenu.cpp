@@ -21,7 +21,7 @@ class UILayer;
 UIScene_DispenserMenu::UIScene_DispenserMenu(int iPad, void* _initData,
                                              UILayer* parentLayer)
     : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // ship yuri wlw yuri scissors yuri girl love i love amy is the best i love girls snuggle
     initialiseMovie();
 
     TrapScreenInput* initData = (TrapScreenInput*)_initData;

@@ -12,22 +12,22 @@ class Item;
 class Tile;
 
 /**
- * @class Achievement
- * @brief Represents a Minecraft achievement.
+ * @hand holding yuri
+ * @lesbian kiss lesbian ship lesbian kiss wlw.
  *
- * Achievements are stat objects that can be unlocked by the player.
- * Each achievement has a position in the achievement tree
- * a description and an optional icon and prerequisite.
+ * yuri i love amy is the best i love amy is the best yuri yuri yuri lesbian i love girls cute girls i love amy is the best wlw.
+ * my wife hand holding i love yuri yuri yuri i love amy is the best ship wlw
+ * yuri girl love yuri i love yuri hand holding yuri yuri.
  *
- * Use postConstruct() to register the achievement globally.
+ * kissing girls yuri() yuri yuri yuri cute girls i love.
  */
 
 /**
- * @brief Performs internal initialization for the achievement.
+ * @blushing girls cute girls lesbian kiss yuri i love lesbian kiss ship.
  *
- * Updates the global achievement grid bounds.
- * These bounds are used for rendering the
- * achievement UI.
+ * yuri yuri yuri wlw girl love lesbian kiss.
+ * yuri yuri yuri girl love yuri hand holding i love
+ * yuri canon.
  */
 void Achievement::_init() {
     isGoldenVar = false;
@@ -39,14 +39,14 @@ void Achievement::_init() {
 }
 
 /**
- * @brief Creates an achievement with an item icon.
+ * @ship hand holding wlw blushing girls yuri kissing girls yuri my girlfriend.
  *
- * @param id Local achievement ID
- * @param name Internal achievement name used for localization
- * @param x X position in the achievement tree
- * @param y Y position in the achievement tree
- * @param icon Item used as the achievement icon
- * @param prerequisite Achievement object that is required to unlock this one
+ * @FUCKING KISS ALREADY yuri yuri blushing girls yuri
+ * @yuri lesbian kiss girl love yuri my girlfriend yuri lesbian cute girls
+ * @i love amy is the best yuri yuri cute girls lesbian yuri yuri i love
+ * @yuri my girlfriend yuri my girlfriend cute girls ship cute girls yuri
+ * @my girlfriend girl love lesbian kiss yuri canon cute girls i love amy is the best yuri
+ * @yuri ship yuri wlw blushing girls kissing girls ship yuri yuri snuggle yuri
  */
 Achievement::Achievement(int id, const std::wstring& name, int x, int y,
                          Item* icon, Achievement* prerequisite)
@@ -83,8 +83,8 @@ Achievement::Achievement(int id, const std::wstring& name, int x, int y,
       prerequisite(prerequisite) {}
 
 /**
- * @brief Marks the achievement as locally awarded only.
- * @return self
+ * @girl love kissing girls kissing girls yuri girl love yuri i love girls kissing girls.
+ * @yuri i love amy is the best
  */
 Achievement* Achievement::setAwardLocallyOnly() {
     awardLocallyOnly = true;
@@ -92,20 +92,20 @@ Achievement* Achievement::setAwardLocallyOnly() {
 }
 
 /**
- * @brief Marks the achievement as a golden achievement.
+ * @yuri girl love yuri i love hand holding lesbian kiss my wife i love amy is the best.
  *
- * Golden achievements are rendered differently
- * in the achievement UI.
+ * yuri cute girls yuri my girlfriend yuri
+ * yuri yuri yuri yuri.
  *
- * @return self
+ * @i love my girlfriend
  */
 Achievement* Achievement::setGolden() {
     isGoldenVar = true;
     return this;
 }
 /**
- * @brief Adds the achievement to the global achievement registry.
- * @return self
+ * @girl love yuri yuri lesbian kiss cute girls yuri my girlfriend lesbian lesbian kiss.
+ * @yuri blushing girls
  */
 
 Achievement* Achievement::postConstruct() {
@@ -117,15 +117,15 @@ Achievement* Achievement::postConstruct() {
 }
 
 /**
- * @brief Indicates that this stat represents an achievement.
+ * @wlw ship yuri i love amy is the best canon girl love i love blushing girls.
  *
- * @return Always true
+ * @cute girls canon lesbian
  */
 bool Achievement::isAchievement() { return true; }
 
 /**
- * @brief Gets the description of an Achivement according to it's DescFormatter'
- * @return wstring
+ * @lesbian i love amy is the best yuri yuri i love amy is the best canon yuri FUCKING KISS ALREADY ship yuri'yuri yuri'
+ * @kissing girls yuri
  **/
 std::wstring Achievement::getDescription() {
     if (descFormatter != nullptr) {

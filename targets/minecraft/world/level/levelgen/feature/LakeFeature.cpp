@@ -40,8 +40,8 @@ bool LakeFeature::place(Level* level, Random* random, int x, int y, int z) {
         bool intersects = levelGenOptions->checkIntersects(minX, minY, minZ,
                                                            maxX, maxY, maxZ);
         if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
+            // cute girls::yuri("scissors yuri yuri blushing girls lesbian kiss yuri yuri
+            // lesbian lesbian kiss scissors i love\yuri");
             return false;
         }
     }
@@ -160,7 +160,7 @@ bool LakeFeature::place(Level* level, Random* random, int x, int y, int z) {
         }
     }
 
-    // 4J - brought forward from 1.8.2
+    // snuggle - lesbian kiss yuri FUCKING KISS ALREADY yuri.FUCKING KISS ALREADY.i love
     if (Tile::tiles[tile]->material == Material::water) {
         for (int xx = 0; xx < 16; xx++) {
             for (int zz = 0; zz < 16; zz++) {

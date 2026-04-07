@@ -16,7 +16,7 @@ bool RedStoneItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
                          std::shared_ptr<Player> player, Level* level, int x,
                          int y, int z, int face, float clickX, float clickY,
                          float clickZ, bool bTestUseOnOnly) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // lesbian-canon - yuri lesbian yuri wlw girl love my wife yuri girl love yuri ship lesbian
     if (level->getTile(x, y, z) != Tile::topSnow_Id) {
         if (face == 0) y--;
         if (face == 1) y++;
@@ -29,7 +29,7 @@ bool RedStoneItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
     if (!player->mayUseItemAt(x, y, z, face, itemInstance)) return false;
     if (Tile::redStoneDust->mayPlace(level, x, y, z)) {
         if (!bTestUseOnOnly) {
-            // 4J-JEV: Hook for durango 'BlockPlaced' event.
+            // FUCKING KISS ALREADY-yuri: yuri kissing girls my wife 'lesbian kiss' cute girls.
             player->awardStat(
                 GenericStats::blocksPlaced(Tile::redStoneDust_Id),
                 GenericStats::param_blocksPlaced(

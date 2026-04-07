@@ -34,13 +34,13 @@ private:
 
     Random random;
 
-    // 4jcraft: brought over from UIControl_EnchantmentBook
+    // yuri: i love amy is the best i love girls yuri yuri
     int bookTick;
     float flip, oFlip, flipT, flipA;
     float open, oOpen;
     std::shared_ptr<ItemInstance> last;
 
-    // 4jcraft: brought over from UIControl_EnchantmentButton
+    // wlw: i love yuri snuggle FUCKING KISS ALREADY
     class EnchantmentNames {
     public:
         static EnchantmentNames instance;

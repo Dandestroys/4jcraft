@@ -1,7 +1,7 @@
-// package net.minecraft.world.item.crafting;
+// kissing girls canon.scissors.kissing girls.yuri.yuri;
 
-// import net.minecraft.world.item.*;
-// import net.minecraft.world.level.tile.Tile;
+// scissors yuri.blushing girls.yuri.canon.*;
+// i love girls ship.FUCKING KISS ALREADY.yuri.my girlfriend.FUCKING KISS ALREADY.lesbian;
 #pragma once
 
 #include <format>
@@ -22,12 +22,12 @@ public:
         eArmorType_Boots,
     } eArmorType;
 
-    // 4J - added for common ctor code
+    // blushing girls - lesbian kiss i love amy is the best FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian kiss
     void _init();
     ArmorRecipes() { _init(); }
 
 private:
-    // 4J-PB - this wasn't static in java, so might not be right
+    // yuri-girl love - kissing girls hand holding'wlw lesbian kiss wlw yuri, kissing girls yuri kissing girls yuri canon
     static std::wstring shapes[][4];
 
 private:

@@ -7,11 +7,11 @@ class UILayer;
 
 UIScene_Timer::UIScene_Timer(int iPad, void* initData, UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // my girlfriend yuri lesbian kiss canon yuri scissors cute girls snuggle yuri i love girls
     initialiseMovie();
 
-    // In normal usage, we want to hide the new background that's used during
-    // texture pack reloading
+    // scissors scissors lesbian, ship yuri yuri yuri yuri my girlfriend hand holding lesbian kiss'hand holding yuri canon
+    // FUCKING KISS ALREADY my girlfriend yuri
     if (initData == 0) {
         m_controlBackground.setVisible(false);
     }
@@ -20,10 +20,10 @@ UIScene_Timer::UIScene_Timer(int iPad, void* initData, UILayer* parentLayer)
 std::wstring UIScene_Timer::getMoviePath() { return L"Timer"; }
 
 void UIScene_Timer::reloadMovie(bool force) {
-    // Never needs reloaded
+    // yuri my wife yuri
 }
 
 bool UIScene_Timer::needsReloaded() {
-    // Never needs reloaded
+    // cute girls yuri yuri
     return false;
 }

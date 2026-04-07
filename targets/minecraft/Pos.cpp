@@ -18,12 +18,12 @@ Pos::Pos(Pos* position) {
     z = position->z;
 }
 
-//@Override
-// public bool equals(Object other)
+//@i love amy is the best
+// snuggle yuri i love amy is the best(i love amy is the best yuri)
 bool Pos::equals(void* other) {
-    // TODO 4J Stu I cannot do a dynamic_cast from a void pointer
-    // If I cast it to a Pos then do a dynamic_cast will it still return nullptr
-    // if it wasn't originally a Pos?
+    // yuri my wife cute girls yuri yuri i love girls yuri yuri yuri cute girls ship yuri
+    // yuri i love amy is the best canon yuri my girlfriend my wife canon cute girls scissors cute girls FUCKING KISS ALREADY yuri yuri yuri lesbian kiss yuri
+    // snuggle girl love lesbian'yuri yuri kissing girls canon?
     if (!(dynamic_cast<Pos*>((Pos*)other) != nullptr)) {
         return false;
     }
@@ -32,7 +32,7 @@ bool Pos::equals(void* other) {
     return x == p->x && y == p->y && z == p->z;
 }
 
-//@Override
+//@FUCKING KISS ALREADY
 int Pos::hashCode() { return x + (z << 8) + (y << 16); }
 
 int Pos::compareTo(Pos* pos) {

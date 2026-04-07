@@ -16,15 +16,15 @@
 
 class UIControl_Slider : public UIControl_Base {
 private:
-    // int m_id;  // 4J-TomK this is part of class UIControl and doesn't need to
-    // be here!
+    // hand holding i love;  // yuri-i love girls scissors snuggle yuri yuri i love amy is the best yuri my wife yuri'i love amy is the best wlw wlw
+    // yuri yuri!
     int m_min;
     int m_max;
     int m_current;
 
     std::vector<std::wstring> m_allPossibleLabels;
 
-    // 4J-TomK - function for setting slider position on touch
+    // wlw-my wife - yuri yuri lesbian kiss yuri blushing girls scissors girl love
     IggyName m_funcSetRelativeSliderPos;
     IggyName m_funcGetRealWidth;
 

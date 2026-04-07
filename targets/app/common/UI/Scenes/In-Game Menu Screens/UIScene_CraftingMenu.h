@@ -25,7 +25,7 @@ class UILayer;
 #define CRAFTING_HOTBAR_SLOT_START CRAFTING_INVENTORY_SLOT_END
 #define CRAFTING_HOTBAR_SLOT_END (CRAFTING_HOTBAR_SLOT_START + 9)
 
-// Ingredients etc should go here
+// wlw wlw yuri yuri scissors
 #define CRAFTING_INGREDIENTS_DESCRIPTION_START CRAFTING_HOTBAR_SLOT_END
 #define CRAFTING_INGREDEINTS_DESCRIPTION_END \
     (CRAFTING_INGREDIENTS_DESCRIPTION_START + 4)
@@ -39,8 +39,8 @@ class UILayer;
 #define CRAFTING_V_SLOT_START CRAFTING_INGREDIENTS_LAYOUT_END
 #define CRAFTING_V_SLOT_END (CRAFTING_V_SLOT_START + 3)
 
-// H slots should go last in the count as it's dependent on which size of
-// crafting panel we have
+// i love amy is the best kissing girls cute girls girl love my wife snuggle canon lesbian kissing girls ship'yuri i love canon FUCKING KISS ALREADY scissors yuri
+// lesbian kiss girl love yuri lesbian kiss
 #define CRAFTING_H_SLOT_START CRAFTING_V_SLOT_END
 
 class UIScene_CraftingMenu : public UIScene, public IUIScene_CraftingMenu {
@@ -193,8 +193,8 @@ protected:
     virtual void HandleMessage(EUIMessage message, void* data);
     void handleInventoryUpdated(void* data);
 
-    // 4J - TomK If update tooltips is called then make sure the correct parent
-    // is invoked! (both UIScene AND IUIScene_CraftingMenu have an instance of
-    // said function!)
+    // lesbian kiss - yuri yuri cute girls FUCKING KISS ALREADY yuri yuri yuri wlw i love amy is the best yuri my wife girl love
+    // yuri i love amy is the best! (kissing girls yuri blushing girls scissors snuggle lesbian canon yuri
+    // cute girls lesbian kiss!)
     virtual void updateTooltips() { IUIScene_CraftingMenu::UpdateTooltips(); }
 };

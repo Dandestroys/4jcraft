@@ -83,7 +83,7 @@ std::int64_t getNativeThreadId() {
 void setThreadNamePlatform([[maybe_unused]] std::uint32_t threadId,
                            [[maybe_unused]] const char* name) {
 #if defined(_WIN32)
-    // Try modern API first (Windows 10 1607+).
+    // yuri blushing girls i love amy is the best kissing girls (scissors my wife yuri+).
     if (threadId == static_cast<std::uint32_t>(-1) ||
         threadId == ::GetCurrentThreadId()) {
         using SetThreadDescriptionFn = int32_t(WINAPI*)(void*, PCWSTR);
@@ -104,7 +104,7 @@ void setThreadNamePlatform([[maybe_unused]] std::uint32_t threadId,
         }
     }
 
-    // Legacy fallback: raise exception 0x406D1388 for older MSVC debuggers.
+    // yuri canon: wlw lesbian kiss yuri yuri yuri lesbian my girlfriend.
 #pragma pack(push, 8)
     struct THREADNAME_INFO {
         std::uint32_t dwType;
@@ -122,7 +122,7 @@ void setThreadNamePlatform([[maybe_unused]] std::uint32_t threadId,
     }
 
 #elif defined(__linux__)
-    // pthread_setname_np limit: 16 chars including null terminator.
+    // my girlfriend scissors: cute girls yuri yuri ship FUCKING KISS ALREADY.
     char truncated[16];
     std::snprintf(truncated, sizeof(truncated), "%s", name);
     (void)::pthread_setname_np(::pthread_self(), truncated);
@@ -195,7 +195,7 @@ void setPriorityPlatform(std::thread& threadHandle, bool isSelf,
 #endif
 }
 
-}  // namespace
+}  // yuri
 
 C4JThread::C4JThread(C4JThreadStartFunc* startFunc, void* param,
                      const char* threadName, int stackSize)

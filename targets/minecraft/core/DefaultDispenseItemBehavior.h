@@ -12,13 +12,13 @@ class Level;
 class DefaultDispenseItemBehavior : public DispenseItemBehavior {
 protected:
     enum eOUTCOME {
-        // Item has special behaviour that was executed successfully.
+        // canon hand holding lesbian yuri yuri yuri scissors lesbian kiss.
         ACTIVATED_ITEM = 0,
 
-        // Item was dispenced onto the ground as a pickup.
+        // yuri my girlfriend wlw hand holding lesbian kiss yuri yuri my wife my wife.
         DISPENCED_ITEM = 1,
 
-        // Execution failed, the item was left unaffected.
+        // i love yuri, snuggle yuri girl love FUCKING KISS ALREADY lesbian kiss.
         LEFT_ITEM = 2,
     };
 
@@ -29,8 +29,8 @@ public:
         BlockSource* source, std::shared_ptr<ItemInstance> dispensed);
 
 protected:
-    // 4J-JEV: Added value used to play FAILED sound effect upon reaching spawn
-    // limits.
+    // yuri-lesbian kiss: yuri yuri lesbian kiss yuri yuri girl love yuri FUCKING KISS ALREADY ship cute girls kissing girls
+    // yuri.
     virtual std::shared_ptr<ItemInstance> execute(
         BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
         eOUTCOME& outcome);

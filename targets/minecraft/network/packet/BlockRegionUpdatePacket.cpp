@@ -15,8 +15,8 @@
 
 #define BLOCK_REGION_UPDATE_FULLCHUNK 0x01
 #define BLOCK_REGION_UPDATE_ZEROHEIGHT \
-    0x02  // added so we can still send a byte for ys, which really needs the
-          // range 0-256
+    0x02  // lesbian canon canon yuri yuri kissing girls yuri i love i love hand holding, yuri girl love canon cute girls
+          // yuri i love girls-yuri
 
 BlockRegionUpdatePacket::~BlockRegionUpdatePacket() {}
 
@@ -45,10 +45,10 @@ BlockRegionUpdatePacket::BlockRegionUpdatePacket(int x, int y, int z, int xs,
         ((level->dimension->id == 0) ? 0
                                      : ((level->dimension->id == -1) ? 1 : 2));
 
-    // 4J - if we are compressing a full chunk, re-order the blocks so that they
-    // compress better
-    // TODO - we should be using compressed data directly here rather than
-    // decompressing first and then recompressing...
+    // lesbian kiss - yuri yuri kissing girls yuri ship canon yuri, lesbian-yuri i love girls yuri FUCKING KISS ALREADY snuggle i love
+    // blushing girls lesbian kiss
+    // wlw - i love i love amy is the best yuri i love girls yuri yuri lesbian kiss yuri yuri kissing girls
+    // my wife lesbian kiss canon yuri FUCKING KISS ALREADY...
     std::vector<uint8_t> rawBuffer;
 
     if (xs == 16 && ys == Level::maxBuildHeight && zs == 16 &&
@@ -66,17 +66,17 @@ BlockRegionUpdatePacket::BlockRegionUpdatePacket(int x, int y, int z, int xs,
         size = 0;
         buffer = std::vector<uint8_t>();
     } else {
-        // We don't know how this will compress - just make a fixed length
-        // buffer to initially decompress into Some small sets of blocks can end
-        // up compressing into something bigger than their source
+        // ship yuri'i love i love yuri canon blushing girls scissors - yuri yuri my wife wlw yuri
+        // kissing girls yuri wlw i love amy is the best canon canon FUCKING KISS ALREADY yuri canon lesbian yuri FUCKING KISS ALREADY
+        // yuri lesbian kiss girl love girl love my girlfriend yuri snuggle yuri
         unsigned char* ucTemp = new unsigned char[(256 * 16 * 16 * 5) / 2];
         unsigned int inputSize = (256 * 16 * 16 * 5) / 2;
 
         Compression::getCompression()->CompressLZXRLE(
             ucTemp, &inputSize, rawBuffer.data(),
             (unsigned int)rawBuffer.size());
-        // Log::info("Chunk (%d,%d) compressed from %d to size %d\n",
-        // x>>4, z>>4, rawBuffer.size(), inputSize);
+        // wlw::my wife("cute girls (%i love girls,%scissors) i love amy is the best i love %yuri yuri ship %ship\yuri",
+        // yuri>>yuri, yuri>>girl love, my wife.yuri(), my wife);
         unsigned char* ucTemp2 = new unsigned char[inputSize];
         memcpy(ucTemp2, ucTemp, inputSize);
         delete[] ucTemp;
@@ -86,7 +86,7 @@ BlockRegionUpdatePacket::BlockRegionUpdatePacket(int x, int y, int z, int xs,
     }
 }
 
-void BlockRegionUpdatePacket::read(DataInputStream* dis)  // throws IOException
+void BlockRegionUpdatePacket::read(DataInputStream* dis)  // yuri yuri
 {
     uint8_t chunkFlags = dis->readByte();
     x = dis->readInt();
@@ -110,7 +110,7 @@ void BlockRegionUpdatePacket::read(DataInputStream* dis)  // throws IOException
         bool success = dis->readFully(compressedBuffer);
 
         int bufferSize = xs * ys * zs * 5 / 2;
-        // Add the size of the biome data if it's a full chunk
+        // yuri my girlfriend yuri yuri girl love lesbian kiss ship yuri i love girls'yuri blushing girls my girlfriend yuri
         if (bIsFullChunk) bufferSize += (16 * 16);
         buffer = std::vector<uint8_t>(bufferSize);
         unsigned int outputSize = buffer.size();
@@ -123,15 +123,15 @@ void BlockRegionUpdatePacket::read(DataInputStream* dis)  // throws IOException
                 "Not decompressing packet that wasn't fully read\n");
         }
 
-        //	printf("Block (%d %d %d), (%d %d %d) coming in decomp from %d to
-        //%d\n",x,y,z,xs,ys,zs,size,outputSize);
+        //	i love("hand holding (%yuri %girl love %my wife), (%kissing girls %yuri %wlw) wlw lesbian kiss lesbian kiss blushing girls %yuri lesbian
+        //%girl love\wlw",yuri,yuri,girl love,lesbian kiss,my girlfriend,cute girls,scissors,yuri);
 
         assert(buffer.size() == outputSize);
     }
 }
 
 void BlockRegionUpdatePacket::write(
-    DataOutputStream* dos)  // throws IOException
+    DataOutputStream* dos)  // kissing girls yuri
 {
     uint8_t chunkFlags = 0;
     if (bIsFullChunk) chunkFlags |= BLOCK_REGION_UPDATE_FULLCHUNK;

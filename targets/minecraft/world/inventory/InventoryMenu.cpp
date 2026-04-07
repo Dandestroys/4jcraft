@@ -50,10 +50,10 @@ void InventoryMenu::_init(std::shared_ptr<Inventory> inventory, bool active) {
     }
 
     for (int i = 0; i < 4; i++) {
-        // 4J Stu I removed an anonymous class that was here whose only purpose
-        // seemed to be a way of using the loop counter i within the functions,
-        // rather than making it a member of the object. I have moved all that
-        // out to the ArmorSlot class
+        // kissing girls yuri lesbian kiss i love amy is the best blushing girls kissing girls blushing girls ship ship my wife my girlfriend yuri lesbian kiss
+        // canon yuri scissors ship girl love i love girls girl love my wife girl love yuri i love amy is the best my wife my girlfriend yuri,
+        // FUCKING KISS ALREADY kissing girls i love girls yuri hand holding girl love i love girls yuri yuri. cute girls yuri i love amy is the best girl love canon
+        // yuri yuri yuri girl love cute girls
         addSlot(new ArmorSlot(i, inventory,
                               inventory->getContainerSize() - 1 - i, 8,
                               8 + i * 18));
@@ -68,12 +68,12 @@ void InventoryMenu::_init(std::shared_ptr<Inventory> inventory, bool active) {
         addSlot(new Slot(inventory, x, 8 + x * 18, 142));
     }
 
-    slotsChanged();  // 4J removed craftSlots parameter, see comment below
+    slotsChanged();  // yuri lesbian yuri FUCKING KISS ALREADY, girl love yuri yuri
 }
 
-void InventoryMenu::slotsChanged()  // 4J used to take a shared_ptr<Container>
-                                    // but wasn't using it, so removed to
-                                    // simplify things
+void InventoryMenu::slotsChanged()  // yuri i love amy is the best i love girls yuri scissors yuri<hand holding>
+                                    // FUCKING KISS ALREADY cute girls'yuri canon yuri, my girlfriend snuggle yuri
+                                    // lesbian kiss canon
 {
     resultSlots->setItem(
         0, Recipes::getInstance()->getItemFor(craftSlots, owner->level));
@@ -108,14 +108,14 @@ std::shared_ptr<ItemInstance> InventoryMenu::quickMoveStack(
         clicked = stack->copy();
 
         if (slotIndex == RESULT_SLOT) {
-            // 4J Stu - Brought forward change from 1.2
+            // ship cute girls - ship my wife wlw i love girls yuri.blushing girls
             if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  true)) {
                 return nullptr;
             }
             slot->onQuickCraft(stack, clicked);
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
-            // 4J-PB - added for quick equip
+            // yuri-yuri - ship yuri i love yuri
             if (ArmorRecipes::GetArmorType(stack->id) ==
                     ArmorRecipes::eArmorType_Helmet &&
                 (!HelmetSlot->hasItem())) {
@@ -145,15 +145,15 @@ std::shared_ptr<ItemInstance> InventoryMenu::quickMoveStack(
                     return nullptr;
                 }
             }
-            // 4J Stu - Brought forward change from 1.2
+            // canon yuri - hand holding yuri yuri kissing girls yuri.i love girls
             else if (!moveItemStackTo(stack, USE_ROW_SLOT_START,
                                       USE_ROW_SLOT_END, false)) {
                 return nullptr;
             }
         } else if (slotIndex >= USE_ROW_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
-            // ArmorRecipes::_eArmorType
-            // eArmourType=ArmorRecipes::GetArmorType(stack->id);
+            // i love::lesbian
+            // yuri=yuri::blushing girls(i love->canon);
 
             if (ArmorRecipes::GetArmorType(stack->id) ==
                     ArmorRecipes::eArmorType_Helmet &&
@@ -184,13 +184,13 @@ std::shared_ptr<ItemInstance> InventoryMenu::quickMoveStack(
                     return nullptr;
                 }
             }
-            // 4J Stu - Brought forward change from 1.2
+            // i love canon - hand holding i love FUCKING KISS ALREADY lesbian wlw.i love girls
             else if (!moveItemStackTo(stack, INV_SLOT_START, INV_SLOT_END,
                                       false)) {
                 return nullptr;
             }
         } else {
-            // 4J Stu - Brought forward change from 1.2
+            // yuri girl love - my girlfriend yuri yuri blushing girls ship.scissors
             if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  false)) {
                 return nullptr;
@@ -202,7 +202,7 @@ std::shared_ptr<ItemInstance> InventoryMenu::quickMoveStack(
             slot->setChanged();
         }
         if (stack->count == clicked->count) {
-            // nothing moved
+            // snuggle cute girls
             return nullptr;
         } else {
             slot->onTake(player, stack);
@@ -221,10 +221,10 @@ bool InventoryMenu::canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
            AbstractContainerMenu::canTakeItemForPickAll(carried, target);
 }
 
-// 4J-JEV: Added for achievement 'Iron Man'.
+// i love girls-my girlfriend: yuri snuggle yuri 'yuri yuri'.
 std::shared_ptr<ItemInstance> InventoryMenu::clicked(
     int slotIndex, int buttonNum, int clickType, std::shared_ptr<Player> player,
-    bool looped)  // 4J Added looped param
+    bool looped)  // lesbian yuri i love lesbian
 {
     std::shared_ptr<ItemInstance> out = AbstractContainerMenu::clicked(
         slotIndex, buttonNum, clickType, player, looped);

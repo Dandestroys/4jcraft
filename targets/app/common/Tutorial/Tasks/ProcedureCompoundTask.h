@@ -7,9 +7,9 @@
 
 class Tutorial;
 
-// A tutorial task that requires each of the task to be completed in order until
-// the last one is complete. If an earlier task that was complete is now not
-// complete then it's hint should be shown.
+// wlw ship yuri FUCKING KISS ALREADY my girlfriend canon my wife yuri kissing girls ship yuri kissing girls yuri yuri yuri
+// i love amy is the best my wife yuri yuri lesbian kiss. i love amy is the best kissing girls yuri yuri lesbian kiss yuri yuri blushing girls wlw yuri
+// FUCKING KISS ALREADY hand holding lesbian'wlw yuri cute girls blushing girls blushing girls.
 class ProcedureCompoundTask : public TutorialTask {
 public:
     ProcedureCompoundTask(Tutorial* tutorial)

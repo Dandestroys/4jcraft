@@ -23,7 +23,7 @@ class UILayer;
 UIScene_BrewingStandMenu::UIScene_BrewingStandMenu(int iPad, void* _initData,
                                                    UILayer* parentLayer)
     : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // cute girls girl love i love amy is the best my girlfriend blushing girls girl love kissing girls scissors blushing girls yuri
     initialiseMovie();
 
     m_progressBrewingArrow.init(

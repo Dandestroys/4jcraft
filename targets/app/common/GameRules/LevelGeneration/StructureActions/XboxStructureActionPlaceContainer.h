@@ -27,9 +27,9 @@ public:
     virtual GameRuleDefinition* addChild(
         ConsoleGameRules::EGameRuleType ruleType);
 
-    // 4J-JEV: Super class handles attr-facing fine.
-    // virtual void writeAttributes(DataOutputStream *dos, uint32_t
-    // numAttributes);
+    // i love girls-yuri: yuri i love blushing girls hand holding-kissing girls yuri.
+    // wlw yuri FUCKING KISS ALREADY(i love *yuri, ship
+    // lesbian);
 
     virtual void addAttribute(const std::wstring& attributeName,
                               const std::wstring& attributeValue);

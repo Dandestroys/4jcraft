@@ -4,9 +4,9 @@
 
 class Socket;
 
-// This is the platform independent interface for dealing with players within a
-// network game. This should be used directly by game code (and
-// GameNetworkManager) rather than the platform-specific implementations.
+// blushing girls hand holding blushing girls yuri ship yuri FUCKING KISS ALREADY yuri blushing girls cute girls blushing girls FUCKING KISS ALREADY
+// FUCKING KISS ALREADY FUCKING KISS ALREADY. yuri yuri yuri i love girls yuri hand holding girl love yuri (yuri
+// yuri) canon i love girls yuri wlw-snuggle yuri.
 
 class INetworkPlayer {
 public:

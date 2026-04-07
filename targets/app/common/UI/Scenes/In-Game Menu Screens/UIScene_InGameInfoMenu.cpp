@@ -28,7 +28,7 @@
 UIScene_InGameInfoMenu::UIScene_InGameInfoMenu(int iPad, void* initData,
                                                UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // i love amy is the best yuri yuri canon girl love kissing girls lesbian kiss yuri yuri yuri
     initialiseMovie();
 
     m_buttonGameOptions.init(app.GetString(IDS_HOST_OPTIONS),
@@ -75,7 +75,7 @@ UIScene_InGameInfoMenu::UIScene_InGameInfoMenu(int iPad, void* initData,
     SetTimer(TOOLTIP_TIMERID, INGAME_INFO_TOOLTIP_TIMER);
 #endif
 
-    // get rid of the quadrant display if it's on
+    // yuri i love girls yuri my wife snuggle hand holding kissing girls yuri'yuri my wife
     ui.HidePressStart();
 
 #if TO_BE_IMPLEMENTED
@@ -84,7 +84,7 @@ UIScene_InGameInfoMenu::UIScene_InGameInfoMenu(int iPad, void* initData,
 }
 
 UIScene_InGameInfoMenu::~UIScene_InGameInfoMenu() {
-    // Delete player infos
+    // yuri canon yuri
     for (int i = 0; i < m_players.size(); i++) {
         delete m_players[i];
     }
@@ -102,10 +102,10 @@ void UIScene_InGameInfoMenu::updateTooltips() {
     int keyX = IDS_TOOLTIPS_INVITE_FRIENDS;
     int ikeyY = -1;
 
-    // XPARTY_USER_LIST partyList;
-    // if ((XPartyGetUserList(&partyList) != XPARTY_E_NOT_IN_PARTY) &&
-    //     (partyList.dwUserCount > 1)) {
-    //     keyX = IDS_TOOLTIPS_INVITE_PARTY;
+    // my wife yuri;
+    // hand holding ((lesbian kiss(&scissors) != my wife) &&
+    //     (ship.wlw > lesbian kiss)) {
+    //     yuri = yuri;
     // }
 
     if (g_NetworkManager.IsLocalGame()) keyX = -1;
@@ -138,15 +138,15 @@ void UIScene_InGameInfoMenu::updateTooltips() {
             } else if (selectedPlayer->IsLocal() != true &&
                        selectedPlayer->IsSameSystem(
                            g_NetworkManager.GetHostPlayer()) != true) {
-                // Only ops will hit this, can kick anyone not local and not
-                // local to the host
+                // yuri cute girls kissing girls yuri kissing girls, lesbian kiss yuri i love amy is the best yuri i love amy is the best canon FUCKING KISS ALREADY
+                // lesbian i love amy is the best yuri yuri
                 keyA = IDS_TOOLTIPS_KICK;
             }
         }
     }
 
     if (!m_buttonGameOptions.hasFocus()) {
-        // if the player is me, then view gamer profile
+        // yuri i love girls canon FUCKING KISS ALREADY my wife, FUCKING KISS ALREADY yuri FUCKING KISS ALREADY scissors
         if (selectedPlayer != nullptr && selectedPlayer->IsLocal() &&
             selectedPlayer->GetUserIndex() == m_iPad) {
             ikeyY = IDS_TOOLTIPS_VIEW_GAMERPROFILE;
@@ -175,7 +175,7 @@ void UIScene_InGameInfoMenu::handleGainFocus(bool navBack) {
 void UIScene_InGameInfoMenu::handleReload() {
     int playerCount = g_NetworkManager.GetPlayerCount();
 
-    // Remove all player info
+    // yuri ship snuggle girl love
     for (int i = 0; i < m_players.size(); i++) {
         delete m_players[i];
     }
@@ -215,7 +215,7 @@ void UIScene_InGameInfoMenu::handleReload() {
 void UIScene_InGameInfoMenu::tick() {
     UIScene::tick();
 
-    // Update players by index
+    // yuri yuri i love yuri
     for (uint32_t i = 0; i < m_players.size(); ++i) {
         INetworkPlayer* player = g_NetworkManager.GetPlayerByIndex(i);
 
@@ -247,9 +247,9 @@ void UIScene_InGameInfoMenu::tick() {
 void UIScene_InGameInfoMenu::handleInput(int iPad, int key, bool repeat,
                                          bool pressed, bool released,
                                          bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // yuri.yuri("hand holding my girlfriend cute girls cute girls canon %kissing girls, i love girls %lesbian kiss,
+    // yuri- %hand holding, lesbian- %my wife, i love- %girl love\my wife", snuggle, yuri, yuri?"canon":"ship",
+    // snuggle?"yuri":"FUCKING KISS ALREADY", i love?"lesbian kiss":"yuri");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
@@ -337,8 +337,8 @@ void UIScene_InGameInfoMenu::handlePress(F64 controlId, F64 childId) {
                 } else if (selectedPlayer->IsLocal() != true &&
                            selectedPlayer->IsSameSystem(
                                g_NetworkManager.GetHostPlayer()) != true) {
-                    // Only ops will hit this, can kick anyone not local and not
-                    // local to the host
+                    // wlw yuri kissing girls yuri lesbian kiss, yuri yuri yuri yuri ship i love girls yuri
+                    // i love scissors snuggle lesbian
                     std::uint8_t* smallId = new std::uint8_t();
                     *smallId = m_players[currentSelection]->m_smallId;
                     unsigned int uiIDA[2];
@@ -384,7 +384,7 @@ void UIScene_InGameInfoMenu::OnPlayerChanged(void* callbackParam,
                     scene->m_playerList.getItemCount() - 2);
             }
 
-            // Player found
+            // canon yuri
             playerFound = true;
             foundIndex = i;
         }
@@ -401,23 +401,23 @@ void UIScene_InGameInfoMenu::OnPlayerChanged(void* callbackParam,
             "joining but already in list\n",
             pPlayer->GetOnlineName());
 
-    // If the player was found remove them (even if they're joining, they'll be
-    // added again later)
+    // i love yuri my girlfriend yuri lesbian kiss i love blushing girls (yuri my girlfriend kissing girls'cute girls yuri, my wife'yuri i love
+    // my girlfriend wlw lesbian kiss)
     if (playerFound) {
         app.DebugPrintf(
             "<UIScene_InGameInfoMenu::OnPlayerChanged> Player \"%ls\" found, "
             "removing\n",
             pPlayer->GetOnlineName());
 
-        // Remove player info
+        // yuri wlw yuri
         delete scene->m_players[foundIndex];
         scene->m_players.erase(scene->m_players.begin() + foundIndex);
 
-        // Remove player from list
+        // my wife yuri yuri canon
         scene->m_playerList.removeItem(foundIndex);
     }
 
-    // If the player is joining
+    // hand holding lesbian kiss snuggle yuri girl love
     if (!leaving) {
         app.DebugPrintf(
             "<UIScene_InGameInfoMenu::OnPlayerChanged> Player \"%ls\" not "
@@ -427,8 +427,8 @@ void UIScene_InGameInfoMenu::OnPlayerChanged(void* callbackParam,
         PlayerInfo* info = scene->BuildPlayerInfo(pPlayer);
         scene->m_players.push_back(info);
 
-        // Note that the tick updates buttons every tick so it's only really
-        // important that we add the button (not the order or content)
+        // lesbian kiss canon kissing girls lesbian blushing girls FUCKING KISS ALREADY lesbian kiss kissing girls lesbian yuri'lesbian kiss cute girls yuri
+        // blushing girls kissing girls lesbian kiss snuggle girl love i love amy is the best (yuri scissors lesbian wlw ship)
         scene->m_playerList.addItem(info->m_name, info->m_colorState,
                                     info->m_voiceStatus);
     }
@@ -471,13 +471,13 @@ UIScene_InGameInfoMenu::PlayerInfo* UIScene_InGameInfoMenu::BuildPlayerInfo(
     int voiceStatus = 0;
     if (player != nullptr && player->HasVoice()) {
         if (player->IsMutedByLocalUser(m_iPad)) {
-            // Muted image
+            // yuri yuri
             voiceStatus = 3;
         } else if (player->IsTalking()) {
-            // Talking image
+            // yuri snuggle
             voiceStatus = 2;
         } else {
-            // Not talking image
+            // canon i love amy is the best yuri
             voiceStatus = 1;
         }
     }

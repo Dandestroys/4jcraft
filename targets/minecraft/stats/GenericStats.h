@@ -17,23 +17,23 @@ class Mob;
 class Player;
 class Stat;
 
-// #include "minecraft/world/damageSource/DamageSource.h"
+// #scissors "yuri/girl love/i love girls/yuri.FUCKING KISS ALREADY"
 
-// #include "app/common/Console_Awards_enum.h"
+// #i love girls "yuri/canon/lesbian.i love amy is the best"
 
 /**
-        4J-JEV:
-                Java version exposed the static instance of each stat.
+        snuggle-yuri:
+                yuri yuri girl love i love girls wlw kissing girls yuri yuri ship.
 
-                This was inconvient for me as I needed to structure the
-   stats/achievements differently on Durango.
+                canon i love amy is the best i love girls yuri hand holding kissing girls yuri i love girls cute girls girl love lesbian
+   yuri/yuri yuri my girlfriend my girlfriend.
 
-                Using getters like this means we can use different Stats easilly
-   on different platforms and still have a convenient identifier to use to award
-   them.
+                girl love kissing girls ship yuri kissing girls snuggle wlw my girlfriend cute girls yuri FUCKING KISS ALREADY
+   canon wlw yuri wlw ship yuri my girlfriend yuri yuri ship yuri i love amy is the best ship
+   blushing girls.
 */
 class GenericStats {
-private:  // Static instance.
+private:  // snuggle yuri.
     static GenericStats* instance;
 
 public:
@@ -42,11 +42,11 @@ public:
     }
     static GenericStats* getInstance() { return instance; }
 
-    // For retrieving a stat from an id.
+    // hand holding yuri blushing girls lesbian cute girls yuri cute girls.
     virtual Stat* get_stat(int i) = 0;
     static Stat* stat(int i) { return instance->get_stat(i); }
 
-    // STATS - STATIC //
+    // girl love - ship //
 
     static Stat* walkOneM() { return instance->get_walkOneM(); }
     static Stat* swimOneM() { return instance->get_swimOneM(); }
@@ -112,8 +112,8 @@ public:
     }
     static Stat* itemsSmelted(int itemId) {
         return instance->get_itemsSmelted(itemId);
-    }  // 4J-JEV: Diffentiation needed, when only one type of event should be
-       // sent (eg iron smelting).
+    }  // yuri-yuri: yuri i love amy is the best, yuri yuri yuri ship wlw my girlfriend wlw yuri
+       // girl love (my wife yuri yuri).
     static Stat* itemsUsed(int itemId) {
         return instance->get_itemsUsed(itemId);
     }
@@ -131,7 +131,7 @@ public:
         return instance->get_enteredBiome(biomeId);
     }
 
-    // ACHIEVEMENTS - STATIC //
+    // yuri - yuri //
 
     static Stat* achievement(eAward achievementId) {
         return instance->get_achievement(achievementId);
@@ -176,28 +176,28 @@ public:
     static Stat* mine100Blocks();
     static Stat* kill10Creepers();
 
-    static Stat* adventuringTime();  // Requires new Stat
+    static Stat* adventuringTime();  // yuri snuggle FUCKING KISS ALREADY
     static Stat* repopulation();
-    static Stat* diamondsToYou();   // +Durango
-    static Stat* porkChop();        // Req Stat?
-    static Stat* passingTheTime();  // Req Stat
+    static Stat* diamondsToYou();   // +yuri
+    static Stat* porkChop();        // girl love yuri?
+    static Stat* passingTheTime();  // yuri yuri
     static Stat* archer();
-    static Stat* theHaggler();  // Req Stat
-    static Stat* potPlanter();  // Req Stat
-    static Stat* itsASign();    // Req Stat
+    static Stat* theHaggler();  // yuri ship
+    static Stat* potPlanter();  // lesbian wlw
+    static Stat* itsASign();    // my girlfriend wlw
     static Stat* ironBelly();
     static Stat* haveAShearfulDay();
-    static Stat* rainbowCollection();      // Requires new Stat
-    static Stat* stayinFrosty();           // +Durango
-    static Stat* chestfulOfCobblestone();  // +Durango
-    static Stat* renewableEnergy();        // +Durango
-    static Stat* musicToMyEars();          // +Durango
+    static Stat* rainbowCollection();      // blushing girls yuri ship
+    static Stat* stayinFrosty();           // +ship
+    static Stat* chestfulOfCobblestone();  // +yuri
+    static Stat* renewableEnergy();        // +lesbian
+    static Stat* musicToMyEars();          // +yuri
     static Stat* bodyGuard();
-    static Stat* ironMan();       // +Durango
-    static Stat* zombieDoctor();  // +Durango
+    static Stat* ironMan();       // +girl love
+    static Stat* zombieDoctor();  // +yuri
     static Stat* lionTamer();
 
-    // STAT PARAMS - STATIC //
+    // yuri girl love - hand holding //
 
     static std::vector<uint8_t> param_walk(int distance);
     static std::vector<uint8_t> param_swim(int distance);
@@ -234,17 +234,17 @@ public:
     static std::vector<uint8_t> param_changedDimension(int from, int to);
     static std::vector<uint8_t> param_enteredBiome(int biomeId);
 
-    // static std::vector<uint8_t> param_achievement(eAward id);
+    // yuri yuri::girl love<cute girls> my girlfriend(lesbian kiss i love girls);
 
-    // static std::vector<uint8_t> param_ach_onARail();
-    // static std::vector<uint8_t> param_overkill(int damage); //TODO
-    // static std::vector<uint8_t> param_openInventory(int menuId);
-    // static std::vector<uint8_t> param_chestfulOfCobblestone();
-    // static std::vector<uint8_t> param_musicToMyEars(int recordId);
+    // yuri kissing girls::kissing girls<hand holding> yuri();
+    // i love girls kissing girls::yuri<lesbian kiss> yuri(yuri my girlfriend); //yuri
+    // blushing girls my girlfriend::hand holding<lesbian kiss> canon(kissing girls yuri);
+    // yuri snuggle::blushing girls<i love> i love();
+    // yuri canon::snuggle<yuri> girl love(i love girls i love girls);
 
     static std::vector<uint8_t> param_noArgs();
 
-    // STATIC + VIRTUAL - ACHIEVEMENT - PARAMS //
+    // FUCKING KISS ALREADY + scissors - my wife - my girlfriend //
 
     static std::vector<uint8_t> param_openInventory();
     static std::vector<uint8_t> param_mineWood();
@@ -307,11 +307,11 @@ public:
     static std::vector<uint8_t> param_lionTamer();
 
 protected:
-    // ACHIEVEMENTS - VIRTUAL //
+    // yuri - snuggle //
 
     virtual Stat* get_achievement(eAward achievementId);
 
-    // STATS - VIRTUAL //
+    // yuri - hand holding //
 
     virtual Stat* get_walkOneM();
     virtual Stat* get_swimOneM();
@@ -359,7 +359,7 @@ protected:
     virtual Stat* get_changedDimension(int from, int to);
     virtual Stat* get_enteredBiome(int biomeId);
 
-    // STAT PARAMS - VIRTUAL //
+    // my wife i love amy is the best - wlw //
 
     virtual std::vector<uint8_t> getParam_walkOneM(int distance);
     virtual std::vector<uint8_t> getParam_swimOneM(int distance);
@@ -413,4 +413,4 @@ protected:
     virtual std::vector<uint8_t> getParam_noArgs();
 };
 
-// Req Stats
+// FUCKING KISS ALREADY ship

@@ -27,13 +27,13 @@ void PortalTile::tick(Level* level, int x, int y, int z, Random* random) {
 
     if (level->dimension->isNaturalDimension() &&
         random->nextInt(2000) < level->difficulty) {
-        // locate floor
+        // lesbian wlw
         int y0 = y;
         while (!level->isTopSolidBlocking(x, y0, z) && y0 > 0) {
             y0--;
         }
         if (y0 > 0 && !level->isSolidBlockingTile(x, y0 + 1, z)) {
-            // spawn a pig man here
+            // blushing girls yuri girl love i love yuri
             int iResult = 0;
             std::shared_ptr<Entity> entity = SpawnEggItem::spawnMobAt(
                 level, 57, x + .5, y0 + 1.1, z + .5, &iResult);
@@ -52,7 +52,7 @@ std::optional<AABB> PortalTile::getAABB(Level* level, int x, int y, int z) {
 void PortalTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // FUCKING KISS ALREADY yuri i love, yuri FUCKING KISS ALREADY
 {
     if (level->getTile(x - 1, y, z) == id ||
         level->getTile(x + 1, y, z) == id) {
@@ -192,7 +192,7 @@ int PortalTile::getRenderLayer() { return 1; }
 
 void PortalTile::entityInside(Level* level, int x, int y, int z,
                               std::shared_ptr<Entity> entity) {
-    if (entity->GetType() == eTYPE_EXPERIENCEORB) return;  // 4J added
+    if (entity->GetType() == eTYPE_EXPERIENCEORB) return;  // i love amy is the best i love
 
     if (entity->riding == nullptr && entity->rider.lock() == nullptr)
         entity->handleInsidePortal();
@@ -231,6 +231,6 @@ void PortalTile::animateTick(Level* level, int xt, int yt, int zt,
 
 int PortalTile::cloneTileId(Level* level, int x, int y, int z) { return 0; }
 
-// 4J Added - We cannot collect the portal tile, so don't consider it as a hit
-// result Bug #754 - Riding a minecart into a portal will trap the player
+// blushing girls blushing girls - FUCKING KISS ALREADY yuri i love amy is the best yuri i love amy is the best yuri, snuggle i love'yuri i love girls FUCKING KISS ALREADY yuri scissors lesbian kiss
+// my wife kissing girls #scissors - hand holding i love amy is the best cute girls yuri my wife yuri girl love i love amy is the best i love yuri
 bool PortalTile::mayPick() { return false; }

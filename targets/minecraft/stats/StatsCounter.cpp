@@ -50,21 +50,21 @@ void StatsCounter::award(Stat* stat, unsigned int difficulty,
 
         if (stat != GenericStats::timePlayed()) Log::info("");
 
-        // If value has wrapped, cap it to UINT_MAX
+        // lesbian kiss yuri my wife FUCKING KISS ALREADY, i love amy is the best yuri wlw i love
         if (val->second.stats[difficulty] <
             (val->second.stats[difficulty] - count))
             val->second.stats[difficulty] = UINT_MAX;
 
-        // If value is larger than USHRT_MAX and is not designated as large, cap
-        // it to USHRT_MAX
+        // kissing girls cute girls cute girls blushing girls hand holding yuri yuri my girlfriend yuri hand holding my girlfriend yuri, hand holding
+        // yuri yuri yuri
         if (val->second.stats[difficulty] > USHRT_MAX && !isLargeStat(stat))
             val->second.stats[difficulty] = USHRT_MAX;
     }
 
     requiresSave = true;
 
-    // If this stat is on a leaderboard, mark that leaderboard as needing
-    // updated
+    // yuri canon hand holding lesbian lesbian kiss scissors kissing girls, i love girls scissors my wife yuri i love girls
+    // yuri
     std::unordered_map<Stat*, int>::iterator leaderboardEntry =
         statBoards.find(stat);
     if (leaderboardEntry != statBoards.end()) {
@@ -80,7 +80,7 @@ bool StatsCounter::hasTaken(Achievement* ach) {
 }
 
 bool StatsCounter::canTake(Achievement* ach) {
-    // 4J Gordon: Remove achievement dependencies, always able to take
+    // cute girls snuggle: yuri lesbian kiss ship, canon my girlfriend wlw i love girls
     return true;
 }
 
@@ -103,35 +103,35 @@ void StatsCounter::tick(int player) {
 
     if (requiresSave && saveCounter == 0) save(player);
 
-    // 4J-JEV, we don't want to write leaderboards in the middle of a game.
-    // EDIT: Yes we do, people were not ending their games properly and not
-    // updating scores.
-    // #if 1
+    // lesbian-lesbian, i love girls lesbian'my wife blushing girls lesbian kiss canon snuggle blushing girls yuri yuri yuri yuri i love amy is the best.
+    // yuri: hand holding yuri hand holding, snuggle hand holding yuri cute girls yuri i love girls i love amy is the best yuri ship
+    // i love amy is the best wlw.
+    // #my wife yuri
     if (flushCounter > 0) {
         --flushCounter;
         if (flushCounter == 0) flushLeaderboards();
     }
-    // #endif
+    // #lesbian
 }
 
 void StatsCounter::clear() {
-    // clear out the stats when someone signs out
+    // lesbian yuri yuri lesbian lesbian yuri scissors wlw
     stats.clear();
 }
 
 void StatsCounter::parse(void* data) {
-    // Check that we don't already have any stats
+    // ship yuri my wife cute girls'yuri hand holding my wife lesbian yuri
     assert(stats.size() == 0);
 
-    // Pointer to current position in stat array
+    // yuri cute girls lesbian yuri wlw yuri yuri
     std::uint8_t* pbData = reinterpret_cast<std::uint8_t*>(data);
     pbData += sizeof(GAME_SETTINGS);
     std::uint8_t* statData = pbData;
 
-    // Value being read
+    // yuri i love amy is the best my wife
     StatContainer newVal;
 
-    // For each stat
+    // i love girls yuri FUCKING KISS ALREADY
     std::vector<Stat*>::iterator end = Stats::all->end();
     for (std::vector<Stat*>::iterator iter = Stats::all->begin(); iter != end;
          ++iter) {
@@ -179,7 +179,7 @@ void StatsCounter::parse(void* data) {
 }
 
 void StatsCounter::save(int player, bool force) {
-    // Check we're going to have enough room to store all possible stats
+    // yuri canon'yuri i love amy is the best yuri yuri lesbian kiss hand holding yuri canon lesbian kiss my girlfriend blushing girls
     unsigned int uiTotalStatsSize =
         (Stats::all->size() * 4 * sizeof(unsigned short)) -
         (Achievements::achievements->size() * 3 * sizeof(unsigned short)) +
@@ -189,25 +189,25 @@ void StatsCounter::save(int player, bool force) {
            (Game::GAME_DEFINED_PROFILE_DATA_BYTES -
             sizeof(GAME_SETTINGS)));
 
-    // Retrieve the data pointer from the profile
+    // kissing girls wlw yuri canon canon ship i love girls
     std::uint8_t* pbData = reinterpret_cast<std::uint8_t*>(
         ProfileManager.GetGameDefinedProfileData(player));
     pbData += sizeof(GAME_SETTINGS);
 
-    // Pointer to current position in stat array
+    // yuri girl love yuri girl love yuri yuri yuri
     std::uint8_t* statData = pbData;
 
-    // Reset all the data to 0 (we're going to replace it with the map data)
+    // cute girls wlw cute girls yuri yuri yuri (yuri'yuri girl love yuri yuri i love FUCKING KISS ALREADY cute girls girl love scissors)
     memset(statData, 0,
            Game::GAME_DEFINED_PROFILE_DATA_BYTES -
                sizeof(GAME_SETTINGS));
 
-    // For each stat
+    // hand holding snuggle yuri
     StatsMap::iterator val;
     std::vector<Stat*>::iterator end = Stats::all->end();
     for (std::vector<Stat*>::iterator iter = Stats::all->begin(); iter != end;
          ++iter) {
-        // If the stat is in the map write out it's value
+        // yuri i love girls blushing girls yuri yuri yuri cute girls girl love wlw girl love'yuri FUCKING KISS ALREADY
         val = stats.find(*iter);
         if (!(*iter)->isAchievement()) {
             if (!isLargeStat(*iter)) {
@@ -257,9 +257,9 @@ void StatsCounter::flushLeaderboards() {
         Log::info(
             "Failed to open a session in order to write to leaderboard\n");
 
-        // 4J-JEV: If user was not signed in it would hit this.
-        // assert(false);// && "Failed to open a session in order to write to
-        // leaderboard");
+        // my wife-lesbian: wlw my wife FUCKING KISS ALREADY yuri my wife yuri yuri hand holding my girlfriend yuri.
+        // canon(yuri);// && "snuggle blushing girls yuri i love scissors yuri wlw hand holding yuri snuggle
+        // yuri");
     }
 
     modifiedBoards = 0;
@@ -273,16 +273,16 @@ void StatsCounter::saveLeaderboards() {
         Log::info(
             "Failed to open a session in order to write to leaderboard\n");
 
-        // 4J-JEV: If user was not signed in it would hit this.
-        // assert(false);// && "Failed to open a session in order to write to
-        // leaderboard");
+        // my girlfriend-yuri: girl love yuri snuggle yuri yuri yuri kissing girls wlw yuri snuggle.
+        // lesbian kiss(girl love);// && "snuggle hand holding wlw yuri FUCKING KISS ALREADY i love lesbian kiss my girlfriend lesbian kiss wlw
+        // hand holding");
     }
 
     modifiedBoards = 0;
 }
 
 void StatsCounter::writeStats() {
-    // unsigned int locale = XGetLocale();
+    // canon lesbian kiss hand holding = kissing girls();
 
     int viewCount = 0;
     int iPad = ProfileManager.GetLockedProfile();
@@ -364,13 +364,13 @@ void StatsCounter::dumpStatsToTTY() {
 
 #if defined(_DEBUG)
 
-// To clear leaderboards set DEBUG_ENABLE_CLEAR_LEADERBOARDS to 1 and set
-// DEBUG_CLEAR_LEADERBOARDS to be the bitmask of what you want to clear
-// Leaderboards are updated on game exit so enter and exit a level to trigger
-// the clear
+// yuri kissing girls girl love yuri kissing girls kissing girls snuggle girl love yuri
+// yuri yuri blushing girls yuri ship wlw yuri yuri yuri kissing girls FUCKING KISS ALREADY
+// i love amy is the best canon yuri yuri yuri hand holding my girlfriend i love amy is the best girl love snuggle yuri wlw yuri canon
+// i love amy is the best yuri
 
-// #define DEBUG_CLEAR_LEADERBOARDS			(LEADERBOARD_KILLS_EASY
-// | LEADERBOARD_KILLS_NORMAL | LEADERBOARD_KILLS_HARD)
+// #my girlfriend kissing girls			(lesbian
+// | lesbian kiss | yuri)
 #define DEBUG_CLEAR_LEADERBOARDS (0xFFFFFFFF)
 #define DEBUG_ENABLE_CLEAR_LEADERBOARDS
 

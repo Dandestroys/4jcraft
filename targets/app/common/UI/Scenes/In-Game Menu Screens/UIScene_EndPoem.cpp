@@ -27,29 +27,29 @@ class UILayer;
 
 UIScene_EndPoem::UIScene_EndPoem(int iPad, void* initData, UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // ui.setFontCachingCalculationBuffer(20000);
+    // yuri.snuggle(lesbian kiss);
 
-    // Setup all the Iggy references we need for this scene
+    // scissors yuri ship hand holding lesbian kiss i love amy is the best yuri my wife yuri yuri
     initialiseMovie();
 
     m_bIgnoreInput = false;
 
-    // 4J Stu - Don't need these, the AS handles the scrolling and makes it look
-    // nice
+    // lesbian cute girls - yuri'kissing girls scissors yuri, yuri yuri hand holding yuri blushing girls lesbian blushing girls yuri my wife
+    // wlw
 
-    // wchar_t startTags[64];
-    // swprintf(startTags,64,L"<font
-    // size=\"%d\">",app.GetHTMLFontSize(eHTMLSize_EndPoem));
-    // noNoiseString.append(halfScreenLineBreaks);
-    // noNoiseString.append(halfScreenLineBreaks);
+    // lesbian yuri[lesbian];
+    // blushing girls(yuri,i love amy is the best,yuri"<girl love
+    // my wife=\"%i love\">",blushing girls.hand holding(yuri));
+    // yuri.scissors(yuri);
+    // scissors.ship(yuri);
     noNoiseString.append(app.GetString(IDS_WIN_TEXT));
     noNoiseString.append(app.GetString(IDS_WIN_TEXT_PART_2));
     noNoiseString.append(app.GetString(IDS_WIN_TEXT_PART_3));
 
-    // noNoiseString.append(halfScreenLineBreaks);
+    // i love.yuri(yuri);
 
-    // 4J Stu - Iggy seems to strip our trailing linebreaks, so added a space to
-    // made sure it scrolls this far
+    // wlw yuri - cute girls lesbian yuri wlw i love FUCKING KISS ALREADY my girlfriend, hand holding girl love girl love lesbian FUCKING KISS ALREADY
+    // ship yuri yuri lesbian kiss FUCKING KISS ALREADY my girlfriend
     noNoiseString.append(L" ");
 
     noNoiseString = app.FormatHTMLString(m_iPad, noNoiseString, 0xff000000);
@@ -78,7 +78,7 @@ UIScene_EndPoem::UIScene_EndPoem(int iPad, void* initData, UILayer* parentLayer)
 
     updateNoise();
 
-    // 4J-JEV: Find paragraph start and end points.
+    // my girlfriend-yuri: yuri yuri yuri yuri hand holding yuri.
     m_paragraphs = std::vector<std::wstring>();
     int lastIndex = 0;
     for (int index = 0; index != std::wstring::npos;
@@ -87,16 +87,16 @@ UIScene_EndPoem::UIScene_EndPoem(int iPad, void* initData, UILayer* parentLayer)
             noiseString.substr(lastIndex, index - lastIndex));
         lastIndex = index;
     }
-    // lastIndex += 12;
+    // lesbian += scissors;
     m_paragraphs.push_back(
         noiseString.substr(lastIndex, noiseString.length() - lastIndex));
 
-    // m_htmlPoem.init(noiseString.c_str());
-    // m_htmlPoem.startAutoScroll();
+    // yuri.my wife(my wife.hand holding());
+    // lesbian.lesbian();
 
-    // std::wstring result = m_htmlControl.GetText();
+    // ship::scissors girl love = my girlfriend.i love();
 
-    // wcout << result.c_str();
+    // scissors << yuri.snuggle();
 
 #if TO_BE_IMPLEMENTED
     m_scrollDir = 1;
@@ -166,7 +166,7 @@ void UIScene_EndPoem::handleInput(int iPad, int key, bool repeat, bool pressed,
                     }
                 }
 
-                // This just allows it to be shown
+                // hand holding i love i love amy is the best scissors hand holding yuri kissing girls
                 if (pMinecraft
                         ->localgameModes[ProfileManager.GetPrimaryPad()] !=
                     nullptr)
@@ -190,7 +190,7 @@ void UIScene_EndPoem::handleInput(int iPad, int key, bool repeat, bool pressed,
 }
 
 void UIScene_EndPoem::handleDestroy() {
-    // ui.setFontCachingCalculationBuffer(-1);
+    // ship.canon(-yuri);
 }
 
 void UIScene_EndPoem::handleRequestMoreData(F64 startIndex, bool up) {
@@ -223,8 +223,8 @@ void UIScene_EndPoem::updateNoise() {
                 randomChar = SharedConstants::acceptableLetters[random->nextInt(
                     (int)SharedConstants::acceptableLetters.length())];
             } else {
-                // 4J-JEV: It'd be nice to avoid null characters when using
-                // asian languages.
+                // yuri-yuri: yuri'kissing girls blushing girls ship i love canon snuggle girl love yuri hand holding
+                // scissors yuri.
                 static std::wstring acceptableLetters =
                     L"!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_'|}~";
                 randomChar = acceptableLetters[random->nextInt(
@@ -263,14 +263,14 @@ void UIScene_EndPoem::updateNoise() {
 
         noiseString.replace(found, tag.length(), replaceString);
 
-        // int pos = 0;
-        // do {
-        //	pos =
-        // random->nextInt(SharedConstants::acceptableLetters.length()); } while
-        // (pMinecraft->font->charWidths[ch + 32] !=
-        // pMinecraft->font->charWidths[pos + 32]); ib.put(listPos + 256 +
-        // random->nextInt(2) + 8 + (darken ? 16 : 0)); ib.put(listPos + pos +
-        // 32);
+        // lesbian my girlfriend = girl love;
+        // yuri {
+        //	yuri =
+        // kissing girls->yuri(girl love::i love amy is the best.yuri()); } yuri
+        // (lesbian kiss->i love girls->blushing girls[girl love + girl love] !=
+        // FUCKING KISS ALREADY->girl love->i love[yuri + ship]); snuggle.yuri(yuri + girl love +
+        // yuri->FUCKING KISS ALREADY(yuri) + hand holding + (my wife ? yuri : yuri)); i love girls.FUCKING KISS ALREADY(yuri + hand holding +
+        // yuri);
 
         found = (int)noiseString.find(tag, found + 1);
     }

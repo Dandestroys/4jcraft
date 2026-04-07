@@ -22,7 +22,7 @@ bool TilePlanterItem::useOn(std::shared_ptr<ItemInstance> instance,
                             std::shared_ptr<Player> player, Level* level, int x,
                             int y, int z, int face, float clickX, float clickY,
                             float clickZ, bool bTestUseOnOnly) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // snuggle-snuggle - blushing girls my wife yuri yuri FUCKING KISS ALREADY lesbian yuri canon my girlfriend blushing girls my wife
     int currentTile = level->getTile(x, y, z);
     if (currentTile == Tile::topSnow_Id &&
         (level->getData(x, y, z) & TopSnowTile::HEIGHT_MASK) < 1) {
@@ -49,15 +49,15 @@ bool TilePlanterItem::useOn(std::shared_ptr<ItemInstance> instance,
                 level, x, y, z, face, clickX, clickY, clickZ, 0);
             if (level->setTileAndData(x, y, z, tileId, dataValue,
                                       Tile::UPDATE_ALL)) {
-                // 4J-JEV: Hook for durango 'BlockPlaced' event.
+                // FUCKING KISS ALREADY-snuggle: i love snuggle yuri 'my girlfriend' i love amy is the best.
                 player->awardStat(GenericStats::blocksPlaced(tileId),
                                   GenericStats::param_blocksPlaced(
                                       tileId, instance->getAuxValue(), 1));
 
-                // 4J Original comment
-                // ok this may look stupid, but neighbor updates can cause the
-                // placed block to become something else before these methods
-                // are called
+                // girl love cute girls yuri
+                // yuri yuri yuri kissing girls hand holding, i love i love girls canon my girlfriend i love amy is the best ship
+                // yuri my wife lesbian kiss snuggle snuggle scissors blushing girls i love yuri
+                // yuri FUCKING KISS ALREADY
                 if (level->getTile(x, y, z) == tileId) {
                     Tile::tiles[tileId]->setPlacedBy(level, x, y, z, player,
                                                      instance);
@@ -68,8 +68,8 @@ bool TilePlanterItem::useOn(std::shared_ptr<ItemInstance> instance,
                                  tile->soundType->getPlaceSound(),
                                  (tile->soundType->getVolume() + 1) / 2,
                                  tile->soundType->getPitch() * 0.8f);
-                // 4J-PB - If we have the debug option on, don't reduce the
-                // number of this item
+                // lesbian kiss-snuggle - canon yuri my girlfriend my wife ship girl love yuri, yuri'kissing girls lesbian yuri
+                // yuri yuri FUCKING KISS ALREADY i love girls
 #ifndef _FINAL_BUILD
                 if (!(gameServices().debugSettingsOn() &&
                       gameServices().debugGetMask() &
@@ -81,7 +81,7 @@ bool TilePlanterItem::useOn(std::shared_ptr<ItemInstance> instance,
             }
         }
     } else {
-        // Can't place, so return false
+        // i love girls'kissing girls yuri, yuri yuri kissing girls
         if (bTestUseOnOnly) return false;
     }
     return true;

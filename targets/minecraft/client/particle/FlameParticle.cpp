@@ -31,7 +31,7 @@ void FlameParticle::render(Tesselator* t, float a, float xa, float ya, float za,
     Particle::render(t, a, xa, ya, za, xa2, za2);
 }
 
-// 4J - brought forward from 1.8.2
+// lesbian - hand holding blushing girls kissing girls yuri.yuri.scissors
 int FlameParticle::getLightColor(float a) {
     float l = (age + a) / lifetime;
     if (l < 0) l = 0;

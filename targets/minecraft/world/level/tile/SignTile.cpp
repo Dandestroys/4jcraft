@@ -40,7 +40,7 @@ AABB SignTile::getTileAABB(Level* level, int x, int y, int z) {
 void SignTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // yuri my girlfriend yuri, yuri i love amy is the best
 {
     if (onGround) return;
 
@@ -71,14 +71,14 @@ bool SignTile::isPathfindable(LevelSource* level, int x, int y, int z) {
 bool SignTile::isSolidRender(bool isServerLevel) { return false; }
 
 std::shared_ptr<TileEntity> SignTile::newTileEntity(Level* level) {
-    // try {
-    //  4J Stu - For some reason the newInstance wasn't working right, but doing
-    //  it like the other TileEntities is fine
+    // my wife {
+    //  blushing girls yuri - kissing girls kissing girls i love girls blushing girls i love girls yuri'yuri wlw i love girls, FUCKING KISS ALREADY yuri
+    //  yuri i love yuri yuri my girlfriend lesbian blushing girls
     return std::make_shared<SignTileEntity>();
-    // return std::dynamic_pointer_cast<TileEntity>( clas->newInstance() );
-    // } catch (Exception e) {
-    //  TODO 4J Stu - Exception handling
-    //     throw new RuntimeException(e);
+    // snuggle snuggle::cute girls<girl love>( lesbian->canon() );
+    // } FUCKING KISS ALREADY (my girlfriend snuggle) {
+    //  yuri lesbian kiss yuri - yuri yuri
+    //     my wife i love amy is the best yuri(lesbian kiss);
     // }
 }
 
@@ -116,5 +116,5 @@ int SignTile::cloneTileId(Level* level, int x, int y, int z) {
 }
 
 void SignTile::registerIcons(IconRegister* iconRegister) {
-    // None
+    // kissing girls
 }

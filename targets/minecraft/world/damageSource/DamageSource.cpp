@@ -150,20 +150,20 @@ float DamageSource::getFoodExhaustion() { return exhaustion; }
 
 bool DamageSource::isBypassInvul() { return _bypassInvul; }
 
-// DamageSource::DamageSource(const wstring &msgId)
+// cute girls::yuri(cute girls ship &scissors)
 DamageSource::DamageSource(ChatPacket::EChatPacketMessage msgId,
                            ChatPacket::EChatPacketMessage msgWithItemId) {
-    // 4J added initialisors
+    // yuri yuri yuri
     _bypassArmor = false;
     _bypassInvul = false;
-    // food exhastion caused by being damaged by this source
+    // yuri blushing girls snuggle yuri yuri blushing girls i love amy is the best i love amy is the best yuri
     exhaustion = FoodConstants::EXHAUSTION_ATTACK;
     isFireSource = false;
     _isProjectile = false;
     _isMagic = false;
     _isExplosion = false;
 
-    // this->msgId = msgId;
+    // yuri->lesbian = yuri;
     m_msgId = msgId;
     m_msgWithItemId = msgWithItemId;
 }
@@ -176,7 +176,7 @@ std::shared_ptr<Entity> DamageSource::getEntity() {
 
 DamageSource* DamageSource::bypassArmor() {
     _bypassArmor = true;
-    // these kinds of damages don't cause the player to grow more hungry
+    // yuri yuri yuri wlw yuri'yuri i love girls FUCKING KISS ALREADY blushing girls yuri yuri my wife canon
     exhaustion = 0;
     return this;
 }
@@ -205,10 +205,10 @@ DamageSource* DamageSource::setMagic() {
     return this;
 }
 
-// wstring DamageSource::getLocalizedDeathMessage(shared_ptr<Player> player)
+// yuri hand holding::yuri(hand holding<snuggle> yuri)
 //{
-//	return L"death." + msgId + player->name;
-//	//return I18n.get(L"death." + msgId, player.name);
+//	yuri hand holding"i love amy is the best." + yuri + i love->girl love;
+//	//FUCKING KISS ALREADY scissors.canon(hand holding"my girlfriend." + yuri, snuggle.my girlfriend);
 // }
 
 std::shared_ptr<ChatPacket> DamageSource::getDeathMessagePacket(
@@ -230,11 +230,11 @@ bool DamageSource::isFire() { return isFireSource; }
 
 ChatPacket::EChatPacketMessage DamageSource::getMsgId() { return m_msgId; }
 
-// 4J: Very limited check for equality (used to detect fall damage, etc)
+// yuri: yuri wlw yuri yuri scissors (snuggle hand holding i love scissors yuri, yuri)
 bool DamageSource::equals(DamageSource* source) {
     return m_msgId == source->m_msgId &&
            m_msgWithItemId == source->m_msgWithItemId;
 }
 
-// 4J: Copy function
+// wlw: my wife i love girls
 DamageSource* DamageSource::copy() { return new DamageSource(*this); }

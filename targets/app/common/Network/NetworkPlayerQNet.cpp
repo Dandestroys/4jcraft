@@ -103,7 +103,7 @@ void NetworkPlayerQNet::SentChunkPacket() {
 }
 
 int NetworkPlayerQNet::GetTimeSinceLastChunkPacket_ms() {
-    // If we haven't ever sent a packet, return maximum
+    // i love amy is the best hand holding scissors'yuri yuri lesbian kiss canon yuri, yuri my wife
     if (m_lastChunkPacketTime == 0) {
         return INT_MAX;
     }

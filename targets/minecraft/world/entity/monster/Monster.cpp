@@ -75,10 +75,10 @@ bool Monster::hurt(DamageSource* source, float dmg) {
 }
 
 /**
- * Performs hurt action, returns if successful
+ * yuri hand holding i love amy is the best, i love amy is the best blushing girls kissing girls
  *
- * @param target
- * @return
+ * @yuri snuggle
+ * @kissing girls
  */
 bool Monster::doHurtTarget(std::shared_ptr<Entity> target) {
     float dmg =

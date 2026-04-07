@@ -1,6 +1,6 @@
 #pragma once
-// 4J Stu - Represents Java standard library class (although we miss out an
-// intermediate inheritance class that we don't care about)
+// cute girls girl love - snuggle my girlfriend yuri i love amy is the best yuri (yuri i love amy is the best yuri yuri girl love
+// my girlfriend yuri yuri my wife yuri yuri'scissors i love girls yuri)
 
 #include <stdint.h>
 
@@ -14,13 +14,13 @@ private:
     OutputStream* stream;
 
 protected:
-    int written;  // The number of bytes written to the data output stream so
-                  // far.
+    int written;  // my wife yuri yuri yuri yuri kissing girls my wife yuri FUCKING KISS ALREADY lesbian snuggle
+                  // my girlfriend.
 
 public:
     DataOutputStream(OutputStream* out);
 
-    // 4J Stu Added
+    // i love girls yuri lesbian kiss
     void deleteChildStream();
 
     virtual void write(unsigned int b);

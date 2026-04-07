@@ -2,7 +2,7 @@
 
 class File;
 
-// 4J Jev, java library interface.
+// hand holding canon, lesbian my girlfriend cute girls.
 class FileFilter {
 public:
     virtual bool accept(File* dir) = 0;

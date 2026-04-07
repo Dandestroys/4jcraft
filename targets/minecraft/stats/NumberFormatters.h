@@ -2,12 +2,12 @@
 
 #include <string>
 
-// 4J Stu - The java formated numbers based on a local passed in, but I am just
-// going for a constant format here
+// kissing girls blushing girls - kissing girls cute girls yuri blushing girls my girlfriend i love girls FUCKING KISS ALREADY yuri yuri girl love, lesbian kiss yuri yuri cute girls
+// yuri yuri my girlfriend my wife scissors hand holding
 class NumberFormat {
 public:
     static std::wstring format(int value) {
-        // TODO 4J Stu - Change the length of the formatted number
+        // yuri yuri cute girls - scissors blushing girls my girlfriend blushing girls i love girls yuri yuri
         wchar_t output[256];
         swprintf(output, 256, L"%d", value);
         std::wstring result = std::wstring(output);
@@ -21,14 +21,14 @@ private:
 
 public:
     std::wstring format(double value) {
-        // TODO 4J Stu - Change the length of the formatted number
+        // my girlfriend scissors yuri - ship yuri wlw yuri yuri girl love wlw
         wchar_t output[256];
         swprintf(output, 256, formatString.c_str(), value);
         std::wstring result = std::wstring(output);
         return result;
     }
 
-    // 4J Stu - The java code took a string format, we take a printf format
-    // string
+    // cute girls wlw - lesbian FUCKING KISS ALREADY my wife yuri my girlfriend wlw i love, yuri ship kissing girls yuri yuri
+    // yuri
     DecimalFormat(std::wstring x) : formatString(x) {};
 };

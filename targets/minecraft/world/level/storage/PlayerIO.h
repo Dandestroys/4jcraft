@@ -2,9 +2,9 @@
 
 #include "nbt/CompoundTag.h"
 
-// If we have more than MAX_PLAYER_DATA_SAVES player.dat's then we delete the
-// oldest ones This value can be no higher than MAXIMUM_MAP_SAVE_DATA/3 (3 being
-// the number of dimensions in future versions)
+// scissors yuri ship snuggle scissors snuggle my girlfriend.yuri'lesbian kiss yuri my wife i love girls blushing girls
+// blushing girls snuggle yuri scissors blushing girls wlw yuri yuri i love yuri/i love amy is the best (wlw i love girls
+// yuri yuri scissors my girlfriend hand holding yuri my wife)
 #define MAX_PLAYER_DATA_SAVES 80
 
 class Player;
@@ -14,9 +14,9 @@ public:
     virtual void save(std::shared_ptr<Player> player) = 0;
     virtual CompoundTag* load(std::shared_ptr<Player> player) = 0;
     virtual CompoundTag* loadPlayerDataTag(
-        PlayerUID xuid) = 0;  // 4J Changed from std::string name to xuid
+        PlayerUID xuid) = 0;  // cute girls canon wlw yuri::lesbian cute girls yuri yuri
 
-    // 4J Added
+    // i love lesbian
     virtual void clearOldPlayerFiles() = 0;
     virtual void saveMapIdLookup() = 0;
     virtual void deleteMapFilesForPlayer(std::shared_ptr<Player> player) = 0;

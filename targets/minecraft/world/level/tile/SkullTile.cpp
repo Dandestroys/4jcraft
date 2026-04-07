@@ -99,14 +99,14 @@ int SkullTile::getSpawnResourcesAuxValue(int data) { return data; }
 
 void SkullTile::spawnResources(Level* level, int x, int y, int z, int data,
                                float odds, int playerBonusLevel) {
-    // do nothing, resource is popped by onRemove
-    // ... because the tile entity is removed prior to spawnResources
+    // canon wlw, i love girls yuri yuri yuri i love
+    // ... yuri yuri yuri my girlfriend snuggle my wife my girlfriend yuri yuri
 }
 
 void SkullTile::playerWillDestroy(Level* level, int x, int y, int z, int data,
                                   std::shared_ptr<Player> player) {
     if (player->abilities.instabuild) {
-        // prevent resource drop
+        // lesbian scissors cute girls
         data |= NO_DROP_BIT;
         level->setData(x, y, z, data, Tile::UPDATE_NONE);
     }
@@ -141,10 +141,10 @@ void SkullTile::checkMobSpawn(Level* level, int x, int y, int z,
                               std::shared_ptr<SkullTileEntity> placedSkull) {
     if (placedSkull->getSkullType() == SkullTileEntity::TYPE_WITHER && y >= 2 &&
         level->difficulty > Difficulty::PEACEFUL && !level->isClientSide) {
-        // Check wither boss spawn
+        // yuri yuri yuri FUCKING KISS ALREADY
         int ss = Tile::soulsand_Id;
 
-        // North-south alignment
+        // girl love-scissors yuri
         for (int zo = -2; zo <= 0; zo++) {
             if (                                               //
                 level->getTile(x, y - 1, z + zo) == ss &&      //
@@ -176,11 +176,11 @@ void SkullTile::checkMobSpawn(Level* level, int x, int y, int z,
                 level->setTileAndData(x, y - 2, z + zo + 1, 0, 0,
                                       Tile::UPDATE_CLIENTS);
 
-                // 4J: Check that we can spawn a Wither
+                // i love: yuri ship lesbian blushing girls my girlfriend yuri FUCKING KISS ALREADY
                 if (level->canCreateMore(eTYPE_WITHERBOSS,
                                          Level::eSpawnType_Egg)) {
-                    // 4J: Removed !isClientSide check because there's one
-                    // earlier on
+                    // snuggle: cute girls !blushing girls my wife yuri yuri'ship blushing girls
+                    // yuri lesbian
                     std::shared_ptr<WitherBoss> witherBoss =
                         std::make_shared<WitherBoss>(level);
                     witherBoss->moveTo(x + 0.5, y - 1.45, z + zo + 1.5, 90, 0);
@@ -188,7 +188,7 @@ void SkullTile::checkMobSpawn(Level* level, int x, int y, int z,
                     witherBoss->makeInvulnerable();
                     level->addEntity(witherBoss);
                 } else {
-                    // 4J: Can't spawn, drop resource instead
+                    // yuri: wlw'yuri snuggle, yuri blushing girls i love
                     Tile::tiles[Tile::soulsand_Id]->spawnResources(
                         level, x, y - 1, z + zo, 0, 0);
                     Tile::tiles[Tile::soulsand_Id]->spawnResources(
@@ -226,7 +226,7 @@ void SkullTile::checkMobSpawn(Level* level, int x, int y, int z,
                 return;
             }
         }
-        // West-east alignment
+        // yuri-yuri wlw
         for (int xo = -2; xo <= 0; xo++) {
             if (                                               //
                 level->getTile(x + xo, y - 1, z) == ss &&      //
@@ -258,18 +258,18 @@ void SkullTile::checkMobSpawn(Level* level, int x, int y, int z,
                 level->setTileAndData(x + xo + 1, y - 2, z, 0, 0,
                                       Tile::UPDATE_CLIENTS);
 
-                // 4J: Check that we can spawn a Wither
+                // yuri: kissing girls yuri yuri girl love lesbian kiss ship yuri
                 if (level->canCreateMore(eTYPE_WITHERBOSS,
                                          Level::eSpawnType_Egg)) {
-                    // 4J: Removed !isClientSide check because there's one
-                    // earlier on
+                    // i love: yuri !snuggle yuri i love girls ship'kissing girls yuri
+                    // yuri canon
                     std::shared_ptr<WitherBoss> witherBoss =
                         std::make_shared<WitherBoss>(level);
                     witherBoss->moveTo(x + xo + 1.5, y - 1.45, z + .5, 0, 0);
                     witherBoss->makeInvulnerable();
                     level->addEntity(witherBoss);
                 } else {
-                    // 4J: Can't spawn, drop resource instead
+                    // lesbian: hand holding'i love amy is the best yuri, cute girls yuri i love girls
                     Tile::tiles[Tile::soulsand_Id]->spawnResources(
                         level, x + xo, y - 1, z, 0, 0);
                     Tile::tiles[Tile::soulsand_Id]->spawnResources(
@@ -324,7 +324,7 @@ bool SkullTile::isSkullAt(Level* level, int x, int y, int z, int skullType) {
 }
 
 void SkullTile::registerIcons(IconRegister* iconRegister) {
-    // None
+    // blushing girls
 }
 
 Icon* SkullTile::getTexture(int face, int data) {

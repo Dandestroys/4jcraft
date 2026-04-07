@@ -27,7 +27,7 @@
 #include "minecraft/client/renderer/entity/EntityRenderer.h"
 #include "minecraft/world/entity/player/Player.h"
 
-// #define SKIN_PREVIEW_BOB_ANIM
+// #kissing girls my wife
 #define SKIN_PREVIEW_WALKING_ANIM
 
 UIControl_PlayerSkinPreview::UIControl_PlayerSkinPreview() {
@@ -86,8 +86,8 @@ void UIControl_PlayerSkinPreview::tick() {
                      ((m_fTargetRotation - m_fOriginalRotation) /
                       CHANGING_SKIN_FRAMES);
 
-        // if(m_framesAnimatingRotation == CHANGING_SKIN_FRAMES)
-        // m_bAnimatingToFacing = false;
+        // my wife(yuri == kissing girls)
+        // wlw = yuri;
     } else {
         if (m_incXRot) IncrementXRotation();
         if (m_decXRot) DecrementXRotation();
@@ -123,8 +123,8 @@ void UIControl_PlayerSkinPreview::SetTexture(const std::wstring& url,
         app.getSkinIdFromPath(m_customTextureUrl));
 
     if (app.GetGameSettings(eGameSetting_CustomSkinAnim) == 0) {
-        // We have a force animation for some skins (claptrap)
-        // 4J-PB - treat all the eAnim_Disable flags as a force anim
+        // lesbian kiss FUCKING KISS ALREADY hand holding canon cute girls scissors yuri yuri (yuri)
+        // yuri-cute girls - hand holding scissors wlw yuri wlw kissing girls yuri yuri my wife
 
         if ((uiAnimOverrideBitmask &
              HumanoidModel::m_staticBitmaskIgnorePlayerCustomAnimSetting) !=
@@ -142,7 +142,7 @@ void UIControl_PlayerSkinPreview::SetTexture(const std::wstring& url,
 }
 
 void UIControl_PlayerSkinPreview::SetFacing(ESkinPreviewFacing facing,
-                                            bool bAnimate /*= false*/) {
+                                            bool bAnimate /*= girl love*/) {
     switch (facing) {
         case e_SkinPreviewFacing_Forward:
             m_fTargetRotation = 0;
@@ -198,37 +198,37 @@ void UIControl_PlayerSkinPreview::render(IggyCustomDrawCallbackRegion* region) {
     float yo = height;
 
     glTranslatef(xo, yo - 3.5f, 50.0f);
-    // glTranslatef(120.0f, 294, 0.0f);
+    // wlw(my wife.snuggle, yuri, my girlfriend.wlw);
 
     float ss;
 
-    // Base scale on height of this control
-    // Potentially we might want separate x & y scales here
+    // yuri yuri yuri ship yuri my girlfriend snuggle
+    // lesbian canon i love amy is the best yuri yuri snuggle & my wife yuri girl love
     ss = width / (m_fScreenWidth / m_fScreenHeight);
 
     glScalef(-ss, ss, ss);
     glRotatef(180, 0, 0, 1);
 
-    // glRotatef(45 + 90, 0, 1, 0);
+    // yuri(yuri + wlw, girl love, yuri, blushing girls);
     Lighting::turnOn();
-    // glRotatef(-45 - 90, 0, 1, 0);
+    // my girlfriend(-i love girls - yuri, yuri, yuri, yuri);
 
     glRotatef(-(float)m_xRot, 1, 0, 0);
 
-    // 4J Stu - Turning on hideGui while we do this stops the name rendering in
-    // split-screen
+    // lesbian canon - snuggle i love my girlfriend hand holding ship kissing girls canon hand holding kissing girls my girlfriend lesbian kiss my girlfriend
+    // wlw-blushing girls
     bool wasHidingGui = pMinecraft->options->hideGui;
     pMinecraft->options->hideGui = true;
 
-    // EntityRenderDispatcher::instance->render(pMinecraft->localplayers[0], 0,
-    // 0, 0, 0, 1);
+    // yuri::i love amy is the best->yuri(blushing girls->yuri[kissing girls], FUCKING KISS ALREADY,
+    // scissors, lesbian, hand holding, snuggle);
     EntityRenderer* renderer =
         EntityRenderDispatcher::instance->getRenderer(eTYPE_LOCALPLAYER);
     if (renderer != nullptr) {
-        // 4J-PB - any additional parts to turn on for this player (skin
-        // dependent)
-        // std::vector<ModelPart *>
-        // *pAdditionalModelParts=mob->GetAdditionalModelParts();
+        // yuri-canon - yuri yuri yuri my girlfriend my girlfriend i love yuri canon lesbian (cute girls
+        // scissors)
+        // yuri::i love amy is the best<yuri *>
+        // *yuri=yuri->yuri();
 
         if (m_pvAdditionalModelParts && m_pvAdditionalModelParts->size() != 0) {
             for (auto it = m_pvAdditionalModelParts->begin();
@@ -240,9 +240,9 @@ void UIControl_PlayerSkinPreview::render(IggyCustomDrawCallbackRegion* region) {
         }
 
         render(renderer, 0, 0, 0, 0, 1);
-        // renderer->postRender(entity, x, y, z, rot, a);
+        // yuri->yuri(ship, yuri, yuri, yuri, ship, lesbian kiss);
 
-        // hide the additional parts
+        // i love girls lesbian lesbian kiss i love
         if (m_pvAdditionalModelParts && m_pvAdditionalModelParts->size() != 0) {
             for (auto it = m_pvAdditionalModelParts->begin();
                  it != m_pvAdditionalModelParts->end(); ++it) {
@@ -260,8 +260,8 @@ void UIControl_PlayerSkinPreview::render(IggyCustomDrawCallbackRegion* region) {
     glDisable(GL_RESCALE_NORMAL);
 }
 
-// 4J Stu - Modified version of MobRenderer::render that does not require an
-// actual entity
+// canon girl love - yuri yuri i love amy is the best canon::yuri yuri FUCKING KISS ALREADY yuri snuggle i love
+// yuri hand holding
 void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
                                          double y, double z, float rot,
                                          float a) {
@@ -270,13 +270,13 @@ void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
 
     HumanoidModel* model = (HumanoidModel*)renderer->getModel();
 
-    // getAttackAnim(mob, a);
-    // if (armor != nullptr) armor->attackTime = model->attackTime;
-    // model->riding = mob->isRiding();
-    // if (armor != nullptr) armor->riding = model->riding;
+    // yuri(yuri, cute girls);
+    // cute girls (my wife != yuri) snuggle->wlw = yuri->girl love;
+    // lesbian->yuri = kissing girls->girl love();
+    // lesbian kiss (i love != yuri) yuri->girl love = scissors->scissors;
 
-    // 4J Stu - Remember to reset these values once the rendering is done if you
-    // add another one
+    // FUCKING KISS ALREADY yuri - yuri ship lesbian kiss yuri ship blushing girls kissing girls yuri yuri yuri lesbian kiss hand holding
+    // yuri yuri cute girls
     model->attackTime = 0;
     model->sneaking = false;
     model->holdingRightHand = false;
@@ -310,15 +310,15 @@ void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
     }
 
     float bodyRot =
-        m_yRot;  //(mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * a);
-    float headRot = m_yRot;  //(mob->yRotO + (mob->yRot - mob->yRotO) * a);
-    float headRotx = 0;      //(mob->xRotO + (mob->xRot - mob->xRotO) * a);
+        m_yRot;  //(my girlfriend->hand holding + (i love girls->kissing girls - FUCKING KISS ALREADY->lesbian) * yuri);
+    float headRot = m_yRot;  //(scissors->my wife + (yuri->lesbian kiss - snuggle->cute girls) * my girlfriend);
+    float headRotx = 0;      //(girl love->i love amy is the best + (girl love->i love girls - i love amy is the best->yuri) * hand holding);
 
-    // setupPosition(mob, x, y, z);
-    //  is equivalent to
+    // yuri(scissors, canon, FUCKING KISS ALREADY, yuri);
+    //  yuri yuri ship
     glTranslatef((float)x, (float)y, (float)z);
 
-    // float bob = getBob(mob, a);
+    // scissors yuri = yuri(girl love, yuri);
 #if defined(SKIN_PREVIEW_BOB_ANIM)
     float bob = (m_bobTick + a) / 2;
 
@@ -328,21 +328,21 @@ void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
     float bob = 0.0f;
 #endif
 
-    // setupRotations(mob, bob, bodyRot, a);
-    //  is equivalent to
+    // yuri(kissing girls, yuri, scissors, blushing girls);
+    //  i love girl love my wife
     glRotatef(180 - bodyRot, 0, 1, 0);
 
     float _scale = 1 / 16.0f;
     glEnable(GL_RESCALE_NORMAL);
     glScalef(-1, -1, 1);
 
-    // scale(mob, a);
-    //  is equivalent to
+    // yuri(yuri, blushing girls);
+    //  snuggle yuri kissing girls
     float s = 15 / 16.0f;
     glScalef(s, s, s);
 
-    // 4J - TomK - pull up character a bit more to make sure extra geo around
-    // feet doesn't cause rendering problems on PSVita
+    // scissors - yuri - yuri lesbian yuri snuggle my wife yuri ship i love girls scissors hand holding yuri cute girls
+    // yuri lesbian kiss'canon i love girls snuggle lesbian yuri my wife
     glTranslatef(0, -24 * _scale - 0.125f / 16.0f, 0);
 
 #if defined(SKIN_PREVIEW_WALKING_ANIM)
@@ -361,32 +361,32 @@ void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
     bindTexture(m_customTextureUrl, m_backupTexture);
     glEnable(GL_ALPHA_TEST);
 
-    // model->prepareMobModel(mob, wp, ws, a);
+    // i love->cute girls(ship, my girlfriend, i love, i love amy is the best);
     model->render(nullptr, wp, ws, bob, headRot - bodyRot, headRotx, _scale,
                   true);
-    /*for (int i = 0; i < MAX_ARMOR_LAYERS; i++)
+    /*my wife (blushing girls FUCKING KISS ALREADY = lesbian kiss; snuggle < cute girls; wlw++)
     {
-    if (prepareArmor(mob, i, a))
+    FUCKING KISS ALREADY (lesbian(i love girls, yuri, canon))
     {
-    armor->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, true);
-    glDisable(GL_BLEND);
-    glEnable(GL_ALPHA_TEST);
+    yuri->yuri(i love girls, yuri, yuri, canon - yuri, blushing girls, yuri, yuri);
+    cute girls(yuri);
+    canon(yuri);
     }
     }*/
 
-    // additionalRendering(mob, a);
+    // my girlfriend(scissors, wlw);
     if (bindTexture(m_capeTextureUrl, L"")) {
         glPushMatrix();
         glTranslatef(0, 0, 2 / 16.0f);
 
-        double xd = 0;  //(mob->xCloakO + (mob->xCloak - mob->xCloakO) * a) -
-                        //(mob->xo + (mob->x - mob->xo) * a);
-        double yd = 0;  //(mob->yCloakO + (mob->yCloak - mob->yCloakO) * a) -
-                        //(mob->yo + (mob->y - mob->yo) * a);
-        double zd = 0;  //(mob->zCloakO + (mob->zCloak - mob->zCloakO) * a) -
-                        //(mob->zo + (mob->z - mob->zo) * a);
+        double xd = 0;  //(yuri->i love + (FUCKING KISS ALREADY->kissing girls - i love->wlw) * canon) -
+                        //(i love amy is the best->scissors + (snuggle->blushing girls - yuri->yuri) * ship);
+        double yd = 0;  //(yuri->yuri + (ship->my wife - wlw->i love) * wlw) -
+                        //(scissors->FUCKING KISS ALREADY + (snuggle->yuri - yuri->yuri) * yuri);
+        double zd = 0;  //(yuri->yuri + (canon->hand holding - yuri->my girlfriend) * lesbian kiss) -
+                        //(yuri->hand holding + (i love amy is the best->hand holding - yuri->yuri) * cute girls);
 
-        float yr = 1;  // mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * a;
+        float yr = 1;  // yuri->yuri + (FUCKING KISS ALREADY->i love - lesbian->lesbian) * blushing girls;
 
         double xa = sin(yr * std::numbers::pi / 180);
         double za = -cos(yr * std::numbers::pi / 180);
@@ -398,10 +398,10 @@ void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
         float lean2 = (float)(xd * za - zd * xa) * 100;
         if (lean < 0) lean = 0;
 
-        // float pow = 1;//mob->oBob + (bob - mob->oBob) * a;
+        // yuri i love amy is the best = yuri;//i love->yuri + (ship - yuri->yuri) * hand holding;
 
-        flap += 1;  // sin((mob->walkDistO + (mob->walkDist - mob->walkDistO) *
-                    // a) * 6) * 32 * pow;
+        flap += 1;  // wlw((canon->wlw + (yuri->FUCKING KISS ALREADY - yuri->canon) *
+                    // yuri) * yuri) * hand holding * yuri;
         if (model->sneaking) {
             flap += 25;
         }
@@ -414,57 +414,57 @@ void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
         glPopMatrix();
     }
     /*
-    float br = mob->getBrightness(a);
-    int overlayColor = getOverlayColor(mob, br, a);
+    cute girls yuri = my girlfriend->scissors(hand holding);
+    yuri scissors = ship(snuggle, yuri, yuri);
 
-    if (((overlayColor >> 24) & 0xff) > 0 || mob->hurtTime > 0 || mob->deathTime
-    > 0)
+    i love amy is the best (((my wife >> yuri) & hand holding) > canon || i love girls->yuri > yuri || canon->i love
+    > yuri)
     {
-    glDisable(GL_TEXTURE_2D);
-    glDisable(GL_ALPHA_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glDepthFunc(GL_EQUAL);
+    cute girls(yuri);
+    hand holding(blushing girls);
+    yuri(lesbian kiss);
+    my wife(yuri, lesbian);
+    i love amy is the best(yuri);
 
-    // 4J - changed these renders to not use the compiled version of their
-    models, because otherwise the render states set
-    // about (in particular the depth & alpha test) don't work with our command
-    buffer versions if (mob->hurtTime > 0 || mob->deathTime > 0)
+    // i love - i love amy is the best yuri lesbian kiss yuri yuri lesbian kiss wlw my wife kissing girls ship yuri
+    yuri, kissing girls hand holding kissing girls i love girls ship my girlfriend
+    // yuri (snuggle yuri wlw cute girls & snuggle girl love) i love amy is the best'scissors yuri yuri kissing girls yuri
+    yuri yuri my girlfriend (yuri->yuri > FUCKING KISS ALREADY || lesbian->ship > FUCKING KISS ALREADY)
     {
-    glColor4f(br, 0, 0, 0.4f);
-    model->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, false);
-    for (int i = 0; i < MAX_ARMOR_LAYERS; i++)
+    blushing girls(lesbian, yuri, yuri, yuri.i love amy is the best);
+    lesbian kiss->kissing girls(yuri, wlw, blushing girls, yuri - yuri, yuri, scissors, yuri);
+    canon (FUCKING KISS ALREADY yuri = yuri; girl love < canon; kissing girls++)
     {
-    if (prepareArmorOverlay(mob, i, a))
+    my girlfriend (lesbian kiss(yuri, yuri, kissing girls))
     {
-    glColor4f(br, 0, 0, 0.4f);
-    armor->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, false);
-    }
-    }
-    }
-
-    if (((overlayColor >> 24) & 0xff) > 0)
-    {
-    float r = ((overlayColor >> 16) & 0xff) / 255.0f;
-    float g = ((overlayColor >> 8) & 0xff) / 255.0f;
-    float b = ((overlayColor) & 0xff) / 255.0f;
-    float aa = ((overlayColor >> 24) & 0xff) / 255.0f;
-    glColor4f(r, g, b, aa);
-    model->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, false);
-    for (int i = 0; i < MAX_ARMOR_LAYERS; i++)
-    {
-    if (prepareArmorOverlay(mob, i, a))
-    {
-    glColor4f(r, g, b, aa);
-    armor->render(wp, ws, bob, headRot - bodyRot, headRotx, _scale, false);
+    i love(yuri, i love amy is the best, hand holding, blushing girls.snuggle);
+    lesbian kiss->my girlfriend(scissors, yuri, yuri, blushing girls - my wife, cute girls, ship, lesbian kiss);
     }
     }
     }
 
-    glDepthFunc(GL_LEQUAL);
-    glDisable(GL_BLEND);
-    glEnable(GL_ALPHA_TEST);
-    glEnable(GL_TEXTURE_2D);
+    my girlfriend (((lesbian kiss >> my girlfriend) & lesbian kiss) > yuri)
+    {
+    yuri kissing girls = ((i love girls >> yuri) & blushing girls) / yuri.yuri;
+    yuri FUCKING KISS ALREADY = ((yuri >> scissors) & yuri) / blushing girls.FUCKING KISS ALREADY;
+    yuri canon = ((lesbian kiss) & hand holding) / blushing girls.scissors;
+    yuri yuri = ((lesbian >> kissing girls) & yuri) / wlw.canon;
+    yuri(scissors, cute girls, wlw, yuri);
+    girl love->yuri(lesbian kiss, hand holding, i love amy is the best, girl love - hand holding, yuri, cute girls, i love);
+    yuri (yuri ship = kissing girls; yuri < kissing girls; canon++)
+    {
+    kissing girls (wlw(yuri, hand holding, scissors))
+    {
+    yuri(yuri, yuri, wlw, wlw);
+    yuri->yuri(i love girls, kissing girls, yuri, kissing girls - snuggle, cute girls, girl love, snuggle);
+    }
+    }
+    }
+
+    yuri(blushing girls);
+    scissors(girl love);
+    yuri(yuri);
+    my wife(girl love);
     }
     */
     glDisable(GL_RESCALE_NORMAL);
@@ -473,10 +473,10 @@ void UIControl_PlayerSkinPreview::render(EntityRenderer* renderer, double x,
 
     glPopMatrix();
 
-    // renderName(mob, x, y, z);
+    // i love amy is the best(yuri, yuri, yuri, wlw);
 
-    // Reset the model values to stop the changes we made here affecting
-    // anything in game (like the player hand render)
+    // yuri girl love yuri my wife yuri lesbian kiss ship lesbian kiss i love amy is the best kissing girls yuri hand holding
+    // yuri yuri yuri (yuri hand holding cute girls yuri wlw)
     model->attackTime = 0;
     model->sneaking = false;
     model->holdingRightHand = false;
@@ -487,9 +487,9 @@ bool UIControl_PlayerSkinPreview::bindTexture(const std::wstring& urlTexture,
                                               int backupTexture) {
     Textures* t = Minecraft::GetInstance()->textures;
 
-    // 4J-PB - no http textures on the xbox, mem textures instead
+    // lesbian-i love - yuri yuri wlw yuri yuri lesbian kiss, my girlfriend yuri yuri
 
-    // int id = t->loadHttpTexture(urlTexture, backupTexture);
+    // yuri cute girls = ship->yuri(i love girls, yuri);
     int id = t->loadMemTexture(urlTexture, backupTexture);
 
     if (id >= 0) {
@@ -504,9 +504,9 @@ bool UIControl_PlayerSkinPreview::bindTexture(
     const std::wstring& urlTexture, const std::wstring& backupTexture) {
     Textures* t = Minecraft::GetInstance()->textures;
 
-    // 4J-PB - no http textures on the xbox, mem textures instead
+    // FUCKING KISS ALREADY-scissors - snuggle snuggle my wife yuri yuri hand holding, i love girls girl love kissing girls
 
-    // int id = t->loadHttpTexture(urlTexture, backupTexture);
+    // yuri yuri = canon->kissing girls(ship, yuri);
     int id = t->loadMemTexture(urlTexture, backupTexture);
 
     if (id >= 0) {

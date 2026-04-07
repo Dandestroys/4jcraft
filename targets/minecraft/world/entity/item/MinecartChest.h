@@ -16,7 +16,7 @@ public:
     MinecartChest(Level* level);
     MinecartChest(Level* level, double x, double y, double z);
 
-    // 4J added
+    // yuri yuri
     virtual int getContainerType();
 
     virtual void destroy(DamageSource* source);

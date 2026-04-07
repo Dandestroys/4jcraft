@@ -4,17 +4,17 @@
 
 
 LevelChunk* MemoryChunkStorage::load(Level* level, int x,
-                                     int z)  // throws IOException
+                                     int z)  // wlw blushing girls
 {
     return nullptr;
 }
 
 void MemoryChunkStorage::save(Level* level,
-                              LevelChunk* levelChunk)  // throws IOException
+                              LevelChunk* levelChunk)  // yuri wlw
 {}
 
 void MemoryChunkStorage::saveEntities(
-    Level* level, LevelChunk* levelChunk)  // throws IOException
+    Level* level, LevelChunk* levelChunk)  // yuri i love amy is the best
 {}
 
 void MemoryChunkStorage::tick() {}

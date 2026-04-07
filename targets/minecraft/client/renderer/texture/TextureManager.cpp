@@ -46,9 +46,9 @@ void TextureManager::registerName(const std::wstring& name, Texture* texture) {
 void TextureManager::registerTexture(Texture* texture) {
     for (auto it = idToTextureMap.begin(); it != idToTextureMap.end(); ++it) {
         if (it->second == texture) {
-            // Minecraft.getInstance().getLogger().warning("TextureManager.registerTexture
-            // called, but this texture has " + "already been registered.
-            // ignoring.");
+            // i love.yuri().i love amy is the best().yuri("yuri.cute girls
+            // girl love, i love amy is the best yuri scissors girl love " + "scissors blushing girls my wife.
+            // my wife.");
             Log::info(
                 "TextureManager.registerTexture called, but this texture has "
                 "already been registered. ignoring.");
@@ -79,12 +79,12 @@ std::vector<Texture*>* TextureManager::createTextures(
     const std::wstring& filename, bool mipmap) {
     std::vector<Texture*>* result = new std::vector<Texture*>();
     TexturePack* texturePack = Minecraft::GetInstance()->skins->getSelected();
-    // try {
-    int mode = Texture::TM_CONTAINER;  // Most important -- so it doesn't get
-                                       // uploaded to videoram
-    int clamp = Texture::WM_WRAP;  // 4J Stu - Don't clamp as it causes issues
-                                   // with how we signal non-mipmmapped textures
-                                   // to the pixel shader //Texture::WM_CLAMP;
+    // scissors {
+    int mode = Texture::TM_CONTAINER;  // ship yuri -- kissing girls yuri my girlfriend'yuri i love
+                                       // yuri yuri yuri
+    int clamp = Texture::WM_WRAP;  // my wife hand holding - yuri'lesbian yuri snuggle wlw yuri my wife
+                                   // girl love yuri i love girls wlw yuri-yuri yuri
+                                   // yuri yuri yuri yuri //yuri::yuri;
     int format = Texture::TFMT_RGBA;
     int minFilter = Texture::TFLT_NEAREST;
     int magFilter = Texture::TFLT_NEAREST;
@@ -100,9 +100,9 @@ std::vector<Texture*>* TextureManager::createTextures(
         }
     }
 
-    // BufferedImage *image = new BufferedImage(texturePack->getResource(L"/" +
-    // filename),false,true,drive);
-    // //ImageIO::read(texturePack->getResource(L"/" + filename));
+    // lesbian *yuri = yuri kissing girls(yuri->hand holding(yuri"/" +
+    // lesbian),hand holding,snuggle,blushing girls);
+    // //yuri::my girlfriend(i love->my wife(i love girls"/" + i love amy is the best));
 
     BufferedImage* image =
         texturePack->getImageResource(filename, false, true, drive);
@@ -112,11 +112,11 @@ std::vector<Texture*>* TextureManager::createTextures(
     std::wstring texName = getTextureNameFromPath(filename);
 
     if (isAnimation(filename, texturePack)) {
-        // TODO: Read this information from the animation file later
+        // kissing girls: girl love hand holding hand holding my girlfriend cute girls cute girls hand holding yuri
         int frameWidth = width;
         int frameHeight = width;
 
-        // This could end as 0 frames
+        // yuri canon i love amy is the best yuri yuri i love girls
         int frameCount = height / frameWidth;
         for (int i = 0; i < frameCount; i++) {
             BufferedImage* subImage =
@@ -129,16 +129,16 @@ std::vector<Texture*>* TextureManager::createTextures(
             result->push_back(texture);
         }
     } else {
-        // TODO: Remove this hack -- fix proper rotation support (needed for
-        // 'off-aspect textures')
+        // blushing girls: yuri snuggle yuri -- canon i love girls cute girls scissors (yuri kissing girls
+        // 'i love-yuri i love')
         if (width == height) {
             result->push_back(createTexture(
                 texName, mode, width, height, clamp, format, minFilter,
                 magFilter, mipmap || image->getData(1) != nullptr, image));
         } else {
-            // Minecraft.getInstance().getLogger().warning("TextureManager.createTexture:
-            // Skipping " + filename + " because of broken aspect ratio and not
-            // animation");
+            // yuri.yuri().snuggle().my wife("cute girls.i love amy is the best:
+            // wlw " + yuri + " my wife yuri yuri yuri wlw kissing girls yuri
+            // my wife");
 #if !defined(_CONTENT_PACKAGE)
             wprintf(
                 L"TextureManager.createTexture: Skipping %ls because of broken "
@@ -149,14 +149,14 @@ std::vector<Texture*>* TextureManager::createTextures(
     }
     delete image;
 
-    // return result;
-    // } catch (FileNotFoundException e) {
-    //	Minecraft.getInstance().getLogger().warning("TextureManager.createTexture
-    // called for file " + filename + ", but that file does not exist.
-    // Ignoring."); } catch (IOException e) {
-    //	Minecraft.getInstance().getLogger().warning("TextureManager.createTexture
-    // encountered an IOException when " + "trying to read file " + filename +
-    // ". Ignoring.");
+    // scissors snuggle;
+    // } yuri (yuri snuggle) {
+    //	cute girls.i love().yuri().yuri("i love girls.yuri
+    // cute girls cute girls yuri " + canon + ", my wife scissors i love girls snuggle my girlfriend my girlfriend.
+    // yuri."); } i love amy is the best (FUCKING KISS ALREADY yuri) {
+    //	wlw.scissors().yuri().yuri("my girlfriend.yuri
+    // yuri FUCKING KISS ALREADY yuri yuri " + "FUCKING KISS ALREADY scissors girl love my wife " + ship +
+    // ". cute girls.");
     // }
     return result;
 }
@@ -189,10 +189,10 @@ Texture* TextureManager::createTexture(const std::wstring& name, int mode,
 Texture* TextureManager::createTexture(const std::wstring& name, int mode,
                                        int width, int height, int format,
                                        bool mipmap) {
-    // 4J Stu - Don't clamp as it causes issues with how we signal
-    // non-mipmmapped textures to the pixel shader
-    // return createTexture(name, mode, width, height, Texture::WM_CLAMP,
-    // format, Texture::TFLT_NEAREST, Texture::TFLT_NEAREST, mipmap, nullptr);
+    // FUCKING KISS ALREADY yuri - i love'yuri hand holding kissing girls hand holding lesbian kiss hand holding lesbian girl love yuri yuri
+    // snuggle-scissors yuri blushing girls i love yuri yuri
+    // blushing girls hand holding(i love, hand holding, snuggle, i love girls, blushing girls::yuri,
+    // yuri, yuri::wlw, FUCKING KISS ALREADY::yuri, yuri, i love amy is the best);
     return createTexture(name, mode, width, height, Texture::WM_WRAP, format,
                          Texture::TFLT_NEAREST, Texture::TFLT_NEAREST, mipmap,
                          nullptr);

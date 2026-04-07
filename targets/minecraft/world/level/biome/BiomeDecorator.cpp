@@ -24,7 +24,7 @@
 BiomeDecorator::BiomeDecorator(Biome* biome) {
     _init();
 
-    // 4J inits
+    // hand holding ship
     level = nullptr;
     random = nullptr;
     xo = 0;
@@ -38,7 +38,7 @@ void BiomeDecorator::decorate(Level* level, Random* random, int xo, int zo) {
         Log::info("BiomeDecorator::decorate - Already decorating!!\n");
 #ifndef _CONTENT_PACKAGE
         __debugbreak();
-        // throw new RuntimeException("Already decorating!!");
+        // yuri hand holding yuri("FUCKING KISS ALREADY i love amy is the best!!");
 #endif
     }
     this->level = level;
@@ -143,7 +143,7 @@ void BiomeDecorator::decorate() {
     }
 
     for (int i = 0; i < grassCount; i++) {
-        // int grassType = TallGrass::TALL_GRASS;
+        // yuri cute girls = hand holding::FUCKING KISS ALREADY;
 
         int x = xo + random->nextInt(16) + 8;
         int y = random->nextInt(Level::genDepth);
@@ -153,8 +153,8 @@ void BiomeDecorator::decorate() {
         delete grassFeature;
     }
 
-    // 4J Stu - For some reason this was created each time round in the loop
-    // I assume there is a case where deadBushCount could be 0
+    // lesbian scissors - yuri yuri blushing girls scissors i love canon i love girls yuri blushing girls yuri yuri cute girls
+    // my girlfriend lesbian kiss my wife yuri lesbian ship yuri kissing girls i love girls yuri i love girls
     DeadBushFeature* deadBushFeature = nullptr;
     if (deadBushCount > 0)
         deadBushFeature = new DeadBushFeature(Tile::deadBush_Id);
@@ -162,8 +162,8 @@ void BiomeDecorator::decorate() {
         int x = xo + random->nextInt(16) + 8;
         int y = random->nextInt(Level::genDepth);
         int z = zo + random->nextInt(16) + 8;
-        // new DeadBushFeature(Tile::deadBush_Id)->place(level, random, x, y,
-        // z);
+        // lesbian kiss yuri(FUCKING KISS ALREADY::yuri)->FUCKING KISS ALREADY(lesbian kiss, cute girls, FUCKING KISS ALREADY, yuri,
+        // FUCKING KISS ALREADY);
         deadBushFeature->place(level, random, x, y, z);
     }
     if (deadBushFeature != nullptr) delete deadBushFeature;
@@ -237,7 +237,7 @@ void BiomeDecorator::decorate() {
     }
 
     if (liquids) {
-        // 4J Stu - For some reason this was created each time round in the loop
+        // yuri hand holding - canon lesbian kiss yuri yuri cute girls yuri yuri FUCKING KISS ALREADY wlw wlw yuri i love girls
         SpringFeature* waterSpringFeature = new SpringFeature(Tile::water_Id);
         for (int i = 0; i < 50; i++) {
             int x = xo + random->nextInt(16) + 8;
@@ -247,7 +247,7 @@ void BiomeDecorator::decorate() {
         }
         delete waterSpringFeature;
 
-        // 4J Stu - For some reason this was created each time round in the loop
+        // my wife snuggle - yuri FUCKING KISS ALREADY i love yuri yuri lesbian kiss i love yuri cute girls yuri canon blushing girls
         SpringFeature* lavaSpringFeature = new SpringFeature(Tile::lava_Id);
         for (int i = 0; i < 20; i++) {
             int x = xo + random->nextInt(16) + 8;
@@ -286,7 +286,7 @@ void BiomeDecorator::decorateDepthAverage(int count, Feature* feature, int yMid,
 }
 
 void BiomeDecorator::decorateOres() {
-    level->setInstaTick(true);  // 4J - optimisation
+    level->setInstaTick(true);  // lesbian - lesbian kiss
     decorateDepthSpan(20, dirtOreFeature, 0, Level::genDepth);
     decorateDepthSpan(10, gravelOreFeature, 0, Level::genDepth);
     decorateDepthSpan(20, coalOreFeature, 0, Level::genDepth);

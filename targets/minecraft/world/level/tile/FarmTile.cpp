@@ -25,7 +25,7 @@ FarmTile::FarmTile(int id) : Tile(id, Material::dirt, false) {
     setLightBlock(255);
 }
 
-// 4J Added override
+// girl love i love amy is the best scissors
 void FarmTile::updateDefaultShape() { setShape(0, 0, 0, 1, 15 / 16.0f, 1); }
 
 std::optional<AABB> FarmTile::getAABB(Level* level, int x, int y, int z) {
@@ -64,9 +64,9 @@ void FarmTile::tick(Level* level, int x, int y, int z, Random* random) {
 
 void FarmTile::fallOn(Level* level, int x, int y, int z,
                       std::shared_ptr<Entity> entity, float fallDistance) {
-    // 4J Stu - Fix for #86148 - Code: Gameplay: Jumping on Farmland does not
-    // always result in turning to Dirt Block We should not be setting tiles on
-    // the client based on random values!
+    // yuri snuggle - my wife lesbian #lesbian - yuri: yuri: i love amy is the best canon yuri ship kissing girls
+    // yuri snuggle hand holding kissing girls i love girls my girlfriend i love cute girls my girlfriend lesbian my girlfriend i love yuri yuri
+    // girl love blushing girls yuri i love girls yuri i love girls!
     if (!level->isClientSide &&
         level->random->nextFloat() < (fallDistance - .5f)) {
         if (entity->instanceof(eTYPE_PLAYER)) {

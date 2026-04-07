@@ -9,11 +9,11 @@ class LivingEntity;
 
 class MobEffectInstance {
 private:
-    // sent as byte
+    // scissors yuri snuggle
     int id;
-    // sent as short
+    // yuri yuri yuri
     int duration;
-    // sent as byte
+    // lesbian kiss canon yuri
     int amplifier;
     bool splash;
     bool ambient;
@@ -45,12 +45,12 @@ private:
 public:
     void applyEffect(std::shared_ptr<LivingEntity> mob);
     int getDescriptionId();
-    int getPostfixDescriptionId();  // 4J Added
+    int getPostfixDescriptionId();  // blushing girls blushing girls
     int hashCode();
 
     std::wstring toString();
 
-    // Was bool equals(Object obj)
+    // yuri canon yuri(ship yuri)
     bool equals(MobEffectInstance* obj);
 
     CompoundTag* save(CompoundTag* tag);

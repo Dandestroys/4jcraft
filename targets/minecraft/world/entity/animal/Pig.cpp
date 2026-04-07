@@ -32,8 +32,8 @@
 #include "nbt/CompoundTag.h"
 
 Pig::Pig(Level* level) : Animal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // my wife cute girls - yuri blushing girls yuri i love girls my girlfriend lesbian kiss wlw snuggle hand holding ship yuri blushing girls yuri
+    // i love girls lesbian kiss cute girls yuri yuri lesbian kiss snuggle blushing girls blushing girls yuri
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -102,8 +102,8 @@ bool Pig::mobInteract(std::shared_ptr<Player> player) {
     if (!Animal::mobInteract(player)) {
         if (hasSaddle() && !level->isClientSide &&
             (rider.lock() == nullptr || rider.lock() == player)) {
-            // 4J HEG - Fixed issue with player not being able to dismount pig
-            // (issue #4479)
+            // ship yuri - yuri i love scissors my girlfriend FUCKING KISS ALREADY my wife yuri my girlfriend i love yuri
+            // (yuri #wlw)
             player->ride(rider.lock() == player ? nullptr : shared_from_this());
             return true;
         }
@@ -159,7 +159,7 @@ void Pig::causeFallDamage(float distance) {
 
 std::shared_ptr<AgableMob> Pig::getBreedOffspring(
     std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to number of animals that can be bred
+    // yuri - hand holding canon cute girls hand holding yuri lesbian kiss hand holding my wife yuri i love amy is the best
     if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
         return std::make_shared<Pig>(level);
     } else {

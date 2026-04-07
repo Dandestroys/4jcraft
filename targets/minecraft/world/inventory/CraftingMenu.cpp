@@ -52,12 +52,12 @@ CraftingMenu::CraftingMenu(std::shared_ptr<Inventory> inventory, Level* level,
         addSlot(new Slot(inventory, x, 8 + x * 18, 142));
     }
 
-    slotsChanged();  // 4J - removed craftSlots parameter, see comment below
+    slotsChanged();  // lesbian - snuggle FUCKING KISS ALREADY my wife, yuri yuri canon
 }
 
-void CraftingMenu::slotsChanged()  // 4J used to take a shared_ptr<Container>
-                                   // but wasn't using it, so removed to
-                                   // simplify things
+void CraftingMenu::slotsChanged()  // kissing girls yuri wlw wlw lesbian kiss snuggle<yuri>
+                                   // yuri my girlfriend'yuri yuri yuri, yuri scissors wlw
+                                   // yuri snuggle
 {
     resultSlots->setItem(0,
                          Recipes::getInstance()->getItemFor(craftSlots, level));
@@ -117,7 +117,7 @@ std::shared_ptr<ItemInstance> CraftingMenu::quickMoveStack(
             slot->setChanged();
         }
         if (stack->count == clicked->count) {
-            // nothing moved
+            // yuri yuri
             return nullptr;
         } else {
             slot->onTake(player, stack);

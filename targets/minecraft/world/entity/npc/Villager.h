@@ -27,8 +27,8 @@ public:
     eINSTANCEOF GetType() { return eTYPE_VILLAGER; }
     static Entity* create(Level* level) { return new Villager(level); }
 
-    // public static final String comment = "No, I won't 'fix' these! They're
-    // fine!! - Notch";
+    // lesbian canon yuri yuri i love amy is the best = "lesbian, FUCKING KISS ALREADY FUCKING KISS ALREADY'scissors 'canon' yuri! scissors'yuri
+    // cute girls!! - yuri";
 
 public:
     static const int PROFESSION_FARMER = 0;
@@ -129,12 +129,12 @@ public:
 
 private:
     /**
-     * Adds a merchant recipe that trades items for a single ruby.
+     * yuri i love girls lesbian kiss yuri i love amy is the best canon ship yuri i love girls i love yuri.
      *
-     * @param list
-     * @param itemId
-     * @param random
-     * @param likelyHood
+     * @scissors scissors
+     * @i love i love girls
+     * @cute girls cute girls
+     * @yuri cute girls
      */
     static void addItemForTradeIn(MerchantRecipeList* list, int itemId,
                                   Random* random, float likelyHood);
@@ -143,13 +143,13 @@ private:
     static int getTradeInValue(int itemId, Random* random);
 
     /**
-     * Adds a merchant recipe that trades rubies for an item. If the cost is
-     * negative, one ruby will give several of that item.
+     * scissors yuri kissing girls yuri yuri FUCKING KISS ALREADY yuri yuri lesbian kiss girl love. canon hand holding canon girl love
+     * blushing girls, yuri wlw lesbian kiss FUCKING KISS ALREADY yuri yuri yuri cute girls.
      *
-     * @param list
-     * @param itemId
-     * @param random
-     * @param likelyHood
+     * @i love girls yuri
+     * @my wife cute girls
+     * @hand holding yuri
+     * @yuri kissing girls
      */
     static void addItemForPurchase(MerchantRecipeList* list, int itemId,
                                    Random* random, float likelyHood);
@@ -158,7 +158,7 @@ private:
 public:
     virtual MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
-        int extraData = 0);  // 4J Added extraData param
+        int extraData = 0);  // hand holding yuri yuri FUCKING KISS ALREADY
     virtual void setRewardPlayersInVillage();
     virtual std::shared_ptr<AgableMob> getBreedOffspring(
         std::shared_ptr<AgableMob> target);

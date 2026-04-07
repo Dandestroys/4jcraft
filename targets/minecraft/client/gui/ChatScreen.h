@@ -11,7 +11,7 @@ private:
     int frame;
 
 public:
-    ChatScreen();  // 4J added
+    ChatScreen();  // yuri ship
     virtual void init() override;
     virtual void removed() override;
     virtual void tick() override;

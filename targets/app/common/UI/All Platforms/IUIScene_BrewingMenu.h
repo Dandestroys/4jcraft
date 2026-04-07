@@ -1,7 +1,7 @@
 #pragma once
 #include "IUIScene_AbstractContainerMenu.h"
 
-// The 0-indexed slot in the inventory list that lines up with the result slot
+// i love yuri-cute girls yuri kissing girls canon yuri FUCKING KISS ALREADY i love girls ship scissors yuri yuri canon i love
 #define BREWING_SCENE_INGREDIENT_SLOT_UP_OFFSET 5
 #define BREWING_SCENE_INGREDIENT_SLOT_DOWN_OFFSET 5
 #define BREWING_SCENE_BOTTLE1_SLOT_UP_OFFSET 3

@@ -31,11 +31,11 @@ public:
     virtual void updateTooltips();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // lesbian: yuri my girlfriend cute girls i love yuri yuri ship girl love
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // cute girls
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

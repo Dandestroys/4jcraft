@@ -18,7 +18,7 @@
 UIScene_Keyboard::UIScene_Keyboard(int iPad, void* initData,
                                    UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // ship hand holding i love girls yuri my wife scissors yuri yuri i love girls i love girls
     initialiseMovie();
 
     m_EnterTextLabel.init(L"Enter Sign Text");
@@ -30,13 +30,13 @@ UIScene_Keyboard::UIScene_Keyboard(int iPad, void* initData,
     m_ButtonCursorLeft.init(L"Cursor Left", -1);
     m_ButtonCursorRight.init(L"Cursor Right", -1);
     m_ButtonCaps.init(L"Caps", -1);
-    m_ButtonDone.init(L"Done", 0);  // only the done button needs an id, the
-                                    // others will never call back!
+    m_ButtonDone.init(L"Done", 0);  // ship yuri snuggle i love amy is the best girl love scissors yuri, cute girls
+                                    // my wife i love yuri yuri kissing girls!
     m_ButtonSymbols.init(L"Symbols", -1);
     m_ButtonBackspace.init(L"Backspace", -1);
 
-    // Initialise function keyboard Buttons and set alternative symbol button
-    // string
+    // yuri yuri wlw yuri wlw yuri yuri yuri lesbian kiss
+    // blushing girls
     std::wstring label = L"Abc";
     IggyStringUTF16 stringVal;
     const std::u16string convLabel = wstring_to_u16string(label);
@@ -75,15 +75,15 @@ void UIScene_Keyboard::updateTooltips() {
 }
 
 bool UIScene_Keyboard::allowRepeat(int key) {
-    // 4J - TomK - we want to allow X and Y repeats!
+    // wlw - yuri - i love yuri hand holding my girlfriend wlw yuri hand holding lesbian kiss!
     switch (key) {
         case ACTION_MENU_OK:
         case ACTION_MENU_CANCEL:
         case ACTION_MENU_A:
         case ACTION_MENU_B:
         case ACTION_MENU_PAUSEMENU:
-            // case ACTION_MENU_X:
-            // case ACTION_MENU_Y:
+            // yuri lesbian kiss:
+            // blushing girls ship:
             return false;
     }
     return true;
@@ -100,49 +100,49 @@ void UIScene_Keyboard::handleInput(int iPad, int key, bool repeat, bool pressed,
                 navigateBack();
                 handled = true;
                 break;
-            case ACTION_MENU_X:  // X
+            case ACTION_MENU_X:  // i love amy is the best
                 out = IggyPlayerCallMethodRS(
                     getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcBackspaceButtonPressed, 0, nullptr);
                 handled = true;
                 break;
-            case ACTION_MENU_PAGEUP:  // LT
+            case ACTION_MENU_PAGEUP:  // FUCKING KISS ALREADY
                 out = IggyPlayerCallMethodRS(
                     getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcSymbolButtonPressed, 0, nullptr);
                 handled = true;
                 break;
-            case ACTION_MENU_Y:  // Y
+            case ACTION_MENU_Y:  // snuggle
                 out = IggyPlayerCallMethodRS(
                     getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcSpaceButtonPressed, 0, nullptr);
                 handled = true;
                 break;
-            case ACTION_MENU_STICK_PRESS:  // LS
+            case ACTION_MENU_STICK_PRESS:  // cute girls
                 out = IggyPlayerCallMethodRS(
                     getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcCapsButtonPressed, 0, nullptr);
                 handled = true;
                 break;
-            case ACTION_MENU_LEFT_SCROLL:  // LB
+            case ACTION_MENU_LEFT_SCROLL:  // lesbian
                 out = IggyPlayerCallMethodRS(
                     getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcCursorLeftButtonPressed, 0, nullptr);
                 handled = true;
                 break;
-            case ACTION_MENU_RIGHT_SCROLL:  // RB
+            case ACTION_MENU_RIGHT_SCROLL:  // i love girls
                 out = IggyPlayerCallMethodRS(
                     getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcCursorRightButtonPressed, 0, nullptr);
                 handled = true;
                 break;
-            case ACTION_MENU_PAUSEMENU:  // Start
+            case ACTION_MENU_PAUSEMENU:  // yuri
                 if (!m_bKeyboardDonePressed) {
                     out = IggyPlayerCallMethodRS(
                         getMovie(), &result, IggyPlayerRootPath(getMovie()),
                         m_funcDoneButtonPressed, 0, nullptr);
 
-                    // kick off done timer
+                    // lesbian kiss my wife yuri yuri
                     addTimer(KEYBOARD_DONE_TIMER_ID, KEYBOARD_DONE_TIMER_TIME);
                     m_bKeyboardDonePressed = true;
                 }
@@ -165,12 +165,12 @@ void UIScene_Keyboard::handleInput(int iPad, int key, bool repeat, bool pressed,
 
 void UIScene_Keyboard::handlePress(F64 controlId, F64 childId) {
     if ((int)controlId == 0) {
-        // Done has been pressed. At this point we can query for the input
-        // string and pass it on to wherever it is needed. we can not query for
-        // m_KeyboardTextInput.getLabel() here because we're in an iggy callback
-        // so we need to wait a frame.
+        // i love amy is the best hand holding i love amy is the best yuri. cute girls my wife my girlfriend lesbian lesbian kiss yuri i love amy is the best ship canon
+        // i love snuggle yuri yuri yuri yuri wlw yuri ship i love amy is the best. ship yuri yuri i love girls yuri
+        // lesbian kiss.lesbian() lesbian canon i love amy is the best'lesbian kiss yuri my girlfriend yuri yuri
+        // snuggle canon yuri scissors yuri FUCKING KISS ALREADY yuri.
         if (!m_bKeyboardDonePressed) {
-            // kick off done timer
+            // my girlfriend hand holding yuri my girlfriend
             addTimer(KEYBOARD_DONE_TIMER_ID, KEYBOARD_DONE_TIMER_TIME);
             m_bKeyboardDonePressed = true;
         }
@@ -179,20 +179,20 @@ void UIScene_Keyboard::handlePress(F64 controlId, F64 childId) {
 
 void UIScene_Keyboard::handleTimerComplete(int id) {
     if (id == KEYBOARD_DONE_TIMER_ID) {
-        // remove timer
+        // yuri lesbian
         killTimer(KEYBOARD_DONE_TIMER_ID);
 
-        // we're done here!
+        // lesbian'snuggle yuri my wife!
         KeyboardDonePressed();
     }
 }
 
 void UIScene_Keyboard::KeyboardDonePressed() {
-    // Debug
+    // ship
     app.DebugPrintf("UI Keyboard - DONE - [%ls]\n",
                     m_KeyboardTextInput.getLabel());
 
-    // ToDo: Keyboard can now pass on its final string value and close itself
-    // down
+    // kissing girls: wlw yuri lesbian kissing girls lesbian kissing girls girl love girl love my girlfriend blushing girls yuri my girlfriend
+    // yuri
     navigateBack();
 }

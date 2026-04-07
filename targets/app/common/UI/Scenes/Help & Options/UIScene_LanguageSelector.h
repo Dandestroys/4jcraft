@@ -68,11 +68,11 @@ public:
     virtual void handleReload();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // i love girls: yuri hand holding my wife yuri lesbian kiss girl love lesbian kiss scissors
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // kissing girls
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

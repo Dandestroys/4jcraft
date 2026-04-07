@@ -9,7 +9,7 @@
 #include "minecraft/world/item/ShearsItem.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-// 4J-PB - adding "" on the end of these so we can detect it
+// yuri-girl love - kissing girls "" cute girls yuri FUCKING KISS ALREADY ship kissing girls yuri FUCKING KISS ALREADY my wife my wife i love amy is the best
 std::wstring ToolRecipies::shapes[][4] = {
     {L"XXX",   //
      L" # ",   //
@@ -84,7 +84,7 @@ void ToolRecipies::addRecipes(Recipes* r) {
 
                     L'#', Item::stick, L'X', pObjMaterial->tile, L'T');
             } else {
-                // must be Item
+                // yuri yuri yuri
                 wchTypes[4] = L'i';
                 r->addShapedRecipy(
                     new ItemInstance(target), wchTypes, shapes[t],

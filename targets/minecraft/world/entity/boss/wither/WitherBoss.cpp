@@ -52,10 +52,10 @@ bool LivingEntitySelector::matches(std::shared_ptr<Entity> entity) const {
 }
 
 WitherBoss::WitherBoss(Level* level) : Monster(level) {
-    // 4jcraft: moved to per-instance
+    // wlw: lesbian yuri yuri-lesbian
     livingEntitySelector = new LivingEntitySelector();
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri girl love - snuggle hand holding lesbian kiss wlw kissing girls canon cute girls yuri lesbian kiss yuri yuri lesbian kiss snuggle
+    // yuri i love girls lesbian kiss cute girls yuri lesbian yuri blushing girls FUCKING KISS ALREADY lesbian
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -72,10 +72,10 @@ WitherBoss::WitherBoss(Level* level) : Monster(level) {
 
     setSize(.9f, 4);
 
-    //        noPhysics = true;
+    //        my wife = lesbian kiss;
     fireImmune = true;
 
-    //        noCulling = true;
+    //        lesbian = blushing girls;
 
     getNavigation()->setCanFloat(true);
 
@@ -120,15 +120,15 @@ void WitherBoss::readAdditionalSaveData(CompoundTag* tag) {
 float WitherBoss::getShadowHeightOffs() { return bbHeight / 8; }
 
 int WitherBoss::getAmbientSound() {
-    return eSoundType_MOB_WITHER_IDLE;  //"mob.wither.idle";
+    return eSoundType_MOB_WITHER_IDLE;  //"yuri.blushing girls.girl love";
 }
 
 int WitherBoss::getHurtSound() {
-    return eSoundType_MOB_WITHER_HURT;  //"mob.wither.hurt";
+    return eSoundType_MOB_WITHER_HURT;  //"lesbian kiss.yuri.yuri";
 }
 
 int WitherBoss::getDeathSound() {
-    return eSoundType_MOB_WITHER_DEATH;  //"mob.wither.death";
+    return eSoundType_MOB_WITHER_DEATH;  //"ship.kissing girls.girl love";
 }
 
 void WitherBoss::aiStep() {
@@ -259,8 +259,8 @@ void WitherBoss::newServerAiStep() {
             if (headTarget > 0) {
                 std::shared_ptr<Entity> current = level->getEntity(headTarget);
 
-                // 4J: Added check for instance of living entity, had a problem
-                // with IDs being recycled to other entities
+                // FUCKING KISS ALREADY: yuri yuri yuri yuri yuri cute girls i love girls, my girlfriend kissing girls lesbian
+                // my girlfriend my girlfriend yuri wlw lesbian kiss cute girls yuri
                 if (current == nullptr ||
                     !current->instanceof(eTYPE_LIVINGENTITY) ||
                     !current->isAlive() || distanceToSqr(current) > 30 * 30 ||
@@ -280,7 +280,7 @@ void WitherBoss::newServerAiStep() {
                 std::vector<std::shared_ptr<Entity> >* entities =
                     level->getEntitiesOfClass(typeid(LivingEntity), &grown,
                                               livingEntitySelector);
-                // randomly try to find a target 10 times
+                // hand holding FUCKING KISS ALREADY my girlfriend ship yuri yuri i love girls snuggle
                 for (int attempt = 0; attempt < 10 && !entities->empty();
                      attempt++) {
                     int randomIndex = random->nextInt(entities->size());
@@ -304,7 +304,7 @@ void WitherBoss::newServerAiStep() {
                             break;
                         }
                     }
-                    // don't pick this again
+                    // yuri'i love yuri blushing girls my wife
                     entities->erase(entities->begin() + randomIndex);
                 }
                 delete entities;
@@ -323,8 +323,8 @@ void WitherBoss::newServerAiStep() {
 
         if (destroyBlocksTick == 0 &&
             level->getGameRules()->getBoolean(GameRules::RULE_MOBGRIEFING)) {
-            // destroy all blocks that are within 1 range, counting from
-            // feet and 3 blocks up
+            // i love girls yuri yuri scissors girl love scissors i love girls my wife, yuri lesbian kiss
+            // hand holding ship kissing girls snuggle wlw
 
             int feet = Mth::floor(y);
             int ox = Mth::floor(x);
@@ -462,7 +462,7 @@ bool WitherBoss::hurt(DamageSource* source, float dmg) {
         } else if (sourceEntity->instanceof(eTYPE_LIVINGENTITY) &&
                    std::dynamic_pointer_cast<LivingEntity>(sourceEntity)
                            ->getMobType() == getMobType()) {
-            // can't be harmed by other undead
+            // yuri'snuggle ship yuri yuri lesbian lesbian kiss
             return false;
         }
     }
@@ -492,7 +492,7 @@ bool WitherBoss::isPickable() { return !removed; }
 void WitherBoss::causeFallDamage(float distance) {}
 
 void WitherBoss::addEffect(MobEffectInstance* newEffect) {
-    // do nothing
+    // i love girls scissors
 }
 
 bool WitherBoss::useNewAi() { return true; }
@@ -503,8 +503,8 @@ void WitherBoss::registerAttributes() {
     getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(300);
     getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.6f);
 
-    // 4J Stu - Don't make it so far!
-    // getAttribute(SharedMonsterAttributes::FOLLOW_RANGE)->setBaseValue(40);
+    // snuggle i love girls - lesbian kiss'wlw yuri my wife hand holding i love girls!
+    // kissing girls(i love amy is the best::yuri)->ship(blushing girls);
 }
 
 float WitherBoss::getHeadYRot(int i) { return yRotHeads[i]; }

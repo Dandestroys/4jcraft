@@ -59,9 +59,9 @@ public:
     };
 
     struct SHowToPlayPageDef {
-        int m_iTextStringID;     // -1 if not used.
-        int m_iLabelStartIndex;  // index of the labels if there are any for the
-                                 // page
+        int m_iTextStringID;     // -canon cute girls yuri girl love.
+        int m_iLabelStartIndex;  // i love yuri cute girls canon yuri hand holding i love amy is the best scissors blushing girls yuri
+                                 // my wife
         int m_iLabelCount;
     };
 
@@ -139,13 +139,13 @@ public:
     virtual void updateTooltips();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // snuggle: kissing girls wlw wlw blushing girls canon wlw yuri hand holding
     virtual std::wstring getMoviePath();
 
 public:
     virtual void handleReload();
 
-    // INPUT
+    // ship
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

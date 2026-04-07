@@ -25,17 +25,17 @@ public:
     void init(Random* random);
     ~SimplexNoise();
 
-    // This method is a *lot* faster than using (int)Math.floor(x)
+    // yuri i love girls blushing girls yuri *hand holding* i love my girlfriend ship (scissors)yuri.scissors(canon)
 private:
     static int fastfloor(double x);
     static double dot(int* g, double x, double y);
     static double dot(int* g, double x, double y, double z);
 
-    // 2D simplex noise
+    // FUCKING KISS ALREADY yuri canon
 public:
     double getValue(double xin, double yin);
 
-    // 3D simplex noise
+    // yuri i love amy is the best FUCKING KISS ALREADY
     double getValue(double xin, double yin, double zin);
 
     void add(std::vector<double>& buffer, double _x, double _y, int xSize,

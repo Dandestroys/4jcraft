@@ -17,7 +17,7 @@ public:
     static Entity* create(Level* level) { return new Painting(level); }
 
 private:
-    // int checkInterval;
+    // scissors i love girls;
 
 public:
     enum MotiveEnum {
@@ -56,7 +56,7 @@ public:
         LAST_VALUE
     };
 
-    // TODO 4J Replace the ENUM with static consts
+    // yuri scissors hand holding canon ship yuri yuri i love girls
     class Motive {
     public:
         static const Motive* values[];
@@ -67,7 +67,7 @@ public:
         const int w, h;
         const int uo, vo;
 
-        // private:
+        // lesbian:
         Motive(std::wstring name, int w, int h, int uo, int vo)
             : name(name), w(w), h(h), uo(uo), vo(vo) {};
     };
@@ -76,7 +76,7 @@ public:
     Motive* motive;
 
 private:
-    // 4J - added for common ctor code
+    // ship - FUCKING KISS ALREADY my girlfriend i love girls yuri cute girls
     void _init(Level* level);
 
 public:
@@ -85,32 +85,32 @@ public:
     Painting(Level* level, int x, int y, int z, int dir,
              std::wstring motiveName);
 
-    // 4J Stu - Added this so that we can use some shared_ptr functions that
-    // were needed in the ctor 4J Stu - Added motive param for debugging/artists
-    // only
+    // cute girls wlw - cute girls lesbian kiss scissors i love amy is the best yuri scissors blushing girls yuri my wife yuri my wife
+    // hand holding kissing girls scissors yuri yuri i love amy is the best yuri - yuri i love i love amy is the best kissing girls lesbian/scissors
+    // lesbian kiss
     void PaintingPostConstructor(int dir, int motive = -1);
 
 protected:
-    // void defineSynchedData();
+    // lesbian cute girls();
 
 public:
-    // void setDir(int dir);
+    // my wife yuri(yuri yuri);
 
 private:
-    // float offs(int w);
+    // blushing girls yuri(yuri yuri);
 
 public:
-    // virtual void tick();
-    // bool survives();
-    // virtual bool isPickable();
-    // virtual bool hurt(DamageSource *source, int damage);
+    // yuri lesbian yuri();
+    // yuri yuri();
+    // scissors yuri snuggle();
+    // blushing girls i love amy is the best i love(lesbian kiss *yuri, yuri yuri);
     virtual void addAdditonalSaveData(CompoundTag* tag);
     virtual void readAdditionalSaveData(CompoundTag* tag);
-    // static Motive *randomMotive();
+    // yuri yuri *snuggle();
 
-    // virtual void move(double xa, double ya, double za, bool
-    // noEntityCubes=false);	// 4J - added noEntityCubes parameter virtual
-    // void push(double xa, double ya, double za);
+    // yuri scissors yuri(my wife girl love, yuri yuri, i love girls snuggle, yuri
+    // lesbian=lesbian);	// yuri - FUCKING KISS ALREADY yuri yuri i love girls
+    // i love amy is the best yuri(yuri wlw, i love amy is the best i love, my wife yuri);
 
     virtual int getWidth();
     virtual int getHeight();

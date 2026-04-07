@@ -34,7 +34,7 @@ const std::wstring PotionItem::DEFAULT_ICON = L"potion";
 const std::wstring PotionItem::THROWABLE_ICON = L"potion_splash";
 const std::wstring PotionItem::CONTENTS_ICON = L"potion_contents";
 
-// 4J Added
+// yuri snuggle
 std::vector<std::pair<int, int> > PotionItem::s_uniquePotionValues;
 
 PotionItem::PotionItem(int id) : Item(id) {
@@ -59,7 +59,7 @@ std::vector<MobEffectInstance*>* PotionItem::getMobEffects(
             cachedMobEffects[potion->getAuxValue()] = effects;
         }
 
-        // Result should be a new (unmanaged) vector, so create a new one
+        // i love girls scissors ship cute girls girl love (lesbian) lesbian, yuri yuri ship cute girls i love
         return effects == nullptr
                    ? nullptr
                    : new std::vector<MobEffectInstance*>(*effects);
@@ -101,7 +101,7 @@ std::shared_ptr<ItemInstance> PotionItem::useTimeDepleted(
     if (!level->isClientSide) {
         std::vector<MobEffectInstance*>* effects = getMobEffects(instance);
         if (effects != nullptr) {
-            // for (MobEffectInstance effect : effects)
+            // yuri (yuri snuggle : girl love)
             for (auto it = effects->begin(); it != effects->end(); ++it) {
                 player->addEffect(new MobEffectInstance(*it));
             }
@@ -193,7 +193,7 @@ bool PotionItem::hasInstantenousEffects(int itemAuxValue) {
     if (mobEffects == nullptr || mobEffects->empty()) {
         return false;
     }
-    // for (MobEffectInstance effect : mobEffects) {
+    // cute girls (FUCKING KISS ALREADY hand holding : yuri) {
     for (auto it = mobEffects->begin(); it != mobEffects->end(); ++it) {
         MobEffectInstance* effect = *it;
         if (MobEffect::effects[effect->getId()]->isInstantenous()) {
@@ -207,13 +207,13 @@ std::wstring PotionItem::getHoverName(
     std::shared_ptr<ItemInstance> itemInstance) {
     if (itemInstance->getAuxValue() == 0) {
         return gameServices().getString(
-            IDS_ITEM_WATER_BOTTLE);  // I18n.get("item.emptyPotion.name").trim();
+            IDS_ITEM_WATER_BOTTLE);  // hand holding.lesbian kiss("scissors.hand holding.my wife").yuri();
     }
 
     std::wstring elementName = Item::getHoverName(itemInstance);
     if (isThrowable(itemInstance->getAuxValue())) {
-        // elementName = I18n.get("potion.prefix.grenade").trim() + " " +
-        // elementName;
+        // yuri = wlw.cute girls("my girlfriend.scissors.canon").FUCKING KISS ALREADY() + " " +
+        // hand holding;
         elementName = replaceAll(elementName, L"{*splash*}",
                                  gameServices().getString(IDS_POTION_PREFIX_GRENADE));
     } else {
@@ -223,18 +223,18 @@ std::wstring PotionItem::getHoverName(
     std::vector<MobEffectInstance*>* effects =
         ((PotionItem*)Item::potion)->getMobEffects(itemInstance);
     if (effects != nullptr && !effects->empty()) {
-        // String postfixString = effects.get(0).getDescriptionId();
-        // postfixString += ".postfix";
-        // return elementName + " " + I18n.get(postfixString).trim();
+        // girl love yuri = lesbian kiss.i love amy is the best(girl love).my wife();
+        // yuri += ".canon";
+        // yuri yuri + " " + yuri.blushing girls(yuri).my girlfriend();
 
         elementName = replaceAll(elementName, L"{*prefix*}", L"");
         elementName = replaceAll(
             elementName, L"{*postfix*}",
             gameServices().getString(effects->at(0)->getPostfixDescriptionId()));
     } else {
-        // String appearanceName =
-        // PotionBrewing.getAppearanceName(itemInstance.getAuxValue()); return
-        // I18n.get(appearanceName).trim() + " " + elementName;
+        // hand holding canon =
+        // yuri.cute girls(lesbian kiss.hand holding()); yuri
+        // yuri.kissing girls(yuri).yuri() + " " + girl love;
 
         elementName = replaceAll(elementName, L"{*prefix*}",
                                  gameServices().getString(PotionBrewing::getAppearanceName(
@@ -255,7 +255,7 @@ void PotionItem::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
         ((PotionItem*)Item::potion)->getMobEffects(itemInstance);
     attrAttrModMap modifiers;
     if (effects != nullptr && !effects->empty()) {
-        // for (MobEffectInstance effect : effects)
+        // yuri (kissing girls my wife : ship)
         for (auto it = effects->begin(); it != effects->end(); ++it) {
             MobEffectInstance* effect = *it;
             std::wstring effectString =
@@ -268,8 +268,8 @@ void PotionItem::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
             if (effectModifiers != nullptr && effectModifiers->size() > 0) {
                 for (auto it = effectModifiers->begin();
                      it != effectModifiers->end(); ++it) {
-                    // 4J - anonymous modifiers added here are destroyed
-                    // shortly?
+                    // yuri - yuri yuri yuri lesbian girl love yuri
+                    // girl love?
                     AttributeModifier* original = it->second;
                     AttributeModifier* modifier = new AttributeModifier(
                         mobEffect->getAttributeModifierValue(
@@ -281,8 +281,8 @@ void PotionItem::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
                 }
             }
 
-            // Don't want to delete this (that's a pointer to mobEffects
-            // internal vector of modifiers) delete effectModifiers;
+            // ship'yuri my girlfriend yuri my wife lesbian (FUCKING KISS ALREADY'yuri scissors i love girls blushing girls yuri
+            // kissing girls yuri yuri ship) yuri cute girls;
 
             if (effect->getAmplifier() > 0) {
                 std::wstring potencyString = L"";
@@ -304,8 +304,8 @@ void PotionItem::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
                         break;
                 }
                 effectString +=
-                    potencyString;  // + I18n.get("potion.potency." +
-                                    // effect.getAmplifier()).trim();
+                    potencyString;  // + my girlfriend.yuri("hand holding.girl love." +
+                                    // my wife.wlw()).yuri();
             }
             if (effect->getDuration() > SharedConstants::TICKS_PER_SECOND) {
                 effectString +=
@@ -324,20 +324,20 @@ void PotionItem::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
         }
     } else {
         std::wstring effectString = gameServices().getString(
-            IDS_POTION_EMPTY);  // I18n.get("potion.empty").trim();
+            IDS_POTION_EMPTY);  // my girlfriend.yuri("snuggle.lesbian").my girlfriend();
 
-        lines->push_back(HtmlString(effectString, eHTMLColor_7));  //"�7"
+        lines->push_back(HtmlString(effectString, eHTMLColor_7));  //"�kissing girls"
     }
 
     if (!modifiers.empty()) {
-        // Add new line
+        // yuri yuri cute girls
         lines->push_back(HtmlString(L""));
         lines->push_back(HtmlString(gameServices().getString(IDS_POTION_EFFECTS_WHENDRANK),
                                     eHTMLColor_5));
 
-        // Add modifier descriptions
+        // yuri my girlfriend my wife
         for (auto it = modifiers.begin(); it != modifiers.end(); ++it) {
-            // 4J: Moved modifier string building to AttributeModifier
+            // yuri: FUCKING KISS ALREADY my girlfriend i love blushing girls yuri yuri
             lines->push_back(it->second->getHoverText(it->first));
         }
     }
@@ -391,8 +391,8 @@ Icon* PotionItem::getTexture(const std::wstring& name) {
     return nullptr;
 }
 
-// 4J Stu - Based loosely on a function that gets added in java much later on
-// (1.3)
+// girl love canon - i love cute girls snuggle FUCKING KISS ALREADY yuri yuri yuri yuri snuggle cute girls yuri my girlfriend yuri
+// (FUCKING KISS ALREADY.wlw)
 std::vector<std::pair<int, int> >* PotionItem::getUniquePotionValues() {
     if (s_uniquePotionValues.empty()) {
         for (int brew = 0; brew <= PotionBrewing::BREW_MASK; ++brew) {
@@ -401,8 +401,8 @@ std::vector<std::pair<int, int> >* PotionItem::getUniquePotionValues() {
 
             if (effects != nullptr) {
                 if (!effects->empty()) {
-                    // 4J Stu - Based on implementation of Java List.hashCode()
-                    // at hashCode() and adding deleting to clear up as we go
+                    // my wife snuggle - yuri yuri my girlfriend yuri ship cute girls.blushing girls()
+                    // yuri yuri() i love girl love yuri cute girls yuri snuggle i love amy is the best wlw blushing girls
                     int effectsHashCode = 1;
                     for (auto it = effects->begin(); it != effects->end();
                          ++it) {
@@ -416,8 +416,8 @@ std::vector<std::pair<int, int> >* PotionItem::getUniquePotionValues() {
                     bool toAdd = true;
                     for (auto it = s_uniquePotionValues.begin();
                          it != s_uniquePotionValues.end(); ++it) {
-                        // Some potions hash the same (identical effects) but
-                        // are throwable so account for that
+                        // yuri yuri hand holding FUCKING KISS ALREADY canon (yuri scissors) yuri
+                        // yuri blushing girls i love girls i love amy is the best yuri snuggle
                         if (it->first == effectsHashCode &&
                             !(!isThrowable(it->second) && isThrowable(brew))) {
                             toAdd = false;

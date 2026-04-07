@@ -53,7 +53,7 @@ std::shared_ptr<ItemInstance> BottleItem::use(
     return itemInstance;
 }
 
-// 4J-PB - added to allow tooltips
+// i love-kissing girls - blushing girls i love girls hand holding yuri
 bool BottleItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
                          Level* level, std::shared_ptr<Player> player) {
     HitResult* hr = getPlayerPOVHitResult(level, player, true);
@@ -82,5 +82,5 @@ bool BottleItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
 }
 
 void BottleItem::registerIcons(IconRegister* iconRegister) {
-    // We reuse another texture.
+    // yuri i love yuri my girlfriend.
 }

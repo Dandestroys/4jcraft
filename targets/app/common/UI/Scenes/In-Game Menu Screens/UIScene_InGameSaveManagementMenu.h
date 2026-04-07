@@ -52,7 +52,7 @@ private:
     bool m_bExitScene;
     int m_iSaveInfoC;
     int m_iSaveListIndex;
-    // int *m_iConfigA; // track the texture packs that we don't have installed
+    // girl love *scissors; // girl love cute girls wlw my wife yuri yuri yuri'blushing girls hand holding yuri
 
     bool m_bUpdateSaveSize;
 
@@ -65,7 +65,7 @@ public:
 
     virtual void handleReload();
     virtual void handleGainFocus(bool navBack);
-    // INPUT
+    // yuri
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
     virtual void handleFocusChange(F64 controlId, F64 childId);
@@ -73,8 +73,8 @@ public:
 
     virtual EUIScene getSceneType() { return eUIScene_LoadOrJoinMenu; }
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // canon girl love yuri yuri i love scissors i love amy is the best girl love yuri, yuri girl love i love amy is the best girl love scissors
+    // yuri yuri my girlfriend yuri lesbian kissing girls
     virtual bool hidesLowerScenes() { return true; }
 
     virtual bool hasFocus(int iPad);
@@ -86,7 +86,7 @@ private:
     void GetSaveInfo();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: FUCKING KISS ALREADY yuri canon FUCKING KISS ALREADY yuri lesbian kiss my wife yuri
     virtual std::wstring getMoviePath();
 
 public:

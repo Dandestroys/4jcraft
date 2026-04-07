@@ -49,8 +49,8 @@ void MerchantMenu::broadcastChanges() {
     AbstractContainerMenu::broadcastChanges();
 }
 
-// 4J used to take a shared_ptr<Container> but wasn't using it, so removed to
-// simplify things
+// wlw lesbian kiss snuggle hand holding ship scissors<i love> girl love kissing girls'yuri yuri hand holding, snuggle scissors FUCKING KISS ALREADY
+// my girlfriend lesbian
 void MerchantMenu::slotsChanged() {
     tradeContainer->updateSellItem();
     AbstractContainerMenu::slotsChanged();

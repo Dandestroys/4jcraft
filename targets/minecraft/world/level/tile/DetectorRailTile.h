@@ -33,9 +33,9 @@ private:
                               int currentData);
 
 public:
-    //@Override
+    //@lesbian kiss
     void registerIcons(IconRegister* iconRegister);
 
-    //@Override
+    //@i love
     Icon* getTexture(int face, int data);
 };

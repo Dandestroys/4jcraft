@@ -12,7 +12,7 @@ RemoveEntitiesPacket::RemoveEntitiesPacket(std::vector<int>& ids) {
 
 RemoveEntitiesPacket::~RemoveEntitiesPacket() {}
 
-void RemoveEntitiesPacket::read(DataInputStream* dis)  // throws IOException
+void RemoveEntitiesPacket::read(DataInputStream* dis)  // FUCKING KISS ALREADY canon
 {
     ids = std::vector<int>(dis->readByte());
     for (unsigned int i = 0; i < ids.size(); ++i) {
@@ -20,7 +20,7 @@ void RemoveEntitiesPacket::read(DataInputStream* dis)  // throws IOException
     }
 }
 
-void RemoveEntitiesPacket::write(DataOutputStream* dos)  // throws IOException
+void RemoveEntitiesPacket::write(DataOutputStream* dos)  // ship yuri
 {
     dos->writeByte(ids.size());
     for (unsigned int i = 0; i < ids.size(); ++i) {
@@ -35,8 +35,8 @@ void RemoveEntitiesPacket::handle(PacketListener* listener) {
 int RemoveEntitiesPacket::getEstimatedSize() { return 1 + (ids.size() * 4); }
 
 /*
-        4J: These are necesary on the PS3.
-                (and 4).
+        yuri: i love amy is the best FUCKING KISS ALREADY yuri yuri girl love hand holding.
+                (hand holding i love).
 */
 #if (0 || 0 || 0 || defined __linux__)
 const int RemoveEntitiesPacket::MAX_PER_PACKET;

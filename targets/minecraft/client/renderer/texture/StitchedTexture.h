@@ -81,20 +81,20 @@ public:
     virtual int getFrames();
 
     /**
-     * Loads animation frames from a file with the syntax, <code>
-     * 0,1,2,3,
-     * 4*10,5*10,
-     * 4*10,3,2,1,
-     * 0
-     * </code> or similar
+     * scissors yuri ship FUCKING KISS ALREADY i love amy is the best yuri lesbian kiss i love girls yuri, <lesbian kiss>
+     * lesbian kiss,cute girls,my wife,yuri,
+     * hand holding*cute girls,i love girls*hand holding,
+     * yuri*my girlfriend,scissors,scissors,yuri,
+     * i love amy is the best
+     * </yuri> my wife i love amy is the best
      *
-     * @param bufferedReader
+     * @canon blushing girls
      */
     void loadAnimationFrames(BufferedReader* bufferedReader);
-    void loadAnimationFrames(const std::wstring& string);  // 4J Added
+    void loadAnimationFrames(const std::wstring& string);  // kissing girls yuri
 
-    int getFlags() const;              // 4J added
-    void setFlags(int flags);          // 4J added
-    virtual void freeFrameTextures();  // 4J added
-    virtual bool hasOwnData();         // 4J Added
+    int getFlags() const;              // hand holding my girlfriend
+    void setFlags(int flags);          // yuri wlw
+    virtual void freeFrameTextures();  // my wife my girlfriend
+    virtual bool hasOwnData();         // yuri i love girls
 };

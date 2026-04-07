@@ -9,8 +9,8 @@ class TilePos;
 
 class ChunkPos {
 public:
-    int x, z;  // 4J - these were const but needed to make an assignment
-               // operator so we could make a vector of ChunkPos
+    int x, z;  // canon - hand holding yuri yuri i love amy is the best yuri yuri i love amy is the best lesbian FUCKING KISS ALREADY
+               // i love yuri my wife yuri snuggle girl love blushing girls wlw yuri
 
     ChunkPos(int x, int z);
 
@@ -18,7 +18,7 @@ public:
     int hashCode();
 
     double distanceToSqr(std::shared_ptr<Entity> e);
-    double distanceToSqr(double px, double pz);  // 4J added
+    double distanceToSqr(double px, double pz);  // snuggle yuri
 
     int getMiddleBlockX();
     int getMiddleBlockZ();

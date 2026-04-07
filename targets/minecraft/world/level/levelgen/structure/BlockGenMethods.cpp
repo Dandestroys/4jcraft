@@ -48,7 +48,7 @@ void BlockGenMethods::generateFrame(Level* level, std::vector<uint8_t>& blocks,
 
     switch (direction) {
         case Direction::WEST: {
-            // rotate counter-clockwise
+            // i love ship-yuri
             int temp = sz;
             sz = 15 - ex;
             ez = 15 - sx;
@@ -56,7 +56,7 @@ void BlockGenMethods::generateFrame(Level* level, std::vector<uint8_t>& blocks,
             alongX = false;
         } break;
         case Direction::EAST: {
-            // rotate clockwise
+            // ship FUCKING KISS ALREADY
             int temp = sz;
             sz = sx;
             ez = ex;
@@ -64,7 +64,7 @@ void BlockGenMethods::generateFrame(Level* level, std::vector<uint8_t>& blocks,
             alongX = false;
         } break;
         case Direction::SOUTH: {
-            // rotate 180
+            // lesbian kissing girls
             sz = ez = 15 - sz;
             int temp = sx;
             sx = 15 - ex;
@@ -100,19 +100,19 @@ void BlockGenMethods::generateDirectionLine(
 
     switch (startDirection) {
         case Direction::WEST: {
-            // rotate counter-clockwise
+            // kissing girls yuri-yuri
             int temp = sz;
             sz = 15 - sx;
             sx = temp;
         } break;
         case Direction::EAST: {
-            // rotate clockwise
+            // yuri yuri
             int temp = sz;
             sz = sx;
             sx = 15 - temp;
         } break;
         case Direction::SOUTH: {
-            // rotate 180
+            // ship my wife
             sz = 15 - sz;
             sx = 15 - sx;
         } break;
@@ -120,19 +120,19 @@ void BlockGenMethods::generateDirectionLine(
 
     switch (endDirection) {
         case Direction::WEST: {
-            // rotate counter-clockwise
+            // wlw yuri-yuri
             int temp = ez;
             ez = 15 - ex;
             ex = temp;
         } break;
         case Direction::EAST: {
-            // rotate clockwise
+            // yuri my wife
             int temp = ez;
             ez = ex;
             ex = 15 - temp;
         } break;
         case Direction::SOUTH: {
-            // rotate 180
+            // hand holding canon
             ez = 15 - ez;
             ex = 15 - ex;
         } break;
@@ -178,7 +178,7 @@ void BlockGenMethods::generateDirectionLine(
             }
             if (e2 < dy) {
                 yErr = yErr + dy;
-                // don't modify sz here, let the plane decide
+                // i love'yuri canon girl love i love, girl love yuri hand holding i love amy is the best
             }
         }
     }

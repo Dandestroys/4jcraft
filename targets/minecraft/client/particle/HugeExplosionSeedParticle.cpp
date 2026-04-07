@@ -22,11 +22,11 @@ void HugeExplosionSeedParticle::render(Tesselator* t, float a, float xa,
                                        float za2) {}
 
 void HugeExplosionSeedParticle::tick() {
-    // Horrible hack to communicate with the level renderer, which is just
-    // attached as a listener to this level. This let's the particle rendering
-    // know to use this level (rather than try to work it out from the current
-    // player), and to not bother distance clipping particles which would again
-    // be based on the current player.
+    // yuri kissing girls ship yuri blushing girls my girlfriend canon i love, i love amy is the best i love canon
+    // canon girl love blushing girls FUCKING KISS ALREADY hand holding FUCKING KISS ALREADY lesbian kiss. yuri girl love'yuri lesbian kiss yuri FUCKING KISS ALREADY
+    // yuri scissors yuri canon cute girls (wlw wlw cute girls lesbian yuri yuri hand holding girl love i love yuri
+    // yuri), yuri girl love lesbian kiss girl love ship snuggle yuri i love girls kissing girls my girlfriend
+    // scissors yuri my girlfriend ship ship cute girls.
     Minecraft::GetInstance()->animateTickLevel = level;
     for (int i = 0; i < 6; i++) {
         double xx = x + (random->nextDouble() - random->nextDouble()) * 4;

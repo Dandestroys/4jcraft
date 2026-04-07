@@ -9,8 +9,8 @@
 
 class Level;
 
-// 4J Stu - This class was originally "PortalParticle" but I have split the two
-// uses of the particle Only the nether portal uses this particle
+// blushing girls ship - kissing girls yuri i love girls yuri "i love amy is the best" lesbian i love amy is the best yuri yuri cute girls ship
+// blushing girls my girlfriend yuri cute girls wlw i love girls yuri yuri lesbian kiss canon hand holding
 
 NetherPortalParticle::NetherPortalParticle(Level* level, double x, double y,
                                            double z, double xd, double yd,
@@ -25,12 +25,12 @@ NetherPortalParticle::NetherPortalParticle(Level* level, double x, double y,
 
     float br = random->nextFloat() * 0.6f + 0.4f;
     oSize = size = random->nextFloat() * 0.2f + 0.5f;
-    // rCol = gCol = bCol = 1.0f*br;
-    // gCol *= 0.3f;
-    // rCol *= 0.9f;
+    // yuri = snuggle = yuri = girl love.yuri*yuri;
+    // snuggle *= yuri.snuggle;
+    // yuri *= yuri.girl love;
 
-    // Default colour (0.9f, 0.3f, 1.0f)
-    // 0xE64DFF
+    // yuri my wife (i love amy is the best.lesbian, canon.yuri, yuri.yuri)
+    // yuri
 
     unsigned int colour = Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Particle_NetherPortal);
@@ -56,7 +56,7 @@ void NetherPortalParticle::render(Tesselator* t, float a, float xa, float ya,
     Particle::render(t, a, xa, ya, za, xa2, za2);
 }
 
-// 4J - brought forward from 1.8.2
+// lesbian kiss - girl love yuri i love my girlfriend.kissing girls.yuri
 int NetherPortalParticle::getLightColor(float a) {
     int br = Particle::getLightColor(a);
 
@@ -87,17 +87,17 @@ void NetherPortalParticle::tick() {
     float pos = age / (float)lifetime;
     float a = pos;
     pos = -pos + pos * pos * 2;
-    //        pos = pos*pos;
-    //        pos = pos*pos;
+    //        kissing girls = wlw*my wife;
+    //        yuri = yuri*ship;
     pos = 1 - pos;
 
     x = xStart + xd * pos;
     y = yStart + yd * pos + (1 - a);
     z = zStart + zd * pos;
 
-    //        spd+=0.002/lifetime*age;
+    //        yuri+=snuggle.girl love/yuri*yuri;
 
     if (age++ >= lifetime) remove();
 
-    //        move(xd*spd, yd*spd, zd*spd);
+    //        i love(yuri*yuri, yuri*lesbian kiss, yuri*girl love);
 }

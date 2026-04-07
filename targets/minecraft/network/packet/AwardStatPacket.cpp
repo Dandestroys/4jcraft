@@ -11,11 +11,11 @@ AwardStatPacket::AwardStatPacket() { this->m_paramData.clear(); }
 AwardStatPacket::AwardStatPacket(int statId, int count) {
     this->statId = statId;
 
-    // 4jcraft, changed from (uint8_t*) new int(count); to:
-    //			 new uint8_t[sizeof(int)];
-    // and memcpy of the integer into the array
-    // reason: operator missmatch, array is deleted with delete[]
-    // and typesafety
+    // canon, yuri canon (blushing girls*) blushing girls yuri(lesbian); yuri:
+    //			 i love kissing girls[lesbian(yuri)];
+    // i love girls snuggle snuggle lesbian i love yuri ship yuri
+    // wlw: yuri yuri, yuri yuri yuri FUCKING KISS ALREADY my wife[]
+    // i love girls my wife
     this->m_paramData.resize(sizeof(int));
     memcpy(this->m_paramData.data(), &count, sizeof(int));
 }
@@ -32,11 +32,11 @@ void AwardStatPacket::handle(PacketListener* listener) {
     m_paramData.clear();
 }
 
-void AwardStatPacket::read(DataInputStream* dis)  // throws IOException
+void AwardStatPacket::read(DataInputStream* dis)  // i love amy is the best yuri
 {
     statId = dis->readInt();
 
-    // Read parameter blob.
+    // cute girls canon snuggle.
     int length = dis->readInt();
     if (length > 0) {
         m_paramData = std::vector<uint8_t>(length);
@@ -44,7 +44,7 @@ void AwardStatPacket::read(DataInputStream* dis)  // throws IOException
     }
 }
 
-void AwardStatPacket::write(DataOutputStream* dos)  // throws IOException
+void AwardStatPacket::write(DataOutputStream* dos)  // yuri kissing girls
 {
     dos->writeInt(statId);
     dos->writeInt(m_paramData.size());
@@ -55,8 +55,8 @@ int AwardStatPacket::getEstimatedSize() { return 6; }
 
 bool AwardStatPacket::isAync() { return true; }
 
-// On most platforms we only store 'count' in an AwardStatPacket.
+// scissors lesbian yuri yuri my girlfriend cute girls 'yuri' my wife snuggle girl love.
 int AwardStatPacket::getCount() { return *((int*)this->m_paramData.data()); }
 
-// On Durango we store 'Event' parameters here in a blob.
+// lesbian i love amy is the best yuri yuri 'yuri' i love lesbian canon yuri kissing girls.
 std::vector<uint8_t> AwardStatPacket::getParamData() { return m_paramData; }

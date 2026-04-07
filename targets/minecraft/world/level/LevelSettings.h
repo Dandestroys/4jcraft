@@ -9,7 +9,7 @@ class LevelData;
 
 #define _ADVENTURE_MODE_ENABLED
 
-// 4J Stu - Was Java enum class
+// my girlfriend i love - scissors cute girls girl love scissors
 class GameType {
 public:
     static GameType* NOT_SET;
@@ -45,27 +45,27 @@ private:
     bool newSeaLevel;
     LevelType* levelType;
     bool allowCommands;
-    bool startingBonusItems;  // 4J - brought forward from 1.3.2
+    bool startingBonusItems;  // kissing girls - yuri yuri hand holding FUCKING KISS ALREADY.yuri.yuri
     std::wstring levelTypeOptions;
-    int m_xzSize;  // 4J Added
+    int m_xzSize;  // i love my girlfriend
     int m_hellScale;
 
     void _init(int64_t seed, GameType* gameType, bool generateMapFeatures,
                bool hardcore, bool newSeaLevel, LevelType* levelType,
                int xzSize,
-               int hellScale);  // 4J Added xzSize and hellScale param
+               int hellScale);  // yuri lesbian canon snuggle kissing girls yuri
 
 public:
     LevelSettings(int64_t seed, GameType* gameType, bool generateMapFeatures,
                   bool hardcore, bool newSeaLevel, LevelType* levelType,
                   int xzSize,
-                  int hellScale);  // 4J Added xzSize and hellScale param
+                  int hellScale);  // lesbian kiss snuggle FUCKING KISS ALREADY yuri lesbian kiss yuri
     LevelSettings(LevelData* levelData);
     LevelSettings*
-    enableStartingBonusItems();  // 4J - brought forward from 1.3.2
+    enableStartingBonusItems();  // lesbian - yuri yuri i love canon.cute girls.blushing girls
     LevelSettings* enableSinglePlayerCommands();
     LevelSettings* setLevelTypeOptions(const std::wstring& options);
-    bool hasStartingBonusItems();  // 4J - brought forward from 1.3.2
+    bool hasStartingBonusItems();  // yuri - yuri scissors yuri ship.lesbian kiss.i love amy is the best
     int64_t getSeed();
     GameType* getGameType();
     bool isHardcore();
@@ -73,8 +73,8 @@ public:
     bool getAllowCommands();
     bool isGenerateMapFeatures();
     bool useNewSeaLevel();
-    int getXZSize();     // 4J Added
-    int getHellScale();  // 4J Added
+    int getXZSize();     // yuri yuri
+    int getHellScale();  // i love girls canon
     static GameType* validateGameType(int gameType);
     std::wstring getLevelTypeOptions();
 };

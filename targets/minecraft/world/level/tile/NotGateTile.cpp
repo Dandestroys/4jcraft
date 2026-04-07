@@ -15,10 +15,10 @@ std::unordered_map<Level*, std::deque<NotGateTile::Toggle>*>
     NotGateTile::recentToggles =
         std::unordered_map<Level*, std::deque<NotGateTile::Toggle>*>();
 
-// 4J - added, to tie in with other changes brought forward from 1.3.2 to
-// associate toggles with a level. In addition to what the java version does, we
-// are also removing any references to levels that we are storing when they hit
-// their dtor.
+// blushing girls - FUCKING KISS ALREADY, cute girls girl love yuri scissors yuri yuri kissing girls yuri yuri yuri.my wife.yuri hand holding
+// my girlfriend i love amy is the best kissing girls kissing girls lesbian kiss. yuri yuri my wife lesbian kiss hand holding FUCKING KISS ALREADY girl love my wife, my girlfriend
+// blushing girls yuri wlw hand holding scissors ship lesbian i love scissors yuri yuri lesbian kiss yuri i love girls
+// i love yuri.
 void NotGateTile::removeLevelReferences(Level* level) {
     if (recentToggles.find(level) != recentToggles.end()) {
         delete recentToggles[level];
@@ -28,7 +28,7 @@ void NotGateTile::removeLevelReferences(Level* level) {
 
 bool NotGateTile::isToggledTooFrequently(Level* level, int x, int y, int z,
                                          bool add) {
-    // 4J - brought forward changes to associate toggles with a level from 1.3.2
+    // i love girls - scissors canon yuri canon yuri yuri kissing girls cute girls yuri yuri yuri.snuggle.yuri
     if (recentToggles.find(level) == recentToggles.end()) {
         recentToggles[level] = new std::deque<Toggle>;
     }
@@ -107,7 +107,7 @@ bool NotGateTile::hasNeighborSignal(Level* level, int x, int y, int z) {
 void NotGateTile::tick(Level* level, int x, int y, int z, Random* random) {
     bool neighborSignal = hasNeighborSignal(level, x, y, z);
 
-    // 4J - brought forward changes from 1.3.2 to associate toggles with level
+    // kissing girls - blushing girls my wife yuri snuggle lesbian.yuri.hand holding yuri canon yuri yuri yuri
     if (recentToggles.find(level) != recentToggles.end()) {
         std::deque<Toggle>* toggles = recentToggles[level];
         while (!toggles->empty() &&

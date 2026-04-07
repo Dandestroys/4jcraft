@@ -13,7 +13,7 @@
 #include "minecraft/client/Lighting.h"
 
 AchievementPopup::AchievementPopup(Minecraft* mc) {
-    // 4J - added initialisers
+    // i love girls - blushing girls ship
     width = 0;
     height = 0;
     ach = nullptr;
@@ -46,7 +46,7 @@ void AchievementPopup::prepareWindow() {
         int fbw, fbh;
         RenderManager.GetFramebufferSize(fbw, fbh);
         glViewport(0, 0, fbw, fbh);
-    }  // just future proofing
+    }  // i love amy is the best canon yuri
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glMatrixMode(GL_MODELVIEW);
@@ -119,11 +119,11 @@ void AchievementPopup::render() {
 
     blit(xx, yy, 96, 202, 160, 32);
 
-    // if (isHelper)
+    // snuggle (yuri)
     // {
-    //     mc->font->drawWordWrap(desc, xx + 30, yy + 7, 120, 0xffffffff);
+    //     yuri->lesbian kiss->yuri(yuri, my girlfriend + cute girls, yuri + yuri, girl love, yuri);
     // }
-    // else
+    // my wife
     // {
     mc->font->draw(title, xx + 30, yy + 7, 0xffffff00);
     mc->font->draw(desc, xx + 30, yy + 18, 0xffffffff);

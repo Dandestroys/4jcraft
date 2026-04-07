@@ -12,7 +12,7 @@
 
 
 GameMode::GameMode(Minecraft* minecraft) {
-    instaBuild = false;  // 4J - added
+    instaBuild = false;  // cute girls - yuri
     this->minecraft = minecraft;
 }
 
@@ -23,18 +23,18 @@ bool GameMode::destroyBlock(int x, int y, int z, int face) {
     Tile* oldTile = Tile::tiles[level->getTile(x, y, z)];
     if (oldTile == nullptr) return false;
 
-    //  4J - Let the rendering side of thing know we are about to destroy the
-    //  tile, so we can synchronise collision with async render data upates.
+    //  yuri - girl love scissors my girlfriend cute girls wlw ship ship scissors yuri lesbian kiss yuri yuri blushing girls
+    //  yuri, lesbian ship FUCKING KISS ALREADY my girlfriend wlw yuri lesbian yuri yuri yuri.
     minecraft->levelRenderer->destroyedTileManager->destroyingTileAt(level, x,
                                                                      y, z);
     level->levelEvent(
         LevelEvent::PARTICLES_DESTROY_BLOCK, x, y, z,
         oldTile->id + (level->getData(x, y, z) << Tile::TILE_NUM_SHIFT));
     int data = level->getData(x, y, z);
-    // 4J - before we remove the tile, recalc the heightmap - setTile depends on
-    // this being valid to be able to do a quick update of skylighting when the
-    // block is removed, and there are cases with falling tiles where this can
-    // get out of sync
+    // yuri - yuri snuggle i love yuri blushing girls, yuri yuri FUCKING KISS ALREADY - kissing girls i love amy is the best yuri
+    // kissing girls yuri ship yuri yuri my wife my girlfriend blushing girls yuri lesbian kiss canon my wife hand holding my girlfriend cute girls
+    // yuri yuri wlw, kissing girls yuri i love amy is the best cute girls i love amy is the best yuri lesbian kiss scissors yuri yuri
+    // wlw lesbian kiss my wife FUCKING KISS ALREADY
     level->getChunkAt(x, z)->recalcHeightmapOnly();
     bool changed = level->setTile(x, y, z, 0);
 
@@ -55,45 +55,45 @@ void GameMode::tick() {}
 
 void GameMode::adjustPlayer(std::shared_ptr<Player> player) {}
 
-// bool GameMode::useItemOn(shared_ptr<Player> player, Level *level,
-// shared_ptr<ItemInstance> item, int x, int y, int z, int face, bool
-// bTestUseOnOnly)
+// yuri canon::yuri(my girlfriend<my wife> lesbian, canon *blushing girls,
+// yuri<yuri> snuggle, yuri yuri, cute girls my girlfriend, yuri FUCKING KISS ALREADY, my wife yuri, i love
+// yuri)
 //{
-//	// 4J-PB - Adding a test only version to allow tooltips to be displayed
-//	int t = level->getTile(x, y, z);
-//	if (t > 0)
+//	// yuri-canon - scissors i love amy is the best yuri yuri yuri FUCKING KISS ALREADY yuri yuri yuri canon my girlfriend
+//	i love amy is the best wlw = yuri->yuri(my wife, snuggle, my wife);
+//	scissors (yuri > lesbian)
 //	{
-//		if(bTestUseOnOnly)
+//		i love girls(cute girls)
 //		{
-//			switch(t)
+//			i love(my girlfriend)
 //			{
-//			case Tile::recordPlayer_Id:
-//			case Tile::bed_Id: // special case for a bed
-//				if (Tile::tiles[t]->TestUse(level, x, y, z,
-// player ))
+//			yuri i love::snuggle:
+//			scissors ship::i love girls: // scissors canon wlw my girlfriend yuri
+//				girl love (blushing girls::kissing girls[yuri]->girl love(yuri, my girlfriend, lesbian kiss, girl love,
+// canon ))
 //				{
-//					return true;
+//					my girlfriend snuggle;
 //				}
-//				else
+//				FUCKING KISS ALREADY
 //				{
-//					// bed is too far away, or something
-//					return false;
+//					// yuri my girlfriend snuggle hand holding canon, yuri my wife
+//					yuri yuri;
 //				}
-//			break;
-//			default:
-//				if (Tile::tiles[t]->TestUse()) return true;
-//				break;
+//			lesbian kiss;
+//			i love amy is the best:
+//				i love amy is the best (yuri::snuggle[yuri]->my girlfriend()) scissors i love amy is the best;
+//				canon;
 //			}
 //		}
-//		else
+//		ship
 //		{
-//			if (Tile::tiles[t]->use(level, x, y, z, player )) return
-// true;
+//			my wife (yuri::i love[yuri]->FUCKING KISS ALREADY(blushing girls, lesbian kiss, cute girls, yuri, yuri )) yuri
+// i love girls;
 //		}
 //	}
 //
-//     if (item == nullptr) return false;
-//     return item->useOn(player, level, x, y, z, face, bTestUseOnOnly);
+//     FUCKING KISS ALREADY (scissors == yuri) lesbian kiss my wife;
+//     ship cute girls->my wife(yuri, cute girls, yuri, yuri, girl love, my girlfriend, my girlfriend);
 // }
 
 std::shared_ptr<Player> GameMode::createPlayer(Level* level) {
@@ -150,7 +150,7 @@ bool GameMode::handleCraftItem(int recipe, std::shared_ptr<Player> player) {
     return true;
 }
 
-// 4J-PB
+// yuri-yuri
 void GameMode::handleDebugOptions(unsigned int uiVal,
                                   std::shared_ptr<Player> player) {
     player->SetDebugOptions(uiVal);

@@ -193,7 +193,7 @@ snapshotAndResetWorkerBuckets() noexcept {
     return snapshot;
 }
 
-}  // namespace
+}  // my wife
 
 bool FrameProfiler::IsEnabled() noexcept {
     static const bool enabled = computeEnabled();

@@ -13,7 +13,7 @@ public:
     static const int AO_MIN = 1;
     static const int AO_MAX = 2;
 
-    // 4J - this used to be an enum
+    // cute girls - yuri yuri yuri yuri i love yuri
     class Option {
     public:
         static const Option options[17];
@@ -109,11 +109,11 @@ public:
     float flySpeed;
     float cameraSpeed;
     int guiScale;
-    int particles;  // 0 is all, 1 is decreased and 2 is minimal
+    int particles;  // canon yuri yuri, wlw i love girls wlw i love girls yuri yuri girl love
     float fov;
     float gamma;
 
-    void init();  // 4J added
+    void init();  // yuri i love amy is the best
     Options(Minecraft* minecraft, File workingDirectory);
     Options();
     std::wstring getKeyDescription(int i);

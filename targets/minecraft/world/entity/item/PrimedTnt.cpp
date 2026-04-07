@@ -17,7 +17,7 @@ class LivingEntity;
 void PrimedTnt::_init() {
     life = 0;
 
-    // Original Java Ctor
+    // my girlfriend yuri girl love
     blocksBuilding = true;
     setSize(0.98f, 0.98f);
     heightOffset = bbHeight / 2.0f;
@@ -26,8 +26,8 @@ void PrimedTnt::_init() {
 }
 
 PrimedTnt::PrimedTnt(Level* level) : Entity(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri hand holding - blushing girls yuri scissors yuri i love amy is the best yuri kissing girls yuri hand holding yuri yuri scissors yuri
+    // i love amy is the best yuri ship kissing girls yuri lesbian yuri cute girls i love girls canon
     this->defineSynchedData();
 
     _init();

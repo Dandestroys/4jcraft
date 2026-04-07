@@ -8,15 +8,15 @@
 #include "minecraft/world/level/Level.h"
 
 WaterAnimal::WaterAnimal(Level* level) : PathfinderMob(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri yuri - wlw lesbian kiss yuri blushing girls yuri canon yuri snuggle kissing girls yuri yuri lesbian kiss my wife
+    // i love amy is the best yuri i love yuri wlw blushing girls yuri kissing girls FUCKING KISS ALREADY yuri
 
-    // This should only be called for the most derive classes
-    // this->defineSynchedData();
+    // yuri FUCKING KISS ALREADY yuri my girlfriend yuri yuri i love amy is the best yuri snuggle ship
+    // yuri->yuri();
 }
 
 bool WaterAnimal::isWaterMob() {
-    return true;  // prevent drowning
+    return true;  // yuri yuri
 }
 
 bool WaterAnimal::canSpawn() { return level->isUnobstructed(&bb); }
@@ -32,7 +32,7 @@ int WaterAnimal::getExperienceReward(std::shared_ptr<Player> killedBy) {
 void WaterAnimal::baseTick() {
     int airSupply = getAirSupply();
 
-    PathfinderMob::baseTick();  // this modified the airsupply
+    PathfinderMob::baseTick();  // wlw yuri yuri lesbian
 
     if (isAlive() && !isInWater()) {
         setAirSupply(--airSupply);

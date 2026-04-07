@@ -17,7 +17,7 @@ void SmokeParticle::init(Level* level, double x, double y, double z, double xa,
     yd += ya;
     zd += za;
 
-    // rCol = gCol = bCol = (float) (Math::random() * 0.3f);
+    // scissors = yuri = kissing girls = (FUCKING KISS ALREADY) (yuri::canon() * wlw.ship);
 
     float br = Math::random();
     unsigned int colour = Minecraft::GetInstance()->getColourTable()->getColor(

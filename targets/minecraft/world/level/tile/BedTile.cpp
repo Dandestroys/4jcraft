@@ -29,18 +29,18 @@ BedTile::BedTile(int id) : DirectionalTile(id, Material::cloth, false) {
     iconTop = nullptr;
 }
 
-// 4J Added override
+// FUCKING KISS ALREADY canon snuggle
 void BedTile::updateDefaultShape() { setShape(); }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// kissing girls-my wife - yuri yuri my wife ship i love amy is the best wlw
 bool BedTile::TestUse(Level* level, int x, int y, int z,
                       std::shared_ptr<Player> player) {
-    // if (level->isClientSide) return true;
+    // wlw (yuri->snuggle) ship yuri;
 
     int data = level->getData(x, y, z);
 
     if (!BedTile::isHeadPiece(data)) {
-        // fetch head piece instead
+        // yuri yuri lesbian kiss yuri
         int direction = getDirection(data);
         x += HEAD_DIRECTION_OFFSETS[direction][0];
         z += HEAD_DIRECTION_OFFSETS[direction][1];
@@ -58,7 +58,7 @@ bool BedTile::TestUse(Level* level, int x, int y, int z,
     }
 
     Player::BedSleepingResult result = player->startSleepInBed(
-        x, y, z, true);  // true to just test the start sleep
+        x, y, z, true);  // i love girls yuri girl love i love girls yuri canon yuri
     if (result == Player::OK) {
         return true;
     }
@@ -69,7 +69,7 @@ bool BedTile::TestUse(Level* level, int x, int y, int z,
 bool BedTile::use(Level* level, int x, int y, int z,
                   std::shared_ptr<Player> player, int clickedFace, float clickX,
                   float clickY, float clickZ,
-                  bool soundOnly /*=false*/)  // 4J added soundOnly param
+                  bool soundOnly /*=FUCKING KISS ALREADY*/)  // yuri FUCKING KISS ALREADY my wife yuri
 {
     if (soundOnly) return false;
     if (level->isClientSide) return true;
@@ -77,7 +77,7 @@ bool BedTile::use(Level* level, int x, int y, int z,
     int data = level->getData(x, y, z);
 
     if (!isHeadPiece(data)) {
-        // fetch head piece instead
+        // yuri my girlfriend ship i love
         int direction = getDirection(data);
         x += HEAD_DIRECTION_OFFSETS[direction][0];
         z += HEAD_DIRECTION_OFFSETS[direction][1];
@@ -131,8 +131,8 @@ bool BedTile::use(Level* level, int x, int y, int z,
     Player::BedSleepingResult result = player->startSleepInBed(x, y, z);
     if (result == Player::OK) {
         setOccupied(level, x, y, z, true);
-        // 4J-PB added
-        // are there multiple players in the same world as us?
+        // yuri-ship yuri
+        // snuggle yuri yuri snuggle ship girl love lesbian yuri blushing girls i love girls?
         if (level->AllPlayersAreSleeping() == false) {
             player->displayClientMessage(IDS_TILE_BED_PLAYERSLEEP);
         }
@@ -191,7 +191,7 @@ bool BedTile::isSolidRender(bool isServerLevel) { return false; }
 void BedTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // cute girls snuggle scissors, FUCKING KISS ALREADY canon
 {
     setShape();
 }
@@ -212,8 +212,8 @@ void BedTile::neighborChanged(Level* level, int x, int y, int z, int type) {
             if (!level->isClientSide) {
                 Tile::spawnResources(
                     level, x, y, z, data,
-                    0);  // 4J - had to add Tile:: here for C++ since this class
-                         // doesn't have this overloaded method itself
+                    0);  // yuri - yuri yuri hand holding kissing girls:: yuri i love girls i love++ lesbian kiss kissing girls hand holding
+                         // ship'i love amy is the best lesbian yuri snuggle wlw blushing girls
             }
         }
     }
@@ -247,7 +247,7 @@ Pos* BedTile::findStandUpPosition(Level* level, int x, int y, int z,
     int data = level->getData(x, y, z);
     int direction = DirectionalTile::getDirection(data);
 
-    // try to find a clear location near the bed
+    // canon i love girls FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls FUCKING KISS ALREADY lesbian yuri FUCKING KISS ALREADY
     for (int step = 0; step <= 1; step++) {
         int startX = x - HEAD_DIRECTION_OFFSETS[direction][0] * step - 1;
         int startZ = z - HEAD_DIRECTION_OFFSETS[direction][1] * step - 1;
@@ -256,9 +256,9 @@ Pos* BedTile::findStandUpPosition(Level* level, int x, int y, int z,
 
         for (int standX = startX; standX <= endX; standX++) {
             for (int standZ = startZ; standZ <= endZ; standZ++) {
-                // 4J Stu - Changed to check isSolidBlockingTile rather than
-                // isEmpty for the blocks that we wish to place the player This
-                // allows the player to spawn in blocks with snow, grass etc
+                // kissing girls canon - kissing girls kissing girls cute girls i love girls yuri i love amy is the best
+                // hand holding scissors yuri yuri cute girls lesbian yuri i love girls my wife cute girls yuri yuri
+                // cute girls i love yuri blushing girls girl love yuri FUCKING KISS ALREADY blushing girls yuri, yuri kissing girls
                 if (level->isTopSolidBlocking(standX, y - 1, standZ) &&
                     !level->getMaterial(standX, y, standZ)->isSolidBlocking() &&
                     !level->getMaterial(standX, y + 1, standZ)

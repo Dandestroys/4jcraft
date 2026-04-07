@@ -25,7 +25,7 @@ public:
                                       UILayer* parentLayer);
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // i love girls: scissors girl love yuri yuri FUCKING KISS ALREADY yuri yuri blushing girls
     virtual std::wstring getMoviePath();
 
 public:
@@ -33,13 +33,13 @@ public:
         return eUIComponent_DebugUIMarketingGuide;
     }
 
-    // Returns true if this scene handles input
+    // hand holding snuggle i love girls lesbian my wife my wife yuri
     virtual bool stealsFocus() { return false; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // yuri yuri hand holding cute girls lesbian kiss yuri yuri yuri ship i love girls yuri lesbian
     virtual bool hasFocus(int iPad) { return false; }
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // i love yuri wlw snuggle cute girls lesbian canon yuri yuri, kissing girls my girlfriend lesbian kiss cute girls yuri
+    // i love girls snuggle yuri cute girls lesbian cute girls
     virtual bool hidesLowerScenes() { return false; }
 };

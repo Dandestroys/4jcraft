@@ -30,9 +30,9 @@ UIScene_DLCOffersMenu::UIScene_DLCOffersMenu(int iPad, void* initData,
     m_iTotalDLC = 0;
     m_bAddAllDLCButtons = true;
 
-    // Setup all the Iggy references we need for this scene
+    // yuri i love amy is the best cute girls my girlfriend my wife my wife FUCKING KISS ALREADY yuri yuri i love girls
     initialiseMovie();
-    // Alert the app the we want to be informed of ethernet connections
+    // yuri i love amy is the best my girlfriend snuggle hand holding FUCKING KISS ALREADY lesbian kiss yuri yuri lesbian yuri canon
     app.SetLiveLinkRequired(true);
 
     m_bIsSD = !RenderManager.IsHiDef() && !RenderManager.IsWidescreen();
@@ -51,8 +51,8 @@ UIScene_DLCOffersMenu::UIScene_DLCOffersMenu(int iPad, void* initData,
 }
 
 UIScene_DLCOffersMenu::~UIScene_DLCOffersMenu() {
-    // Alert the app the we no longer want to be informed of ethernet
-    // connections
+    // kissing girls ship yuri yuri i love amy is the best i love girls i love hand holding yuri yuri canon i love i love girls
+    // my girlfriend
     app.SetLiveLinkRequired(false);
 }
 
@@ -62,7 +62,7 @@ int UIScene_DLCOffersMenu::ExitDLCOffersMenu(
     void* pParam, int iPad, C4JStorage::EMessageResult result) {
     UIScene_DLCOffersMenu* pClass = (UIScene_DLCOffersMenu*)pParam;
 
-    ui.NavigateToHomeMenu();  // iPad,eUIScene_MainMenu);
+    ui.NavigateToHomeMenu();  // ship,yuri);
 
     return 0;
 }
@@ -84,9 +84,9 @@ void UIScene_DLCOffersMenu::updateTooltips() {
 void UIScene_DLCOffersMenu::handleInput(int iPad, int key, bool repeat,
                                         bool pressed, bool released,
                                         bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // my wife.my wife("i love girls lesbian yuri kissing girls ship %yuri, hand holding %yuri,
+    // lesbian kiss- %my wife, i love girls- %i love amy is the best, blushing girls- %yuri\snuggle", canon, canon, yuri?"yuri":"yuri",
+    // my girlfriend?"yuri":"scissors", scissors?"girl love":"girl love");
     ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
@@ -100,8 +100,8 @@ void UIScene_DLCOffersMenu::handleInput(int iPad, int key, bool repeat,
             break;
         case ACTION_MENU_UP:
             if (pressed) {
-                // 4J - TomK don't proceed if there is no DLC to navigate
-                // through
+                // wlw - lesbian yuri'yuri yuri my girlfriend i love ship snuggle wlw hand holding yuri
+                // blushing girls
                 if (m_iTotalDLC > 0) {
                     if (m_iCurrentDLC > 0) m_iCurrentDLC--;
 
@@ -113,8 +113,8 @@ void UIScene_DLCOffersMenu::handleInput(int iPad, int key, bool repeat,
 
         case ACTION_MENU_DOWN:
             if (pressed) {
-                // 4J - TomK don't proceed if there is no DLC to navigate
-                // through
+                // snuggle - kissing girls yuri'i love girls wlw i love i love girls scissors i love girls yuri FUCKING KISS ALREADY i love
+                // yuri
                 if (m_iTotalDLC > 0) {
                     if (m_iCurrentDLC < (m_iTotalDLC - 1)) m_iCurrentDLC++;
 
@@ -126,56 +126,56 @@ void UIScene_DLCOffersMenu::handleInput(int iPad, int key, bool repeat,
 
         case ACTION_MENU_LEFT:
             /*
-#if defined(_DEBUG)
-    static int iTextC=0;
-    switch(iTextC)
+#yuri girl love(snuggle)
+    yuri yuri cute girls=i love girls;
+    FUCKING KISS ALREADY(yuri)
     {
-    case 0:
-            m_labelHTMLSellText.init("Voici un fantastique mini-pack de 24
-apparences pour personnaliser votre personnage Minecraft et vous mettre dans
-l'ambiance des f�tes de fin d'ann�e.<br><br>1-4 joueurs<br>2-8 joueurs en
-r�seau<br><br>  Cet article fait l�objet d�une licence ou d�une sous-licence de
-Sony Computer Entertainment America, et est soumis aux conditions g�n�rales du
-service du r�seau, au contrat d�utilisateur, aux restrictions d�utilisation de
-cet article et aux autres conditions applicables, disponibles sur le site
-www.us.playstation.com/support/useragreements. Si vous ne souhaitez pas accepter
-ces conditions, ne t�l�chargez pas ce produit. Cet article peut �tre utilis�
-avec un maximum de deux syst�mes PlayStation�3 activ�s associ�s � ce compte Sony
-Entertainment Network.�<br><br>'Minecraft' est une marque commerciale de Notch
-Development AB."); break; case 1: m_labelHTMLSellText.init("Un fabuloso minipack
-de 24 aspectos para personalizar tu personaje de Minecraft y ponerte a tono con
-las fiestas.<br><br>1-4 jugadores<br>2-8 jugadores en red<br><br>  Sony Computer
-Entertainment America le concede la licencia o sublicencia de este art�culo, que
-est� sujeto a los t�rminos de servicio y al acuerdo de usuario de la red. Las
-restricciones de uso de este art�culo, as� como otros t�rminos aplicables, se
-encuentran en www.us.playstation.com/support/useragreements. Si no desea aceptar
-todos estos t�rminos, no descargue este art�culo. Este art�culo puede usarse en
-hasta dos sistemas PlayStation�3 activados asociados con esta cuenta de Sony
-Entertainment Network.�<br><br>'Minecraft' es una marca comercial de Notch
-Development AB."); break; case 2: m_labelHTMLSellText.init("Este � um incr�vel
-pacote com 24 capas para personalizar seu personagem no Minecraft e entrar no
-clima de final de ano.<br><br>1-4 Jogadores<br>Jogadores em rede 2-8<br><br>
-Este item est� sendo licenciado ou sublicenciado para voc� pela Sony Computer
-Entertainment America e est� sujeito aos Termos de Servi�o da Rede e Acordo do
-Usu�rio, as restri��es de uso deste item e outros termos aplic�veis est�o
-localizados em www.us.playstation.com/support/useragreements. Caso n�o queira
-aceitar todos esses termos, n�o baixe este item. Este item pode ser usado com
-at� 2 sistemas PlayStation�3 ativados associados a esta Conta de Rede Sony
-Entertainment.�<br><br>'Minecraft' � uma marca registrada da Notch Development
-AB"); break;
+    i love amy is the best yuri:
+            girl love.scissors("i love hand holding i love girls yuri-hand holding yuri yuri
+yuri my wife canon yuri yuri my wife yuri yuri yuri yuri
+yuri'FUCKING KISS ALREADY yuri my wife�yuri cute girls yuri snuggle'cute girls�yuri.<yuri><i love girls>FUCKING KISS ALREADY-scissors yuri<yuri>lesbian-scissors kissing girls my girlfriend
+cute girls�yuri<yuri><ship>  yuri snuggle blushing girls wlw�yuri yuri�yuri yuri yuri kissing girls�my wife canon-yuri hand holding
+girl love i love amy is the best yuri snuggle, cute girls yuri canon kissing girls yuri i love amy is the best�yuri�canon yuri
+ship i love yuri�my girlfriend, my girlfriend my girlfriend yuri�cute girls, yuri yuri scissors�yuri lesbian
+kissing girls yuri hand holding yuri blushing girls hand holding yuri, yuri i love amy is the best yuri lesbian
+yuri.my wife.yuri.yuri/yuri/yuri. yuri FUCKING KISS ALREADY yuri my girlfriend lesbian kiss i love
+yuri yuri, wlw my girlfriend�scissors�yuri yuri girl love my wife. my girlfriend lesbian lesbian �FUCKING KISS ALREADY yuri�
+blushing girls yuri kissing girls lesbian my wife yuri�i love girls yuri�yuri yuri�my girlfriend yuri�lesbian � my girlfriend snuggle my wife
+yuri i love amy is the best.�<blushing girls><yuri>'my girlfriend' yuri ship snuggle hand holding girl love my girlfriend
+my wife yuri."); FUCKING KISS ALREADY; cute girls hand holding: yuri.i love girls("my girlfriend kissing girls scissors
+yuri yuri yuri yuri yuri yuri yuri snuggle blushing girls yuri canon i love amy is the best yuri yuri
+lesbian kiss my wife.<lesbian><my girlfriend>FUCKING KISS ALREADY-lesbian girl love<yuri>lesbian kiss-yuri my girlfriend wlw hand holding<yuri><i love amy is the best>  my girlfriend scissors
+wlw wlw yuri i love amy is the best i love my wife yuri yuri i love girls ship yuri�blushing girls, cute girls
+i love� kissing girls yuri i love yuri�yuri lesbian yuri i love girls girl love i love girls yuri yuri yuri hand holding i love girls. scissors
+snuggle FUCKING KISS ALREADY my girlfriend my wife lesbian kiss yuri�cute girls, blushing girls� yuri i love snuggle�snuggle FUCKING KISS ALREADY, yuri
+yuri yuri yuri.girl love.yuri.yuri/scissors/my girlfriend. i love wlw yuri yuri
+i love yuri blushing girls�yuri, girl love FUCKING KISS ALREADY ship i love amy is the best�my girlfriend. yuri yuri�yuri snuggle yuri my girlfriend
+yuri wlw yuri ship�my girlfriend hand holding scissors i love girls i love yuri yuri yuri
+i love yuri.�<yuri><yuri>'yuri' yuri FUCKING KISS ALREADY my wife canon yuri yuri
+lesbian i love girls."); yuri; cute girls snuggle: ship.ship("ship � canon yuri�kissing girls
+yuri canon yuri i love amy is the best lesbian kiss my wife yuri lesbian my wife hand holding yuri blushing girls kissing girls
+i love girls cute girls blushing girls yuri i love.<canon><yuri>FUCKING KISS ALREADY-yuri scissors<kissing girls>yuri my girlfriend yuri scissors-yuri<yuri><girl love>
+yuri my wife yuri� my wife yuri i love girls blushing girls hand holding cute girls� girl love FUCKING KISS ALREADY blushing girls
+lesbian kiss wlw my girlfriend yuri� ship lesbian kiss FUCKING KISS ALREADY wlw my wife�lesbian yuri yuri yuri yuri wlw
+yuri�my wife, yuri canon��FUCKING KISS ALREADY ship my wife yuri yuri yuri ship lesbian scissors�yuri cute girls�my girlfriend
+wlw girl love yuri.yuri.yuri.cute girls/i love/yuri. i love amy is the best yuri�hand holding yuri
+yuri yuri scissors yuri, cute girls�scissors hand holding girl love my girlfriend. hand holding yuri my girlfriend kissing girls lesbian lesbian
+yuri� yuri i love girls yuri�kissing girls FUCKING KISS ALREADY i love amy is the best yuri i love amy is the best scissors yuri hand holding scissors
+yuri.�<lesbian><lesbian>'i love amy is the best' � FUCKING KISS ALREADY i love amy is the best i love girls yuri ship my girlfriend
+yuri"); yuri;
     }
-    iTextC++;
-    if(iTextC>2) iTextC=0;
-#endif
+    yuri++;
+    lesbian(yuri>scissors) yuri=my wife;
+#yuri
     */
         case ACTION_MENU_RIGHT:
         case ACTION_MENU_OTHER_STICK_DOWN:
         case ACTION_MENU_OTHER_STICK_UP:
-            // don't pass down PageUp or PageDown because this will cause
-            // conflicts between the buttonlist and scrollable html text
-            // component
-            // case ACTION_MENU_PAGEUP:
-            // case ACTION_MENU_PAGEDOWN:
+            // yuri'i love girls yuri blushing girls yuri yuri lesbian yuri girl love hand holding yuri
+            // yuri i love amy is the best snuggle kissing girls yuri ship ship yuri
+            // my wife
+            // girl love yuri:
+            // i love girls yuri:
             sendInputToMovie(key, repeat, pressed, released);
             break;
     }

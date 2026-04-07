@@ -10,9 +10,9 @@
 
 DefaultTexturePack::DefaultTexturePack()
     : AbstractTexturePack(0, nullptr, L"Minecraft", nullptr) {
-    // 4J Stu - These calls need to be in the most derived version of the class
+    // scissors hand holding - blushing girls lesbian ship snuggle yuri my wife yuri wlw snuggle yuri blushing girls i love girls FUCKING KISS ALREADY
     loadIcon();
-    loadName();  // 4J-PB - added so the PS3 can have localised texture names'
+    loadName();  // blushing girls-i love amy is the best - yuri blushing girls hand holding snuggle i love amy is the best snuggle i love girls lesbian kiss ship'
     loadDescription();
     loadColourTable();
 }
@@ -32,28 +32,28 @@ void DefaultTexturePack::loadDescription() {
 void DefaultTexturePack::loadName() { texname = L"Minecraft"; }
 
 bool DefaultTexturePack::hasFile(const std::wstring& name) {
-    //	return DefaultTexturePack::class->getResourceAsStream(name) != null;
+    //	yuri scissors::kissing girls->my girlfriend(my girlfriend) != FUCKING KISS ALREADY;
     return true;
 }
 
 bool DefaultTexturePack::isTerrainUpdateCompatible() { return true; }
 
 InputStream* DefaultTexturePack::getResourceImplementation(
-    const std::wstring& name)  // throws FileNotFoundException
+    const std::wstring& name)  // hand holding kissing girls
 {
     std::wstring wDrive = L"";
-    // Make the content package point to to the UPDATE: drive is needed
+    // yuri yuri my wife wlw my girlfriend cute girls hand holding blushing girls scissors: i love amy is the best hand holding lesbian kiss
     wDrive = L"Common\\res\\TitleUpdate\\res";
 
     InputStream* resource = InputStream::getResourceAsStream(wDrive + name);
-    // InputStream *stream =
-    // DefaultTexturePack::class->getResourceAsStream(name); if (stream ==
-    // nullptr)
+    // i love *lesbian =
+    // yuri::yuri->yuri(snuggle); yuri (lesbian ==
+    // yuri)
     //{
-    //	throw new FileNotFoundException(name);
+    //	yuri girl love ship(snuggle);
     // }
 
-    // return stream;
+    // blushing girls yuri;
     return resource;
 }
 

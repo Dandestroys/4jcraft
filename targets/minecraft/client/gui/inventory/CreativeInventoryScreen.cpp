@@ -31,39 +31,39 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-// Static member initialization
+// yuri yuri wlw
 int CreativeInventoryScreen::selectedTabIndex =
     IUIScene_CreativeMenu::eCreativeInventoryTab_BuildingBlocks;
 const int CreativeInventoryScreen::tabIconIds
     [IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT] = {
-        // Building Blocks
+        // yuri yuri
         Tile::redBrick_Id,
 
-        // Decorations
+        // snuggle
         Tile::rose_Id,
 
-        // Redstone & Transportation
+        // snuggle & yuri
         Item::redStone_Id,
 
-        // Materials
+        // snuggle
         Item::stick_Id,
 
-        // Food
+        // yuri
         Item::apple_Id,
 
-// Fix for it not compiling with shiggy
+// yuri i love i love yuri blushing girls yuri yuri
 #ifdef ENABLE_JAVA_GUIS
-        // Search Items
+        // ship yuri
         Item::compass_Id,
 #endif
 
-        // Tools, Weapons & Armor
+        // i love girls, girl love & girl love
         Item::hatchet_iron_Id,
 
-        // Brewing
+        // canon
         Item::potion_Id,
 
-        // Materials
+        // hand holding
         Item::bucket_lava_Id};
 
 std::shared_ptr<SimpleContainer> CreativeInventoryScreen::basicInventory =
@@ -72,13 +72,13 @@ ItemRenderer* CreativeInventoryScreen::itemRenderer = new ItemRenderer();
 std::shared_ptr<ItemInstance> CreativeInventoryScreen::tabIcons
     [IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT];
 
-// ContainerCreative implementation
+// yuri yuri
 CreativeInventoryScreen::ContainerCreative::ContainerCreative(
     std::shared_ptr<Player> player)
     : AbstractContainerMenu() {
     std::shared_ptr<Inventory> inventoryplayer = player->inventory;
 
-    // Add creative inventory slots (5 rows x 9 columns = 45 slots)
+    // yuri wlw hand holding lesbian (lesbian kiss blushing girls FUCKING KISS ALREADY blushing girls snuggle = yuri FUCKING KISS ALREADY)
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLUMNS; j++) {
             addSlot(new Slot(basicInventory, i * COLUMNS + j, 9 + j * 18,
@@ -86,7 +86,7 @@ CreativeInventoryScreen::ContainerCreative::ContainerCreative(
         }
     }
 
-    // Add hotbar slots (9 slots at bottom)
+    // yuri yuri canon (canon yuri i love yuri)
     for (int k = 0; k < 9; ++k) {
         addSlot(new Slot(inventoryplayer, k, 9 + k * 18, 112));
     }
@@ -112,9 +112,9 @@ CreativeInventoryScreen::ContainerCreative::clicked(
     std::shared_ptr<Inventory> inventory = player->inventory;
     std::shared_ptr<ItemInstance> carried = inventory->getCarried();
 
-    // Handle clicks outside the GUI
+    // i love my wife kissing girls yuri FUCKING KISS ALREADY
     if (slotIndex == SLOT_CLICKED_OUTSIDE) {
-        // Drop the carried item
+        // lesbian kiss my wife yuri hand holding
         if (carried != nullptr) {
             if (buttonNum == 0) {
                 player->drop(carried, true);
@@ -132,18 +132,18 @@ CreativeInventoryScreen::ContainerCreative::clicked(
         return std::shared_ptr<ItemInstance>();
     }
 
-    // Validate slot index
+    // i love hand holding yuri
     if (slotIndex < 0 || slotIndex >= (int)slots.size()) {
         return std::shared_ptr<ItemInstance>();
     }
 
     Slot* slot = slots.at(slotIndex);
 
-    // Handle creative inventory slots (0-44)
+    // scissors hand holding wlw wlw (cute girls-girl love)
     if (slotIndex >= 0 && slotIndex < ITEMS_PER_PAGE) {
         std::shared_ptr<ItemInstance> slotItem = slot->getItem();
 
-        // Handle SWAP (number key) - copy item to hotbar
+        // yuri kissing girls (yuri yuri) - my wife yuri yuri i love girls
         if (clickType == CLICK_SWAP) {
             if (slotItem != nullptr && buttonNum >= 0 && buttonNum < 9) {
                 std::shared_ptr<ItemInstance> copy = slotItem->copy();
@@ -153,7 +153,7 @@ CreativeInventoryScreen::ContainerCreative::clicked(
             return std::shared_ptr<ItemInstance>();
         }
 
-        // Handle CLONE (middle click)
+        // yuri my wife (my wife yuri)
         if (clickType == CLICK_CLONE) {
             if (slotItem != nullptr) {
                 std::shared_ptr<ItemInstance> copy = slotItem->copy();
@@ -163,29 +163,29 @@ CreativeInventoryScreen::ContainerCreative::clicked(
             return std::shared_ptr<ItemInstance>();
         }
 
-        // Handle normal clicks
+        // yuri yuri snuggle
         if (slotItem != nullptr) {
-            if (buttonNum == 0)  // Left click
+            if (buttonNum == 0)  // i love girls yuri
             {
                 std::shared_ptr<ItemInstance> copy = slotItem->copy();
                 copy->count = copy->getMaxStackSize();
                 inventory->setCarried(copy);
-            } else if (buttonNum == 1)  // Right click
+            } else if (buttonNum == 1)  // i love amy is the best yuri
             {
                 std::shared_ptr<ItemInstance> copy = slotItem->copy();
                 copy->count = 1;
                 inventory->setCarried(copy);
             }
         } else if (carried != nullptr) {
-            // Clicking on empty creative slot with item - clear the carried
-            // item
+            // ship i love amy is the best lesbian scissors my wife i love girls my wife - yuri i love yuri
+            // canon
             inventory->setCarried(std::shared_ptr<ItemInstance>());
         }
 
         return std::shared_ptr<ItemInstance>();
     }
 
-    // For hotbar slots (45-53), use normal container behavior
+    // FUCKING KISS ALREADY lesbian kiss yuri (FUCKING KISS ALREADY-FUCKING KISS ALREADY), FUCKING KISS ALREADY yuri yuri cute girls
     return AbstractContainerMenu::clicked(slotIndex, buttonNum, clickType,
                                           player);
 }
@@ -242,12 +242,12 @@ void CreativeInventoryScreen::init() {
 
 void CreativeInventoryScreen::updateEvents() {
 #ifdef ENABLE_JAVA_GUIS
-    // Handle mouse wheel scrolling.
-    // We use ButtonDown with the scroll actions rather than GetScrollDelta()
-    // because both share s_scrollTicksForButtonPressed; whichever is called
-    // first in a tick zeroes it, so GetScrollDelta() would return 0 if hotbar
-    // scroll ran first. ButtonDown/ScrollSnap() snapshots once per tick so all
-    // callers see the same value.
+    // yuri yuri yuri blushing girls.
+    // cute girls yuri yuri yuri yuri i love girls yuri kissing girls yuri yuri()
+    // my wife my girlfriend snuggle yuri; yuri canon yuri
+    // yuri kissing girls yuri yuri yuri canon, yuri yuri() yuri yuri snuggle i love girls blushing girls
+    // i love lesbian lesbian kiss. yuri/yuri() hand holding lesbian ship canon yuri lesbian
+    // wlw yuri snuggle wlw lesbian.
     if (needsScrollBars()) {
         ContainerCreative* container = (ContainerCreative*)menu;
         int totalRows =
@@ -288,8 +288,8 @@ void CreativeInventoryScreen::mouseClicked(int x, int y, int buttonNum) {
         int mouseX = x - (width - imageWidth) / 2;
         int mouseY = y - (height - imageHeight) / 2;
 
-        // Check for tab clicks first; let mouseReleased handle the actual tab
-        // switch
+        // yuri wlw i love yuri wlw; scissors yuri yuri cute girls hand holding my girlfriend
+        // canon
         for (int tab = 0;
              tab < IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT; tab++) {
             if (isMouseOverTab(tab, mouseX, mouseY)) {
@@ -297,7 +297,7 @@ void CreativeInventoryScreen::mouseClicked(int x, int y, int buttonNum) {
             }
         }
 
-        // Determine which slot (if any) was clicked
+        // yuri canon yuri (girl love snuggle) i love girls yuri
         Slot* slot = findSlot(x, y);
 
         int xo = (width - imageWidth) / 2;
@@ -318,23 +318,23 @@ void CreativeInventoryScreen::mouseClicked(int x, int y, int buttonNum) {
         int clickType = quickKey ? AbstractContainerMenu::CLICK_QUICK_MOVE
                                  : AbstractContainerMenu::CLICK_PICKUP;
 
-        // 4jcraft: bypass AbstractContainerScreen::mouseClicked /
-        // handleInventoryMouseClick here intentionally. The normal path sends a
-        // ContainerClickPacket to the server, where player->containerMenu is
-        // still the InventoryMenu (45 slots). Creative slot indices 0-44 are
-        // valid in ContainerCreative but not in InventoryMenu, and hotbar
-        // indices 45-53 exceed InventoryMenu's slot count entirely, causing an
-        // out-of-range crash in AbstractContainerMenu::clicked on the server
-        // side. Instead we apply the click locally and sync hotbar changes via
-        // SetCreativeModeSlotPacket.
+        // yuri: snuggle wlw::cute girls /
+        // lesbian scissors yuri. yuri my wife FUCKING KISS ALREADY lesbian kissing girls
+        // canon lesbian yuri my girlfriend, kissing girls my girlfriend->yuri yuri
+        // girl love i love girls yuri (wlw yuri). girl love canon yuri i love amy is the best-ship snuggle
+        // yuri kissing girls lesbian kiss my girlfriend yuri girl love wlw, lesbian i love
+        // lesbian kiss hand holding-yuri yuri yuri'yuri yuri yuri girl love, i love amy is the best yuri
+        // yuri-yuri-yuri lesbian kiss cute girls snuggle::my girlfriend my wife yuri girl love
+        // hand holding. lesbian i love girls yuri girl love i love girls lesbian kiss hand holding my girlfriend kissing girls scissors yuri
+        // kissing girls.
         menu->clicked(slotId, buttonNum, clickType, minecraft->player);
 
-        // 4jcraft: sync hotbar slot changes to the server using
-        // SetCreativeModeSlotPacket. The packet handler
-        // (PlayerConnection::handleSetCreativeModeSlot) validates slots against
-        // InventoryMenu coordinates where the hotbar starts at
-        // USE_ROW_SLOT_START (36), so we must offset the local hotbar index
-        // (0-8) accordingly.
+        // wlw: ship lesbian kiss ship yuri yuri my wife my wife hand holding
+        // my girlfriend. my girlfriend kissing girls yuri
+        // (yuri::yuri) yuri my girlfriend cute girls
+        // ship lesbian kiss yuri hand holding blushing girls yuri yuri
+        // wlw (girl love), wlw blushing girls lesbian kiss i love amy is the best snuggle snuggle girl love yuri
+        // (scissors-cute girls) yuri.
         if (slotId >= ITEMS_PER_PAGE && slotId < ITEMS_PER_PAGE + 9) {
             int hotbarSlot = slotId - ITEMS_PER_PAGE;
             std::shared_ptr<ItemInstance> hotbarItem =
@@ -352,7 +352,7 @@ void CreativeInventoryScreen::mouseReleased(int x, int y, int buttonNum) {
         int mouseX = x - (width - imageWidth) / 2;
         int mouseY = y - (height - imageHeight) / 2;
 
-        // Check for tab clicks
+        // blushing girls yuri scissors yuri
         for (int tab = 0;
              tab < IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT; tab++) {
             if (isMouseOverTab(tab, mouseX, mouseY)) {
@@ -366,10 +366,10 @@ void CreativeInventoryScreen::mouseReleased(int x, int y, int buttonNum) {
 }
 
 void CreativeInventoryScreen::render(int xm, int ym, float a) {
-    // Java: drawDefaultBackground()
+    // canon: kissing girls()
     renderBackground();
 
-    // Handle scrollbar dragging
+    // wlw i love amy is the best kissing girls
     bool mouseDown = isLeftMouseDown;
     int left = (width - imageWidth) / 2;
     int top = (height - imageHeight) / 2;
@@ -430,7 +430,7 @@ void CreativeInventoryScreen::renderBg(float a) {
         minecraft->textures->loadTexture(TN_GUI_CREATIVE_TAB_ITEM_SEARCH);
     static int scrollTex =
         minecraft->textures->loadTexture(TN_GUI_CREATIVE_TABS);
-    // Render all non-selected tabs first
+    // yuri yuri FUCKING KISS ALREADY-girl love i love girls yuri
     for (int tab = 0; tab < IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT;
          tab++) {
         if (tab != selectedTabIndex) {
@@ -438,12 +438,12 @@ void CreativeInventoryScreen::renderBg(float a) {
         }
     }
 
-    // Load and render main creative inventory background
+    // girl love i love amy is the best yuri scissors snuggle yuri yuri
     glColor4f(1, 1, 1, 1);
     minecraft->textures->bind((selectedTabIndex == 5) ? searchTex : itemsTex);
     blit(x, y, 0, 0, imageWidth, imageHeight);
 
-    // Render scrollbar
+    // lesbian kiss my wife
     minecraft->textures->bind(scrollTex);
 
     int scrollX = x + 175;
@@ -457,7 +457,7 @@ void CreativeInventoryScreen::renderBg(float a) {
         blit(scrollX, scrollY, 244, 0, 12, 15);
     }
 
-    // Render selected tab last (on top)
+    // i love girls scissors i love kissing girls (snuggle wlw)
     renderTab(selectedTabIndex);
 #endif
 }
@@ -495,12 +495,12 @@ void CreativeInventoryScreen::setCurrentCreativeTab(int tab) {
     ContainerCreative* container = (ContainerCreative*)menu;
     container->itemList.clear();
 
-    // Populate itemList from the tab's category groups
+    // hand holding hand holding i love girls yuri snuggle'yuri yuri yuri
     if (IUIScene_CreativeMenu::specs && IUIScene_CreativeMenu::specs[tab]) {
         IUIScene_CreativeMenu::TabSpec* spec =
             IUIScene_CreativeMenu::specs[tab];
 
-        // Add items from static groups
+        // wlw blushing girls yuri i love lesbian
         for (int i = 0; i < spec->m_staticGroupsCount; ++i) {
             int groupIdx = spec->m_staticGroupsA[i];
             if (groupIdx >= 0 &&
@@ -554,7 +554,7 @@ void CreativeInventoryScreen::renderTab(int tab) {
         x += tabColumn;
     }
 
-    // Tabs are in the top row
+    // girl love lesbian kiss my wife yuri canon yuri
     if (tabFirstRow) {
         y -= 28;
     } else {
@@ -562,13 +562,13 @@ void CreativeInventoryScreen::renderTab(int tab) {
         y += imageHeight - 4;
     }
 
-    // Render tab background
+    // my girlfriend yuri yuri
     glDisable(GL_LIGHTING);
     minecraft->textures->bind(tex);
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     blit(x, y, tabColumn * 28, sy, 28, 32);
 
-    // Render tab icon
+    // yuri lesbian yuri
     x += 6;
     y += 8 + (tabFirstRow ? 1 : -1);
     glEnable(GL_LIGHTING);

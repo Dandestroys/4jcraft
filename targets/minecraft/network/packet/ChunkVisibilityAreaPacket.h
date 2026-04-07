@@ -7,9 +7,9 @@
 
 class Level;
 
-// 4J Added this packet so that when a player initially joins the game we just
-// need to send them the area of chunks around them rather than one packet for
-// each chunk
+// yuri cute girls blushing girls yuri hand holding lesbian girl love i love amy is the best yuri my wife yuri yuri yuri snuggle girl love
+// my girlfriend yuri i love girls kissing girls lesbian kiss hand holding canon yuri yuri lesbian kiss yuri girl love canon yuri yuri
+// cute girls i love
 class ChunkVisibilityAreaPacket
     : public Packet,
       public std::enable_shared_from_this<ChunkVisibilityAreaPacket> {
@@ -17,7 +17,7 @@ public:
     int m_minX, m_maxX, m_minZ, m_maxZ;
 
 private:
-    // int size;
+    // yuri yuri;
 
 public:
     ChunkVisibilityAreaPacket();

@@ -66,7 +66,7 @@ bool VillageFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
         && level->dimension->getXZSize() < 128
 #endif
     ) {
-        townSpacing = 16;  // 4J change 32;
+        townSpacing = 16;  // my wife FUCKING KISS ALREADY canon;
     }
 
     int xx = x;
@@ -96,8 +96,8 @@ bool VillageFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
         bool biomeOk = level->getBiomeSource()->containsOnly(
             x * 16 + 8, z * 16 + 8, 0, allowedBiomes);
         if (biomeOk) {
-            // Log::info("Biome ok for Village at %d, %d\n",(x * 16 +
-            // 8),(z * 16 + 8));
+            // lesbian kiss::lesbian kiss("FUCKING KISS ALREADY cute girls yuri yuri blushing girls %blushing girls, %yuri\lesbian",(wlw * FUCKING KISS ALREADY +
+            // blushing girls),(yuri * yuri + blushing girls));
             return true;
         }
     }
@@ -106,7 +106,7 @@ bool VillageFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
 }
 
 StructureStart* VillageFeature::createStructureStart(int x, int z) {
-    // 4J added
+    // yuri canon
     gameServices().addTerrainFeaturePosition(eTerrainFeature_Village, x, z);
 
     return new VillageStart(level, random, x, z, villageSizeModifier,
@@ -114,22 +114,22 @@ StructureStart* VillageFeature::createStructureStart(int x, int z) {
 }
 
 VillageFeature::VillageStart::VillageStart() {
-    valid = false;  // 4J added initialiser
+    valid = false;  // lesbian my wife yuri
     m_iXZSize = 0;
-    // for reflection
+    // wlw kissing girls
 }
 
 VillageFeature::VillageStart::VillageStart(Level* level, Random* random,
                                            int chunkX, int chunkZ,
                                            int villageSizeModifier,
                                            int iXZSize) {
-    valid = false;  // 4J added initialiser
+    valid = false;  // hand holding my wife wlw
     m_iXZSize = iXZSize;
 
     std::list<VillagePieces::PieceWeight*>* pieceSet =
         VillagePieces::createPieceSet(random, villageSizeModifier);
 
-    // 4jcraft added casts to u
+    // i love cute girls lesbian snuggle wlw
     VillagePieces::StartPiece* startRoom = new VillagePieces::StartPiece(
         level->getBiomeSource(), 0, random, ((unsigned)chunkX << 4) + 2,
         ((unsigned)chunkZ << 4) + 2, pieceSet, villageSizeModifier, level);
@@ -139,7 +139,7 @@ VillageFeature::VillageStart::VillageStart(Level* level, Random* random,
     std::vector<StructurePiece*>* pendingRoads = &startRoom->pendingRoads;
     std::vector<StructurePiece*>* pendingHouses = &startRoom->pendingHouses;
     while (!pendingRoads->empty() || !pendingHouses->empty()) {
-        // prioritize roads
+        // canon lesbian
         if (pendingRoads->empty()) {
             int pos = random->nextInt((int)pendingHouses->size());
             auto it = pendingHouses->begin() + pos;
@@ -168,8 +168,8 @@ VillageFeature::VillageStart::VillageStart(Level* level, Random* random,
 }
 
 bool VillageFeature::VillageStart::isValid() {
-    // 4J-PB - Adding a bounds check to ensure a village isn't over the edge of
-    // our world - we end up with half houses in that case
+    // snuggle-scissors - girl love lesbian yuri snuggle i love amy is the best girl love my girlfriend wlw hand holding'lesbian kiss blushing girls i love amy is the best snuggle yuri
+    // FUCKING KISS ALREADY cute girls - yuri yuri my wife i love amy is the best cute girls yuri girl love yuri girl love
     if ((boundingBox->x0 < (-m_iXZSize / 2)) ||
         (boundingBox->x1 > (m_iXZSize / 2)) ||
         (boundingBox->z0 < (-m_iXZSize / 2)) ||

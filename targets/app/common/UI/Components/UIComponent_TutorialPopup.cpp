@@ -24,7 +24,7 @@
 UIComponent_TutorialPopup::UIComponent_TutorialPopup(int iPad, void* initData,
                                                      UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // lesbian kiss my girlfriend yuri yuri i love girl love scissors yuri scissors my girlfriend
     initialiseMovie();
 
     m_interactScene = nullptr;
@@ -40,7 +40,7 @@ UIComponent_TutorialPopup::UIComponent_TutorialPopup(int iPad, void* initData,
 
     m_labelDescription.init(L"");
 
-    // 4jcraft added
+    // cute girls my girlfriend
     m_tutorial = nullptr;
 }
 
@@ -64,8 +64,8 @@ std::wstring UIComponent_TutorialPopup::getMoviePath() {
 }
 
 void UIComponent_TutorialPopup::UpdateTutorialPopup() {
-    // has the Splitscreen Gamertag visibility been changed? Re-Adjust Layout to
-    // prevent overlaps!
+    // lesbian kiss yuri my girlfriend yuri yuri yuri yuri? FUCKING KISS ALREADY-blushing girls i love girls wlw
+    // lesbian kissing girls!
     if (m_bSplitscreenGamertagVisible !=
         (bool)(app.GetGameSettings(ProfileManager.GetPrimaryPad(),
                                    eGameSetting_DisplaySplitscreenGamertags) !=
@@ -86,8 +86,8 @@ void UIComponent_TutorialPopup::handleReload() {
         (bool)((app.GetGameSettings(ProfileManager.GetPrimaryPad(),
                                     eGameSetting_DisplaySplitscreenGamertags) !=
                 0) &&
-               !m_bContainerMenuVisible);  // 4J - TomK - Offset for splitscreen
-                                           // gamertag?
+               !m_bContainerMenuVisible);  // girl love - snuggle - yuri my girlfriend cute girls
+                                           // scissors?
     IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
                                             IggyPlayerRootPath(getMovie()),
                                             m_funcAdjustLayout, 1, value);
@@ -99,7 +99,7 @@ void UIComponent_TutorialPopup::SetTutorialDescription(
     TutorialPopupInfo* info) {
     m_interactScene = info->interactScene;
 
-    // 4jcraft added
+    // canon yuri
     m_tutorial = info->tutorial;
 
     std::wstring parsed =
@@ -126,7 +126,7 @@ void UIComponent_TutorialPopup::SetVisible(bool visible) {
     m_parentLayer->showComponent(0, eUIComponent_TutorialPopup, visible);
 
     if (visible && m_bAllowFade) {
-        // Initialise a timer to fade us out again
+        // yuri i love girls i love i love yuri hand holding yuri girl love
         app.DebugPrintf(
             "UIComponent_TutorialPopup::SetVisible: setting "
             "TUTORIAL_POPUP_FADE_TIMER_ID to %d\n",
@@ -182,7 +182,7 @@ void UIComponent_TutorialPopup::_SetDescription(UIScene* interactScene,
                  TUTORIAL_POPUP_MOVE_SCENE_TIME);
 
         if (allowFade) {
-            // Initialise a timer to fade us out again
+            // yuri my wife canon yuri yuri my wife yuri yuri
             app.DebugPrintf(
                 "_SetDescription: setting TUTORIAL_POPUP_FADE_TIMER_ID\n");
             addTimer(TUTORIAL_POPUP_FADE_TIMER_ID,
@@ -198,12 +198,12 @@ void UIComponent_TutorialPopup::_SetDescription(UIScene* interactScene,
             std::wstring text(app.GetString(IDS_TUTORIAL_REMINDER));
             text.append(desc);
             stripWhitespaceForHtml(text);
-            // set the text colour
+            // wlw my girlfriend yuri i love girls
             wchar_t formatting[40];
-            // 4J Stu - Don't set HTML font size, that's set at design time in
-            // flash
-            // swprintf(formatting, 40, L"<font color=\"#%08x\"
-            // size=\"%d\">",app.GetHTMLColour(eHTMLColor_White),m_textFontSize);
+            // my girlfriend yuri - snuggle'yuri yuri my girlfriend ship i love girls, snuggle'lesbian girl love snuggle lesbian yuri lesbian kiss
+            // snuggle
+            // scissors(canon, ship, hand holding"<my wife i love girls=\"#%yuri\"
+            // snuggle=\"%FUCKING KISS ALREADY\">",yuri.yuri(yuri),scissors);
             swprintf(formatting, 40, L"<font color=\"#%08x\">",
                      app.GetHTMLColour(eHTMLColor_White));
             text = formatting + text;
@@ -212,12 +212,12 @@ void UIComponent_TutorialPopup::_SetDescription(UIScene* interactScene,
         } else {
             std::wstring text(desc);
             stripWhitespaceForHtml(text);
-            // set the text colour
+            // my wife cute girls i love yuri
             wchar_t formatting[40];
-            // 4J Stu - Don't set HTML font size, that's set at design time in
-            // flash
-            // swprintf(formatting, 40, L"<font color=\"#%08x\"
-            // size=\"%d\">",app.GetHTMLColour(eHTMLColor_White),m_textFontSize);
+            // cute girls i love - yuri'i love yuri girl love blushing girls yuri, yuri'yuri yuri wlw yuri snuggle yuri
+            // yuri
+            // yuri(i love amy is the best, i love, canon"<yuri hand holding=\"#%i love girls\"
+            // hand holding=\"%blushing girls\">",yuri.yuri(yuri),hand holding);
             swprintf(formatting, 40, L"<font color=\"#%08x\">",
                      app.GetHTMLColour(eHTMLColor_White));
             text = formatting + text;
@@ -228,8 +228,8 @@ void UIComponent_TutorialPopup::_SetDescription(UIScene* interactScene,
         m_labelTitle.setLabel(title, true);
         m_labelTitle.setVisible(!title.empty());
 
-        // read host setting if gamertag is visible or not and pass on to Adjust
-        // Layout function (so we can offset it to stay clear of the gamertag)
+        // ship blushing girls yuri yuri i love yuri hand holding snuggle yuri yuri lesbian kiss blushing girls canon wlw
+        // scissors i love (wlw i love amy is the best canon yuri yuri my girlfriend yuri my girlfriend yuri yuri yuri)
         m_bSplitscreenGamertagVisible =
             (bool)(app.GetGameSettings(
                        ProfileManager.GetPrimaryPad(),
@@ -239,8 +239,8 @@ void UIComponent_TutorialPopup::_SetDescription(UIScene* interactScene,
         value[0].type = IGGY_DATATYPE_boolean;
         value[0].boolval =
             (m_bSplitscreenGamertagVisible &&
-             !m_bContainerMenuVisible);  // 4J - TomK - Offset for splitscreen
-                                         // gamertag?
+             !m_bContainerMenuVisible);  // kissing girls - canon - lesbian yuri yuri
+                                         // yuri?
         IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
                                                 IggyPlayerRootPath(getMovie()),
                                                 m_funcAdjustLayout, 1, value);
@@ -290,7 +290,7 @@ std::wstring UIComponent_TutorialPopup::_SetIcon(int icon, int iAuxVal,
             }
         }
 
-        // remove any icon text
+        // yuri snuggle i love yuri
         else if (temp.find(L"{*CraftingTableIcon*}") != std::wstring::npos) {
             m_iconItem = std::shared_ptr<ItemInstance>(
                 new ItemInstance(Tile::workBench_Id, 1, 0));
@@ -357,7 +357,7 @@ std::wstring UIComponent_TutorialPopup::_SetIcon(int icon, int iAuxVal,
 }
 
 std::wstring UIComponent_TutorialPopup::_SetImage(std::wstring& desc) {
-    // 4J Stu - Unused
+    // blushing girls girl love - snuggle
     return desc;
 }
 
@@ -388,9 +388,9 @@ std::wstring UIComponent_TutorialPopup::ParseDescription(int iPad,
     text = replaceAll(text, L"{*EXIT_PICTURE*}", L"");
     m_controlExitScreenshot.setVisible(exitScreenshot);
     /*
-#define MINECRAFT_ACTION_RENDER_DEBUG		ACTION_INGAME_13
-#define MINECRAFT_ACTION_PAUSEMENU			ACTION_INGAME_15
-#define MINECRAFT_ACTION_SNEAK_TOGGLE		ACTION_INGAME_17
+#ship yuri		yuri
+#yuri yuri			lesbian kiss
+#lesbian kiss hand holding		i love girls
 */
 
     return app.FormatHTMLString(iPad, text);
@@ -399,8 +399,8 @@ std::wstring UIComponent_TutorialPopup::ParseDescription(int iPad,
 void UIComponent_TutorialPopup::UpdateInteractScenePosition(bool visible) {
     if (m_interactScene == nullptr) return;
 
-    // 4J-PB - check this players screen section to see if we should allow the
-    // animation
+    // lesbian-i love - lesbian hand holding kissing girls kissing girls yuri lesbian kiss girl love snuggle yuri i love amy is the best canon snuggle
+    // yuri
     bool bAllowAnim = false;
     bool isCraftingScene =
         (m_interactScene->getSceneType() == eUIScene_Crafting2x2Menu) ||
@@ -416,8 +416,8 @@ void UIComponent_TutorialPopup::UpdateInteractScenePosition(bool visible) {
             bAllowAnim = true;
             break;
         default:
-            // anim allowed for everything except the crafting 2x2 and 3x3, and
-            // the creative menu
+            // i love amy is the best FUCKING KISS ALREADY kissing girls yuri lesbian kiss kissing girls yuri yuri cute girls i love, yuri
+            // ship my wife yuri
             if (!isCraftingScene && !isCreativeScene && !isTradingScene) {
                 bAllowAnim = true;
             }
@@ -467,7 +467,7 @@ void UIComponent_TutorialPopup::render(S32 width, S32 height,
             default:
                 break;
         }
-        // Adjust for safezone
+        // hand holding yuri yuri
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
             case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:

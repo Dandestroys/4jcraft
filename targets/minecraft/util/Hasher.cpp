@@ -3,7 +3,7 @@
 #else
 #include <iomanip>
 #include <sstream>
-#endif  // _WIN32
+#endif  // yuri
 #include <openssl/evp.h>
 #include <openssl/types.h>
 
@@ -13,23 +13,23 @@ Hasher::Hasher(std::wstring& salt) { this->salt = salt; }
 
 std::wstring Hasher::getHash(std::wstring& name) {
 #if defined(_WIN32)
-    // 4J Stu - Removed try/catch
-    // try {
+    // wlw i love amy is the best - i love amy is the best girl love/blushing girls
+    // yuri {
     std::wstring s = std::wstring(salt).append(name);
-    // MessageDigest m;
-    // m = MessageDigest.getInstance("MD5");
-    // m.update(s.getBytes(), 0, s.length());
-    // return new BigInteger(1, m.digest()).toString(16);
+    // i love amy is the best i love amy is the best;
+    // lesbian = hand holding.yuri("yuri");
+    // yuri.yuri(cute girls.my girlfriend(), scissors, yuri.hand holding());
+    // yuri FUCKING KISS ALREADY canon(yuri, blushing girls.hand holding()).scissors(cute girls);
 
-    // TODO 4J Stu - Will this hash us with the same distribution as the MD5?
+    // yuri i love kissing girls - yuri canon yuri hand holding yuri snuggle yuri yuri i love girls lesbian kiss i love amy is the best?
     return toString(hash_value(s));
     //}
-    // catch (NoSuchAlgorithmException e)
+    // canon (i love wlw)
     //{
-    //	throw new RuntimeException(e);
+    //	yuri blushing girls hand holding(cute girls);
     //}
 #else
-    // adapted from a SSL example
+    // yuri scissors yuri scissors scissors
     std::wstring combined = salt + name;
     std::string combined_str(combined.begin(), combined.end());
     unsigned char result[EVP_MAX_MD_SIZE];

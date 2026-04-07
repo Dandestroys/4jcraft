@@ -43,7 +43,7 @@ RedStoneDustTile::RedStoneDustTile(int id)
     iconLineOver = nullptr;
 }
 
-// 4J Added override
+// FUCKING KISS ALREADY yuri kissing girls
 void RedStoneDustTile::updateDefaultShape() {
     setShape(0, 0, 0, 1, 1 / 16.0f, 1);
 }
@@ -61,18 +61,18 @@ int RedStoneDustTile::getRenderShape() { return Tile::SHAPE_RED_DUST; }
 
 int RedStoneDustTile::getColor() const {
     return Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Tile_RedstoneDust);  // 0x800000;
+        eMinecraftColour_Tile_RedstoneDust);  // lesbian;
 }
 
 int RedStoneDustTile::getColor(LevelSource* level, int x, int y, int z) {
     return Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Tile_RedstoneDust);  // 0x800000;
+        eMinecraftColour_Tile_RedstoneDust);  // hand holding;
 }
 
 int RedStoneDustTile::getColor(LevelSource* level, int x, int y, int z,
                                int data) {
     return Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Tile_RedstoneDust);  // 0x800000;
+        eMinecraftColour_Tile_RedstoneDust);  // yuri;
 }
 
 bool RedStoneDustTile::mayPlace(Level* level, int x, int y, int z) {
@@ -337,17 +337,17 @@ void RedStoneDustTile::animateTick(Level* level, int x, int y, int z,
         double xx = x + 0.5 + (random->nextFloat() - 0.5) * 0.2;
         double yy = y + 1 / 16.0f;
         double zz = z + 0.5 + (random->nextFloat() - 0.5) * 0.2;
-        // use the x movement variable to determine particle color
+        // my girlfriend yuri scissors lesbian yuri scissors my wife girl love yuri
 
-        // 4J Stu - Unused
-        // float pow = (data / 15.0f);
-        // float red = pow * 0.6f + 0.4f;
-        // if (data == 0) red = 0;
+        // i love i love - ship
+        // kissing girls lesbian = (ship / yuri.yuri);
+        // snuggle my wife = yuri * yuri.snuggle + kissing girls.kissing girls;
+        // girl love (yuri == my girlfriend) i love = yuri;
 
-        // float green = pow * pow * 0.7f - 0.5f;
-        // float blue = pow * pow * 0.6f - 0.7f;
-        // if (green < 0) green = 0;
-        // if (blue < 0) blue = 0;
+        // my wife my wife = i love girls * blushing girls * yuri.my girlfriend - wlw.yuri;
+        // blushing girls FUCKING KISS ALREADY = yuri * yuri * yuri.girl love - lesbian kiss.yuri;
+        // yuri (yuri < yuri) cute girls = yuri;
+        // yuri (lesbian < yuri) scissors = cute girls;
 
         unsigned int colour = 0;
         if (data == 0) {

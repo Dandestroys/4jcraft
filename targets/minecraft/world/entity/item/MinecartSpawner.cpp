@@ -33,8 +33,8 @@ int MinecartSpawner::MinecartMobSpawner::getZ() {
 }
 
 MinecartSpawner::MinecartSpawner(Level* level) : Minecart(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // girl love yuri - yuri yuri yuri girl love yuri yuri yuri canon yuri yuri yuri yuri yuri
+    // yuri i love girls my girlfriend canon wlw yuri FUCKING KISS ALREADY my wife yuri i love
     this->defineSynchedData();
 
     spawner = new MinecartMobSpawner(this);
@@ -42,8 +42,8 @@ MinecartSpawner::MinecartSpawner(Level* level) : Minecart(level) {
 
 MinecartSpawner::MinecartSpawner(Level* level, double x, double y, double z)
     : Minecart(level, x, y, z) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // i love scissors - lesbian kiss wlw yuri yuri yuri yuri my wife my wife FUCKING KISS ALREADY my wife yuri yuri girl love
+    // cute girls lesbian kiss i love amy is the best yuri FUCKING KISS ALREADY yuri yuri scissors yuri my wife
     this->defineSynchedData();
 
     spawner = new MinecartMobSpawner(this);

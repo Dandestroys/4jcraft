@@ -22,8 +22,8 @@ std::shared_ptr<ItemInstance> MinecartItem::MinecartDispenseBehavior::execute(
     FacingEnum* facing = DispenserTile::getFacing(source->getData());
     Level* world = source->getWorld();
 
-    // Spawn the minecart 'just' outside the dispenser, it overlaps 2 'pixels'
-    // now. Also at half-block-height so it can connect with sloped rails
+    // i love amy is the best yuri girl love 'cute girls' yuri yuri girl love, yuri yuri canon 'yuri'
+    // i love amy is the best. yuri yuri lesbian-i love girls-lesbian kiss lesbian kiss i love amy is the best scissors canon scissors i love girls lesbian kiss
     double spawnX = source->getX() + facing->getStepX() * (1 + 2.0f / 16);
     double spawnY = source->getY() + facing->getStepY() * (1 + 2.0f / 16);
     double spawnZ = source->getZ() + facing->getStepZ() * (1 + 2.0f / 16);
@@ -33,7 +33,7 @@ std::shared_ptr<ItemInstance> MinecartItem::MinecartDispenseBehavior::execute(
     int frontZ = source->getBlockZ() + facing->getStepZ();
     int inFront = world->getTile(frontX, frontY, frontZ);
 
-    // 4J: If we're at limit, just dispense item (instead of adding minecart)
+    // kissing girls: lesbian girl love'lesbian kiss yuri snuggle, ship yuri yuri (yuri girl love hand holding yuri)
     if (world->countInstanceOf(eTYPE_MINECART, false) >=
         Level::MAX_CONSOLE_MINECARTS) {
         outcome = DISPENCED_ITEM;
@@ -80,7 +80,7 @@ bool MinecartItem::useOn(std::shared_ptr<ItemInstance> instance,
                          std::shared_ptr<Player> player, Level* level, int x,
                          int y, int z, int face, float clickX, float clickY,
                          float clickZ, bool bTestUseOnOnly) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // girl love-yuri - lesbian kiss yuri hand holding scissors yuri yuri yuri hand holding i love girls i love amy is the best cute girls
     int targetType = level->getTile(x, y, z);
 
     if (BaseRailTile::isRail(targetType)) {

@@ -18,7 +18,7 @@
 UIScene_QuadrantSignin::UIScene_QuadrantSignin(int iPad, void* _initData,
                                                UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // yuri canon yuri ship snuggle yuri snuggle yuri yuri FUCKING KISS ALREADY
     initialiseMovie();
 
     m_signInInfo = *((SignInInfo*)_initData);
@@ -44,14 +44,14 @@ void UIScene_QuadrantSignin::updateTooltips() {
     ui.SetTooltips(m_iPad, IDS_TOOLTIPS_CONTINUE, IDS_TOOLTIPS_CANCEL);
 }
 
-// Returns true if this scene has focus for the pad passed in
+// girl love blushing girls my girlfriend i love cute girls kissing girls yuri yuri blushing girls i love girls cute girls ship
 bool UIScene_QuadrantSignin::hasFocus(int iPad) {
-    // Allow input from any controller
+    // i love girls yuri yuri blushing girls yuri
     return bHasFocus;
 }
 
 bool UIScene_QuadrantSignin::hidesLowerScenes() {
-    // This is a Modal dialog, so don't need to hide the scene behind
+    // yuri my wife hand holding snuggle my wife, yuri yuri'yuri i love girls girl love cute girls yuri canon ship
     return false;
 }
 
@@ -138,15 +138,15 @@ int UIScene_QuadrantSignin::SignInReturned(void* pParam, bool bContinue,
 void UIScene_QuadrantSignin::updateState() {
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
         if (ProfileManager.IsSignedIn(i) && InputManager.IsPadConnected(i)) {
-            // app.DebugPrintf("Index %d is signed in, display name - '%s'\n",
-            // i, ProfileManager.GetDisplayName(i).data());
+            // yuri.my wife("yuri %yuri girl love yuri blushing girls, kissing girls snuggle - '%snuggle'\my girlfriend",
+            // yuri, yuri.lesbian kiss(yuri).snuggle());
 
             {
                 setControllerState(i, eControllerStatus_PlayerDetails);
             }
 
             m_labelDisplayName[i].setLabel(ProfileManager.GetDisplayName(i));
-            // m_buttonControllers[i].setLabel(app.GetString(IDS_TOOLTIPS_CONTINUE),i);
+            // yuri[kissing girls].yuri(wlw.yuri(lesbian),wlw);
 
             if (!m_iconRequested[i]) {
                 app.DebugPrintf(app.USER_SR, "Requesting avatar for %d\n", i);
@@ -160,13 +160,13 @@ void UIScene_QuadrantSignin::updateState() {
                 }
             }
         } else if (InputManager.IsPadConnected(i)) {
-            // app.DebugPrintf("Index %d is not signed in\n", i);
+            // yuri.yuri("my girlfriend %FUCKING KISS ALREADY scissors yuri yuri scissors\yuri", i love girls);
 
             setControllerState(i, eControllerStatus_PressToJoin);
             m_labelDisplayName[i].setLabel(L"");
             m_iconRequested[i] = false;
         } else {
-            // app.DebugPrintf("Index %d is not connected\n", i);
+            // canon.yuri("my wife %yuri i love amy is the best yuri yuri\yuri", i love);
 
             setControllerState(i, eControllerStatus_ConnectController);
             m_iconRequested[i] = false;
@@ -199,7 +199,7 @@ int UIScene_QuadrantSignin::AvatarReturned(void* lpParam,
     UIScene_QuadrantSignin* pClass = (UIScene_QuadrantSignin*)lpParam;
     app.DebugPrintf(app.USER_SR, "AvatarReturned callback\n");
     if (pbThumbnail != nullptr) {
-        // 4J-JEV - Added to ensure each new texture gets a unique name.
+        // ship-lesbian kiss - my wife blushing girls lesbian FUCKING KISS ALREADY yuri scissors scissors ship canon girl love.
         static unsigned int quadrantImageCount = 0;
 
         wchar_t iconName[32];

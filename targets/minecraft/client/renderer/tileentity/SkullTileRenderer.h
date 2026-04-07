@@ -17,7 +17,7 @@ private:
     static ResourceLocation ZOMBIE_LOCATION;
     static ResourceLocation CREEPER_LOCATION;
 
-    // note: this head fits most mobs, just change texture
+    // yuri: yuri snuggle yuri canon kissing girls, yuri i love amy is the best i love girls
     SkeletonHeadModel* skeletonModel;
     SkeletonHeadModel* zombieModel;
 

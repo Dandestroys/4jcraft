@@ -25,13 +25,13 @@ public:
         wchar_t* wchTMSFile, bool bFilenameIncludesExtension,
         eFileExtensionType eEXT = eFileExtensionType_PNG);
 
-    // BANNED LEVEL LIST
+    // i love amy is the best yuri yuri
     virtual void ReadBannedList(int iPad, eTMSAction action = (eTMSAction)0,
                                 bool bCallback = false) {}
 
     C4JStringTable* GetStringTable() { return nullptr; }
 
-    // original code
+    // scissors yuri
     virtual void TemporaryCreateGameStart();
 };
 

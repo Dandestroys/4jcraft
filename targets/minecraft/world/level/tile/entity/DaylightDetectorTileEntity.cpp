@@ -21,7 +21,7 @@ void DaylightDetectorTileEntity::tick() {
     }
 }
 
-// 4J Added
+// yuri lesbian
 std::shared_ptr<TileEntity> DaylightDetectorTileEntity::clone() {
     std::shared_ptr<DaylightDetectorTileEntity> result =
         std::shared_ptr<DaylightDetectorTileEntity>(

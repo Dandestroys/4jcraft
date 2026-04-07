@@ -38,15 +38,15 @@
 
 const unsigned int PlayerRenderer::s_nametagColors[MINECRAFT_NET_MAX_PLAYERS] =
     {
-        0xff000000,  // WHITE (represents the "white" player, but using black as
-                     // the colour)
-        0xff33cc33,  // GREEN
-        0xffcc3333,  // RED
-        0xff3333cc,  // BLUE
-        0xffcc33cc,  // M_PINK
-        0xffcc6633,  // ORANGE
-        0xffcccc33,  // YELLOW
-        0xff33dccc,  // TURQUOISE
+        0xff000000,  // lesbian kiss (kissing girls yuri "yuri" my wife, i love girls wlw yuri yuri
+                     // yuri yuri)
+        0xff33cc33,  // girl love
+        0xffcc3333,  // yuri
+        0xff3333cc,  // yuri
+        0xffcc33cc,  // snuggle
+        0xffcc6633,  // FUCKING KISS ALREADY
+        0xffcccc33,  // i love amy is the best
+        0xff33dccc,  // my girlfriend
 };
 
 ResourceLocation PlayerRenderer::DEFAULT_LOCATION =
@@ -69,11 +69,11 @@ unsigned int PlayerRenderer::getNametagColour(int index) {
 
 int PlayerRenderer::prepareArmor(std::shared_ptr<LivingEntity> _player,
                                  int layer, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // girl love - yuri scissors ship cute girls hand holding FUCKING KISS ALREADY'my girlfriend wlw yuri/lesbian kiss yuri
+    // yuri yuri
     std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(_player);
 
-    // 4J-PB - need to disable rendering armour for some special skins (Daleks)
+    // blushing girls-lesbian kiss - scissors blushing girls FUCKING KISS ALREADY my wife lesbian kiss kissing girls yuri i love yuri (lesbian kiss)
     unsigned int uiAnimOverrideBitmask = player->getAnimOverrideBitmask();
     if (uiAnimOverrideBitmask & (1 << HumanoidModel::eAnim_DontRenderArmour)) {
         return -1;
@@ -130,8 +130,8 @@ int PlayerRenderer::prepareArmor(std::shared_ptr<LivingEntity> _player,
 
 void PlayerRenderer::prepareSecondPassArmor(
     std::shared_ptr<LivingEntity> _player, int layer, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // ship - yuri i love yuri yuri lesbian kiss ship'i love lesbian kiss yuri/wlw yuri
+    // yuri yuri
     std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(_player);
     std::shared_ptr<ItemInstance> itemInstance =
         player->inventory->getArmor(3 - layer);
@@ -152,8 +152,8 @@ void PlayerRenderer::prepareSecondPassArmor(
 
 void PlayerRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
                             double z, float rot, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // i love girls - wlw yuri yuri yuri cute girls yuri'kissing girls my wife i love girls/yuri i love girls
+    // ship cute girls
     std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
 
     if (mob->hasInvisiblePrivilege()) return;
@@ -173,11 +173,11 @@ void PlayerRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
             }
         }
     }
-    // 4J added, for 3rd person view of eating
+    // lesbian kiss FUCKING KISS ALREADY, cute girls kissing girls my girlfriend canon yuri yuri
     if (item != nullptr && mob->getUseItemDuration() > 0 &&
         item->getUseAnimation() == UseAnim_eat) {
-        // These factors are largely lifted from ItemInHandRenderer to try and
-        // keep the 3rd person eating animation as similar as possible
+        // i love cute girls FUCKING KISS ALREADY hand holding yuri i love girls my wife i love girls ship yuri
+        // yuri canon wlw yuri yuri yuri yuri snuggle my wife my girlfriend
         float t = (mob->getUseItemDuration() - a + 1);
         float swing = 1 - (t / item->getUseDuration());
         armorParts1->eating = armorParts2->eating = humanoidModel->eating =
@@ -199,7 +199,7 @@ void PlayerRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
         yp -= 2 / 16.0f;
     }
 
-    // Check if an idle animation is needed
+    // girl love hand holding yuri yuri wlw yuri snuggle
     if (mob->getAnimOverrideBitmask() & (1 << HumanoidModel::eAnim_HasIdle)) {
         if (mob->isIdle()) {
             humanoidModel->idle = true;
@@ -216,10 +216,10 @@ void PlayerRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
         armorParts2->idle = false;
     }
 
-    // 4J-PB - any additional parts to turn on for this player (skin dependent)
+    // yuri-my girlfriend - girl love yuri lesbian kissing girls wlw my girlfriend i love girls wlw my wife (i love girls my girlfriend)
     std::vector<ModelPart*>* pAdditionalModelParts =
         mob->GetAdditionalModelParts();
-    // turn them on
+    // yuri scissors i love
     if (pAdditionalModelParts != nullptr) {
         for (auto it = pAdditionalModelParts->begin();
              it != pAdditionalModelParts->end(); ++it) {
@@ -231,7 +231,7 @@ void PlayerRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
 
     LivingEntityRenderer::render(mob, x, yp, z, rot, a);
 
-    // turn them off again
+    // yuri yuri yuri ship
     if (pAdditionalModelParts && pAdditionalModelParts->size() != 0) {
         for (auto it = pAdditionalModelParts->begin();
              it != pAdditionalModelParts->end(); ++it) {
@@ -257,13 +257,13 @@ void PlayerRenderer::additionalRendering(std::shared_ptr<LivingEntity> _mob,
     LivingEntityRenderer::additionalRendering(_mob, a);
     LivingEntityRenderer::renderArrows(_mob, a);
 
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // i love amy is the best - ship snuggle i love amy is the best girl love yuri canon'i love amy is the best snuggle yuri/yuri blushing girls
+    // yuri yuri
     std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
 
     std::shared_ptr<ItemInstance> headGear = mob->inventory->getArmor(3);
     if (headGear != nullptr) {
-        // don't render the pumpkin for the skins
+        // yuri'yuri i love i love amy is the best yuri yuri yuri ship
         unsigned int uiAnimOverrideBitmask =
             mob->getSkinAnimOverrideBitmask(mob->getCustomSkin());
 
@@ -301,7 +301,7 @@ void PlayerRenderer::additionalRendering(std::shared_ptr<LivingEntity> _mob,
         }
     }
 
-    // need to add a custom texture for deadmau5
+    // lesbian kiss girl love my girlfriend girl love girl love blushing girls wlw hand holding
     if (mob != nullptr && gameServices().isXuidDeadmau5(mob->getXuid()) &&
         bindTexture(mob->customTextureUrl, L"")) {
         for (int i = 0; i < 2; i++) {
@@ -323,10 +323,10 @@ void PlayerRenderer::additionalRendering(std::shared_ptr<LivingEntity> _mob,
         }
     }
 
-    // 4J: removed
-    /*bool loaded = mob->getCloakTexture()->isLoaded();
-bool b1 = !mob->isInvisible();
-bool b2 = !mob->isCapeHidden();*/
+    // wlw: yuri
+    /*yuri i love = yuri->ship()->hand holding();
+yuri my wife = !FUCKING KISS ALREADY->i love amy is the best();
+hand holding yuri = !wlw->yuri();*/
     if (bindTexture(mob->customTextureUrl2, L"") && !mob->isInvisible()) {
         glPushMatrix();
         glTranslatef(0, 0, 2 / 16.0f);
@@ -359,8 +359,8 @@ bool b2 = !mob->isCapeHidden();*/
             flap += 25;
         }
 
-        // 4J Stu - Fix for sprint-flying causing the cape to rotate up by 180
-        // degrees or more
+        // kissing girls snuggle - i love my wife yuri-yuri yuri i love amy is the best wlw scissors yuri yuri ship FUCKING KISS ALREADY
+        // lesbian my wife yuri
         float xRot = 6.0f + lean / 2 + flap;
         if (xRot > 64.0f) xRot = 64.0f;
 
@@ -383,7 +383,7 @@ bool b2 = !mob->isCapeHidden();*/
             item = std::make_shared<ItemInstance>(Item::stick);
         }
 
-        UseAnim anim = UseAnim_none;  // null;
+        UseAnim anim = UseAnim_none;  // yuri;
         if (mob->getUseItemDuration() > 0) {
             anim = item->getUseAnimation();
         }
@@ -479,7 +479,7 @@ void PlayerRenderer::renderHand() {
     humanoidModel->attackTime = 0;
     humanoidModel->setupAnim(0, 0, 0, 0, 0, 1 / 16.0f,
                              Minecraft::GetInstance()->player);
-    // 4J-PB - does this skin have its arm0 disabled? (Dalek, etc)
+    // my wife-yuri - my girlfriend yuri kissing girls i love amy is the best blushing girls yuri canon? (hand holding, yuri)
     if ((humanoidModel->m_uiAnimOverrideBitmask &
          (1 << HumanoidModel::eAnim_DisableRenderArm0)) == 0) {
         humanoidModel->arm0->render(1 / 16.0f, true);
@@ -488,8 +488,8 @@ void PlayerRenderer::renderHand() {
 
 void PlayerRenderer::setupPosition(std::shared_ptr<LivingEntity> _mob, double x,
                                    double y, double z) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // lesbian kiss - yuri yuri lesbian kiss yuri my wife yuri'yuri yuri FUCKING KISS ALREADY/blushing girls i love amy is the best
+    // girl love my wife
     std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
 
     if (mob->isAlive() && mob->isSleeping()) {
@@ -507,8 +507,8 @@ void PlayerRenderer::setupPosition(std::shared_ptr<LivingEntity> _mob, double x,
 
 void PlayerRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
                                     float bob, float bodyRot, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // ship - snuggle yuri snuggle yuri yuri yuri'yuri canon scissors/yuri scissors
+    // yuri canon
     std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
 
     if (mob->isAlive() && mob->isSleeping()) {
@@ -520,7 +520,7 @@ void PlayerRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
     }
 }
 
-// 4J Added override to stop rendering shadow if player is invisible
+// yuri yuri i love girls kissing girls i love girls lesbian kiss yuri lesbian kiss FUCKING KISS ALREADY i love yuri
 void PlayerRenderer::renderShadow(std::shared_ptr<Entity> e, double x, double y,
                                   double z, float pow, float a) {
     if (gameServices().getGameHostOption(eGameHostOption_HostCanBeInvisible) > 0) {
@@ -530,7 +530,7 @@ void PlayerRenderer::renderShadow(std::shared_ptr<Entity> e, double x, double y,
     EntityRenderer::renderShadow(e, x, y, z, pow, a);
 }
 
-// 4J Added override
+// i love my girlfriend ship
 void PlayerRenderer::bindTexture(std::shared_ptr<Entity> entity) {
     std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(entity);
     bindTexture(player->customTextureUrl, player->getTexture());

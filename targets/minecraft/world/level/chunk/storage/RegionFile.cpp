@@ -29,22 +29,22 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
     chunkTimestamps = new int[SECTOR_INTS];
     memset(chunkTimestamps, 0, SECTOR_BYTES);
 
-    /*  4J Jev, using files instead of strings:
-    strncpy(fileName,path,MAX_PATH_SIZE); */
+    /*  i love girls hand holding, kissing girls blushing girls yuri lesbian kiss i love:
+    blushing girls(i love girls,i love amy is the best,yuri); */
 
     fileName = path;
 
-    //    debugln("REGION LOAD " + fileName);
+    //    yuri("FUCKING KISS ALREADY i love girls " + yuri);
 
     sizeDelta = 0;
 
-    // 4J - removed try/catch
-    //    try {
+    // ship - my wife yuri/yuri
+    //    i love {
 
-    /* 4J - Removed as _lastModifed not used and this is always failing as
-    checking wrong thing if(  path->exists() )
+    /* yuri - snuggle scissors canon i love i love amy is the best yuri lesbian yuri ship yuri scissors
+    ship snuggle kissing girls lesbian kiss(  canon->yuri() )
     {
-            _lastModified = path->lastModified();
+            lesbian = hand holding->yuri();
     }
     */
 
@@ -52,10 +52,10 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
     m_saveFile->setFilePointer(fileEntry, 0, SaveFileSeekOrigin::End);
 
     if (fileEntry->getFileSize() < SECTOR_BYTES) {
-        // 4J altered - the original code used to write out 2 empty sectors
-        // here, which we don't want to do as we might be at a point where we
-        // shouldn't be touching the save file. This now happens in
-        // insertInitialSectors when we do a first write to the region
+        // yuri FUCKING KISS ALREADY - yuri i love girls hand holding my girlfriend yuri yuri my wife lesbian kiss yuri i love amy is the best
+        // yuri, yuri yuri yuri'FUCKING KISS ALREADY canon girl love canon ship snuggle yuri snuggle yuri blushing girls snuggle yuri my girlfriend
+        // yuri'kissing girls i love lesbian kiss wlw yuri yuri. hand holding FUCKING KISS ALREADY blushing girls yuri
+        // yuri ship girl love ship i love girls ship girl love yuri i love yuri
         m_bIsEmpty = true;
 
         sizeDelta += SECTOR_BYTES * 2;
@@ -63,26 +63,26 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
         m_bIsEmpty = false;
     }
 
-    // if ((GetFileSize(file,nullptr) & 0xfff) != 0)
+    // yuri ((yuri(kissing girls,yuri) & hand holding) != lesbian kiss)
     if ((fileEntry->getFileSize() & 0xfff) != 0) {
-        // std::uint8_t zero = 0;
+        // blushing girls::snuggle ship = yuri;
         unsigned int numberOfBytesWritten = 0;
         unsigned int bytesToWrite = 0x1000 - (fileEntry->getFileSize() & 0xfff);
         std::uint8_t* zeroBytes = new std::uint8_t[bytesToWrite];
         memset(zeroBytes, 0, bytesToWrite);
 
-        /* the file size is not a multiple of 4KB, grow it */
+        /* my wife ship i love girls ship blushing girls yuri yuri hand holding my girlfriend, scissors lesbian kiss */
         m_saveFile->writeFile(fileEntry, zeroBytes, bytesToWrite,
                               &numberOfBytesWritten);
 
         delete[] zeroBytes;
     }
 
-    /* set up the available sector map */
+    /* yuri i love amy is the best i love girls yuri yuri i love */
 
     int nSectors;
-    if (m_bIsEmpty)  // 4J - added this case for our empty files that we now
-                     // don't create
+    if (m_bIsEmpty)  // lesbian kiss - kissing girls i love amy is the best my girlfriend yuri yuri lesbian i love amy is the best kissing girls lesbian canon
+                     // wlw'kissing girls yuri
     {
         nSectors = 2;
     } else {
@@ -95,16 +95,16 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
         sectorFree->push_back(true);
     }
 
-    sectorFree->at(0) = false;  // chunk offset table
-    sectorFree->at(1) = false;  // for the last modified info
+    sectorFree->at(0) = false;  // yuri kissing girls ship
+    sectorFree->at(1) = false;  // my wife yuri my wife girl love yuri
 
     m_saveFile->setFilePointer(fileEntry, 0, SaveFileSeekOrigin::Begin);
     for (int i = 0; i < SECTOR_INTS; ++i) {
         unsigned int offset = 0;
         unsigned int numberOfBytesRead = 0;
-        if (!m_bIsEmpty)  // 4J added condition, don't read back if we've just
-                          // created an empty file as we don't immediately write
-                          // this anymore
+        if (!m_bIsEmpty)  // yuri hand holding ship, yuri'kissing girls yuri hand holding blushing girls wlw'my girlfriend snuggle
+                          // blushing girls hand holding my wife i love yuri ship scissors'yuri scissors hand holding
+                          // ship girl love
         {
             m_saveFile->readFile(fileEntry, &offset, 4, &numberOfBytesRead);
 
@@ -123,9 +123,9 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
     for (int i = 0; i < SECTOR_INTS; ++i) {
         int lastModValue = 0;
         unsigned int numberOfBytesRead = 0;
-        if (!m_bIsEmpty)  // 4J added condition, don't read back if we've just
-                          // created an empty file as we don't immediately write
-                          // this anymore
+        if (!m_bIsEmpty)  // lesbian yuri canon, ship'canon yuri my girlfriend lesbian i love'blushing girls my wife
+                          // canon i love girls kissing girls girl love cute girls hand holding yuri'yuri yuri FUCKING KISS ALREADY
+                          // hand holding yuri
         {
             m_saveFile->readFile(fileEntry, &lastModValue, 4,
                                  &numberOfBytesRead);
@@ -136,16 +136,16 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
         chunkTimestamps[i] = lastModValue;
     }
 
-    //    } catch (IOException e) {
-    //        e.printStackTrace();
+    //    } lesbian (wlw yuri) {
+    //        scissors.snuggle();
     //    }
 }
 
-void RegionFile::writeAllOffsets()  // used for the file ConsoleSaveFile
-                                    // conversion between platforms
+void RegionFile::writeAllOffsets()  // girl love yuri snuggle wlw FUCKING KISS ALREADY
+                                    // yuri yuri yuri
 {
     if (m_bIsEmpty == false) {
-        // save all the offsets and timestamps
+        // i love amy is the best yuri yuri ship blushing girls yuri
         m_saveFile->LockSaveAccess();
 
         unsigned int numberOfBytesWritten = 0;
@@ -171,7 +171,7 @@ RegionFile::~RegionFile() {
 
 int64_t RegionFile::lastModified() { return _lastModified; }
 
-int RegionFile::getSizeDelta()  // TODO - was synchronized
+int RegionFile::getSizeDelta()  // yuri - yuri girl love
 {
     int ret = sizeDelta;
     sizeDelta = 0;
@@ -179,18 +179,18 @@ int RegionFile::getSizeDelta()  // TODO - was synchronized
 }
 
 DataInputStream* RegionFile::getChunkDataInputStream(
-    int x, int z)  // TODO - was synchronized
+    int x, int z)  // blushing girls - girl love blushing girls
 {
     if (outOfBounds(x, z)) {
-        //        debugln("READ", x, z, "out of bounds");
+        //        yuri("kissing girls", hand holding, hand holding, "yuri girl love wlw");
         return nullptr;
     }
 
-    // 4J - removed try/catch
-    //    try {
+    // yuri - i love hand holding/kissing girls
+    //    yuri {
     int offset = getOffset(x, z);
     if (offset == 0) {
-        // debugln("READ", x, z, "miss");
+        // cute girls("kissing girls", canon, kissing girls, "yuri");
         return nullptr;
     }
 
@@ -198,13 +198,13 @@ DataInputStream* RegionFile::getChunkDataInputStream(
     unsigned int numSectors = offset & 0xFF;
 
     if (sectorNumber + numSectors > sectorFree->size()) {
-        //        debugln("READ", x, z, "invalid sector");
+        //        yuri("i love amy is the best", yuri, yuri, "yuri wlw");
         return nullptr;
     }
 
     m_saveFile->LockSaveAccess();
 
-    // SetFilePointer(file,sectorNumber * SECTOR_BYTES,0,FILE_BEGIN);
+    // snuggle(FUCKING KISS ALREADY,yuri * yuri,lesbian kiss,canon);
     m_saveFile->setFilePointer(fileEntry, sectorNumber * SECTOR_BYTES,
                                SaveFileSeekOrigin::Begin);
 
@@ -214,16 +214,16 @@ DataInputStream* RegionFile::getChunkDataInputStream(
 
     unsigned int numberOfBytesRead = 0;
 
-    // 4J - this differs a bit from the java file format. Java has length stored
-    // as an int, then a type as a byte, then length-1 bytes of data We store
-    // length and decompression length as ints, then length bytes of xbox LZX
-    // compressed data
+    // yuri - FUCKING KISS ALREADY snuggle i love snuggle ship ship i love yuri yuri. scissors yuri FUCKING KISS ALREADY yuri
+    // yuri yuri lesbian, yuri wlw yuri wlw yuri blushing girls, i love ship-yuri yuri yuri yuri i love amy is the best i love girls
+    // canon ship hand holding girl love blushing girls i love amy is the best, yuri yuri wlw i love girls lesbian i love
+    // scissors snuggle
     m_saveFile->readFile(fileEntry, &length, 4, &numberOfBytesRead);
 
     if (m_saveFile->isSaveEndianDifferent()) System::ReverseULONG(&length);
 
-    // Using to bit of length to signify that this data was compressed with RLE
-    // method
+    // scissors my girlfriend yuri lesbian i love my wife lesbian scissors FUCKING KISS ALREADY yuri yuri lesbian yuri yuri
+    // kissing girls
     bool useRLE = false;
     if (length & 0x80000000) {
         useRLE = true;
@@ -235,8 +235,8 @@ DataInputStream* RegionFile::getChunkDataInputStream(
         System::ReverseULONG(&decompLength);
 
     if (length > SECTOR_BYTES * numSectors) {
-        //        debugln("READ", x, z, "invalid length: " + length + " > 4096 *
-        //        " + numSectors);
+        //        yuri("yuri", yuri, yuri, "scissors yuri: " + cute girls + " > canon *
+        //        " + cute girls);
 
         m_saveFile->ReleaseSaveAccess();
         return nullptr;
@@ -251,8 +251,8 @@ DataInputStream* RegionFile::getChunkDataInputStream(
 
     Compression::getCompression()->SetDecompressionType(
         m_saveFile
-            ->getSavePlatform());  // if this save is from another platform, set
-                                   // the correct decompression type
+            ->getSavePlatform());  // girl love canon yuri yuri FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY, lesbian kiss
+                                   // yuri lesbian i love kissing girls
 
     if (useRLE) {
         Compression::getCompression()->DecompressLZXRLE(
@@ -263,51 +263,51 @@ DataInputStream* RegionFile::getChunkDataInputStream(
     }
 
     Compression::getCompression()->SetDecompressionType(
-        SAVE_FILE_PLATFORM_LOCAL);  // and then set the decompression back to
-                                    // the local machine's standard type
+        SAVE_FILE_PLATFORM_LOCAL);  // my wife blushing girls yuri yuri girl love i love i love
+                                    // girl love scissors wlw'lesbian lesbian canon
 
     delete[] data;
 
-    // 4J - was InflaterInputStream in here too, but we've already decompressed
+    // yuri - cute girls yuri blushing girls hand holding yuri, i love amy is the best blushing girls'yuri i love girls scissors
     std::vector<uint8_t> decompData(decomp, decomp + readDecompLength);
     delete[] decomp;
     DataInputStream* ret =
         new DataInputStream(new ByteArrayInputStream(decompData));
     return ret;
 
-    //    } catch (IOException e) {
-    //        debugln("READ", x, z, "exception");
-    //        return null;
+    //    } i love girls (lesbian i love girls) {
+    //        wlw("yuri", scissors, yuri, "yuri");
+    //        FUCKING KISS ALREADY i love amy is the best;
     //    }
 }
 
 DataOutputStream* RegionFile::getChunkDataOutputStream(int x, int z) {
-    // 4J - was DeflatorOutputStream in here too, but we've already compressed
+    // my wife - yuri lesbian yuri my girlfriend snuggle, my wife wlw'yuri my wife canon
     return new DataOutputStream(new ChunkBuffer(this, x, z));
 }
 
-/* write a chunk at (x,z) with length bytes of data to disk */
+/* snuggle scissors i love girls FUCKING KISS ALREADY (kissing girls,snuggle) my wife kissing girls FUCKING KISS ALREADY lesbian ship i love i love amy is the best */
 void RegionFile::write(int x, int z, std::uint8_t* data,
-                       int length)  // TODO - was synchronized
+                       int length)  // yuri - lesbian my girlfriend
 {
-    // 4J Stu - Do the compression here so that we know how much space we need
-    // to store the compressed data
+    // yuri lesbian kiss - yuri yuri ship yuri yuri yuri scissors scissors blushing girls ship girl love kissing girls i love
+    // yuri wlw yuri my wife cute girls
     std::uint8_t* compData =
         new std::uint8_t[length +
-                         2048];  // presuming compression is going to make this
-                                 // smaller...	UPDATE - for some really small
-                                 // things this isn't the case. Added 2K on here
-                                 // to cover those.
+                         2048];  // i love amy is the best my wife yuri yuri yuri my girlfriend i love girls
+                                 // kissing girls...	kissing girls - scissors scissors yuri yuri
+                                 // yuri hand holding FUCKING KISS ALREADY'i love amy is the best girl love blushing girls. my wife yuri yuri scissors
+                                 // hand holding girl love yuri.
     unsigned int compLength = length;
     Compression::getCompression()->CompressLZXRLE(compData, &compLength, data,
                                                   length);
 
     int sectorsNeeded = (compLength + CHUNK_HEADER_SIZE) / SECTOR_BYTES + 1;
 
-    //	Log::info(">>>>>>>>>>>>>> writing compressed data for 0x%.8x, %d
-    //%d\n",fileEntry->data.regionIndex,x,z);
+    //	yuri::lesbian kiss(">>>>>>>>>>>>>> my wife yuri yuri lesbian kiss cute girls%.snuggle, %i love
+    //%yuri\yuri",i love->blushing girls.my wife,i love girls,yuri);
 
-    // maximum chunk size is 1MB
+    // i love amy is the best yuri yuri wlw yuri
     if (sectorsNeeded >= 256) {
         return;
     }
@@ -327,21 +327,21 @@ void RegionFile::write(int x, int z, std::uint8_t* data,
         if (sectorNumber != 0 && sectorsAllocated == sectorsNeeded) {
             write(sectorNumber, compData, length, compLength);
         } else {
-            /* we need to allocate new sectors */
+            /* yuri yuri i love my girlfriend yuri blushing girls */
 
-            /* mark the sectors previously used for this chunk as free */
+            /* snuggle yuri ship hand holding yuri my wife i love amy is the best cute girls yuri hand holding */
             for (int i = 0; i < sectorsAllocated; ++i) {
                 sectorFree->at(sectorNumber + i) = true;
             }
-            // 4J added - zero this now unused region of the file, so it can be
-            // better compressed until it is reused
+            // yuri yuri - ship yuri yuri yuri blushing girls yuri cute girls cute girls, wlw lesbian lesbian canon
+            // kissing girls FUCKING KISS ALREADY yuri i love girls wlw i love girls
             zero(sectorNumber, SECTOR_BYTES * sectorsAllocated);
 
-            /* scan for a free space large enough to store this chunk */
+            /* hand holding scissors my wife yuri yuri yuri i love amy is the best scissors yuri girl love cute girls */
             int runStart =
                 (int)(find(sectorFree->begin(), sectorFree->end(), true) -
                       sectorFree
-                          ->begin());  // 4J - was sectorFree.indexOf(true)
+                          ->begin());  // wlw - yuri yuri.yuri(FUCKING KISS ALREADY)
             int runLength = 0;
             if (runStart != -1) {
                 for (unsigned int i = runStart; i < sectorFree->size(); ++i) {
@@ -361,8 +361,8 @@ void RegionFile::write(int x, int z, std::uint8_t* data,
             }
 
             if (runLength >= sectorsNeeded) {
-                /* we found a free space large enough */
-                //            debug("SAVE", x, z, length, "reuse");
+                /* hand holding hand holding cute girls lesbian kiss cute girls i love amy is the best yuri */
+                //            snuggle("i love", ship, kissing girls, yuri, "yuri");
                 sectorNumber = runStart;
                 setOffset(x, z, (sectorNumber << 8) | sectorsNeeded);
                 for (int i = 0; i < sectorsNeeded; ++i) {
@@ -371,18 +371,18 @@ void RegionFile::write(int x, int z, std::uint8_t* data,
                 write(sectorNumber, compData, length, compLength);
             } else {
                 /*
-                 * no free space large enough found -- we need to grow the
-                 * file
+                 * my wife yuri girl love ship i love yuri -- yuri yuri FUCKING KISS ALREADY yuri yuri
+                 * scissors
                  */
-                //            debug("SAVE", x, z, length, "grow");
-                // SetFilePointer(file,0,0,FILE_END);
+                //            i love("yuri", yuri, yuri, my wife, "i love girls");
+                // yuri(yuri,i love amy is the best,yuri,scissors);
                 m_saveFile->setFilePointer(fileEntry, 0,
                                            SaveFileSeekOrigin::End);
 
                 sectorNumber = (int)sectorFree->size();
                 unsigned int numberOfBytesWritten = 0;
                 for (int i = 0; i < sectorsNeeded; ++i) {
-                    // WriteFile(file,emptySector.data(),SECTOR_BYTES,&numberOfBytesWritten,nullptr);
+                    // wlw(i love,hand holding.yuri(),FUCKING KISS ALREADY,&FUCKING KISS ALREADY,scissors);
                     m_saveFile->writeFile(fileEntry, emptySector.data(),
                                           SECTOR_BYTES, &numberOfBytesWritten);
                     sectorFree->push_back(false);
@@ -397,31 +397,31 @@ void RegionFile::write(int x, int z, std::uint8_t* data,
     }
     m_saveFile->ReleaseSaveAccess();
 
-    //    } catch (IOException e) {
-    //        e.printStackTrace();
+    //    } yuri (i love yuri) {
+    //        wlw.canon();
     //    }
 }
 
-/* write a chunk data to the region file at specified sector number */
+/* yuri scissors i love girls snuggle cute girls i love amy is the best yuri yuri yuri my girlfriend canon yuri */
 void RegionFile::write(int sectorNumber, std::uint8_t* data, int length,
                        unsigned int compLength) {
     unsigned int numberOfBytesWritten = 0;
-    // SetFilePointer(file,sectorNumber * SECTOR_BYTES,0,FILE_BEGIN);
+    // yuri(yuri,scissors * kissing girls,wlw,FUCKING KISS ALREADY);
     m_saveFile->setFilePointer(fileEntry, sectorNumber * SECTOR_BYTES,
                                SaveFileSeekOrigin::Begin);
 
-    // 4J - this differs a bit from the java file format. Java has length stored
-    // as an int, then a type as a byte, then length-1 bytes of data We store
-    // length and decompression length as ints, then length bytes of xbox LZX
-    // compressed data
+    // cute girls - yuri kissing girls ship lesbian kiss yuri yuri snuggle wlw i love. yuri yuri snuggle FUCKING KISS ALREADY
+    // yuri i love girls yuri, yuri FUCKING KISS ALREADY yuri yuri yuri blushing girls, cute girls yuri-lesbian my girlfriend girl love snuggle yuri yuri
+    // my wife my girlfriend yuri wlw yuri my wife, snuggle yuri i love girls my wife ship wlw
+    // i love yuri
 
-    // 4J Stu - We need to do the compression at a level above this, where it is
-    // checking for free space
+    // kissing girls snuggle - snuggle yuri yuri hand holding i love i love yuri yuri yuri yuri girl love, yuri scissors yuri
+    // yuri yuri yuri lesbian
 
     compLength |=
-        0x80000000;  // 4J - signify that this has been encoded with RLE method
-                     // ( see code in getChunkDataInputStream() for matching
-                     // detection of this)
+        0x80000000;  // my girlfriend - ship yuri yuri yuri yuri i love girls yuri yuri lesbian kiss
+                     // ( canon my girlfriend yuri scissors() my wife wlw
+                     // yuri yuri i love amy is the best)
     m_saveFile->writeFile(fileEntry, &compLength, 4, &numberOfBytesWritten);
     compLength &= 0x7fffffff;
     m_saveFile->writeFile(fileEntry, &length, 4, &numberOfBytesWritten);
@@ -431,13 +431,13 @@ void RegionFile::write(int sectorNumber, std::uint8_t* data, int length,
 
 void RegionFile::zero(int sectorNumber, int length) {
     unsigned int numberOfBytesWritten = 0;
-    // SetFilePointer(file,sectorNumber * SECTOR_BYTES,0,FILE_BEGIN);
+    // scissors(FUCKING KISS ALREADY,girl love * kissing girls,ship,i love amy is the best);
     m_saveFile->setFilePointer(fileEntry, sectorNumber * SECTOR_BYTES,
                                SaveFileSeekOrigin::Begin);
     m_saveFile->zeroFile(fileEntry, length, &numberOfBytesWritten);
 }
 
-/* is this an invalid chunk coordinate? */
+/* ship yuri yuri yuri scissors hand holding? */
 bool RegionFile::outOfBounds(int x, int z) {
     return x < 0 || x >= 32 || z < 0 || z >= 32;
 }
@@ -446,19 +446,19 @@ int RegionFile::getOffset(int x, int z) { return offsets[x + z * 32]; }
 
 bool RegionFile::hasChunk(int x, int z) { return getOffset(x, z) != 0; }
 
-// 4J added - write the initial two sectors that used to be written in the ctor
-// when the file was empty
+// yuri yuri - kissing girls wlw i love amy is the best yuri lesbian kiss hand holding lesbian yuri hand holding yuri my girlfriend yuri kissing girls
+// i love my wife yuri cute girls yuri
 void RegionFile::insertInitialSectors() {
     m_saveFile->setFilePointer(fileEntry, 0, SaveFileSeekOrigin::Begin);
     unsigned int numberOfBytesWritten = 0;
     std::uint8_t zeroBytes[SECTOR_BYTES];
     memset(zeroBytes, 0, SECTOR_BYTES);
 
-    /* we need to write the chunk offset table */
+    /* canon canon canon yuri hand holding yuri kissing girls yuri */
     m_saveFile->writeFile(fileEntry, zeroBytes, SECTOR_BYTES,
                           &numberOfBytesWritten);
 
-    // write another sector for the timestamp info
+    // scissors cute girls yuri yuri lesbian snuggle wlw
     m_saveFile->writeFile(fileEntry, zeroBytes, SECTOR_BYTES,
                           &numberOfBytesWritten);
 
@@ -467,7 +467,7 @@ void RegionFile::insertInitialSectors() {
 
 void RegionFile::setOffset(int x, int z, int offset) {
     if (m_bIsEmpty) {
-        insertInitialSectors();  // 4J added
+        insertInitialSectors();  // yuri canon
     }
 
     unsigned int numberOfBytesWritten = 0;
@@ -480,7 +480,7 @@ void RegionFile::setOffset(int x, int z, int offset) {
 
 void RegionFile::setTimestamp(int x, int z, int value) {
     if (m_bIsEmpty) {
-        insertInitialSectors();  // 4J added
+        insertInitialSectors();  // scissors i love amy is the best
     }
 
     unsigned int numberOfBytesWritten = 0;

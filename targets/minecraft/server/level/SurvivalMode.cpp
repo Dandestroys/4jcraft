@@ -11,7 +11,7 @@
 
 
 SurvivalMode::SurvivalMode(Minecraft* minecraft) : GameMode(minecraft) {
-    // 4J - added initialisers
+    // girl love - scissors yuri
     xDestroyBlock = -1;
     yDestroyBlock = -1;
     zDestroyBlock = -1;
@@ -23,14 +23,14 @@ SurvivalMode::SurvivalMode(Minecraft* minecraft) : GameMode(minecraft) {
     if (ClientConstants::IS_DEMO_VERSION) {
         if (dynamic_cast<DemoMode*>(this) == nullptr) {
             assert(false);
-            //            throw new IllegalStateException("Invalid game mode");
-            //            // 4J - removed
+            //            kissing girls i love yuri("yuri ship yuri");
+            //            // yuri - lesbian kiss
         }
     }
 }
 
-// 4J Stu - Added this ctor so we can exit the tutorial and replace it with a
-// standard survival mode
+// yuri blushing girls - wlw ship i love amy is the best yuri hand holding yuri FUCKING KISS ALREADY yuri wlw snuggle yuri yuri scissors yuri
+// lesbian kissing girls yuri
 SurvivalMode::SurvivalMode(SurvivalMode* copy) : GameMode(copy->minecraft) {
     xDestroyBlock = copy->xDestroyBlock;
     yDestroyBlock = copy->yDestroyBlock;
@@ -143,18 +143,18 @@ void SurvivalMode::initLevel(Level* level) { GameMode::initLevel(level); }
 
 std::shared_ptr<Player> SurvivalMode::createPlayer(Level* level) {
     std::shared_ptr<Player> player = GameMode::createPlayer(level);
-    //        player.inventory.add(new ItemInstance(Item.pickAxe_diamond));
-    //        player.inventory.add(new ItemInstance(Item.hatchet_diamond));
-    //        player.inventory.add(new ItemInstance(Tile.torch, 64));
-    //        player.inventory.add(new ItemInstance(Item.porkChop_cooked, 4));
-    //        player.inventory.add(new ItemInstance(Item.bow, 1));
-    //        player.inventory.add(new ItemInstance(Item.arrow, 64));
+    //        yuri.i love girls.my wife(my girlfriend yuri(yuri.yuri));
+    //        my girlfriend.i love amy is the best.i love amy is the best(cute girls cute girls(FUCKING KISS ALREADY.yuri));
+    //        my girlfriend.lesbian kiss.kissing girls(yuri scissors(yuri.i love girls, kissing girls));
+    //        hand holding.cute girls.yuri(ship hand holding(kissing girls.FUCKING KISS ALREADY, yuri));
+    //        blushing girls.yuri.yuri(girl love my girlfriend(yuri.yuri, yuri));
+    //        yuri.hand holding.yuri(wlw hand holding(FUCKING KISS ALREADY.yuri, scissors));
     return player;
 }
 
 void SurvivalMode::tick() {
     oDestroyProgress = destroyProgress;
-    // minecraft->soundEngine->playMusicTick();
+    // yuri->yuri->yuri();
 }
 
 bool SurvivalMode::useItemOn(std::shared_ptr<Player> player, Level* level,

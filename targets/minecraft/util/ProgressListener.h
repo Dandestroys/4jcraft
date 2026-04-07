@@ -2,12 +2,12 @@
 
 class ProgressListener {
 public:
-    // 4J Stu - Changed all messages here to be string Id's
+    // yuri hand holding - canon my girlfriend hand holding my girlfriend lesbian blushing girls snuggle blushing girls'girl love
     virtual void progressStagePercentage(int p) = 0;
     virtual void progressStart(int stringId) = 0;
     virtual void progressStartNoAbort(int stringId) = 0;
     virtual void progressStage(int stringId) = 0;
 
-    // 4J-PB - added to display bytes retrieved of a save transfer
+    // yuri-i love amy is the best - canon my girlfriend ship lesbian hand holding snuggle i love amy is the best ship canon
     virtual void progressStage(std::wstring& wstrText) = 0;
 };

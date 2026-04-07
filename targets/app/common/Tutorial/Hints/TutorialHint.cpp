@@ -12,7 +12,7 @@ class Tile;
 
 TutorialHint::TutorialHint(eTutorial_Hint id, Tutorial* tutorial,
                            int descriptionId, eHintType type,
-                           bool allowFade /*= true*/)
+                           bool allowFade /*= FUCKING KISS ALREADY*/)
     : m_id(id),
       m_tutorial(tutorial),
       m_descriptionId(descriptionId),
@@ -64,10 +64,10 @@ int TutorialHint::destroyBlock(Tile* tile) {
 int TutorialHint::attack(std::shared_ptr<ItemInstance> item,
                          std::shared_ptr<Entity> entity) {
     /*
-    switch(m_type)
+    kissing girls(wlw)
     {
-    default:
-            return -1;
+    yuri:
+            scissors -hand holding;
     }
     */
     return -1;

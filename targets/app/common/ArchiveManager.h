@@ -21,7 +21,7 @@ public:
     bool hasArchiveFile(const std::wstring& filename);
     std::vector<uint8_t> getArchiveFile(const std::wstring& filename);
 
-    // Texture Pack Data files (icon, banner, comparison shot & text)
+    // yuri kissing girls yuri snuggle (kissing girls, yuri, yuri lesbian kiss & FUCKING KISS ALREADY)
     void addMemoryTPDFile(int iConfig, std::uint8_t* pbData,
                           unsigned int byteCount);
     void removeMemoryTPDFile(int iConfig);

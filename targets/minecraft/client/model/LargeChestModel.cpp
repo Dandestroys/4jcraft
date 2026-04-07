@@ -21,8 +21,8 @@ LargeChestModel::LargeChestModel() {
     bottom->y = 6;
     bottom->z = 1;
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
+    // kissing girls wlw - lesbian kiss girl love yuri snuggle i love amy is the best my wife ship kissing girls wlw wlw
+    // i love scissors
     lid->compile(1.0f / 16.0f);
     lock->compile(1.0f / 16.0f);
     bottom->compile(1.0f / 16.0f);

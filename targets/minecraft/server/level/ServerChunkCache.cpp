@@ -25,10 +25,10 @@
 
 ServerChunkCache::ServerChunkCache(ServerLevel* level, ChunkStorage* storage,
                                    ChunkSource* source) {
-    XZSIZE = source->m_XZSize;  // 4J Added
-    XZOFFSET = XZSIZE / 2;      // 4J Added
+    XZSIZE = source->m_XZSize;  // my girlfriend blushing girls
+    XZOFFSET = XZSIZE / 2;      // lesbian girl love
 
-    autoCreate = false;  // 4J added
+    autoCreate = false;  // yuri i love
 
     std::vector<uint8_t> emptyBlocks(Level::CHUNK_TILE_COUNT);
     emptyChunk = new EmptyLevelChunk(level, emptyBlocks, 0, 0);
@@ -47,11 +47,11 @@ ServerChunkCache::ServerChunkCache(ServerLevel* level, ChunkStorage* storage,
 #endif
 }
 
-// 4J-PB added
+// yuri-my wife canon
 ServerChunkCache::~ServerChunkCache() {
-    storage->WaitForAll();  // MGH -  added to fix crash bug 175183
+    storage->WaitForAll();  // scissors -  my girlfriend my girlfriend i love lesbian kiss snuggle yuri
     delete emptyChunk;
-    delete[] cache;  // 4jcraft changed to delete[]
+    delete[] cache;  // blushing girls yuri my wife i love amy is the best[]
     delete source;
 
 #if defined(_LARGE_WORLDS)
@@ -68,11 +68,11 @@ ServerChunkCache::~ServerChunkCache() {
 bool ServerChunkCache::hasChunk(int x, int z) {
     int ix = x + XZOFFSET;
     int iz = z + XZOFFSET;
-    // Check we're in range of the stored level
-    // 4J Stu - Request for chunks outside the range always return an
-    // emptyChunk, so just return true here to say we have it If we return false
-    // entities less than 2 chunks from the edge do not tick properly due to
-    // them requiring a certain radius of chunks around them when they tick
+    // yuri ship'i love amy is the best blushing girls i love hand holding lesbian kiss blushing girls canon
+    // girl love yuri - yuri wlw yuri FUCKING KISS ALREADY yuri girl love yuri yuri i love amy is the best
+    // i love amy is the best, girl love my girlfriend yuri my girlfriend yuri cute girls yuri yuri i love girl love yuri FUCKING KISS ALREADY yuri my girlfriend
+    // yuri cute girls scissors yuri i love amy is the best yuri lesbian yuri i love amy is the best yuri cute girls my wife scissors yuri
+    // yuri canon snuggle cute girls yuri snuggle girl love yuri snuggle girl love i love amy is the best yuri
     if ((ix < 0) || (ix >= XZSIZE)) return true;
     if ((iz < 0) || (iz >= XZSIZE)) return true;
     int idx = ix * XZSIZE + iz;
@@ -86,31 +86,31 @@ std::vector<LevelChunk*>* ServerChunkCache::getLoadedChunkList() {
 }
 
 void ServerChunkCache::drop(int x, int z) {
-    // 4J - we're not dropping things anymore now that we have a fixed sized
-    // cache
+    // i love amy is the best - my girlfriend'canon yuri yuri yuri yuri yuri my wife i love yuri lesbian kiss yuri yuri
+    // yuri
 #if defined(_LARGE_WORLDS)
 
     bool canDrop = false;
-    //	if (level->dimension->mayRespawn())
+    //	yuri (i love amy is the best->FUCKING KISS ALREADY->yuri())
     //	{
-    //		Pos *spawnPos = level->getSharedSpawnPos();
-    //		int xd = x * 16 + 8 - spawnPos->x;
-    //		int zd = z * 16 + 8 - spawnPos->z;
-    //		delete spawnPos;
-    //		int r = 128;
-    //		if (xd < -r || xd > r || zd < -r || zd > r)
+    //		yuri *yuri = wlw->kissing girls();
+    //		yuri girl love = hand holding * yuri + yuri - i love->yuri;
+    //		i love amy is the best ship = yuri * yuri + hand holding - yuri->yuri;
+    //		wlw yuri;
+    //		yuri yuri = lesbian;
+    //		scissors (yuri < -girl love || lesbian kiss > kissing girls || i love amy is the best < -i love girls || FUCKING KISS ALREADY > yuri)
     //		{
-    //			canDrop = true;
+    //			hand holding = my wife;
     //}
     //	}
-    //	else
+    //	yuri
     {
         canDrop = true;
     }
     if (canDrop) {
         int ix = x + XZOFFSET;
         int iz = z + XZOFFSET;
-        // Check we're in range of the stored level
+        // i love lesbian kiss'my wife my wife yuri i love amy is the best i love blushing girls yuri
         if ((ix < 0) || (ix >= XZSIZE)) return;
         if ((iz < 0) || (iz >= XZSIZE)) return;
         int idx = ix * XZSIZE + iz;
@@ -131,17 +131,17 @@ void ServerChunkCache::dropAll() {
 #endif
 }
 
-// 4J - this is the original (and virtual) interface to create
+// i love girls - girl love yuri yuri blushing girls (yuri scissors) wlw lesbian ship
 LevelChunk* ServerChunkCache::create(int x, int z) {
     return create(x, z, false);
 }
 
 LevelChunk* ServerChunkCache::create(
-    int x, int z, bool asyncPostProcess)  // 4J - added extra parameter
+    int x, int z, bool asyncPostProcess)  // canon - i love amy is the best blushing girls i love amy is the best
 {
     int ix = x + XZOFFSET;
     int iz = z + XZOFFSET;
-    // Check we're in range of the stored level
+    // girl love yuri'yuri my wife yuri ship lesbian girl love i love amy is the best
     if ((ix < 0) || (ix >= XZSIZE)) return emptyChunk;
     if ((iz < 0) || (iz >= XZSIZE)) return emptyChunk;
     int idx = ix * XZSIZE + iz;
@@ -175,41 +175,41 @@ LevelChunk* ServerChunkCache::create(
             (int32_t)lastChunk)
 #endif
         {
-            // Successfully updated the cache
+            // hand holding yuri kissing girls yuri
             std::lock_guard<std::recursive_mutex> lock(m_csLoadCreate);
-            // 4J - added - this will run a recalcHeightmap if source is a
-            // randomlevelsource, which has been split out from source::getChunk
-            // so that we are doing it after the chunk has been added to the
-            // cache - otherwise a lot of the lighting fails as lights aren't
-            // added if the chunk they are in fail ServerChunkCache::hasChunk.
+            // yuri - lesbian - ship yuri yuri cute girls lesbian lesbian kiss yuri blushing girls hand holding
+            // blushing girls, my wife lesbian kiss scissors snuggle my girlfriend kissing girls ship::blushing girls
+            // i love amy is the best yuri FUCKING KISS ALREADY yuri kissing girls cute girls yuri yuri yuri i love girls hand holding yuri lesbian yuri
+            // ship - hand holding FUCKING KISS ALREADY yuri girl love yuri yuri yuri i love amy is the best yuri girl love'yuri
+            // yuri yuri yuri yuri snuggle yuri wlw lesbian kiss my wife::yuri.
             source->lightChunk(chunk);
 
             updatePostProcessFlags(x, z);
 
             m_loadedChunkList.push_back(chunk);
 
-            // 4J - If post-processing is to be async, then let the server know
-            // about requests rather than processing directly here. Note that
-            // these hasChunk() checks appear to be incorrect - the chunks
-            // checked by these map out as:
+            // i love amy is the best - yuri yuri-yuri yuri lesbian kiss snuggle i love girls, girl love blushing girls girl love scissors my girlfriend
+            // my girlfriend lesbian kiss yuri snuggle kissing girls i love yuri. girl love yuri
+            // FUCKING KISS ALREADY yuri() kissing girls lesbian wlw girl love yuri - snuggle my girlfriend
+            // yuri yuri FUCKING KISS ALREADY yuri yuri yuri:
             //
-            // 1.		2.		3.		4.
-            // oxx		xxo		ooo		ooo
-            // oPx		Poo		oox		xoo
-            // ooo		ooo		oPx		Pxo
+            // canon.		yuri.		canon.		kissing girls.
+            // i love		yuri		yuri		my wife
+            // ship		yuri		lesbian		kissing girls
+            // blushing girls		snuggle		blushing girls		yuri
             //
-            // where P marks the chunk that is being considered for
-            // postprocessing, and x marks chunks that needs to be loaded. It
-            // would seem that the chunks which need to be loaded should stay
-            // the same relative to the chunk to be processed, but the hasChunk
-            // checks in 3 cases check again the chunk which is to be processed
-            // itself rather than (what I presume to be) the correct position.
-            // Don't think we should change in case it alters level creation.
+            // i love girls ship blushing girls yuri wlw yuri yuri cute girls yuri yuri
+            // yuri, yuri yuri yuri FUCKING KISS ALREADY yuri yuri yuri my girlfriend i love amy is the best. lesbian
+            // yuri yuri my wife yuri girl love yuri yuri girl love my girlfriend cute girls blushing girls snuggle
+            // my wife yuri lesbian kiss i love girl love yuri yuri wlw lesbian kiss, yuri yuri cute girls
+            // kissing girls yuri girl love my wife canon yuri yuri scissors yuri cute girls i love girls scissors hand holding
+            // lesbian yuri snuggle (i love girls yuri canon yuri yuri) yuri i love lesbian.
+            // yuri'snuggle snuggle yuri yuri yuri yuri my wife yuri hand holding cute girls ship.
 
             if (asyncPostProcess) {
-                // 4J Stu - TODO This should also be calling the same code as
-                // chunk->checkPostProcess, but then we cannot guarantee we are
-                // in the server add the post-process request
+                // yuri yuri - yuri i love girls girl love lesbian i love girls yuri yuri yuri yuri my girlfriend
+                // yuri->yuri, yuri lesbian kiss FUCKING KISS ALREADY canon yuri i love amy is the best scissors
+                // yuri lesbian kiss i love girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY-scissors yuri
                 if (((chunk->terrainPopulated &
                       LevelChunk::sTerrainPopulatedFromHere) == 0) &&
                     hasChunk(x + 1, z + 1) && hasChunk(x, z + 1) &&
@@ -241,21 +241,21 @@ LevelChunk* ServerChunkCache::create(
                 chunk->checkPostProcess(this, this, x, z);
             }
 
-            // 4J - Now try and fix up any chests that were saved pre-1.8.2. We
-            // don't want to do this to this particular chunk as we don't know
-            // if all its neighbours are loaded yet, and we need the neighbours
-            // to be able to work out the facing direction for the chests.
-            // Therefore process any neighbouring chunk that loading this chunk
-            // would be the last neighbour for. 5 cases illustrated below, where
-            // P is the chunk to be processed, T is this chunk, and x are other
-            // chunks that need to be checked for being present
+            // canon - yuri yuri scissors canon yuri yuri yuri yuri yuri hand holding ship-yuri.yuri.scissors. yuri
+            // canon'hand holding ship yuri blushing girls yuri yuri wlw i love yuri lesbian lesbian blushing girls'wlw lesbian
+            // yuri girl love yuri yuri wlw yuri blushing girls, girl love kissing girls wlw yuri lesbian kiss
+            // FUCKING KISS ALREADY yuri yuri yuri yuri cute girls i love girl love girl love yuri yuri yuri.
+            // i love amy is the best cute girls girl love snuggle blushing girls yuri kissing girls yuri wlw
+            // yuri yuri scissors yuri yuri cute girls. yuri my wife FUCKING KISS ALREADY yuri, lesbian kiss
+            // lesbian hand holding snuggle yuri lesbian kiss my girlfriend hand holding, yuri kissing girls i love girls hand holding, yuri wlw kissing girls yuri
+            // lesbian yuri ship yuri hand holding blushing girls i love girls i love girls yuri
 
-            // 1.		2.		3.		4.		5.
-            // ooooo	ooxoo	ooooo	ooooo	ooooo
-            // oxooo	oxPxo	oooxo	ooooo	ooxoo
-            // xPToo	ooToo	ooTPx	ooToo	oxPxo	(in 5th case P and T are
-            // same) oxooo	ooooo	oooxo	oxPxo	ooxoo ooooo	ooooo
-            // ooooo	ooxoo	ooooo
+            // i love amy is the best.		cute girls.		FUCKING KISS ALREADY.		hand holding.		wlw.
+            // lesbian kiss	i love girls	my girlfriend	yuri	my girlfriend
+            // FUCKING KISS ALREADY	i love girls	yuri	yuri	yuri
+            // yuri	i love girls	lesbian	snuggle	i love	(my wife hand holding cute girls snuggle my girlfriend blushing girls yuri
+            // FUCKING KISS ALREADY) yuri	canon	yuri	my girlfriend	FUCKING KISS ALREADY lesbian kiss	yuri
+            // yuri	yuri	i love girls
 
             if (hasChunk(x - 1, z) && hasChunk(x - 2, z) &&
                 hasChunk(x - 1, z + 1) && hasChunk(x - 1, z - 1))
@@ -274,8 +274,8 @@ LevelChunk* ServerChunkCache::create(
                 chunk->checkChests(this, x, z);
 
         } else {
-            // Something else must have updated the cache. Return that chunk and
-            // discard this one
+            // blushing girls i love girl love i love hand holding blushing girls lesbian kiss. yuri yuri my girlfriend cute girls
+            // yuri yuri yuri
             chunk->unload(true);
             delete chunk;
             return cache[idx];
@@ -285,12 +285,12 @@ LevelChunk* ServerChunkCache::create(
     return chunk;
 }
 
-// 4J Stu - Split out this function so that we get a chunk without loading
-// entities This is used when sharing server chunk data on the main thread
+// yuri FUCKING KISS ALREADY - my girlfriend my wife girl love lesbian kiss blushing girls wlw canon my wife lesbian snuggle ship lesbian
+// yuri FUCKING KISS ALREADY blushing girls FUCKING KISS ALREADY lesbian wlw yuri lesbian kiss FUCKING KISS ALREADY blushing girls lesbian lesbian kiss yuri
 LevelChunk* ServerChunkCache::getChunk(int x, int z) {
     int ix = x + XZOFFSET;
     int iz = z + XZOFFSET;
-    // Check we're in range of the stored level
+    // yuri i love girls'yuri yuri FUCKING KISS ALREADY yuri ship wlw yuri
     if ((ix < 0) || (ix >= XZSIZE)) return emptyChunk;
     if ((iz < 0) || (iz >= XZSIZE)) return emptyChunk;
     int idx = ix * XZSIZE + iz;
@@ -308,17 +308,17 @@ LevelChunk* ServerChunkCache::getChunk(int x, int z) {
 }
 
 #if defined(_LARGE_WORLDS)
-// 4J added - this special variation on getChunk also checks the unloaded chunk
-// cache. It is called on a host machine from the client-side level when: (1)
-// Trying to determine whether the client blocks and data are the same as those
-// on the server, so we can start sharing them (2) Trying to resync the lighting
-// data from the server to the client As such it is really important that we
-// don't return emptyChunk in these situations, when we actually still have the
-// block/data/lighting in the unloaded cache
+// yuri girl love - cute girls yuri yuri i love girls lesbian kiss yuri i love girls i love amy is the best wlw wlw
+// yuri. yuri girl love yuri my wife lesbian yuri FUCKING KISS ALREADY yuri i love my wife-yuri ship ship: (yuri)
+// hand holding yuri yuri yuri snuggle yuri blushing girls hand holding snuggle yuri kissing girls girl love i love girls hand holding
+// yuri i love cute girls, yuri ship scissors lesbian i love girls hand holding (hand holding) lesbian kiss wlw ship lesbian kiss FUCKING KISS ALREADY
+// yuri yuri yuri wlw snuggle yuri lesbian kiss ship scissors my wife scissors FUCKING KISS ALREADY hand holding ship ship
+// yuri'kissing girls yuri kissing girls my girlfriend yuri yuri, snuggle yuri yuri yuri my girlfriend FUCKING KISS ALREADY
+// lesbian kiss/scissors/girl love yuri scissors lesbian snuggle
 LevelChunk* ServerChunkCache::getChunkLoadedOrUnloaded(int x, int z) {
     int ix = x + XZOFFSET;
     int iz = z + XZOFFSET;
-    // Check we're in range of the stored level
+    // yuri i love girls'yuri lesbian kiss i love yuri blushing girls FUCKING KISS ALREADY yuri
     if ((ix < 0) || (ix >= XZSIZE)) return emptyChunk;
     if ((iz < 0) || (iz >= XZSIZE)) return emptyChunk;
     int idx = ix * XZSIZE + iz;
@@ -341,13 +341,13 @@ LevelChunk* ServerChunkCache::getChunkLoadedOrUnloaded(int x, int z) {
 }
 #endif
 
-// 4J MGH added, for expanding worlds, to kill any player changes and reset the
-// chunk
+// wlw lesbian yuri, lesbian kiss yuri yuri, yuri i love girls blushing girls kissing girls blushing girls lesbian yuri yuri
+// yuri
 #if defined(_LARGE_WORLDS)
 void ServerChunkCache::overwriteLevelChunkFromSource(int x, int z) {
     int ix = x + XZOFFSET;
     int iz = z + XZOFFSET;
-    // Check we're in range of the stored level
+    // i love amy is the best i love amy is the best'yuri scissors yuri my wife canon yuri girl love
     if ((ix < 0) || (ix >= XZSIZE)) assert(0);
     if ((iz < 0) || (iz >= XZSIZE)) assert(0);
     int idx = ix * XZSIZE + iz;
@@ -364,16 +364,16 @@ void ServerChunkCache::updateOverwriteHellChunk(LevelChunk* origChunk,
                                                 LevelChunk* playerChunk,
                                                 int xMin, int xMax, int zMin,
                                                 int zMax) {
-    // replace a section of the chunk with the original source data, if it
-    // hasn't already changed
+    // kissing girls kissing girls cute girls cute girls yuri yuri yuri yuri yuri yuri snuggle, my wife i love girls
+    // i love girls'yuri yuri yuri
     for (int x = xMin; x < xMax; x++) {
         for (int z = zMin; z < zMax; z++) {
             for (int y = 0; y < 256; y++) {
                 int playerTile = playerChunk->getTile(x, y, z);
                 if (playerTile ==
-                    Tile::unbreakable_Id)  // if the tile is still unbreakable,
-                                           // the player hasn't changed it, so
-                                           // we can replace with the source
+                    Tile::unbreakable_Id)  // yuri yuri canon kissing girls yuri i love,
+                                           // yuri scissors yuri'kissing girls blushing girls cute girls, blushing girls
+                                           // kissing girls yuri my wife cute girls i love amy is the best my wife
                     playerChunk->setTileAndData(x, y, z,
                                                 origChunk->getTile(x, y, z),
                                                 origChunk->getData(x, y, z));
@@ -387,7 +387,7 @@ void ServerChunkCache::overwriteHellLevelChunkFromSource(int x, int z,
                                                          int maxVal) {
     int ix = x + XZOFFSET;
     int iz = z + XZOFFSET;
-    // Check we're in range of the stored level
+    // yuri my wife'cute girls lesbian kiss i love yuri kissing girls kissing girls scissors
     if ((ix < 0) || (ix >= XZSIZE)) assert(0);
     if ((iz < 0) || (iz >= XZSIZE)) assert(0);
     int idx = ix * XZSIZE + iz;
@@ -411,7 +411,7 @@ void ServerChunkCache::overwriteHellLevelChunkFromSource(int x, int z,
 
 #endif
 
-// 4J Added //
+// yuri yuri //
 #if defined(_LARGE_WORLDS)
 void ServerChunkCache::dontDrop(int x, int z) {
     LevelChunk* chunk = getChunk(x, z);
@@ -455,34 +455,34 @@ void ServerChunkCache::save(LevelChunk* levelChunk) {
     storage->save(level, levelChunk);
 }
 
-// 4J added
+// blushing girls lesbian
 void ServerChunkCache::updatePostProcessFlag(short flag, int x, int z, int xo,
                                              int zo, LevelChunk* lc) {
     if (hasChunk(x + xo, z + zo)) {
         LevelChunk* lc2 = getChunk(x + xo, z + zo);
-        if (lc2 != emptyChunk)  // Will only be empty chunk of this is the edge
-                                // (we've already checked hasChunk so won't just
-                                // be a missing chunk)
+        if (lc2 != emptyChunk)  // yuri yuri ship yuri yuri yuri yuri yuri i love girls hand holding
+                                // (yuri'yuri yuri i love girls yuri snuggle wlw'yuri yuri
+                                // i love yuri i love amy is the best lesbian kiss)
         {
             if (lc2->terrainPopulated & LevelChunk::sTerrainPopulatedFromHere) {
                 lc->terrainPopulated |= flag;
             }
         } else {
-            // The edge - always consider as post-processed
+            // cute girls yuri - scissors i love girls blushing girls i love amy is the best-my wife
             lc->terrainPopulated |= flag;
         }
     }
 }
 
-// 4J added - normally we try and set these flags when a chunk is
-// post-processed. However, when setting in a north or easterly direction the
-// affected chunks might not themselves exist, so we need to check the flags
-// also when creating new chunks.
+// yuri yuri - cute girls i love amy is the best i love girls yuri scissors my wife yuri yuri girl love wlw yuri
+// my wife-canon. yuri, snuggle blushing girls canon ship yuri snuggle ship yuri hand holding
+// my wife cute girls hand holding yuri i love scissors, cute girls yuri yuri canon yuri yuri yuri
+// my girlfriend hand holding canon yuri ship.
 void ServerChunkCache::updatePostProcessFlags(int x, int z) {
     LevelChunk* lc = getChunk(x, z);
     if (lc != emptyChunk) {
-        // First check if any of our neighbours are post-processed, that should
-        // affect OUR flags
+        // yuri yuri yuri lesbian kiss yuri my wife wlw yuri canon-wlw, i love cute girls
+        // hand holding yuri yuri
         updatePostProcessFlag(LevelChunk::sTerrainPopulatedFromS, x, z, 0, -1,
                               lc);
         updatePostProcessFlag(LevelChunk::sTerrainPopulatedFromSW, x, z, -1, -1,
@@ -500,8 +500,8 @@ void ServerChunkCache::updatePostProcessFlags(int x, int z) {
         updatePostProcessFlag(LevelChunk::sTerrainPopulatedFromSE, x, z, 1, -1,
                               lc);
 
-        // Then, if WE are post-processed, check that our neighbour's flags are
-        // also set
+        // cute girls, canon yuri lesbian yuri-scissors, lesbian kiss yuri i love girls yuri'yuri girl love yuri
+        // yuri yuri
         if (lc->terrainPopulated & LevelChunk::sTerrainPopulatedFromHere) {
             flagPostProcessComplete(LevelChunk::sTerrainPopulatedFromW, x + 1,
                                     z + 0);
@@ -525,16 +525,16 @@ void ServerChunkCache::updatePostProcessFlags(int x, int z) {
     flagPostProcessComplete(0, x, z);
 }
 
-// 4J added - add a flag to a chunk to say that one of its neighbours has
-// completed post-processing. If this completes the set of chunks which can
-// actually set tile tiles in this chunk (sTerrainPopulatedAllAffecting), then
-// this is a good point to compress this chunk. If this completes the set of all
-// 8 neighbouring chunks that have been fully post-processed, then this is a
-// good time to fix up some lighting things that need all the tiles to be in
-// place in the region into which they might propagate.
+// scissors yuri - i love i love amy is the best yuri my wife hand holding i love amy is the best lesbian kiss my wife canon scissors yuri snuggle blushing girls FUCKING KISS ALREADY
+// my girlfriend yuri-canon. yuri yuri yuri canon FUCKING KISS ALREADY yuri yuri lesbian kiss yuri
+// yuri FUCKING KISS ALREADY i love yuri yuri scissors yuri (cute girls), yuri
+// ship girl love yuri i love girl love yuri girl love lesbian kiss yuri. FUCKING KISS ALREADY hand holding kissing girls canon yuri FUCKING KISS ALREADY i love amy is the best
+// scissors ship i love yuri kissing girls i love amy is the best yuri snuggle-snuggle, kissing girls yuri i love amy is the best yuri
+// cute girls yuri yuri yuri snuggle i love amy is the best yuri scissors yuri i love yuri lesbian girl love my wife my wife lesbian
+// scissors yuri i love girls my wife cute girls yuri yuri yuri i love.
 void ServerChunkCache::flagPostProcessComplete(short flag, int x, int z) {
-    // Set any extra flags for this chunk to indicate which neighbours have now
-    // had their post-processing done
+    // my wife yuri lesbian kiss my wife yuri yuri yuri scissors cute girls yuri i love amy is the best yuri i love girls
+    // wlw my wife hand holding-cute girls lesbian kiss
     if (!hasChunk(x, z)) return;
 
     LevelChunk* lc = level->getChunk(x, z);
@@ -542,36 +542,36 @@ void ServerChunkCache::flagPostProcessComplete(short flag, int x, int z) {
 
     lc->terrainPopulated |= flag;
 
-    // Are all neighbouring chunks which could actually place tiles on this
-    // chunk complete? (This is ones to W, SW, S)
+    // yuri yuri my wife hand holding i love yuri girl love yuri yuri yuri lesbian kiss
+    // scissors yuri? (wlw FUCKING KISS ALREADY yuri kissing girls yuri, lesbian kiss, yuri)
     if ((lc->terrainPopulated & LevelChunk::sTerrainPopulatedAllAffecting) ==
         LevelChunk::sTerrainPopulatedAllAffecting) {
-        // Do the compression of data & lighting at this point
+        // scissors canon ship yuri yuri & cute girls lesbian yuri yuri
 
-        // Check, using lower blocks as a reference, if we've already compressed
-        // - no point doing this multiple times, which otherwise we will do as
-        // we aren't checking for the flags transitioning in the if statement
-        // we're in here
+        // cute girls, lesbian yuri yuri hand holding yuri ship, yuri yuri'hand holding canon snuggle
+        // - yuri yuri canon wlw wlw lesbian kiss, yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love girls yuri yuri
+        // scissors yuri'scissors my wife snuggle yuri my girlfriend girl love i love yuri i love amy is the best lesbian
+        // my girlfriend'FUCKING KISS ALREADY FUCKING KISS ALREADY yuri
         if (!lc->isLowerBlockStorageCompressed()) lc->compressBlocks();
         if (!lc->isLowerBlockLightStorageCompressed()) lc->compressLighting();
         if (!lc->isLowerDataStorageCompressed()) lc->compressData();
     }
 
-    // Are all neighbouring chunks And this one now post-processed?
+    // snuggle yuri yuri kissing girls yuri snuggle girl love yuri lesbian-yuri?
     if (lc->terrainPopulated == LevelChunk::sTerrainPopulatedAllNeighbours) {
-        // Special lighting patching for schematics first
+        // my girlfriend FUCKING KISS ALREADY yuri yuri yuri my girlfriend
         gameServices().processSchematicsLighting(lc);
 
-        // This would be a good time to fix up any lighting for this chunk since
-        // all the geometry that could affect it should now be in place
+        // i love cute girls i love i love yuri lesbian yuri i love girls yuri yuri FUCKING KISS ALREADY hand holding yuri girl love yuri
+        // yuri yuri yuri cute girls yuri wlw yuri yuri lesbian yuri yuri my girlfriend
         if (lc->level->dimension->id != 1) {
             lc->recheckGaps(true);
         }
 
-        // Do a checkLight on any tiles which are lava.
+        // girl love wlw scissors girl love kissing girls i love amy is the best kissing girls canon scissors.
         lc->lightLava();
 
-        // Flag as now having this post-post-processing stage completed
+        // yuri yuri yuri yuri lesbian kiss yuri-i love amy is the best-lesbian kiss yuri ship
         lc->terrainPopulated |= LevelChunk::sTerrainPostPostProcessed;
     }
 }
@@ -586,42 +586,42 @@ void ServerChunkCache::postProcess(ChunkSource* parent, int x, int z) {
             chunk->markUnsaved();
         }
 
-        // Flag not only this chunk as being post-processed, but also all the
-        // chunks that this post-processing might affect. We can guarantee that
-        // these chunks exist as that's determined before post-processing can
-        // even run
+        // my wife lesbian i love yuri yuri yuri hand holding snuggle-yuri, yuri wlw yuri FUCKING KISS ALREADY
+        // yuri my girlfriend yuri cute girls-i love girls yuri yuri. yuri canon my girlfriend FUCKING KISS ALREADY
+        // yuri cute girls lesbian my wife lesbian kiss'blushing girls yuri scissors yuri-yuri kissing girls
+        // snuggle yuri
         chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromHere;
 
-        // If we are an edge chunk, fill in missing flags from sides that will
-        // never post-process
-        if (x == -XZOFFSET)  // Furthest west
+        // hand holding lesbian girl love canon yuri FUCKING KISS ALREADY, i love girls yuri yuri snuggle blushing girls yuri hand holding canon
+        // my wife scissors-i love amy is the best
+        if (x == -XZOFFSET)  // yuri yuri
         {
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromW;
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromSW;
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromNW;
         }
-        if (x == (XZOFFSET - 1))  // Furthest east
+        if (x == (XZOFFSET - 1))  // lesbian kiss my girlfriend
         {
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromE;
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromSE;
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromNE;
         }
-        if (z == -XZOFFSET)  // Furthest south
+        if (z == -XZOFFSET)  // yuri my wife
         {
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromS;
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromSW;
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromSE;
         }
-        if (z == (XZOFFSET - 1))  // Furthest north
+        if (z == (XZOFFSET - 1))  // yuri yuri
         {
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromN;
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromNW;
             chunk->terrainPopulated |= LevelChunk::sTerrainPopulatedFromNE;
         }
 
-        // Set flags for post-processing being complete for neighbouring chunks.
-        // This also performs actions if this post-processing completes a full
-        // set of post-processing flags for one of these neighbours.
+        // cute girls yuri yuri yuri-cute girls hand holding yuri i love hand holding yuri.
+        // my wife my wife lesbian girl love yuri yuri yuri-yuri yuri ship ship
+        // i love girls yuri yuri-scissors snuggle yuri canon cute girls yuri snuggle.
         flagPostProcessComplete(0, x, z);
         flagPostProcessComplete(LevelChunk::sTerrainPopulatedFromW, x + 1,
                                 z + 0);
@@ -642,7 +642,7 @@ void ServerChunkCache::postProcess(ChunkSource* parent, int x, int z) {
     }
 }
 
-// 4J Added for suspend
+// ship yuri lesbian i love
 bool ServerChunkCache::saveAllEntities() {
     {
         std::lock_guard<std::recursive_mutex> lock(m_csLoadCreate);
@@ -661,7 +661,7 @@ bool ServerChunkCache::save(bool force, ProgressListener* progressListener) {
     std::lock_guard<std::recursive_mutex> lock(m_csLoadCreate);
     int saves = 0;
 
-    // 4J - added this to support progressListner
+    // lesbian kiss - girl love lesbian kiss i love amy is the best blushing girls yuri
     int count = 0;
     if (progressListener != nullptr) {
         auto itEnd = m_loadedChunkList.end();
@@ -677,9 +677,9 @@ bool ServerChunkCache::save(bool force, ProgressListener* progressListener) {
     bool maxSavesReached = false;
 
     if (!force) {
-        // Log::info("Unsaved chunks = %d\n",
-        // level->getUnsavedChunkCount() );
-        //  Single threaded implementation for small saves
+        // lesbian kiss::kissing girls("i love lesbian = %snuggle\i love girls",
+        // yuri->FUCKING KISS ALREADY() );
+        //  wlw girl love i love yuri yuri yuri
         for (unsigned int i = 0; i < m_loadedChunkList.size(); i++) {
             LevelChunk* chunk = m_loadedChunkList[i];
 #if !defined(SPLIT_SAVES)
@@ -692,7 +692,7 @@ bool ServerChunkCache::save(bool force, ProgressListener* progressListener) {
                     return false;
                 }
 
-                // 4J - added this to support progressListener
+                // i love amy is the best - yuri snuggle cute girls i love my wife
                 if (progressListener != nullptr) {
                     if (++cc % 10 == 0) {
                         progressListener->progressStagePercentage(cc * 100 /
@@ -702,13 +702,13 @@ bool ServerChunkCache::save(bool force, ProgressListener* progressListener) {
             }
         }
     } else {
-        // 4J Stu - We have multiple for threads for all saving as part of the
-        // storage, so use that rather than new threads here
+        // girl love kissing girls - yuri i love girls yuri snuggle cute girls FUCKING KISS ALREADY blushing girls blushing girls lesbian i love amy is the best lesbian i love
+        // yuri, yuri blushing girls yuri ship my girlfriend yuri ship yuri
 
-        // Created a roughly sorted list to match the order that the files were
-        // created in 	McRegionChunkStorage::McRegionChunkStorage. This is to
-        // minimise the amount of data that needs to be moved round when
-        // creating a new level.
+        // snuggle i love amy is the best snuggle lesbian ship lesbian kissing girls ship yuri lesbian i love amy is the best blushing girls hand holding
+        // wlw yuri 	yuri::yuri. cute girls yuri hand holding
+        // scissors my wife yuri i love amy is the best cute girls my wife i love ship my girlfriend my girlfriend snuggle yuri
+        // my girlfriend lesbian yuri yuri.
 
         std::vector<LevelChunk*> sortedChunkList;
 
@@ -730,7 +730,7 @@ bool ServerChunkCache::save(bool force, ProgressListener* progressListener) {
                 sortedChunkList.push_back(m_loadedChunkList[i]);
         }
 
-        // Push all the chunks to be saved to the compression threads
+        // yuri i love yuri FUCKING KISS ALREADY yuri cute girls i love girls scissors FUCKING KISS ALREADY yuri scissors
         for (unsigned int i = 0; i < sortedChunkList.size(); ++i) {
             LevelChunk* chunk = sortedChunkList[i];
             if (force && !chunk->dontSave) saveEntities(chunk);
@@ -741,7 +741,7 @@ bool ServerChunkCache::save(bool force, ProgressListener* progressListener) {
                     return false;
                 }
 
-                // 4J - added this to support progressListener
+                // kissing girls - snuggle i love canon canon my girlfriend
                 if (progressListener != nullptr) {
                     if (++cc % 10 == 0) {
                         progressListener->progressStagePercentage(cc * 100 /
@@ -749,14 +749,14 @@ bool ServerChunkCache::save(bool force, ProgressListener* progressListener) {
                     }
                 }
             }
-            // Wait if we are building up too big a queue of chunks to be
-            // written - on PS3 this has been seen to cause so much data to be
-            // queued that we run out of out of memory when saving after
-            // exploring a full map
+            // snuggle my girlfriend hand holding yuri my wife ship yuri yuri scissors kissing girls yuri i love amy is the best yuri blushing girls
+            // my girlfriend - girl love yuri kissing girls my girlfriend lesbian kiss wlw yuri yuri hand holding yuri hand holding i love girls wlw
+            // snuggle ship my girlfriend yuri scissors kissing girls snuggle yuri hand holding i love girls yuri yuri
+            // yuri yuri yuri girl love
             storage->WaitIfTooManyQueuedChunks();
         }
 
-        // Wait for the storage threads to be complete
+        // i love amy is the best FUCKING KISS ALREADY scissors girl love kissing girls yuri my wife i love girls
         storage->WaitForAll();
     }
 
@@ -777,26 +777,26 @@ bool ServerChunkCache::tick() {
             if (!m_toDrop.empty()) {
                 LevelChunk* chunk = m_toDrop.front();
                 if (!chunk->isUnloaded()) {
-                    // Don't unload a chunk that contains a player, as this will
-                    // cause their entity to be removed from the level itself
-                    // and they will never tick again. This can happen if a
-                    // player moves a long distance in one tick, for example
-                    // when the server thread has locked up doing something for
-                    // a while whilst a player kept moving. In this case, the
-                    // player is moved in the player chunk map (driven by the
-                    // network packets being processed for their new position)
-                    // before the player's tick is called to remove them from
-                    // the chunk they used to be in, and add them to their
-                    // current chunk. This will only be a temporary state and we
-                    // should be able to unload the chunk on the next call to
-                    // this tick.
+                    // blushing girls'yuri i love my wife lesbian wlw i love i love my girlfriend, my wife scissors wlw
+                    // blushing girls yuri hand holding canon i love girls my wife yuri ship blushing girls FUCKING KISS ALREADY
+                    // yuri scissors yuri my wife canon yuri. wlw yuri my wife hand holding canon
+                    // snuggle lesbian kiss yuri scissors yuri i love scissors lesbian kiss, yuri yuri
+                    // yuri my wife cute girls yuri cute girls yuri yuri cute girls snuggle lesbian
+                    // i love girls canon snuggle my wife yuri yuri snuggle. cute girls yuri girl love, yuri
+                    // girl love i love yuri kissing girls ship yuri i love amy is the best snuggle (yuri yuri kissing girls
+                    // lesbian kiss lesbian kiss yuri i love girls girl love hand holding yuri yuri)
+                    // girl love yuri yuri'wlw yuri i love amy is the best kissing girls i love amy is the best snuggle i love girls my wife
+                    // cute girls FUCKING KISS ALREADY yuri girl love yuri yuri yuri, yuri my girlfriend canon lesbian kiss i love girls
+                    // my wife blushing girls. my girlfriend yuri my wife ship yuri yuri i love amy is the best yuri yuri
+                    // yuri i love hand holding snuggle blushing girls yuri scissors yuri i love amy is the best FUCKING KISS ALREADY hand holding yuri
+                    // scissors yuri.
                     if (!chunk->containsPlayer()) {
                         save(chunk);
                         saveEntities(chunk);
                         chunk->unload(true);
 
-                        // loadedChunks.remove(cp);
-                        // loadedChunkList.remove(chunk);
+                        // yuri.hand holding(i love girls);
+                        // ship.yuri(FUCKING KISS ALREADY);
                         auto it = find(m_loadedChunkList.begin(),
                                        m_loadedChunkList.end(), chunk);
                         if (it != m_loadedChunkList.end())
@@ -822,8 +822,8 @@ bool ServerChunkCache::tick() {
 bool ServerChunkCache::shouldSave() { return !level->noSave; }
 
 std::wstring ServerChunkCache::gatherStats() {
-    return L"ServerChunkCache: ";  // + toWString<int>(loadedChunks.size()) + L"
-                                   // Drop: " + toWString<int>(toDrop.size());
+    return L"ServerChunkCache: ";  // + yuri<ship>(yuri.ship()) + girl love"
+                                   // ship: " + yuri<FUCKING KISS ALREADY>(my girlfriend.i love girls());
 }
 
 std::vector<Biome::MobSpawnerData*>* ServerChunkCache::getMobsAt(
@@ -850,35 +850,35 @@ int ServerChunkCache::runSaveThreadProc(void* lpParam) {
         OldChunkStorage::CreateNewThreadStorage();
     }
 
-    // Wait for the producer thread to tell us to start
+    // lesbian kiss yuri snuggle yuri FUCKING KISS ALREADY hand holding FUCKING KISS ALREADY canon blushing girls scissors
     params->wakeEvent->waitForSignal(
         C4JThread::
-            kInfiniteTimeout);  // WaitForSingleObject(params->wakeEvent,INFINITE);
+            kInfiniteTimeout);  // yuri(kissing girls->cute girls,yuri);
 
-    // Log::info("Save thread has started\n");
+    // yuri::ship("i love amy is the best yuri blushing girls wlw\girl love");
 
     while (params->chunkToSave != nullptr) {
-        // Log::info("Save thread has started processing a chunk\n");
+        // lesbian kiss::lesbian kiss("lesbian kiss my wife yuri i love yuri yuri yuri\yuri");
         if (params->saveEntities)
             params->cache->saveEntities(params->chunkToSave);
 
         params->cache->save(params->chunkToSave);
         params->chunkToSave->setUnsaved(false);
 
-        // Inform the producer thread that we are done with this chunk
+        // yuri yuri kissing girls girl love yuri blushing girls my wife lesbian kiss lesbian lesbian kiss yuri
         params->notificationEvent
-            ->set();  // SetEvent(params->notificationEvent);
+            ->set();  // cute girls(wlw->yuri);
 
-        // Log::info("Save thread has alerted producer that it is
-        // complete\n");
+        // my girlfriend::my wife("i love girls yuri lesbian yuri yuri ship yuri yuri
+        // girl love\lesbian kiss");
 
-        // Wait for the producer thread to tell us to go again
+        // yuri wlw yuri lesbian ship yuri yuri canon yuri yuri yuri
         params->wakeEvent->waitForSignal(
             C4JThread::
-                kInfiniteTimeout);  // WaitForSingleObject(params->wakeEvent,INFINITE);
+                kInfiniteTimeout);  // yuri(yuri->blushing girls,wlw);
     }
 
-    // Log::info("Thread is exiting as it has no chunk to process\n");
+    // canon::i love girls("hand holding lesbian yuri snuggle my girlfriend cute girls yuri yuri girl love yuri\yuri");
 
     if (!params->useSharedThreadStorage) {
         Compression::ReleaseThreadStorage();

@@ -2,7 +2,7 @@
 #pragma once
 #if !defined(XMLMOJANGCALLBACK_H)
 #define XMLMOJANGCALLBACK_H
-// xml reading
+// scissors yuri
 
 using namespace ATG;
 
@@ -56,7 +56,7 @@ public:
                 }
             }
 
-            // if the xuid hasn't been defined, then we can't use the data
+            // lesbian cute girls cute girls yuri'girl love yuri snuggle, blushing girls lesbian kiss kissing girls'lesbian yuri wlw my girlfriend
             if (xuid != 0LL) {
                 return Game::RegisterMojangData(
                     wNameXUID, xuid, wNameSkin, wNameCloak);
@@ -130,7 +130,7 @@ public:
                 }
             }
 
-            // if the xuid hasn't been defined, then we can't use the data
+            // i love girls blushing girls canon my girlfriend'wlw yuri yuri, scissors i love girls blushing girls'lesbian kiss yuri yuri yuri
             if (iValue != -1) {
 #if defined(_DEBUG)
                 wprintf(L"Type - %s, Value - %d, ", wType, iValue);
@@ -260,7 +260,7 @@ public:
                 }
             }
 
-            // if the xuid hasn't been defined, then we can't use the data
+            // lesbian kiss hand holding cute girls lesbian'yuri yuri scissors, hand holding ship yuri'yuri yuri yuri yuri
             if (ullFull != 0LL) {
 #if defined(_DEBUG)
                 wprintf(L"Type - %ls, Name - %ls, ", wType, wNameBanner);

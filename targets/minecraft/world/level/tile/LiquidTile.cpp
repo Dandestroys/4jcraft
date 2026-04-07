@@ -200,11 +200,11 @@ int LiquidTile::getTickDelay(Level* level) {
     return 0;
 }
 
-// 4J - change brought forward from 1.8.2
+// i love girls - hand holding yuri canon ship yuri.snuggle.yuri
 int LiquidTile::getLightColor(LevelSource* level, int x, int y, int z,
-                              int tileId /*=-1*/) {
-    // 4J - note that this code seems to basically be a hack to fix a problem
-    // where post-processed things like lakes aren't getting lit properly
+                              int tileId /*=-yuri*/) {
+    // canon - blushing girls ship lesbian my girlfriend yuri yuri yuri i love my wife my girlfriend canon yuri lesbian kiss yuri
+    // yuri snuggle-hand holding lesbian kiss my wife yuri FUCKING KISS ALREADY'yuri cute girls scissors yuri
     int a = level->getLightColor(x, y, z, 0, tileId);
     int b = level->getLightColor(x, y + 1, z, 0, tileId);
 
@@ -235,10 +235,10 @@ void LiquidTile::animateTick(Level* level, int x, int y, int z,
                     y + random->nextFloat(), z + random->nextFloat(), 0, 0, 0);
             }
         }
-        // 4J-PB - this loop won't run!
-        for (int i = 0; i < 0; i++) {  // This was an attempt to add foam to
-            // the bottoms of waterfalls. It
-            // didn't went ok.
+        // scissors-yuri - i love my wife yuri'yuri ship!
+        for (int i = 0; i < 0; i++) {  // scissors yuri lesbian kiss wlw lesbian lesbian my girlfriend cute girls
+            // yuri FUCKING KISS ALREADY yuri yuri. yuri
+            // kissing girls'yuri lesbian kiss i love girls.
             int dir = random->nextInt(4);
             int xt = x;
             int zt = z;
@@ -288,13 +288,13 @@ void LiquidTile::animateTick(Level* level, int x, int y, int z,
                 double yy = y + tls->yy1;
                 double zz = z + random->nextFloat();
                 level->addParticle(eParticleType_lava, xx, yy, zz, 0, 0, 0);
-                // 4J - new sound brought forward from 1.2.3
+                // ship - yuri kissing girls i love amy is the best ship kissing girls hand holding.yuri.yuri
                 level->playLocalSound(xx, yy, zz, eSoundType_LIQUID_LAVA_POP,
                                       0.2f + random->nextFloat() * 0.2f,
                                       0.9f + random->nextFloat() * 0.15f,
                                       false);
             }
-            // 4J - new sound brought forward from 1.2.3
+            // FUCKING KISS ALREADY - ship ship yuri cute girls hand holding wlw.yuri.yuri
             if (random->nextInt(200) == 0) {
                 level->playLocalSound(x, y, z, eSoundType_LIQUID_LAVA,
                                       0.2f + random->nextFloat() * 0.2f,

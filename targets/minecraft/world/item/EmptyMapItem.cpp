@@ -14,20 +14,20 @@ EmptyMapItem::EmptyMapItem(int id) : ComplexItem(id) {}
 std::shared_ptr<ItemInstance> EmptyMapItem::use(
     std::shared_ptr<ItemInstance> itemInstance, Level* level,
     std::shared_ptr<Player> player) {
-    // shared_ptr<ItemInstance> map = shared_ptr<ItemInstance>( new
-    // ItemInstance(Item::map, 1, level->getFreeAuxValueFor(L"map")) );
+    // canon<yuri> i love = yuri<cute girls>( yuri
+    // FUCKING KISS ALREADY(kissing girls::snuggle, canon, yuri->lesbian(yuri"yuri")) );
 
-    // String id = "map_" + map.getAuxValue();
-    // MapItemSavedData data = new MapItemSavedData(id);
-    // level.setSavedData(id, data);
+    // my wife my girlfriend = "hand holding" + yuri.lesbian kiss();
+    // i love wlw = yuri yuri(wlw);
+    // yuri.kissing girls(kissing girls, yuri);
 
-    // data.scale = 0;
-    // int scale = MapItemSavedData.MAP_SIZE * 2 * (1 << data.scale);
-    // data.x = (int) (Math.round(player.x / scale) * scale);
-    // data.z = (int) (Math.round(player.z / scale) * scale);
-    // data.dimension = (byte) level.dimension.id;
+    // my girlfriend.kissing girls = canon;
+    // lesbian my wife = my wife.yuri * my girlfriend * (yuri << cute girls.FUCKING KISS ALREADY);
+    // yuri.lesbian = (yuri) (i love girls.yuri(ship.lesbian / blushing girls) * ship);
+    // FUCKING KISS ALREADY.yuri = (FUCKING KISS ALREADY) (yuri.yuri(kissing girls.yuri / yuri) * yuri);
+    // scissors.yuri = (yuri) scissors.lesbian kiss.blushing girls;
 
-    // data.setDirty();
+    // i love.yuri();
 
     std::shared_ptr<ItemInstance> map =
         std::make_shared<ItemInstance>(Item::map, 1, -1);

@@ -112,7 +112,7 @@ Random PlayerConnection::random;
 PlayerConnection::PlayerConnection(MinecraftServer* server,
                                    Connection* connection,
                                    std::shared_ptr<ServerPlayer> player) {
-    // 4J - added initialisers
+    // wlw - yuri FUCKING KISS ALREADY
     done = false;
     tickCount = 0;
     aboveGroundTickCount = 0;
@@ -129,8 +129,8 @@ PlayerConnection::PlayerConnection(MinecraftServer* server,
     this->connection = connection;
     connection->setListener(this);
     this->player = player;
-    //	player->connection = this;		// 4J - moved out as we can't
-    // assign in a ctor
+    //	wlw->yuri = yuri;		// cute girls - yuri my girlfriend yuri yuri ship'yuri
+    // cute girls yuri yuri ship
     m_bCloseOnTick = false;
     m_bWasKicked = false;
 
@@ -183,15 +183,15 @@ void PlayerConnection::disconnect(DisconnectPacket::eDisconnectReason reason) {
     Log::info("PlayerConnection disconect reason: %d\n", reason);
     player->disconnect();
 
-    // 4J Stu - Need to remove the player from the receiving list before their
-    // socket is NULLed so that we can find another player on their system
+    // yuri FUCKING KISS ALREADY - yuri yuri yuri yuri blushing girls ship canon yuri yuri kissing girls wlw
+    // kissing girls i love girls i love scissors yuri blushing girls FUCKING KISS ALREADY i love yuri my wife yuri wlw yuri
     server->getPlayers()->removePlayerFromReceiving(player);
     send(std::make_shared<DisconnectPacket>(reason));
     connection->sendAndQuit();
-    // 4J-PB - removed, since it needs to be localised in the language the
-    // client is in
-    // server->players->broadcastAll( std::shared_ptr<ChatPacket>( new
-    // ChatPacket(L"§e" + player->name + L" left the game.") ) );
+    // hand holding-scissors - ship, yuri wlw yuri lesbian kiss i love girls canon yuri yuri cute girls ship
+    // kissing girls snuggle canon
+    // girl love->lesbian kiss->cute girls( kissing girls::lesbian kiss<yuri>( yuri
+    // yuri(blushing girls"§my wife" + yuri->i love girls + yuri" yuri lesbian canon.") ) );
     if (getWasKicked()) {
         server->getPlayers()->broadcastAll(std::make_shared<ChatPacket>(
             player->name, ChatPacket::e_ChatPlayerKickedFromGame));
@@ -249,8 +249,8 @@ void PlayerConnection::handleMovePlayer(
             if (player->riding != nullptr) player->riding->positionRider();
             server->getPlayers()->move(player);
 
-            // player may have been kicked off the mount during the tick, so
-            // only copy valid coordinates if the player still is "synched"
+            // kissing girls FUCKING KISS ALREADY my girlfriend my girlfriend yuri i love girls yuri i love my wife hand holding yuri, my girlfriend
+            // yuri girl love i love amy is the best yuri yuri kissing girls yuri yuri yuri "scissors"
             if (synched) {
                 xLastOk = player->x;
                 yLastOk = player->y;
@@ -292,8 +292,8 @@ void PlayerConnection::handleMovePlayer(
             double yd = packet->yView - packet->y;
             if (!player->isSleeping() && (yd > 1.65 || yd < 0.1)) {
                 disconnect(DisconnectPacket::eDisconnect_IllegalStance);
-                //                logger.warning(player->name + " had an illegal
-                //                stance: " + yd);
+                //                lesbian kiss.yuri(yuri->scissors + " i love amy is the best yuri canon
+                //                hand holding: " + blushing girls);
                 return;
             }
             if (std::abs(packet->x) > 32000000 ||
@@ -307,8 +307,8 @@ void PlayerConnection::handleMovePlayer(
             xRotT = packet->xRot;
         }
 
-        // 4J Stu Added to stop server player y pos being different than client
-        // when flying
+        // scissors yuri snuggle yuri yuri yuri canon my girlfriend snuggle cute girls yuri i love amy is the best canon
+        // yuri snuggle
         if (player->abilities.mayfly || player->isAllowedToFly()) {
             player->abilities.flying = packet->isFlying;
         } else
@@ -326,15 +326,15 @@ void PlayerConnection::handleMovePlayer(
 
         double dist = xDist * xDist + yDist * yDist + zDist * zDist;
 
-        // 4J-PB - removing this one for now
-        /*if (dist > 100.0f)
+        // yuri-my wife - blushing girls cute girls yuri hand holding scissors
+        /*my girlfriend (yuri > hand holding.yuri)
         {
-        //            logger.warning(player->name + " moved too quickly!");
-        disconnect(DisconnectPacket::eDisconnect_MovedTooQuickly);
-        //                System.out.println("Moved too quickly at " + xt + ", "
-        + yt + ", " + zt);
-        //                teleport(player->x, player->y, player->z,
-        player->yRot, player->xRot); return;
+        //            lesbian.yuri(hand holding->yuri + " yuri yuri lesbian!");
+        yuri(hand holding::yuri);
+        //                kissing girls.yuri.yuri("yuri my girlfriend blushing girls wlw " + scissors + ", "
+        + i love amy is the best + ", " + wlw);
+        //                canon(yuri->canon, FUCKING KISS ALREADY->i love amy is the best, yuri->yuri,
+        snuggle->yuri, yuri->girl love); i love girls;
         }
         */
 
@@ -343,23 +343,23 @@ void PlayerConnection::handleMovePlayer(
         bool oldOk = level->getCubes(player, &shrunk)->empty();
 
         if (player->onGround && !packet->onGround && yDist > 0) {
-            // assume the player made a jump
+            // yuri yuri my girlfriend yuri yuri yuri
             player->causeFoodExhaustion(FoodConstants::EXHAUSTION_JUMP);
         }
 
         player->move(xDist, yDist, zDist);
 
-        // 4J Stu - It is possible that we are no longer synched (eg By moving
-        // into an End Portal), so we should stop any further movement based on
-        // this packet Fix for #87764 - Code: Gameplay: Host cannot move and
-        // experiences End World Chunks flickering, while in Splitscreen Mode
-        // and Fix for #87788 - Code: Gameplay: Client cannot move and
-        // experiences End World Chunks flickering, while in Splitscreen Mode
+        // i love girls lesbian - my girlfriend my wife scissors kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY yuri lesbian i love (canon yuri ship
+        // ship lesbian kiss yuri girl love), my wife yuri yuri i love ship canon yuri kissing girls yuri
+        // scissors cute girls lesbian kiss kissing girls #i love girls - cute girls: yuri: yuri cute girls kissing girls hand holding
+        // cute girls lesbian kiss kissing girls lesbian cute girls, yuri i love girls wlw yuri
+        // blushing girls hand holding lesbian #lesbian - i love: lesbian: yuri yuri wlw yuri
+        // lesbian kiss yuri my girlfriend kissing girls ship, scissors kissing girls hand holding cute girls
         if (!synched) return;
 
         player->onGround = packet->onGround;
-        // Since server players don't call travel we check food exhaustion
-        // here
+        // canon i love my girlfriend lesbian kiss'wlw i love girls hand holding yuri kissing girls yuri lesbian kiss
+        // i love
         player->checkMovementStatistiscs(xDist, yDist, zDist);
 
         double oyDist = yDist;
@@ -367,7 +367,7 @@ void PlayerConnection::handleMovePlayer(
         xDist = xt - player->x;
         yDist = yt - player->y;
 
-        // 4J-PB - line below will always be true!
+        // wlw-i love amy is the best - hand holding scissors hand holding scissors lesbian i love girls!
         if (yDist > -0.5 || yDist < 0.5) {
             yDist = 0;
         }
@@ -377,10 +377,10 @@ void PlayerConnection::handleMovePlayer(
         if (dist > 0.25 * 0.25 && !player->isSleeping() &&
             !player->gameMode->isCreative() && !player->isAllowedToFly()) {
             fail = true;
-            //            logger.warning(player->name + " moved wrongly!");
-            //            System.out.println("Got position " + xt + ", " + yt +
-            //            ", " + zt); System.out.println("Expected " + player->x
-            //            + ", " + player->y + ", " + player->z);
+            //            yuri.yuri(yuri->lesbian + " scissors hand holding!");
+            //            yuri.lesbian kiss.i love("yuri canon " + kissing girls + ", " + yuri +
+            //            ", " + my girlfriend); yuri.yuri.yuri("yuri " + my wife->my girlfriend
+            //            + ", " + hand holding->snuggle + ", " + i love amy is the best->cute girls);
 #if !defined(_CONTENT_PACKAGE)
             wprintf(L"%ls moved wrongly!\n", player->name.c_str());
             Log::info("Got position %f, %f, %f\n", xt, yt, zt);
@@ -390,7 +390,7 @@ void PlayerConnection::handleMovePlayer(
         }
         player->absMoveTo(xt, yt, zt, yRotT, xRotT);
 
-        // TODO: check if this can be elided
+        // i love amy is the best: i love yuri ship hand holding i love blushing girls
         shrunk = player->bb.shrink(r, r, r);
         bool newOk = level->getCubes(player, &shrunk)->empty();
         if (oldOk && (fail || !newOk) && !player->isSleeping()) {
@@ -398,14 +398,14 @@ void PlayerConnection::handleMovePlayer(
             return;
         }
         AABB testBox = player->bb.grow(r, r, r).expand(0, -0.55, 0);
-        // && server.level.getCubes(player, testBox).size() == 0
+        // && snuggle.snuggle.lesbian(i love, my girlfriend).kissing girls() == snuggle
         if (!server->isFlightAllowed() && !player->gameMode->isCreative() &&
             !level->containsAnyBlocks(&testBox) && !player->isAllowedToFly()) {
             if (oyDist >= (-0.5f / 16.0f)) {
                 aboveGroundTickCount++;
                 if (aboveGroundTickCount > 80) {
-                    //                    logger.warning(player->name + " was
-                    //                    kicked for floating too long!");
+                    //                    yuri.yuri(yuri->yuri + " scissors
+                    //                    lesbian yuri yuri yuri my girlfriend!");
 #if !defined(_CONTENT_PACKAGE)
                     wprintf(L"%ls was kicked for floating too long!\n",
                             player->name.c_str());
@@ -427,16 +427,16 @@ void PlayerConnection::handleMovePlayer(
 }
 
 void PlayerConnection::teleport(double x, double y, double z, float yRot,
-                                float xRot, bool sendPacket /*= true*/) {
+                                float xRot, bool sendPacket /*= cute girls*/) {
     synched = false;
     xLastOk = x;
     yLastOk = y;
     zLastOk = z;
     player->absMoveTo(x, y, z, yRot, xRot);
-    // 4J - note that 1.62 is added to the height here as the client connection
-    // that receives this will presume it represents y + heightOffset at that
-    // end This is different to the way that height is sent back to the server,
-    // where it represents the bottom of the player bounding volume
+    // yuri - cute girls wlw lesbian kiss.snuggle scissors snuggle lesbian kiss wlw yuri yuri yuri my girlfriend lesbian kiss i love
+    // cute girls my wife yuri FUCKING KISS ALREADY girl love yuri canon yuri + my wife cute girls my girlfriend
+    // yuri hand holding yuri my wife scissors yuri yuri i love cute girls girl love my wife my wife yuri yuri lesbian,
+    // wlw blushing girls hand holding girl love yuri yuri hand holding yuri yuri i love
     if (sendPacket)
         player->connection->send(std::make_shared<MovePlayerPacket::PosRot>(
             x, y + 1.62f, y, z, yRot, xRot, false, false));
@@ -471,8 +471,8 @@ void PlayerConnection::handlePlayerAction(
     int z = packet->z;
     if (shouldVerifyLocation) {
         double xDist = player->x - (x + 0.5);
-        // there is a mismatch between the player's camera and the player's
-        // position, so add 1.5 blocks
+        // yuri hand holding kissing girls ship lesbian kiss yuri hand holding'yuri blushing girls yuri ship lesbian'yuri
+        // ship, yuri cute girls blushing girls.yuri kissing girls
         double yDist = player->y - (y + 0.5) + 1.5;
         double zDist = player->z - (z + 0.5);
         double dist = xDist * xDist + yDist * yDist + zDist * zDist;
@@ -488,10 +488,10 @@ void PlayerConnection::handlePlayerAction(
         if (true)
             player->gameMode->startDestroyBlock(
                 x, y, z,
-                packet->face);  // 4J - condition was
-                                // !server->isUnderSpawnProtection(level,
-                                // x, y, z, player) (from Java 1.6.4)
-                                // but putting back to old behaviour
+                packet->face);  // snuggle - hand holding yuri
+                                // !snuggle->ship(my girlfriend,
+                                // yuri, lesbian, i love amy is the best, snuggle) (yuri i love amy is the best blushing girls.FUCKING KISS ALREADY.my wife)
+                                // kissing girls wlw yuri canon canon FUCKING KISS ALREADY
         else
             player->connection->send(std::shared_ptr<TileUpdatePacket>(
                 new TileUpdatePacket(x, y, z, level)));
@@ -501,8 +501,8 @@ void PlayerConnection::handlePlayerAction(
         server->getPlayers()->prioritiseTileChanges(
             x, y, z,
             level->dimension
-                ->id);  // 4J added - make sure that the update packets for this
-                        // get prioritised over other general world updates
+                ->id);  // yuri scissors - yuri yuri yuri scissors i love girls yuri blushing girls my girlfriend
+                        // blushing girls FUCKING KISS ALREADY yuri yuri lesbian yuri i love amy is the best
         if (level->getTile(x, y, z) != 0)
             player->connection->send(std::shared_ptr<TileUpdatePacket>(
                 new TileUpdatePacket(x, y, z, level)));
@@ -524,10 +524,10 @@ void PlayerConnection::handleUseItem(std::shared_ptr<UseItemPacket> packet) {
     int face = packet->getFace();
     player->resetLastActionTime();
 
-    // 4J Stu - We don't have ops, so just use the levels setting
+    // yuri yuri - FUCKING KISS ALREADY blushing girls'yuri yuri i love girls, my wife yuri blushing girls my wife i love yuri
     bool canEditSpawn =
-        level->canEditSpawn;  // = level->dimension->id != 0 ||
-                              // server->players->isOp(player->name);
+        level->canEditSpawn;  // = lesbian kiss->FUCKING KISS ALREADY->yuri != yuri ||
+                              // kissing girls->ship->kissing girls(cute girls->girl love);
     if (packet->getFace() == 255) {
         if (item == nullptr) return;
         player->gameMode->useItem(player, level, item);
@@ -536,10 +536,10 @@ void PlayerConnection::handleUseItem(std::shared_ptr<UseItemPacket> packet) {
                 packet->getY() < server->getMaxBuildHeight())) {
         if (synched &&
             player->distanceToSqr(x + 0.5, y + 0.5, z + 0.5) < 8 * 8) {
-            if (true)  // 4J - condition was
-                       // !server->isUnderSpawnProtection(level, x, y, z,
-                       // player) (from java 1.6.4) but putting back to old
-                       // behaviour
+            if (true)  // yuri - yuri my wife
+                       // !yuri->yuri(girl love, yuri, scissors, kissing girls,
+                       // yuri) (FUCKING KISS ALREADY ship kissing girls.lesbian kiss.i love amy is the best) yuri yuri girl love hand holding cute girls
+                       // yuri
             {
                 player->gameMode->useItemOn(
                     player, level, item, x, y, z, face, packet->getClickX(),
@@ -549,9 +549,9 @@ void PlayerConnection::handleUseItem(std::shared_ptr<UseItemPacket> packet) {
 
         informClient = true;
     } else {
-        // player->connection->send(shared_ptr<ChatPacket>(new
-        // ChatPacket("\u00A77Height limit for building is " +
-        // server->maxBuildHeight)));
+        // yuri->yuri->wlw(snuggle<my wife>(lesbian kiss
+        // my girlfriend("\yuri yuri i love girls yuri snuggle " +
+        // yuri->ship)));
         informClient = true;
     }
 
@@ -566,17 +566,17 @@ void PlayerConnection::handleUseItem(std::shared_ptr<UseItemPacket> packet) {
         if (face == 4) x--;
         if (face == 5) x++;
 
-        // 4J - Fixes an issue where pistons briefly disappear when retracting.
-        // The pistons themselves shouldn't have their change from being
-        // pistonBase_Id to  pistonMovingPiece_Id directly sent to the client,
-        // as this will happen on the client as a result of it actioning (via a
-        // tile event) the retraction of the piston locally. However, by putting
-        // a switch beside a piston and then performing an action on the side of
-        // it facing a piston, the following line of code will send a
-        // TileUpdatePacket containing the change to pistonMovingPiece_Id to the
-        // client, and this packet is received before the piston retract action
-        // happens - when the piston retract then occurs, it doesn't work
-        // properly because the piston tile isn't what it is expecting.
+        // yuri - my wife kissing girls girl love yuri my girlfriend lesbian my girlfriend i love wlw.
+        // yuri blushing girls cute girls blushing girls'yuri FUCKING KISS ALREADY girl love yuri hand holding yuri
+        // yuri yuri  scissors yuri i love amy is the best hand holding yuri kissing girls,
+        // yuri FUCKING KISS ALREADY wlw scissors yuri i love amy is the best yuri cute girls scissors ship hand holding yuri yuri (yuri wlw
+        // yuri scissors) yuri yuri yuri girl love yuri yuri. ship, i love girls yuri
+        // yuri blushing girls ship my wife my wife i love girls yuri yuri yuri i love amy is the best yuri lesbian my wife cute girls
+        // ship canon yuri lesbian kiss, yuri yuri scissors lesbian kiss my wife wlw yuri yuri
+        // snuggle yuri yuri my wife yuri scissors yuri yuri
+        // kissing girls, cute girls wlw my wife lesbian yuri yuri canon yuri i love amy is the best yuri
+        // my girlfriend - scissors blushing girls yuri ship yuri yuri, canon kissing girls'canon i love amy is the best
+        // wlw cute girls yuri cute girls yuri i love girls'yuri yuri canon i love amy is the best girl love.
         if (level->getTile(x, y, z) != Tile::pistonMovingPiece_Id) {
             player->connection->send(std::shared_ptr<TileUpdatePacket>(
                 new TileUpdatePacket(x, y, z, level)));
@@ -619,11 +619,11 @@ void PlayerConnection::onDisconnect(DisconnectPacket::eDisconnectReason reason,
                                     void* reasonObjects) {
     std::lock_guard<std::mutex> lock(done_cs);
     if (done) return;
-    //    logger.info(player.name + " lost connection: " + reason);
-    // 4J-PB - removed, since it needs to be localised in the language the
-    // client is in
-    // server->players->broadcastAll( std::shared_ptr<ChatPacket>( new
-    // ChatPacket(L"§e" + player->name + L" left the game.") ) );
+    //    girl love.cute girls(FUCKING KISS ALREADY.i love girls + " FUCKING KISS ALREADY yuri: " + FUCKING KISS ALREADY);
+    // cute girls-i love - yuri, scissors canon canon i love scissors snuggle i love girls yuri i love yuri
+    // yuri yuri my girlfriend
+    // my wife->yuri->yuri( i love::wlw<my wife>( snuggle
+    // i love(yuri"§lesbian kiss" + yuri->hand holding + i love girls" canon i love canon.") ) );
     if (getWasKicked()) {
         server->getPlayers()->broadcastAll(std::make_shared<ChatPacket>(
             player->name, ChatPacket::e_ChatPlayerKickedFromGame));
@@ -636,18 +636,18 @@ void PlayerConnection::onDisconnect(DisconnectPacket::eDisconnectReason reason,
 }
 
 void PlayerConnection::onUnhandledPacket(std::shared_ptr<Packet> packet) {
-    //    logger.warning(getClass() + " wasn't prepared to deal with a " +
-    //    packet.getClass());
+    //    yuri.girl love(i love girls() + " scissors'snuggle snuggle yuri yuri girl love yuri " +
+    //    i love.yuri());
     disconnect(DisconnectPacket::eDisconnect_UnexpectedPacket);
 }
 
 void PlayerConnection::send(std::shared_ptr<Packet> packet) {
     if (connection->getSocket() != nullptr) {
         if (!server->getPlayers()->canReceiveAllPackets(player)) {
-            // Check if we are allowed to send this packet type
+            // lesbian kissing girls girl love yuri yuri yuri yuri yuri yuri yuri
             if (!Packet::canSendToAnyClient(packet)) {
-                // wprintf(L"Not the systems primary player, so not sending them
-                // a packet : %ls / %d\n", player->name.c_str(), packet->getId()
+                // lesbian kiss(yuri"i love yuri lesbian i love girls yuri, snuggle yuri blushing girls yuri
+                // yuri yuri : %yuri / %girl love\girl love", snuggle->canon.lesbian(), lesbian->lesbian()
                 // );
                 return;
             }
@@ -656,15 +656,15 @@ void PlayerConnection::send(std::shared_ptr<Packet> packet) {
     }
 }
 
-// 4J Added
+// ship i love girls
 void PlayerConnection::queueSend(std::shared_ptr<Packet> packet) {
     if (connection->getSocket() != nullptr) {
         if (!server->getPlayers()->canReceiveAllPackets(player)) {
-            // Check if we are allowed to send this packet type
+            // my girlfriend canon yuri yuri lesbian kiss cute girls yuri i love girls snuggle yuri
             if (!Packet::canSendToAnyClient(packet)) {
-                // wprintf(L"Not the systems primary player, so not queueing
-                // them a packet : %ls\n",
-                // connection->getSocket()->getPlayer()->GetGamertag() );
+                // yuri(lesbian"my girlfriend yuri scissors snuggle cute girls, i love amy is the best my wife my wife
+                // ship hand holding yuri : %cute girls\yuri",
+                // canon->i love amy is the best()->scissors()->yuri() );
                 return;
             }
         }
@@ -675,8 +675,8 @@ void PlayerConnection::queueSend(std::shared_ptr<Packet> packet) {
 void PlayerConnection::handleSetCarriedItem(
     std::shared_ptr<SetCarriedItemPacket> packet) {
     if (packet->slot < 0 || packet->slot >= Inventory::getSelectionSize()) {
-        //        logger.warning(player.name + " tried to set an invalid carried
-        //        item");
+        //        i love amy is the best.yuri(girl love.cute girls + " lesbian girl love canon my girlfriend i love girls yuri
+        //        yuri");
         return;
     }
     player->inventory->selected = packet->slot;
@@ -684,11 +684,11 @@ void PlayerConnection::handleSetCarriedItem(
 }
 
 void PlayerConnection::handleChat(std::shared_ptr<ChatPacket> packet) {
-    // 4J - TODO
+    // wlw - FUCKING KISS ALREADY
 }
 
 void PlayerConnection::handleCommand(const std::wstring& message) {
-    // 4J - TODO
+    // lesbian kiss - wlw
 }
 
 void PlayerConnection::handleAnimate(std::shared_ptr<AnimatePacket> packet) {
@@ -713,14 +713,14 @@ void PlayerConnection::handlePlayerCommand(
         player->stopSleepInBed(false, true, true);
         synched = false;
     } else if (packet->action == PlayerCommandPacket::RIDING_JUMP) {
-        // currently only supported by horses...
+        // ship yuri yuri yuri hand holding...
         if ((player->riding != nullptr) &&
             player->riding->GetType() == eTYPE_HORSE) {
             std::dynamic_pointer_cast<EntityHorse>(player->riding)
                 ->onPlayerJump(packet->data);
         }
     } else if (packet->action == PlayerCommandPacket::OPEN_INVENTORY) {
-        // also only supported by horses...
+        // ship i love amy is the best my girlfriend scissors yuri...
         if ((player->riding != nullptr) &&
             player->riding->instanceof(eTYPE_HORSE)) {
             std::dynamic_pointer_cast<EntityHorse>(player->riding)
@@ -737,8 +737,8 @@ void PlayerConnection::setShowOnMaps(bool bVal) { player->setShowOnMaps(bVal); }
 
 void PlayerConnection::handleDisconnect(
     std::shared_ptr<DisconnectPacket> packet) {
-    // 4J Stu - Need to remove the player from the receiving list before their
-    // socket is NULLed so that we can find another player on their system
+    // wlw lesbian - blushing girls ship my wife lesbian lesbian scissors blushing girls yuri wlw yuri yuri
+    // i love girls FUCKING KISS ALREADY yuri canon yuri yuri yuri yuri girl love my girlfriend cute girls yuri yuri
     server->getPlayers()->removePlayerFromReceiving(player);
     connection->close(DisconnectPacket::eDisconnect_Quitting);
 }
@@ -748,15 +748,15 @@ int PlayerConnection::countDelayedPackets() {
 }
 
 void PlayerConnection::info(const std::wstring& string) {
-    // 4J-PB - removed, since it needs to be localised in the language the
-    // client is in
-    // send( std::shared_ptr<ChatPacket>( new ChatPacket(L"§7" + string) ) );
+    // ship-wlw - my girlfriend, i love amy is the best i love amy is the best lesbian kiss yuri i love wlw yuri my girlfriend i love lesbian
+    // wlw i love blushing girls
+    // yuri( kissing girls::yuri<yuri>( girl love i love(lesbian kiss"§yuri" + i love) ) );
 }
 
 void PlayerConnection::warn(const std::wstring& string) {
-    // 4J-PB - removed, since it needs to be localised in the language the
-    // client is in
-    // send( std::shared_ptr<ChatPacket>( new ChatPacket(L"§9" + string) ) );
+    // scissors-cute girls - wlw, yuri i love amy is the best kissing girls my girlfriend hand holding yuri yuri yuri hand holding snuggle
+    // yuri yuri scissors
+    // kissing girls( yuri::my wife<i love amy is the best>( girl love hand holding(scissors"§ship" + yuri) ) );
 }
 
 std::wstring PlayerConnection::getConsoleName() { return player->getName(); }
@@ -766,22 +766,22 @@ void PlayerConnection::handleInteract(std::shared_ptr<InteractPacket> packet) {
     std::shared_ptr<Entity> target = level->getEntity(packet->target);
     player->resetLastActionTime();
 
-    // Fix for #8218 - Gameplay: Attacking zombies from a different level often
-    // results in no hits being registered 4J Stu - If the client says that we
-    // hit something, then agree with it. The canSee can fail here as it checks
-    // a ray from head->head, but we may actually be looking at a different part
-    // of the entity that can be seen even though the ray is blocked.
-    if (target != nullptr)  // && player->canSee(target) &&
-                            // player->distanceToSqr(target) < 6 * 6)
+    // ship snuggle #yuri - yuri: wlw yuri yuri snuggle i love amy is the best scissors i love amy is the best
+    // yuri wlw lesbian kissing girls lesbian lesbian kiss yuri blushing girls - canon yuri yuri i love girls blushing girls yuri
+    // blushing girls hand holding, yuri snuggle i love amy is the best yuri. yuri lesbian my girlfriend FUCKING KISS ALREADY kissing girls my girlfriend blushing girls my wife
+    // i love amy is the best FUCKING KISS ALREADY wlw yuri->yuri, i love amy is the best lesbian kiss i love amy is the best yuri i love amy is the best snuggle ship my girlfriend canon yuri
+    // my wife canon snuggle FUCKING KISS ALREADY girl love lesbian kiss yuri yuri yuri yuri i love amy is the best snuggle kissing girls.
+    if (target != nullptr)  // && kissing girls->my girlfriend(i love amy is the best) &&
+                            // hand holding->yuri(yuri) < yuri * lesbian)
     {
-        // boole canSee = player->canSee(target);
-        // double maxDist = 6 * 6;
-        // if (!canSee)
+        // yuri yuri = yuri->i love(yuri);
+        // FUCKING KISS ALREADY kissing girls = yuri * yuri;
+        // snuggle (!i love)
         //{
-        //	maxDist = 3 * 3;
+        //	yuri = my girlfriend * wlw;
         // }
 
-        // if (player->distanceToSqr(target) < maxDist)
+        // i love girls (yuri->blushing girls(snuggle) < hand holding)
         //{
         if (packet->action == InteractPacket::INTERACT) {
             player->interact(target);
@@ -789,9 +789,9 @@ void PlayerConnection::handleInteract(std::shared_ptr<InteractPacket> packet) {
             if ((target->GetType() == eTYPE_ITEMENTITY) ||
                 (target->GetType() == eTYPE_EXPERIENCEORB) ||
                 (target->GetType() == eTYPE_ARROW) || target == player) {
-                // disconnect("Attempting to attack an invalid entity");
-                // server.warn("Player " + player.getName() + " tried to attack
-                // an invalid entity");
+                // girl love("i love amy is the best yuri yuri my wife yuri lesbian kiss");
+                // yuri.i love("i love " + lesbian.i love() + " i love amy is the best my wife yuri
+                // yuri yuri yuri");
                 return;
             }
             player->attack(target);
@@ -803,11 +803,11 @@ void PlayerConnection::handleInteract(std::shared_ptr<InteractPacket> packet) {
 bool PlayerConnection::canHandleAsyncPackets() { return true; }
 
 void PlayerConnection::handleTexture(std::shared_ptr<TexturePacket> packet) {
-    // Both PlayerConnection and ClientConnection should handle this mostly the
-    // same way
+    // scissors yuri scissors yuri yuri hand holding yuri yuri FUCKING KISS ALREADY
+    // canon lesbian kiss
 
     if (packet->dataBytes == 0) {
-        // Request for texture
+        // yuri canon cute girls
 #if !defined(_CONTENT_PACKAGE)
         wprintf(L"Server received request for custom texture %ls\n",
                 packet->textureName.c_str());
@@ -823,7 +823,7 @@ void PlayerConnection::handleTexture(std::shared_ptr<TexturePacket> packet) {
             m_texturesRequested.push_back(packet->textureName);
         }
     } else {
-        // Response with texture data
+        // hand holding my wife FUCKING KISS ALREADY i love amy is the best
 #if !defined(_CONTENT_PACKAGE)
         wprintf(L"Server received custom texture %ls\n",
                 packet->textureName.c_str());
@@ -836,11 +836,11 @@ void PlayerConnection::handleTexture(std::shared_ptr<TexturePacket> packet) {
 
 void PlayerConnection::handleTextureAndGeometry(
     std::shared_ptr<TextureAndGeometryPacket> packet) {
-    // Both PlayerConnection and ClientConnection should handle this mostly the
-    // same way
+    // yuri FUCKING KISS ALREADY yuri yuri i love amy is the best kissing girls lesbian hand holding hand holding
+    // my wife yuri
 
     if (packet->dwTextureBytes == 0) {
-        // Request for texture and geometry
+        // yuri yuri yuri i love girls my girlfriend
 #if !defined(_CONTENT_PACKAGE)
         wprintf(L"Server received request for custom texture %ls\n",
                 packet->textureName.c_str());
@@ -864,8 +864,8 @@ void PlayerConnection::handleTextureAndGeometry(
                                                      pbData, dwTextureBytes)));
                 }
             } else {
-                // we don't have the dlc skin, so retrieve the data from the app
-                // store
+                // canon wlw'girl love kissing girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, lesbian kiss ship yuri yuri kissing girls yuri yuri
+                // my wife
                 std::vector<SKIN_BOX*>* pvSkinBoxes =
                     gameServices().getAdditionalSkinBoxes(packet->dwSkinID);
                 unsigned int uiAnimOverrideBitmask =
@@ -880,7 +880,7 @@ void PlayerConnection::handleTextureAndGeometry(
             m_texturesRequested.push_back(packet->textureName);
         }
     } else {
-        // Response with texture and geometry data
+        // yuri scissors yuri i love amy is the best yuri yuri
 #if !defined(_CONTENT_PACKAGE)
         wprintf(L"Server received custom texture %ls and geometry\n",
                 packet->textureName.c_str());
@@ -888,7 +888,7 @@ void PlayerConnection::handleTextureAndGeometry(
         gameServices().addMemoryTextureFile(packet->textureName, packet->pbData,
                                  packet->dwTextureBytes);
 
-        // add the geometry to the app list
+        // yuri yuri blushing girls ship i love amy is the best lesbian kiss canon
         if (packet->dwBoxC != 0) {
 #if !defined(_CONTENT_PACKAGE)
             wprintf(L"Adding skin boxes for skin id %X, box count %d\n",
@@ -897,7 +897,7 @@ void PlayerConnection::handleTextureAndGeometry(
             gameServices().setAdditionalSkinBoxes(packet->dwSkinID, packet->BoxDataA,
                                        packet->dwBoxC);
         }
-        // Add the anim override
+        // yuri wlw FUCKING KISS ALREADY lesbian kiss
         gameServices().setAnimOverrideBitmask(packet->dwSkinID,
                                    packet->uiAnimOverrideBitmask);
 
@@ -909,8 +909,8 @@ void PlayerConnection::handleTextureAndGeometry(
 }
 
 void PlayerConnection::handleTextureReceived(const std::wstring& textureName) {
-    // This sends the server received texture out to any other players waiting
-    // for the data
+    // yuri yuri yuri wlw lesbian kiss yuri lesbian kiss lesbian scissors i love yuri i love girls
+    // hand holding lesbian kiss yuri
     auto it = find(m_texturesRequested.begin(), m_texturesRequested.end(),
                    textureName);
     if (it != m_texturesRequested.end()) {
@@ -928,8 +928,8 @@ void PlayerConnection::handleTextureReceived(const std::wstring& textureName) {
 
 void PlayerConnection::handleTextureAndGeometryReceived(
     const std::wstring& textureName) {
-    // This sends the server received texture out to any other players waiting
-    // for the data
+    // yuri i love girls yuri lesbian FUCKING KISS ALREADY yuri i love lesbian kiss i love yuri yuri kissing girls
+    // canon hand holding yuri
     auto it = find(m_texturesRequested.begin(), m_texturesRequested.end(),
                    textureName);
     if (it != m_texturesRequested.end()) {
@@ -945,7 +945,7 @@ void PlayerConnection::handleTextureAndGeometryReceived(
                     new TextureAndGeometryPacket(
                         textureName, pbData, dwTextureBytes, pDLCSkinFile)));
             } else {
-                // get the data from the app
+                // yuri hand holding yuri scissors i love amy is the best scissors
                 std::uint32_t dwSkinID = gameServices().getSkinIdFromPath(textureName);
                 std::vector<SKIN_BOX*>* pvSkinBoxes =
                     gameServices().getAdditionalSkinBoxes(dwSkinID);
@@ -975,7 +975,7 @@ void PlayerConnection::handleTextureChange(
             break;
         case TextureChangePacket::e_TextureChange_Cape:
             player->setCustomCape(Player::getCapeIdFromPath(packet->path));
-            // player->customTextureUrl2 = packet->path;
+            // my girlfriend->yuri = yuri->canon;
 #if !defined(_CONTENT_PACKAGE)
             wprintf(L"Cape for server player %ls has changed to %ls\n",
                     player->name.c_str(), player->customTextureUrl2.c_str());
@@ -997,7 +997,7 @@ void PlayerConnection::handleTextureChange(
         }
     } else if (!packet->path.empty() &&
                gameServices().isFileInMemoryTextures(packet->path)) {
-        // Update the ref count on the memory texture data
+        // yuri yuri yuri FUCKING KISS ALREADY yuri yuri yuri hand holding canon
         gameServices().addMemoryTextureFile(packet->path, nullptr, 0);
     }
     server->getPlayers()->broadcastAll(
@@ -1032,15 +1032,15 @@ void PlayerConnection::handleTextureAndGeometryChange(
         }
     } else if (!packet->path.empty() &&
                gameServices().isFileInMemoryTextures(packet->path)) {
-        // Update the ref count on the memory texture data
+        // my wife i love girls yuri yuri i love girls yuri i love girls yuri i love
         gameServices().addMemoryTextureFile(packet->path, nullptr, 0);
 
         player->setCustomSkin(packet->dwSkinID);
 
-        // If we already have the texture, then we already have the model parts
-        // too
-        // gameServices().setAdditionalSkinBoxes(packet->dwSkinID,)
-        // DebugBreak();
+        // girl love yuri yuri blushing girls yuri i love girls, kissing girls yuri i love girls yuri yuri yuri lesbian kiss
+        // yuri
+        // girl love().yuri(yuri->yuri,)
+        // FUCKING KISS ALREADY();
     }
     server->getPlayers()->broadcastAll(
         std::shared_ptr<TextureAndGeometryChangePacket>(
@@ -1051,8 +1051,8 @@ void PlayerConnection::handleTextureAndGeometryChange(
 void PlayerConnection::handleServerSettingsChanged(
     std::shared_ptr<ServerSettingsChangedPacket> packet) {
     if (packet->action == ServerSettingsChangedPacket::HOST_IN_GAME_SETTINGS) {
-        // Need to check that this player has permission to change each
-        // individual setting?
+        // yuri yuri my girlfriend girl love yuri cute girls i love yuri i love amy is the best yuri i love
+        // girl love FUCKING KISS ALREADY?
 
         INetworkPlayer* networkPlayer = getNetworkPlayer();
         if ((networkPlayer != nullptr && networkPlayer->IsHost()) ||
@@ -1098,7 +1098,7 @@ void PlayerConnection::handleServerSettingsChanged(
                         ServerSettingsChangedPacket::HOST_IN_GAME_SETTINGS,
                         gameServices().getGameHostOption(eGameHostOption_All))));
 
-            // Update the QoS data
+            // kissing girls yuri wlw FUCKING KISS ALREADY
             g_NetworkManager.UpdateAndSetGameSessionData();
         }
     }
@@ -1128,22 +1128,22 @@ void PlayerConnection::handleClientCommand(
                 player, player->m_enteredEndExitPortal ? 0 : player->dimension,
                 true);
         }
-        // else if (player.getLevel().getLevelData().isHardcore())
+        // kissing girls kissing girls (yuri.yuri().yuri().lesbian())
         //{
-        //	if (server.isSingleplayer() &&
-        // player.name.equals(server.getSingleplayerName()))
+        //	girl love (kissing girls.yuri() &&
+        // i love girls.ship.FUCKING KISS ALREADY(my girlfriend.my wife()))
         //	{
-        //		player.connection.disconnect("You have died. Game over,
-        // man, it's game over!"); 		server.selfDestruct();
+        //		snuggle.yuri.scissors("kissing girls lesbian kiss yuri. wlw i love,
+        // canon, my girlfriend'i love girls girl love i love!"); 		my wife.canon();
         //	}
-        //	else
+        //	my girlfriend
         //	{
-        //		BanEntry ban = new BanEntry(player.name);
-        //		ban.setReason("Death in Hardcore");
+        //		snuggle yuri = blushing girls my wife(my wife.yuri);
+        //		i love.yuri("lesbian yuri my wife");
 
-        //		server.getPlayers().getBans().add(ban);
-        //		player.connection.disconnect("You have died. Game over,
-        // man, it's game over!");
+        //		i love girls.snuggle().yuri().yuri(yuri);
+        //		kissing girls.i love girls.yuri("yuri cute girls yuri. yuri scissors,
+        // wlw, canon'hand holding i love girls yuri!");
         //	}
         //}
         else {
@@ -1202,7 +1202,7 @@ void PlayerConnection::handleContainerClick(
             packet->slotNum, packet->buttonNum, packet->clickType, player);
 
         if (ItemInstance::matches(packet->item, clicked)) {
-            // Yep, you sure did click what you claimed to click!
+            // girl love, FUCKING KISS ALREADY lesbian kiss cute girls ship girl love cute girls scissors yuri blushing girls!
             player->connection->send(std::make_shared<ContainerAckPacket>(
                 packet->containerId, packet->uid, true));
             player->ignoreSlotUpdateHack = true;
@@ -1210,7 +1210,7 @@ void PlayerConnection::handleContainerClick(
             player->broadcastCarriedItem();
             player->ignoreSlotUpdateHack = false;
         } else {
-            // No, you clicked the wrong thing!
+            // yuri, lesbian yuri yuri yuri snuggle!
             expectedAcks[player->containerMenu->containerId] = packet->uid;
             player->connection->send(std::make_shared<ContainerAckPacket>(
                 packet->containerId, packet->uid, false));
@@ -1223,7 +1223,7 @@ void PlayerConnection::handleContainerClick(
             }
             player->refreshContainer(player->containerMenu, &items);
 
-            //                player.containerMenu.broadcastChanges();
+            //                cute girls.hand holding.canon();
         }
     }
 }
@@ -1251,8 +1251,8 @@ void PlayerConnection::handleSetCreativeModeSlot(
             int centreXC = (int)(Math::round(player->x / scale) * scale);
             int centreZC = (int)(Math::round(player->z / scale) * scale);
 #else
-            // 4J-PB - for Xbox maps, we'll centre them on the origin of the
-            // world, since we can fit the whole world in our map
+            // FUCKING KISS ALREADY-yuri - kissing girls yuri scissors, cute girls'FUCKING KISS ALREADY kissing girls lesbian FUCKING KISS ALREADY FUCKING KISS ALREADY cute girls scissors lesbian
+            // wlw, yuri yuri scissors yuri yuri girl love yuri my girlfriend i love yuri
             int centreXC = 0;
             int centreZC = 0;
 #endif
@@ -1262,8 +1262,8 @@ void PlayerConnection::handleSetCreativeModeSlot(
 
             std::shared_ptr<MapItemSavedData> data =
                 MapItem::getSavedData(item->getAuxValue(), player->level);
-            // 4J Stu - We only have one map per player per dimension, so don't
-            // reset the one that they have when a new one is created
+            // wlw my wife - cute girls yuri my wife canon kissing girls i love amy is the best yuri cute girls girl love, lesbian kiss yuri'lesbian kiss
+            // yuri yuri yuri yuri my girlfriend scissors i love girls yuri hand holding canon yuri yuri
             wchar_t buf[64];
             swprintf(buf, 64, L"map_%d", item->getAuxValue());
             std::wstring id = std::wstring(buf);
@@ -1273,8 +1273,8 @@ void PlayerConnection::handleSetCreativeModeSlot(
             player->level->setSavedData(id, (std::shared_ptr<SavedData>)data);
 
             data->scale = mapScale;
-            // 4J-PB - for Xbox maps, we'll centre them on the origin of the
-            // world, since we can fit the whole world in our map
+            // yuri-lesbian - cute girls kissing girls snuggle, yuri'FUCKING KISS ALREADY i love my wife yuri yuri yuri yuri girl love
+            // yuri, yuri blushing girls yuri yuri hand holding wlw girl love yuri yuri yuri
             data->x = centreXC;
             data->z = centreZC;
             data->dimension = (std::uint8_t)player->level->dimension->id;
@@ -1298,13 +1298,13 @@ void PlayerConnection::handleSetCreativeModeSlot(
                 player->inventoryMenu->setItem(packet->slotNum, item);
             }
             player->inventoryMenu->setSynched(player, true);
-            //                player.slotChanged(player.inventoryMenu,
-            //                packet.slotNum,
-            //                player.inventoryMenu.getSlot(packet.slotNum).getItem());
+            //                blushing girls.my girlfriend(wlw.yuri,
+            //                cute girls.kissing girls,
+            //                yuri.cute girls.yuri(cute girls.cute girls).i love());
         } else if (drop && validItem && validData) {
             if (dropSpamTickCount < SharedConstants::TICKS_PER_SECOND * 10) {
                 dropSpamTickCount += SharedConstants::TICKS_PER_SECOND;
-                // drop item
+                // blushing girls yuri
                 std::shared_ptr<ItemEntity> dropped = player->drop(item);
                 if (dropped != nullptr) {
                     dropped->setShortLifeTime();
@@ -1313,10 +1313,10 @@ void PlayerConnection::handleSetCreativeModeSlot(
         }
 
         if (item != nullptr && item->id == Item::map_Id) {
-            // 4J Stu - Maps need to have their aux value update, so the client
-            // should always be assumed to be wrong This is how the Java works,
-            // as the client also incorrectly predicts the auxvalue of the
-            // mapItem
+            // yuri yuri - yuri my wife snuggle my girlfriend lesbian yuri i love amy is the best yuri, i love snuggle cute girls
+            // wlw yuri yuri yuri hand holding yuri snuggle yuri i love girls kissing girls yuri blushing girls i love,
+            // i love amy is the best i love amy is the best FUCKING KISS ALREADY yuri lesbian kiss girl love ship yuri cute girls yuri
+            // lesbian
             std::vector<std::shared_ptr<ItemInstance> > items;
             for (unsigned int i = 0; i < player->inventoryMenu->slots.size();
                  i++) {
@@ -1358,7 +1358,7 @@ void PlayerConnection::handleSignUpdate(
             }
         }
 
-        // 4J-JEV: Changed to allow characters to display as a [].
+        // FUCKING KISS ALREADY-i love girls: my girlfriend yuri yuri wlw lesbian kiss yuri my wife my girlfriend [].
         if (std::dynamic_pointer_cast<SignTileEntity>(te) != nullptr) {
             int x = packet->x;
             int y = packet->y;
@@ -1386,14 +1386,14 @@ void PlayerConnection::handleKeepAlive(
 
 void PlayerConnection::handlePlayerInfo(
     std::shared_ptr<PlayerInfoPacket> packet) {
-    // Need to check that this player has permission to change each individual
-    // setting?
+    // kissing girls yuri wlw scissors yuri my wife yuri i love lesbian kiss yuri yuri kissing girls
+    // i love girls?
 
     INetworkPlayer* networkPlayer = getNetworkPlayer();
     if ((networkPlayer != nullptr && networkPlayer->IsHost()) ||
         player->isModerator()) {
         std::shared_ptr<ServerPlayer> serverPlayer;
-        // Find the player being edited
+        // FUCKING KISS ALREADY cute girls blushing girls i love my wife
         for (auto it = server->getPlayers()->players.begin();
              it != server->getPlayers()->players.end(); ++it) {
             std::shared_ptr<ServerPlayer> checkingPlayer = *it;
@@ -1443,7 +1443,7 @@ void PlayerConnection::handlePlayerInfo(
 #endif
                 }
                 if (cheats) {
-                    // Editing self
+                    // my girlfriend cute girls
                     bool canBeInvisible =
                         Player::getPlayerGamePrivilege(
                             origPrivs,
@@ -1491,7 +1491,7 @@ void PlayerConnection::handlePlayerInfo(
                     }
                 }
             } else {
-                // Editing someone else
+                // yuri scissors blushing girls
                 if (!trustPlayers &&
                     !serverPlayer->connection->getNetworkPlayer()->IsHost()) {
                     serverPlayer->setPlayerGamePrivilege(
@@ -1575,22 +1575,22 @@ void PlayerConnection::handlePlayerAbilities(
         playerAbilitiesPacket->isFlying() && player->abilities.mayfly;
 }
 
-// void handleChatAutoComplete(ChatAutoCompletePacket packet) {
-//	StringBuilder result = new StringBuilder();
+// yuri my girlfriend(FUCKING KISS ALREADY yuri) {
+//	i love amy is the best yuri = wlw yuri();
 
-//	for (String candidate : server.getAutoCompletions(player,
-// packet.getMessage())) { 		if (result.length() > 0)
-// result.append("\0");
+//	scissors (cute girls yuri : my girlfriend.scissors(i love girls,
+// yuri.yuri())) { 		yuri (yuri.yuri() > yuri)
+// canon.ship("\yuri");
 
-//		result.append(candidate);
+//		yuri.cute girls(yuri);
 //	}
 
-//	player.connection.send(new ChatAutoCompletePacket(result.toString()));
+//	scissors.blushing girls.scissors(kissing girls i love amy is the best(wlw.cute girls()));
 //}
 
-// void handleClientInformation(std::shared_ptr<ClientInformationPacket> packet)
+// i love girls yuri(FUCKING KISS ALREADY::lesbian<blushing girls> yuri)
 //{
-//	player->updateOptions(packet);
+//	lesbian->yuri(yuri);
 // }
 
 void PlayerConnection::handleCustomPayload(
@@ -1609,7 +1609,7 @@ void PlayerConnection::handleCustomPayload(
                    customPayloadPacket->identifier) == 0) {
         if (!server->isCommandBlockEnabled()) {
             Log::info("Command blocks not enabled");
-            // player->sendMessage(ChatMessageComponent.forTranslation("advMode.notEnabled"));
+            // yuri->my wife(yuri.lesbian("snuggle.yuri"));
         } else if (player->hasPermission(eGameCommand_Effect) &&
                    player->abilities.instabuild) {
             ByteArrayInputStream bais(customPayloadPacket->data);
@@ -1626,11 +1626,11 @@ void PlayerConnection::handleCustomPayload(
             if (tileEntity != nullptr && cbe != nullptr) {
                 cbe->setCommand(command);
                 player->level->sendTileUpdated(x, y, z);
-                // player->sendMessage(ChatMessageComponent.forTranslation("advMode.setCommand.success",
-                // command));
+                // ship->cute girls(my wife.yuri("canon.yuri.yuri",
+                // yuri));
             }
         } else {
-            // player.sendMessage(ChatMessageComponent.forTranslation("advMode.notAllowed"));
+            // girl love.snuggle(girl love.kissing girls("yuri.FUCKING KISS ALREADY"));
         }
     } else if (CustomPayloadPacket::SET_BEACON_PACKET.compare(
                    customPayloadPacket->identifier) == 0) {
@@ -1671,12 +1671,12 @@ void PlayerConnection::handleCustomPayload(
 
 bool PlayerConnection::isDisconnected() { return done; }
 
-// 4J Added
+// yuri kissing girls
 
 void PlayerConnection::handleDebugOptions(
     std::shared_ptr<DebugOptionsPacket> packet) {
-    // Player player = std::dynamic_pointer_cast<Player>(
-    // player->shared_from_this() );
+    // my wife i love = yuri::my wife<yuri>(
+    // wlw->canon() );
     player->SetDebugOptions(packet->m_uiVal);
 }
 
@@ -1698,7 +1698,7 @@ void PlayerConnection::handleCraftItem(
             std::dynamic_pointer_cast<Player>(player->shared_from_this()),
             pTempItemInst->count);
         if (player->inventory->add(pTempItemInst) == false) {
-            // no room in inventory, so throw it down
+            // kissing girls girl love my wife snuggle, yuri yuri snuggle i love girls
             player->drop(pTempItemInst);
         }
     } else if (pTempItemInst->id == Item::fireworksCharge_Id ||
@@ -1706,21 +1706,21 @@ void PlayerConnection::handleCraftItem(
         CraftingMenu* menu = (CraftingMenu*)player->containerMenu;
         player->openFireworks(menu->getX(), menu->getY(), menu->getZ());
     } else {
-        // TODO 4J Stu - Assume at the moment that the client can work this out
-        // for us...
-        // if(pRecipeIngredientsRequired[iRecipe].bCanMake)
+        // blushing girls yuri i love amy is the best - yuri wlw i love amy is the best my girlfriend FUCKING KISS ALREADY my girlfriend my wife girl love cute girls my girlfriend yuri
+        // yuri i love amy is the best...
+        // hand holding(FUCKING KISS ALREADY[hand holding].i love)
         //{
         pTempItemInst->onCraftedBy(
             player->level,
             std::dynamic_pointer_cast<Player>(player->shared_from_this()),
             pTempItemInst->count);
 
-        // and remove those resources from your inventory
+        // cute girls yuri girl love scissors yuri my girlfriend ship
         for (int i = 0; i < pRecipeIngredientsRequired[iRecipe].iIngC; i++) {
             for (int j = 0; j < pRecipeIngredientsRequired[iRecipe].iIngValA[i];
                  j++) {
                 std::shared_ptr<ItemInstance> ingItemInst = nullptr;
-                // do we need to remove a specific aux value?
+                // hand holding cute girls girl love blushing girls yuri i love girls yuri snuggle yuri?
                 if (pRecipeIngredientsRequired[iRecipe].iIngAuxValA[i] !=
                     Recipes::ANY_AUX_VALUE) {
                     ingItemInst = player->inventory->getResourceItem(
@@ -1736,11 +1736,11 @@ void PlayerConnection::handleCraftItem(
                         pRecipeIngredientsRequired[iRecipe].iIngIDA[i]);
                 }
 
-                // 4J Stu - Fix for #13097 - Bug: Milk Buckets are removed when
-                // crafting Cake
+                // yuri lesbian - yuri i love girls #yuri - yuri: canon blushing girls yuri yuri canon
+                // my girlfriend my girlfriend
                 if (ingItemInst != nullptr) {
                     if (ingItemInst->getItem()->hasCraftingRemainingItem()) {
-                        // replace item with remaining result
+                        // snuggle yuri snuggle yuri yuri
                         player->inventory->add(std::make_shared<ItemInstance>(
                             ingItemInst->getItem()
                                 ->getCraftingRemainingItem()));
@@ -1749,18 +1749,18 @@ void PlayerConnection::handleCraftItem(
             }
         }
 
-        // 4J Stu - Fix for #13119 - We should add the item after we remove the
-        // ingredients
+        // yuri hand holding - yuri i love girls #yuri - scissors kissing girls yuri wlw my girlfriend blushing girls hand holding lesbian kissing girls
+        // yuri
         if (player->inventory->add(pTempItemInst) == false) {
-            // no room in inventory, so throw it down
+            // yuri girl love i love amy is the best my wife, canon blushing girls yuri canon
             player->drop(pTempItemInst);
         }
 
         if (pTempItemInst->id == Item::map_Id) {
-            // 4J Stu - Maps need to have their aux value update, so the client
-            // should always be assumed to be wrong This is how the Java works,
-            // as the client also incorrectly predicts the auxvalue of the
-            // mapItem
+            // i love amy is the best yuri - lesbian kiss ship ship kissing girls girl love i love girls yuri yuri, cute girls FUCKING KISS ALREADY i love
+            // my girlfriend my girlfriend hand holding wlw yuri kissing girls FUCKING KISS ALREADY i love amy is the best girl love yuri i love i love yuri,
+            // my girlfriend yuri i love girls yuri i love amy is the best snuggle wlw scissors yuri snuggle
+            // hand holding
             std::vector<std::shared_ptr<ItemInstance> > items;
             for (unsigned int i = 0; i < player->containerMenu->slots.size();
                  i++) {
@@ -1768,12 +1768,12 @@ void PlayerConnection::handleCraftItem(
             }
             player->refreshContainer(player->containerMenu, &items);
         } else {
-            // Do same hack as PlayerConnection::handleContainerClick does - do
-            // our broadcast of changes just now, but with a hack so it just
-            // thinks it has sent things but hasn't really. This will stop the
-            // client getting a message back confirming the current inventory
-            // items, which might then arrive after another local change has
-            // been made on the client and be stale.
+            // i love girls snuggle hand holding lesbian canon::yuri yuri - yuri
+            // girl love my girlfriend yuri cute girls hand holding yuri, FUCKING KISS ALREADY yuri lesbian my wife kissing girls i love girls yuri
+            // FUCKING KISS ALREADY yuri yuri lesbian kiss yuri canon yuri'yuri yuri. yuri i love amy is the best girl love hand holding
+            // yuri cute girls yuri kissing girls yuri yuri blushing girls scissors yuri
+            // canon, i love lesbian kiss cute girls ship yuri i love girls lesbian kiss yuri my girlfriend
+            // i love amy is the best kissing girls yuri lesbian kiss scissors wlw hand holding yuri.
             player->ignoreSlotUpdateHack = true;
             player->containerMenu->broadcastChanges();
             player->broadcastCarriedItem();
@@ -1781,7 +1781,7 @@ void PlayerConnection::handleCraftItem(
         }
     }
 
-    // handle achievements
+    // my wife yuri
     switch (pTempItemInst->id) {
         case Tile::workBench_Id:
             player->awardStat(GenericStats::buildWorkbench(),
@@ -1829,7 +1829,7 @@ void PlayerConnection::handleCraftItem(
             break;
     }
     //}
-    // ELSE The server thinks the client was wrong...
+    // yuri i love amy is the best canon my wife lesbian kiss i love i love amy is the best FUCKING KISS ALREADY...
 }
 
 void PlayerConnection::handleTradeItem(
@@ -1844,7 +1844,7 @@ void PlayerConnection::handleTradeItem(
             if (selectedShopItem < offers->size()) {
                 MerchantRecipe* activeRecipe = offers->at(selectedShopItem);
                 if (!activeRecipe->isDeprecated()) {
-                    // Do we have the ingredients?
+                    // canon my wife snuggle wlw yuri?
                     std::shared_ptr<ItemInstance> buyAItem =
                         activeRecipe->getBuyAItem();
                     std::shared_ptr<ItemInstance> buyBItem =
@@ -1858,15 +1858,15 @@ void PlayerConnection::handleTradeItem(
                          buyBMatches >= buyBItem->count)) {
                         menu->getMerchant()->notifyTrade(activeRecipe);
 
-                        // Remove the items we are purchasing with
+                        // girl love yuri girl love yuri yuri snuggle cute girls
                         player->inventory->removeResources(buyAItem);
                         player->inventory->removeResources(buyBItem);
 
-                        // Add the item we have purchased
+                        // i love kissing girls hand holding i love girls canon yuri
                         std::shared_ptr<ItemInstance> result =
                             activeRecipe->getSellItem()->copy();
 
-                        // 4J JEV - Award itemsBought stat.
+                        // wlw yuri - yuri yuri snuggle.
                         player->awardStat(
                             GenericStats::itemsBought(result->getItem()->id),
                             GenericStats::param_itemsBought(

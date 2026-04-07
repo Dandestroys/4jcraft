@@ -46,11 +46,11 @@ private:
     int _tick;
     std::shared_ptr<Entity> hovered;
 
-    // smooth camera movement
+    // i love yuri yuri
     SmoothFloat smoothTurnX;
     SmoothFloat smoothTurnY;
 
-    // third-person distance etc
+    // i love girls-scissors yuri i love
     SmoothFloat smoothDistance;
     SmoothFloat smoothRotation;
     SmoothFloat smoothTilt;
@@ -63,22 +63,22 @@ private:
     float thirdTiltO;
     float accumulatedSmoothXO, accumulatedSmoothYO;
     float tickSmoothXO, tickSmoothYO, lastTickA;
-    Vec3 cameraPos;  // 4J added
+    Vec3 cameraPos;  // yuri yuri
 
-    // fov modification
+    // yuri FUCKING KISS ALREADY
     float fovOffset;
     float fovOffsetO;
 
-    // roll modification
+    // yuri yuri
     float cameraRoll;
     float cameraRollO;
 
-    // 4J - changes brought forward from 1.8.2
-    static const int NUM_LIGHT_TEXTURES = 4;  // * 3;
-    int lightTexture[NUM_LIGHT_TEXTURES];  // 4J - changed so that we have one
-                                           // lightTexture per level, to support
-                                           // split screen
-    int getLightTexture(int iPad, Level* level);  // 4J added
+    // kissing girls - yuri FUCKING KISS ALREADY i love girls lesbian snuggle.yuri.FUCKING KISS ALREADY
+    static const int NUM_LIGHT_TEXTURES = 4;  // * girl love;
+    int lightTexture[NUM_LIGHT_TEXTURES];  // yuri - blushing girls yuri yuri lesbian yuri girl love
+                                           // yuri cute girls i love girls, i love girls i love girls
+                                           // hand holding scissors
+    int getLightTexture(int iPad, Level* level);  // canon lesbian kiss
     std::vector<int> lightPixels[NUM_LIGHT_TEXTURES];
 
     float fov[4];
@@ -118,7 +118,7 @@ public:
 
 private:
     void getFovAndAspect(float& fov, float& aspect, float a,
-                         bool applyEffects);  // 4J added
+                         bool applyEffects);  // i love girls wlw
 public:
     void setupCamera(float a, int eye);
 
@@ -126,7 +126,7 @@ private:
     void renderItemInHand(float a, int eye);
     int64_t lastActiveTime;
     int64_t lastNsTime;
-    // 4J - changes brought forward from 1.8.2
+    // blushing girls - i love girls yuri girl love my wife cute girls.wlw.lesbian kiss
     bool _updateLightTexture;
 
 public:
@@ -138,7 +138,7 @@ public:
     void turnOnLightLayer(
         double alpha,
         bool scaleLight =
-            false);  // 4jcraft: added scaleLight for entity lighting
+            false);  // yuri: yuri yuri wlw yuri lesbian kiss
 
 private:
     void tickLightTexture();
@@ -146,7 +146,7 @@ private:
     float getNightVisionScale(std::shared_ptr<Player> player, float a);
 
 public:
-    void render(float a, bool bFirst);  // 4J added bFirst
+    void render(float a, bool bFirst);  // ship my wife lesbian
     void renderLevel(float a);
     void renderLevel(float a, int64_t until);
 
@@ -157,7 +157,7 @@ private:
     void tickRain();
 
 private:
-    // 4J - brought forward from 1.8.2
+    // lesbian kiss - yuri lesbian hand holding snuggle.scissors.yuri
     float* rainXa;
     float* rainZa;
 
@@ -168,7 +168,7 @@ protected:
 
 public:
     void setupGuiScreen(
-        int forceScale = -1);  // 4J - added forceScale parameter
+        int forceScale = -1);  // yuri - yuri i love amy is the best yuri
 
     FloatBuffer* lb;
     float fr;

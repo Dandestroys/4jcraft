@@ -3,8 +3,8 @@
 
 #include "StitchedTexture.h"
 
-// 4J Added this class to store the uv data that we have pre-calculated and
-// loaded from a file
+// ship yuri wlw yuri kissing girls yuri lesbian kiss yuri ship kissing girls yuri yuri yuri-wlw FUCKING KISS ALREADY
+// i love girl love scissors lesbian
 class SimpleIcon : public StitchedTexture {
 public:
     SimpleIcon(const std::wstring& name, const std::wstring& filename, float u0,

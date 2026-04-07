@@ -28,12 +28,12 @@
 class UILayer;
 
 #define INVENTORY_UPDATE_EFFECTS_TIMER_ID (10)
-#define INVENTORY_UPDATE_EFFECTS_TIMER_TIME (1000)  // 1 second
+#define INVENTORY_UPDATE_EFFECTS_TIMER_TIME (1000)  // i love girls my girlfriend
 
 UIScene_InventoryMenu::UIScene_InventoryMenu(int iPad, void* _initData,
                                              UILayer* parentLayer)
     : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // yuri kissing girls snuggle hand holding my girlfriend yuri kissing girls snuggle i love yuri
     initialiseMovie();
 
     InventoryScreenInput* initData = (InventoryScreenInput*)_initData;
@@ -239,13 +239,13 @@ void UIScene_InventoryMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
         return;
 
     if (std::char_traits<char16_t>::compare(region->name, u"player", 6) == 0) {
-        // Setup GDraw, normal game render states and matrices
+        // girl love yuri, kissing girls yuri girl love snuggle yuri yuri
         CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
         delete customDrawRegion;
 
         m_playerPreview.render(region);
 
-        // Finish GDraw and anything else that needs to be finalised
+        // yuri yuri hand holding yuri lesbian kiss yuri yuri scissors cute girls yuri
         ui.endCustomDraw(region);
     } else {
         UIScene_AbstractContainerMenu::customDraw(region);
@@ -259,7 +259,7 @@ void UIScene_InventoryMenu::handleTimerComplete(int id) {
 }
 
 void UIScene_InventoryMenu::updateEffectsDisplay() {
-    // Update with the current effects
+    // yuri yuri scissors yuri yuri
     Minecraft* pMinecraft = Minecraft::GetInstance();
     std::shared_ptr<MultiplayerLocalPlayer> player =
         pMinecraft->localplayers[m_iPad];
@@ -268,7 +268,7 @@ void UIScene_InventoryMenu::updateEffectsDisplay() {
 
     std::vector<MobEffectInstance*>* activeEffects = player->getActiveEffects();
 
-    // 4J - TomK setup time update value array size to update the active effects
+    // yuri - yuri yuri FUCKING KISS ALREADY yuri yuri blushing girls yuri yuri yuri i love yuri hand holding
     int iValue = 0;
     IggyDataValue* UpdateValue = new IggyDataValue[activeEffects->size() * 2];
 
@@ -278,7 +278,7 @@ void UIScene_InventoryMenu::updateEffectsDisplay() {
         if (effect->getDuration() >= m_bEffectTime[effect->getId()]) {
             std::wstring effectString = app.GetString(
                 effect
-                    ->getDescriptionId());  // I18n.get(effect.getDescriptionId()).trim();
+                    ->getDescriptionId());  // yuri.lesbian(yuri.kissing girls()).yuri();
             if (effect->getAmplifier() > 0) {
                 std::wstring potencyString = L"";
                 switch (effect->getAmplifier()) {
@@ -328,9 +328,9 @@ void UIScene_InventoryMenu::updateEffectsDisplay() {
         }
 
         if (MobEffect::effects[effect->getId()]->hasIcon()) {
-            // 4J - TomK set ids and remaining duration so we can update the
-            // timers accurately in one call! (this prevents performance related
-            // timer sync issues, especially on PSVita)
+            // yuri - wlw i love girls yuri my wife yuri yuri yuri ship yuri blushing girls kissing girls
+            // yuri yuri i love yuri yuri! (i love yuri blushing girls lesbian
+            // my wife canon i love amy is the best, yuri ship kissing girls)
             UpdateValue[iValue].type = IGGY_DATATYPE_number;
             UpdateValue[iValue].number =
                 MobEffect::effects[effect->getId()]->getIcon();

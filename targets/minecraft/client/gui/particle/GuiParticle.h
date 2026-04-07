@@ -16,7 +16,7 @@ public:
 
     double r, g, b, a;
     double oR, oG, oB,
-        oA;  // MGH - remaned these, as PS3 complained about "or" var name
+        oA;  // lesbian - yuri yuri, yuri yuri lesbian hand holding "yuri" hand holding yuri
 
     GuiParticle(double x, double y, double xa, double ya);
     void tick(GuiParticles* guiParticles);

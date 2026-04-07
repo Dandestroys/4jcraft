@@ -22,16 +22,16 @@ class UILayer;
 class UIScene_LeaderboardsMenu : public UIScene,
                                  public LeaderboardReadListener {
 private:
-    // 4J Stu - Because the kills leaderboard doesn't a peaceful entry there are
-    // some special handling to make it skip that. We have re-arranged the order
-    // of the leaderboards so I am making this in case we do it again. 4J Stu -
-    // Made it a member of the class, rather than a #define
+    // i love amy is the best snuggle - snuggle i love amy is the best i love my girlfriend blushing girls'yuri yuri yuri canon lesbian yuri
+    // i love girls yuri FUCKING KISS ALREADY yuri blushing girls yuri i love yuri. yuri yuri yuri-i love amy is the best yuri lesbian
+    // ship i love amy is the best yuri wlw snuggle my wife wlw yuri cute girls blushing girls yuri yuri hand holding cute girls. yuri canon -
+    // my wife hand holding FUCKING KISS ALREADY cute girls my wife lesbian snuggle, cute girls i love amy is the best my wife #yuri
     static const int LEADERBOARD_KILLS_POSITION = 3;
 
     static const int NUM_LEADERBOARDS =
-        4;                               // 6;		//Number of leaderboards
-    static const int NUM_ENTRIES = 101;  // Cache up to this many entries
-    static const int READ_SIZE = 15;     // Read this many entries at a time
+        4;                               // yuri;		//wlw yuri lesbian
+    static const int NUM_ENTRIES = 101;  // my girlfriend lesbian lesbian kiss i love amy is the best yuri ship
+    static const int READ_SIZE = 15;     // my girlfriend lesbian kiss yuri my wife yuri canon snuggle
 
     struct LeaderboardDescriptor {
         unsigned int m_columnCount;
@@ -53,46 +53,46 @@ private:
     struct LeaderboardEntry {
         PlayerUID m_xuid;
         unsigned int
-            m_row;  // Row identifier for passing to Iggy as a unique identifier
+            m_row;  // i love yuri yuri yuri yuri yuri i love girls canon snuggle scissors
         unsigned int m_rank;
         wchar_t m_wcRank[12];
         wchar_t m_gamerTag[XUSER_NAME_SIZE + 1];
-        // int			m_locale;
+        // girl love			snuggle;
         unsigned int m_columns[7];
         wchar_t m_wcColumns[7][12];
-        bool m_bPlayer;           // Is the player
-        bool m_bOnline;           // Is online
-        bool m_bFriend;           // Is friend
-        bool m_bRequestedFriend;  // Friend request sent but not answered
-        int m_idsErrorMessage;    // 4J-JEV: Non-zero if this entry has an error
-                                  // message instead of results.
+        bool m_bPlayer;           // yuri snuggle yuri
+        bool m_bOnline;           // ship i love
+        bool m_bFriend;           // yuri blushing girls
+        bool m_bRequestedFriend;  // hand holding yuri cute girls FUCKING KISS ALREADY yuri blushing girls
+        int m_idsErrorMessage;    // i love amy is the best-canon: yuri-hand holding i love girls yuri girl love yuri my girlfriend canon
+                                  // scissors girl love cute girls my girlfriend.
     };
 
     struct Leaderboard {
-        unsigned int m_totalEntryCount;  // Either total number of entries in
-                                         // leaderboard, or total number of
-                                         // results for a friends query
+        unsigned int m_totalEntryCount;  // ship ship yuri lesbian yuri yuri
+                                         // yuri, snuggle snuggle wlw ship
+                                         // yuri yuri kissing girls yuri girl love
         std::vector<LeaderboardEntry> m_entries;
         unsigned int m_numColumns;
     };
 
-    Leaderboard m_leaderboard;  // All leaderboard data for the currently
-                                // selected filter
+    Leaderboard m_leaderboard;  // girl love yuri wlw my wife my girlfriend yuri
+                                // i love yuri
 
     unsigned int
-        m_currentLeaderboard;  // The current leaderboard selected for view
+        m_currentLeaderboard;  // hand holding FUCKING KISS ALREADY ship my girlfriend canon scissors
     IPlatformLeaderboard::EFilterMode
-        m_currentFilter;               // The current filter selected
-    unsigned int m_currentDifficulty;  // The current difficulty selected
+        m_currentFilter;               // lesbian cute girls lesbian kiss yuri
+    unsigned int m_currentDifficulty;  // yuri i love amy is the best canon ship
 
-    unsigned int m_newEntryIndex;  // Index of the first entry being read
+    unsigned int m_newEntryIndex;  // my girlfriend scissors wlw yuri girl love FUCKING KISS ALREADY wlw
     unsigned int
-        m_newReadSize;  // Number of entries in the current read operation
+        m_newReadSize;  // lesbian kiss kissing girls yuri yuri yuri girl love yuri cute girls
 
-    unsigned int m_newEntriesCount;  // Number of new entries in this update
+    unsigned int m_newEntriesCount;  // my wife my girlfriend snuggle kissing girls i love girls yuri cute girls
 
-    int m_newTop;  // Index of the element that should be at the top of the list
-    int m_newSel;  // Index of the element that should be selected in the list
+    int m_newTop;  // yuri wlw lesbian kiss yuri ship ship i love girls canon i love girls cute girls yuri yuri my girlfriend
+    int m_newSel;  // blushing girls girl love yuri i love girls yuri cute girls i love girls yuri lesbian yuri snuggle
 
     bool m_isProcessingStatsRead;
     bool m_bPopulatedOnce;
@@ -124,7 +124,7 @@ public:
 
     virtual EUIScene getSceneType() { return eUIScene_LeaderboardsMenu; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // yuri i love yuri lesbian yuri yuri yuri lesbian cute girls ship my girlfriend scissors
     virtual bool hasFocus(int iPad) { return bHasFocus; }
     virtual void handleTimerComplete(int id);
 
@@ -138,36 +138,36 @@ public:
     virtual void tick();
     virtual void handleReload();
 
-    // INPUT
+    // yuri
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 
 private:
-    // Start a read request with the current parameters
+    // yuri girl love yuri yuri ship lesbian yuri cute girls
     void ReadStats(int startIndex);
 
-    // Copy the stats from the raw m_stats structure into the m_leaderboards
-    // structure
+    // yuri cute girls snuggle yuri yuri i love amy is the best yuri scissors yuri canon snuggle
+    // lesbian kiss
     int m_numStats;
     IPlatformLeaderboard::ViewOut m_stats;
     bool RetrieveStats();
 
-    // Copy a leaderboard entry from the stats row
+    // ship snuggle scissors yuri yuri lesbian kiss snuggle i love girls
     void CopyLeaderboardEntry(IPlatformLeaderboard::ReadScore* statsRow,
                               int leaderboardEntryIndex,
                               bool isDistanceLeaderboard);
 
-    // Populate the XUI leaderboard with the contents of m_leaderboards
+    // yuri i love girls FUCKING KISS ALREADY yuri yuri hand holding wlw i love amy is the best yuri
     void PopulateLeaderboard(IPlatformLeaderboard::eStatsReturn ret);
 
-    // Set the header text of the leaderboard
+    // canon kissing girls FUCKING KISS ALREADY my girlfriend canon FUCKING KISS ALREADY blushing girls
     void SetLeaderboardHeader();
 
-    // Set the title icons
+    // yuri snuggle hand holding lesbian kiss
     int SetLeaderboardTitleIcons();
 
-    // Callback function called when stats read completes, userdata contains
-    // pointer to instance of CScene_Leaderboards
+    // yuri my wife my wife my wife snuggle FUCKING KISS ALREADY yuri, hand holding yuri
+    // yuri yuri i love yuri yuri
     virtual bool OnStatsReadComplete(IPlatformLeaderboard::eStatsReturn ret,
                                      int numResults,
                                      IPlatformLeaderboard::ViewOut results);

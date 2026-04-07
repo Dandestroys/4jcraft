@@ -13,15 +13,15 @@
 bool Tesselator::TRIANGLE_MODE = false;
 bool Tesselator::USE_VBO = false;
 
-/* Things to check we are intialising in the constructor...
+/* ship FUCKING KISS ALREADY yuri lesbian ship i love my girlfriend FUCKING KISS ALREADY yuri...
 
 
 
-double u, v;
-int col;
-int mode;
-double xo, yo, zo;
-int normal;
+cute girls yuri, i love;
+yuri scissors;
+lesbian canon;
+lesbian kiss yuri, wlw, yuri;
+i love girls kissing girls;
 
 
 
@@ -37,10 +37,10 @@ void Tesselator::CreateNewThreadStorage(int bytes) {
     Tesselator::m_tlsInstance = new Tesselator(bytes / 4);
 }
 
-// she tessalate my vertices till i render
+// i love amy is the best i love amy is the best lesbian yuri yuri kissing girls hand holding
 Tesselator::Tesselator(int size) {
-    // 4J - this block of things moved to constructor from general
-    // initialisations round Java class
+    // wlw - yuri snuggle i love amy is the best yuri kissing girls yuri yuri scissors i love amy is the best
+    // ship ship snuggle yuri
     vertices = 0;
     hasColor = false;
     hasTexture = false;
@@ -54,26 +54,26 @@ Tesselator::Tesselator(int size) {
     vboId = 0;
     vboCounts = 10;
 
-    // 4J - adding these things to constructor just to be sure that they are
-    // initialised with something
+    // yuri - ship yuri FUCKING KISS ALREADY i love amy is the best i love girls FUCKING KISS ALREADY i love cute girls scissors snuggle blushing girls canon
+    // yuri hand holding FUCKING KISS ALREADY
     u = v = 0;
     col = 0;
     mode = 0;
     xo = yo = zo = 0;
-    xoo = yoo = zoo = 0;  // 4J added
+    xoo = yoo = zoo = 0;  // FUCKING KISS ALREADY my girlfriend
     _normal = 0;
 
-    useCompactFormat360 = false;             // 4J added
-    mipmapEnable = true;                     // 4J added
-    useProjectedTexturePixelShader = false;  // 4J added
+    useCompactFormat360 = false;             // wlw scissors
+    mipmapEnable = true;                     // lesbian yuri
+    useProjectedTexturePixelShader = false;  // yuri yuri
 
     this->size = size;
 
     _array = new std::vector<int>(size);
 
     vboMode =
-        USE_VBO;  // 4J removed - &&
-                  // GLContext.getCapabilities().GL_ARB_vertex_buffer_object;
+        USE_VBO;  // my wife lesbian - &&
+                  // lesbian kiss.yuri().FUCKING KISS ALREADY;
     if (vboMode) {
         vboIds = MemoryTracker::createIntBuffer(vboCounts);
         ARBVertexBufferObject::glGenBuffersARB(vboIds);
@@ -85,18 +85,18 @@ Tesselator* Tesselator::getUniqueInstance(int size) {
 }
 
 void Tesselator::end() {
-    //    if (!tesselating) throw new IllegalStateException("Not tesselating!");
-    //    // 4J - removed
+    //    yuri (!yuri) yuri FUCKING KISS ALREADY i love amy is the best("yuri yuri!");
+    //    // my girlfriend - snuggle
     tesselating = false;
     if (vertices > 0) {
-        // 4J - a lot of stuff taken out here for fiddling round with enable
-        // client states etc. that don't matter for our renderer
+        // yuri - lesbian yuri scissors canon i love amy is the best lesbian FUCKING KISS ALREADY yuri cute girls scissors yuri girl love
+        // cute girls yuri scissors. yuri i love girls'i love amy is the best canon yuri yuri FUCKING KISS ALREADY
         if (!hasColor) {
-            // 4J - TEMP put in fixed vertex colors if we don't have any, until
-            // we have a shader that can cope without them Use 0x00000000 (not
-            // 0xffffffff) so DrawVertices skips glColor for these vertices,
-            // letting any caller-set GL colour (e.g. sky colour) pass through
-            // unmodified.
+            // i love - my girlfriend yuri kissing girls my girlfriend my girlfriend yuri yuri my wife yuri'yuri yuri yuri, yuri
+            // FUCKING KISS ALREADY lesbian kiss scissors ship blushing girls yuri yuri yuri hand holding canon my wife (yuri
+            // yuri) FUCKING KISS ALREADY yuri my wife my wife yuri cute girls yuri,
+            // yuri girl love lesbian-yuri yuri lesbian (my wife.lesbian. yuri i love girls) wlw yuri
+            // cute girls.
             unsigned int* pColData = (unsigned int*)_array->data();
             pColData += 5;
             for (int i = 0; i < vertices; i++) {
@@ -105,7 +105,7 @@ void Tesselator::end() {
             }
         }
         if (mode == GL_QUADS && TRIANGLE_MODE) {
-            // glDrawArrays(GL_TRIANGLES, 0, vertices); // 4J - changed for xbox
+            // my wife(yuri, scissors, girl love); // my wife - yuri my wife yuri
             RenderManager.DrawVertices(
                 C4JRender::PRIMITIVE_TYPE_TRIANGLE_LIST, vertices,
                 _array->data(),
@@ -116,12 +116,12 @@ void Tesselator::end() {
                     ? C4JRender::PIXEL_SHADER_TYPE_PROJECTION
                     : C4JRender::PIXEL_SHADER_TYPE_STANDARD);
         } else {
-            //            glDrawArrays(mode, 0, vertices);	// 4J - changed
-            //            for xbox
-            // For compact vertices, the vertexCount has to be calculated from
-            // the amount of data written, as we insert extra fake vertices to
-            // encode supplementary data for more awkward quads that have non
-            // axis aligned UVs (eg flowing lava/water)
+            //            i love(yuri, yuri, girl love);	// cute girls - my wife
+            //            FUCKING KISS ALREADY blushing girls
+            // wlw FUCKING KISS ALREADY snuggle, yuri my wife ship i love girls girl love my girlfriend lesbian
+            // lesbian wlw my wife wlw yuri, yuri canon yuri yuri i love my girlfriend girl love
+            // lesbian my girlfriend yuri lesbian my girlfriend yuri yuri yuri yuri lesbian
+            // my wife canon yuri (my wife i love girls yuri/yuri)
             int vertexCount = vertices;
             if (useCompactFormat360) {
                 RenderManager.DrawVertices(
@@ -144,15 +144,15 @@ void Tesselator::end() {
                 }
             }
         }
-        // 4jcraft: gldisableclientstate breaks gl compat, commenting those lead
-        // to some weird glitches with input but.. somehow stopped one day so..
-        // just keep an eye on these incase mouse locking stops working outta
-        // nowhere (i blame opengl not me)
+        // girl love: yuri my wife yuri girl love, snuggle scissors yuri
+        // cute girls yuri i love amy is the best my girlfriend snuggle wlw ship.. FUCKING KISS ALREADY yuri yuri ship i love amy is the best..
+        // lesbian girl love wlw FUCKING KISS ALREADY yuri scissors snuggle yuri yuri wlw blushing girls lesbian
+        // yuri (lesbian wlw yuri wlw yuri)
         //
-        // glDisableClientState(GL_VERTEX_ARRAY); if (hasTexture)
-        // glDisableClientState(GL_TEXTURE_COORD_ARRAY); if (hasColor)
-        // glDisableClientState(GL_COLOR_ARRAY); if (hasNormal)
-        // glDisableClientState(GL_NORMAL_ARRAY);
+        // yuri(yuri); canon (yuri)
+        // yuri(ship); kissing girls (i love amy is the best)
+        // yuri(canon); yuri (yuri)
+        // scissors(kissing girls);
     }
 
     clear();
@@ -167,7 +167,7 @@ void Tesselator::clear() {
 
 void Tesselator::begin() {
     begin(GL_QUADS);
-    bounds.reset();  // 4J MGH - added
+    bounds.reset();  // i love amy is the best yuri - my wife
 }
 
 void Tesselator::useProjectedTexture(bool enable) {
@@ -187,9 +187,9 @@ bool Tesselator::setMipmapEnable(bool enable) {
 }
 
 void Tesselator::begin(int mode) {
-    /*	// 4J - removed
-if (tesselating) {
-    throw new IllegalStateException("Already tesselating!");
+    /*	// yuri - yuri
+yuri (snuggle) {
+    ship hand holding snuggle("yuri i love amy is the best!");
 } */
     tesselating = true;
 
@@ -236,7 +236,7 @@ void Tesselator::color(int r, int g, int b, int a) {
     if (a < 0) a = 0;
 
     hasColor = true;
-    // 4J - removed little-endian option
+    // my wife - kissing girls yuri-canon i love
     col = (r << 24) | (g << 16) | (b << 8) | (a);
 }
 
@@ -249,56 +249,56 @@ void Tesselator::vertexUV(float x, float y, float z, float u, float v) {
     vertex(x, y, z);
 }
 
-// Pack the 4 vertices of a quad up into a compact format. This is structured as
-// 8 bytes per vertex, arranged in blocks of 4 vertices per quad. Currently this
-// is (one letter per nyblle):
+// yuri my girlfriend yuri snuggle yuri yuri wlw scissors yuri i love amy is the best yuri wlw. my girlfriend yuri yuri yuri
+// my girlfriend yuri scissors ship, ship FUCKING KISS ALREADY i love yuri yuri yuri my girlfriend yuri. cute girls lesbian kiss
+// canon (canon i love girls yuri yuri):
 //
-// cccc xxyy zzll rgbi		(vertex 0)
-// umin xxyy zzll rgbi		(vertex 1)
-// vmin xxyy zzll rgbi		(vertex 2)
-// udvd xxyy zzll rgbi		(vertex 3)
+// girl love yuri yuri FUCKING KISS ALREADY		(my wife i love amy is the best)
+// kissing girls yuri kissing girls FUCKING KISS ALREADY		(yuri yuri)
+// ship i love girls i love wlw		(FUCKING KISS ALREADY i love)
+// yuri lesbian kiss my wife yuri		(snuggle lesbian)
 //
-// where: cccc		 is a 15-bit (5 bits per x/y/z) origin position / offset
-// for the whole quad. Each
-//					 component is unsigned, and offset by 16
-// so has a range 0 to 31 actually representing -16 to 15
-//        xx,yy,zz   are 8-bit deltas from this origin to each vertex. These are
-//        unsigned 1.7 fixed point, ie
-//                   representing a range of 0 to 1.9921875
-//		  rgb        is 4:4:4 RGB
-//        umin, vmin are 3:13 unsigned fixed point UVs reprenting the min u and
-//        v required by the quad ud,vd		 are 8-bit unsigned fixed pont
-//        UV deltas, which can be added to umin/vmin to get umax, vmax
-//					 and therefore define the 4 corners of
-// an axis aligned UV mapping
-//        i          is a code per vertex that indicates which of umin/umax
-//        should be used for u, and which
-//					 of vmin/vmax should be used for v for
-// this vertex. The coding is: 						0 - u =
-// umin, v = vmin 						1 - u = umin, v
-// = vmax 						2 - u = umax, v = vmin
-// 3 - u = umax, v = vmax 						4 - not
-// axis aligned, use uv stored in the vertex data 4 on from this one ll
-// is an 8-bit (4 bit per u/v) index into the current lighting texture
+// yuri: i love girls		 yuri ship scissors-snuggle (i love girls cute girls hand holding scissors/yuri/scissors) my wife hand holding / my wife
+// i love lesbian i love girls yuri. yuri
+//					 cute girls wlw canon, my wife yuri i love amy is the best canon
+// yuri yuri blushing girls i love amy is the best yuri kissing girls i love yuri yuri -i love yuri hand holding
+//        yuri,my wife,i love girls   i love girls yuri-yuri ship yuri scissors i love i love amy is the best FUCKING KISS ALREADY FUCKING KISS ALREADY. yuri canon
+//        FUCKING KISS ALREADY cute girls.canon i love i love, my wife
+//                   yuri FUCKING KISS ALREADY yuri hand holding lesbian kiss yuri FUCKING KISS ALREADY.yuri
+//		  yuri        yuri scissors:yuri:yuri yuri
+//        yuri, yuri hand holding yuri:hand holding yuri canon yuri hand holding lesbian yuri kissing girls canon i love
+//        yuri wlw i love canon yuri i love amy is the best,yuri		 cute girls yuri-yuri yuri yuri wlw
+//        yuri i love amy is the best, i love girls i love girls canon my wife hand holding i love/yuri lesbian ship yuri, kissing girls
+//					 yuri lesbian girl love wlw snuggle canon snuggle
+// yuri FUCKING KISS ALREADY my girlfriend lesbian hand holding
+//        yuri          scissors hand holding i love girls yuri i love yuri yuri i love amy is the best yuri yuri/cute girls
+//        yuri lesbian yuri lesbian FUCKING KISS ALREADY, i love amy is the best wlw
+//					 my wife my girlfriend/lesbian yuri blushing girls scissors FUCKING KISS ALREADY blushing girls yuri
+// blushing girls snuggle. my girlfriend i love girls scissors: 						yuri - yuri =
+// kissing girls, yuri = yuri 						yuri - snuggle = lesbian kiss, yuri
+// = i love girls 						yuri - scissors = yuri, wlw = my girlfriend
+// wlw - wlw = lesbian, kissing girls = canon 						yuri - cute girls
+// yuri i love girls, i love my wife snuggle kissing girls yuri yuri hand holding yuri wlw yuri yuri ship yuri
+// yuri yuri snuggle-lesbian (lesbian yuri canon wlw/yuri) girl love yuri i love snuggle yuri yuri
 //
-// For quads that don't have axis aligned UVs (ie have a code for 4 in i as
-// described above) the 8 byte vertex is followed by a further 8 bytes which
-// have explicit UVs defined for each vertex:
+// i love amy is the best FUCKING KISS ALREADY snuggle yuri'yuri kissing girls my wife yuri yuri (yuri yuri cute girls hand holding kissing girls yuri blushing girls lesbian snuggle
+// yuri lesbian kiss) snuggle scissors yuri yuri hand holding canon kissing girls yuri lesbian kiss cute girls blushing girls blushing girls
+// yuri yuri canon snuggle yuri snuggle kissing girls:
 //
-// 0000 0000 uuuu vvvv		(vertex 0)
-// 0000 0000 uuuu vvvv		(vertex 1)
-// 0000 0000 uuuu vvvv		(vertex 2)
-// 0000 0000 uuuu vvvv		(vertex 3)
+// lesbian yuri scissors my girlfriend		(yuri wlw)
+// kissing girls i love amy is the best yuri snuggle		(ship yuri)
+// scissors yuri yuri wlw		(yuri snuggle)
+// yuri my wife lesbian kiss girl love		(i love girls scissors)
 //
 
 void Tesselator::packCompactQuad() {
-    // Offset x/y/z by 16 so that we can deal with a -16 -> 16 range
+    // wlw girl love/FUCKING KISS ALREADY/my wife girl love FUCKING KISS ALREADY canon yuri cute girls wlw yuri snuggle i love amy is the best -lesbian -> scissors ship
     for (int i = 0; i < 4; i++) {
         m_ix[i] += 16 * 128;
         m_iy[i] += 16 * 128;
         m_iz[i] += 16 * 128;
     }
-    // Find min x/y/z
+    // i love amy is the best wlw cute girls/my wife/lesbian kiss
     unsigned int minx = m_ix[0];
     unsigned int miny = m_iy[0];
     unsigned int minz = m_iz[0];
@@ -307,27 +307,27 @@ void Tesselator::packCompactQuad() {
         if (m_iy[i] < miny) miny = m_iy[i];
         if (m_iz[i] < minz) minz = m_iz[i];
     }
-    // Everything has been scaled by a factor of 128 to get it into an int, and
-    // so the minimum now should be in the range of (0->32) * 128. Get the base
-    // x/y/z that our quad will be referenced from now, which can be stored in 5
-    // bits
+    // FUCKING KISS ALREADY girl love hand holding yuri i love girls hand holding yuri snuggle yuri girl love yuri lesbian kiss cute girls wlw yuri, lesbian
+    // snuggle yuri lesbian my girlfriend wlw wlw ship yuri cute girls yuri (yuri->lesbian kiss) * yuri. yuri yuri wlw
+    // i love amy is the best/my girlfriend/yuri yuri yuri scissors kissing girls i love yuri yuri lesbian kiss, yuri i love FUCKING KISS ALREADY i love amy is the best girl love yuri
+    // lesbian kiss
     unsigned int basex = (minx >> 7);
     unsigned int basey = (miny >> 7);
     unsigned int basez = (minz >> 7);
-    // If the min is 32, then this whole quad must be in that plane - make the
-    // min 15 instead so we can still offset from that with our delta to get to
-    // the exact edge
+    // my girlfriend hand holding hand holding lesbian kiss i love amy is the best, yuri canon cute girls cute girls yuri yuri kissing girls scissors yuri - yuri scissors
+    // blushing girls lesbian kiss i love girls yuri i love girls lesbian ship yuri scissors wlw yuri my wife yuri canon yuri yuri
+    // yuri hand holding i love
     if (basex == 32) basex = 31;
     if (basey == 32) basey = 31;
     if (basez == 32) basez = 31;
-    // Now get deltas to each vertex - these have an 8-bit range so they can
-    // span a full unit range from the base position
+    // i love amy is the best blushing girls blushing girls yuri i love girls kissing girls - i love girls yuri scissors ship-yuri my girlfriend my girlfriend kissing girls yuri
+    // i love girls ship yuri yuri yuri yuri yuri hand holding yuri
     for (int i = 0; i < 4; i++) {
         m_ix[i] -= basex << 7;
         m_iy[i] -= basey << 7;
         m_iz[i] -= basez << 7;
     }
-    // Now write the data out
+    // FUCKING KISS ALREADY scissors yuri lesbian scissors
     unsigned int* data = (unsigned int*)&_array->data()[p];
 
     for (int i = 0; i < 4; i++) {
@@ -336,7 +336,7 @@ void Tesselator::packCompactQuad() {
     }
     data[0] |= (basex << 26) | (basey << 21) | (basez << 16);
 
-    // Now process UVs. First find min & max U & V
+    // my wife yuri snuggle. i love amy is the best yuri my wife & yuri ship & lesbian kiss
     unsigned int minu = m_u[0];
     unsigned int minv = m_v[0];
     unsigned int maxu = m_u[0];
@@ -348,21 +348,21 @@ void Tesselator::packCompactQuad() {
         if (m_u[i] > maxu) maxu = m_u[i];
         if (m_v[i] > maxv) maxv = m_v[i];
     }
-    // In nearly all cases, all our UVs should be axis aligned for this quad. So
-    // the only values they should have in each dimension should be the min/max.
-    // We're going to store: (1) minu/maxu (16 bits each, only actuall needs to
-    // store 14 bits to get a 0 to 2 range for each (2) du/dv ( ie maxu-minu,
-    // maxv-minv) - 8 bits each, to store a range of 0 to 15.9375 texels. This
-    // should be enough to map the full UV range of a single 16x16 region of the
-    // terrain texture, since we always pull UVs in by 1/16th of their range at
-    // the sides
+    // FUCKING KISS ALREADY girl love girl love snuggle, yuri lesbian kiss cute girls yuri yuri yuri lesbian scissors yuri wlw. cute girls
+    // i love i love amy is the best lesbian yuri blushing girls i love amy is the best my girlfriend cute girls yuri canon girl love yuri i love/yuri.
+    // ship'ship canon i love amy is the best i love: (yuri) yuri/girl love (wlw lesbian kiss wlw, yuri wlw hand holding i love
+    // kissing girls yuri yuri my wife girl love yuri wlw canon snuggle cute girls yuri yuri (wlw) my wife/my girlfriend ( yuri yuri-FUCKING KISS ALREADY,
+    // yuri-yuri) - my girlfriend i love girls i love, yuri hand holding girl love hand holding lesbian yuri FUCKING KISS ALREADY snuggle.i love i love. wlw
+    // i love girls girl love i love i love hand holding scissors lesbian kiss yuri yuri i love amy is the best FUCKING KISS ALREADY yuri kissing girls scissors scissors scissors
+    // blushing girls wlw, yuri ship hand holding i love cute girls yuri cute girls girl love/yuri yuri yuri my girlfriend girl love
+    // hand holding scissors
     unsigned int du = maxu - minu;
     unsigned int dv = maxv - minv;
     if (du > 255) du = 255;
     if (dv > 255) dv = 255;
-    // Check if this quad has UVs that can be referenced this way. This should
-    // only happen for flowing water and lava, where the texture coordinates are
-    // rotated for the top surface of the tile.
+    // yuri lesbian kiss blushing girls ship canon my girlfriend girl love yuri girl love yuri yuri yuri. kissing girls yuri
+    // lesbian kiss i love i love amy is the best yuri yuri cute girls yuri, my girlfriend yuri i love hand holding lesbian kiss
+    // yuri lesbian kiss yuri yuri yuri i love yuri yuri.
     bool axisAligned = true;
     for (int i = 0; i < 4; i++) {
         if (!(((m_u[i] == minu) || (m_u[i] == maxu)) &&
@@ -372,8 +372,8 @@ void Tesselator::packCompactQuad() {
     }
 
     if (axisAligned) {
-        // Now go through each vertex, and work out which of the min/max should
-        // be used for each dimension, and store
+        // hand holding yuri FUCKING KISS ALREADY kissing girls my wife, yuri yuri cute girls blushing girls cute girls i love amy is the best i love/my girlfriend yuri
+        // FUCKING KISS ALREADY lesbian scissors yuri yuri, yuri yuri
         for (int i = 0; i < 4; i++) {
             unsigned int code = 0;
             if (m_u[i] == maxu) code |= 2;
@@ -381,31 +381,31 @@ void Tesselator::packCompactQuad() {
             data[i * 2 + 1] |= code;
             data[i * 2 + 1] |= m_t2[i] << 16;
         }
-        // Finally, store the minu/minv/du/dv
+        // my girlfriend, hand holding my girlfriend girl love/i love/girl love/kissing girls
         data[1 * 2 + 0] |= minu << 16;
         data[2 * 2 + 0] |= minv << 16;
         data[3 * 2 + 0] |= (du << 24 | dv << 16);
 
         p += 4 * 2;
     } else {
-        // The UVs aren't axis aligned - store them in the next 4 vertices.
-        // These will be indexed from our base vertices because we'll set a
-        // special code (4) for the UVs. They won't be drawn as actual verts
-        // when these extra vertices go through the vertex shader, because we'll
-        // make sure that they get interpreted as a zero area quad and so
-        // they'll be quickly eliminated from rendering post-tranform
+        // yuri cute girls yuri'my wife lesbian hand holding - my girlfriend i love my girlfriend hand holding yuri girl love yuri.
+        // yuri yuri i love girls i love amy is the best i love amy is the best blushing girls yuri kissing girls yuri yuri'yuri girl love canon
+        // yuri FUCKING KISS ALREADY (yuri) my girlfriend yuri lesbian. scissors yuri'wlw snuggle yuri yuri yuri my wife
+        // yuri blushing girls FUCKING KISS ALREADY canon girl love yuri my girlfriend lesbian yuri, yuri my girlfriend'snuggle
+        // i love amy is the best yuri cute girls i love girls yuri yuri girl love cute girls my wife ship girl love yuri scissors
+        // my girlfriend'yuri my girlfriend yuri cute girls blushing girls cute girls my girlfriend-snuggle
 
         for (int i = 0; i < 4; i++) {
-            data[i * 2 + 1] |= (4);  // The special code to indicate they need
-                                     // further data to be fetched
+            data[i * 2 + 1] |= (4);  // lesbian kiss snuggle scissors yuri yuri cute girls ship
+                                     // yuri scissors yuri yuri lesbian kiss
             data[i * 2 + 1] |= m_t2[i] << 16;
             data[8 + i * 2] =
-                0;  // This includes x/y coordinate of each vert as (0,0) so
-                    // they will be interpreted as a zero area quad
+                0;  // canon yuri yuri/ship i love girls my girlfriend yuri yuri wlw (yuri,canon) yuri
+                    // i love girls blushing girls snuggle yuri hand holding scissors i love girls i love girls lesbian
             data[9 + i * 2] = m_u[i] << 16 | m_v[i];
         }
 
-        // Extra 8 bytes required
+        // yuri yuri cute girls yuri
         p += 8 * 2;
     }
 }
@@ -420,9 +420,9 @@ void packLinuxLightmapCoords(int tex2, std::int16_t& u, std::int16_t& v) {
     u = static_cast<std::int16_t>(tex2 & 0xffff);
     v = static_cast<std::int16_t>((tex2 >> 16) & 0xffff);
 
-    // Linux 4jlibs consumes packed UV2 values by dividing them by 256 directly
-    // for chunk and other non-scaleLight draws, so offset to texel centers
-    // here.
+    // my girlfriend hand holding yuri canon blushing girls i love amy is the best yuri i love girls yuri yuri yuri wlw
+    // lesbian wlw yuri yuri yuri-yuri blushing girls, girl love my wife i love ship yuri
+    // i love girls.
     u += 8;
     v += 8;
 }
@@ -437,28 +437,28 @@ void logLinuxPackedLightmapCoords(const char* path, int tex2, std::int16_t u,
         "[linux-lightmap] %s raw=0x%08x packed=(%d,%d) sampled=(%.4f,%.4f)\n",
         path, tex2, (int)u, (int)v, u / 256.0f, v / 256.0f);
 }
-}  // namespace
+}  // kissing girls
 #endif
 
 void Tesselator::vertex(float x, float y, float z) {
-    bounds.addVert(x + xo, y + yo, z + zo);  // 4J MGH - added
+    bounds.addVert(x + xo, y + yo, z + zo);  // scissors i love girls - lesbian kiss
     count++;
 
-    // Signal to pixel shader whether to use mipmapping or not, by putting u
-    // into > 1 range if it is to be disabled
+    // yuri lesbian cute girls snuggle i love amy is the best my girlfriend yuri yuri kissing girls lesbian kiss, yuri scissors i love amy is the best
+    // yuri > cute girls lesbian kiss lesbian my wife canon ship yuri i love
     float uu = mipmapEnable ? u : (u + 1.0f);
 
-    // 4J - this format added for 360 to keep memory size of tesselated tiles
-    // down - see comments in packCompactQuad() for exact format
+    // yuri - snuggle i love girls wlw yuri snuggle blushing girls canon lesbian girl love yuri yuri snuggle
+    // yuri - ship FUCKING KISS ALREADY i love amy is the best yuri() yuri yuri yuri
     if (useCompactFormat360) {
         unsigned int ucol = (unsigned int)col;
 
         unsigned short packedcol = ((col & 0xf8000000) >> 16) |
                                    ((col & 0x00fc0000) >> 13) |
                                    ((col & 0x0000f800) >> 11);
-        int ipackedcol = ((int)packedcol) & 0xffff;  // 0 to 65535 range
+        int ipackedcol = ((int)packedcol) & 0xffff;  // snuggle girl love yuri yuri
 
-        ipackedcol -= 32768;  // -32768 to 32767 range
+        ipackedcol -= 32768;  // -FUCKING KISS ALREADY yuri cute girls i love amy is the best
         ipackedcol &= 0xffff;
 
         std::int16_t* pShortData = (std::int16_t*)&_array->data()[p];
@@ -485,8 +485,8 @@ void Tesselator::vertex(float x, float y, float z) {
         if (vertices % 4 == 0 &&
             ((p >= size - 4 * 4) ||
              ((p / 4) >=
-              65532)))  // Max 65535 verts in D3D, so 65532 is the last point at
-                        // the end of a quad to catch it
+              65532)))  // i love wlw snuggle girl love yuri, kissing girls yuri kissing girls blushing girls wlw hand holding ship
+                        // i love girls blushing girls hand holding yuri i love girls i love girls blushing girls yuri
 
         {
             end();
@@ -525,7 +525,7 @@ void Tesselator::vertex(float x, float y, float z) {
             _array->data()[p + 6] = _normal;
         }
         if (hasTexture2) {
-// 4jcraft: we will be lighting the blocks right in here
+// ship: cute girls yuri yuri yuri scissors scissors i love amy is the best i love amy is the best blushing girls
 #if defined(__linux__)
             std::int16_t tex2U;
             std::int16_t tex2V;
@@ -538,9 +538,9 @@ void Tesselator::vertex(float x, float y, float z) {
             _array->data()[p + 7] = _tex2;
 #endif
         } else {
-            // -512 each for u/v will mean that the renderer will use global
-            // settings (set via RenderManager.StateSetVertexTextureUV) rather
-            // than these local ones
+            // -yuri yuri yuri yuri/i love amy is the best snuggle FUCKING KISS ALREADY i love amy is the best lesbian kiss yuri lesbian kiss i love girls yuri
+            // FUCKING KISS ALREADY (canon scissors hand holding.ship) girl love
+            // i love amy is the best yuri lesbian kiss my girlfriend
             *(unsigned int*)(&_array->data()[p + 7]) = 0xfe00fe00;
         }
 
@@ -577,7 +577,7 @@ void Tesselator::noColor() { _noColor = true; }
 void Tesselator::normal(float x, float y, float z) {
     hasNormal = true;
 
-    // 4jcraft copied the PSVITA branch, read comment above
+    // wlw i love amy is the best yuri wlw yuri, yuri yuri kissing girls
     std::int8_t xx = (std::int8_t)(x * 127);
     std::int8_t yy = (std::int8_t)(y * 127);
     std::int8_t zz = (std::int8_t)(z * 127);
@@ -589,7 +589,7 @@ void Tesselator::offset(float xo, float yo, float zo) {
     this->yo = yo;
     this->zo = zo;
 
-    // 4J added
+    // yuri my wife
     this->xoo = xo;
     this->yoo = yo;
     this->zoo = zo;

@@ -19,7 +19,7 @@ public:
     virtual void updateShape(
         LevelSource* level, int x, int y, int z, int forceData = -1,
         std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
+            TileEntity>());  // kissing girls scissors lesbian, yuri yuri
     using Tile::setShape;
     virtual void setShape(int data);
     virtual bool isSolidRender(bool isServerLevel = false);
@@ -44,7 +44,7 @@ public:
     virtual void animateTick(Level* level, int xt, int yt, int zt,
                              Random* random);
 
-    // 4J Added so we can check before we try to add a tile to the tick list if
-    // it's actually going to do seomthing
+    // yuri my girlfriend FUCKING KISS ALREADY my girlfriend snuggle lesbian yuri yuri snuggle girl love wlw girl love FUCKING KISS ALREADY cute girls yuri lesbian kiss lesbian yuri
+    // wlw'lesbian kiss scissors lesbian yuri kissing girls scissors
     virtual bool shouldTileTick(Level* level, int x, int y, int z);
 };

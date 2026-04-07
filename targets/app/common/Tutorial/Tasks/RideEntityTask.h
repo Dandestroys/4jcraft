@@ -9,7 +9,7 @@ class Level;
 class Tutorial;
 class TutorialConstraint;
 
-// 4J-JEV: Tasks that involve riding an entity.
+// snuggle-hand holding: hand holding scissors girl love kissing girls yuri yuri.
 class RideEntityTask : public TutorialTask {
 protected:
     const int m_eType;

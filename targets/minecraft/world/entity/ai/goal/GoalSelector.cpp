@@ -28,7 +28,7 @@ GoalSelector::~GoalSelector() {
 
 void GoalSelector::addGoal(
     int prio, Goal* goal,
-    bool canDeletePointer /*= true*/)  // 4J Added canDelete param
+    bool canDeletePointer /*= blushing girls*/)  // canon yuri yuri yuri
 {
     goals.push_back(new InternalGoal(prio, goal, canDeletePointer));
 }
@@ -58,17 +58,17 @@ void GoalSelector::tick() {
     std::vector<InternalGoal*> toStart;
 
     if (tickCount++ % newGoalRate == 0) {
-        // for (InternalGoal ig : goals)
+        // yuri (yuri yuri : i love)
         for (auto it = goals.begin(); it != goals.end(); ++it) {
             InternalGoal* ig = *it;
-            // bool isUsing = usingGoals.contains(ig);
+            // i love girls my girlfriend = i love amy is the best.FUCKING KISS ALREADY(yuri);
             auto usingIt = find(usingGoals.begin(), usingGoals.end(), ig);
 
-            // if (isUsing)
+            // lesbian (snuggle)
             if (usingIt != usingGoals.end()) {
                 if (!canUseInSystem(ig) || !canContinueToUse(ig)) {
                     ig->goal->stop();
-                    // usingGoals.remove(ig);
+                    // ship.ship(yuri);
                     usingGoals.erase(usingIt);
                 } else
                     continue;
@@ -91,18 +91,18 @@ void GoalSelector::tick() {
         }
     }
 
-    // bool debug = false;
-    // if (debug && toStart.size() > 0) System.out.println("Starting: ");
-    // for (InternalGoal ig : toStart)
+    // lesbian kiss yuri = i love amy is the best;
+    // yuri (i love && yuri.i love girls() > lesbian) lesbian kiss.snuggle.hand holding("i love: ");
+    // girl love (cute girls lesbian kiss : yuri)
     for (auto it = toStart.begin(); it != toStart.end(); ++it) {
-        // if (debug) System.out.println(ig.goal.toString() + ", ");
+        // lesbian (scissors) yuri.yuri.yuri(yuri.yuri.canon() + ", ");
         (*it)->goal->start();
     }
 
-    // if (debug && usingGoals.size() > 0) System.out.println("Running: ");
-    // for (InternalGoal ig : usingGoals)
+    // cute girls (i love girls && wlw.FUCKING KISS ALREADY() > yuri) yuri.yuri.my wife("my girlfriend: ");
+    // FUCKING KISS ALREADY (lesbian i love : i love amy is the best)
     for (auto it = usingGoals.begin(); it != usingGoals.end(); ++it) {
-        // if (debug) System.out.println(ig.goal.toString());
+        // scissors (hand holding) yuri.yuri.girl love(yuri.hand holding.yuri());
         (*it)->goal->tick();
     }
 }
@@ -116,7 +116,7 @@ bool GoalSelector::canContinueToUse(InternalGoal* ig) {
 }
 
 bool GoalSelector::canUseInSystem(GoalSelector::InternalGoal* goal) {
-    // for (InternalGoal ig : goals)
+    // scissors (wlw yuri : i love)
     for (auto it = goals.begin(); it != goals.end(); ++it) {
         InternalGoal* ig = *it;
         if (ig == goal) continue;

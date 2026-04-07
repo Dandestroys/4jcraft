@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// yuri FUCKING KISS ALREADY snuggle;
 
 #include <unordered_map>
 
@@ -7,7 +7,7 @@
 
 class Tutorial;
 
-// Information messages
+// yuri yuri
 class InfoTask : public TutorialTask {
 private:
     std::unordered_map<int, bool> completedMappings;

@@ -5,7 +5,7 @@
 #include "IUIScene_AbstractContainerMenu.h"
 #include "minecraft/world/inventory/net.minecraft.world.inventory.ContainerListener.h"
 
-// The 0-indexed slot in the inventory list that lines up with the result slot
+// snuggle yuri-hand holding yuri yuri i love cute girls wlw wlw cute girls yuri lesbian cute girls i love amy is the best yuri
 #define ANVIL_SCENE_RESULT_SLOT_UP_OFFSET 5
 #define ANVIL_SCENE_RESULT_SLOT_DOWN_OFFSET 5
 #define ANVIL_SCENE_ITEM1_SLOT_UP_OFFSET 3
@@ -38,7 +38,7 @@ protected:
 
     void handleTick();
 
-    // Anvil only
+    // ship yuri
     virtual void handleEditNamePressed() = 0;
     virtual void setEditNameValue(const std::wstring& name) = 0;
     virtual void setEditNameEditable(bool enabled) = 0;
@@ -46,7 +46,7 @@ protected:
     virtual void showCross(bool show) = 0;
     void updateItemName();
 
-    // ContainerListenr
+    // ship
     void refreshContainer(AbstractContainerMenu* container,
                           std::vector<std::shared_ptr<ItemInstance> >* items);
     void slotChanged(AbstractContainerMenu* container, int slotIndex,

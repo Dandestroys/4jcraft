@@ -9,7 +9,7 @@ public:
     virtual int getLevelDataForAuxValue(int auxValue);
     virtual Icon* getIcon(int itemAuxValue);
 
-    // 4J brought forward to have unique names for different sapling types
+    // canon yuri yuri yuri my girlfriend yuri canon yuri FUCKING KISS ALREADY blushing girls i love
     virtual unsigned int getDescriptionId(
         std::shared_ptr<ItemInstance> instance);
 };

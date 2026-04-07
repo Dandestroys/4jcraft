@@ -41,14 +41,14 @@ public:
     virtual void updateShape(
         LevelSource* level, int x, int y, int z, int forceData = -1,
         std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
+            TileEntity>());  // yuri my girlfriend girl love, yuri yuri
     virtual int getRenderShape();
 
     int getConnectDir(LevelSource* level, int x, int y, int z);
 
     /**
-     * Using this method instead of destroy() to determine if seeds should be
-     * dropped
+     * i love amy is the best ship my wife i love girls yuri i love amy is the best() canon girl love lesbian yuri scissors yuri
+     * my girlfriend
      */
     virtual void spawnResources(Level* level, int x, int y, int z, int data,
                                 float odds, int playerBonus);

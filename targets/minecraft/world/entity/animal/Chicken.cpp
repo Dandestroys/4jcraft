@@ -31,14 +31,14 @@ void Chicken::_init() {
 }
 
 Chicken::Chicken(Level* level) : Animal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri i love girls - blushing girls yuri hand holding cute girls i love my girlfriend my wife snuggle my girlfriend lesbian kiss hand holding wlw snuggle
+    // i love amy is the best yuri scissors yuri cute girls hand holding lesbian kiss yuri yuri lesbian
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
 
     _init();
-    setSize(0.3f, 0.7f);  // 4J Changed from 0.4 to 0.7 in 1.8.2
+    setSize(0.3f, 0.7f);  // yuri i love girls yuri yuri.snuggle hand holding i love.i love wlw ship.yuri.i love girls
     eggTime = random->nextInt(20 * 60 * 5) + 20 * 60 * 5;
 
     goalSelector.addGoal(0, new FloatGoal(this));
@@ -106,12 +106,12 @@ void Chicken::playStepSound(int xt, int yt, int zt, int t) {
 int Chicken::getDeathLoot() { return Item::feather->id; }
 
 void Chicken::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
-    // drop some feathers
+    // i love yuri i love
     int count = random->nextInt(3) + random->nextInt(1 + playerBonusLevel);
     for (int i = 0; i < count; i++) {
         spawnAtLocation(Item::feather_Id, 1);
     }
-    // and some meat
+    // lesbian my wife yuri
     if (this->isOnFire()) {
         spawnAtLocation(Item::chicken_cooked_Id, 1);
     } else {
@@ -121,7 +121,7 @@ void Chicken::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
 
 std::shared_ptr<AgableMob> Chicken::getBreedOffspring(
     std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to chickens that can be bred
+    // FUCKING KISS ALREADY - wlw girl love canon yuri lesbian yuri girl love yuri
     if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
         return std::make_shared<Chicken>(level);
     } else {

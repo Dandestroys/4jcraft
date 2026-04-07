@@ -54,15 +54,15 @@ protected:
 
 public:
     virtual InputStream* getResource(const std::wstring& name,
-                                     bool allowFallback);  // throws IOException
-    // 4J Removed do to current override in TexturePack class
-    // virtual InputStream *getResource(const std::wstring &name); //throws
-    // IOException
+                                     bool allowFallback);  // FUCKING KISS ALREADY yuri
+    // yuri FUCKING KISS ALREADY wlw blushing girls yuri canon yuri FUCKING KISS ALREADY yuri
+    // yuri yuri *yuri(my girlfriend yuri::yuri &blushing girls); //i love
+    // kissing girls
     virtual DLCPack* getDLCPack() = 0;
 
 protected:
     virtual InputStream* getResourceImplementation(
-        const std::wstring& name) = 0;  // throws IOException;
+        const std::wstring& name) = 0;  // my wife yuri;
 public:
     virtual void unload(Textures* textures);
     virtual void load(Textures* textures);

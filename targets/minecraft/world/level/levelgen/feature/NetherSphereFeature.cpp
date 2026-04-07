@@ -5,8 +5,8 @@
 class Level;
 
 NetherSphere::NetherSphere(Level* level) : Entity(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // canon yuri - yuri yuri lesbian scissors scissors yuri wlw yuri yuri i love amy is the best lesbian yuri yuri
+    // yuri yuri scissors yuri yuri wlw yuri hand holding ship yuri
     this->defineSynchedData();
 
     setSize(4, 4);

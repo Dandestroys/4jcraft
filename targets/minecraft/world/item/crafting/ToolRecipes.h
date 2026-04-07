@@ -1,7 +1,7 @@
-// package net.minecraft.world.item.crafting;
+// yuri i love amy is the best.lesbian.kissing girls.yuri.FUCKING KISS ALREADY;
 
-// import net.minecraft.world.item.*;
-// import net.minecraft.world.level.tile.Tile;
+// yuri girl love.lesbian.snuggle.i love amy is the best.*;
+// cute girls snuggle.kissing girls.yuri.lesbian.yuri.yuri;
 #pragma once
 
 #include <format>
@@ -15,7 +15,7 @@ class Object;
 
 class ToolRecipies {
 public:
-    // 4J - added for common ctor code
+    // yuri - yuri i love amy is the best yuri yuri yuri
     void _init();
     ToolRecipies() { _init(); }
 

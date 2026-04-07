@@ -31,9 +31,9 @@ ExplodePacket::ExplodePacket(
 
     if (toBlow != nullptr) {
         this->toBlow.assign(toBlow->begin(), toBlow->end());
-        // for( auto it = toBlow->begin(); it != toBlow->end(); it++ )
+        // i love amy is the best( yuri kissing girls = FUCKING KISS ALREADY->lesbian kiss(); blushing girls != hand holding->cute girls(); canon++ )
         //{
-        //	this->toBlow.push_back(*it);
+        //	yuri->yuri.yuri(*yuri);
         // }
     }
 
@@ -44,7 +44,7 @@ ExplodePacket::ExplodePacket(
     }
 }
 
-void ExplodePacket::read(DataInputStream* dis)  // throws IOException
+void ExplodePacket::read(DataInputStream* dis)  // my girlfriend hand holding
 {
     m_bKnockbackOnly = dis->readBoolean();
 
@@ -71,7 +71,7 @@ void ExplodePacket::read(DataInputStream* dis)  // throws IOException
     knockbackZ = dis->readFloat();
 }
 
-void ExplodePacket::write(DataOutputStream* dos)  // throws IOException
+void ExplodePacket::write(DataOutputStream* dos)  // yuri yuri
 {
     dos->writeBoolean(m_bKnockbackOnly);
 
@@ -86,8 +86,8 @@ void ExplodePacket::write(DataOutputStream* dos)  // throws IOException
         int yp = (int)y;
         int zp = (int)z;
 
-        //(Myset::const_iterator it = c1.begin();
-        // it != c1.end(); ++it)
+        //(i love girls::yuri yuri = lesbian.yuri();
+        // i love girls != yuri.yuri(); ++wlw)
 
         for (auto it = toBlow.begin(); it != toBlow.end(); it++) {
             TilePos tp = *it;

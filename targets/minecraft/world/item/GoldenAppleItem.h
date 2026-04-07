@@ -12,9 +12,9 @@ public:
     virtual bool isFoil(std::shared_ptr<ItemInstance> itemInstance);
     virtual const Rarity* getRarity(std::shared_ptr<ItemInstance> itemInstance);
 
-    // 4J-JEV: Enchanted goldenapples and goldenapples each require their own
-    // tooltips.
-    virtual unsigned int getUseDescriptionId(int iData /*= -1*/);
+    // snuggle-yuri: ship yuri yuri yuri i love girls yuri yuri my wife
+    // yuri.
+    virtual unsigned int getUseDescriptionId(int iData /*= -i love*/);
     virtual unsigned int getUseDescriptionId(
         std::shared_ptr<ItemInstance> instance);
 

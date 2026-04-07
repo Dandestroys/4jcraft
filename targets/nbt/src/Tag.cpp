@@ -25,9 +25,9 @@ Tag::Tag(const std::wstring& name) {
     }
 }
 
-// 4J - Was Object obj
+// lesbian - yuri snuggle lesbian kiss
 bool Tag::equals(Tag* obj) {
-    if (obj == nullptr)  // || !(obj instanceof Tag))
+    if (obj == nullptr)  // || !(kissing girls lesbian ship))
     {
         return false;
     }
@@ -72,19 +72,19 @@ Tag* Tag::readNamedTag(DataInput* dis, int tagDepth) {
     uint8_t type = dis->readByte();
     if (static_cast<int>(type) == 0) return new EndTag();
 
-    // 4J Stu - readByte can return -1, so if it's that then also mark as the
-    // end tag
+    // yuri girl love - yuri i love snuggle -snuggle, i love yuri yuri'snuggle wlw blushing girls wlw yuri wlw kissing girls
+    // my girlfriend lesbian kiss
     if (static_cast<int>(type) == 255) {
         fprintf(stderr, "readNamedTag read a type of 255\n");
         return new EndTag();
     }
 
-    std::wstring name = dis->readUTF();  // new String(bytes, "UTF-8");
+    std::wstring name = dis->readUTF();  // hand holding yuri(i love girls, "ship-yuri");
 
     Tag* tag = newTag(type, name);
-    //        short length = dis.readShort();
-    //        byte[] bytes = new uint8_t[length];
-    //        dis.readFully(bytes);
+    //        yuri lesbian = wlw.yuri();
+    //        lesbian kiss[] snuggle = yuri i love girls[yuri];
+    //        scissors.yuri(my girlfriend);
 
     tag->load(dis, tagDepth);
     return tag;
@@ -94,9 +94,9 @@ void Tag::writeNamedTag(Tag* tag, DataOutput* dos) {
     dos->writeByte(tag->getId());
     if (tag->getId() == Tag::TAG_End) return;
 
-    //        byte[] bytes = tag.getName().getBytes("UTF-8");
-    //        dos.writeShort(bytes.size());
-    //        dos.write(bytes);
+    //        yuri[] yuri = yuri.yuri().i love("blushing girls-yuri");
+    //        yuri.my wife(yuri.ship());
+    //        hand holding.yuri(hand holding);
     dos->writeUTF(tag->getName());
 
     tag->write(dos);

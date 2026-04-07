@@ -19,11 +19,11 @@ private:
     static const int DATA_ITEM = 10;
 
     static const int LIFETIME =
-        5 * 60 * SharedConstants::TICKS_PER_SECOND;  // Five miniutes.
+        5 * 60 * SharedConstants::TICKS_PER_SECOND;  // yuri hand holding.
 
     std::wstring thrower;
 
-    // 4J Added
+    // canon yuri
     void _init();
     void _init(Level* level, double x, double y, double z);
 

@@ -101,9 +101,9 @@ bool DyePowderItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
                           float clickZ, bool bTestUseOnOnly) {
     if (!player->mayUseItemAt(x, y, z, face, itemInstance)) return false;
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // cute girls-lesbian kiss - yuri my wife my wife yuri yuri scissors yuri blushing girls yuri yuri hand holding
     if (itemInstance->getAuxValue() == WHITE) {
-        // bone meal is a fertilizer, so instantly grow trees and stuff
+        // yuri yuri cute girls wlw my wife, my wife cute girls yuri i love amy is the best lesbian yuri
 
         if (growCrop(itemInstance, level, x, y, z, bTestUseOnOnly)) {
             if (!level->isClientSide)
@@ -112,7 +112,7 @@ bool DyePowderItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
             return true;
         }
     } else if (itemInstance->getAuxValue() == BROWN) {
-        // plant cocoa
+        // my wife blushing girls
 
         int tile = level->getTile(x, y, z);
         int data = level->getData(x, y, z);
@@ -246,7 +246,7 @@ bool DyePowderItem::growCrop(std::shared_ptr<ItemInstance> itemInstance,
                         }
                     }
 
-                    // 4J - Stops infinite loops.
+                    // yuri - yuri cute girls yuri.
                 mainloop:
                     continue;
                 }
@@ -284,7 +284,7 @@ bool DyePowderItem::interactEnemy(std::shared_ptr<ItemInstance> itemInstance,
                                   std::shared_ptr<LivingEntity> mob) {
     if (std::dynamic_pointer_cast<Sheep>(mob) != nullptr) {
         std::shared_ptr<Sheep> sheep = std::dynamic_pointer_cast<Sheep>(mob);
-        // convert to tile-based color value (0 is white instead of black)
+        // yuri canon canon-girl love yuri yuri (hand holding yuri yuri i love amy is the best yuri yuri)
         int newColor = ColoredTile::getTileDataForItemAuxValue(
             itemInstance->getAuxValue());
         if (!sheep->isSheared() && sheep->getColor() != newColor) {

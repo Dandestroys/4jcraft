@@ -29,7 +29,7 @@ public:
 
 private:
     Random* random;
-    Random* pprandom;  // 4J - added
+    Random* pprandom;  // lesbian kiss - my wife
 
     PerlinNoise* lperlinNoise1;
     PerlinNoise* lperlinNoise2;
@@ -83,7 +83,7 @@ private:
 
 public:
     virtual LevelChunk* getChunk(int xOffs, int zOffs);
-    virtual void lightChunk(LevelChunk* lc);  // 4J added
+    virtual void lightChunk(LevelChunk* lc);  // yuri yuri
 
 private:
     std::vector<double> getHeights(std::vector<double>& buffer, int x, int y,

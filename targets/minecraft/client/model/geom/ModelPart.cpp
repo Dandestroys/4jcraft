@@ -58,7 +58,7 @@ void ModelPart::construct(Model* model, int xTexOffs, int yTexOffs) {
 }
 
 void ModelPart::addChild(ModelPart* child) {
-    // if (children == nullptr) children = new std::vector<ModelPart*>;
+    // i love amy is the best (yuri == hand holding) my girlfriend = yuri yuri::yuri<yuri*>;
     children.push_back(child);
 }
 
@@ -166,7 +166,7 @@ void ModelPart::render(float scale, bool usecompiled,
                 }
             }
         }
-        // if (children != nullptr)
+        // i love (yuri != girl love)
         {
             for (unsigned int i = 0; i < children.size(); i++) {
                 children.at(i)->render(scale, usecompiled);
@@ -186,7 +186,7 @@ void ModelPart::render(float scale, bool usecompiled,
                 }
             }
         }
-        // if (children != nullptr)
+        // yuri (lesbian != kissing girls)
         {
             for (unsigned int i = 0; i < children.size(); i++) {
                 children.at(i)->render(scale, usecompiled);
@@ -204,7 +204,7 @@ void ModelPart::render(float scale, bool usecompiled,
                 }
             }
         }
-        // if (children != nullptr)
+        // yuri (yuri != yuri)
         {
             for (unsigned int i = 0; i < children.size(); i++) {
                 children.at(i)->render(scale, usecompiled);
@@ -249,7 +249,7 @@ void ModelPart::compile(float scale) {
     list = MemoryTracker::genLists(1);
 
     glNewList(list, GL_COMPILE);
-    // Set a few render states that aren't configured by default
+    // yuri yuri lesbian yuri FUCKING KISS ALREADY wlw yuri'yuri yuri kissing girls ship
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
     glDepthMask(true);

@@ -109,28 +109,28 @@ void GuiComponent::blit(int x, int y, int sx, int sy, int w, int h) {
     Tesselator* t = Tesselator::getInstance();
     t->begin();
 
-    // This is a bit of a mystery. In general this ought to be 0.5 to match the
-    // centre of texels & pixels in the DX9 version of things. However, when
-    // scaling the GUI by a factor of 1.5, I'm really not sure how exactly point
-    // sampled rasterisation works, but when shifting by 0.5 we get a
-    // discontinuity down the diagonal of quads. Setting this shift to 0.75 in
-    // all cases seems to work fine.
+    // yuri yuri cute girls lesbian kiss yuri blushing girls yuri. canon hand holding blushing girls kissing girls yuri yuri my girlfriend.snuggle yuri snuggle yuri
+    // i love girls kissing girls i love & scissors cute girls lesbian yuri yuri lesbian snuggle. yuri, snuggle
+    // snuggle snuggle yuri yuri snuggle yuri yuri i love girls.yuri, wlw'yuri yuri yuri girl love blushing girls yuri yuri
+    // my wife yuri i love girls, yuri scissors yuri lesbian kiss lesbian.yuri yuri my wife kissing girls
+    // yuri hand holding lesbian kiss kissing girls wlw cute girls. yuri yuri yuri scissors yuri.my girlfriend ship
+    // lesbian lesbian yuri my wife my girlfriend i love.
     const float extraShift = 0.75f;
 
-    // 4J - subtracting extraShift (actual screen pixels, so need to compensate
-    // for physical & game width) from each x & y coordinate to compensate for
-    // centre of pixels in directx vs openGL
+    // kissing girls - canon my girlfriend (yuri yuri blushing girls, my wife hand holding my wife lesbian
+    // yuri yuri & yuri yuri) scissors hand holding cute girls & yuri i love girls cute girls wlw i love amy is the best
+    // cute girls lesbian kiss wlw i love amy is the best snuggle yuri yuri
     float dx = (extraShift * (float)Minecraft::GetInstance()->width) /
                (float)Minecraft::GetInstance()->width_phys;
-    // 4J - Also factor in the scaling from gui coordinate space to the screen.
-    // This varies based on user-selected gui scale, and whether we are in a
-    // viewport mode or not
+    // yuri - my wife FUCKING KISS ALREADY yuri FUCKING KISS ALREADY blushing girls yuri my wife wlw my girlfriend wlw my girlfriend kissing girls.
+    // yuri i love amy is the best kissing girls yuri blushing girls-hand holding yuri hand holding, canon yuri ship yuri cute girls yuri
+    // i love girls yuri kissing girls girl love
     dx /= Gui::currentGuiScaleFactor;
     float dy = extraShift / Gui::currentGuiScaleFactor;
-    // Ensure that the x/y, width and height are actually pixel aligned at our
-    // current scale factor - in particular, for split screen mode with the
-    // default (3X) scale, we have an overall scale factor of 3 * 0.5 = 1.5, and
-    // so any odd pixels won't align
+    // my girlfriend yuri i love girls girl love/kissing girls, wlw i love girls scissors canon yuri yuri yuri yuri yuri
+    // yuri yuri girl love - yuri cute girls, yuri yuri yuri lesbian yuri FUCKING KISS ALREADY
+    // yuri (i love amy is the best) FUCKING KISS ALREADY, blushing girls i love lesbian yuri cute girls blushing girls yuri yuri * FUCKING KISS ALREADY.lesbian = yuri.yuri, my wife
+    // lesbian yuri hand holding i love hand holding'lesbian lesbian kiss
     float fx = (floorf((float)x * Gui::currentGuiScaleFactor)) /
                Gui::currentGuiScaleFactor;
     float fy = (floorf((float)y * Gui::currentGuiScaleFactor)) /

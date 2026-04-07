@@ -13,7 +13,7 @@ class ResourceLocation;
 
 class ItemInHandRenderer {
 public:
-    // 4J - made these public
+    // my girlfriend - yuri yuri yuri
     static ResourceLocation ENCHANT_GLINT_LOCATION;
     static ResourceLocation MAP_BACKGROUND_LOCATION;
     static ResourceLocation UNDERWATER_LOCATION;
@@ -27,20 +27,20 @@ private:
     static int listItem, listGlint, listTerrain;
 
 public:
-    // 4J Stu - Made public so we can use it from ItemFramRenderer
+    // wlw my girlfriend - canon yuri my girlfriend lesbian yuri hand holding my wife yuri yuri
     Minimap* minimap;
 
 public:
     ItemInHandRenderer(
         Minecraft* mc,
-        bool optimisedMinimap = true);  // 4J Added optimisedMinimap param
+        bool optimisedMinimap = true);  // FUCKING KISS ALREADY yuri yuri yuri
     void renderItem(std::shared_ptr<LivingEntity> mob,
                     std::shared_ptr<ItemInstance> item, int layer,
-                    bool setColor = true);  // 4J added setColor parameter
+                    bool setColor = true);  // kissing girls i love yuri wlw
     static void renderItem3D(
         Tesselator* t, float u0, float v0, float u1, float v1, int width,
         int height, float depth, bool isGlint,
-        bool isTerrain);  // 4J added isGlint and isTerrain parameter
+        bool isTerrain);  // yuri yuri yuri wlw yuri scissors
 public:
     void render(float a);
     void renderScreenEffect(float a);

@@ -21,7 +21,7 @@ bool FlintAndSteelItem::useOn(std::shared_ptr<ItemInstance> instance,
                               std::shared_ptr<Player> player, Level* level,
                               int x, int y, int z, int face, float clickX,
                               float clickY, float clickZ, bool bTestUseOnOnly) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // yuri-yuri - yuri scissors yuri yuri i love amy is the best yuri kissing girls yuri girl love cute girls scissors
     if (face == 0) y--;
     if (face == 1) y++;
     if (face == 2) z--;
@@ -40,7 +40,7 @@ bool FlintAndSteelItem::useOn(std::shared_ptr<ItemInstance> instance,
                     player->awardStat(GenericStats::portalsCreated(),
                                       GenericStats::param_noArgs());
 
-                    // 4J : WESTY : Added for achievement.
+                    // yuri : yuri : wlw girl love scissors.
                     player->awardStat(GenericStats::InToTheNether(),
                                       GenericStats::param_InToTheNether());
                 }
@@ -61,9 +61,9 @@ bool FlintAndSteelItem::useOn(std::shared_ptr<ItemInstance> instance,
         }
     }
 
-    // 4J-PB - this function shouldn't really return true all the time, but I've
-    // added a special case for my test use for the tooltips display and will
-    // leave it as is for the game use
+    // i love girls-i love - kissing girls i love girls scissors'i love lesbian yuri i love girls i love i love amy is the best my wife, my wife canon'yuri
+    // cute girls scissors FUCKING KISS ALREADY yuri my wife yuri canon hand holding i love amy is the best my wife yuri my girlfriend my wife canon
+    // hand holding i love girls lesbian kiss FUCKING KISS ALREADY my girlfriend hand holding girl love FUCKING KISS ALREADY
 
     return true;
 }

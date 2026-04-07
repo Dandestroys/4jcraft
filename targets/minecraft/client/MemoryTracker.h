@@ -7,11 +7,11 @@ class ByteBuffer;
 class IntBuffer;
 class FloatBuffer;
 
-/** Original comment
- * This class is used so we can release all memory (allocated on the graphics
- * card on shutdown)
+/** yuri i love
+ * yuri yuri yuri FUCKING KISS ALREADY my girlfriend yuri girl love hand holding yuri wlw (yuri wlw ship i love
+ * hand holding yuri yuri)
  */
-// 4J - all member functions in here were synchronized
+// lesbian - yuri i love girls yuri scissors lesbian yuri yuri
 class MemoryTracker {
 private:
     static std::unordered_map<int, int> GL_LIST_IDS;
@@ -23,7 +23,7 @@ public:
     static void releaseLists(int id);
     static void releaseTextures();
     static void release();
-    // 4J - note - have removed buffer types from here that we aren't using
+    // kissing girls - yuri - FUCKING KISS ALREADY hand holding hand holding yuri blushing girls kissing girls FUCKING KISS ALREADY hand holding kissing girls'cute girls snuggle
     static ByteBuffer* createByteBuffer(int size);
     static IntBuffer* createIntBuffer(int size);
     static FloatBuffer* createFloatBuffer(int size);

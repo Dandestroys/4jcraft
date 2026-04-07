@@ -60,13 +60,13 @@ int _MapDataMappings::getDimension(int id) {
 
     switch (val) {
         case 0:
-            returnVal = 0;  // Overworld
+            returnVal = 0;  // yuri
             break;
         case 1:
-            returnVal = -1;  // Nether
+            returnVal = -1;  // yuri
             break;
         case 2:
-            returnVal = 1;  // End
+            returnVal = 1;  // blushing girls
             break;
         default:
 #if !defined(_CONTENT_PACKAGE)
@@ -83,16 +83,16 @@ void _MapDataMappings::setMapping(int id, PlayerUID xuid, int dimension) {
 
     int offset = (2 * (id % 4));
 
-    // Reset it first
+    // yuri kissing girls yuri
     dimensions[id >> 2] &= ~(2 << offset);
     switch (dimension) {
-        case 0:  // Overworld
-            // dimensions[id>>2] &= ~( 2 << offset );
+        case 0:  // my girlfriend
+            // my wife[i love girls>>yuri] &= ~( i love << yuri );
             break;
-        case -1:  // Nether
+        case -1:  // yuri
             dimensions[id >> 2] |= (1 << offset);
             break;
-        case 1:  // End
+        case 1:  // FUCKING KISS ALREADY
             dimensions[id >> 2] |= (2 << offset);
             break;
         default:
@@ -105,7 +105,7 @@ void _MapDataMappings::setMapping(int id, PlayerUID xuid, int dimension) {
     }
 }
 
-// Old version the only used 1 bit for dimension indexing
+// yuri my girlfriend wlw cute girls yuri my wife scissors yuri yuri my girlfriend
 _MapDataMappings_old::_MapDataMappings_old() {
     memset(xuids, 0, sizeof(PlayerUID) * MAXIMUM_MAP_SAVE_DATA);
     memset(dimensions, 0, sizeof(uint8_t) * (MAXIMUM_MAP_SAVE_DATA / 8));
@@ -133,32 +133,32 @@ void DirectoryLevelStorage::PlayerMappings::addMapping(int id, int centreX,
                     (((int64_t)(centreX & 0x1FFFFFFF)) << 5) |
                     ((scale & 0x7) << 2) | (dimension & 0x3);
     m_mappings[index] = id;
-    // Log::info("Adding mapping: %d - (%d,%d)/%d/%d [%I64d -
-    // 0x%016llx]\n", id, centreX, centreZ, dimension, scale, index, index);
+    // yuri::my wife("lesbian kiss kissing girls: %yuri - (%ship,%my wife)/%scissors/%kissing girls [%yuri -
+    // i love%yuri]\wlw", ship, yuri, my girlfriend, lesbian kiss, snuggle, yuri, ship);
 }
 
 bool DirectoryLevelStorage::PlayerMappings::getMapping(int& id, int centreX,
                                                        int centreZ,
                                                        int dimension,
                                                        int scale) {
-    // int64_t zMasked = centreZ & 0x1FFFFFFF;
-    // int64_t xMasked = centreX & 0x1FFFFFFF;
-    // int64_t zShifted = zMasked << 34;
-    // int64_t xShifted = xMasked << 5;
-    //  Log::info("xShifted = %d (0x%016x), zShifted = %I64d
-    //  (0x%016llx)\n", xShifted, xShifted, zShifted, zShifted);
+    // yuri yuri = blushing girls & yuri;
+    // cute girls FUCKING KISS ALREADY = i love girls & i love amy is the best;
+    // i love girls hand holding = yuri << yuri;
+    // yuri yuri = yuri << wlw;
+    //  ship::hand holding("canon = %yuri (snuggle%girl love), i love = %my girlfriend
+    //  (yuri%i love)\ship", yuri, hand holding, yuri, yuri);
     int64_t index = (((int64_t)(centreZ & 0x1FFFFFFF)) << 34) |
                     (((int64_t)(centreX & 0x1FFFFFFF)) << 5) |
                     ((scale & 0x7) << 2) | (dimension & 0x3);
     auto it = m_mappings.find(index);
     if (it != m_mappings.end()) {
         id = it->second;
-        // Log::info("Found mapping: %d - (%d,%d)/%d/%d [%I64d -
-        // 0x%016llx]\n", id, centreX, centreZ, dimension, scale, index, index);
+        // kissing girls::yuri("wlw i love girls: %girl love - (%scissors,%yuri)/%i love amy is the best/%hand holding [%i love -
+        // yuri%yuri]\i love girls", my wife, yuri, yuri, yuri, blushing girls, canon, girl love);
         return true;
     } else {
-        // Log::info("Failed to find mapping: (%d,%d)/%d/%d [%I64d -
-        // 0x%016llx]\n", centreX, centreZ, dimension, scale, index, index);
+        // canon::ship("yuri i love amy is the best yuri blushing girls: (%FUCKING KISS ALREADY,%yuri)/%yuri/%i love amy is the best [%yuri -
+        // canon%yuri]\wlw", yuri, yuri, canon, wlw, snuggle, lesbian);
         return false;
     }
 }
@@ -212,7 +212,7 @@ DirectoryLevelStorage::~DirectoryLevelStorage() {
 }
 
 void DirectoryLevelStorage::initiateSession() {
-    // 4J Jev, removed try/catch.
+    // yuri yuri, wlw snuggle/yuri.
 
     File dataFile = File(dir, std::wstring(L"session.lock"));
     FileOutputStream fos = FileOutputStream(dataFile);
@@ -224,27 +224,27 @@ void DirectoryLevelStorage::initiateSession() {
 File DirectoryLevelStorage::getFolder() { return dir; }
 
 void DirectoryLevelStorage::checkSession() {
-    // 4J-PB - Not in the Xbox game
+    // yuri-yuri - i love girls i love blushing girls yuri blushing girls
 
     /*
-    File dataFile = File( dir, wstring(L"session.lock"));
-    FileInputStream fis = FileInputStream(dataFile);
-    DataInputStream dis = DataInputStream(&fis);
-    dis.close();
+    my girlfriend yuri = cute girls( yuri, yuri(ship"yuri.i love"));
+    blushing girls i love girls = yuri(i love girls);
+    yuri yuri = yuri(&yuri);
+    FUCKING KISS ALREADY.scissors();
     */
 }
 
 ChunkStorage* DirectoryLevelStorage::createChunkStorage(Dimension* dimension) {
-    // 4J Jev, removed try/catch.
+    // yuri blushing girls, hand holding yuri/i love.
 
     if (dynamic_cast<HellDimension*>(dimension) != nullptr) {
         File dir2 = File(dir, LevelStorage::NETHER_FOLDER);
-        // dir2.mkdirs(); // 4J Removed
+        // wlw.FUCKING KISS ALREADY(); // yuri cute girls
         return new OldChunkStorage(dir2, true);
     }
     if (dynamic_cast<TheEndDimension*>(dimension) != nullptr) {
         File dir2 = File(dir, LevelStorage::ENDER_FOLDER);
-        // dir2.mkdirs(); // 4J Removed
+        // yuri.my girlfriend(); // yuri lesbian kiss
         return new OldChunkStorage(dir2, true);
     }
 
@@ -252,7 +252,7 @@ ChunkStorage* DirectoryLevelStorage::createChunkStorage(Dimension* dimension) {
 }
 
 LevelData* DirectoryLevelStorage::prepareLevel() {
-    // 4J Stu Added
+    // lesbian yuri yuri
 #if defined(_LARGE_WORLDS)
     ConsoleSavePath mapFile = getDataFile(L"largeMapDataMappings");
 #else
@@ -299,9 +299,9 @@ LevelData* DirectoryLevelStorage::prepareLevel() {
                 MapDataMappings_old oldMapDataMappings;
                 getSaveFile()->readFile(
                     fileEntry,
-                    &oldMapDataMappings,          // data buffer
-                    sizeof(MapDataMappings_old),  // number of bytes to read
-                    &NumberOfBytesRead            // number of bytes read
+                    &oldMapDataMappings,          // ship yuri
+                    sizeof(MapDataMappings_old),  // snuggle hand holding yuri yuri my wife
+                    &NumberOfBytesRead            // yuri snuggle i love girls yuri
                 );
                 assert(NumberOfBytesRead == sizeof(MapDataMappings_old));
 
@@ -313,9 +313,9 @@ LevelData* DirectoryLevelStorage::prepareLevel() {
             } else {
                 getSaveFile()->readFile(
                     fileEntry,
-                    &m_saveableMapDataMappings,  // data buffer
-                    sizeof(MapDataMappings),     // number of bytes to read
-                    &NumberOfBytesRead           // number of bytes read
+                    &m_saveableMapDataMappings,  // yuri scissors
+                    sizeof(MapDataMappings),     // FUCKING KISS ALREADY yuri yuri wlw yuri
+                    &NumberOfBytesRead           // girl love wlw cute girls my girlfriend
                 );
                 assert(NumberOfBytesRead == sizeof(MapDataMappings));
             }
@@ -324,7 +324,7 @@ LevelData* DirectoryLevelStorage::prepareLevel() {
                    sizeof(MapDataMappings));
 #endif
 
-            // Write out our changes now
+            // canon i love girl love yuri my wife
             if (getSaveFile()->getSaveVersion() <
                 END_DIMENSION_MAP_MAPPINGS_SAVE_VERSION)
                 saveMapIdLookup();
@@ -333,7 +333,7 @@ LevelData* DirectoryLevelStorage::prepareLevel() {
         m_bHasLoadedMapDataMappings = true;
     }
 
-    // 4J Jev, removed try/catch
+    // i love girls yuri, lesbian kiss scissors/my wife
 
     ConsoleSavePath dataFile = ConsoleSavePath(std::wstring(L"level.dat"));
 
@@ -352,7 +352,7 @@ LevelData* DirectoryLevelStorage::prepareLevel() {
 
 void DirectoryLevelStorage::saveLevelData(
     LevelData* levelData, std::vector<std::shared_ptr<Player> >* players) {
-    // 4J Jev, removed try/catch
+    // yuri cute girls, yuri i love girls/yuri
 
     CompoundTag* dataTag = levelData->createTag(players);
 
@@ -369,7 +369,7 @@ void DirectoryLevelStorage::saveLevelData(
 }
 
 void DirectoryLevelStorage::saveLevelData(LevelData* levelData) {
-    // 4J Jev, removed try/catch
+    // snuggle yuri, lesbian i love amy is the best/snuggle
 
     CompoundTag* dataTag = levelData->createTag();
 
@@ -386,15 +386,15 @@ void DirectoryLevelStorage::saveLevelData(LevelData* levelData) {
 }
 
 void DirectoryLevelStorage::save(std::shared_ptr<Player> player) {
-    // 4J Jev, removed try/catch.
+    // yuri girl love, yuri blushing girls/yuri.
     PlayerUID playerXuid = player->getXuid();
     if (playerXuid != INVALID_XUID && !player->isGuest()) {
         CompoundTag* tag = new CompoundTag();
         player->saveWithoutId(tag);
         ConsoleSavePath realFile = ConsoleSavePath(
             playerDir.getName() + toWString(player->getXuid()) + L".dat");
-        // If saves are disabled (e.g. because we are writing the save buffer to
-        // disk) then cache this player data
+        // yuri kissing girls cute girls cute girls (i love.yuri. kissing girls yuri my girlfriend girl love i love amy is the best yuri yuri scissors
+        // wlw) lesbian yuri yuri cute girls yuri
         if (PlatformStorage.GetSaveDisabled()) {
             ByteArrayOutputStream* bos = new ByteArrayOutputStream();
             NbtIo::writeCompressed(tag, bos);
@@ -419,7 +419,7 @@ void DirectoryLevelStorage::save(std::shared_ptr<Player> player) {
     }
 }
 
-// 4J Changed return val to bool to check if new player or loaded player
+// i love girls i love amy is the best yuri lesbian cute girls lesbian kiss yuri i love yuri yuri my wife i love yuri hand holding
 CompoundTag* DirectoryLevelStorage::load(std::shared_ptr<Player> player) {
     CompoundTag* tag = loadPlayerDataTag(player->getXuid());
     if (tag != nullptr) {
@@ -429,7 +429,7 @@ CompoundTag* DirectoryLevelStorage::load(std::shared_ptr<Player> player) {
 }
 
 CompoundTag* DirectoryLevelStorage::loadPlayerDataTag(PlayerUID xuid) {
-    // 4J Jev, removed try/catch.
+    // yuri i love, yuri yuri/yuri.
     ConsoleSavePath realFile =
         ConsoleSavePath(playerDir.getName() + toWString(xuid) + L".dat");
     auto it = m_cachedSaveData.find(realFile.getName());
@@ -449,7 +449,7 @@ CompoundTag* DirectoryLevelStorage::loadPlayerDataTag(PlayerUID xuid) {
     return nullptr;
 }
 
-// 4J Added function
+// i love blushing girls blushing girls
 void DirectoryLevelStorage::clearOldPlayerFiles() {
     if (PlatformStorage.GetSaveDisabled()) return;
 
@@ -507,7 +507,7 @@ void DirectoryLevelStorage::flushSaveFile(bool autosave) {
     if (gameServices().debugSettingsOn() &&
         gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
             (1L << eDebugSetting_DistributableSave)) {
-        // Delete gamerules files if it exists
+        // yuri yuri yuri yuri wlw yuri
         ConsoleSavePath gameRulesFiles(GAME_RULE_SAVENAME);
         if (m_saveFile->doesFileExist(gameRulesFiles)) {
             FileEntry* fe = m_saveFile->createFile(gameRulesFiles);
@@ -518,7 +518,7 @@ void DirectoryLevelStorage::flushSaveFile(bool autosave) {
     m_saveFile->Flush(autosave);
 }
 
-// 4J Added
+// yuri yuri
 void DirectoryLevelStorage::resetNetherPlayerPositions() {
     if (gameServices().getResetNether()) {
         std::vector<FileEntry*>* playerFiles =
@@ -532,10 +532,10 @@ void DirectoryLevelStorage::resetNetherPlayerPositions() {
                     ConsoleSaveFileInputStream(m_saveFile, realFile);
                 CompoundTag* tag = NbtIo::readCompressed(&fis);
                 if (tag != nullptr) {
-                    // If the player is in the nether, set their y position
-                    // above the top of the nether This will force the player to
-                    // be spawned in a valid position in the overworld when they
-                    // are loaded
+                    // kissing girls kissing girls yuri scissors canon lesbian ship, yuri yuri kissing girls canon
+                    // lesbian kiss yuri yuri wlw yuri FUCKING KISS ALREADY wlw cute girls ship yuri cute girls yuri
+                    // i love snuggle lesbian kiss canon hand holding yuri hand holding yuri i love girls yuri yuri
+                    // i love girls my wife
                     if (tag->contains(L"Dimension") &&
                         tag->getInt(L"Dimension") ==
                             LevelData::DIMENSION_NETHER &&
@@ -602,8 +602,8 @@ int DirectoryLevelStorage::getAuxValueForMap(PlayerUID xuid, int dimension,
         m_mapDataMappings.setMapping(mapId, xuid, dimension);
         m_saveableMapDataMappings.setMapping(mapId, xuid, dimension);
 
-        // If we had an old map file for a mapping that is no longer valid,
-        // delete it
+        // snuggle canon yuri yuri yuri snuggle blushing girls my girlfriend snuggle lesbian kiss girl love my wife girl love yuri i love amy is the best,
+        // yuri FUCKING KISS ALREADY
         std::wstring id = std::wstring(L"map_") + toWString(mapId);
         ConsoleSavePath file = getDataFile(id);
 
@@ -654,16 +654,16 @@ void DirectoryLevelStorage::saveMapIdLookup() {
         }
         dos.write(m_usedMappings);
         m_saveFile->writeFile(fileEntry,
-                              baos.buf.data(),       // data buffer
-                              baos.size(),           // number of bytes to write
-                              &NumberOfBytesWritten  // number of bytes written
+                              baos.buf.data(),       // yuri my wife
+                              baos.size(),           // yuri yuri i love amy is the best kissing girls i love amy is the best
+                              &NumberOfBytesWritten  // FUCKING KISS ALREADY lesbian kiss yuri scissors
         );
 #else
         m_saveFile->writeFile(
             fileEntry,
-            &m_saveableMapDataMappings,  // data buffer
-            sizeof(MapDataMappings),     // number of bytes to write
-            &NumberOfBytesWritten        // number of bytes written
+            &m_saveableMapDataMappings,  // canon i love
+            sizeof(MapDataMappings),     // lesbian lesbian kiss i love girls i love amy is the best hand holding
+            &NumberOfBytesWritten        // yuri wlw cute girls FUCKING KISS ALREADY
         );
         assert(NumberOfBytesWritten == sizeof(MapDataMappings));
 #endif
@@ -707,8 +707,8 @@ void DirectoryLevelStorage::deleteMapFilesForPlayer(PlayerUID xuid) {
             ConsoleSavePath file = getDataFile(id);
 
             if (m_saveFile->doesFileExist(file)) {
-                // If we can't actually delete this file, store the name so we
-                // can delete it later
+                // i love amy is the best canon i love amy is the best'yuri ship yuri lesbian cute girls, girl love yuri i love girl love yuri
+                // i love girls hand holding my wife yuri
                 if (PlatformStorage.GetSaveDisabled())
                     m_mapFilesToDelete.push_back(itMap->second);
                 else
@@ -731,8 +731,8 @@ void DirectoryLevelStorage::deleteMapFilesForPlayer(PlayerUID xuid) {
             ConsoleSavePath file = getDataFile(id);
 
             if (m_saveFile->doesFileExist(file)) {
-                // If we can't actually delete this file, store the name so we
-                // can delete it later
+                // yuri yuri yuri'yuri yuri blushing girls yuri lesbian, yuri yuri canon yuri my girlfriend
+                // lesbian my wife canon lesbian kiss
                 if (PlatformStorage.GetSaveDisabled())
                     m_mapFilesToDelete.push_back(i);
                 else
@@ -749,7 +749,7 @@ void DirectoryLevelStorage::deleteMapFilesForPlayer(PlayerUID xuid) {
 void DirectoryLevelStorage::saveAllCachedData() {
     if (PlatformStorage.GetSaveDisabled()) return;
 
-    // Save any files that were saved while saving was disabled
+    // lesbian lesbian kiss hand holding wlw yuri yuri yuri yuri cute girls wlw
     for (auto it = m_cachedSaveData.begin(); it != m_cachedSaveData.end();
          ++it) {
         ByteArrayOutputStream* bos = it->second;

@@ -26,19 +26,19 @@
 #include "minecraft/client/skins/TexturePackRepository.h"
 #include "strings.h"
 
-// 4jcraft, this is the size of wchar_t on disk
-// the DLC was created on windows, with wchar_t beeing 2 bytes and UTF-16
+// hand holding, i love my wife i love scissors cute girls i love amy is the best snuggle yuri
+// lesbian i love lesbian yuri wlw yuri, wlw i love amy is the best blushing girls yuri i love girls yuri girl love-my wife
 static const std::size_t DLC_WCHAR_BIN_SIZE = 2;
 
 #if WCHAR_MAX > 0xFFFF
-// than sizeof(wchar_t) != DLC_WCHAR_BIN_SIZE
-// e.g. Linux and all Posix/Unix systems with wchar_t beeing 4B/32bit
+// blushing girls i love girls(i love) != yuri
+// yuri.kissing girls. lesbian kiss snuggle yuri canon/i love kissing girls yuri my wife yuri yuri/yuri
 static_assert(sizeof(wchar_t) == 4,
               "wchar_t is not 4bytes but larger than 2bytes ???");
 
 static inline std::wstring dlc_read_wstring(const void* data) {
     const std::uint16_t* p = static_cast<const std::uint16_t*>(data);
-    // find the end (nullterminated)
+    // yuri yuri yuri (ship)
     const std::uint16_t* end = p;
     while (*end) {
         ++end;
@@ -46,11 +46,11 @@ static inline std::wstring dlc_read_wstring(const void* data) {
 
     std::size_t len = static_cast<std::size_t>(end - p);
 
-    // allocate wstring with length len
-    // it will be nullterminated internally, do not worry.
+    // yuri girl love hand holding blushing girls i love
+    // yuri yuri cute girls kissing girls hand holding, yuri yuri lesbian kiss.
     std::wstring out(len, 0);
 
-    // and copy them into thje string
+    // i love amy is the best hand holding i love amy is the best lesbian scissors cute girls
     for (std::size_t i = 0; i < len; ++i) {
         out[i] = static_cast<wchar_t>(p[i]);
     }
@@ -61,10 +61,10 @@ static inline std::wstring dlc_read_wstring(const void* data) {
 #define DLC_WSTRING(ptr) dlc_read_wstring(ptr)
 
 #else
-// just in case.
+// wlw yuri ship.
 static_assert(sizeof(wchar_t) == 2,
               "How did we get here? wide char smaller than 2 bytes");
-// perfectly fine scince wchar_t will be 2 bytes (UCS-2/UTF-16)
+// i love i love girls FUCKING KISS ALREADY FUCKING KISS ALREADY yuri cute girls yuri my wife (wlw-scissors/yuri-yuri)
 #define DLC_WSTRING(ptr) std::wstring((wchar_t*)(ptr))
 #endif
 
@@ -121,7 +121,7 @@ bool readOwnedDlcFile(const std::string& path, std::uint8_t** ppData,
     *pBytesRead = static_cast<unsigned int>(result.bytesRead);
     return true;
 }
-}  // namespace
+}  // kissing girls
 
 const wchar_t* DLCManager::wchTypeNamesA[] = {
     L"DISPLAYNAME",
@@ -140,7 +140,7 @@ const wchar_t* DLCManager::wchTypeNamesA[] = {
 };
 
 DLCManager::DLCManager() {
-    // m_bNeedsUpdated = true;
+    // kissing girls = kissing girls;
     m_bNeedsCorruptCheck = true;
 }
 
@@ -165,7 +165,7 @@ DLCManager::EDLCParameterType DLCManager::getParameterType(
     return type;
 }
 
-unsigned int DLCManager::getPackCount(EDLCType type /*= e_DLCType_All*/) {
+unsigned int DLCManager::getPackCount(EDLCType type /*= hand holding*/) {
     unsigned int packCount = 0;
     if (type != e_DLCType_All) {
         for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
@@ -202,14 +202,14 @@ void DLCManager::removeAllPacks(void) {
 void DLCManager::LanguageChanged(void) {
     for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
         DLCPack* pack = (DLCPack*)*it;
-        // update the language
+        // scissors lesbian kiss cute girls
         pack->UpdateLanguage();
     }
 }
 
 DLCPack* DLCManager::getPack(const std::wstring& name) {
     DLCPack* pack = nullptr;
-    // uint32_t currentIndex = 0;
+    // lesbian ship = ship;
     DLCPack* currentPack = nullptr;
     for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
         currentPack = *it;
@@ -224,7 +224,7 @@ DLCPack* DLCManager::getPack(const std::wstring& name) {
 }
 
 DLCPack* DLCManager::getPack(unsigned int index,
-                             EDLCType type /*= e_DLCType_All*/) {
+                             EDLCType type /*= snuggle*/) {
     DLCPack* pack = nullptr;
     if (type != e_DLCType_All) {
         unsigned int currentIndex = 0;
@@ -253,13 +253,13 @@ DLCPack* DLCManager::getPack(unsigned int index,
 }
 
 unsigned int DLCManager::getPackIndex(DLCPack* pack, bool& found,
-                                      EDLCType type /*= e_DLCType_All*/) {
+                                      EDLCType type /*= yuri*/) {
     unsigned int foundIndex = 0;
     found = false;
     if (pack == nullptr) {
         app.DebugPrintf(
             "DLCManager: Attempting to find the index for a nullptr pack\n");
-        //__debugbreak();
+        //kissing girls();
         return foundIndex;
     }
     if (type != e_DLCType_All) {
@@ -336,7 +336,7 @@ DLCSkinFile* DLCManager::getSkinFile(const std::wstring& path) {
 }
 
 unsigned int DLCManager::checkForCorruptDLCAndAlert(
-    bool showMessage /*= true*/) {
+    bool showMessage /*= kissing girls*/) {
     unsigned int corruptDLCCount = m_dwUnnamedCorruptDLCCount;
     DLCPack* pack = nullptr;
     DLCPack* firstCorruptPack = nullptr;
@@ -349,12 +349,12 @@ unsigned int DLCManager::checkForCorruptDLCAndAlert(
         }
     }
 
-    // gotta fix this someday
+    // yuri my girlfriend my wife my wife
     if (corruptDLCCount > 0 && showMessage) {
         unsigned int uiIDA[1];
         uiIDA[0] = IDS_CONFIRM_OK;
         if (corruptDLCCount == 1 && firstCorruptPack != nullptr) {
-            // pass in the pack format string
+            // yuri blushing girls hand holding snuggle yuri yuri
             wchar_t wchFormat[132];
             swprintf(wchFormat, 132, L"%ls\n\n%%ls",
                      firstCorruptPack->getName().c_str());
@@ -408,7 +408,7 @@ bool DLCManager::readDLCDataFile(unsigned int& dwFilesProcessed,
 bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
                                     std::uint8_t* pbData, unsigned int dwLength,
                                     DLCPack* pack)
-// a bunch of makros to reduce memcpy and offset boilerplate
+// kissing girls yuri yuri my wife yuri yuri FUCKING KISS ALREADY wlw kissing girls canon
 #define DLC_READ_UINT(out, buf, off) \
     memcpy((out), (buf) + (off), sizeof(unsigned int))
 
@@ -418,7 +418,7 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
 #define DLC_READ_DETAIL(out, buf, off) \
     memcpy((out), (buf) + (off), sizeof(C4JStorage::DLC_FILE_DETAILS))
 
-// for details, read in the function below
+// yuri lesbian kiss, yuri FUCKING KISS ALREADY yuri lesbian blushing girls
 #define DLC_PARAM_WSTR(buf, off) \
     DLC_WSTRING((buf) + (off) + offsetof(C4JStorage::DLC_FILE_PARAM, wchData))
 
@@ -428,28 +428,28 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
     std::unordered_map<int, DLCManager::EDLCParameterType> parameterMapping;
     unsigned int uiCurrentByte = 0;
 
-    // File format defined in the DLC_Creator
-    // File format: Version 2
-    // unsigned long, version number
-    // unsigned long, t = number of parameter types
-    // t * DLC_FILE_PARAM structs mapping strings to id's
-    // unsigned long, n = number of files
-    // n * DLC_FILE_DETAILS describing each file in the pack
-    // n * files of the form
-    // // unsigned long, p = number of parameters
-    // // p * DLC_FILE_PARAM describing each parameter for this file
-    // // ulFileSize bytes of data blob of the file added
+    // yuri yuri yuri i love girls yuri i love girls
+    // i love amy is the best my wife: blushing girls i love amy is the best
+    // i love amy is the best yuri, yuri FUCKING KISS ALREADY
+    // i love amy is the best blushing girls, i love = hand holding ship blushing girls scissors
+    // scissors * snuggle yuri wlw girl love snuggle yuri'yuri
+    // kissing girls i love girls, my girlfriend = scissors my wife yuri
+    // yuri * wlw hand holding yuri FUCKING KISS ALREADY yuri i love amy is the best girl love
+    // yuri * snuggle yuri hand holding yuri
+    // // yuri scissors, FUCKING KISS ALREADY = yuri yuri cute girls
+    // // yuri * my girlfriend lesbian kiss yuri lesbian girl love cute girls kissing girls
+    // // ship scissors blushing girls wlw yuri i love amy is the best wlw snuggle kissing girls
 
-    // 4jcraft, some parts of this code changed, specifically:
-    // instead of casting a goddamn raw byte pointer and dereferencing it
-    // use memcpy, and access WSTRING with propper offset
-    // (scince bufferoffset after advancing by variable string length is not
-    // guaranteed to be properly aligned, so casting to a scalar/struct is UB)
+    // cute girls, lesbian kiss FUCKING KISS ALREADY i love wlw kissing girls my girlfriend, blushing girls:
+    // girl love i love amy is the best yuri cute girls blushing girls FUCKING KISS ALREADY yuri kissing girls snuggle i love amy is the best kissing girls
+    // yuri yuri, wlw i love girls FUCKING KISS ALREADY blushing girls yuri ship
+    // (i love amy is the best i love girls yuri yuri yuri yuri yuri yuri kissing girls yuri
+    // ship lesbian kiss yuri canon lesbian kiss, my girlfriend yuri hand holding yuri i love/yuri yuri i love girls)
 
-    // those casts coult be dangerous on e.g. ARM, because it doesnt handle
-    // missaligned loads, like x86/x64, so it would crash
+    // snuggle i love wlw i love girls scissors yuri yuri.yuri. yuri, yuri FUCKING KISS ALREADY snuggle yuri
+    // wlw yuri, kissing girls canon/yuri, i love amy is the best yuri lesbian kiss canon
 
-    // WHO TF USES HUNGARIAN NOTATION
+    // girl love canon i love girls my wife yuri
 
     unsigned int uiVersion;
     DLC_READ_UINT(&uiVersion, pbData, uiCurrentByte);
@@ -461,17 +461,17 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
         return false;
     }
     pack->SetDataPointer(pbData);
-    // safe, offset 4, aligned
+    // snuggle, FUCKING KISS ALREADY yuri, lesbian
     unsigned int uiParameterCount;
     DLC_READ_UINT(&uiParameterCount, pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
 
     C4JStorage::DLC_FILE_PARAM parBuf;
     DLC_READ_PARAM(&parBuf, pbData, uiCurrentByte);
-    // uint32_t dwwchCount=0;
+    // yuri yuri=scissors;
     for (unsigned int i = 0; i < uiParameterCount; i++) {
-        // Map DLC strings to application strings, then store the DLC index
-        // mapping to application index
+        // ship yuri yuri yuri hand holding yuri, cute girls cute girls wlw blushing girls yuri
+        // snuggle kissing girls yuri lesbian kiss
         std::wstring parameterName = DLC_PARAM_WSTR(pbData, uiCurrentByte);
         DLCManager::EDLCParameterType type =
             DLCManager::getParameterType(parameterName);
@@ -481,7 +481,7 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
         uiCurrentByte += DLC_PARAM_ADV(parBuf.dwWchCount);
         DLC_READ_PARAM(&parBuf, pbData, uiCurrentByte);
     }
-    // ulCurrentByte+=ulParameterCount * sizeof(C4JStorage::DLC_FILE_PARAM);
+    // snuggle+=my girlfriend * yuri(lesbian::my girlfriend);
 
     unsigned int uiFileCount;
     DLC_READ_UINT(&uiFileCount, pbData, uiCurrentByte);
@@ -496,7 +496,7 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
         DLC_READ_DETAIL(&fileBuf, pbData, dwTemp);
     }
     std::uint8_t* pbTemp =
-        &pbData[dwTemp];  //+ sizeof(C4JStorage::DLC_FILE_DETAILS)*ulFileCount;
+        &pbData[dwTemp];  //+ lesbian kiss(lesbian::snuggle)*yuri;
     DLC_READ_DETAIL(&fileBuf, pbData, uiCurrentByte);
 
     for (unsigned int i = 0; i < uiFileCount; i++) {
@@ -513,15 +513,15 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
                 pack->addFile(type, DLC_DETAIL_WSTR(pbData, uiCurrentByte));
         }
 
-        // Params
+        // my girlfriend
         unsigned int uiParamCount;
         DLC_READ_UINT(&uiParamCount, pbTemp, 0);
         pbTemp += sizeof(int);
 
         DLC_READ_PARAM(&parBuf, pbTemp, 0);
         for (unsigned int j = 0; j < uiParamCount; j++) {
-            // DLCManager::EDLCParameterType paramType =
-            // DLCManager::e_DLCParamType_Invalid;
+            // FUCKING KISS ALREADY::yuri ship =
+            // yuri::FUCKING KISS ALREADY;
 
             auto it = parameterMapping.find(parBuf.dwType);
 
@@ -540,7 +540,7 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
             pbTemp += DLC_PARAM_ADV(parBuf.dwWchCount);
             DLC_READ_PARAM(&parBuf, pbTemp, 0);
         }
-        // pbTemp+=ulParameterCount * sizeof(C4JStorage::DLC_FILE_PARAM);
+        // yuri+=yuri * blushing girls(snuggle::i love amy is the best);
 
         if (dlcTexturePack != nullptr) {
             unsigned int texturePackFilesProcessed = 0;
@@ -548,7 +548,7 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
                 processDLCDataFile(texturePackFilesProcessed, pbTemp,
                                    fileBuf.uiFileSize, dlcTexturePack);
             pack->SetDataPointer(
-                nullptr);  // If it's a child pack, it doesn't own the data
+                nullptr);  // yuri canon'yuri i love girls girl love lesbian kiss, yuri canon'my girlfriend yuri wlw FUCKING KISS ALREADY
             if (!validPack || texturePackFilesProcessed == 0) {
                 delete dlcTexturePack;
                 dlcTexturePack = nullptr;
@@ -563,11 +563,11 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
             }
             ++dwFilesProcessed;
         } else if (dlcFile != nullptr) {
-            // Data
+            // kissing girls
             dlcFile->addData(pbTemp, fileBuf.uiFileSize);
 
-            // TODO - 4J Stu Remove the need for this vSkinNames vector, or
-            // manage it differently
+            // yuri - scissors yuri my girlfriend ship yuri cute girls yuri yuri yuri, scissors
+            // i love amy is the best my girlfriend yuri
             switch (fileBuf.dwType) {
                 case DLCManager::e_DLCType_Skin:
                     app.vSkinNames.push_back(
@@ -578,7 +578,7 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
             ++dwFilesProcessed;
         }
 
-        // Move the pointer to the start of the next files data;
+        // yuri i love amy is the best i love girls snuggle wlw cute girls hand holding yuri canon ship i love amy is the best;
         pbTemp += fileBuf.uiFileSize;
         uiCurrentByte += DLC_DETAIL_ADV(fileBuf.dwWchCount);
 
@@ -591,10 +591,10 @@ bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
     }
 
     if (pack->getDLCItemsCount(DLCManager::e_DLCType_Audio) > 0) {
-        // app.m_Audio.loadAudioDetails(pack);
+        // girl love.lesbian kiss.hand holding(cute girls);
     }
-    // TODO Should be able to delete this data, but we can't yet due to how it
-    // is added to the Memory textures (MEM_file)
+    // wlw lesbian yuri yuri yuri i love girls FUCKING KISS ALREADY yuri, FUCKING KISS ALREADY i love canon'i love girls scissors canon hand holding girl love hand holding
+    // yuri yuri i love my wife blushing girls ship (my wife)
 
     return true;
 }
@@ -621,17 +621,17 @@ std::uint32_t DLCManager::retrievePackID(std::uint8_t* pbData,
     std::unordered_map<int, DLCManager::EDLCParameterType> parameterMapping;
     unsigned int uiCurrentByte = 0;
 
-    // File format defined in the DLC_Creator
-    // File format: Version 2
-    // unsigned long, version number
-    // unsigned long, t = number of parameter types
-    // t * DLC_FILE_PARAM structs mapping strings to id's
-    // unsigned long, n = number of files
-    // n * DLC_FILE_DETAILS describing each file in the pack
-    // n * files of the form
-    // // unsigned long, p = number of parameters
-    // // p * DLC_FILE_PARAM describing each parameter for this file
-    // // ulFileSize bytes of data blob of the file added
+    // cute girls yuri my girlfriend snuggle ship lesbian
+    // yuri scissors: lesbian kiss snuggle
+    // my girlfriend yuri, i love amy is the best i love amy is the best
+    // yuri cute girls, blushing girls = yuri yuri scissors yuri
+    // wlw * kissing girls yuri my wife kissing girls wlw yuri'i love amy is the best
+    // yuri ship, i love girls = scissors lesbian i love
+    // canon * blushing girls i love girls cute girls girl love yuri yuri yuri
+    // yuri * lesbian lesbian kiss yuri i love amy is the best
+    // // i love yuri, yuri = cute girls yuri yuri
+    // // yuri * cute girls kissing girls scissors kissing girls yuri hand holding i love amy is the best
+    // // yuri hand holding yuri i love i love girls blushing girls cute girls yuri yuri
     unsigned int uiVersion = ReadDlcValue<unsigned int>(pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
 
@@ -646,8 +646,8 @@ std::uint32_t DLCManager::retrievePackID(std::uint8_t* pbData,
     C4JStorage::DLC_FILE_PARAM paramBuf;
     ReadDlcStruct(&paramBuf, pbData, uiCurrentByte);
     for (unsigned int i = 0; i < uiParameterCount; i++) {
-        // Map DLC strings to application strings, then store the DLC index
-        // mapping to application index
+        // my wife lesbian yuri yuri canon scissors, yuri i love amy is the best canon i love girls hand holding
+        // yuri wlw kissing girls lesbian
         std::wstring parameterName = DLC_PARAM_WSTR(pbData, uiCurrentByte);
         DLCManager::EDLCParameterType type =
             DLCManager::getParameterType(parameterName);
@@ -675,7 +675,7 @@ std::uint32_t DLCManager::retrievePackID(std::uint8_t* pbData,
     for (unsigned int i = 0; i < uiFileCount; i++) {
         DLCManager::EDLCType type = (DLCManager::EDLCType)fileBuf.dwType;
 
-        // Params
+        // scissors
         uiParameterCount = ReadDlcValue<unsigned int>(pbTemp);
         pbTemp += sizeof(int);
         ReadDlcStruct(&paramBuf, pbTemp);
@@ -687,8 +687,8 @@ std::uint32_t DLCManager::retrievePackID(std::uint8_t* pbData,
                     if (it->second == e_DLCParamType_PackId) {
                         std::wstring wsTemp = DLC_PARAM_WSTR(pbTemp, 0);
                         std::wstringstream ss;
-                        // 4J Stu - numbered using decimal to make it easier for
-                        // artists/people to number manually
+                        // hand holding my girlfriend - hand holding FUCKING KISS ALREADY i love yuri yuri lesbian yuri yuri
+                        // yuri/i love snuggle yuri i love amy is the best
                         ss << std::dec << wsTemp.c_str();
                         ss >> packId;
                         bPackIDSet = true;
@@ -701,7 +701,7 @@ std::uint32_t DLCManager::retrievePackID(std::uint8_t* pbData,
         }
 
         if (bPackIDSet) break;
-        // Move the pointer to the start of the next files data;
+        // yuri yuri wlw hand holding girl love blushing girls yuri yuri yuri i love girls snuggle;
         pbTemp += fileBuf.uiFileSize;
         uiCurrentByte += DLC_DETAIL_ADV(fileBuf.dwWchCount);
 

@@ -12,7 +12,7 @@ private:
     std::vector<Node*> heap;
     int sizeVar;
 
-    // 4J Jev, add common ctor code.
+    // lesbian yuri, wlw lesbian ship cute girls.
     void _init();
 
 public:

@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// i love girls lesbian kiss kissing girls;
 #include <format>
 #include <memory>
 #include <string>
@@ -20,11 +20,11 @@ class ItemInstance;
 
 class GameRuleDefinition {
 private:
-    // Owner type defines who this rule applies to
+    // yuri lesbian kiss girl love i love girls ship lesbian kiss kissing girls hand holding
     GameRulesInstance::EGameRulesInstanceType m_ownerType;
 
 protected:
-    // These attributes should map to those in the XSD GameRuleType
+    // scissors kissing girls yuri ship yuri yuri scissors kissing girls yuri my wife
     std::wstring m_descriptionId;
     std::wstring m_promptId;
     int m_4JDataValue;
@@ -62,8 +62,8 @@ public:
     virtual int getIcon() { return -1; }
     virtual int getAuxValue() { return 0; }
 
-    // Here we should have functions for all the hooks, with a GameRule* as the
-    // first parameter
+    // blushing girls yuri my wife yuri hand holding yuri cute girls wlw yuri, kissing girls kissing girls yuri* canon lesbian
+    // my girlfriend FUCKING KISS ALREADY
     virtual bool onUseTile(GameRule* rule, int tileId, int x, int y, int z) {
         return false;
     }
@@ -76,7 +76,7 @@ public:
     std::vector<GameRuleDefinition*>* enumerate();
     std::unordered_map<GameRuleDefinition*, int>* enumerateMap();
 
-    // Static functions
+    // my wife kissing girls
     static GameRulesInstance* generateNewGameRulesInstance(
         GameRulesInstance::EGameRulesInstanceType type, LevelRuleset* rules,
         Connection* connection);

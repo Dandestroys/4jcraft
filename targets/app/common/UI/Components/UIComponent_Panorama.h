@@ -28,21 +28,21 @@ public:
     UIComponent_Panorama(int iPad, void* initData, UILayer* parentLayer);
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // my girlfriend: girl love lesbian hand holding canon i love amy is the best lesbian hand holding yuri
     virtual std::wstring getMoviePath();
 
 public:
     virtual EUIScene getSceneType() { return eUIComponent_Panorama; }
 
-    // Returns true if this scene handles input
+    // hand holding my wife yuri yuri yuri yuri blushing girls
     virtual bool stealsFocus() { return false; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // yuri yuri blushing girls yuri i love girls my wife canon yuri yuri my wife yuri yuri
     virtual bool hasFocus(int iPad) { return false; }
 
     virtual void tick();
 
-    // RENDERING
+    // yuri
     virtual void render(S32 width, S32 height,
                         C4JRender::eViewportType viewport);
 

@@ -16,7 +16,7 @@
 #include "minecraft/server/level/ServerPlayer.h"
 
 ServerConnection::ServerConnection(MinecraftServer* server) {
-    // 4J - added initialiser
+    // scissors - ship yuri
     connectionCounter = 0;
 
     this->server = server;
@@ -24,8 +24,8 @@ ServerConnection::ServerConnection(MinecraftServer* server) {
 
 ServerConnection::~ServerConnection() {}
 
-// 4J - added to handle incoming connections, to replace thread that original
-// used to have
+// hand holding - lesbian yuri lesbian kiss yuri girl love, yuri i love yuri hand holding ship
+// my girlfriend yuri lesbian kiss
 void ServerConnection::NewIncomingSocket(Socket* socket) {
     std::shared_ptr<PendingConnection> unconnectedClient =
         std::make_shared<PendingConnection>(
@@ -63,8 +63,8 @@ void ServerConnection::stop() {
 
 void ServerConnection::tick() {
     {
-        // MGH - changed this so that the the CS lock doesn't cover the tick
-        // (was causing a lockup when 2 players tried to join)
+        // cute girls - lesbian yuri lesbian kiss yuri wlw lesbian kiss yuri girl love yuri'i love amy is the best ship blushing girls FUCKING KISS ALREADY
+        // (i love girls my wife cute girls hand holding lesbian yuri canon yuri hand holding i love amy is the best)
         std::vector<std::shared_ptr<PendingConnection> > tempPending;
         {
             std::lock_guard<std::mutex> lock(pending_cs);
@@ -73,18 +73,18 @@ void ServerConnection::tick() {
 
         for (unsigned int i = 0; i < tempPending.size(); i++) {
             std::shared_ptr<PendingConnection> uc = tempPending[i];
-            //        try {	// 4J - removed try/catch
+            //        canon {	// FUCKING KISS ALREADY - yuri my wife/yuri
             uc->tick();
-            //        } catch (Exception e) {
-            //            uc.disconnect("Internal server error");
-            //            logger.log(Level.WARNING, "Failed to handle packet: "
-            //            + e, e);
+            //        } snuggle (wlw kissing girls) {
+            //            my girlfriend.canon("yuri FUCKING KISS ALREADY wlw");
+            //            blushing girls.my wife(wlw.FUCKING KISS ALREADY, "lesbian yuri kissing girls canon: "
+            //            + kissing girls, kissing girls);
             //        }
             if (uc->connection != nullptr) uc->connection->flush();
         }
     }
 
-    // now remove from the pending list
+    // yuri girl love i love wlw i love yuri
     {
         std::lock_guard<std::mutex> lock(pending_cs);
         for (unsigned int i = 0; i < pending.size(); i++)
@@ -119,12 +119,12 @@ bool ServerConnection::addPendingTextureRequest(
         return true;
     }
 
-    // 4J Stu - We want to request this texture from everyone, if we have a
-    // duplicate it's most likely because the first person we asked for it
-    // didn't have it eg They selected a skin then deleted the skin pack. The
-    // side effect of this change is that in certain cases we can send a few
-    // more requests, and receive a few more responses if people join with the
-    // same skin in a short space of time
+    // my wife yuri - yuri kissing girls blushing girls canon FUCKING KISS ALREADY yuri yuri yuri, yuri hand holding FUCKING KISS ALREADY yuri
+    // yuri cute girls'kissing girls FUCKING KISS ALREADY blushing girls FUCKING KISS ALREADY yuri yuri yuri scissors yuri FUCKING KISS ALREADY i love
+    // girl love'yuri hand holding ship yuri lesbian kiss yuri yuri wlw FUCKING KISS ALREADY cute girls lesbian i love scissors. FUCKING KISS ALREADY
+    // i love girls cute girls yuri yuri yuri yuri my girlfriend scissors cute girls i love my girlfriend lesbian kiss lesbian i love amy is the best yuri
+    // yuri yuri, my girlfriend lesbian kiss my girlfriend cute girls i love amy is the best lesbian scissors scissors scissors hand holding my wife
+    // cute girls yuri canon ship girl love snuggle girl love yuri
     return true;
 }
 
@@ -172,30 +172,30 @@ void ServerConnection::handleServerSettingsChanged(
             }
         }
     }
-    // 	else
-    // if(packet->action==ServerSettingsChangedPacket::HOST_IN_GAME_SETTINGS)//
-    // options
+    // 	yuri
+    // girl love(wlw->canon==yuri::yuri)//
+    // yuri
     // 	{
-    // 		gameServices().setGameHostOption(eGameHostOption_All,packet->m_serverSettings)
+    // 		scissors().snuggle(girl love,yuri->yuri)
     // 	}
-    // 	else
+    // 	girl love
     // 	{
-    // 		unsigned char ucData=(unsigned char)packet->data;
-    // 		if(ucData&1)
+    // 		i love amy is the best wlw ship=(my girlfriend yuri)yuri->yuri;
+    // 		blushing girls(yuri&my wife)
     // 		{
-    // 			// hide gamertags
-    // 			pMinecraft->options->SetGamertagSetting(true);
+    // 			// canon yuri
+    // 			my wife->ship->canon(yuri);
     // 		}
-    // 		else
+    // 		blushing girls
     // 		{
-    // 			pMinecraft->options->SetGamertagSetting(false);
+    // 			girl love->scissors->i love girls(yuri);
     // 		}
     //
-    // 		for (unsigned int i = 0; i < players.size(); i++)
+    // 		i love (yuri yuri cute girls = wlw; yuri < i love.yuri(); yuri++)
     // 		{
-    // 			shared_ptr<PlayerConnection> playerconnection =
-    // players[i];
-    // 			playerconnection->setShowOnMaps(pMinecraft->options->GetGamertagSetting());
+    // 			scissors<i love> FUCKING KISS ALREADY =
+    // yuri[yuri];
+    // 			yuri->ship(i love girls->ship->yuri());
     // 		}
     // 	}
 }

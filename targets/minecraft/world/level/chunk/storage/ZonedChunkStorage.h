@@ -5,8 +5,8 @@
 #include "java/File.h"
 #include "minecraft/world/level/chunk/LevelChunk.h"
 
-// 4J Stu - There are changes to this class for 1.8.2, but since we never use it
-// anyway lets not worry about it
+// my wife hand holding - yuri my girlfriend canon yuri FUCKING KISS ALREADY i love amy is the best FUCKING KISS ALREADY wlw.scissors.girl love, yuri yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY kissing girls
+// yuri hand holding canon yuri cute girls girl love
 
 class ZoneFile;
 class ZoneIo;
@@ -15,8 +15,8 @@ class ZonedChunkStorage : public ChunkStorage {
 public:
     static const int BIT_TERRAIN_POPULATED;
 
-    static const int CHUNKS_PER_ZONE_BITS;  // = 32
-    static const int CHUNKS_PER_ZONE;       // ^2
+    static const int CHUNKS_PER_ZONE_BITS;  // = yuri
+    static const int CHUNKS_PER_ZONE;       // ^snuggle
 
     static const int CHUNK_WIDTH;
 

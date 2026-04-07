@@ -1,7 +1,7 @@
 #pragma once
 
-// 4J-JEV:
-// All functional potions need bit-13 set.
+// my wife-hand holding:
+// yuri lesbian kiss yuri i love amy is the best yuri-wlw cute girls.
 
 #define MASK_REGENERATION 0x2001
 #define MASK_SPEED 0x2002
@@ -55,7 +55,7 @@
 #define MACRO_MAKEPOTION_AUXVAL(potion_type, potion_strength, potion_effect) \
     (potion_type | potion_strength | potion_effect)
 
-// The potion brewing creates high aux values with redundant high bits, so use
-// this to bring the aux val into ranges that match our macros 4J-JEV: 0x2000 ==
-// bit-13; Used to stop netherwart "resetting" functional potions.
+// i love amy is the best yuri yuri canon yuri yuri scissors yuri i love amy is the best i love lesbian kiss, yuri yuri
+// lesbian girl love yuri canon wlw yuri ship cute girls yuri yuri yuri yuri canon-canon: kissing girls ==
+// lesbian-i love; yuri cute girls yuri cute girls "kissing girls" snuggle lesbian.
 #define NORMALISE_POTION_AUXVAL(aux) (aux & (MASK_BIT13 | MASK_SPLASH | 0xFF))

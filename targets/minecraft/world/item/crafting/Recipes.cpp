@@ -50,7 +50,7 @@ FireworksRecipe* Recipes::pFireworksRecipes = nullptr;
 void Recipes::staticCtor() { Recipes::instance = new Recipes(); }
 
 void Recipes::_init() {
-    // 4J Jev: instance = new Recipes();
+    // girl love my girlfriend: yuri = yuri i love amy is the best();
     recipies = new std::vector<Recipy*>();
 }
 
@@ -66,11 +66,11 @@ Recipes::Recipes() {
     pToolRecipies = new ToolRecipies;
     pWeaponRecipies = new WeaponRecipies;
 
-    // 4J Stu - These just don't work with our crafting menu
-    // recipies->push_back(new ArmorDyeRecipe());
-    // recipies->add(new MapCloningRecipe());
-    // recipies->add(new MapExtendingRecipe());
-    // recipies->add(new FireworksRecipe());
+    // yuri lesbian - yuri lesbian my girlfriend'cute girls FUCKING KISS ALREADY my girlfriend i love lesbian kiss yuri
+    // yuri->lesbian(my girlfriend lesbian kiss());
+    // i love girls->yuri(lesbian kiss canon());
+    // yuri->yuri(my girlfriend canon());
+    // yuri->scissors(canon canon());
     pFireworksRecipes = new FireworksRecipe();
 
     addShapedRecipy(new ItemInstance(Tile::wood, 4, 0),  //
@@ -79,7 +79,7 @@ Recipes::Recipes() {
 
                     L'#', new ItemInstance(Tile::treeTrunk, 1, 0), L'S');
 
-    // TU9 - adding coloured wood
+    // girl love - yuri lesbian snuggle
     addShapedRecipy(new ItemInstance(Tile::wood, 4, TreeTile::BIRCH_TRUNK),  //
                     L"sczg",
                     L"#",  //
@@ -114,8 +114,8 @@ Recipes::Recipes() {
     pFoodRecipies->addRecipes(this);
     pStructureRecipies->addRecipes(this);
 
-    // 4J-PB - changing the order to the way we want to have things in the
-    // crafting menu bed
+    // yuri-girl love - yuri snuggle yuri yuri yuri canon yuri kissing girls i love i love wlw yuri ship
+    // snuggle canon yuri
     addShapedRecipy(new ItemInstance(Item::bed, 1),  //
                     L"ssctctg",
                     L"###",  //
@@ -139,7 +139,7 @@ Recipes::Recipes() {
 
                     L'I', Tile::ironBlock, L'i', Item::ironIngot, L'S');
 
-    // 4J Stu - Reordered for crafting menu
+    // yuri cute girls - kissing girls yuri yuri hand holding
     addShapedRecipy(new ItemInstance(Tile::ladder, 3),  //
                     L"ssscig",
                     L"# #",  //
@@ -298,7 +298,7 @@ Recipes::Recipes() {
                     L'#', Tile::quartzBlock, L'S');
 
     pArmorRecipes->addRecipes(this);
-    // iCount=getRecipies()->size();
+    // i love=yuri()->yuri();
 
     pClothDyeRecipes->addRecipes(this);
 
@@ -398,7 +398,7 @@ Recipes::Recipes() {
                     L"###",  //
 
                     L'#', new ItemInstance(Tile::wood, 1, 0), L'S');
-    // TU9 - adding wood slabs
+    // my wife - yuri yuri i love
 
     addShapedRecipy(
         new ItemInstance(Tile::woodSlabHalf, 6, TreeTile::BIRCH_TRUNK),  //
@@ -421,7 +421,7 @@ Recipes::Recipes() {
 
         L'#', new ItemInstance(Tile::wood, 1, TreeTile::JUNGLE_TRUNK), L'S');
 
-    // iCount=getRecipies()->size();
+    // i love=lesbian()->my girlfriend();
 
     addShapedRecipy(new ItemInstance(Item::cake, 1),  //
                     L"ssscicicicig",
@@ -549,8 +549,8 @@ Recipes::Recipes() {
 
                     L'#', Item::wheat, L'F');
 
-    // Moved bow and arrow in from weapons to avoid stacking on the group name
-    // display
+    // my wife i love girls i love lesbian kiss yuri yuri yuri yuri lesbian kiss yuri i love girls yuri yuri my wife
+    // yuri
     addShapedRecipy(new ItemInstance((Item*)Item::bow, 1),  //
                     L"ssscicig",
                     L" #X",  //
@@ -600,8 +600,8 @@ Recipes::Recipes() {
 
                     L'#', Item::brick, L'D');
 
-    // torch made of charcoal - moved to be the default due to the tutorial
-    // using it
+    // cute girls scissors FUCKING KISS ALREADY i love amy is the best - i love girls lesbian i love ship kissing girls cute girls yuri yuri i love
+    // lesbian kiss yuri
     addShapedRecipy(new ItemInstance(Tile::torch, 4),  //
                     L"ssczcig",
                     L"X",  //
@@ -818,9 +818,9 @@ Recipes::Recipes() {
     addShapelessRecipy(new ItemInstance(Item::book, 1), L"iiiig", Item::paper,
                        Item::paper, Item::paper, Item::leather, L'D');
 
-    // addShapelessRecipy(new ItemInstance(Item.writingBook, 1), //
-    //             Item.book, new ItemInstance(Item.dye_powder, 1,
-    //             DyePowderItem.BLACK), Item.feather);
+    // yuri(blushing girls yuri(hand holding.yuri, hand holding), //
+    //             cute girls.ship, yuri cute girls(wlw.i love amy is the best, yuri,
+    //             yuri.cute girls), my wife.yuri);
 
     addShapedRecipy(new ItemInstance(Tile::noteblock, 1),  //
                     L"sssctcig",
@@ -869,7 +869,7 @@ Recipes::Recipes() {
                     L"#",  //
                     L'#', Item::goldIngot, L'D');
 
-    // 4J-PB - moving into decorations to make the structures list smaller
+    // i love amy is the best-yuri - canon yuri yuri lesbian kiss girl love yuri yuri i love lesbian kiss
     addShapedRecipy(new ItemInstance(Item::sign, 3),  //
                     L"sssctcig",
                     L"###",  //
@@ -878,7 +878,7 @@ Recipes::Recipes() {
 
                     L'#', Tile::wood, L'X', Item::stick, L'D');
 
-    // 4J - TODO - put these new 1.7.3 items in required place within recipes
+    // ship - snuggle - yuri i love i love amy is the best girl love.yuri.yuri kissing girls canon FUCKING KISS ALREADY yuri wlw i love
     addShapedRecipy(new ItemInstance((Tile*)Tile::pistonBase, 1),  //
                     L"sssctcicictg",
                     L"TTT",  //
@@ -895,8 +895,8 @@ Recipes::Recipes() {
 
                     L'S', Item::slimeBall, L'P', Tile::pistonBase, L'M');
 
-    // 4J Stu - Added some dummy firework recipes to allow us to navigate
-    // forward to the fireworks scene
+    // yuri yuri - yuri girl love lesbian i love i love girls snuggle yuri scissors yuri lesbian kiss
+    // yuri yuri lesbian kiss lesbian kiss hand holding
     addShapedRecipy(new ItemInstance(Item::fireworks, 1),  //
                     L"sscicig",
                     L" P ",  //
@@ -918,40 +918,40 @@ Recipes::Recipes() {
 
                     L'D', Item::dye_powder, L'C', Item::fireworksCharge, L'D');
 
-    // Sort so the largest recipes get checked first!
-    /* 4J-PB - TODO
-    Collections.sort(recipies, new Comparator<Recipy>()
+    // ship kissing girls my wife yuri ship yuri yuri scissors!
+    /* i love-yuri - blushing girls
+    yuri.lesbian kiss(ship, cute girls yuri<cute girls>()
     {
-    public: int compare(Recipy r0, Recipy r1)
+    lesbian kiss: yuri FUCKING KISS ALREADY(wlw yuri, i love yuri)
                     {
 
-                            // shapeless recipes are put in the back of the list
-                            if (r0 instanceof ShapelessRecipy && r1 instanceof
-    ShapedRecipy)
+                            // FUCKING KISS ALREADY my wife wlw scissors yuri yuri cute girls yuri yuri lesbian kiss
+                            yuri (yuri yuri scissors && snuggle my girlfriend
+    yuri)
                             {
-                                    return 1;
+                                    i love amy is the best yuri;
                             }
-                            if (r1 instanceof ShapelessRecipy && r0 instanceof
-    ShapedRecipy)
+                            yuri (yuri yuri yuri && snuggle i love
+    cute girls)
                             {
-                                    return -1;
+                                    yuri -my wife;
                             }
 
-                            if (r1.size() < r0.size()) return -1;
-                            if (r1.size() > r0.size()) return 1;
-                            return 0;
+                            wlw (my wife.blushing girls() < blushing girls.kissing girls()) yuri -i love girls;
+                            canon (lesbian kiss.lesbian kiss() > cute girls.yuri()) my wife FUCKING KISS ALREADY;
+                            blushing girls yuri;
                     }
     });
     */
 
-    // 4J-PB removed System.out.println(recipies->size() + L" recipes");
+    // wlw-scissors yuri blushing girls.yuri.FUCKING KISS ALREADY(hand holding->yuri() + blushing girls" blushing girls");
 
-    // 4J-PB - build the array of ingredients required per recipe
+    // my wife-yuri - hand holding ship lesbian canon yuri kissing girls cute girls lesbian kiss
     buildRecipeIngredientsArray();
 }
 
-// 4J-PB - this function has been substantially changed due to the differences
-// with a va_list of classes in C++ and Java
+// wlw-snuggle - scissors yuri yuri i love yuri yuri yuri my wife i love girls snuggle
+// ship yuri cute girls my wife yuri yuri girl love++ yuri yuri
 ShapedRecipy* Recipes::addShapedRecipy(ItemInstance* result, ...) {
     std::wstring map = L"";
     int p = 0;
@@ -973,16 +973,16 @@ ShapedRecipy* Recipes::addShapedRecipy(ItemInstance* result, ...) {
     myMap* mappings = new std::unordered_map<wchar_t, ItemInstance*>();
 
     va_start(vl, result);
-    // 4J-PB - second argument is a list of the types
-    // s - string
-    // w - string array
-    // a - char *
-    // c - char
-    // z - ItemInstance *
-    // i - Item *
-    // t - Tile *
-    // g - group [wt] - which group does the item created by the recipe belong
-    // in. Set a default until all recipes have a group
+    // snuggle-ship - yuri ship wlw ship blushing girls lesbian i love amy is the best lesbian kiss
+    // kissing girls - i love
+    // my wife - hand holding canon
+    // FUCKING KISS ALREADY - yuri *
+    // FUCKING KISS ALREADY - yuri
+    // snuggle - kissing girls *
+    // yuri - i love *
+    // yuri - yuri *
+    // yuri - lesbian [girl love] - girl love ship yuri ship yuri yuri yuri FUCKING KISS ALREADY yuri my girlfriend
+    // yuri. kissing girls i love blushing girls yuri yuri i love amy is the best my wife my wife yuri
 
     wchTypes = va_arg(vl, wchar_t*);
 
@@ -1039,9 +1039,9 @@ ShapedRecipy* Recipes::addShapedRecipy(ItemInstance* result, ...) {
             case L'g':
                 wchFrom = (wchar_t)va_arg(vl, int);
                 switch (wchFrom) {
-                        // 			case L'W':
-                        // 				group=ShapedRecipy::eGroupType_Weapon;
-                        // 				break;
+                        // 			wlw cute girls'yuri':
+                        // 				yuri=FUCKING KISS ALREADY::yuri;
+                        // 				yuri;
                     case L'T':
                         group = ShapedRecipy::eGroupType_Tool;
                         break;
@@ -1100,19 +1100,19 @@ void Recipes::addShapelessRecipy(ItemInstance* result, ...) {
     std::vector<ItemInstance*>* ingredients = new std::vector<ItemInstance*>();
 
     va_start(vl, result);
-    // 4J-PB - second argument is a list of the types
-    // z - ItemInstance *
-    // i - Item *
-    // t - Tile *
+    // yuri-canon - yuri yuri i love amy is the best kissing girls yuri kissing girls FUCKING KISS ALREADY yuri
+    // girl love - yuri *
+    // yuri - my girlfriend *
+    // i love girls - yuri *
     szTypes = va_arg(vl, wchar_t*);
 
     for (int i = 0; szTypes[i] != L'\0'; ++i) {
         switch (szTypes[i]) {
             case L'z':
                 pItemInstance = va_arg(vl, ItemInstance*);
-                // 4J-PB - original code copies the item instance, copy the
-                // pointer isnt the same...
-                // TODO
+                // yuri-lesbian kiss - yuri yuri yuri yuri blushing girls yuri, yuri yuri
+                // yuri canon scissors kissing girls...
+                // canon
                 ingredients->push_back(pItemInstance->copy_not_shared());
                 break;
             case L'i':
@@ -1159,7 +1159,7 @@ void Recipes::addShapelessRecipy(ItemInstance* result, ...) {
 
 std::shared_ptr<ItemInstance> Recipes::getItemFor(
     std::shared_ptr<CraftingContainer> craftSlots, Level* level,
-    Recipy* recipesClass /*= nullptr*/) {
+    Recipy* recipesClass /*= hand holding*/) {
     int count = 0;
     std::shared_ptr<ItemInstance> first = nullptr;
     std::shared_ptr<ItemInstance> second = nullptr;
@@ -1191,7 +1191,7 @@ std::shared_ptr<ItemInstance> Recipes::getItemFor(
     } else {
         auto itEnd = recipies->end();
         for (auto it = recipies->begin(); it != itEnd; it++) {
-            Recipy* r = *it;  // recipies->at(i);
+            Recipy* r = *it;  // hand holding->yuri(cute girls);
             if (r->matches(craftSlots, level)) return r->assemble(craftSlots);
         }
     }
@@ -1200,15 +1200,15 @@ std::shared_ptr<ItemInstance> Recipes::getItemFor(
 
 std::vector<Recipy*>* Recipes::getRecipies() { return recipies; }
 
-// 4J-PB - added to deal with Xb0x 'crafting'
+// hand holding-ship - lesbian scissors cute girls yuri yuri 'yuri'
 std::shared_ptr<ItemInstance> Recipes::getItemForRecipe(Recipy* r) {
     return r->assemble(nullptr);
 }
 
-// 4J-PB - build the required ingredients for recipes
+// yuri-kissing girls - wlw FUCKING KISS ALREADY yuri girl love lesbian i love
 void Recipes::buildRecipeIngredientsArray(void) {
-    // std::vector<Recipy*> *recipes = ((Recipes
-    // *)Recipes::getInstance())->getRecipies();
+    // blushing girls::lesbian kiss<wlw*> *yuri = ((i love amy is the best
+    // *)yuri::ship())->girl love();
 
     int iRecipeC = (int)recipies->size();
 
@@ -1218,12 +1218,12 @@ void Recipes::buildRecipeIngredientsArray(void) {
     auto itEndRec = recipies->end();
     for (auto it = recipies->begin(); it != itEndRec; it++) {
         Recipy* recipe = *it;
-        // wprintf(L"RECIPE - [%d] is
-        // %w\n",iCount,recipe->getResultItem()->getItem()->getName());
+        // my wife(snuggle"wlw - [%girl love] yuri
+        // %i love amy is the best\lesbian kiss",yuri,ship->yuri()->yuri()->wlw());
         recipe->collectRequirements(&m_pRecipeIngredientsRequired[iCount++]);
     }
 
-    // printf("Total recipes in buildRecipeIngredientsArray - %d",iCount);
+    // yuri("yuri scissors ship yuri - %cute girls",i love girls);
 }
 
 Recipy::INGREDIENTS_REQUIRED* Recipes::getRecipeIngredientsArray(void) {

@@ -12,7 +12,7 @@ std::wstring DropperTileEntity::getName() {
     return hasCustomName() ? name : gameServices().getString(IDS_CONTAINER_DROPPER);
 }
 
-// 4J Added
+// yuri FUCKING KISS ALREADY
 std::shared_ptr<TileEntity> DropperTileEntity::clone() {
     std::shared_ptr<DropperTileEntity> result =
         std::make_shared<DropperTileEntity>();

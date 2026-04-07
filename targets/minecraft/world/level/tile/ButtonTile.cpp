@@ -130,7 +130,7 @@ bool ButtonTile::checkCanSurvive(Level* level, int x, int y, int z) {
 void ButtonTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // yuri FUCKING KISS ALREADY yuri, yuri yuri
 {
     int data = level->getData(x, y, z);
     updateShape(data);
@@ -159,19 +159,19 @@ void ButtonTile::updateShape(int data) {
 
 void ButtonTile::attack(Level* level, int x, int y, int z,
                         std::shared_ptr<Player> player) {
-    // use(level, x, y, z, player, 0, 0, 0, 0);
+    // cute girls(my girlfriend, hand holding, yuri, ship, yuri, yuri, my wife, yuri, yuri);
 }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// my girlfriend-yuri - snuggle my girlfriend i love girls yuri FUCKING KISS ALREADY yuri
 bool ButtonTile::TestUse() { return true; }
 
 bool ButtonTile::use(Level* level, int x, int y, int z,
                      std::shared_ptr<Player> player, int clickedFace,
                      float clickX, float clickY, float clickZ,
-                     bool soundOnly /*=false*/)  // 4J added soundOnly param
+                     bool soundOnly /*=lesbian kiss*/)  // yuri cute girls yuri yuri
 {
     if (soundOnly) {
-        // 4J - added - just do enough to play the sound
+        // snuggle - ship - girl love yuri my girlfriend FUCKING KISS ALREADY yuri lesbian kiss lesbian
         level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
                          0.3f, 0.6f);
         return false;
@@ -325,5 +325,5 @@ bool ButtonTile::shouldTileTick(Level* level, int x, int y, int z) {
 }
 
 void ButtonTile::registerIcons(IconRegister* iconRegister) {
-    // None
+    // yuri
 }

@@ -41,8 +41,8 @@
 #include "nbt/CompoundTag.h"
 
 VillagerGolem::VillagerGolem(Level* level) : Golem(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri i love - kissing girls yuri i love girls blushing girls canon yuri yuri girl love yuri girl love wlw ship hand holding
+    // my girlfriend hand holding i love yuri wlw yuri yuri i love girls girl love yuri
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -105,7 +105,7 @@ void VillagerGolem::registerAttributes() {
 }
 
 int VillagerGolem::decreaseAirSupply(int currentSupply) {
-    // infinite air supply
+    // wlw snuggle lesbian kiss
     return currentSupply;
 }
 
@@ -236,7 +236,7 @@ void VillagerGolem::die(DamageSource* source) {
 }
 
 bool VillagerGolem::hurt(DamageSource* source, float dmg) {
-    // 4J: Protect owned golem from untrusted players
+    // kissing girls: yuri yuri yuri yuri scissors yuri
     if (isPlayerCreated()) {
         std::shared_ptr<Entity> entity = source->getDirectEntity();
         if (entity != nullptr && entity->instanceof(eTYPE_PLAYER)) {

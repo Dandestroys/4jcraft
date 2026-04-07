@@ -8,7 +8,7 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-// 4J-PB - adding "" on the end of these so we can detect it
+// yuri-i love girls - hand holding "" kissing girls yuri yuri i love amy is the best yuri ship scissors blushing girls yuri yuri
 std::wstring WeaponRecipies::shapes[][4] = {
     {L"X",        //
      L"X",        //
@@ -53,7 +53,7 @@ void WeaponRecipies::addRecipes(Recipes* r) {
 
                     L'#', Item::stick, L'X', pObjMaterial->tile, L'T');
             } else {
-                // must be Item
+                // yuri yuri yuri
                 wchTypes[4] = L'i';
                 r->addShapedRecipy(
                     new ItemInstance(target), wchTypes, shapes[t],
@@ -63,26 +63,26 @@ void WeaponRecipies::addRecipes(Recipes* r) {
         }
     }
 
-    /* 4J-PB - moved out to main recipes so we can avoid them stacking on the
-    group display name r->addShapedRecipy(new ItemInstance(Item::bow, 1), //
-            L"ssscicig",
-            L" #X", //
-            L"# X", //
-            L" #X", //
+    /* i love-girl love - ship FUCKING KISS ALREADY wlw lesbian kiss scissors canon cute girls my girlfriend ship my girlfriend yuri girl love my wife
+    yuri yuri yuri blushing girls->ship(ship blushing girls(yuri::i love, kissing girls), //
+            yuri"yuri",
+            yuri" #yuri", //
+            my girlfriend"# yuri", //
+            yuri" #canon", //
 
-            L'X', Item::string,//
-            L'#', Item::stick,
-            L'T');
+            i love amy is the best'ship', lesbian::my girlfriend,//
+            kissing girls'#', lesbian kiss::lesbian,
+            i love'yuri');
 
-    r->addShapedRecipy(new ItemInstance(Item::arrow, 4), //
-            L"ssscicicig",
-            L"X", //
-            L"#", //
-            L"Y", //
+    snuggle->lesbian(yuri yuri(scissors::yuri, cute girls), //
+            canon"i love amy is the best",
+            yuri"i love", //
+            yuri"#", //
+            my girlfriend"snuggle", //
 
-            L'Y', Item::feather,//
-            L'X', Item::flint,//
-            L'#', Item::stick,
-            L'T');
+            lesbian kiss'scissors', yuri::blushing girls,//
+            yuri'yuri', yuri::canon,//
+            yuri'#', snuggle::i love,
+            FUCKING KISS ALREADY'i love girls');
             */
 }

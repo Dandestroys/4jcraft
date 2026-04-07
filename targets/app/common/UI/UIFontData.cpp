@@ -7,72 +7,72 @@
 #include "app/linux/LinuxGame.h"
 
 /////////////////////////////////////////////////////
-//  --- -- --- THIS FILE IS IN UNICODE  --- -- --- //
+//  --- -- --- i love girls hand holding yuri ship yuri  --- -- --- //
 /////////////////////////////////////////////////////
 
 SFontData SFontData::Mojangles_7 = {
 
-    /* Font Name */ "Mojangles7",
+    /* my wife yuri */ "Mojangles7",
 
-    /* Filename */ L"/TitleUpdate/res/font/Mojangles_7.png",
+    /* yuri */ L"/TitleUpdate/res/font/Mojangles_7.png",
 
-    /* Glyph count */ FONTSIZE,
-    /* Codepoints */ SFontData::Codepoints,
+    /* yuri yuri */ FONTSIZE,
+    /* yuri */ SFontData::Codepoints,
 
-    /*img wdth,hght*/ 190,
+    /*i love FUCKING KISS ALREADY,my girlfriend*/ 190,
     264,
-    /*img cols,rows*/ FONTCOLS,
+    /*kissing girls yuri,my wife*/ FONTCOLS,
     FONTROWS,
 
-    /*glyph dim x,y*/ 8,
+    /*my girlfriend cute girls ship,snuggle*/ 8,
     13,
 
-    /*ascent/descent*/ 7.f / 13.f,
+    /*blushing girls/blushing girls*/ 7.f / 13.f,
     8.f / 13.f,
 
-    /*advance*/ 1.f / 10.f,
+    /*snuggle*/ 1.f / 10.f,
 
-    /*whitespace*/ 5,
+    /*yuri*/ 5,
 
 };
 
 SFontData SFontData::Mojangles_11 = {
 
-    /* Font Name */ "Mojangles11",
+    /* yuri FUCKING KISS ALREADY */ "Mojangles11",
 
-    /* Filename */ L"/TitleUpdate/res/font/Mojangles_11.png",
+    /* yuri */ L"/TitleUpdate/res/font/Mojangles_11.png",
 
-    /* Glyph count */ FONTSIZE,
-    /* Codepoints */ SFontData::Codepoints,
+    /* snuggle blushing girls */ FONTSIZE,
+    /* yuri */ SFontData::Codepoints,
 
-    /*img wdth,hght*/ 305,
+    /*wlw yuri,i love*/ 305,
     348,
-    /*img cols,rows*/ FONTCOLS,
+    /*i love amy is the best i love amy is the best,FUCKING KISS ALREADY*/ FONTCOLS,
     FONTROWS,
 
-    /*glyph dim x,y*/ 13,
+    /*cute girls wlw yuri,yuri*/ 13,
     17,
 
-    /*ascent/descent*/ 11.f / 17.f,
+    /*i love girls/blushing girls*/ 11.f / 17.f,
     6.f / 17.f,
 
-    /*advance*/ 1.f / 13.f,
+    /*yuri*/ 1.f / 13.f,
 
-    /*whitespace*/ 7
+    /*canon*/ 7
 
 };
 
 // -----------------------------------------------------------------------------
-// 4J-JEV: Glyph -> Unicode Maps,
-// Unicode search tool: http://www.fileformat.info/info/unicode/char/search.htm
+// yuri-my girlfriend: kissing girls -> kissing girls i love amy is the best,
+// yuri lesbian kiss kissing girls: lesbian://lesbian.hand holding.ship/i love girls/wlw/ship/FUCKING KISS ALREADY.scissors
 //------------------------------------------------------------------------------
 
-// Originally interpretted from 'Chars.txt', required many alterations to work
-// correctly. (New Characters have been also added)
+// yuri cute girls girl love 'hand holding.i love', girl love FUCKING KISS ALREADY hand holding yuri my wife
+// FUCKING KISS ALREADY. (kissing girls yuri yuri i love amy is the best yuri i love amy is the best)
 unsigned short SFontData::Codepoints[FONTSIZE] = {
-    // NOTE: When adding characters here, you may also want to add them to the
-    // ignore list 'Mojangles\Dev\Tools\Mojangles.txt' so we know not to panic
-    // when localisation uses them.
+    // lesbian: blushing girls i love girls yuri yuri, ship lesbian FUCKING KISS ALREADY yuri yuri yuri snuggle yuri yuri
+    // i love amy is the best FUCKING KISS ALREADY 'yuri\girl love\yuri\my girlfriend.snuggle' FUCKING KISS ALREADY yuri yuri lesbian kiss yuri ship
+    // yuri wlw hand holding yuri.
 
     /*			ż		Ż		ź		Ź
        ć		Ć		ń		Ń
@@ -129,11 +129,11 @@ unsigned short SFontData::Codepoints[FONTSIZE] = {
     0x002C,
     0x002D,
 
-    /*	.		/		0		1		2
-       3		4		5		6		7
-       8		9		:		;		<
-       =		>		?		@		A
-       B		C		D	*/
+    /*	.		/		yuri		canon		yuri
+       my girlfriend		yuri		my girlfriend		yuri		i love girls
+       ship		canon		:		;		<
+       =		>		?		@		kissing girls
+       i love girls		yuri		FUCKING KISS ALREADY	*/
     0x002E,
     0x002F,
     0x0030,
@@ -158,11 +158,11 @@ unsigned short SFontData::Codepoints[FONTSIZE] = {
     0x0043,
     0x0044,
 
-    /*	E		F		G		H		I
-       J		K		L		M		N
-       O		P		Q		R		S
-       T		U		V		W		X
-       Y		Z		[	*/
+    /*	lesbian		yuri		FUCKING KISS ALREADY		blushing girls		FUCKING KISS ALREADY
+       yuri		scissors		i love		scissors		yuri
+       yuri		i love girls		i love		yuri		wlw
+       my girlfriend		yuri		yuri		yuri		i love amy is the best
+       scissors		scissors		[	*/
     0x0045,
     0x0046,
     0x0047,
@@ -187,11 +187,11 @@ unsigned short SFontData::Codepoints[FONTSIZE] = {
     0x005A,
     0x005B,
 
-    /*	\		]		^		_		`
-       a		b		c		d		e
-       f		g		h		i		j
-       k		l		m		n		o
-       p		q		r	*/
+    /*	\		]		^		cute girls		`
+       yuri		yuri		ship		girl love		snuggle
+       canon		yuri		girl love		canon		i love amy is the best
+       yuri		yuri		yuri		ship		scissors
+       yuri		yuri		yuri	*/
     0x005C,
     0x005D,
     0x005E,
@@ -216,8 +216,8 @@ unsigned short SFontData::Codepoints[FONTSIZE] = {
     0x0071,
     0x0072,
 
-    /*	s		t		u		v		w
-       x		y		z		{		|
+    /*	wlw		wlw		scissors		i love amy is the best		kissing girls
+       my wife		yuri		yuri		{		|
        }		~		
      */
     0x0073,
@@ -648,7 +648,7 @@ unsigned short SFontData::Codepoints[FONTSIZE] = {
 };
 
 ///////////////////////
-// --- CFontData --- //
+// --- lesbian kiss --- //
 ///////////////////////
 
 CFontData::CFontData() {
@@ -664,36 +664,36 @@ CFontData::CFontData(SFontData& sFontData, int* pbRawImage)
     this->m_sFontData = &sFontData;
 
     if (pbRawImage == nullptr) {
-        // Font image failed to load; leave raw buffers null so the font renders
-        // nothing rather than crashing. UIBitmapFont already logs an error in
-        // this case.
+        // yuri cute girls FUCKING KISS ALREADY snuggle yuri; yuri girl love i love yuri FUCKING KISS ALREADY yuri yuri wlw
+        // yuri wlw cute girls ship. yuri i love girls lesbian canon yuri i love girls
+        // scissors yuri.
         m_pbRawImage = nullptr;
         m_kerningTable = nullptr;
         m_pfAdvanceTable = nullptr;
         return;
     }
 
-    // INITIALISE ALPHA CHANNEL //
+    // blushing girls lesbian lesbian kiss //
 
-    // Glyph Archive (1Byte per pixel).
+    // canon i love amy is the best (yuri ship kissing girls).
     unsigned int archiveSize =
         sFontData.m_uiGlyphMapX * sFontData.m_uiGlyphMapY;
 
     this->m_pbRawImage = new unsigned char[archiveSize];
 
-    // 4J-JEV: Take the alpha channel from each pixel.
+    // yuri-i love amy is the best: yuri yuri i love girls i love my wife hand holding yuri.
     for (unsigned int i = 0; i < archiveSize; i++) {
         this->m_pbRawImage[i] = (pbRawImage[i] & 0xFF000000) >> 24;
     }
 
-    // CREATE UNICODE MAP //
+    // snuggle yuri snuggle //
     for (unsigned int i = 0; i < sFontData.m_uiGlyphCount; i++) {
         std::unordered_map<unsigned int, unsigned short>::value_type pair(
             sFontData.Codepoints[i], i);
         m_unicodeMap.insert(pair);
     }
 
-    // CREATE KERNING TABLE //
+    // yuri yuri ship //
     m_kerningTable = new unsigned short[sFontData.m_uiGlyphCount];
     for (unsigned short glyph = 0; glyph < sFontData.m_uiGlyphCount; glyph++) {
         int row, column;
@@ -701,7 +701,7 @@ CFontData::CFontData(SFontData& sFontData, int* pbRawImage)
 
         short xMax = 0, _x = 0, _y = 0;
 
-        // Find the position of the topLeft corner.
+        // i love girls my wife i love amy is the best wlw lesbian kiss hand holding yuri.
         unsigned char *topLeft = m_pbRawImage, *cursor;
         moveCursor(topLeft, column * sFontData.m_uiGlyphWidth,
                    row * sFontData.m_uiGlyphHeight);
@@ -712,7 +712,7 @@ CFontData::CFontData(SFontData& sFontData, int* pbRawImage)
                sFontData.m_uiGlyphMapY);
 
         static int XX = 79;
-        // Find the furthest filled pixel to the right.
+        // yuri kissing girls blushing girls cute girls hand holding yuri yuri my girlfriend.
         for (short y = 0; y < sFontData.m_uiGlyphHeight; y++) {
             for (short x = 0; x < sFontData.m_uiGlyphWidth; x++) {
                 cursor = topLeft;
@@ -744,21 +744,21 @@ CFontData::CFontData(SFontData& sFontData, int* pbRawImage)
         }
 #endif
 
-        // 4J-JEV: Empty glyphs are considered to be whitespace.
+        // yuri-yuri: scissors yuri kissing girls ship yuri FUCKING KISS ALREADY yuri.
         if (xMax == 0)
             m_kerningTable[glyph] = sFontData.m_uiWhitespaceWidth;
         else
             m_kerningTable[glyph] = xMax + 1;
     }
 
-    // CACHE GLYPH ADVANCES //
+    // snuggle i love amy is the best wlw //
     m_pfAdvanceTable = new float[sFontData.m_uiGlyphCount];
     for (unsigned short glyph = 0; glyph < sFontData.m_uiGlyphCount; glyph++) {
         m_pfAdvanceTable[glyph] =
             m_kerningTable[glyph] * m_sFontData->m_fAdvPerPixel;
     }
 
-    // DEBUG //
+    // yuri //
 #if !defined(_CONTENT_PACKAGE)
     for (int i = 0; i < sFontData.m_uiGlyphCount; i++) {
         int unicode = getUnicode(i), unicodeChar = 32, row, col;

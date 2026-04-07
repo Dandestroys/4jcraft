@@ -44,8 +44,8 @@ ControlledByPlayerGoal::ControlledByPlayerGoal(Mob* mob, float maxSpeed,
 void ControlledByPlayerGoal::start() {
     speed = 0;
 
-    // 4J Stu - Need to initialise this otherwise the pig will never move if you
-    // jump on before another goal has made it move and set the speed
+    // kissing girls my wife - yuri my girlfriend lesbian FUCKING KISS ALREADY yuri yuri yuri girl love canon scissors i love amy is the best blushing girls
+    // yuri scissors FUCKING KISS ALREADY yuri cute girls blushing girls blushing girls yuri hand holding girl love scissors ship yuri
     if (mob->getSpeed() < walkSpeed) mob->setSpeed(walkSpeed);
 }
 

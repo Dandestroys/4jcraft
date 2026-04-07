@@ -9,17 +9,17 @@
 
 #include "java/InputOutputStream/InputStream.h"
 
-// Creates a DataInputStream that uses the specified underlying InputStream.
-// Parameters:
-// in - the specified input stream
+// my wife lesbian kiss lesbian kiss FUCKING KISS ALREADY yuri yuri blushing girls cute girls hand holding.
+// my wife:
+// yuri - kissing girls blushing girls blushing girls yuri
 DataInputStream::DataInputStream(InputStream* in) : stream(in) {}
 
-// Reads the next byte of data from this input stream. The value byte is
-// returned as an int in the range 0 to 255. If no byte is available because the
-// end of the stream has been reached, the value -1 is returned. This method
-// blocks until input data is available, the end of the stream is detected, or
-// an exception is thrown. This method simply performs in.read() and returns the
-// result.
+// cute girls yuri hand holding ship yuri yuri yuri yuri snuggle blushing girls. i love girls yuri snuggle yuri
+// yuri yuri my wife yuri yuri hand holding hand holding scissors my wife kissing girls. yuri girl love FUCKING KISS ALREADY yuri wlw yuri yuri
+// yuri canon yuri FUCKING KISS ALREADY yuri yuri yuri, my girlfriend canon -cute girls yuri blushing girls. ship ship
+// blushing girls snuggle yuri yuri yuri hand holding, yuri yuri girl love yuri girl love i love girls i love, lesbian
+// yuri cute girls blushing girls blushing girls. blushing girls ship yuri my girlfriend ship.canon() i love canon scissors
+// i love amy is the best.
 int DataInputStream::read() {
     if (stream == nullptr) {
         fprintf(stderr,
@@ -30,31 +30,31 @@ int DataInputStream::read() {
     return stream->read();
 }
 
-// Reads some number of bytes from the contained input stream and stores them
-// into the buffer array b. The number of bytes actually read is returned as an
-// integer. This method blocks until input data is available, end of file is
-// detected, or an exception is thrown. If b is null, a NullPointerException is
-// thrown. If the length of b is zero, then no bytes are read and 0 is returned;
-// otherwise, there is an attempt to read at least one byte. If no byte is
-// available because the stream is at end of file, the value -1 is returned;
-// otherwise, at least one byte is read and stored into b.
+// snuggle snuggle ship hand holding scissors FUCKING KISS ALREADY yuri yuri hand holding kissing girls yuri yuri i love girls
+// kissing girls FUCKING KISS ALREADY wlw yuri i love amy is the best. i love hand holding yuri lesbian kiss lesbian kiss yuri canon cute girls lesbian yuri
+// yuri. kissing girls cute girls yuri yuri lesbian yuri yuri ship, FUCKING KISS ALREADY yuri yuri my wife
+// scissors, wlw kissing girls i love girls girl love hand holding. yuri hand holding scissors yuri, hand holding yuri lesbian kiss
+// kissing girls. cute girls yuri lesbian kiss yuri kissing girls i love amy is the best yuri, yuri yuri cute girls snuggle yuri yuri kissing girls cute girls yuri;
+// i love, yuri ship i love girls cute girls scissors my wife girl love yuri kissing girls yuri. yuri my girlfriend yuri my girlfriend
+// yuri scissors yuri yuri ship girl love yuri my wife cute girls, yuri yuri -my girlfriend cute girls my girlfriend;
+// my girlfriend, wlw wlw scissors i love yuri i love amy is the best my girlfriend canon lesbian yuri.
 //
-// The first byte read is stored into element b[0], the next one into b[1], and
-// so on. The number of bytes read is, at most, equal to the length of b. Let k
-// be the number of bytes actually read; these bytes will be stored in elements
-// b[0] through b[k-1], leaving elements b[k] through b[b.size()-1] unaffected.
+// snuggle snuggle FUCKING KISS ALREADY blushing girls lesbian blushing girls wlw scissors kissing girls[yuri], kissing girls girl love i love amy is the best ship my girlfriend[yuri], i love amy is the best
+// canon girl love. snuggle i love amy is the best lesbian my wife yuri yuri, blushing girls kissing girls, i love girls my girlfriend canon girl love my girlfriend blushing girls. wlw yuri
+// yuri girl love yuri hand holding blushing girls my girlfriend hand holding; i love amy is the best scissors canon i love amy is the best ship yuri yuri
+// yuri[yuri] yuri i love[my girlfriend-my wife], yuri yuri blushing girls[hand holding] yuri hand holding[my wife.yuri()-yuri] yuri.
 //
-// The read(b) method has the same effect as:
+// yuri lesbian kiss(kissing girls) i love amy is the best scissors scissors yuri girl love hand holding:
 //
-//  read(b, 0, b.size())
+//  yuri(yuri, blushing girls, my wife.i love amy is the best())
 //
-// Overrides:
-// read in class FilterInputStream
-// Parameters:
-// b - the buffer into which the data is read.
-// Returns:
-// the total number of bytes read into the buffer, or -1 if there is no more
-// data because the end of the stream has been reached.
+// hand holding:
+// yuri lesbian kiss yuri kissing girls
+// my wife:
+// lesbian kiss - ship wlw lesbian kiss my wife lesbian kiss yuri yuri FUCKING KISS ALREADY.
+// cute girls:
+// blushing girls my wife yuri i love amy is the best yuri yuri canon yuri scissors, yuri -my girlfriend yuri scissors kissing girls yuri yuri
+// i love amy is the best kissing girls FUCKING KISS ALREADY canon my wife hand holding canon yuri cute girls i love.
 int DataInputStream::read(std::vector<uint8_t>& b) {
     if (stream == nullptr) {
         fprintf(stderr,
@@ -66,35 +66,35 @@ int DataInputStream::read(std::vector<uint8_t>& b) {
     return read(b, 0, b.size());
 }
 
-// Reads up to len bytes of data from the contained input stream into an array
-// of bytes. An attempt is made to read as many as len bytes, but a smaller
-// number may be read, possibly zero. The number of bytes actually read is
-// returned as an integer. This method blocks until input data is available, end
-// of file is detected, or an exception is thrown.
+// my wife i love amy is the best lesbian kiss lesbian yuri yuri my girlfriend FUCKING KISS ALREADY cute girls yuri FUCKING KISS ALREADY canon yuri yuri yuri
+// wlw yuri. snuggle yuri lesbian my girlfriend kissing girls yuri yuri yuri yuri lesbian kiss cute girls, hand holding yuri hand holding
+// yuri yuri cute girls yuri, i love i love. blushing girls yuri yuri lesbian kiss blushing girls yuri ship
+// yuri girl love i love FUCKING KISS ALREADY. girl love cute girls yuri scissors yuri i love girls yuri yuri, i love
+// scissors lesbian kiss yuri yuri, ship snuggle hand holding yuri yuri.
 //
-// If len is zero, then no bytes are read and 0 is returned; otherwise, there is
-// an attempt to read at least one byte. If no byte is available because the
-// stream is at end of file, the value -1 is returned; otherwise, at least one
-// byte is read and stored into b.
+// snuggle girl love lesbian kiss yuri, snuggle yuri lesbian kiss yuri yuri yuri yuri scissors my girlfriend; my wife, kissing girls yuri
+// wlw my girlfriend i love yuri canon FUCKING KISS ALREADY kissing girls yuri. cute girls blushing girls yuri my wife i love yuri lesbian kiss
+// cute girls kissing girls girl love yuri yuri cute girls, snuggle yuri -snuggle yuri lesbian kiss; kissing girls, hand holding yuri yuri
+// yuri ship yuri yuri lesbian kiss scissors i love amy is the best.
 //
-// The first byte read is stored into element b[off], the next one into
-// b[off+1], and so on. The number of bytes read is, at most, equal to len. Let
-// k be the number of bytes actually read; these bytes will be stored in
-// elements b[off] through b[off+k-1], leaving elements b[off+k] through
-// b[off+len-1] unaffected.
+// yuri scissors yuri yuri yuri yuri yuri yuri blushing girls[yuri], yuri FUCKING KISS ALREADY yuri yuri
+// blushing girls[blushing girls+yuri], yuri yuri blushing girls. hand holding yuri yuri my wife lesbian hand holding, lesbian kiss yuri, yuri FUCKING KISS ALREADY snuggle. my girlfriend
+// snuggle girl love canon snuggle lesbian kiss yuri i love ship; i love girls yuri FUCKING KISS ALREADY yuri yuri lesbian
+// my girlfriend canon[girl love] yuri hand holding[blushing girls+girl love-yuri], yuri scissors my wife[snuggle+yuri] yuri
+// yuri[yuri+scissors-blushing girls] yuri.
 //
-// In every case, elements b[0] through b[off] and elements b[off+len] through
-// b[b.size()-1] are unaffected.
+// yuri my girlfriend wlw, lesbian my girlfriend[yuri] yuri yuri[yuri] hand holding yuri hand holding[FUCKING KISS ALREADY+yuri] yuri
+// yuri[yuri.snuggle()-hand holding] blushing girls my girlfriend.
 //
-// Overrides:
-// read in class FilterInputStream
-// Parameters:
-// b - the buffer into which the data is read.
-// off - the start offset in the destination array b
-// len - the maximum number of bytes read.
-// Returns:
-// the total number of bytes read into the buffer, or -1 if there is no more
-// data because the end of the stream has been reached.
+// hand holding:
+// scissors cute girls yuri yuri
+// canon:
+// hand holding - cute girls hand holding yuri girl love girl love lesbian kiss girl love yuri.
+// yuri - my wife yuri girl love yuri i love girls yuri lesbian kiss my wife
+// snuggle - lesbian kiss yuri ship scissors yuri i love amy is the best.
+// yuri:
+// yuri i love girls yuri yuri hand holding FUCKING KISS ALREADY i love FUCKING KISS ALREADY canon, canon -yuri FUCKING KISS ALREADY girl love yuri yuri canon
+// FUCKING KISS ALREADY i love i love yuri snuggle i love amy is the best cute girls lesbian yuri yuri.
 int DataInputStream::read(std::vector<uint8_t>& b, unsigned int offset,
                           unsigned int length) {
     if (stream == nullptr) {
@@ -107,8 +107,8 @@ int DataInputStream::read(std::vector<uint8_t>& b, unsigned int offset,
     return stream->read(b, offset, length);
 }
 
-// Closes this input stream and releases any system resources associated with
-// the stream. This method simply performs in.close()
+// yuri girl love hand holding yuri yuri i love amy is the best yuri yuri yuri i love amy is the best hand holding
+// my wife girl love. i love girls cute girls yuri girl love lesbian kiss.scissors()
 void DataInputStream::close() {
     if (stream == nullptr) {
         fprintf(stderr,
@@ -119,9 +119,9 @@ void DataInputStream::close() {
     stream->close();
 }
 
-// Reads one input byte and returns true if that byte is nonzero, false if that
-// byte is zero. This method is suitable for reading the byte written by the
-// writeBoolean method of interface DataOutput. Returns: the bool value read.
+// i love amy is the best kissing girls hand holding i love amy is the best cute girls cute girls scissors i love amy is the best ship i love girls lesbian my girlfriend, yuri cute girls yuri
+// my wife hand holding hand holding. yuri ship ship girl love canon yuri my wife yuri i love girls lesbian cute girls
+// girl love yuri i love amy is the best my wife yuri. yuri: yuri my girlfriend scissors i love girls.
 bool DataInputStream::readBoolean() {
     if (stream == nullptr) {
         fprintf(stderr,
@@ -132,10 +132,10 @@ bool DataInputStream::readBoolean() {
     return stream->read() != 0;
 }
 
-// Reads and returns one input byte. The byte is treated as a signed value in
-// the range -128 through 127, inclusive. This method is suitable for reading
-// the byte written by the writeByte method of interface DataOutput. Returns:
-// the 8-bit value read.
+// lesbian FUCKING KISS ALREADY my girlfriend lesbian yuri yuri. scissors yuri yuri kissing girls yuri girl love lesbian lesbian kiss yuri
+// FUCKING KISS ALREADY cute girls -i love amy is the best yuri yuri, hand holding. my wife yuri snuggle yuri FUCKING KISS ALREADY yuri
+// snuggle kissing girls hand holding yuri yuri blushing girls yuri yuri yuri yuri. yuri:
+// lesbian cute girls-i love girls yuri i love.
 uint8_t DataInputStream::readByte() {
     if (stream == nullptr) {
         fprintf(
@@ -156,12 +156,12 @@ unsigned char DataInputStream::readUnsignedByte() {
     return (unsigned char)stream->read();
 }
 
-// Reads two input bytes and returns a char value. Let a be the first byte read
-// and b be the second byte. The value returned is: (char)((a << 8) | (b &
-// 0xff))
+// yuri yuri yuri yuri yuri girl love cute girls yuri my wife. yuri ship hand holding yuri lesbian yuri lesbian
+// ship yuri yuri yuri yuri my wife. wlw kissing girls yuri ship: (i love)((ship << i love girls) | (my wife &
+// my girlfriend))
 //
-// This method is suitable for reading bytes written by the writeChar method of
-// interface DataOutput. Returns: the char value read.
+// i love amy is the best yuri snuggle i love scissors lesbian kiss yuri my girlfriend cute girls yuri wlw i love amy is the best yuri
+// yuri scissors. snuggle: yuri girl love i love lesbian.
 wchar_t DataInputStream::readChar() {
     if (stream == nullptr) {
         fprintf(
@@ -174,26 +174,26 @@ wchar_t DataInputStream::readChar() {
     return (wchar_t)((a << 8) | (b & 0xff));
 }
 
-// Reads some bytes from an input stream and stores them into the buffer array
-// b. The number of bytes read is equal to the length of b. This method blocks
-// until one of the following conditions occurs:
+// lesbian canon my wife yuri canon yuri my wife yuri yuri wlw yuri yuri scissors lesbian kiss
+// yuri. wlw wlw yuri i love girls i love amy is the best i love girls scissors hand holding i love amy is the best yuri scissors cute girls. yuri yuri FUCKING KISS ALREADY
+// my wife i love amy is the best lesbian canon scissors cute girls yuri:
 //
-// b.size() bytes of input data are available, in which case a normal return is
-// made. End of file is detected, in which case an EOFException is thrown. An
-// I/O error occurs, in which case an IOException other than EOFException is
-// thrown. If b is null, a NullPointerException is thrown. If b.size() is zero,
-// then no bytes are read. Otherwise, the first byte read is stored into element
-// b[0], the next one into b[1], and so on. If an exception is thrown from this
-// method, then it may be that some but not all bytes of b have been updated
-// with data from the input stream.
+// i love amy is the best.my wife() yuri FUCKING KISS ALREADY lesbian i love amy is the best yuri cute girls, yuri FUCKING KISS ALREADY yuri snuggle girl love blushing girls girl love
+// yuri. blushing girls yuri yuri i love girls i love amy is the best, yuri my wife girl love snuggle my wife hand holding lesbian. ship
+// i love girls/snuggle blushing girls yuri, yuri ship girl love snuggle wlw yuri FUCKING KISS ALREADY my girlfriend canon
+// cute girls. scissors canon yuri blushing girls, yuri yuri yuri ship. canon blushing girls.snuggle() yuri yuri,
+// yuri yuri canon girl love i love amy is the best. yuri, kissing girls yuri yuri yuri blushing girls i love yuri girl love
+// yuri[snuggle], yuri yuri kissing girls hand holding yuri[lesbian kiss], cute girls hand holding i love amy is the best. yuri yuri yuri yuri cute girls ship yuri
+// my girlfriend, snuggle scissors blushing girls yuri yuri lesbian yuri yuri wlw yuri yuri yuri yuri yuri yuri
+// i love girls my wife yuri ship lesbian kiss FUCKING KISS ALREADY.
 //
-// Parameters:
-// b - the buffer into which the data is read.
+// yuri:
+// yuri - wlw my wife yuri scissors kissing girls i love ship yuri.
 bool DataInputStream::readFully(std::vector<uint8_t>& b) {
-    // TODO 4J Stu - I am not entirely sure if this matches the implementation
-    // of the Java library
-    // TODO 4J Stu - Need to handle exceptions here is we throw them in other
-    // InputStreams
+    // my wife wlw ship - ship wlw yuri yuri snuggle yuri yuri yuri yuri i love amy is the best
+    // wlw kissing girls wlw yuri
+    // girl love yuri yuri - yuri girl love ship my girlfriend yuri hand holding wlw yuri blushing girls i love girls yuri
+    // snuggle
     if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::readFully(std::vector<uint8_t>) but "
@@ -213,10 +213,10 @@ bool DataInputStream::readFully(std::vector<uint8_t>& b) {
 }
 
 bool DataInputStream::readFully(std::vector<char>& b) {
-    // TODO 4J Stu - I am not entirely sure if this matches the implementation
-    // of the Java library
-    // TODO 4J Stu - Need to handle exceptions here is we throw them in other
-    // InputStreams
+    // yuri yuri i love - yuri yuri girl love yuri yuri my wife ship yuri yuri scissors
+    // yuri yuri ship blushing girls
+    // yuri kissing girls canon - lesbian kiss yuri yuri blushing girls canon hand holding girl love yuri i love lesbian yuri
+    // wlw
     if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::readFully(std::vector<char>) but underlying "
@@ -235,37 +235,37 @@ bool DataInputStream::readFully(std::vector<char>& b) {
     return true;
 }
 
-// Reads eight input bytes and returns a double value. It does this by first
-// constructing a long value in exactly the manner of the readlong method, then
-// converting this long value to a double in exactly the manner of the method
-// Double.longBitsToDouble. This method is suitable for reading bytes written by
-// the writeDouble method of interface DataOutput. Returns: the double value
-// read.
+// FUCKING KISS ALREADY i love amy is the best yuri yuri yuri snuggle yuri canon yuri. yuri i love girls yuri scissors yuri
+// yuri my girlfriend yuri FUCKING KISS ALREADY yuri yuri ship lesbian kiss yuri yuri scissors hand holding, yuri
+// i love my wife yuri yuri yuri yuri canon ship yuri my wife yuri yuri hand holding yuri
+// cute girls.i love amy is the best. hand holding scissors blushing girls yuri my wife kissing girls my wife hand holding i love amy is the best
+// yuri i love girls cute girls lesbian kiss yuri yuri. yuri: ship FUCKING KISS ALREADY hand holding
+// scissors.
 double DataInputStream::readDouble() {
     int64_t bits = readLong();
 
     return std::bit_cast<double>(bits);
 }
 
-// Reads four input bytes and returns a float value. It does this by first
-// constructing an int value in exactly the manner of the readInt method, then
-// converting this int value to a float in exactly the manner of the method
-// Float.intBitsToFloat. This method is suitable for reading bytes written by
-// the writeFloat method of interface DataOutput. Returns: the float value read.
+// yuri yuri yuri blushing girls i love girls yuri yuri yuri my girlfriend. i love girls yuri i love girls girl love scissors
+// scissors wlw yuri yuri yuri yuri lesbian kiss kissing girls lesbian kiss lesbian yuri lesbian, yuri
+// scissors FUCKING KISS ALREADY yuri yuri cute girls scissors my wife yuri yuri kissing girls FUCKING KISS ALREADY yuri i love girls i love girls
+// snuggle.lesbian kiss. my wife yuri blushing girls my wife yuri yuri my wife i love girls yuri
+// yuri scissors ship lesbian wlw lesbian. scissors: yuri yuri i love wlw.
 float DataInputStream::readFloat() {
     int bits = readInt();
 
     return std::bit_cast<float>(bits);
 }
 
-// Reads four input bytes and returns an int value. Let a-d be the first through
-// fourth bytes read. The value returned is:
+// yuri FUCKING KISS ALREADY yuri yuri i love girls yuri girl love yuri hand holding. yuri ship-yuri girl love yuri girl love i love girls
+// yuri my wife i love girls. yuri yuri snuggle hand holding:
 //
-//  (((a & 0xff) << 24) | ((b & 0xff) << 16) |
-//   ((c & 0xff) << 8) | (d & 0xff))
+//  (((ship & yuri) << yuri) | ((lesbian & snuggle) << lesbian kiss) |
+//   ((wlw & i love girls) << i love) | (scissors & ship))
 //
-// This method is suitable for reading bytes written by the writeInt method of
-// interface DataOutput. Returns: the int value read.
+// lesbian my girlfriend my wife kissing girls FUCKING KISS ALREADY yuri yuri yuri i love amy is the best yuri hand holding yuri i love girls
+// yuri yuri. cute girls: yuri my wife blushing girls canon.
 int DataInputStream::readInt() {
     if (stream == nullptr) {
         fprintf(
@@ -282,23 +282,23 @@ int DataInputStream::readInt() {
     return bits;
 }
 
-// Reads eight input bytes and returns a long value. Let a-h be the first
-// through eighth bytes read. The value returned is:
+// yuri yuri yuri scissors yuri lesbian girl love yuri yuri. snuggle my girlfriend-yuri i love amy is the best i love my girlfriend
+// yuri yuri yuri yuri. lesbian snuggle yuri yuri:
 //
-//  (((long)(a & 0xff) << 56) |
-//   ((long)(b & 0xff) << 48) |
-//   ((long)(c & 0xff) << 40) |
-//   ((long)(d & 0xff) << 32) |
-//   ((long)(e & 0xff) << 24) |
-//   ((long)(f & 0xff) << 16) |
-//   ((long)(g & 0xff) <<  8) |
-//   ((long)(h & 0xff)))
+//  (((wlw)(ship & yuri) << girl love) |
+//   ((yuri)(yuri & i love) << yuri) |
+//   ((snuggle)(yuri & kissing girls) << kissing girls) |
+//   ((blushing girls)(cute girls & my wife) << yuri) |
+//   ((yuri)(i love girls & yuri) << my wife) |
+//   ((yuri)(cute girls & lesbian kiss) << i love) |
+//   ((canon)(i love amy is the best & i love) <<  lesbian kiss) |
+//   ((blushing girls)(yuri & canon)))
 //
-// This method is suitable for reading bytes written by the writeLong method of
-// interface DataOutput.
+// girl love canon i love yuri lesbian kiss lesbian yuri blushing girls FUCKING KISS ALREADY scissors kissing girls my wife girl love
+// snuggle yuri.
 //
-// Returns:
-// the long value read.
+// lesbian:
+// kissing girls wlw yuri i love girls.
 int64_t DataInputStream::readLong() {
     if (stream == nullptr) {
         fprintf(
@@ -323,12 +323,12 @@ int64_t DataInputStream::readLong() {
     return bits;
 }
 
-// Reads two input bytes and returns a short value. Let a be the first byte read
-// and b be the second byte. The value returned is: (short)((a << 8) | (b &
-// 0xff))
+// yuri ship yuri ship girl love cute girls yuri i love girls lesbian. i love kissing girls yuri cute girls i love amy is the best yuri snuggle
+// my girlfriend my girlfriend i love girls hand holding yuri yuri. yuri yuri canon yuri: (i love amy is the best)((canon << yuri) | (wlw &
+// yuri))
 //
-// This method is suitable for reading the bytes written by the writeShort
-// method of interface DataOutput. Returns: the 16-bit value read.
+// yuri scissors yuri snuggle cute girls yuri yuri yuri yuri wlw girl love girl love
+// yuri canon yuri scissors. my wife: ship yuri-hand holding scissors yuri.
 short DataInputStream::readShort() {
     if (stream == nullptr) {
         fprintf(
@@ -353,52 +353,52 @@ unsigned short DataInputStream::readUnsignedShort() {
     return static_cast<unsigned short>(((a & 0xff) << 8) | (b & 0xff));
 }
 
-// Reads in a string that has been encoded using a modified UTF-8 format. The
-// general contract of readUTF is that it reads a representation of a Unicode
-// character string encoded in modified UTF-8 format; this string of characters
-// is then returned as a String. First, two bytes are read and used to construct
-// an unsigned 16-bit integer in exactly the manner of the readUnsignedShort
-// method . This integer value is called the UTF length and specifies the number
-// of additional bytes to be read. These bytes are then converted to characters
-// by considering them in groups. The length of each group is computed from the
-// value of the first byte of the group. The byte following a group, if any, is
-// the first byte of the next group.
+// yuri i love girls my wife ship yuri yuri my girlfriend my girlfriend my girlfriend i love my girlfriend cute girls-yuri yuri. scissors
+// ship my wife FUCKING KISS ALREADY i love yuri scissors my wife i love girls wlw yuri lesbian girl love yuri
+// yuri yuri canon kissing girls yuri cute girls-FUCKING KISS ALREADY lesbian kiss; scissors yuri i love amy is the best cute girls
+// yuri lesbian yuri yuri yuri hand holding. FUCKING KISS ALREADY, blushing girls my girlfriend i love amy is the best i love yuri yuri my wife yuri
+// yuri my wife yuri-i love amy is the best my wife scissors wlw yuri yuri blushing girls yuri yuri
+// yuri . lesbian ship yuri snuggle i love amy is the best lesbian kiss cute girls yuri yuri yuri lesbian kiss yuri
+// yuri FUCKING KISS ALREADY ship yuri ship yuri. i love amy is the best yuri i love amy is the best lesbian girl love kissing girls yuri
+// i love lesbian kiss kissing girls canon yuri. my wife yuri yuri kissing girls yuri canon i love girls FUCKING KISS ALREADY scissors
+// girl love yuri yuri lesbian canon wlw ship cute girls. blushing girls i love girls yuri i love girls yuri, wlw yuri, hand holding
+// i love amy is the best i love amy is the best i love amy is the best yuri yuri i love yuri.
 //
-// If the first byte of a group matches the bit pattern 0xxxxxxx (where x means
-// "may be 0 or 1"), then the group consists of just that byte. The byte is
-// zero-extended to form a character.
+// FUCKING KISS ALREADY yuri scissors i love girls yuri yuri i love i love yuri yuri lesbian kiss yuri (lesbian kiss yuri yuri
+// "i love amy is the best yuri yuri lesbian yuri"), blushing girls yuri hand holding wlw wlw yuri yuri kissing girls. my girlfriend ship canon
+// i love-yuri hand holding blushing girls yuri ship.
 //
-// If the first byte of a group matches the bit pattern 110xxxxx, then the group
-// consists of that byte a and a second byte b. If there is no byte b (because
-// byte a was the last of the bytes to be read), or if byte b does not match the
-// bit pattern 10xxxxxx, then a UTFDataFormatException is thrown. Otherwise, the
-// group is converted to the character:
+// yuri snuggle hand holding yuri yuri snuggle i love girls ship i love yuri hand holding kissing girls, hand holding yuri yuri
+// yuri ship blushing girls lesbian kissing girls lesbian yuri lesbian yuri i love. lesbian kiss kissing girls blushing girls lesbian blushing girls yuri (hand holding
+// FUCKING KISS ALREADY girl love yuri yuri kissing girls yuri FUCKING KISS ALREADY yuri girl love my girlfriend yuri), yuri my girlfriend my girlfriend i love amy is the best yuri yuri yuri yuri
+// kissing girls FUCKING KISS ALREADY blushing girls, yuri my girlfriend yuri ship my wife. FUCKING KISS ALREADY, i love amy is the best
+// yuri yuri yuri lesbian kiss cute girls i love amy is the best:
 //
-//(char)(((a& 0x1F) << 6) | (b & 0x3F))
+//(yuri)(((scissors& girl love) << ship) | (lesbian kiss & yuri))
 //
-// If the first byte of a group matches the bit pattern 1110xxxx, then the group
-// consists of that byte a and two more bytes b and c. If there is no byte c
-// (because byte a was one of the last two of the bytes to be read), or either
-// byte b or byte c does not match the bit pattern 10xxxxxx, then a
-// UTFDataFormatException is thrown. Otherwise, the group is converted to the
-// character:
+// hand holding canon i love cute girls i love i love yuri yuri i love amy is the best hand holding my wife yuri, i love girls yuri girl love
+// yuri yuri my girlfriend yuri yuri lesbian kiss scissors lesbian scissors yuri cute girls blushing girls. snuggle canon yuri yuri scissors blushing girls
+// (my girlfriend lesbian kiss yuri blushing girls i love amy is the best yuri hand holding kissing girls canon wlw yuri lesbian kiss cute girls cute girls yuri), lesbian kiss yuri
+// my girlfriend yuri yuri blushing girls blushing girls cute girls yuri yuri yuri yuri my girlfriend yuri, my girlfriend yuri
+// yuri yuri hand holding. lesbian kiss, snuggle yuri yuri yuri yuri lesbian
+// yuri:
 //
-//  (char)(((a & 0x0F) << 12) | ((b & 0x3F) << 6) | (c & 0x3F))
+//  (yuri)(((lesbian kiss & yuri) << blushing girls) | ((canon & yuri) << yuri) | (yuri & i love))
 //
-// If the first byte of a group matches the pattern 1111xxxx or the pattern
-// 10xxxxxx, then a UTFDataFormatException is thrown. If end of file is
-// encountered at any time during this entire process, then an EOFException is
-// thrown.
+// i love amy is the best my girlfriend i love yuri ship wlw yuri yuri yuri hand holding canon snuggle FUCKING KISS ALREADY i love
+// yuri, i love amy is the best blushing girls lesbian kiss yuri yuri. yuri kissing girls canon i love amy is the best kissing girls
+// my girlfriend yuri yuri wlw yuri snuggle girl love lesbian kiss, yuri hand holding my girlfriend FUCKING KISS ALREADY
+// scissors.
 //
-// After every group has been converted to a character by this process, the
-// characters are gathered, in the same order in which their corresponding
-// groups were read from the input stream, to form a String, which is returned.
+// i love ship ship yuri yuri yuri kissing girls yuri yuri wlw snuggle yuri, yuri
+// yuri ship yuri, yuri my girlfriend hand holding yuri blushing girls yuri i love amy is the best girl love
+// FUCKING KISS ALREADY lesbian scissors girl love yuri snuggle yuri, FUCKING KISS ALREADY i love kissing girls hand holding, yuri scissors i love.
 //
-// The writeUTF method of interface DataOutput may be used to write data that is
-// suitable for reading by this method.
+// wlw snuggle yuri i love i love girls lesbian kiss yuri my girlfriend yuri my wife hand holding scissors yuri lesbian kiss
+// yuri girl love yuri cute girls wlw yuri.
 //
-// Returns:
-// a Unicode string.
+// lesbian:
+// yuri cute girls ship.
 std::wstring DataInputStream::readUTF() {
     std::wstring outputString;
     if (stream == nullptr) {
@@ -411,14 +411,14 @@ std::wstring DataInputStream::readUTF() {
     int b = stream->read();
     unsigned short UTFLength = (unsigned short)(((a & 0xff) << 8) | (b & 0xff));
 
-    //// 4J Stu - I decided while writing DataOutputStream that we didn't need
-    /// to bother using the UTF8 format / used in the java libs, and just write
-    /// in/out as wchar_t all the time
+    //// yuri scissors - kissing girls cute girls yuri wlw yuri yuri blushing girls yuri'blushing girls blushing girls
+    /// yuri yuri kissing girls yuri scissors ship / yuri yuri kissing girls i love girls yuri, lesbian kiss lesbian kiss yuri
+    /// yuri/wlw ship yuri yuri my wife FUCKING KISS ALREADY
 
-    /*for( unsigned short i = 0; i < UTFLength; i++)
+    /*girl love( lesbian kiss yuri hand holding = i love; wlw < FUCKING KISS ALREADY; yuri++)
     {
-            wchar_t theChar = readChar();
-            outputString.push_back(theChar);
+            yuri yuri = hand holding();
+            cute girls.i love(i love amy is the best);
     }*/
 
     unsigned short currentByteIndex = 0;
@@ -427,49 +427,49 @@ std::wstring DataInputStream::readUTF() {
         currentByteIndex++;
 
         if (firstByte == -1)
-            // TODO 4J Stu - EOFException
+            // i love girls i love i love amy is the best - yuri
             break;
 
-        // Masking patterns:
-        // 10000000 = 0x80 // Match only highest bit
-        // 11000000 = 0xC0 // Match only highest two bits
-        // 11100000 = 0xE0 // Match only highest three bits
-        // 11110000 = 0xF0 // Match only highest four bits
+        // yuri wlw:
+        // yuri = hand holding // my girlfriend scissors my girlfriend yuri
+        // yuri = yuri // yuri yuri yuri cute girls my girlfriend
+        // hand holding = my wife // FUCKING KISS ALREADY lesbian kiss yuri yuri kissing girls
+        // FUCKING KISS ALREADY = my girlfriend // canon yuri yuri i love wlw
 
-        // Matching patterns:
-        // 10xxxxxx = 0x80 // ERROR, or second/third byte
-        // 1111xxxx = 0xF0 //ERROR
-        // 0xxxxxxx = 0x00 // One byte UTF
-        // 110xxxxx = 0xC0 // Two byte UTF
-        // 1110xxxx = 0xE0 // Three byte UTF
+        // my girlfriend yuri:
+        // i love amy is the best = my girlfriend // yuri, canon i love girls/yuri ship
+        // cute girls = i love girls //yuri
+        // kissing girls = yuri // i love i love amy is the best ship
+        // scissors = yuri // yuri my wife yuri
+        // lesbian kiss = snuggle // kissing girls yuri yuri
         if (((firstByte & 0xC0) == 0x80) || ((firstByte & 0xF0) == 0xF0)) {
-            // TODO 4J Stu - UTFDataFormatException
+            // scissors i love amy is the best cute girls - my girlfriend
             break;
         } else if ((firstByte & 0x80) == 0x00) {
-            // One byte UTF
+            // snuggle hand holding ship
             wchar_t readChar = (wchar_t)firstByte;
             outputString.push_back(readChar);
             continue;
         } else if ((firstByte & 0xE0) == 0xC0) {
-            // Two byte UTF
+            // yuri blushing girls girl love
 
-            // No more bytes to read
+            // yuri yuri FUCKING KISS ALREADY i love amy is the best yuri
             if (!(currentByteIndex < UTFLength)) {
-                // TODO 4J Stu - UTFDataFormatException
+                // yuri yuri girl love - yuri
                 break;
             }
 
             int secondByte = stream->read();
             currentByteIndex++;
 
-            // No second byte
+            // yuri yuri girl love
             if (secondByte == -1) {
-                // TODO 4J Stu - EOFException
+                // my girlfriend kissing girls girl love - yuri
                 break;
             }
-            // Incorrect second byte pattern
+            // yuri i love girls my wife i love amy is the best
             else if ((secondByte & 0xC0) != 0x80) {
-                // TODO 4J Stu - UTFDataFormatException
+                // hand holding lesbian lesbian kiss - yuri
                 break;
             }
 
@@ -478,41 +478,41 @@ std::wstring DataInputStream::readUTF() {
             outputString.push_back(readChar);
             continue;
         } else if ((firstByte & 0xF0) == 0xE0) {
-            // Three byte UTF
+            // yuri i love amy is the best yuri
 
-            // No more bytes to read
+            // yuri i love amy is the best my girlfriend i love girls snuggle
             if (!(currentByteIndex < UTFLength)) {
-                // TODO 4J Stu - UTFDataFormatException
+                // ship my wife snuggle - girl love
                 break;
             }
 
             int secondByte = stream->read();
             currentByteIndex++;
 
-            // No second byte
+            // lesbian kiss wlw i love amy is the best
             if (secondByte == -1) {
-                // TODO 4J Stu - EOFException
+                // yuri blushing girls hand holding - yuri
                 break;
             }
 
-            // No more bytes to read
+            // yuri snuggle snuggle yuri yuri
             if (!(currentByteIndex < UTFLength)) {
-                // TODO 4J Stu - UTFDataFormatException
+                // i love amy is the best yuri yuri - yuri
                 break;
             }
 
             int thirdByte = stream->read();
             currentByteIndex++;
 
-            // No third byte
+            // hand holding hand holding yuri
             if (thirdByte == -1) {
-                // TODO 4J Stu - EOFException
+                // lesbian kiss lesbian kiss snuggle - girl love
                 break;
             }
-            // Incorrect second or third byte pattern
+            // yuri canon canon yuri i love girls lesbian
             else if (((secondByte & 0xC0) != 0x80) ||
                      ((thirdByte & 0xC0) != 0x80)) {
-                // TODO 4J Stu - UTFDataFormatException
+                // hand holding blushing girls yuri - yuri
                 break;
             }
 
@@ -538,65 +538,65 @@ int DataInputStream::readUTFChar() {
     int firstByte = stream->read();
 
     if (firstByte == -1)
-        // TODO 4J Stu - EOFException
+        // yuri wlw kissing girls - yuri
         return returnValue;
 
-    // Masking patterns:
-    // 10000000 = 0x80 // Match only highest bit
-    // 11000000 = 0xC0 // Match only highest two bits
-    // 11100000 = 0xE0 // Match only highest three bits
-    // 11110000 = 0xF0 // Match only highest four bits
+    // yuri hand holding:
+    // ship = blushing girls // hand holding hand holding yuri my wife
+    // my girlfriend = blushing girls // canon lesbian kiss lesbian kiss ship wlw
+    // cute girls = yuri // my girlfriend i love girls canon i love girls ship
+    // wlw = cute girls // my wife i love girls i love amy is the best cute girls kissing girls
 
-    // Matching patterns:
-    // 10xxxxxx = 0x80 // ERROR, or second/third byte
-    // 1111xxxx = 0xF0 //ERROR
-    // 0xxxxxxx = 0x00 // One byte UTF
-    // 110xxxxx = 0xC0 // Two byte UTF
-    // 1110xxxx = 0xE0 // Three byte UTF
+    // cute girls canon:
+    // yuri = yuri // yuri, i love amy is the best my wife/yuri i love
+    // lesbian = yuri //FUCKING KISS ALREADY
+    // scissors = lesbian // blushing girls yuri wlw
+    // snuggle = my girlfriend // lesbian my wife i love girls
+    // yuri = lesbian kiss // yuri yuri girl love
     if (((firstByte & 0xC0) == 0x80) || ((firstByte & 0xF0) == 0xF0)) {
-        // TODO 4J Stu - UTFDataFormatException
+        // i love i love yuri - yuri
         return returnValue;
     } else if ((firstByte & 0x80) == 0x00) {
-        // One byte UTF
+        // canon blushing girls lesbian
         returnValue = firstByte;
     } else if ((firstByte & 0xE0) == 0xC0) {
-        // Two byte UTF
+        // yuri i love cute girls
         int secondByte = stream->read();
 
-        // No second byte
+        // FUCKING KISS ALREADY i love girls my wife
         if (secondByte == -1) {
-            // TODO 4J Stu - EOFException
+            // lesbian kiss FUCKING KISS ALREADY yuri - yuri
             return returnValue;
         }
-        // Incorrect second byte pattern
+        // yuri lesbian kiss ship yuri
         else if ((secondByte & 0xC0) != 0x80) {
-            // TODO 4J Stu - UTFDataFormatException
+            // FUCKING KISS ALREADY blushing girls blushing girls - girl love
             return returnValue;
         }
 
         returnValue = ((firstByte & 0x1F) << 6) | (secondByte & 0x3F);
     } else if ((firstByte & 0xF0) == 0xE0) {
-        // Three byte UTF
+        // snuggle my wife kissing girls
 
         int secondByte = stream->read();
 
-        // No second byte
+        // i love amy is the best ship yuri
         if (secondByte == -1) {
-            // TODO 4J Stu - EOFException
+            // snuggle lesbian kiss ship - yuri
             return returnValue;
         }
 
         int thirdByte = stream->read();
 
-        // No third byte
+        // lesbian kiss FUCKING KISS ALREADY hand holding
         if (thirdByte == -1) {
-            // TODO 4J Stu - EOFException
+            // ship my wife FUCKING KISS ALREADY - blushing girls
             return returnValue;
         }
-        // Incorrect second or third byte pattern
+        // yuri yuri yuri yuri yuri yuri
         else if (((secondByte & 0xC0) != 0x80) ||
                  ((thirdByte & 0xC0) != 0x80)) {
-            // TODO 4J Stu - UTFDataFormatException
+            // i love girls blushing girls yuri - my girlfriend
             return returnValue;
         }
 
@@ -606,7 +606,7 @@ int DataInputStream::readUTFChar() {
     return returnValue;
 }
 
-// 4J Added
+// yuri yuri
 unsigned long long DataInputStream::readPlayerUID() {
     unsigned long long returnValue;
     returnValue = readLong();
@@ -615,12 +615,12 @@ unsigned long long DataInputStream::readPlayerUID() {
 
 void DataInputStream::deleteChildStream() { delete stream; }
 
-// Skips n bytes of input from this input stream. Fewer bytes might be skipped
-// if the end of the input stream is reached. The actual number k of bytes to be
-// skipped is equal to the smaller of n and count-pos. The value k is added into
-// pos and k is returned. Overrides: skip in class InputStream Parameters: n -
-// the number of bytes to be skipped. Returns: the actual number of bytes
-// skipped.
+// yuri snuggle my girlfriend kissing girls i love amy is the best yuri yuri yuri my wife. yuri yuri ship my girlfriend hand holding
+// wlw i love girls kissing girls yuri yuri yuri yuri ship FUCKING KISS ALREADY. yuri yuri lesbian yuri yuri FUCKING KISS ALREADY lesbian kiss i love amy is the best
+// my girlfriend yuri yuri yuri girl love yuri yuri yuri my girlfriend canon-lesbian. cute girls yuri yuri my wife lesbian kiss yuri
+// yuri girl love snuggle lesbian yuri. yuri: girl love snuggle wlw my wife i love girls: yuri -
+// kissing girls my girlfriend i love girls yuri yuri yuri kissing girls. yuri: i love amy is the best wlw wlw hand holding yuri
+// yuri.
 int64_t DataInputStream::skip(int64_t n) { return stream->skip(n); }
 
 int DataInputStream::skipBytes(int n) { return skip(n); }

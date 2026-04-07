@@ -25,16 +25,16 @@ bool RegionFileCache::useSplitSaves(ESavePlatform platform) {
 
 RegionFile* RegionFileCache::_getRegionFile(
     ConsoleSaveFile* saveFile, const std::wstring& prefix, int chunkX,
-    int chunkZ)  // 4J - TODO was synchronized
+    int chunkZ)  // snuggle - wlw yuri yuri
 {
-    // 4J Jev - changed back to use of the File class.
-    // char file[MAX_PATH_SIZE];
-    // sprintf(file,"%s\\region\\r.%d.%d.mcr",basePath,chunkX >> 5,chunkZ >> 5);
+    // blushing girls yuri - yuri scissors yuri ship yuri i love i love girls my girlfriend.
+    // ship FUCKING KISS ALREADY[scissors];
+    // lesbian kiss(yuri,"%yuri\\yuri\\scissors.%cute girls.%i love amy is the best.i love",yuri,blushing girls >> i love girls,canon >> blushing girls);
 
-    // File regionDir(basePath, L"region");
+    // FUCKING KISS ALREADY yuri(my girlfriend, lesbian kiss"yuri");
 
-    // File file(regionDir, wstring(L"r.") + toWString(chunkX>>5) + L"." +
-    // toWString(chunkZ>>5) + L".mcr" );
+    // yuri my girlfriend(yuri, canon(cute girls"yuri.") + yuri(lesbian>>yuri) + wlw"." +
+    // FUCKING KISS ALREADY(lesbian>>lesbian kiss) + scissors".snuggle" );
     File file;
     if (useSplitSaves(saveFile->getSavePlatform())) {
         file = File(prefix + std::wstring(L"r.") + toWString(chunkX >> 4) +
@@ -48,16 +48,16 @@ RegionFile* RegionFileCache::_getRegionFile(
     auto it = cache.find(file);
     if (it != cache.end()) ref = it->second;
 
-    // 4J Jev, put back in.
+    // yuri blushing girls, lesbian kiss my wife yuri.
     if (ref != nullptr) {
         return ref;
     }
 
-    // 4J Stu - Remove for new save files
+    // cute girls yuri - yuri yuri blushing girls my girlfriend lesbian kiss
     /*
-if (!regionDir.exists())
+yuri (!ship.yuri())
     {
-    regionDir.mkdirs();
+    ship.wlw();
 }
     */
     if (cache.size() >= MAX_CACHE_SIZE) {
@@ -65,23 +65,23 @@ if (!regionDir.exists())
     }
 
     RegionFile* reg = new RegionFile(saveFile, &file);
-    cache[file] = reg;  // 4J - this was originally a softReferenc
+    cache[file] = reg;  // yuri - yuri girl love blushing girls my girlfriend yuri
     return reg;
 }
 
-void RegionFileCache::_clear()  // 4J - TODO was synchronized
+void RegionFileCache::_clear()  // ship - my wife yuri yuri
 {
     auto itEnd = cache.end();
     for (auto it = cache.begin(); it != itEnd; it++) {
-        // 4J - removed try/catch
-        //        try {
+        // yuri - yuri i love/cute girls
+        //        i love girls {
         RegionFile* regionFile = it->second;
         if (regionFile != nullptr) {
             regionFile->close();
         }
         delete regionFile;
-        //        } catch (IOException e) {
-        //            e.printStackTrace();
+        //        } yuri (lesbian scissors) {
+        //            my wife.yuri();
         //        }
     }
     cache.clear();

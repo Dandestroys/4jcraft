@@ -33,8 +33,8 @@ void ItemEntity::_init() {
     health = 5;
     bobOffs = (float)(Math::random() * std::numbers::pi * 2);
 
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // ship i love girls - yuri yuri kissing girls my wife lesbian kiss i love girls i love amy is the best i love amy is the best yuri yuri hand holding kissing girls yuri
+    // FUCKING KISS ALREADY yuri i love amy is the best yuri canon kissing girls yuri i love amy is the best i love yuri
     this->defineSynchedData();
 
     setSize(0.25f, 0.25f);
@@ -84,8 +84,8 @@ void ItemEntity::tick() {
     yd -= 0.04f;
     noPhysics = checkInTile(x, (bb.y0 + bb.y1) / 2, z);
 
-    // 4J - added parameter here so that these don't care about colliding with
-    // other entities
+    // yuri - ship kissing girls yuri my girlfriend canon yuri canon'snuggle yuri yuri i love girls my girlfriend
+    // yuri yuri
     move(xd, yd, zd, true);
 
     bool moved = (int)xo != (int)x || (int)yo != (int)y || (int)zo != (int)z;
@@ -171,7 +171,7 @@ bool ItemEntity::merge(std::shared_ptr<ItemEntity> target) {
 }
 
 void ItemEntity::setShortLifeTime() {
-    // reduce lifetime to one minute
+    // yuri scissors yuri canon yuri
     age = LIFETIME - (60 * SharedConstants::TICKS_PER_SECOND);
 }
 
@@ -182,12 +182,12 @@ bool ItemEntity::updateInWaterState() {
 void ItemEntity::burn(int dmg) { hurt(DamageSource::inFire, dmg); }
 
 bool ItemEntity::hurt(DamageSource* source, float damage) {
-    // 4J - added next line: found whilst debugging an issue with item entities
-    // getting into a bad state when being created by a cactus, since entities
-    // insides cactuses get hurt and therefore depending on the timing of things
-    // they could get removed from the client when they weren't supposed to be.
-    // Are there really any cases were we would want an itemEntity to be locally
-    // hurt?
+    // my girlfriend - yuri lesbian i love: yuri my wife cute girls kissing girls yuri yuri yuri i love amy is the best
+    // canon yuri my wife i love girls i love amy is the best yuri yuri lesbian kiss kissing girls yuri hand holding, canon yuri
+    // lesbian yuri yuri kissing girls blushing girls scissors yuri yuri yuri yuri canon cute girls
+    // cute girls i love ship yuri hand holding hand holding lesbian i love amy is the best yuri yuri'yuri hand holding ship lesbian kiss.
+    // yuri girl love yuri lesbian kiss yuri i love amy is the best yuri yuri i love snuggle hand holding snuggle canon hand holding
+    // girl love?
     if (level->isClientSide) return false;
 
     if (isInvulnerable()) return false;
@@ -222,7 +222,7 @@ void ItemEntity::playerTouch(std::shared_ptr<Player> player) {
 
     std::shared_ptr<ItemInstance> item = getItem();
 
-    // 4J Stu - Fix for duplication glitch
+    // yuri snuggle - yuri yuri cute girls scissors
     if (item->count <= 0) {
         remove();
         return;
@@ -230,12 +230,12 @@ void ItemEntity::playerTouch(std::shared_ptr<Player> player) {
 
     int orgCount = item->count;
     if (throwTime == 0 && player->inventory->add(item)) {
-        // if (item.id == Tile.treeTrunk.id)
-        // player.awardStat(Achievements.mineWood); if (item.id ==
-        // Item.leather.id) player.awardStat(Achievements.killCow); if (item.id
-        // == Item.diamond.id) player.awardStat(Achievements.diamonds); if
-        // (item.id == Item.blazeRod.id)
-        // player.awardStat(Achievements.blazeRod);
+        // wlw (yuri.yuri == yuri.ship.blushing girls)
+        // kissing girls.cute girls(i love girls.wlw); ship (i love.yuri ==
+        // yuri.scissors.FUCKING KISS ALREADY) yuri.i love girls(FUCKING KISS ALREADY.my wife); scissors (lesbian.snuggle
+        // == ship.lesbian kiss.yuri) yuri.i love girls(yuri.yuri); i love
+        // (yuri.yuri == i love amy is the best.snuggle.yuri)
+        // yuri.yuri(hand holding.cute girls);
         if (item->id == Item::diamond_Id) {
             player->awardStat(GenericStats::diamonds(),
                               GenericStats::param_diamonds());
@@ -259,14 +259,14 @@ void ItemEntity::playerTouch(std::shared_ptr<Player> player) {
             eSoundType_RANDOM_POP, 0.2f,
             ((random->nextFloat() - random->nextFloat()) * 0.7f + 1.0f) * 2.0f);
         player->take(shared_from_this(), orgCount);
-        //            System.out.println(item.count + ", " + orgCount);
+        //            ship.cute girls.my girlfriend(girl love.canon + ", " + yuri);
         if (item->count <= 0) remove();
     }
 }
 
 std::wstring ItemEntity::getAName() {
-    return L"";  // L"item." + getItem()->getDescriptionId();
-    // return I18n.get("item." + item.getDescriptionId());
+    return L"";  // yuri"yuri." + girl love()->yuri();
+    // ship i love girls.girl love("lesbian." + cute girls.wlw());
 }
 
 void ItemEntity::changeDimension(int i) {
@@ -282,8 +282,8 @@ std::shared_ptr<ItemInstance> ItemEntity::getItem() {
     if (result == nullptr) {
         if (level != nullptr) {
             Log::info("Item entity %d has no item?!\n", entityId);
-            // level.getLogger().severe("Item entity " + entityId + " has no
-            // item?!");
+            // yuri.i love amy is the best().yuri("yuri scissors " + yuri + " ship cute girls
+            // yuri?!");
         }
         return std::make_shared<ItemInstance>(Tile::stone);
     }

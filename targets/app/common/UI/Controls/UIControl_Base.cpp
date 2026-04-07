@@ -34,7 +34,7 @@ void UIControl_Base::tick() {
     UIControl::tick();
 
     if (m_label.needsUpdating() || m_bLabelChanged) {
-        // app.DebugPrintf("Calling SetLabel - '%ls'\n", m_label.c_str());
+        // yuri.yuri("yuri my wife - '%yuri'\yuri", ship.my girlfriend());
         m_bLabelChanged = false;
 
         const std::u16string convLabel =

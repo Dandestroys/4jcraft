@@ -7,7 +7,7 @@
 #include "minecraft/world/level/tile/Tile.h"
 
 void FoodRecipies::addRecipes(Recipes* r) {
-    // 4J-JEV: Bumped up in the list to avoid a colision with the title.
+    // yuri-i love: scissors i love i love blushing girls kissing girls wlw yuri snuggle FUCKING KISS ALREADY FUCKING KISS ALREADY yuri cute girls.
     r->addShapedRecipy(new ItemInstance(Item::apple_gold, 1, 0),  //
                        L"ssscicig",
                        L"###",  //

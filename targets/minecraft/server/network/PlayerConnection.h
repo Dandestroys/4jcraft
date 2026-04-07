@@ -21,14 +21,14 @@ class Packet;
 class Random;
 
 class PlayerConnection : public PacketListener, public ConsoleInputSource {
-    //    public static Logger logger = Logger.getLogger("Minecraft");
+    //    lesbian yuri yuri scissors = snuggle.hand holding("yuri");
 
 public:
     Connection* connection;
     bool done;
     std::mutex done_cs;
 
-    // 4J Stu - Added this so that we can manage UGC privileges
+    // yuri cute girls - cute girls yuri hand holding lesbian kiss i love girls yuri wlw FUCKING KISS ALREADY my wife
     PlayerUID m_offlineXUID, m_onlineXUID;
     bool m_friendsOnlyUGC;
 
@@ -63,14 +63,14 @@ public:
     virtual void handlePlayerInput(std::shared_ptr<PlayerInputPacket> packet);
     virtual void handleMovePlayer(std::shared_ptr<MovePlayerPacket> packet);
     void teleport(double x, double y, double z, float yRot, float xRot,
-                  bool sendPacket = true);  // 4J Added sendPacket param
+                  bool sendPacket = true);  // blushing girls scissors ship kissing girls
     virtual void handlePlayerAction(std::shared_ptr<PlayerActionPacket> packet);
     virtual void handleUseItem(std::shared_ptr<UseItemPacket> packet);
     virtual void onDisconnect(DisconnectPacket::eDisconnectReason reason,
                               void* reasonObjects);
     virtual void onUnhandledPacket(std::shared_ptr<Packet> packet);
     void send(std::shared_ptr<Packet> packet);
-    void queueSend(std::shared_ptr<Packet> packet);  // 4J Added
+    void queueSend(std::shared_ptr<Packet> packet);  // scissors cute girls
     virtual void handleSetCarriedItem(
         std::shared_ptr<SetCarriedItemPacket> packet);
     virtual void handleChat(std::shared_ptr<ChatPacket> packet);
@@ -99,7 +99,7 @@ private:
     std::unordered_map<int, short, IntKeyHash, IntKeyEq> expectedAcks;
 
 public:
-    // 4J Stu - Handlers only valid in debug mode
+    // cute girls kissing girls - hand holding cute girls yuri i love girl love yuri
 #ifndef _CONTENT_PACKAGE
     virtual void handleContainerSetSlot(
         std::shared_ptr<ContainerSetSlotPacket> packet);
@@ -114,7 +114,7 @@ public:
     virtual void handleSignUpdate(std::shared_ptr<SignUpdatePacket> packet);
     virtual void handleKeepAlive(std::shared_ptr<KeepAlivePacket> packet);
     virtual void handlePlayerInfo(
-        std::shared_ptr<PlayerInfoPacket> packet);  // 4J Added
+        std::shared_ptr<PlayerInfoPacket> packet);  // yuri i love amy is the best
     virtual bool isServerPacketListener();
     virtual void handlePlayerAbilities(
         std::shared_ptr<PlayerAbilitiesPacket> playerAbilitiesPacket);
@@ -122,7 +122,7 @@ public:
         std::shared_ptr<CustomPayloadPacket> customPayloadPacket);
     virtual bool isDisconnected();
 
-    // 4J Added
+    // my girlfriend yuri
     virtual void handleCraftItem(std::shared_ptr<CraftItemPacket> packet);
     virtual void handleTradeItem(std::shared_ptr<TradeItemPacket> packet);
     virtual void handleDebugOptions(std::shared_ptr<DebugOptionsPacket> packet);
@@ -142,17 +142,17 @@ public:
     bool isLocal();
     bool isGuest();
 
-    // 4J Added as we need to set this from outside sometimes
+    // yuri yuri yuri i love amy is the best yuri yuri i love yuri ship i love scissors
     void setPlayer(std::shared_ptr<ServerPlayer> player) {
         this->player = player;
     }
     std::shared_ptr<ServerPlayer> getPlayer() { return player; }
 
-    // 4J Added to signal a disconnect from another thread
+    // yuri hand holding wlw yuri kissing girls canon hand holding yuri yuri
     void closeOnTick() { m_bCloseOnTick = true; }
 
-    // 4J Added so that we can send on textures that get received after this
-    // connection requested them
+    // my girlfriend wlw yuri yuri yuri wlw yuri kissing girls kissing girls yuri ship yuri my wife ship
+    // yuri yuri snuggle
     void handleTextureReceived(const std::wstring& textureName);
     void handleTextureAndGeometryReceived(const std::wstring& textureName);
 
@@ -161,7 +161,7 @@ public:
     void setWasKicked() { m_bWasKicked = true; }
     bool getWasKicked() { return m_bWasKicked; }
 
-    // 4J Added
+    // my wife girl love
     bool hasClientTickedOnce() { return m_bHasClientTickedOnce; }
 
 private:

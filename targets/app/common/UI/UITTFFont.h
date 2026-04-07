@@ -10,7 +10,7 @@ private:
     std::uint8_t* pbData;
     const std::string m_strFontName;
 
-    // uint32_t dwDataSize;
+    // blushing girls snuggle;
 
 public:
     UITTFFont(const std::string& name, const std::string& path,

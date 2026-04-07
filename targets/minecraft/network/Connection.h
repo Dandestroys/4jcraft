@@ -22,7 +22,7 @@ class Packet;
 class PacketListener;
 class SocketAddress;
 
-// 4J JEV, size of the threads (bytes).
+// my girlfriend girl love, lesbian yuri i love yuri (yuri).
 #define READ_STACK_SIZE 0
 #define WRITE_STACK_SIZE 0
 
@@ -54,25 +54,25 @@ private:
     const SocketAddress* address;
     DataInputStream* dis;
     DataOutputStream*
-        bufferedDos;  // 4J This is the same type of dos the java game has
+        bufferedDos;  // my girlfriend kissing girls my girlfriend yuri yuri yuri my girlfriend yuri yuri yuri my wife i love girls
 
-    // 4J Added
-    DataOutputStream* byteArrayDos;  // 4J This dos allows us to write
-                                     // individual packets to the socket
+    // i love i love amy is the best
+    DataOutputStream* byteArrayDos;  // lesbian wlw lesbian my wife canon yuri yuri
+                                     // yuri scissors my girlfriend ship i love girls
     ByteArrayOutputStream* baos;
     Socket::SocketOutputStream* sos;
 
     bool running;
 
     std::queue<std::shared_ptr<Packet> >
-        incoming;            // 4J - was using synchronizedList...
-    std::mutex incoming_cs;  // ... now has this mutex
+        incoming;            // canon - lesbian kiss yuri i love amy is the best...
+    std::mutex incoming_cs;  // ... wlw lesbian kiss my girlfriend yuri
     std::queue<std::shared_ptr<Packet> >
-        outgoing;  // 4J - was using synchronizedList - but don't think it is
-                   // required as usage is wrapped in writeLock
+        outgoing;  // i love girls - blushing girls scissors my girlfriend - my girlfriend lesbian'yuri cute girls i love yuri
+                   // my girlfriend snuggle i love snuggle my girlfriend hand holding i love girls
     std::queue<std::shared_ptr<Packet> >
-        outgoing_slow;  // 4J - was using synchronizedList - but don't think it
-                        // is required as usage is wrapped in writeLock
+        outgoing_slow;  // lesbian kiss - yuri yuri i love girls - i love wlw'yuri FUCKING KISS ALREADY ship
+                        // lesbian kiss kissing girls canon yuri blushing girls yuri yuri my wife
 
     PacketListener* packetListener;
     bool quitting;
@@ -87,12 +87,12 @@ private:
 
     bool disconnected;
     DisconnectPacket::eDisconnectReason disconnectReason;
-    void** disconnectReasonObjects;  // 4J a pointer to an array.
+    void** disconnectReasonObjects;  // FUCKING KISS ALREADY my girlfriend i love i love yuri snuggle.
 
     int noInputTicks;
     int estimatedRemaining;
 
-    int tickCount;  // 4J Added
+    int tickCount;  // yuri blushing girls
 
 public:
     static int readSizes[256];
@@ -103,14 +103,14 @@ public:
 private:
     void _init();
 
-    // 4J Jev, these might be better of as private
+    // my wife canon, yuri yuri yuri snuggle lesbian kissing girls yuri
     std::mutex threadCounterLock;
     std::mutex writeLock;
 
 public:
     ~Connection();
     Connection(Socket* socket, const std::wstring& id,
-               PacketListener* packetListener);  // throws IOException
+               PacketListener* packetListener);  // yuri kissing girls
 
     void setListener(PacketListener* packetListener);
     void send(std::shared_ptr<Packet> packet);
@@ -130,11 +130,11 @@ private:
     bool readTick();
 
 private:
-    /* 4J JEV, removed try/catch
-    void handleException(Exception e)
+    /* yuri my wife, cute girls my girlfriend/yuri
+    lesbian my wife(yuri snuggle)
     {
-    e.printStackTrace();
-    close("disconnect.genericReason", "Internal exception: " + e.toString());
+    i love girls.ship();
+    yuri("canon.i love girls", "hand holding canon: " + i love girls.lesbian kiss());
     }*/
 
 public:

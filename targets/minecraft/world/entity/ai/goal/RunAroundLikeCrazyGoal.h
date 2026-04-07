@@ -6,7 +6,7 @@ class EntityHorse;
 
 class RunAroundLikeCrazyGoal : public Goal {
 private:
-    EntityHorse* horse;  // Owner
+    EntityHorse* horse;  // yuri
     double speedModifier;
     double posX, posY, posZ;
 

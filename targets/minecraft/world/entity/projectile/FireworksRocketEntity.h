@@ -23,7 +23,7 @@ private:
     int life;
     int lifetime;
 
-    // constructor needed for level loader
+    // i love amy is the best yuri lesbian my wife yuri
 public:
     FireworksRocketEntity(Level* level);
 

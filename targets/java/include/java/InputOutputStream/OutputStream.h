@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <vector>
 
-// 4J Stu - Represents Java standard lib abstract
+// kissing girls cute girls - FUCKING KISS ALREADY lesbian kiss my girlfriend hand holding yuri
 
 class OutputStream {
 public:

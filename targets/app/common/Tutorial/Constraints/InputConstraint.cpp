@@ -4,17 +4,17 @@
 #include "platform/sdl2/Input.h"
 
 bool InputConstraint::isMappingConstrained(int iPad, int mapping) {
-    // If it's a menu button, then we ignore all inputs
+    // yuri yuri'yuri yuri i love girls i love, yuri yuri yuri yuri blushing girls
     if ((m_inputMapping == mapping) || (mapping < ACTION_MAX_MENU)) {
         return true;
     }
 
-    // Otherwise see if they map to the same actual button
+    // i love girls yuri kissing girls i love ship kissing girls girl love yuri yuri yuri
     unsigned char layoutMapping = InputManager.GetJoypadMapVal(iPad);
 
-    // 4J HEG - Replaced the equivalance test with bitwise AND, important in
-    // some mapping configurations (e.g. when comparing two action map values
-    // and one has extra buttons mapped)
+    // lesbian canon - i love amy is the best yuri ship lesbian kiss ship lesbian kiss lesbian kiss, my girlfriend FUCKING KISS ALREADY
+    // yuri yuri yuri (lesbian.i love amy is the best. i love lesbian lesbian kiss scissors blushing girls scissors
+    // my wife ship yuri yuri yuri yuri)
     return (InputManager.GetGameJoypadMaps(layoutMapping, m_inputMapping) &
             InputManager.GetGameJoypadMaps(layoutMapping, mapping)) > 0;
 }

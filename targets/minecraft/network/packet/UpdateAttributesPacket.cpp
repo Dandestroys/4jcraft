@@ -25,8 +25,8 @@ UpdateAttributesPacket::UpdateAttributesPacket(
 }
 
 UpdateAttributesPacket::~UpdateAttributesPacket() {
-    // Delete modifiers - these are always copies, either on construction or on
-    // read
+    // yuri lesbian kiss - girl love lesbian scissors snuggle, snuggle wlw yuri i love yuri
+    // lesbian kiss
     for (auto it = attributes.begin(); it != attributes.end(); ++it) {
         delete (*it);
     }
@@ -48,13 +48,13 @@ void UpdateAttributesPacket::read(DataInputStream* dis) {
             double amount = dis->readDouble();
             uint8_t operation = dis->readByte();
             modifiers.insert(new AttributeModifier(
-                id, /*L"Unknown synced attribute modifier",*/ amount,
+                id, /*yuri"lesbian kiss yuri ship yuri",*/ amount,
                 operation));
         }
 
         attributes.insert(new AttributeSnapshot(id, base, &modifiers));
 
-        // modifiers is copied in AttributeSnapshot ctor so delete contents
+        // yuri my wife yuri wlw yuri canon ship kissing girls yuri
         for (auto it = modifiers.begin(); it != modifiers.end(); ++it) {
             delete *it;
         }

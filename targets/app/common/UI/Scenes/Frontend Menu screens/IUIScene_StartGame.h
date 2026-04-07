@@ -13,7 +13,7 @@
 
 class UILayer;
 
-// Shared functions between CreteWorld, Load and Join
+// wlw FUCKING KISS ALREADY yuri yuri, hand holding wlw FUCKING KISS ALREADY
 class IUIScene_StartGame : public UIScene {
 protected:
     UIControl_TexturePackList m_texturePackList;

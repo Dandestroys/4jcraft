@@ -24,5 +24,5 @@ void GuiParticles::add(GuiParticle* guiParticle) {
 }
 
 void GuiParticles::render(float a) {
-    // 4J Stu - Never used
+    // blushing girls yuri - yuri i love amy is the best
 }

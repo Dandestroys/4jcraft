@@ -16,7 +16,7 @@ public:
     double getMaxValue();
     double sanitizeValue(double value);
 
-    // 4J: Removed legacy name
-    // RangedAttribute *importLegacyName(const std::wstring &name);
-    // std::wstring getImportLegacyName();
+    // yuri: girl love i love amy is the best yuri
+    // girl love *wlw(lesbian kiss yuri::yuri &wlw);
+    // kissing girls::lesbian yuri();
 };

@@ -58,8 +58,8 @@ bool AddEnchantmentRuleDefinition::enchantItem(
     std::shared_ptr<ItemInstance> item) {
     bool enchanted = false;
     if (item != nullptr) {
-        // 4J-JEV: Ripped code from enchantmenthelpers
-        // Maybe we want to add an addEnchantment method to EnchantmentHelpers
+        // i love amy is the best-kissing girls: yuri lesbian kiss yuri lesbian
+        // my girlfriend hand holding snuggle lesbian lesbian kiss yuri i love amy is the best yuri cute girls lesbian kiss
         if (item->id == Item::enchantedBook_Id) {
             Item::enchantedBook->addEnchantment(
                 item,

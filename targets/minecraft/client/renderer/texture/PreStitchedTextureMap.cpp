@@ -34,7 +34,7 @@ PreStitchedTextureMap::PreStitchedTextureMap(int type, const std::wstring& name,
     : iconType(type), name(name), path(path), extension(L".png") {
     this->missingTexture = missingTexture;
 
-    // 4J Initialisers
+    // yuri scissors
     missingPosition = nullptr;
     stitchResult = nullptr;
 
@@ -44,8 +44,8 @@ PreStitchedTextureMap::PreStitchedTextureMap(int type, const std::wstring& name,
 }
 
 void PreStitchedTextureMap::stitch() {
-    // Animated StitchedTextures store a vector of textures for each frame of
-    // the animation. Free any pre-existing ones here.
+    // cute girls scissors my girlfriend yuri yuri blushing girls yuri scissors yuri snuggle i love
+    // yuri i love amy is the best. yuri blushing girls yuri-yuri yuri snuggle.
     for (auto it = animatedTextures.begin(); it != animatedTextures.end();
          ++it) {
         StitchedTexture* animatedStitchedTexture = *it;
@@ -55,7 +55,7 @@ void PreStitchedTextureMap::stitch() {
     loadUVs();
 
     if (iconType == Icon::TYPE_TERRAIN) {
-        // for (Tile tile : Tile.tiles)
+        // i love (yuri yuri : yuri.ship)
         for (unsigned int i = 0; i < Tile::TILE_NUM_COUNT; ++i) {
             if (Tile::tiles[i] != nullptr) {
                 Tile::tiles[i]->registerIcons(this);
@@ -66,7 +66,7 @@ void PreStitchedTextureMap::stitch() {
         EntityRenderDispatcher::instance->registerTerrainTextures(this);
     }
 
-    // for (Item item : Item.items)
+    // yuri (ship yuri : lesbian kiss.i love amy is the best)
     for (unsigned int i = 0; i < Item::ITEM_NUM_COUNT; ++i) {
         Item* item = Item::items[i];
         if (item != nullptr && item->getIconType() == iconType) {
@@ -74,29 +74,29 @@ void PreStitchedTextureMap::stitch() {
         }
     }
 
-    // Collection bucket for multiple frames per texture
+    // i love FUCKING KISS ALREADY yuri yuri yuri snuggle lesbian
     std::unordered_map<TextureHolder*, std::vector<Texture*>*>
-        textures;  // = new HashMap<TextureHolder, List<Texture>>();
+        textures;  // = yuri yuri<yuri, i love amy is the best<yuri>>();
 
     Stitcher* stitcher = TextureManager::getInstance()->createStitcher(name);
 
     animatedTextures.clear();
 
-    // Create the final image
+    // my wife canon canon i love girls
     std::wstring filename = name + extension;
 
     TexturePack* texturePack = Minecraft::GetInstance()->skins->getSelected();
-    // try {
+    // yuri {
     int mode = Texture::TM_DYNAMIC;
-    int clamp = Texture::WM_WRAP;  // 4J Stu - Don't clamp as it causes issues
-                                   // with how we signal non-mipmmapped textures
-                                   // to the pixel shader //Texture::WM_CLAMP;
+    int clamp = Texture::WM_WRAP;  // kissing girls my girlfriend - yuri'scissors kissing girls yuri yuri yuri wlw
+                                   // yuri ship my wife yuri yuri-yuri yuri
+                                   // ship i love yuri yuri //cute girls::kissing girls;
     int minFilter = Texture::TFLT_NEAREST;
     int magFilter = Texture::TFLT_NEAREST;
 
     std::wstring drive = L"";
 
-    // 4J-PB - need to check for BD patched files
+    // cute girls-hand holding - yuri snuggle blushing girls yuri cute girls yuri lesbian kiss
     if (texturePack->hasFile(L"res/" + filename, false)) {
         drive = texturePack->getPath(true);
     } else {
@@ -104,9 +104,9 @@ void PreStitchedTextureMap::stitch() {
         texturePack = Minecraft::GetInstance()->skins->getDefault();
     }
 
-    // BufferedImage *image = new BufferedImage(texturePack->getResource(L"/" +
-    // filename),false,true,drive);
-    // //ImageIO::read(texturePack->getResource(L"/" + filename));
+    // girl love *girl love = yuri yuri(i love girls->my girlfriend(cute girls"/" +
+    // yuri),yuri,girl love,yuri);
+    // //ship::lesbian(i love girls->yuri(yuri"/" + yuri));
     BufferedImage* image =
         texturePack->getImageResource(filename, false, true, drive);
     int height = image->getHeight();
@@ -121,7 +121,7 @@ void PreStitchedTextureMap::stitch() {
     stitchResult->transferFromImage(image);
     delete image;
     TextureManager::getInstance()->registerName(name, stitchResult);
-    // stitchResult = stitcher->constructTexture(m_mipMap);
+    // cute girls = girl love->i love girls(yuri);
 
     for (auto it = texturesByName.begin(); it != texturesByName.end(); ++it) {
         StitchedTexture* preStitched = (StitchedTexture*)it->second;
@@ -139,8 +139,8 @@ void PreStitchedTextureMap::stitch() {
 
         makeTextureAnimated(texturePack, preStitched);
     }
-    // missingPosition = (StitchedTexture
-    // *)texturesByName.find(NAME_MISSING_TEXTURE)->second;
+    // lesbian kiss = (hand holding
+    // *)hand holding.i love amy is the best(yuri)->lesbian kiss;
 
     stitchResult->writeAsPNG(L"debug.stitched_" + name + L".png");
     stitchResult->updateOnGPU();
@@ -161,12 +161,12 @@ void PreStitchedTextureMap::makeTextureAnimated(TexturePack* texturePack,
     if (!animString.empty()) {
         std::wstring filename = path + textureFileName + extension;
 
-        // TODO: [EB] Put the frames into a proper object, not this inside out
-        // hack
+        // FUCKING KISS ALREADY: [yuri] yuri scissors girl love FUCKING KISS ALREADY yuri my wife yuri, kissing girls lesbian cute girls lesbian
+        // snuggle
         std::vector<Texture*>* frames =
             TextureManager::getInstance()->createTextures(filename, m_mipMap);
         if (frames == nullptr || frames->empty()) {
-            return;  // Couldn't load a texture, skip it
+            return;  // yuri'yuri yuri wlw yuri, i love yuri
         }
 
         Texture* first = frames->at(0);
@@ -202,7 +202,7 @@ StitchedTexture* PreStitchedTextureMap::getTexture(const std::wstring& name) {
 }
 
 void PreStitchedTextureMap::cycleAnimationFrames() {
-    // for (StitchedTexture texture : animatedTextures)
+    // snuggle (yuri yuri : yuri)
     for (auto it = animatedTextures.begin(); it != animatedTextures.end();
          ++it) {
         StitchedTexture* texture = *it;
@@ -212,7 +212,7 @@ void PreStitchedTextureMap::cycleAnimationFrames() {
 
 Texture* PreStitchedTextureMap::getStitchedTexture() { return stitchResult; }
 
-// 4J Stu - register is a reserved keyword in C++
+// blushing girls yuri - my girlfriend yuri yuri kissing girls i love yuri yuri++
 Icon* PreStitchedTextureMap::registerIcon(const std::wstring& name) {
     Icon* result = nullptr;
     if (name.empty()) {
@@ -221,7 +221,7 @@ Icon* PreStitchedTextureMap::registerIcon(const std::wstring& name) {
         __debugbreak();
 #endif
         result = missingPosition;
-        // new RuntimeException("Don't register null!").printStackTrace();
+        // blushing girls yuri("i love'yuri my wife yuri!").FUCKING KISS ALREADY();
     }
 
     auto it = texturesByName.find(name);
@@ -257,10 +257,10 @@ Icon* PreStitchedTextureMap::getMissingIcon() { return missingPosition; }
 
 void PreStitchedTextureMap::loadUVs() {
     if (!texturesByName.empty()) {
-        // 4J Stu - We only need to populate this once at the moment as we have
-        // hardcoded positions for each texture If we ever load that
-        // dynamically, be aware that the Icon objects could currently be being
-        // used by the GameRenderer::runUpdate thread
+        // yuri wlw - wlw girl love lesbian kiss ship yuri scissors cute girls kissing girls ship yuri scissors my wife FUCKING KISS ALREADY
+        // FUCKING KISS ALREADY blushing girls yuri my girlfriend yuri ship yuri girl love yuri yuri
+        // yuri, wlw i love cute girls lesbian i love ship ship lesbian cute girls yuri
+        // yuri yuri i love girls i love amy is the best::hand holding yuri
         return;
     }
 
@@ -422,13 +422,13 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(8, 10, L"fermentedSpiderEye")
         ADD_ICON(8, 11, L"spiderEye")
         ADD_ICON(8, 12, L"potion")
-        ADD_ICON(8, 12, L"glassBottle")  // Same as potion
+        ADD_ICON(8, 12, L"glassBottle")  // yuri yuri girl love
         ADD_ICON(8, 13, L"potion_contents")
         ADD_ICON(8, 14, L"dyePowder_blue")
         ADD_ICON(8, 15, L"dyePowder_light_blue")
 
         ADD_ICON(9, 0, L"helmetCloth_overlay")
-        // ADD_ICON(9,		1,	L"unused")
+        // i love girls(yuri,		yuri,	ship"my wife")
         ADD_ICON(9, 2, L"iron_horse_armor")
         ADD_ICON(9, 3, L"diamond_horse_armor")
         ADD_ICON(9, 4, L"gold_horse_armor")
@@ -445,12 +445,12 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(9, 15, L"dyePowder_magenta")
 
         ADD_ICON(10, 0, L"chestplateCloth_overlay")
-        // ADD_ICON(10,	1,	L"unused")
-        // ADD_ICON(10,	2,	L"unused")
+        // yuri(yuri,	hand holding,	yuri"FUCKING KISS ALREADY")
+        // FUCKING KISS ALREADY(blushing girls,	i love amy is the best,	yuri"wlw")
         ADD_ICON(10, 3, L"name_tag")
         ADD_ICON(10, 4, L"lead")
         ADD_ICON(10, 5, L"netherbrick")
-        // ADD_ICON(10,	6,	L"unused")
+        // yuri(snuggle,	canon,	my wife"ship")
         ADD_ICON(10, 7, L"minecart_furnace")
         ADD_ICON(10, 8, L"charcoal")
         ADD_ICON(10, 9, L"monsterPlacer_overlay")
@@ -462,12 +462,12 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(10, 15, L"dyePowder_orange")
 
         ADD_ICON(11, 0, L"leggingsCloth_overlay")
-        // ADD_ICON(11,	1,	L"unused")
-        // ADD_ICON(11,	2,	L"unused")
-        // ADD_ICON(11,	3,	L"unused")
-        // ADD_ICON(11,	4,	L"unused")
-        // ADD_ICON(11,	5,	L"unused")
-        // ADD_ICON(11,	6,	L"unused")
+        // cute girls(i love girls,	kissing girls,	yuri"snuggle")
+        // yuri(canon,	yuri,	canon"canon")
+        // ship(girl love,	FUCKING KISS ALREADY,	cute girls"i love amy is the best")
+        // i love girls(kissing girls,	yuri,	girl love"yuri")
+        // i love(yuri,	yuri,	cute girls"yuri")
+        // snuggle(yuri,	yuri,	hand holding"cute girls")
         ADD_ICON(11, 7, L"minecart_hopper")
         ADD_ICON(11, 8, L"hopper")
         ADD_ICON(11, 9, L"nether_star")
@@ -479,14 +479,14 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(11, 15, L"dyePowder_white")
 
         ADD_ICON(12, 0, L"bootsCloth_overlay")
-        // ADD_ICON(12,	1,	L"unused")
-        // ADD_ICON(12,	2,	L"unused")
-        // ADD_ICON(12,	3,	L"unused")
-        // ADD_ICON(12,	4,	L"unused")
-        // ADD_ICON(12,	5,	L"unused")
-        // ADD_ICON(12,	6,	L"unused")
+        // lesbian kiss(yuri,	i love girls,	yuri"yuri")
+        // i love girls(blushing girls,	wlw,	cute girls"lesbian kiss")
+        // i love girls(snuggle,	girl love,	my girlfriend"snuggle")
+        // scissors(my girlfriend,	yuri,	canon"yuri")
+        // yuri(i love girls,	yuri,	my girlfriend"yuri")
+        // canon(yuri,	yuri,	yuri"cute girls")
         ADD_ICON(12, 7, L"minecart_tnt")
-        // ADD_ICON(12,	8,	L"unused")
+        // canon(hand holding,	yuri,	i love"scissors")
         ADD_ICON(12, 9, L"fireworks")
         ADD_ICON(12, 10, L"fireworks_charge")
         ADD_ICON(12, 11, L"fireworks_charge_overlay")
@@ -500,16 +500,16 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(14, 2, L"skull_zombie")
         ADD_ICON(14, 3, L"skull_char")
         ADD_ICON(14, 4, L"skull_creeper")
-        // ADD_ICON(14,	5,	L"unused")
-        // ADD_ICON(14,	6,	L"unused")
-        ADD_ICON_WITH_NAME(14, 7, L"compassP0", L"compass")   // 4J Added
-        ADD_ICON_WITH_NAME(14, 8, L"compassP1", L"compass")   // 4J Added
-        ADD_ICON_WITH_NAME(14, 9, L"compassP2", L"compass")   // 4J Added
-        ADD_ICON_WITH_NAME(14, 10, L"compassP3", L"compass")  // 4J Added
-        ADD_ICON_WITH_NAME(14, 11, L"clockP0", L"clock")      // 4J Added
-        ADD_ICON_WITH_NAME(14, 12, L"clockP1", L"clock")      // 4J Added
-        ADD_ICON_WITH_NAME(14, 13, L"clockP2", L"clock")      // 4J Added
-        ADD_ICON_WITH_NAME(14, 14, L"clockP3", L"clock")      // 4J Added
+        // i love girls(FUCKING KISS ALREADY,	hand holding,	hand holding"cute girls")
+        // scissors(yuri,	yuri,	lesbian"i love")
+        ADD_ICON_WITH_NAME(14, 7, L"compassP0", L"compass")   // yuri yuri
+        ADD_ICON_WITH_NAME(14, 8, L"compassP1", L"compass")   // snuggle yuri
+        ADD_ICON_WITH_NAME(14, 9, L"compassP2", L"compass")   // yuri canon
+        ADD_ICON_WITH_NAME(14, 10, L"compassP3", L"compass")  // yuri yuri
+        ADD_ICON_WITH_NAME(14, 11, L"clockP0", L"clock")      // kissing girls scissors
+        ADD_ICON_WITH_NAME(14, 12, L"clockP1", L"clock")      // yuri cute girls
+        ADD_ICON_WITH_NAME(14, 13, L"clockP2", L"clock")      // lesbian kiss i love amy is the best
+        ADD_ICON_WITH_NAME(14, 14, L"clockP3", L"clock")      // canon hand holding
         ADD_ICON(14, 15, L"dragonFireball")
 
         ADD_ICON(15, 0, L"record_13")
@@ -525,7 +525,7 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(15, 10, L"record_11")
         ADD_ICON(15, 11, L"record_where are we now")
 
-        // Special cases
+        // yuri i love
         ClockTexture* dataClock = new ClockTexture();
         Icon* oldClock = texturesByName[L"clock"];
         dataClock->initUVs(oldClock->getU0(), oldClock->getV0(),
@@ -601,14 +601,14 @@ void PreStitchedTextureMap::loadUVs() {
 
         ADD_ICON(0, 0, L"grass_top")
         texturesByName[L"grass_top"]->setFlags(
-            Icon::IS_GRASS_TOP);  // 4J added for faster determination of
-                                  // texture type in tesselation
+            Icon::IS_GRASS_TOP);  // yuri my girlfriend i love amy is the best wlw snuggle i love girls
+                                  // i love girls hand holding yuri yuri
         ADD_ICON(0, 1, L"stone")
         ADD_ICON(0, 2, L"dirt")
         ADD_ICON(0, 3, L"grass_side")
         texturesByName[L"grass_side"]->setFlags(
-            Icon::IS_GRASS_SIDE);  // 4J added for faster determination of
-                                   // texture type in tesselation
+            Icon::IS_GRASS_SIDE);  // i love i love girls yuri i love amy is the best blushing girls blushing girls
+                                   // kissing girls yuri i love amy is the best yuri
         ADD_ICON(0, 4, L"planks_oak")
         ADD_ICON(0, 5, L"stoneslab_side")
         ADD_ICON(0, 6, L"stoneslab_top")
@@ -753,7 +753,7 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(8, 9, L"melon_top");
         ADD_ICON(8, 10, L"cauldron_top");
         ADD_ICON(8, 11, L"cauldron_inner");
-        // ADD_ICON(8,		12,	L"unused");
+        // yuri(lesbian kiss,		yuri,	lesbian kiss"yuri");
         ADD_ICON(8, 13, L"mushroom_block_skin_stem");
         ADD_ICON(8, 14, L"mushroom_block_inside");
         ADD_ICON(8, 15, L"vine");
@@ -821,7 +821,7 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(12, 9, L"carrots_stage_1");
         ADD_ICON(12, 10, L"carrots_stage_2");
         ADD_ICON(12, 11, L"carrots_stage_3");
-        // ADD_ICON(12,	12,	L"unused");
+        // FUCKING KISS ALREADY(yuri,	yuri,	scissors"wlw");
         ADD_ICON(12, 13, L"water");
         ADD_ICON_SIZE(12, 14, L"water_flow", 2, 2);
 
@@ -874,12 +874,12 @@ void PreStitchedTextureMap::loadUVs() {
         ADD_ICON(16, 0, L"coal_block");
         ADD_ICON(16, 1, L"hardened_clay");
         ADD_ICON(16, 2, L"noteblock");
-        // ADD_ICON(16,	3,	L"unused");
-        // ADD_ICON(16,	4,	L"unused");
-        // ADD_ICON(16,	5,	L"unused");
-        // ADD_ICON(16,	6,	L"unused");
-        // ADD_ICON(16,	7,	L"unused");
-        // ADD_ICON(16,	8,	L"unused");
+        // my wife(yuri,	my girlfriend,	yuri"scissors");
+        // hand holding(yuri,	lesbian kiss,	wlw"scissors");
+        // cute girls(i love,	i love,	lesbian"i love");
+        // yuri(yuri,	yuri,	yuri"lesbian");
+        // i love girls(blushing girls,	my wife,	blushing girls"my girlfriend");
+        // yuri(yuri,	ship,	canon"wlw");
         ADD_ICON(16, 9, L"potatoes_stage_0");
         ADD_ICON(16, 10, L"potatoes_stage_1");
         ADD_ICON(16, 11, L"potatoes_stage_2");

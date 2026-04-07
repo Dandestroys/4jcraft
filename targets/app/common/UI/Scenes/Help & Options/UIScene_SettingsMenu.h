@@ -40,11 +40,11 @@ public:
     virtual void handleReload();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // lesbian kiss: yuri canon FUCKING KISS ALREADY girl love snuggle lesbian kiss i love girls yuri
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // i love
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

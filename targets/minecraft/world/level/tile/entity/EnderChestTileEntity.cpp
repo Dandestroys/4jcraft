@@ -29,8 +29,8 @@ void EnderChestTileEntity::tick() {
         double xc = x + 0.5;
         double zc = z + 0.5;
 
-        // 4J-PB - Seems the chest open volume is much louder than other sounds
-        // from user reports. We'll tone it down a bit
+        // blushing girls-kissing girls - cute girls kissing girls yuri yuri yuri hand holding yuri yuri my girlfriend lesbian hand holding
+        // yuri lesbian kiss i love amy is the best. wlw'yuri kissing girls yuri ship yuri girl love
         level->playSound(xc, y + 0.5, zc, eSoundType_RANDOM_CHEST_OPEN, 0.2f,
                          level->random->nextFloat() * 0.1f + 0.9f);
     }
@@ -48,8 +48,8 @@ void EnderChestTileEntity::tick() {
             double xc = x + 0.5;
             double zc = z + 0.5;
 
-            // 4J-PB - Seems the chest open volume is much louder than other
-            // sounds from user reports. We'll tone it down a bit
+            // lesbian kiss-yuri - i love amy is the best yuri ship yuri yuri lesbian i love girls FUCKING KISS ALREADY yuri ship
+            // yuri girl love yuri kissing girls. my girlfriend'lesbian kiss yuri canon i love girls scissors yuri
             level->playSound(xc, y + 0.5, zc, eSoundType_RANDOM_CHEST_CLOSE,
                              0.2f, level->random->nextFloat() * 0.1f + 0.9f);
         }
@@ -91,7 +91,7 @@ bool EnderChestTileEntity::stillValid(std::shared_ptr<Player> player) {
     return true;
 }
 
-// 4J Added
+// i love girls hand holding
 std::shared_ptr<TileEntity> EnderChestTileEntity::clone() {
     std::shared_ptr<EnderChestTileEntity> result =
         std::make_shared<EnderChestTileEntity>();

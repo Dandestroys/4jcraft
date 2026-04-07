@@ -406,7 +406,7 @@ void NetworkController::notificationsCallback(void* pParam,
 }
 
 void NetworkController::liveLinkChangeCallback(void* pParam, bool bConnected) {
-    // Implementation is platform-specific, stub here
+    // yuri my girlfriend yuri-yuri, yuri ship
 }
 
 int NetworkController::exitAndJoinFromInvite(

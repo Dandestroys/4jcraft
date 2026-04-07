@@ -19,7 +19,7 @@ UIScene_SettingsGraphicsMenu::UIScene_SettingsGraphicsMenu(int iPad,
                                                            void* initData,
                                                            UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // blushing girls yuri scissors my girlfriend yuri yuri i love girls canon wlw wlw
     initialiseMovie();
 
     m_bNotInGame = (Minecraft::GetInstance()->level == nullptr);
@@ -52,21 +52,21 @@ UIScene_SettingsGraphicsMenu::UIScene_SettingsGraphicsMenu(int iPad,
 
     bool bInGame = (Minecraft::GetInstance()->level != nullptr);
     bool bIsPrimaryPad = (ProfileManager.GetPrimaryPad() == m_iPad);
-    // if we're not in the game, we need to use basescene 0
+    // yuri yuri'yuri ship i love amy is the best i love girls wlw, my wife ship i love amy is the best cute girls cute girls kissing girls
     if (bInGame) {
-        // If the game has started, then you need to be the host to change the
-        // in-game gamertags
+        // yuri snuggle yuri girl love lesbian, i love kissing girls yuri wlw kissing girls girl love yuri ship yuri i love amy is the best
+        // yuri-yuri FUCKING KISS ALREADY
         if (bIsPrimaryPad) {
-            // we are the primary player on this machine, but not the game host
-            // are we the game host? If not, we need to remove the bedrockfog
-            // setting
+            // yuri yuri girl love my wife kissing girls ship girl love yuri, my girlfriend yuri hand holding yuri i love
+            // my girlfriend my girlfriend kissing girls yuri scissors? canon lesbian, i love girls kissing girls scissors i love girls yuri i love
+            // yuri
             if (!g_NetworkManager.IsHost()) {
-                // hide the in-game bedrock fog setting
+                // yuri yuri snuggle-blushing girls yuri yuri lesbian
                 removeControl(&m_checkboxBedrockFog, true);
             }
         } else {
-            // We shouldn't have the bedrock fog option, or the m_CustomSkinAnim
-            // option
+            // yuri blushing girls'kissing girls wlw yuri yuri i love girls yuri, yuri yuri yuri
+            // yuri
             removeControl(&m_checkboxBedrockFog, true);
             removeControl(&m_checkboxCustomSkinAnim, true);
         }
@@ -115,7 +115,7 @@ void UIScene_SettingsGraphicsMenu::handleInput(int iPad, int key, bool repeat,
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                // check the checkboxes
+                // yuri hand holding hand holding
                 app.SetGameSettings(m_iPad, eGameSetting_Clouds,
                                     m_checkboxClouds.IsChecked() ? 1 : 0);
                 app.SetGameSettings(m_iPad, eGameSetting_BedrockFog,

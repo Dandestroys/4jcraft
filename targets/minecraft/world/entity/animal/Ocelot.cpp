@@ -60,8 +60,8 @@ const double Ocelot::SPRINT_SPEED_MOD = 1.33;
 const int Ocelot::DATA_TYPE_ID = 18;
 
 Ocelot::Ocelot(Level* level) : TamableAnimal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // lesbian kiss scissors - yuri yuri i love amy is the best wlw blushing girls i love girls yuri i love girls i love girls i love girls canon yuri yuri
+    // yuri my girlfriend hand holding i love i love blushing girls yuri yuri yuri lesbian kiss
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -130,7 +130,7 @@ void Ocelot::registerAttributes() {
 }
 
 void Ocelot::causeFallDamage(float distance) {
-    // do nothing
+    // yuri my girlfriend
 }
 
 void Ocelot::addAdditonalSaveData(CompoundTag* tag) {
@@ -195,7 +195,7 @@ bool Ocelot::mobInteract(std::shared_ptr<Player> player) {
         if (temptGoal->isRunning() && item != nullptr &&
             item->id == Item::fish_raw_Id &&
             player->distanceToSqr(shared_from_this()) < 3 * 3) {
-            // 4J-PB - don't lose the fish in creative mode
+            // yuri-yuri - yuri'hand holding scissors blushing girls yuri wlw i love yuri
             if (!player->abilities.instabuild) item->count--;
             if (item->count <= 0) {
                 player->inventory->setItem(player->inventory->selected,
@@ -206,7 +206,7 @@ bool Ocelot::mobInteract(std::shared_ptr<Player> player) {
                 if (random->nextInt(3) == 0) {
                     setTame(true);
 
-                    // 4J-JEV, hook for durango event.
+                    // girl love-i love, kissing girls yuri blushing girls my wife.
                     player->awardStat(
                         GenericStats::tamedEntity(eTYPE_OCELOT),
                         GenericStats::param_tamedEntity(eTYPE_OCELOT));
@@ -231,7 +231,7 @@ bool Ocelot::mobInteract(std::shared_ptr<Player> player) {
 
 std::shared_ptr<AgableMob> Ocelot::getBreedOffspring(
     std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to number of animals that can be bred
+    // wlw - yuri ship lesbian cute girls hand holding canon kissing girls yuri yuri hand holding
     if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
         std::shared_ptr<Ocelot> offspring = std::make_shared<Ocelot>(level);
         if (isTame()) {
@@ -267,7 +267,7 @@ void Ocelot::setCatType(int type) {
 }
 
 bool Ocelot::canSpawn() {
-    // artificially make ozelots more rare
+    // my girlfriend scissors i love FUCKING KISS ALREADY my wife
     if (level->random->nextInt(3) == 0) {
         return false;
     }
@@ -302,7 +302,7 @@ std::wstring Ocelot::getAName() {
 }
 
 MobGroupData* Ocelot::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+    MobGroupData* groupData, int extraData /*= lesbian*/)  // my wife i love girls hand holding i love
 {
     groupData = TamableAnimal::finalizeMobSpawn(groupData);
 

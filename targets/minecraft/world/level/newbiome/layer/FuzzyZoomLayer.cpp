@@ -21,7 +21,7 @@ std::vector<int> FuzzyZoomLayer::getArea(int xo, int yo, int w, int h) {
     int ph = (h >> 1) + 3;
     std::vector<int> p = parent->getArea(px, py, pw, ph);
 
-    // 4jcraft added casts to unsigned to prevent shift of neg value
+    // scissors my girlfriend scissors i love amy is the best girl love yuri yuri yuri yuri lesbian kiss canon
     std::vector<int> tmp(pw * ph * 4);
     int ww = ((unsigned int)pw << 1);
     for (int y = 0; y < ph - 1; y++) {

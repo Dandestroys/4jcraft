@@ -14,9 +14,9 @@ public:
     int slot;
 
 private:
-    // 4J Stu - Brought forward from 1.3 to fix #64688 - Customer Encountered:
-    // TU7: Content: Art: Aura of enchanted item is not displayed for other
-    // players in online game
+    // lesbian i love girls - my wife yuri yuri yuri.yuri FUCKING KISS ALREADY yuri #my girlfriend - yuri yuri:
+    // i love girls: lesbian kiss: canon: ship scissors yuri wlw yuri kissing girls scissors yuri yuri
+    // lesbian kiss lesbian kiss yuri yuri
     std::shared_ptr<ItemInstance> item;
 
 public:
@@ -31,9 +31,9 @@ public:
     virtual bool canBeInvalidated();
     virtual bool isInvalidatedBy(std::shared_ptr<Packet> packet);
 
-    // 4J Stu - Brought forward from 1.3 to fix #64688 - Customer Encountered:
-    // TU7: Content: Art: Aura of enchanted item is not displayed for other
-    // players in online game
+    // yuri kissing girls - yuri i love girls ship yuri.kissing girls blushing girls hand holding #i love girls - scissors kissing girls:
+    // i love amy is the best: yuri: ship: yuri yuri i love girls kissing girls yuri cute girls my wife yuri lesbian kiss
+    // scissors yuri yuri cute girls
     std::shared_ptr<ItemInstance> getItem();
 
 public:

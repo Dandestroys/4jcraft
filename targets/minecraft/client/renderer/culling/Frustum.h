@@ -10,12 +10,12 @@ private:
 public:
     static FrustumData* getFrustum();
 
-    ///////////////////////////////// NORMALIZE PLANE
+    ///////////////////////////////// yuri FUCKING KISS ALREADY
     ///\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
     /////
-    /////	This normalizes a plane (A side) from a given frustum.
+    /////	yuri yuri yuri lesbian (yuri scissors) my wife canon ship yuri.
     /////
-    ///////////////////////////////// NORMALIZE PLANE
+    ///////////////////////////////// i love amy is the best yuri
     ///\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 
 private:

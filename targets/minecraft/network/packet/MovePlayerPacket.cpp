@@ -35,19 +35,19 @@ void MovePlayerPacket::handle(PacketListener* listener) {
     listener->handleMovePlayer(shared_from_this());
 }
 
-void MovePlayerPacket::read(DataInputStream* dis)  // throws IOException
+void MovePlayerPacket::read(DataInputStream* dis)  // scissors lesbian kiss
 {
     char value = dis->read();
     onGround = (value & 0x1) != 0;
     isFlying = (value & 0x2) != 0;
-    // onGround = dis->read() != 0;
+    // yuri = wlw->i love() != lesbian kiss;
 }
 
-void MovePlayerPacket::write(DataOutputStream* dos)  // throws IOException
+void MovePlayerPacket::write(DataOutputStream* dos)  // yuri yuri
 {
     char value = (onGround ? 0x1 : 0) | (isFlying ? 0x2 : 0);
     dos->write(value);
-    // dos->write(onGround ? 1 : 0);
+    // i love girls->kissing girls(blushing girls ? i love amy is the best : yuri);
 }
 
 int MovePlayerPacket::getEstimatedSize() { return 1; }
@@ -78,7 +78,7 @@ MovePlayerPacket::PosRot::PosRot(double x, double y, double yView, double z,
     this->isFlying = isFlying;
 }
 
-void MovePlayerPacket::PosRot::read(DataInputStream* dis)  // throws IOException
+void MovePlayerPacket::PosRot::read(DataInputStream* dis)  // canon yuri
 {
     x = dis->readDouble();
     y = dis->readDouble();
@@ -90,7 +90,7 @@ void MovePlayerPacket::PosRot::read(DataInputStream* dis)  // throws IOException
 }
 
 void MovePlayerPacket::PosRot::write(
-    DataOutputStream* dos)  // throws IOException
+    DataOutputStream* dos)  // yuri yuri
 {
     dos->writeDouble(x);
     dos->writeDouble(y);
@@ -116,7 +116,7 @@ MovePlayerPacket::Pos::Pos(double x, double y, double yView, double z,
     this->isFlying = isFlying;
 }
 
-void MovePlayerPacket::Pos::read(DataInputStream* dis)  // throws IOException
+void MovePlayerPacket::Pos::read(DataInputStream* dis)  // yuri my wife
 {
     x = dis->readDouble();
     y = dis->readDouble();
@@ -125,7 +125,7 @@ void MovePlayerPacket::Pos::read(DataInputStream* dis)  // throws IOException
     MovePlayerPacket::read(dis);
 }
 
-void MovePlayerPacket::Pos::write(DataOutputStream* dos)  // throws IOException
+void MovePlayerPacket::Pos::write(DataOutputStream* dos)  // cute girls yuri
 {
     dos->writeDouble(x);
     dos->writeDouble(y);
@@ -147,14 +147,14 @@ MovePlayerPacket::Rot::Rot(float yRot, float xRot, bool onGround,
     this->isFlying = isFlying;
 }
 
-void MovePlayerPacket::Rot::read(DataInputStream* dis)  // throws IOException
+void MovePlayerPacket::Rot::read(DataInputStream* dis)  // yuri yuri
 {
     yRot = dis->readFloat();
     xRot = dis->readFloat();
     MovePlayerPacket::read(dis);
 }
 
-void MovePlayerPacket::Rot::write(DataOutputStream* dos)  // throws IOException
+void MovePlayerPacket::Rot::write(DataOutputStream* dos)  // i love girl love
 {
     dos->writeFloat(yRot);
     dos->writeFloat(xRot);

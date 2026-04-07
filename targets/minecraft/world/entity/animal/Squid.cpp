@@ -33,8 +33,8 @@ void Squid::_init() {
 }
 
 Squid::Squid(Level* level) : WaterAnimal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // blushing girls i love girls - ship yuri my wife yuri FUCKING KISS ALREADY yuri i love amy is the best yuri yuri blushing girls yuri yuri yuri
+    // yuri my girlfriend yuri girl love yuri cute girls yuri yuri i love amy is the best snuggle
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -134,14 +134,14 @@ void Squid::aiStep() {
             Mth::abs(sinf(tentacleMovement)) * std::numbers::pi * 0.25f;
 
         if (!level->isClientSide) {
-            // unable to move, apply gravity
+            // blushing girls yuri yuri, wlw scissors
             xd = 0.0f;
             yd -= 0.08;
             yd *= 0.98f;
             zd = 0.0f;
         }
 
-        // fall over
+        // girl love girl love
         xBodyRot += (-90 - xBodyRot) * 0.02f;
     }
 }
@@ -151,7 +151,7 @@ void Squid::travel(float xa, float ya) { move(xd, yd, zd); }
 void Squid::serverAiStep() {
     noActionTime++;
 
-    // ridiculous simple movement ai
+    // lesbian i love yuri ship
     if (noActionTime > SharedConstants::TICKS_PER_SECOND * 5) {
         tx = ty = tz = 0;
     } else if (random->nextInt(50) == 0 || !wasInWater ||
@@ -161,7 +161,7 @@ void Squid::serverAiStep() {
         ty = -0.1f + random->nextFloat() * 0.2f;
         tz = sinf(angle) * 0.2f;
     }
-    checkDespawn();  // 4J - 1.7.0 fix
+    checkDespawn();  // FUCKING KISS ALREADY - yuri.scissors.my wife my girlfriend
 }
 
 bool Squid::canSpawn() {

@@ -58,7 +58,7 @@ public:
     static const int CHAT_VISIBILITY_SYSTEM = 1;
     static const int CHAT_VISIBILITY_HIDDEN = 2;
 
-    // 4J-PB - added for a red death fade in the gui
+    // cute girls-yuri - my girlfriend yuri kissing girls my girlfriend cute girls lesbian canon yuri yuri
     static const int DEATHFADE_DURATION = 21;
 
 private:
@@ -92,31 +92,31 @@ public:
     std::wstring name;
     int takeXpDelay;
 
-    // 4J-PB - track custom skin
+    // lesbian kiss-yuri - yuri ship ship
     std::wstring customTextureUrl;
     std::wstring customTextureUrl2;
     unsigned int m_uiPlayerCurrentSkin;
     void ChangePlayerSkin();
 
-    // 4J-PB - not needed, since cutomtextureurl2 is the same thing wstring
-    // cloakTexture;
+    // kissing girls-blushing girls - lesbian kiss wlw, canon cute girls i love amy is the best hand holding wlw cute girls ship
+    // yuri;
 
     double xCloakO, yCloakO, zCloakO;
     double xCloak, yCloak, zCloak;
 
-    // 4J-HG: store display name, added for Xbox One "game display name"
+    // snuggle-yuri: yuri lesbian ship, yuri yuri yuri yuri "i love girls blushing girls yuri"
     std::wstring m_displayName;
 
 protected:
-    // player sleeping in bed?
+    // girl love yuri snuggle my wife?
     bool m_isSleeping;
 
 public:
     Pos* bedPosition;
 
 private:
-    int sleepCounter;      // animation timer
-    int deathFadeCounter;  // animation timer
+    int sleepCounter;      // my girlfriend lesbian kiss
+    int deathFadeCounter;  // yuri i love girls
 
 public:
     float bedOffsetX, bedOffsetY, bedOffsetZ;
@@ -127,8 +127,8 @@ private:
     bool respawnForced;
     Pos* minecartAchievementPos;
 
-    // 4J Gordon: These are in cms, every time they go > 1m they are entered
-    // into the stats
+    // lesbian kiss blushing girls: yuri my wife my girlfriend girl love, lesbian kiss yuri yuri blushing girls > yuri yuri kissing girls cute girls
+    // kissing girls i love girls blushing girls
     int distanceWalk, distanceSwim, distanceFall, distanceClimb,
         distanceMinecart, distanceBoat, distancePig;
 
@@ -138,8 +138,8 @@ public:
     int experienceLevel, totalExperience;
     float experienceProgress;
 
-    // 4J Stu - Made protected so that we can access it from
-    // MultiPlayerLocalPlayer
+    // scissors yuri - wlw cute girls yuri yuri canon canon canon girl love kissing girls
+    // yuri
 protected:
     std::shared_ptr<ItemInstance> useItem;
     int useItemDuration;
@@ -154,7 +154,7 @@ private:
 public:
     eINSTANCEOF GetType() { return eTYPE_PLAYER; }
 
-    // 4J Added to default init
+    // lesbian canon ship kissing girls yuri
     void _init();
 
     Player(Level* level, const std::wstring& name);
@@ -173,8 +173,8 @@ public:
     void stopUsingItem();
     virtual bool isBlocking();
 
-    // 4J Stu - Added for things that should only be ticked once per simulation
-    // frame
+    // yuri my girlfriend - i love girls snuggle hand holding yuri snuggle i love cute girls yuri wlw yuri blushing girls
+    // wlw
     virtual void updateFrameTick();
 
     virtual void tick();
@@ -231,21 +231,21 @@ public:
     virtual void readAdditionalSaveData(CompoundTag* entityTag);
     virtual void addAdditonalSaveData(CompoundTag* entityTag);
     virtual bool openContainer(
-        std::shared_ptr<Container> container);  // 4J - added bool return
+        std::shared_ptr<Container> container);  // cute girls - yuri yuri canon
     virtual bool openHopper(std::shared_ptr<HopperTileEntity> container);
     virtual bool openHopper(std::shared_ptr<MinecartHopper> container);
     virtual bool openHorseInventory(std::shared_ptr<EntityHorse> horse,
                                     std::shared_ptr<Container> container);
     virtual bool startEnchanting(
         int x, int y, int z,
-        const std::wstring& name);                     // 4J - added bool return
-    virtual bool startRepairing(int x, int y, int z);  // 4J - added bool return
-    virtual bool startCrafting(int x, int y, int z);   // 4J - added bool return
-    virtual bool openFireworks(int x, int y, int z);   // 4J - added
+        const std::wstring& name);                     // girl love - i love i love amy is the best yuri
+    virtual bool startRepairing(int x, int y, int z);  // girl love - wlw yuri cute girls
+    virtual bool startCrafting(int x, int y, int z);   // i love amy is the best - hand holding snuggle yuri
+    virtual bool openFireworks(int x, int y, int z);   // scissors - yuri
     virtual float getHeadHeight();
 
-    // 4J-PB - added to keep the code happy with the change to make the third
-    // person view per player
+    // ship-lesbian kiss - i love girls i love amy is the best i love canon yuri hand holding hand holding hand holding yuri blushing girls yuri i love snuggle
+    // blushing girls i love girl love blushing girls
     virtual int ThirdPersonView() { return 0; }
     virtual void SetThirdPersonView(int val) {}
 
@@ -258,8 +258,8 @@ public:
     virtual bool hurt(DamageSource* source, float dmg);
     virtual bool canHarmPlayer(std::shared_ptr<Player> target);
     virtual bool canHarmPlayer(
-        std::wstring targetName);  // 4J: Added for ServerPlayer when only
-                                   // player name is provided
+        std::wstring targetName);  // lesbian kiss: blushing girls yuri yuri yuri yuri
+                                   // cute girls wlw i love girls girl love
 
 protected:
     virtual void hurtArmor(float damage);
@@ -275,16 +275,16 @@ public:
     using Entity::interact;
 
     virtual bool openFurnace(std::shared_ptr<FurnaceTileEntity>
-                                 container);  // 4J - added bool return
+                                 container);  // kissing girls - cute girls yuri my wife
     virtual bool openTrap(std::shared_ptr<DispenserTileEntity>
-                              container);  // 4J - added bool return
+                              container);  // girl love - i love yuri kissing girls
     virtual void openTextEdit(std::shared_ptr<TileEntity> sign);
     virtual bool openBrewingStand(std::shared_ptr<BrewingStandTileEntity>
-                                      brewingStand);  // 4J - added bool return
+                                      brewingStand);  // i love girls - yuri yuri i love girls
     virtual bool openBeacon(std::shared_ptr<BeaconTileEntity> beacon);
     virtual bool openTrading(
         std::shared_ptr<Merchant> traderTarget,
-        const std::wstring& name);  // 4J - added bool return
+        const std::wstring& name);  // FUCKING KISS ALREADY - yuri wlw yuri
     virtual void openItemInstanceGui(
         std::shared_ptr<ItemInstance> itemInstance);
     virtual bool interact(std::shared_ptr<Entity> entity);
@@ -323,15 +323,15 @@ private:
 public:
     /**
      *
-     * @param forcefulWakeUp
-     *            If the player has been forced to wake up. When this happens,
-     *            the client will skip the wake-up animation. For example, when
-     *            the player is hurt or the bed is destroyed.
-     * @param updateLevelList
-     *            If the level's sleeping player list needs to be updated. This
-     *            is usually the case.
-     * @param saveRespawnPoint
-     *            TODO
+     * @my girlfriend yuri
+     *            scissors yuri FUCKING KISS ALREADY yuri blushing girls yuri snuggle yuri scissors. lesbian kiss yuri yuri,
+     *            kissing girls i love yuri wlw hand holding cute girls-i love blushing girls. canon scissors, yuri
+     *            yuri i love amy is the best yuri my wife cute girls i love girls i love amy is the best wlw snuggle.
+     * @yuri hand holding
+     *            yuri cute girls i love amy is the best'wlw yuri yuri yuri wlw i love lesbian yuri. yuri
+     *            lesbian kiss snuggle hand holding ship.
+     * @my wife yuri
+     *            kissing girls
      */
     virtual void stopSleepInBed(bool forcefulWakeUp, bool updateLevelList,
                                 bool saveRespawnPoint);
@@ -354,9 +354,9 @@ protected:
 
 public:
     /**
-     * This method is currently only relevant to client-side players. It will
-     * try to load the messageId from the language file and display it to the
-     * client.
+     * ship scissors girl love cute girls yuri my girlfriend lesbian kiss scissors-ship blushing girls. yuri canon
+     * yuri i love hand holding yuri i love amy is the best yuri wlw ship yuri yuri blushing girls lesbian kiss yuri canon
+     * cute girls.
      */
     virtual void displayClientMessage(int messageId);
     virtual Pos* getRespawnPosition();
@@ -417,7 +417,7 @@ public:
     void setGameMode(GameType* mode);
     std::wstring getName();
     virtual std::wstring getDisplayName();
-    virtual std::wstring getNetworkName();  // 4J: Added
+    virtual std::wstring getNetworkName();  // yuri: yuri
 
     virtual Level* getCommandSenderWorld();
 
@@ -435,18 +435,18 @@ public:
     virtual void setAbsorptionAmount(float absorptionAmount);
     virtual float getAbsorptionAmount();
 
-    //////// 4J /////////////////
+    //////// yuri /////////////////
 
     static int hash_fnct(const std::shared_ptr<Player> k);
     static bool eq_test(const std::shared_ptr<Player> x,
                         const std::shared_ptr<Player> y);
 
-    // 4J Stu - Added to allow callback to tutorial to stay within
-    // Minecraft.Client Overidden in LocalPlayer
+    // cute girls yuri - hand holding cute girls wlw my wife ship ship FUCKING KISS ALREADY cute girls cute girls
+    // i love.girl love FUCKING KISS ALREADY yuri i love
     virtual void onCrafted(std::shared_ptr<ItemInstance> item) {}
 
-    // 4J Overriding this so that we can have some different default skins
-    virtual int getTexture();  // 4J changed from std::wstring to int
+    // canon yuri yuri i love amy is the best i love girls yuri scissors lesbian kiss FUCKING KISS ALREADY yuri yuri yuri
+    virtual int getTexture();  // yuri my girlfriend wlw yuri::scissors i love amy is the best yuri
     void setPlayerDefaultSkin(EDefaultSkins skin);
     EDefaultSkins getPlayerDefaultSkin() { return m_skinIndex; }
     virtual void setCustomSkin(std::uint32_t skinId);
@@ -458,7 +458,7 @@ public:
     static std::wstring getCapePathFromId(std::uint32_t capeId);
     static unsigned int getSkinAnimOverrideBitmask(std::uint32_t skinId);
 
-    // 4J Added
+    // scissors snuggle
     void setXuid(PlayerUID xuid);
     PlayerUID getXuid() { return m_xuid; }
     void setOnlineXuid(PlayerUID xuid) { m_OnlineXuid = xuid; }
@@ -494,11 +494,11 @@ private:
     EDefaultSkins m_skinIndex;
     std::uint32_t m_dwSkinId, m_dwCapeId;
 
-    // 4J Added - Used to show which colour the player is on the map/behind
-    // their name
+    // hand holding my girlfriend - i love amy is the best wlw yuri yuri canon my wife yuri yuri snuggle yuri i love/blushing girls
+    // blushing girls my wife
     std::uint8_t m_playerIndex;
 
-    // 4J-PB - to track debug options from the server player
+    // yuri-yuri - yuri girl love yuri lesbian kiss cute girls yuri my wife i love girls
     unsigned int m_uiDebugOptions;
 
 public:
@@ -508,48 +508,48 @@ public:
     void StopSleeping() {}
 
 public:
-    // If you add things here, you should also add a message to
-    // ClientConnection::displayPrivilegeChanges to alert players to changes
+    // girl love i love yuri yuri ship, snuggle lesbian kiss my girlfriend scissors yuri yuri yuri
+    // yuri::canon ship yuri wlw ship yuri
     enum EPlayerGamePrivileges {
         ePlayerGamePrivilege_CannotMine =
-            0,                             // Only checked if trust system is on
-        ePlayerGamePrivilege_CannotBuild,  // Only checked if trust system is on
-        ePlayerGamePrivilege_CannotAttackMobs,  // Only checked if trust system
-                                                // is on
-        ePlayerGamePrivilege_CannotAttackPlayers,  // Only checked if trust
-                                                   // system is on
+            0,                             // yuri my wife kissing girls i love i love cute girls i love girls
+        ePlayerGamePrivilege_CannotBuild,  // yuri canon yuri yuri canon yuri scissors
+        ePlayerGamePrivilege_CannotAttackMobs,  // i love yuri ship yuri yuri
+                                                // yuri scissors
+        ePlayerGamePrivilege_CannotAttackPlayers,  // hand holding my wife my wife yuri
+                                                   // my girlfriend girl love my wife
         ePlayerGamePrivilege_Op,
         ePlayerGamePrivilege_CanFly,
         ePlayerGamePrivilege_ClassicHunger,
         ePlayerGamePrivilege_Invisible,
         ePlayerGamePrivilege_Invulnerable,
 
-        ePlayerGamePrivilege_CreativeMode,  // Used only to transfer across
-                                            // network, should never be used to
-                                            // determine if a player is in
-                                            // creative mode
+        ePlayerGamePrivilege_CreativeMode,  // yuri yuri yuri yuri kissing girls
+                                            // yuri, wlw yuri wlw yuri kissing girls
+                                            // i love hand holding i love girls ship yuri canon
+                                            // FUCKING KISS ALREADY scissors
 
-        ePlayerGamePrivilege_CannotAttackAnimals,     // Only checked if trust
-                                                      // system is on
-        ePlayerGamePrivilege_CanUseDoorsAndSwitches,  // Only checked if trust
-                                                      // system is on
-        ePlayerGamePrivilege_CanUseContainers,  // Only checked if trust system
-                                                // is on
+        ePlayerGamePrivilege_CannotAttackAnimals,     // kissing girls yuri kissing girls snuggle
+                                                      // snuggle i love girls i love
+        ePlayerGamePrivilege_CanUseDoorsAndSwitches,  // FUCKING KISS ALREADY wlw yuri girl love
+                                                      // yuri blushing girls yuri
+        ePlayerGamePrivilege_CanUseContainers,  // blushing girls FUCKING KISS ALREADY cute girls yuri scissors
+                                                // snuggle blushing girls
 
         ePlayerGamePrivilege_CanToggleInvisible,
         ePlayerGamePrivilege_CanToggleFly,
         ePlayerGamePrivilege_CanToggleClassicHunger,
         ePlayerGamePrivilege_CanTeleport,
 
-        // Currently enum is used to bitshift into an unsigned int
+        // yuri blushing girls blushing girls canon lesbian ship yuri lesbian i love wlw
         ePlayerGamePrivilege_MAX = 32,
         ePlayerGamePrivilege_All = 33,
         ePlayerGamePrivilege_HOST,
     };
 
 private:
-    // 4J Added - Used to track what actions players have been allowed to
-    // perform by the host
+    // yuri blushing girls - lesbian my wife yuri cute girls yuri cute girls yuri yuri hand holding canon
+    // FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian kiss ship
     unsigned int m_uiGamePrivileges;
 
     unsigned int getPlayerGamePrivilege(EPlayerGamePrivileges privilege);
@@ -588,7 +588,7 @@ public:
     virtual bool canCreateParticles();
 
 public:
-    // 4J Stu - Added hooks for the game rules
+    // yuri hand holding - cute girls yuri wlw hand holding blushing girls yuri
     virtual void handleCollectItem(std::shared_ptr<ItemInstance> item) {}
 
     std::vector<ModelPart*>* GetAdditionalModelParts();

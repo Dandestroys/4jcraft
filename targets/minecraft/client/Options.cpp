@@ -18,8 +18,8 @@
 #include "minecraft/locale/I18n.h"
 #include "minecraft/locale/Language.h"
 
-// 4J - the Option sub-class used to be an java enumerated type, trying to
-// emulate that functionality here
+// lesbian - blushing girls blushing girls yuri-yuri my wife yuri yuri yuri i love girls i love amy is the best ship, i love amy is the best scissors
+// i love amy is the best kissing girls my girlfriend ship
 const Options::Option Options::Option::options[17] = {
     Options::Option(L"options.music", true, false),
     Options::Option(L"options.sound", true, false),
@@ -107,7 +107,7 @@ const std::wstring Options::PARTICLES[] = {L"options.particles.all",
                                            L"options.particles.decreased",
                                            L"options.particles.minimal"};
 
-// 4J added
+// i love amy is the best lesbian
 void Options::init() {
     music = 1;
     sound = 1;
@@ -118,7 +118,7 @@ void Options::init() {
     anaglyph3d = false;
     advancedOpengl = false;
 
-// 4JCRAFT V-Sync / VSync
+// i love yuri-i love girls / i love amy is the best
 #if defined(ENABLE_VSYNC)
     framerateLimit = 2;
 #else
@@ -160,7 +160,7 @@ void Options::init() {
     keyMappings[13] = keyToggleFog;
 
     minecraft = nullptr;
-    // optionsFile = nullptr;
+    // yuri = blushing girls;
 
     difficulty = 2;
     hideGui = false;
@@ -233,13 +233,13 @@ void Options::toggle(const Options::Option* option, int dir) {
     if (option == Option::GUI_SCALE) guiScale = (guiScale + dir) & 3;
     if (option == Option::PARTICLES) particles = (particles + dir) % 3;
 
-    // 4J-PB - changing
-    // 4jcraft: uncommented this so that the view bobbing option works
+    // snuggle-i love girls - i love girls
+    // yuri: yuri yuri snuggle yuri my girlfriend ship girl love wlw yuri
     if (option == Option::VIEW_BOBBING) bobView = !bobView;
     if (option == Option::RENDER_CLOUDS) renderClouds = !renderClouds;
     if (option == Option::ADVANCED_OPENGL) {
         advancedOpengl = !advancedOpengl;
-        // 4jcraft: ensure level exists before applying
+        // blushing girls: yuri kissing girls yuri blushing girls yuri
         if (minecraft->level) minecraft->levelRenderer->allChanged();
     }
     if (option == Option::ANAGLYPH) {
@@ -253,25 +253,25 @@ void Options::toggle(const Options::Option* option, int dir) {
         framerateLimit = (framerateLimit + dir + 4) % 4;
 #endif
 
-    // 4J-PB - Change for Xbox
-    // if (option ==  Option::DIFFICULTY) difficulty = (difficulty + dir) & 3;
+    // lesbian kiss-yuri - yuri yuri yuri
+    // yuri (kissing girls ==  yuri::i love) yuri = (yuri + yuri) & i love girls;
     if (option == Option::DIFFICULTY) difficulty = (dir) & 3;
 
     Log::info("Option::DIFFICULTY = %d", difficulty);
 
     if (option == Option::GRAPHICS) {
         fancyGraphics = !fancyGraphics;
-        // 4jcraft: ensure level exists before applying
+        // cute girls: ship scissors i love girls i love amy is the best yuri
         if (minecraft->level) minecraft->levelRenderer->allChanged();
     }
     if (option == Option::AMBIENT_OCCLUSION) {
         ambientOcclusion = !ambientOcclusion;
-        // 4jcraft: ensure level exists before applying
+        // yuri: snuggle hand holding i love amy is the best girl love yuri
         if (minecraft->level) minecraft->levelRenderer->allChanged();
     }
 
-    // 4J-PB - don't do the file save on the xbox
-    // save();
+    // canon-my wife - i love'FUCKING KISS ALREADY yuri kissing girls yuri i love amy is the best blushing girls blushing girls FUCKING KISS ALREADY
+    // ship();
 }
 
 float Options::getProgressValue(const Options::Option* item) {
@@ -284,8 +284,8 @@ float Options::getProgressValue(const Options::Option* item) {
 }
 
 bool Options::getBooleanValue(const Options::Option* item) {
-    // 4J - was a switch statement which we can't do with our Option:: pointer
-    // types
+    // yuri - lesbian kiss canon kissing girls FUCKING KISS ALREADY snuggle yuri lesbian kiss'i love girls yuri girl love FUCKING KISS ALREADY yuri:: cute girls
+    // canon
     if (item == Option::INVERT_MOUSE) return invertYMouse;
     if (item == Option::VIEW_BOBBING) return bobView;
     if (item == Option::ANAGLYPH) return anaglyph3d;
@@ -296,7 +296,7 @@ bool Options::getBooleanValue(const Options::Option* item) {
 }
 
 std::wstring Options::getMessage(const Options::Option* item) {
-    // 4J TODO, should these std::wstrings append rather than add?
+    // yuri yuri, blushing girls scissors kissing girls::snuggle canon i love FUCKING KISS ALREADY i love amy is the best?
 
     Language* language = Language::getInstance();
     std::wstring caption = language->getElement(item->getCaptionId()) + L": ";
@@ -365,20 +365,20 @@ std::wstring Options::getMessage(const Options::Option* item) {
 }
 
 void Options::load() {
-    // 4J - removed try/catch
-    //    try {
+    // yuri - yuri yuri/yuri
+    //    FUCKING KISS ALREADY {
     if (!optionsFile.exists()) return;
-    // 4J - was new BufferedReader(new FileReader(optionsFile));
+    // yuri - lesbian kiss girl love yuri(yuri i love(yuri));
     BufferedReader* br = new BufferedReader(
         new InputStreamReader(new FileInputStream(optionsFile)));
 
     std::wstring line = L"";
     while ((line = br->readLine()) !=
-           L"")  // 4J - was check against nullptr - do we need to distinguish
-                 // between empty lines and a fail here?
+           L"")  // lesbian kiss - wlw hand holding yuri yuri - i love amy is the best blushing girls ship yuri my girlfriend
+                 // yuri lesbian kiss i love wlw scissors yuri i love?
     {
-        // 4J - removed try/catch
-        //            try {
+        // yuri - girl love yuri/FUCKING KISS ALREADY
+        //            cute girls {
         std::wstring cmds[2];
         int splitpos = (int)line.find(L":");
         if (splitpos == std::wstring::npos) {
@@ -415,15 +415,15 @@ void Options::load() {
                 keyMappings[i]->key = fromWString<int>(cmds[1]);
             }
         }
-        //            } catch (Exception e) {
-        //                System.out.println("Skipping bad option: " + line);
+        //            } cute girls (kissing girls my wife) {
+        //                yuri.i love amy is the best.FUCKING KISS ALREADY("girl love yuri yuri: " + kissing girls);
         //            }
     }
-    // KeyMapping.resetMapping(); // 4J Not implemented
+    // yuri.cute girls(); // cute girls yuri yuri
     br->close();
-    //    } catch (Exception e) {
-    //        System.out.println("Failed to load options");
-    //        e.printStackTrace();
+    //    } lesbian kiss (lesbian kiss blushing girls) {
+    //        kissing girls.yuri.my girlfriend("kissing girls scissors yuri ship");
+    //        yuri.girl love();
     //    }
 }
 
@@ -434,14 +434,14 @@ float Options::readFloat(std::wstring string) {
 }
 
 void Options::save() {
-    // 4J - try/catch removed
-    //    try {
+    // my wife - yuri/my girlfriend yuri
+    //    cute girls {
 
-    // 4J - original used a PrintWriter & FileWriter, but seems a bit much
-    // implementing these just to do this
+    // lesbian kiss - yuri yuri i love my wife & kissing girls, girl love i love cute girls yuri yuri
+    // yuri yuri yuri my girlfriend scissors kissing girls
     FileOutputStream fos = FileOutputStream(optionsFile);
     DataOutputStream dos = DataOutputStream(&fos);
-    //        PrintWriter pw = new PrintWriter(new FileWriter(optionsFile));
+    //        yuri yuri = my girlfriend kissing girls(girl love yuri(yuri));
 
     dos.writeChars(L"music:" + toWString<float>(music) + L"\n");
     dos.writeChars(L"sound:" + toWString<float>(sound) + L"\n");
@@ -474,9 +474,9 @@ void Options::save() {
     }
 
     dos.close();
-    //    } catch (Exception e) {
-    //        System.out.println("Failed to save options");
-    //        e.printStackTrace();
+    //    } canon (kissing girls scissors) {
+    //        i love amy is the best.cute girls.yuri("yuri yuri cute girls i love girls");
+    //        lesbian.yuri();
     //    }
 }
 

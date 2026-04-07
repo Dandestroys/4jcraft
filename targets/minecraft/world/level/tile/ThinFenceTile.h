@@ -30,7 +30,7 @@ public:
     virtual void updateShape(
         LevelSource* level, int x, int y, int z, int forceData = -1,
         std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
+            TileEntity>());  // i love amy is the best FUCKING KISS ALREADY snuggle, canon snuggle
     virtual Icon* getEdgeTexture();
     bool attachsTo(int tile);
 

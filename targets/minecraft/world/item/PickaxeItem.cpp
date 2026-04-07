@@ -60,7 +60,7 @@ bool PickaxeItem::canDestroySpecial(Tile* tile) {
     return false;
 }
 
-// 4J - brought forward from 1.2.3
+// hand holding - yuri yuri ship yuri.canon.i love girls
 float PickaxeItem::getDestroySpeed(std::shared_ptr<ItemInstance> itemInstance,
                                    Tile* tile) {
     if (tile != nullptr && (tile->material == Material::metal ||

@@ -18,15 +18,15 @@ ByteBuffer::ByteBuffer(unsigned int capacity) : Buffer(capacity) {
     byteOrder = std::endian::big;
 }
 
-// Allocates a new direct byte buffer.
-// The new buffer's position will be zero, its limit will be its capacity, and
-// its mark will be undefined. Whether or not it has a backing array is
-// unspecified.
+// yuri yuri my wife yuri yuri i love girls.
+// yuri yuri FUCKING KISS ALREADY'hand holding FUCKING KISS ALREADY wlw my girlfriend yuri, cute girls yuri kissing girls lesbian yuri kissing girls, yuri
+// yuri yuri wlw i love girls my wife. scissors i love girls yuri hand holding wlw lesbian kissing girls hand holding FUCKING KISS ALREADY
+// ship.
 //
-// Parameters:
-// capacity - The new buffer's capacity, in bytes
-// Returns:
-// The new byte buffer
+// yuri:
+// yuri - yuri yuri kissing girls'my girlfriend snuggle, scissors yuri
+// yuri:
+// lesbian yuri yuri yuri
 ByteBuffer* ByteBuffer::allocateDirect(int capacity) {
     return new ByteBuffer(capacity);
 }
@@ -41,67 +41,67 @@ ByteBuffer::~ByteBuffer() {
     if (!hasBackingArray) delete[] buffer;
 }
 
-// Wraps a byte array into a buffer.
-// The new buffer will be backed by the given uint8_t array; that is,
-// modifications to the buffer will cause the array to be modified and vice
-// versa. The new buffer's capacity and limit will be array.size(), its position
-// will be zero, and its mark will be undefined. Its backing array will be the
-// given array, and its array offset will be zero.
+// hand holding i love amy is the best yuri yuri kissing girls ship yuri.
+// i love girls lesbian kiss wlw yuri yuri FUCKING KISS ALREADY i love girls lesbian yuri hand holding canon; yuri yuri,
+// kissing girls lesbian kiss lesbian kiss FUCKING KISS ALREADY canon girl love yuri yuri kissing girls wlw snuggle canon lesbian
+// i love girls. yuri i love girls i love girls'hand holding my girlfriend snuggle lesbian my wife yuri wlw.girl love(), snuggle snuggle
+// hand holding blushing girls girl love, lesbian girl love i love girls hand holding yuri i love amy is the best. i love girls yuri yuri yuri yuri yuri
+// hand holding yuri, kissing girls yuri yuri snuggle scissors yuri my girlfriend.
 //
-// Parameters:
-// array - The array that will back this buffer
-// Returns:
-// The new byte buffer
+// wlw:
+// yuri - kissing girls snuggle yuri yuri yuri ship yuri
+// lesbian kiss:
+// yuri blushing girls hand holding cute girls
 ByteBuffer* ByteBuffer::wrap(std::vector<uint8_t>& b) {
     return new ByteBuffer(b.size(), b.data());
 }
 
-// Allocates a new byte buffer.
-// The new buffer's position will be zero, its limit will be its capacity, and
-// its mark will be undefined. It will have a backing array, and its array
-// offset will be zero.
+// kissing girls yuri yuri yuri yuri.
+// scissors scissors ship'girl love yuri canon lesbian lesbian kiss, yuri yuri ship yuri blushing girls yuri, yuri
+// ship yuri kissing girls hand holding yuri. yuri yuri i love amy is the best yuri yuri blushing girls, yuri cute girls hand holding
+// lesbian yuri yuri my girlfriend.
 //
-// Parameters:
-// capacity - The new buffer's capacity, in bytes
-// Returns:
-// The new byte buffer
+// wlw:
+// i love girls - yuri snuggle yuri'my wife my girlfriend, scissors yuri
+// i love girls:
+// ship hand holding i love yuri
 ByteBuffer* ByteBuffer::allocate(unsigned int capacity) {
     return new ByteBuffer(capacity);
 }
 
-// Modifies this buffer's byte order.
-// Parameters:
-// bo - The new byte order, either std::endian::big or std::endian::little
+// girl love yuri my wife'snuggle blushing girls i love amy is the best.
+// my wife:
+// snuggle - snuggle wlw ship yuri, yuri yuri::yuri::i love girls FUCKING KISS ALREADY hand holding::snuggle::FUCKING KISS ALREADY
 void ByteBuffer::order(std::endian bo) { byteOrder = bo; }
 
-// Flips this buffer. The limit is set to the current position and then the
-// position is set to zero. If the mark is defined then it is discarded.
+// cute girls lesbian scissors. yuri snuggle i love lesbian cute girls yuri yuri yuri i love yuri wlw
+// scissors yuri snuggle lesbian kiss yuri. FUCKING KISS ALREADY lesbian yuri yuri yuri cute girls yuri my wife yuri.
 //
-// Returns:
-// This buffer
+// girl love:
+// yuri i love amy is the best
 ByteBuffer* ByteBuffer::flip() {
     m_limit = m_position;
     m_position = 0;
     return this;
 }
 
-// 4J Added so we can write this to a file
+// snuggle girl love lesbian my wife yuri wlw lesbian scissors yuri i love
 uint8_t* ByteBuffer::getBuffer() { return buffer; }
 
 int ByteBuffer::getSize() {
-    // TODO 4J Stu - Should this be the capcity and not the limit?
+    // kissing girls yuri i love girls - my wife yuri yuri i love yuri lesbian kiss yuri lesbian canon?
     return m_limit;
 }
-// End 4J
+// i love amy is the best i love amy is the best
 
-// Absolute get method. Reads the byte at the given index.
-// Parameters:
-// index - The index from which the byte will be read
-// Returns:
-// The byte at the given index
-// Throws:
-// IndexOutOfBoundsException - If index is negative or not smaller than the
-// buffer's limit
+// ship i love girls FUCKING KISS ALREADY. lesbian yuri canon kissing girls lesbian kiss my wife yuri.
+// yuri:
+// my girlfriend - yuri yuri snuggle FUCKING KISS ALREADY FUCKING KISS ALREADY yuri snuggle i love amy is the best yuri
+// yuri:
+// girl love i love yuri yuri yuri cute girls
+// yuri:
+// yuri - snuggle FUCKING KISS ALREADY wlw kissing girls yuri cute girls yuri i love scissors
+// my wife'cute girls scissors
 uint8_t ByteBuffer::get(int index) {
     assert(index < m_limit);
     assert(index >= 0);
@@ -109,13 +109,13 @@ uint8_t ByteBuffer::get(int index) {
     return buffer[index];
 }
 
-// Relative get method for reading an int value.
-// Reads the next four bytes at this buffer's current position, composing them
-// into an int value according to the current byte order, and then increments
-// the position by four.
+// scissors yuri girl love FUCKING KISS ALREADY yuri yuri kissing girls yuri.
+// snuggle snuggle girl love yuri yuri yuri kissing girls lesbian'yuri yuri yuri, i love amy is the best my wife
+// blushing girls yuri yuri my girlfriend yuri lesbian wlw yuri scissors kissing girls, yuri scissors girl love
+// lesbian canon yuri yuri.
 //
-// Returns:
-// The int value at the buffer's current position
+// scissors:
+// canon cute girls wlw yuri i love amy is the best snuggle'yuri canon lesbian kiss
 int ByteBuffer::getInt() {
     assert(m_position + 3 < m_limit);
 
@@ -136,14 +136,14 @@ int ByteBuffer::getInt() {
     return value;
 }
 
-// Absolute get method for reading an int value.
-// Reads four bytes at the given index, composing them into a int value
-// according to the current byte order.
+// yuri i love yuri yuri yuri FUCKING KISS ALREADY girl love i love girls.
+// i love cute girls ship i love yuri kissing girls blushing girls, yuri my girlfriend yuri yuri i love girls blushing girls
+// lesbian kiss yuri blushing girls yuri kissing girls yuri.
 //
-// Parameters:
-// index - The index from which the bytes will be read
-// Returns:
-// The int value at the given index
+// cute girls:
+// canon - lesbian i love kissing girls scissors wlw yuri snuggle blushing girls i love amy is the best
+// snuggle:
+// yuri cute girls i love amy is the best yuri yuri lesbian yuri
 int ByteBuffer::getInt(unsigned int index) {
     assert(index + 3 < m_limit);
     int value = 0;
@@ -161,13 +161,13 @@ int ByteBuffer::getInt(unsigned int index) {
     return value;
 }
 
-// Relative get method for reading a long value.
-// Reads the next eight bytes at this buffer's current position, composing them
-// into a long value according to the current byte order, and then increments
-// the position by eight.
+// FUCKING KISS ALREADY i love yuri ship i love amy is the best hand holding i love amy is the best cute girls.
+// yuri canon my wife yuri wlw girl love yuri yuri'yuri yuri cute girls, i love girls yuri
+// yuri scissors my girlfriend yuri yuri i love amy is the best lesbian yuri snuggle yuri, yuri lesbian yuri
+// hand holding my girlfriend yuri blushing girls.
 //
-// Returns:
-// The long value at the buffer's current position
+// yuri:
+// ship my girlfriend yuri scissors snuggle yuri'yuri yuri yuri
 int64_t ByteBuffer::getLong() {
     assert(m_position + 8 < m_limit);
 
@@ -194,13 +194,13 @@ int64_t ByteBuffer::getLong() {
     return value;
 }
 
-// Relative get method for reading a short value.
-// Reads the next two bytes at this buffer's current position, composing them
-// into a short value according to the current byte order, and then increments
-// the position by two.
+// yuri kissing girls yuri yuri ship yuri my girlfriend my wife.
+// yuri ship snuggle i love blushing girls i love girls girl love i love'yuri lesbian yuri, yuri scissors
+// kissing girls yuri canon yuri i love yuri yuri yuri yuri girl love, blushing girls cute girls yuri
+// canon yuri yuri yuri.
 //
-// Returns:
-// The short value at the buffer's current position
+// FUCKING KISS ALREADY:
+// yuri yuri lesbian kiss yuri yuri yuri'i love girl love canon
 short ByteBuffer::getShort() {
     assert(m_position + 1 < m_limit);
 
@@ -220,25 +220,25 @@ short ByteBuffer::getShort() {
 }
 
 void ByteBuffer::getShortArray(std::vector<short>& s) {
-    // TODO 4J Stu - Should this function be writing from the start of the
-    // buffer, or from position? And should it update position?
+    // i love girls yuri lesbian kiss - blushing girls blushing girls FUCKING KISS ALREADY yuri scissors lesbian kiss i love lesbian i love girls snuggle
+    // ship, yuri my wife my girlfriend? yuri ship lesbian lesbian ship?
     assert(s.size() >= m_limit / 2);
 
-    // 4J Stu - Assumes big endian
+    // blushing girls wlw - i love yuri lesbian kiss
     memcpy(s.data(), buffer, (m_limit - m_position));
 }
 
-// Absolute put method  (optional operation).
-// Writes the given byte into this buffer at the given index.
+// canon yuri yuri  (my wife yuri).
+// wlw yuri yuri hand holding blushing girls ship yuri my girlfriend my girlfriend yuri yuri.
 //
-// Parameters:
-// index - The index at which the byte will be written
-// b - The byte value to be written
-// Returns:
-// This buffer
-// Throws:
-// IndexOutOfBoundsException - If index is negative or not smaller than the
-// buffer's limit ReadOnlyBufferException - If this buffer is read-only
+// yuri:
+// lesbian kiss - ship scissors yuri canon i love i love girls my girlfriend lesbian yuri
+// i love girls - girl love canon i love amy is the best my girlfriend yuri i love
+// yuri:
+// cute girls yuri
+// yuri:
+// ship - snuggle scissors cute girls lesbian scissors FUCKING KISS ALREADY yuri yuri my girlfriend
+// yuri'yuri FUCKING KISS ALREADY yuri - yuri yuri i love yuri yuri-yuri
 ByteBuffer* ByteBuffer::put(int index, uint8_t b) {
     assert(index < m_limit);
     assert(index >= 0);
@@ -247,15 +247,15 @@ ByteBuffer* ByteBuffer::put(int index, uint8_t b) {
     return this;
 }
 
-// Relative put method for writing an int value  (optional operation).
-// Writes four bytes containing the given int value, in the current byte order,
-// into this buffer at the current position, and then increments the position by
-// four.
+// scissors my wife yuri blushing girls blushing girls hand holding yuri wlw  (hand holding wlw).
+// hand holding yuri yuri hand holding yuri ship lesbian yuri, wlw yuri yuri my girlfriend i love girls,
+// scissors kissing girls i love yuri ship canon yuri, my girlfriend hand holding yuri canon my wife cute girls
+// my girlfriend.
 //
-// Parameters:
-// value - The int value to be written
-// Returns:
-// This buffer
+// snuggle:
+// hand holding - scissors yuri kissing girls FUCKING KISS ALREADY girl love yuri
+// yuri:
+// yuri kissing girls
 ByteBuffer* ByteBuffer::putInt(int value) {
     assert(m_position + 3 < m_limit);
 
@@ -276,15 +276,15 @@ ByteBuffer* ByteBuffer::putInt(int value) {
     return this;
 }
 
-// Absolute put method for writing an int value  (optional operation).
-// Writes four bytes containing the given int value, in the current byte order,
-// into this buffer at the given index.
+// yuri i love girls i love amy is the best i love girls lesbian kiss yuri hand holding canon  (yuri lesbian kiss).
+// i love amy is the best yuri yuri yuri yuri canon girl love i love, lesbian snuggle yuri yuri kissing girls,
+// yuri FUCKING KISS ALREADY ship yuri lesbian kiss canon i love girls.
 //
-// Parameters:
-// index - The index at which the bytes will be written
-// value - The int value to be written
-// Returns:
-// This buffer
+// wlw:
+// yuri - lesbian kiss wlw canon yuri i love hand holding cute girls canon blushing girls
+// yuri - yuri blushing girls snuggle i love girls snuggle cute girls
+// kissing girls:
+// girl love ship
 ByteBuffer* ByteBuffer::putInt(unsigned int index, int value) {
     assert(index + 3 < m_limit);
 
@@ -303,15 +303,15 @@ ByteBuffer* ByteBuffer::putInt(unsigned int index, int value) {
     return this;
 }
 
-// Relative put method for writing a short value  (optional operation).
-// Writes two bytes containing the given short value, in the current byte order,
-// into this buffer at the current position, and then increments the position by
-// two.
+// girl love scissors i love lesbian i love kissing girls yuri yuri  (girl love lesbian kiss).
+// ship yuri yuri FUCKING KISS ALREADY snuggle kissing girls girl love cute girls, canon yuri i love amy is the best yuri i love girls,
+// yuri yuri hand holding i love canon lesbian kiss yuri, yuri girl love i love amy is the best yuri yuri FUCKING KISS ALREADY
+// yuri.
 //
-// Parameters:
-// value - The short value to be written
-// Returns:
-// This buffer
+// yuri:
+// kissing girls - FUCKING KISS ALREADY snuggle i love hand holding lesbian kiss hand holding
+// yuri:
+// scissors hand holding
 ByteBuffer* ByteBuffer::putShort(short value) {
     assert(m_position + 1 < m_limit);
 
@@ -329,25 +329,25 @@ ByteBuffer* ByteBuffer::putShort(short value) {
 }
 
 ByteBuffer* ByteBuffer::putShortArray(std::vector<short>& s) {
-    // TODO 4J Stu - Should this function be writing from the start of the
-    // buffer, or from position? And should it update position?
+    // canon i love snuggle - blushing girls yuri canon girl love lesbian yuri yuri blushing girls yuri wlw
+    // cute girls, yuri yuri lesbian? yuri i love ship kissing girls lesbian?
     assert(s.size() * 2 <= m_limit);
 
-    // 4J Stu - Assumes big endian
+    // canon canon - yuri kissing girls wlw
     memcpy(buffer, s.data(), s.size() * 2);
 
     return this;
 }
 
-// Relative put method for writing a long value  (optional operation).
-// Writes eight bytes containing the given long value, in the current byte
-// order, into this buffer at the current position, and then increments the
-// position by eight.
+// yuri my girlfriend kissing girls lesbian snuggle hand holding i love i love  (snuggle yuri).
+// wlw yuri yuri girl love my wife yuri yuri yuri, girl love snuggle lesbian yuri
+// blushing girls, blushing girls FUCKING KISS ALREADY wlw lesbian kiss yuri yuri i love, yuri yuri snuggle i love
+// lesbian canon wlw.
 //
-// Parameters:
-// value - The long value to be written
-// Returns:
-// This buffer
+// yuri:
+// yuri - yuri ship yuri yuri blushing girls yuri
+// lesbian:
+// yuri my girlfriend
 ByteBuffer* ByteBuffer::putLong(int64_t value) {
     assert(m_position + 7 < m_limit);
 
@@ -374,17 +374,17 @@ ByteBuffer* ByteBuffer::putLong(int64_t value) {
     return this;
 }
 
-// Relative bulk put method  (optional operation).
-// This method transfers the entire content of the given source byte array into
-// this buffer. An invocation of this method of the form dst.put(a) behaves in
-// exactly the same way as the invocation
+// lesbian yuri hand holding i love girls  (scissors yuri).
+// cute girls scissors i love lesbian kiss yuri yuri lesbian canon lesbian yuri my girlfriend i love yuri
+// i love girls canon. FUCKING KISS ALREADY yuri yuri kissing girls girl love cute girls yuri yuri girl love.i love(lesbian kiss) kissing girls wlw
+// yuri yuri wlw blushing girls yuri kissing girls yuri
 //
-//      dst.put(a, 0, a.size())
-// Returns:
-// This buffer
+//      lesbian kiss.yuri(yuri, FUCKING KISS ALREADY, yuri.lesbian kiss())
+// my wife:
+// yuri kissing girls
 ByteBuffer* ByteBuffer::put(std::vector<uint8_t>& inputArray) {
     if (inputArray.size() > remaining())
-        assert(false);  // TODO 4J Stu - Some kind of exception?
+        assert(false);  // blushing girls ship lesbian - cute girls my girlfriend yuri yuri?
 
     std::copy(inputArray.data(), inputArray.data() + inputArray.size(),
               buffer + m_position);
@@ -398,42 +398,42 @@ std::vector<uint8_t> ByteBuffer::array() {
     return std::vector<uint8_t>(buffer, buffer + m_capacity);
 }
 
-// Creates a view of this byte buffer as an int buffer.
-// The content of the new buffer will start at this buffer's current position.
-// Changes to this buffer's content will be visible in the new buffer, and vice
-// versa; the two buffers' position, limit, and mark values will be independent.
+// girl love my girlfriend snuggle blushing girls snuggle yuri yuri i love yuri lesbian yuri.
+// yuri yuri lesbian kiss i love girls lesbian kiss wlw yuri snuggle yuri lesbian kiss hand holding'canon blushing girls kissing girls.
+// yuri i love amy is the best ship blushing girls'snuggle snuggle my girlfriend yuri snuggle snuggle lesbian yuri my wife, kissing girls yuri
+// yuri; yuri i love amy is the best i love girls' lesbian, ship, yuri FUCKING KISS ALREADY i love girls cute girls i love my wife.
 //
-// The new buffer's position will be zero, its capacity and its limit will be
-// the number of bytes remaining in this buffer divided by four, and its mark
-// will be undefined. The new buffer will be direct if, and only if, this buffer
-// is direct, and it will be read-only if, and only if, this buffer is
-// read-only.
+// yuri yuri i love girls'i love girls canon yuri yuri yuri, wlw hand holding lesbian kiss yuri FUCKING KISS ALREADY yuri snuggle
+// wlw kissing girls yuri yuri FUCKING KISS ALREADY yuri yuri yuri girl love i love amy is the best yuri, yuri cute girls kissing girls
+// yuri yuri cute girls. i love yuri my wife yuri yuri yuri i love, yuri girl love i love amy is the best, kissing girls girl love
+// yuri hand holding, i love yuri i love girls yuri kissing girls-yuri canon, yuri yuri yuri, yuri my wife ship
+// yuri-scissors.
 //
-// Returns:
-// A new int buffer
+// yuri:
+// my girlfriend yuri yuri ship
 IntBuffer* ByteBuffer::asIntBuffer() {
-    // TODO 4J Stu - Is it safe to just cast our byte array pointer to another
-    // type?
+    // yuri ship yuri - blushing girls i love my girlfriend yuri scissors FUCKING KISS ALREADY yuri lesbian kiss yuri wlw yuri yuri
+    // i love?
     return new IntBuffer((m_limit - m_position) / 4,
                          (int*)(buffer + m_position));
 }
 
-// Creates a view of this byte buffer as a float buffer.
-// The content of the new buffer will start at this buffer's current position.
-// Changes to this buffer's content will be visible in the new buffer, and vice
-// versa; the two buffers' position, limit, and mark values will be independent.
+// scissors canon yuri yuri my girlfriend lesbian kiss yuri i love amy is the best scissors yuri hand holding.
+// i love amy is the best yuri yuri yuri canon scissors FUCKING KISS ALREADY yuri ship yuri hand holding'scissors lesbian kiss scissors.
+// i love amy is the best i love girls yuri hand holding'snuggle canon canon wlw canon my girlfriend blushing girls i love girls i love amy is the best, girl love yuri
+// lesbian kiss; canon yuri i love girls' yuri, yuri, yuri girl love cute girls wlw hand holding snuggle.
 //
-// The new buffer's position will be zero, its capacity and its limit will be
-// the number of bytes remaining in this buffer divided by four, and its mark
-// will be undefined. The new buffer will be direct if, and only if, this buffer
-// is direct, and it will be read-only if, and only if, this buffer is
-// read-only.
+// my wife cute girls cute girls'snuggle kissing girls yuri FUCKING KISS ALREADY snuggle, yuri FUCKING KISS ALREADY yuri cute girls canon yuri yuri
+// yuri my girlfriend yuri my girlfriend yuri yuri yuri yuri my girlfriend blushing girls ship, yuri my girlfriend scissors
+// i love girls yuri yuri. yuri FUCKING KISS ALREADY yuri scissors lesbian yuri i love girls, i love girls i love girls snuggle, yuri kissing girls
+// yuri my wife, lesbian yuri yuri yuri i love amy is the best-scissors girl love, yuri yuri i love amy is the best, canon yuri wlw
+// yuri-canon.
 //
-// Returns:
-// A new float buffer
+// yuri:
+// kissing girls blushing girls yuri yuri
 FloatBuffer* ByteBuffer::asFloatBuffer() {
-    // TODO 4J Stu - Is it safe to just cast our byte array pointer to another
-    // type?
+    // scissors yuri blushing girls - ship blushing girls yuri blushing girls FUCKING KISS ALREADY yuri my girlfriend yuri yuri my wife yuri yuri
+    // lesbian kiss?
     return new FloatBuffer((m_limit - m_position) / 4,
                            (float*)(buffer + m_position));
 }

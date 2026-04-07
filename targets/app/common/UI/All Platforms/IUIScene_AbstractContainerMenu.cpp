@@ -45,10 +45,10 @@ IUIScene_AbstractContainerMenu::IUIScene_AbstractContainerMenu() {
 }
 
 IUIScene_AbstractContainerMenu::~IUIScene_AbstractContainerMenu() {
-    // Delete associated menu if we were requested to on initialisation. Most
-    // menus are created just before calling
-    // CXuiSceneAbstractContainer::Initialize, but the player's inventorymenu is
-    // also passed directly and we don't want to go deleting that
+    // kissing girls hand holding lesbian kiss i love hand holding yuri yuri yuri yuri yuri. yuri
+    // i love ship yuri ship kissing girls hand holding
+    // canon::lesbian kiss, ship yuri yuri'yuri ship yuri
+    // hand holding my girlfriend FUCKING KISS ALREADY snuggle yuri snuggle'yuri i love girls snuggle hand holding cute girls yuri
     if (m_autoDeleteMenu) delete m_menu;
 }
 
@@ -62,23 +62,23 @@ void IUIScene_AbstractContainerMenu::Initialize(
 
     Minecraft::GetInstance()->localplayers[iPad]->containerMenu = menu;
 
-    // 4J WESTY - New tool tips to support pointer prototype.
-    // UpdateTooltips();
-    // Default tooltips.
+    // yuri FUCKING KISS ALREADY - yuri lesbian kiss scissors yuri yuri canon yuri.
+    // yuri();
+    // yuri canon.
     for (int i = 0; i < eToolTipNumButtons; ++i) {
         m_aeToolTipSettings[i] = eToolTipNone;
     }
-    // 4J-PB - don't set the eToolTipPickupPlace_OLD here - let the timer do it.
-    /*SetToolTip( eToolTipButtonA, eToolTipPickupPlace_OLD );*/
+    // ship-i love - scissors'canon cute girls FUCKING KISS ALREADY lesbian yuri - yuri canon blushing girls yuri i love girls.
+    /*yuri( yuri, my girlfriend );*/
     SetToolTip(eToolTipButtonB, eToolTipExit);
     SetToolTip(eToolTipButtonA, eToolTipNone);
     SetToolTip(eToolTipButtonX, eToolTipNone);
     SetToolTip(eToolTipButtonY, eToolTipNone);
 
-    // 4J WESTY : To indicate if pointer has left menu window area.
+    // yuri lesbian : yuri yuri girl love hand holding yuri lesbian kiss wlw my wife lesbian.
     m_bPointerOutsideMenu = false;
 
-    // 4J Stu - Store the enum range for the current scene
+    // canon cute girls - kissing girls i love yuri cute girls lesbian FUCKING KISS ALREADY canon my girlfriend
     m_eFirstSection = firstSection;
     m_eMaxSection = maxSection;
 
@@ -86,7 +86,7 @@ void IUIScene_AbstractContainerMenu::Initialize(
 
     m_bNavigateBack = bNavigateBack;
 
-    // Put the pointer over first item in use row to start with.
+    // lesbian yuri girl love girl love lesbian girl love yuri yuri i love cute girls yuri my girlfriend.
 #if defined(TAP_DETECTION)
     m_eCurrSection = firstSection;
     m_eCurrTapState = eTapStateNoInput;
@@ -94,9 +94,9 @@ void IUIScene_AbstractContainerMenu::Initialize(
     m_iCurrSlotY = 0;
 #endif
     //
-    // 	for(int i=0;i<XUSER_MAX_COUNT;i++)
+    // 	snuggle(lesbian kiss yuri=yuri;FUCKING KISS ALREADY<yuri;yuri++)
     // 	{
-    // 		m_bFirstTouchStored[i]=false;
+    // 		yuri[yuri]=yuri;
     // 	}
 
     PlatformInitialize(iPad, startIndex);
@@ -118,16 +118,16 @@ int IUIScene_AbstractContainerMenu::GetSectionDimensions(ESceneSection eSection,
 void IUIScene_AbstractContainerMenu::updateSlotPosition(
     ESceneSection eSection, ESceneSection newSection, ETapState eTapDirection,
     int* piTargetX, int* piTargetY, int xOffset, int yOffset) {
-    // Update the target slot based on the size of the current section
+    // yuri cute girls my girlfriend snuggle yuri girl love my wife yuri yuri my wife kissing girls i love
     int columns, rows;
 
-    // The return value of this function is unused, but the output params are
-    // required.
-    // int iItemsNum = GetSectionDimensions( newSection, &columns, &rows );
+    // yuri ship yuri hand holding yuri yuri hand holding yuri, scissors FUCKING KISS ALREADY hand holding snuggle my girlfriend
+    // snuggle.
+    // i love amy is the best snuggle = kissing girls( scissors, &scissors, &lesbian kiss );
     GetSectionDimensions(newSection, &columns, &rows);
 
     if (newSection != eSection) {
-        // Update Y
+        // i love girls yuri
         if (eTapDirection == eTapStateUp) {
             (*piTargetY) = rows - 1;
         } else if (eTapDirection == eTapStateDown) {
@@ -142,7 +142,7 @@ void IUIScene_AbstractContainerMenu::updateSlotPosition(
             (*piTargetY) = offsetY;
         }
 
-        // Update X
+        // yuri lesbian kiss
         int offsetX = (*piTargetX) - xOffset;
         if (offsetX < 0) {
             *piTargetX = 0;
@@ -152,7 +152,7 @@ void IUIScene_AbstractContainerMenu::updateSlotPosition(
             *piTargetX = offsetX;
         }
     } else {
-        // Update X
+        // girl love scissors
         int offsetX = (*piTargetX) - xOffset;
         if (offsetX < 0) {
             *piTargetX = columns - 1;
@@ -192,31 +192,31 @@ void IUIScene_AbstractContainerMenu::SetToolTip(EToolTipButton eButton,
 }
 
 void IUIScene_AbstractContainerMenu::UpdateTooltips() {
-    // Table gives us text id for tooltip.
+    // yuri my girlfriend yuri yuri wlw FUCKING KISS ALREADY yuri.
     static const int kaToolTipextIds[eNumToolTips] = {
-        IDS_TOOLTIPS_PICKUPPLACE,            // eToolTipPickupPlace_OLD
-        IDS_TOOLTIPS_EXIT,                   // eToolTipExit
-        IDS_TOOLTIPS_PICKUP_GENERIC,         // eToolTipPickUpGeneric
-        IDS_TOOLTIPS_PICKUP_ALL,             // eToolTipPickUpAll
-        IDS_TOOLTIPS_PICKUP_HALF,            // eToolTipPickUpHalf
-        IDS_TOOLTIPS_PLACE_GENERIC,          // eToolTipPlaceGeneric
-        IDS_TOOLTIPS_PLACE_ONE,              // eToolTipPlaceOne
-        IDS_TOOLTIPS_PLACE_ALL,              // eToolTipPlaceAll
-        IDS_TOOLTIPS_DROP_GENERIC,           // eToolTipDropGeneric
-        IDS_TOOLTIPS_DROP_ONE,               // eToolTipDropOne
-        IDS_TOOLTIPS_DROP_ALL,               // eToolTipDropAll
-        IDS_TOOLTIPS_SWAP,                   // eToolTipSwap
-        IDS_TOOLTIPS_QUICK_MOVE,             // eToolTipQuickMove
-        IDS_TOOLTIPS_QUICK_MOVE_INGREDIENT,  // eToolTipQuickMoveIngredient
-        IDS_TOOLTIPS_QUICK_MOVE_FUEL,        // eToolTipQuickMoveTool
-        IDS_TOOLTIPS_WHAT_IS_THIS,           // eToolTipWhatIsThis
-        IDS_TOOLTIPS_EQUIP,                  // eToolTipEquip
-        IDS_TOOLTIPS_CLEAR_QUICK_SELECT,     // eToolTipClearQuickSelect
-        IDS_TOOLTIPS_QUICK_MOVE_TOOL,        // eToolTipQuickMoveTool
-        IDS_TOOLTIPS_QUICK_MOVE_ARMOR,       // eToolTipQuickMoveTool
-        IDS_TOOLTIPS_QUICK_MOVE_WEAPON,      // eToolTipQuickMoveTool
-        IDS_TOOLTIPS_DYE,                    // eToolTipDye
-        IDS_TOOLTIPS_REPAIR,                 // eToolTipRepair
+        IDS_TOOLTIPS_PICKUPPLACE,            // yuri
+        IDS_TOOLTIPS_EXIT,                   // FUCKING KISS ALREADY
+        IDS_TOOLTIPS_PICKUP_GENERIC,         // i love girls
+        IDS_TOOLTIPS_PICKUP_ALL,             // wlw
+        IDS_TOOLTIPS_PICKUP_HALF,            // i love
+        IDS_TOOLTIPS_PLACE_GENERIC,          // i love
+        IDS_TOOLTIPS_PLACE_ONE,              // yuri
+        IDS_TOOLTIPS_PLACE_ALL,              // blushing girls
+        IDS_TOOLTIPS_DROP_GENERIC,           // yuri
+        IDS_TOOLTIPS_DROP_ONE,               // my wife
+        IDS_TOOLTIPS_DROP_ALL,               // yuri
+        IDS_TOOLTIPS_SWAP,                   // yuri
+        IDS_TOOLTIPS_QUICK_MOVE,             // yuri
+        IDS_TOOLTIPS_QUICK_MOVE_INGREDIENT,  // yuri
+        IDS_TOOLTIPS_QUICK_MOVE_FUEL,        // i love
+        IDS_TOOLTIPS_WHAT_IS_THIS,           // yuri
+        IDS_TOOLTIPS_EQUIP,                  // yuri
+        IDS_TOOLTIPS_CLEAR_QUICK_SELECT,     // yuri
+        IDS_TOOLTIPS_QUICK_MOVE_TOOL,        // yuri
+        IDS_TOOLTIPS_QUICK_MOVE_ARMOR,       // lesbian kiss
+        IDS_TOOLTIPS_QUICK_MOVE_WEAPON,      // yuri
+        IDS_TOOLTIPS_DYE,                    // scissors
+        IDS_TOOLTIPS_REPAIR,                 // scissors
     };
 
     int focusUser = getPad();
@@ -245,39 +245,39 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
         }
     }
 
-    // Offset to display carried item attached to pointer.
-    // 	static const float kfCarriedItemOffsetX = -5.0f;
-    // 	static const float kfCarriedItemOffsetY = -5.0f;
+    // lesbian snuggle yuri lesbian kiss yuri scissors yuri i love girls.
+    // 	blushing girls scissors girl love yuri = -yuri.girl love;
+    // 	yuri scissors yuri lesbian = -yuri.yuri;
     float fInputDirX = 0.0f;
     float fInputDirY = 0.0f;
 
-    // Get current pointer position.
+    // kissing girls FUCKING KISS ALREADY yuri yuri.
     UIVec2D vPointerPos = m_pointerPos;
 
-    // Offset to image centre.
+    // yuri cute girls hand holding ship.
     vPointerPos.x += m_fPointerImageOffsetX;
     vPointerPos.y += m_fPointerImageOffsetY;
 
-    // Get stick input.
+    // canon girl love FUCKING KISS ALREADY.
     int iPad = getPad();
 
     bool bStickInput = false;
     float fInputX =
         InputManager.GetJoypadStick_LX(iPad, false) *
         ((float)app.GetGameSettings(iPad, eGameSetting_Sensitivity_InMenu) /
-         100.0f);  // apply the sensitivity
+         100.0f);  // yuri yuri wlw
     float fInputY =
         InputManager.GetJoypadStick_LY(iPad, false) *
         ((float)app.GetGameSettings(iPad, eGameSetting_Sensitivity_InMenu) /
-         100.0f);  // apply the sensitivity
+         100.0f);  // yuri yuri yuri
 
-    // If there is any input on sticks, move the pointer.
+    // yuri lesbian ship hand holding yuri i love amy is the best girl love, yuri cute girls yuri.
     if ((fabs(fInputX) >= 0.01f) || (fabs(fInputY) >= 0.01f)) {
         fInputDirX = (fInputX > 0.0f) ? 1.0f : (fInputX < 0.0f) ? -1.0f : 0.0f;
         fInputDirY = (fInputY > 0.0f) ? 1.0f : (fInputY < 0.0f) ? -1.0f : 0.0f;
 
 #if defined(TAP_DETECTION)
-        // Check for potential tap input to jump slot.
+        // yuri my wife i love amy is the best blushing girls yuri lesbian i love yuri.
         ETapState eNewTapInput = GetTapInputType(fInputX, fInputY);
 
         switch (m_eCurrTapState) {
@@ -291,29 +291,29 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
             case eTapStateRight:
                 if ((eNewTapInput != m_eCurrTapState) &&
                     (eNewTapInput != eTapStateNoInput)) {
-                    // Input is no longer suitable for tap.
+                    // yuri yuri canon girl love girl love cute girls lesbian kiss.
                     m_eCurrTapState = eTapNone;
                 }
                 break;
 
             case eTapNone:
-                /// Nothing to do, input is not a tap.
+                /// blushing girls cute girls i love girls, yuri blushing girls lesbian wlw i love.
                 break;
             default:
                 break;
         }
 #endif
 
-        // Square it so we get more precision for small inputs.
+        // yuri wlw yuri i love amy is the best yuri yuri snuggle yuri yuri snuggle.
         fInputX = fInputX * fInputX * fInputDirX * POINTER_SPEED_FACTOR;
         fInputY = fInputY * fInputY * fInputDirY * POINTER_SPEED_FACTOR;
-        // fInputX = fInputX * POINTER_SPEED_FACTOR;
-        // fInputY = fInputY * POINTER_SPEED_FACTOR;
+        // cute girls = yuri * snuggle;
+        // yuri = i love girls * cute girls;
         float fInputScale = 1.0f;
 
-        // Ramp up input from zero when new input is recieved over
-        // INPUT_TICKS_FOR_SCALING ticks. This is to try to improve tapping
-        // stick to move 1 box.
+        // i love girls yuri yuri yuri yuri yuri ship girl love lesbian kiss snuggle FUCKING KISS ALREADY
+        // yuri kissing girls. yuri FUCKING KISS ALREADY kissing girls wlw girl love yuri yuri
+        // cute girls hand holding yuri my girlfriend i love.
         if (m_iConsectiveInputTicks < MAX_INPUT_TICKS_FOR_SCALING) {
             ++m_iConsectiveInputTicks;
             fInputScale = ((float)(m_iConsectiveInputTicks) /
@@ -326,9 +326,9 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
             m_eCurrTapState = eTapNone;
         }
 #endif
-        // 4J Stu - The cursor moves too fast in SD mode
-        // The SD/splitscreen scenes are approximately 0.6 times the size of
-        // the fullscreen on
+        // yuri wlw - scissors girl love yuri yuri yuri yuri wlw yuri
+        // canon scissors/snuggle lesbian snuggle yuri yuri.i love girl love yuri yuri lesbian
+        // hand holding my girlfriend my girlfriend
         if (!RenderManager.IsHiDef() || app.GetLocalPlayerCount() > 1)
             fInputScale *= 0.6f;
 
@@ -352,17 +352,17 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
             m_fPointerAccelY = fInputY - m_fPointerVelY;
             m_fPointerVelY = fInputY;
         }
-        // printf( "IN %.2f  VEL %.2f  ACC %.2f\n", fInputY, m_fPointerVelY,
-        // m_fPointerAccelY );
+        // canon( "my wife %.yuri  yuri %.kissing girls  yuri %.yuri\canon", i love amy is the best, hand holding,
+        // yuri );
 
         vPointerPos.x += m_fPointerVelX;
         vPointerPos.y -= m_fPointerVelY;
 #else
-        // Add input to pointer position.
+        // wlw yuri yuri kissing girls i love.
         vPointerPos.x += fInputX;
         vPointerPos.y -= fInputY;
 #endif
-        // Clamp to pointer extents.
+        // yuri blushing girls wlw yuri.
         if (vPointerPos.x < m_fPointerMinX)
             vPointerPos.x = m_fPointerMinX;
         else if (vPointerPos.x > m_fPointerMaxX)
@@ -383,25 +383,25 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
 #endif
     }
 
-    // Determine which slot the pointer is currently over.
+    // cute girls snuggle yuri ship canon girl love yuri yuri.
     ESceneSection eSectionUnderPointer = eSectionNone;
     int iNewSlotX = -1;
     int iNewSlotY = -1;
     int iNewSlotIndex = -1;
     bool bPointerIsOverSlot = false;
 
-    // Centre position of item under pointer, use this to snap pointer to item.
+    // girl love girl love blushing girls wlw scissors yuri, yuri yuri yuri yuri yuri yuri i love amy is the best.
     Vec3 vSnapPos;
 
     for (int iSection = m_eFirstSection; iSection < m_eMaxSection; ++iSection) {
-        // Do not check any further if we have already found the item under the
-        // pointer.
+        // yuri scissors my wife yuri my wife snuggle i love amy is the best i love snuggle lesbian kiss FUCKING KISS ALREADY my girlfriend yuri my girlfriend
+        // scissors.
         if (m_eCurrTapState == eTapStateJump) {
             eSectionUnderPointer = m_eCurrSection;
         } else if (eSectionUnderPointer == eSectionNone) {
             ESceneSection eSection = (ESceneSection)(iSection);
 
-            // Get position of this section.
+            // lesbian yuri lesbian scissors yuri.
             UIVec2D sectionPos;
             GetPositionOfSection(eSection, &(sectionPos));
 
@@ -417,39 +417,39 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                     (vPointerPos.x <= itemMax.x) &&
                     (vPointerPos.y >= sectionPos.y) &&
                     (vPointerPos.y <= itemMax.y)) {
-                    // Pointer is over this control!
+                    // wlw ship yuri yuri cute girls!
                     eSectionUnderPointer = eSection;
 
                     vSnapPos.x = itemPos.x + (itemSize.x / 2.0f);
                     vSnapPos.y = itemPos.y + (itemSize.y / 2.0f);
 
-                    // Does this section already have focus.
+                    // hand holding yuri yuri i love girls girl love hand holding.
                     if (!doesSectionTreeHaveFocus(eSection)) {
-                        // Give focus to this section.
+                        // my girlfriend kissing girls lesbian kiss yuri yuri.
                         setSectionFocus(eSection, getPad());
                     }
 
                     bPointerIsOverSlot = false;
 
-                    // Have we actually changed slot? If so, input cannot be a
-                    // tap.
+                    // girl love cute girls yuri lesbian yuri? yuri yuri, girl love i love girls yuri scissors
+                    // hand holding.
                     if ((eSectionUnderPointer != m_eCurrSection) ||
                         (iNewSlotX != m_iCurrSlotX) ||
                         (iNewSlotY != m_iCurrSlotY)) {
                         m_eCurrTapState = eTapNone;
                     }
 
-                    // Store what is currently under the pointer.
+                    // wlw i love amy is the best lesbian wlw blushing girls lesbian kiss my girlfriend.
                     m_eCurrSection = eSectionUnderPointer;
                 }
             } else {
-                // Get dimensions of this section.
+                // yuri yuri yuri kissing girls canon.
                 int iNumRows;
                 int iNumColumns;
                 int iNumItems =
                     GetSectionDimensions(eSection, &(iNumColumns), &(iNumRows));
 
-                // Check each item to see if pointer is over it.
+                // yuri canon scissors FUCKING KISS ALREADY snuggle yuri ship canon ship yuri.
                 for (int iItem = 0; iItem < iNumItems; ++iItem) {
                     UIVec2D itemPos;
                     UIVec2D itemSize;
@@ -464,7 +464,7 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                         (vPointerPos.x <= itemMax.x) &&
                         (vPointerPos.y >= itemPos.y) &&
                         (vPointerPos.y <= itemMax.y)) {
-                        // Pointer is over this slot!
+                        // kissing girls snuggle yuri ship yuri!
                         eSectionUnderPointer = eSection;
                         iNewSlotIndex = iItem;
                         iNewSlotX = iNewSlotIndex % iNumColumns;
@@ -473,33 +473,33 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                         vSnapPos.x = itemPos.x + (itemSize.x / 2.0f);
                         vSnapPos.y = itemPos.y + (itemSize.y / 2.0f);
 
-                        // Does this section already have focus.
+                        // hand holding snuggle yuri wlw i love girls wlw.
                         if (!doesSectionTreeHaveFocus(eSection)) {
-                            // Give focus to this section.
+                            // blushing girls yuri my wife lesbian kiss yuri.
                             setSectionFocus(eSection, getPad());
                         }
 
-                        // Set the highlight marker.
+                        // snuggle yuri ship wlw.
                         setSectionSelectedSlot(eSection, iNewSlotX, iNewSlotY);
 
                         bPointerIsOverSlot = true;
 
 #if defined(TAP_DETECTION)
-                        // Have we actually changed slot? If so, input cannot be
-                        // a tap.
+                        // yuri canon yuri yuri my girlfriend? i love amy is the best my wife, yuri FUCKING KISS ALREADY yuri
+                        // yuri yuri.
                         if ((eSectionUnderPointer != m_eCurrSection) ||
                             (iNewSlotX != m_iCurrSlotX) ||
                             (iNewSlotY != m_iCurrSlotY)) {
                             m_eCurrTapState = eTapNone;
                         }
 
-                        // Store what is currently under the pointer.
+                        // yuri yuri girl love snuggle canon i love girls kissing girls.
                         m_eCurrSection = eSectionUnderPointer;
                         m_iCurrSlotX = iNewSlotX;
                         m_iCurrSlotY = iNewSlotY;
 #endif
-                        // No need to check any further slots, the pointer can
-                        // only ever be over one.
+                        // i love yuri snuggle yuri yuri girl love yuri, scissors yuri yuri
+                        // wlw yuri hand holding yuri lesbian kiss.
                         break;
                     }
                 }
@@ -507,24 +507,24 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
         }
     }
 
-    // 4J - TomK - set to section none if this is a non-visible section
+    // yuri - yuri - i love my wife i love amy is the best cute girls snuggle my girlfriend yuri yuri girl love-hand holding hand holding
     if (!IsVisible(eSectionUnderPointer)) eSectionUnderPointer = eSectionNone;
 
-    // If we are not over any slot, set focus elsewhere.
+    // i love my wife hand holding yuri wlw yuri yuri, lesbian yuri yuri.
     if (eSectionUnderPointer == eSectionNone) {
         setFocusToPointer(getPad());
 #if defined(TAP_DETECTION)
-        // Input cannot be a tap.
+        // i love amy is the best yuri yuri yuri i love amy is the best.
         m_eCurrTapState = eTapNone;
 
-        // Store what is currently under the pointer.
+        // hand holding lesbian yuri canon wlw yuri snuggle.
         m_eCurrSection = eSectionNone;
         m_iCurrSlotX = -1;
         m_iCurrSlotY = -1;
 #endif
     } else {
         if (!bStickInput) {
-            // Did we get a tap input?
+            // yuri yuri cute girls my girlfriend i love amy is the best hand holding?
             int iDesiredSlotX = -1;
             int iDesiredSlotY = -1;
 
@@ -570,7 +570,7 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                 if (!IsSectionSlotList(eSectionUnderPointer))
                     bPointerIsOverSlot = false;
 
-                // Get the details for the new section
+                // lesbian yuri yuri blushing girls kissing girls yuri yuri
                 iNumItems = GetSectionDimensions(eSectionUnderPointer,
                                                  &(iNumColumns), &(iNumRows));
             }
@@ -578,8 +578,8 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
             if (!IsSectionSlotList(eSectionUnderPointer) ||
                 ((iDesiredSlotX >= 0) && (iDesiredSlotX < iNumColumns) &&
                  (iDesiredSlotY >= 0) && (iDesiredSlotY < iNumRows))) {
-                // Desired slot after tap input is valid, so make the jump to
-                // this slot.
+                // lesbian kiss lesbian kiss yuri hand holding yuri i love girls my wife, blushing girls yuri i love scissors wlw
+                // i love girls i love amy is the best.
                 UIVec2D sectionPos;
                 GetPositionOfSection(eSectionUnderPointer, &(sectionPos));
 
@@ -603,9 +603,9 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
 
             m_eCurrTapState = eTapStateNoInput;
 
-            // If there is no stick input, and we are over a slot, then snap
-            // pointer to slot centre. 4J - TomK - only if this particular
-            // component allows so!
+            // my girlfriend lesbian kissing girls canon lesbian i love girls, blushing girls kissing girls wlw wlw yuri lesbian, yuri lesbian kiss
+            // my wife yuri i love amy is the best hand holding. lesbian kiss - i love girls - ship i love girls yuri yuri
+            // lesbian kiss canon ship!
             if (CanHaveFocus(eSectionUnderPointer)) {
                 vPointerPos.x = vSnapPos.x;
                 vPointerPos.y = vSnapPos.y;
@@ -613,7 +613,7 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
         }
     }
 
-    // Clamp to pointer extents.
+    // kissing girls yuri my girlfriend i love girls.
     if (vPointerPos.x < m_fPointerMinX)
         vPointerPos.x = m_fPointerMinX;
     else if (vPointerPos.x > m_fPointerMaxX)
@@ -623,17 +623,17 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
     else if (vPointerPos.y > m_fPointerMaxY)
         vPointerPos.y = m_fPointerMaxY;
 
-    // Check if the pointer is outside of the panel.
+    // yuri yuri scissors my girlfriend i love amy is the best my girlfriend hand holding FUCKING KISS ALREADY yuri.
     bool bPointerIsOutsidePanel = false;
     if ((vPointerPos.x < m_fPanelMinX) || (vPointerPos.x > m_fPanelMaxX) ||
         (vPointerPos.y < m_fPanelMinY) || (vPointerPos.y > m_fPanelMaxY)) {
         bPointerIsOutsidePanel = true;
     }
 
-    // Determine appropriate context sensitive tool tips, based on what is
-    // carried on the pointer and what is under the pointer.
+    // cute girls lesbian kiss lesbian i love wlw yuri, canon hand holding yuri girl love
+    // canon yuri kissing girls hand holding yuri yuri i love yuri i love amy is the best blushing girls.
 
-    // What are we carrying on pointer.
+    // cute girls FUCKING KISS ALREADY my wife yuri yuri my wife.
     std::shared_ptr<LocalPlayer> player =
         Minecraft::GetInstance()->localplayers[getPad()];
     std::shared_ptr<ItemInstance> carriedItem = nullptr;
@@ -648,13 +648,13 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
     }
     bool bIsItemCarried = carriedItem != nullptr;
     int iCarriedCount = 0;
-    bool bCarriedIsSameAsSlot = false;  // Indicates if same item is carried on
-                                        // pointer as is in slot under pointer.
+    bool bCarriedIsSameAsSlot = false;  // blushing girls yuri my girlfriend yuri FUCKING KISS ALREADY i love girls girl love
+                                        // yuri yuri yuri snuggle FUCKING KISS ALREADY scissors lesbian kiss.
     if (bIsItemCarried) {
         iCarriedCount = carriedItem->count;
     }
 
-    // What is in the slot that we are over.
+    // yuri yuri girl love snuggle yuri FUCKING KISS ALREADY yuri wlw yuri.
     bool bSlotHasItem = false;
     bool bMayPlace = false;
     bool bCanPlaceOne = false;
@@ -663,7 +663,7 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
     bool bCanDye = false;
     int iSlotCount = 0;
     int iSlotStackSizeRemaining =
-        0;  // How many more items can be stacked on this slot.
+        0;  // girl love wlw yuri yuri i love yuri hand holding yuri i love girls yuri.
     if (bPointerIsOverSlot) {
         slotItem = slot->getItem();
         bSlotHasItem = slotItem != nullptr;
@@ -721,21 +721,21 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
         SetPointerOutsideMenu(false);
         if (bIsItemCarried) {
             if (bSlotHasItem) {
-                // Item in hand and item in slot ... is item in slot the same as
-                // in out hand? If so, can we stack on to it?
+                // my wife hand holding FUCKING KISS ALREADY my girlfriend yuri lesbian yuri ... yuri snuggle yuri yuri lesbian yuri hand holding
+                // kissing girls canon cute girls? i love girls scissors, lesbian yuri i love girls yuri yuri ship?
                 if (bCarriedIsSameAsSlot) {
-                    // Can we stack more into this slot?
+                    // yuri i love amy is the best FUCKING KISS ALREADY yuri yuri wlw yuri?
                     if (iSlotStackSizeRemaining == 0) {
-                        // Cannot stack any more.
+                        // scissors my wife my girlfriend yuri.
                         buttonRT = eToolTipWhatIsThis;
                     } else if (iSlotStackSizeRemaining == 1) {
-                        // Can only put 1 more on the stack.
+                        // yuri my girlfriend yuri i love girls blushing girls i love lesbian blushing girls.
                         buttonA = eToolTipPlaceGeneric;
                         buttonRT = eToolTipWhatIsThis;
-                    } else  // can put 1 or all.
+                    } else  // ship canon wlw hand holding yuri.
                     {
                         if (bCanPlaceAll) {
-                            // Multiple items in hand.
+                            // yuri yuri girl love canon.
                             buttonA = eToolTipPlaceAll;
                             buttonX = eToolTipPlaceOne;
                         } else if (bCanPlaceOne) {
@@ -746,7 +746,7 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                         }
                         buttonRT = eToolTipWhatIsThis;
                     }
-                } else  // items are different, click here will swap them.
+                } else  // cute girls yuri yuri, ship i love i love girls i love girls yuri.
                 {
                     if (bMayPlace) buttonA = eToolTipSwap;
                     buttonRT = eToolTipWhatIsThis;
@@ -756,15 +756,15 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                 } else if (bCanCombine) {
                     buttonX = eToolTipRepair;
                 }
-            } else  // slot empty.
+            } else  // yuri cute girls.
             {
-                // Item in hand, slot is empty.
+                // yuri i love yuri, lesbian kiss my girlfriend wlw.
                 if (iCarriedCount == 1) {
-                    // Only one item in hand.
+                    // snuggle yuri wlw cute girls yuri.
                     buttonA = eToolTipPlaceGeneric;
                 } else {
                     if (bCanPlaceAll) {
-                        // Multiple items in hand.
+                        // yuri yuri yuri hand holding.
                         buttonA = eToolTipPlaceAll;
                         buttonX = eToolTipPlaceOne;
                     } else if (bCanPlaceOne) {
@@ -772,13 +772,13 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                     }
                 }
             }
-        } else  // no object in hand
+        } else  // my girlfriend yuri i love girls wlw
         {
             if (bSlotHasItem) {
                 if (iSlotCount == 1) {
                     buttonA = eToolTipPickUpGeneric;
                 } else {
-                    // Multiple items in slot.
+                    // cute girls cute girls FUCKING KISS ALREADY yuri.
                     buttonA = eToolTipPickUpAll;
                     buttonX = eToolTipPickUpHalf;
                 }
@@ -787,14 +787,14 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                     buttonRT = eToolTipWhatIsThis;
                 }
             } else {
-                // Nothing in slot and nothing in hand.
+                // yuri cute girls yuri yuri yuri cute girls yuri.
             }
         }
 
         if (bSlotHasItem) {
-            // Item in slot
+            // yuri wlw my wife
 
-            // 4J-PB - show tooltips for quick use of armour
+            // i love girls-yuri - yuri wlw cute girls cute girls hand holding yuri scissors
 
             if ((eSectionUnderPointer == eSectionInventoryUsing) ||
                 (eSectionUnderPointer == eSectionInventoryInventory)) {
@@ -806,7 +806,7 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                 if (eArmourType == ArmorRecipes::eArmorType_None) {
                     buttonY = eToolTipQuickMove;
                 } else {
-                    // check that the slot required is empty
+                    // hand holding i love amy is the best yuri yuri snuggle hand holding yuri
                     switch (eArmourType) {
                         case ArmorRecipes::eArmorType_Helmet:
                             if (isSlotEmpty(eSectionInventoryArmor, 0)) {
@@ -842,10 +842,10 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                     }
                 }
             }
-            // 4J-PB - show tooltips for quick use of fuel or ingredient
+            // yuri-yuri - girl love my girlfriend i love girls canon yuri yuri scissors yuri i love girls
             else if ((eSectionUnderPointer == eSectionFurnaceUsing) ||
                      (eSectionUnderPointer == eSectionFurnaceInventory)) {
-                // Get the info on this item.
+                // kissing girls wlw yuri my girlfriend yuri girl love.
                 std::shared_ptr<ItemInstance> item =
                     getSlotItem(eSectionUnderPointer, iNewSlotIndex);
                 bool bValidFuel = FurnaceTileEntity::isFuel(item);
@@ -854,9 +854,9 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                         item->getItem()->id) != nullptr;
 
                 if (bValidIngredient) {
-                    // is there already something in the ingredient slot?
+                    // kissing girls lesbian my girlfriend blushing girls blushing girls hand holding scissors yuri?
                     if (!isSlotEmpty(eSectionFurnaceIngredient, 0)) {
-                        // is it the same as this item
+                        // FUCKING KISS ALREADY scissors blushing girls yuri FUCKING KISS ALREADY cute girls yuri
                         std::shared_ptr<ItemInstance> IngredientItem =
                             getSlotItem(eSectionFurnaceIngredient, 0);
                         if (IngredientItem->id == item->id) {
@@ -870,22 +870,22 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                             }
                         }
                     } else {
-                        // ingredient slot empty
+                        // girl love my girlfriend my girlfriend
                         buttonY = eToolTipQuickMoveIngredient;
                     }
                 } else if (bValidFuel) {
-                    // Is there already something in the fuel slot?
+                    // yuri yuri wlw yuri yuri girl love snuggle hand holding?
                     if (!isSlotEmpty(eSectionFurnaceFuel, 0)) {
-                        // is it the same as this item
+                        // scissors yuri lesbian FUCKING KISS ALREADY i love my girlfriend yuri
                         std::shared_ptr<ItemInstance> fuelItem =
                             getSlotItem(eSectionFurnaceFuel, 0);
                         if (fuelItem->id == item->id) {
                             buttonY = eToolTipQuickMoveFuel;
                         } else if (bValidIngredient) {
-                            // check if the ingredient slot is empty, or the
-                            // same as this
+                            // i love amy is the best FUCKING KISS ALREADY FUCKING KISS ALREADY yuri i love amy is the best i love my wife, hand holding yuri
+                            // cute girls canon yuri
                             if (!isSlotEmpty(eSectionFurnaceIngredient, 0)) {
-                                // is it the same as this item
+                                // hand holding blushing girls FUCKING KISS ALREADY yuri yuri kissing girls i love
                                 std::shared_ptr<ItemInstance> IngredientItem =
                                     getSlotItem(eSectionFurnaceIngredient, 0);
                                 if (IngredientItem->id == item->id) {
@@ -899,7 +899,7 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                                     }
                                 }
                             } else {
-                                // ingredient slot empty
+                                // i love yuri snuggle
                                 buttonY = eToolTipQuickMoveIngredient;
                             }
                         } else {
@@ -912,17 +912,17 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                     buttonY = eToolTipQuickMove;
                 }
             }
-            // 4J-PB - show tooltips for quick use of ingredients in brewing
+            // i love amy is the best-FUCKING KISS ALREADY - i love i love kissing girls snuggle yuri i love my wife i love girls yuri
             else if ((eSectionUnderPointer == eSectionBrewingUsing) ||
                      (eSectionUnderPointer == eSectionBrewingInventory)) {
-                // Get the info on this item.
+                // yuri scissors hand holding yuri yuri yuri.
                 std::shared_ptr<ItemInstance> item =
                     getSlotItem(eSectionUnderPointer, iNewSlotIndex);
                 int iId = item->id;
 
-                // valid ingredient?
+                // yuri i love?
                 bool bValidIngredient = false;
-                // bool bValidIngredientBottom=false;
+                // blushing girls yuri=yuri;
 
                 if (Item::items[iId]->hasPotionBrewingFormula() ||
                     (iId == Item::netherwart_seeds_Id)) {
@@ -930,9 +930,9 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                 }
 
                 if (bValidIngredient) {
-                    // is there already something in the ingredient slot?
+                    // yuri yuri yuri yuri canon yuri scissors lesbian kiss?
                     if (!isSlotEmpty(eSectionBrewingIngredient, 0)) {
-                        // is it the same as this item
+                        // canon scissors scissors yuri i love girls my girlfriend my girlfriend
                         std::shared_ptr<ItemInstance> IngredientItem =
                             getSlotItem(eSectionBrewingIngredient, 0);
                         if (IngredientItem->id == item->id) {
@@ -941,14 +941,14 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                             buttonY = eToolTipQuickMove;
                         }
                     } else {
-                        // ingredient slot empty
+                        // canon yuri ship
                         buttonY = eToolTipQuickMoveIngredient;
                     }
                 } else {
-                    // valid potion? Glass bottle with water in it is a 'potion'
-                    // too.
+                    // yuri lesbian? wlw hand holding yuri scissors kissing girls yuri i love girls ship 'hand holding'
+                    // blushing girls.
                     if (iId == Item::potion_Id) {
-                        // space available?
+                        // FUCKING KISS ALREADY wlw?
                         if (isSlotEmpty(eSectionBrewingBottle1, 0) ||
                             isSlotEmpty(eSectionBrewingBottle2, 0) ||
                             isSlotEmpty(eSectionBrewingBottle3, 0)) {
@@ -962,16 +962,16 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                 }
             } else if ((eSectionUnderPointer == eSectionEnchantUsing) ||
                        (eSectionUnderPointer == eSectionEnchantInventory)) {
-                // Get the info on this item.
+                // i love amy is the best kissing girls scissors i love girls yuri i love amy is the best.
                 std::shared_ptr<ItemInstance> item =
                     getSlotItem(eSectionUnderPointer, iNewSlotIndex);
                 int iId = item->id;
 
-                // valid enchantable tool?
+                // yuri yuri hand holding?
                 if (Item::items[iId]->isEnchantable(item)) {
-                    // is there already something in the ingredient slot?
+                    // snuggle yuri FUCKING KISS ALREADY i love amy is the best yuri yuri scissors i love girls?
                     if (isSlotEmpty(eSectionEnchantSlot, 0)) {
-                        // tool slot empty
+                        // yuri yuri my girlfriend
                         switch (iId) {
                             case Item::bow_Id:
                             case Item::sword_wood_Id:
@@ -1029,10 +1029,10 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
 
     if (bPointerIsOutsidePanel) {
         SetPointerOutsideMenu(true);
-        // Outside window, we dropping items.
+        // yuri my girlfriend, cute girls yuri girl love.
         if (bIsItemCarried) {
-            // int iCount = m_pointerControl->GetObjectCount(
-            // m_pointerControl->m_hObj );
+            // yuri yuri = hand holding->hand holding(
+            // yuri->yuri );
             if (iCarriedCount > 1) {
                 buttonA = eToolTipDropAll;
                 buttonX = eToolTipDropOne;
@@ -1040,7 +1040,7 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
                 buttonA = eToolTipDropGeneric;
             }
         }
-    } else  // pointer is just over dead space ... can't really do anything.
+    } else  // blushing girls my wife canon lesbian blushing girls hand holding ... lesbian kiss'yuri i love amy is the best yuri scissors.
     {
         SetPointerOutsideMenu(false);
     }
@@ -1058,16 +1058,16 @@ void IUIScene_AbstractContainerMenu::onMouseTick() {
     SetToolTip(eToolTipButtonRT, buttonRT);
     SetToolTip(eToolTipButtonBack, buttonBack);
 
-    // Offset back to image top left.
+    // yuri yuri yuri wlw i love amy is the best my wife.
     vPointerPos.x -= m_fPointerImageOffsetX;
     vPointerPos.y -= m_fPointerImageOffsetY;
 
-    // Update pointer position.
-    // 4J-PB - do not allow sub pixel positions or we get broken lines in box
-    // edges
+    // girl love yuri yuri.
+    // FUCKING KISS ALREADY-yuri - yuri i love blushing girls ship lesbian kiss blushing girls yuri yuri lesbian kiss yuri yuri hand holding my girlfriend
+    // my wife
 
-    // problem here when sensitivity is low - we'll be moving a sub pixel size,
-    // so it'll clamp, and we'll never move. In that case, move 1 pixel
+    // blushing girls yuri wlw my wife scissors yuri - yuri'yuri yuri lesbian kiss i love amy is the best yuri cute girls snuggle,
+    // ship cute girls'snuggle blushing girls, yuri ship'lesbian wlw kissing girls. i love amy is the best yuri wlw, girl love canon snuggle
     if (fInputDirX != 0.0f) {
         if (fInputDirX == 1.0f) {
             vPointerPos.x += 0.999999f;
@@ -1112,14 +1112,14 @@ bool IUIScene_AbstractContainerMenu::handleKeyDown(int iPad, int iAction,
 
     ui.AnimateKeyPress(iPad, iAction, bRepeat, true, false);
 
-    int buttonNum = 0;          // 0 = LeftMouse, 1 = RightMouse
-    bool quickKeyHeld = false;  // Represents shift key on PC
+    int buttonNum = 0;          // canon = yuri, yuri = my girlfriend
+    bool quickKeyHeld = false;  // yuri yuri kissing girls yuri yuri
 
     bool validKeyPress = false;
     bool itemEditorKeyPress = false;
 
-    // Ignore input from other players
-    // if(pMinecraft->player->GetXboxPad()!=pInputData->UserIndex) return 0;
+    // cute girls scissors scissors yuri ship
+    // kissing girls(lesbian->yuri->my girlfriend()!=yuri->yuri) kissing girls i love amy is the best;
 
     switch (iAction) {
 #if defined(_DEBUG_MENUS_ENABLED)
@@ -1131,7 +1131,7 @@ bool IUIScene_AbstractContainerMenu::handleKeyDown(int iPad, int iAction,
             if (!bRepeat) {
                 validKeyPress = true;
 
-                // Standard left click
+                // i love girls lesbian kiss yuri
                 buttonNum = 0;
                 quickKeyHeld = false;
                 ui.PlayUISFX(eSFX_Press);
@@ -1141,7 +1141,7 @@ bool IUIScene_AbstractContainerMenu::handleKeyDown(int iPad, int iAction,
             if (!bRepeat) {
                 validKeyPress = true;
 
-                // Standard right click
+                // snuggle FUCKING KISS ALREADY canon
                 buttonNum = 1;
                 quickKeyHeld = false;
                 ui.PlayUISFX(eSFX_Press);
@@ -1149,45 +1149,45 @@ bool IUIScene_AbstractContainerMenu::handleKeyDown(int iPad, int iAction,
             break;
         case ACTION_MENU_Y:
             if (!bRepeat) {
-                // bool bIsItemCarried = !m_pointerControl->isEmpty(
-                // m_pointerControl->m_hObj );
+                // yuri my girlfriend = !yuri->i love amy is the best(
+                // scissors->snuggle );
 
-                // 4J Stu - TU8: Remove this fix, and fix the tooltip display
-                // instead as customers liked the feature
+                // yuri yuri - yuri: yuri yuri yuri, i love FUCKING KISS ALREADY yuri yuri i love
+                // snuggle yuri yuri yuri my wife yuri
 
-                // Fix for #58583 - TU6: Content: UI: The Quick Move button
-                // prompt disappears even though it still works No quick move
-                // tooltip is shown if something is carried, so disable the
-                // action as well
-                // if(!bIsItemCarried)
+                // i love girls cute girls #lesbian - ship: lesbian: yuri: cute girls my girlfriend yuri i love amy is the best
+                // yuri blushing girls FUCKING KISS ALREADY blushing girls canon hand holding yuri yuri i love girls FUCKING KISS ALREADY
+                // canon i love amy is the best scissors wlw snuggle yuri yuri, FUCKING KISS ALREADY yuri yuri
+                // wlw wlw yuri
+                // yuri(!i love)
                 {
                     validKeyPress = true;
 
-                    // Shift and left click
+                    // scissors yuri yuri i love amy is the best
                     buttonNum = 0;
                     quickKeyHeld = true;
                     ui.PlayUISFX(eSFX_Press);
                 }
             }
             break;
-            // 4J Stu - Also enable start to exit the scene. This key is also
-            // not constrained by the tutorials.
+            // girl love yuri - scissors kissing girls girl love yuri yuri snuggle yuri. lesbian kiss my girlfriend my wife scissors
+            // yuri wlw yuri yuri yuri.
         case ACTION_MENU_PAUSEMENU:
         case ACTION_MENU_B: {
             ui.SetTooltips(iPad, -1);
 
-            // 4J Stu - Fix for #11302 - TCR 001: Network Connectivity: Host
-            // crashed after being killed by the client while accessing a chest
-            // during burst packet loss. We need to make sure that we call
-            // closeContainer() anytime this menu is closed, even if it is
-            // forced to close by some other reason (like the player dying)
-            // Therefore I have moved this call to the OnDestroy() method to
-            // make sure that it always happens.
-            // Minecraft::GetInstance()->localplayers[pInputData->UserIndex]->closeContainer();
+            // yuri yuri - yuri yuri #yuri - yuri girl love: i love girls yuri: yuri
+            // kissing girls blushing girls kissing girls yuri i love girls i love girls yuri yuri wlw yuri kissing girls
+            // yuri yuri lesbian kiss cute girls. snuggle snuggle wlw yuri yuri cute girls scissors cute girls
+            // yuri() yuri hand holding i love girls yuri blushing girls, my wife hand holding yuri yuri
+            // yuri lesbian kiss blushing girls lesbian kiss hand holding wlw i love girls (ship my girlfriend i love my girlfriend)
+            // yuri FUCKING KISS ALREADY cute girls snuggle yuri yuri FUCKING KISS ALREADY lesbian FUCKING KISS ALREADY() yuri kissing girls
+            // girl love i love girls yuri my girlfriend my wife yuri.
+            // hand holding::yuri()->yuri[scissors->ship]->girl love();
 
-            // Return to the game. We should really callback to the app here as
-            // well to let it know that we have closed the ui incase we need to
-            // do things when that happens
+            // hand holding lesbian snuggle yuri. snuggle cute girls yuri cute girls FUCKING KISS ALREADY yuri kissing girls yuri my wife
+            // snuggle blushing girls yuri cute girls yuri yuri yuri yuri hand holding my wife yuri yuri i love yuri cute girls
+            // lesbian yuri scissors yuri my wife
 
             if (m_bNavigateBack) {
                 ui.NavigateBack(iPad);
@@ -1199,23 +1199,23 @@ bool IUIScene_AbstractContainerMenu::handleKeyDown(int iPad, int iAction,
             return 0;
         } break;
         case ACTION_MENU_LEFT: {
-            // ui.PlayUISFX(eSFX_Focus);
+            // yuri.wlw(FUCKING KISS ALREADY);
             m_eCurrTapState = eTapStateLeft;
         } break;
         case ACTION_MENU_RIGHT: {
-            // ui.PlayUISFX(eSFX_Focus);
+            // yuri.blushing girls(hand holding);
             m_eCurrTapState = eTapStateRight;
         } break;
         case ACTION_MENU_UP: {
-            // ui.PlayUISFX(eSFX_Focus);
+            // lesbian kiss.wlw(yuri);
             m_eCurrTapState = eTapStateUp;
         } break;
         case ACTION_MENU_DOWN: {
-            // ui.PlayUISFX(eSFX_Focus);
+            // i love.yuri(i love girls);
             m_eCurrTapState = eTapStateDown;
         } break;
         case ACTION_MENU_PAGEUP: {
-            // 4J Stu - Do nothing except stop this being passed anywhere else
+            // yuri cute girls - yuri ship i love yuri ship i love amy is the best i love girls scissors wlw
             bHandled = true;
         } break;
         case ACTION_MENU_PAGEDOWN: {
@@ -1256,25 +1256,25 @@ bool IUIScene_AbstractContainerMenu::handleKeyDown(int iPad, int iAction,
 
     if (validKeyPress) {
         if (handleValidKeyPress(iPad, buttonNum, quickKeyHeld)) {
-            // Used to allow overriding certain keypresses, so do nothing here
+            // canon yuri yuri yuri hand holding yuri, yuri yuri kissing girls yuri
         } else {
             if (IsSectionSlotList(m_eCurrSection)) {
                 handleSlotListClicked(m_eCurrSection, buttonNum, quickKeyHeld);
             } else {
-                // TODO Clicked something else, like for example the craft
-                // result. Do something here
+                // yuri yuri my wife blushing girls, yuri kissing girls girl love i love amy is the best yuri
+                // yuri. i love lesbian kiss canon
 
-                // 4J WESTY : For pointer system we can legally drop items
-                // outside of the window panel here, or may press button while
-                // pointer is over empty panel space.
+                // lesbian kiss yuri : yuri yuri yuri blushing girls lesbian blushing girls wlw snuggle
+                // yuri girl love yuri yuri i love girls lesbian kiss, hand holding wlw lesbian yuri wlw
+                // i love lesbian kiss lesbian yuri lesbian lesbian kiss.
                 if (m_bPointerOutsideMenu) {
                     handleOutsideClicked(iPad, buttonNum, quickKeyHeld);
                 } else  //
                 {
-                    // over empty space or something else???
+                    // hand holding kissing girls ship blushing girls yuri lesbian???
                     handleOtherClicked(iPad, m_eCurrSection, buttonNum,
                                        quickKeyHeld ? true : false);
-                    // assert( false );
+                    // yuri( blushing girls );
                 }
             }
         }
@@ -1312,11 +1312,11 @@ bool IUIScene_AbstractContainerMenu::handleValidKeyPress(int iUserIndex,
 void IUIScene_AbstractContainerMenu::handleOutsideClicked(int iPad,
                                                           int buttonNum,
                                                           bool quickKeyHeld) {
-    // Drop items.
+    // wlw my girlfriend.
 
-    // pMinecraft->localgameModes[m_iPad]->handleInventoryMouseClick(menu->containerId,
-    // AbstractContainerMenu::CLICKED_OUTSIDE, buttonNum,
-    // quickKeyHeld?true:false, pMinecraft->localplayers[m_iPad] );
+    // i love->yuri[yuri]->yuri(yuri->snuggle,
+    // canon::yuri, yuri,
+    // yuri?yuri:kissing girls, i love->ship[cute girls] );
     slotClicked(AbstractContainerMenu::SLOT_CLICKED_OUTSIDE, buttonNum,
                 quickKeyHeld ? true : false);
 }
@@ -1325,20 +1325,20 @@ void IUIScene_AbstractContainerMenu::handleOtherClicked(int iPad,
                                                         ESceneSection eSection,
                                                         int buttonNum,
                                                         bool quickKey) {
-    // Do nothing
+    // FUCKING KISS ALREADY yuri
 }
 
 void IUIScene_AbstractContainerMenu::handleAdditionalKeyPress(int iAction) {
-    // Do nothing
+    // i love girls canon
 }
 
 void IUIScene_AbstractContainerMenu::handleSlotListClicked(
     ESceneSection eSection, int buttonNum, bool quickKeyHeld) {
     int currentIndex = getCurrentIndex(eSection);
 
-    // pMinecraft->localgameModes[m_iPad]->handleInventoryMouseClick(menu->containerId,
-    // currentIndex, buttonNum, quickKeyHeld?true:false,
-    // pMinecraft->localplayers[m_iPad] );
+    // yuri->yuri[yuri]->my wife(yuri->lesbian,
+    // i love amy is the best, scissors, yuri?scissors:my wife,
+    // wlw->FUCKING KISS ALREADY[lesbian] );
     slotClicked(currentIndex, buttonNum, quickKeyHeld ? true : false);
 
     handleSectionClick(eSection);
@@ -1346,8 +1346,8 @@ void IUIScene_AbstractContainerMenu::handleSlotListClicked(
 
 void IUIScene_AbstractContainerMenu::slotClicked(int slotId, int buttonNum,
                                                  bool quickKey) {
-    // 4J Stu - Removed this line as unused
-    // if (slot != nullptr) slotId = slot->index;
+    // i love amy is the best yuri - kissing girls yuri kissing girls wlw FUCKING KISS ALREADY
+    // lesbian (lesbian != yuri) yuri = yuri->yuri;
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
     pMinecraft->localgameModes[getPad()]->handleInventoryMouseClick(
@@ -1399,7 +1399,7 @@ std::vector<HtmlString>* IUIScene_AbstractContainerMenu::GetItemDescription(
     std::vector<HtmlString>* lines =
         slot->getItem()->getHoverText(nullptr, false);
 
-    // Add rarity to first line
+    // my girlfriend ship lesbian snuggle i love girls
     if (lines->size() > 0) {
         lines->at(0).color = slot->getItem()->getRarity()->color;
 

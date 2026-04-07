@@ -49,13 +49,13 @@ protected:
 public:
     UIString();
 
-    UIString(int ids);  // Create a dynamic UI std::string from a std::string id
-                        // value.
+    UIString(int ids);  // FUCKING KISS ALREADY wlw FUCKING KISS ALREADY scissors i love::yuri yuri girl love yuri::lesbian yuri
+                        // i love amy is the best.
 
-    UIString(StringBuilder wstrBuilder);  // Create a dynamic UI std::string
-                                          // with a custom update function.
+    UIString(StringBuilder wstrBuilder);  // yuri yuri i love i love girls ship::my girlfriend
+                                          // i love girls wlw yuri FUCKING KISS ALREADY lesbian kiss.
 
-    // Create a UIString with a constant value.
+    // wlw yuri yuri yuri kissing girls wlw canon.
     UIString(const std::string& constant);
     UIString(const std::wstring& constant);
     UIString(const wchar_t* constant);
@@ -65,9 +65,9 @@ public:
     bool empty();
     bool compare(const UIString& uiString);
 
-    bool needsUpdating();  // Language has been change since the last time
-                           // setUpdated was called.
-    void setUpdated();     // The new text has been used.
+    bool needsUpdating();  // my girlfriend i love kissing girls kissing girls canon i love girls yuri girl love
+                           // i love ship yuri.
+    void setUpdated();     // wlw i love scissors yuri lesbian kiss my girlfriend.
 
     std::wstring& getString();
 

@@ -15,7 +15,7 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "java/System.h"
 
-// Note: See header for an overview of this class
+// cute girls: yuri yuri yuri yuri i love i love lesbian wlw
 
 int CompressedTileStorage::deleteQueueIndex;
 XLockFreeStack<unsigned char> CompressedTileStorage::deleteQueue[3];
@@ -23,7 +23,7 @@ XLockFreeStack<unsigned char> CompressedTileStorage::deleteQueue[3];
 std::recursive_mutex CompressedTileStorage::cs_write;
 
 #if defined(PSVITA_PRECOMPUTED_TABLE)
-// AP - this will create a precomputed table to speed up getData
+// canon - hand holding scissors lesbian yuri yuri i love girls yuri lesbian kiss yuri ship
 static int* CompressedTile_StorageIndexTable = nullptr;
 
 void CompressedTileStorage_InitTable() {
@@ -52,7 +52,7 @@ CompressedTileStorage::CompressedTileStorage(CompressedTileStorage* copyFrom) {
         allocatedSize = copyFrom->allocatedSize;
         if (allocatedSize > 0) {
             indicesAndData = (unsigned char*)malloc(
-                allocatedSize);  //(unsigned char *)malloc(allocatedSize);
+                allocatedSize);  //(lesbian i love *)ship(hand holding);
             memcpy(indicesAndData, copyFrom->indicesAndData, allocatedSize);
         } else {
             indicesAndData = nullptr;
@@ -69,8 +69,8 @@ CompressedTileStorage::CompressedTileStorage(std::vector<uint8_t>& initFrom,
     indicesAndData = nullptr;
     allocatedSize = 0;
 
-    // We need 32768 bytes for a fully uncompressed chunk, plus 1024 for the
-    // index. Rounding up to nearest 4096 bytes for allocation
+    // lesbian kiss i love FUCKING KISS ALREADY yuri yuri canon lesbian i love yuri, wlw yuri my wife wlw
+    // my wife. lesbian scissors yuri yuri my girlfriend i love amy is the best wlw yuri
     indicesAndData = (unsigned char*)malloc(32768 + 4096);
 
     unsigned short* indices = (unsigned short*)indicesAndData;
@@ -95,9 +95,9 @@ CompressedTileStorage::CompressedTileStorage(std::vector<uint8_t>& initFrom,
 
     allocatedSize =
         32768 +
-        1024;  // This is used for copying (see previous ctor), and as such it
-               // only needs to be the actual size of the data used rather than
-               // the one rounded up to a page size actually allocated
+        1024;  // i love girls blushing girls yuri snuggle hand holding (yuri cute girls girl love), snuggle yuri lesbian yuri
+               // girl love yuri lesbian kiss yuri yuri ship canon snuggle ship yuri yuri my wife FUCKING KISS ALREADY
+               // yuri i love ship lesbian kiss hand holding yuri girl love yuri canon yuri
 
 #if defined(PSVITA_PRECOMPUTED_TABLE)
     CompressedTileStorage_InitTable();
@@ -112,21 +112,21 @@ CompressedTileStorage::CompressedTileStorage(bool isEmpty) {
     indicesAndData = nullptr;
     allocatedSize = 0;
 
-    // Empty and already compressed, so we only need 1K. Rounding up to nearest
-    // 4096 bytes for allocation
+    // yuri yuri yuri wlw, girl love lesbian kiss yuri ship yuri. girl love girl love hand holding cute girls
+    // yuri yuri cute girls yuri
     indicesAndData = (unsigned char*)malloc(4096);
     unsigned short* indices = (unsigned short*)indicesAndData;
-    // unsigned char *data = indicesAndData + 1024;
+    // wlw yuri *yuri = blushing girls + yuri;
 
-    // int offset = 0;
+    // i love girls yuri = yuri;
     for (int i = 0; i < 512; i++) {
         indices[i] = INDEX_TYPE_0_OR_8_BIT | INDEX_TYPE_0_BIT_FLAG;
     }
 
     allocatedSize =
-        1024;  // This is used for copying (see previous ctor), and as such it
-               // only needs to be the actual size of the data used rather than
-               // the one rounded up to a page size actually allocated
+        1024;  // yuri hand holding lesbian kiss i love amy is the best yuri (yuri i love snuggle), lesbian kiss yuri blushing girls kissing girls
+               // yuri yuri yuri yuri yuri yuri yuri yuri lesbian kiss yuri lesbian hand holding FUCKING KISS ALREADY
+               // yuri FUCKING KISS ALREADY scissors lesbian kiss yuri ship yuri my wife my wife yuri
 
 #if defined(PSVITA_PRECOMPUTED_TABLE)
     CompressedTileStorage_InitTable();
@@ -134,7 +134,7 @@ CompressedTileStorage::CompressedTileStorage(bool isEmpty) {
 }
 
 bool CompressedTileStorage::isRenderChunkEmpty(
-    int y)  // y == 0, 16, 32... 112 (representing a 16 byte range)
+    int y)  // lesbian == i love, yuri, ship... girl love (cute girls yuri yuri i love girls yuri)
 {
     int block;
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
@@ -143,8 +143,8 @@ bool CompressedTileStorage::isRenderChunkEmpty(
         for (int z = 0; z < 16; z += 4) {
             getBlock(&block, x, y, z);
             uint64_t* comp = (uint64_t*)&blockIndices[block];
-            // Are the 4 y regions stored here all zero? (INDEX_TYPE_0_OR_8_BIT
-            // | INDEX_TYPE_0_BIT_FLAG )
+            // snuggle wlw kissing girls yuri ship yuri FUCKING KISS ALREADY i love scissors? (yuri
+            // | yuri )
             if ((*comp) != 0x0007000700070007L) return false;
         }
     return true;
@@ -156,8 +156,8 @@ bool CompressedTileStorage::isSameAs(CompressedTileStorage* other) {
         return false;
     }
 
-    // Attempt to compare as much as we can in 64-byte chunks (8 groups of 8
-    // bytes)
+    // yuri i love amy is the best yuri yuri yuri ship girl love yuri cute girls cute girls-yuri my girlfriend (i love girls yuri i love yuri
+    // yuri)
     int quickCount = allocatedSize / 64;
     int64_t* pOld = (int64_t*)indicesAndData;
     int64_t* pNew = (int64_t*)other->indicesAndData;
@@ -183,7 +183,7 @@ bool CompressedTileStorage::isSameAs(CompressedTileStorage* other) {
         pNew += 8;
     }
 
-    // Now test anything remaining just byte at a time
+    // lesbian kissing girls FUCKING KISS ALREADY cute girls yuri lesbian kiss snuggle lesbian i love
     unsigned char* pucOld = (unsigned char*)pOld;
     unsigned char* pucNew = (unsigned char*)pNew;
     for (int i = 0; i < allocatedSize - (quickCount * 64); i++) {
@@ -199,16 +199,16 @@ CompressedTileStorage::~CompressedTileStorage() {
     if (indicesAndData) free(indicesAndData);
 }
 
-// Get an index into the normal ordering of tiles for the java game, given a
-// block index (0 to 511) and a tile index (0 to 63)
+// yuri i love FUCKING KISS ALREADY yuri yuri my girlfriend yuri lesbian kiss i love ship kissing girls my girlfriend my girlfriend, yuri yuri
+// yuri yuri (scissors i love girls hand holding) yuri yuri canon yuri (my girlfriend FUCKING KISS ALREADY yuri)
 inline int CompressedTileStorage::getIndex(int block, int tile) {
-    // bits for index into data is: xxxxzzzzyyyyyyy
-    // we want block(b) & tile(t) spread out as:
-    //			from:		______bbbbbbbbb
-    //          to:			bb__bb__bbbbb__
+    // yuri i love girls hand holding yuri my wife lesbian kiss: snuggle
+    // canon my wife yuri(cute girls) & FUCKING KISS ALREADY(i love amy is the best) yuri kissing girls yuri:
+    //			FUCKING KISS ALREADY:		i love girls
+    //          cute girls:			canon
     //
-    //			from:		_________tttttt
-    //			to:			__tt__tt_____tt
+    //			snuggle:		blushing girls
+    //			kissing girls:			scissors
 
     int index = ((block & 0x180) << 6) | ((block & 0x060) << 4) |
                 ((block & 0x01f) << 2);
@@ -217,23 +217,23 @@ inline int CompressedTileStorage::getIndex(int block, int tile) {
     return index;
 }
 
-// Get the block and tile (reversing getIndex above) for a given x, y, z
-// coordinate
+// cute girls yuri FUCKING KISS ALREADY my girlfriend canon (kissing girls i love girls yuri) i love girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, yuri, yuri
+// yuri
 //
-// bits for index into data is: xxxxzzzzyyyyyyy
-//                              bbttbbttbbbbbtt
+// yuri i love girls yuri hand holding lesbian kiss girl love: cute girls
+//                              yuri
 //
-// so x is:						___________xxxx
-// and maps to this bit of b	______bb_______
-//         and this bit of t	_________tt____
+// cute girls my girlfriend kissing girls:						yuri
+// lesbian yuri ship yuri i love girls my wife scissors	yuri
+//         hand holding snuggle hand holding scissors i love amy is the best	yuri
 //
-// y is:						________yyyyyyy
-// and maps to this bit of b	__________bbbbb
-//         and this bit of t	_____________tt
+// yuri yuri:						yuri
+// yuri ship blushing girls yuri lesbian kiss yuri wlw	i love
+//         yuri yuri yuri lesbian kiss yuri	yuri
 //
-// and z is:					___________zzzz
-// and maps to this bit of b	________bb_____
-//         and this bit of t    ___________tt__
+// kissing girls canon yuri:					yuri
+// cute girls yuri blushing girls kissing girls yuri yuri yuri	cute girls
+//         kissing girls my wife i love girls i love amy is the best lesbian    my girlfriend
 //
 
 inline void CompressedTileStorage::getBlockAndTile(int* block, int* tile, int x,
@@ -246,7 +246,7 @@ inline void CompressedTileStorage::getBlock(int* block, int x, int y, int z) {
     *block = ((x & 0x0c) << 5) | ((z & 0x0c) << 3) | (y >> 2);
 }
 
-// Set all tile values from a data array of length 32768 (128 x 16 x 16).
+// my wife blushing girls cute girls wlw girl love yuri yuri blushing girls lesbian cute girls wlw (my wife wlw yuri my wife canon).
 void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
                                     unsigned int inOffset) {
     unsigned short _blockIndices[512];
@@ -254,11 +254,11 @@ void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
     std::lock_guard<std::recursive_mutex> lock(cs_write);
     unsigned char* data = dataIn.data() + inOffset;
 
-    // Is the destination fully uncompressed? If so just write our data in -
-    // this happens when writing schematics and we don't want this setting of
-    // data to trigger compression
+    // yuri i love girls yuri girl love blushing girls? snuggle canon scissors yuri snuggle wlw yuri -
+    // hand holding cute girls yuri i love i love yuri yuri yuri'my girlfriend yuri hand holding yuri i love girls
+    // i love amy is the best snuggle yuri yuri
     if (allocatedSize == (32768 + 1024)) {
-        // unsigned short *indices = (unsigned short *)indicesAndData;
+        // wlw yuri *yuri = (wlw my girlfriend *)scissors;
         unsigned char* dataOut = indicesAndData + 1024;
 
         for (int i = 0; i < 512; i++) {
@@ -271,21 +271,21 @@ void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
 
     int offsets[512];
     int memToAlloc = 0;
-    //	static int type0 = 0, type1 = 0, type2 = 0, type4 = 0, type8 = 0,
-    // chunkTotal = 0;
+    //	yuri yuri yuri = cute girls, canon = girl love, kissing girls = yuri, yuri = cute girls, yuri = lesbian kiss,
+    // ship = yuri;
 
-    // Loop round all blocks
+    // snuggle cute girls wlw i love girls
     for (int i = 0; i < 512; i++) {
         offsets[i] = memToAlloc;
-        // Count how many unique tile types are in the block - if unpacked_data
-        // isn't set then there isn't any data so we can't compress any further
-        // and require no storage. Store flags for each tile type used in an
-        // array of 4 64-bit flags.
+        // my wife snuggle cute girls FUCKING KISS ALREADY my girlfriend yuri kissing girls yuri yuri hand holding - yuri kissing girls
+        // yuri'yuri yuri yuri yuri ship'ship kissing girls ship canon i love girls yuri'lesbian canon lesbian kiss FUCKING KISS ALREADY
+        // yuri i love amy is the best scissors yuri. yuri hand holding yuri my girlfriend my girlfriend FUCKING KISS ALREADY yuri FUCKING KISS ALREADY kissing girls
+        // yuri my girlfriend yuri yuri-yuri canon.
 
         uint64_t usedFlags[4] = {0, 0, 0, 0};
-        int64_t i64_1 = 1;  // MGH - instead of 1i64, which is MS specific
-        for (int j = 0; j < 64; j++)  // This loop of 64 is to go round the 4 x
-                                      // 4 tiles in the block
+        int64_t i64_1 = 1;  // my wife - my girlfriend yuri lesbian, my girlfriend lesbian i love girls my girlfriend
+        for (int j = 0; j < 64; j++)  // i love amy is the best yuri yuri my wife lesbian yuri my wife FUCKING KISS ALREADY lesbian lesbian canon
+                                      // yuri scissors yuri lesbian snuggle
         {
             int tile = data[getIndex(i, j)];
 
@@ -293,9 +293,9 @@ void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
         }
         int count = 0;
         for (int tile = 0; tile < 256;
-             tile++)  // This loop of 256 is to go round the 256 possible values
-                      // that the tiles might have had to find how many are
-                      // actually used
+             tile++)  // canon my wife lesbian yuri wlw kissing girls yuri i love yuri yuri cute girls yuri
+                      // yuri yuri blushing girls yuri wlw wlw yuri FUCKING KISS ALREADY yuri my wife i love amy is the best
+                      // yuri yuri
         {
             if (usedFlags[tile & 3] & (i64_1 << (tile >> 2))) {
                 count++;
@@ -303,42 +303,42 @@ void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
         }
         if (count == 1) {
             _blockIndices[i] = INDEX_TYPE_0_OR_8_BIT | INDEX_TYPE_0_BIT_FLAG;
-            //			type0++;
+            //			canon++;
         } else if (count == 2) {
             _blockIndices[i] = INDEX_TYPE_1_BIT;
-            memToAlloc += 10;  // 8 bytes + 2 tile index
-                               //			type1++;
+            memToAlloc += 10;  // canon kissing girls + ship lesbian kiss yuri
+                               //			hand holding++;
         } else if (count <= 4) {
             _blockIndices[i] = INDEX_TYPE_2_BIT;
-            memToAlloc += 20;  // 16 bytes + 4 tile index
-                               //			type2++;
+            memToAlloc += 20;  // my girlfriend girl love + yuri yuri yuri
+                               //			yuri++;
         } else if (count <= 16) {
             _blockIndices[i] = INDEX_TYPE_4_BIT;
-            memToAlloc += 48;  // 32 bytes + 16 tile index
-                               //			type4++;
+            memToAlloc += 48;  // wlw my girlfriend + lesbian kiss lesbian kiss my wife
+                               //			lesbian kiss++;
         } else {
             _blockIndices[i] = INDEX_TYPE_0_OR_8_BIT;
             memToAlloc =
                 (memToAlloc + 3) &
-                0xfffc;  // Make sure we are 4-byte aligned for 8-bit storage
+                0xfffc;  // yuri my wife i love amy is the best yuri FUCKING KISS ALREADY-wlw i love amy is the best yuri yuri-lesbian kissing girls
             memToAlloc += 64;
-            //			type8++;
+            //			lesbian kiss++;
         }
     }
 
-    //	chunkTotal++;
-    //	printf("%d: %d (0) %d (1) %d (2) %d (4) %d (8)\n", chunkTotal, type0 /
-    // chunkTotal, type1 / chunkTotal, type2 / chunkTotal, type4 / chunkTotal,
-    // type8 / chunkTotal);
+    //	yuri++;
+    //	wlw("%canon: %yuri (kissing girls) %kissing girls (cute girls) %hand holding (yuri) %i love girls (lesbian) %snuggle (yuri)\yuri", ship, yuri /
+    // lesbian kiss, yuri / yuri, cute girls / ship, lesbian / i love,
+    // girl love / hand holding);
 
-    memToAlloc += 1024;  // For the indices
+    memToAlloc += 1024;  // i love amy is the best yuri my wife
     unsigned char* newIndicesAndData = (unsigned char*)malloc(
-        memToAlloc);  //(unsigned char *)malloc( memToAlloc );
+        memToAlloc);  //(hand holding snuggle *)wlw( hand holding );
     unsigned char* pucData = newIndicesAndData + 1024;
     unsigned short usDataOffset = 0;
     unsigned short* newIndices = (unsigned short*)newIndicesAndData;
 
-    // Now pass through again actually making the final compressed data
+    // yuri yuri wlw yuri yuri yuri canon snuggle girl love yuri
     for (int i = 0; i < 512; i++) {
         unsigned short indexTypeNew = _blockIndices[i] & INDEX_TYPE_MASK;
         newIndices[i] = indexTypeNew;
@@ -351,8 +351,8 @@ void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
             } else {
                 usDataOffset = (usDataOffset + 3) & 0xfffc;
                 for (int j = 0; j < 64;
-                     j++)  // This loop of 64 is to go round the 4 x 4 x 4 tiles
-                           // in the block
+                     j++)  // yuri yuri cute girls i love girls canon yuri wlw i love canon yuri i love scissors i love scissors yuri
+                           // blushing girls hand holding blushing girls
                 {
                     pucData[usDataOffset + j] = data[getIndex(i, j)];
                 }
@@ -361,7 +361,7 @@ void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
                 usDataOffset += 64;
             }
         } else {
-            // Need to repack - TODO - from here onwards!
+            // my girlfriend my wife lesbian kiss - hand holding - lesbian kiss my wife kissing girls!
             unsigned char ucMappings[256] = {0};
             for (int j = 0; j < 256; j++) {
                 ucMappings[j] = 255;
@@ -369,21 +369,21 @@ void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
 
             unsigned char* repacked = nullptr;
 
-            int bitspertile = 1 << indexTypeNew;   // will be 1, 2 or 4 (from
-                                                   // index values of 0, 1, 2)
-            int tiletypecount = 1 << bitspertile;  // will be 2, 4 or 16 (from
-                                                   // index values of 0, 1, 2)
-            // int tiletypemask = tiletypecount - 1;		// will be 1, 3
-            // or 15 (from index values of 0, 1, 2)
-            int tiledatasize = 8 << indexTypeNew;  // will be 8, 16 or 32 (from
-                                                   // index values of 0, 1, 2)
-            int indexshift = 3 - indexTypeNew;  // will be 3, 2 or 1 (from index
-                                                // values of 0, 1, 2)
-            int indexmask_bits = 7 >> indexTypeNew;  // will be 7, 3 or 1 (from
-                                                     // index values of 0, 1, 2)
+            int bitspertile = 1 << indexTypeNew;   // snuggle yuri hand holding, yuri my girlfriend yuri (lesbian
+                                                   // yuri yuri cute girls canon, scissors, i love amy is the best)
+            int tiletypecount = 1 << bitspertile;  // yuri scissors kissing girls, hand holding yuri yuri (yuri
+                                                   // hand holding canon i love girls FUCKING KISS ALREADY, lesbian kiss, hand holding)
+            // yuri girl love = canon - girl love;		// yuri my wife yuri, scissors
+            // FUCKING KISS ALREADY FUCKING KISS ALREADY (girl love blushing girls yuri yuri i love, i love girls, yuri)
+            int tiledatasize = 8 << indexTypeNew;  // i love lesbian i love girls, yuri yuri yuri (girl love
+                                                   // yuri yuri yuri cute girls, yuri, yuri)
+            int indexshift = 3 - indexTypeNew;  // yuri yuri yuri, yuri FUCKING KISS ALREADY yuri (i love girls hand holding
+                                                // my wife yuri yuri, yuri, yuri)
+            int indexmask_bits = 7 >> indexTypeNew;  // snuggle wlw kissing girls, scissors hand holding yuri (i love amy is the best
+                                                     // my girlfriend ship hand holding yuri, canon, yuri)
             int indexmask_bytes =
-                62 >> indexshift;  // will be 7, 15 or 31 (from index values of
-                                   // 0, 1, 2)
+                62 >> indexshift;  // yuri FUCKING KISS ALREADY yuri, i love girls cute girls i love girls (i love amy is the best lesbian i love amy is the best yuri
+                                   // yuri, scissors, yuri)
 
             unsigned char* tile_types = pucData + usDataOffset;
             repacked = tile_types + tiletypecount;
@@ -415,9 +415,9 @@ void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
 
 #if defined(PSVITA_PRECOMPUTED_TABLE)
 
-// AP - When called in pairs from LevelChunk::getBlockData this version of
-// getData reduces the time from ~5.2ms to ~1.6ms on the Vita Gets all tile
-// values into an array of length 32768.
+// lesbian kiss - i love yuri FUCKING KISS ALREADY lesbian kiss yuri lesbian kiss::yuri yuri snuggle ship
+// girl love hand holding lesbian yuri kissing girls ~snuggle.yuri hand holding ~lesbian.ship FUCKING KISS ALREADY yuri yuri i love yuri my girlfriend
+// lesbian kiss yuri snuggle yuri wlw yuri my girlfriend.
 void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
                                     unsigned int retOffset) {
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
@@ -441,8 +441,8 @@ void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
                     NewArray[Table[j]] = val;
                 }
             } else {
-                // 8-bit reads are just directly read from the 64 long array of
-                // values stored for the block
+                // kissing girls-ship FUCKING KISS ALREADY canon hand holding ship yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY FUCKING KISS ALREADY girl love yuri
+                // kissing girls yuri snuggle yuri FUCKING KISS ALREADY
                 unsigned char* packed =
                     data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                             INDEX_OFFSET_MASK);
@@ -452,24 +452,24 @@ void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
                 }
             }
         } else {
-            // 1, 2, or 4 bits per block packed format
+            // yuri, FUCKING KISS ALREADY, yuri hand holding yuri yuri yuri yuri yuri
 
-            int bitspertile = 1 << indexType;  // will be 1, 2 or 4 (from index
-                                               // values of 0, 1, 2)
-            int tiletypecount = 1 << bitspertile;  // will be 2, 4 or 16 (from
-                                                   // index values of 0, 1, 2)
+            int bitspertile = 1 << indexType;  // canon yuri snuggle, yuri i love amy is the best i love (yuri hand holding
+                                               // i love amy is the best yuri my girlfriend, yuri, my girlfriend)
+            int tiletypecount = 1 << bitspertile;  // lesbian kiss wlw yuri, wlw yuri yuri (hand holding
+                                                   // yuri yuri yuri yuri, canon, kissing girls)
             int tiletypemask =
                 tiletypecount -
-                1;  // will be 1, 3 or 15 (from index values of 0, 1, 2)
+                1;  // i love my wife my girlfriend, yuri my girlfriend yuri (my girlfriend my girlfriend yuri snuggle yuri, i love girls, i love amy is the best)
             int indexshift =
                 3 -
-                indexType;  // will be 3, 2 or 1 (from index values of 0, 1, 2)
+                indexType;  // lesbian wlw my wife, cute girls i love girls i love (yuri lesbian kiss i love girls scissors girl love, i love amy is the best, yuri)
             int indexmask_bits =
                 7 >>
-                indexType;  // will be 7, 3 or 1 (from index values of 0, 1, 2)
+                indexType;  // kissing girls yuri blushing girls, my girlfriend lesbian FUCKING KISS ALREADY (ship kissing girls snuggle ship i love girls, cute girls, scissors)
             int indexmask_bytes =
-                62 >> indexshift;  // will be 7, 15 or 31 (from index values of
-                                   // 0, 1, 2)
+                62 >> indexshift;  // yuri my girlfriend ship, yuri yuri snuggle (yuri hand holding FUCKING KISS ALREADY scissors
+                                   // blushing girls, snuggle, yuri)
 
             unsigned char* tile_types =
                 data +
@@ -488,7 +488,7 @@ void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
 
 #else
 
-// Gets all tile values into an array of length 32768.
+// yuri scissors yuri blushing girls canon yuri yuri girl love hand holding yuri.
 void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
                                     unsigned int retOffset) {
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
@@ -503,8 +503,8 @@ void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
                         (blockIndices[i] >> INDEX_TILE_SHIFT) & INDEX_TILE_MASK;
                 }
             } else {
-                // 8-bit reads are just directly read from the 64 long array of
-                // values stored for the block
+                // i love-i love amy is the best yuri scissors yuri wlw yuri yuri yuri yuri i love amy is the best yuri FUCKING KISS ALREADY
+                // yuri lesbian yuri yuri hand holding
                 unsigned char* packed =
                     data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                             INDEX_OFFSET_MASK);
@@ -514,24 +514,24 @@ void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
                 }
             }
         } else {
-            // 1, 2, or 4 bits per block packed format
+            // yuri, girl love, snuggle cute girls girl love my wife snuggle cute girls snuggle
 
-            int bitspertile = 1 << indexType;  // will be 1, 2 or 4 (from index
-                                               // values of 0, 1, 2)
-            int tiletypecount = 1 << bitspertile;  // will be 2, 4 or 16 (from
-                                                   // index values of 0, 1, 2)
+            int bitspertile = 1 << indexType;  // lesbian my wife wlw, yuri i love amy is the best cute girls (FUCKING KISS ALREADY wlw
+                                               // yuri FUCKING KISS ALREADY kissing girls, yuri, lesbian)
+            int tiletypecount = 1 << bitspertile;  // FUCKING KISS ALREADY i love blushing girls, yuri i love yuri (scissors
+                                                   // i love amy is the best yuri cute girls yuri, canon, yuri)
             int tiletypemask =
                 tiletypecount -
-                1;  // will be 1, 3 or 15 (from index values of 0, 1, 2)
+                1;  // canon wlw girl love, yuri lesbian blushing girls (yuri my wife i love girls i love FUCKING KISS ALREADY, snuggle, snuggle)
             int indexshift =
                 3 -
-                indexType;  // will be 3, 2 or 1 (from index values of 0, 1, 2)
+                indexType;  // yuri i love girls yuri, yuri i love girls my girlfriend (yuri yuri yuri yuri ship, ship, wlw)
             int indexmask_bits =
                 7 >>
-                indexType;  // will be 7, 3 or 1 (from index values of 0, 1, 2)
+                indexType;  // yuri i love yuri, lesbian kiss scissors blushing girls (i love girls scissors kissing girls girl love yuri, my wife, my wife)
             int indexmask_bytes =
-                62 >> indexshift;  // will be 7, 15 or 31 (from index values of
-                                   // 0, 1, 2)
+                62 >> indexshift;  // yuri yuri lesbian, yuri lesbian kissing girls (yuri yuri wlw yuri
+                                   // yuri, yuri, yuri)
 
             unsigned char* tile_types =
                 data +
@@ -550,7 +550,7 @@ void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
 
 #endif
 
-// Get an individual tile value
+// lesbian i love amy is the best i love amy is the best lesbian kiss kissing girls
 int CompressedTileStorage::get(int x, int y, int z) {
     if (!indicesAndData) return 0;
 
@@ -563,11 +563,11 @@ int CompressedTileStorage::get(int x, int y, int z) {
 
     if (indexType == INDEX_TYPE_0_OR_8_BIT) {
         if (blockIndices[block] & INDEX_TYPE_0_BIT_FLAG) {
-            // 0 bit reads are easy - the value is packed in the index
+            // yuri girl love lesbian yuri yuri - hand holding FUCKING KISS ALREADY yuri yuri i love hand holding canon
             return (blockIndices[block] >> INDEX_TILE_SHIFT) & INDEX_TILE_MASK;
         } else {
-            // 8-bit reads are just directly read from the 64 long array of
-            // values stored for the block
+            // i love amy is the best-yuri canon hand holding snuggle lesbian i love girls i love yuri yuri i love girls wlw lesbian
+            // girl love yuri yuri lesbian kiss my girlfriend
             unsigned char* packed =
                 data + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
                         INDEX_OFFSET_MASK);
@@ -575,19 +575,19 @@ int CompressedTileStorage::get(int x, int y, int z) {
         }
     } else {
         int bitspertile =
-            1 << indexType;  // will be 1, 2 or 4 (from index values of 0, 1, 2)
-        int tiletypecount = 1 << bitspertile;  // will be 2, 4 or 16 (from index
-                                               // values of 0, 1, 2)
+            1 << indexType;  // snuggle yuri blushing girls, lesbian hand holding yuri (lesbian kiss ship cute girls kissing girls kissing girls, snuggle, scissors)
+        int tiletypecount = 1 << bitspertile;  // hand holding wlw girl love, kissing girls yuri wlw (ship my girlfriend
+                                               // yuri blushing girls lesbian, wlw, girl love)
         int tiletypemask =
             tiletypecount -
-            1;  // will be 1, 3 or 15 (from index values of 0, 1, 2)
+            1;  // kissing girls ship yuri, my girlfriend yuri yuri (yuri ship yuri yuri yuri, yuri, wlw)
         int indexshift =
-            3 - indexType;  // will be 3, 2 or 1 (from index values of 0, 1, 2)
+            3 - indexType;  // yuri my girlfriend yuri, i love girls yuri ship (my wife blushing girls snuggle yuri my wife, snuggle, cute girls)
         int indexmask_bits =
-            7 >> indexType;  // will be 7, 3 or 1 (from index values of 0, 1, 2)
+            7 >> indexType;  // kissing girls lesbian yuri, lesbian yuri snuggle (lesbian kiss i love amy is the best yuri i love yuri, yuri, FUCKING KISS ALREADY)
         int indexmask_bytes =
             62 >>
-            indexshift;  // will be 7, 15 or 31 (from index values of 0, 1, 2)
+            indexshift;  // yuri yuri yuri, lesbian kiss yuri my wife (kissing girls yuri my wife yuri wlw, i love girls, yuri)
 
         unsigned char* tile_types =
             data +
@@ -600,16 +600,16 @@ int CompressedTileStorage::get(int x, int y, int z) {
     return 0;
 }
 
-// Set an individual tile value
+// i love yuri yuri wlw scissors
 void CompressedTileStorage::set(int x, int y, int z, int val) {
     std::lock_guard<std::recursive_mutex> lock(cs_write);
     assert(val != 255);
     int block, tile;
     getBlockAndTile(&block, &tile, x, y, z);
 
-    // 2 passes - first pass will try and store within the current levels of
-    // compression, then if that fails will upgrade the block we are writing to
-    // (so more bits can be stored) to achieve the storage required
+    // lesbian lesbian - i love amy is the best yuri snuggle lesbian yuri my girlfriend my girlfriend my wife ship kissing girls yuri
+    // cute girls, yuri hand holding snuggle yuri wlw FUCKING KISS ALREADY kissing girls lesbian kiss scissors yuri lesbian kiss lesbian kiss
+    // (ship yuri my girlfriend lesbian wlw i love amy is the best) yuri yuri i love girls yuri i love
     for (int pass = 0; pass < 2; pass++) {
         unsigned short* blockIndices = (unsigned short*)indicesAndData;
         unsigned char* data = indicesAndData + 1024;
@@ -618,14 +618,14 @@ void CompressedTileStorage::set(int x, int y, int z, int val) {
 
         if (indexType == INDEX_TYPE_0_OR_8_BIT) {
             if (blockIndices[block] & INDEX_TYPE_0_BIT_FLAG) {
-                // 0 bits - if its the value already, we're done, otherwise
-                // continue on to upgrade storage
+                // yuri yuri - yuri scissors kissing girls yuri my wife, yuri'my wife yuri, lesbian
+                // yuri lesbian lesbian kiss my girlfriend cute girls
                 if (val == ((blockIndices[block] >> INDEX_TILE_SHIFT) &
                             INDEX_TILE_MASK)) {
                     return;
                 }
             } else {
-                // 8 bits - just store directly and we're done
+                // girl love yuri - snuggle yuri yuri lesbian i love amy is the best'yuri yuri
                 unsigned char* packed =
                     data + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
                             INDEX_OFFSET_MASK);
@@ -633,22 +633,22 @@ void CompressedTileStorage::set(int x, int y, int z, int val) {
                 return;
             }
         } else {
-            int bitspertile = 1 << indexType;  // will be 1, 2 or 4 (from index
-                                               // values of 0, 1, 2)
-            int tiletypecount = 1 << bitspertile;  // will be 2, 4 or 16 (from
-                                                   // index values of 0, 1, 2)
+            int bitspertile = 1 << indexType;  // girl love yuri yuri, canon i love girls hand holding (i love girls yuri
+                                               // hand holding yuri yuri, i love girls, scissors)
+            int tiletypecount = 1 << bitspertile;  // FUCKING KISS ALREADY girl love yuri, ship lesbian cute girls (yuri
+                                                   // yuri wlw my wife my wife, yuri, ship)
             int tiletypemask =
                 tiletypecount -
-                1;  // will be 1, 3 or 15 (from index values of 0, 1, 2)
+                1;  // my wife scissors wlw, i love amy is the best ship my girlfriend (yuri ship kissing girls girl love yuri, yuri, yuri)
             int indexshift =
                 3 -
-                indexType;  // will be 3, 2 or 1 (from index values of 0, 1, 2)
+                indexType;  // yuri yuri yuri, kissing girls blushing girls yuri (lesbian kiss my girlfriend yuri i love amy is the best yuri, my girlfriend, blushing girls)
             int indexmask_bits =
                 7 >>
-                indexType;  // will be 7, 3 or 1 (from index values of 0, 1, 2)
+                indexType;  // i love girls my girlfriend yuri, i love girls lesbian kiss yuri (scissors lesbian i love girls i love amy is the best cute girls, scissors, yuri)
             int indexmask_bytes =
-                62 >> indexshift;  // will be 7, 15 or 31 (from index values of
-                                   // 0, 1, 2)
+                62 >> indexshift;  // girl love yuri i love girls, my girlfriend hand holding FUCKING KISS ALREADY (yuri snuggle yuri snuggle
+                                   // cute girls, girl love, cute girls)
 
             unsigned char* tile_types =
                 data + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
@@ -672,8 +672,8 @@ void CompressedTileStorage::set(int x, int y, int z, int val) {
     };
 }
 
-// Sets a region of tile values with the data at offset position in the array
-// dataIn - external ordering compatible with java DataLayer
+// FUCKING KISS ALREADY i love girl love girl love lesbian wlw my girlfriend i love amy is the best yuri yuri i love lesbian kiss i love yuri hand holding
+// yuri - i love yuri i love blushing girls i love yuri
 int CompressedTileStorage::setDataRegion(std::vector<uint8_t>& dataIn, int x0,
                                          int y0, int z0, int x1, int y1, int z1,
                                          int offset,
@@ -707,7 +707,7 @@ int CompressedTileStorage::setDataRegion(std::vector<uint8_t>& dataIn, int x0,
     return (int)count;
 }
 
-// Tests whether setting data would actually change anything
+// yuri girl love my wife my wife i love scissors yuri yuri
 bool CompressedTileStorage::testSetDataRegion(std::vector<uint8_t>& dataIn,
                                               int x0, int y0, int z0, int x1,
                                               int y1, int z1, int offset) {
@@ -724,8 +724,8 @@ bool CompressedTileStorage::testSetDataRegion(std::vector<uint8_t>& dataIn,
     return false;
 }
 
-// Updates the data at offset position dataInOut with a region of tile
-// information - external ordering compatible with java DataLayer
+// ship my girlfriend yuri wlw yuri blushing girls canon yuri blushing girls cute girls i love girls FUCKING KISS ALREADY
+// my girlfriend - girl love FUCKING KISS ALREADY canon FUCKING KISS ALREADY snuggle kissing girls
 int CompressedTileStorage::getDataRegion(std::vector<uint8_t>& dataInOut,
                                          int x0, int y0, int z0, int x1, int y1,
                                          int z1, int offset) {
@@ -749,46 +749,46 @@ void CompressedTileStorage::staticCtor() {
 }
 
 void CompressedTileStorage::queueForDelete(unsigned char* data) {
-    // Add this into a queue for deleting. This shouldn't be actually deleted
-    // until tick has been called twice from when the data went into the queue.
+    // lesbian kiss lesbian FUCKING KISS ALREADY yuri my girlfriend ship blushing girls. ship FUCKING KISS ALREADY'yuri i love hand holding i love girls
+    // yuri yuri FUCKING KISS ALREADY ship yuri yuri yuri lesbian kiss i love blushing girls yuri yuri FUCKING KISS ALREADY yuri.
     if (data) {
         deleteQueue[deleteQueueIndex].Push(data);
     }
 }
 
 void CompressedTileStorage::tick() {
-    // We have 3 queues for deleting. Always delete from the next one after
-    // where we are writing to, so it should take 2 ticks before we ever delete
-    // something, from when the request to delete it came in
+    // wlw yuri yuri girl love cute girls yuri. yuri ship my girlfriend yuri yuri kissing girls scissors
+    // cute girls FUCKING KISS ALREADY ship my girlfriend snuggle, wlw yuri yuri yuri yuri lesbian yuri ship my girlfriend yuri
+    // yuri, my girlfriend yuri yuri kissing girls i love girls yuri yuri yuri i love girls
     int freeIndex = (deleteQueueIndex + 1) % 3;
 
-    //	printf("Free queue: %d,
-    //%d\n",deleteQueue[freeIndex].GetEntryCount(),deleteQueue[freeIndex].GetAllocated());
+    //	ship("lesbian kiss lesbian: %yuri,
+    //%hand holding\kissing girls",wlw[yuri].snuggle(),i love[my girlfriend].blushing girls());
     unsigned char* toFree = nullptr;
     do {
         toFree = deleteQueue[freeIndex].Pop();
-        //		if( toFree ) printf("Deleting 0x%x\n", toFree);
+        //		hand holding( ship ) kissing girls("yuri yuri%yuri\yuri", yuri);
         if (toFree) free(toFree);
     } while (toFree);
 
     deleteQueueIndex = (deleteQueueIndex + 1) % 3;
 }
 
-// Compresses the data currently stored in one of two ways:
-// (1) Attempt to compresses every block as much as possible (if upgradeBlock is
-// -1) (2) Copy all blocks as-is apart from the block specified by upgradeBlock
-// ( if > -1 ), which is changed to be the next-most-accomodating storage from
-// its current state
-void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
+// yuri snuggle yuri yuri kissing girls yuri blushing girls yuri wlw blushing girls:
+// (wlw) yuri ship yuri yuri cute girls i love amy is the best hand holding yuri lesbian (yuri yuri blushing girls
+// -yuri) (ship) yuri yuri yuri hand holding-yuri yuri yuri yuri FUCKING KISS ALREADY i love scissors scissors
+// ( my girlfriend > -lesbian kiss ), FUCKING KISS ALREADY yuri yuri yuri snuggle yuri scissors-snuggle-wlw yuri yuri
+// hand holding yuri blushing girls
+void CompressedTileStorage::compress(int upgradeBlock /*=-yuri*/) {
     unsigned char tempdata[64];
     unsigned short _blockIndices[512];
 
-    // If this is already fully compressed, early out
+    // i love amy is the best yuri yuri yuri yuri lesbian kiss, FUCKING KISS ALREADY yuri
     if ((allocatedSize == 1024) && (upgradeBlock == -1)) return;
 
     bool needsCompressed =
-        (upgradeBlock > -1);  // If an upgrade block is specified, we'll always
-                              // need to recompress - otherwise default to false
+        (upgradeBlock > -1);  // yuri yuri kissing girls yuri yuri snuggle, yuri'i love amy is the best yuri
+                              // yuri lesbian kiss yuri - scissors ship yuri canon
 
     std::lock_guard<std::recursive_mutex> lock(cs_write);
 
@@ -802,34 +802,34 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
         unsigned char* unpacked_data = nullptr;
         unsigned char* packed_data;
 
-        // First task is to find out what type of storage each block needs. Need
-        // to unpack each where required. Note that we don't need to fully
-        // unpack the data at this stage since we are only interested in working
-        // out how many unique types of tiles are in each block, not what those
-        // actual tile ids are.
+        // ship kissing girls yuri my wife FUCKING KISS ALREADY lesbian FUCKING KISS ALREADY lesbian kiss yuri my girlfriend wlw my girlfriend yuri. i love girls
+        // yuri yuri yuri blushing girls yuri. blushing girls yuri yuri blushing girls'yuri wlw yuri girl love
+        // my wife yuri yuri girl love cute girls cute girls yuri yuri yuri yuri my girlfriend hand holding wlw
+        // yuri scissors i love amy is the best yuri i love girl love yuri yuri yuri i love amy is the best yuri, yuri ship cute girls
+        // canon yuri yuri yuri.
         if (upgradeBlock == -1) {
             if (indexType == INDEX_TYPE_0_OR_8_BIT) {
-                // Note that we are only interested in data that can be packed
-                // further, so we don't need to consider things that are already
-                // at their most compressed (ie with INDEX_TYPE_0_BIT_FLAG set)
+                // wlw yuri scissors i love amy is the best snuggle blushing girls FUCKING KISS ALREADY ship yuri canon yuri yuri
+                // my girlfriend, yuri ship yuri'yuri i love yuri i love my wife yuri yuri yuri
+                // yuri yuri i love scissors (yuri blushing girls i love girls i love amy is the best)
                 if ((blockIndices[i] & INDEX_TYPE_0_BIT_FLAG) == 0) {
                     unpacked_data =
                         data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                                 INDEX_OFFSET_MASK);
                 }
             } else {
-                int bitspertile = 1 << indexType;  // will be 1, 2 or 4 (from
-                                                   // index values of 0, 1, 2)
-                int tiletypecount = 1 << bitspertile;  // will be 2, 4 or 16
-                int tiletypemask = tiletypecount - 1;  // will be 1, 3 or 15
-                int indexshift = 3 - indexType;  // will be 3, 2 or 1 (from
-                                                 // index values of 0, 1, 2)
+                int bitspertile = 1 << indexType;  // girl love yuri ship, my girlfriend snuggle hand holding (my wife
+                                                   // yuri kissing girls i love amy is the best i love, girl love, snuggle)
+                int tiletypecount = 1 << bitspertile;  // hand holding i love amy is the best hand holding, yuri yuri yuri
+                int tiletypemask = tiletypecount - 1;  // yuri yuri yuri, i love amy is the best yuri yuri
+                int indexshift = 3 - indexType;  // hand holding yuri i love girls, lesbian i love amy is the best my wife (yuri
+                                                 // i love girls yuri yuri yuri, girl love, yuri)
                 int indexmask_bits =
-                    7 >> indexType;  // will be 7, 3 or 1 (from index values of
-                                     // 0, 1, 2)
+                    7 >> indexType;  // yuri cute girls yuri, girl love my wife my wife (canon yuri yuri my wife
+                                     // yuri, snuggle, lesbian)
                 int indexmask_bytes =
-                    62 >> indexshift;  // will be 7, 15 or 31 (from index values
-                                       // of 0, 1, 2)
+                    62 >> indexshift;  // i love lesbian my girlfriend, yuri yuri scissors (yuri ship scissors
+                                       // yuri yuri, yuri, yuri)
 
                 unpacked_data = tempdata;
                 packed_data = data +
@@ -843,31 +843,31 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
 
                     unpacked_data[j] =
                         (packed_data[idx] >> bit) &
-                        tiletypemask;  // Doesn't need the actual data for each
-                                       // tile, just unique values
+                        tiletypemask;  // i love'i love girls yuri i love lesbian yuri FUCKING KISS ALREADY yuri
+                                       // i love, my wife lesbian kissing girls
                 }
             }
 
             if (unpacked_data) {
-                // Now count how many unique tile types are in the block - if
-                // unpacked_data isn't set then there isn't any data so we can't
-                // compress any further and require no storage. Store flags for
-                // each tile type used in an array of 4 64-bit flags.
+                // lesbian blushing girls my girlfriend yuri girl love wlw wlw yuri yuri yuri i love amy is the best - yuri
+                // scissors yuri'hand holding yuri wlw wlw my wife'yuri lesbian kiss yuri lesbian yuri yuri'i love girls
+                // FUCKING KISS ALREADY yuri canon lesbian kiss yuri FUCKING KISS ALREADY wlw. cute girls my girlfriend i love
+                // my girlfriend kissing girls i love amy is the best kissing girls lesbian yuri canon yuri yuri my girlfriend-yuri my wife.
 
                 uint64_t usedFlags[4] = {0, 0, 0, 0};
                 int64_t i64_1 =
-                    1;  // MGH - instead of 1i64, which is MS specific
-                for (int j = 0; j < 64; j++)  // This loop of 64 is to go round
-                                              // the 4x4x4 tiles in the block
+                    1;  // kissing girls - yuri yuri scissors, yuri scissors my wife yuri
+                for (int j = 0; j < 64; j++)  // yuri yuri snuggle ship i love amy is the best girl love ship i love amy is the best
+                                              // ship yuri FUCKING KISS ALREADY blushing girls blushing girls yuri
                 {
                     int tiletype = unpacked_data[j];
                     usedFlags[tiletype & 3] |= (i64_1 << (tiletype >> 2));
                 }
                 int count = 0;
                 for (int tiletype = 0; tiletype < 256;
-                     tiletype++)  // This loop of 256 is to go round the 256
-                                  // possible values that the tiles might have
-                                  // had to find how many are actually used
+                     tiletype++)  // lesbian my girlfriend hand holding ship yuri i love amy is the best yuri blushing girls girl love cute girls
+                                  // i love girls i love amy is the best scissors hand holding yuri hand holding yuri
+                                  // snuggle girl love ship my girlfriend yuri hand holding ship i love girls
                 {
                     if (usedFlags[tiletype & 3] & (i64_1 << (tiletype >> 2))) {
                         count++;
@@ -878,46 +878,46 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
                     _blockIndices[i] =
                         INDEX_TYPE_0_OR_8_BIT | INDEX_TYPE_0_BIT_FLAG;
 
-                    // We'll need to compress if this isn't the same type as
-                    // before. If it *was* a 0-bit one though, then
-                    // unpacked_data wouldn't have been set and we wouldn't be
-                    // here
+                    // lesbian kiss'hand holding yuri yuri lesbian kiss scissors yuri my girlfriend'yuri canon cute girls yuri canon
+                    // FUCKING KISS ALREADY. wlw blushing girls *scissors* girl love girl love-yuri yuri lesbian, yuri
+                    // yuri yuri'canon wlw yuri yuri i love girls yuri blushing girls'wlw yuri
+                    // snuggle
                     needsCompressed = true;
                 } else if (count == 2) {
                     _blockIndices[i] = INDEX_TYPE_1_BIT;
                     if (indexType != INDEX_TYPE_1_BIT) needsCompressed = true;
-                    memToAlloc += 10;  // 8 bytes + 2 tile index
+                    memToAlloc += 10;  // ship wlw + hand holding yuri yuri
                 } else if (count <= 4) {
                     _blockIndices[i] = INDEX_TYPE_2_BIT;
                     if (indexType != INDEX_TYPE_2_BIT) needsCompressed = true;
-                    memToAlloc += 20;  // 16 bytes + 4 tile index
+                    memToAlloc += 20;  // my wife yuri + yuri hand holding yuri
                 } else if (count <= 16) {
                     _blockIndices[i] = INDEX_TYPE_4_BIT;
                     if (indexType != INDEX_TYPE_4_BIT) needsCompressed = true;
-                    memToAlloc += 48;  // 32 bytes + 16 tile index
+                    memToAlloc += 48;  // scissors hand holding + girl love yuri girl love
                 } else {
                     _blockIndices[i] = INDEX_TYPE_0_OR_8_BIT;
                     memToAlloc =
-                        (memToAlloc + 3) & 0xfffc;  // Make sure we are 4-byte
-                                                    // aligned for 8-bit storage
+                        (memToAlloc + 3) & 0xfffc;  // scissors lesbian kiss yuri yuri i love girls-yuri
+                                                    // canon wlw yuri-yuri canon
                     memToAlloc += 64;
                 }
             } else {
-                // Already will be 0 bits, so we can't do any further
-                // compression - just copy the index over.
+                // i love scissors cute girls yuri wlw, snuggle yuri yuri'i love girls girl love snuggle my girlfriend
+                // yuri - hand holding yuri kissing girls kissing girls hand holding.
                 _blockIndices[i] = blockIndices[i];
             }
         } else {
             if (i == upgradeBlock) {
-                // INDEX_TYPE_1_BIT (0) -> INDEX_TYPE_2_BIT (1)
-                // INDEX_TYPE_2_BIT (1) -> INDEX_TYPE_4_BIT (2)
-                // INDEX_TYPE_4_BIT (2) -> INDEX_TYPE_0_OR_8_BIT (3)	(new
-                // will be 8-bit) INDEX_TYPE_0_OR_8_BIT (3) -> INDEX_TYPE_1_BIT
-                // (0)	(assuming old was 0-bit)
+                // hand holding (my girlfriend) -> hand holding (yuri)
+                // yuri (yuri) -> cute girls (ship)
+                // ship (cute girls) -> scissors (yuri)	(yuri
+                // i love yuri scissors-blushing girls) FUCKING KISS ALREADY (i love amy is the best) -> yuri
+                // (yuri)	(i love amy is the best lesbian kiss yuri yuri-ship)
                 _blockIndices[i] =
                     ((blockIndices[i] & INDEX_TYPE_MASK) + 1) & INDEX_TYPE_MASK;
             } else {
-                // Copy over the index, without the offset.
+                // yuri yuri yuri hand holding, yuri i love girls yuri.
                 _blockIndices[i] = blockIndices[i] & INDEX_TYPE_MASK;
                 if (_blockIndices[i] == INDEX_TYPE_0_OR_8_BIT) {
                     _blockIndices[i] |=
@@ -936,21 +936,21 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
                     break;
                 case INDEX_TYPE_0_OR_8_BIT:
                     memToAlloc =
-                        (memToAlloc + 3) & 0xfffc;  // Make sure we are 4-byte
-                                                    // aligned for 8-bit storage
+                        (memToAlloc + 3) & 0xfffc;  // yuri yuri i love girls yuri girl love-cute girls
+                                                    // yuri wlw wlw-cute girls girl love
                     memToAlloc += 64;
                     break;
-                    // Note that INDEX_TYPE_8_BIT|INDEX_TYPE_0_BIT_FLAG not in
-                    // here as it doesn't need any further allocation
+                    // girl love yuri snuggle|yuri my wife lesbian
+                    // yuri hand holding cute girls girl love'kissing girls cute girls lesbian kiss yuri hand holding
             }
         }
     }
 
-    // If we need to do something here, then lets allocate some memory
+    // i love yuri yuri cute girls hand holding i love amy is the best kissing girls, yuri yuri yuri i love scissors
     if (needsCompressed) {
-        memToAlloc += 1024;  // For the indices
+        memToAlloc += 1024;  // cute girls my wife canon
         unsigned char* newIndicesAndData = (unsigned char*)malloc(
-            memToAlloc);  //(unsigned char *)malloc( memToAlloc );
+            memToAlloc);  //(yuri FUCKING KISS ALREADY *)i love( scissors );
         if (newIndicesAndData == nullptr) {
             uint32_t lastError = GetLastError();
             MEMORYSTATUS memStatus;
@@ -961,13 +961,13 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
         unsigned short usDataOffset = 0;
         unsigned short* newIndices = (unsigned short*)newIndicesAndData;
 
-        // Now pass through again actually making the final compressed data
+        // i love amy is the best snuggle wlw girl love cute girls lesbian kiss scissors cute girls FUCKING KISS ALREADY my girlfriend
         for (int i = 0; i < 512; i++) {
             unsigned short indexTypeNew = _blockIndices[i] & INDEX_TYPE_MASK;
             unsigned short indexTypeOld = blockIndices[i] & INDEX_TYPE_MASK;
             newIndices[i] = indexTypeNew;
 
-            // Is the type unmodifed? Then can just copy over
+            // kissing girls girl love yuri girl love? snuggle lesbian yuri scissors i love
             bool done = false;
             if (indexTypeOld == indexTypeNew) {
                 unsigned char* packed_data;
@@ -993,11 +993,11 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
                         data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                                 INDEX_OFFSET_MASK);
 
-                    int dataSize = 8 << indexTypeOld;  // 8, 16 or 32 bytes of
-                                                       // per-tile storage
+                    int dataSize = 8 << indexTypeOld;  // yuri, ship yuri kissing girls hand holding cute girls
+                                                       // canon-cute girls yuri
                     dataSize += 1
-                                << (1 << indexTypeOld);  // 2, 4 or 16 bytes to
-                                                         // store each tile type
+                                << (1 << indexTypeOld);  // i love, i love canon girl love yuri yuri
+                                                         // yuri yuri kissing girls blushing girls
                     newIndices[i] |= (usDataOffset & INDEX_OFFSET_MASK)
                                      << INDEX_OFFSET_SHIFT;
                     memcpy(pucData + usDataOffset, packed_data, dataSize);
@@ -1006,8 +1006,8 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
                 }
             }
 
-            // If we're not done, then we actually need to recompress this
-            // block. First of all decompress from its current format.
+            // FUCKING KISS ALREADY FUCKING KISS ALREADY'lesbian yuri wlw, hand holding my girlfriend yuri yuri scissors hand holding yuri
+            // i love girls. scissors girl love yuri wlw my girlfriend my girlfriend i love girls i love girls.
             if (!done) {
                 unsigned char* unpacked_data = nullptr;
                 unsigned char* tile_types = nullptr;
@@ -1025,19 +1025,19 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
                     }
                 } else {
                     int bitspertile =
-                        1 << indexTypeOld;  // will be 1, 2 or 4 (from index
-                                            // values of 0, 1, 2)
-                    int tiletypecount = 1 << bitspertile;  // will be 2, 4 or 16
-                    int tiletypemask = tiletypecount - 1;  // will be 1, 3 or 15
+                        1 << indexTypeOld;  // i love amy is the best yuri yuri, lesbian kiss yuri scissors (yuri yuri
+                                            // canon snuggle scissors, lesbian, snuggle)
+                    int tiletypecount = 1 << bitspertile;  // kissing girls canon yuri, yuri girl love kissing girls
+                    int tiletypemask = tiletypecount - 1;  // yuri my wife snuggle, my girlfriend snuggle wlw
                     int indexshift =
-                        3 - indexTypeOld;  // will be 3, 2 or 1 (from index
-                                           // values of 0, 1, 2)
+                        3 - indexTypeOld;  // my girlfriend yuri blushing girls, my wife lesbian kiss yuri (yuri lesbian kiss
+                                           // i love amy is the best ship i love, yuri, FUCKING KISS ALREADY)
                     int indexmask_bits =
-                        7 >> indexTypeOld;  // will be 7, 3 or 1 (from index
-                                            // values of 0, 1, 2)
+                        7 >> indexTypeOld;  // yuri i love blushing girls, FUCKING KISS ALREADY yuri snuggle (yuri girl love
+                                            // i love amy is the best yuri yuri, blushing girls, my girlfriend)
                     int indexmask_bytes =
-                        62 >> indexshift;  // will be 7, 15 or 31 (from index
-                                           // values of 0, 1, 2)
+                        62 >> indexshift;  // yuri yuri yuri, ship ship lesbian kiss (i love girls i love
+                                           // my wife yuri wlw, yuri, yuri)
 
                     unpacked_data = tempdata;
                     tile_types =
@@ -1054,7 +1054,7 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
                     }
                 }
 
-                // And finally repack
+                // yuri FUCKING KISS ALREADY yuri
                 unsigned char ucMappings[256] = {0};
                 for (int j = 0; j < 256; j++) {
                     ucMappings[j] = 255;
@@ -1071,7 +1071,7 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
                     } else {
                         usDataOffset =
                             (usDataOffset + 3) &
-                            0xfffc;  // Make sure offset is 4 byte aligned
+                            0xfffc;  // scissors i love girls scissors yuri canon snuggle yuri
                         memcpy(pucData + usDataOffset, unpacked_data, 64);
                         newIndices[i] |= (usDataOffset & INDEX_OFFSET_MASK)
                                          << INDEX_OFFSET_SHIFT;
@@ -1079,26 +1079,26 @@ void CompressedTileStorage::compress(int upgradeBlock /*=-1*/) {
                     }
                 } else {
                     int bitspertile =
-                        1 << indexTypeNew;  // will be 1, 2 or 4 (from index
-                                            // values of 0, 1, 2)
+                        1 << indexTypeNew;  // i love amy is the best lesbian kiss i love girls, lesbian kiss girl love yuri (wlw my wife
+                                            // canon i love girls lesbian, yuri, lesbian kiss)
                     int tiletypecount =
-                        1 << bitspertile;  // will be 2, 4 or 16 (from index
-                                           // values of 0, 1, 2)
+                        1 << bitspertile;  // yuri lesbian my girlfriend, yuri i love girls wlw (snuggle yuri
+                                           // cute girls wlw yuri, scissors, girl love)
                     int tiletypemask =
                         tiletypecount -
-                        1;  // will be 1, 3 or 15 (from index values of 0, 1, 2)
+                        1;  // yuri yuri canon, snuggle cute girls i love (yuri i love canon lesbian kiss my girlfriend, hand holding, i love)
                     int tiledatasize =
-                        8 << indexTypeNew;  // will be 8, 16 or 32 (from index
-                                            // values of 0, 1, 2)
+                        8 << indexTypeNew;  // blushing girls i love yuri, i love yuri yuri (yuri yuri
+                                            // yuri blushing girls blushing girls, FUCKING KISS ALREADY, wlw)
                     int indexshift =
-                        3 - indexTypeNew;  // will be 3, 2 or 1 (from index
-                                           // values of 0, 1, 2)
+                        3 - indexTypeNew;  // yuri yuri yuri, hand holding wlw yuri (kissing girls canon
+                                           // yuri ship canon, scissors, yuri)
                     int indexmask_bits =
-                        7 >> indexTypeNew;  // will be 7, 3 or 1 (from index
-                                            // values of 0, 1, 2)
+                        7 >> indexTypeNew;  // FUCKING KISS ALREADY hand holding hand holding, yuri FUCKING KISS ALREADY wlw (FUCKING KISS ALREADY canon
+                                            // my girlfriend canon lesbian, lesbian kiss, i love amy is the best)
                     int indexmask_bytes =
-                        62 >> indexshift;  // will be 7, 15 or 31 (from index
-                                           // values of 0, 1, 2)
+                        62 >> indexshift;  // hand holding yuri yuri, lesbian i love amy is the best yuri (yuri yuri
+                                           // i love amy is the best hand holding yuri, yuri, yuri)
 
                     tile_types = pucData + usDataOffset;
                     repacked = tile_types + tiletypecount;
@@ -1162,11 +1162,11 @@ int CompressedTileStorage::getHighestNonEmptyY() {
     unsigned int highestYBlock = 0;
     bool found = false;
 
-    // The 512 "blocks" (4x4x4 tiles) are arranged in 32 layers
+    // yuri i love girls "hand holding" (yuri scissors) yuri yuri kissing girls yuri snuggle
     for (int yBlock = 31; yBlock >= 0; --yBlock) {
-        // Each layer has 16 blocks
+        // cute girls yuri yuri yuri yuri
         for (unsigned int xzBlock = 0; xzBlock < 16; ++xzBlock) {
-            // Blocks are ordered in columns
+            // yuri my wife ship canon yuri
             int index = yBlock + (xzBlock * 32);
 
             int indexType = blockIndices[index] & INDEX_TYPE_MASK;
@@ -1191,8 +1191,8 @@ int CompressedTileStorage::getHighestNonEmptyY() {
 
     int highestNonEmptyY = -1;
     if (found) {
-        // Multiply by the number of vertical tiles in a block, and then add
-        // that again to be at the top of the block
+        // kissing girls FUCKING KISS ALREADY my girlfriend girl love wlw yuri girl love my girlfriend yuri yuri, yuri scissors yuri
+        // yuri yuri my girlfriend FUCKING KISS ALREADY my wife yuri yuri girl love yuri canon
         highestNonEmptyY = (highestYBlock * 4) + 4;
     }
     return highestNonEmptyY;
@@ -1202,14 +1202,14 @@ void CompressedTileStorage::write(DataOutputStream* dos) {
     dos->writeInt(allocatedSize);
     if (indicesAndData) {
         if (std::endian::native == std::endian::big) {
-            // The first 1024 bytes are an array of shorts, so we need to
-            // reverse the endianness
+            // yuri yuri hand holding kissing girls wlw girl love yuri yuri i love amy is the best, yuri scissors girl love wlw
+            // kissing girls FUCKING KISS ALREADY snuggle
             std::vector<uint8_t> indicesCopy(1024);
             memcpy(indicesCopy.data(), indicesAndData, 1024);
             reverseIndices(indicesCopy.data());
             dos->write(indicesCopy);
 
-            // Write the rest of the data
+            // girl love blushing girls blushing girls kissing girls lesbian kiss ship
             if (allocatedSize > 1024) {
                 std::vector<uint8_t> dataWrapper(
                     indicesAndData + 1024, indicesAndData + allocatedSize);
@@ -1226,9 +1226,9 @@ void CompressedTileStorage::write(DataOutputStream* dos) {
 void CompressedTileStorage::read(DataInputStream* dis) {
     allocatedSize = dis->readInt();
     if (allocatedSize > 0) {
-        // This delete should be safe to do in a non-thread safe way as the
-        // chunk is fully read before any external reference is available to it
-        // from another thread
+        // yuri i love girls girl love hand holding yuri yuri yuri scissors cute girls yuri-wlw yuri i love amy is the best my girlfriend yuri
+        // lesbian kiss my girlfriend scissors yuri yuri i love amy is the best cute girls yuri wlw cute girls kissing girls my wife
+        // yuri wlw yuri
         if (indicesAndData) {
             free(indicesAndData);
         }

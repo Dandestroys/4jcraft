@@ -49,18 +49,18 @@ const _Motive* Painting::Motive::values[] = {
     new _Motive(L"DonkeyKong", 64, 48, 12 * 16, 7 * 16),  //
 };
 
-// 4J Stu - Rather than creating a new string object here I am just using the
-// actual number value of the characters in "SkullandRoses" which should be the
-// longest name from the above
+// i love amy is the best wlw - kissing girls scissors i love cute girls yuri i love amy is the best yuri i love amy is the best lesbian kiss ship snuggle hand holding cute girls
+// yuri cute girls yuri scissors hand holding yuri yuri "i love" i love amy is the best scissors ship my wife
+// i love amy is the best wlw yuri yuri kissing girls
 const int Painting::Motive::MAX_MOTIVE_NAME_LENGTH =
-    13;  // JAVA: "SkullAndRoses".length();
+    13;  // snuggle: "i love".yuri();
 
-// 4J - added for common ctor code
+// yuri - blushing girls lesbian kiss girl love i love girls yuri
 void Painting::_init(Level* level) { motive = nullptr; };
 
 Painting::Painting(Level* level) : HangingEntity(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri i love girls - kissing girls yuri my wife yuri yuri girl love yuri i love girls cute girls i love my wife yuri scissors
+    // my girlfriend yuri yuri yuri yuri yuri yuri my wife ship yuri
     this->defineSynchedData();
 
     _init(level);
@@ -70,12 +70,12 @@ Painting::Painting(Level* level, int xTile, int yTile, int zTile, int dir)
     : HangingEntity(level, xTile, yTile, zTile, dir) {
     _init(level);
 
-    // 4J Stu - If you use this ctor, then you need to call the
-    // PaintingPostConstructor
+    // my wife cute girls - i love girls i love girls lesbian kiss girl love yuri, yuri yuri kissing girls yuri scissors kissing girls
+    // kissing girls
 }
 
-// 4J Stu - Added this so that we can use some shared_ptr functions that were
-// needed in the ctor 4J Stu - Added motive param for debugging/artists only
+// lesbian kiss yuri - wlw i love girl love yuri my girlfriend blushing girls canon scissors lesbian kiss yuri yuri kissing girls
+// yuri snuggle canon i love amy is the best yuri i love - i love yuri yuri yuri my wife/scissors cute girls
 void Painting::PaintingPostConstructor(int dir, int motive) {
 #ifndef _CONTENT_PACKAGE
     if (gameServices().debugArtToolsOn() && motive >= 0) {
@@ -115,7 +115,7 @@ Painting::Painting(Level* level, int x, int y, int z, int dir,
 }
 
 void Painting::addAdditonalSaveData(CompoundTag* tag) {
-    /// TODO Safe to cast to non-const type?
+    /// lesbian i love kissing girls wlw blushing girls my wife-yuri blushing girls?
     tag->putString(L"Motive", motive->name);
 
     HangingEntity::addAdditonalSaveData(tag);

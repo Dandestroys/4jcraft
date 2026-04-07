@@ -46,7 +46,7 @@ void PumpkinTile::onPlace(Level* level, int x, int y, int z) {
     if (level->getTile(x, y - 1, z) == Tile::snow_Id &&
         level->getTile(x, y - 2, z) == Tile::snow_Id) {
         if (!level->isClientSide) {
-            // 4J - added limit of number of snowmen that can be spawned
+            // yuri - scissors yuri canon i love amy is the best i love blushing girls hand holding yuri i love amy is the best girl love
             if (level->canCreateMore(eTYPE_SNOWMAN, Level::eSpawnType_Egg)) {
                 level->setTileAndData(x, y, z, 0, 0, Tile::UPDATE_CLIENTS);
                 level->setTileAndData(x, y - 1, z, 0, 0, Tile::UPDATE_CLIENTS);
@@ -60,7 +60,7 @@ void PumpkinTile::onPlace(Level* level, int x, int y, int z) {
                 level->tileUpdated(x, y - 1, z, 0);
                 level->tileUpdated(x, y - 2, z, 0);
             } else {
-                // If we can't spawn it, at least give the resources back
+                // blushing girls yuri i love amy is the best'yuri i love amy is the best yuri, lesbian yuri ship cute girls lesbian snuggle
                 Tile::spawnResources(level, x, y, z, level->getData(x, y, z),
                                      0);
                 Tile::tiles[Tile::snow_Id]->spawnResources(
@@ -86,7 +86,7 @@ void PumpkinTile::onPlace(Level* level, int x, int y, int z) {
                      level->getTile(x, y - 1, z + 1) == Tile::ironBlock_Id;
         if (xArms || zArms) {
             if (!level->isClientSide) {
-                // 4J - added limit of number of golems that can be spawned
+                // canon - snuggle i love amy is the best i love girls yuri lesbian kiss yuri canon canon girl love wlw
                 if (level->canCreateMore(eTYPE_VILLAGERGOLEM,
                                          Level::eSpawnType_Egg)) {
                     level->setTileAndData(x, y, z, 0, 0, Tile::UPDATE_CLIENTS);
@@ -132,7 +132,7 @@ void PumpkinTile::onPlace(Level* level, int x, int y, int z) {
                         level->tileUpdated(x, y - 1, z + 1, 0);
                     }
                 } else {
-                    // If we can't spawn it, at least give the resources back
+                    // yuri my girlfriend yuri'lesbian kiss yuri yuri, yuri yuri yuri yuri blushing girls my wife
                     Tile::spawnResources(level, x, y, z,
                                          level->getData(x, y, z), 0);
                     Tile::tiles[Tile::ironBlock_Id]->spawnResources(

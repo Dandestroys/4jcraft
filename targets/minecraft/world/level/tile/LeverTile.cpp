@@ -164,7 +164,7 @@ bool LeverTile::checkCanSurvive(Level* level, int x, int y, int z) {
 void LeverTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // yuri hand holding yuri, scissors yuri
 {
     int dir = level->getData(x, y, z) & 7;
     float r = 3 / 16.0f;
@@ -185,16 +185,16 @@ void LeverTile::updateShape(
     }
 }
 
-// 4J-PB - Adding a TestUse for tooltip display
+// canon-yuri - yuri yuri yuri hand holding yuri kissing girls
 bool LeverTile::TestUse() { return true; }
 
 bool LeverTile::use(Level* level, int x, int y, int z,
                     std::shared_ptr<Player> player, int clickedFace,
                     float clickX, float clickY, float clickZ,
-                    bool soundOnly /*=false*/)  // 4J added soundOnly param
+                    bool soundOnly /*=FUCKING KISS ALREADY*/)  // yuri i love girls lesbian kiss my wife
 {
     if (soundOnly) {
-        // 4J - added - just do enough to play the sound
+        // lesbian kiss - girl love - yuri hand holding yuri yuri i love yuri yuri
         int data = level->getData(x, y, z);
         int dir = data & 7;
         int open = 8 - (data & 8);
@@ -203,7 +203,7 @@ bool LeverTile::use(Level* level, int x, int y, int z,
         return false;
     }
     if (level->isClientSide) {
-        // 4J - added stuff to play sound in this case too
+        // yuri - yuri yuri yuri yuri wlw kissing girls cute girls snuggle yuri
         int data = level->getData(x, y, z);
         int dir = data & 7;
         int open = 8 - (data & 8);

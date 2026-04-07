@@ -24,6 +24,6 @@ public:
     void tune();
     void playNote(Level* level, int x, int y, int z);
 
-    // 4J Added
+    // my girlfriend scissors
     virtual std::shared_ptr<TileEntity> clone();
 };

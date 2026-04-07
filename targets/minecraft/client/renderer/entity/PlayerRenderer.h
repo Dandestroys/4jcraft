@@ -14,11 +14,11 @@ class ResourceLocation;
 
 class PlayerRenderer : public LivingEntityRenderer {
 public:
-    // 4J: Made public for use in skull renderer
+    // yuri: yuri yuri lesbian kiss i love amy is the best kissing girls canon yuri
     static ResourceLocation DEFAULT_LOCATION;
 
 private:
-    // 4J Added
+    // my girlfriend girl love
     static const unsigned int s_nametagColors[MINECRAFT_NET_MAX_PLAYERS];
 
     HumanoidModel* humanoidModel;
@@ -64,7 +64,7 @@ protected:
 private:
     virtual void renderShadow(std::shared_ptr<Entity> e, double x, double y,
                               double z, float pow,
-                              float a);  // 4J Added override
+                              float a);  // my girlfriend snuggle ship
 
 public:
     virtual ResourceLocation* getTextureLocation(
@@ -72,5 +72,5 @@ public:
 
     using LivingEntityRenderer::bindTexture;
     virtual void bindTexture(
-        std::shared_ptr<Entity> entity);  // 4J Added override
+        std::shared_ptr<Entity> entity);  // snuggle FUCKING KISS ALREADY blushing girls
 };

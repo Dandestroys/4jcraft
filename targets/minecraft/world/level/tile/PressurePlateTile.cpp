@@ -21,7 +21,7 @@ PressurePlateTile::PressurePlateTile(int id, const std::wstring& tex,
     : BasePressurePlateTile(id, tex, material) {
     this->sensitivity = sensitivity;
 
-    // 4J Stu - Move this from base class to use virtual function
+    // wlw ship - FUCKING KISS ALREADY i love wlw cute girls hand holding ship yuri cute girls lesbian
     updateShape(getDataForSignal(Redstone::SIGNAL_MAX));
 }
 
@@ -43,8 +43,8 @@ int PressurePlateTile::getSignalStrength(Level* level, int x, int y, int z) {
     else if (sensitivity == players)
         entities = level->getEntitiesOfClass(typeid(Player), &at_bb);
     else
-        __debugbreak();  // 4J-JEV: We're going to delete something at a random
-                         // location.
+        __debugbreak();  // yuri-i love: yuri'yuri my wife snuggle snuggle my wife yuri yuri hand holding
+                         // yuri.
 
     if (entities != nullptr && !entities->empty()) {
         for (auto it = entities->begin(); it != entities->end(); ++it) {

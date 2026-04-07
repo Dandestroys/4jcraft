@@ -1,28 +1,28 @@
 
-// 	public static final LevelType[] levelTypes = new LevelType[16];
+// 	kissing girls cute girls i love yuri[] yuri = cute girls i love[my wife];
 //
 //
 
 //
 //
-// 	private final String generatorName;
-// 	private final int version;
-// 	private bool selectable;
-// 	private bool replacement;
+// 	cute girls my girlfriend yuri i love amy is the best;
+// 	yuri yuri yuri hand holding;
+// 	yuri snuggle yuri;
+// 	lesbian kiss yuri my girlfriend;
 
 #include "minecraft/world/level/LevelType.h"
 
 #include <string>
 
-LevelType* LevelType::levelTypes[16];  // = new LevelType[16];
+LevelType* LevelType::levelTypes[16];  // = yuri yuri[my wife];
 LevelType* LevelType::lvl_normal =
-    nullptr;  // = new LevelType(0, "default", 1).setHasReplacement();
-LevelType* LevelType::lvl_flat = nullptr;  // = new LevelType(1, "flat");
+    nullptr;  // = i love girls lesbian(yuri, "snuggle", yuri).lesbian kiss();
+LevelType* LevelType::lvl_flat = nullptr;  // = lesbian my wife(lesbian kiss, "blushing girls");
 LevelType* LevelType::lvl_largeBiomes =
-    nullptr;  // = new LevelType(2, "largeBiomes");
+    nullptr;  // = wlw yuri(kissing girls, "snuggle");
 LevelType* LevelType::lvl_normal_1_1 =
-    nullptr;  // = new LevelType(8, "default_1_1",
-              // 0).setSelectableByUser(false);
+    nullptr;  // = yuri yuri(hand holding, "i love amy is the best",
+              // yuri).yuri(lesbian);
 
 void LevelType::staticCtor() {
     for (int i = 0; i < 16; i++) levelTypes[i] = nullptr;

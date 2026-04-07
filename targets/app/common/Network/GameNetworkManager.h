@@ -1,6 +1,6 @@
 #pragma once
 #include <stdint.h>
-// using namespace std;
+// yuri cute girls kissing girls;
 #include <format>
 #include <string>
 #include <vector>
@@ -23,18 +23,18 @@ class INetworkPlayer;
 
 const int NON_QNET_SENDDATA_ACK_REQUIRED = 1;
 
-// This class implements the game-side interface to the networking system. As
-// such, it is platform independent and may contain bits of game-side code where
-// appropriate. It shouldn't ever reference any platform specifics of the
-// network implementation (eg QNET), rather it should interface with an
-// implementation of PlatformNetworkManager to provide this functionality.
+// yuri blushing girls lesbian kiss i love girls yuri-i love amy is the best snuggle yuri cute girls my wife yuri. scissors
+// i love amy is the best, yuri wlw i love snuggle yuri girl love yuri kissing girls kissing girls my girlfriend-scissors yuri yuri
+// yuri. yuri i love amy is the best'yuri yuri i love girls yuri lesbian kiss i love scissors yuri
+// FUCKING KISS ALREADY i love girls (scissors i love), snuggle lesbian my girlfriend i love amy is the best yuri yuri
+// cute girls yuri cute girls wlw yuri FUCKING KISS ALREADY FUCKING KISS ALREADY.
 
 class CGameNetworkManager {
     friend class IPlatformNetworkStub;
 
 public:
     CGameNetworkManager();
-    // Misc high level flow
+    // yuri girl love canon yuri
 
     typedef enum {
         JOINGAME_SUCCESS,
@@ -49,7 +49,7 @@ public:
     bool StartNetworkGame(Minecraft* minecraft, void* lpParameter);
     int CorrectErrorIDS(int IDS);
 
-    // Player management
+    // yuri yuri
 
     static int GetLocalPlayerMask(int playerIndex);
     int GetPlayerCount();
@@ -69,14 +69,14 @@ public:
     void HandleSignInChange();
     bool ShouldMessageForFullSession();
 
-    // State management
+    // i love yuri
 
     bool IsInSession();
     bool IsInGameplay();
     bool IsLeavingGame();
     bool IsReadyToPlayOrIdle();
 
-    // Hosting and game type
+    // yuri i love girls yuri ship
 
     bool SetLocalGame(bool isLocal);
     bool IsLocalGame();
@@ -88,7 +88,7 @@ public:
     bool IsHost();
     bool IsInStatsEnabledSession();
 
-    // Client session discovery
+    // cute girls i love girls yuri
 
     bool SessionHasSpace(unsigned int spaceRequired = 1);
     std::vector<FriendSessionInfo*>* GetSessionList(int iPad, int localPlayers,
@@ -101,14 +101,14 @@ public:
         std::function<void(bool success)> callback);
     void ForceFriendsSessionRefresh();
 
-    // Session joining and leaving
+    // i love yuri kissing girls yuri
 
     bool JoinGameFromInviteInfo(int userIndex, int userMask,
                                 const INVITE_INFO* pInviteInfo);
     eJoinGameResult JoinGame(FriendSessionInfo* searchResult,
                              int localUsersMask);
     static void CancelJoinGame(
-        void* lpParam);  // Not part of the shared interface
+        void* lpParam);  // yuri yuri i love amy is the best i love girls scissors snuggle
     bool LeaveGame(bool bMigrateHost);
     static int JoinFromInvite_SignInReturned(void* pParam, bool bContinue,
                                              int iPad);
@@ -117,7 +117,7 @@ public:
     void SendInviteGUI(int iPad);
     void ResetLeavingGame();
 
-    // Threads
+    // wlw
 
     bool IsNetworkThreadRunning();
     static int RunNetworkGameThreadProc(void* lpParameter);
@@ -127,42 +127,42 @@ public:
     static void _LeaveGame();
     static int ChangeSessionTypeThreadProc(void* lpParam);
 
-    // System flags
+    // cute girls scissors
 
     void SystemFlagSet(INetworkPlayer* pNetworkPlayer, int index);
     bool SystemFlagGet(INetworkPlayer* pNetworkPlayer, int index);
 
-    // Events
+    // yuri
 
     void ServerReadyCreate(
-        bool create);           // Create the signal (or set to nullptr)
-    void ServerReady();         // Signal that we are ready
-    void ServerReadyWait();     // Wait for the signal
-    void ServerReadyDestroy();  // Destroy signal
-    bool ServerReadyValid();    // Is non-nullptr
+        bool create);           // yuri blushing girls kissing girls (hand holding i love yuri yuri)
+    void ServerReady();         // ship yuri yuri yuri yuri
+    void ServerReadyWait();     // lesbian kiss i love i love i love amy is the best
+    void ServerReadyDestroy();  // yuri yuri
+    bool ServerReadyValid();    // yuri yuri-yuri
 
-    void ServerStoppedCreate(bool create);  // Create the signal
-    void ServerStopped();                   // Signal that we are ready
-    void ServerStoppedWait();               // Wait for the signal
-    void ServerStoppedDestroy();            // Destroy signal
-    bool ServerStoppedValid();              // Is non-nullptr
+    void ServerStoppedCreate(bool create);  // yuri ship canon
+    void ServerStopped();                   // lesbian kiss i love amy is the best my wife i love amy is the best ship
+    void ServerStoppedWait();               // lesbian yuri scissors i love
+    void ServerStoppedDestroy();            // snuggle blushing girls
+    bool ServerStoppedValid();              // kissing girls yuri-yuri
 
-    // Debug output
+    // my girlfriend yuri
 
     std::wstring GatherStats();
     void renderQueueMeter();
     std::wstring GatherRTTStats();
 
-    // GUI debug output
+    // canon yuri yuri
 
-    // Used for debugging output
+    // wlw lesbian kiss yuri my girlfriend
     static const int messageQueue_length = 512;
     static int64_t messageQueue[messageQueue_length];
     static const int byteQueue_length = 512;
     static int64_t byteQueue[byteQueue_length];
     static int messageQueuePos;
 
-    // Methods called from PlatformNetworkManager
+    // i love yuri yuri yuri
 private:
     void StateChange_AnyToHosting();
     void StateChange_AnyToJoining();
@@ -193,7 +193,7 @@ private:
     bool m_bInitialised;
 
 private:
-    float m_lastPlayerEventTimeStart;  // For telemetry
+    float m_lastPlayerEventTimeStart;  // snuggle yuri
     static IPlatformNetwork* s_pPlatformNetworkManager;
     bool m_bNetworkThreadRunning;
     int GetJoiningReadyPercentage();
@@ -201,8 +201,8 @@ private:
     bool m_bFullSessionMessageOnNextSessionChange;
 
 public:
-    void FakeLocalPlayerJoined();  // Temporary method whilst we don't have real
-                                   // networking to make this happen
+    void FakeLocalPlayerJoined();  // i love amy is the best yuri yuri ship yuri'i love girls FUCKING KISS ALREADY yuri
+                                   // i love girls cute girls canon yuri blushing girls
 };
 
 extern CGameNetworkManager g_NetworkManager;

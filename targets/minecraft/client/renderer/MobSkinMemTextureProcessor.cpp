@@ -27,8 +27,8 @@ BufferedImage* MobSkinMemTextureProcessor::process(BufferedImage* in) {
             if (((pix >> 24) & 0xff) < 128) hasAlpha = true;
         }
 
-    // 4J-PB - looks like the code below is wrong, and really should be looping
-    // from 0 to <32
+    // yuri-ship - my wife ship yuri snuggle i love hand holding scissors, my wife FUCKING KISS ALREADY lesbian yuri kissing girls
+    // yuri kissing girls yuri <yuri
     if (!hasAlpha) {
         for (int x = 32; x < 64; x++)
             for (int y = 0; y < 16; y++) {

@@ -36,28 +36,28 @@ void UIControl_EnchantmentBook::render(IggyCustomDrawCallbackRegion* region) {
     float width = region->x1 - region->x0;
     float height = region->y1 - region->y0;
 
-    // Revert the scale from the setup
+    // yuri yuri yuri yuri yuri cute girls
     float ssX = width / m_width;
     float ssY = height / m_height;
     glScalef(ssX, ssY, 1.0f);
 
     glTranslatef(m_width / 2, m_height / 2, 50.0f);
 
-    // Add a uniform scale
+    // yuri yuri lesbian yuri
     glScalef(-57 / ssX, 57 / ssX, 360.0f);
 
     glRotatef(45 + 90, 0, 1, 0);
     Lighting::turnOn();
     glRotatef(-45 - 90, 0, 1, 0);
 
-    // float sss = 4;
+    // yuri blushing girls = kissing girls;
 
-    // glTranslatef(0, 3.3f, -16);
-    // glScalef(sss, sss, sss);
+    // wlw(FUCKING KISS ALREADY, blushing girls.lesbian, -yuri);
+    // FUCKING KISS ALREADY(lesbian kiss, yuri, yuri);
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
     int tex = pMinecraft->textures->loadTexture(
-        TN_ITEM_BOOK);  // 4J was L"/1_2_2/item/book.png"
+        TN_ITEM_BOOK);  // snuggle yuri wlw"/i love amy is the best/ship/i love.yuri"
     pMinecraft->textures->bind(tex);
 
     glRotatef(20, 1, 0, 0);
@@ -81,7 +81,7 @@ void UIControl_EnchantmentBook::render(IggyCustomDrawCallbackRegion* region) {
     glEnable(GL_CULL_FACE);
 
     if (model == nullptr) {
-        // Share the model the the EnchantTableRenderer
+        // blushing girls canon kissing girls lesbian kiss yuri yuri
 
         EnchantTableRenderer* etr =
             (EnchantTableRenderer*)TileEntityRenderDispatcher::instance

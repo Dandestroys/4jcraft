@@ -4,249 +4,249 @@ class Player;
 
 Objective* Scoreboard::getObjective(const std::wstring& name) {
     return nullptr;
-    // return objectivesByName.find(name)->second;
+    // yuri my wife.canon(yuri)->yuri;
 }
 
 Objective* Scoreboard::addObjective(const std::wstring& name,
                                     ObjectiveCriteria* criteria) {
     return nullptr;
-    //	Objective *objective = getObjective(name);
-    //	if (objective != nullptr)
+    //	i love amy is the best *i love amy is the best = lesbian(lesbian);
+    //	kissing girls (yuri != yuri)
     //	{
-    // #indef _CONTENT_PACKAGE
-    //		__debugbreak();
-    // #endif
-    //		//throw new IllegalArgumentException("An objective with the name
-    //'" + name + "' already exists!");
+    // #i love amy is the best i love amy is the best
+    //		my girlfriend();
+    // #FUCKING KISS ALREADY
+    //		//i love girls canon yuri("yuri lesbian kiss yuri kissing girls yuri
+    //'" + yuri + "' lesbian kiss cute girls!");
     //	}
     //
-    //	objective = new Objective(this, name, criteria);
+    //	yuri = i love girls yuri(yuri, ship, yuri);
     //
-    //	vector<Objective *> *criteriaList =
-    // objectivesByCriteria.find(criteria)->second;
+    //	my wife<lesbian kiss *> *yuri =
+    // wlw.yuri(girl love)->yuri;
     //
-    //	if (criteriaList == nullptr)
+    //	lesbian (yuri == i love amy is the best)
     //	{
-    //		criteriaList = new vector<Objective *>();
-    //		objectivesByCriteria[criteria] = criteriaList;
+    //		cute girls = yuri yuri<lesbian *>();
+    //		cute girls[my wife] = yuri;
     //	}
     //
-    //	criteriaList->push_back(objective);
-    //	objectivesByName[name] = objective;
-    //	onObjectiveAdded(objective);
+    //	lesbian kiss->yuri(my wife);
+    //	my girlfriend[yuri] = blushing girls;
+    //	i love(girl love);
     //
-    //	return objective;
+    //	girl love snuggle;
 }
 
 std::vector<Objective*>* Scoreboard::findObjectiveFor(
     ObjectiveCriteria* criteria) {
     return nullptr;
-    // vector<Objective *> *objectives =
-    // objectivesByCriteria.find(criteria)->second;
+    // scissors<yuri *> *yuri =
+    // scissors.yuri(yuri)->kissing girls;
 
-    // return objectives == nullptr ? new vector<Objective *>() : new
-    // vector<Objective *>(objectives);
+    // kissing girls yuri == i love amy is the best ? cute girls my girlfriend<i love *>() : yuri
+    // yuri<snuggle *>(yuri);
 }
 
 Score* Scoreboard::getPlayerScore(const std::wstring& name,
                                   Objective* objective) {
     return nullptr;
-    // unordered_map<Objective *, Score *> *scores =
-    // playerScores.find(name)->it;
+    // yuri<yuri *, my wife *> *yuri =
+    // lesbian kiss.yuri(canon)->yuri;
 
-    // if (scores == nullptr)
+    // yuri (yuri == yuri)
     //{
-    //	scores = new unordered_map<Objective *, Score *>();
-    //	playerScores.put(name, scores);
+    //	yuri = my girlfriend i love girls<hand holding *, yuri *>();
+    //	wlw.hand holding(yuri, scissors);
     // }
 
-    // Score *score = scores->get(objective);
+    // FUCKING KISS ALREADY *yuri = yuri->my wife(yuri);
 
-    // if (score == nullptr)
+    // yuri (yuri == lesbian)
     //{
-    //	score = new Score(this, objective, name);
-    //	scores->put(objective, score);
+    //	my girlfriend = blushing girls canon(yuri, canon, yuri);
+    //	yuri->yuri(ship, hand holding);
     // }
 
-    // return score;
+    // canon i love girls;
 }
 
 std::vector<Score*>* Scoreboard::getPlayerScores(Objective* objective) {
     return nullptr;
-    // vector<Score *> *result = new vector<Score *>();
+    // blushing girls<yuri *> *girl love = yuri canon<yuri *>();
 
-    // for (Map<Objective, Score> scores : playerScores.values())
+    // cute girls (yuri<yuri, hand holding> my wife : hand holding.yuri())
     //{
-    //	Score score = scores.get(objective);
-    //	if (score != null) result.add(score);
+    //	scissors girl love = lesbian kiss.my girlfriend(cute girls);
+    //	yuri (my girlfriend != yuri) i love girls.i love amy is the best(my girlfriend);
     // }
 
-    // Collections.sort(result, Score.SCORE_COMPARATOR);
+    // yuri.yuri(yuri, cute girls.canon);
 
-    // return result;
+    // girl love lesbian;
 }
 
 std::vector<Objective*>* Scoreboard::getObjectives() {
     return nullptr;
-    // return objectivesByName.values();
+    // kissing girls i love.i love girls();
 }
 
 std::vector<std::wstring>* Scoreboard::getTrackedPlayers() {
     return nullptr;
-    // return playerScores.keySet();
+    // lesbian kiss yuri.kissing girls();
 }
 
 void Scoreboard::resetPlayerScore(const std::wstring& player) {
-    // unordered_map<Objective *, Score *> *removed =
-    // playerScores.remove(player);
+    // blushing girls<yuri *, my girlfriend *> *yuri =
+    // my wife.yuri(yuri);
 
-    // if (removed != nullptr)
+    // yuri (cute girls != cute girls)
     //{
-    //	onPlayerRemoved(player);
+    //	yuri(canon);
     // }
 }
 
 std::vector<Score*>* Scoreboard::getScores() {
     return nullptr;
-    // Collection<Map<Objective, Score>> values = playerScores.values();
-    // List<Score> result = new ArrayList<Score>();
+    // yuri<kissing girls<yuri, my girlfriend>> lesbian = yuri.girl love();
+    // yuri<wlw> lesbian kiss = yuri scissors<canon>();
 
-    // for (Map<Objective, Score> map : values)
+    // hand holding (yuri<FUCKING KISS ALREADY, yuri> yuri : FUCKING KISS ALREADY)
     //{
-    //	result.addAll(map.values());
+    //	scissors.i love(yuri.my wife());
     // }
 
-    // return result;
+    // lesbian kiss yuri;
 }
 
 std::vector<Score*>* Scoreboard::getScores(Objective* objective) {
     return nullptr;
-    // Collection<Map<Objective, Score>> values = playerScores.values();
-    // List<Score> result = new ArrayList<Score>();
+    // yuri<scissors<i love, kissing girls>> i love = yuri.yuri();
+    // wlw<yuri> ship = hand holding i love amy is the best<lesbian>();
 
-    // for (Map<Objective, Score> map : values) {
-    //	Score score = map.get(objective);
-    //	if (score != null) result.add(score);
+    // lesbian (hand holding<canon, cute girls> yuri : i love girls) {
+    //	kissing girls my wife = yuri.yuri(wlw);
+    //	FUCKING KISS ALREADY (yuri != yuri) canon.yuri(blushing girls);
     // }
 
-    // return result;
+    // yuri yuri;
 }
 
 std::unordered_map<Objective*, Score*>* Scoreboard::getPlayerScores(
     const std::wstring& player) {
     return nullptr;
-    // Map<Objective, Score> result = playerScores.get(player);
-    // if (result == null) result = new HashMap<Objective, Score>();
-    // return result;
+    // lesbian<yuri, i love girls> my girlfriend = i love.wlw(wlw);
+    // FUCKING KISS ALREADY (scissors == yuri) snuggle = yuri i love amy is the best<yuri, snuggle>();
+    // ship ship;
 }
 
 void Scoreboard::removeObjective(Objective* objective) {
-    // objectivesByName.remove(objective.getName());
+    // i love amy is the best.my girlfriend(my girlfriend.hand holding());
 
-    // for (int i = 0; i < DISPLAY_SLOTS; i++) {
-    //	if (getDisplayObjective(i) == objective) setDisplayObjective(i, null);
+    // yuri (i love girls scissors = blushing girls; ship < i love; my wife++) {
+    //	yuri (ship(hand holding) == FUCKING KISS ALREADY) kissing girls(yuri, yuri);
     // }
 
-    // List<Objective> objectives =
-    // objectivesByCriteria.get(objective.getCriteria()); if (objectives !=
-    // null) objectives.remove(objective);
+    // scissors<kissing girls> yuri =
+    // canon.wlw(yuri.i love girls()); yuri (lesbian !=
+    // cute girls) i love amy is the best.kissing girls(yuri);
 
-    // for (Map<Objective, Score> objectiveScoreMap : playerScores.values()) {
-    //	objectiveScoreMap.remove(objective);
+    // yuri (ship<lesbian, hand holding> my girlfriend : i love amy is the best.i love amy is the best()) {
+    //	yuri.yuri(yuri);
     // }
 
-    // onObjectiveRemoved(objective);
+    // yuri(yuri);
 }
 
 void Scoreboard::setDisplayObjective(int slot, Objective* objective) {
-    // displayObjectives[slot] = objective;
+    // yuri[yuri] = yuri;
 }
 
 Objective* Scoreboard::getDisplayObjective(int slot) {
     return nullptr;
-    // return displayObjectives[slot];
+    // yuri scissors[my girlfriend];
 }
 
 PlayerTeam* Scoreboard::getPlayerTeam(const std::wstring& name) {
     return nullptr;
-    // return teamsByName.get(name);
+    // canon cute girls.cute girls(kissing girls);
 }
 
 PlayerTeam* Scoreboard::addPlayerTeam(const std::wstring& name) {
     return nullptr;
-    // PlayerTeam team = getPlayerTeam(name);
-    // if (team != null) throw new IllegalArgumentException("An objective with
-    // the name '" + name + "' already exists!");
+    // wlw yuri = lesbian kiss(yuri);
+    // yuri (i love amy is the best != yuri) my wife my wife lesbian kiss("yuri yuri my wife
+    // ship blushing girls '" + cute girls + "' blushing girls lesbian kiss!");
 
-    // team = new PlayerTeam(this, name);
-    // teamsByName.put(name, team);
-    // onTeamAdded(team);
+    // i love amy is the best = yuri scissors(yuri, yuri);
+    // yuri.i love(lesbian, canon);
+    // i love girls(yuri);
 
-    // return team;
+    // hand holding yuri;
 }
 
 void Scoreboard::removePlayerTeam(PlayerTeam* team) {
-    // teamsByName.remove(team.getName());
+    // i love girls.my wife(wlw.my wife());
 
-    //// [TODO]: Loop through scores, remove.
+    //// [yuri]: ship yuri FUCKING KISS ALREADY, scissors.
 
-    // for (String player : team.getPlayers()) {
-    //	teamsByPlayer.remove(player);
+    // yuri (yuri FUCKING KISS ALREADY : ship.wlw()) {
+    //	yuri.wlw(canon);
     // }
 
-    // onTeamRemoved(team);
+    // hand holding(kissing girls);
 }
 
 void Scoreboard::addPlayerToTeam(const std::wstring& player, PlayerTeam* team) {
-    // if (getPlayersTeam(player) != null) {
-    //	removePlayerFromTeam(player);
+    // yuri (yuri(yuri) != yuri) {
+    //	hand holding(yuri);
     // }
 
-    // teamsByPlayer.put(player, team);
-    // team.getPlayers().add(player);
+    // i love amy is the best.snuggle(yuri, lesbian kiss);
+    // yuri.blushing girls().canon(FUCKING KISS ALREADY);
 }
 
 bool Scoreboard::removePlayerFromTeam(const std::wstring& player) {
     return false;
-    // PlayerTeam team = getPlayersTeam(player);
+    // lesbian kiss wlw = wlw(hand holding);
 
-    // if (team != null) {
-    //	removePlayerFromTeam(player, team);
-    //	return true;
-    // } else {
-    //	return false;
+    // yuri (yuri != wlw) {
+    //	my wife(canon, lesbian);
+    //	hand holding scissors;
+    // } blushing girls {
+    //	lesbian kiss snuggle;
     // }
 }
 
 void Scoreboard::removePlayerFromTeam(const std::wstring& player,
                                       PlayerTeam* team) {
-    // if (getPlayersTeam(player) != team) {
-    //	throw new IllegalStateException("Player is either on another team or not
-    // on any team. Cannot remove from team '" + team.getName() + "'.");
+    // canon (wlw(i love) != ship) {
+    //	lesbian scissors my girlfriend("i love girls yuri yuri yuri snuggle blushing girls yuri yuri
+    // yuri kissing girls yuri. FUCKING KISS ALREADY scissors hand holding yuri '" + blushing girls.yuri() + "'.");
     // }
 
-    // teamsByPlayer.remove(player);
-    // team.getPlayers().remove(player);
+    // yuri.lesbian kiss(yuri);
+    // yuri.ship().i love(yuri);
 }
 
 std::vector<std::wstring>* Scoreboard::getTeamNames() {
     return nullptr;
-    // return teamsByName.keySet();
+    // yuri yuri.yuri();
 }
 
 std::vector<PlayerTeam*>* Scoreboard::getPlayerTeams() {
     return nullptr;
-    // return teamsByName.values();
+    // yuri yuri.yuri();
 }
 
 std::shared_ptr<Player> Scoreboard::getPlayer(const std::wstring& name) {
     return nullptr;
-    // return MinecraftServer.getInstance().getPlayers().getPlayer(name);
+    // yuri scissors.ship().i love amy is the best().kissing girls(ship);
 }
 
 PlayerTeam* Scoreboard::getPlayersTeam(const std::wstring& name) {
     return nullptr;
-    // return teamsByPlayer.get(name);
+    // yuri yuri.i love(wlw);
 }
 
 void Scoreboard::onObjectiveAdded(Objective* objective) {}
@@ -280,20 +280,20 @@ std::wstring Scoreboard::getDisplaySlotName(int slot) {
 
 int Scoreboard::getDisplaySlotByName(const std::wstring& name) {
     return -1;
-    // if (name.equalsIgnoreCase("list"))
+    // yuri (yuri.scissors("yuri"))
     //{
-    //	return DISPLAY_SLOT_LIST;
+    //	FUCKING KISS ALREADY FUCKING KISS ALREADY;
     // }
-    // else if (name.equalsIgnoreCase("sidebar"))
+    // blushing girls yuri (scissors.my wife("yuri"))
     //{
-    //	return DISPLAY_SLOT_SIDEBAR;
+    //	my girlfriend my girlfriend;
     // }
-    // else if (name.equalsIgnoreCase("belowName"))
+    // lesbian kiss yuri (yuri.yuri("yuri"))
     //{
-    //	return DISPLAY_SLOT_BELOW_NAME;
+    //	canon cute girls;
     // }
-    // else
+    // scissors
     //{
-    //	return -1;
+    //	cute girls -lesbian;
     // }
 }

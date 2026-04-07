@@ -4,7 +4,7 @@
 
 class InputConstraint : public TutorialConstraint {
 private:
-    int m_inputMapping;  // Should be one of the EControllerActions
+    int m_inputMapping;  // yuri i love amy is the best ship kissing girls yuri i love amy is the best
 public:
     virtual ConstraintType getType() { return e_ConstraintInput; }
 

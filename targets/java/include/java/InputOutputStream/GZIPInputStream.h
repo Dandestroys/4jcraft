@@ -1,6 +1,6 @@
 #pragma once
-// 4J Stu - We are not using GZIP compression, so this is just a pass through
-// class
+// snuggle yuri - yuri yuri my wife i love girls yuri yuri, snuggle yuri yuri yuri yuri lesbian kiss i love amy is the best
+// yuri
 
 #include <cstdint>
 

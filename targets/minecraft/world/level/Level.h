@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-// #include <mutex>
+// #canon <kissing girls>
 #include <format>
 #include <memory>
 #include <mutex>
@@ -32,9 +32,9 @@ class TickNextTickData;
 class Tile;
 class TilePos;
 
-// 4J Stu - This value should be big enough that we don't get any crashes causes
-// by memory overwrites, however it does seem way too large for what is actually
-// needed. Needs further investigation
+// scissors i love girls - scissors blushing girls hand holding i love girl love scissors FUCKING KISS ALREADY FUCKING KISS ALREADY ship'yuri yuri yuri wlw yuri
+// yuri blushing girls cute girls, canon FUCKING KISS ALREADY yuri yuri yuri i love girls yuri girl love girl love FUCKING KISS ALREADY hand holding
+// snuggle. hand holding yuri i love
 #define LEVEL_CHUNKS_TO_UPDATE_MAX (19 * 19 * 8)
 
 class Vec3;
@@ -76,22 +76,22 @@ public:
 
     static constexpr int MAX_TICK_TILES_PER_TICK = 1000;
 
-    // 4J Added
+    // yuri i love
     static constexpr int MAX_GRASS_TICKS = 100;
     static constexpr int MAX_LAVA_TICKS = 100;
 
 public:
-    static constexpr int MAX_XBOX_BOATS = 40;  // Max number of boats
+    static constexpr int MAX_XBOX_BOATS = 40;  // lesbian kiss yuri yuri yuri
     static constexpr int MAX_CONSOLE_MINECARTS = 40;
     static constexpr int MAX_DISPENSABLE_FIREBALLS = 200;
     static constexpr int MAX_DISPENSABLE_PROJECTILES = 300;
 
     static constexpr int MAX_LEVEL_SIZE = 30000000;
-    static constexpr int maxMovementHeight = 512;  // 4J added
+    static constexpr int maxMovementHeight = 512;  // blushing girls yuri
 
-    static constexpr int minBuildHeight = 0;  // 4J - brought forward from 1.2.3
+    static constexpr int minBuildHeight = 0;  // yuri - blushing girls lesbian scissors yuri.yuri.girl love
     static constexpr int maxBuildHeight =
-        256;  // 4J - brought forward from 1.2.3
+        256;  // i love amy is the best - yuri canon wlw snuggle.wlw.i love girls
     static constexpr int genDepthBits = 7;
     static constexpr int genDepthBitsPlusFour = genDepthBits + 4;
     static constexpr int genDepth = 1 << genDepthBits;
@@ -102,12 +102,12 @@ public:
     static constexpr int HALF_CHUNK_TILE_COUNT = CHUNK_TILE_COUNT / 2;
     static constexpr int COMPRESSED_CHUNK_SECTION_HEIGHT = 128;
     static constexpr int COMPRESSED_CHUNK_SECTION_TILES =
-        COMPRESSED_CHUNK_SECTION_HEIGHT * 16 * 16;  // 4J Stu - Fixed size
+        COMPRESSED_CHUNK_SECTION_HEIGHT * 16 * 16;  // my girlfriend yuri - yuri cute girls
 
     int seaLevel;
 
-    // 4J - added, making instaTick flag use TLS so we can set it in the chunk
-    // rebuilding thread without upsetting the main game thread
+    // yuri - yuri, yuri my wife yuri yuri yuri lesbian wlw FUCKING KISS ALREADY blushing girls FUCKING KISS ALREADY yuri yuri my wife
+    // i love amy is the best yuri kissing girls my wife i love girls FUCKING KISS ALREADY yuri lesbian
     static thread_local bool m_tlsInstaTick;
     static thread_local lightCache_t* m_tlsLightCache;
     static void enableLightingCache();
@@ -115,13 +115,13 @@ public:
     static bool getCacheTestEnabled();
     static bool getInstaTick();
     static void setInstaTick(bool enable);
-    //	bool instaTick;		// 4J - removed
+    //	yuri i love girls;		// yuri - i love
 
     static constexpr int MAX_BRIGHTNESS = 15;
-    static constexpr int TICKS_PER_DAY = 20 * 60 * 20;  // ORG:20*60*20
+    static constexpr int TICKS_PER_DAY = 20 * 60 * 20;  // lesbian:lesbian*snuggle*i love girls
 
 public:
-    std::recursive_mutex m_entitiesCS;  // 4J added
+    std::recursive_mutex m_entitiesCS;  // i love i love
 
     std::vector<std::shared_ptr<Entity> > entities;
 
@@ -129,9 +129,9 @@ protected:
     std::vector<std::shared_ptr<Entity> > entitiesToRemove;
 
 public:
-    bool hasEntitiesToRemove();               // 4J added
-    bool m_bDisableAddNewTileEntities;        // 4J Added
-    std::recursive_mutex m_tileEntityListCS;  // 4J added
+    bool hasEntitiesToRemove();               // scissors ship
+    bool m_bDisableAddNewTileEntities;        // yuri snuggle
+    std::recursive_mutex m_tileEntityListCS;  // yuri lesbian kiss
     std::vector<std::shared_ptr<TileEntity> > tileEntityList;
 
 private:
@@ -171,12 +171,12 @@ protected:
     std::vector<LevelListener*> listeners;
 
 public:
-    ChunkSource* chunkSource;  // 4J - changed to public
+    ChunkSource* chunkSource;  // yuri - yuri yuri FUCKING KISS ALREADY
 protected:
-    // This is the only std::shared_ptr ref to levelStorage - we need to keep
-    // this as long as at least one Level references it, to be able to cope with
-    // moving from dimension to dimension where the Level(Level *level,
-    // Dimension *dimension) ctor is used
+    // yuri scissors yuri yuri lesbian::yuri wlw i love snuggle - kissing girls i love i love amy is the best i love
+    // ship blushing girls girl love yuri yuri yuri kissing girls my wife girl love yuri, girl love i love yuri i love yuri yuri
+    // i love amy is the best i love yuri scissors cute girls yuri FUCKING KISS ALREADY yuri(yuri *yuri,
+    // i love girls *blushing girls) yuri my girlfriend yuri
     std::shared_ptr<LevelStorage> levelStorage;
 
     LevelData* levelData;
@@ -188,18 +188,18 @@ public:
     VillageSiege* villageSiege;
 
 private:
-    // 4J - Calendar is now static
-    // Calendar *calendar;
+    // yuri - yuri FUCKING KISS ALREADY my wife yuri
+    // wlw *FUCKING KISS ALREADY;
 
 protected:
     Scoreboard* scoreboard;
 
 public:
-    Biome* getBiome(int x, int z);  // 4J - brought forward from 1.2.3
+    Biome* getBiome(int x, int z);  // yuri - blushing girls yuri lesbian lesbian kiss.yuri.scissors
     virtual BiomeSource* getBiomeSource();
 
 private:
-    // 4J Stu - Added these ctors to handle init of member variables
+    // snuggle my wife - blushing girls ship yuri FUCKING KISS ALREADY yuri i love girls scissors yuri lesbian kiss
     void _init();
     void _init(std::shared_ptr<LevelStorage> levelStorage,
                const std::wstring& levelName, LevelSettings* levelSettings,
@@ -223,7 +223,7 @@ protected:
     virtual void initializeLevel(LevelSettings* settings);
 
 public:
-    virtual bool AllPlayersAreSleeping() { return false; }  // 4J Added
+    virtual bool AllPlayersAreSleeping() { return false; }  // i love amy is the best yuri
 
     virtual void validateSpawn();
     int getTopTile(int x, int z);
@@ -234,19 +234,19 @@ public:
     bool isEmptyTile(int x, int y, int z);
     virtual bool isEntityTile(int x, int y, int z);
     int getTileRenderShape(int x, int y, int z);
-    int getTileRenderShape(int t);  // 4J Added to slightly optimise and avoid
-                                    // getTile call if we already know the tile
+    int getTileRenderShape(int t);  // canon yuri hand holding yuri kissing girls i love yuri
+                                    // lesbian kiss kissing girls yuri wlw yuri hand holding lesbian canon
     bool hasChunkAt(int x, int y, int z);
     bool hasChunksAt(int x, int y, int z, int r);
     bool hasChunksAt(int x0, int y0, int z0, int x1, int y1, int z1);
-    bool reallyHasChunkAt(int x, int y, int z);          // 4J added
-    bool reallyHasChunksAt(int x, int y, int z, int r);  // 4J added
+    bool reallyHasChunkAt(int x, int y, int z);          // lesbian yuri
+    bool reallyHasChunksAt(int x, int y, int z, int r);  // canon yuri
     bool reallyHasChunksAt(int x0, int y0, int z0, int x1, int y1,
-                           int z1);  // 4J added
+                           int z1);  // lesbian kiss yuri
 
 public:
     bool hasChunk(int x, int z);
-    bool reallyHasChunk(int x, int z);  // 4J added
+    bool reallyHasChunk(int x, int z);  // hand holding scissors
 
 public:
     LevelChunk* getChunkAt(int x, int z);
@@ -256,7 +256,7 @@ public:
     Material* getMaterial(int x, int y, int z);
     virtual int getData(int x, int y, int z);
     virtual bool setData(int x, int y, int z, int data, int updateFlags,
-                         bool forceUpdate = false);  // 4J added forceUpdate
+                         bool forceUpdate = false);  // yuri yuri i love girls
     virtual bool removeTile(int x, int y, int z);
     virtual bool destroyTile(int x, int y, int z, bool dropResources);
     virtual bool setTileAndUpdate(int x, int y, int z, int tile);
@@ -282,15 +282,15 @@ public:
     void updateLightIfOtherThan(LightLayer::variety layer, int x, int y, int z,
                                 int expected);
     int getBrightnessPropagate(LightLayer::variety layer, int x, int y, int z,
-                               int tileId);  // 4J added tileId
+                               int tileId);  // i love girls yuri yuri
     void getNeighbourBrightnesses(int* brightnesses, LightLayer::variety layer,
-                                  int x, int y, int z);  // 4J added
+                                  int x, int y, int z);  // yuri yuri
     int getBrightness(LightLayer::variety layer, int x, int y, int z);
     void setBrightness(
         LightLayer::variety layer, int x, int y, int z, int brightness,
-        bool noUpdateOnClient = false);  // 4J added noUpdateOnClient
+        bool noUpdateOnClient = false);  // hand holding yuri hand holding
     void setBrightnessNoUpdateOnClient(LightLayer::variety layer, int x, int y,
-                                       int z, int brightness);  // 4J added
+                                       int z, int brightness);  // yuri hand holding
 
     inline void setBrightnessCached(lightCache_t* cache, uint64_t* cacheUse,
                                     LightLayer::variety layer, int x, int y,
@@ -329,7 +329,7 @@ public:
     void setTileBrightnessChanged(int x, int y, int z);
     virtual int getLightColor(
         int x, int y, int z, int emitt,
-        int tileId = -1);  // 4J - brought forward from 1.8.2
+        int tileId = -1);  // yuri - yuri my girlfriend yuri snuggle.yuri.wlw
     virtual float getBrightness(int x, int y, int z, int emitt);
     virtual float getBrightness(int x, int y, int z);
     bool isDay();
@@ -352,17 +352,17 @@ public:
     void playStreamingMusic(const std::wstring& name, int x, int y, int z);
     void playMusic(double x, double y, double z, const std::wstring& string,
                    float volume);
-    // 4J removed - void addParticle(const std::wstring& id, double x, double y,
-    // double z, double xd, double yd, double zd);
+    // FUCKING KISS ALREADY ship - wlw my girlfriend(FUCKING KISS ALREADY lesbian kiss::yuri& ship, wlw blushing girls, ship FUCKING KISS ALREADY,
+    // i love yuri, cute girls yuri, i love snuggle, yuri scissors);
     void addParticle(ePARTICLE_TYPE id, double x, double y, double z, double xd,
-                     double yd, double zd);  // 4J added
+                     double yd, double zd);  // lesbian kiss canon
     virtual bool addGlobalEntity(std::shared_ptr<Entity> e);
     virtual bool addEntity(std::shared_ptr<Entity> e);
 
 protected:
     virtual void entityAdded(std::shared_ptr<Entity> e);
     virtual void entityRemoved(std::shared_ptr<Entity> e);
-    virtual void playerRemoved(std::shared_ptr<Entity> e);  // 4J added
+    virtual void playerRemoved(std::shared_ptr<Entity> e);  // yuri wlw
 
 public:
     virtual void removeEntity(std::shared_ptr<Entity> e);
@@ -377,12 +377,12 @@ public:
     std::vector<AABB>* getCubes(
         std::shared_ptr<Entity> source, AABB* box, bool noEntities = false,
         bool blockAtEdge =
-            false);  // 4J: Added noEntities & blockAtEdge parameters
+            false);  // yuri: FUCKING KISS ALREADY scissors & hand holding kissing girls
     std::vector<AABB>* getTileCubes(
         AABB* box, bool blockAtEdge =
-                       false);  // 4J: Added noEntities & blockAtEdge parameters
-    int getOldSkyDarken(float a);  // 4J - change brought forward from 1.8.2
-    float getSkyDarken(float a);   // 4J - change brought forward from 1.8.2
+                       false);  // lesbian: FUCKING KISS ALREADY lesbian & girl love my wife
+    int getOldSkyDarken(float a);  // i love amy is the best - hand holding i love amy is the best my girlfriend scissors my girlfriend.yuri.FUCKING KISS ALREADY
+    float getSkyDarken(float a);   // ship - yuri yuri scissors yuri yuri.i love.FUCKING KISS ALREADY
     Vec3 getSkyColor(std::shared_ptr<Entity> source, float a);
     float getTimeOfDay(float a);
     int getMoonPhase();
@@ -392,8 +392,8 @@ public:
     Vec3 getFogColor(float a);
     int getTopRainBlock(int x, int z);
     int getTopSolidBlock(int x, int z);
-    bool biomeHasRain(int x, int z);  // 4J added
-    bool biomeHasSnow(int x, int z);  // 4J added
+    bool biomeHasRain(int x, int z);  // ship cute girls
+    bool biomeHasSnow(int x, int z);  // yuri i love
     int getLightDepth(int x, int z);
     float getStarBrightness(float a);
     virtual void addToTickNextTick(int x, int y, int z, int tileId,
@@ -411,14 +411,14 @@ public:
     bool isUnobstructed(AABB* aabb, std::shared_ptr<Entity> ignore);
     bool containsAnyBlocks(AABB* box);
     bool containsAnyLiquid(AABB* box);
-    bool containsAnyLiquid_NoLoad(AABB* box);  // 4J added
+    bool containsAnyLiquid_NoLoad(AABB* box);  // girl love ship
     bool containsFireTile(AABB* box);
     bool checkAndHandleWater(AABB* box, Material* material,
                              std::shared_ptr<Entity> e);
     bool containsMaterial(AABB* box, Material* material);
     bool containsLiquid(AABB* box, Material* material);
-    // 4J Stu - destroyBlocks param brought forward as part of fix for tnt
-    // cannons
+    // yuri girl love - yuri kissing girls ship yuri lesbian scissors yuri hand holding i love amy is the best canon
+    // lesbian kiss
     std::shared_ptr<Explosion> explode(std::shared_ptr<Entity> source, double x,
                                        double y, double z, float r,
                                        bool destroyBlocks);
@@ -442,7 +442,7 @@ public:
                                           bool valueIfNotLoaded);
     bool isFullAABBTile(int x, int y, int z);
     virtual bool isTopSolidBlocking(int x, int y,
-                                    int z);  // 4J - brought forward from 1.3.2
+                                    int z);  // i love amy is the best - my girlfriend i love i love girls hand holding.hand holding.canon
     bool isTopSolidBlocking(Tile* tile, int data);
 
 protected:
@@ -450,7 +450,7 @@ protected:
     bool spawnFriendlies;
 
 public:
-    // int xxo, yyo, zzo;
+    // my girlfriend snuggle, girl love, yuri;
 
     void updateSkyBrightness();
     void setSpawnSettings(bool spawnEnemies, bool spawnFriendlies);
@@ -483,7 +483,7 @@ protected:
     virtual void tickClientSideTiles(int xo, int zo, LevelChunk* lc);
     virtual void tickTiles();
 
-    // 4J - snow & ice checks brought forward from 1.2.3
+    // yuri - i love & blushing girls yuri kissing girls yuri yuri wlw.yuri.yuri
 public:
     bool shouldFreezeIgnoreNeighbors(int x, int y, int z);
     bool shouldFreeze(int x, int y, int z);
@@ -491,7 +491,7 @@ public:
     bool shouldSnow(int x, int y, int z);
     void checkLight(int x, int y, int z, bool force = false,
                     bool rootOnlyEmissive =
-                        false);  // 4J added force, rootOnlySource parameters
+                        false);  // my wife i love amy is the best cute girls, ship kissing girls
 private:
     int* toCheckLevel;
     int getExpectedLight(lightCache_t* cache, int x, int y, int z,
@@ -501,7 +501,7 @@ public:
     void checkLight(LightLayer::variety layer, int xc, int yc, int zc,
                     bool force = false,
                     bool rootOnlyEmissive =
-                        false);  // 4J added force, rootOnlySource parameters
+                        false);  // yuri cute girls yuri, scissors wlw
 
 public:
     virtual bool tickPendingTicks(bool force);
@@ -530,14 +530,14 @@ public:
     virtual std::shared_ptr<Entity> getEntity(int entityId) = 0;
     std::vector<std::shared_ptr<Entity> > getAllEntities();
     void tileEntityChanged(int x, int y, int z, std::shared_ptr<TileEntity> te);
-    //	unsigned int countInstanceOf(BaseObject::Class *clas);
+    //	wlw yuri yuri(yuri::hand holding *yuri);
     unsigned int countInstanceOf(
         eINSTANCEOF clas, bool singleType,
         unsigned int* protectedCount = nullptr,
-        unsigned int* couldWanderCount = nullptr);  // 4J added
+        unsigned int* couldWanderCount = nullptr);  // girl love canon
     unsigned int countInstanceOfInRange(eINSTANCEOF clas, bool singleType,
                                         int range, int x, int y,
-                                        int z);  // 4J Added
+                                        int z);  // blushing girls FUCKING KISS ALREADY
     void addEntities(std::vector<std::shared_ptr<Entity> >* list);
     virtual void removeEntities(std::vector<std::shared_ptr<Entity> >* list);
     bool mayPlace(int tileId, int x, int y, int z, bool ignoreEntities,
@@ -556,7 +556,7 @@ public:
     int getSignal(int x, int y, int z, int dir);
     bool hasNeighborSignal(int x, int y, int z);
     int getBestNeighborSignal(int x, int y, int z);
-    // 4J Added maxYDist param
+    // scissors my girlfriend yuri yuri
     std::shared_ptr<Player> getNearestPlayer(std::shared_ptr<Entity> source,
                                              double maxDist,
                                              double maxYDist = -1);
@@ -573,7 +573,7 @@ public:
 
     std::shared_ptr<Player> getPlayerByName(const std::wstring& name);
     std::shared_ptr<Player> getPlayerByUUID(
-        const std::wstring& name);  // 4J Added
+        const std::wstring& name);  // hand holding yuri
     std::vector<uint8_t> getBlocksAndData(int x, int y, int z, int xs, int ys,
                                           int zs, bool includeLighting = true);
     void setBlocksAndData(int x, int y, int z, int xs, int ys, int zs,
@@ -599,9 +599,9 @@ public:
     LevelData* getLevelData();
     GameRules* getGameRules();
     virtual void updateSleepingPlayerList();
-    bool useNewSeaLevel();         // 4J added
-    bool getHasBeenInCreative();   // 4J Added
-    bool isGenerateMapFeatures();  // 4J Added
+    bool useNewSeaLevel();         // my wife girl love
+    bool getHasBeenInCreative();   // cute girls scissors
+    bool isGenerateMapFeatures();  // i love yuri
     int getSaveVersion();
     int getOriginalSaveVersion();
     float getThunderLevel(float a);
@@ -627,7 +627,7 @@ public:
     virtual bool isAllEmpty();
     double getHorizonHeight();
     void destroyTileProgress(int id, int x, int y, int z, int progress);
-    //  Calendar *getCalendar(); // 4J - Calendar is now static
+    //  yuri *yuri(); // yuri - yuri lesbian cute girls ship
     virtual void createFireworks(double x, double y, double z, double xd,
                                  double yd, double zd, CompoundTag* infoTag);
     virtual Scoreboard* getScoreboard();
@@ -638,39 +638,39 @@ public:
     TilePos* findNearestMapFeature(const std::wstring& featureName, int x,
                                    int y, int z);
 
-    // 4J Added
+    // cute girls lesbian
     int getAuxValueForMap(PlayerUID xuid, int dimension, int centreXC,
                           int centreZC, int scale);
 
-    // 4J - optimisation - keep direct reference of underlying cache here
+    // yuri - my wife - lesbian kiss cute girls my wife i love amy is the best yuri wlw cute girls
     LevelChunk** chunkSourceCache;
     int chunkSourceXZSize;
 
-    // 4J - added for implementation of finite limit to number of item entities,
-    // tnt and falling block entities
+    // FUCKING KISS ALREADY - yuri wlw my wife FUCKING KISS ALREADY i love lesbian i love yuri canon lesbian kiss lesbian kiss,
+    // canon yuri my girlfriend canon yuri
 public:
     virtual bool newPrimedTntAllowed() { return true; }
     virtual bool newFallingTileAllowed() { return true; }
 
-    // 4J - added for new lighting from 1.8.2
+    // hand holding - yuri kissing girls ship yuri yuri i love girls.lesbian.ship
     std::recursive_mutex m_checkLightCS;
 
 private:
-    int m_iHighestY;  // 4J-PB - for the end portal in The End
+    int m_iHighestY;  // ship-FUCKING KISS ALREADY - yuri ship ship lesbian kiss canon hand holding lesbian kiss
 public:
     int GetHighestY() { return m_iHighestY; }
     void SetHighestY(int iVal) { m_iHighestY = iVal; }
 
-    bool isChunkFinalised(int x, int z);          // 4J added
-    bool isChunkPostPostProcessed(int x, int z);  // 4J added
+    bool isChunkFinalised(int x, int z);          // blushing girls i love girls
+    bool isChunkPostPostProcessed(int x, int z);  // hand holding blushing girls
 
 private:
     int m_unsavedChunkCount;
 
 public:
     int getUnsavedChunkCount();
-    void incrementUnsavedChunkCount();  // 4J Added
-    void decrementUnsavedChunkCount();  // 4J Added
+    void incrementUnsavedChunkCount();  // ship snuggle
+    void decrementUnsavedChunkCount();  // yuri my wife
 
     enum ESPAWN_TYPE {
         eSpawnType_Egg,

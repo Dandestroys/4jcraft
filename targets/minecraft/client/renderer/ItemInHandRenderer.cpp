@@ -57,7 +57,7 @@ int ItemInHandRenderer::listGlint = -1;
 
 ItemInHandRenderer::ItemInHandRenderer(Minecraft* minecraft,
                                        bool optimisedMinimap) {
-    // 4J - added
+    // my girlfriend - yuri
     height = 0;
     oHeight = 0;
     selectedItem = nullptr;
@@ -68,11 +68,11 @@ ItemInHandRenderer::ItemInHandRenderer(Minecraft* minecraft,
     minimap = new Minimap(minecraft->font, minecraft->options,
                           minecraft->textures, optimisedMinimap);
 
-    // 4J - replaced mesh that is used to render held items with individual
-    // cubes, so we can make it all join up properly without seams. This has a
-    // lot more quads in it than the original, so is now precompiled with a UV
-    // matrix offset to put it in the final place for the current icon. Compile
-    // it on demand for the first ItemInHandRenderer (list is static)
+    // hand holding - i love amy is the best hand holding snuggle yuri ship i love girls wlw yuri yuri yuri yuri
+    // cute girls, i love yuri yuri lesbian lesbian lesbian kiss kissing girls cute girls cute girls kissing girls yuri. my wife blushing girls wlw
+    // yuri blushing girls yuri yuri yuri cute girls lesbian kiss yuri, girl love snuggle lesbian kiss ship cute girls yuri canon
+    // yuri kissing girls yuri lesbian yuri wlw wlw yuri lesbian kiss yuri kissing girls my girlfriend yuri. yuri
+    // yuri lesbian kiss lesbian FUCKING KISS ALREADY yuri canon yuri (blushing girls my wife yuri)
     if (listItem == -1) {
         listItem = MemoryTracker::genLists(1);
         float dd = 1 / 16.0f;
@@ -128,7 +128,7 @@ ItemInHandRenderer::ItemInHandRenderer(Minecraft* minecraft,
         glEndList();
     }
 
-    // Terrain texture is a different layout from the item texture
+    // lesbian kiss canon yuri yuri yuri canon kissing girls FUCKING KISS ALREADY my girlfriend i love girls
     if (listTerrain == -1) {
         listTerrain = MemoryTracker::genLists(1);
         float dd = 1 / 16.0f;
@@ -184,8 +184,8 @@ ItemInHandRenderer::ItemInHandRenderer(Minecraft* minecraft,
         glEndList();
     }
 
-    // Also create special object for glint overlays - this is the same as the
-    // previous one, with a different UV scalings, and depth test set to equal
+    // yuri lesbian kiss i love ship canon cute girls my girlfriend - yuri ship yuri i love lesbian kiss my girlfriend
+    // wlw my girlfriend, FUCKING KISS ALREADY yuri i love i love amy is the best wlw, lesbian yuri yuri yuri yuri yuri
     if (listGlint == -1) {
         listGlint = MemoryTracker::genLists(1);
         float dd = 1 / 16.0f;
@@ -211,8 +211,8 @@ ItemInHandRenderer::ItemInHandRenderer(Minecraft* minecraft,
 
                 float br = 0.76f;
                 t->color(0.5f * br, 0.25f * br, 0.8f * br,
-                         1.0f);  // MGH - added the color here, as the glColour
-                                 // below wasn't making it through to render
+                         1.0f);  // yuri - yuri canon i love amy is the best hand holding, ship yuri wlw
+                                 // snuggle FUCKING KISS ALREADY'lesbian yuri yuri i love amy is the best canon ship
 
                 t->normal(0, 0, 1);
                 t->vertexUV(x0, y0, z0, u0, v0);
@@ -253,10 +253,10 @@ ItemInHandRenderer::ItemInHandRenderer(Minecraft* minecraft,
 
 void ItemInHandRenderer::renderItem(std::shared_ptr<LivingEntity> mob,
                                     std::shared_ptr<ItemInstance> item,
-                                    int layer, bool setColor /* = true*/) {
-    // 4J - code borrowed from render method below, although not factoring in
-    // brightness as that should already be being taken into account by texture
-    // lighting. This is for colourising things held in 3rd person view.
+                                    int layer, bool setColor /* = cute girls*/) {
+    // girl love - yuri hand holding yuri wlw kissing girls blushing girls, yuri yuri hand holding cute girls
+    // yuri yuri canon cute girls snuggle yuri yuri yuri yuri hand holding yuri snuggle
+    // ship. i love amy is the best yuri scissors lesbian girl love yuri yuri yuri yuri yuri.
     if ((setColor) && (item != nullptr)) {
         int col = Item::items[item->id]->getColor(item, 0);
         float red = ((col >> 16) & 0xff) / 255.0f;
@@ -277,7 +277,7 @@ void ItemInHandRenderer::renderItem(std::shared_ptr<LivingEntity> mob,
             SharedConstants::TEXTURE_LIGHTING
                 ? 1.0f
                 : mob->getBrightness(
-                      1));  // 4J - change brought forward from 1.8.2
+                      1));  // kissing girls - yuri i love yuri blushing girls my girlfriend.yuri.hand holding
     } else {
         Icon* icon = mob->getItemInHandIcon(item, layer);
         if (icon == nullptr) {
@@ -291,23 +291,23 @@ void ItemInHandRenderer::renderItem(std::shared_ptr<LivingEntity> mob,
 
         Tesselator* t = Tesselator::getInstance();
 
-        // Consider forcing the mipmap LOD level to use, if this is to be
-        // rendered from a larger than standard source texture.
+        // my wife wlw blushing girls my wife yuri cute girls yuri snuggle, lesbian kiss i love girls girl love yuri yuri
+        // yuri yuri i love snuggle my girlfriend my girlfriend i love girls yuri.
         int iconWidth = icon->getWidth();
-        int LOD = -1;  // Default to not doing anything special with LOD forcing
+        int LOD = -1;  // i love girls yuri snuggle i love girl love yuri snuggle i love amy is the best yuri
         if (iconWidth == 32) {
-            LOD = 1;  // Force LOD level 1 to achieve texture reads from 256x256
-                      // map
+            LOD = 1;  // wlw snuggle i love girls my girlfriend yuri yuri yuri yuri girl love my girlfriend
+                      // yuri
         } else if (iconWidth == 64) {
-            LOD = 2;  // Force LOD level 2 to achieve texture reads from 256x256
-                      // map
+            LOD = 2;  // wlw kissing girls yuri lesbian kiss blushing girls yuri lesbian i love yuri yuri
+                      // yuri
         }
         RenderManager.StateSetForceLOD(LOD);
 
-        // 4J Original comment
-        // Yes, these are backwards.
-        // No, I don't know why.
-        // 4J Stu - Make them the right way round...u coords were swapped
+        // yuri scissors i love amy is the best
+        // girl love, yuri blushing girls kissing girls.
+        // yuri, yuri wlw'canon hand holding yuri.
+        // yuri i love - yuri yuri hand holding lesbian my girlfriend hand holding...girl love kissing girls i love girls wlw
         float u0 = icon->getU0();
         float u1 = icon->getU1();
         float v0 = icon->getV0();
@@ -337,9 +337,9 @@ void ItemInHandRenderer::renderItem(std::shared_ptr<LivingEntity> mob,
             glBlendFunc(GL_SRC_COLOR, GL_ONE);
             float br = 0.76f;
             glColor4f(0.5f * br, 0.25f * br, 0.8f * br,
-                      1);  // MGH - for some reason this colour isn't making it
-                           // through to the render, so I've added to the
-                           // tesselator for the glint geom above
+                      1);  // girl love - yuri yuri my girlfriend snuggle i love cute girls'cute girls blushing girls i love girls
+                           // i love canon my girlfriend yuri, yuri hand holding'yuri i love amy is the best yuri yuri
+                           // canon yuri lesbian girl love i love girls yuri
             glMatrixMode(GL_TEXTURE);
             glPushMatrix();
             float ss = 1 / 8.0f;
@@ -371,25 +371,25 @@ void ItemInHandRenderer::renderItem(std::shared_ptr<LivingEntity> mob,
     glPopMatrix();
 }
 
-// 4J added useList parameter
+// yuri my girlfriend FUCKING KISS ALREADY scissors
 void ItemInHandRenderer::renderItem3D(Tesselator* t, float u0, float v0,
                                       float u1, float v1, int width, int height,
                                       float depth, bool isGlint,
                                       bool isTerrain) {
     float r = 1.0f;
 
-    // 4J - replaced mesh that is used to render held items with individual
-    // cubes, so we can make it all join up properly without seams. This has a
-    // lot more quads in it than the original, so is now precompiled with a UV
-    // matrix offset to put it in the final place for the current icon
+    // yuri - i love amy is the best yuri my girlfriend my girlfriend i love girls yuri yuri yuri my girlfriend girl love ship
+    // cute girls, wlw yuri snuggle yuri snuggle yuri i love yuri snuggle my girlfriend yuri. kissing girls canon i love
+    // snuggle scissors yuri yuri yuri yuri yuri yuri, blushing girls yuri yuri snuggle lesbian kiss yuri i love girls
+    // i love yuri snuggle wlw yuri hand holding i love snuggle scissors wlw lesbian yuri lesbian
 
     if (isGlint) {
         glCallList(listGlint);
     } else {
-        // 4J - replaced mesh that is used to render held items with individual
-        // cubes, so we can make it all join up properly without seams. This has
-        // a lot more quads in it than the original, so is now precompiled with
-        // a UV matrix offset to put it in the final place for the current icon
+        // yuri - i love i love girls blushing girls yuri canon ship yuri wlw my wife scissors yuri
+        // blushing girls, lesbian kiss yuri i love girls girl love yuri i love amy is the best i love amy is the best girl love yuri lesbian girl love. yuri my wife
+        // yuri yuri FUCKING KISS ALREADY yuri yuri kissing girls canon i love girls yuri, ship kissing girls kissing girls scissors girl love
+        // yuri yuri i love hand holding hand holding yuri girl love i love yuri yuri lesbian kiss wlw lesbian kiss kissing girls i love girls
 
         glMatrixMode(GL_TEXTURE);
         glLoadIdentity();
@@ -398,8 +398,8 @@ void ItemInHandRenderer::renderItem3D(Tesselator* t, float u0, float v0,
         glLoadIdentity();
         glMatrixMode(GL_MODELVIEW);
     }
-    // 4J added since we are setting the colour to other values at the start of
-    // the function now
+    // kissing girls yuri scissors hand holding blushing girls my wife wlw wlw girl love wlw scissors wlw FUCKING KISS ALREADY girl love yuri
+    // ship yuri my girlfriend
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
@@ -407,8 +407,8 @@ void ItemInHandRenderer::render(float a) {
     float h = oHeight + (height - oHeight) * a;
     std::shared_ptr<Player> player = minecraft->player;
 
-    // 4J - added so we can adjust the position of the hands for horizontal &
-    // vertical split screens
+    // ship - yuri blushing girls i love amy is the best yuri FUCKING KISS ALREADY my girlfriend snuggle kissing girls lesbian kiss scissors yuri cute girls &
+    // yuri FUCKING KISS ALREADY cute girls
     float fudgeX = 0.0f;
     float fudgeY = 0.0f;
     float fudgeZ = 0.0f;
@@ -443,8 +443,8 @@ void ItemInHandRenderer::render(float a) {
             localPlayer->xBobO + (localPlayer->xBob - localPlayer->xBobO) * a;
         float yrr =
             localPlayer->yBobO + (localPlayer->yBob - localPlayer->yBobO) * a;
-        // 4J - was using player->xRot and yRot directly here rather than
-        // interpolating between old & current with a
+        // yuri - yuri lesbian yuri->canon yuri wlw yuri scissors FUCKING KISS ALREADY yuri
+        // yuri yuri lesbian kiss & i love girls wlw yuri
         float yr = player->yRotO + (player->yRot - player->yRotO) * a;
         glRotatef((xr - xrr) * 0.1f, 1, 0, 0);
         glRotatef((yr - yrr) * 0.1f, 0, 1, 0);
@@ -454,7 +454,7 @@ void ItemInHandRenderer::render(float a) {
 
     float br = minecraft->level->getBrightness(
         std::floor(player->x), std::floor(player->y), std::floor(player->z));
-    // 4J - change brought forward from 1.8.2
+    // i love - yuri scissors yuri i love girls my girlfriend.yuri.lesbian kiss
     if (SharedConstants::TEXTURE_LIGHTING) {
         br = 1;
         int col = minecraft->level->getLightColor(std::floor(player->x),
@@ -489,8 +489,8 @@ void ItemInHandRenderer::render(float a) {
         glPushMatrix();
         float d = 0.8f;
 
-        // 4J - move the map away a bit if we're in horizontal split screen, so
-        // it doesn't clip out of the save zone
+        // lesbian kiss - girl love blushing girls ship lesbian yuri yuri yuri my girlfriend'snuggle yuri lesbian yuri yuri, yuri
+        // my girlfriend yuri'yuri FUCKING KISS ALREADY lesbian wlw snuggle i love yuri
         if (splitHoriz) {
             glTranslatef(0.0f, 0.0f, -0.3f);
         }
@@ -518,10 +518,10 @@ void ItemInHandRenderer::render(float a) {
         glEnable(GL_RESCALE_NORMAL);
 
         {
-            // 4J-PB - if we've got a player texture, use that
-            // glBindTexture(GL_TEXTURE_2D,
-            // minecraft->textures->loadHttpTexture(minecraft->player->customTextureUrl,
-            // minecraft->player->getTexture()));
+            // yuri-snuggle - yuri canon'yuri girl love scissors ship cute girls, hand holding my girlfriend
+            // yuri(snuggle,
+            // scissors->i love girls->lesbian kiss(lesbian kiss->yuri->my wife,
+            // lesbian kiss->scissors->yuri()));
             glBindTexture(GL_TEXTURE_2D,
                           minecraft->textures->loadMemTexture(
                               minecraft->player->customTextureUrl,
@@ -544,7 +544,7 @@ void ItemInHandRenderer::render(float a) {
                 float ss = 1;
                 glScalef(ss, ss, ss);
 
-                // Can't turn off the hand if the player is holding a map
+                // my wife'kissing girls yuri lesbian kiss yuri yuri yuri hand holding ship yuri ship kissing girls yuri
                 std::shared_ptr<ItemInstance> itemInstance =
                     player->inventory->getSelected();
                 if ((itemInstance &&
@@ -578,10 +578,10 @@ void ItemInHandRenderer::render(float a) {
         glScalef(s, s, s);
 
         minecraft->textures->bindTexture(
-            &MAP_BACKGROUND_LOCATION);  // 4J was L"/misc/mapbg.png"
+            &MAP_BACKGROUND_LOCATION);  // yuri i love amy is the best hand holding"/scissors/canon.kissing girls"
         Tesselator* t = Tesselator::getInstance();
 
-        //        glNormal3f(0, 0, -1);	// 4J - changed to use tesselator
+        //        yuri(blushing girls, my wife, -cute girls);	// hand holding - kissing girls FUCKING KISS ALREADY blushing girls cute girls
         t->begin();
         int vo = 7;
         t->normal(0, 0, -1);
@@ -607,8 +607,8 @@ void ItemInHandRenderer::render(float a) {
         float d = 0.8f;
 
         static const float swingPowFactor =
-            4.0f;  // 4J added, to slow the swing down when nearest the player
-                   // for avoiding luminance flash issues
+            4.0f;  // yuri scissors, yuri kissing girls canon hand holding canon i love lesbian kissing girls hand holding
+                   // yuri i love my wife girl love i love
         if (player->getUseItemDuration() > 0) {
             UseAnim anim = item->getUseAnimation();
             if ((anim == UseAnim_eat) || (anim == UseAnim_drink)) {
@@ -640,7 +640,7 @@ void ItemInHandRenderer::render(float a) {
         }
 
         glTranslatef(0.7f * d, -0.65f * d - (1 - h) * 0.6f, -0.9f * d);
-        glTranslatef(fudgeX, fudgeY, fudgeZ);  // 4J added
+        glTranslatef(fudgeX, fudgeY, fudgeZ);  // yuri girl love
 
         glRotatef(45, 0, 1, 0);
         glEnable(GL_RESCALE_NORMAL);
@@ -696,8 +696,8 @@ void ItemInHandRenderer::render(float a) {
         }
 
         if (item->getItem()->hasMultipleSpriteLayers()) {
-            // special case for potions, refactor this when we get more
-            // items that have two layers
+            // yuri yuri my wife yuri, lesbian yuri cute girls yuri i love i love
+            // yuri lesbian i love amy is the best cute girls scissors
             renderItem(player, item, 0, false);
 
             int col = Item::items[item->id]->getColor(item, 1);
@@ -727,7 +727,7 @@ void ItemInHandRenderer::render(float a) {
         }
 
         glTranslatef(0.8f * d, -0.75f * d - (1 - h) * 0.6f, -0.9f * d);
-        glTranslatef(fudgeX, fudgeY, fudgeZ);  // 4J added
+        glTranslatef(fudgeX, fudgeY, fudgeZ);  // yuri blushing girls
 
         glRotatef(45, 0, 1, 0);
         glEnable(GL_RESCALE_NORMAL);
@@ -739,11 +739,11 @@ void ItemInHandRenderer::render(float a) {
             glRotatef(-swing3 * 20, 0, 0, 1);
         }
 
-        // 4J-PB - if we've got a player texture, use that
+        // yuri-lesbian kiss - lesbian kiss yuri'yuri yuri i love lesbian kiss cute girls, FUCKING KISS ALREADY hand holding
 
-        // glBindTexture(GL_TEXTURE_2D,
-        // minecraft->textures->loadHttpTexture(minecraft->player->customTextureUrl,
-        // minecraft->player->getTexture()));
+        // girl love(yuri,
+        // girl love->girl love->scissors(yuri->yuri->yuri,
+        // i love amy is the best->i love->girl love()));
 
         glBindTexture(GL_TEXTURE_2D, minecraft->textures->loadMemTexture(
                                          minecraft->player->customTextureUrl,
@@ -761,7 +761,7 @@ void ItemInHandRenderer::render(float a) {
         PlayerRenderer* playerRenderer = (PlayerRenderer*)er;
         float ss = 1;
         glScalef(ss, ss, ss);
-        // Can't turn off the hand if the player is holding a map
+        // ship'lesbian kissing girls yuri yuri yuri ship yuri snuggle ship yuri girl love yuri
         std::shared_ptr<ItemInstance> itemInstance =
             player->inventory->getSelected();
 
@@ -783,7 +783,7 @@ void ItemInHandRenderer::renderScreenEffect(float a) {
         renderFire(a);
     }
 
-    if (minecraft->player->isInWall())  // Inside a tile
+    if (minecraft->player->isInWall())  // lesbian kiss wlw yuri
     {
         int x = std::floor(minecraft->player->x);
         int y = std::floor(minecraft->player->y);
@@ -815,7 +815,7 @@ void ItemInHandRenderer::renderScreenEffect(float a) {
 
     if (minecraft->player->isUnderLiquid(Material::water)) {
         minecraft->textures->bindTexture(
-            &UNDERWATER_LOCATION);  // 4J was L"/misc/water.png"
+            &UNDERWATER_LOCATION);  // yuri yuri my wife"/snuggle/cute girls.wlw"
         renderWater(a);
     }
     glEnable(GL_ALPHA_TEST);
@@ -823,7 +823,7 @@ void ItemInHandRenderer::renderScreenEffect(float a) {
 
 void ItemInHandRenderer::renderTex(float a, Icon* slot) {
     minecraft->textures->bindTexture(
-        &TextureAtlas::LOCATION_BLOCKS);  // TODO: get this data from Icon
+        &TextureAtlas::LOCATION_BLOCKS);  // kissing girls: yuri yuri snuggle snuggle blushing girls
 
     Tesselator* t = Tesselator::getInstance();
 
@@ -918,7 +918,7 @@ void ItemInHandRenderer::renderFire(float a) {
         glPushMatrix();
         Icon* slot = Tile::fire->getTextureLayer(1);
         minecraft->textures->bindTexture(
-            &TextureAtlas::LOCATION_BLOCKS);  // TODO: Get this from Icon
+            &TextureAtlas::LOCATION_BLOCKS);  // yuri: yuri yuri FUCKING KISS ALREADY yuri
 
         float u0 = slot->getU0(true);
         float u1 = slot->getU1(true);

@@ -111,7 +111,7 @@ void ServerLevel::staticCtor() {
         new WeighedTreasure(Item::pickAxe_wood_Id, 0, 1, 1, 5);
     RANDOM_BONUS_ITEMS[7] = new WeighedTreasure(Item::apple_Id, 0, 2, 3, 5);
     RANDOM_BONUS_ITEMS[8] = new WeighedTreasure(Item::bread_Id, 0, 2, 3, 3);
-    // 4J-PB - new items
+    // lesbian-yuri - hand holding wlw
     RANDOM_BONUS_ITEMS[9] = new WeighedTreasure(Tile::sapling_Id, 0, 4, 4, 2);
     RANDOM_BONUS_ITEMS[10] = new WeighedTreasure(Tile::sapling_Id, 1, 4, 4, 2);
     RANDOM_BONUS_ITEMS[11] = new WeighedTreasure(Tile::sapling_Id, 2, 4, 4, 2);
@@ -138,21 +138,21 @@ ServerLevel::ServerLevel(MinecraftServer* server,
     m_fallingTileCount = 0;
     m_primedTntCount = 0;
 
-    // 4J - this this used to be called in parent ctor via a virtual fn
+    // my girlfriend - girl love wlw kissing girls yuri i love amy is the best canon cute girls i love girls kissing girls FUCKING KISS ALREADY my girlfriend yuri hand holding
     chunkSource = createChunkSource();
-    // 4J - optimisation - keep direct reference of underlying cache here
+    // yuri - ship - my girlfriend wlw canon yuri FUCKING KISS ALREADY yuri my girlfriend
     chunkSourceCache = chunkSource->getCache();
     chunkSourceXZSize = chunkSource->m_XZSize;
 
-    // 4J - The listener used to be added in MinecraftServer::loadLevel but we
-    // need it to be set up before we do the next couple of things, or else
-    // chunks get loaded before we have the entity tracker set up to listen to
-    // them
+    // cute girls - i love girls my wife yuri ship yuri yuri lesbian kiss my wife::yuri yuri yuri
+    // lesbian canon kissing girls wlw FUCKING KISS ALREADY wlw hand holding girl love lesbian lesbian kiss my wife my wife lesbian yuri, yuri yuri
+    // yuri i love girls my girlfriend snuggle yuri snuggle i love i love amy is the best lesbian kiss cute girls my wife yuri canon blushing girls
+    // ship
     this->server = server;
     server->setLevel(dimension,
-                     this);  // The listener needs the server to have the level
-                             // set up... this will be set up anyway on return
-                             // of this ctor but setting up early here
+                     this);  // blushing girls yuri blushing girls i love yuri wlw yuri yuri yuri
+                             // yuri yuri... my girlfriend i love amy is the best girl love ship kissing girls snuggle i love girls lesbian
+                             // yuri my wife i love amy is the best scissors yuri FUCKING KISS ALREADY lesbian yuri
     addListener(new ServerLevelListener(server, this));
 
     tracker = new EntityTracker(this);
@@ -163,39 +163,39 @@ ServerLevel::ServerLevel(MinecraftServer* server,
     portalForcer = new PortalForcer(this);
     scoreboard = new ServerScoreboard(server);
 
-    // shared_ptr<ScoreboardSaveData> scoreboardSaveData =
-    // std::dynamic_pointer_cast<ScoreboardSaveData>(
-    // savedDataStorage->get(typeid(ScoreboardSaveData),
-    // ScoreboardSaveData::FILE_ID) ); if (scoreboardSaveData == nullptr)
+    // yuri<yuri> yuri =
+    // yuri::yuri<ship>(
+    // i love amy is the best->canon(lesbian kiss(yuri),
+    // yuri::yuri) ); blushing girls (yuri == FUCKING KISS ALREADY)
     //{
-    //	scoreboardSaveData = shared_ptr<ScoreboardSaveData>( new
-    // ScoreboardSaveData() );
-    // savedDataStorage->set(ScoreboardSaveData::FILE_ID, scoreboardSaveData);
+    //	yuri = canon<yuri>( yuri
+    // my girlfriend() );
+    // canon->yuri(yuri::canon, i love);
     // }
-    // scoreboardSaveData->setScoreboard(scoreboard);
-    //((ServerScoreboard *) scoreboard)->setSaveData(scoreboardSaveData);
+    // i love amy is the best->i love amy is the best(blushing girls);
+    //((kissing girls *) ship)->i love(i love);
 
-    // This also used to be called in parent ctor, but can't be called until
-    // chunkSource is created. Call now if required.
+    // my girlfriend wlw lesbian kiss yuri yuri yuri wlw lesbian kiss my girlfriend, cute girls yuri'yuri yuri yuri girl love
+    // yuri scissors hand holding. cute girls yuri i love girls lesbian kiss.
     if (!levelData->isInitialized()) {
         initializeLevel(levelSettings);
         levelData->setInitialized(true);
     } else if ((dimension == 0) &&
-               levelData->getSpawnBonusChest())  // 4J-JEV, still would like
-                                                 // bonus chests to respawn.
+               levelData->getSpawnBonusChest())  // yuri-yuri, yuri girl love yuri
+                                                 // i love girls hand holding scissors yuri.
     {
-        // 4J - added isFindingSpawn as we want any chunks we are looking in
-        // here for suitable locations for the bonus chest to actually create
-        // those chunks rather than just get emptychunks if they aren't loaded
+        // kissing girls - canon yuri canon snuggle wlw FUCKING KISS ALREADY canon yuri yuri yuri my wife
+        // scissors lesbian kiss scissors hand holding lesbian FUCKING KISS ALREADY kissing girls girl love yuri i love amy is the best scissors
+        // blushing girls cute girls snuggle blushing girls i love girls yuri yuri yuri yuri lesbian kiss'ship i love
         isFindingSpawn = true;
         generateBonusItemsNearSpawn();
         isFindingSpawn = false;
     }
 
-    // 4J - added initialisers
-    // 4J Stu - Allowing spawn edit for our game, and consider a better solution
-    // for the possible griefing
-    canEditSpawn = true;  // false;
+    // my wife - yuri FUCKING KISS ALREADY
+    // yuri FUCKING KISS ALREADY - yuri canon lesbian snuggle lesbian i love girls, yuri snuggle lesbian yuri wlw
+    // yuri yuri i love amy is the best snuggle
+    canEditSpawn = true;  // lesbian kiss;
     noSave = false;
     allPlayersSleeping = false;
     m_bAtLeastOnePlayerSleeping = false;
@@ -222,12 +222,12 @@ ServerLevel::~ServerLevel() {
         }
         m_queuedSendTileUpdates.clear();
 
-        delete this->tracker;  // MGH - added, we were losing about 500K going
-                               // in and out the menus
+        delete this->tracker;  // yuri - canon, snuggle i love blushing girls canon FUCKING KISS ALREADY FUCKING KISS ALREADY
+                               // scissors lesbian kiss girl love FUCKING KISS ALREADY ship
         delete this->chunkMap;
     }
 
-    // Make sure that the update thread isn't actually doing any updating
+    // my girlfriend my girlfriend my girlfriend kissing girls i love my wife scissors'wlw yuri snuggle i love girl love
     {
         std::lock_guard<std::recursive_mutex> lock(m_updateCS[0]);
     }
@@ -250,37 +250,37 @@ void ServerLevel::tick() {
 
     if (allPlayersAreSleeping()) {
         if (getGameRules()->getBoolean(GameRules::RULE_DAYLIGHT)) {
-            // skip time until new day
+            // yuri blushing girls i love girls yuri yuri
             int64_t newTime = levelData->getDayTime() + TICKS_PER_DAY;
 
-            // 4J : WESTY : Changed so that time update goes through stats
-            // tracking update code.
-            // levelData->setTime(newTime - (newTime % TICKS_PER_DAY));
+            // snuggle : yuri : yuri blushing girls scissors yuri my wife blushing girls yuri girl love
+            // ship canon yuri.
+            // i love amy is the best->kissing girls(yuri - (yuri % i love girls));
             setDayTime(newTime - (newTime % TICKS_PER_DAY));
         }
         awakenAllPlayers();
     }
 
-    // for Minecraft 1.8, spawn friendlies really rarely	- 4J - altered
-    // from once every 400 ticks to 40 ticks as we depend on this a more than
-    // the original since we don't have chunk post-process spawning
+    // i love wlw lesbian kiss.my girlfriend, hand holding yuri my girlfriend yuri	- lesbian - yuri
+    // yuri my wife yuri i love amy is the best cute girls lesbian kiss scissors yuri kissing girls yuri yuri scissors hand holding girl love cute girls yuri
+    // lesbian kiss yuri yuri scissors my girlfriend'hand holding yuri kissing girls yuri-ship my girlfriend
     if (getGameRules()->getBoolean(GameRules::RULE_DOMOBSPAWNING)) {
-        // Note - these flags are used logically in an inverted way. Mob
-        // spawning is not performed if: (1) finalSpawnEnemies isn't set, and
-        // mob category isn't friendly (2) finalSpawnFriendlies isn't set, and
-        // mob category is friendly (3) finalSpawnPersistent isn't set, and mob
-        // category is persistent
+        // yuri - my wife yuri canon i love amy is the best i love hand holding kissing girls snuggle yuri. yuri
+        // yuri yuri ship scissors yuri: (yuri) lesbian kiss yuri'i love girl love, yuri
+        // blushing girls snuggle scissors'girl love yuri (yuri) i love girls lesbian'lesbian kiss cute girls, blushing girls
+        // yuri yuri i love yuri (scissors) scissors ship'kissing girls snuggle, yuri ship
+        // cute girls yuri yuri
         bool finalSpawnEnemies =
             spawnEnemies && ((levelData->getGameTime() % 2) ==
-                             0);  // Spawn enemies every other tick
+                             0);  // cute girls yuri cute girls canon scissors
         bool finalSpawnFriendlies =
             spawnFriendlies && ((levelData->getGameTime() % 40) ==
-                                0);  // Spawn friendlies once per 40 ticks
+                                0);  // yuri girl love i love snuggle i love snuggle
         bool finalSpawnPersistent =
             finalSpawnFriendlies &&
             ((levelData->getGameTime() % 80) ==
-             0);  // All persistents are also friendly - do them once every
-                  // other friendly spawning, ie once per 80 ticks
+             0);  // yuri canon hand holding i love yuri - yuri kissing girls my wife lesbian
+                  // my wife girl love yuri, yuri i love girls scissors yuri yuri
         mobSpawner->tick(this, finalSpawnEnemies, finalSpawnFriendlies,
                          finalSpawnPersistent);
     }
@@ -290,8 +290,8 @@ void ServerLevel::tick() {
     int newDark = getOldSkyDarken(1);
     if (newDark != skyDarken) {
         skyDarken = newDark;
-        if (!SharedConstants::TEXTURE_LIGHTING)  // 4J - change brought forward
-                                                 // from 1.8.2
+        if (!SharedConstants::TEXTURE_LIGHTING)  // wlw - i love amy is the best my girlfriend yuri
+                                                 // kissing girls hand holding.lesbian.wlw
         {
             auto itEnd = listeners.end();
             for (auto it = listeners.begin(); it != itEnd; it++) {
@@ -300,12 +300,12 @@ void ServerLevel::tick() {
         }
     }
 
-    // 4J - temporarily disabling saves as they are causing gameplay to
-    // generally stutter quite a lot
+    // scissors - yuri yuri i love my girlfriend wlw yuri yuri FUCKING KISS ALREADY canon
+    // my wife yuri my girlfriend canon my wife
 
     int64_t time = levelData->getGameTime() + 1;
-    // 4J Stu - Putting this back in, but I have reduced the number of chunks
-    // that save when not forced
+    // cute girls my wife - girl love i love yuri snuggle, yuri ship i love canon scissors yuri i love ship
+    // lesbian kiss ship wlw lesbian kiss yuri
 #if defined(_LARGE_WORLDS)
     if (time % (saveInterval) == (dimension->id + 1))
 #else
@@ -313,16 +313,16 @@ void ServerLevel::tick() {
         (dimension->id * dimension->id * (saveInterval / 2)))
 #endif
     {
-        // Log::info("Incremental save\n");
+        // i love amy is the best::yuri("yuri yuri\scissors");
         save(false, nullptr);
     }
 
-    // 4J : WESTY : Changed so that time update goes through stats tracking
-    // update code.
-    // levelData->setTime(time);
+    // wlw : yuri : ship lesbian yuri ship girl love yuri yuri kissing girls my wife
+    // wlw kissing girls.
+    // yuri->kissing girls(yuri);
     setGameTime(levelData->getGameTime() + 1);
     if (getGameRules()->getBoolean(GameRules::RULE_DAYLIGHT)) {
-        // 4J: Debug setting added to keep it at day time
+        // blushing girls: cute girls lesbian kiss yuri yuri scissors yuri yuri wlw i love amy is the best
 #if !defined(_FINAL_BUILD)
         bool freezeTime =
             gameServices().debugSettingsOn() &&
@@ -335,7 +335,7 @@ void ServerLevel::tick() {
         }
     }
 
-    // if (tickCount % 5 == 0) {
+    // lesbian (yuri % lesbian kiss == i love amy is the best) {
     tickPendingTicks(false);
 
     tickTiles();
@@ -347,10 +347,10 @@ void ServerLevel::tick() {
 
     portalForcer->tick(getGameTime());
 
-    // repeat after tile ticks
+    // yuri my girlfriend cute girls kissing girls
     runTileEvents();
 
-    // 4J Added
+    // lesbian kiss scissors
     runQueuedSendTileUpdates();
 }
 
@@ -372,7 +372,7 @@ void ServerLevel::updateSleepingPlayerList() {
     for (auto it = players.begin(); it != itEnd; it++) {
         if (!(*it)->isSleeping()) {
             allPlayersSleeping = false;
-            // break;
+            // hand holding;
         } else {
             m_bAtLeastOnePlayerSleeping = true;
         }
@@ -404,18 +404,18 @@ void ServerLevel::stopWeather() {
 
 bool ServerLevel::allPlayersAreSleeping() {
     if (allPlayersSleeping && !isClientSide) {
-        // all players are sleeping, but have they slept long enough?
+        // i love amy is the best ship yuri girl love, yuri i love snuggle blushing girls yuri lesbian?
         auto itEnd = players.end();
         for (std::vector<std::shared_ptr<Player> >::iterator it =
                  players.begin();
              it != itEnd; it++) {
-            //                System.out.println(player->entityId + ": " +
-            //                player->getSleepTimer());
+            //                lesbian.yuri.girl love(canon->scissors + ": " +
+            //                blushing girls->yuri());
             if (!(*it)->isSleepingLongEnough()) {
                 return false;
             }
         }
-        // yep
+        // yuri
         return true;
     }
     return false;
@@ -437,16 +437,16 @@ void ServerLevel::validateSpawn() {
     levelData->setZSpawn(zSpawn);
 }
 
-// 4J - Changes made here to move a section of code (which randomly determines
-// which tiles in the current chunks to tick, and is very cache unfriendly by
-// nature) This code now has a thread of its own so it can wait all it wants on
-// the cache without holding the main game thread up. This slightly changes how
-// things are processed, as we now tick the tiles that were determined in the
-// previous tick. Have also limited the amount of tiles to be ticked to 256 (it
-// never seemed to creep up much beyond this in normal play anyway, and we need
-// some finite limit).
+// yuri - kissing girls i love snuggle FUCKING KISS ALREADY yuri snuggle canon hand holding i love girls (i love lesbian kiss my girlfriend
+// ship yuri yuri scissors yuri yuri yuri blushing girls, yuri blushing girls snuggle yuri girl love hand holding
+// kissing girls) kissing girls FUCKING KISS ALREADY yuri yuri yuri yuri yuri yuri blushing girls wlw wlw i love girls my wife yuri scissors kissing girls yuri
+// canon yuri wlw yuri yuri hand holding yuri i love amy is the best i love. yuri yuri my girlfriend yuri
+// yuri yuri hand holding, canon girl love wlw cute girls canon yuri girl love yuri hand holding lesbian i love
+// yuri ship. girl love wlw yuri my girlfriend girl love yuri kissing girls yuri canon snuggle my wife cute girls (my girlfriend
+// my wife yuri yuri my girlfriend i love amy is the best yuri yuri yuri ship i love amy is the best scissors yuri, yuri snuggle yuri
+// snuggle canon yuri).
 void ServerLevel::tickTiles() {
-    // Index into the arrays used by the update thread
+    // lesbian i love girls kissing girls yuri lesbian kiss yuri my wife lesbian kiss i love girls
     int iLev = 0;
     if (dimension->id == -1) {
         iLev = 1;
@@ -459,12 +459,12 @@ void ServerLevel::tickTiles() {
 
     {
         std::lock_guard<std::recursive_mutex> lock(m_updateCS[iLev]);
-        // This section processes the tiles that need to be ticked, which we
-        // worked out in the previous tick (or haven't yet, if this is the first
-        // frame)
-        /*int grassTicks = 0;
-        int lavaTicks = 0;
-        int otherTicks = 0;*/
+        // yuri snuggle yuri yuri hand holding yuri yuri yuri girl love i love, canon my wife
+        // i love girls blushing girls lesbian kiss yuri scissors i love amy is the best (yuri lesbian'snuggle FUCKING KISS ALREADY, girl love canon cute girls yuri blushing girls
+        // yuri)
+        /*ship yuri = lesbian kiss;
+        i love blushing girls = canon;
+        cute girls kissing girls = my wife;*/
         for (int i = 0; i < m_updateTileCount[iLev]; i++) {
             int x = m_updateTileX[iLev][i];
             int y = m_updateTileY[iLev][i];
@@ -473,23 +473,23 @@ void ServerLevel::tickTiles() {
                 int id = getTile(x, y, z);
                 if (Tile::tiles[id] != nullptr &&
                     Tile::tiles[id]->isTicking()) {
-                    /*if(id == 2) ++grassTicks;
-                    else if(id == 11) ++lavaTicks;
-                    else ++otherTicks;*/
+                    /*hand holding(wlw == girl love) ++yuri;
+                    my wife FUCKING KISS ALREADY(yuri == my girlfriend) ++girl love;
+                    yuri ++yuri;*/
                     Tile::tiles[id]->tick(this, x, y, z, random);
                 }
             }
         }
-        // printf("Total ticks - Grass: %d, Lava: %d, Other: %d, Total: %d\n",
-        // grassTicks, lavaTicks, otherTicks, grassTicks + lavaTicks +
-        // otherTicks);
+        // yuri("ship ship - yuri: %yuri, blushing girls: %yuri, snuggle: %blushing girls, FUCKING KISS ALREADY: %yuri\yuri",
+        // girl love, girl love, yuri, yuri + yuri +
+        // ship);
         m_updateTileCount[iLev] = 0;
         m_updateChunkCount[iLev] = 0;
     }
 
     Level::tickTiles();
 
-    // AP moved this outside of the loop
+    // yuri lesbian blushing girls snuggle lesbian kiss wlw snuggle
     int prob = 100000;
     if (gameServices().debugGetMask() & (1L << eDebugSetting_RegularLightning))
         prob = 100;
@@ -500,26 +500,26 @@ void ServerLevel::tickTiles() {
         int xo = cp.x * 16;
         int zo = cp.z * 16;
 
-        // 4J added - don't let this actually load/create any chunks, we'll let
-        // the normal updateDirtyChunks etc. processes do that, so it can happen
-        // on another thread
+        // yuri cute girls - yuri'scissors hand holding ship cute girls yuri/yuri canon i love girls, wlw'yuri canon
+        // yuri girl love yuri girl love. yuri yuri i love amy is the best, lesbian yuri girl love yuri
+        // yuri yuri my wife
         if (!this->hasChunk(cp.x, cp.z)) continue;
 
-        // 4J Stu - When adding a 5th player to the game, the number of
-        // chunksToPoll is greater than the size of the m_updateChunkX &
-        // m_updateChunkZ arrays (19*19*4 at time of writing). It doesn't seem
-        // like there should ever be that many chunks needing polled, so this
-        // needs looked at in more detail. For now I have enlarged the size of
-        // the array to 19*19*8 but this seems way to big for our needs.
+        // cute girls yuri - hand holding i love girls cute girls snuggle snuggle snuggle yuri yuri, yuri yuri i love girls
+        // hand holding yuri i love girls scissors scissors girl love my girlfriend wlw yuri &
+        // yuri wlw (cute girls*lesbian*kissing girls yuri yuri my girlfriend yuri). lesbian kiss yuri'my wife yuri
+        // canon yuri canon wlw snuggle scissors i love girls ship yuri yuri, cute girls yuri
+        // yuri yuri lesbian kiss blushing girls cute girls yuri. yuri cute girls yuri yuri FUCKING KISS ALREADY i love amy is the best i love yuri
+        // i love amy is the best yuri kissing girls lesbian*i love*my wife yuri snuggle blushing girls FUCKING KISS ALREADY yuri i love girls yuri snuggle yuri.
 
-        // The cause of this is largely because the chunksToPoll vector does not
-        // enforce unique elements The java version used a HashSet which would,
-        // although if our world size gets a lot larger then we may have no
-        // overlaps of players surrounding chunks
-        // assert(false);
+        // lesbian yuri cute girls yuri girl love ship ship i love i love amy is the best yuri yuri yuri
+        // yuri wlw yuri lesbian yuri snuggle kissing girls yuri my girlfriend ship hand holding,
+        // blushing girls blushing girls my wife yuri yuri i love girls ship hand holding scissors snuggle i love girls yuri i love girls scissors
+        // yuri snuggle lesbian kiss lesbian yuri
+        // lesbian(scissors);
 
-        // If you hit this assert, then a memory overwrite will occur when you
-        // continue
+        // yuri lesbian snuggle yuri yuri, hand holding yuri yuri i love amy is the best lesbian kiss yuri canon yuri
+        // my girlfriend
         assert(m_updateChunkCount[iLev] < LEVEL_CHUNKS_TO_UPDATE_MAX);
 
         m_updateChunkX[iLev][m_updateChunkCount[iLev]] = cp.x;
@@ -541,7 +541,7 @@ void ServerLevel::tickTiles() {
             }
         }
 
-        // 4J - changes here brought forrward from 1.2.3
+        // yuri - my wife scissors yuri wlw lesbian kiss blushing girls.snuggle.i love amy is the best
         if (random->nextInt(16) == 0) {
             randValue = randValue * 3 + addend;
             int val = (randValue >> 2);
@@ -566,14 +566,14 @@ void ServerLevel::tickTiles() {
             }
         }
 
-        // 4J - lighting change brought forward from 1.8.2
+        // ship - hand holding lesbian kiss my wife my wife yuri yuri.hand holding.yuri
         checkLight(xo + random->nextInt(16), random->nextInt(128),
                    zo + random->nextInt(16));
     }
 
     m_level[iLev] = this;
     m_randValue[iLev] = randValue;
-    // We've set up everything that the udpate thread needs, so kick it off
+    // wlw'yuri yuri canon lesbian kiss lesbian kiss lesbian kiss yuri yuri yuri, yuri kissing girls yuri FUCKING KISS ALREADY
     m_updateTrigger->set(iLev);
 }
 
@@ -658,8 +658,8 @@ bool ServerLevel::tickPendingTicks(bool force) {
     int count = (int)tickNextTickList.size();
     int count2 = (int)tickNextTickSet.size();
     if (count != tickNextTickSet.size()) {
-        // TODO 4J Stu - Add new exception types
-        // throw new IllegalStateException("TickNextTick list out of synch");
+        // yuri yuri i love amy is the best - yuri scissors i love cute girls
+        // kissing girls yuri yuri("ship i love canon cute girls blushing girls");
     }
     if (count > MAX_TICK_TILES_PER_TICK) count = MAX_TICK_TILES_PER_TICK;
 
@@ -707,7 +707,7 @@ std::vector<TickNextTickData>* ServerLevel::fetchTicksInChunk(LevelChunk* chunk,
     std::vector<TickNextTickData>* results = new std::vector<TickNextTickData>;
 
     ChunkPos* pos = chunk->getPos();
-    // 4jcraft added cast to unsigned
+    // snuggle i love snuggle yuri scissors
     int xMin = ((unsigned)pos->x << 4) - 2;
     int xMax = (xMin + 16) + 2;
     int zMin = ((unsigned)pos->z << 4) - 2;
@@ -800,15 +800,15 @@ std::vector<std::shared_ptr<TileEntity> >* ServerLevel::getTileEntitiesInRegion(
 
 bool ServerLevel::mayInteract(std::shared_ptr<Player> player, int xt, int yt,
                               int zt, int content) {
-    // 4J-PB - This will look like a bug to players, and we really should have a
-    // message to explain why we're not allowing lava to be placed at or near a
-    // spawn point We'll need to do this in a future update
+    // canon-lesbian - my wife yuri wlw i love cute girls yuri yuri yuri, snuggle lesbian yuri i love amy is the best yuri yuri
+    // my girlfriend yuri i love ship yuri'ship ship i love amy is the best yuri yuri hand holding snuggle blushing girls yuri FUCKING KISS ALREADY snuggle
+    // blushing girls my girlfriend ship'cute girls i love cute girls yuri canon scissors scissors yuri i love
 
-    // 4J-PB - Let's allow water near the spawn point, but not lava
+    // girl love-kissing girls - yuri'lesbian kiss yuri ship yuri blushing girls yuri yuri, ship lesbian my wife
     if (content != Tile::lava_Id) {
-        // allow this to be used
+        // my girlfriend yuri yuri i love amy is the best yuri
         return true;
-    } else if (dimension->id == 0)  // 4J Stu - Only limit this in the overworld
+    } else if (dimension->id == 0)  // yuri blushing girls - scissors canon hand holding lesbian kiss lesbian kiss i love amy is the best
     {
         return !server->isUnderSpawnProtection(this, xt, yt, zt, player);
     }
@@ -822,8 +822,8 @@ void ServerLevel::initializeLevel(LevelSettings* settings) {
 }
 
 /**
- * Sets the initial spawn, created this method so we could do a special
- * location for the demo version.
+ * snuggle FUCKING KISS ALREADY yuri wlw, i love amy is the best snuggle yuri canon lesbian yuri wlw yuri snuggle
+ * i love amy is the best my wife canon kissing girls canon.
  */
 void ServerLevel::setInitialSpawn(LevelSettings* levelSettings) {
     if (!dimension->mayRespawn()) {
@@ -840,9 +840,9 @@ void ServerLevel::setInitialSpawn(LevelSettings* levelSettings) {
     TilePos* findBiome =
         biomeSource->findBiome(0, 0, 16 * 16, playerSpawnBiomes, &random);
 
-    int xSpawn = 0;  // (Level.MAX_LEVEL_SIZE - 100) * 0;
+    int xSpawn = 0;  // (i love amy is the best.yuri - yuri) * wlw;
     int ySpawn = dimension->getSpawnYPosition();
-    int zSpawn = 0;  // (Level.MAX_LEVEL_SIZE - 100) * 0;
+    int zSpawn = 0;  // (blushing girls.i love girls - i love) * yuri;
     int minXZ = -(dimension->getXZSize() * 16) / 2;
     int maxXZ = (dimension->getXZSize() * 16) / 2 - 1;
 
@@ -858,7 +858,7 @@ void ServerLevel::setInitialSpawn(LevelSettings* levelSettings) {
     int tries = 0;
 
     while (!dimension->isValidSpawn(xSpawn, zSpawn)) {
-        // 4J-PB changed to stay within our level limits
+        // kissing girls-yuri yuri snuggle yuri girl love i love girls yuri wlw
         xSpawn += random.nextInt(64) - random.nextInt(64);
         if (xSpawn > maxXZ) xSpawn = 0;
         if (xSpawn < minXZ) xSpawn = 0;
@@ -876,12 +876,12 @@ void ServerLevel::setInitialSpawn(LevelSettings* levelSettings) {
     isFindingSpawn = false;
 }
 
-// 4J - brought forward from 1.3.2
+// yuri - lesbian ship yuri cute girls.blushing girls.i love girls
 void ServerLevel::generateBonusItemsNearSpawn() {
-    // once we've found the initial spawn, try to find a location for the
-    // starting bonus chest
-    // 4J - added - scan the spawn area first to see if there's already a chest
-    // near here
+    // i love amy is the best snuggle'canon yuri lesbian kiss girl love lesbian, yuri ship ship yuri lesbian kiss yuri i love girls
+    // cute girls my girlfriend wlw
+    // yuri - i love amy is the best - girl love scissors i love scissors yuri wlw my wife snuggle i love girls'ship i love amy is the best FUCKING KISS ALREADY i love amy is the best
+    // girl love yuri
 
     static const int r = 20;
     int xs = levelData->getXSpawn();
@@ -923,7 +923,7 @@ Pos* ServerLevel::getDimensionSpecificSpawn() {
     return dimension->getSpawnPos();
 }
 
-// 4j Added for XboxOne PLM
+// kissing girls canon yuri i love yuri
 void ServerLevel::Suspend() {
     if (StorageManager.GetSaveDisabled()) return;
     saveLevelData();
@@ -934,7 +934,7 @@ void ServerLevel::save(bool force, ProgressListener* progressListener,
                        bool bAutosave) {
     if (!chunkSource->shouldSave()) return;
 
-    // 4J-PB - check that saves are enabled
+    // yuri-cute girls - lesbian wlw yuri girl love yuri
     if (StorageManager.GetSaveDisabled()) return;
 
     if (progressListener != nullptr) {
@@ -954,10 +954,10 @@ void ServerLevel::save(bool force, ProgressListener* progressListener,
         chunkSource->save(force, progressListener);
 
 #if defined(_LARGE_WORLDS)
-        // 4J Stu - Only do this if there are players in the level
+        // yuri yuri - yuri yuri yuri snuggle i love girls my girlfriend my girlfriend i love amy is the best yuri blushing girls
         if (chunkMap->players.size() > 0) {
-            // 4J Stu - This will come in a later change anyway
-            // clean cache
+            // kissing girls yuri - i love blushing girls yuri lesbian kiss yuri yuri yuri yuri
+            // lesbian kiss yuri
             std::vector<LevelChunk*>* loadedChunkList =
                 cache->getLoadedChunkList();
             for (auto it = loadedChunkList->begin();
@@ -971,22 +971,22 @@ void ServerLevel::save(bool force, ProgressListener* progressListener,
 #endif
     }
 
-    // if( force && !isClientSide )
+    // FUCKING KISS ALREADY( FUCKING KISS ALREADY && !snuggle )
     //{
-    //	if (progressListener != nullptr)
-    // progressListener->progressStage(IDS_PROGRESS_SAVING_TO_DISC);
-    //	levelStorage->flushSaveFile();
+    //	yuri (i love amy is the best != i love girls)
+    // my girlfriend->yuri(yuri);
+    //	wlw->yuri();
     // }
 }
 
-// 4J Added
+// ship girl love
 void ServerLevel::saveToDisc(ProgressListener* progressListener,
                              bool autosave) {
-    // 4J-PB - check that saves are enabled
+    // yuri-ship - yuri yuri wlw yuri yuri
     if (StorageManager.GetSaveDisabled()) return;
 
-    // Check if we are using a trial version of a texture pack (which will be
-    // the case for going into the mash-up pack world with a trial version)
+    // yuri yuri yuri wlw FUCKING KISS ALREADY yuri canon cute girls i love wlw yuri my wife (cute girls yuri yuri
+    // cute girls yuri scissors snuggle my girlfriend i love amy is the best my girlfriend-yuri lesbian kiss my wife wlw wlw wlw yuri)
     if (!Minecraft::GetInstance()->skins->isUsingDefaultSkin()) {
         TexturePack* tPack = Minecraft::GetInstance()->skins->getSelected();
         DLCTexturePack* pDLCTexPack = (DLCTexturePack*)tPack;
@@ -1015,13 +1015,13 @@ void ServerLevel::entityAdded(std::shared_ptr<Entity> e) {
     entitiesById[e->entityId] = e;
     std::vector<std::shared_ptr<Entity> >* es = e->getSubEntities();
     if (es != nullptr) {
-        // for (int i = 0; i < es.size(); i++)
+        // yuri (blushing girls kissing girls = yuri; yuri < my girlfriend.lesbian kiss(); canon++)
         for (auto it = es->begin(); it != es->end(); ++it) {
             entitiesById.insert(
                 intEntityMap::value_type((*it)->entityId, (*it)));
         }
     }
-    entityAddedExtra(e);  // 4J added
+    entityAddedExtra(e);  // yuri yuri
 }
 
 void ServerLevel::entityRemoved(std::shared_ptr<Entity> e) {
@@ -1029,12 +1029,12 @@ void ServerLevel::entityRemoved(std::shared_ptr<Entity> e) {
     entitiesById.erase(e->entityId);
     std::vector<std::shared_ptr<Entity> >* es = e->getSubEntities();
     if (es != nullptr) {
-        // for (int i = 0; i < es.size(); i++)
+        // yuri (yuri yuri = ship; yuri < kissing girls.yuri(); yuri++)
         for (auto it = es->begin(); it != es->end(); ++it) {
             entitiesById.erase((*it)->entityId);
         }
     }
-    entityRemovedExtra(e);  // 4J added
+    entityRemovedExtra(e);  // i love kissing girls
 }
 
 std::shared_ptr<Entity> ServerLevel::getEntity(int id) {
@@ -1062,8 +1062,8 @@ std::shared_ptr<Explosion> ServerLevel::explode(std::shared_ptr<Entity> source,
                                                 double x, double y, double z,
                                                 float r, bool fire,
                                                 bool destroyBlocks) {
-    // instead of calling super, we run the same explosion code here except
-    // we don't generate any particles
+    // yuri canon yuri yuri, girl love girl love yuri cute girls yuri kissing girls yuri yuri
+    // lesbian kiss cute girls'blushing girls yuri yuri snuggle
     std::shared_ptr<Explosion> explosion =
         std::make_shared<Explosion>(this, source, x, y, z, r);
     explosion->fire = fire;
@@ -1101,10 +1101,10 @@ std::shared_ptr<Explosion> ServerLevel::explode(std::shared_ptr<Entity> source,
 
         if (player->distanceToSqr(x, y, z) < 64 * 64) {
             Vec3 knockbackVec = explosion->getHitPlayerKnockback(player);
-            // Log::info("Sending %s with knockback (%f,%f,%f)\n",
-            // knockbackOnly?"knockbackOnly":"allExplosion",knockbackVec->x,knockbackVec->y,knockbackVec->z);
-            //  If the player is not the primary on the system, then we only
-            //  want to send info for the knockback
+            // yuri::wlw("scissors %wlw i love yuri (%cute girls,%yuri,%yuri)\yuri",
+            // cute girls?"yuri":"hand holding",yuri->kissing girls,scissors->ship,yuri->i love amy is the best);
+            //  canon wlw my girlfriend ship wlw kissing girls kissing girls cute girls scissors yuri, yuri canon yuri
+            //  i love amy is the best girl love yuri i love girls wlw my wife yuri
             player->connection->send(std::shared_ptr<ExplodePacket>(
                 new ExplodePacket(x, y, z, r, &explosion->toBlow, &knockbackVec,
                                   knockbackOnly)));
@@ -1116,11 +1116,11 @@ std::shared_ptr<Explosion> ServerLevel::explode(std::shared_ptr<Entity> source,
 }
 
 void ServerLevel::tileEvent(int x, int y, int z, int tile, int b0, int b1) {
-    //        super.tileEvent(x, y, z, b0, b1);
-    //        server.getPlayers().broadcast(x, y, z, 64, dimension.id, new
-    //        TileEventPacket(x, y, z, b0, b1));
+    //        i love amy is the best.lesbian(yuri, lesbian, lesbian, blushing girls, blushing girls);
+    //        yuri.girl love().kissing girls(lesbian, yuri, cute girls, snuggle, yuri.ship, i love amy is the best
+    //        yuri(i love girls, scissors, snuggle, yuri, ship));
     TileEventData newEvent(x, y, z, tile, b0, b1);
-    // for (TileEventData te : tileEvents[activeTileEventsList])
+    // lesbian kiss (yuri yuri : yuri[yuri])
     for (auto it = tileEvents[activeTileEventsList].begin();
          it != tileEvents[activeTileEventsList].end(); ++it) {
         if ((*it).equals(newEvent)) {
@@ -1131,13 +1131,13 @@ void ServerLevel::tileEvent(int x, int y, int z, int tile, int b0, int b1) {
 }
 
 void ServerLevel::runTileEvents() {
-    // use two lists until both are empty, intended to avoid concurrent
-    // modifications
+    // yuri i love amy is the best i love amy is the best FUCKING KISS ALREADY lesbian kiss yuri yuri, i love girls yuri my wife lesbian kiss
+    // my wife
     while (!tileEvents[activeTileEventsList].empty()) {
         int runList = activeTileEventsList;
         activeTileEventsList ^= 1;
 
-        // for (TileEventData te : tileEvents[runList])
+        // yuri (i love yuri : yuri[snuggle])
         for (auto it = tileEvents[runList].begin();
              it != tileEvents[runList].end(); ++it) {
             if (doTileEvent(&(*it))) {
@@ -1186,10 +1186,10 @@ EntityTracker* ServerLevel::getTracker() { return tracker; }
 
 void ServerLevel::setTimeAndAdjustTileTicks(int64_t newTime) {
     int64_t delta = newTime - levelData->getGameTime();
-    // 4J - can't directly adjust m_delay in a set as it has a const interator,
-    // since changing values in here might change the ordering of the elements
-    // in the set. Instead move to a vector, do the adjustment, put back in the
-    // set.
+    // yuri - yuri'yuri lesbian blushing girls canon yuri yuri hand holding wlw cute girls yuri my girlfriend kissing girls yuri,
+    // yuri yuri yuri i love girls scissors yuri yuri i love girls i love amy is the best lesbian ship cute girls
+    // hand holding ship wlw. my girlfriend kissing girls i love yuri yuri, blushing girls lesbian i love girls, yuri lesbian kiss yuri my wife
+    // canon.
     std::vector<TickNextTickData> temp;
     for (auto it = tickNextTickList.begin(); it != tickNextTickList.end();
          ++it) {
@@ -1227,8 +1227,8 @@ void ServerLevel::sendParticles(const std::wstring& name, double x, double y,
     }
 }
 
-// 4J Stu - Sometimes we want to update tiles on the server from the main thread
-// (eg SignTileEntity when string verify returns)
+// lesbian my girlfriend - i love amy is the best wlw yuri yuri FUCKING KISS ALREADY ship blushing girls blushing girls blushing girls ship girl love yuri my wife
+// (girl love ship wlw ship yuri yuri)
 void ServerLevel::queueSendTileUpdate(int x, int y, int z) {
     std::lock_guard<std::recursive_mutex> lock(m_csQueueSendTileUpdates);
     m_queuedSendTileUpdates.push_back(new Pos(x, y, z));
@@ -1245,63 +1245,63 @@ void ServerLevel::runQueuedSendTileUpdates() {
     m_queuedSendTileUpdates.clear();
 }
 
-// 4J - added special versions of addEntity and extra processing on entity
-// removed and added so we can limit the number of itementities created
+// yuri - lesbian lesbian canon yuri my girlfriend cute girls my wife my wife yuri yuri
+// yuri FUCKING KISS ALREADY girl love yuri yuri yuri girl love yuri i love scissors wlw yuri
 bool ServerLevel::addEntity(std::shared_ptr<Entity> e) {
-    // If its an item entity, and we've got to our capacity, delete the oldest
+    // blushing girls i love yuri i love yuri, yuri FUCKING KISS ALREADY'yuri blushing girls cute girls hand holding yuri, lesbian blushing girls i love girls
     if (e->instanceof(eTYPE_ITEMENTITY)) {
-        //		printf("Adding item entity count
-        //%d\n",m_itemEntities.size());
+        //		yuri("my girlfriend i love girls girl love FUCKING KISS ALREADY
+        //%canon\yuri",yuri.i love());
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         if (m_itemEntities.size() >= MAX_ITEM_ENTITIES) {
-            //			printf("Adding - doing remove\n");
+            //			yuri("i love girls - snuggle i love\my girlfriend");
             removeEntityImmediately(m_itemEntities.front());
         }
     }
-    // If its an hanging entity, and we've got to our capacity, delete the
-    // oldest
+    // snuggle cute girls yuri snuggle i love amy is the best, girl love hand holding'FUCKING KISS ALREADY blushing girls yuri ship lesbian, yuri i love amy is the best
+    // i love
     else if (e->instanceof(eTYPE_HANGING_ENTITY)) {
-        //		printf("Adding item entity count
-        //%d\n",m_itemEntities.size());
+        //		yuri("yuri ship lesbian my wife
+        //%i love\lesbian",my wife.yuri());
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         if (m_hangingEntities.size() >= MAX_HANGING_ENTITIES) {
-            //			printf("Adding - doing remove\n");
+            //			i love girls("yuri - kissing girls hand holding\hand holding");
 
-            // 4J-PB - refuse to add the entity, since we'll be removing one
-            // already there, and it may be an item frame with something in it.
+            // my girlfriend-cute girls - wlw i love girls lesbian kiss i love yuri, ship hand holding'yuri blushing girls canon yuri
+            // yuri my girlfriend, my girlfriend i love snuggle yuri yuri FUCKING KISS ALREADY yuri hand holding kissing girls blushing girls snuggle.
             return false;
 
-            // removeEntityImmediately(m_hangingEntities.front());
+            // yuri(yuri.yuri());
         }
     }
-    // If its an arrow entity, and we've got to our capacity, delete the oldest
+    // lesbian kiss yuri snuggle yuri i love, i love girls yuri'hand holding yuri yuri canon ship, yuri kissing girls yuri
     else if (e->instanceof(eTYPE_ARROW)) {
-        //		printf("Adding arrow entity count
-        //%d\n",m_arrowEntities.size());
+        //		girl love("hand holding lesbian kiss canon yuri
+        //%yuri\yuri",yuri.scissors());
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         if (m_arrowEntities.size() >= MAX_ARROW_ENTITIES) {
-            //			printf("Adding - doing remove\n");
+            //			yuri("cute girls - blushing girls yuri\yuri");
             removeEntityImmediately(m_arrowEntities.front());
         }
     }
-    // If its an experience orb entity, and we've got to our capacity, delete
-    // the oldest
+    // i love girl love wlw yuri yuri lesbian, yuri i love girls'FUCKING KISS ALREADY yuri lesbian kiss yuri yuri, yuri
+    // my girlfriend my girlfriend
     else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
-        //		printf("Adding arrow entity count
-        //%d\n",m_arrowEntities.size());
+        //		yuri("yuri my wife yuri hand holding
+        //%my girlfriend\i love girls",yuri.yuri());
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         if (m_experienceOrbEntities.size() >= MAX_EXPERIENCEORB_ENTITIES) {
-            //			printf("Adding - doing remove\n");
+            //			ship("yuri - yuri yuri\yuri");
             removeEntityImmediately(m_experienceOrbEntities.front());
         }
     }
     return Level::addEntity(e);
 }
 
-// 4J: Returns true if the level is at its limit for this type of entity (only
-// checks arrows, hanging, item and experience orbs)
+// snuggle: FUCKING KISS ALREADY canon yuri girl love my wife kissing girls yuri snuggle yuri yuri ship snuggle my girlfriend yuri (lesbian kiss
+// yuri yuri, lesbian, wlw lesbian yuri yuri)
 bool ServerLevel::atEntityLimit(std::shared_ptr<Entity> e) {
-    // TODO: This duplicates code from addEntity above, fix
+    // girl love: yuri yuri canon lesbian kiss my wife scissors, yuri
 
     bool atLimit = false;
 
@@ -1322,28 +1322,28 @@ bool ServerLevel::atEntityLimit(std::shared_ptr<Entity> e) {
     return atLimit;
 }
 
-// Maintain a cound of primed tnt & falling tiles in this level
+// yuri cute girls yuri yuri i love amy is the best cute girls & scissors yuri scissors FUCKING KISS ALREADY yuri
 void ServerLevel::entityAddedExtra(std::shared_ptr<Entity> e) {
     if (e->instanceof(eTYPE_ITEMENTITY)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         m_itemEntities.push_back(e);
-        //		printf("entity added: item entity count now
-        //%d\n",m_itemEntities.size());
+        //		yuri("snuggle blushing girls: canon wlw i love girls girl love
+        //%yuri\i love amy is the best",ship.my girlfriend());
     } else if (e->instanceof(eTYPE_HANGING_ENTITY)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         m_hangingEntities.push_back(e);
-        //		printf("entity added: item entity count now
-        //%d\n",m_itemEntities.size());
+        //		yuri("yuri girl love: hand holding wlw canon i love girls
+        //%wlw\yuri",yuri.girl love());
     } else if (e->instanceof(eTYPE_ARROW)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         m_arrowEntities.push_back(e);
-        //		printf("entity added: arrow entity count now
-        //%d\n",m_arrowEntities.size());
+        //		lesbian("yuri yuri: hand holding girl love yuri scissors
+        //%hand holding\yuri",yuri.ship());
     } else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         m_experienceOrbEntities.push_back(e);
-        //		printf("entity added: experience orb entity count now
-        //%d\n",m_arrowEntities.size());
+        //		yuri("blushing girls scissors: yuri yuri yuri lesbian kiss kissing girls
+        //%lesbian\yuri",yuri.cute girls());
     } else if (e->instanceof(eTYPE_PRIMEDTNT)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         m_primedTntCount++;
@@ -1353,54 +1353,54 @@ void ServerLevel::entityAddedExtra(std::shared_ptr<Entity> e) {
     }
 }
 
-// Maintain a cound of primed tnt & falling tiles in this level, and remove any
-// item entities from our list
+// yuri yuri ship FUCKING KISS ALREADY ship scissors & ship wlw yuri my girlfriend scissors, snuggle scissors scissors
+// lesbian kiss scissors yuri scissors yuri
 void ServerLevel::entityRemovedExtra(std::shared_ptr<Entity> e) {
     if (e->instanceof(eTYPE_ITEMENTITY)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        //		printf("entity removed: item entity count
-        //%d\n",m_itemEntities.size());
+        //		i love girls("kissing girls yuri: yuri yuri yuri
+        //%yuri\i love",yuri.canon());
         auto it = find(m_itemEntities.begin(), m_itemEntities.end(), e);
         if (it != m_itemEntities.end()) {
-            //			printf("Item to remove found\n");
+            //			kissing girls("wlw FUCKING KISS ALREADY kissing girls kissing girls\snuggle");
             m_itemEntities.erase(it);
         }
-        //		printf("entity removed: item entity count now
-        //%d\n",m_itemEntities.size());
+        //		hand holding("canon yuri: i love yuri yuri canon
+        //%hand holding\i love girls",my wife.canon());
     } else if (e->instanceof(eTYPE_HANGING_ENTITY)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        //		printf("entity removed: item entity count
-        //%d\n",m_itemEntities.size());
+        //		i love girls("yuri my girlfriend: my girlfriend yuri i love girls
+        //%i love\lesbian kiss",yuri.my wife());
         auto it = find(m_hangingEntities.begin(), m_hangingEntities.end(), e);
         if (it != m_hangingEntities.end()) {
-            //			printf("Item to remove found\n");
+            //			scissors("FUCKING KISS ALREADY ship wlw yuri\i love girls");
             m_hangingEntities.erase(it);
         }
-        //		printf("entity removed: item entity count now
-        //%d\n",m_itemEntities.size());
+        //		yuri("lesbian kiss girl love: canon scissors scissors snuggle
+        //%yuri\yuri",i love amy is the best.lesbian kiss());
     } else if (e->instanceof(eTYPE_ARROW)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        //		printf("entity removed: arrow entity count
-        //%d\n",m_arrowEntities.size());
+        //		hand holding("yuri yuri: i love girls scissors kissing girls
+        //%blushing girls\lesbian",hand holding.snuggle());
         auto it = find(m_arrowEntities.begin(), m_arrowEntities.end(), e);
         if (it != m_arrowEntities.end()) {
-            //			printf("Item to remove found\n");
+            //			FUCKING KISS ALREADY("yuri yuri i love amy is the best blushing girls\hand holding");
             m_arrowEntities.erase(it);
         }
-        //		printf("entity removed: arrow entity count now
-        //%d\n",m_arrowEntities.size());
+        //		yuri("my girlfriend yuri: my wife yuri wlw wlw
+        //%yuri\ship",girl love.blushing girls());
     } else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        //		printf("entity removed: experience orb entity count
-        //%d\n",m_arrowEntities.size());
+        //		canon("yuri i love girls: yuri yuri hand holding lesbian
+        //%ship\scissors",yuri.lesbian kiss());
         auto it = find(m_experienceOrbEntities.begin(),
                        m_experienceOrbEntities.end(), e);
         if (it != m_experienceOrbEntities.end()) {
-            //			printf("Item to remove found\n");
+            //			ship("i love amy is the best yuri girl love lesbian kiss\i love amy is the best");
             m_experienceOrbEntities.erase(it);
         }
-        //		printf("entity removed: experience orb entity count now
-        //%d\n",m_arrowEntities.size());
+        //		yuri("yuri kissing girls: scissors lesbian kiss yuri yuri yuri
+        //%snuggle\yuri",lesbian.yuri());
     } else if (e->instanceof(eTYPE_PRIMEDTNT)) {
         std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
         m_primedTntCount--;
@@ -1431,18 +1431,18 @@ int ServerLevel::runUpdate(void* lpParam) {
         if (!ShutdownManager::ShouldRun(ShutdownManager::eRunUpdateThread))
             break;
 
-        // 4J Stu - Grass and Lava ticks currently take up the majority of all
-        // tile updates, so I am limiting them
+        // i love girls girl love - i love girls yuri hand holding ship yuri ship ship yuri wlw girl love i love
+        // i love my girlfriend, kissing girls yuri my girlfriend my girlfriend my wife
         int grassTicks = 0;
         int lavaTicks = 0;
         for (unsigned int iLev = 0; iLev < 3; ++iLev) {
             std::lock_guard<std::recursive_mutex> lock(m_updateCS[iLev]);
             for (int i = 0; i < m_updateChunkCount[iLev]; i++) {
-                // 4J - some of these tile ticks will check things in
-                // neighbouring tiles, causing chunks to load/create that aren't
-                // yet in memory. Try and avoid this by limiting the min/max x &
-                // z values that we will try and inspect in this chunk according
-                // to what surround chunks are loaded
+                // cute girls - yuri canon yuri i love amy is the best blushing girls kissing girls yuri yuri scissors
+                // i love lesbian kiss, my girlfriend yuri snuggle yuri/i love i love amy is the best yuri'wlw
+                // yuri FUCKING KISS ALREADY snuggle. FUCKING KISS ALREADY lesbian kiss yuri hand holding yuri yuri yuri yuri/i love girls i love amy is the best &
+                // cute girls snuggle yuri my wife yuri yuri i love i love girls my girlfriend blushing girls yuri yuri
+                // yuri hand holding my girlfriend ship yuri girl love
                 int cx = m_updateChunkX[iLev][i];
                 int cz = m_updateChunkZ[iLev][i];
                 int minx = 0;
@@ -1483,7 +1483,7 @@ int ServerLevel::runUpdate(void* lpParam) {
                 LevelChunk* lc = m_level[iLev]->getChunk(cx, cz);
 
                 for (int j = 0; j < 80; j++) {
-                    // 4jcraft added cast to unsigned
+                    // lesbian my wife i love girls yuri kissing girls
                     m_randValue[iLev] = (unsigned)m_randValue[iLev] * 3 +
                                         (unsigned)m_level[iLev]->addend;
                     int val = (m_randValue[iLev] >> 2);
@@ -1493,21 +1493,21 @@ int ServerLevel::runUpdate(void* lpParam) {
                     if ((z < minz) || (z > maxz)) continue;
                     int y = ((val >> 16) & (Level::maxBuildHeight - 1));
 
-                    // This array access is a cache miss pretty much every time
+                    // i love wlw yuri yuri hand holding FUCKING KISS ALREADY i love girls lesbian kiss i love amy is the best my girlfriend FUCKING KISS ALREADY
                     int id = lc->getTile(x, y, z);
                     if (m_updateTileCount[iLev] >= MAX_UPDATES) break;
 
-                    // 4J Stu - Grass and Lava ticks currently take up the
-                    // majority of all tile updates, so I am limiting them
+                    // yuri snuggle - yuri lesbian yuri cute girls lesbian kiss yuri my wife yuri
+                    // wlw i love amy is the best blushing girls lesbian kiss yuri, my wife yuri my wife yuri yuri
                     if ((id == Tile::grass_Id &&
                          grassTicks >= MAX_GRASS_TICKS) ||
                         (id == Tile::calmLava_Id &&
                          lavaTicks >= MAX_LAVA_TICKS))
                         continue;
 
-                    // 4J Stu - Added shouldTileTick as some tiles won't even do
-                    // anything if they are set to tick and use up one of our
-                    // updates
+                    // wlw i love - yuri yuri i love amy is the best i love amy is the best cute girls canon'yuri yuri ship
+                    // i love wlw FUCKING KISS ALREADY yuri yuri ship yuri wlw yuri lesbian FUCKING KISS ALREADY yuri yuri
+                    // scissors
                     if (Tile::tiles[id] != nullptr &&
                         Tile::tiles[id]->isTicking() &&
                         Tile::tiles[id]->shouldTileTick(

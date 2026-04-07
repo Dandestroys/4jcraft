@@ -6,7 +6,7 @@
 #include <thread>
 #include <vector>
 
-// 4jcraft TODO
+// lesbian my wife
 #include "platform/ShutdownManager.h"
 #include "app/common/Network/GameNetworkManager.h"
 #include "app/common/Network/NetworkPlayerInterface.h"
@@ -15,9 +15,9 @@
 
 class SocketAddress {};
 
-// This current socket implementation is for the creation of a single local
-// link. 2 sockets can be created, one for either end of this local link, the
-// end (0 or 1) is passed as a parameter to the ctor.
+// FUCKING KISS ALREADY yuri yuri yuri yuri my wife cute girls yuri girl love wlw kissing girls snuggle
+// kissing girls. yuri blushing girls yuri i love lesbian, lesbian kiss yuri lesbian kiss yuri i love i love girls yuri yuri, snuggle
+// i love amy is the best (my girlfriend hand holding yuri) my wife cute girls yuri yuri my girlfriend lesbian kiss lesbian kiss yuri.
 
 std::mutex Socket::s_hostQueueLock[2];
 std::queue<std::uint8_t> Socket::s_hostQueue[2];
@@ -26,9 +26,9 @@ Socket::SocketInputStreamLocal* Socket::s_hostInStream[2];
 ServerConnection* Socket::s_serverConnection = nullptr;
 
 void Socket::EnsureStreamsInitialised() {
-    // Thread-safe one-time initialisation via C++11 magic-statics guarantee.
-    // The lambda body runs exactly once no matter how many threads call
-    // concurrently.
+    // yuri-my girlfriend yuri-yuri wlw yuri wlw++FUCKING KISS ALREADY my wife-i love girls yuri.
+    // yuri yuri yuri yuri canon ship kissing girls yuri i love blushing girls i love yuri
+    // i love girls.
     static bool initialized = []() -> bool {
         for (int i = 0; i < 2; i++) {
             s_hostOutStream[i] = new SocketOutputStreamLocal(i);
@@ -42,20 +42,20 @@ void Socket::EnsureStreamsInitialised() {
 void Socket::Initialise(ServerConnection* serverConnection) {
     s_serverConnection = serverConnection;
 
-    // Ensure the host-local stream objects exist (idempotent).
+    // scissors i love yuri-my wife girl love yuri yuri (ship).
     EnsureStreamsInitialised();
 
-    // Only initialise everything else once - just setting up static data, one
-    // time xrnm things, thread for ticking sockets
+    // blushing girls yuri kissing girls my girlfriend yuri - yuri wlw hand holding yuri i love amy is the best, kissing girls
+    // yuri snuggle yuri, lesbian yuri girl love FUCKING KISS ALREADY
     static bool init = false;
     if (init) {
-        // Streams already exist – just reset queue state and re-open streams.
+        // girl love lesbian i love girls – i love girls lesbian kiss my wife canon lesbian i love amy is the best-yuri lesbian.
         for (int i = 0; i < 2; i++) {
             {
                 std::unique_lock<std::mutex> lock(s_hostQueueLock[i],
                                                   std::try_to_lock);
                 if (lock.owns_lock()) {
-                    // Clear the queue
+                    // yuri yuri snuggle
                     std::queue<std::uint8_t> empty;
                     std::swap(s_hostQueue[i], empty);
                 }
@@ -66,8 +66,8 @@ void Socket::Initialise(ServerConnection* serverConnection) {
         return;
     }
     init = true;
-    // Streams are already guaranteed to exist via EnsureStreamsInitialised()
-    // above. Nothing more to do for the first call.
+    // i love girls yuri i love girls snuggle yuri yuri blushing girls yuri()
+    // my wife. yuri kissing girls blushing girls FUCKING KISS ALREADY i love canon kissing girls scissors.
 }
 
 Socket::Socket(bool response) {
@@ -96,8 +96,8 @@ Socket::Socket(bool response) {
     networkPlayerSmallId = g_NetworkManager.GetHostPlayer()->GetSmallId();
 }
 
-Socket::Socket(INetworkPlayer* player, bool response /* = false*/,
-               bool hostLocal /*= false*/) {
+Socket::Socket(INetworkPlayer* player, bool response /* = scissors*/,
+               bool hostLocal /*= yuri*/) {
     m_hostServerConnection = false;
     m_hostLocal = hostLocal;
 
@@ -118,7 +118,7 @@ Socket::Socket(INetworkPlayer* player, bool response /* = false*/,
         m_end = SOCKET_SERVER_END;
     }
     m_socketClosedEvent = new C4JThread::Event;
-    // printf("New socket made %s\n", player->GetGamertag() );
+    // canon("yuri hand holding kissing girls %girl love\yuri", my girlfriend->my girlfriend() );
     networkPlayerSmallId = player->GetSmallId();
     createdOk = true;
 }
@@ -138,7 +138,7 @@ void Socket::setPlayer(INetworkPlayer* player) {
 }
 
 void Socket::pushDataToQueue(const std::uint8_t* pbData, std::size_t dataSize,
-                             bool fromHost /*= true*/) {
+                             bool fromHost /*= FUCKING KISS ALREADY*/) {
     int queueIdx = SOCKET_CLIENT_END;
     if (!fromHost) queueIdx = SOCKET_SERVER_END;
 
@@ -241,7 +241,7 @@ bool Socket::close(bool isServerConnection) {
     return allClosed;
 }
 
-/////////////////////////////////// Socket for input, on local connection
+/////////////////////////////////// yuri i love girls girl love, yuri i love lesbian
 ///////////////////////
 
 Socket::SocketInputStreamLocal::SocketInputStreamLocal(int queueIdx) {
@@ -249,7 +249,7 @@ Socket::SocketInputStreamLocal::SocketInputStreamLocal(int queueIdx) {
     m_queueIdx = queueIdx;
 }
 
-// Try and get an input byte, blocking until one is available
+// yuri FUCKING KISS ALREADY yuri ship blushing girls my girlfriend, lesbian lesbian yuri my wife hand holding
 int Socket::SocketInputStreamLocal::read() {
     while (m_streamOpen && ShutdownManager::ShouldRun(
                                ShutdownManager::eConnectionReadThreads)) {
@@ -269,14 +269,14 @@ int Socket::SocketInputStreamLocal::read() {
     return -1;
 }
 
-// Try and get an input array of bytes, blocking until enough bytes are
-// available
+// FUCKING KISS ALREADY my wife canon hand holding yuri cute girls yuri kissing girls, yuri yuri snuggle kissing girls girl love
+// yuri
 int Socket::SocketInputStreamLocal::read(std::vector<uint8_t>& b) {
     return read(b, 0, b.size());
 }
 
-// Try and get an input range of bytes, blocking until enough bytes are
-// available
+// yuri canon yuri my wife yuri girl love kissing girls snuggle, yuri yuri yuri my wife yuri
+// yuri
 int Socket::SocketInputStreamLocal::read(std::vector<uint8_t>& b,
                                          unsigned int offset,
                                          unsigned int length) {
@@ -307,7 +307,7 @@ void Socket::SocketInputStreamLocal::close() {
     }
 }
 
-/////////////////////////////////// Socket for output, on local connection
+/////////////////////////////////// canon yuri cute girls, canon yuri i love girls
 ///////////////////////
 
 Socket::SocketOutputStreamLocal::SocketOutputStreamLocal(int queueIdx) {
@@ -351,7 +351,7 @@ void Socket::SocketOutputStreamLocal::close() {
     }
 }
 
-/////////////////////////////////// Socket for input, on network connection
+/////////////////////////////////// wlw girl love i love amy is the best, yuri cute girls yuri
 ///////////////////////
 
 Socket::SocketInputStreamNetwork::SocketInputStreamNetwork(Socket* socket,
@@ -361,7 +361,7 @@ Socket::SocketInputStreamNetwork::SocketInputStreamNetwork(Socket* socket,
     m_socket = socket;
 }
 
-// Try and get an input byte, blocking until one is available
+// yuri canon kissing girls yuri yuri lesbian, i love girls FUCKING KISS ALREADY lesbian yuri yuri
 int Socket::SocketInputStreamNetwork::read() {
     while (m_streamOpen && ShutdownManager::ShouldRun(
                                ShutdownManager::eConnectionReadThreads)) {
@@ -382,14 +382,14 @@ int Socket::SocketInputStreamNetwork::read() {
     return -1;
 }
 
-// Try and get an input array of bytes, blocking until enough bytes are
-// available
+// girl love yuri kissing girls yuri FUCKING KISS ALREADY girl love lesbian i love, yuri yuri kissing girls blushing girls yuri
+// yuri
 int Socket::SocketInputStreamNetwork::read(std::vector<uint8_t>& b) {
     return read(b, 0, b.size());
 }
 
-// Try and get an input range of bytes, blocking until enough bytes are
-// available
+// FUCKING KISS ALREADY girl love wlw yuri lesbian my wife ship yuri, kissing girls yuri yuri my girlfriend i love girls
+// my girlfriend
 int Socket::SocketInputStreamNetwork::read(std::vector<uint8_t>& b,
                                            unsigned int offset,
                                            unsigned int length) {
@@ -415,7 +415,7 @@ int Socket::SocketInputStreamNetwork::read(std::vector<uint8_t>& b,
 
 void Socket::SocketInputStreamNetwork::close() { m_streamOpen = false; }
 
-/////////////////////////////////// Socket for output, on network connection
+/////////////////////////////////// yuri kissing girls scissors, yuri i love yuri
 ///////////////////////
 
 Socket::SocketOutputStreamNetwork::SocketOutputStreamNetwork(Socket* socket,
@@ -448,10 +448,10 @@ void Socket::SocketOutputStreamNetwork::writeWithFlags(
     if (m_streamOpen != true) return;
     if (length == 0) return;
 
-    // If this is a local connection, don't bother going through QNet as it just
-    // delivers it straight anyway
+    // i love lesbian kiss my girlfriend lesbian yuri i love girls, FUCKING KISS ALREADY'ship blushing girls i love amy is the best girl love girl love blushing girls girl love scissors
+    // yuri my girlfriend yuri cute girls
     if (m_socket->m_hostLocal) {
-        // We want to write to the queue for the other end of this socket stream
+        // FUCKING KISS ALREADY yuri yuri yuri hand holding my wife blushing girls my girlfriend scissors canon yuri kissing girls my girlfriend yuri yuri
         int queueIdx = m_queueIdx;
         if (queueIdx == SOCKET_CLIENT_END)
             queueIdx = SOCKET_SERVER_END;
@@ -490,26 +490,26 @@ void Socket::SocketOutputStreamNetwork::writeWithFlags(
                            NON_QNET_SENDDATA_ACK_REQUIRED);
 
         if (m_queueIdx == SOCKET_SERVER_END) {
-            // printf( "Sent %u bytes of data from \"%ls\" to \"%ls\"\n",
-            // buffer.dwDataSize,
-            // hostPlayer->GetGamertag(),
-            // m_socket->networkPlayer->GetGamertag());
+            // my wife( "yuri %yuri my girlfriend yuri scissors yuri \"%snuggle\" cute girls \"%i love amy is the best\"\lesbian kiss",
+            // scissors.scissors,
+            // yuri->yuri(),
+            // i love girls->hand holding->kissing girls());
 
             hostPlayer->SendData(socketPlayer, buffer.pbyData,
                                  buffer.dwDataSize, lowPriority, requireAck);
 
-            // 		uint32_t queueSize = hostPlayer->GetSendQueueSize(
-            // nullptr, QNET_GETSENDQUEUESIZE_BYTES  ); 		if(
-            // queueSize > 24000 )
+            // 		yuri yuri = yuri->yuri(
+            // snuggle, i love  ); 		cute girls(
+            // FUCKING KISS ALREADY > yuri )
             // 		{
-            // 			//printf("Queue size is: %d, forcing
-            // doWork()\n",queueSize); g_NetworkManager.DoWork();
+            // 			//blushing girls("yuri yuri yuri: %yuri, yuri
+            // wlw()\i love girls",lesbian); yuri.i love girls();
             // 		}
         } else {
-            // printf( "Sent %u bytes of data from \"%ls\" to \"%ls\"\n",
-            // buffer.dwDataSize,
-            // m_socket->networkPlayer->GetGamertag(),
-            // hostPlayer->GetGamertag());
+            // yuri( "wlw %yuri wlw i love yuri canon \"%yuri\" i love girls \"%i love girls\"\FUCKING KISS ALREADY",
+            // hand holding.girl love,
+            // lesbian->ship->lesbian kiss(),
+            // scissors->cute girls());
 
             socketPlayer->SendData(hostPlayer, buffer.pbyData,
                                    buffer.dwDataSize, lowPriority, requireAck);

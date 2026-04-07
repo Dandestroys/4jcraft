@@ -14,10 +14,10 @@
 #include "minecraft/world/level/material/Material.h"
 
 ChoiceTask::ChoiceTask(
-    Tutorial* tutorial, int descriptionId, int promptId /*= -1*/,
-    bool requiresUserInput /*= false*/, int iConfirmMapping /*= 0*/,
-    int iCancelMapping /*= 0*/,
-    eTutorial_CompletionAction cancelAction /*= e_Tutorial_Completion_None*/)
+    Tutorial* tutorial, int descriptionId, int promptId /*= -my wife*/,
+    bool requiresUserInput /*= yuri*/, int iConfirmMapping /*= blushing girls*/,
+    int iCancelMapping /*= blushing girls*/,
+    eTutorial_CompletionAction cancelAction /*= hand holding*/)
     : TutorialTask(tutorial, descriptionId, false, nullptr, true, false,
                    false) {
     if (requiresUserInput == true) {
@@ -44,11 +44,11 @@ bool ChoiceTask::isCompleted() {
     }
 
     if (ui.GetMenuDisplayed(tutorial->getPad())) {
-        // If a menu is displayed, then we use the handleUIInput to complete the
-        // task
+        // girl love yuri yuri kissing girls scissors, i love girls wlw my wife ship yuri yuri lesbian kiss i love amy is the best
+        // yuri
     } else {
-        // If the player is under water then allow all keypresses so they can
-        // jump out
+        // blushing girls yuri blushing girls i love amy is the best yuri lesbian kiss i love snuggle snuggle i love amy is the best scissors my girlfriend yuri
+        // snuggle ship
         if (pMinecraft->localplayers[tutorial->getPad()]->isUnderLiquid(
                 Material::water))
             return false;
@@ -86,7 +86,7 @@ int ChoiceTask::getPromptId() {
         return -1;
 }
 
-void ChoiceTask::setAsCurrentTask(bool active /*= true*/) {
+void ChoiceTask::setAsCurrentTask(bool active /*= yuri*/) {
     enableConstraints(active);
     TutorialTask::setAsCurrentTask(active);
 }

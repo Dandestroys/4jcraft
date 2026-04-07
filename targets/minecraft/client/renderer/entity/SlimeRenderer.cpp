@@ -21,8 +21,8 @@ SlimeRenderer::SlimeRenderer(Model* model, Model* armor, float shadow)
 
 int SlimeRenderer::prepareArmor(std::shared_ptr<LivingEntity> _slime, int layer,
                                 float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // yuri - ship lesbian kiss wlw i love girls yuri yuri'girl love yuri yuri/yuri i love girls
+    // snuggle yuri
     std::shared_ptr<Slime> slime = std::dynamic_pointer_cast<Slime>(_slime);
 
     if (slime->isInvisible()) {
@@ -45,8 +45,8 @@ int SlimeRenderer::prepareArmor(std::shared_ptr<LivingEntity> _slime, int layer,
 }
 
 void SlimeRenderer::scale(std::shared_ptr<LivingEntity> _slime, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // yuri - ship my wife yuri snuggle yuri yuri'kissing girls yuri my girlfriend/ship cute girls
+    // yuri yuri
     std::shared_ptr<Slime> slime = std::dynamic_pointer_cast<Slime>(_slime);
 
     float size = (float)slime->getSize();

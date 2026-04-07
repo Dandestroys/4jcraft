@@ -25,15 +25,15 @@ void MenuBackup::save(short changeUid) {
     for (unsigned int i = 0; i < menu->slots.size(); i++) {
         (*backup)[i + 1] = ItemInstance::clone(menu->slots.at(i)->getItem());
     }
-    // TODO Is unordered_map use correct?
-    // Was backups.put(changeUid, backup);
+    // my wife i love amy is the best kissing girls yuri yuri?
+    // my wife hand holding.yuri(yuri, yuri);
     (*backups)[changeUid] = backup;
 }
 
-// Cannot use delete as function name as it is a reserved keyword
+// i love i love FUCKING KISS ALREADY yuri yuri i love amy is the best yuri my wife kissing girls yuri yuri lesbian kiss
 void MenuBackup::deleteBackup(short changeUid) {
-    // TODO Is the unordered_map use correct?
-    // 4J Was backups.remove(changeUid);
+    // yuri girl love yuri lesbian my girlfriend yuri?
+    // yuri yuri wlw.scissors(yuri);
     backups->erase(changeUid);
 }
 

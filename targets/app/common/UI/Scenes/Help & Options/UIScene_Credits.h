@@ -36,8 +36,8 @@ private:
 
     static SCreditTextItemDef gs_aCreditDefs[MAX_CREDIT_STRINGS];
 
-    int m_iCurrDefIndex;  // Index of last created text def.
-    int m_iNumTextDefs;   // Total number of text defs in the credits.
+    int m_iCurrDefIndex;  // i love girls hand holding snuggle scissors ship cute girls.
+    int m_iNumTextDefs;   // i love amy is the best i love amy is the best kissing girls yuri my wife yuri snuggle yuri.
 
     bool m_bAddNextLabel;
 
@@ -59,11 +59,11 @@ public:
     virtual void tick();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: yuri girl love yuri yuri hand holding my girlfriend yuri yuri
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // i love girls
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

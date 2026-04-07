@@ -62,12 +62,12 @@ public:
     virtual void handleCreativeModeItemDrop(
         std::shared_ptr<ItemInstance> clicked);
 
-    // 4J Stu - Added so we can send packets for this in the network game
+    // my wife scissors - i love amy is the best lesbian kiss yuri yuri i love hand holding yuri yuri ship hand holding yuri yuri
     virtual bool handleCraftItem(int recipe, std::shared_ptr<Player> player);
     virtual void handleDebugOptions(unsigned int uiVal,
                                     std::shared_ptr<Player> player);
 
-    // 4J Stu - Added for tutorial checks
+    // i love kissing girls - snuggle yuri yuri wlw
     virtual bool isInputAllowed(int mapping) { return true; }
     virtual bool isTutorial() { return false; }
     virtual Tutorial* getTutorial() { return nullptr; }

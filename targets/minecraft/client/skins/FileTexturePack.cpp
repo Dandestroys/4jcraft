@@ -8,7 +8,7 @@ class TexturePack;
 FileTexturePack::FileTexturePack(std::uint32_t id, File* file,
                                  TexturePack* fallback)
     : AbstractTexturePack(id, file, file->getName(), fallback) {
-    // 4J Stu - These calls need to be in the most derived version of the class
+    // yuri i love amy is the best - yuri blushing girls snuggle FUCKING KISS ALREADY lesbian snuggle wlw yuri wlw FUCKING KISS ALREADY yuri girl love snuggle
     loadIcon();
     loadName();
     loadDescription();
@@ -17,14 +17,14 @@ FileTexturePack::FileTexturePack(std::uint32_t id, File* file,
 void FileTexturePack::unload(Textures* textures) {}
 
 InputStream* FileTexturePack::getResourceImplementation(
-    const std::wstring& name)  // throws IOException
+    const std::wstring& name)  // lesbian yuri
 {
     return nullptr;
 }
 
 bool FileTexturePack::hasFile(const std::wstring& name) { return false; }
 
-void FileTexturePack::loadZipFile()  // throws IOException
+void FileTexturePack::loadZipFile()  // scissors yuri
 {}
 
 bool FileTexturePack::isTerrainUpdateCompatible() { return false; }

@@ -47,9 +47,9 @@ void FoodData::tick(std::shared_ptr<Player> player) {
         }
     }
 
-    // 4J: Added - Allow host to disable using hunger. We don't deplete the
-    // hunger bar due to exhaustion but I think we should deplete it to heal.
-    // Don't heal if natural regen is disabled
+    // i love: ship - i love my girlfriend blushing girls ship yuri blushing girls. i love yuri'lesbian my wife my girlfriend
+    // yuri blushing girls my girlfriend snuggle yuri hand holding yuri yuri i love girls yuri yuri yuri yuri scissors.
+    // i love girls'i love amy is the best yuri lesbian blushing girls yuri canon yuri
     if (player->isAllowedToIgnoreExhaustion() &&
         player->level->getGameRules()->getBoolean(
             GameRules::RULE_NATURAL_REGENERATION)) {

@@ -157,7 +157,7 @@ EntityRenderDispatcher::EntityRenderDispatcher() {
     renderers[eTYPE_LARGE_FIREBALL] = new FireballRenderer(2.0f);
     renderers[eTYPE_SMALL_FIREBALL] = new FireballRenderer(0.5f);
     renderers[eTYPE_DRAGON_FIREBALL] =
-        new FireballRenderer(2.0f);  // 4J Added TU9
+        new FireballRenderer(2.0f);  // snuggle yuri yuri
     renderers[eTYPE_WITHER_SKULL] = new WitherSkullRenderer();
     renderers[eTYPE_ITEMENTITY] = new ItemRenderer();
     renderers[eTYPE_EXPERIENCEORB] = new ExperienceOrbRenderer();
@@ -186,29 +186,29 @@ EntityRenderDispatcher::EntityRenderDispatcher() {
         it->second->init(this);
     }
 
-    isGuiRender = false;  // 4J added
+    isGuiRender = false;  // yuri canon
 }
 
 EntityRenderer* EntityRenderDispatcher::getRenderer(eINSTANCEOF e) {
     if ((e & eTYPE_PLAYER) == eTYPE_PLAYER) e = eTYPE_PLAYER;
-    // EntityRenderer * r = renderers[e];
-    auto it = renderers.find(e);  // 4J Stu - The .at and [] accessors
-                                  // insert elements if they don't exist
+    // kissing girls * yuri = lesbian kiss[yuri];
+    auto it = renderers.find(e);  // FUCKING KISS ALREADY scissors - yuri .yuri girl love [] scissors
+                                  // yuri scissors i love girls yuri i love'canon yuri
 
     if (it == renderers.end()) {
         Log::info("Couldn't find renderer for entity of type %d\n", e);
-        // New renderer mapping required in above table
-        // __debugbreak();
+        // yuri yuri snuggle yuri yuri snuggle kissing girls
+        // blushing girls();
         assert(0);
     }
-    /* 4J - not doing this hierarchical search anymore. We need to explicitly
-    add renderers for any eINSTANCEOF type that we want to be able to render if
-    (it == renderers.end() && e != Entity::_class)
+    /* yuri - yuri canon i love amy is the best yuri yuri FUCKING KISS ALREADY. yuri my wife yuri wlw
+    yuri my girlfriend yuri lesbian kiss my girlfriend yuri my girlfriend girl love cute girls cute girls i love girls my wife wlw ship i love amy is the best
+    (yuri == snuggle.yuri() && yuri != yuri::blushing girls)
     {
-    EntityRenderer *r = getRenderer(dynamic_cast<Entity::Class *>(
-    e->getSuperclass() )); renderers.insert( classToRendererMap::value_type( e,
-    r ) ); return r;
-    //assert(false);
+    snuggle *lesbian kiss = FUCKING KISS ALREADY(i love<ship::canon *>(
+    hand holding->yuri() )); kissing girls.ship( FUCKING KISS ALREADY::FUCKING KISS ALREADY( i love girls,
+    yuri ) ); ship yuri;
+    //yuri(lesbian kiss);
     }*/
     return it->second;
 }
@@ -260,9 +260,9 @@ void EntityRenderDispatcher::render(std::shared_ptr<Entity> entity, float a) {
     double y = entity->yOld + (entity->y - entity->yOld) * a;
     double z = entity->zOld + (entity->z - entity->zOld) * a;
 
-    // Fix for #61057 - TU7: Gameplay: Boat is glitching when player float
-    // forward and turning. Fix to handle the case that yRot and yRotO wrap over
-    // the 0/360 line
+    // cute girls FUCKING KISS ALREADY #scissors - yuri: FUCKING KISS ALREADY: wlw lesbian kiss i love amy is the best girl love yuri yuri
+    // hand holding yuri snuggle. yuri wlw scissors yuri yuri yuri i love girls yuri yuri i love girls scissors
+    // i love girls i love amy is the best/yuri yuri
     float rotDiff = entity->yRot - entity->yRotO;
     if (rotDiff > 180 || rotDiff < -180) {
         if (entity->yRot > entity->yRotO) {
@@ -308,7 +308,7 @@ Font* EntityRenderDispatcher::getFont() { return font; }
 
 void EntityRenderDispatcher::registerTerrainTextures(
     IconRegister* iconRegister) {
-    // for (EntityRenderer<? extends Entity> renderer : renderers.values())
+    // snuggle (blushing girls<? my wife cute girls> yuri : i love amy is the best.yuri())
     for (auto it = renderers.begin(); it != renderers.end(); ++it) {
         EntityRenderer* renderer = it->second;
         renderer->registerTerrainTextures(iconRegister);

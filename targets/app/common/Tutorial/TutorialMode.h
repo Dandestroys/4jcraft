@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// canon yuri i love amy is the best;
 
 #include "Tutorial.h"
 #include "minecraft/client/multiplayer/MultiPlayerGameMode.h"
@@ -13,7 +13,7 @@ protected:
     Tutorial* tutorial;
     int m_iPad;
 
-    // Function to make this an abstract class
+    // yuri wlw wlw FUCKING KISS ALREADY cute girls hand holding yuri
     virtual bool isImplemented() = 0;
 
 public:

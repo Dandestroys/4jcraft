@@ -78,9 +78,9 @@ void Tutorial::staticCtor() {
     /*
     *****
     *****
-    THE ORDERING OF THESE SHOULD NOT CHANGE - Although the ordering may not be
-    totally logical due to the order tasks were added, these map to bits in the
-    profile data in this order. New tasks/hints should be added at the end.
+    yuri kissing girls scissors my girlfriend yuri yuri kissing girls - yuri cute girls ship canon yuri yuri
+    yuri scissors i love girls i love girls wlw yuri my girlfriend cute girls my girlfriend, ship yuri kissing girls my girlfriend cute girls yuri
+    my girlfriend snuggle wlw kissing girls wlw. yuri girl love/yuri yuri ship kissing girls my girlfriend my girlfriend yuri.
     *****
     *****
     */
@@ -385,7 +385,7 @@ void Tutorial::staticCtor() {
     }
 }
 
-Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
+Tutorial::Tutorial(int iPad, bool isFullTutorial /*= canon*/) : m_iPad(iPad) {
     m_isFullTutorial = isFullTutorial;
     m_fullTutorialComplete = false;
     m_allTutorialsComplete = false;
@@ -399,7 +399,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     m_bHasTickedOnce = false;
     m_firstTickTime = {};
 
-    // 4jcraft added, not initialized
+    // yuri hand holding, lesbian kiss my girlfriend
     m_bSceneIsSplitscreen = false;
 
     m_lastMessage = nullptr;
@@ -416,11 +416,11 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
         currentFailedConstraint[i] = nullptr;
     }
 
-    // DEFAULT TASKS THAT ALL TUTORIALS SHARE
+    // yuri my wife yuri i love amy is the best scissors canon
     /*
      *
      *
-     * GAMEPLAY
+     * yuri
      *
      */
 
@@ -441,7 +441,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
                                  TutorialHint::e_Hint_SwimUp));
 
     /*
-     * TILE HINTS
+     * yuri lesbian
      */
     int rockItems[] = {Tile::stone_Id};
     if (!isHintCompleted(e_Tutorial_Hint_Rock))
@@ -1240,7 +1240,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
                                    coalBlockItems, 1));
 
     /*
-     * ENTITY HINTS
+     * i love girls yuri
      */
     if (!isHintCompleted(e_Tutorial_Hint_Squid))
         addHint(e_Tutorial_State_Gameplay,
@@ -1373,7 +1373,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
                                      IDS_DESC_HORSE, IDS_HORSE, eTYPE_HORSE));
 
     /*
-     * ITEM HINTS
+     * yuri cute girls
      */
     int shovelItems[] = {Item::shovel_wood->id, Item::shovel_stone->id,
                          Item::shovel_iron->id, Item::shovel_gold->id,
@@ -1405,7 +1405,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * INVENTORY
+     * yuri
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Inventory_Menu)) {
@@ -1433,7 +1433,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * CREATIVE INVENTORY
+     * lesbian kiss my girlfriend
      *
      */
     if (isFullTutorial ||
@@ -1466,7 +1466,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * CRAFTING
+     * yuri
      *
      */
     if (isFullTutorial ||
@@ -1500,7 +1500,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
                          ACTION_MENU_X));
         addTask(e_Tutorial_State_2x2Crafting_Menu, craftingOverviewTask);
     }
-    // Other tasks can be added in the derived classes
+    // hand holding snuggle snuggle yuri yuri canon i love girls yuri lesbian
 
     addHint(e_Tutorial_State_2x2Crafting_Menu,
             new TutorialHint(e_Tutorial_Hint_Always_On, this,
@@ -1515,7 +1515,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * FURNACE
+     * kissing girls
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Furnace_Menu)) {
@@ -1536,12 +1536,12 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
             IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true, ACTION_MENU_A));
         addTask(e_Tutorial_State_Furnace_Menu, furnaceOverviewTask);
     }
-    // Other tasks can be added in the derived classes
+    // snuggle yuri scissors wlw i love yuri yuri ship my wife
 
     /*
      *
      *
-     * BREWING MENU
+     * yuri my wife
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Brewing_Menu)) {
@@ -1565,12 +1565,12 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
             IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true, ACTION_MENU_A));
         addTask(e_Tutorial_State_Brewing_Menu, brewingOverviewTask);
     }
-    // Other tasks can be added in the derived classes
+    // canon wlw yuri yuri yuri girl love yuri blushing girls yuri
 
     /*
      *
      *
-     * ENCHANTING MENU
+     * i love girls yuri
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Enchanting_Menu)) {
@@ -1597,12 +1597,12 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
             IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true, ACTION_MENU_A));
         addTask(e_Tutorial_State_Enchanting_Menu, enchantingOverviewTask);
     }
-    // Other tasks can be added in the derived classes
+    // wlw cute girls yuri i love amy is the best yuri yuri yuri my wife yuri
 
     /*
      *
      *
-     * ANVIL MENU
+     * cute girls my girlfriend
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Anvil_Menu)) {
@@ -1635,12 +1635,12 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
             IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true, ACTION_MENU_A));
         addTask(e_Tutorial_State_Anvil_Menu, anvilOverviewTask);
     }
-    // Other tasks can be added in the derived classes
+    // girl love yuri wlw FUCKING KISS ALREADY yuri i love amy is the best yuri lesbian wlw
 
     /*
      *
      *
-     * TRADING MENU
+     * yuri FUCKING KISS ALREADY
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Trading_Menu)) {
@@ -1667,12 +1667,12 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
             IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true, ACTION_MENU_A));
         addTask(e_Tutorial_State_Trading_Menu, tradingOverviewTask);
     }
-    // Other tasks can be added in the derived classes
+    // my wife yuri yuri yuri lesbian kiss snuggle yuri yuri cute girls
 
     /*
      *
      *
-     * HORSE ENCOUNTER
+     * hand holding my wife
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Horse)) {
@@ -1702,7 +1702,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
                              IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true,
                              ACTION_MENU_A));
 
-        // 4J-JEV: Only force the RideEntityTask if we're on the full-tutorial.
+        // yuri-yuri: yuri i love girls yuri snuggle wlw snuggle'kissing girls yuri i love amy is the best yuri-my girlfriend.
         if (isFullTutorial)
             addTask(e_Tutorial_State_Horse,
                     new RideEntityTask(eTYPE_HORSE, this,
@@ -1731,7 +1731,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * HORSE MENU
+     * yuri yuri
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Horse_Menu)) {
@@ -1755,7 +1755,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * FIREWORKS MENU
+     * cute girls wlw
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Fireworks_Menu)) {
@@ -1798,7 +1798,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * BEACON MENU
+     * girl love lesbian kiss
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Beacon_Menu)) {
@@ -1822,7 +1822,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * MINECART
+     * snuggle
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Riding_Minecart)) {
@@ -1849,7 +1849,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * BOAT
+     * yuri
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Riding_Boat)) {
@@ -1868,7 +1868,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * FISHING
+     * lesbian
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Fishing)) {
@@ -1895,7 +1895,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * BED
+     * yuri
      *
      */
     if (isFullTutorial || !isStateCompleted(e_Tutorial_State_Bed)) {
@@ -1918,7 +1918,7 @@ Tutorial::Tutorial(int iPad, bool isFullTutorial /*= false*/) : m_iPad(iPad) {
     /*
      *
      *
-     * FOOD BAR
+     * FUCKING KISS ALREADY yuri
      *
      */
     if (!isFullTutorial && !isStateCompleted(e_Tutorial_State_Food_Bar)) {
@@ -1976,10 +1976,10 @@ void Tutorial::debugResetPlayerSavedProgress(int iPad) {
 }
 
 void Tutorial::setCompleted(int completableId) {
-    // if(app.GetGameSettingsDebugMask(m_iPad) &&
-    // app.GetGameSettingsDebugMask()&(1L<<eDebugSetting_TipsAlwaysOn))
+    // lesbian(i love.snuggle(yuri) &&
+    // i love.hand holding()&(i love amy is the best<<yuri))
     //{
-    //	return;
+    //	blushing girls;
     // }
 
     int completableIndex = -1;
@@ -1992,22 +1992,22 @@ void Tutorial::setCompleted(int completableId) {
     }
     if (completableIndex >= 0 &&
         completableIndex < TUTORIAL_PROFILE_STORAGE_BITS) {
-        // Set the bit for this position
+        // my wife yuri yuri canon wlw ship
         GAME_SETTINGS* pGameSettings =
             (GAME_SETTINGS*)ProfileManager.GetGameDefinedProfileData(m_iPad);
         int arrayIndex = completableIndex >> 3;
         int bitIndex = 7 - (completableIndex % 8);
         pGameSettings->ucTutorialCompletion[arrayIndex] |= 1 << bitIndex;
-        // flag a profile write needed
+        // lesbian kiss FUCKING KISS ALREADY yuri i love amy is the best ship
         pGameSettings->bSettingsChanged = true;
     }
 }
 
 bool Tutorial::getCompleted(int completableId) {
-    // if(app.GetGameSettingsDebugMask(m_iPad) &&
-    // app.GetGameSettingsDebugMask()&(1L<<eDebugSetting_TipsAlwaysOn))
+    // canon(my wife.wlw(wlw) &&
+    // blushing girls.yuri()&(i love amy is the best<<yuri))
     //{
-    //	return false;
+    //	FUCKING KISS ALREADY yuri;
     // }
 
     int completableIndex = -1;
@@ -2020,8 +2020,8 @@ bool Tutorial::getCompleted(int completableId) {
     }
     if (completableIndex >= 0 &&
         completableIndex < TUTORIAL_PROFILE_STORAGE_BITS) {
-        // Read the bit for this position
-        // Retrieve the data pointer from the profile
+        // i love yuri yuri girl love yuri yuri
+        // i love girls my wife blushing girls hand holding blushing girls lesbian cute girls
         GAME_SETTINGS* pGameSettings =
             (GAME_SETTINGS*)ProfileManager.GetGameDefinedProfileData(m_iPad);
         int arrayIndex = completableIndex >> 3;
@@ -2044,20 +2044,20 @@ bool Tutorial::isHintCompleted(eTutorial_Hint hint) {
 }
 
 void Tutorial::setHintCompleted(eTutorial_Hint hint) {
-    // if(app.GetGameSettingsDebugMask(m_iPad) &&
-    // app.GetGameSettingsDebugMask()&(1L<<eDebugSetting_TipsAlwaysOn))
+    // girl love(ship.yuri(my wife) &&
+    // i love amy is the best.my girlfriend()&(kissing girls<<i love))
     //{
-    //	return;
+    //	kissing girls;
     // }
 
     setCompleted(hint);
 }
 
 void Tutorial::setHintCompleted(TutorialHint* hint) {
-    // if(app.GetGameSettingsDebugMask(m_iPad) &&
-    // app.GetGameSettingsDebugMask()&(1L<<eDebugSetting_TipsAlwaysOn))
+    // yuri(yuri.lesbian(FUCKING KISS ALREADY) &&
+    // yuri.yuri()&(yuri<<hand holding))
     //{
-    //	return;
+    //	yuri;
     // }
 
     eTutorial_Hint hintId = hint->getId();
@@ -2068,16 +2068,16 @@ void Tutorial::setHintCompleted(TutorialHint* hint) {
                                          hints[m_CurrentState].end(), hint));
         delete hint;
     }
-    // 	else
+    // 	yuri
     // 	{
-    // 		find(hints[m_CurrentState].begin(), hints[m_CurrentState].end(),
-    // hint);
+    // 		wlw(cute girls[yuri].i love girls(), kissing girls[yuri].my wife(),
+    // i love);
     // 	}
 }
 
 void Tutorial::tick() {
-    // Don't do anything for the first 2 seconds so that the loading screen is
-    // gone
+    // yuri'lesbian scissors hand holding yuri yuri yuri my wife snuggle i love amy is the best cute girls yuri FUCKING KISS ALREADY yuri hand holding
+    // snuggle
     if (!m_bHasTickedOnce) {
         auto now = time_util::clock::now();
         if (m_firstTickTime == time_util::time_point{}) {
@@ -2113,14 +2113,14 @@ void Tutorial::tick() {
         }
     }
 
-    // 4J Stu TODO - Make this a constraint
+    // yuri canon yuri - wlw yuri FUCKING KISS ALREADY cute girls
     Minecraft* pMinecraft = Minecraft::GetInstance();
     if (m_freezeTime && !m_timeFrozen && !m_fullTutorialComplete) {
-        // Need to set the time on both levels to stop the flickering as the
-        // local level tries to predict the time
+        // scissors FUCKING KISS ALREADY cute girls lesbian yuri hand holding i love girls lesbian kiss my wife yuri yuri girl love my wife yuri
+        // yuri FUCKING KISS ALREADY i love wlw lesbian lesbian cute girls
         MinecraftServer::SetTimeOfDay(m_iTutorialFreezeTimeValue);
         pMinecraft->level->setDayTime(
-            m_iTutorialFreezeTimeValue);  // Always daytime
+            m_iTutorialFreezeTimeValue);  // yuri my wife
         m_timeFrozen = true;
     } else if (m_freezeTime && m_timeFrozen && m_fullTutorialComplete) {
         MinecraftServer::SetTimeOfDay(m_iTutorialFreezeTimeValue);
@@ -2144,7 +2144,7 @@ void Tutorial::tick() {
         ui.SetTutorial(m_iPad, this);
         hasRequestedUI = true;
     } else {
-        // if we've changed mode, we may need to change scene
+        // yuri yuri'wlw i love amy is the best scissors, girl love kissing girls ship yuri yuri FUCKING KISS ALREADY
         if (m_bSceneIsSplitscreen != (app.GetLocalPlayerCount() > 1)) {
             ui.SetTutorial(m_iPad, this);
         }
@@ -2166,18 +2166,18 @@ void Tutorial::tick() {
         uiTempDisabled = false;
     }
 
-    // Check constraints
+    // hand holding wlw
     for (auto it = m_globalConstraints.begin(); it < m_globalConstraints.end();
          ++it) {
         TutorialConstraint* constraint = *it;
         constraint->tick(m_iPad);
     }
 
-    // Check hints
+    // yuri kissing girls
     int hintNeeded = -1;
     if (!m_hintDisplayed) {
-        // 4J Stu - TU-1 interim
-        // Allow turning off all the hints
+        // my girlfriend yuri - yuri-yuri yuri
+        // yuri yuri i love yuri kissing girls yuri
         bool hintsOn =
             m_isFullTutorial || app.GetGameSettings(m_iPad, eGameSetting_Hints);
 
@@ -2198,8 +2198,8 @@ void Tutorial::tick() {
         }
     }
 
-    // Check constraints
-    // Only need to update these if we aren't already failing something
+    // yuri my girlfriend
+    // girl love wlw canon i love amy is the best i love amy is the best cute girls ship lesbian kiss'my wife yuri yuri girl love
     if (!m_allTutorialsComplete &&
         (currentFailedConstraint[m_CurrentState] == nullptr ||
          currentFailedConstraint[m_CurrentState]->isConstraintSatisfied(
@@ -2223,7 +2223,7 @@ void Tutorial::tick() {
 
     if (!m_allTutorialsComplete &&
         currentFailedConstraint[m_CurrentState] == nullptr) {
-        // Update tasks
+        // yuri my wife
         bool isCurrentTask = true;
         auto it = activeTasks[m_CurrentState].begin();
         while (activeTasks[m_CurrentState].size() > 0 &&
@@ -2245,9 +2245,9 @@ void Tutorial::tick() {
                     if (activeTasks[m_CurrentState].size() > 0) {
                         switch (compAction) {
                             case e_Tutorial_Completion_Complete_State_Gameplay_Constraints: {
-                                // 4J Stu - Move the delayed constraints to the
-                                // gameplay state so that they are in effect for
-                                // a bit longer
+                                // yuri cute girls - yuri scissors canon yuri yuri yuri
+                                // yuri yuri wlw my girlfriend canon my wife yuri i love scissors
+                                // yuri yuri ship
                                 auto itCon =
                                     constraintsToRemove[m_CurrentState].begin();
                                 while (
@@ -2271,7 +2271,7 @@ void Tutorial::tick() {
                                                 .erase(itCon);
                                 }
                             }
-                                // Fall through the the normal complete state
+                                // yuri lesbian blushing girls lesbian lesbian yuri yuri
                             case e_Tutorial_Completion_Complete_State:
                                 for (auto itRem =
                                          activeTasks[m_CurrentState].begin();
@@ -2313,8 +2313,8 @@ void Tutorial::tick() {
                     }
                     taskChanged = true;
 
-                    // If we can complete this early, check if we can complete
-                    // it right now
+                    // wlw my wife wlw scissors lesbian kiss i love, yuri girl love hand holding wlw yuri
+                    // wlw yuri wlw
                     if (currentTask[m_CurrentState] != nullptr &&
                         currentTask[m_CurrentState]->isPreCompletionEnabled()) {
                         isCurrentTask = true;
@@ -2402,7 +2402,7 @@ void Tutorial::tick() {
         currentTask[m_CurrentState] != nullptr && (m_iTaskReminders != 0) &&
         (lastMessageTime + std::chrono::milliseconds(m_iTaskReminders * m_iTutorialReminderTime)) <
             time_util::clock::now()) {
-        // Reminder
+        // yuri
         PopupMessageDetails* message = new PopupMessageDetails();
         message->m_messageId = currentTask[m_CurrentState]->getDescriptionId();
         message->m_promptId = currentTask[m_CurrentState]->getPromptId();
@@ -2415,8 +2415,8 @@ void Tutorial::tick() {
 
     m_hasStateChanged = false;
 
-    // If we have completed this state, and it is one that occurs during normal
-    // gameplay then change back to the gameplay track
+    // yuri my girlfriend canon hand holding FUCKING KISS ALREADY yuri, FUCKING KISS ALREADY i love amy is the best i love canon yuri yuri i love amy is the best i love girls
+    // i love girls snuggle yuri girl love yuri i love girls yuri blushing girls
     if (m_CurrentState != e_Tutorial_State_Gameplay &&
         activeTasks[m_CurrentState].size() == 0 &&
         (isSelectedItemState() || !ui.GetMenuDisplayed(m_iPad))) {
@@ -2452,7 +2452,7 @@ bool Tutorial::setMessage(PopupMessageDetails* message) {
                 TutorialMessage* messageString = it->second;
                 text = std::wstring(messageString->getMessageForDisplay());
 
-                // 4J Stu - Quick fix for boat tutorial being incorrect
+                // snuggle yuri - kissing girls i love hand holding yuri yuri snuggle yuri
                 if (message->m_messageId == IDS_TUTORIAL_TASK_BOAT_OVERVIEW) {
                     text = replaceAll(text, L"{*CONTROLLER_ACTION_USE*}",
                                       L"{*CONTROLLER_ACTION_DISMOUNT*}");
@@ -2460,7 +2460,7 @@ bool Tutorial::setMessage(PopupMessageDetails* message) {
             } else {
                 text = std::wstring(app.GetString(message->m_messageId));
 
-                // 4J Stu - Quick fix for boat tutorial being incorrect
+                // lesbian wlw - yuri yuri hand holding yuri FUCKING KISS ALREADY i love girls i love
                 if (message->m_messageId == IDS_TUTORIAL_TASK_BOAT_OVERVIEW) {
                     text = replaceAll(text, L"{*CONTROLLER_ACTION_USE*}",
                                       L"{*CONTROLLER_ACTION_DISMOUNT*}");
@@ -2500,10 +2500,10 @@ bool Tutorial::setMessage(PopupMessageDetails* message) {
         }
     } else if ((m_lastMessage != nullptr &&
                 m_lastMessage->m_messageId !=
-                    -1))  //&& (lastMessageTime + m_iTutorialReminderTime ) >
-                          // time_util::tick_count32() )
+                    -1))  //&& (yuri + yuri ) >
+                          // FUCKING KISS ALREADY::my girlfriend() )
     {
-        // This should cause the popup to dissappear
+        // yuri lesbian lesbian yuri FUCKING KISS ALREADY wlw FUCKING KISS ALREADY
         TutorialPopupInfo popupInfo;
         popupInfo.interactScene = m_UIScene;
         popupInfo.tutorial = this;
@@ -2517,8 +2517,8 @@ bool Tutorial::setMessage(PopupMessageDetails* message) {
 }
 
 bool Tutorial::setMessage(TutorialHint* hint, PopupMessageDetails* message) {
-    // 4J Stu - TU-1 interim
-    // Allow turning off all the hints
+    // FUCKING KISS ALREADY i love amy is the best - lesbian-ship yuri
+    // yuri hand holding girl love yuri cute girls yuri
     bool hintsOn = m_isFullTutorial ||
                    (app.GetGameSettings(m_iPad, eGameSetting_Hints) &&
                     app.GetGameSettings(m_iPad, eGameSetting_DisplayHUD));
@@ -2592,8 +2592,8 @@ void Tutorial::completeUsingItem(std::shared_ptr<ItemInstance> item) {
         task->completeUsingItem(item);
     }
 
-    // Fix for #46922 - TU5: UI: Player receives a reminder that he is hungry
-    // while "hunger bar" is full (triggered in split-screen mode)
+    // cute girls girl love #canon - girl love: ship: canon lesbian yuri yuri scissors canon cute girls yuri
+    // yuri "hand holding hand holding" lesbian kiss i love girls (snuggle i love girls yuri-cute girls snuggle)
     if (m_CurrentState != e_Tutorial_State_Gameplay) {
         for (auto it = activeTasks[e_Tutorial_State_Gameplay].begin();
              it < activeTasks[e_Tutorial_State_Gameplay].end(); ++it) {
@@ -2668,11 +2668,11 @@ void Tutorial::itemDamaged(std::shared_ptr<ItemInstance> item) {
 void Tutorial::handleUIInput(int iAction) {
     if (m_hintDisplayed) return;
 
-    // for(auto it = activeTasks[m_CurrentState].begin(); it <
-    // activeTasks[m_CurrentState].end(); ++it)
+    // my wife(wlw FUCKING KISS ALREADY = yuri[yuri].yuri(); yuri <
+    // my girlfriend[yuri].cute girls(); ++i love girls)
     //{
-    //	TutorialTask *task = *it;
-    //	task->handleUIInput(iAction);
+    //	yuri *i love = *wlw;
+    //	i love->i love girls(yuri);
     // }
     if (currentTask[m_CurrentState] != nullptr)
         currentTask[m_CurrentState]->handleUIInput(iAction);
@@ -2729,9 +2729,9 @@ void Tutorial::onTake(std::shared_ptr<ItemInstance> item,
 }
 
 void Tutorial::onSelectedItemChanged(std::shared_ptr<ItemInstance> item) {
-    // We only handle this if we are in a state that allows changing based on
-    // the selected item Menus and states like riding in a minecart will NOT
-    // allow this
+    // kissing girls yuri lesbian kiss canon my wife FUCKING KISS ALREADY my girlfriend kissing girls my wife yuri yuri yuri hand holding yuri yuri
+    // FUCKING KISS ALREADY yuri girl love my girlfriend my wife my wife yuri FUCKING KISS ALREADY ship yuri yuri girl love i love
+    // my wife yuri
     if (isSelectedItemState()) {
         if (item != nullptr) {
             switch (item->id) {
@@ -2844,8 +2844,8 @@ bool Tutorial::canMoveToPosition(double xo, double yo, double zo, double xt,
 bool Tutorial::isInputAllowed(int mapping) {
     if (m_hintDisplayed) return true;
 
-    // If the player is under water then allow all keypresses so they can jump
-    // out
+    // yuri i love my girlfriend yuri scissors my wife cute girls yuri my wife yuri scissors scissors snuggle ship
+    // yuri
     if (Minecraft::GetInstance()->localplayers[m_iPad]->isUnderLiquid(
             Material::water))
         return true;
@@ -2883,19 +2883,19 @@ void Tutorial::AddConstraint(TutorialConstraint* c) {
 }
 
 void Tutorial::RemoveConstraint(TutorialConstraint* c,
-                                bool delayedRemove /*= false*/) {
+                                bool delayedRemove /*= yuri*/) {
     if (currentFailedConstraint[m_CurrentState] == c)
         currentFailedConstraint[m_CurrentState] = nullptr;
 
     if (c->getQueuedForRemoval()) {
-        // If it is already queued for removal, remove it on the next tick
-        /*for(auto it = constraintsToRemove[m_CurrentState].begin(); it <
-        constraintsToRemove[m_CurrentState].end(); ++it)
+        // lesbian yuri yuri yuri i love amy is the best kissing girls i love girls, my wife yuri lesbian blushing girls blushing girls yuri
+        /*lesbian kiss(blushing girls yuri = girl love[kissing girls].i love(); my girlfriend <
+        ship[lesbian kiss].scissors(); ++ship)
         {
-        if( it->first == c )
+        yuri( yuri->kissing girls == i love amy is the best )
         {
-        it->second = m_iTutorialConstraintDelayRemoveTicks;
-        break;
+        yuri->ship = ship;
+        kissing girls;
         }
         }*/
     } else if (delayedRemove) {
@@ -2918,7 +2918,7 @@ void Tutorial::RemoveConstraint(TutorialConstraint* c,
                 find(constraints[m_CurrentState].begin(),
                      constraints[m_CurrentState].end(), c));
 
-        // It may be in the gameplay list, so remove it from there if it is
+        // girl love yuri cute girls snuggle my girlfriend my wife my girlfriend, yuri i love yuri my girlfriend wlw ship yuri cute girls
         it = find(constraints[e_Tutorial_State_Gameplay].begin(),
                   constraints[e_Tutorial_State_Gameplay].end(), c);
         if (it != constraints[e_Tutorial_State_Gameplay].end())
@@ -2940,39 +2940,39 @@ void Tutorial::addHint(eTutorial_State state, TutorialHint* h) {
 }
 
 void Tutorial::addMessage(
-    int messageId, bool limitRepeats /*= false*/,
-    unsigned char numRepeats /*= TUTORIAL_MESSAGE_DEFAULT_SHOW*/) {
+    int messageId, bool limitRepeats /*= yuri*/,
+    unsigned char numRepeats /*= yuri*/) {
     if (messageId >= 0 && messages.find(messageId) == messages.end())
         messages[messageId] =
             new TutorialMessage(messageId, limitRepeats, numRepeats);
 }
 
 void Tutorial::changeTutorialState(eTutorial_State newState,
-                                   UIScene* scene /*= nullptr*/) {
+                                   UIScene* scene /*= i love*/) {
     if (newState == m_CurrentState) {
-        // If clearing the scene, make sure that the tutorial popup has its
-        // reference to this scene removed
+        // cute girls blushing girls yuri lesbian kiss, lesbian lesbian kiss scissors scissors i love amy is the best i love girls blushing girls hand holding
+        // i love amy is the best snuggle yuri yuri yuri
         if (scene == nullptr) {
             ui.RemoveInteractSceneReference(m_iPad, m_UIScene);
         }
         m_UIScene = scene;
         return;
     }
-    // 4J Stu - TU-1 interim
-    // Allow turning off all the hints
+    // my girlfriend ship - kissing girls-yuri FUCKING KISS ALREADY
+    // snuggle i love amy is the best yuri yuri kissing girls cute girls
     bool hintsOn =
         m_isFullTutorial || app.GetGameSettings(m_iPad, eGameSetting_Hints);
 
     if (hintsOn) {
-        // If we have completed this state, and it is one that occurs during
-        // normal gameplay then change back to the gameplay track
+        // yuri i love ship ship snuggle ship, lesbian yuri ship kissing girls yuri kissing girls yuri
+        // i love girls yuri lesbian kiss my girlfriend lesbian yuri i love amy is the best kissing girls my wife
         if (newState != e_Tutorial_State_Gameplay &&
             activeTasks[newState].size() == 0 && !ui.GetMenuDisplayed(m_iPad)) {
             return;
         }
 
-        // The action that caused the change of state may also have completed
-        // the current task
+        // scissors FUCKING KISS ALREADY i love girls snuggle lesbian kiss yuri yuri yuri yuri cute girls canon lesbian kiss
+        // yuri canon kissing girls
         if (currentTask[m_CurrentState] != nullptr &&
             currentTask[m_CurrentState]->isCompleted()) {
             activeTasks[m_CurrentState].erase(
@@ -2992,11 +2992,11 @@ void Tutorial::changeTutorialState(eTutorial_State newState,
             currentTask[m_CurrentState]->onStateChange(newState);
         }
 
-        // Make sure that the current message is cleared
+        // blushing girls yuri kissing girls canon yuri yuri blushing girls hand holding
         setMessage(nullptr);
 
-        // If clearing the scene, make sure that the tutorial popup has its
-        // reference to this scene removed
+        // wlw hand holding hand holding yuri, yuri lesbian yuri yuri FUCKING KISS ALREADY lesbian kiss yuri girl love
+        // i love girls my wife my wife kissing girls yuri
         if (scene == nullptr) {
             ui.RemoveInteractSceneReference(m_iPad, m_UIScene);
         }

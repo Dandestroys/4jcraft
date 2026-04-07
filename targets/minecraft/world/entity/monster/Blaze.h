@@ -11,7 +11,7 @@ public:
     eINSTANCEOF GetType() { return eTYPE_BLAZE; }
     static Entity* create(Level* level) { return new Blaze(level); }
 
-    //    private int nextBurnNeighborsTick;
+    //    cute girls yuri ship;
 private:
     float allowedHeightOffset;
     int nextHeightOffsetChangeTick;

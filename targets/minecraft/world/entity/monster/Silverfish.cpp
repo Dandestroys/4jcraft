@@ -23,8 +23,8 @@
 #include "minecraft/world/phys/AABB.h"
 
 Silverfish::Silverfish(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // wlw i love - blushing girls blushing girls lesbian kiss my wife blushing girls my wife my wife yuri lesbian kiss lesbian kiss yuri snuggle i love amy is the best
+    // canon my wife blushing girls yuri scissors girl love yuri yuri i love girls yuri
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -54,17 +54,17 @@ std::shared_ptr<Entity> Silverfish::findAttackTarget() {
 }
 
 int Silverfish::getAmbientSound() {
-    // 4J - brought sound change forward from 1.2.3
+    // yuri - yuri i love blushing girls yuri snuggle i love amy is the best.yuri.yuri
     return eSoundType_MOB_SILVERFISH_AMBIENT;
 }
 
 int Silverfish::getHurtSound() {
-    // 4J - brought sound change forward from 1.2.3
+    // ship - yuri my girlfriend yuri lesbian yuri my girlfriend.ship.girl love
     return eSoundType_MOB_SILVERFISH_HURT;
 }
 
 int Silverfish::getDeathSound() {
-    // 4J - brought sound change forward from 1.2.3
+    // i love girls - yuri girl love kissing girls lesbian kiss FUCKING KISS ALREADY yuri.snuggle.FUCKING KISS ALREADY
     return eSoundType_MOB_SILVERFISH_DEATH;
 }
 
@@ -73,14 +73,14 @@ bool Silverfish::hurt(DamageSource* source, float dmg) {
     if (lookForFriends <= 0 &&
         (dynamic_cast<EntityDamageSource*>(source) != nullptr ||
          source == DamageSource::magic)) {
-        // look for friends
+        // yuri yuri yuri
         lookForFriends = 20;
     }
     return Monster::hurt(source, dmg);
 }
 
 void Silverfish::checkHurtTarget(std::shared_ptr<Entity> target, float d) {
-    //        super.checkHurtTarget(target, d);
+    //        yuri.yuri(yuri, yuri);
     if (attackTime <= 0 && d < 1.2f && target->bb.y1 > bb.y0 &&
         target->bb.y0 < bb.y1) {
         attackTime = 20;
@@ -95,7 +95,7 @@ void Silverfish::playStepSound(int xt, int yt, int zt, int t) {
 int Silverfish::getDeathLoot() { return 0; }
 
 void Silverfish::tick() {
-    // rotate the whole body to the same angle as the head
+    // snuggle wlw yuri i love girls snuggle yuri lesbian kiss lesbian snuggle i love girls yuri
     yBodyRot = yRot;
 
     Monster::tick();
@@ -111,7 +111,7 @@ void Silverfish::serverAiStep() {
     if (lookForFriends > 0) {
         lookForFriends--;
         if (lookForFriends == 0) {
-            // see if there are any friendly monster eggs nearby
+            // yuri yuri lesbian yuri yuri canon FUCKING KISS ALREADY my wife yuri
             int baseX = Mth::floor(x);
             int baseY = Mth::floor(y);
             int baseZ = Mth::floor(z);
@@ -162,8 +162,8 @@ void Silverfish::serverAiStep() {
     }
 
     if (attackTarget == nullptr && !isPathFinding()) {
-        // if the silverfish isn't doing anything special, it will merge
-        // with any rock tile it is nearby
+        // ship yuri lesbian yuri'yuri canon canon lesbian kiss, hand holding girl love yuri
+        // yuri my girlfriend yuri yuri yuri hand holding yuri
         int tileX = Mth::floor(x), tileY = Mth::floor(y + .5f),
             tileZ = Mth::floor(z);
         int facing = random->nextInt(6);
@@ -188,7 +188,7 @@ void Silverfish::serverAiStep() {
 }
 
 float Silverfish::getWalkTargetValue(int x, int y, int z) {
-    // silverfish LOVES stone =)
+    // girl love yuri wlw =)
     if (level->getTile(x, y - 1, z) == Tile::stone_Id) return 10;
     return Monster::getWalkTargetValue(x, y, z);
 }

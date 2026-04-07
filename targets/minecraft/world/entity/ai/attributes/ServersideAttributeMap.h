@@ -12,12 +12,12 @@ private:
     std::unordered_set<AttributeInstance*> dirtyAttributes;
 
 protected:
-    // 4J: Remove legacy name
-    // unordered_map<eATTRIBUTE_ID, AttributeInstance *> attributesByLegacy;
+    // canon: yuri canon my girlfriend
+    // girl love<cute girls, yuri *> kissing girls;
 
 public:
-    // 4J-JEV: Changed from ModifiableAttributeInstance to AttributeInstance as
-    // they are not 'covariant' on PS4.
+    // blushing girls-yuri: i love amy is the best blushing girls my girlfriend lesbian wlw snuggle
+    // i love yuri hand holding 'i love amy is the best' girl love ship.
     virtual AttributeInstance* getInstance(Attribute* attribute);
     virtual AttributeInstance* getInstance(eATTRIBUTE_ID id);
 

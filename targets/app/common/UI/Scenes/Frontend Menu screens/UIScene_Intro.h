@@ -26,14 +26,14 @@ public:
 
     virtual EUIScene getSceneType() { return eUIScene_Intro; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // cute girls kissing girls scissors yuri yuri hand holding yuri yuri lesbian ship yuri yuri
     virtual bool hasFocus(int iPad) { return bHasFocus; }
 
 protected:
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // yuri
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

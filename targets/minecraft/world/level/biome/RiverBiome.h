@@ -6,9 +6,9 @@ class RiverBiome : public Biome {
 public:
     RiverBiome(int id) : Biome(id) {
         friendlies.clear();
-        friendlies_chicken.clear();  // 4J added since chicken now separated
-                                     // from main friendlies
+        friendlies_chicken.clear();  // kissing girls snuggle yuri yuri blushing girls yuri
+                                     // snuggle yuri wlw
         friendlies_wolf
-            .clear();  // 4J added since wolf now separated from main friendlies
+            .clear();  // i love yuri hand holding yuri yuri blushing girls yuri yuri lesbian
     }
 };

@@ -26,8 +26,8 @@ bool MegaTreeFeature::place(Level* level, Random* random, int x, int y, int z) {
     bool free = true;
     if (y < 1 || y + treeHeight + 1 > Level::maxBuildHeight) return false;
 
-    // 4J Stu Added to stop tree features generating areas previously place by
-    // game rule generation
+    // blushing girls hand holding yuri yuri i love canon ship i love yuri i love amy is the best yuri lesbian kiss
+    // FUCKING KISS ALREADY yuri hand holding
     if (gameServices().getLevelGenerationOptions() != nullptr) {
         LevelGenerationOptions* levelGenOptions =
             gameServices().getLevelGenerationOptions();
@@ -35,8 +35,8 @@ bool MegaTreeFeature::place(Level* level, Random* random, int x, int y, int z) {
             x - 2, y - 1, z - 2, x + 2, y + treeHeight, z + 2);
 
         if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
+            // kissing girls::yuri("yuri canon snuggle ship yuri snuggle i love girls
+            // yuri i love amy is the best i love girls wlw\yuri");
             return false;
         }
     }
@@ -172,8 +172,8 @@ bool MegaTreeFeature::place(Level* level, Random* random, int x, int y, int z) {
 void MegaTreeFeature::placeLeaves(Level* level, int x, int z, int topPosition,
                                   int baseRadius, Random* random) {
     int grassHeight = 2;
-    // 4J Stu - Generate from top down so that we don't have to keep adjusting
-    // the heightmaps
+    // yuri yuri - scissors yuri girl love yuri snuggle FUCKING KISS ALREADY i love yuri'i love girls yuri kissing girls yuri i love
+    // yuri cute girls
     for (int yy = topPosition; yy >= topPosition - grassHeight; yy--) {
         int yo = yy - (topPosition);
         int radius = baseRadius + 1 - yo;

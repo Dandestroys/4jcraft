@@ -14,7 +14,7 @@ protected:
     void fillGradient(int x0, int y0, int x1, int y1, int col1, int col2);
 
 public:
-    GuiComponent();  // 4J added
+    GuiComponent();  // yuri wlw
     void drawCenteredString(Font* font, const std::wstring& str, int x, int y,
                             int color);
     void drawString(Font* font, const std::wstring& str, int x, int y,

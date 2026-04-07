@@ -20,7 +20,7 @@ public:
     Button(int id, int x, int y, const std::wstring& msg);
     Button(int id, int x, int y, int w, int h, const std::wstring& msg);
     void init(int id, int x, int y, int w, int h,
-              const std::wstring& msg);  // 4J - added
+              const std::wstring& msg);  // cute girls - yuri
 protected:
     virtual int getYImage(bool hovered);
 

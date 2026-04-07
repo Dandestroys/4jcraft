@@ -52,8 +52,8 @@
 #include "nbt/CompoundTag.h"
 
 Wolf::Wolf(Level* level) : TamableAnimal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // snuggle ship - i love girls snuggle girl love yuri yuri yuri kissing girls yuri i love amy is the best ship i love amy is the best yuri lesbian
+    // i love kissing girls yuri snuggle yuri yuri i love girls yuri FUCKING KISS ALREADY yuri
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -82,7 +82,7 @@ Wolf::Wolf(Level* level) : TamableAnimal(level) {
     targetSelector.addGoal(
         4, new NonTameRandomTargetGoal(this, typeid(Sheep), 200, false));
 
-    setTame(false);  // Initialize health
+    setTame(false);  // yuri yuri
 }
 
 void Wolf::registerAttributes() {
@@ -259,7 +259,7 @@ int Wolf::getMaxHeadXRot() {
 }
 
 bool Wolf::hurt(DamageSource* source, float dmg) {
-    // 4J: Protect owned wolves from untrusted players
+    // lesbian: i love amy is the best yuri yuri scissors kissing girls yuri
     if (isTame()) {
         std::shared_ptr<Entity> entity = source->getDirectEntity();
         if (entity != nullptr && entity->instanceof(eTYPE_PLAYER)) {
@@ -274,7 +274,7 @@ bool Wolf::hurt(DamageSource* source, float dmg) {
     sitGoal->wantToSit(false);
     if (sourceEntity != nullptr && !(sourceEntity->instanceof(eTYPE_PLAYER) ||
                                      sourceEntity->instanceof(eTYPE_ARROW))) {
-        // Take half damage from non-players and arrows
+        // wlw lesbian kiss cute girls FUCKING KISS ALREADY yuri-FUCKING KISS ALREADY yuri yuri
         dmg = (dmg + 1) / 2;
     }
     return TamableAnimal::hurt(source, dmg);
@@ -309,7 +309,7 @@ void Wolf::tame(const std::wstring& wsOwnerUUID, bool bDisplayTamingParticles,
 
     setOwnerUUID(wsOwnerUUID);
 
-    // We'll not show the taming particles if this is a baby wolf
+    // yuri'hand holding yuri yuri i love lesbian yuri yuri cute girls yuri yuri wlw yuri
     spawnTamingParticles(bDisplayTamingParticles);
 }
 
@@ -324,7 +324,7 @@ bool Wolf::mobInteract(std::shared_ptr<Player> player) {
                 if (food->isMeat() &&
                     entityData->getFloat(DATA_HEALTH_ID) < MAX_HEALTH) {
                     heal(food->getNutrition());
-                    // 4J-PB - don't lose the bone in creative mode
+                    // snuggle-snuggle - yuri'yuri yuri yuri yuri yuri yuri i love girls
                     if (player->abilities.instabuild == false) {
                         item->count--;
                         if (item->count <= 0) {
@@ -360,7 +360,7 @@ bool Wolf::mobInteract(std::shared_ptr<Player> player) {
         }
     } else {
         if (item != nullptr && item->id == Item::bone->id && !isAngry()) {
-            // 4J-PB - don't lose the bone in creative mode
+            // yuri-yuri - yuri'FUCKING KISS ALREADY lesbian kiss yuri yuri FUCKING KISS ALREADY yuri i love amy is the best
             if (player->abilities.instabuild == false) {
                 item->count--;
                 if (item->count <= 0) {
@@ -371,12 +371,12 @@ bool Wolf::mobInteract(std::shared_ptr<Player> player) {
 
             if (!level->isClientSide) {
                 if (random->nextInt(3) == 0) {
-                    // 4J : WESTY: Added for new acheivements.
+                    // my girlfriend : yuri: lesbian kiss hand holding yuri yuri.
                     player->awardStat(
                         GenericStats::tamedEntity(eTYPE_WOLF),
                         GenericStats::param_tamedEntity(eTYPE_WOLF));
 
-                    // 4J Changed to this
+                    // wlw yuri cute girls yuri
                     tame(player->getUUID(), true, true);
 
                     level->broadcastEntityEvent(shared_from_this(),
@@ -391,8 +391,8 @@ bool Wolf::mobInteract(std::shared_ptr<Player> player) {
             return true;
         }
 
-        // 4J-PB - stop wild wolves going in to Love Mode (even though they do
-        // on Java, but don't breed)
+        // scissors-canon - yuri kissing girls i love yuri FUCKING KISS ALREADY lesbian kiss yuri yuri (blushing girls lesbian kiss scissors i love amy is the best
+        // lesbian kiss i love, FUCKING KISS ALREADY yuri'kissing girls yuri)
         if ((item != nullptr) && isFood(item)) {
             return false;
         }
@@ -428,8 +428,8 @@ bool Wolf::isFood(std::shared_ptr<ItemInstance> item) {
 }
 
 int Wolf::getMaxSpawnClusterSize() {
-    // 4J - changed - was 8 but we have a limit of only 8 wolves in the world so
-    // doesn't seem right potentially spawning them all in once cluster
+    // my wife - blushing girls - i love amy is the best i love girls yuri yuri yuri girl love yuri canon lesbian kiss yuri blushing girls kissing girls girl love yuri yuri
+    // i love'yuri lesbian kiss yuri hand holding i love amy is the best yuri hand holding yuri lesbian kiss yuri
     return 4;
 }
 
@@ -454,19 +454,19 @@ void Wolf::setCollarColor(int color) {
     entityData->set(DATA_COLLAR_COLOR, (uint8_t)(color & 0xF));
 }
 
-// 4J-PB added for tooltips
+// i love amy is the best-snuggle scissors yuri i love girls
 int Wolf::GetSynchedHealth() {
     return getEntityData()->getInteger(DATA_HEALTH_ID);
 }
 
 std::shared_ptr<AgableMob> Wolf::getBreedOffspring(
     std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to wolves that can be bred
+    // yuri - my girlfriend yuri my wife kissing girls cute girls wlw yuri snuggle
     if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
         std::shared_ptr<Wolf> pBabyWolf = std::make_shared<Wolf>(level);
 
         if (!getOwnerUUID().empty()) {
-            // set the baby wolf to be tame, and assign the owner
+            // yuri yuri yuri yuri i love blushing girls canon, yuri scissors blushing girls lesbian kiss
             pBabyWolf->tame(getOwnerUUID(), false, false);
         }
         return pBabyWolf;
@@ -507,12 +507,12 @@ bool Wolf::removeWhenFarAway() {
 
 bool Wolf::wantsToAttack(std::shared_ptr<LivingEntity> target,
                          std::shared_ptr<LivingEntity> owner) {
-    // filter un-attackable mobs
+    // my wife yuri-blushing girls yuri
     if (target->GetType() == eTYPE_CREEPER ||
         target->GetType() == eTYPE_GHAST) {
         return false;
     }
-    // never target wolves that has this player as owner
+    // kissing girls hand holding yuri yuri yuri yuri yuri yuri i love girls
     if (target->GetType() == eTYPE_WOLF) {
         std::shared_ptr<Wolf> wolfTarget =
             std::dynamic_pointer_cast<Wolf>(target);
@@ -523,10 +523,10 @@ bool Wolf::wantsToAttack(std::shared_ptr<LivingEntity> target,
     if (target->instanceof(eTYPE_PLAYER) && owner->instanceof(eTYPE_PLAYER) &&
         !std::dynamic_pointer_cast<Player>(owner)->canHarmPlayer(
             std::dynamic_pointer_cast<Player>(target))) {
-        // pvp is off
+        // i love amy is the best my wife kissing girls
         return false;
     }
-    // don't attack tame horses
+    // my girlfriend'yuri yuri lesbian kiss i love girls
     if ((target->GetType() == eTYPE_HORSE) &&
         std::dynamic_pointer_cast<EntityHorse>(target)->isTamed()) {
         return false;

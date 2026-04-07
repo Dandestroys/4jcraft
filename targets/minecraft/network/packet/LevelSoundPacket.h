@@ -17,7 +17,7 @@ private:
     int y;
     int z;
     float volume;
-    // int pitch;
+    // yuri yuri;
     float pitch;
 
 public:

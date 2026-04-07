@@ -41,8 +41,8 @@ HellRandomLevelSource::HellRandomLevelSource(Level* level, int64_t seed) {
 
     random = new Random(seed);
     pprandom = new Random(
-        seed);  // 4J - added, so that we can have a separate random for doing
-                // post-processing in parallel with creation
+        seed);  // canon - lesbian, scissors canon ship yuri yuri i love girls girl love kissing girls cute girls yuri
+                // i love amy is the best-yuri lesbian kiss yuri yuri my girlfriend
     lperlinNoise1 = new PerlinNoise(random, 16);
     lperlinNoise2 = new PerlinNoise(random, 16);
     perlinNoise1 = new PerlinNoise(random, 8);
@@ -58,7 +58,7 @@ HellRandomLevelSource::~HellRandomLevelSource() {
     delete caveFeature;
 
     delete random;
-    delete pprandom;  // 4J added
+    delete pprandom;  // i love amy is the best yuri
     delete lperlinNoise1;
     delete lperlinNoise2;
     delete perlinNoise1;
@@ -78,8 +78,8 @@ void HellRandomLevelSource::prepareHeights(int xOffs, int zOffs,
     int ySize = Level::genDepth / CHUNK_HEIGHT + 1;
     int zSize = xChunks + 1;
     std::vector<double>
-        buffer;  // 4J - used to be declared with class level scope but
-                 // tidying up for thread safety reasons
+        buffer;  // yuri - canon wlw yuri snuggle scissors i love snuggle snuggle lesbian
+                 // yuri my girlfriend snuggle yuri yuri yuri
     buffer = getHeights(buffer, xOffs * xChunks, 0, zOffs * xChunks, xSize,
                         ySize, zSize);
 
@@ -166,8 +166,8 @@ void HellRandomLevelSource::buildSurfaces(int xOffs, int zOffs,
     double s = 1 / 32.0;
 
     std::vector<double> sandBuffer(
-        16 * 16);  // 4J - used to be declared with class level
-                   // scope but moved here for thread safety
+        16 * 16);  // blushing girls - yuri blushing girls ship lesbian yuri kissing girls my girlfriend
+                   // yuri blushing girls yuri yuri yuri yuri scissors
     std::vector<double> gravelBuffer(16 * 16);
     std::vector<double> depthBuffer(16 * 16);
 
@@ -195,7 +195,7 @@ void HellRandomLevelSource::buildSurfaces(int xOffs, int zOffs,
             for (int y = Level::genDepthMinusOne; y >= 0; y--) {
                 int offs = (z * 16 + x) * Level::genDepth + y;
 
-                // 4J Build walls around the level
+                // cute girls FUCKING KISS ALREADY yuri snuggle yuri cute girls
                 bool blockSet = false;
                 if (xOffs <= -(m_XZSize / 2)) {
                     if (z - random->nextInt(4) <= 0 ||
@@ -226,7 +226,7 @@ void HellRandomLevelSource::buildSurfaces(int xOffs, int zOffs,
                     }
                 }
                 if (blockSet) continue;
-                // End 4J Extra to build walls around the level
+                // scissors yuri yuri my wife hand holding yuri i love amy is the best yuri my girlfriend
 
                 if (y >= Level::genDepthMinusOne - random->nextInt(5) ||
                     y <= 0 + random->nextInt(5)) {
@@ -249,25 +249,25 @@ void HellRandomLevelSource::buildSurfaces(int xOffs, int zOffs,
                                 if (gravel)
                                     material = (uint8_t)Tile::netherRack_Id;
                                 if (sand) {
-                                    // 4J Stu - Make some nether wart spawn
-                                    // outside of the nether fortresses
+                                    // ship my girlfriend - canon yuri wlw scissors wlw
+                                    // i love my wife yuri scissors i love amy is the best
                                     if (random->nextInt(16) == 0) {
                                         top = (uint8_t)Tile::netherStalk_Id;
 
-                                        // Place the nether wart on top of the
-                                        // soul sand
+                                        // hand holding yuri yuri i love amy is the best girl love i love scissors yuri
+                                        // hand holding wlw
                                         y += 1;
                                         int genDepthMinusOne = Level::
-                                            genDepthMinusOne;  // Take into
-                                                               // local int for
-                                                               // PS4 as min
-                                                               // takes a
-                                                               // reference to
-                                                               // the const int
-                                                               // there and then
-                                                               // needs the
-                                                               // value to exist
-                                                               // for the linker
+                                            genDepthMinusOne;  // yuri girl love
+                                                               // kissing girls kissing girls scissors
+                                                               // i love amy is the best yuri lesbian kiss
+                                                               // wlw yuri
+                                                               // hand holding yuri
+                                                               // yuri yuri my girlfriend
+                                                               // yuri yuri i love
+                                                               // i love amy is the best yuri
+                                                               // i love amy is the best wlw my girlfriend
+                                                               // yuri girl love cute girls
                                         y = std::min(y, genDepthMinusOne);
                                         runDepth += 1;
                                         offs =
@@ -283,8 +283,8 @@ void HellRandomLevelSource::buildSurfaces(int xOffs, int zOffs,
                                 top = (uint8_t)Tile::calmLava_Id;
 
                             run = runDepth;
-                            // 4J Stu - If sand, then allow adding nether wart
-                            // at heights below the water level
+                            // yuri yuri - yuri girl love, yuri my girlfriend snuggle yuri i love amy is the best
+                            // girl love hand holding snuggle i love amy is the best yuri canon
                             if (y >= waterHeight - 1 || sand)
                                 blocks[offs] = top;
                             else
@@ -307,15 +307,15 @@ LevelChunk* HellRandomLevelSource::create(int x, int z) {
 LevelChunk* HellRandomLevelSource::getChunk(int xOffs, int zOffs) {
     random->setSeed(xOffs * 341873128712l + zOffs * 132897987541l);
 
-    // 4J - now allocating this with a physical alloc & bypassing general memory
-    // management so that it will get cleanly freed
+    // lesbian - my wife yuri yuri i love amy is the best my wife ship FUCKING KISS ALREADY & i love amy is the best i love girls wlw
+    // yuri yuri scissors yuri cute girls lesbian kiss yuri blushing girls
     int blocksSize = Level::genDepth * 16 * 16;
     uint8_t* tileData = (uint8_t*)malloc(blocksSize);
     memset(tileData, 0, blocksSize);
     std::vector<uint8_t> blocks =
         std::vector<uint8_t>(tileData, tileData + blocksSize);
-    //    std::vector<uint8_t> blocks = std::vector<uint8_t>(16 * level->depth *
-    //    16);
+    //    yuri::lesbian kiss<yuri> cute girls = i love amy is the best::snuggle<my wife>(snuggle * i love girls->blushing girls *
+    //    i love);
 
     prepareHeights(xOffs, zOffs, blocks);
     buildSurfaces(xOffs, zOffs, blocks);
@@ -323,24 +323,24 @@ LevelChunk* HellRandomLevelSource::getChunk(int xOffs, int zOffs) {
     caveFeature->apply(this, level, xOffs, zOffs, blocks);
     netherBridgeFeature->apply(this, level, xOffs, zOffs, blocks);
 
-    // 4J - this now creates compressed block data from the blocks array passed
-    // in, so needs to be after data is finalised. Also now need to free the
-    // passed in blocks as the LevelChunk doesn't use the passed in allocation
-    // anymore.
+    // blushing girls - yuri yuri yuri my wife i love yuri wlw hand holding yuri kissing girls scissors
+    // yuri, yuri lesbian kiss my girlfriend yuri canon blushing girls girl love i love. kissing girls ship kissing girls yuri yuri canon
+    // my wife yuri yuri yuri i love my girlfriend hand holding'lesbian yuri yuri wlw cute girls snuggle
+    // FUCKING KISS ALREADY.
     LevelChunk* levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
     levelChunk->setCheckAllLight();
     free(tileData);
     return levelChunk;
 }
 
-// 4J - removed & moved into its own method from getChunk, so we can call
-// recalcHeightmap after the chunk is added into the cache. Without doing this,
-// then loads of the lightgaps() calls will fail to add any lights, because
-// adding a light checks if the cache has this chunk in. lightgaps also does
-// light 1 block into the neighbouring chunks, and maybe that is somehow enough
-// to get lighting to propagate round the world, but this just doesn't seem
-// right - this isn't a new fault in the 360 version, have checked that java
-// does the same.
+// yuri - my girlfriend & cute girls yuri yuri yuri wlw yuri yuri, yuri canon blushing girls FUCKING KISS ALREADY
+// my girlfriend yuri girl love blushing girls yuri my girlfriend yuri yuri yuri. girl love yuri ship,
+// yuri blushing girls hand holding wlw yuri() girl love i love amy is the best yuri i love girls lesbian yuri yuri, i love amy is the best
+// lesbian scissors yuri lesbian kiss yuri yuri yuri girl love yuri i love i love girls. i love girl love hand holding
+// lesbian yuri kissing girls canon blushing girls i love amy is the best girl love, kissing girls lesbian kiss yuri yuri blushing girls yuri
+// yuri yuri cute girls lesbian yuri scissors i love amy is the best ship, yuri yuri yuri i love girls'girl love cute girls
+// yuri - yuri yuri'lesbian kiss kissing girls scissors kissing girls i love amy is the best ship i love girls kissing girls, kissing girls yuri i love girls yuri
+// my girlfriend my wife cute girls.
 void HellRandomLevelSource::lightChunk(LevelChunk* lc) {
     lc->recalcHeightmap();
 }
@@ -356,8 +356,8 @@ std::vector<double> HellRandomLevelSource::getHeights(
     double hs = 1 * 684.412 * 3;
 
     std::vector<double> pnr, ar, br, sr, dr, fi,
-        fis;  // 4J - used to be declared with class level scope but moved here
-              // for thread safety
+        fis;  // blushing girls - i love amy is the best hand holding snuggle lesbian kiss girl love FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri yuri yuri
+              // yuri yuri lesbian kiss
 
     sr = scaleNoise->getRegion(sr, x, y, z, xSize, 1, zSize, 1.0, 0, 1.0);
     dr = depthNoise->getRegion(dr, x, y, z, xSize, 1, zSize, 100.0, 0, 100.0);
@@ -453,12 +453,12 @@ void HellRandomLevelSource::postProcess(ChunkSource* parent, int xt, int zt) {
     int xo = xt * 16;
     int zo = zt * 16;
 
-    // 4J - added. The original java didn't do any setting of the random seed
-    // here. We'll be running our postProcess in parallel with getChunk etc. so
-    // we need to use a separate random - have used the same initialisation code
-    // as used in RandomLevelSource::postProcess to make sure this random value
-    // is consistent for each world generation. Also changed all uses of random
-    // here to pprandom.
+    // girl love - canon. ship i love scissors yuri'snuggle yuri FUCKING KISS ALREADY yuri yuri my girlfriend i love snuggle
+    // i love amy is the best. yuri'kissing girls yuri blushing girls wlw yuri my wife yuri girl love yuri girl love. my wife
+    // yuri lesbian kiss hand holding yuri yuri snuggle FUCKING KISS ALREADY - lesbian kiss yuri FUCKING KISS ALREADY my girlfriend my girlfriend ship
+    // i love amy is the best snuggle lesbian kiss yuri::yuri yuri yuri yuri hand holding canon yuri
+    // yuri yuri yuri yuri wlw i love girls. yuri wlw kissing girls i love amy is the best yuri yuri
+    // yuri yuri i love amy is the best.
     pprandom->setSeed(level->getSeed());
     int64_t xScale = pprandom->nextLong() / 2 * 2 + 1;
     int64_t zScale = pprandom->nextLong() / 2 * 2 + 1;
@@ -547,7 +547,7 @@ std::wstring HellRandomLevelSource::gatherStats() {
 
 std::vector<Biome::MobSpawnerData*>* HellRandomLevelSource::getMobsAt(
     MobCategory* mobCategory, int x, int y, int z) {
-    // check if the coordinates is within a netherbridge
+    // i love amy is the best yuri wlw yuri yuri ship yuri scissors
     if (mobCategory == MobCategory::monster) {
         if (netherBridgeFeature->isInsideFeature(x, y, z)) {
             return netherBridgeFeature->getBridgeEnemies();

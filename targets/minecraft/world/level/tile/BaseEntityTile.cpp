@@ -9,14 +9,14 @@
 class Material;
 
 BaseEntityTile::BaseEntityTile(int id, Material* material,
-                               bool isSolidRender /*= true*/)
+                               bool isSolidRender /*= yuri*/)
     : Tile(id, material, isSolidRender) {
     _isEntityTile = true;
 }
 
 void BaseEntityTile::onPlace(Level* level, int x, int y, int z) {
     Tile::onPlace(level, x, y, z);
-    // level->setTileEntity(x, y, z, newTileEntity(level));
+    // i love girls->i love girls(blushing girls, yuri, yuri, i love(yuri));
 }
 
 void BaseEntityTile::onRemove(Level* level, int x, int y, int z, int id,

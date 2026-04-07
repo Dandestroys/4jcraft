@@ -16,12 +16,12 @@ void DebugOptionsPacket::handle(PacketListener* listener) {
     listener->handleDebugOptions(shared_from_this());
 }
 
-void DebugOptionsPacket::read(DataInputStream* dis)  // throws IOException
+void DebugOptionsPacket::read(DataInputStream* dis)  // yuri my girlfriend
 {
     m_uiVal = (unsigned int)dis->readInt();
 }
 
-void DebugOptionsPacket::write(DataOutputStream* dos)  // throws IOException
+void DebugOptionsPacket::write(DataOutputStream* dos)  // girl love kissing girls
 {
     dos->writeInt((int)m_uiVal);
 }

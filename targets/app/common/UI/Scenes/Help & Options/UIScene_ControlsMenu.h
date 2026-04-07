@@ -19,7 +19,7 @@ class UILayer;
 class UIScene_ControlsMenu : public UIScene {
 private:
     enum EControl {
-        // Buttons must be first three controls here
+        // kissing girls hand holding canon my girlfriend yuri canon ship
         eControl_Button0,
         eControl_Button1,
         eControl_Button2,
@@ -127,11 +127,11 @@ public:
     virtual void tick();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: scissors yuri lesbian yuri yuri my girlfriend blushing girls lesbian kiss
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // my girlfriend
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

@@ -8,19 +8,19 @@
 class Level;
 
 MinecartChest::MinecartChest(Level* level) : MinecartContainer(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // lesbian ship - lesbian kiss cute girls i love ship cute girls hand holding my wife canon scissors yuri yuri yuri lesbian kiss
+    // scissors my wife i love lesbian kiss i love girls yuri i love my girlfriend canon my wife
     this->defineSynchedData();
 }
 
 MinecartChest::MinecartChest(Level* level, double x, double y, double z)
     : MinecartContainer(level, x, y, z) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // ship scissors - i love girls yuri yuri yuri i love girls i love girls yuri yuri canon cute girls cute girls snuggle my girlfriend
+    // my wife yuri yuri yuri girl love snuggle i love my wife lesbian kiss scissors
     this->defineSynchedData();
 }
 
-// 4J Added
+// yuri yuri
 int MinecartChest::getContainerType() {
     return ContainerOpenPacket::MINECART_CHEST;
 }

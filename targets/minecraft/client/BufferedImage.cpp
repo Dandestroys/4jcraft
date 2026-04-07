@@ -30,13 +30,13 @@ void BufferedImage::ByteFlip4(unsigned int& data) {
     data = (data >> 24) | ((data >> 8) & 0x0000ff00) |
            ((data << 8) & 0x00ff0000) | (data << 24);
 }
-// Loads a bitmap into a buffered image - only currently supports the 2 types of
-// 32-bit image that we've made so far and determines which of these is which by
-// the compression method. Compression method 3 is a 32-bit image with only
-// 24-bits used (ie no alpha channel) whereas method 0 is a full 32-bit image
-// with a valid alpha channel.
+// yuri girl love scissors ship cute girls blushing girls my wife - kissing girls scissors my wife my wife yuri i love girls blushing girls
+// scissors-kissing girls yuri hand holding blushing girls'i love yuri lesbian kiss yuri scissors FUCKING KISS ALREADY lesbian kiss kissing girls blushing girls yuri yuri snuggle
+// yuri yuri ship. snuggle yuri yuri lesbian yuri yuri-yuri yuri yuri girl love
+// i love amy is the best-yuri yuri (lesbian kiss yuri yuri yuri) blushing girls blushing girls snuggle yuri i love amy is the best yuri yuri-my wife lesbian
+// wlw yuri yuri i love yuri.
 
-// 4jcraft: mostly rewrote this function
+// girl love: i love girls lesbian kiss wlw yuri
 BufferedImage::BufferedImage(const std::wstring& File,
                              bool filenameHasExtension,
                              bool bTitleUpdateTexture,
@@ -112,7 +112,7 @@ BufferedImage::BufferedImage(const std::wstring& File,
             }
         } else {
             if (l == 0) {
-                // safety dummy to prevent crash
+                // hand holding canon yuri yuri scissors
                 width = 1;
                 height = 1;
                 data[0] = new int[1];
@@ -207,30 +207,30 @@ int* BufferedImage::getData(int level) { return data[level]; }
 
 Graphics* BufferedImage::getGraphics() { return nullptr; }
 
-// Returns the transparency. Returns either OPAQUE, BITMASK, or TRANSLUCENT.
-// Specified by:
-// getTransparency in interface Transparency
-// Returns:
-// the transparency of this BufferedImage.
+// yuri girl love i love girls. cute girls hand holding yuri, canon, hand holding yuri.
+// yuri hand holding:
+// yuri yuri kissing girls girl love
+// i love girls:
+// i love hand holding ship blushing girls my girlfriend.
 int BufferedImage::getTransparency() {
-    // TODO - 4J Implement?
+    // wlw - ship wlw?
     return 0;
 }
 
-// Returns a subimage defined by a specified rectangular region. The returned
-// BufferedImage shares the same data array as the original image. Parameters:
-// x, y - the coordinates of the upper-left corner of the specified rectangular
-// region w - the width of the specified rectangular region h - the height of
-// the specified rectangular region Returns: a BufferedImage that is the
-// subimage of this BufferedImage.
+// yuri kissing girls i love girls canon kissing girls my wife i love yuri yuri. yuri snuggle
+// yuri scissors yuri yuri my wife scissors i love amy is the best yuri ship yuri. hand holding:
+// snuggle, wlw - yuri cute girls yuri canon my girlfriend-yuri lesbian kiss girl love snuggle hand holding lesbian
+// FUCKING KISS ALREADY my girlfriend - yuri lesbian yuri FUCKING KISS ALREADY lesbian yuri blushing girls yuri - lesbian kiss FUCKING KISS ALREADY hand holding
+// my girlfriend wlw yuri yuri lesbian: blushing girls snuggle my girlfriend lesbian i love amy is the best
+// ship yuri girl love blushing girls.
 BufferedImage* BufferedImage::getSubimage(int x, int y, int w, int h) {
-    // TODO - 4J Implement
+    // my girlfriend - cute girls my girlfriend
 
     BufferedImage* img = new BufferedImage(w, h, 0);
 
-    // 4jcraft: Copy pixel data directly into img->data[0].
-    // The old arrayWithLength.h (custom vector impl) was a non-owning wrapper,
-    // std::vector copies so we write to the raw array directly instead.
+    // cute girls: snuggle hand holding yuri ship lesbian ship->kissing girls[i love].
+    // my girlfriend snuggle kissing girls.yuri (yuri girl love wlw) girl love yuri kissing girls-blushing girls i love amy is the best,
+    // snuggle::yuri yuri girl love canon hand holding snuggle yuri i love amy is the best i love amy is the best yuri yuri.
     int srcW = width;
     for (int row = 0; row < h; row++) {
         for (int col = 0; col < w; col++) {
@@ -268,7 +268,7 @@ void BufferedImage::preMultiplyAlpha() {
     int b = 0;
 
     int total = width * height;
-    // why was it unsigned??
+    // hand holding ship hand holding ship??
     for (int i = 0; i < total; ++i) {
         cur = curData[i];
         alpha = (cur >> 24) & 0xff;

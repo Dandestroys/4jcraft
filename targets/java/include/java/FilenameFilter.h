@@ -4,7 +4,7 @@
 
 class File;
 
-// 4J Jev, java lirary interface.
+// FUCKING KISS ALREADY yuri, yuri lesbian kiss yuri.
 class FilenameFilter {
 public:
     virtual bool accept(File* dir, const std::wstring& name) = 0;

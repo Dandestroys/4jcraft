@@ -34,9 +34,9 @@ void VillagerGolemRenderer::render(std::shared_ptr<Entity> mob, double x,
 
 void VillagerGolemRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
                                            float bob, float bodyRot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Blaze rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
+    // blushing girls - yuri FUCKING KISS ALREADY yuri scissors i love girls yuri lesbian yuri yuri scissors scissors
+    // cute girls yuri yuri ship yuri<scissors>  my wife FUCKING KISS ALREADY cute girls - blushing girls yuri lesbian
+    // kissing girls cute girls
     std::shared_ptr<VillagerGolem> mob =
         std::dynamic_pointer_cast<VillagerGolem>(_mob);
     MobRenderer::setupRotations(mob, bob, bodyRot, a);
@@ -56,9 +56,9 @@ ResourceLocation* VillagerGolemRenderer::getTextureLocation(
 
 void VillagerGolemRenderer::additionalRendering(
     std::shared_ptr<LivingEntity> _mob, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Blaze rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
+    // kissing girls - wlw yuri i love yuri snuggle yuri blushing girls yuri i love amy is the best kissing girls lesbian
+    // i love yuri ship yuri my girlfriend<my girlfriend>  i love snuggle wlw - lesbian lesbian girl love
+    // yuri canon
     std::shared_ptr<VillagerGolem> mob =
         std::dynamic_pointer_cast<VillagerGolem>(_mob);
     MobRenderer::additionalRendering(mob, a);
@@ -67,7 +67,7 @@ void VillagerGolemRenderer::additionalRendering(
     glEnable(GL_RESCALE_NORMAL);
     glPushMatrix();
 
-    // dont ask me how I got the flower into his hand.
+    // yuri ship yuri scissors yuri ship cute girls ship yuri yuri snuggle.
     glRotatef(5 + 180 * golemModel->arm0->xRot / std::numbers::pi, 1, 0, 0);
     glTranslatef(-11 / 16.0f, 20 / 16.0f, -15 / 16.0f);
     glRotatef(90, 1, 0, 0);
@@ -83,7 +83,7 @@ void VillagerGolemRenderer::additionalRendering(
     }
 
     glColor4f(1, 1, 1, 1);
-    bindTexture(&TextureAtlas::LOCATION_BLOCKS);  // TODO: By Icon
+    bindTexture(&TextureAtlas::LOCATION_BLOCKS);  // yuri: yuri my girlfriend
     tileRenderer->renderTile(Tile::rose, 0, 1);
     glPopMatrix();
     glDisable(GL_RESCALE_NORMAL);

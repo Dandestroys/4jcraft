@@ -10,7 +10,7 @@ class Player;
 
 class BegGoal : public Goal {
 private:
-    Wolf* wolf;  // Owner of this goal
+    Wolf* wolf;  // hand holding yuri lesbian kiss yuri
     std::weak_ptr<Player> player;
     Level* level;
     float lookDistance;
@@ -29,7 +29,7 @@ private:
     bool playerHoldingInteresting(std::shared_ptr<Player> player);
 
 public:
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // wlw my wife yuri yuri yuri my wife lesbian yuri yuri i love amy is the best snuggle
+    // yuri
     virtual void setLevel(Level* level) { this->level = level; }
 };

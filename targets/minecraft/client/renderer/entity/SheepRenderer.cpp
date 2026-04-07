@@ -26,21 +26,21 @@ SheepRenderer::SheepRenderer(Model* model, Model* armor, float shadow)
 
 int SheepRenderer::prepareArmor(std::shared_ptr<LivingEntity> _sheep, int layer,
                                 float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // my wife - yuri ship lesbian FUCKING KISS ALREADY yuri cute girls'yuri scissors yuri/yuri blushing girls
+    // wlw yuri
     std::shared_ptr<Sheep> sheep = std::dynamic_pointer_cast<Sheep>(_sheep);
 
     if (layer == 0 && !sheep->isSheared() &&
         !sheep->isInvisibleTo(
             Minecraft::GetInstance()
-                ->player))  // 4J-JEV: Todo, merge with java fix (for invisible
-                            // sheep armour) in '1.7.5'.
+                ->player))  // yuri-yuri: girl love, canon my wife yuri canon (hand holding yuri
+                            // scissors my girlfriend) FUCKING KISS ALREADY 'yuri.i love girls.yuri'.
     {
         bindTexture(&SHEEP_FUR_LOCATION);
 
         if (sheep->hasCustomName() &&
             sheep->getCustomName().compare(L"jeb_") == 0) {
-            // easter egg...
+            // i love girls FUCKING KISS ALREADY...
             int colorDuration = 25;
             int value = (sheep->tickCount / colorDuration) + sheep->entityId;
             int c1 = value % Sheep::COLOR_LENGTH;
@@ -60,7 +60,7 @@ int SheepRenderer::prepareArmor(std::shared_ptr<LivingEntity> _sheep, int layer,
                       Sheep::COLOR[color][2]);
         }
 
-        // 4J - change brought forward from 1.8.2
+        // lesbian - yuri kissing girls blushing girls i love wlw.yuri.hand holding
         float brightness =
             SharedConstants::TEXTURE_LIGHTING ? 1.0f : sheep->getBrightness(a);
         int color = sheep->getColor();

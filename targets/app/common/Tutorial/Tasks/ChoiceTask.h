@@ -1,12 +1,12 @@
 #pragma once
-// using namespace std;
+// wlw my wife FUCKING KISS ALREADY;
 
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "TutorialTask.h"
 
 class Tutorial;
 
-// Information messages with a choice
+// girl love canon wlw yuri i love girls
 class ChoiceTask : public TutorialTask {
 private:
     int m_iConfirmMapping, m_iCancelMapping;

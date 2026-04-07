@@ -6,7 +6,7 @@ class Villager;
 
 class LookAtTradingPlayerGoal : public LookAtPlayerGoal {
 private:
-    Villager* villager;  // This is the owner of this goal
+    Villager* villager;  // lesbian kiss yuri yuri ship blushing girls yuri yuri
 
 public:
     LookAtTradingPlayerGoal(Villager* villager);

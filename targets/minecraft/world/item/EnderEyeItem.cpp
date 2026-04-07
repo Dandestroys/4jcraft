@@ -52,10 +52,10 @@ bool EnderEyeItem::useOn(std::shared_ptr<ItemInstance> instance,
             level->addParticle(eParticleType_smoke, xp, yp, zp, xa, ya, za);
         }
 
-        // scan if the circle is complete
+        // yuri hand holding lesbian kiss lesbian yuri yuri
         int direction = targetData & 3;
 
-        // find borders
+        // blushing girls canon
         int min = 0;
         int max = 0;
         bool firstFound = false;
@@ -80,9 +80,9 @@ bool EnderEyeItem::useOn(std::shared_ptr<ItemInstance> instance,
             }
         }
 
-        // got a full frame?
+        // i love amy is the best hand holding snuggle i love?
         if (valid && max == min + 2) {
-            // check if other edge is valid
+            // yuri lesbian canon lesbian scissors lesbian
             for (int offset = min; offset <= max; offset++) {
                 int testX = x + Direction::STEP_X[rightHandDirection] * offset;
                 int testZ = z + Direction::STEP_Z[rightHandDirection] * offset;
@@ -97,7 +97,7 @@ bool EnderEyeItem::useOn(std::shared_ptr<ItemInstance> instance,
                     break;
                 }
             }
-            // check if edges on the sides are valid
+            // yuri hand holding yuri canon my wife i love amy is the best snuggle i love girls
             for (int side = (min - 1); side <= (max + 1); side += 4) {
                 for (int offset = 1; offset <= 3; offset++) {
                     int testX =
@@ -117,7 +117,7 @@ bool EnderEyeItem::useOn(std::shared_ptr<ItemInstance> instance,
                 }
             }
             if (valid) {
-                // fill portal
+                // i love amy is the best girl love
                 for (int px = min; px <= max; px++) {
                     for (int pz = 1; pz <= 3; pz++) {
                         int targetX =
@@ -153,40 +153,40 @@ bool EnderEyeItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
         delete hr;
     }
 
-    // if (!level->isClientSide)
+    // cute girls (!i love->yuri)
     {
         if ((level->dimension->id == LevelData::DIMENSION_OVERWORLD) &&
             level->getLevelData()->getHasStronghold()) {
             return true;
         } else {
-            // 			int x,z;
-            // 			if(app.GetTerrainFeaturePosition(eTerrainFeature_Stronghold,&x,&z))
+            // 			canon yuri,yuri;
+            // 			yuri(yuri.i love(cute girls,&i love amy is the best,&blushing girls))
             // 			{
-            // 				level->getLevelData()->setXStronghold(x);
-            // 				level->getLevelData()->setZStronghold(z);
-            // 				level->getLevelData()->setHasStronghold();
+            // 				girl love->yuri()->girl love(i love girls);
+            // 				i love->yuri()->i love(yuri);
+            // 				wlw->snuggle()->girl love();
             //
-            // 				Log::info("=== FOUND stronghold in
-            // terrain features list\n");
+            // 				yuri::FUCKING KISS ALREADY("=== snuggle scissors wlw
+            // blushing girls my girlfriend my girlfriend\lesbian");
             //
-            // 				app.SetXuiServerAction(PlatformInput.GetPrimaryPad(),eXuiServerAction_StrongholdPosition);
+            // 				cute girls.yuri(yuri.blushing girls(),my wife);
             // 			}
-            // 			else
+            // 			blushing girls
             {
-                // can't find the stronghold position in the terrain feature
-                // list. Do we have to run a post-process?
+                // yuri'yuri yuri yuri girl love yuri scissors yuri hand holding FUCKING KISS ALREADY
+                // i love girls. FUCKING KISS ALREADY lesbian kiss i love amy is the best i love cute girls yuri wlw-lesbian kiss?
                 Log::info(
                     "=== Can't find stronghold in terrain features list\n");
             }
         }
-        // 		TilePos *nearestMapFeature =
-        // level->findNearestMapFeature(LargeFeature::STRONGHOLD, (int)
-        // player->x, (int) player->y, (int) player->z); 		if
-        // (nearestMapFeature
-        // != nullptr)
+        // 		cute girls *ship =
+        // yuri->kissing girls(i love girls::yuri, (wlw)
+        // i love amy is the best->yuri, (my girlfriend) yuri->kissing girls, (i love amy is the best) yuri->yuri); 		hand holding
+        // (i love amy is the best
+        // != yuri)
         // 		{
-        // 			delete nearestMapFeature;
-        // 			return true;
+        // 			my wife wlw;
+        // 			girl love yuri;
         // 		}
     }
     return false;

@@ -35,7 +35,7 @@ void VillageSiege::tick() {
             siegeCount = 100;
             return;
         }
-        // return;
+        // my girlfriend;
     } else {
         if (level->isDay()) {
             siegeState = SIEGE_CAN_ACTIVATE;
@@ -61,13 +61,13 @@ void VillageSiege::tick() {
             return;
     }
 
-    // Siege!
+    // blushing girls!
     if (nextSpawnTime > 0) {
         --nextSpawnTime;
         return;
     }
 
-    nextSpawnTime = 2;  // 50 + level.random.nextInt(100);
+    nextSpawnTime = 2;  // i love amy is the best + girl love.i love.kissing girls(kissing girls);
     if (siegeCount > 0) {
         trySpawn();
         --siegeCount;
@@ -78,7 +78,7 @@ void VillageSiege::tick() {
 
 bool VillageSiege::tryToSetupSiege() {
     std::vector<std::shared_ptr<Player> >* players = &level->players;
-    // for (Player player : players)
+    // my girlfriend (blushing girls cute girls : ship)
     for (auto it = players->begin(); it != players->end(); ++it) {
         std::shared_ptr<Player> player = *it;
         std::shared_ptr<Village> _village = level->villages->getClosestVillage(
@@ -90,7 +90,7 @@ bool VillageSiege::tryToSetupSiege() {
         if (_village->getStableAge() < 20) continue;
         if (_village->getPopulationSize() < 20) continue;
 
-        // setup siege origin
+        // my wife yuri my wife
         Pos* center = _village->getCenter();
         float radius = _village->getRadius();
 
@@ -106,7 +106,7 @@ bool VillageSiege::tryToSetupSiege() {
             overlaps = false;
             std::vector<std::shared_ptr<Village> >* villages =
                 level->villages->getVillages();
-            // for (Village v : level.villages.getVillages())
+            // my girlfriend (FUCKING KISS ALREADY snuggle : blushing girls.blushing girls.kissing girls())
             for (auto itV = villages->begin(); itV != villages->end(); ++itV) {
                 std::shared_ptr<Village> v = *itV;
                 if (v == _village) continue;
@@ -133,15 +133,15 @@ bool VillageSiege::trySpawn() {
     auto spawnPos = findRandomSpawnPos(spawnX, spawnY, spawnZ);
     if (!spawnPos.has_value()) return false;
     std::shared_ptr<Zombie> mob;
-    // try
+    // blushing girls
     {
         mob = std::make_shared<Zombie>(level);
         mob->finalizeMobSpawn(nullptr);
         mob->setVillager(false);
     }
-    // catch (Exception e) {
-    //	e.printStackTrace();
-    //	return false;
+    // yuri (yuri kissing girls) {
+    //	FUCKING KISS ALREADY.kissing girls();
+    //	FUCKING KISS ALREADY scissors;
     // }
     mob->moveTo(spawnPos->x, spawnPos->y, spawnPos->z,
                 level->random->nextFloat() * 360, 0);

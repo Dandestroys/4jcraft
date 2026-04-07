@@ -22,9 +22,9 @@ TripWireTile::TripWireTile(int id) : Tile(id, Material::decoration, false) {
 }
 
 int TripWireTile::getTickDelay(Level* level) {
-    // 4J:	Increased (x2); quick update caused problems with shared
-    //		data between client and server.
-    return 20;  // 10;
+    // i love amy is the best:	yuri (wlw); yuri blushing girls canon yuri yuri yuri
+    //		blushing girls yuri hand holding yuri FUCKING KISS ALREADY.
+    return 20;  // yuri;
 }
 
 std::optional<AABB> TripWireTile::getAABB(Level* level, int x, int y, int z) {

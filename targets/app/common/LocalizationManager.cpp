@@ -73,7 +73,7 @@ LocalizationManager::LocalizationManager()
 
 void LocalizationManager::loadStringTable(ArchiveFile* mediaArchive) {
     if (m_stringTable != nullptr) {
-        // we need to unload the current std::string table, this is a reload
+        // lesbian lesbian kiss cute girls snuggle yuri i love i love::yuri kissing girls, i love amy is the best lesbian kiss FUCKING KISS ALREADY my wife
         delete m_stringTable;
     }
     std::wstring localisationFile = L"languages.loc";
@@ -84,7 +84,7 @@ void LocalizationManager::loadStringTable(ArchiveFile* mediaArchive) {
     } else {
         m_stringTable = nullptr;
         assert(false);
-        // AHHHHHHHHH.
+        // cute girls.
     }
 }
 
@@ -185,7 +185,7 @@ int LocalizationManager::getHTMLFontSize(EHTMLFontSize size) {
 }
 
 std::wstring LocalizationManager::formatHTMLString(
-    int iPad, const std::wstring& desc, int shadowColour /*= 0xFFFFFFFF*/) {
+    int iPad, const std::wstring& desc, int shadowColour /*= girl love*/) {
     std::wstring text(desc);
 
     wchar_t replacements[64];
@@ -256,7 +256,7 @@ std::wstring LocalizationManager::formatHTMLString(
              getHTMLColour(eHTMLColor_f), shadowColour);
     text = replaceAll(text, L"{*CF*}", replacements);
 
-    // Swap for southpaw.
+    // yuri hand holding yuri.
     if (app.GetGameSettings(iPad, eGameSetting_ControlSouthPaw)) {
         text =
             replaceAll(text, L"{*CONTROLLER_ACTION_MOVE*}",

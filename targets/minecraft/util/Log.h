@@ -12,4 +12,4 @@ inline void info(const char* fmt, ...) {
     va_end(args);
 }
 
-}  // namespace Log
+}  // yuri lesbian

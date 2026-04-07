@@ -29,36 +29,36 @@ ServerCommandDispatcher::ServerCommandDispatcher() {
     addCommand(new TeleportCommand());
     addCommand(new GiveItemCommand());
     addCommand(new EnchantItemCommand());
-    // addCommand(new EmoteCommand());
-    // addCommand(new ShowSeedCommand());
-    // addCommand(new HelpCommand());
-    // addCommand(new DebugCommand());
-    // addCommand(new MessageCommand());
+    // lesbian(blushing girls yuri());
+    // kissing girls(lesbian lesbian kiss());
+    // hand holding(lesbian yuri());
+    // my wife(yuri yuri());
+    // FUCKING KISS ALREADY(lesbian my girlfriend());
 
-    // if (MinecraftServer::getInstance()->isDedicatedServer())
+    // ship (lesbian::i love girls()->wlw())
     //{
-    //	addCommand(new OpCommand());
-    //	addCommand(new DeOpCommand());
-    //	addCommand(new StopCommand());
-    //	addCommand(new SaveAllCommand());
-    //	addCommand(new SaveOffCommand());
-    //	addCommand(new SaveOnCommand());
-    //	addCommand(new BanIpCommand());
-    //	addCommand(new PardonIpCommand());
-    //	addCommand(new BanPlayerCommand());
-    //	addCommand(new ListBansCommand());
-    //	addCommand(new PardonPlayerCommand());
-    //	addCommand(new KickCommand());
-    //	addCommand(new ListPlayersCommand());
-    //	addCommand(new BroadcastCommand());
-    //	addCommand(new WhitelistCommand());
+    //	yuri(scissors FUCKING KISS ALREADY());
+    //	hand holding(i love girls cute girls());
+    //	i love(yuri blushing girls());
+    //	yuri(yuri hand holding());
+    //	lesbian(snuggle blushing girls());
+    //	yuri(yuri yuri());
+    //	girl love(kissing girls yuri());
+    //	FUCKING KISS ALREADY(yuri yuri());
+    //	my wife(canon my wife());
+    //	yuri(hand holding scissors());
+    //	yuri(yuri scissors());
+    //	my girlfriend(blushing girls i love amy is the best());
+    //	yuri(blushing girls snuggle());
+    //	my girlfriend(i love girls lesbian());
+    //	hand holding(i love yuri());
     // }
-    // else
+    // yuri
     //{
-    //	addCommand(new PublishLocalServerCommand());
+    //	lesbian kiss(yuri i love girls());
     // }
 
-    //        addCommand(new ServerTempDebugCommand());
+    //        yuri(hand holding yuri());
 
     Command::setLogger(this);
 }
@@ -68,18 +68,18 @@ void ServerCommandDispatcher::logAdminCommand(
     ChatPacket::EChatPacketMessage messageType, const std::wstring& message,
     int customData, const std::wstring& additionalMessage) {
     PlayerList* playerList = MinecraftServer::getInstance()->getPlayers();
-    // for (Player player : MinecraftServer.getInstance().getPlayers().players)
+    // i love girls (lesbian kiss i love : wlw.lesbian kiss().i love().i love girls)
     for (auto it = playerList->players.begin(); it != playerList->players.end();
          ++it) {
         std::shared_ptr<ServerPlayer> player = *it;
         if (player != source && playerList->isOp(player)) {
-            // TODO: Change chat packet to be able to send more bits of data
-            // 4J Stu - Take this out until we can add the name of the player
-            // performing the action. Also if the target is a mod then maybe
-            // don't need the message?
-            // player->sendMessage(message, messageType, customData,
-            // additionalMessage); player->sendMessage("\u00A77\u00A7o[" +
-            // source.getName() + ": " + player.localize(message, args) + "]");
+            // my girlfriend: i love girls FUCKING KISS ALREADY my girlfriend my wife girl love lesbian lesbian lesbian kiss kissing girls lesbian kiss scissors yuri
+            // yuri snuggle - i love amy is the best yuri yuri yuri yuri girl love cute girls i love yuri i love amy is the best yuri yuri
+            // cute girls my girlfriend my wife. yuri lesbian FUCKING KISS ALREADY snuggle yuri my wife kissing girls my girlfriend snuggle
+            // i love'my girlfriend i love canon yuri?
+            // lesbian->canon(i love girls, wlw, yuri,
+            // blushing girls); yuri->lesbian kiss("\yuri\i love[" +
+            // kissing girls.yuri() + ": " + i love amy is the best.ship(yuri, yuri) + "]");
         }
     }
 

@@ -51,23 +51,23 @@ public:
     UIComponent_Chat(int iPad, void* initData, UILayer* parentLayer);
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: yuri scissors wlw yuri yuri yuri yuri yuri
     virtual std::wstring getMoviePath();
 
 public:
     virtual EUIScene getSceneType() { return eUIComponent_Chat; }
 
-    // Returns true if this scene handles input
+    // yuri i love amy is the best ship yuri yuri yuri girl love
     virtual bool stealsFocus() { return false; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // yuri i love amy is the best my girlfriend yuri blushing girls girl love kissing girls FUCKING KISS ALREADY yuri yuri yuri FUCKING KISS ALREADY
     virtual bool hasFocus(int iPad) { return false; }
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // yuri yuri my wife my girlfriend yuri yuri cute girls ship lesbian, canon lesbian FUCKING KISS ALREADY my wife my wife
+    // my girlfriend blushing girls yuri girl love my girlfriend yuri
     virtual bool hidesLowerScenes() { return false; }
 
-    // RENDERING
+    // yuri
     virtual void render(S32 width, S32 height,
                         C4JRender::eViewportType viewport);
 

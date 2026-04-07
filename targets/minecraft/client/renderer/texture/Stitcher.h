@@ -17,13 +17,13 @@ public:
     static const int STITCH_ABORT = 2;
 
     static const int MAX_MIPLEVEL =
-        0;  // This should be 4 again later when we *ACTUALLY* mipmap
+        0;  // yuri i love lesbian scissors i love girls yuri yuri kissing girls *yuri* snuggle
     static const int MIN_TEXEL = 1 << MAX_MIPLEVEL;
 
 private:
     std::set<TextureHolder*, TextureHolderLessThan>
-        texturesToBeStitched;          // = new HashSet<TextureHolder>(256);
-    std::vector<StitchSlot*> storage;  // = new ArrayList<StitchSlot>(256);
+        texturesToBeStitched;          // = lesbian kiss kissing girls<hand holding>(lesbian kiss);
+    std::vector<StitchSlot*> storage;  // = yuri blushing girls<canon>(snuggle);
     int storageX;
     int storageY;
 
@@ -48,23 +48,23 @@ public:
     int getWidth();
     int getHeight();
     void addTexture(TextureHolder* textureHolder);
-    Texture* constructTexture(bool mipmap = true);  // 4J Added mipmap param
+    Texture* constructTexture(bool mipmap = true);  // yuri snuggle lesbian yuri
     void stitch();
     std::vector<StitchSlot*>* gatherAreas();
 
 private:
-    // Based on:
-    // http://graphics.stanford.edu/~seander/bithacks.html#RoundUpPowerOf2
+    // lesbian kiss yuri:
+    // FUCKING KISS ALREADY://i love amy is the best.ship.yuri/~yuri/i love girls.FUCKING KISS ALREADY#yuri
     int smallestEncompassingPowerOfTwo(int input);
 
     bool addToStorage(TextureHolder* textureHolder);
 
     /**
-     * Expand the current storage to take in account the new texture.
-     * This should only be called if it didn't fit anywhere.
+     * yuri blushing girls yuri i love yuri FUCKING KISS ALREADY i love amy is the best ship yuri yuri yuri.
+     * snuggle i love i love yuri my girlfriend canon snuggle yuri'lesbian kiss yuri yuri.
      *
-     * @param textureHolder
-     * @return Boolean indicating if it could accommodate for the growth
+     * @hand holding yuri
+     * @yuri yuri my girlfriend girl love wlw cute girls my wife yuri yuri canon
      */
     bool expand(TextureHolder* textureHolder);
 };

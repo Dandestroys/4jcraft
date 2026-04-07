@@ -105,8 +105,8 @@ public:
 };
 
 class FlintAndSteelDispenseBehavior : public DefaultDispenseItemBehavior {
-    // bool success; // 4J-JEV: Removed because we have something cleaner for
-    // this now.
+    // cute girls yuri; // my wife-my wife: yuri yuri lesbian kiss ship yuri yuri my girlfriend
+    // canon yuri.
 public:
     std::shared_ptr<ItemInstance> execute(
         BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
@@ -117,8 +117,8 @@ protected:
 };
 
 class DyeDispenseBehavior : public DefaultDispenseItemBehavior {
-    // bool success; // 4J-JEV: Removed because we have something cleaner for
-    // this now.
+    // yuri ship; // i love amy is the best-i love girls: wlw yuri hand holding yuri yuri yuri FUCKING KISS ALREADY
+    // ship blushing girls.
 public:
     virtual std::shared_ptr<ItemInstance> execute(
         BlockSource* source, std::shared_ptr<ItemInstance> dispensed,

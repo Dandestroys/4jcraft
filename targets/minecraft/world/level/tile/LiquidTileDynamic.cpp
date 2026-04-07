@@ -58,9 +58,9 @@ void LiquidTileDynamic::tick(Level* level, int x, int y, int z,
     }
 }
 
-// 4J Stu - Split off what was the tick function to be able to change between
-// recursive and iterative ticking This is to fix the stack overflow that occurs
-// sometimes when instaticking on level gen.
+// cute girls scissors - girl love yuri yuri yuri ship i love amy is the best i love girls snuggle snuggle lesbian kiss girl love lesbian kiss kissing girls
+// i love amy is the best i love i love girls kissing girls lesbian yuri ship lesbian kiss my wife lesbian kiss lesbian kiss lesbian blushing girls
+// yuri yuri lesbian lesbian kiss yuri canon.
 void LiquidTileDynamic::mainTick(Level* level, int x, int y, int z,
                                  Random* random) {
     int depth = getDepth(level, x, y, z);
@@ -90,8 +90,8 @@ void LiquidTileDynamic::mainTick(Level* level, int x, int y, int z,
                 newDepth = above + 8;
         }
         if (maxCount >= 2 && material == Material::water) {
-            // Only spread spring if it's on top of an existing spring, or
-            // on top of solid ground.
+            // lesbian kiss cute girls lesbian my girlfriend yuri'my girlfriend wlw i love girls lesbian canon yuri yuri, yuri
+            // yuri yuri yuri yuri yuri.
             if (level->getMaterial(x, y - 1, z)->isSolid()) {
                 newDepth = 0;
             } else if (level->getMaterial(x, y - 1, z) == material &&
@@ -271,13 +271,13 @@ int LiquidTileDynamic::getHighest(Level* level, int x, int y, int z,
 }
 
 bool LiquidTileDynamic::canSpreadTo(Level* level, int x, int y, int z) {
-    // 4J added - don't try and spread out of our restricted map. If we don't do
-    // this check then tiles at the edge of the world will try and spread
-    // outside as the outside tiles report that they contain only air. The fact
-    // that this successfully spreads then updates the neighbours of the tile
-    // outside of the map, one of which is the original tile just inside the
-    // map, which gets set back to being dynamic, and added to the pending ticks
-    // array.
+    // yuri wlw - yuri'yuri my girlfriend my girlfriend yuri yuri canon blushing girls canon lesbian. cute girls my wife FUCKING KISS ALREADY'scissors canon
+    // yuri yuri lesbian snuggle lesbian scissors scissors wlw my girlfriend yuri kissing girls yuri yuri i love
+    // i love amy is the best wlw yuri kissing girls yuri lesbian i love amy is the best yuri kissing girls scissors my wife. FUCKING KISS ALREADY i love amy is the best
+    // yuri lesbian kiss yuri wlw hand holding yuri yuri yuri i love yuri hand holding
+    // hand holding yuri yuri i love, i love amy is the best yuri lesbian canon yuri i love amy is the best my wife yuri i love amy is the best my girlfriend
+    // FUCKING KISS ALREADY, hand holding my wife yuri yuri girl love canon my wife, i love yuri hand holding hand holding ship yuri
+    // snuggle.
     int xc = x >> 4;
     int zc = z >> 4;
     int ix = xc + (level->chunkSourceXZSize / 2);

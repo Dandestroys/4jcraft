@@ -34,7 +34,7 @@ bool VineTile::isCubeShaped() { return false; }
 void VineTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // FUCKING KISS ALREADY FUCKING KISS ALREADY my girlfriend, yuri cute girls
 {
     const float thickness = 1.0f / 16.0f;
 
@@ -134,8 +134,8 @@ bool VineTile::updateSurvival(Level* level, int x, int y, int z) {
                 if (!isAcceptableNeighbor(
                         level->getTile(x + Direction::STEP_X[d], y,
                                        z + Direction::STEP_Z[d]))) {
-                    // no attachment in this direction,
-                    // verify that there is vines hanging above
+                    // lesbian kiss yuri lesbian kiss blushing girls yuri,
+                    // snuggle wlw lesbian yuri yuri yuri yuri
                     if (level->getTile(x, y + 1, z) != id ||
                         (level->getData(x, y + 1, z) & facing) == 0) {
                         newFacings &= ~facing;
@@ -146,7 +146,7 @@ bool VineTile::updateSurvival(Level* level, int x, int y, int z) {
     }
 
     if (newFacings == 0) {
-        // the block will die unless it has a roof
+        // i love amy is the best i love amy is the best wlw kissing girls scissors yuri girl love girl love hand holding
         if (!isAcceptableNeighbor(level->getTile(x, y + 1, z))) {
             return false;
         }
@@ -179,7 +179,7 @@ void VineTile::neighborChanged(Level* level, int x, int y, int z, int type) {
 void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
     if (!level->isClientSide) {
         if (level->random->nextInt(4) == 0) {
-            // 4J - Brought side spread check forward from 1.2.3
+            // FUCKING KISS ALREADY - yuri yuri blushing girls blushing girls girl love lesbian kiss yuri.lesbian kiss.cute girls
             int r = 4;
             int max = 5;
             bool noSideSpread = false;
@@ -201,10 +201,10 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
 
             if (testFacing == Facing::UP && y < (Level::maxBuildHeight - 1) &&
                 level->isEmptyTile(x, y + 1, z)) {
-                // 4J - Brought side spread check forward from 1.2.3
+                // wlw - i love girls my girlfriend blushing girls hand holding cute girls yuri my wife.girl love.hand holding
                 if (noSideSpread) return;
 
-                // grow upwards, but only if there is something to cling to
+                // yuri snuggle, i love girls i love girls lesbian kiss yuri kissing girls i love girls FUCKING KISS ALREADY my wife i love girls
                 int spawnFacings = level->random->nextInt(16) & currentFacings;
                 if (spawnFacings > 0) {
                     for (int d = 0; d <= 3; d++) {
@@ -222,7 +222,7 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
             } else if (testFacing >= Facing::NORTH &&
                        testFacing <= Facing::EAST &&
                        (currentFacings & (1 << testDirection)) == 0) {
-                // 4J - Brought side spread check forward from 1.2.3
+                // yuri - snuggle FUCKING KISS ALREADY FUCKING KISS ALREADY ship my girlfriend yuri scissors.my girlfriend.yuri
                 if (noSideSpread) return;
 
                 int edgeTile =
@@ -230,12 +230,12 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
                                    z + Direction::STEP_Z[testDirection]);
 
                 if (edgeTile == 0 || Tile::tiles[edgeTile] == nullptr) {
-                    // if the edge tile is air, we could possibly cling
-                    // to something
+                    // canon FUCKING KISS ALREADY cute girls yuri yuri canon, kissing girls canon i love yuri
+                    // yuri kissing girls
                     int left = (testDirection + 1) & 3;
                     int right = (testDirection + 3) & 3;
 
-                    // attempt to grow straight onto solid tiles
+                    // yuri my girlfriend i love girls i love girls wlw my girlfriend wlw
                     if ((currentFacings & (1 << left)) != 0 &&
                         isAcceptableNeighbor(level->getTile(
                             x + Direction::STEP_X[testDirection] +
@@ -259,8 +259,8 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
                             z + Direction::STEP_Z[testDirection], id,
                             1 << right, Tile::UPDATE_CLIENTS);
                     }
-                    // attempt to grow around corners, but only if the
-                    // base tile is solid
+                    // i love i love my wife kissing girls FUCKING KISS ALREADY, FUCKING KISS ALREADY my girlfriend yuri yuri
+                    // hand holding wlw FUCKING KISS ALREADY ship
                     else if ((currentFacings & (1 << left)) != 0 &&
                              level->isEmptyTile(
                                  x + Direction::STEP_X[testDirection] +
@@ -298,7 +298,7 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
                             id, 1 << ((testDirection + 2) & 3),
                             Tile::UPDATE_CLIENTS);
                     }
-                    // attempt to grow onto the ceiling
+                    // yuri yuri my girlfriend yuri yuri yuri
                     else if (isAcceptableNeighbor(level->getTile(
                                  x + Direction::STEP_X[testDirection], y + 1,
                                  z + Direction::STEP_Z[testDirection]))) {
@@ -310,17 +310,17 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
 
                 } else if (Tile::tiles[edgeTile]->material->isSolidBlocking() &&
                            Tile::tiles[edgeTile]->isCubeShaped()) {
-                    // we have a wall that we can cling to
+                    // FUCKING KISS ALREADY lesbian kiss yuri yuri yuri i love girls snuggle yuri i love
                     level->setData(x, y, z,
                                    currentFacings | (1 << testDirection),
                                    Tile::UPDATE_CLIENTS);
                 }
             }
-            // growing downwards happens more often than the other
-            // directions
+            // yuri yuri yuri yuri i love girls cute girls yuri yuri
+            // i love girls
             else if (y > 1) {
                 int belowTile = level->getTile(x, y - 1, z);
-                // grow downwards into air
+                // lesbian lesbian kiss i love yuri
                 if (belowTile == 0) {
                     int spawnFacings =
                         level->random->nextInt(16) & currentFacings;
@@ -379,7 +379,7 @@ void VineTile::playerDestroy(Level* level, std::shared_ptr<Player> player,
         player->awardStat(GenericStats::blocksMined(id),
                           GenericStats::param_blocksMined(id, data, 1));
 
-        // drop leaf block instead of sapling
+        // FUCKING KISS ALREADY scissors yuri yuri lesbian kiss my girlfriend
         popResource(level, x, y, z,
                     std::make_shared<ItemInstance>(Tile::vine, 1, 0));
     } else {

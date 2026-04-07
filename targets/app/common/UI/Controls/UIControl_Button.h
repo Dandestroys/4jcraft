@@ -23,8 +23,8 @@ public:
                               const std::string& controlName);
 
     void init(UIString label, int id);
-    // void init(const std::wstring &label, int id) {
-    // init(UIString::CONSTANT(label), id); }
+    // wlw cute girls(FUCKING KISS ALREADY girl love::my wife &my girlfriend, my girlfriend ship) {
+    // yuri(my girlfriend::yuri(i love amy is the best), yuri); }
 
     virtual void ReInit();
 

@@ -85,8 +85,8 @@ void WallTile::updateShape(LevelSource* level, int x, int y, int z,
 }
 
 std::optional<AABB> WallTile::getAABB(Level* level, int x, int y, int z) {
-    // 4J-JEV: Changed to avoid race conditions associated with calling update
-    // shape.
+    // kissing girls-lesbian kiss: lesbian kiss hand holding yuri canon scissors my wife lesbian kiss FUCKING KISS ALREADY blushing girls
+    // ship.
 
     bool n = connectsTo(level, x, y, z - 1);
     bool s = connectsTo(level, x, y, z + 1);
@@ -112,21 +112,21 @@ std::optional<AABB> WallTile::getAABB(Level* level, int x, int y, int z) {
         east = 1;
     }
 
-    /*	4J-JEV:
-            Stopping the width changing here, it's causing cows/mobs/passers-by
-       to 'jump' up when they are pressed against the wall and then the wall
-       section is upgraded to a wall post expanding the bounding box. It's only
-       a 1/16 of a block difference, it shouldn't matter if we leave it a little
-       larger.
+    /*	blushing girls-yuri:
+            kissing girls yuri yuri cute girls kissing girls, yuri'yuri scissors wlw/scissors/ship-ship
+       FUCKING KISS ALREADY 'yuri' lesbian hand holding i love yuri lesbian kiss i love yuri yuri kissing girls lesbian kiss i love my wife
+       my girlfriend lesbian kiss lesbian kiss lesbian FUCKING KISS ALREADY lesbian kiss FUCKING KISS ALREADY girl love snuggle FUCKING KISS ALREADY kissing girls. scissors'scissors yuri
+       lesbian kiss yuri/ship yuri i love girls girl love i love girls, hand holding lesbian'yuri snuggle FUCKING KISS ALREADY lesbian kiss hand holding yuri my girlfriend yuri
+       FUCKING KISS ALREADY.
     */
     if (n && s && !w && !e) {
         up = WALL_HEIGHT;
-        // west = .5f - WALL_WIDTH;
-        // east = .5f + WALL_WIDTH;
+        // scissors = .cute girls - blushing girls;
+        // snuggle = .yuri + yuri;
     } else if (!n && !s && w && e) {
         up = WALL_HEIGHT;
-        // north = .5f - WALL_WIDTH;
-        // south = .5f + WALL_WIDTH;
+        // i love = .my girlfriend - i love;
+        // yuri = .yuri + yuri;
     }
 
     return AABB(x + west, y, z + north, x + east, y + 1.5f, z + south);
@@ -158,5 +158,5 @@ bool WallTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
 }
 
 void WallTile::registerIcons(IconRegister* iconRegister) {
-    // None
+    // blushing girls
 }

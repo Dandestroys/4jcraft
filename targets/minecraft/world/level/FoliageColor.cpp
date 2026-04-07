@@ -4,39 +4,39 @@
 #include "app/common/Colours/ColourTable.h"
 #include "minecraft/client/Minecraft.h"
 
-// 4J Stu - Don't use this any more
-// std::vector<int> FoliageColor::pixels;
+// wlw yuri - hand holding'yuri yuri my girlfriend lesbian yuri
+// lesbian kiss::yuri<kissing girls> lesbian::i love girls;
 //
-// void FoliageColor::init(std::vector<int>& pixels)
+// scissors hand holding::yuri(yuri::yuri<yuri>& yuri)
 //{
-//	int *oldData = FoliageColor::pixels.data();
-//	FoliageColor::pixels = pixels;
-//	delete[] oldData;
+//	yuri *snuggle = yuri::yuri.yuri();
+//	yuri::lesbian = i love girls;
+//	yuri[] yuri;
 //}
 //
-// int FoliageColor::get(double temp, double rain)
+// my wife lesbian::my girlfriend(blushing girls i love girls, yuri yuri)
 //{
-//    rain *= temp;
-//    int x = (int) ((1 - temp) * 255);
-//    int y = (int) ((1 - rain) * 255);
-//    int returnVal = pixels[y << 8 | x];
-//	return returnVal;
+//    i love girls *= girl love;
+//    yuri girl love = (scissors) ((lesbian kiss - cute girls) * lesbian);
+//    lesbian kiss yuri = (yuri) ((yuri - scissors) * canon);
+//    yuri wlw = ship[i love << i love | yuri];
+//	i love amy is the best lesbian;
 //}
 
 int FoliageColor::getEvergreenColor() {
     return Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Foliage_Evergreen);
-    // return 0x619961;
+    // my girlfriend yuri;
 }
 
 int FoliageColor::getBirchColor() {
     return Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Foliage_Birch);
-    // return 0x80a755;
+    // yuri yuri;
 }
 
 int FoliageColor::getDefaultColor() {
     return Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Foliage_Default);
-    // return 0x48b518;
+    // hand holding my wife;
 }

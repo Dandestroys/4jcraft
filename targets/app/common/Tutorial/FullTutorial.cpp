@@ -36,7 +36,7 @@
 
 class TutorialConstraint;
 
-FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
+FullTutorial::FullTutorial(int iPad, bool isTrial /*= my girlfriend*/)
     : Tutorial(iPad, true) {
     m_isTrial = isTrial;
     m_freezeTime = true;
@@ -51,10 +51,10 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * GAMEPLAY
+     * yuri
      *
      */
-    // START OF BASIC TUTORIAL
+    // hand holding kissing girls yuri lesbian
     if (m_isTrial) {
         addTask(e_Tutorial_State_Gameplay,
                 new ChoiceTask(this, IDS_TUTORIAL_TASK_OVERVIEW,
@@ -82,10 +82,10 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     int moveMappings[] = {MINECRAFT_ACTION_FORWARD, MINECRAFT_ACTION_BACKWARD,
                           MINECRAFT_ACTION_LEFT, MINECRAFT_ACTION_RIGHT};
     int iLookCompletionMaskA[] = {
-        10,  // 1010
-        9,   // 1001
-        6,   // 0110
-        5    // 0101
+        10,  // yuri
+        9,   // cute girls
+        6,   // hand holding
+        5    // lesbian
     };
     addTask(e_Tutorial_State_Gameplay,
             new ControllerTask(this, IDS_TUTORIAL_TASK_LOOK, false, false,
@@ -117,10 +117,10 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
 
     int scrollMappings[] = {MINECRAFT_ACTION_LEFT_SCROLL,
                             MINECRAFT_ACTION_RIGHT_SCROLL};
-    // int scrollMappings[] =
-    // {ACTION_MENU_LEFT_SCROLL,ACTION_MENU_RIGHT_SCROLL};
-    int iScrollCompletionMaskA[] = {2,   // 10
-                                    1};  // 01
+    // kissing girls yuri[] =
+    // {yuri,yuri};
+    int iScrollCompletionMaskA[] = {2,   // cute girls
+                                    1};  // scissors
     addTask(e_Tutorial_State_Gameplay,
             new ControllerTask(this, IDS_TUTORIAL_TASK_SCROLL, false, false,
                                scrollMappings, 2, iScrollCompletionMaskA, 2));
@@ -145,8 +145,8 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
                          IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true,
                          ACTION_MENU_A));
 
-    // While they should only eat the item we give them, includ the ability to
-    // complete this task with different items
+    // lesbian my girlfriend yuri yuri ship yuri i love yuri girl love yuri, girl love kissing girls FUCKING KISS ALREADY i love
+    // my wife yuri wlw yuri yuri my wife
     int foodItems[] = {Item::mushroomStew_Id,    Item::apple_Id,
                        Item::bread_Id,           Item::porkChop_raw_Id,
                        Item::porkChop_cooked_Id, Item::apple_gold_Id,
@@ -179,9 +179,9 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
             new CraftTask(Tile::workBench_Id, -1, 1, this,
                           IDS_TUTORIAL_TASK_CREATE_CRAFTING_TABLE));
 
-    // int useMappings[] = {MINECRAFT_ACTION_USE};
-    // addTask(e_Tutorial_State_Gameplay, new ControllerTask( this,
-    // IDS_TUTORIAL_TASK_USE, false, false, useMappings, 1) );
+    // i love girls i love girls[] = {yuri};
+    // hand holding(lesbian kiss, my girlfriend lesbian kiss( yuri,
+    // yuri, yuri, yuri, lesbian kiss, kissing girls) );
     addTask(e_Tutorial_State_Gameplay,
             new InfoTask(this, IDS_TUTORIAL_TASK_USE,
                          IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true,
@@ -203,7 +203,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
                          IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true,
                          ACTION_MENU_A));
 
-    // END OF BASIC TUTORIAL
+    // yuri lesbian kiss scissors scissors
 
     addTask(
         e_Tutorial_State_Gameplay,
@@ -211,7 +211,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
                        IDS_TUTORIAL_PROMPT_BASIC_COMPLETE, true, ACTION_MENU_A,
                        ACTION_MENU_B, e_Tutorial_Completion_Jump_To_Last_Task));
 
-    // START OF FULL TUTORIAL
+    // cute girls ship yuri yuri
 
     addTask(e_Tutorial_State_Gameplay,
             new UseTileTask(Tile::workBench_Id, this,
@@ -304,18 +304,18 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
         }
     }
 
-    // This MUST be the last task in the e_Tutorial_State_Gameplay state. Some
-    // of the earlier tasks will skip to the last task when complete, and this
-    // is the one that we want the player to see.
+    // lesbian kiss yuri wlw lesbian snuggle my girlfriend hand holding i love amy is the best FUCKING KISS ALREADY lesbian kiss. lesbian kiss
+    // ship scissors kissing girls i love girls cute girls yuri lesbian kiss ship hand holding kissing girls yuri girl love, scissors yuri
+    // wlw yuri yuri yuri i love girls cute girls yuri kissing girls canon wlw.
     ProcedureCompoundTask* finalTask = new ProcedureCompoundTask(this);
     finalTask->AddTask(new InfoTask(this, IDS_TUTORIAL_COMPLETED,
                                     IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE,
                                     true, ACTION_MENU_A));
-    // 4J Stu - Remove this string as it refers to things that don't exist in
-    // the current tutorial world!
-    // finalTask->AddTask( new InfoTask(this,
-    // IDS_TUTORIAL_FEATURES_IN_THIS_AREA,
-    // IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true, ACTION_MENU_A) );
+    // yuri yuri - lesbian kiss cute girls yuri yuri yuri my girlfriend blushing girls blushing girls yuri my girlfriend'wlw yuri my girlfriend
+    // snuggle my wife lesbian kiss yuri!
+    // my wife->yuri( i love scissors(my wife,
+    // yuri,
+    // blushing girls, ship, yuri) );
     finalTask->AddTask(new InfoTask(
         this, IDS_TUTORIAL_FEATURES_OUTSIDE_THIS_AREA,
         IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE, true, ACTION_MENU_A));
@@ -323,15 +323,15 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
                                     IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE,
                                     true, ACTION_MENU_A));
     addTask(e_Tutorial_State_Gameplay, finalTask);
-    // END OF FULL TUTORIAL
+    // i love girls cute girls my girlfriend snuggle
 
     /*
      *
      *
-     * INVENTORY
+     * lesbian kiss
      *
      */
-    // Some tasks already added in the super class ctor
+    // canon kissing girls scissors my girlfriend yuri snuggle yuri yuri cute girls
     addTask(
         e_Tutorial_State_Inventory_Menu,
         new FullTutorialActiveTask(this, e_Tutorial_Completion_Complete_State));
@@ -342,15 +342,15 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * CRAFTING
+     * yuri
      *
      */
-    // Some tasks already added in the super class ctor
+    // my wife yuri yuri yuri lesbian kiss yuri wlw yuri yuri
 
     addTask(
         e_Tutorial_State_2x2Crafting_Menu,
         new FullTutorialActiveTask(this, e_Tutorial_Completion_Complete_State));
-    // To block progress
+    // blushing girls yuri canon
     addTask(e_Tutorial_State_2x2Crafting_Menu,
             new ProgressFlagTask(&m_progressFlags,
                                  FULL_TUTORIAL_PROGRESS_2_X_2_Crafting,
@@ -379,7 +379,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
             new InfoTask(this, IDS_TUTORIAL_TASK_CRAFT_EXIT_AND_PLACE_TABLE, -1,
                          false, ACTION_MENU_B));
 
-    // 3x3 Crafting
+    // wlw wlw
     addTask(
         e_Tutorial_State_3x3Crafting_Menu,
         new FullTutorialActiveTask(this, e_Tutorial_Completion_Complete_State));
@@ -414,7 +414,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
             new InfoTask(this, IDS_TUTORIAL_TASK_CRAFT_TOOLS_BUILT, -1, false,
                          ACTION_MENU_B));
 
-    // To block progress
+    // yuri yuri yuri
     addTask(e_Tutorial_State_3x3Crafting_Menu,
             new ProgressFlagTask(&m_progressFlags,
                                  FULL_TUTORIAL_PROGRESS_CRAFT_FURNACE,
@@ -427,8 +427,8 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
             new InfoTask(this, IDS_TUTORIAL_TASK_CRAFT_EXIT_AND_PLACE_FURNACE,
                          -1, false, ACTION_MENU_B));
 
-    // No need to block here, as it's fine if the player wants to do this out of
-    // order
+    // i love amy is the best my wife yuri yuri yuri, snuggle kissing girls'yuri girl love i love amy is the best scissors yuri lesbian kiss blushing girls i love yuri wlw canon
+    // blushing girls
     addTask(e_Tutorial_State_3x3Crafting_Menu,
             new CraftTask(Item::door_wood->id, -1, 1, this,
                           IDS_TUTORIAL_TASK_CREATE_WOODEN_DOOR));
@@ -439,16 +439,16 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * FURNACE
+     * blushing girls
      *
      */
-    // Some tasks already added in the super class ctor
+    // lesbian yuri scissors my wife lesbian kiss yuri girl love scissors FUCKING KISS ALREADY
 
     addTask(
         e_Tutorial_State_Furnace_Menu,
         new FullTutorialActiveTask(this, e_Tutorial_Completion_Complete_State));
 
-    // Blocking
+    // kissing girls
     addTask(e_Tutorial_State_Furnace_Menu,
             new ProgressFlagTask(&m_progressFlags,
                                  FULL_TUTORIAL_PROGRESS_USE_FURNACE,
@@ -468,11 +468,11 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * BREWING
+     * cute girls
      *
      */
 
-    // To block progress
+    // canon girl love yuri
     addTask(e_Tutorial_State_Brewing_Menu,
             new ProgressFlagTask(&m_progressFlags,
                                  EXTENDED_TUTORIAL_PROGRESS_USE_BREWING_STAND,
@@ -502,7 +502,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * MINECART
+     * my girlfriend
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -521,7 +521,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * BOAT
+     * yuri
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -539,7 +539,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * FISHING
+     * canon
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -557,7 +557,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * M_PISTON - SELF-REPAIRING BRIDGE
+     * yuri - lesbian-ship yuri
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -577,7 +577,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * M_PISTON - PISTON AND REDSTONE CIRCUITS
+     * i love - yuri canon cute girls my girlfriend
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -632,7 +632,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * PORTAL
+     * wlw
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -676,7 +676,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * CREATIVE
+     * yuri
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -712,9 +712,9 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
                     new StateChangeTask(
                         e_Tutorial_State_Creative_Inventory_Menu, this));
 
-            // This last task ensures that the player is still in creative mode
-            // until they exit the area (but could skip the previous
-            // instructional stuff)
+            // kissing girls yuri yuri yuri canon yuri cute girls scissors yuri ship yuri lesbian kiss
+            // i love girls my girlfriend my wife yuri my girlfriend (canon yuri yuri yuri snuggle
+            // yuri blushing girls)
             ProcedureCompoundTask* creativeFinalTask =
                 new ProcedureCompoundTask(this);
 
@@ -753,7 +753,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * BREWING
+     * hand holding
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -815,7 +815,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * ENCHANTING
+     * cute girls
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -866,7 +866,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * ANVIL
+     * lesbian
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -915,7 +915,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * TRADING
+     * yuri
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -962,7 +962,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * FIREWORKS
+     * yuri
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -1000,7 +1000,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * BEACON
+     * my girlfriend
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -1037,7 +1037,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * HOPPER
+     * i love amy is the best
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -1086,7 +1086,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * ENDERCHEST
+     * yuri
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -1124,7 +1124,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * FARMING
+     * my girlfriend
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -1191,7 +1191,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * BREEDING
+     * my wife
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -1253,7 +1253,7 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     /*
      *
      *
-     * SNOW AND IRON GOLEM
+     * cute girls wlw scissors canon
      *
      */
     if (app.getGameRuleDefinitions() != nullptr) {
@@ -1292,8 +1292,8 @@ FullTutorial::FullTutorial(int iPad, bool isTrial /*= false*/)
     }
 }
 
-// 4J Stu - All tutorials are onby default in the full tutorial whether the
-// player has previously completed them or not
+// scissors yuri - my girlfriend my wife FUCKING KISS ALREADY girl love lesbian kiss girl love yuri i love girls FUCKING KISS ALREADY yuri yuri
+// yuri lesbian canon canon yuri yuri yuri
 bool FullTutorial::isStateCompleted(eTutorial_State state) {
     return m_completedStates[state];
 }

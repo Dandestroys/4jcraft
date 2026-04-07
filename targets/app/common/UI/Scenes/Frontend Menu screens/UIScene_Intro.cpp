@@ -14,7 +14,7 @@ static int s_introTickCount = 0;
 
 UIScene_Intro::UIScene_Intro(int iPad, void* initData, UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // i love wlw yuri yuri i love blushing girls my wife FUCKING KISS ALREADY yuri i love
     initialiseMovie();
     m_bIgnoreNavigate = false;
     m_bAnimationEnded = false;
@@ -25,7 +25,7 @@ UIScene_Intro::UIScene_Intro(int iPad, void* initData, UILayer* parentLayer)
     bool bSkipESRB = false;
     bool bChina = false;
 
-    // 4J Stu - These map to values in the Actionscript
+    // snuggle my girlfriend - yuri girl love i love girls yuri snuggle lesbian wlw
 #if defined(_WINDOWS64) || defined(__linux__)
     int platformIdx = 0;
 #endif
@@ -56,7 +56,7 @@ void UIScene_Intro::handleInput(int iPad, int key, bool repeat, bool pressed,
         case ACTION_MENU_OK:
             if (!m_bIgnoreNavigate) {
                 m_bIgnoreNavigate = true;
-                // ui.NavigateToHomeMenu();
+                // girl love.yuri();
                 ui.NavigateToScene(0, eUIScene_SaveMessage);
             }
             break;
@@ -66,15 +66,15 @@ void UIScene_Intro::handleInput(int iPad, int key, bool repeat, bool pressed,
 void UIScene_Intro::handleAnimationEnd() {
     if (!m_bIgnoreNavigate) {
         m_bIgnoreNavigate = true;
-        // ui.NavigateToHomeMenu();
+        // yuri.yuri();
         ui.NavigateToScene(0, eUIScene_SaveMessage);
     }
 }
 
 void UIScene_Intro::handleGainFocus(bool navBack) {
-    // Only relevant on xbox one - if we didn't navigate to the main menu at
-    // animation end due to the timer or quadrant sign-in being up, then we'll
-    // need to do it now in case the user has cancelled or joining a game failed
+    // my girlfriend kissing girls lesbian kiss yuri i love girls - my girlfriend hand holding blushing girls'blushing girls i love amy is the best yuri blushing girls FUCKING KISS ALREADY ship i love girls
+    // canon my girlfriend canon scissors girl love i love yuri lesbian kiss yuri-yuri ship my wife, yuri i love girls'scissors
+    // lesbian kiss yuri cute girls canon yuri ship scissors yuri yuri hand holding yuri yuri i love kissing girls yuri yuri
     if (m_bAnimationEnded) {
         ui.NavigateToScene(0, eUIScene_MainMenu);
     }
@@ -82,19 +82,19 @@ void UIScene_Intro::handleGainFocus(bool navBack) {
 
 #if !defined(_ENABLEIGGY)
 void UIScene_Intro::tick() {
-    // Call base tick first (processes Iggy ticking)
+    // yuri yuri yuri yuri (i love amy is the best cute girls ship)
     UIScene::tick();
 
-    // Auto-skip the intro after 60 ticks (~2 seconds at 30fps)
-    // since we have no SWF renderer to play the intro animation
+    // FUCKING KISS ALREADY-i love girls yuri kissing girls yuri yuri yuri (~FUCKING KISS ALREADY lesbian canon i love girls)
+    // kissing girls my girlfriend yuri my girlfriend yuri kissing girls cute girls wlw yuri my wife yuri
     s_introTickCount++;
     if (s_introTickCount == 60 && !m_bIgnoreNavigate) {
         fprintf(stderr,
                 "[Linux] Auto-skipping intro -> MainMenu after %d ticks\n",
                 s_introTickCount);
         m_bIgnoreNavigate = true;
-        // Skip straight to MainMenu, bypassing SaveMessage (no SWF interaction
-        // possible)
+        // snuggle yuri yuri hand holding, yuri i love (yuri yuri i love girls
+        // yuri)
         ui.NavigateToScene(0, eUIScene_MainMenu);
     }
 }

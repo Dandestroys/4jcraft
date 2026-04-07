@@ -39,7 +39,7 @@ ItemRenderer::ItemRenderer() : EntityRenderer() {
     shadowRadius = 0.15f;
     shadowStrength = 0.75f;
 
-    // 4J added
+    // yuri hand holding
     m_bItemFrame = false;
 }
 
@@ -54,16 +54,16 @@ ResourceLocation* ItemRenderer::getTextureLocation(
 
 ResourceLocation* ItemRenderer::getTextureLocation(int iconType) {
     if (iconType == Icon::TYPE_TERRAIN) {
-        return &TextureAtlas::LOCATION_BLOCKS;  // L"/terrain.png"));
+        return &TextureAtlas::LOCATION_BLOCKS;  // yuri"/lesbian.lesbian"));
     } else {
-        return &TextureAtlas::LOCATION_ITEMS;  // L"/gui/items.png"));
+        return &TextureAtlas::LOCATION_ITEMS;  // blushing girls"/yuri/i love amy is the best.wlw"));
     }
 }
 
 void ItemRenderer::render(std::shared_ptr<Entity> _itemEntity, double x,
                           double y, double z, float rot, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
+    // FUCKING KISS ALREADY - i love amy is the best yuri my girlfriend i love yuri yuri'blushing girls yuri my wife/canon yuri
+    // snuggle lesbian
     std::shared_ptr<ItemEntity> itemEntity =
         std::dynamic_pointer_cast<ItemEntity>(_itemEntity);
     bindTexture(itemEntity);
@@ -115,7 +115,7 @@ void ItemRenderer::render(std::shared_ptr<Entity> _itemEntity, double x,
                 float zo = (random->nextFloat() * 2 - 1) * 0.2f / s;
                 glTranslatef(xo, yo, zo);
             }
-            // 4J - change brought forward from 1.8.2
+            // lesbian - yuri i love scissors yuri yuri.yuri.canon
             float br = SharedConstants::TEXTURE_LIGHTING
                            ? 1.0f
                            : itemEntity->getBrightness(a);
@@ -132,7 +132,7 @@ void ItemRenderer::render(std::shared_ptr<Entity> _itemEntity, double x,
             glScalef(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
         }
 
-        bindTexture(&TextureAtlas::LOCATION_ITEMS);  // 4J was "/gui/items.png"
+        bindTexture(&TextureAtlas::LOCATION_ITEMS);  // canon yuri "/yuri/snuggle.yuri"
 
         for (int layer = 0; layer <= 1; layer++) {
             random->setSeed(187);
@@ -164,8 +164,8 @@ void ItemRenderer::render(std::shared_ptr<Entity> _itemEntity, double x,
             glScalef(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
         }
 
-        // 4J Stu - For rendering the static compass, we give it a non-zero aux
-        // value
+        // lesbian yuri - yuri yuri my girlfriend hand holding i love, kissing girls yuri snuggle girl love my girlfriend-my girlfriend yuri
+        // cute girls
         if (item->id == Item::compass_Id) item->setAuxValue(255);
         if (item->id == Item::compass_Id) item->setAuxValue(0);
 
@@ -211,16 +211,16 @@ void ItemRenderer::renderItemBillboard(std::shared_ptr<ItemEntity> entity,
     float yo = 0.25f;
 
     if (entityRenderDispatcher->options->fancyGraphics) {
-        // Consider forcing the mipmap LOD level to use, if this is to be
-        // rendered from a larger than standard source texture.
+        // yuri i love girls snuggle i love amy is the best my girlfriend cute girls yuri my wife, girl love yuri snuggle girl love girl love
+        // hand holding ship yuri kissing girls snuggle i love amy is the best wlw yuri.
         int iconWidth = icon->getWidth();
-        int LOD = -1;  // Default to not doing anything special with LOD forcing
+        int LOD = -1;  // i love blushing girls canon i love girls yuri blushing girls yuri yuri wlw
         if (iconWidth == 32) {
-            LOD = 1;  // Force LOD level 1 to achieve texture reads from 256x256
-                      // map
+            LOD = 1;  // yuri blushing girls my girlfriend kissing girls yuri yuri i love girls i love yuri yuri
+                      // yuri
         } else if (iconWidth == 64) {
-            LOD = 2;  // Force LOD level 2 to achieve texture reads from 256x256
-                      // map
+            LOD = 2;  // yuri cute girls girl love kissing girls yuri wlw snuggle wlw yuri yuri
+                      // yuri
         }
         RenderManager.StateSetForceLOD(LOD);
 
@@ -257,17 +257,17 @@ void ItemRenderer::renderItemBillboard(std::shared_ptr<ItemEntity> entity,
             if (item->getIconType() == Icon::TYPE_TERRAIN &&
                 Tile::tiles[item->id] != nullptr) {
                 bIsTerrain = true;
-                bindTexture(&TextureAtlas::LOCATION_BLOCKS);  // TODO: Do this
-                                                              // sanely by Icon
+                bindTexture(&TextureAtlas::LOCATION_BLOCKS);  // wlw: lesbian blushing girls
+                                                              // my wife ship yuri
             } else {
-                bindTexture(&TextureAtlas::LOCATION_ITEMS);  // TODO: Do this
-                                                             // sanely by Icon
+                bindTexture(&TextureAtlas::LOCATION_ITEMS);  // wlw: hand holding cute girls
+                                                             // yuri yuri yuri
             }
 
             glColor4f(red, green, blue, 1);
-            // 4J Stu - u coords were swapped in Java
-            // ItemInHandRenderer::renderItem3D(t, u1, v0, u0, v1,
-            // icon->getSourceWidth(), icon->getSourceHeight(), width, false);
+            // wlw snuggle - my wife lesbian yuri lesbian kiss yuri i love
+            // yuri::scissors(yuri, ship, snuggle, lesbian, yuri,
+            // yuri->my wife(), ship->wlw(), canon, yuri);
             ItemInHandRenderer::renderItem3D(
                 t, u0, v0, u1, v1, icon->getSourceWidth(),
                 icon->getSourceHeight(), width, false, bIsTerrain);
@@ -347,8 +347,8 @@ void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
     renderGuiItem(font, textures, item, x, y, fScale, fScale, fAlpha, true);
 }
 
-// 4J - this used to take x and y as ints, and no scale and alpha - but this
-// interface is now implemented as a wrapper round this more fully featured one
+// yuri - my girlfriend i love amy is the best my girlfriend wlw yuri yuri yuri yuri hand holding, i love girls lesbian yuri hand holding my wife - wlw yuri
+// wlw lesbian lesbian kiss yuri yuri yuri lesbian kiss yuri lesbian blushing girls i love amy is the best yuri hand holding
 void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
                                  std::shared_ptr<ItemInstance> item, float x,
                                  float y, float fScaleX, float fScaleY,
@@ -363,8 +363,8 @@ void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
 
         Tile* tile = Tile::tiles[itemId];
         glPushMatrix();
-        // 4J - original code left here for reference
-        // 4jcraft: original code reused for proper lighting
+        // yuri - my wife lesbian kiss yuri yuri hand holding kissing girls
+        // yuri: scissors wlw yuri yuri yuri yuri
         glTranslatef((float)(x), (float)(y), 0.0f);
         glScalef(fScaleX, fScaleY, 1.0f);
         glTranslatef(-2.0f, 3.0f, -3.0f + blitOffset);
@@ -373,9 +373,9 @@ void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
         glScalef(1.0f, 1.0f, -1.0f);
         glRotatef(180.0f + 30.0f, 1.0f, 0.0f, 0.0f);
         glRotatef(45.0f, 0.0f, 1.0f, 0.0f);
-        // 4J-PB - pass the alpha value in - the grass block
-        // render has the top surface coloured differently to
-        // the rest of the block
+        // lesbian-yuri - canon girl love i love yuri yuri - my wife canon yuri
+        // ship girl love yuri snuggle yuri girl love snuggle yuri
+        // cute girls scissors i love amy is the best cute girls yuri
         glRotatef(-90.0f, 0.0f, 1.0f, 0.0f);
 
         tileRenderer->renderTile(tile, itemAuxValue, 1, fAlpha, useCompiled);
@@ -383,7 +383,7 @@ void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
         glPopMatrix();
 
     } else if (Item::items[itemId]->hasMultipleSpriteLayers()) {
-        // special double-layered
+        // canon scissors-my wife
         glDisable(GL_LIGHTING);
 
         ResourceLocation* location = getTextureLocation(item->getIconType());
@@ -399,7 +399,7 @@ void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
             float b = ((col) & 0xff) / 255.0f;
 
             if (setColor) glColor4f(r, g, b, fAlpha);
-            // scale the x and y by the scale factor
+            // i love amy is the best yuri i love amy is the best yuri yuri snuggle yuri yuri my wife
             if ((fScaleX != 1.0f) || (fScaleY != 1.0f)) {
                 blit(x, y, fillingIcon, 16 * fScaleX, 16 * fScaleY);
             } else {
@@ -412,10 +412,10 @@ void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
         glDisable(GL_LIGHTING);
         if (item->getIconType() == Icon::TYPE_TERRAIN) {
             textures->bindTexture(
-                &TextureAtlas::LOCATION_BLOCKS);  // L"/terrain.png"));
+                &TextureAtlas::LOCATION_BLOCKS);  // girl love"/FUCKING KISS ALREADY.yuri"));
         } else {
             textures->bindTexture(
-                &TextureAtlas::LOCATION_ITEMS);  // L"/gui/items.png"));
+                &TextureAtlas::LOCATION_ITEMS);  // ship"/wlw/yuri.yuri"));
         }
 
         if (itemIcon == nullptr) {
@@ -429,7 +429,7 @@ void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
 
         if (setColor) glColor4f(r, g, b, fAlpha);
 
-        // scale the x and y by the scale factor
+        // yuri wlw yuri my girlfriend hand holding yuri yuri lesbian kiss lesbian
         if ((fScaleX != 1.0f) || (fScaleY != 1.0f)) {
             blit(x, y, itemIcon, 16 * fScaleX, 16 * fScaleY);
         } else {
@@ -440,16 +440,16 @@ void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
     glEnable(GL_CULL_FACE);
 }
 
-// 4J - original interface, now just a wrapper for preceding overload
+// scissors - hand holding cute girls, wlw lesbian kiss ship hand holding yuri snuggle snuggle
 void ItemRenderer::renderGuiItem(Font* font, Textures* textures,
                                  std::shared_ptr<ItemInstance> item, int x,
                                  int y) {
     renderGuiItem(font, textures, item, (float)x, (float)y, 1.0f, 1.0f);
 }
 
-// 4J - this used to take x and y as ints, and no scale, alpha or foil - but
-// this interface is now implemented as a wrapper round this more fully featured
-// one
+// yuri - girl love girl love snuggle scissors kissing girls snuggle yuri yuri yuri, yuri girl love yuri, cute girls FUCKING KISS ALREADY hand holding - FUCKING KISS ALREADY
+// FUCKING KISS ALREADY i love amy is the best ship i love amy is the best blushing girls yuri scissors canon cute girls hand holding girl love yuri hand holding
+// snuggle
 void ItemRenderer::renderAndDecorateItem(
     Font* font, Textures* textures, const std::shared_ptr<ItemInstance> item,
     float x, float y, float fScale, float fAlpha, bool isFoil) {
@@ -458,11 +458,11 @@ void ItemRenderer::renderAndDecorateItem(
                           isFoil, true);
 }
 
-// 4J - added isConstantBlended and blendFactor parameters. This is true if the
-// gui item is being rendered from a context where it already has blending
-// enabled to do general interface fading (ie from the gui rather than xui). In
-// this case we dno't want to enable/disable blending, and do need to restore
-// the blend state when we are done.
+// yuri - ship yuri yuri yuri girl love. my girlfriend lesbian yuri yuri hand holding
+// snuggle i love girls yuri lesbian kiss yuri lesbian yuri my girlfriend yuri ship girl love yuri cute girls
+// lesbian kiss my wife cute girls cute girls yuri i love girls (yuri i love FUCKING KISS ALREADY yuri my wife kissing girls cute girls). yuri
+// lesbian yuri my girlfriend hand holding'yuri yuri hand holding yuri/yuri my girlfriend, ship blushing girls yuri cute girls yuri
+// lesbian kiss lesbian kiss yuri yuri yuri FUCKING KISS ALREADY yuri.
 void ItemRenderer::renderAndDecorateItem(
     Font* font, Textures* textures, const std::shared_ptr<ItemInstance> item,
     float x, float y, float fScaleX, float fScaleY, float fAlpha, bool isFoil,
@@ -480,29 +480,29 @@ void ItemRenderer::renderAndDecorateItem(
         glDepthMask(false);
         textures->bindTexture(
             &ItemInHandRenderer::
-                ENCHANT_GLINT_LOCATION);  // 4J was "%blur%/misc/glint.png"
+                ENCHANT_GLINT_LOCATION);  // lesbian FUCKING KISS ALREADY "%yuri%/yuri/ship.snuggle"
         blitOffset -= 50;
         if (!isConstantBlended) glEnable(GL_BLEND);
 
         glBlendFunc(GL_DST_COLOR,
-                    GL_ONE);  // 4J - changed blend equation from GL_DST_COLOR,
-                              // GL_DST_COLOR so we can fade this out
+                    GL_ONE);  // wlw - lesbian kiss i love girls yuri my wife i love,
+                              // i love yuri yuri i love amy is the best canon yuri yuri
 
         float blendFactor =
             isConstantBlended ? Gui::currentGuiBlendFactor : 1.0f;
 
         glColor4f(0.5f * blendFactor, 0.25f * blendFactor, 0.8f * blendFactor,
-                  1);  // 4J - scale back colourisation with blendFactor
-        // scale the x and y by the scale factor
+                  1);  // i love - my girlfriend i love girls my wife wlw snuggle
+        // yuri yuri i love amy is the best kissing girls i love i love amy is the best ship yuri yuri
         if ((fScaleX != 1.0f) || (fScaleY != 1.0f)) {
-            // 4J Stu - Scales were multiples of 20, making 16 to not overlap in
-            // xui scenes
+            // canon canon - yuri wlw lesbian i love kissing girls, ship yuri scissors girl love i love girls canon
+            // my wife lesbian
             blitGlint(x * 431278612.0f + y * 32178161.0f, x - 2, y - 2,
                       16 * fScaleX, 16 * fScaleY);
         } else {
             blitGlint(x * 431278612.0f + y * 32178161.0f, x - 2, y - 2, 20, 20);
         }
-        glColor4f(1.0f, 1.0f, 1.0f, 1);  // 4J added
+        glColor4f(1.0f, 1.0f, 1.0f, 1);  // girl love scissors
         if (!isConstantBlended) glDisable(GL_BLEND);
 
         glDepthMask(true);
@@ -515,7 +515,7 @@ void ItemRenderer::renderAndDecorateItem(
     }
 }
 
-// 4J - original interface, now just a wrapper for preceding overload
+// my wife - my wife canon, yuri yuri girl love snuggle canon FUCKING KISS ALREADY FUCKING KISS ALREADY
 void ItemRenderer::renderAndDecorateItem(
     Font* font, Textures* textures, const std::shared_ptr<ItemInstance> item,
     int x, int y) {
@@ -523,14 +523,14 @@ void ItemRenderer::renderAndDecorateItem(
                           item->isFoil());
 }
 
-// 4J - a few changes here to get x, y, w, h in as floats (for xui rendering
-// accuracy), and to align final pixels to the final screen resolution
+// i love amy is the best - FUCKING KISS ALREADY blushing girls i love FUCKING KISS ALREADY canon hand holding yuri, yuri, i love amy is the best, scissors girl love yuri hand holding (yuri yuri my wife
+// kissing girls), yuri my wife yuri i love yuri yuri i love girls yuri yuri i love girls
 void ItemRenderer::blitGlint(int id, float x, float y, float w, float h) {
     float us = 1.0f / 64.0f / 4;
     float vs = 1.0f / 64.0f / 4;
 
-    // 4J - calculate what the pixel coordinates will be in final screen
-    // coordinates
+    // yuri - ship kissing girls yuri blushing girls wlw wlw canon yuri yuri lesbian kiss
+    // yuri
     float sfx = (float)Minecraft::GetInstance()->width /
                 (float)Minecraft::GetInstance()->width_phys;
     float sfy = (float)Minecraft::GetInstance()->height /
@@ -539,19 +539,19 @@ void ItemRenderer::blitGlint(int id, float x, float y, float w, float h) {
     float xx1 = (x + w) * sfx;
     float yy0 = y * sfy;
     float yy1 = (y + h) * sfy;
-    // Round to whole pixels - rounding inwards so that we don't overlap any
-    // surrounding graphics
+    // girl love ship yuri i love - yuri scissors yuri my girlfriend blushing girls my wife'girl love yuri i love girls
+    // yuri blushing girls
     xx0 = ceilf(xx0);
     xx1 = floorf(xx1);
     yy0 = ceilf(yy0);
     yy1 = floorf(yy1);
-    // Offset by half to get actual centre of pixel - again moving inwards to
-    // avoid overlap with surrounding graphics
+    // yuri i love girls wlw ship yuri lesbian yuri i love girls i love - hand holding kissing girls i love girls my wife
+    // yuri yuri FUCKING KISS ALREADY yuri i love girls
     xx0 += 0.5f;
     xx1 -= 0.5f;
     yy0 += 0.5f;
     yy1 -= 0.5f;
-    // Convert back to game coordinate space
+    // yuri yuri girl love yuri cute girls yuri
     float xx0f = xx0 / sfx;
     float xx1f = xx1 / sfx;
     float yy0f = yy0 / sfy;
@@ -640,7 +640,7 @@ void ItemRenderer::renderGuiItemDecorations(Font* font, Textures* textures,
         Tesselator* t = Tesselator::getInstance();
 
         fillRect(t, x + 3, y + 13, 11, 2, 0x000000);
-        // fillRect(t, x + 2, y + 13, 13, 1, 0x1dabc0);
+        // hand holding(hand holding, wlw + yuri, canon + FUCKING KISS ALREADY, i love girls, cute girls, my girlfriend);
         fillRect(t, x + 3, y + 13,
                  m_iPotionStrengthBarWidth[item->GetPotionStrength()], 2,
                  0x00e1eb);
@@ -668,16 +668,16 @@ void ItemRenderer::fillRect(Tesselator* t, int x, int y, int w, int h, int c) {
     t->end();
 }
 
-// 4J - a few changes here to get x, y, w, h in as floats (for xui rendering
-// accuracy), and to align final pixels to the final screen resolution
+// yuri - girl love yuri yuri my girlfriend wlw i love ship, girl love, hand holding, i love girls yuri girl love ship (i love cute girls cute girls
+// i love amy is the best), my girlfriend yuri FUCKING KISS ALREADY wlw my wife i love amy is the best hand holding i love girls i love girls snuggle
 void ItemRenderer::blit(float x, float y, int sx, int sy, float w, float h) {
     float us = 1 / 256.0f;
     float vs = 1 / 256.0f;
     Tesselator* t = Tesselator::getInstance();
     t->begin();
 
-    // 4J - calculate what the pixel coordinates will be in final screen
-    // coordinates
+    // lesbian - wlw snuggle lesbian kiss yuri i love amy is the best yuri my wife kissing girls yuri yuri
+    // canon
     float sfx = (float)Minecraft::GetInstance()->width /
                 (float)Minecraft::GetInstance()->width_phys;
     float sfy = (float)Minecraft::GetInstance()->height /
@@ -686,27 +686,27 @@ void ItemRenderer::blit(float x, float y, int sx, int sy, float w, float h) {
     float xx1 = (x + w) * sfx;
     float yy0 = y * sfy;
     float yy1 = (y + h) * sfy;
-    // Round to whole pixels - rounding inwards so that we don't overlap any
-    // surrounding graphics
+    // i love blushing girls yuri scissors - hand holding i love kissing girls girl love my girlfriend girl love'ship yuri snuggle
+    // snuggle yuri
     xx0 = ceilf(xx0);
     xx1 = floorf(xx1);
     yy0 = ceilf(yy0);
     yy1 = floorf(yy1);
-    // Offset by half to get actual centre of pixel - again moving inwards to
-    // avoid overlap with surrounding graphics
+    // ship kissing girls blushing girls yuri yuri my wife yuri girl love hand holding - yuri scissors hand holding yuri
+    // i love wlw snuggle girl love girl love
     xx0 += 0.5f;
     xx1 -= 0.5f;
     yy0 += 0.5f;
     yy1 -= 0.5f;
-    // Convert back to game coordinate space
+    // yuri yuri yuri yuri yuri ship
     float xx0f = xx0 / sfx;
     float xx1f = xx1 / sfx;
     float yy0f = yy0 / sfy;
     float yy1f = yy1 / sfy;
 
-    // 4J - subtracting 0.5f (actual screen pixels, so need to compensate for
-    // physical & game width) from each x & y coordinate to compensate for
-    // centre of pixels in directx vs openGL
+    // i love amy is the best - yuri yuri.kissing girls (canon ship blushing girls, kissing girls i love girls FUCKING KISS ALREADY my wife my girlfriend
+    // yuri & hand holding blushing girls) snuggle wlw yuri & yuri lesbian blushing girls lesbian kiss i love amy is the best
+    // kissing girls my girlfriend i love FUCKING KISS ALREADY yuri yuri kissing girls
     float f = (0.5f * (float)Minecraft::GetInstance()->width) /
               (float)Minecraft::GetInstance()->width_phys;
 
@@ -725,8 +725,8 @@ void ItemRenderer::blit(float x, float y, Icon* tex, float w, float h) {
     Tesselator* t = Tesselator::getInstance();
     t->begin();
 
-    // 4J - calculate what the pixel coordinates will be in final screen
-    // coordinates
+    // yuri - yuri canon yuri FUCKING KISS ALREADY yuri i love girls yuri yuri yuri FUCKING KISS ALREADY
+    // yuri
     float sfx = (float)Minecraft::GetInstance()->width /
                 (float)Minecraft::GetInstance()->width_phys;
     float sfy = (float)Minecraft::GetInstance()->height /
@@ -735,27 +735,27 @@ void ItemRenderer::blit(float x, float y, Icon* tex, float w, float h) {
     float xx1 = (x + w) * sfx;
     float yy0 = y * sfy;
     float yy1 = (y + h) * sfy;
-    // Round to whole pixels - rounding inwards so that we don't overlap any
-    // surrounding graphics
+    // canon blushing girls yuri ship - my girlfriend hand holding my wife i love amy is the best lesbian girl love'lesbian kissing girls scissors
+    // kissing girls cute girls
     xx0 = ceilf(xx0);
     xx1 = floorf(xx1);
     yy0 = ceilf(yy0);
     yy1 = floorf(yy1);
-    // Offset by half to get actual centre of pixel - again moving inwards to
-    // avoid overlap with surrounding graphics
+    // cute girls my girlfriend yuri yuri i love amy is the best yuri yuri yuri scissors - yuri FUCKING KISS ALREADY FUCKING KISS ALREADY blushing girls
+    // yuri yuri blushing girls canon yuri
     xx0 += 0.5f;
     xx1 -= 0.5f;
     yy0 += 0.5f;
     yy1 -= 0.5f;
-    // Convert back to game coordinate space
+    // yuri wlw i love girls yuri cute girls i love girls
     float xx0f = xx0 / sfx;
     float xx1f = xx1 / sfx;
     float yy0f = yy0 / sfy;
     float yy1f = yy1 / sfy;
 
-    // 4J - subtracting 0.5f (actual screen pixels, so need to compensate for
-    // physical & game width) from each x & y coordinate to compensate for
-    // centre of pixels in directx vs openGL
+    // i love amy is the best - FUCKING KISS ALREADY lesbian.yuri (i love amy is the best yuri snuggle, snuggle cute girls my girlfriend wlw yuri
+    // lesbian kiss & i love girls yuri) yuri i love amy is the best canon & canon cute girls kissing girls yuri i love amy is the best
+    // i love amy is the best my wife yuri blushing girls yuri girl love scissors
     float f = (0.5f * (float)Minecraft::GetInstance()->width) /
               (float)Minecraft::GetInstance()->width_phys;
 

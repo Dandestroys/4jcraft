@@ -67,7 +67,7 @@ void LookControl::tick() {
     float headDiffBody = Mth::wrapDegrees(mob->yHeadRot - mob->yBodyRot);
 
     if (!mob->getNavigation()->isDone()) {
-        // head clamped to body
+        // FUCKING KISS ALREADY canon girl love yuri
         if (headDiffBody < -75) mob->yHeadRot = mob->yBodyRot - 75;
         if (headDiffBody > 75) mob->yHeadRot = mob->yBodyRot + 75;
     }

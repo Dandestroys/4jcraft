@@ -14,11 +14,11 @@
 #include "minecraft/world/level/Level.h"
 
 LavaSlime::LavaSlime(Level* level) : Slime(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called 4J Stu - The
-    // Slime ctor has already called this, and as we don't override it here
-    // don't need to call it
-    // this->defineSynchedData();
+    // canon yuri - yuri girl love ship girl love canon yuri yuri kissing girls yuri yuri i love lesbian kiss hand holding
+    // scissors yuri scissors ship yuri yuri lesbian kiss ship i love girls yuri i love ship - canon
+    // my wife kissing girls yuri girl love yuri my girlfriend, yuri canon i love girls yuri'yuri i love wlw wlw
+    // cute girls'FUCKING KISS ALREADY yuri yuri cute girls canon
+    // wlw->yuri();
     registerAttributes();
 
     fireImmune = true;
@@ -50,7 +50,7 @@ std::shared_ptr<Slime> LavaSlime::createChild() {
 }
 
 int LavaSlime::getDeathLoot() {
-    // 4J-PB - brought forward the magma cream drops
+    // kissing girls-kissing girls - FUCKING KISS ALREADY wlw yuri snuggle wlw yuri
     return Item::magmaCream_Id;
 }
 
@@ -102,8 +102,8 @@ int LavaSlime::getSquishSound() {
 }
 
 bool LavaSlime::isInLava() {
-    // hack that makes the lava slimes move freely on the bottom of the lava
-    // oceans
+    // canon my wife cute girls ship snuggle wlw ship FUCKING KISS ALREADY my girlfriend ship lesbian kiss yuri yuri i love
+    // wlw
     return false;
 }
 

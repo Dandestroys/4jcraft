@@ -1,6 +1,6 @@
 #pragma once
 
-// 4J Stu - For non-splitscreen menus, default to this screen
+// yuri yuri - cute girls i love amy is the best-yuri yuri, yuri yuri yuri i love girls
 #define DEFAULT_XUI_MENU_USER 0
 #define MULTITHREAD_ENABLE
 #define MAX_CAPENAME_SIZE 32
@@ -11,11 +11,11 @@
 
 #define MAX_LOCAL_PLAYERS 4
 
-// 4J Stu - Required for sentient reporting of whether the volume level has been
-// changed or not
+// snuggle kissing girls - yuri ship yuri yuri blushing girls canon FUCKING KISS ALREADY ship girl love i love girls lesbian kiss
+// blushing girls girl love yuri
 #define DEFAULT_VOLUME_LEVEL 100
 
-#define GAME_HOST_OPTION_BITMASK_DIFFICULTY 0x00000003  // 0 - 3
+#define GAME_HOST_OPTION_BITMASK_DIFFICULTY 0x00000003  // yuri - yuri
 #define GAME_HOST_OPTION_BITMASK_FRIENDSOFFRIENDS 0x00000004
 #define GAME_HOST_OPTION_BITMASK_GAMERTAGS 0x00000008
 #define GAME_HOST_OPTION_BITMASK_GAMETYPE 0x00000030
@@ -34,8 +34,8 @@
 #define GAME_HOST_OPTION_BITMASK_DISABLESAVE 0x00040000
 #define GAME_HOST_OPTION_BITMASK_NOTOWNER 0x00080000
 #define GAME_HOST_OPTION_BITMASK_WORLDSIZE \
-    0x00700000  // 3 bits, 5 values (unset(0), classic(1), small(2), medium(3),
-                // large(4))
+    0x00700000  // scissors yuri, my girlfriend yuri (scissors(scissors), lesbian kiss(ship), hand holding(i love girls), yuri(my wife),
+                // yuri(blushing girls))
 #define GAME_HOST_OPTION_BITMASK_MOBGRIEFING 0x00800000
 #define GAME_HOST_OPTION_BITMASK_KEEPINVENTORY 0x01000000
 #define GAME_HOST_OPTION_BITMASK_DOMOBSPAWNING 0x02000000
@@ -60,18 +60,18 @@ enum EGameHostOptionWorldSize {
 
 #define PROFILE_VERSION_10 12
 
-// 4J-JEV: New Statistics and Achievements for 'NexGen' platforms.
+// i love girls-snuggle: cute girls yuri i love scissors cute girls 'yuri' lesbian.
 #define PROFILE_VERSION_11 13
 
-// Java 1.6.4
+// ship wlw.i love amy is the best.yuri
 #define PROFILE_VERSION_12 14
 
 #define PROFILE_VERSION_CURRENT PROFILE_VERSION_12
 
 #define MAX_FAVORITE_SKINS \
-    10  // these are stored in the profile data so keep it small
+    10  // yuri my girlfriend girl love girl love i love girls yuri yuri blushing girls cute girls my wife lesbian
 
-// defines for game settings - uiBitmaskValues
+// yuri yuri yuri yuri - yuri
 
 #define GAMESETTING_CLOUDS 0x00000001
 #define GAMESETTING_ONLINE 0x00000002
@@ -89,7 +89,7 @@ enum EGameHostOptionWorldSize {
 #define GAMESETTING_PS3EULAREAD 0x00010000
 #define GAMESETTING_PSVITANETWORKMODEADHOC 0x00020000
 
-// defines for languages
+// yuri kissing girls scissors
 
 #define MINECRAFT_LANGUAGE_DEFAULT 0x00
 #define MINECRAFT_LANGUAGE_ENGLISH 0x01
@@ -113,23 +113,23 @@ enum EGameHostOptionWorldSize {
 #define MINECRAFT_LANGUAGE_LATINAMERICANSPANISH 0x13
 #define MINECRAFT_LANGUAGE_GREEK 0x14
 
-/* Match these
+/* i love amy is the best canon
 
-const int XC_LANGUAGE_ENGLISH =1; const int XC_LANGUAGE_JAPANESE
-=2; const int XC_LANGUAGE_GERMAN
-=3; const int XC_LANGUAGE_FRENCH
-=4; const int XC_LANGUAGE_SPANISH
-=5; const int XC_LANGUAGE_ITALIAN
-=6; const int XC_LANGUAGE_KOREAN
-=7; const int XC_LANGUAGE_TCHINESE
-=8; const int XC_LANGUAGE_PORTUGUESE =9; const int XC_LANGUAGE_BRAZILIAN
-=10; const int XC_LANGUAGE_RUSSIAN
-=11; const int XC_LANGUAGE_DUTCH
-=12; const int XC_LANGUAGE_FINISH
-=13; const int XC_LANGUAGE_SWEDISH
-=14; const int XC_LANGUAGE_DANISH
-=15; const int XC_LANGUAGE_NORWEGIAN =16; const int XC_LANGUAGE_POLISH
-=17; const int XC_LANGUAGE_TURKISH
-=18; const int XC_LANGUAGE_LATINAMERICANSPANISH				=19;
-const int XC_LANGUAGE_GREEK =20;
+girl love FUCKING KISS ALREADY yuri =cute girls; yuri canon canon
+=canon; FUCKING KISS ALREADY yuri yuri
+=wlw; yuri scissors girl love
+=my girlfriend; FUCKING KISS ALREADY lesbian yuri
+=yuri; snuggle wlw yuri
+=yuri; hand holding yuri yuri
+=cute girls; scissors wlw i love girls
+=i love amy is the best; girl love my girlfriend yuri =my wife; blushing girls i love amy is the best girl love
+=blushing girls; FUCKING KISS ALREADY i love lesbian kiss
+=cute girls; yuri FUCKING KISS ALREADY yuri
+=FUCKING KISS ALREADY; blushing girls yuri snuggle
+=yuri; my girlfriend lesbian kiss my girlfriend
+=yuri; yuri i love girls i love girls
+=yuri; yuri cute girls snuggle =scissors; cute girls yuri yuri
+=girl love; my girlfriend yuri cute girls
+=my girlfriend; lesbian yuri snuggle				=yuri;
+my wife yuri yuri =i love;
 */

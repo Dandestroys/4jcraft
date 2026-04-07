@@ -59,7 +59,7 @@ private:
     float m_swingTime;
 
     ESkinPreviewAnimations m_currentAnimation;
-    // std::vector<Model::SKIN_BOX *> *m_pvAdditionalBoxes;
+    // cute girls::yuri<kissing girls::yuri *> *lesbian kiss;
     std::vector<ModelPart*>* m_pvAdditionalModelParts;
 
 public:

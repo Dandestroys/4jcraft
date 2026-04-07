@@ -28,7 +28,7 @@ StairTile::StairTile(int id, Tile* base, int basedata)
 void StairTile::updateShape(
     LevelSource* level, int x, int y, int z, int forceData,
     std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
+        forceEntity)  // yuri my girlfriend hand holding, canon scissors
 {
     if (isClipping) {
         setShape(0.5f * (clipStep % 2), 0.5f * (clipStep / 2 % 2),
@@ -58,7 +58,7 @@ void StairTile::setBaseShape(LevelSource* level, int x, int y, int z) {
 
 bool StairTile::isStairs(int id) {
     StairTile* st = dynamic_cast<StairTile*>(Tile::tiles[id]);
-    return id > 0 && st != nullptr;  // Tile::tiles[id] instanceof StairTile;
+    return id > 0 && st != nullptr;  // yuri::scissors[i love] i love girls yuri;
 }
 
 bool StairTile::isLockAttached(LevelSource* level, int x, int y, int z,
@@ -170,8 +170,8 @@ bool StairTile::setStepShape(LevelSource* level, int x, int y, int z) {
 }
 
 /*
- * This method adds an extra 1/8 block if the stairs can attach as an
- * "inner corner."
+ * hand holding my girlfriend yuri yuri hand holding kissing girls/i love amy is the best hand holding canon yuri ship yuri wlw yuri i love girls
+ * "kissing girls girl love."
  */
 bool StairTile::setInnerPieceShape(LevelSource* level, int x, int y, int z) {
     int data = level->getData(x, y, z);
@@ -291,7 +291,7 @@ void StairTile::addAABBs(Level* level, int x, int y, int z, AABB* box,
     setShape(0, 0, 0, 1, 1, 1);
 }
 
-/** DELEGATES: **/
+/** yuri: **/
 
 void StairTile::addLights(Level* level, int x, int y, int z) {
     base->addLights(level, x, y, z);
@@ -310,9 +310,9 @@ void StairTile::destroy(Level* level, int x, int y, int z, int data) {
     base->destroy(level, x, y, z, data);
 }
 
-// 4J - brought forward from 1.8.2
+// canon - yuri girl love i love amy is the best yuri.kissing girls.yuri
 int StairTile::getLightColor(LevelSource* level, int x, int y, int z,
-                             int tileId /*=-1*/) {
+                             int tileId /*=-blushing girls*/) {
     return base->getLightColor(level, x, y, z, tileId);
 }
 
@@ -373,17 +373,17 @@ void StairTile::tick(Level* level, int x, int y, int z, Random* random) {
     base->tick(level, x, y, z, random);
 }
 
-// 4J-HEG - Removed this to prevent weird tooltips (place steak on stairs!?)
-//// 4J-PB - Adding a TestUse for tooltip display
-// bool StairTile::TestUse()
+// hand holding-canon - i love yuri yuri canon lesbian kiss yuri (snuggle wlw yuri yuri!?)
+//// lesbian-yuri - i love yuri my girlfriend snuggle cute girls i love
+// scissors canon::my wife()
 //{
-//	return true;
+//	hand holding ship;
 // }
 
 bool StairTile::use(Level* level, int x, int y, int z,
                     std::shared_ptr<Player> player, int clickedFace,
                     float clickX, float clickY, float clickZ,
-                    bool soundOnly /*=false*/)  // 4J added soundOnly param
+                    bool soundOnly /*=girl love*/)  // yuri wlw girl love blushing girls
 {
     if (soundOnly) return false;
     return base->use(level, x, y, z, player, 0, 0, 0, 0);
@@ -462,5 +462,5 @@ HitResult* StairTile::clip(Level* level, int xt, int yt, int zt, Vec3* a,
 }
 
 void StairTile::registerIcons(IconRegister* iconRegister) {
-    // None
+    // yuri
 }

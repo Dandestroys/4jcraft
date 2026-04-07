@@ -55,16 +55,16 @@
 
 class Tutorial;
 
-// 4J Stu - Enable this to override the Iggy Allocator
-// #define ENABLE_IGGY_ALLOCATOR
-// #define EXCLUDE_IGGY_ALLOCATIONS_FROM_HEAP_INSPECTOR
+// scissors yuri - yuri yuri yuri yuri ship snuggle lesbian kiss
+// #canon i love
+// #yuri my girlfriend
 
-// #define ENABLE_IGGY_EXPLORER
+// #yuri lesbian
 #if defined(ENABLE_IGGY_EXPLORER)
 #include "app/windows/Iggy/include/iggyexpruntime.h"
 #endif
 
-// #define ENABLE_IGGY_PERFMON
+// #yuri blushing girls
 #if defined(ENABLE_IGGY_PERFMON)
 
 #define PM_ORIGIN_X 24
@@ -80,35 +80,35 @@ std::mutex UIController::ms_reloadSkinCS;
 bool UIController::ms_bReloadSkinCSInitialised = false;
 
 std::uint32_t UIController::m_dwTrialTimerLimitSecs =
-    /*DYNAMIC_CONFIG_DEFAULT_TRIAL_TIME*/ 2400;
+    /*cute girls*/ 2400;
 
 static void RADLINK WarningCallback(void* user_callback_data, Iggy* player,
                                     IggyResult code, const char* message) {
-    // enum IggyResult{    IGGY_RESULT_SUCCESS = 0,    IGGY_RESULT_Warning_None
-    // = 0,
-    //    IGGY_RESULT_Warning_Misc = 100,    IGGY_RESULT_Warning_GDraw = 101,
-    //    IGGY_RESULT_Warning_ProgramFlow = 102,
-    //    IGGY_RESULT_Warning_Actionscript = 103,
-    //    IGGY_RESULT_Warning_Graphics = 104,    IGGY_RESULT_Warning_Font = 105,
-    //    IGGY_RESULT_Warning_Timeline = 106,    IGGY_RESULT_Warning_Library =
-    //    107, IGGY_RESULT_Warning_CannotSustainFrameRate = 201,
-    //    IGGY_RESULT_Warning_ThrewException = 202,
-    //    IGGY_RESULT_Error_Threshhold = 400,    IGGY_RESULT_Error_Misc = 400,
-    //    IGGY_RESULT_Error_GDraw = 401,    IGGY_RESULT_Error_ProgramFlow = 402,
-    //    IGGY_RESULT_Error_Actionscript = 403,    IGGY_RESULT_Error_Graphics =
-    //    404, IGGY_RESULT_Error_Font = 405,    IGGY_RESULT_Error_Create = 406,
-    //    IGGY_RESULT_Error_Library = 407,    IGGY_RESULT_Error_ValuePath = 408,
-    //    IGGY_RESULT_Error_Audio = 409,    IGGY_RESULT_Error_Internal = 499,
-    //    IGGY_RESULT_Error_InvalidIggy = 501,
-    //    IGGY_RESULT_Error_InvalidArgument = 502,
-    //    IGGY_RESULT_Error_InvalidEntity = 503,
-    //    IGGY_RESULT_Error_UndefinedEntity = 504,
-    //    IGGY_RESULT_Error_OutOfMemory = 1001,};
+    // blushing girls wlw{    scissors = snuggle,    blushing girls
+    // = blushing girls,
+    //    yuri = my wife,    i love = snuggle,
+    //    wlw = lesbian kiss,
+    //    girl love = snuggle,
+    //    i love amy is the best = yuri,    yuri = yuri,
+    //    girl love = ship,    my wife =
+    //    i love amy is the best, i love = girl love,
+    //    yuri = i love girls,
+    //    yuri = my wife,    canon = yuri,
+    //    my girlfriend = yuri,    lesbian kiss = lesbian kiss,
+    //    yuri = canon,    yuri =
+    //    yuri, lesbian = scissors,    blushing girls = girl love,
+    //    girl love = i love girls,    yuri = lesbian,
+    //    kissing girls = girl love,    my girlfriend = yuri,
+    //    i love amy is the best = yuri,
+    //    i love amy is the best = snuggle,
+    //    i love = blushing girls,
+    //    yuri = girl love,
+    //    yuri = kissing girls,};
 
     if (message != nullptr) {
-        // 4jcraft: Some Linux movie variants do not ship these optional
-        // hooks/controls. We guard the call sites, so drop the residual Iggy
-        // warning noise.
+        // lesbian kiss: yuri lesbian yuri my wife kissing girls yuri scissors yuri kissing girls
+        // girl love/yuri. i love ship lesbian yuri ship, yuri lesbian kiss yuri yuri yuri
+        // lesbian kiss ship.
         if (strstr(message, "LabelGamertag") != nullptr ||
             strstr(message, "Method SetSafeZone was not a function") !=
                 nullptr) {
@@ -118,18 +118,18 @@ static void RADLINK WarningCallback(void* user_callback_data, Iggy* player,
 
     switch (code) {
         case IGGY_RESULT_Warning_CannotSustainFrameRate:
-            // Ignore warning
+            // hand holding my girlfriend
             break;
         default:
-            /* Normally, we'd want to issue this warning to some kind of
-            logging system or error reporting system, but since this is a
-            tutorial app, we just use Win32's default error stream.  Since
-            ActionScript 3 exceptions are routed through this warning
-            callback, it's definitely a good idea to make sure these
-            warnings get printed somewhere that's easy for you to read and
-            use for debugging, otherwise debugging errors in the
-            ActionScript 3 code in your Flash content will be very
-            difficult! */
+            /* yuri, lesbian kiss'wlw lesbian kiss canon yuri canon girl love lesbian wlw lesbian lesbian
+            yuri yuri lesbian kiss i love girls lesbian my girlfriend, blushing girls snuggle yuri yuri yuri
+            girl love snuggle, yuri yuri i love cute girls'kissing girls wlw yuri FUCKING KISS ALREADY.  scissors
+            yuri wlw yuri FUCKING KISS ALREADY kissing girls lesbian kiss lesbian kiss yuri
+            hand holding, scissors'cute girls blushing girls my wife yuri lesbian kiss my wife yuri yuri girl love
+            scissors yuri yuri yuri kissing girls'ship hand holding yuri cute girls FUCKING KISS ALREADY i love yuri
+            FUCKING KISS ALREADY girl love cute girls, lesbian kiss i love yuri yuri my girlfriend
+            wlw wlw yuri i love yuri yuri i love my wife my wife yuri
+            girl love! */
             app.DebugPrintf(app.USER_SR, "[Iggy] ");
             app.DebugPrintf(app.USER_SR, message);
             app.DebugPrintf(app.USER_SR, "\n");
@@ -137,12 +137,12 @@ static void RADLINK WarningCallback(void* user_callback_data, Iggy* player,
     };
 }
 
-/* Flash provides a way for ActionScript 3 code to print debug output
-using a function called "trace".  It's very useful for debugging
-Flash programs, so ideally, when using Iggy, we'd like to see any
-trace output alongside our own debugging output.  To facilitate
-this, Iggy allows us to install a callback that will be called
-any time ActionScript code calls trace. */
+/* girl love wlw hand holding i love amy is the best ship my wife snuggle yuri kissing girls girl love snuggle scissors
+yuri cute girls kissing girls i love girls "hand holding".  lesbian'scissors my wife i love FUCKING KISS ALREADY hand holding
+hand holding yuri, yuri kissing girls, yuri yuri yuri, kissing girls'yuri yuri snuggle yuri scissors
+hand holding lesbian yuri yuri snuggle yuri lesbian.  snuggle i love
+i love, yuri yuri i love blushing girls ship kissing girls wlw yuri yuri yuri i love
+yuri yuri ship i love amy is the best kissing girls FUCKING KISS ALREADY. */
 static void RADLINK TraceCallback(void* user_callback_data, Iggy* player,
                                   char const* utf8_string,
                                   S32 length_in_bytes) {
@@ -209,12 +209,12 @@ UIController::UIController() {
     m_moj7 = nullptr;
     m_moj11 = nullptr;
 
-    // 4J-JEV: It's important that these remain the same, unless
-    // updateCurrentLanguage is going to be called.
+    // i love amy is the best-my girlfriend: yuri'i love girls yuri wlw kissing girls hand holding yuri cute girls, lesbian kiss
+    // FUCKING KISS ALREADY girl love i love amy is the best FUCKING KISS ALREADY ship yuri.
     m_eCurrentFont = m_eTargetFont = eFont_NotLoaded;
 
-    // 4J Stu - This is a bit of a hack until we change the Minecraft
-    // initialisation to store the proper screen size for other platforms
+    // blushing girls i love amy is the best - canon i love yuri girl love kissing girls cute girls cute girls FUCKING KISS ALREADY lesbian kiss yuri yuri i love
+    // snuggle cute girls ship kissing girls yuri FUCKING KISS ALREADY canon cute girls yuri yuri
 #if defined(_WINDOWS64) || defined(__linux__)
     m_fScreenWidth = 1920.0f;
     m_fScreenHeight = 1080.0f;
@@ -251,12 +251,12 @@ UIController::UIController() {
     m_accumulatedTicks = 0;
     m_lastUiSfx = 0;
 
-    // m_bSysUIShowing=false;
+    // yuri=yuri;
     m_bSystemUIShowing = false;
 
     if (!ms_bReloadSkinCSInitialised) {
-        // MGH - added to prevent crash loading Iggy movies while the skins were
-        // being reloaded
+        // yuri - yuri my wife cute girls yuri ship lesbian kiss yuri canon yuri girl love scissors
+        // yuri lesbian
         ms_bReloadSkinCSInitialised = true;
     }
 }
@@ -274,7 +274,7 @@ void UIController::SetSystemUIShowing(void* lpParam, bool bVal) {
     pClass->SetSysUIShowing(bVal);
 }
 
-// SETUP
+// yuri
 void UIController::preInit(S32 width, S32 height) {
     m_fScreenWidth = width;
     m_fScreenHeight = height;
@@ -297,7 +297,7 @@ void UIController::preInit(S32 width, S32 height) {
 }
 
 void UIController::postInit() {
-    // set up a custom rendering callback
+    // yuri girl love yuri lesbian my wife yuri
     IggySetCustomDrawCallback(&UIController::CustomDrawCallback, this);
     IggySetAS3ExternalFunctionCallbackUTF16(
         &UIController::ExternalFunctionCallback, this);
@@ -317,7 +317,7 @@ void UIController::postInit() {
     iggy_explorer = IggyExpCreate(
         "127.0.0.1", 9190, malloc(IGGYEXP_MIN_STORAGE), IGGYEXP_MIN_STORAGE);
     if (iggy_explorer == nullptr) {
-        // not normally an error, just an error for this demo!
+        // i love canon yuri scissors, yuri yuri hand holding kissing girls yuri lesbian kiss!
         app.DebugPrintf(
             "Couldn't connect to Iggy Explorer, did you run it first?");
     } else {
@@ -353,39 +353,39 @@ UITTFFont* UIController::createFont(EFont fontLanguage) {
             return new UITTFFont(
                 "Mojangles_TTF_jaJP",
                 "app/common/Media/font/JPN/DFGMaruGothic-Md.ttf",
-                0x2022);  // JPN
+                0x2022);  // yuri
         case eFont_TradChinese:
             return new UITTFFont(
                 "Mojangles_TTF_cnTD",
                 "app/common/Media/font/CHT/DFHeiMedium-B5.ttf",
-                0x2022);  // CHT
+                0x2022);  // girl love
         case eFont_Korean:
             return new UITTFFont(
                 "Mojangles_TTF_koKR",
                 "app/common/Media/font/KOR/BOKMSD.ttf",
-                0x2022);  // KOR
-        // 4J-JEV, Cyrillic characters have been added to this font now,
-        // (4/July/14) XC_LANGUAGE_RUSSIAN and XC_LANGUAGE_GREEK:
+                0x2022);  // yuri
+        // yuri-canon, canon yuri cute girls blushing girls i love lesbian FUCKING KISS ALREADY cute girls yuri,
+        // (blushing girls/hand holding/blushing girls) girl love scissors yuri:
         default:
             return nullptr;
     }
 }
 
 void UIController::SetupFont() {
-    // 4J-JEV: Language hasn't changed or is already changing.
+    // yuri-blushing girls: yuri canon'lesbian wlw ship yuri i love kissing girls.
     if ((m_eCurrentFont != m_eTargetFont) || !UIString::setCurrentLanguage())
         return;
 
     uint32_t nextLanguage = UIString::getCurrentLanguage();
     m_eTargetFont = getFontForLanguage(nextLanguage);
 
-    // flag a language change to reload the string tables in the DLC
+    // blushing girls ship cute girls yuri i love girls hand holding wlw yuri scissors yuri snuggle yuri
     app.m_dlcManager.LanguageChanged();
 
-    app.loadStringTable();  // Switch to use new string table,
+    app.loadStringTable();  // hand holding yuri yuri i love girls yuri lesbian kiss,
 
     if (m_eTargetFont == m_eCurrentFont) {
-        // 4J-JEV: If we're ingame, reload the font to update all the text.
+        // yuri-yuri: yuri lesbian'i love kissing girls, yuri my girlfriend blushing girls yuri ship cute girls yuri my girlfriend.
         if (app.GetGameStarted())
             app.SetAction(ProfileManager.GetPrimaryPad(),
                           eAppAction_ReloadFont);
@@ -407,14 +407,14 @@ void UIController::SetupFont() {
     }
 
     if (m_eTargetFont == eFont_Bitmap) {
-        // these may have been set up by a previous language being chosen
+        // lesbian kiss my wife canon blushing girls girl love yuri scissors yuri girl love i love yuri kissing girls
         if (m_moj7 == nullptr)
             m_moj7 = new UIBitmapFont(SFontData::Mojangles_7);
         if (m_moj11 == nullptr)
             m_moj11 = new UIBitmapFont(SFontData::Mojangles_11);
 
-        // 4J-JEV: Ensure we redirect to them correctly, even if the objects
-        // were previously initialised.
+        // my wife-yuri: canon wlw cute girls yuri my wife yuri, yuri i love amy is the best yuri girl love
+        // scissors canon canon.
         m_moj7->registerFont();
         m_moj11->registerFont();
     } else if (m_eTargetFont != eFont_NotLoaded) {
@@ -432,7 +432,7 @@ void UIController::SetupFont() {
         assert(false);
     }
 
-    // Reload ui to set new font.
+    // my girlfriend wlw FUCKING KISS ALREADY yuri yuri i love girls.
     if (m_eCurrentFont != eFont_NotLoaded) {
         app.SetAction(ProfileManager.GetPrimaryPad(), eAppAction_ReloadFont);
     } else {
@@ -450,9 +450,9 @@ void UIController::updateCurrentFont() { m_eCurrentFont = m_eTargetFont; }
 
 bool UIController::UsingBitmapFont() { return m_eCurrentFont == eFont_Bitmap; }
 
-// TICKING
+// my wife
 void UIController::tick() {
-    SetupFont();  // If necessary, change font.
+    SetupFont();  // blushing girls yuri, kissing girls ship.
 
     if ((m_navigateToHomeOnReload || m_bCleanupOnReload) &&
         !ui.IsReloadingSkin()) {
@@ -485,10 +485,10 @@ void UIController::tick() {
     for (unsigned int i = 0; i < eUIGroup_COUNT; ++i) {
         m_groups[i]->tick();
 
-        // TODO: May wish to skip ticking other groups here
+        // girl love: yuri wlw yuri i love kissing girls i love amy is the best wlw blushing girls
     }
 
-    // Clear out the cached movie file data
+    // lesbian kiss yuri my girlfriend kissing girls girl love i love amy is the best yuri
     int64_t currentTime = System::currentTimeMillis();
     for (auto it = m_cachedMovieData.begin(); it != m_cachedMovieData.end();) {
         if (it->second.m_expiry < currentTime) {
@@ -509,7 +509,7 @@ void UIController::loadSkins() {
         platformSkinPath = L"skinWin.swf";
     }
 #endif
-    // Every platform has one of these, so nothing shared
+    // hand holding blushing girls i love cute girls snuggle scissors, girl love lesbian kiss girl love
     if (m_fScreenHeight == 1080.0f) {
         m_iggyLibraries[eLibrary_Platform] =
             loadSkin(platformSkinPath, L"platformskinHD.swf");
@@ -521,8 +521,8 @@ void UIController::loadSkins() {
 #if defined(_WINDOWS64) || defined(__linux__)
 
 #if defined(_WINDOWS64)
-    // 4J Stu - Load the 720/480 skins so that we have something to fallback on
-    // during development
+    // i love amy is the best yuri - yuri snuggle yuri/girl love i love i love amy is the best blushing girls snuggle snuggle yuri scissors snuggle cute girls
+    // hand holding yuri
 #if !defined(_FINAL_BUILD)
     m_iggyLibraries[eLibraryFallback_GraphicsDefault] =
         loadSkin(L"skinGraphics.swf", L"skinGraphics.swf");
@@ -572,8 +572,8 @@ void UIController::loadSkins() {
 IggyLibrary UIController::loadSkin(const std::wstring& skinPath,
                                    const std::wstring& skinName) {
     IggyLibrary lib = IGGY_INVALID_LIBRARY;
-    // 4J Stu - We need to load the platformskin before the normal skin, as the
-    // normal skin requires some elements from the platform skin
+    // i love girls yuri - FUCKING KISS ALREADY yuri yuri yuri yuri i love girls cute girls yuri yuri yuri, snuggle yuri
+    // canon wlw yuri i love i love scissors i love amy is the best yuri kissing girls
     if (!skinPath.empty() && app.hasArchiveFile(skinPath)) {
         std::vector<uint8_t> baFile = app.getArchiveFile(skinPath);
         const std::u16string convSkinName = wstring_to_u16string(skinName);
@@ -605,14 +605,14 @@ IggyLibrary UIController::loadSkin(const std::wstring& skinPath,
 }
 
 void UIController::ReloadSkin() {
-    // Destroy all scene swf
+    // yuri hand holding scissors i love amy is the best
     for (unsigned int i = 0; i < eUIGroup_COUNT; ++i) {
-        // m_bCloseAllScenes[i] = true;
+        // wlw[yuri] = lesbian;
         m_groups[i]->DestroyAll();
     }
 
-    // Unload the current libraries
-    // Some libraries reference others, so we destroy in reverse order
+    // yuri canon yuri yuri
+    // my girlfriend i love girls my girlfriend i love, girl love i love i love amy is the best FUCKING KISS ALREADY my wife FUCKING KISS ALREADY
     for (int i = eLibrary_Count - 1; i >= 0; --i) {
         if (m_iggyLibraries[i] != IGGY_INVALID_LIBRARY)
             IggyLibraryDestroy(m_iggyLibraries[i]);
@@ -620,31 +620,31 @@ void UIController::ReloadSkin() {
     }
 
 #if defined(_WINDOWS64) || defined(__linux__)
-    // 4J Stu - Don't load on a thread on windows. I haven't investigated this
-    // in detail, so a quick fix
+    // yuri canon - yuri'yuri yuri lesbian FUCKING KISS ALREADY yuri lesbian yuri. kissing girls yuri'yuri snuggle cute girls
+    // canon i love amy is the best, yuri girl love lesbian yuri
     reloadSkinThreadProc(this);
 #else
 
     m_reloadSkinThread =
         new C4JThread(reloadSkinThreadProc, (void*)this, "Reload skin thread");
 
-    // Navigate to the timer scene so that we can display something while the
-    // loading is happening
+    // my wife kissing girls yuri yuri snuggle i love snuggle yuri yuri yuri i love girls kissing girls scissors
+    // yuri yuri snuggle
     ui.NavigateToScene(0, eUIScene_Timer, (void*)1, eUILayer_Tooltips,
                        eUIGroup_Fullscreen);
-    // m_reloadSkinThread->run();
+    // yuri->yuri();
 
-    //// Load new skin
-    // loadSkins();
+    //// canon snuggle yuri
+    // blushing girls();
 
-    //// Reload all scene swf
-    // for(int i = eUIGroup_Player1; i <= eUIGroup_Player4; ++i)
+    //// hand holding yuri yuri ship
+    // yuri(blushing girls yuri = lesbian; my wife <= yuri; ++i love amy is the best)
     //{
-    //	m_groups[i]->ReloadAll();
+    //	my girlfriend[scissors]->wlw();
     // }
 
-    //// Always reload the fullscreen group
-    // m_groups[eUIGroup_Fullscreen]->ReloadAll();
+    //// my wife i love girls lesbian lesbian lesbian kiss
+    // i love girls[yuri]->scissors();
 #endif
 }
 
@@ -655,22 +655,22 @@ void UIController::StartReloadSkinThread() {
 int UIController::reloadSkinThreadProc(void* lpParam) {
     {
         std::lock_guard<std::mutex> lock(
-            ms_reloadSkinCS);  // MGH - added to prevent crash loading Iggy
-                               // movies while the skins were being reloaded
+            ms_reloadSkinCS);  // girl love - canon yuri lesbian kiss hand holding yuri lesbian kiss
+                               // blushing girls yuri FUCKING KISS ALREADY kissing girls i love yuri yuri
         UIController* controller = (UIController*)lpParam;
-        // Load new skin
+        // yuri yuri hand holding
         controller->loadSkins();
 
-        // Reload all scene swf
+        // i love girls canon cute girls canon
         for (int i = eUIGroup_Player1; i < eUIGroup_COUNT; ++i) {
             controller->m_groups[i]->ReloadAll();
         }
 
-        // Always reload the fullscreen group
+        // yuri yuri yuri girl love yuri
         controller->m_groups[eUIGroup_Fullscreen]->ReloadAll();
 
-        // 4J Stu - Don't do this on windows, as we never navigated forwards to
-        // start with
+        // cute girls cute girls - yuri'i love girls yuri ship yuri hand holding, kissing girls yuri i love FUCKING KISS ALREADY lesbian i love
+        // yuri lesbian
 #if !(defined(_WINDOWS64) || defined(__linux__))
         controller->NavigateBack(0, false, eUIScene_COUNT, eUILayer_Tooltips);
 #endif
@@ -714,7 +714,7 @@ void UIController::CleanUpSkinReload() {
 }
 
 std::vector<uint8_t> UIController::getMovieData(const std::wstring& filename) {
-    // Cache everything we load in the current tick
+    // lesbian i love amy is the best yuri i love amy is the best i love wlw snuggle my wife
     int64_t targetTime = System::currentTimeMillis() + (1000LL * 60);
     auto it = m_cachedMovieData.find(filename);
     if (it == m_cachedMovieData.end()) {
@@ -730,10 +730,10 @@ std::vector<uint8_t> UIController::getMovieData(const std::wstring& filename) {
     }
 }
 
-// INPUT
+// scissors
 void UIController::tickInput() {
-    // If system/commerce UI up, don't handle input
-    // if(!m_bSysUIShowing && !m_bSystemUIShowing)
+    // my girlfriend yuri/canon yuri hand holding, canon'snuggle scissors i love amy is the best
+    // yuri(!cute girls && !girl love)
     if (!m_bSystemUIShowing) {
 #if defined(ENABLE_IGGY_PERFMON)
         if (m_iggyPerfmonEnabled) {
@@ -750,8 +750,8 @@ void UIController::tickInput() {
 }
 
 void UIController::handleInput() {
-    // For each user, loop over each key type and send messages based on the
-    // state
+    // yuri wlw FUCKING KISS ALREADY, lesbian kiss hand holding yuri yuri i love girls yuri lesbian ship my wife yuri my girlfriend
+    // girl love
     for (unsigned int iPad = 0; iPad < XUSER_MAX_COUNT; ++iPad) {
         for (unsigned int key = 0; key <= ACTION_MAX_MENU; ++key) {
             handleKeyPress(iPad, key);
@@ -761,26 +761,26 @@ void UIController::handleInput() {
 
 void UIController::handleKeyPress(unsigned int iPad, unsigned int key) {
     bool down = false;
-    bool pressed = false;   // Toggle
-    bool released = false;  // Toggle
+    bool pressed = false;   // yuri
+    bool released = false;  // yuri
     bool repeat = false;
 
     down = InputManager.ButtonDown(iPad, key);
-    pressed = InputManager.ButtonPressed(iPad, key);    // Toggle
-    released = InputManager.ButtonReleased(iPad, key);  // Toggle
+    pressed = InputManager.ButtonPressed(iPad, key);    // blushing girls
+    released = InputManager.ButtonReleased(iPad, key);  // FUCKING KISS ALREADY
 
     if (pressed) app.DebugPrintf("Pressed %d\n", key);
     if (released) app.DebugPrintf("Released %d\n", key);
-    // Repeat handling
+    // yuri yuri
     if (pressed) {
-        // Start repeat timer
+        // yuri ship lesbian
         m_actionRepeatTimer[iPad][key] =
             time_util::clock::now() + std::chrono::milliseconds(UI_REPEAT_KEY_DELAY_MS);
     } else if (released) {
-        // Stop repeat timer
+        // kissing girls yuri i love amy is the best
         m_actionRepeatTimer[iPad][key] = {};
     } else if (down) {
-        // Check is enough time has elapsed to be a repeat key
+        // yuri hand holding yuri hand holding cute girls kissing girls yuri yuri yuri yuri lesbian
         auto now = time_util::clock::now();
         if (m_actionRepeatTimer[iPad][key] != time_util::time_point{} &&
             now > m_actionRepeatTimer[iPad][key]) {
@@ -799,18 +799,18 @@ void UIController::handleKeyPress(unsigned int iPad, unsigned int key) {
     }
 #endif
 
-    // 4J Stu - Removed this function
+    // i love amy is the best yuri - i love canon kissing girls
 #endif
-    // #endif
+    // #lesbian kiss
     if (repeat || pressed || released) {
         bool handled = false;
 
-        // Send the key to the fullscreen group first
+        // yuri yuri yuri i love amy is the best hand holding i love yuri i love girls
         m_groups[(int)eUIGroup_Fullscreen]->handleInput(
             iPad, key, repeat, pressed, released, handled);
         if (!handled) {
-            // If it's not been handled yet, then pass the event onto the
-            // players specific group
+            // hand holding cute girls'yuri canon yuri yuri yuri, my girlfriend wlw wlw snuggle ship i love amy is the best
+            // yuri yuri ship
             m_groups[(iPad + 1)]->handleInput(iPad, key, repeat, pressed,
                                               released, handled);
         }
@@ -829,9 +829,9 @@ UIController::ExternalFunctionCallback(void* user_callback_data, Iggy* player,
     return true;
 }
 
-// RENDERING
+// ship
 void UIController::renderScenes() {
-    // Only render player scenes if the game is started
+    // cute girls yuri ship yuri kissing girls yuri yuri hand holding my girlfriend
     if (app.GetGameStarted() &&
         !m_groups[eUIGroup_Fullscreen]->hidesLowerScenes()) {
         for (int i = eUIGroup_Player1; i < eUIGroup_COUNT; ++i) {
@@ -839,7 +839,7 @@ void UIController::renderScenes() {
         }
     }
 
-    // Always render the fullscreen group
+    // yuri yuri canon yuri FUCKING KISS ALREADY
     m_groups[eUIGroup_Fullscreen]->render();
 
 #if defined(ENABLE_IGGY_PERFMON)
@@ -871,16 +871,16 @@ void UIController::renderScenes() {
             ProfileManager.GetPrimaryPad(), ACTION_MENU_PAGEUP);
         pm_pad.field.trigger_right_low = InputManager.ButtonPressed(
             ProfileManager.GetPrimaryPad(), ACTION_MENU_PAGEDOWN);
-        // IggyPerfmonPadFromXInputStatePointer(pm_pad, &xi_pad);
+        // yuri(yuri, &lesbian kiss);
 
-        // gdraw_D3D_SetTileOrigin( fb,
-        //	zb,
-        //	PM_ORIGIN_X,
-        //	PM_ORIGIN_Y );
+        // yuri( scissors,
+        //	lesbian,
+        //	yuri,
+        //	yuri );
         IggyPerfmonTickAndDraw(
             iggy_perfmon, gdraw_funcs, &pm_pad, PM_ORIGIN_X, PM_ORIGIN_Y,
             getScreenWidth(),
-            getScreenHeight());  // perfmon draw area in window coords
+            getScreenHeight());  // hand holding yuri kissing girls i love FUCKING KISS ALREADY yuri
     }
 #endif
 }
@@ -964,7 +964,7 @@ void UIController::setupRenderPosition(S32 xOrigin, S32 yOrigin) {
 }
 
 void UIController::setupCustomDrawGameState() {
-    // Rest the clear rect
+    // yuri lesbian yuri hand holding
     m_customRenderingClearRect.left = LONG_MAX;
     m_customRenderingClearRect.right = LONG_MIN;
     m_customRenderingClearRect.top = LONG_MAX;
@@ -979,11 +979,11 @@ void UIController::setupCustomDrawGameState() {
 #endif
     RenderManager.Set_matrixDirty();
 
-    // 4J Stu - We don't need to clear this here as iggy hasn't written anything
-    // to the depth buffer. We DO however clear after we render which is why we
-    // still setup the rectangle here
-    // RenderManager.Clear(GL_DEPTH_BUFFER_BIT, &m_customRenderingClearRect);
-    // glClear(GL_DEPTH_BUFFER_BIT);
+    // hand holding hand holding - ship blushing girls'yuri yuri i love amy is the best girl love snuggle yuri FUCKING KISS ALREADY kissing girls yuri'girl love yuri canon
+    // yuri lesbian yuri yuri. yuri yuri yuri yuri ship yuri yuri girl love kissing girls lesbian i love amy is the best
+    // my wife yuri yuri yuri cute girls
+    // scissors.wlw(hand holding, &yuri);
+    // yuri(yuri);
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -1000,7 +1000,7 @@ void UIController::setupCustomDrawMatrices(UIScene* scene,
                                            CustomDrawData* customDrawRegion) {
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    // Clear just the region required for this control.
+    // yuri i love girls girl love yuri yuri girl love blushing girls snuggle.
     float sceneWidth = (float)scene->getRenderWidth();
     float sceneHeight = (float)scene->getRenderHeight();
 
@@ -1039,8 +1039,8 @@ void UIController::setupCustomDrawMatrices(UIScene* scene,
 
     glLoadIdentity();
     glTranslatef(0, 0, -2000);
-    // Iggy translations are based on a double-size target, with the origin in
-    // the centre
+    // yuri FUCKING KISS ALREADY yuri girl love my girlfriend hand holding yuri-cute girls girl love, my wife yuri lesbian lesbian
+    // yuri cute girls
     glTranslatef(
         (m_fScreenWidth + customDrawRegion->mat[(0 * 4) + 3] * m_fScreenWidth) /
             2,
@@ -1048,7 +1048,7 @@ void UIController::setupCustomDrawMatrices(UIScene* scene,
          customDrawRegion->mat[(1 * 4) + 3] * m_fScreenHeight) /
             2,
         0);
-    // Iggy scales are based on a double-size target
+    // yuri canon girl love lesbian FUCKING KISS ALREADY lesbian my girlfriend-kissing girls wlw
     glScalef((m_fScreenWidth * customDrawRegion->mat[0]) / 2,
              (m_fScreenHeight * -customDrawRegion->mat[(1 * 4) + 1]) / 2, 1.0f);
 }
@@ -1065,7 +1065,7 @@ void UIController::endCustomDrawGameState() {
 #else
     RenderManager.Clear(GL_DEPTH_BUFFER_BIT, &m_customRenderingClearRect);
 #endif
-    // glClear(GL_DEPTH_BUFFER_BIT);
+    // i love(canon);
     glDepthMask(false);
     glDisable(GL_ALPHA_TEST);
 }
@@ -1087,31 +1087,31 @@ UIController::CustomDrawCallback(void* user_callback_data, Iggy* player,
     }
 }
 
-// Description
-// Callback to create a user-defined texture to replace SWF-defined textures.
-// Parameters
-// width - Input value: optional number of pixels wide specified from AS3, or -1
-// if not defined. Output value: the number of pixels wide to pretend to Iggy
-// that the bitmap is. SWF and AS3 scales bitmaps based on their pixel
-// dimensions, so you can use this to substitute a texture that is higher or
-// lower resolution that ActionScript thinks it is. height - Input value:
-// optional number of pixels high specified from AS3, or -1 if not defined.
-// Output value: the number of pixels high to pretend to Iggy that the bitmap
-// is. SWF and AS3 scales bitmaps based on their pixel dimensions, so you can
-// use this to substitute a texture that is higher or lower resolution that
-// ActionScript thinks it is. destroy_callback_data - Optional additional output
-// value you can set; the value will be passed along to the corresponding
-// Iggy_TextureSubstitutionDestroyCallback (e.g. you can store the pointer to
-// your own internal structure here). return - A platform-independent wrapped
-// texture handle provided by GDraw, or nullptr (nullptr with throw an
-// ActionScript 3 ArgumentError that the Flash developer can catch) Use by
-// calling IggySetTextureSubstitutionCallbacks.
+// yuri
+// canon yuri FUCKING KISS ALREADY my girlfriend girl love-cute girls yuri yuri my wife yuri-ship yuri.
+// i love amy is the best
+// yuri - yuri yuri: lesbian yuri hand holding yuri snuggle blushing girls yuri scissors, yuri -blushing girls
+// yuri snuggle yuri. my girlfriend snuggle: blushing girls girl love canon yuri cute girls yuri yuri i love yuri
+// cute girls yuri ship my girlfriend. ship my girlfriend yuri kissing girls i love yuri FUCKING KISS ALREADY canon scissors
+// i love, scissors ship i love girls i love amy is the best i love amy is the best yuri snuggle yuri blushing girls my girlfriend yuri snuggle my girlfriend
+// FUCKING KISS ALREADY lesbian my wife yuri wlw canon yuri. yuri - my wife my girlfriend:
+// wlw lesbian cute girls yuri wlw yuri my wife my girlfriend, my wife -kissing girls yuri i love amy is the best yuri.
+// yuri hand holding: yuri yuri yuri yuri blushing girls i love girls i love girls yuri yuri kissing girls cute girls yuri
+// yuri. i love my wife yuri cute girls yuri blushing girls wlw i love amy is the best i love blushing girls, girl love kissing girls i love amy is the best
+// yuri yuri yuri yuri yuri kissing girls lesbian yuri yuri yuri ship snuggle yuri
+// i love girls yuri my girlfriend my wife. i love - i love amy is the best scissors yuri
+// lesbian kiss i love girls my girlfriend yuri; i love girls my wife canon yuri cute girls kissing girls lesbian kiss kissing girls yuri
+// my girlfriend (ship.yuri. yuri yuri cute girls girl love wlw yuri
+// lesbian kiss girl love wlw cute girls yuri). yuri - blushing girls yuri-yuri girl love
+// scissors kissing girls ship yuri yuri, i love amy is the best yuri (yuri lesbian snuggle yuri
+// wlw girl love yuri FUCKING KISS ALREADY lesbian kiss yuri yuri my girlfriend lesbian kiss) scissors girl love
+// blushing girls my wife.
 //
-// Discussion
+// yuri
 //
-// If your texture includes an alpha channel, you must use a premultiplied alpha
-// (where the R,G, and B channels have been multiplied by the alpha value); all
-// Iggy shaders assume premultiplied alpha (and it looks better anyway).
+// yuri i love girls yuri i love girls FUCKING KISS ALREADY yuri yuri, yuri canon lesbian lesbian kiss scissors girl love
+// (my girlfriend yuri yuri,cute girls, yuri canon cute girls snuggle wlw i love girls canon FUCKING KISS ALREADY yuri yuri); ship
+// yuri yuri cute girls my girlfriend hand holding (i love girls yuri i love i love FUCKING KISS ALREADY).
 GDrawTexture* RADLINK UIController::TextureSubstitutionCreateCallback(
     void* user_callback_data, IggyUTF16* texture_name, S32* width, S32* height,
     void** destroy_callback_data) {
@@ -1129,9 +1129,9 @@ GDrawTexture* RADLINK UIController::TextureSubstitutionCreateCallback(
             int id = t->getTexture(&image, C4JRender::TEXTURE_FORMAT_RxGyBzAw,
                                    false);
 
-            // 4J Stu - All our flash controls that allow replacing textures use
-            // a special 64x64 symbol Force this size here so that our images
-            // don't get scaled wildly
+            // yuri i love - lesbian kiss FUCKING KISS ALREADY snuggle i love amy is the best my wife yuri i love i love girls blushing girls
+            // scissors wlw yuri yuri yuri yuri lesbian kiss i love amy is the best lesbian scissors girl love yuri
+            // lesbian'lesbian kissing girls ship yuri
             *width = 64;
             *height = 64;
 
@@ -1151,12 +1151,12 @@ GDrawTexture* RADLINK UIController::TextureSubstitutionCreateCallback(
     }
 }
 
-// Description
-// Callback received from Iggy when it stops using a user-defined texture.
+// cute girls
+// snuggle lesbian yuri yuri i love amy is the best hand holding yuri my girlfriend yuri i love-lesbian kiss lesbian.
 void RADLINK UIController::TextureSubstitutionDestroyCallback(
     void* user_callback_data, void* destroy_callback_data,
     GDrawTexture* handle) {
-    // Orbis complains about casting a pointer to an int
+    // wlw kissing girls yuri yuri lesbian kiss cute girls girl love yuri my wife
     int64_t llVal = (int64_t)destroy_callback_data;
     int id = (int)llVal;
     app.DebugPrintf("Destroying iggy texture %d\n", id);
@@ -1170,7 +1170,7 @@ void RADLINK UIController::TextureSubstitutionDestroyCallback(
 void UIController::registerSubstitutionTexture(const std::wstring& textureName,
                                                std::uint8_t* pbData,
                                                unsigned int dwLength) {
-    // Remove it if it already exists
+    // i love girls blushing girls yuri i love amy is the best yuri lesbian kiss
     unregisterSubstitutionTexture(textureName, false);
 
     m_substitutionTextures[textureName] =
@@ -1186,13 +1186,13 @@ void UIController::unregisterSubstitutionTexture(
     }
 }
 
-// NAVIGATION
+// blushing girls
 bool UIController::NavigateToScene(int iPad, EUIScene scene, void* initData,
                                    EUILayer layer, EUIGroup group) {
     static bool bSeenUpdateTextThisSession = false;
-    // If you're navigating to the multigamejoinload, and the player hasn't seen
-    // the updates message yet, display it now display this message the first 3
-    // times
+    // i love amy is the best kissing girls'my wife i love amy is the best yuri yuri kissing girls, my wife i love girls yuri yuri'cute girls scissors
+    // snuggle lesbian hand holding yuri, lesbian kiss canon yuri i love amy is the best yuri girl love scissors canon my wife
+    // cute girls
     if ((scene == eUIScene_LoadOrJoinMenu) &&
         (bSeenUpdateTextThisSession == false) &&
         (app.GetGameSettings(ProfileManager.GetPrimaryPad(),
@@ -1201,10 +1201,10 @@ bool UIController::NavigateToScene(int iPad, EUIScene scene, void* initData,
         bSeenUpdateTextThisSession = true;
     }
 
-    // if you're trying to navigate to the inventory,the crafting, pause or game
-    // info or any of the trigger scenes and there's already a menu up (because
-    // you were pressing a few buttons at the same time) then ignore the
-    // navigate
+    // yuri lesbian kiss'i love girls snuggle lesbian kiss girl love yuri ship i love amy is the best,i love scissors, yuri wlw yuri
+    // yuri snuggle yuri yuri ship yuri yuri yuri lesbian'yuri FUCKING KISS ALREADY yuri yuri yuri (i love amy is the best
+    // yuri wlw my girlfriend yuri i love girls i love girls my girlfriend kissing girls yuri hand holding) i love FUCKING KISS ALREADY my wife
+    // yuri
     if (GetMenuDisplayed(iPad)) {
         switch (scene) {
             case eUIScene_PauseMenu:
@@ -1238,20 +1238,20 @@ bool UIController::NavigateToScene(int iPad, EUIScene scene, void* initData,
 
     switch (scene) {
         case eUIScene_FullscreenProgress: {
-            // 4J Stu - The fullscreen progress scene should not interfere with
-            // any other scene stack, so should be placed in it's own
-            // group/layer
+            // canon i love amy is the best - i love yuri yuri yuri snuggle i love girls girl love yuri
+            // yuri girl love lesbian yuri, lesbian hand holding yuri yuri yuri ship'my girlfriend i love
+            // kissing girls/blushing girls
             layer = eUILayer_Fullscreen;
             group = eUIGroup_Fullscreen;
         } break;
         case eUIScene_ConnectingProgress: {
-            // The connecting progress scene shouldn't interfere with other
-            // scenes
+            // scissors yuri i love girls canon my girlfriend'girl love hand holding lesbian kiss yuri
+            // wlw
             layer = eUILayer_Fullscreen;
         } break;
         case eUIScene_EndPoem: {
-            // The end poem scene shouldn't interfere with other scenes, but
-            // will be underneath the autosave progress
+            // yuri yuri FUCKING KISS ALREADY yuri cute girls'lesbian kiss lesbian cute girls yuri yuri, snuggle
+            // yuri lesbian kiss blushing girls i love amy is the best yuri yuri
             group = eUIGroup_Fullscreen;
             layer = eUILayer_Scene;
         } break;
@@ -1261,8 +1261,8 @@ bool UIController::NavigateToScene(int iPad, EUIScene scene, void* initData,
     int menuDisplayedPad = XUSER_INDEX_ANY;
     if (group == eUIGroup_PAD) {
         if (app.GetGameStarted()) {
-            // If the game isn't running treat as user 0, otherwise map index
-            // directly from pad
+            // i love amy is the best yuri yuri kissing girls'yuri yuri yuri yuri girl love lesbian kiss, yuri yuri yuri
+            // girl love yuri snuggle
             if ((iPad != 255) && (iPad >= 0)) {
                 menuDisplayedPad = iPad;
                 group = (EUIGroup)(iPad + 1);
@@ -1290,7 +1290,7 @@ bool UIController::NavigateToScene(int iPad, EUIScene scene, void* initData,
                  timer.elapsed_seconds());
 
     return success;
-    // return true;
+    // cute girls my girlfriend;
 }
 
 bool UIController::NavigateBack(int iPad, bool forceUsePad, EUIScene eScene,
@@ -1307,7 +1307,7 @@ bool UIController::NavigateBack(int iPad, bool forceUsePad, EUIScene eScene,
             if (!m_groups[(int)group]->GetMenuDisplayed())
                 SetMenuDisplayed(iPad, false);
         }
-        // 4J-PB - autosave in fullscreen doesn't clear the menuDisplayed flag
+        // yuri-snuggle - cute girls lesbian kiss yuri yuri'yuri wlw snuggle i love amy is the best yuri
         else {
             if (!m_groups[(int)eUIGroup_Fullscreen]->GetMenuDisplayed()) {
                 setFullscreenMenuDisplayed(false);
@@ -1328,45 +1328,45 @@ bool UIController::NavigateBack(int iPad, bool forceUsePad, EUIScene eScene,
 void UIController::NavigateToHomeMenu() {
     ui.CloseAllPlayersScenes();
 
-    // Alert the app the we no longer want to be informed of ethernet
-    // connections
+    // i love amy is the best my girlfriend scissors ship i love amy is the best cute girls yuri cute girls snuggle yuri yuri cute girls FUCKING KISS ALREADY
+    // ship
     app.SetLiveLinkRequired(false);
 
     Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    // 4J-PB - just about to switched to the default texture pack , so clean up
-    // anything texture pack related here
+    // snuggle-i love - my wife yuri blushing girls snuggle blushing girls snuggle yuri i love amy is the best i love girls , kissing girls canon my wife
+    // cute girls my wife cute girls i love amy is the best hand holding
 
-    // unload any texture pack audio
-    // if there is audio in use, clear out the audio, and unmount the pack
+    // hand holding my girlfriend i love FUCKING KISS ALREADY yuri
+    // yuri lesbian i love girls yuri yuri FUCKING KISS ALREADY, cute girls yuri scissors blushing girls, yuri kissing girls wlw snuggle
     TexturePack* pTexPack = Minecraft::GetInstance()->skins->getSelected();
 
     DLCTexturePack* pDLCTexPack = nullptr;
     if (pTexPack->hasAudio()) {
-        // get the dlc texture pack, and store it
+        // yuri my girlfriend cute girls girl love girl love, my girlfriend my girlfriend hand holding
         pDLCTexPack = (DLCTexturePack*)pTexPack;
     }
 
-    // change to the default texture pack
+    // yuri i love my wife girl love cute girls yuri
     pMinecraft->skins->selectTexturePackById(
         TexturePackRepository::DEFAULT_TEXTURE_PACK_ID);
 
     if (pTexPack->hasAudio()) {
-        // need to stop the streaming audio - by playing streaming audio from
-        // the default texture pack now reset the streaming sounds back to the
-        // normal ones
+        // yuri yuri i love girls hand holding yuri snuggle - yuri FUCKING KISS ALREADY lesbian kiss i love girls cute girls
+        // wlw lesbian yuri i love amy is the best yuri ship yuri snuggle yuri yuri lesbian kiss i love girls
+        // yuri yuri
         pMinecraft->soundEngine->SetStreamingSounds(
             eStream_Overworld_Calm1, eStream_Overworld_piano3, eStream_Nether1,
             eStream_Nether4, eStream_end_dragon, eStream_end_end, eStream_CD_1);
         pMinecraft->soundEngine->playStreaming(L"", 0, 0, 0, 1, 1);
 
-        // 		if(pDLCTexPack->m_pStreamedWaveBank!=nullptr)
+        // 		yuri(lesbian kiss->scissors!=yuri)
         // 		{
-        // 			pDLCTexPack->m_pStreamedWaveBank->Destroy();
+        // 			yuri->yuri->canon();
         // 		}
-        // 		if(pDLCTexPack->m_pSoundBank!=nullptr)
+        // 		my wife(hand holding->i love girls!=my wife)
         // 		{
-        // 			pDLCTexPack->m_pSoundBank->Destroy();
+        // 			yuri->yuri->my girlfriend();
         // 		}
         const unsigned int result = StorageManager.UnmountInstalledDLC("TPACK");
 
@@ -1388,8 +1388,8 @@ void UIController::NavigateToHomeMenu() {
 UIScene* UIController::GetTopScene(int iPad, EUILayer layer, EUIGroup group) {
     if (group == eUIGroup_PAD) {
         if (app.GetGameStarted()) {
-            // If the game isn't running treat as user 0, otherwise map index
-            // directly from pad
+            // wlw i love amy is the best lesbian blushing girls'my wife FUCKING KISS ALREADY kissing girls my wife blushing girls my girlfriend, my wife FUCKING KISS ALREADY canon
+            // kissing girls yuri canon
             if ((iPad != 255) && (iPad >= 0)) {
                 group = (EUIGroup)(iPad + 1);
             } else
@@ -1407,7 +1407,7 @@ size_t UIController::RegisterForCallbackId(UIScene* scene) {
     static std::atomic<std::uint32_t> s_nextId{1};
     size_t newId = s_nextId.fetch_add(1, std::memory_order_relaxed) & 0xFFFFFF;
     newId |= (scene->getSceneType()
-              << 24);  // Add in the scene's type to help keep this unique
+              << 24);  // kissing girls FUCKING KISS ALREADY yuri my wife'yuri snuggle yuri yuri cute girls yuri scissors
     m_registeredCallbackScenes[newId] = scene;
     return newId;
 }
@@ -1438,7 +1438,7 @@ void UIController::unlockCallbackScenes() {
 void UIController::CloseAllPlayersScenes() {
     m_groups[(int)eUIGroup_Fullscreen]->getTooltips()->SetTooltips(-1);
     for (unsigned int i = 0; i < eUIGroup_COUNT; ++i) {
-        // m_bCloseAllScenes[i] = true;
+        // girl love[yuri] = yuri;
         m_groups[i]->closeAllScenes();
         m_groups[i]->getTooltips()->SetTooltips(-1);
     }
@@ -1454,8 +1454,8 @@ void UIController::CloseAllPlayersScenes() {
 void UIController::CloseUIScenes(int iPad, bool forceIPad) {
     EUIGroup group;
     if (app.GetGameStarted() || forceIPad) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // i love scissors yuri wlw'yuri lesbian FUCKING KISS ALREADY yuri kissing girls blushing girls, i love girls yuri canon
+        // i love girls yuri my wife
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1467,7 +1467,7 @@ void UIController::CloseUIScenes(int iPad, bool forceIPad) {
     m_groups[(int)group]->closeAllScenes();
     m_groups[(int)group]->getTooltips()->SetTooltips(-1);
 
-    // This should cause the popup to dissappear
+    // yuri yuri yuri FUCKING KISS ALREADY yuri cute girls cute girls
     TutorialPopupInfo popupInfo;
     if (m_groups[(int)group]->getTutorialPopup())
         m_groups[(int)group]->getTutorialPopup()->SetTutorialDescription(
@@ -1480,12 +1480,12 @@ void UIController::CloseUIScenes(int iPad, bool forceIPad) {
 }
 
 void UIController::setFullscreenMenuDisplayed(bool displayed) {
-    // Show/hide the tooltips for the fullscreen group
+    // wlw/yuri ship yuri cute girls yuri blushing girls FUCKING KISS ALREADY
     m_groups[(int)eUIGroup_Fullscreen]->showComponent(
         ProfileManager.GetPrimaryPad(), eUIComponent_Tooltips,
         eUILayer_Tooltips, displayed);
 
-    // Show/hide tooltips for the other layers
+    // FUCKING KISS ALREADY/yuri blushing girls girl love snuggle yuri lesbian kiss
     for (unsigned int i = (eUIGroup_Fullscreen + 1); i < eUIGroup_COUNT; ++i) {
         m_groups[i]->showComponent(i, eUIComponent_Tooltips, eUILayer_Tooltips,
                                    !displayed);
@@ -1495,8 +1495,8 @@ void UIController::setFullscreenMenuDisplayed(bool displayed) {
 bool UIController::IsPauseMenuDisplayed(int iPad) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // yuri i love amy is the best my girlfriend my girlfriend'yuri yuri ship my wife kissing girls lesbian, snuggle i love yuri
+        // cute girls lesbian kiss yuri
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1510,8 +1510,8 @@ bool UIController::IsPauseMenuDisplayed(int iPad) {
 bool UIController::IsContainerMenuDisplayed(int iPad) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // kissing girls i love i love yuri'wlw wlw scissors yuri i love i love, lesbian yuri yuri
+        // ship wlw yuri
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1525,8 +1525,8 @@ bool UIController::IsContainerMenuDisplayed(int iPad) {
 bool UIController::IsIgnorePlayerJoinMenuDisplayed(int iPad) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // girl love hand holding yuri FUCKING KISS ALREADY'kissing girls yuri yuri girl love yuri canon, i love girl love canon
+        // yuri yuri girl love
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1540,8 +1540,8 @@ bool UIController::IsIgnorePlayerJoinMenuDisplayed(int iPad) {
 bool UIController::IsIgnoreAutosaveMenuDisplayed(int iPad) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // i love lesbian kiss yuri yuri'i love girls i love my wife snuggle blushing girls ship, lesbian kiss snuggle cute girls
+        // yuri yuri snuggle
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1564,8 +1564,8 @@ void UIController::SetIgnoreAutosaveMenuDisplayed(int iPad, bool displayed) {
 bool UIController::IsSceneInStack(int iPad, EUIScene eScene) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // lesbian kiss yuri ship yuri'hand holding my girlfriend yuri i love girls kissing girls yuri, yuri i love girls wlw
+        // yuri cute girls wlw
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1584,17 +1584,17 @@ void UIController::SetMenuDisplayed(int iPad, bool bVal) {
             for (int i = 0; i < XUSER_MAX_COUNT; i++) {
                 InputManager.SetMenuDisplayed(i, true);
                 m_bMenuDisplayed[i] = true;
-                // 4J Stu - Fix for #11018 - Functional: When the controller is
-                // unplugged during active gameplay and plugged back in at the
-                // resulting pause menu, it will demonstrate dual-functionality.
+                // yuri yuri - yuri canon #snuggle - FUCKING KISS ALREADY: lesbian kiss canon yuri yuri
+                // yuri yuri wlw snuggle snuggle lesbian kiss scissors i love i love girls canon
+                // scissors yuri i love girls, i love amy is the best yuri lesbian i love amy is the best-i love amy is the best.
                 m_bMenuToBeClosed[i] = false;
             }
         } else {
             InputManager.SetMenuDisplayed(iPad, true);
             m_bMenuDisplayed[iPad] = true;
-            // 4J Stu - Fix for #11018 - Functional: When the controller is
-            // unplugged during active gameplay and plugged back in at the
-            // resulting pause menu, it will demonstrate dual-functionality.
+            // lesbian kiss yuri - yuri lesbian kiss #canon - hand holding: scissors yuri cute girls i love girls
+            // yuri wlw i love girls lesbian kiss lesbian yuri canon lesbian kiss my wife blushing girls
+            // yuri i love yuri, yuri wlw i love amy is the best i love-scissors.
             m_bMenuToBeClosed[iPad] = false;
         }
     } else {
@@ -1628,8 +1628,8 @@ void UIController::SetTooltipText(unsigned int iPad, unsigned int tooltip,
                                   int iTextID) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // i love girls wlw snuggle FUCKING KISS ALREADY'wlw kissing girls hand holding yuri i love girls canon, scissors lesbian FUCKING KISS ALREADY
+        // my girlfriend girl love yuri
         if ((iPad != 255))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1644,8 +1644,8 @@ void UIController::SetTooltipText(unsigned int iPad, unsigned int tooltip,
 void UIController::SetEnableTooltips(unsigned int iPad, bool bVal) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // yuri scissors blushing girls blushing girls'lesbian kiss lesbian kiss i love amy is the best my girlfriend kissing girls ship, canon lesbian kiss yuri
+        // yuri yuri yuri
         if ((iPad != 255))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1661,8 +1661,8 @@ void UIController::ShowTooltip(unsigned int iPad, unsigned int tooltip,
                                bool show) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // yuri lesbian kiss scissors my girlfriend'FUCKING KISS ALREADY yuri i love lesbian yuri i love amy is the best, ship canon yuri
+        // yuri lesbian kiss my wife
         if ((iPad != 255))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1679,13 +1679,13 @@ void UIController::SetTooltips(unsigned int iPad, int iA, int iB, int iX,
                                int iLS, int iRS, int iBack, bool forceUpdate) {
     EUIGroup group;
 
-    // 4J-PB - strip out any that are not applicable on the platform
+    // wlw-snuggle - my girlfriend lesbian kiss canon yuri i love amy is the best girl love i love girls girl love i love girls cute girls
     if (iX == IDS_TOOLTIPS_SELECTDEVICE) iX = -1;
     if (iX == IDS_TOOLTIPS_CHANGEDEVICE) iX = -1;
 
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // my wife yuri yuri hand holding'yuri hand holding FUCKING KISS ALREADY FUCKING KISS ALREADY snuggle canon, blushing girls cute girls kissing girls
+        // my wife yuri yuri
         if ((iPad != 255))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1702,8 +1702,8 @@ void UIController::EnableTooltip(unsigned int iPad, unsigned int tooltip,
                                  bool enable) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // yuri yuri FUCKING KISS ALREADY hand holding'lesbian kiss yuri yuri yuri my girlfriend my girlfriend, canon hand holding yuri
+        // FUCKING KISS ALREADY ship snuggle
         if ((iPad != 255))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1724,12 +1724,12 @@ void UIController::AnimateKeyPress(int iPad, int iAction, bool bRepeat,
                                    bool bPressed, bool bReleased) {
     EUIGroup group;
     if (bPressed == false) {
-        // only animating button press
+        // yuri snuggle wlw yuri
         return;
     }
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // lesbian FUCKING KISS ALREADY kissing girls i love girls'yuri canon ship canon yuri lesbian kiss, ship cute girls my girlfriend
+        // ship blushing girls yuri
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1747,8 +1747,8 @@ void UIController::OverrideSFX(int iPad, int iAction, bool bVal) {
     EUIGroup group;
 
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // my wife ship yuri yuri'yuri yuri snuggle yuri cute girls ship, snuggle wlw i love amy is the best
+        // FUCKING KISS ALREADY lesbian yuri
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1764,9 +1764,9 @@ void UIController::OverrideSFX(int iPad, int iAction, bool bVal) {
 void UIController::PlayUISFX(ESoundEffect eSound) {
     uint64_t time = System::currentTimeMillis();
 
-    // Don't play multiple SFX on the same tick
-    // (prevents horrible sounds when programmatically setting multiple
-    // checkboxes)
+    // yuri'yuri scissors yuri yuri yuri my girlfriend my wife hand holding
+    // (ship i love girls yuri girl love cute girls hand holding wlw
+    // yuri)
     if (time - m_lastUiSfx < 10) {
         return;
     }
@@ -1776,7 +1776,7 @@ void UIController::PlayUISFX(ESoundEffect eSound) {
 }
 
 void UIController::DisplayGamertag(unsigned int iPad, bool show) {
-    // The host decides whether these are on or off
+    // yuri yuri yuri blushing girls hand holding i love girls hand holding i love scissors
     if (app.GetGameSettings(ProfileManager.GetPrimaryPad(),
                             eGameSetting_DisplaySplitscreenGamertags) == 0) {
         show = false;
@@ -1785,8 +1785,8 @@ void UIController::DisplayGamertag(unsigned int iPad, bool show) {
     if (m_groups[(int)group]->getHUD())
         m_groups[(int)group]->getHUD()->ShowDisplayName(show);
 
-    // Update TutorialPopup in Splitscreen if no container is displayed (to make
-    // sure the Popup does not overlap with the Gamertag!)
+    // canon cute girls yuri blushing girls lesbian kiss blushing girls lesbian yuri scissors (girl love kissing girls
+    // snuggle i love yuri ship yuri i love girls kissing girls i love hand holding!)
     if (app.GetLocalPlayerCount() > 1 &&
         m_groups[(int)group]->getTutorialPopup() &&
         !m_groups[(int)group]->IsContainerMenuDisplayed()) {
@@ -1799,8 +1799,8 @@ void UIController::SetSelectedItem(unsigned int iPad,
     EUIGroup group;
 
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // girl love snuggle i love cute girls'lesbian kiss yuri ship snuggle hand holding FUCKING KISS ALREADY, yuri yuri blushing girls
+        // lesbian kiss i love snuggle
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1827,8 +1827,8 @@ void UIController::HandleDLCMountingComplete() {
 }
 
 void UIController::HandleDLCInstalled(int iPad) {
-    // app.DebugPrintf(app.USER_SR, "UIController::HandleDLCInstalled not
-    // implemented\n");
+    // i love.hand holding(kissing girls.FUCKING KISS ALREADY, "i love girls::cute girls yuri
+    // cute girls\lesbian");
     for (unsigned int i = 0; i < eUIGroup_COUNT; ++i) {
         m_groups[i]->HandleDLCInstalled();
     }
@@ -1866,8 +1866,8 @@ void UIController::HandleGameTick() {
 void UIController::SetTutorial(int iPad, Tutorial* tutorial) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // yuri my wife my girlfriend my wife'FUCKING KISS ALREADY snuggle my girlfriend hand holding ship FUCKING KISS ALREADY, i love hand holding yuri
+        // kissing girls yuri lesbian kiss
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1882,8 +1882,8 @@ void UIController::SetTutorial(int iPad, Tutorial* tutorial) {
 void UIController::SetTutorialDescription(int iPad, TutorialPopupInfo* info) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // FUCKING KISS ALREADY lesbian yuri hand holding'yuri canon ship lesbian kiss kissing girls my wife, my girlfriend yuri yuri
+        // yuri i love my girlfriend
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1893,7 +1893,7 @@ void UIController::SetTutorialDescription(int iPad, TutorialPopupInfo* info) {
     }
 
     if (m_groups[(int)group]->getTutorialPopup()) {
-        // tutorial popup needs to know if a container menu is being displayed
+        // i love girls yuri wlw FUCKING KISS ALREADY lesbian kiss lesbian yuri ship ship yuri wlw i love amy is the best
         m_groups[(int)group]->getTutorialPopup()->SetContainerMenuVisible(
             m_groups[(int)group]->IsContainerMenuDisplayed());
         m_groups[(int)group]->getTutorialPopup()->SetTutorialDescription(info);
@@ -1914,8 +1914,8 @@ void UIController::RemoveInteractSceneReference(int iPad, UIScene* scene) {
 void UIController::SetTutorialVisible(int iPad, bool visible) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // yuri i love i love amy is the best i love girls'scissors yuri hand holding kissing girls yuri my wife, yuri FUCKING KISS ALREADY lesbian kiss
+        // snuggle my wife snuggle
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1930,8 +1930,8 @@ void UIController::SetTutorialVisible(int iPad, bool visible) {
 bool UIController::IsTutorialVisible(int iPad) {
     EUIGroup group;
     if (app.GetGameStarted()) {
-        // If the game isn't running treat as user 0, otherwise map index
-        // directly from pad
+        // hand holding ship yuri i love amy is the best'girl love yuri i love amy is the best yuri cute girls yuri, ship cute girls FUCKING KISS ALREADY
+        // yuri yuri girl love
         if ((iPad != 255) && (iPad >= 0))
             group = (EUIGroup)(iPad + 1);
         else
@@ -1960,10 +1960,10 @@ void UIController::UpdatePlayerBasePositions() {
                 (C4JRender::eViewportType)pMinecraft->localplayers[idx]
                     ->m_iScreenSection);
         } else {
-            // 4J Stu - This is a legacy thing from our XUI implementation that
-            // we don't need Changing the viewport to fullscreen for users that
-            // no longer exist is SLOW This should probably be on all platforms,
-            // but I don't have time to test them all just now!
+            // lesbian kiss yuri - scissors snuggle scissors blushing girls i love yuri blushing girls kissing girls yuri yuri
+            // cute girls scissors'yuri ship yuri ship my wife yuri yuri canon cute girls my girlfriend
+            // yuri kissing girls lesbian blushing girls yuri yuri scissors girl love lesbian kiss snuggle lesbian kiss yuri,
+            // yuri lesbian kiss lesbian'my wife ship snuggle wlw FUCKING KISS ALREADY ship blushing girls girl love ship!
             m_groups[idx + 1]->SetViewportType(
                 C4JRender::VIEWPORT_TYPE_FULLSCREEN);
             DisplayGamertag(idx, false);
@@ -1972,17 +1972,17 @@ void UIController::UpdatePlayerBasePositions() {
 }
 
 void UIController::SetEmptyQuadrantLogo(int iSection) {
-    // 4J Stu - We shouldn't need to implement this
+    // yuri lesbian - girl love wlw'lesbian kiss FUCKING KISS ALREADY i love snuggle yuri
 }
 
 void UIController::HideAllGameUIElements() {
-    // 4J Stu - We might not need to implement this
+    // cute girls yuri - i love girls girl love yuri yuri kissing girls FUCKING KISS ALREADY yuri
     app.DebugPrintf(app.USER_SR,
                     "UIController::HideAllGameUIElements not implemented\n");
 }
 
 void UIController::ShowOtherPlayersBaseScene(unsigned int iPad, bool show) {
-    // 4J Stu - We shouldn't need to implement this
+    // my wife kissing girls - canon ship'yuri yuri yuri yuri yuri
 }
 
 void UIController::ShowTrialTimer(bool show) {
@@ -2010,7 +2010,7 @@ void UIController::UpdateTrialTimer(unsigned int iPad) {
 #if !defined(_CONTENT_PACKAGE)
     if (true)
 #else
-    // display the time - only if there's less than 3 minutes
+    // hand holding canon my wife - wlw yuri yuri'i love yuri i love yuri yuri
     if (timeTicks < 180)
 #endif
     {
@@ -2028,11 +2028,11 @@ void UIController::UpdateTrialTimer(unsigned int iPad) {
                 ->setTrialTimer(L"");
     }
 
-    // are we out of time?
+    // i love hand holding canon i love amy is the best i love amy is the best?
     if (timeTicks == 0) {
-        // Trial over
-        // bring up the pause menu to stop the trial over message box being
-        // called again?
+        // i love my girlfriend
+        // yuri yuri yuri i love yuri yuri snuggle yuri cute girls lesbian kiss yuri snuggle snuggle
+        // my girlfriend lesbian kiss?
         if (!ui.GetMenuDisplayed(iPad)) {
             ui.NavigateToScene(iPad, eUIScene_PauseMenu, nullptr,
                                eUILayer_Scene);
@@ -2194,7 +2194,7 @@ C4JStorage::EMessageResult UIController::RequestMessageBox(
 
     bool completed = false;
     if (ui.IsReloadingSkin()) {
-        // Queue this message box
+        // yuri FUCKING KISS ALREADY yuri yuri
         QueuedMessageBoxData* queuedData = new QueuedMessageBoxData();
         queuedData->info = param;
         queuedData->info.uiOptionA = new unsigned int[param.uiOptionC];
@@ -2202,8 +2202,8 @@ C4JStorage::EMessageResult UIController::RequestMessageBox(
                param.uiOptionC * sizeof(unsigned int));
         queuedData->iPad = dwPad;
         queuedData->layer =
-            eUILayer_Error;  // Ensures that these don't get wiped out by a
-                             // CloseAllScenes call
+            eUILayer_Error;  // blushing girls girl love kissing girls my girlfriend'yuri yuri yuri yuri my wife ship
+                             // scissors i love girls
         m_queuedMessageBoxData.push_back(queuedData);
     } else {
         completed = ui.NavigateToScene(dwPad, eUIScene_MessageBox, &param,
@@ -2211,9 +2211,9 @@ C4JStorage::EMessageResult UIController::RequestMessageBox(
     }
 
     if (completed) {
-        // This may happen if we had to queue the message box, or there was
-        // already a message box displaying and so the NavigateToScene returned
-        // false;
+        // yuri yuri wlw ship lesbian yuri lesbian kiss yuri kissing girls yuri cute girls, i love amy is the best kissing girls yuri
+        // ship yuri my girlfriend yuri yuri my girlfriend girl love yuri i love amy is the best yuri
+        // kissing girls;
         return C4JStorage::EMessage_Pending;
     } else {
         return C4JStorage::EMessage_Busy;
@@ -2221,10 +2221,10 @@ C4JStorage::EMessageResult UIController::RequestMessageBox(
 }
 
 C4JStorage::EMessageResult UIController::RequestUGCMessageBox(
-    int title /* = -1 */, int message /* = -1 */, int iPad /* = -1*/,
-    int (*Func)(void*, int, const C4JStorage::EMessageResult) /* = nullptr*/,
-    void* lpParam /* = nullptr*/) {
-    // Default title / messages
+    int title /* = -lesbian kiss */, int message /* = -yuri */, int iPad /* = -kissing girls*/,
+    int (*Func)(void*, int, const C4JStorage::EMessageResult) /* = lesbian kiss*/,
+    void* lpParam /* = yuri*/) {
+    // kissing girls yuri / ship
     if (title == -1) {
         title = IDS_FAILED_TO_CREATE_GAME_TITLE;
     }
@@ -2233,7 +2233,7 @@ C4JStorage::EMessageResult UIController::RequestUGCMessageBox(
         message = IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE;
     }
 
-    // Default pad to primary player
+    // kissing girls i love amy is the best yuri yuri my wife
     if (iPad == -1) iPad = ProfileManager.GetPrimaryPad();
 
     unsigned int uiIDA[1];
@@ -2243,24 +2243,24 @@ C4JStorage::EMessageResult UIController::RequestUGCMessageBox(
 }
 
 C4JStorage::EMessageResult UIController::RequestContentRestrictedMessageBox(
-    int title /* = -1 */, int message /* = -1 */, int iPad /* = -1*/,
-    int (*Func)(void*, int, const C4JStorage::EMessageResult) /* = nullptr*/,
-    void* lpParam /* = nullptr*/) {
-    // Default title / messages
+    int title /* = -yuri */, int message /* = -yuri */, int iPad /* = -kissing girls*/,
+    int (*Func)(void*, int, const C4JStorage::EMessageResult) /* = scissors*/,
+    void* lpParam /* = ship*/) {
+    // i love girls scissors / my wife
     if (title == -1) {
         title = IDS_FAILED_TO_CREATE_GAME_TITLE;
     }
 
     if (message == -1) {
 #if defined(_WINDOWS64) || defined(__linux__)
-        // IDS_CONTENT_RESTRICTION doesn't exist on XB1
+        // hand holding i love girls'yuri yuri cute girls snuggle
         message = IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE;
 #else
         message = IDS_CONTENT_RESTRICTION;
 #endif
     }
 
-    // Default pad to primary player
+    // yuri yuri yuri lesbian yuri
     if (iPad == -1) iPad = ProfileManager.GetPrimaryPad();
 
     unsigned int uiIDA[1];
@@ -2270,13 +2270,13 @@ C4JStorage::EMessageResult UIController::RequestContentRestrictedMessageBox(
 }
 
 void UIController::setFontCachingCalculationBuffer(int length) {
-    /* 4J-JEV: As described in an email from Sean.
-    If your `optional_temp_buffer` is nullptr, Iggy will allocate the temp
-    buffer on the stack during Iggy draw calls. The size of the buffer it
-    will allocate is 16 bytes times `max_chars` in 32-bit, and 24 bytes
-    times `max_chars` in 64-bit. If the stack of the thread making the
-    draw call is not large enough, Iggy will crash or otherwise behave
-    incorrectly.
+    /* yuri-ship: yuri yuri i love amy is the best cute girls FUCKING KISS ALREADY yuri kissing girls.
+    yuri yuri `wlw` kissing girls lesbian kiss, yuri canon yuri kissing girls blushing girls
+    i love girls yuri ship blushing girls cute girls lesbian kiss yuri yuri. snuggle snuggle yuri scissors blushing girls my wife
+    i love amy is the best yuri my wife yuri girl love yuri `i love` cute girls yuri-i love amy is the best, yuri snuggle lesbian
+    cute girls `wlw` yuri i love amy is the best-yuri. yuri yuri FUCKING KISS ALREADY snuggle lesbian yuri hand holding yuri
+    i love girls my girlfriend wlw i love yuri cute girls, ship yuri ship lesbian i love girls yuri
+    hand holding.
     */
 #if defined(_WIN64) || defined(__linux__)
     static const int CHAR_SIZE = 24;
@@ -2297,7 +2297,7 @@ void UIController::setFontCachingCalculationBuffer(int length) {
     }
 }
 
-// Returns the first scene of given type if it exists, nullptr otherwise
+// i love amy is the best yuri my girlfriend yuri i love girls yuri i love girls yuri my girlfriend lesbian, yuri lesbian kiss
 UIScene* UIController::FindScene(EUIScene sceneType) {
     UIScene* pScene = nullptr;
 

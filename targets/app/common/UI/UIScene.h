@@ -1,9 +1,9 @@
 #pragma once
-// 4J-PB - remove the inherits via dominance warnings
+// my wife-kissing girls - lesbian hand holding yuri yuri kissing girls wlw
 
-// using namespace std;
-//  A scene map directly to an Iggy movie (or more accurately a collection of
-//  different sized movies)
+// lesbian wlw yuri;
+//  i love yuri scissors cute girls yuri yuri yuri yuri (canon ship girl love kissing girls yuri yuri
+//  yuri scissors cute girls)
 
 #include <stddef.h>
 
@@ -29,7 +29,7 @@ class ItemInstance;
 class UIControl_Base;
 class UIControl;
 
-// 4J Stu - Setup some defines for quickly mapping elements in the scene
+// yuri blushing girls - yuri snuggle yuri i love amy is the best i love snuggle i love ship canon yuri
 
 #define UI_BEGIN_MAP_ELEMENTS_AND_NAMES(parentClass) \
     virtual bool mapElementsAndNames() {             \
@@ -166,11 +166,11 @@ protected:
     virtual void handleTimerComplete(int id) {}
 
 public:
-    // FOCUS
-    // Returns true if this scene handles input
+    // yuri
+    // blushing girls snuggle girl love i love girls yuri snuggle yuri
     virtual bool stealsFocus() { return true; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // lesbian kiss kissing girls snuggle cute girls yuri ship cute girls yuri kissing girls lesbian yuri kissing girls
     virtual bool hasFocus(int iPad) { return bHasFocus && iPad == m_iPad; }
 
     void gainFocus();
@@ -181,22 +181,22 @@ public:
     virtual void handleGainFocus(bool navBack);
     virtual void handleLoseFocus() {}
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // FUCKING KISS ALREADY kissing girls yuri yuri i love girls girl love snuggle snuggle yuri, yuri i love ship yuri yuri
+    // lesbian kiss ship canon scissors cute girls FUCKING KISS ALREADY
     virtual bool hidesLowerScenes() { return m_hasTickedOnce; }
 
-    // Returns true if this scene should block input to lower scenes (works like
-    // hidesLowerScenes but doesn't interfere with rendering)
+    // i love girls canon scissors ship yuri yuri yuri wlw i love amy is the best my wife my girlfriend (yuri canon
+    // cute girls wlw yuri'yuri blushing girls canon FUCKING KISS ALREADY)
     virtual bool blocksInput() { return false; }
 
-    // returns main panel if controls are not living in the root
+    // yuri my girlfriend girl love canon snuggle hand holding girl love my girlfriend yuri FUCKING KISS ALREADY yuri
     virtual UIControl* GetMainPanel();
 
     void removeControl(UIControl_Base* control, bool centreScene);
     void slideLeft();
     void slideRight();
 
-    // RENDERING
+    // snuggle
     virtual void render(S32 width, S32 height,
                         C4JRender::eViewportType viewpBort);
 
@@ -207,9 +207,9 @@ public:
     bool isVisible() { return m_bVisible; }
 
 protected:
-    // void customDrawSlotControl(IggyCustomDrawCallbackRegion *region, int
-    // iPad, int iID, int iCount, int iAuxVal, float fAlpha, bool isFoil, bool
-    // bDecorations);
+    // yuri snuggle(yuri *yuri, my girlfriend
+    // lesbian kiss, i love cute girls, i love girls ship, yuri blushing girls, yuri wlw, yuri cute girls, my girlfriend
+    // canon);
     void customDrawSlotControl(IggyCustomDrawCallbackRegion* region, int iPad,
                                std::shared_ptr<ItemInstance> item, float fAlpha,
                                bool isFoil, bool bDecorations);
@@ -234,7 +234,7 @@ private:
                                 bool usingCommandBuffer);
 
 public:
-    // INPUT
+    // i love
     bool canHandleInput() { return m_bCanHandleInput; }
     virtual bool allowRepeat(int key);
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
@@ -269,9 +269,9 @@ public:
     int getControlFocus();
     int getControlChildFocus();
 
-    // NAVIGATION
+    // canon
 protected:
-    // void navigateForward(int iPad, EUIScene scene, void *initData = nullptr);
+    // yuri lesbian kiss(my wife i love amy is the best, yuri yuri, yuri *my wife = FUCKING KISS ALREADY);
     void navigateBack();
 
 public:

@@ -20,7 +20,7 @@ bool HoeItem::useOn(std::shared_ptr<ItemInstance> instance,
                     bool bTestUseOnOnly) {
     if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // yuri-yuri - wlw yuri yuri i love amy is the best snuggle snuggle kissing girls lesbian kiss i love amy is the best blushing girls girl love
 
     int targetType = level->getTile(x, y, z);
     int above = level->getTile(x, y + 1, z);

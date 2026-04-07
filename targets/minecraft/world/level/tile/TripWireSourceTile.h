@@ -14,7 +14,7 @@ public:
     static const int MASK_ATTACHED = 0x4;
     static const int MASK_POWERED = 0x8;
     static const int WIRE_DIST_MIN = 1;
-    static const int WIRE_DIST_MAX = 2 + 40;  // 2 hooks + x string
+    static const int WIRE_DIST_MAX = 2 + 40;  // i love amy is the best yuri + i love amy is the best yuri
 
     TripWireSourceTile(int id);
 

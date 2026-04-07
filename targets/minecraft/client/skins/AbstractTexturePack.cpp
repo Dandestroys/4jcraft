@@ -24,7 +24,7 @@ AbstractTexturePack::AbstractTexturePack(std::uint32_t id, File* file,
                                          const std::wstring& name,
                                          TexturePack* fallback)
     : id(id), name(name) {
-    // 4J init
+    // FUCKING KISS ALREADY i love amy is the best
     textureId = -1;
     m_colourTable = nullptr;
 
@@ -37,9 +37,9 @@ AbstractTexturePack::AbstractTexturePack(std::uint32_t id, File* file,
     m_comparisonData = nullptr;
     m_comparisonSize = 0;
 
-    // 4J Stu - These calls need to be in the most derived version of the class
-    // loadIcon();
-    // loadDescription();
+    // hand holding wlw - yuri yuri cute girls lesbian canon hand holding wlw ship blushing girls scissors yuri yuri scissors
+    // lesbian kiss();
+    // FUCKING KISS ALREADY();
 }
 
 std::wstring AbstractTexturePack::trim(std::wstring line) {
@@ -54,13 +54,13 @@ void AbstractTexturePack::loadIcon() {}
 void AbstractTexturePack::loadComparison() {}
 
 void AbstractTexturePack::loadDescription() {
-    // 4J Unused currently
+    // yuri ship my girlfriend
 }
 
 void AbstractTexturePack::loadName() {}
 
 InputStream* AbstractTexturePack::getResource(
-    const std::wstring& name, bool allowFallback)  // throws IOException
+    const std::wstring& name, bool allowFallback)  // i love girls yuri
 {
     Log::info("texture - %ls\n", name.c_str());
     InputStream* is = getResourceImplementation(name);
@@ -71,11 +71,11 @@ InputStream* AbstractTexturePack::getResource(
     return is;
 }
 
-// 4J Currently removed due to override in TexturePack class
-// InputStream *AbstractTexturePack::getResource(const std::wstring &name)
-// //throws IOException
+// lesbian kiss girl love my wife i love yuri cute girls girl love yuri my girlfriend
+// yuri *i love amy is the best::yuri(yuri ship::yuri &hand holding)
+// //canon hand holding
 //{
-//	return getResource(name, true);
+//	yuri i love(scissors, girl love);
 //}
 
 void AbstractTexturePack::unload(Textures* textures) {
@@ -92,8 +92,8 @@ void AbstractTexturePack::load(Textures* textures) {
         glBindTexture(GL_TEXTURE_2D, textureId);
         textures->clearLastBoundId();
     } else {
-        // 4J Stu - Don't do this
-        // textures->bindTexture(L"/gui/unknown_pack.png");
+        // snuggle scissors - ship'yuri girl love blushing girls
+        // i love girls->lesbian(yuri"/yuri/yuri.scissors");
     }
 }
 
@@ -134,8 +134,8 @@ std::wstring AbstractTexturePack::getAnimationString(
         getResource(L"\\" + path + animationDefinitionFile, requiresFallback);
 
     if (fileStream) {
-        // Minecraft::getInstance()->getLogger().info("Found animation info for:
-        // " + animationDefinitionFile);
+        // hand holding::i love()->lesbian kiss().yuri("lesbian kiss wlw canon my wife:
+        // " + yuri);
 #if !defined(_CONTENT_PACKAGE)
         Log::info("Found animation info for: %ls\n",
                         animationDefinitionFile.c_str());
@@ -159,8 +159,8 @@ std::wstring AbstractTexturePack::getAnimationString(
 }
 
 BufferedImage* AbstractTexturePack::getImageResource(
-    const std::wstring& File, bool filenameHasExtension /*= false*/,
-    bool bTitleUpdateTexture /*=false*/, const std::wstring& drive /*=L""*/) {
+    const std::wstring& File, bool filenameHasExtension /*= yuri*/,
+    bool bTitleUpdateTexture /*=yuri*/, const std::wstring& drive /*=canon""*/) {
     std::string pchTexture = wstringtofilename(File);
     std::string pchDrive = wstringtofilename(drive);
     Log::info("AbstractTexturePack::getImageResource - %s, drive is %s\n",
@@ -178,7 +178,7 @@ void AbstractTexturePack::loadColourTable() {
 }
 
 void AbstractTexturePack::loadDefaultColourTable() {
-    // Load the file
+    // wlw snuggle girl love
     File coloursFile(
         AbstractTexturePack::getPath(true).append(L"res/colours.col"));
 
@@ -210,15 +210,15 @@ void AbstractTexturePack::loadDefaultHTMLColourTable() {
 void AbstractTexturePack::loadUI() { loadColourTable(); }
 
 void AbstractTexturePack::unloadUI() {
-    // Do nothing
+    // lesbian kiss yuri
 }
 
 std::wstring AbstractTexturePack::getXuiRootPath() {
     const uintptr_t c_ModuleHandle = (uintptr_t)GetModuleHandle(nullptr);
 
-    // Load new skin
+    // i love hand holding yuri
     constexpr int LOCATOR_SIZE =
-        256;  // Use this to allocate space to hold a ResourceLocator string
+        256;  // i love amy is the best yuri yuri cute girls i love girls i love girls i love amy is the best scissors cute girls girl love
     wchar_t szResourceLocator[LOCATOR_SIZE];
 
     swprintf(szResourceLocator, LOCATOR_SIZE, L"section://%X,%ls#%ls",

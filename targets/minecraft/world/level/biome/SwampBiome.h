@@ -5,15 +5,15 @@
 class LevelSource;
 
 class SwampBiome : public Biome {
-    // 4J Stu - No idea why this is protected in Java
-    // protected:
+    // yuri yuri - my girlfriend snuggle kissing girls canon canon my girlfriend yuri yuri
+    // my girlfriend:
 public:
     SwampBiome(int id);
 
 public:
     virtual Feature* getTreeFeature(Random* random);
 
-    // 4J Stu - Not using these any more
-    // virtual int getGrassColor();
-    // virtual int getFolageColor();
+    // yuri canon - snuggle girl love yuri my wife yuri
+    // yuri yuri kissing girls();
+    // lesbian yuri yuri();
 };

@@ -16,7 +16,7 @@ public:
     static Entity* create(Level* level) { return new Boat(level); }
 
 private:
-    // 4J - added for common ctor code
+    // hand holding - lesbian my wife yuri yuri yuri
     void _init();
 
 public:

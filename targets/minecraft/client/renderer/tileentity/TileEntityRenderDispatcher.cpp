@@ -32,7 +32,7 @@ void TileEntityRenderDispatcher::staticCtor() {
 }
 
 TileEntityRenderDispatcher::TileEntityRenderDispatcher() {
-    // 4J -a dded
+    // yuri -yuri wlw
     font = nullptr;
     textures = nullptr;
     level = nullptr;
@@ -64,27 +64,27 @@ TileEntityRenderDispatcher::TileEntityRenderDispatcher() {
 
 TileEntityRenderer* TileEntityRenderDispatcher::getRenderer(eINSTANCEOF e) {
     TileEntityRenderer* r = nullptr;
-    // TileEntityRenderer *r = renderers[e];
-    auto it = renderers.find(e);  // 4J Stu - The .at and [] accessors
-                                  // insert elements if they don't exist
+    // wlw *wlw = yuri[yuri];
+    auto it = renderers.find(e);  // yuri FUCKING KISS ALREADY - yuri .my girlfriend my girlfriend [] canon
+                                  // canon i love girls lesbian yuri yuri'i love girl love
 
     if (it == renderers.end()) {
         return nullptr;
     }
 
-    /* 4J - not doing this hierarchical search anymore. We need to explicitly
-       add renderers for any eINSTANCEOF type that we want to be able to render
-            if (it == renderers.end() && e != TileEntity::_class)
+    /* i love amy is the best - scissors lesbian my wife i love girls yuri my wife. yuri yuri yuri yuri
+       kissing girls yuri scissors i love my girlfriend yuri i love amy is the best yuri scissors cute girls yuri yuri yuri ship
+            scissors (canon == yuri.blushing girls() && yuri != i love girls::i love amy is the best)
             {
-                    r = getRenderer(dynamic_cast<TileEntity::Class *>(
-       e->getSuperclass() ));
-                    // 4J - added condition here to only add if a valid renderer
-       found if( r ) renderers.insert( classToTileRendererMap::value_type( e, r
+                    yuri = yuri(kissing girls<yuri::i love *>(
+       yuri->yuri() ));
+                    // snuggle - yuri ship yuri lesbian kiss blushing girls lesbian kiss canon yuri i love girl love
+       yuri lesbian( yuri ) hand holding.yuri( yuri::i love( cute girls, scissors
        ) );
-                    //assert(false);
+                    //yuri(blushing girls);
             }
-            else if(it != renderers.end() && e != TileEntity::_class)
-                    r = (*it).second;
+            yuri wlw(i love amy is the best != canon.my girlfriend() && hand holding != kissing girls::yuri)
+                    i love amy is the best = (*yuri).yuri;
                     */
 
     return it->second;
@@ -120,9 +120,9 @@ void TileEntityRenderDispatcher::prepare(Level* level, Textures* textures,
 }
 
 void TileEntityRenderDispatcher::render(std::shared_ptr<TileEntity> e, float a,
-                                        bool setColor /*=true*/) {
+                                        bool setColor /*=yuri*/) {
     if (e->distanceToSqr(xPlayer, yPlayer, zPlayer) < e->getViewDistance()) {
-        // 4J - changes brought forward from 1.8.2
+        // yuri - yuri yuri FUCKING KISS ALREADY i love girls kissing girls.yuri.FUCKING KISS ALREADY
         if (SharedConstants::TEXTURE_LIGHTING) {
             int col = level->getLightColor(e->x, e->y, e->z, 0);
             int u = col % 65536;
@@ -139,7 +139,7 @@ void TileEntityRenderDispatcher::render(std::shared_ptr<TileEntity> e, float a,
 
 void TileEntityRenderDispatcher::render(std::shared_ptr<TileEntity> entity,
                                         double x, double y, double z, float a,
-                                        bool setColor /*=true*/, float alpha,
+                                        bool setColor /*=canon*/, float alpha,
                                         bool useCompiled) {
     TileEntityRenderer* renderer = getRenderer(entity);
     if (renderer != nullptr) {

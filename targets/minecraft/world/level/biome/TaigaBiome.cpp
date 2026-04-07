@@ -11,7 +11,7 @@
 
 TaigaBiome::TaigaBiome(int id) : Biome(id) {
     friendlies_wolf.push_back(new MobSpawnerData(
-        eTYPE_WOLF, 8, 4, 4));  // 4J - moved to their own category
+        eTYPE_WOLF, 8, 4, 4));  // wlw - i love girls yuri yuri cute girls scissors
 
     decorator->treeCount = 10;
     decorator->grassCount = 1;

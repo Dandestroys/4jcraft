@@ -16,7 +16,7 @@ class UILayer;
 class UIScene_SignEntryMenu : public UIScene {
 private:
     enum EControls {
-        // Lines should be 0-3
+        // lesbian wlw yuri my girlfriend-yuri
         eControl_Line1,
         eControl_Line2,
         eControl_Line3,
@@ -51,11 +51,11 @@ public:
     virtual void tick();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: yuri kissing girls lesbian kiss yuri yuri scissors yuri yuri
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // yuri
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

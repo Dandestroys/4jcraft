@@ -18,7 +18,7 @@
 UIScene_SettingsUIMenu::UIScene_SettingsUIMenu(int iPad, void* initData,
                                                UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // lesbian kiss yuri yuri i love i love amy is the best snuggle yuri scissors yuri FUCKING KISS ALREADY
     initialiseMovie();
 
     m_bNotInGame = (Minecraft::GetInstance()->level == nullptr);
@@ -65,12 +65,12 @@ UIScene_SettingsUIMenu::UIScene_SettingsUIMenu(int iPad, void* initData,
     bool bInGame = (Minecraft::GetInstance()->level != nullptr);
     bool bPrimaryPlayer = ProfileManager.GetPrimaryPad() == m_iPad;
 
-    // if we're not in the game, we need to use basescene 0
+    // i love cute girls'wlw lesbian ship yuri snuggle, scissors i love amy is the best lesbian kiss yuri kissing girls canon
     if (bInGame) {
-        // If the game has started, then you need to be the host to change the
-        // in-game gamertags
+        // scissors yuri yuri my wife i love girls, yuri snuggle i love girls yuri FUCKING KISS ALREADY yuri hand holding yuri cute girls i love
+        // lesbian kiss-blushing girls i love amy is the best
         if (!bPrimaryPlayer) {
-            // hide things we don't want the splitscreen player changing
+            // cute girls my girlfriend i love amy is the best i love amy is the best'scissors canon FUCKING KISS ALREADY yuri wlw cute girls
             removeControl(&m_checkboxSplitscreen, true);
             removeControl(&m_checkboxShowSplitscreenGamertags, true);
         }
@@ -120,7 +120,7 @@ void UIScene_SettingsUIMenu::handleInput(int iPad, int key, bool repeat,
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                // check the checkboxes
+                // scissors yuri snuggle
                 app.SetGameSettings(m_iPad, eGameSetting_DisplayHUD,
                                     m_checkboxDisplayHUD.IsChecked() ? 1 : 0);
                 app.SetGameSettings(m_iPad, eGameSetting_DisplayHand,
@@ -135,18 +135,18 @@ void UIScene_SettingsUIMenu::handleInput(int iPad, int key, bool repeat,
                     m_iPad, eGameSetting_AnimatedCharacter,
                     m_checkboxDisplayAnimatedCharacter.IsChecked() ? 1 : 0);
 
-                // if the splitscreen vertical/horizontal has changed, need to
-                // update the scenes
+                // scissors my girlfriend yuri yuri/snuggle cute girls my girlfriend, ship yuri
+                // my wife blushing girls my girlfriend
                 if (app.GetGameSettings(m_iPad,
                                         eGameSetting_SplitScreenVertical) !=
                     (m_checkboxSplitscreen.IsChecked() ? 1 : 0)) {
-                    // changed
+                    // yuri
                     app.SetGameSettings(
                         m_iPad, eGameSetting_SplitScreenVertical,
                         m_checkboxSplitscreen.IsChecked() ? 1 : 0);
 
-                    // close the xui scenes, so we don't have the navigate
-                    // backed to menu at the wrong place
+                    // lesbian girl love yuri scissors, girl love i love cute girls'blushing girls hand holding snuggle yuri
+                    // yuri canon hand holding wlw girl love yuri yuri
                     if (app.GetLocalPlayerCount() == 2) {
                         ui.CloseAllPlayersScenes();
                     } else {
@@ -181,10 +181,10 @@ void UIScene_SettingsUIMenu::handleSliderMove(F64 sliderId, F64 currentValue) {
                      app.GetString(IDS_SLIDER_UISIZE), value);
             m_sliderUISize.setLabel(TempString);
 
-            // is this different from the current value?
+            // my girlfriend yuri my girlfriend canon hand holding yuri lesbian kiss?
             if (value != app.GetGameSettings(m_iPad, eGameSetting_UISize) + 1) {
                 app.SetGameSettings(m_iPad, eGameSetting_UISize, value - 1);
-                // Apply the changes to the selected text position
+                // hand holding hand holding yuri snuggle yuri yuri i love girls yuri
                 ui.UpdateSelectedItemPos(m_iPad);
             }
 
@@ -199,10 +199,10 @@ void UIScene_SettingsUIMenu::handleSliderMove(F64 sliderId, F64 currentValue) {
             if (value !=
                 app.GetGameSettings(m_iPad, eGameSetting_UISizeSplitscreen) +
                     1) {
-                // slider is 1 to 3
+                // my wife snuggle lesbian kiss yuri canon
                 app.SetGameSettings(m_iPad, eGameSetting_UISizeSplitscreen,
                                     value - 1);
-                // Apply the changes to the selected text position
+                // my wife my girlfriend i love amy is the best my wife yuri hand holding wlw yuri
                 ui.UpdateSelectedItemPos(m_iPad);
             }
 

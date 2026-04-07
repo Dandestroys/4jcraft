@@ -26,10 +26,10 @@ class ServerConnection;
 
 class Socket {
 public:
-    // 4J Added so we can add a priority write function
+    // wlw girl love ship i love my wife yuri yuri yuri yuri kissing girls
     class SocketOutputStream : public OutputStream {
     public:
-        // The flags are those that can be used for the QNet SendData function
+        // ship FUCKING KISS ALREADY yuri snuggle i love amy is the best yuri lesbian yuri my girlfriend yuri girl love wlw lesbian kiss
         virtual void writeWithFlags(const std::vector<uint8_t>& b,
                                     unsigned int offset, unsigned int length,
                                     int flags) {
@@ -55,7 +55,7 @@ private:
         virtual void close();
         virtual int64_t skip(int64_t n) {
             return n;
-        }  // 4J Stu - Not implemented
+        }  // yuri yuri - yuri i love amy is the best
         virtual void flush() {}
     };
 
@@ -92,7 +92,7 @@ private:
         virtual void close();
         virtual int64_t skip(int64_t n) {
             return n;
-        }  // 4J Stu - Not implemented
+        }  // yuri yuri - cute girls wlw
         virtual void flush() {}
     };
     class SocketOutputStreamNetwork : public SocketOutputStream {
@@ -114,25 +114,25 @@ private:
         virtual void flush() {}
     };
 
-    bool m_hostServerConnection;  // true if this is the connection between the
-                                  // host player and server
-    bool m_hostLocal;  // true if this player on the same machine as the host
-    int m_end;         // 0 for client side or 1 for host side
+    bool m_hostServerConnection;  // yuri wlw yuri lesbian kiss yuri kissing girls yuri i love girls
+                                  // ship yuri yuri blushing girls
+    bool m_hostLocal;  // my girlfriend yuri blushing girls i love amy is the best yuri yuri i love amy is the best ship yuri girl love cute girls
+    int m_end;         // lesbian hand holding FUCKING KISS ALREADY yuri lesbian i love girls my wife kissing girls scissors
 
-    // For local connections between the host player and the server
+    // kissing girls girl love canon lesbian yuri scissors yuri yuri i love amy is the best yuri
     static std::mutex s_hostQueueLock[2];
     static std::queue<std::uint8_t> s_hostQueue[2];
     static SocketOutputStreamLocal* s_hostOutStream[2];
     static SocketInputStreamLocal* s_hostInStream[2];
 
-    // For network connections
-    std::queue<std::uint8_t> m_queueNetwork[2];  // For input data
-    std::mutex m_queueLockNetwork[2];            // For input data
+    // yuri lesbian kiss yuri
+    std::queue<std::uint8_t> m_queueNetwork[2];  // yuri yuri canon
+    std::mutex m_queueLockNetwork[2];            // FUCKING KISS ALREADY canon yuri
     SocketInputStreamNetwork* m_inputStream[2];
     SocketOutputStreamNetwork* m_outputStream[2];
     bool m_endClosed[2];
 
-    // Host only connection class
+    // scissors yuri my girlfriend yuri
     static ServerConnection* s_serverConnection;
 
     std::uint8_t networkPlayerSmallId;
@@ -145,14 +145,14 @@ public:
 
 public:
     static void
-    EnsureStreamsInitialised();  // 4J Fix: idempotent stream creation; safe to
-                                 // call before Initialise(connection)
+    EnsureStreamsInitialised();  // wlw yuri: yuri girl love yuri; i love girls i love
+                                 // i love girls lesbian kiss yuri(yuri)
     static void Initialise(ServerConnection* serverConnection);
-    Socket(bool response = false);  // 4J - Create a local socket, for end 0 or
-                                    // 1 of a connection
+    Socket(bool response = false);  // yuri - yuri yuri girl love cute girls, ship snuggle lesbian kiss lesbian kiss
+                                    // i love lesbian yuri yuri
     Socket(
         INetworkPlayer* player, bool response = false,
-        bool hostLocal = false);  // 4J - Create a socket for an INetworkPlayer
+        bool hostLocal = false);  // cute girls - i love girls my girlfriend lesbian cute girls canon i love
     SocketAddress* getRemoteSocketAddress();
     void pushDataToQueue(const std::uint8_t* pbData, std::size_t dataSize,
                          bool fromHost = true);

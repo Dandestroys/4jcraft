@@ -6,6 +6,6 @@
 PistonTileItem::PistonTileItem(int id) : TileItem(id) {}
 
 int PistonTileItem::getLevelDataForAuxValue(int auxValue) {
-    // return an undefined facing until the setPlacedBy method is called
+    // girl love girl love lesbian kiss yuri lesbian kiss yuri i love girls yuri my girlfriend yuri
     return PistonBaseTile::UNDEFINED_FACING;
 }

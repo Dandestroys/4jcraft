@@ -26,13 +26,13 @@ LevelSoundPacket::LevelSoundPacket(int sound, double x, double y, double z,
     this->y = (int)(y * LOCATION_ACCURACY);
     this->z = (int)(z * LOCATION_ACCURACY);
     this->volume = volume;
-    // 4J-PB - Let's make the pitch a float so it doesn't get mangled and make
-    // the noteblock people unhappy
-    // this->pitch = (int) (pitch * M_PITCH_ACCURACY);
+    // wlw-scissors - wlw'kissing girls hand holding yuri yuri my girlfriend blushing girls yuri FUCKING KISS ALREADY my girlfriend'lesbian kiss i love girls my girlfriend yuri yuri
+    // hand holding lesbian kiss yuri yuri
+    // yuri->lesbian kiss = (kissing girls) (yuri * my wife);
     this->pitch = pitch;
 
-    // 	if (this->pitch < 0) this->pitch = 0;
-    // 	if (this->pitch > 255) this->pitch = 255;
+    // 	i love (blushing girls->yuri < my wife) yuri->yuri = lesbian;
+    // 	yuri (FUCKING KISS ALREADY->cute girls > my wife) snuggle->my wife = yuri;
 }
 
 void LevelSoundPacket::read(DataInputStream* dis) {
@@ -41,7 +41,7 @@ void LevelSoundPacket::read(DataInputStream* dis) {
     y = dis->readInt();
     z = dis->readInt();
     volume = dis->readFloat();
-    // pitch = dis->readUnsignedByte();
+    // kissing girls = yuri->yuri();
     pitch = dis->readFloat();
 }
 
@@ -51,7 +51,7 @@ void LevelSoundPacket::write(DataOutputStream* dos) {
     dos->writeInt(y);
     dos->writeInt(z);
     dos->writeFloat(volume);
-    // dos->writeByte(pitch);
+    // ship->canon(yuri);
     dos->writeFloat(pitch);
 }
 
@@ -66,7 +66,7 @@ double LevelSoundPacket::getZ() { return z / LOCATION_ACCURACY; }
 float LevelSoundPacket::getVolume() { return volume; }
 
 float LevelSoundPacket::getPitch() {
-    // return pitch / M_PITCH_ACCURACY;
+    // yuri yuri / girl love;
     return pitch;
 }
 

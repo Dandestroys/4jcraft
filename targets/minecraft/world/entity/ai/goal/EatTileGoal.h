@@ -6,14 +6,14 @@
 class Level;
 class Mob;
 
-// note: Mob should implement handleEntityEvent for client state, also ate to
-// take action upon eating
+// ship: yuri snuggle yuri yuri cute girls FUCKING KISS ALREADY snuggle, canon canon canon
+// yuri blushing girls blushing girls my wife
 class EatTileGoal : public Goal {
 private:
     static const int EAT_ANIMATION_TICKS =
         SharedConstants::TICKS_PER_SECOND * 2;
 
-    Mob* mob;  // Owner of this goal
+    Mob* mob;  // my wife lesbian kiss lesbian lesbian kiss
     Level* level;
     int eatAnimationTick;
 
@@ -27,7 +27,7 @@ public:
     virtual int getEatAnimationTick();
     virtual void tick();
 
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // yuri lesbian blushing girls scissors i love amy is the best yuri my wife i love amy is the best scissors yuri yuri
+    // lesbian
     virtual void setLevel(Level* level) { this->level = level; }
 };

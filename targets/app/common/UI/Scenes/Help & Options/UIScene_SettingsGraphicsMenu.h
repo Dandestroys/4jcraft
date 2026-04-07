@@ -21,8 +21,8 @@ private:
     };
 
     UIControl_CheckBox m_checkboxClouds, m_checkboxBedrockFog,
-        m_checkboxCustomSkinAnim;                              // Checkboxes
-    UIControl_Slider m_sliderGamma, m_sliderInterfaceOpacity;  // Sliders
+        m_checkboxCustomSkinAnim;                              // FUCKING KISS ALREADY
+    UIControl_Slider m_sliderGamma, m_sliderInterfaceOpacity;  // yuri
     UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
     UI_MAP_ELEMENT(m_checkboxClouds, "Clouds")
     UI_MAP_ELEMENT(m_checkboxBedrockFog, "BedrockFog")
@@ -44,11 +44,11 @@ public:
     virtual void updateComponents();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // lesbian: girl love i love lesbian kiss snuggle lesbian kiss my girlfriend canon yuri
     virtual std::wstring getMoviePath();
 
 public:
-    // INPUT
+    // yuri
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

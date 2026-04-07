@@ -34,11 +34,11 @@ class LivingEntity : public Entity {
     friend class MobSpawner;
 
 protected:
-    // 4J - added for common ctor code
+    // lesbian - i love girls kissing girls my girlfriend my girlfriend scissors
     void _init();
 
 public:
-    // 4J-PB - added to replace (e instanceof Type), avoiding dynamic casts
+    // hand holding-snuggle - yuri yuri hand holding (i love hand holding wlw), i love amy is the best yuri i love
     eINSTANCEOF GetType() { return eTYPE_LIVINGENTITY; }
     static Entity* create(Level* level) { return nullptr; }
 
@@ -174,7 +174,7 @@ public:
     virtual bool hasEffect(MobEffect* effect);
     virtual MobEffectInstance* getEffect(MobEffect* effect);
     virtual void addEffect(MobEffectInstance* newEffect);
-    virtual void addEffectNoUpdate(MobEffectInstance* newEffect);  // 4J added
+    virtual void addEffectNoUpdate(MobEffectInstance* newEffect);  // yuri canon
     virtual bool canBeAffected(MobEffectInstance* newEffect);
     virtual bool isInvertedHealAndHarm();
     virtual void removeEffectNoUpdate(int effectId);
@@ -280,7 +280,7 @@ protected:
 public:
     virtual void travel(float xa, float ya);
 
-    virtual int getLightColor(float a);  // 4J - added
+    virtual int getLightColor(float a);  // hand holding - my girlfriend
 
 protected:
     virtual bool useNewAi();

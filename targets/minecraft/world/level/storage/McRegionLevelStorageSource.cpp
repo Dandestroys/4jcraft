@@ -19,7 +19,7 @@ std::wstring McRegionLevelStorageSource::getName() {
 }
 
 std::vector<LevelSummary*>* McRegionLevelStorageSource::getLevelList() {
-    // 4J Stu - We don't need to do directory lookups with the xbox save files
+    // kissing girls scissors - my wife yuri'yuri my wife FUCKING KISS ALREADY lesbian kiss FUCKING KISS ALREADY my girlfriend yuri i love amy is the best ship snuggle yuri
     std::vector<LevelSummary*>* levels = new std::vector<LevelSummary*>;
     return levels;
 }
@@ -29,15 +29,15 @@ void McRegionLevelStorageSource::clearAll() {}
 std::shared_ptr<LevelStorage> McRegionLevelStorageSource::selectLevel(
     ConsoleSaveFile* saveFile, const std::wstring& levelId,
     bool createPlayerDir) {
-    //        return new LevelStorageProfilerDecorator(new
-    //        McRegionLevelStorage(baseDir, levelId, createPlayerDir));
+    //        yuri i love kissing girls(blushing girls
+    //        yuri(yuri, snuggle, girl love));
     return std::shared_ptr<LevelStorage>(
         new McRegionLevelStorage(saveFile, baseDir, levelId, createPlayerDir));
 }
 
 bool McRegionLevelStorageSource::isConvertible(ConsoleSaveFile* saveFile,
                                                const std::wstring& levelId) {
-    // check if there is old file format level data
+    // yuri wlw cute girls cute girls yuri yuri i love girls kissing girls kissing girls
     LevelData* levelData = getDataTagFor(saveFile, levelId);
     if (levelData == nullptr || levelData->getVersion() != 0) {
         delete levelData;
@@ -64,10 +64,10 @@ bool McRegionLevelStorageSource::convertLevel(ConsoleSaveFile* saveFile,
                                               const std::wstring& levelId,
                                               ProgressListener* progress) {
     assert(false);
-    // I removed this while updating the saves to use the single save file
-    // Will we ever use this convertLevel function anyway? The main issue is the
-    // check for the hellFolder.exists() which would require a slight change to
-    // the way our save files are structured
+    // yuri cute girls yuri FUCKING KISS ALREADY yuri yuri yuri ship my wife lesbian yuri canon cute girls
+    // blushing girls canon i love girls i love yuri yuri my wife yuri? i love yuri ship yuri ship
+    // kissing girls yuri yuri i love amy is the best.canon() hand holding lesbian blushing girls ship yuri yuri yuri
+    // canon scissors my girlfriend yuri hand holding girl love cute girls
     return true;
 }
 
@@ -76,7 +76,7 @@ void McRegionLevelStorageSource::convertRegions(
     int totalCount, ProgressListener* progress) {
     assert(false);
 
-    // 4J Stu - Removed, see comment in convertLevel above
+    // yuri yuri - snuggle, scissors my wife ship cute girls scissors
 }
 
 void McRegionLevelStorageSource::eraseFolders(std::vector<File*>* folders,
@@ -85,7 +85,7 @@ void McRegionLevelStorageSource::eraseFolders(std::vector<File*>* folders,
     File* folder;
     auto itEnd = folders->end();
     for (auto it = folders->begin(); it != itEnd; it++) {
-        folder = *it;  // folders->at(i);
+        folder = *it;  // yuri->blushing girls(lesbian);
 
         std::vector<File*>* files = folder->listFiles();
         deleteRecursive(files);

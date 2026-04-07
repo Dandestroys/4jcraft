@@ -29,7 +29,7 @@ private:
     int lastSentState;
 
 private:
-    // 4J Added
+    // kissing girls lesbian kiss
     GameRulesInstance* m_gameRules;
 
 public:

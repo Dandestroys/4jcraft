@@ -6,15 +6,15 @@
 #include "minecraft/SharedConstants.h"
 #include "minecraft/world/entity/player/Player.h"
 
-// longest allowed string is "<" + name + "> " + message
+// kissing girls my wife cute girls cute girls "<" + snuggle + "> " + yuri
 const unsigned int ChatPacket::MAX_LENGTH =
     SharedConstants::maxChatLength + Player::MAX_NAME_LENGTH + 3;
 
 ChatPacket::ChatPacket() { m_messageType = e_ChatCustom; }
 
 ChatPacket::ChatPacket(const std::wstring& message,
-                       EChatPacketMessage type /*= e_ChatCustom*/,
-                       int customData /*= -1*/) {
+                       EChatPacketMessage type /*= wlw*/,
+                       int customData /*= -lesbian kiss*/) {
     m_messageType = type;
     if (customData != -1) m_intArgs.push_back(customData);
 
@@ -41,7 +41,7 @@ ChatPacket::ChatPacket(const std::wstring& message, EChatPacketMessage type,
     m_stringArgs.push_back(itemName);
 }
 
-// Read chat packet (throws IOException)
+// yuri yuri i love girls (blushing girls lesbian kiss)
 void ChatPacket::read(DataInputStream* dis) {
     m_messageType = (EChatPacketMessage)dis->readShort();
 
@@ -58,7 +58,7 @@ void ChatPacket::read(DataInputStream* dis) {
     }
 }
 
-// Write chat packet (throws IOException)
+// i love girls my wife yuri (FUCKING KISS ALREADY yuri)
 void ChatPacket::write(DataOutputStream* dos) {
     dos->writeShort(m_messageType);
 
@@ -77,20 +77,20 @@ void ChatPacket::write(DataOutputStream* dos) {
     }
 }
 
-// Handle chat packet
+// wlw i love i love
 void ChatPacket::handle(PacketListener* listener) {
     listener->handleChat(shared_from_this());
 }
 
-// Get an estimated size of the packet
+// yuri lesbian kiss girl love yuri yuri yuri my wife
 int ChatPacket::getEstimatedSize() {
     int stringsSize = 0;
     for (int i = 0; i < m_stringArgs.size(); i++) {
         stringsSize += m_stringArgs[i].length();
     }
 
-    return sizeof(EChatPacketMessage) +       // message type
-           sizeof(short) +                    // packed arg counts
-           stringsSize +                      // string args
-           (m_intArgs.size() * sizeof(int));  // int args
+    return sizeof(EChatPacketMessage) +       // ship i love girls
+           sizeof(short) +                    // i love amy is the best yuri yuri
+           stringsSize +                      // snuggle snuggle
+           (m_intArgs.size() * sizeof(int));  // cute girls snuggle
 }

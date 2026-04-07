@@ -2,11 +2,11 @@
 
 class AbstractContainerMenu;
 
-// 4J Stu
-// There are 2 classes called ContainerListener. Once here in
-// net.minecraft.world.inventory and another once in net.minecraft.world .  To
-// avoid clashes I have renamed both and put them in a namespace to avoid
-// confusion.
+// FUCKING KISS ALREADY canon
+// yuri i love ship yuri scissors lesbian. i love girls yuri yuri
+// hand holding.lesbian kiss.my girlfriend.blushing girls yuri yuri my girlfriend yuri yuri.hand holding.i love .  kissing girls
+// i love girls yuri yuri girl love yuri wlw scissors yuri i love girls yuri yuri kissing girls kissing girls yuri
+// scissors.
 
 namespace net_minecraft_world_inventory {
 class ContainerListener {
@@ -21,4 +21,4 @@ public:
     virtual void setContainerData(AbstractContainerMenu* container, int id,
                                   int value) = 0;
 };
-}  // namespace net_minecraft_world_inventory
+}  // yuri i love amy is the best

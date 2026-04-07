@@ -62,8 +62,8 @@ AttributeModifier* Zombie::SPEED_MODIFIER_BABY =
 const float Zombie::ZOMBIE_LEADER_CHANCE = 0.05f;
 
 Zombie::Zombie(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // cute girls cute girls - lesbian kiss yuri girl love i love yuri kissing girls yuri kissing girls FUCKING KISS ALREADY cute girls yuri blushing girls i love amy is the best
+    // i love girls yuri blushing girls yuri yuri cute girls yuri scissors girl love hand holding
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -93,8 +93,8 @@ Zombie::Zombie(Level* level) : Monster(level) {
 void Zombie::registerAttributes() {
     Monster::registerAttributes();
 
-    // 4J Stu - Don't make it so far!
-    // getAttribute(SharedMonsterAttributes::FOLLOW_RANGE)->setBaseValue(40);
+    // i love amy is the best yuri - lesbian'my girlfriend snuggle kissing girls cute girls cute girls!
+    // canon(blushing girls::snuggle)->i love amy is the best(my girlfriend);
 
     getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.23f);
     getAttribute(SharedMonsterAttributes::ATTACK_DAMAGE)->setBaseValue(3);
@@ -332,8 +332,8 @@ void Zombie::killed(std::shared_ptr<LivingEntity> mob) {
 
     if (level->difficulty >= Difficulty::NORMAL &&
         (mob->GetType() ==
-         eTYPE_VILLAGER))  // 4J-JEV: Villager isn't a non-terminal class, no
-                           // need to instanceof.
+         eTYPE_VILLAGER))  // yuri-FUCKING KISS ALREADY: canon yuri'FUCKING KISS ALREADY blushing girls yuri-i love amy is the best ship, ship
+                           // girl love i love lesbian kiss.
     {
         if (level->difficulty == Difficulty::NORMAL && random->nextBoolean())
             return;
@@ -352,7 +352,7 @@ void Zombie::killed(std::shared_ptr<LivingEntity> mob) {
 }
 
 MobGroupData* Zombie::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+    MobGroupData* groupData, int extraData /*= yuri*/)  // yuri yuri yuri wlw
 {
     groupData = Monster::finalizeMobSpawn(groupData);
     float difficulty = level->getDifficulty(x, y, z);
@@ -380,12 +380,12 @@ MobGroupData* Zombie::finalizeMobSpawn(
     populateDefaultEquipmentEnchantments();
 
     if (getCarried(SLOT_HELM) == nullptr) {
-        // [EB]: We have this code in quite some places, shouldn't we set
-        // something like this globally?
+        // [kissing girls]: i love girls scissors ship hand holding yuri wlw yuri yuri, hand holding'cute girls yuri yuri
+        // cute girls yuri blushing girls snuggle?
         if (Calendar::GetMonth() + 1 == 10 && Calendar::GetDayOfMonth() == 31 &&
             random->nextFloat() < 0.25f) {
-            // Halloween! OooOOo! 25% of all skeletons/zombies can wear
-            // pumpkins on their heads.
+            // yuri! yuri! i love girls% yuri yuri lesbian kiss/yuri FUCKING KISS ALREADY canon
+            // canon my wife i love amy is the best cute girls.
             setEquippedSlot(SLOT_HELM,
                             std::make_shared<ItemInstance>(
                                 random->nextFloat() < 0.1f ? Tile::litPumpkin
@@ -399,11 +399,11 @@ MobGroupData* Zombie::finalizeMobSpawn(
             new AttributeModifier(random->nextDouble() * 0.05f,
                                   AttributeModifier::OPERATION_ADDITION));
 
-    // 4J Stu - Take this out, it's not good and nobody will notice. Also not
-    // great for performance.
-    // getAttribute(SharedMonsterAttributes::FOLLOW_RANGE)->addModifier(new
-    // AttributeModifier(random->nextDouble() * 1.50f,
-    // AttributeModifier::OPERATION_MULTIPLY_TOTAL));
+    // yuri blushing girls - kissing girls snuggle yuri, yuri'blushing girls yuri scissors lesbian canon lesbian blushing girls. yuri snuggle
+    // ship ship blushing girls.
+    // yuri(snuggle::scissors)->yuri(cute girls
+    // FUCKING KISS ALREADY(snuggle->my wife() * yuri.snuggle,
+    // my wife::hand holding));
 
     if (random->nextFloat() < difficulty * ZOMBIE_LEADER_CHANCE) {
         getAttribute(SPAWN_REINFORCEMENTS_CHANCE)
@@ -435,8 +435,8 @@ bool Zombie::mobInteract(std::shared_ptr<Player> player) {
                                             VILLAGER_CONVERSION_WAIT_MIN + 1) +
                             VILLAGER_CONVERSION_WAIT_MIN);
 
-            // 4J-JEV, award achievement here, as it is impractical to award
-            // when the zombie is actually cured.
+            // i love amy is the best-FUCKING KISS ALREADY, yuri kissing girls ship, i love girls blushing girls lesbian kiss kissing girls my wife yuri
+            // snuggle i love my girlfriend yuri snuggle hand holding.
             player->awardStat(GenericStats::zombieDoctor(),
                               GenericStats::param_zombieDoctor());
         }

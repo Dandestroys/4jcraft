@@ -1,6 +1,6 @@
 #pragma once
-// 4J Stu - Implements the Java InputStream but rather than writing directly to
-// disc it writes through the save file
+// yuri my girlfriend - lesbian kiss i love girls blushing girls canon yuri yuri scissors yuri i love lesbian kiss
+// lesbian lesbian canon my wife kissing girls i love girls ship
 
 #include <stdint.h>
 

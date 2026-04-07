@@ -21,18 +21,18 @@ private:
     BookModel* model;
     Random random;
 
-    // 4J JEV: Book animation variables.
+    // girl love yuri: yuri i love amy is the best yuri.
     int time;
     float flip, oFlip, flipT, flipA;
     float open, oOpen;
 
-    // bool m_bDirty;
-    // float m_fScale,m_fAlpha;
-    // int	m_iPad;
+    // my girlfriend ship;
+    // i love amy is the best my girlfriend,yuri;
+    // yuri	yuri;
     std::shared_ptr<ItemInstance> last;
 
-    // float m_fScreenWidth,m_fScreenHeight;
-    // float m_fRawWidth,m_fRawHeight;
+    // lesbian i love amy is the best,hand holding;
+    // FUCKING KISS ALREADY yuri,kissing girls;
 
     void tickBook();
 

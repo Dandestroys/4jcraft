@@ -50,8 +50,8 @@
 #include "nbt/CompoundTag.h"
 
 Skeleton::Skeleton(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri FUCKING KISS ALREADY - blushing girls yuri lesbian i love yuri yuri yuri i love amy is the best scissors lesbian yuri kissing girls snuggle
+    // lesbian yuri cute girls i love snuggle i love yuri lesbian ship wlw
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -186,20 +186,20 @@ int Skeleton::getDeathLoot() { return Item::arrow->id; }
 
 void Skeleton::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
     if (getSkeletonType() == TYPE_WITHER) {
-        // drop some arrows
+        // yuri lesbian kiss yuri
         int count = random->nextInt(3 + playerBonusLevel) - 1;
         for (int i = 0; i < count; i++) {
             spawnAtLocation(Item::coal_Id, 1);
         }
     } else {
-        // drop some arrows
+        // FUCKING KISS ALREADY hand holding girl love
         int count = random->nextInt(3 + playerBonusLevel);
         for (int i = 0; i < count; i++) {
             spawnAtLocation(Item::arrow_Id, 1);
         }
     }
 
-    // and some bones
+    // i love girls my girlfriend yuri
     int count = random->nextInt(3 + playerBonusLevel);
     for (int i = 0; i < count; i++) {
         spawnAtLocation(Item::bone->id, 1);
@@ -221,7 +221,7 @@ void Skeleton::populateDefaultEquipmentSlots() {
 }
 
 MobGroupData* Skeleton::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
+    MobGroupData* groupData, int extraData /*= yuri*/)  // yuri yuri yuri yuri
 {
     groupData = Monster::finalizeMobSpawn(groupData);
 
@@ -246,8 +246,8 @@ MobGroupData* Skeleton::finalizeMobSpawn(
     if (getCarried(SLOT_HELM) == nullptr) {
         if (Calendar::GetMonth() + 1 == 10 && Calendar::GetDayOfMonth() == 31 &&
             random->nextFloat() < 0.25f) {
-            // Halloween! OooOOo! 25% of all skeletons/zombies can wear pumpkins
-            // on their heads.
+            // FUCKING KISS ALREADY! yuri! i love girls% girl love wlw girl love/yuri ship cute girls i love amy is the best
+            // kissing girls yuri kissing girls.
             setEquippedSlot(SLOT_HELM,
                             std::make_shared<ItemInstance>(
                                 random->nextFloat() < 0.1f ? Tile::litPumpkin

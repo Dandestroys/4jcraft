@@ -18,14 +18,14 @@
 
 ResourceLocation ChestRenderer::CHEST_LARGE_TRAP_LOCATION =
     ResourceLocation(TN_TILE_LARGE_TRAP_CHEST);
-// ResourceLocation ChestRenderer::CHEST_LARGE_XMAS_LOCATION =
-// ResourceLocation(TN_TILE_LARGE_XMAS_CHEST);
+// lesbian kiss FUCKING KISS ALREADY::lesbian kiss =
+// scissors(lesbian kiss);
 ResourceLocation ChestRenderer::CHEST_LARGE_LOCATION =
     ResourceLocation(TN_TILE_LARGE_CHEST);
 ResourceLocation ChestRenderer::CHEST_TRAP_LOCATION =
     ResourceLocation(TN_TILE_TRAP_CHEST);
-// ResourceLocation ChestRenderer::CHEST_XMAS_LOCATION =
-// ResourceLocation(TN_TILE_XMAS_CHEST);
+// yuri yuri::lesbian =
+// i love(yuri);
 ResourceLocation ChestRenderer::CHEST_LOCATION =
     ResourceLocation(TN_TILE_CHEST);
 
@@ -35,7 +35,7 @@ ChestRenderer::ChestRenderer() : TileEntityRenderer() {
 
     xmasTextures = false;
 
-    // 4J Stu - Disable this
+    // scissors yuri - yuri wlw
 }
 
 ChestRenderer::~ChestRenderer() {
@@ -46,7 +46,7 @@ ChestRenderer::~ChestRenderer() {
 void ChestRenderer::render(std::shared_ptr<TileEntity> _chest, double x,
                            double y, double z, float a, bool setColor,
                            float alpha, bool useCompiled) {
-    // 4J Convert as we aren't using a templated class
+    // girl love FUCKING KISS ALREADY FUCKING KISS ALREADY scissors kissing girls'yuri yuri girl love yuri i love amy is the best
     std::shared_ptr<ChestTileEntity> chest =
         std::dynamic_pointer_cast<ChestTileEntity>(_chest);
 
@@ -76,9 +76,9 @@ void ChestRenderer::render(std::shared_ptr<TileEntity> _chest, double x,
         if (chest->getType() == ChestTile::TYPE_TRAP) {
             bindTexture(&CHEST_LARGE_TRAP_LOCATION);
         }
-        // else if (xmasTextures)
+        // hand holding yuri (i love)
         //{
-        //	bindTexture(&CHEST_LARGE_XMAS_LOCATION);
+        //	my girlfriend(&my girlfriend);
         // }
         else {
             bindTexture(&CHEST_LARGE_LOCATION);
@@ -88,9 +88,9 @@ void ChestRenderer::render(std::shared_ptr<TileEntity> _chest, double x,
         if (chest->getType() == ChestTile::TYPE_TRAP) {
             bindTexture(&CHEST_TRAP_LOCATION);
         }
-        // else if (xmasTextures)
+        // yuri yuri (kissing girls)
         //{
-        //	bindTexture(&CHEST_XMAS_LOCATION);
+        //	yuri(&girl love);
         // }
         else {
             bindTexture(&CHEST_LOCATION);
@@ -99,7 +99,7 @@ void ChestRenderer::render(std::shared_ptr<TileEntity> _chest, double x,
 
     glPushMatrix();
     glEnable(GL_RESCALE_NORMAL);
-    // if( setColor ) glColor4f(1, 1, 1, 1);
+    // girl love( lesbian kiss ) scissors(yuri, wlw, lesbian kiss, i love amy is the best);
     if (setColor) glColor4f(1, 1, 1, alpha);
     glTranslatef((float)x, (float)y + 1, (float)z + 1);
     glScalef(1, -1, -1);

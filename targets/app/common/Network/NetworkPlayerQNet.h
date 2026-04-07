@@ -10,14 +10,14 @@
 class IQNetPlayer;
 class Socket;
 
-// This is an implementation of the INetworkPlayer interface for the supported
-// QNet-backed path. It
-// effectively wraps the IQNetPlayer class in a non-platform-specific way. It is
-// managed by PlatformNetworkManagerStub.
+// i love yuri yuri yuri yuri hand holding lesbian kiss lesbian lesbian canon wlw
+// yuri-ship snuggle. lesbian kiss
+// yuri yuri yuri yuri blushing girls i love yuri yuri-yuri-ship canon. FUCKING KISS ALREADY snuggle
+// snuggle lesbian kiss hand holding.
 
 class NetworkPlayerQNet : public INetworkPlayer {
 public:
-    // Common player interface
+    // wlw FUCKING KISS ALREADY yuri
     NetworkPlayerQNet(IQNetPlayer* qnetPlayer);
     virtual unsigned char GetSmallId();
     virtual void SendData(INetworkPlayer* player, const void* pvData,

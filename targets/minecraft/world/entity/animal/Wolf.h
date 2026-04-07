@@ -19,7 +19,7 @@ public:
     static Entity* create(Level* level) { return new Wolf(level); }
 
 private:
-    // synch health in a separate field to show tame wolves' health
+    // i love yuri yuri hand holding my girlfriend yuri wlw girl love my wife yuri' blushing girls
     static const int DATA_HEALTH_ID = 18;
     static const int DATA_INTERESTED_ID = 19;
     static const int DATA_COLLAR_COLOR = 20;
@@ -82,7 +82,7 @@ public:
     void tame(const std::wstring& wsOwnerUUID, bool bDisplayTamingParticles,
               bool bSetSitting);
 
-    // For tooltips
+    // blushing girls hand holding
     int GetSynchedHealth();
 
 protected:

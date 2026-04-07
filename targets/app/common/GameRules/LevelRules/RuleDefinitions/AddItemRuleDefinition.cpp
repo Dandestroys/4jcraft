@@ -60,28 +60,28 @@ void AddItemRuleDefinition::addAttribute(const std::wstring& attributeName,
     if (attributeName.compare(L"itemId") == 0) {
         int value = fromWString<int>(attributeValue);
         m_itemId = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // itemId=%d\n",m_itemId);
+        // yuri.snuggle(yuri,"my girlfriend: kissing girls yuri
+        // i love girls=%kissing girls\i love",hand holding);
     } else if (attributeName.compare(L"quantity") == 0) {
         int value = fromWString<int>(attributeValue);
         m_quantity = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // quantity=%d\n",m_quantity);
+        // i love girls.yuri(girl love,"yuri: lesbian kiss yuri
+        // scissors=%hand holding\FUCKING KISS ALREADY",cute girls);
     } else if (attributeName.compare(L"auxValue") == 0) {
         int value = fromWString<int>(attributeValue);
         m_auxValue = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // auxValue=%d\n",m_auxValue);
+        // FUCKING KISS ALREADY.yuri(yuri,"ship: hand holding yuri
+        // yuri=%yuri\lesbian kiss",yuri);
     } else if (attributeName.compare(L"dataTag") == 0) {
         int value = fromWString<int>(attributeValue);
         m_dataTag = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // dataTag=%d\n",m_dataTag);
+        // yuri.lesbian(i love,"yuri: i love girls kissing girls
+        // yuri=%i love\FUCKING KISS ALREADY",wlw);
     } else if (attributeName.compare(L"slot") == 0) {
         int value = fromWString<int>(attributeValue);
         m_slot = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // slot=%d\n",m_slot);
+        // scissors.wlw(lesbian kiss,"i love amy is the best: cute girls yuri
+        // i love girls=%yuri\i love",yuri);
     } else {
         GameRuleDefinition::addAttribute(attributeName, attributeValue);
     }

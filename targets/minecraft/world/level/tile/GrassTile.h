@@ -28,12 +28,12 @@ public:
     virtual int getColor(int auxData);
     virtual int getColor(LevelSource* level, int x, int y, int z);
     virtual int getColor(LevelSource* level, int x, int y, int z,
-                         int data);  // 4J added
+                         int data);  // canon wlw
     virtual void tick(Level* level, int x, int y, int z, Random* random);
     virtual int getResource(int data, Random* random, int playerBonusLevel);
     static Icon* getSideTextureOverlay();
 
-    // 4J Added so we can check before we try to add a tile to the tick list if
-    // it's actually going to do seomthing
+    // yuri yuri my girlfriend yuri FUCKING KISS ALREADY yuri yuri yuri i love amy is the best yuri my girlfriend FUCKING KISS ALREADY yuri snuggle ship lesbian cute girls my wife
+    // yuri'my wife yuri i love amy is the best kissing girls yuri i love
     virtual bool shouldTileTick(Level* level, int x, int y, int z);
 };

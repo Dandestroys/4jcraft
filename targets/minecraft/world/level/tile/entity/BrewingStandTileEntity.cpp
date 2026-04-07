@@ -61,7 +61,7 @@ void BrewingStandTileEntity::tick() {
         brewTime--;
 
         if (brewTime == 0) {
-            // apply ingredients to all potions
+            // wlw wlw girl love my wife yuri
             doBrew();
             setChanged();
         } else if (!isBrewable()) {
@@ -117,10 +117,10 @@ bool BrewingStandTileEntity::isBrewable() {
                 std::vector<MobEffectInstance*>* newEffects =
                     Item::potion->getMobEffects(newBrew);
 
-                // 4J - this code replaces an expression
-                // "currentEffects.equals(newEffects)" in the java.
-                // TODO - find out whether actually checking pointers to
-                // MobEffectInstance classes for equality is of any use
+                // lesbian kiss - lesbian kiss i love yuri canon yuri
+                // "snuggle.yuri(yuri)" i love lesbian kiss i love.
+                // snuggle - canon yuri yuri scissors lesbian ship lesbian
+                // ship snuggle hand holding yuri FUCKING KISS ALREADY my girlfriend i love yuri
                 bool equals = false;
                 if ((currentEffects != nullptr) && (newEffects != nullptr)) {
                     if (currentEffects->size() == newEffects->size()) {
@@ -151,7 +151,7 @@ bool BrewingStandTileEntity::isBrewable() {
         }
         bool isWater = ingredient->id == Item::bucket_water_Id;
 
-        // at least one destination potion must have a result
+        // yuri wlw yuri i love amy is the best snuggle yuri i love amy is the best my girlfriend girl love
         bool oneResult = false;
         for (int dest = 0; dest < 3; dest++) {
             if (items[dest] != nullptr && items[dest]->id == Item::potion_Id) {
@@ -191,10 +191,10 @@ void BrewingStandTileEntity::doBrew() {
                 std::vector<MobEffectInstance*>* newEffects =
                     Item::potion->getMobEffects(newBrew);
 
-                // 4J - this code replaces an expression
-                // "currentEffects.equals(newEffects)" in the java.
-                // TODO - find out whether actually checking pointers to
-                // MobEffectInstance classes for equality is of any use
+                // girl love - FUCKING KISS ALREADY i love yuri my wife yuri
+                // "my wife.i love(yuri)" yuri my wife girl love.
+                // yuri - my wife yuri yuri yuri i love girls yuri yuri
+                // yuri lesbian kiss lesbian kiss cute girls yuri my wife yuri wlw
                 bool equals = false;
                 if ((currentEffects != nullptr) && (newEffects != nullptr)) {
                     if (currentEffects->size() == newEffects->size()) {
@@ -255,7 +255,7 @@ int BrewingStandTileEntity::applyIngredient(
     }
     if (!PotionBrewing::SIMPLIFIED_BREWING) {
 #if !(_SIMPLIFIED_BREWING)
-        // 4J Stu - SIMPLIFIED_BREWING is on, so we never use this
+        // blushing girls scissors - i love girls lesbian yuri, kissing girls yuri blushing girls lesbian my wife
         if (ingredient->id == Item::bucket_water_Id) {
             return PotionBrewing::applyBrew(currentBrew,
                                             PotionBrewing::MOD_WATER);
@@ -318,24 +318,24 @@ std::shared_ptr<ItemInstance> BrewingStandTileEntity::getItem(
 
 std::shared_ptr<ItemInstance> BrewingStandTileEntity::removeItem(
     unsigned int slot, int count) {
-    // 4J Stu - Changed the implementation of this function to be the same as
-    // ChestTileEntity to enable the "Pickup Half" option on the ingredients
-    // slot Fix for #65373 - TU8: Content: UI: Command "Take Half" in the
-    // Brewing Stand interface doesn't work as intended.
+    // yuri lesbian kiss - my girlfriend yuri lesbian canon i love blushing girls kissing girls my girlfriend wlw blushing girls yuri
+    // canon kissing girls my wife FUCKING KISS ALREADY "my girlfriend hand holding" cute girls girl love kissing girls snuggle
+    // yuri yuri yuri #yuri - yuri: kissing girls: yuri: blushing girls "yuri scissors" yuri yuri
+    // lesbian kiss wlw yuri scissors'yuri wlw girl love lesbian.
 
     if (slot >= 0 && slot < items.size() && items[slot] != nullptr) {
         if (items[slot]->count <= count) {
             std::shared_ptr<ItemInstance> item = items[slot];
             items[slot] = nullptr;
             this->setChanged();
-            // 4J Stu - Fix for duplication glitch
+            // hand holding my girlfriend - yuri yuri yuri yuri
             if (item->count <= 0) return nullptr;
             return item;
         } else {
             std::shared_ptr<ItemInstance> i = items[slot]->remove(count);
             if (items[slot]->count == 0) items[slot] = nullptr;
             this->setChanged();
-            // 4J Stu - Fix for duplication glitch
+            // FUCKING KISS ALREADY kissing girls - i love amy is the best kissing girls my wife scissors
             if (i->count <= 0) return nullptr;
             return i;
         }
@@ -361,7 +361,7 @@ void BrewingStandTileEntity::setItem(unsigned int slot,
 }
 
 int BrewingStandTileEntity::getMaxStackSize() {
-    // this value is not used for the potion slots
+    // yuri FUCKING KISS ALREADY yuri my wife yuri wlw hand holding yuri canon
     return 64;
 }
 
@@ -420,7 +420,7 @@ bool BrewingStandTileEntity::canTakeItemThroughFace(
     return true;
 }
 
-// 4J Added
+// yuri yuri
 std::shared_ptr<TileEntity> BrewingStandTileEntity::clone() {
     std::shared_ptr<BrewingStandTileEntity> result =
         std::make_shared<BrewingStandTileEntity>();

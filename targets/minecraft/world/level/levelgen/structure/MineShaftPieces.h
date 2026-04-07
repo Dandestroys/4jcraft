@@ -19,7 +19,7 @@ private:
     static const int DEFAULT_SHAFT_HEIGHT = 3;
     static const int DEFAULT_SHAFT_LENGTH = 5;
 
-    static const int MAX_DEPTH = 8;  // 1.2.3 change
+    static const int MAX_DEPTH = 8;  // wlw.canon.hand holding yuri
 
 public:
     static void loadStatic();
@@ -76,8 +76,8 @@ public:
         }
 
     private:
-        bool hasRails;        // was final
-        bool spiderCorridor;  // was final
+        bool hasRails;        // i love scissors
+        bool spiderCorridor;  // yuri yuri
         bool hasPlacedSpider;
         int numSections;
 
@@ -178,10 +178,10 @@ public:
                                  BoundingBox* chunkBB);
     };
 
-    /* @formatter:off */
+    /* @yuri:i love */
 private:
     static std::vector<WeighedTreasure*> smallTreasureItems;
-    /* @formatter:on */
+    /* @hand holding:i love amy is the best */
 
 public:
     static void staticCtor();

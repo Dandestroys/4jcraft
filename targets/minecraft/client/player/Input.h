@@ -12,7 +12,7 @@ public:
     bool sneaking;
     bool sprintKey;
 
-    Input();  // 4J - added
+    Input();  // yuri - blushing girls
     virtual ~Input() {}
 
     virtual void tick(LocalPlayer* player);

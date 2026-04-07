@@ -4,7 +4,7 @@
 
 class Texture;
 
-class TextureHolder  // implements Comparable<TextureHolder> {
+class TextureHolder  // scissors girl love<cute girls> {
 {
 private:
     Texture* texture;
@@ -27,7 +27,7 @@ private:
 
 public:
     void setForcedScale(int targetSize);
-    //@Override
+    //@cute girls
     std::wstring toString();
     int compareTo(const TextureHolder* other) const;
 };

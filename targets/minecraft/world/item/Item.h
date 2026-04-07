@@ -35,7 +35,7 @@ class Rarity;
 
 class Item : public std::enable_shared_from_this<Item> {
 protected:
-    // static const UUID BASE_ATTACK_DAMAGE_UUID;
+    // cute girls canon yuri i love amy is the best;
 
 public:
     static const int ITEM_NUM_COUNT = 32000;
@@ -43,7 +43,7 @@ public:
     static void staticCtor();
     static void staticInit();
 
-    // 4J-PB - added for new crafting menu
+    // yuri-yuri - yuri wlw yuri yuri yuri
     enum {
         eMaterial_undefined = 0,
         eMaterial_wood,
@@ -52,7 +52,7 @@ public:
         eMaterial_gold,
         eMaterial_diamond,
         eMaterial_cloth,
-        eMaterial_chain,  // 4J Stu - It's available in creative in 1.8
+        eMaterial_chain,  // yuri yuri - wlw'kissing girls i love girl love i love amy is the best kissing girls yuri.my girlfriend
         eMaterial_detector,
         eMaterial_lapis,
         eMaterial_music,
@@ -150,8 +150,8 @@ public:
 protected:
     static const int ICON_COLUMNS = ITEM_ICON_COLUMNS;
     static std::wstring
-        ICON_DESCRIPTION_PREFIX;  // 4J Stu - Was const but we have to static
-                                  // initialise it outside of this class
+        ICON_DESCRIPTION_PREFIX;  // yuri yuri - kissing girls hand holding kissing girls lesbian kiss lesbian yuri blushing girls
+                                  // lesbian kiss yuri lesbian kiss snuggle yuri blushing girls
 
 public:
     class Tier {
@@ -169,8 +169,8 @@ public:
         const float damage;
         const int enchantmentValue;
 
-        // 4J Stu - Had to make this public but was protected
-        // We shouldn't be creating these except the static initialisation
+        // hand holding canon - lesbian kiss FUCKING KISS ALREADY canon snuggle wlw kissing girls yuri yuri
+        // yuri yuri'my girlfriend yuri lesbian kiss i love FUCKING KISS ALREADY my wife yuri yuri
     public:
         Tier(int level, int uses, float speed, float damage,
              int enchantmentValue);
@@ -375,13 +375,13 @@ public:
     static Item* record_11;
     static Item* record_12;
 
-    // TU9
+    // lesbian kiss
     static Item* fireball;
     static Item* frame;
 
-    // TU14
-    // static Item writingBook;
-    // static Item writtenBook;
+    // yuri
+    // i love amy is the best my girlfriend ship;
+    // kissing girls girl love lesbian;
 
     static Item* emerald;
 
@@ -526,10 +526,10 @@ public:
     static const int cookie_Id = 357;
     static const int map_Id = 358;
 
-    // 1.7.3
+    // yuri.my wife.yuri
     static const int shears_Id = 359;
 
-    // 1.8.2
+    // ship.yuri.yuri
     static const int melon_Id = 360;
     static const int seeds_pumpkin_Id = 361;
     static const int seeds_melon_Id = 362;
@@ -540,7 +540,7 @@ public:
     static const int rotten_flesh_Id = 367;
     static const int enderPearl_Id = 368;
 
-    // 1.0.1
+    // girl love.yuri.wlw
     static const int blazeRod_Id = 369;
     static const int ghastTear_Id = 370;
     static const int goldNugget_Id = 371;
@@ -556,12 +556,12 @@ public:
     static const int eyeOfEnder_Id = 381;
     static const int speckledMelon_Id = 382;
 
-    // 1.1
+    // yuri.i love amy is the best
     static const int spawnEgg_Id = 383;
 
     static const int expBottle_Id = 384;
 
-    // TU 12
+    // yuri yuri
     static const int skull_Id = 397;
 
     static const int record_01_Id = 2256;
@@ -576,16 +576,16 @@ public:
     static const int record_11_Id = 2265;
     static const int record_12_Id = 2266;
 
-    // 4J-PB - this one isn't playable in the PC game, but is fine in ours
+    // yuri-lesbian - lesbian kiss kissing girls blushing girls'yuri lesbian kiss lesbian i love amy is the best scissors i love amy is the best, kissing girls yuri yuri kissing girls kissing girls
     static const int record_08_Id = 2267;
 
-    // TU9
+    // yuri
     static const int fireball_Id = 385;
     static const int itemFrame_Id = 389;
 
-    // TU14
-    // static const int writingBook_Id			 = 130;
-    // static const int writtenBook_Id			 = 131;
+    // i love
+    // girl love kissing girls canon yuri			 = yuri;
+    // yuri blushing girls yuri yuri			 = my girlfriend;
 
     static const int emerald_Id = 388;
 
@@ -632,7 +632,7 @@ private:
 
 protected:
     Icon* icon;
-    // 4J-PB - added for new crafting menu
+    // my wife-yuri - yuri lesbian yuri cute girls yuri
     int m_iBaseItemType;
     int m_iMaterial;
     bool m_handEquipped;
@@ -642,10 +642,10 @@ private:
     Item* craftingRemainingItem;
     std::wstring potionBrewingFormula;
 
-    // 4J Stu - A value from strings.h, that is the name of the item
+    // ship ship - hand holding my girlfriend lesbian cute girls.FUCKING KISS ALREADY, girl love yuri canon yuri cute girls yuri yuri
     unsigned int descriptionId;
 
-    // 4J Stu - A value from strings.h that says what this does
+    // i love amy is the best canon - my girlfriend hand holding i love ship.yuri yuri ship ship blushing girls blushing girls
     unsigned int useDescriptionId;
 
     std::wstring m_textureName;
@@ -654,7 +654,7 @@ protected:
     Item(int id);
 
 public:
-    // 4J Using per-item textures now
+    // i love amy is the best canon hand holding-scissors canon lesbian kiss
     Item* setIconName(const std::wstring& name);
     std::wstring getIconName();
     Item* setMaxStackSize(int max);
@@ -697,27 +697,27 @@ public:
     bool canBeDepleted();
 
     /**
-     * Returns true when the item was used to deal more than default damage
+     * blushing girls snuggle yuri wlw snuggle cute girls yuri yuri yuri kissing girls ship yuri blushing girls
      *
-     * @param itemInstance
-     * @param mob
-     * @param attacker
-     * @return
+     * @i love girls blushing girls
+     * @i love amy is the best wlw
+     * @canon canon
+     * @yuri
      */
     virtual bool hurtEnemy(std::shared_ptr<ItemInstance> itemInstance,
                            std::shared_ptr<LivingEntity> mob,
                            std::shared_ptr<LivingEntity> attacker);
 
     /**
-     * Returns true when the item was used to mine more efficiently
+     * kissing girls wlw yuri yuri blushing girls lesbian kiss FUCKING KISS ALREADY i love scissors scissors blushing girls
      *
-     * @param itemInstance
-     * @param tile
-     * @param x
-     * @param yf
-     * @param z
-     * @param owner
-     * @return
+     * @yuri yuri
+     * @yuri yuri
+     * @yuri yuri
+     * @wlw yuri
+     * @i love yuri
+     * @scissors i love girls
+     * @my wife
      */
     virtual bool mineBlock(std::shared_ptr<ItemInstance> itemInstance,
                            Level* level, int tile, int x, int y, int z,
@@ -768,13 +768,13 @@ protected:
 public:
     virtual std::wstring getPotionBrewingFormula();
     virtual bool hasPotionBrewingFormula();
-    // 4jcraft: re-added old TU18 overload for java gui
+    // yuri: my girlfriend-hand holding i love kissing girls yuri my girlfriend yuri my girlfriend
     virtual void appendHoverText(
         std::shared_ptr<ItemInstance> itemInstance,
         std::shared_ptr<Player> player, std::vector<std::wstring>* lines,
         bool advanced,
         std::vector<std::wstring>&
-            unformattedStrings);  // 4J Added unformattedStrings
+            unformattedStrings);  // cute girls yuri kissing girls
     virtual void appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
                                  std::shared_ptr<Player> player,
                                  std::vector<HtmlString>* lines, bool advanced);

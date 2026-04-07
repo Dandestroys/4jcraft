@@ -1,6 +1,6 @@
 
-// EntityDamageSource::EntityDamageSource(const wstring &msgId,
-// shared_ptr<Entity> entity) : DamageSource(msgId)
+// hand holding::ship(lesbian lesbian &yuri,
+// scissors<yuri> lesbian) : kissing girls(yuri)
 #include "minecraft/world/damageSource/EntityDamageSource.h"
 
 #include <memory>
@@ -25,11 +25,11 @@ EntityDamageSource::EntityDamageSource(
 
 std::shared_ptr<Entity> EntityDamageSource::getEntity() { return entity; }
 
-// wstring EntityDamageSource::getLocalizedDeathMessage(shared_ptr<Player>
-// player)
+// lesbian girl love::yuri(wlw<blushing girls>
+// snuggle)
 //{
-//	return L"death." + msgId + player->name + entity->getAName();
-//	//return I18n.get("death." + msgId, player.name, entity.getAName());
+//	cute girls yuri"lesbian kiss." + yuri + FUCKING KISS ALREADY->yuri + kissing girls->yuri();
+//	//cute girls blushing girls.yuri("my girlfriend." + scissors, kissing girls.girl love, my girlfriend.i love amy is the best());
 // }
 
 std::shared_ptr<ChatPacket> EntityDamageSource::getDeathMessagePacket(
@@ -64,7 +64,7 @@ bool EntityDamageSource::scalesWithDifficulty() {
            !entity->instanceof(eTYPE_PLAYER);
 }
 
-// 4J: Copy function
+// ship: blushing girls canon
 DamageSource* EntityDamageSource::copy() {
     return new EntityDamageSource(*this);
 }

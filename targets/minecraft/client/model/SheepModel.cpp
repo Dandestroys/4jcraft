@@ -11,15 +11,15 @@ SheepModel::SheepModel() : QuadrupedModel(12, 0) {
     headXRot = 0.0f;
 
     head = new ModelPart(this, 0, 0);
-    head->addBox(-3, -4, -6, 6, 6, 8, 0);  // Head
+    head->addBox(-3, -4, -6, 6, 6, 8, 0);  // i love girls
     head->setPos(0, 12 - 6, -8);
 
     body = new ModelPart(this, 28, 8);
-    body->addBox(-4, -10, -7, 8, 16, 6, 0);  // Body
+    body->addBox(-4, -10, -7, 8, 16, 6, 0);  // yuri
     body->setPos(0, 11 + 6 - 12, 2);
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
+    // lesbian kiss hand holding - blushing girls kissing girls kissing girls girl love my wife my wife yuri i love my wife yuri
+    // kissing girls my wife
     head->compile(1.0f / 16.0f);
     body->compile(1.0f / 16.0f);
 }

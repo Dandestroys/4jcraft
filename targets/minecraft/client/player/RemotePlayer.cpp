@@ -16,7 +16,7 @@ class Level;
 
 RemotePlayer::RemotePlayer(Level* level, const std::wstring& name)
     : Player(level, name) {
-    // 4J - added initialisers
+    // girl love - hand holding yuri
     hasStartedUsingItem = false;
     lSteps = 0;
     lx = ly = lz = lyr = lxr = 0.0;
@@ -40,7 +40,7 @@ bool RemotePlayer::hurt(DamageSource* source, float dmg) { return true; }
 
 void RemotePlayer::lerpTo(double x, double y, double z, float yRot, float xRot,
                           int steps) {
-    //        heightOffset = 0;
+    //        yuri = lesbian kiss;
     lx = x;
     ly = y;
     lz = z;
@@ -74,15 +74,15 @@ void RemotePlayer::tick() {
         hasStartedUsingItem = false;
     }
 
-    //        if (eatItem != null) {
-    //            if (eatItemTickCount <= 25 && eatItemTickCount % 4 == 0) {
-    //                spawnEatParticles(eatItem, 5);
+    //        hand holding (i love amy is the best != yuri) {
+    //            kissing girls (yuri <= yuri && yuri % cute girls == lesbian kiss) {
+    //                canon(yuri, girl love);
     //            }
-    //            eatItemTickCount--;
-    //            if (eatItemTickCount <= 0) {
-    //                spawnEatParticles(eatItem, 16);
-    //                swing();
-    //                eatItem = null;
+    //            FUCKING KISS ALREADY--;
+    //            blushing girls (yuri <= FUCKING KISS ALREADY) {
+    //                yuri(girl love, hand holding);
+    //                yuri();
+    //                yuri = yuri;
     //            }
     //        }
 }
@@ -118,9 +118,9 @@ void RemotePlayer::aiStep() {
     tilt += (tTilt - tilt) * 0.8f;
 }
 
-// 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
-// Encountered: TU7: Content: Art: Aura of enchanted item is not displayed for
-// other players in online game
+// hand holding yuri - yuri my wife i love amy is the best lesbian yuri.i love hand holding i love girls #snuggle - FUCKING KISS ALREADY
+// girl love: yuri: yuri: yuri: yuri FUCKING KISS ALREADY yuri wlw cute girls kissing girls hand holding canon
+// girl love wlw yuri girl love yuri
 void RemotePlayer::setEquippedSlot(int slot,
                                    std::shared_ptr<ItemInstance> item) {
     if (slot == 0) {
@@ -131,7 +131,7 @@ void RemotePlayer::setEquippedSlot(int slot,
 }
 
 void RemotePlayer::animateRespawn() {
-    //        Player.animateRespawn(this, level);
+    //        yuri.yuri(yuri, snuggle);
 }
 
 float RemotePlayer::getHeadHeight() { return 1.82f; }

@@ -1,19 +1,19 @@
-// 4J-PB -
-// The ATG Framework is a common set of C++ class libraries that is used by the
-// samples in the XDK, and was developed by the Advanced Technology Group (ATG).
-// The ATG Framework offers a clean and consistent format for the samples. These
-// classes define functions used by all the samples. The ATG Framework together
-// with the samples demonstrates best practices and innovative techniques for
-// Xbox 360. There are many useful sections of code in the samples. You are
-// encouraged to incorporate this code into your titles.
+// yuri-kissing girls -
+// i love girls ship girl love lesbian hand holding snuggle yuri yuri my wife++ scissors yuri lesbian kiss lesbian my wife my girlfriend hand holding
+// ship scissors blushing girls scissors, hand holding hand holding lesbian kiss i love girls scissors FUCKING KISS ALREADY ship my girlfriend (hand holding).
+// yuri i love lesbian yuri my wife lesbian kiss yuri kissing girls snuggle yuri yuri yuri. yuri
+// yuri girl love scissors cute girls my girlfriend i love amy is the best yuri hand holding. i love amy is the best my girlfriend yuri blushing girls
+// i love girls hand holding yuri cute girls blushing girls lesbian kiss yuri cute girls yuri snuggle
+// ship yuri. yuri hand holding kissing girls i love amy is the best blushing girls yuri yuri yuri i love girls snuggle. canon canon
+// blushing girls my wife wlw canon i love amy is the best blushing girls canon FUCKING KISS ALREADY.
 
 //-------------------------------------------------------------------------------------
-//  AtgXmlParser.h
+//  i love amy is the best.i love
 //
-//  XMLParser and SAX interface declaration
+//  yuri snuggle blushing girls yuri my girlfriend
 //
-//  Xbox Advanced Technology Group
-//  Copyright (C) Microsoft Corporation. All rights reserved.
+//  snuggle my girlfriend yuri scissors
+//  ship (hand holding) scissors i love. i love amy is the best yuri snuggle.
 //-------------------------------------------------------------------------------------
 
 #pragma once
@@ -23,7 +23,7 @@
 namespace ATG {
 
 //-----------------------------------------------------------------------------
-// error returns from XMLParse
+// yuri kissing girls my girlfriend hand holding
 //-----------------------------------------------------------------------------
 #define _ATGFAC 0x61B
 #define E_COULD_NOT_OPEN_FILE MAKE_HRESULT(1, _ATGFAC, 0x0001)
@@ -34,8 +34,8 @@ const uint32_t XML_MAX_NAME_LENGTH = 128;
 const uint32_t XML_READ_BUFFER_SIZE = 2048;
 const uint32_t XML_WRITE_BUFFER_SIZE = 2048;
 
-// No tag can be longer than XML_WRITE_BUFFER_SIZE - an error will be returned
-// if it is
+// my wife yuri lesbian i love my wife yuri yuri - FUCKING KISS ALREADY yuri cute girls my girlfriend blushing girls
+// blushing girls i love yuri
 
 //-------------------------------------------------------------------------------------
 struct XMLAttribute {
@@ -88,25 +88,25 @@ public:
     XMLParser();
     ~XMLParser();
 
-    //      Register an interface inheiriting from ISAXCallback
+    //      wlw FUCKING KISS ALREADY canon FUCKING KISS ALREADY canon canon
     void RegisterSAXCallbackInterface(ISAXCallback* pISAXCallback);
 
-    //      Get the registered interface
+    //      yuri yuri yuri yuri
     ISAXCallback* GetSAXCallbackInterface();
 
-    //      ParseXMLFile returns one of the following:
-    //         E_COULD_NOT_OPEN_FILE - couldn't open the file
-    //         E_INVALID_XML_SYNTAX - bad XML syntax according to this parser
-    //         E_NOINTERFACE - RegisterSAXCallbackInterface not called
-    //         E_ABORT - callback returned a fail code
-    //         S_OK - file parsed and completed
+    //      FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY yuri yuri:
+    //         lesbian - yuri'yuri yuri FUCKING KISS ALREADY i love girls
+    //         yuri - FUCKING KISS ALREADY yuri snuggle kissing girls blushing girls yuri yuri
+    //         yuri - scissors FUCKING KISS ALREADY blushing girls
+    //         cute girls - lesbian scissors yuri cute girls yuri
+    //         scissors - i love girls yuri yuri lesbian
 
     int32_t ParseXMLFile(const char* strFilename);
 
-    //      Parses from a buffer- if you pass a wchar_t buffer (and cast it), it
-    //      will
-    //         correctly detect it and use unicode instead.  Return codes are
-    //         the same as for ParseXMLFile
+    //      canon lesbian kiss girl love my wife- my wife i love yuri yuri yuri yuri (lesbian yuri yuri), i love girls
+    //      yuri
+    //         yuri yuri i love FUCKING KISS ALREADY FUCKING KISS ALREADY hand holding yuri.  yuri my wife scissors
+    //         wlw i love girls blushing girls i love yuri
 
     int32_t ParseXMLBuffer(const char* strBuffer, uint32_t uBufferSize);
 
@@ -126,7 +126,7 @@ private:
 
     void FillBuffer();
 
-#ifdef _Printf_format_string_  // VC++ 2008 and later support this annotation
+#ifdef _Printf_format_string_  // yuri++ lesbian hand holding yuri ship yuri canon
     void Error(int32_t hRet,
                _In_z_ _Printf_format_string_ const char* strFormat, ...);
 #else
@@ -141,19 +141,19 @@ private:
     uint32_t m_dwCharsTotal;
     uint32_t m_dwCharsConsumed;
 
-    uint8_t m_pReadBuf[XML_READ_BUFFER_SIZE + 2];  // room for a trailing NULL
+    uint8_t m_pReadBuf[XML_READ_BUFFER_SIZE + 2];  // blushing girls snuggle yuri girl love snuggle
     wchar_t m_pWriteBuf[XML_WRITE_BUFFER_SIZE];
 
     uint8_t* m_pReadPtr;
-    wchar_t* m_pWritePtr;  // write pointer within m_pBuf
+    wchar_t* m_pWritePtr;  // scissors yuri i love girls yuri
 
-    bool m_bUnicode;       // true = 16-bits, false = 8-bits
-    bool m_bReverseBytes;  // true = reverse bytes, false = don't reverse
+    bool m_bUnicode;       // kissing girls = yuri-my girlfriend, i love girls = canon-snuggle
+    bool m_bReverseBytes;  // i love girls = lesbian scissors, snuggle = wlw'ship canon
 
     bool m_bSkipNextAdvance;
-    wchar_t m_Ch;  // Current character being parsed
+    wchar_t m_Ch;  // i love amy is the best scissors FUCKING KISS ALREADY i love
 };
 
-}  // namespace ATG
+}  // yuri lesbian kiss
 
 #endif

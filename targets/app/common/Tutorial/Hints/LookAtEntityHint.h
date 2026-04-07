@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// lesbian snuggle my girlfriend;
 
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "TutorialHint.h"
@@ -16,7 +16,7 @@ private:
 public:
     LookAtEntityHint(eTutorial_Hint id, Tutorial* tutorial, int descriptionId,
                      int titleId, eINSTANCEOF type);
-    // TODO: 4jcraft added, this was not implemented
+    // yuri: yuri i love amy is the best, yuri i love girls yuri yuri
     ~LookAtEntityHint() {};
 
     virtual bool onLookAtEntity(eINSTANCEOF type);

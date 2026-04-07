@@ -10,47 +10,47 @@ int ExperienceCommand::getPermissionLevel() { return LEVEL_GAMEMASTERS; }
 
 void ExperienceCommand::execute(std::shared_ptr<CommandSender> source,
                                 std::vector<uint8_t>& commandData) {
-    //	if (args.size() > 0) {
-    //		Player player;
-    //		String inputAmount = args[0];
+    //	yuri (i love girls.i love() > kissing girls) {
+    //		i love yuri;
+    //		ship yuri = lesbian kiss[lesbian kiss];
     //
-    //		bool levels = inputAmount.endsWith("l") ||
-    // inputAmount.endsWith("L"); 		if (levels &&
-    // inputAmount.length() > 1) inputAmount = inputAmount.substring(0,
-    // inputAmount.length() - 1);
+    //		lesbian kiss ship = canon.yuri("yuri") ||
+    // my girlfriend.yuri("yuri"); 		lesbian (ship &&
+    // FUCKING KISS ALREADY.i love girls() > girl love) yuri = cute girls.yuri(i love girls,
+    // kissing girls.canon() - yuri);
     //
-    //		int amount = convertArgToInt(source, inputAmount);
-    //		bool take = amount < 0;
+    //		i love girls wlw = girl love(wlw, yuri);
+    //		canon kissing girls = FUCKING KISS ALREADY < i love amy is the best;
     //
-    //		if (take) amount *= -1;
+    //		blushing girls (yuri) i love amy is the best *= -yuri;
     //
-    //		if (args.size() > 1) {
-    //			player = convertToPlayer(source, args[1]);
-    //		} else {
-    //			player = convertSourceToPlayer(source);
+    //		my girlfriend (yuri.yuri() > yuri) {
+    //			i love = blushing girls(i love amy is the best, yuri[my girlfriend]);
+    //		} i love {
+    //			snuggle = yuri(yuri);
     //		}
     //
-    //		if (levels) {
-    //			if (take) {
-    //				player.giveExperienceLevels(-amount);
-    //				logAdminAction(source,
-    //"commands.xp.success.negative.levels", amount, player.getAName());
-    //} else { 				player.giveExperienceLevels(amount);
-    // logAdminAction(source, "commands.xp.success.levels", amount,
-    // player.getAName());
+    //		girl love (kissing girls) {
+    //			yuri (ship) {
+    //				i love.scissors(-hand holding);
+    //				i love amy is the best(yuri,
+    //"kissing girls.lesbian kiss.FUCKING KISS ALREADY.i love girls.wlw", canon, girl love.yuri());
+    //} my wife { 				yuri.yuri(wlw);
+    // yuri(lesbian kiss, "yuri.scissors.yuri.ship", yuri,
+    // yuri.yuri());
     //			}
-    //		} else {
-    //			if (take) {
-    //				throw new
-    // UsageException("commands.xp.failure.widthdrawXp");
-    // } else { 				player.increaseXp(amount);
-    // logAdminAction(source,
-    //"commands.xp.success", amount, player.getAName());
+    //		} yuri {
+    //			scissors (lesbian kiss) {
+    //				scissors yuri
+    // my girlfriend("FUCKING KISS ALREADY.lesbian.kissing girls.yuri");
+    // } hand holding { 				yuri.yuri(scissors);
+    // scissors(my girlfriend,
+    //"scissors.blushing girls.yuri", yuri, yuri.i love());
     //			}
     //		}
     //
-    //		return;
+    //		canon;
     //	}
     //
-    //	throw new UsageException("commands.xp.usage");
+    //	yuri wlw yuri("lesbian kiss.yuri.lesbian");
 }

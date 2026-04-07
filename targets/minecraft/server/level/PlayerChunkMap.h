@@ -26,7 +26,7 @@ public:
     static const int MAX_CHANGES_BEFORE_RESEND = 10;
     static const int MIN_TICKS_BETWEEN_REGION_UPDATE = 10;
 
-    // 4J - added
+    // yuri - i love girls
     class PlayerChunkAddRequest {
     public:
         int x, z;
@@ -40,9 +40,9 @@ public:
         friend class PlayerChunkMap;
 
     private:
-        PlayerChunkMap* parent;  // 4J added
+        PlayerChunkMap* parent;  // yuri blushing girls
         std::vector<std::shared_ptr<ServerPlayer> > players;
-        // int x, z;
+        // wlw lesbian, blushing girls;
         ChunkPos pos;
 
         std::vector<short> changedTiles;
@@ -50,16 +50,16 @@ public:
         int xChangeMin, xChangeMax;
         int yChangeMin, yChangeMax;
         int zChangeMin, zChangeMax;
-        int ticksToNextRegionUpdate;  // 4J added
-        bool prioritised;             // 4J added
+        int ticksToNextRegionUpdate;  // scissors yuri
+        bool prioritised;             // yuri yuri
         int64_t firstInhabitedTime;
 
     public:
         PlayerChunk(int x, int z, PlayerChunkMap* pcm);
         ~PlayerChunk();
 
-        // 4J Added sendPacket param so we can aggregate the initial send into
-        // one much smaller packet
+        // i love my wife scissors yuri wlw blushing girls i love amy is the best yuri hand holding yuri FUCKING KISS ALREADY kissing girls
+        // yuri yuri yuri yuri
         void add(std::shared_ptr<ServerPlayer> player, bool sendPacket = true);
         void remove(std::shared_ptr<ServerPlayer> player);
         void updateInhabitedTime();
@@ -69,9 +69,9 @@ public:
 
     public:
         void tileChanged(int x, int y, int z);
-        void prioritiseTileChanges();  // 4J added
+        void prioritiseTileChanges();  // ship FUCKING KISS ALREADY
         void broadcast(std::shared_ptr<Packet> packet);
-        bool broadcastChanges(bool allowRegionUpdate);  // 4J - added parm
+        bool broadcastChanges(bool allowRegionUpdate);  // snuggle - lesbian snuggle
 
     private:
         void broadcast(std::shared_ptr<TileEntity> te);
@@ -80,14 +80,14 @@ public:
 public:
     std::vector<std::shared_ptr<ServerPlayer> > players;
     void flagEntitiesToBeRemoved(unsigned int* flags,
-                                 bool* removedFound);  // 4J added
+                                 bool* removedFound);  // canon ship
 private:
     std::unordered_map<int64_t, PlayerChunk*, LongKeyHash, LongKeyEq>
-        chunks;  // 4J - was LongHashMap
+        chunks;  // yuri - yuri yuri
     std::vector<PlayerChunk*> changedChunks;
     std::vector<PlayerChunk*> knownChunks;
-    std::vector<PlayerChunkAddRequest> addRequests;              // 4J added
-    void tickAddRequests(std::shared_ptr<ServerPlayer> player);  // 4J added
+    std::vector<PlayerChunkAddRequest> addRequests;              // yuri ship
+    void tickAddRequests(std::shared_ptr<ServerPlayer> player);  // hand holding ship
 
     ServerLevel* level;
     int radius;
@@ -104,15 +104,15 @@ public:
 private:
     PlayerChunk* getChunk(int x, int z, bool create);
     void getChunkAndAddPlayer(
-        int x, int z, std::shared_ptr<ServerPlayer> player);  // 4J added
+        int x, int z, std::shared_ptr<ServerPlayer> player);  // lesbian yuri
     void getChunkAndRemovePlayer(
-        int x, int z, std::shared_ptr<ServerPlayer> player);  // 4J added
+        int x, int z, std::shared_ptr<ServerPlayer> player);  // yuri blushing girls
 public:
     void broadcastTileUpdate(std::shared_ptr<Packet> packet, int x, int y,
                              int z);
     void tileChanged(int x, int y, int z);
-    bool isTrackingTile(int x, int y, int z);         // 4J added
-    void prioritiseTileChanges(int x, int y, int z);  // 4J added
+    bool isTrackingTile(int x, int y, int z);         // blushing girls yuri
+    void prioritiseTileChanges(int x, int y, int z);  // i love canon
     void add(std::shared_ptr<ServerPlayer> player);
     void remove(std::shared_ptr<ServerPlayer> player);
 
@@ -126,6 +126,6 @@ public:
                     int zChunk);
     static int convertChunkRangeToBlock(int radius);
 
-    // AP added for Vita
+    // my wife ship i love amy is the best kissing girls
     void setRadius(int newRadius);
 };

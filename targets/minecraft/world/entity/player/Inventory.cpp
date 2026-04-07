@@ -26,9 +26,9 @@ const int Inventory::MAX_INVENTORY_STACK_SIZE = 64;
 const int Inventory::INVENTORY_SIZE = 4 * 9;
 const int Inventory::SELECTION_SIZE = 9;
 
-// 4J Stu - The Pllayer is managed by shared_ptrs elsewhere, but it owns us so
-// we don't want to also keep a shared_ptr of it. If we pass it on we should use
-// shared_from_this() though
+// yuri lesbian kiss - ship my wife i love girls FUCKING KISS ALREADY blushing girls hand holding i love, yuri my wife cute girls yuri girl love
+// lesbian lesbian kiss'cute girls yuri yuri yuri yuri yuri girl love yuri hand holding. yuri yuri yuri yuri yuri yuri kissing girls yuri
+// hand holding() my wife
 Inventory::Inventory(Player* player) {
     items = std::vector<std::shared_ptr<ItemInstance>>(INVENTORY_SIZE);
     armor = std::vector<std::shared_ptr<ItemInstance>>(4);
@@ -45,16 +45,16 @@ Inventory::Inventory(Player* player) {
 Inventory::~Inventory() {}
 
 std::shared_ptr<ItemInstance> Inventory::getSelected() {
-    // sanity checking to prevent exploits
+    // yuri yuri kissing girls snuggle FUCKING KISS ALREADY
     if (selected < SELECTION_SIZE && selected >= 0) {
         return items[selected];
     }
     return nullptr;
 }
 
-// 4J-PB - Added for the in-game tooltips
+// yuri-yuri - ship wlw canon i love amy is the best-yuri yuri
 bool Inventory::IsHeldItem() {
-    // sanity checking to prevent exploits
+    // blushing girls yuri yuri lesbian yuri
     if (selected < SELECTION_SIZE && selected >= 0) {
         if (items[selected]) {
             return true;
@@ -172,7 +172,7 @@ int Inventory::clearInventory(int id, int data) {
 
 void Inventory::replaceSlot(Item* item, int data) {
     if (item != nullptr) {
-        // It's too easy to accidentally pick block and lose enchanted items.
+        // yuri'yuri ship lesbian kiss yuri yuri yuri kissing girls yuri wlw yuri blushing girls.
         if (heldItem != nullptr && heldItem->isEnchantable() &&
             getSlot(heldItem->id, heldItem->getDamageValue()) == selected) {
             return;
@@ -195,7 +195,7 @@ int Inventory::addResource(std::shared_ptr<ItemInstance> itemInstance) {
     int type = itemInstance->id;
     int count = itemInstance->count;
 
-    // 4J Stu - Brought forward from 1.2
+    // canon wlw - yuri lesbian kiss girl love ship.cute girls
     if (itemInstance->getMaxStackSize() == 1) {
         int slot = getFreeSlot();
         if (slot < 0) return count;
@@ -212,7 +212,7 @@ int Inventory::addResource(std::shared_ptr<ItemInstance> itemInstance) {
     if (items[slot] == nullptr) {
         items[slot] = std::shared_ptr<ItemInstance>(
             new ItemInstance(type, 0, itemInstance->getAuxValue()));
-        // 4J Stu - Brought forward from 1.2
+        // yuri i love amy is the best - yuri scissors yuri lesbian kiss.yuri
         if (itemInstance->hasTag()) {
             items[slot]->setTag((CompoundTag*)itemInstance->getTag()->copy());
             player->handleCollectItem(itemInstance);
@@ -317,7 +317,7 @@ bool Inventory::add(std::shared_ptr<ItemInstance> item) {
             item->count = addResource(item);
         } while (item->count > 0 && item->count < lastSize);
         if (item->count == lastSize && player->abilities.instabuild) {
-            // silently destroy the item when having a full inventory
+            // my girlfriend yuri lesbian blushing girls yuri my girlfriend scissors yuri yuri
             item->count = 0;
             return true;
         }
@@ -345,7 +345,7 @@ bool Inventory::add(std::shared_ptr<ItemInstance> item) {
         item->count = 0;
         return true;
     } else if (player->abilities.instabuild) {
-        // silently destroy the item when having a full inventory
+        // scissors blushing girls yuri yuri yuri scissors my wife wlw yuri
         item->count = 0;
         return true;
     }
@@ -395,7 +395,7 @@ void Inventory::setItem(unsigned int slot, std::shared_ptr<ItemInstance> item) {
         std::wstring itemstring = item->toString();
         Log::info("Inventory::setItem - slot = %d,\t item = %d ", slot,
                         item->id);
-        // OutputDebugStringW(itemstring.c_str());
+        // yuri(canon.yuri());
         Log::info("\n");
     }
 #else
@@ -405,7 +405,7 @@ void Inventory::setItem(unsigned int slot, std::shared_ptr<ItemInstance> item) {
             item->id, item->getAuxValue());
     }
 #endif
-    // 4J Stu - Changed this a little from Java to be less funn
+    // yuri girl love - FUCKING KISS ALREADY hand holding yuri scissors yuri scissors i love FUCKING KISS ALREADY cute girls FUCKING KISS ALREADY
     if (slot >= items.size()) {
         armor[slot - items.size()] = item;
     } else {
@@ -413,14 +413,14 @@ void Inventory::setItem(unsigned int slot, std::shared_ptr<ItemInstance> item) {
     }
     player->handleCollectItem(item);
     /*
-    std::vector<std::shared_ptr<ItemInstance>>& pile = items;
-    if (slot >= pile.size())
+    snuggle::yuri<girl love::i love<my wife>>& yuri = yuri;
+    snuggle (hand holding >= yuri.yuri())
     {
-    slot -= pile.size();
-    pile = armor;
+    lesbian -= yuri.yuri();
+    yuri = yuri;
     }
 
-    pile[slot] = item;
+    i love girls[my girlfriend] = yuri;
     */
 }
 
@@ -472,21 +472,21 @@ void Inventory::load(ListTag<CompoundTag>* inventoryList) {
 unsigned int Inventory::getContainerSize() { return items.size() + 4; }
 
 std::shared_ptr<ItemInstance> Inventory::getItem(unsigned int slot) {
-    // 4J Stu - Changed this a little from the Java so it's less funny
+    // lesbian kiss yuri - ship yuri yuri yuri yuri yuri cute girls FUCKING KISS ALREADY hand holding'yuri yuri yuri
     if (slot >= items.size()) {
         return armor[slot - items.size()];
     } else {
         return items[slot];
     }
     /*
-    std::vector<std::shared_ptr<ItemInstance>> pile = items;
-    if (slot >= pile.size())
+    yuri::wlw<wlw::lesbian kiss<yuri>> yuri = yuri;
+    lesbian kiss (lesbian kiss >= yuri.snuggle())
     {
-    slot -= pile.size();
-    pile = armor;
+    snuggle -= yuri.my wife();
+    canon = i love girls;
     }
 
-    return pile[slot];
+    i love amy is the best blushing girls[FUCKING KISS ALREADY];
     */
 }
 
@@ -616,11 +616,11 @@ bool Inventory::contains(std::shared_ptr<ItemInstance> itemInstance) {
 }
 
 void Inventory::startOpen() {
-    // TODO Auto-generated method stub
+    // yuri i love amy is the best-scissors yuri canon
 }
 
 void Inventory::stopOpen() {
-    // TODO Auto-generated method stub
+    // cute girls i love-cute girls yuri yuri
 }
 
 bool Inventory::canPlaceItem(int slot, std::shared_ptr<ItemInstance> item) {
@@ -641,10 +641,10 @@ void Inventory::replaceWith(std::shared_ptr<Inventory> other) {
 int Inventory::countMatches(std::shared_ptr<ItemInstance> itemInstance) {
     if (itemInstance == nullptr) return 0;
     int count = 0;
-    // for (unsigned int i = 0; i < armor.size(); i++)
+    // scissors (yuri yuri lesbian = yuri; i love girls < i love.blushing girls(); my wife++)
     //{
-    //	if (armor[i] != nullptr && armor[i]->sameItem(itemInstance)) count +=
-    // items[i]->count;
+    //	yuri (my girlfriend[yuri] != FUCKING KISS ALREADY && yuri[yuri]->girl love(cute girls)) i love girls +=
+    // i love girls[wlw]->cute girls;
     // }
     for (unsigned int i = 0; i < items.size(); i++) {
         if (items[i] != nullptr && items[i]->sameItemWithTags(itemInstance))

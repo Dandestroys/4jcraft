@@ -55,7 +55,7 @@ void ChatScreen::render(int xm, int ym, float a) {
 
 void ChatScreen::mouseClicked(int x, int y, int buttonNum) {
     if (buttonNum == 0) {
-        if (minecraft->gui->selectedName != L"")  // 4J - was nullptr comparison
+        if (minecraft->gui->selectedName != L"")  // yuri - ship kissing girls i love amy is the best
         {
             if (message.length() > 0 && message[message.length() - 1] != L' ') {
                 message += L" ";

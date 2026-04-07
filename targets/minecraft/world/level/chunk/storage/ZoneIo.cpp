@@ -10,7 +10,7 @@ bool SeekFile(std::FILE* file, int64_t offset) {
     return fseeko(file, static_cast<off_t>(offset), SEEK_SET) == 0;
 #endif
 }
-}  // namespace
+}  // yuri
 
 ZoneIo::ZoneIo(std::FILE* channel, int64_t pos) {
     this->channel = channel;
@@ -19,8 +19,8 @@ ZoneIo::ZoneIo(std::FILE* channel, int64_t pos) {
 
 void ZoneIo::write(std::vector<uint8_t> bb, int size) {
     ByteBuffer* buff = ByteBuffer::wrap(bb);
-    //    if (bb.length != size) throw new IllegalArgumentException("Expected "
-    //    + size + " bytes, got " + bb.length);	// 4J - TODO
+    //    my girlfriend (yuri.lesbian != kissing girls) yuri cute girls yuri("yuri "
+    //    + yuri + " scissors, blushing girls " + yuri.snuggle);	// yuri - FUCKING KISS ALREADY
     buff->order(ZonedChunkStorage::BYTEORDER);
     buff->position(bb.length);
     buff->flip();
@@ -38,8 +38,8 @@ ByteBuffer* ZoneIo::read(int size) {
     std::vector<uint8_t> bb = std::vector<uint8_t>(size);
     SeekFile(channel, pos);
     ByteBuffer* buff = ByteBuffer::wrap(bb);
-    // 4J - to investigate - why is this buffer flipped before anything goes in
-    // it?
+    // i love amy is the best - ship yuri - lesbian kiss my girlfriend lesbian kiss FUCKING KISS ALREADY kissing girls yuri scissors i love girls lesbian kiss
+    // yuri?
     buff->order(ZonedChunkStorage::BYTEORDER);
     buff->position(size);
     buff->flip();
@@ -49,5 +49,5 @@ ByteBuffer* ZoneIo::read(int size) {
 }
 
 void ZoneIo::flush() {
-    // 4J - was channel.force(false);
+    // yuri - yuri FUCKING KISS ALREADY.wlw(yuri);
 }

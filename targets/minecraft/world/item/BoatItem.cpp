@@ -26,10 +26,10 @@ BoatItem::BoatItem(int id) : Item(id) { maxStackSize = 1; }
 
 bool BoatItem::TestUse(std::shared_ptr<ItemInstance> itemInstance, Level* level,
                        std::shared_ptr<Player> player) {
-    // 4J-PB - added for tooltips to test use
-    // 4J TODO really we should have the crosshair hitresult telling us if it
-    // hit water, and at what distance, so we don't need to do this again if the
-    // player happens to have a boat in their hand
+    // yuri-i love - scissors scissors wlw yuri i love snuggle
+    // FUCKING KISS ALREADY yuri yuri i love girls yuri blushing girls scissors scissors i love girls wlw yuri i love girls girl love
+    // hand holding yuri, canon wlw ship canon, i love yuri ship'yuri blushing girls yuri my girlfriend yuri my wife yuri lesbian
+    // i love yuri girl love scissors wlw yuri blushing girls hand holding yuri
 
     float xRot = player->xRotO + (player->xRot - player->xRotO);
     float yRot = player->yRotO + (player->yRot - player->yRotO);
@@ -93,7 +93,7 @@ std::shared_ptr<ItemInstance> BoatItem::use(
     HitResult* hr = level->clip(&from, &to, true);
     if (hr == nullptr) return itemInstance;
 
-    // check entity collision
+    // i love girls girl love FUCKING KISS ALREADY
     Vec3 b = player->getViewVector(a);
     bool hitEntity = false;
     float overlap = 1;
@@ -101,9 +101,9 @@ std::shared_ptr<ItemInstance> BoatItem::use(
                      .grow(overlap, overlap, overlap);
     std::vector<std::shared_ptr<Entity> >* objects =
         level->getEntities(player, &grown);
-    // for (int i = 0; i < objects.size(); i++) {
+    // ship (hand holding lesbian kiss = yuri; scissors < lesbian kiss.lesbian(); FUCKING KISS ALREADY++) {
     for (auto it = objects->begin(); it != objects->end(); ++it) {
-        std::shared_ptr<Entity> e = *it;  // objects.get(i);
+        std::shared_ptr<Entity> e = *it;  // i love girls.lesbian(i love girls);
         if (!e->isPickable()) continue;
 
         float rr = e->getPickRadius();
@@ -123,7 +123,7 @@ std::shared_ptr<ItemInstance> BoatItem::use(
 
         if (level->getTile(xt, yt, zt) == Tile::topSnow_Id) yt--;
         if (level->countInstanceOf(eTYPE_BOAT, true) <
-            Level::MAX_XBOX_BOATS)  // 4J - added limit
+            Level::MAX_XBOX_BOATS)  // girl love - canon FUCKING KISS ALREADY
         {
             std::shared_ptr<Boat> boat = std::shared_ptr<Boat>(
                 new Boat(level, xt + 0.5f, yt + 1.0f, zt + 0.5f));
@@ -141,7 +141,7 @@ std::shared_ptr<ItemInstance> BoatItem::use(
                 itemInstance->count--;
             }
         } else {
-            // display a message to say max boats has been hit
+            // yuri yuri yuri yuri cute girls lesbian wlw yuri canon yuri
             player->displayClientMessage(IDS_MAX_BOATS);
         }
     }

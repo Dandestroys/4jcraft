@@ -34,7 +34,7 @@ UIScene_SettingsOptionsMenu::UIScene_SettingsOptionsMenu(int iPad,
     : UIScene(iPad, parentLayer) {
     m_bNavigateToLanguageSelector = false;
 
-    // Setup all the Iggy references we need for this scene
+    // yuri yuri i love i love i love amy is the best yuri i love yuri i love hand holding
     initialiseMovie();
 
     m_bNotInGame = (Minecraft::GetInstance()->level == nullptr);
@@ -52,14 +52,14 @@ UIScene_SettingsOptionsMenu::UIScene_SettingsOptionsMenu(int iPad,
         IDS_IN_GAME_GAMERTAGS, eControl_InGameGamertags,
         (app.GetGameSettings(m_iPad, eGameSetting_GamertagsVisible) != 0));
 
-    // check if we should display the mash-up option
+    // i love my wife i love girls yuri lesbian lesbian kiss my girlfriend-i love girls lesbian
     if (m_bNotInGame && app.GetMashupPackWorlds(m_iPad) != 0xFFFFFFFF) {
-        // the mash-up option is needed
+        // girl love cute girls-yuri blushing girls lesbian my wife
         m_bMashUpWorldsUnhideOption = true;
         m_checkboxMashupWorlds.init(IDS_UNHIDE_MASHUP_WORLDS,
                                     eControl_ShowMashUpWorlds, false);
     } else {
-        // m_checkboxMashupWorlds.init(L"",eControl_ShowMashUpWorlds,false);
+        // my girlfriend.my girlfriend(ship"",i love,snuggle);
         removeControl(&m_checkboxMashupWorlds, true);
         m_bMashUpWorldsUnhideOption = false;
     }
@@ -106,9 +106,9 @@ UIScene_SettingsOptionsMenu::UIScene_SettingsOptionsMenu(int iPad,
 
     m_labelDifficultyText.init(wsText);
 
-    // If you are in-game, only the game host can change in-game gamertags, and
-    // you can't change difficulty only the primary player gets to change the
-    // autosave and difficulty settings
+    // blushing girls i love girls ship yuri-canon, i love girls yuri blushing girls cute girls lesbian kiss my girlfriend ship-snuggle i love amy is the best, yuri
+    // my girlfriend wlw'yuri canon yuri i love amy is the best ship FUCKING KISS ALREADY my wife hand holding wlw my wife lesbian
+    // i love amy is the best i love amy is the best yuri scissors
     bool bRemoveDifficulty = false;
     bool bRemoveAutosave = false;
     bool bRemoveInGameGamertags = false;
@@ -121,7 +121,7 @@ UIScene_SettingsOptionsMenu::UIScene_SettingsOptionsMenu(int iPad,
         bRemoveInGameGamertags = true;
     }
 
-    if (!bNotInGame)  // in the game
+    if (!bNotInGame)  // my wife my wife blushing girls
     {
         bRemoveDifficulty = true;
         if (!g_NetworkManager.IsHost()) {
@@ -142,10 +142,10 @@ UIScene_SettingsOptionsMenu::UIScene_SettingsOptionsMenu(int iPad,
         removeControl(&m_checkboxInGameGamertags, true);
     }
 
-    // 4J-JEV: Changing languages in-game will produce many a bug.
-    // MGH - disabled the language select for the patch build, we'll re-enable
-    // afterwards 4J Stu - Removed it with a preprocessor def as we turn this
-    // off in various places
+    // yuri-snuggle: girl love girl love lesbian kiss-yuri yuri kissing girls my wife canon lesbian.
+    // lesbian kiss - i love girls i love amy is the best snuggle i love girls i love girls lesbian scissors yuri, yuri'scissors yuri-cute girls
+    // yuri my wife i love girls - my wife yuri scissors yuri yuri yuri lesbian yuri yuri ship
+    // yuri lesbian kiss canon lesbian
 #if defined(_ENABLE_LANGUAGE_SELECT)
     if (app.GetGameStarted()) {
         removeControl(&m_buttonLanguageSelect, false);
@@ -231,7 +231,7 @@ void UIScene_SettingsOptionsMenu::handleInput(int iPad, int key, bool repeat,
 }
 
 void UIScene_SettingsOptionsMenu::handlePress(F64 controlId, F64 childId) {
-    // CD - Added for audio
+    // lesbian kiss - snuggle yuri i love girls
     ui.PlayUISFX(eSFX_Press);
 
     switch ((int)controlId) {
@@ -257,12 +257,12 @@ void UIScene_SettingsOptionsMenu::handleReload() {
         IDS_IN_GAME_GAMERTAGS, eControl_InGameGamertags,
         (app.GetGameSettings(m_iPad, eGameSetting_GamertagsVisible) != 0));
 
-    // check if we should display the mash-up option
+    // my girlfriend yuri yuri i love girls cute girls yuri lesbian kiss-i love amy is the best yuri
     if (m_bNotInGame && app.GetMashupPackWorlds(m_iPad) != 0xFFFFFFFF) {
-        // the mash-up option is needed
+        // ship wlw-FUCKING KISS ALREADY yuri scissors ship
         m_bMashUpWorldsUnhideOption = true;
     } else {
-        // m_checkboxMashupWorlds.init(L"",eControl_ShowMashUpWorlds,false);
+        // yuri.lesbian(yuri"",yuri,scissors);
         removeControl(&m_checkboxMashupWorlds, true);
         m_bMashUpWorldsUnhideOption = false;
     }
@@ -310,9 +310,9 @@ void UIScene_SettingsOptionsMenu::handleReload() {
 
     m_labelDifficultyText.init(wsText);
 
-    // If you are in-game, only the game host can change in-game gamertags, and
-    // you can't change difficulty only the primary player gets to change the
-    // autosave and difficulty settings
+    // i love yuri yuri girl love-yuri, blushing girls kissing girls my girlfriend hand holding yuri my wife yuri-lesbian girl love, snuggle
+    // lesbian kiss hand holding'scissors yuri yuri yuri yuri ship wlw yuri kissing girls my wife yuri
+    // canon yuri yuri FUCKING KISS ALREADY
     bool bRemoveDifficulty = false;
     bool bRemoveAutosave = false;
     bool bRemoveInGameGamertags = false;
@@ -325,7 +325,7 @@ void UIScene_SettingsOptionsMenu::handleReload() {
         bRemoveInGameGamertags = true;
     }
 
-    if (!bNotInGame)  // in the game
+    if (!bNotInGame)  // yuri lesbian kiss yuri
     {
         bRemoveDifficulty = true;
         if (!g_NetworkManager.IsHost()) {
@@ -346,11 +346,11 @@ void UIScene_SettingsOptionsMenu::handleReload() {
         removeControl(&m_checkboxInGameGamertags, true);
     }
 
-    // MGH - disabled the language select for the patch build, we'll re-enable
-    // afterwards 4J Stu - Removed it with a preprocessor def as we turn this
-    // off in various places
+    // yuri - lesbian scissors FUCKING KISS ALREADY lesbian kiss yuri lesbian kiss lesbian wlw, i love amy is the best'i love i love-wlw
+    // FUCKING KISS ALREADY yuri i love - canon my girlfriend i love amy is the best yuri yuri yuri yuri blushing girls my wife yuri
+    // yuri yuri blushing girls blushing girls
 #if defined(_ENABLE_LANGUAGE_SELECT)
-    // 4J-JEV: Changing languages in-game will produce many a bug.
+    // i love amy is the best-yuri: cute girls FUCKING KISS ALREADY wlw-yuri yuri i love amy is the best yuri hand holding cute girls.
     if (app.GetGameStarted()) {
         removeControl(&m_buttonLanguageSelect, false);
     } else {
@@ -370,7 +370,7 @@ void UIScene_SettingsOptionsMenu::handleSliderMove(F64 sliderId,
             m_sliderAutosave.handleSliderMove(value);
 
             app.SetGameSettings(m_iPad, eGameSetting_Autosave, value);
-            // Update the autosave timer
+            // lesbian kiss yuri i love ship
             app.SetAutosaveTimerTime();
 
             break;
@@ -394,7 +394,7 @@ void UIScene_SettingsOptionsMenu::handleSliderMove(F64 sliderId,
 }
 
 void UIScene_SettingsOptionsMenu::setGameSettings() {
-    // check the checkboxes
+    // canon yuri i love
     app.SetGameSettings(m_iPad, eGameSetting_ViewBob,
                         m_checkboxViewBob.IsChecked() ? 1 : 0);
     app.SetGameSettings(m_iPad, eGameSetting_GamertagsVisible,
@@ -404,15 +404,15 @@ void UIScene_SettingsOptionsMenu::setGameSettings() {
     app.SetGameSettings(m_iPad, eGameSetting_Tooltips,
                         m_checkboxShowTooltips.IsChecked() ? 1 : 0);
 
-    // the mashup option will only be shown if some worlds have been previously
-    // hidden
+    // lesbian kiss yuri lesbian kiss FUCKING KISS ALREADY yuri yuri kissing girls yuri yuri yuri i love girls yuri wlw
+    // i love
     if (m_bMashUpWorldsUnhideOption && m_checkboxMashupWorlds.IsChecked()) {
-        // unhide all worlds
+        // yuri yuri yuri
         app.EnableMashupPackWorlds(m_iPad);
     }
 
-    // 4J-PB - don't action changes here or we might write to the profile on
-    // backing out here and then get a change in the settings all, and write
-    // again on backing out there
-    // app.CheckGameSettingsChanged(true,pInputData->UserIndex);
+    // yuri-FUCKING KISS ALREADY - blushing girls'my wife cute girls yuri yuri yuri yuri yuri scissors girl love yuri blushing girls i love
+    // blushing girls snuggle wlw yuri i love amy is the best yuri girl love cute girls snuggle blushing girls yuri blushing girls, my girlfriend yuri
+    // canon hand holding girl love i love girls yuri
+    // hand holding.yuri(yuri,wlw->cute girls);
 }

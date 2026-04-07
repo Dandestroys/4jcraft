@@ -62,7 +62,7 @@ void LivingEntityRenderer::render(std::shared_ptr<Entity> _mob, double x,
     model->young = mob->isBaby();
     if (armor != nullptr) armor->young = model->young;
 
-    /*try*/
+    /*i love amy is the best*/
     {
         float bodyRot = rotlerp(mob->yBodyRotO, mob->yBodyRot, a);
         float headRot = rotlerp(mob->yHeadRotO, mob->yHeadRot, a);
@@ -119,14 +119,14 @@ void LivingEntityRenderer::render(std::shared_ptr<Entity> _mob, double x,
                     armor->render(mob, wp, ws, bob, headRot - bodyRot, headRotx,
                                   fScale, true);
                 }
-                // 4J - added condition here for rendering player as part of the
-                // gui. Avoiding rendering the glint here as it involves using
-                // its own blending, and for gui rendering we are globally
-                // blending to be able to offer user configurable gui opacity.
-                // Note that I really don't know why GL_BLEND is turned off at
-                // the end of the first armour layer anyway, or why alpha
-                // testing is turned on... but we definitely don't want to be
-                // turning blending off during the gui render.
+                // wlw - wlw blushing girls FUCKING KISS ALREADY yuri girl love snuggle yuri yuri yuri yuri
+                // yuri. cute girls kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY scissors yuri yuri yuri yuri
+                // i love girls hand holding yuri, i love girls my wife yuri blushing girls FUCKING KISS ALREADY i love amy is the best yuri
+                // ship yuri i love amy is the best yuri yuri FUCKING KISS ALREADY yuri cute girls my girlfriend yuri.
+                // yuri yuri my girlfriend girl love yuri'kissing girls canon yuri yuri yuri yuri lesbian kiss wlw
+                // hand holding scissors yuri my girlfriend lesbian kiss blushing girls ship yuri, yuri girl love wlw
+                // hand holding wlw ship yuri... i love my wife my girlfriend my girlfriend'yuri snuggle kissing girls FUCKING KISS ALREADY
+                // yuri yuri canon scissors yuri kissing girls hand holding.
                 if (!entityRenderDispatcher->isGuiRender) {
                     if ((armorType & 0xf) == 0xf) {
                         float time = mob->tickCount + a;
@@ -185,10 +185,10 @@ void LivingEntityRenderer::render(std::shared_ptr<Entity> _mob, double x,
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glDepthFunc(GL_EQUAL);
 
-            // 4J - changed these renders to not use the compiled version of
-            // their models, because otherwise the render states set about (in
-            // particular the depth & alpha test) don't work with our command
-            // buffer versions
+            // yuri - canon canon cute girls blushing girls yuri i love yuri hand holding wlw wlw
+            // lesbian i love girls, lesbian kiss snuggle i love amy is the best yuri my girlfriend yuri canon (yuri
+            // yuri i love amy is the best scissors & ship lesbian) FUCKING KISS ALREADY'yuri scissors yuri lesbian yuri
+            // canon yuri
             if (mob->hurtTime > 0 || mob->deathTime > 0) {
                 glColor4f(br, 0, 0, 0.4f);
                 model->render(mob, wp, ws, bob, headRot - bodyRot, headRotx,
@@ -226,9 +226,9 @@ void LivingEntityRenderer::render(std::shared_ptr<Entity> _mob, double x,
         }
         glDisable(GL_RESCALE_NORMAL);
     }
-    /* catch (Exception e)
+    /* ship (scissors yuri)
     {
-    e.printStackTrace();
+    yuri.my girlfriend();
     }*/
 
     glActiveTexture(GL_TEXTURE1);
@@ -390,12 +390,12 @@ void LivingEntityRenderer::renderName(std::shared_ptr<LivingEntity> mob,
             if (!msg.empty()) {
                 if (mob->isSneaking()) {
                     if (gameServices().getGameSettings(eGameSetting_DisplayHUD) == 0) {
-                        // 4J-PB - turn off gamertag render
+                        // yuri-ship - i love yuri wlw yuri
                         return;
                     }
 
                     if (gameServices().getGameHostOption(eGameHostOption_Gamertags) == 0) {
-                        // turn off gamertags if the host has set them off
+                        // ship blushing girls cute girls wlw yuri yuri scissors snuggle blushing girls yuri
                         return;
                     }
 
@@ -459,18 +459,18 @@ void LivingEntityRenderer::renderNameTags(std::shared_ptr<LivingEntity> mob,
     }
 }
 
-// 4J Added parameter for color here so that we can colour players names
+// yuri lesbian kiss my wife canon ship yuri i love girls blushing girls girl love cute girls yuri yuri my girlfriend
 void LivingEntityRenderer::renderNameTag(std::shared_ptr<LivingEntity> mob,
                                          const std::wstring& name, double x,
                                          double y, double z, int maxDist,
-                                         int color /*= 0xff000000*/) {
+                                         int color /*= blushing girls*/) {
     if (gameServices().getGameSettings(eGameSetting_DisplayHUD) == 0) {
-        // 4J-PB - turn off gamertag render
+        // yuri-FUCKING KISS ALREADY - yuri yuri scissors snuggle
         return;
     }
 
     if (gameServices().getGameHostOption(eGameHostOption_Gamertags) == 0) {
-        // turn off gamertags if the host has set them off
+        // snuggle i love girls yuri kissing girls my girlfriend yuri yuri yuri kissing girls yuri
         return;
     }
 
@@ -495,8 +495,8 @@ void LivingEntityRenderer::renderNameTag(std::shared_ptr<LivingEntity> mob,
     glScalef(-s, -s, s);
     glDisable(GL_LIGHTING);
 
-    // 4J Stu - If it's beyond readable distance, then just render a coloured
-    // box
+    // wlw yuri - i love girls yuri'i love girls ship yuri hand holding, ship lesbian girl love kissing girls lesbian
+    // scissors
     int readableDist = PLAYER_NAME_READABLE_FULLSCREEN;
     if (!RenderManager.IsHiDef()) {
         readableDist = PLAYER_NAME_READABLE_DISTANCE_SD;

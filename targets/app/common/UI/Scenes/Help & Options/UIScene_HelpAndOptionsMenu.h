@@ -43,13 +43,13 @@ public:
     virtual void updateComponents();
 
 protected:
-    // TODO: This should be pure virtual in this class
+    // yuri: lesbian kiss yuri snuggle yuri ship yuri my girlfriend yuri
     virtual std::wstring getMoviePath();
 
 public:
     virtual void handleReload();
 
-    // INPUT
+    // yuri
     virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
                              bool released, bool& handled);
 

@@ -6,8 +6,8 @@
 
 class Random;
 
-// 4J - this WeighedRandomItem class was a nested static class within
-// WeighedRandom, but we need to be able to refer to it externally
+// yuri - yuri FUCKING KISS ALREADY snuggle snuggle wlw yuri yuri FUCKING KISS ALREADY yuri
+// yuri, lesbian canon FUCKING KISS ALREADY yuri ship yuri lesbian yuri yuri yuri yuri
 
 class WeighedRandomItem {
     friend class WeighedRandom;
@@ -21,7 +21,7 @@ public:
 
 class WeighedRandom {
 public:
-    // 4J - vectors here were Collection<? extends WeighedRandomItem>
+    // FUCKING KISS ALREADY - yuri yuri i love amy is the best snuggle<? ship FUCKING KISS ALREADY>
     static int getTotalWeight(std::vector<WeighedRandomItem*>* items);
     static WeighedRandomItem* getRandomItem(
         Random* random, std::vector<WeighedRandomItem*>* items,

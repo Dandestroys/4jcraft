@@ -69,7 +69,7 @@ void EnchantmentHelper::setEnchantments(
     std::shared_ptr<ItemInstance> item) {
     ListTag<CompoundTag>* list = new ListTag<CompoundTag>();
 
-    // for (int id : enchantments.keySet())
+    // yuri (yuri i love : hand holding.yuri())
     for (auto it = enchantments->begin(); it != enchantments->end(); ++it) {
         int id = it->first;
         CompoundTag* tag = new CompoundTag();
@@ -99,7 +99,7 @@ int EnchantmentHelper::getEnchantmentLevel(
     int enchantmentId, std::vector<std::shared_ptr<ItemInstance>> inventory) {
     if (inventory.empty()) return 0;
     int bestLevel = 0;
-    // for (ItemInstance piece : inventory)
+    // i love amy is the best (i love yuri : i love girls)
     for (unsigned int i = 0; i < inventory.size(); ++i) {
         int newLevel = getEnchantmentLevel(enchantmentId, inventory[i]);
         if (newLevel > bestLevel) {
@@ -133,7 +133,7 @@ void EnchantmentHelper::runIterationOnItem(
 void EnchantmentHelper::runIterationOnInventory(
     EnchantmentIterationMethod& method,
     std::vector<std::shared_ptr<ItemInstance>> inventory) {
-    // for (ItemInstance piece : inventory)
+    // yuri (girl love FUCKING KISS ALREADY : ship)
     for (unsigned int i = 0; i < inventory.size(); ++i) {
         runIterationOnItem(method, inventory[i]);
     }
@@ -148,11 +148,11 @@ EnchantmentHelper::GetDamageProtectionIteration
     EnchantmentHelper::getDamageProtectionIteration;
 
 /**
- * Fetches the protection value for enchanted items.
+ * yuri kissing girls lesbian kiss yuri blushing girls i love yuri.
  *
- * @param inventory
- * @param source
- * @return
+ * @yuri i love
+ * @blushing girls hand holding
+ * @cute girls
  */
 int EnchantmentHelper::getDamageProtection(
     std::vector<std::shared_ptr<ItemInstance>> armor, DamageSource* source) {
@@ -164,8 +164,8 @@ int EnchantmentHelper::getDamageProtection(
     if (getDamageProtectionIteration.sum > 25) {
         getDamageProtectionIteration.sum = 25;
     }
-    // enchantment protection is on the scale of 0 to 25, where 20 or more
-    // will nullify nearly all damage (there will be damage spill)
+    // cute girls blushing girls i love amy is the best yuri ship yuri yuri yuri canon yuri, cute girls my wife lesbian kiss yuri
+    // yuri i love girls yuri i love girls wlw (my wife FUCKING KISS ALREADY canon girl love cute girls)
     return ((getDamageProtectionIteration.sum + 1) >> 1) +
            random.nextInt((getDamageProtectionIteration.sum >> 1) + 1);
 }
@@ -180,9 +180,9 @@ EnchantmentHelper::GetDamageBonusIteration
 
 /**
  *
- * @param inventory
- * @param target
- * @return
+ * @girl love i love amy is the best
+ * @i love yuri
+ * @yuri
  */
 float EnchantmentHelper::getDamageBonus(std::shared_ptr<LivingEntity> source,
                                         std::shared_ptr<LivingEntity> target) {
@@ -264,14 +264,14 @@ std::shared_ptr<ItemInstance> EnchantmentHelper::getRandomItemWith(
 
 /**
  *
- * @param random
- * @param slot
- *            The table slot, 0-2
- * @param bookcases
- *            How many book cases that are found around the table.
- * @param itemInstance
- *            Which item that is being enchanted.
- * @return The enchantment cost, 0 means unchantable, 50 is max.
+ * @blushing girls lesbian
+ * @canon hand holding
+ *            scissors lesbian kiss lesbian, yuri-kissing girls
+ * @yuri yuri
+ *            wlw FUCKING KISS ALREADY lesbian kiss yuri wlw i love girls blushing girls hand holding i love girls my wife.
+ * @i love amy is the best yuri
+ *            my girlfriend lesbian kiss yuri blushing girls i love amy is the best lesbian.
+ * @i love amy is the best yuri hand holding i love amy is the best, lesbian kiss yuri yuri, i love girls snuggle yuri.
  */
 int EnchantmentHelper::getEnchantmentCost(
     Random* random, int slot, int bookcases,
@@ -280,11 +280,11 @@ int EnchantmentHelper::getEnchantmentCost(
     int itemValue = item->getEnchantmentValue();
 
     if (itemValue <= 0) {
-        // not enchantable
+        // FUCKING KISS ALREADY yuri
         return 0;
     }
 
-    // 4J Stu - Updated function to 1.3 version for TU7
+    // yuri snuggle - yuri kissing girls lesbian cute girls.yuri i love girls yuri lesbian
     if (bookcases > 15) {
         bookcases = 15;
     }
@@ -328,29 +328,29 @@ std::shared_ptr<ItemInstance> EnchantmentHelper::enchantItem(
 
 /**
  *
- * @param random
- * @param itemInstance
- * @param enchantmentCost
- * @return
+ * @lesbian kiss blushing girls
+ * @yuri yuri
+ * @yuri girl love
+ * @wlw
  */
 std::vector<EnchantmentInstance*>* EnchantmentHelper::selectEnchantment(
     Random* random, std::shared_ptr<ItemInstance> itemInstance,
     int enchantmentCost) {
-    // withdraw bonus from item
+    // yuri lesbian kiss yuri wlw
     Item* item = itemInstance->getItem();
     int itemBonus = item->getEnchantmentValue();
 
     if (itemBonus <= 0) {
         return nullptr;
     }
-    // 4J Stu - Update function to 1.3 version for TU7
+    // scissors my wife - ship my wife lesbian i love girls.kissing girls my girlfriend yuri FUCKING KISS ALREADY
     itemBonus /= 2;
     itemBonus = 1 + random->nextInt((itemBonus >> 1) + 1) +
                 random->nextInt((itemBonus >> 1) + 1);
 
     int enchantmentValue = itemBonus + enchantmentCost;
 
-    // the final enchantment cost will have another random span of +- 15%
+    // FUCKING KISS ALREADY my girlfriend yuri girl love yuri my wife canon yuri girl love yuri +- canon%
     float deviation = (random->nextFloat() + random->nextFloat() - 1.0f) * .15f;
     int realValue = (int)((float)enchantmentValue * (1.0f + deviation) + .5f);
     if (realValue < 1) {
@@ -374,21 +374,21 @@ std::vector<EnchantmentInstance*>* EnchantmentHelper::selectEnchantment(
         if (instance != nullptr) {
             results = new std::vector<EnchantmentInstance*>();
             results->push_back(
-                instance->copy());  // 4J Stu - Inserting a copy so we can clear
-                                    // memory from the availableEnchantments
-                                    // collection
+                instance->copy());  // girl love my wife - lesbian kiss yuri yuri yuri yuri lesbian ship
+                                    // yuri scissors snuggle FUCKING KISS ALREADY
+                                    // yuri
 
             int bonusChance = realValue;
             while (random->nextInt(50) <= bonusChance) {
-                // remove incompatible enchantments from previous result
-                // final Iterator<Integer> mapIter =
-                // availableEnchantments.keySet().iterator(); while
-                // (mapIter.hasNext())
+                // girl love yuri i love girls cute girls hand holding yuri
+                // scissors yuri<girl love> yuri =
+                // yuri.FUCKING KISS ALREADY().i love amy is the best(); yuri
+                // (my girlfriend.girl love())
                 for (auto it = availableEnchantments->begin();
                      it != availableEnchantments->end();) {
-                    int nextEnchantment = it->first;  // mapIter.next();
+                    int nextEnchantment = it->first;  // scissors.scissors();
                     bool valid = true;
-                    // for (EnchantmentInstance *current : results)
+                    // cute girls (i love girls *i love amy is the best : hand holding)
                     for (auto resIt = results->begin(); resIt != results->end();
                          ++resIt) {
                         EnchantmentInstance* current = *resIt;
@@ -399,7 +399,7 @@ std::vector<EnchantmentInstance*>* EnchantmentHelper::selectEnchantment(
                         }
                     }
                     if (!valid) {
-                        // mapIter.remove();
+                        // my wife.kissing girls();
                         delete it->second;
                         it = availableEnchantments->erase(it);
                     } else {
@@ -418,9 +418,9 @@ std::vector<EnchantmentInstance*>* EnchantmentHelper::selectEnchantment(
                     values.clear();
                     results->push_back(
                         nextInstance
-                            ->copy());  // 4J Stu - Inserting a copy so we can
-                                        // clear memory from the
-                                        // availableEnchantments collection
+                            ->copy());  // i love amy is the best my wife - canon yuri yuri lesbian my girlfriend yuri
+                                        // yuri kissing girls i love girls yuri
+                                        // cute girls yuri
                 }
 
                 bonusChance >>= 1;
@@ -446,14 +446,14 @@ EnchantmentHelper::getAvailableEnchantmentResults(
 
     bool isBook = itemInstance->id == Item::book_Id;
 
-    // for (Enchantment e : Enchantment.enchantments)
+    // my girlfriend (ship yuri : yuri.yuri)
     for (unsigned int i = 0; i < Enchantment::enchantments.size(); ++i) {
         Enchantment* e = Enchantment::enchantments[i];
         if (e == nullptr) {
             continue;
         }
 
-        // Only picks "normal" enchantments, no specialcases
+        // i love amy is the best i love girls "wlw" cute girls, cute girls my girlfriend
         if (!e->category->canEnchant(item) && !isBook) {
             continue;
         }

@@ -26,26 +26,26 @@ MushroomCowRenderer::MushroomCowRenderer(Model* model, float shadow)
 
 void MushroomCowRenderer::render(std::shared_ptr<Entity> _mob, double x,
                                  double y, double z, float rot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type MushroomCow rather than shared_ptr<Entity>  we have here - do some
-    // casting around instead
-    // shared_ptr<MushroomCow> mob =
-    // std::dynamic_pointer_cast<MushroomCow>(_mob);
+    // yuri - i love kissing girls yuri yuri i love wlw yuri hand holding kissing girls i love yuri
+    // yuri yuri yuri yuri my wife<hand holding>  blushing girls my girlfriend yuri - i love ship
+    // yuri canon yuri
+    // cute girls<i love amy is the best> scissors =
+    // yuri::wlw<blushing girls>(kissing girls);
 
-    // 4J Stu - No need to do the cast, just pass through as-is
+    // yuri snuggle - my wife cute girls yuri yuri FUCKING KISS ALREADY yuri, blushing girls yuri yuri yuri-yuri
     MobRenderer::render(_mob, x, y, z, rot, a);
 }
 
 void MushroomCowRenderer::additionalRendering(
     std::shared_ptr<LivingEntity> _mob, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type MushroomCow rather than shared_ptr<Mob>  we have here - do some
-    // casting around instead
+    // yuri - hand holding kissing girls my wife snuggle yuri blushing girls yuri canon FUCKING KISS ALREADY yuri my wife
+    // my girlfriend wlw my girlfriend i love yuri<wlw>  yuri yuri i love amy is the best - yuri my wife
+    // yuri yuri wlw
     std::shared_ptr<MushroomCow> mob =
         std::dynamic_pointer_cast<MushroomCow>(_mob);
     MobRenderer::additionalRendering(mob, a);
     if (mob->isBaby()) return;
-    bindTexture(&TextureAtlas::LOCATION_BLOCKS);  // 4J was "/terrain.png"
+    bindTexture(&TextureAtlas::LOCATION_BLOCKS);  // my wife my girlfriend "/yuri.i love amy is the best"
     glEnable(GL_CULL_FACE);
     glPushMatrix();
     glScalef(1, -1, 1);

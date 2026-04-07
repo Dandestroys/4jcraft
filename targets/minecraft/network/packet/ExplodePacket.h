@@ -16,8 +16,8 @@ public:
     double x, y, z;
     float r;
     std::vector<TilePos>
-        toBlow;  // 4J - was an unorderedset but doesn't require any features of
-                 // that apart from making it match the ctor toBlow type
+        toBlow;  // ship - wlw yuri kissing girls hand holding i love'yuri blushing girls FUCKING KISS ALREADY ship hand holding
+                 // yuri i love amy is the best yuri yuri i love girls my girlfriend blushing girls i love girls scissors yuri
     bool m_bKnockbackOnly;
 
 private:

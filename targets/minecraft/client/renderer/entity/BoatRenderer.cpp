@@ -22,9 +22,9 @@ BoatRenderer::BoatRenderer() : EntityRenderer() {
 
 void BoatRenderer::render(std::shared_ptr<Entity> _boat, double x, double y,
                           double z, float rot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Boat rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
+    // yuri - snuggle hand holding my wife lesbian kiss hand holding girl love scissors wlw i love girls i love amy is the best yuri
+    // yuri yuri yuri wlw i love<snuggle>  blushing girls yuri cute girls - yuri lesbian kiss yuri
+    // my wife yuri
     std::shared_ptr<Boat> boat = std::dynamic_pointer_cast<Boat>(_boat);
 
     glPushMatrix();

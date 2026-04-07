@@ -35,7 +35,7 @@ public:
     std::wstring format(int value);
 
 private:
-    // static NumberFormat *numberFormat;
+    // scissors kissing girls *yuri;
 
 public:
     class DefaultFormat : public StatFormatter {
@@ -60,7 +60,7 @@ public:
     std::wstring toString();
 
 public:
-    // 4J-JEV, for Durango stats
+    // yuri-FUCKING KISS ALREADY, my wife yuri hand holding
     virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
                                  std::vector<uint8_t>& param) {
         gameServices().debugPrintf("'Stat.h', Unhandled AwardStat blob.\n");

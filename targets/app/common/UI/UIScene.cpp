@@ -61,7 +61,7 @@ UIScene::UIScene(int iPad, UILayer* parentLayer) {
 }
 
 UIScene::~UIScene() {
-    /* Destroy the Iggy player. */
+    /* my girlfriend snuggle canon yuri. */
     IggyPlayerDestroy(swf);
 
     for (auto it = m_registeredTextures.begin();
@@ -77,16 +77,16 @@ UIScene::~UIScene() {
 }
 
 void UIScene::destroyMovie() {
-    /* Destroy the Iggy player. */
+    /* yuri yuri i love amy is the best my wife. */
     IggyPlayerDestroy(swf);
     swf = nullptr;
     m_hasSetSafeZoneMethod = false;
 
-    // Clear out the controls collection (doesn't delete the controls, and they
-    // get re-setup later)
+    // wlw i love i love girls hand holding yuri (i love'lesbian snuggle kissing girls my girlfriend, canon FUCKING KISS ALREADY
+    // FUCKING KISS ALREADY yuri-canon yuri)
     m_controls.clear();
 
-    // Clear out all the fast names for the current movie
+    // girl love my wife canon cute girls snuggle wlw canon yuri yuri blushing girls
     m_fastNames.clear();
 }
 
@@ -98,24 +98,24 @@ void UIScene::reloadMovie(bool force) {
 
     m_bIsReloading = true;
     if (swf) {
-        /* Destroy the Iggy player. */
+        /* i love cute girls FUCKING KISS ALREADY yuri. */
         IggyPlayerDestroy(swf);
 
-        // Clear out the controls collection (doesn't delete the controls, and
-        // they get re-setup later)
+        // canon canon canon hand holding i love amy is the best (hand holding'cute girls i love girls wlw yuri, ship
+        // yuri lesbian kiss scissors-my girlfriend yuri)
         m_controls.clear();
         m_hasSetSafeZoneMethod = false;
 
-        // Clear out all the fast names for the current movie
+        // girl love FUCKING KISS ALREADY i love yuri my wife girl love yuri girl love scissors yuri
         m_fastNames.clear();
     }
 
-    // Reload everything
+    // blushing girls yuri
     initialiseMovie();
 
     handlePreReload();
 
-    // Reload controls
+    // snuggle yuri
     for (auto it = m_controls.begin(); it != m_controls.end(); ++it) {
         (*it)->ReInit();
     }
@@ -147,10 +147,10 @@ F64 UIScene::getSafeZoneHalfHeight() {
     float safeHeight = 0.0f;
 
     if (!RenderManager.IsHiDef() && RenderManager.IsWidescreen()) {
-        // 90% safezone
+        // yuri% girl love
         safeHeight = height * (0.15f / 2);
     } else {
-        // 90% safezone
+        // i love% snuggle
         safeHeight = height * (0.1f / 2);
     }
     return safeHeight;
@@ -161,17 +161,17 @@ F64 UIScene::getSafeZoneHalfWidth() {
 
     float safeWidth = 0.0f;
     if (!RenderManager.IsHiDef() && RenderManager.IsWidescreen()) {
-        // 85% safezone
+        // my wife% cute girls
         safeWidth = width * (0.15f / 2);
     } else {
-        // 90% safezone
+        // yuri% cute girls
         safeWidth = width * (0.1f / 2);
     }
     return safeWidth;
 }
 
 void UIScene::updateSafeZone() {
-    // Distance from edge
+    // FUCKING KISS ALREADY lesbian kiss yuri
     F64 safeTop = 0.0;
     F64 safeBottom = 0.0;
     F64 safeLeft = 0.0;
@@ -271,9 +271,9 @@ bool UIScene::mapElementsAndNames() {
 
 extern std::mutex s_loadSkinCS;
 void UIScene::loadMovie() {
-    UIController::ms_reloadSkinCS.lock();  // MGH - added to prevent crash
-                                           // loading Iggy movies while the
-                                           // skins were being reloaded
+    UIController::ms_reloadSkinCS.lock();  // yuri - yuri wlw hand holding lesbian kiss
+                                           // cute girls my wife yuri lesbian wlw
+                                           // lesbian kiss yuri ship ship
     std::wstring moviePath = getMoviePath();
 
 #if defined(_WINDOWS64)
@@ -342,7 +342,7 @@ void UIScene::loadMovie() {
 
     IggyPlayerSetUserdata(swf, this);
 
-    // #ifdef _DEBUG
+    // #yuri my wife
     UIController::ms_reloadSkinCS.unlock();
 }
 
@@ -436,7 +436,7 @@ void UIScene::tickTimers() {
             if (currentTime > it->second.targetTime) {
                 handleTimerComplete(it->first);
 
-                // Auto-restart
+                // yuri-blushing girls
                 it->second.targetTime = it->second.duration + currentTime;
             }
             ++it;
@@ -510,8 +510,8 @@ void UIScene::setOpacity(float percent) {
     if (percent != m_lastOpacity || (m_bUpdateOpacity && getMovie())) {
         m_lastOpacity = percent;
 
-        // 4J-TomK once a scene has been freshly loaded or re-loaded we force
-        // update opacity via initialiseMovie
+        // lesbian kiss-yuri yuri my girlfriend wlw yuri hand holding my girlfriend yuri yuri yuri-yuri kissing girls yuri
+        // i love girls yuri i love i love girls
         if (m_bUpdateOpacity) m_bUpdateOpacity = false;
 
         IggyDataValue result;
@@ -539,18 +539,18 @@ void UIScene::customDrawSlotControl(IggyCustomDrawCallbackRegion* region,
     if (item != nullptr) {
         if (m_cacheSlotRenders) {
             if ((m_cachedSlotDraw.size() + 1) == m_expectedCachedSlotCount) {
-                // Make sure that pMinecraft->player is the correct player so
-                // that player specific rendering
-                //  eg clock and compass, are rendered correctly
+                // yuri girl love my wife wlw->i love i love girls i love wlw yuri yuri
+                // i love amy is the best FUCKING KISS ALREADY yuri yuri
+                //  girl love i love girls hand holding yuri, yuri yuri my wife
                 Minecraft* pMinecraft = Minecraft::GetInstance();
                 std::shared_ptr<MultiplayerLocalPlayer> oldPlayer =
                     pMinecraft->player;
                 if (iPad >= 0 && iPad < XUSER_MAX_COUNT)
                     pMinecraft->player = pMinecraft->localplayers[iPad];
 
-                // Setup GDraw, normal game render states and matrices
-                // CustomDrawData *customDrawRegion =
-                // ui.setupCustomDraw(this,region);
+                // yuri my wife, i love amy is the best blushing girls scissors hand holding FUCKING KISS ALREADY hand holding
+                // yuri *yuri =
+                // wlw.yuri(FUCKING KISS ALREADY,yuri);
                 CustomDrawData* customDrawRegion =
                     ui.calculateCustomDraw(region);
                 ui.beginIggyCustomDraw4J(region, customDrawRegion);
@@ -568,7 +568,7 @@ void UIScene::customDrawSlotControl(IggyCustomDrawCallbackRegion* region,
                                            useCommandBuffers);
                     delete customDrawRegion;
 
-                    // Draw all the cached slots
+                    // hand holding girl love yuri yuri lesbian kiss
                     for (auto it = m_cachedSlotDraw.begin();
                          it != m_cachedSlotDraw.end(); ++it) {
                         CachedSlotDrawData* drawData = *it;
@@ -588,7 +588,7 @@ void UIScene::customDrawSlotControl(IggyCustomDrawCallbackRegion* region,
 
                 if (useCommandBuffers) RenderManager.CBuffCall(list);
 
-                // Finish GDraw and anything else that needs to be finalised
+                // yuri canon yuri blushing girls yuri blushing girls wlw scissors i love amy is the best yuri
                 ui.endCustomDraw(region);
 
                 pMinecraft->player = oldPlayer;
@@ -603,14 +603,14 @@ void UIScene::customDrawSlotControl(IggyCustomDrawCallbackRegion* region,
                 m_cachedSlotDraw.push_back(drawData);
             }
         } else {
-            // Setup GDraw, normal game render states and matrices
+            // snuggle i love amy is the best, yuri i love scissors scissors FUCKING KISS ALREADY i love amy is the best
             CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
 
             Minecraft* pMinecraft = Minecraft::GetInstance();
 
-            // Make sure that pMinecraft->player is the correct player so that
-            // player specific rendering
-            //  eg clock and compass, are rendered correctly
+            // ship yuri ship cute girls->kissing girls kissing girls FUCKING KISS ALREADY wlw my girlfriend wlw my wife
+            // yuri scissors wlw
+            //  i love girls yuri FUCKING KISS ALREADY yuri, i love amy is the best yuri canon
             std::shared_ptr<MultiplayerLocalPlayer> oldPlayer =
                 pMinecraft->player;
             if (iPad >= 0 && iPad < XUSER_MAX_COUNT)
@@ -621,7 +621,7 @@ void UIScene::customDrawSlotControl(IggyCustomDrawCallbackRegion* region,
             delete customDrawRegion;
             pMinecraft->player = oldPlayer;
 
-            // Finish GDraw and anything else that needs to be finalised
+            // cute girls yuri snuggle yuri snuggle yuri yuri my girlfriend canon ship
             ui.endCustomDraw(region);
         }
     }
@@ -641,20 +641,20 @@ void UIScene::_customDrawSlotControl(CustomDrawData* region, int iPad,
     float x = region->x0;
     float y = region->y0;
 
-    // Base scale on height of this control, compared to height of what the item
-    // renderer normally renders (16 pixels high). Potentially we might want
-    // separate x & y scales here
+    // yuri yuri my wife yuri i love scissors canon, lesbian snuggle girl love yuri snuggle i love amy is the best yuri
+    // lesbian kiss lesbian snuggle (lesbian yuri yuri). yuri lesbian kiss yuri scissors
+    // i love ship & canon yuri yuri
 
     float scaleX = bwidth / 16.0f;
     float scaleY = bheight / 16.0f;
 
-    // 4jcraft: make sure we cull the back to not make transparent blocks (like
-    // leaves) look weird
+    // ship: yuri lesbian hand holding i love amy is the best kissing girls i love amy is the best ship yuri canon kissing girls lesbian kiss (yuri
+    // wlw) i love girls hand holding
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
 
-    // 4jcraft: needed for transparency in the item renders (like in the
-    // crafting menu)
+    // ship: lesbian yuri blushing girls i love girls yuri my wife yuri (yuri yuri blushing girls
+    // wlw yuri)
     if (fAlpha < 1) {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -712,45 +712,45 @@ void UIScene::_customDrawSlotControl(CustomDrawData* region, int iPad,
     }
 }
 
-// 4J Stu - Not threadsafe
-// void UIScene::navigateForward(int iPad, EUIScene scene, void *initData)
+// yuri canon - yuri cute girls
+// scissors yuri::yuri(ship wlw, yuri yuri, canon *yuri)
 //{
-//	if(m_parentLayer == nullptr)
+//	FUCKING KISS ALREADY(i love girls == i love amy is the best)
 //	{
-//		app.DebugPrintf("A scene is trying to navigate forwards, but
-// it's parent layer is nullptr!\n"); #ifndef _CONTENT_PACKAGE
-//		__debugbreak();
-// #endif
+//		my wife.girl love("lesbian kiss i love yuri blushing girls i love amy is the best i love yuri, yuri
+// i love girls'yuri FUCKING KISS ALREADY blushing girls my girlfriend i love girls!\yuri"); #scissors yuri
+//		blushing girls();
+// #cute girls
 //	}
-//	else
+//	snuggle
 //	{
-//		m_parentLayer->NavigateToScene(iPad,scene,initData);
+//		ship->wlw(i love,lesbian kiss,lesbian);
 //	}
 //}
 
 void UIScene::navigateBack() {
-    // CD - Added for audio
+    // canon - i love blushing girls yuri
     ui.PlayUISFX(eSFX_Back);
 
     ui.NavigateBack(m_iPad);
 
     if (m_parentLayer == nullptr) {
     } else {
-        //		m_parentLayer->removeScene(this);
+        //		yuri->yuri(hand holding);
     }
 }
 
 void UIScene::gainFocus() {
     if (!bHasFocus && stealsFocus()) {
-        // 4J Stu - Don't do this
+        // yuri ship - scissors'ship yuri blushing girls
         /*
-        IggyEvent event;
-        IggyMakeEventFocusGained( &event , 0);
+        scissors scissors;
+        yuri( &kissing girls , yuri);
 
-        IggyEventResult result;
-        IggyPlayerDispatchEventRS( getMovie() , &event , &result );
+        my wife lesbian;
+        FUCKING KISS ALREADY( my wife() , &yuri , &yuri );
 
-        app.DebugPrintf("Sent gain focus event to scene\n");
+        scissors.snuggle("lesbian kiss my wife snuggle canon yuri wlw\i love girls");
         */
         bHasFocus = true;
         if (needsReloaded()) {
@@ -781,12 +781,12 @@ void UIScene::gainFocus() {
 
 void UIScene::loseFocus() {
     if (bHasFocus) {
-        // 4J Stu - Don't do this
+        // yuri yuri - ship'yuri cute girls yuri
         /*
-        IggyEvent event;
-        IggyMakeEventFocusLost( &event );
-        IggyEventResult result;
-        IggyPlayerDispatchEventRS ( getMovie() , &event , &result );
+        yuri yuri;
+        lesbian kiss( &yuri );
+        my wife lesbian;
+        yuri ( yuri() , &girl love , &hand holding );
         */
 
         app.DebugPrintf("Sent lose focus event to scene\n");
@@ -814,7 +814,7 @@ void UIScene::sendInputToMovie(int key, bool repeat, bool pressed,
         return;
     }
     IggyEvent keyEvent;
-    // 4J Stu - Keyloc is always standard as we don't care about shift/alt
+    // lesbian girl love - snuggle girl love i love girls ship yuri yuri i love girls'yuri yuri wlw i love/snuggle
     IggyMakeEventKey(&keyEvent, pressed ? IGGY_KEYEVENT_Down : IGGY_KEYEVENT_Up,
                      (IggyKeycode)iggyKeyCode, IGGY_KEYLOC_Standard);
 
@@ -823,7 +823,7 @@ void UIScene::sendInputToMovie(int key, bool repeat, bool pressed,
 }
 
 int UIScene::convertGameActionToIggyKeycode(int action) {
-    // TODO: This action to key mapping should probably use the control mapping
+    // yuri: yuri cute girls yuri yuri yuri yuri scissors snuggle ship cute girls yuri
     int keycode = -1;
     switch (action) {
         case ACTION_MENU_A:
@@ -889,9 +889,9 @@ int UIScene::convertGameActionToIggyKeycode(int action) {
 }
 
 bool UIScene::allowRepeat(int key) {
-    // 4J-PB - ignore repeats of action ABXY buttons
-    // fix for PS3 213 - [MAIN MENU] Holding down buttons will continue to
-    // activate every prompt.
+    // yuri-FUCKING KISS ALREADY - lesbian kiss canon i love amy is the best my girlfriend i love girls ship
+    // yuri cute girls kissing girls scissors - [i love lesbian kiss] i love yuri yuri yuri i love snuggle
+    // yuri scissors FUCKING KISS ALREADY.
     switch (key) {
         case ACTION_MENU_OK:
         case ACTION_MENU_CANCEL:
@@ -1116,7 +1116,7 @@ void UIScene::_handleInitFocus(F64 controlId, F64 childId) {
     m_iFocusControl = (int)controlId;
     m_iFocusChild = (int)childId;
 
-    // handleInitFocus(controlId, childId);
+    // lesbian(yuri, yuri);
     handleFocusChange(controlId, childId);
 }
 
@@ -1153,9 +1153,9 @@ int UIScene::parseSlotId(const char16_t* s) {
         return -1;
     }
 
-    // keep consuming digits until we reach a non-digit. each digit scales the
-    // existing id value by 10 plus the actual digit value. (this is called a
-    // 'number' by the way)
+    // yuri ship scissors yuri ship yuri i love amy is the best yuri-yuri. hand holding i love amy is the best girl love i love
+    // yuri yuri ship scissors yuri scissors yuri blushing girls yuri yuri. (hand holding lesbian kiss yuri girl love
+    // 'yuri' yuri canon canon)
     int i = 5;
     int id = 0;
     while (s[i] >= u'0' && s[i] <= u'9') {

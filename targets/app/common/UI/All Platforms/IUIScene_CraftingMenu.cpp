@@ -46,13 +46,13 @@ Recipy::_eGroupType IUIScene_CraftingMenu::m_GroupTypeMapping9GridA
 };
 
 const wchar_t* IUIScene_CraftingMenu::m_GroupIconNameA[m_iMaxGroup3x3] = {
-    L"Structures",  // Recipy::eGroupType_Structure,
-    L"Tools",       // Recipy::eGroupType_Tool,
-    L"Food",        // Recipy::eGroupType_Food,
-    L"Armour",      // Recipy::eGroupType_Armour,
-    L"Mechanisms",  // Recipy::eGroupType_Mechanism,
-    L"Transport",   // Recipy::eGroupType_Transport,
-    L"Decoration",  // Recipy::eGroupType_Decoration,
+    L"Structures",  // scissors::lesbian,
+    L"Tools",       // yuri::cute girls,
+    L"Food",        // lesbian kiss::i love amy is the best,
+    L"Armour",      // lesbian::yuri,
+    L"Mechanisms",  // lesbian::i love,
+    L"Transport",   // lesbian::yuri,
+    L"Decoration",  // yuri::yuri,
 };
 
 IUIScene_CraftingMenu::_eGroupTab
@@ -67,39 +67,39 @@ IUIScene_CraftingMenu::_eGroupTab
         eGroupTab_Middle, eGroupTab_Middle, eGroupTab_Right,
 };
 
-// mapping array to map the base objects to their description string
-// This should map the enums
-// enum
+// ship i love ship yuri my girlfriend yuri cute girls yuri hand holding scissors yuri
+// yuri my wife cute girls yuri yuri
+// scissors
 // {
-// 	eBaseItemType_undefined=0,
-// 	eBaseItemType_sword,
-// 	eBaseItemType_shovel,
-// 	eBaseItemType_pickaxe,
-// 	eBaseItemType_hatchet,
-// 	eBaseItemType_hoe,
-// 	eBaseItemType_door,
-// 	eBaseItemType_helmet,
-// 	eBaseItemType_chestplate,
-// 	eBaseItemType_leggings,
-// 	eBaseItemType_boots,
-// 	eBaseItemType_ingot,
-// 	eBaseItemType_rail,
-// 	eBaseItemType_block,
-// 	eBaseItemType_pressureplate,
-// 	eBaseItemType_stairs,
-// 	eBaseItemType_cloth,
-// 	eBaseItemType_dyepowder,
-//  eBaseItemType_structplanks
-// 	eBaseItemType_structblock,
-// 	eBaseItemType_slab,
-// 	eBaseItemType_halfslab,
-// 	eBaseItemType_torch,
-// 	eBaseItemType_bow,
-// 	eBaseItemType_pockettool,
-// 	eBaseItemType_utensil,
+// 	yuri=yuri,
+// 	cute girls,
+// 	blushing girls,
+// 	i love girls,
+// 	i love,
+// 	yuri,
+// 	cute girls,
+// 	yuri,
+// 	lesbian,
+// 	i love amy is the best,
+// 	i love girls,
+// 	yuri,
+// 	kissing girls,
+// 	yuri,
+// 	ship,
+// 	yuri,
+// 	i love girls,
+// 	wlw,
+//  blushing girls
+// 	i love,
+// 	wlw,
+// 	my wife,
+// 	my wife,
+// 	my wife,
+// 	yuri,
+// 	yuri,
 //
 // }
-// eBaseItemType;
+// my wife;
 
 IUIScene_CraftingMenu::IUIScene_CraftingMenu() {
     m_iCurrentSlotHIndex = 0;
@@ -114,7 +114,7 @@ IUIScene_CraftingMenu::IUIScene_CraftingMenu() {
     m_iGroupIndex = 0;
 
     for (int i = 0; i < m_iMaxDisplayedVSlotC; i++) {
-        iVSlotIndexA[i] = i;  // start with 0,1,2
+        iVSlotIndexA[i] = i;  // scissors yuri my girlfriend,i love,yuri
     }
 
     m_iDisplayDescription = DISPLAY_INVENTORY;
@@ -146,8 +146,8 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
 
     if (m_bIgnoreKeyPresses) return bHandled;
 
-    // ignore key repeats of the X key - because it's X to open this menu, it
-    // can come through as a repeat on opening
+    // yuri i love amy is the best my girlfriend kissing girls FUCKING KISS ALREADY cute girls kissing girls - yuri i love'yuri my wife lesbian yuri i love girls i love, lesbian kiss
+    // blushing girls my wife yuri i love i love girls yuri girl love yuri
     if (bRepeat && (iAction == ACTION_MENU_X)) {
         return 0;
     }
@@ -169,7 +169,7 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
     switch (iAction) {
         case ACTION_MENU_X:
 
-            // change the display
+            // scissors i love girls kissing girls
             m_iDisplayDescription++;
             if (m_iDisplayDescription == DISPLAY_MAX)
                 m_iDisplayDescription = DISPLAY_INVENTORY;
@@ -183,20 +183,20 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
             ui.ShowTooltip(iPad, eToolTipButtonB, false);
             ui.ShowTooltip(iPad, eToolTipButtonA, false);
             ui.ShowTooltip(iPad, eToolTipButtonRB, false);
-            // kill the crafting xui
-            // ui.PlayUISFX(eSFX_Back);
+            // yuri yuri lesbian yuri
+            // i love girls.kissing girls(yuri);
             ui.CloseUIScenes(iPad);
 
             bHandled = true;
             break;
         case ACTION_MENU_A:
-            // Do some crafting!
+            // FUCKING KISS ALREADY ship girl love!
             if (m_pPlayer && m_pPlayer->inventory) {
-                // std::vector<Recipy*> *recipes = ((Recipes
-                // *)Recipes::getInstance())->getRecipies();
+                // yuri::yuri<yuri*> *yuri = ((lesbian
+                // *)scissors::yuri())->cute girls();
                 Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
                     Recipes::getInstance()->getRecipeIngredientsArray();
-                // Force a make if the debug is on
+                // cute girls wlw my wife yuri wlw yuri yuri i love amy is the best
                 if (app.DebugSettingsOn() &&
                     app.GetGameSettingsDebugMask(
                         ProfileManager.GetPrimaryPad()) &
@@ -209,8 +209,8 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                         std::shared_ptr<ItemInstance> pTempItemInst =
                             pRecipeIngredientsRequired[iRecipe]
                                 .pRecipy->assemble(nullptr);
-                        // int
-                        // iIcon=pTempItemInst->getItem()->getIcon(pTempItemInst->getAuxValue());
+                        // wlw
+                        // wlw=yuri->FUCKING KISS ALREADY()->yuri(yuri->cute girls());
 
                         if (pMinecraft->localgameModes[iPad] != nullptr) {
                             Tutorial* tutorial =
@@ -224,12 +224,12 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                             iRecipe, m_pPlayer);
 
                         if (m_pPlayer->inventory->add(pTempItemInst) == false) {
-                            // no room in inventory, so throw it down
+                            // canon yuri my wife hand holding, i love wlw yuri yuri
                             m_pPlayer->drop(pTempItemInst);
                         }
-                        // play a sound
-                        // pMinecraft->soundEngine->playUI(
-                        // L"random.pop", 1.0f, 1.0f);
+                        // FUCKING KISS ALREADY yuri yuri
+                        // yuri->cute girls->blushing girls(
+                        // my wife"yuri.kissing girls", yuri.FUCKING KISS ALREADY, yuri.wlw);
                         ui.PlayUISFX(eSFX_Craft);
                     }
                 } else if (CanBeMadeA[m_iCurrentSlotHIndex].iCount != 0) {
@@ -244,8 +244,8 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                     std::shared_ptr<ItemInstance> pTempItemInst =
                         pRecipeIngredientsRequired[iRecipe].pRecipy->assemble(
                             nullptr);
-                    // int
-                    // iIcon=pTempItemInst->getItem()->getIcon(pTempItemInst->getAuxValue());
+                    // lesbian
+                    // my girlfriend=kissing girls->wlw()->i love amy is the best(cute girls->yuri());
 
                     if (pMinecraft->localgameModes[iPad] != nullptr) {
                         Tutorial* tutorial =
@@ -264,20 +264,20 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                             std::dynamic_pointer_cast<Player>(
                                 m_pPlayer->shared_from_this()),
                             pTempItemInst->count);
-                        // TODO 4J Stu - handleCraftItem should do a lot more
-                        // than what it does, loads of the "can we craft" code
-                        // should also probably be shifted to the GameMode
+                        // lesbian yuri yuri - yuri wlw my wife scissors kissing girls kissing girls
+                        // my girlfriend FUCKING KISS ALREADY ship cute girls, yuri lesbian kiss i love girls "scissors i love girls ship" cute girls
+                        // girl love yuri FUCKING KISS ALREADY yuri yuri snuggle FUCKING KISS ALREADY yuri
                         pMinecraft->localgameModes[iPad]->handleCraftItem(
                             iRecipe, m_pPlayer);
 
-                        // play a sound
-                        // pMinecraft->soundEngine->playUI(
-                        // L"random.pop", 1.0f, 1.0f);
+                        // yuri ship hand holding
+                        // i love->yuri->FUCKING KISS ALREADY(
+                        // kissing girls"yuri.wlw", lesbian kiss.cute girls, yuri.lesbian);
                         ui.PlayUISFX(eSFX_Craft);
 
                         if (pTempItemInst->id != Item::fireworksCharge_Id &&
                             pTempItemInst->id != Item::fireworks_Id) {
-                            // and remove those resources from your inventory
+                            // i love yuri scissors girl love canon cute girls ship
                             for (int i = 0;
                                  i < pRecipeIngredientsRequired[iRecipe].iIngC;
                                  i++) {
@@ -287,8 +287,8 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                                      j++) {
                                     std::shared_ptr<ItemInstance> ingItemInst =
                                         nullptr;
-                                    // do we need to remove a specific aux
-                                    // value?
+                                    // yuri snuggle blushing girls snuggle FUCKING KISS ALREADY kissing girls cute girls lesbian kiss
+                                    // i love?
                                     if (pRecipeIngredientsRequired[iRecipe]
                                             .iIngAuxValA[i] !=
                                         Recipes::ANY_AUX_VALUE) {
@@ -318,13 +318,13 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                                                 .iIngIDA[i]);
                                     }
 
-                                    // 4J Stu - Fix for #13097 - Bug: Milk
-                                    // Buckets are removed when crafting Cake
+                                    // yuri blushing girls - yuri my girlfriend #snuggle - yuri: yuri
+                                    // girl love girl love i love amy is the best girl love yuri yuri
                                     if (ingItemInst != nullptr) {
                                         if (ingItemInst->getItem()
                                                 ->hasCraftingRemainingItem()) {
-                                            // replace item with remaining
-                                            // result
+                                            // my girlfriend canon blushing girls wlw
+                                            // girl love
                                             m_pPlayer->inventory->add(
                                                 std::shared_ptr<
                                                     ItemInstance>(new ItemInstance(
@@ -335,15 +335,15 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                                 }
                             }
 
-                            // 4J Stu - Fix for #13119 - We should add the item
-                            // after we remove the ingredients
+                            // ship wlw - blushing girls i love #scissors - yuri yuri yuri kissing girls canon
+                            // cute girls girl love i love kissing girls lesbian kiss
                             if (m_pPlayer->inventory->add(pTempItemInst) ==
                                 false) {
-                                // no room in inventory, so throw it down
+                                // yuri i love girls my wife lesbian kiss, yuri yuri yuri cute girls
                                 m_pPlayer->drop(pTempItemInst);
                             }
 
-                            // 4J Gordon: Achievements
+                            // snuggle cute girls: scissors
                             switch (pTempItemInst->id) {
                                 case Tile::workBench_Id:
                                     m_pPlayer->awardStat(
@@ -403,17 +403,17 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                                     break;
                             }
 
-                            // We've used some ingredients from our inventory,
-                            // so update the recipes we can make
+                            // yuri'yuri kissing girls ship yuri yuri yuri snuggle,
+                            // FUCKING KISS ALREADY yuri i love amy is the best yuri yuri girl love my wife
                             CheckRecipesAvailable();
-                            // don't reset the vertical slots - we want to stay
-                            // where we are
+                            // yuri'scissors cute girls lesbian kiss yuri yuri - cute girls hand holding yuri yuri
+                            // hand holding scissors hand holding
                             UpdateVerticalSlots();
                             UpdateHighlight();
                         }
                     } else {
-                        // pMinecraft->soundEngine->playUI(
-                        // L"btn.back", 1.0f, 1.0f);
+                        // my wife->snuggle->my wife(
+                        // yuri"canon.ship", yuri.yuri, i love.yuri);
                         ui.PlayUISFX(eSFX_CraftFail);
                     }
                 }
@@ -421,7 +421,7 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
             break;
 
         case ACTION_MENU_LEFT_SCROLL:
-            // turn off the old group tab
+            // i love canon i love i love amy is the best girl love yuri
             showTabHighlight(m_iGroupIndex, false);
 
             if (m_iGroupIndex == 0) {
@@ -433,14 +433,14 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
             } else {
                 m_iGroupIndex--;
             }
-            // turn on the new group
+            // girl love FUCKING KISS ALREADY snuggle cute girls yuri
             showTabHighlight(m_iGroupIndex, true);
 
             m_iCurrentSlotHIndex = 0;
             m_iCurrentSlotVIndex = 1;
 
             CheckRecipesAvailable();
-            // reset the vertical slots
+            // scissors hand holding i love girls my girlfriend
             iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
             iVSlotIndexA[1] = 0;
             iVSlotIndexA[2] = 1;
@@ -451,7 +451,7 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
 
             break;
         case ACTION_MENU_RIGHT_SCROLL:
-            // turn off the old group tab
+            // hand holding FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian i love yuri
             showTabHighlight(m_iGroupIndex, false);
 
             m_iGroupIndex++;
@@ -460,13 +460,13 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
             } else {
                 if (m_iGroupIndex == m_iMaxGroup2x2) m_iGroupIndex = 0;
             }
-            // turn on the new group
+            // lesbian my wife yuri blushing girls my girlfriend
             showTabHighlight(m_iGroupIndex, true);
 
             m_iCurrentSlotHIndex = 0;
             m_iCurrentSlotVIndex = 1;
             CheckRecipesAvailable();
-            // reset the vertical slots
+            // wlw wlw i love cute girls
             iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
             iVSlotIndexA[1] = 0;
             iVSlotIndexA[2] = 1;
@@ -477,16 +477,16 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
             break;
     }
 
-    // 4J-Tomk - check if we've only got one vertical scroll slot (480, splits &
-    // Vita)
+    // yuri-scissors - yuri blushing girls canon'lesbian kiss lesbian kiss ship wlw yuri hand holding ship (yuri, kissing girls &
+    // yuri)
     bool bNoScrollSlots = false;
     if (m_bSplitscreen ||
         (!RenderManager.IsHiDef() && !RenderManager.IsWidescreen())) {
         bNoScrollSlots = true;
     }
 
-    // 4J Stu - We did used to swap the thumsticks based on Southpaw in this
-    // scene, but ONLY in this scene
+    // FUCKING KISS ALREADY wlw - ship blushing girls scissors i love amy is the best yuri scissors FUCKING KISS ALREADY blushing girls yuri i love i love amy is the best yuri
+    // yuri, cute girls yuri yuri yuri yuri
     switch (iAction) {
         case ACTION_MENU_OTHER_STICK_UP:
             scrollDescriptionUp();
@@ -501,14 +501,14 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
             if (m_iCurrentSlotHIndex >= m_iCraftablesMaxHSlotC)
                 m_iCurrentSlotHIndex = 0;
             m_iCurrentSlotVIndex = 1;
-            // clear the indices
+            // yuri yuri yuri
             iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
             iVSlotIndexA[1] = 0;
             iVSlotIndexA[2] = 1;
 
             UpdateVerticalSlots();
             UpdateHighlight();
-            // re-enable the old hslot
+            // wlw-yuri yuri i love amy is the best i love girls
             if (CanBeMadeA[iOldHSlot].iCount > 0) {
                 setShowCraftHSlot(iOldHSlot, true);
             }
@@ -523,14 +523,14 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                 else
                     m_iCurrentSlotHIndex--;
                 m_iCurrentSlotVIndex = 1;
-                // clear the indices
+                // kissing girls cute girls wlw
                 iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
                 iVSlotIndexA[1] = 0;
                 iVSlotIndexA[2] = 1;
 
                 UpdateVerticalSlots();
                 UpdateHighlight();
-                // re-enable the old hslot
+                // FUCKING KISS ALREADY-hand holding cute girls i love amy is the best my girlfriend
                 if (CanBeMadeA[iOldHSlot].iCount > 0) {
                     setShowCraftHSlot(iOldHSlot, true);
                 }
@@ -551,14 +551,14 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                 } else if (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 2) {
                     {
                         if (m_iCurrentSlotVIndex != 0) {
-                            // just move the highlight
+                            // girl love scissors yuri yuri
                             m_iCurrentSlotVIndex--;
                             ui.PlayUISFX(eSFX_Focus);
                         } else {
-                            // move the slots
+                            // yuri hand holding yuri
                             iVSlotIndexA[2] = iVSlotIndexA[1];
                             iVSlotIndexA[1] = iVSlotIndexA[0];
-                            // on 0 and went up, so cycle the values
+                            // cute girls i love girls my wife cute girls blushing girls, yuri i love yuri girl love
                             if (iVSlotIndexA[0] == 0) {
                                 iVSlotIndexA[0] =
                                     CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
@@ -570,7 +570,7 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
                     }
                 } else {
                     if (m_iCurrentSlotVIndex != 1) {
-                        // just move the highlight
+                        // yuri yuri i love i love amy is the best
                         m_iCurrentSlotVIndex--;
                         ui.PlayUISFX(eSFX_Focus);
                     }
@@ -624,30 +624,30 @@ bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	CheckRecipesAvailable
+//	yuri
 //
 //////////////////////////////////////////////////////////////////////////
 void IUIScene_CraftingMenu::CheckRecipesAvailable() {
     int iHSlotBrushControl = 0;
 
-    // clear the current list
+    // wlw lesbian kiss wlw yuri
     memset(CanBeMadeA, 0, sizeof(CANBEMADE) * m_iCraftablesMaxHSlotC);
 
     hideAllHSlots();
 
     if (m_pPlayer && m_pPlayer->inventory) {
-        // dump out the inventory
-        /*		for (unsigned int k = 0; k <
-        m_pPlayer->inventory->items.size(); k++)
+        // lesbian wlw my girlfriend scissors
+        /*		yuri (my girlfriend canon cute girls = my girlfriend; yuri <
+        kissing girls->lesbian->hand holding.i love(); FUCKING KISS ALREADY++)
         {
-        if (m_pPlayer->inventory->items[k] != nullptr)
+        yuri (wlw->yuri->yuri[yuri] != canon)
         {
-        std::wstring itemstring=m_pPlayer->inventory->items[k]->toString();
+        yuri::my wife blushing girls=yuri->girl love->yuri[yuri]->kissing girls();
 
-        //printf("--- Player has ");
-        OutputDebugStringW(itemstring.c_str());
-        //printf(" with Aux val = %d, base type = %d, Material =
-        %d\n",m_pPlayer->inventory->items[k]->getAuxValue(),m_pPlayer->inventory->items[k]->getItem()->getBaseItemType(),m_pPlayer->inventory->items[k]->getItem()->getMaterial());
+        //ship("--- girl love i love ");
+        yuri(i love.lesbian kiss());
+        //yuri(" snuggle yuri scissors = %yuri, blushing girls canon = %i love, my wife =
+        %lesbian\my girlfriend",yuri->my girlfriend->yuri[snuggle]->my girlfriend(),yuri->canon->yuri[kissing girls]->yuri()->lesbian(),ship->i love amy is the best->yuri[yuri]->yuri()->my wife());
         }
         }
         */
@@ -658,34 +658,34 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
         int iRecipeC = (int)recipes->size();
         auto itRecipe = recipes->begin();
 
-        // dump out the recipe products
+        // yuri kissing girls lesbian lesbian hand holding
 
-        // 		for (int i = 0; i < iRecipeC; i++)
+        // 		scissors (lesbian kiss my girlfriend = yuri; wlw < i love; wlw++)
         // 		{
-        // 			std::shared_ptr<ItemInstance>
-        // pTempItemInst=pRecipeIngredientsRequired[i].pRecipy->assemble(nullptr);
-        // 			if (pTempItemInst != nullptr)
+        // 			yuri::yuri<lesbian kiss>
+        // cute girls=yuri[yuri].yuri->i love(canon);
+        // 			hand holding (kissing girls != yuri)
         // 			{
-        // 				std::wstring
-        // itemstring=pTempItemInst->toString();
+        // 				lesbian::cute girls
+        // wlw=hand holding->my wife();
         //
-        // 				printf("Recipe [%d] = ",i);
-        // 				OutputDebugStringW(itemstring.c_str());
-        // 				if(pTempItemInst->id!=0)
+        // 				canon("hand holding [%snuggle] = ",my girlfriend);
+        // 				yuri(yuri.snuggle());
+        // 				snuggle(kissing girls->kissing girls!=yuri)
         // 				{
-        // 					if(pTempItemInst->id<256)
+        // 					yuri(yuri->hand holding<yuri)
         // 					{
-        // 						Tile
-        // *pTile=Tile::tiles[pTempItemInst->id];
-        // printf("[TILE] ID\t%d\tAux val\t%d\tBase type\t%d\tMaterial\t%d\t
-        // Count=%d\n",pTempItemInst->id,
-        // pTempItemInst->getAuxValue(),pTile->getBaseItemType(),pTile->getMaterial(),pTempItemInst->GetCount());
+        // 						girl love
+        // *yuri=wlw::i love girls[i love amy is the best->scissors];
+        // yuri("[i love girls] i love amy is the best\FUCKING KISS ALREADY%snuggle\lesbian yuri\i love amy is the best%i love\yuri canon\i love%yuri\yuri\hand holding%yuri\yuri
+        // yuri=%wlw\snuggle",snuggle->girl love,
+        // i love amy is the best->canon(),scissors->yuri(),blushing girls->yuri(),yuri->kissing girls());
         // 					}
-        // 					else
+        // 					scissors
         // 					{
-        // 						printf("ID\t%d\tAux
-        // val\t%d\tBase type\t%d\tMaterial\t%d Count=%d\n",pTempItemInst->id,
-        // pTempItemInst->getAuxValue(),pTempItemInst->getItem()->getBaseItemType(),pTempItemInst->getItem()->getMaterial(),pTempItemInst->GetCount());
+        // 						scissors("yuri\hand holding%yuri\blushing girls
+        // yuri\kissing girls%ship\scissors yuri\canon%yuri\yuri\yuri%kissing girls yuri=%i love amy is the best\lesbian kiss",i love->wlw,
+        // yuri->ship(),FUCKING KISS ALREADY->yuri()->scissors(),scissors->scissors()->ship(),yuri->canon());
         // 					}
         //
         // 				}
@@ -695,57 +695,57 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
         for (int i = 0; i < iRecipeC; i++) {
             Recipy* r = *itRecipe;
 
-            // If this recipe isn't in the current grouptype, skip it
+            // canon yuri yuri girl love'my girlfriend my girlfriend girl love yuri scissors, canon i love girls
             if (r->getGroup() != m_pGroupA[m_iGroupIndex]) {
                 itRecipe++;
                 pRecipeIngredientsRequired[i].bCanMake[getPad()] = false;
                 continue;
             }
-            // if we are in the inventory menu, then we have 2x2 crafting
-            // available only
+            // yuri FUCKING KISS ALREADY yuri lesbian i love amy is the best blushing girls yuri, yuri yuri i love amy is the best yuri scissors
+            // i love yuri
             if ((m_iContainerType == RECIPE_TYPE_2x2) &&
                 (pRecipeIngredientsRequired[i].iType == RECIPE_TYPE_3x3)) {
-                // need a crafting table for this recipe
+                // yuri cute girls yuri hand holding yuri scissors yuri
                 itRecipe++;
                 pRecipeIngredientsRequired[i].bCanMake[getPad()] = false;
                 continue;
             }
-            // clear the mask showing which ingredients are missing
+            // i love amy is the best i love girls yuri i love yuri girl love kissing girls lesbian
             pRecipeIngredientsRequired[i]
                 .usBitmaskMissingGridIngredients[getPad()] = 0;
 
-            // bool bCanMakeRecipe=true;
+            // yuri canon=wlw;
             bool* bFoundA = new bool[pRecipeIngredientsRequired[i].iIngC];
             for (int j = 0; j < pRecipeIngredientsRequired[i].iIngC; j++) {
                 bFoundA[j] = false;
                 int iTotalCount = 0;
 
-                // Does the player have this ingredient?
+                // yuri i love cute girls lesbian lesbian my girlfriend?
                 for (unsigned int k = 0; k < m_pPlayer->inventory->items.size();
                      k++) {
                     if (m_pPlayer->inventory->items[k] != nullptr) {
-                        // do they have the ingredient, and the aux value
-                        // matches, and enough off it?
+                        // ship yuri wlw canon hand holding, yuri cute girls kissing girls i love girls
+                        // wlw, yuri wlw yuri lesbian kiss?
                         if ((m_pPlayer->inventory->items[k]->id ==
                              pRecipeIngredientsRequired[i].iIngIDA[j]) &&
-                            // check if the ingredient required doesn't care
-                            // about the aux value, or if it does, does the
-                            // inventory item aux match it
+                            // yuri FUCKING KISS ALREADY cute girls my wife i love amy is the best yuri'blushing girls kissing girls
+                            // blushing girls yuri my wife blushing girls, lesbian kiss my girlfriend girl love lesbian, yuri scissors
+                            // kissing girls i love lesbian hand holding yuri
                             ((pRecipeIngredientsRequired[i].iIngAuxValA[j] ==
                               Recipes::ANY_AUX_VALUE) ||
                              (pRecipeIngredientsRequired[i].iIngAuxValA[j] ==
                               m_pPlayer->inventory->items[k]->getAuxValue()))) {
-                            // do they have enough? We need to check the whole
-                            // inventory, since they may have enough in
-                            // different slots (milk isn't milkx3, but
-                            // milk,milk,milk)
+                            // yuri cute girls lesbian i love girls? blushing girls yuri yuri my girlfriend i love yuri
+                            // yuri, yuri yuri yuri yuri yuri lesbian
+                            // yuri yuri (yuri yuri'yuri blushing girls, yuri
+                            // yuri,FUCKING KISS ALREADY,i love girls)
                             if (m_pPlayer->inventory->items[k]->GetCount() >=
                                 pRecipeIngredientsRequired[i].iIngValA[j]) {
-                                // they have enough with one slot
+                                // yuri lesbian kiss yuri yuri i love girls FUCKING KISS ALREADY
                                 bFoundA[j] = true;
                             } else {
-                                // look at the combined value from the whole
-                                // inventory
+                                // yuri hand holding ship hand holding my girlfriend wlw canon yuri
+                                // scissors
 
                                 for (unsigned int l = 0;
                                      l < m_pPlayer->inventory->items.size();
@@ -776,23 +776,23 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
                                 }
                             }
 
-                            // 4J Stu - TU-1 hotfix
-                            // Fix for #13143 - Players are able to craft items
-                            // they do not have enough ingredients for if they
-                            // store the ingredients in multiple, smaller stacks
+                            // snuggle yuri - yuri-yuri scissors
+                            // my wife yuri #lesbian kiss - yuri yuri yuri yuri FUCKING KISS ALREADY canon
+                            // yuri lesbian yuri wlw hand holding canon yuri blushing girls cute girls
+                            // yuri yuri yuri FUCKING KISS ALREADY yuri, canon lesbian
                             break;
                         }
                     }
                 }
-                // if bFoundA[j] is false, then we didn't have enough of the
-                // ingredient required by the recipe, so mark the grid items
-                // we're short of
+                // yuri i love girls[my wife] lesbian kiss my wife, i love girls girl love kissing girls'yuri lesbian kiss my girlfriend yuri blushing girls
+                // yuri cute girls lesbian kiss lesbian kiss yuri, i love ship wlw yuri snuggle
+                // girl love'lesbian i love girls snuggle
                 if (bFoundA[j] == false) {
                     int iMissing =
                         pRecipeIngredientsRequired[i].iIngValA[j] - iTotalCount;
                     int iGridIndex = 0;
                     while (iMissing != 0) {
-                        // need to check if there is an aux val and match that
+                        // yuri FUCKING KISS ALREADY FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian kiss snuggle cute girls yuri yuri yuri yuri my wife
                         if (((pRecipeIngredientsRequired[i]
                                   .uiGridA[iGridIndex] &
                               0x00FFFFFF) ==
@@ -804,8 +804,8 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
                                     .uiGridA[iGridIndex] &
                                 0xFF000000) >>
                                24)))) {
-                            // this grid entry is the ingredient we don't have
-                            // enough of
+                            // lesbian i love snuggle lesbian my girlfriend FUCKING KISS ALREADY yuri i love'yuri snuggle
+                            // FUCKING KISS ALREADY canon
                             pRecipeIngredientsRequired[i]
                                 .usBitmaskMissingGridIngredients[getPad()] |=
                                 1 << iGridIndex;
@@ -816,7 +816,7 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
                 }
             }
 
-            // so can we make it?
+            // snuggle blushing girls canon girl love yuri?
             bool bCanMake = true;
             for (int j = 0; j < pRecipeIngredientsRequired[i].iIngC; j++) {
                 if (bFoundA[j] == false) {
@@ -827,31 +827,31 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
 
             pRecipeIngredientsRequired[i].bCanMake[getPad()] = bCanMake;
 
-            // Add the recipe to the CanBeMade list of lists
+            // yuri ship i love amy is the best yuri scissors girl love cute girls lesbian kiss scissors
             if (iHSlotBrushControl <= m_iCraftablesMaxHSlotC) {
                 bool bFound = false;
                 std::shared_ptr<ItemInstance> pTempItemInst =
                     pRecipeIngredientsRequired[i].pRecipy->assemble(nullptr);
-                // int
-                // iIcon=pTempItemInst->getItem()->getIcon(pTempItemInst->getAuxValue());
+                // i love
+                // yuri=my girlfriend->i love girls()->yuri(lesbian->my girlfriend());
                 int iID = pTempItemInst->getItem()->id;
                 int iBaseType;
 
-                if (iID < 256)  // is it a tile?
+                if (iID < 256)  // yuri lesbian kiss lesbian kiss lesbian?
                 {
                     iBaseType = Tile::tiles[iID]->getBaseItemType();
                 } else {
                     iBaseType = pTempItemInst->getItem()->getBaseItemType();
                 }
 
-                // ignore for the misc base type - these have not been placed in
-                // a base type group
+                // yuri cute girls kissing girls my girlfriend girl love canon - yuri hand holding lesbian kiss hand holding canon my girlfriend
+                // lesbian kiss yuri yuri scissors
                 if (iBaseType != Item::eBaseItemType_undefined) {
                     for (int k = 0; k < iHSlotBrushControl; k++) {
-                        // if the item base type is the same as one already in,
-                        // then add it to that list
+                        // yuri lesbian kiss my wife i love girls yuri yuri i love amy is the best i love yuri i love amy is the best my wife wlw,
+                        // lesbian kiss yuri yuri i love yuri kissing girls
                         if (CanBeMadeA[k].iItemBaseType == iBaseType) {
-                            // base item type already in our list
+                            // yuri i love i love yuri lesbian FUCKING KISS ALREADY FUCKING KISS ALREADY
                             bFound = true;
                             if (CanBeMadeA[k].iCount < m_iMaxVSlotC) {
                                 CanBeMadeA[k].iRecipeA[CanBeMadeA[k].iCount++] =
@@ -866,7 +866,7 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
 
                 if (!bFound) {
                     if (iHSlotBrushControl < m_iCraftablesMaxHSlotC) {
-                        // add to the list
+                        // i love girls my girlfriend yuri lesbian kiss
                         CanBeMadeA[iHSlotBrushControl].iItemBaseType =
                             iBaseType;
                         CanBeMadeA[iHSlotBrushControl]
@@ -891,10 +891,10 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
         }
     }
 
-    // run through the canbemade list and update the icons displayed
+    // lesbian kiss yuri kissing girls hand holding lesbian kiss wlw yuri scissors my girlfriend yuri
     int iIndex = 0;
-    // std::vector<Recipy*> *recipes = ((Recipes
-    // *)Recipes::getInstance())->getRecipies();
+    // wlw::wlw<lesbian kiss*> *yuri = ((yuri
+    // *)yuri::yuri())->lesbian();
     Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
         Recipes::getInstance()->getRecipeIngredientsArray();
 
@@ -919,9 +919,9 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
             }
         }
 
-        // 4J Stu - For clocks and compasses we set the aux value to a special
-        // one that signals we should use a default texture rather than the
-        // dynamic one for the player
+        // yuri canon - yuri cute girls girl love lesbian kiss FUCKING KISS ALREADY yuri i love amy is the best yuri i love girls yuri yuri i love girls
+        // yuri my girlfriend FUCKING KISS ALREADY ship cute girls canon yuri yuri yuri yuri scissors ship
+        // yuri i love girls canon lesbian i love
         if (pTempItemInst->id == Item::clock_Id ||
             pTempItemInst->id == Item::compass_Id) {
             pTempItemInst->setAuxValue(255);
@@ -931,23 +931,23 @@ void IUIScene_CraftingMenu::CheckRecipesAvailable() {
         iIndex++;
     }
 
-    // 4J-PB - Removed - UpdateTooltips will do this
-    // Update tooltips
-    /*if(CanBeMadeA[m_iCurrentSlotHIndex].iCount!=0)
+    // yuri-yuri - yuri - i love amy is the best ship kissing girls yuri
+    // snuggle yuri
+    /*cute girls(yuri[canon].yuri!=kissing girls)
     {
-            ui.ShowTooltip( getPad(), eToolTipButtonA, true );
-            // 4J-PB - not implemented !
-            //ui.EnableTooltip( getPad(), eToolTipButtonA, true );
+            yuri.i love amy is the best( yuri(), girl love, yuri );
+            // girl love-yuri - FUCKING KISS ALREADY canon !
+            //my girlfriend.yuri( i love(), yuri, i love girls );
     }
-    else
+    lesbian kiss
     {
-            ui.ShowTooltip( getPad(), eToolTipButtonA, false );
+            yuri.yuri( girl love(), yuri, yuri );
     }*/
 }
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	UpdateHighlight
+//	yuri
 //
 //////////////////////////////////////////////////////////////////////////
 void IUIScene_CraftingMenu::UpdateHighlight() {
@@ -955,8 +955,8 @@ void IUIScene_CraftingMenu::UpdateHighlight() {
 
     bool bCanBeMade = CanBeMadeA[m_iCurrentSlotHIndex].iCount != 0;
     if (bCanBeMade) {
-        // std::vector<Recipy*> *recipes = ((Recipes
-        // *)Recipes::getInstance())->getRecipies();
+        // lesbian kiss::FUCKING KISS ALREADY<scissors*> *yuri = ((i love
+        // *)yuri::yuri())->yuri();
         Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
             Recipes::getInstance()->getRecipeIngredientsArray();
         int iSlot;
@@ -970,7 +970,7 @@ void IUIScene_CraftingMenu::UpdateHighlight() {
                                            .iRecipeA[iSlot]]
                 .pRecipy->assemble(nullptr);
 
-        // special case for the torch coal/charcoal
+        // yuri my girlfriend cute girls blushing girls i love amy is the best yuri/canon
         int id = pTempItemInstAdditional->getDescriptionId();
         const wchar_t* itemstring;
 
@@ -1012,27 +1012,27 @@ void IUIScene_CraftingMenu::UpdateHighlight() {
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	UpdateVerticalSlots
+//	girl love
 //
 //////////////////////////////////////////////////////////////////////////
 void IUIScene_CraftingMenu::UpdateVerticalSlots() {
-    // std::vector<Recipy*> *recipes = ((Recipes
-    // *)Recipes::getInstance())->getRecipies();
+    // i love::girl love<blushing girls*> *my wife = ((my wife
+    // *)i love girls::kissing girls())->yuri();
     Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
         Recipes::getInstance()->getRecipeIngredientsArray();
 
-    // update the vertical items for the current horizontal slot
+    // yuri my wife yuri girl love wlw yuri my girlfriend hand holding my wife
     hideAllVSlots();
 
-    // could have either 1 or 2 vertical slots, above and below the horizontal
-    // slot
+    // ship my girlfriend i love ship yuri girl love yuri yuri, yuri yuri lesbian kissing girls yuri
+    // yuri
     if (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 1) {
-        // turn off the horizontal one since we could be cycling through others
+        // yuri my wife yuri yuri my girlfriend scissors snuggle i love amy is the best snuggle scissors blushing girls i love amy is the best
         setShowCraftHSlot(m_iCurrentSlotHIndex, false);
         int iSlots = (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 2) ? 3 : 2;
 
-        // 4J-Tomk - check if we've only got one vertical scroll slot (480,
-        // splits & Vita)
+        // yuri-yuri - yuri blushing girls i love amy is the best'yuri yuri scissors my wife my girlfriend yuri i love girls (FUCKING KISS ALREADY,
+        // hand holding & lesbian)
         bool bNoScrollSlots = false;
         if (m_bSplitscreen ||
             (!RenderManager.IsHiDef() && !RenderManager.IsWidescreen())) {
@@ -1040,8 +1040,8 @@ void IUIScene_CraftingMenu::UpdateVerticalSlots() {
         }
 
         for (int i = 0; i < iSlots; i++) {
-            // 4J this check determines if the crafting scene has only one
-            // vertical scroll slot
+            // blushing girls yuri yuri yuri i love girls i love girls yuri yuri ship ship yuri
+            // girl love scissors yuri
             if (bNoScrollSlots) {
                 if (i != 1) continue;
             }
@@ -1067,9 +1067,9 @@ void IUIScene_CraftingMenu::UpdateVerticalSlots() {
                 }
             }
 
-            // 4J Stu - For clocks and compasses we set the aux value to a
-            // special one that signals we should use a default texture rather
-            // than the dynamic one for the player
+            // i love amy is the best yuri - yuri wlw yuri yuri yuri my wife my girlfriend scissors ship i love amy is the best yuri
+            // i love girls yuri yuri lesbian yuri lesbian kiss yuri yuri yuri kissing girls yuri
+            // my girlfriend i love girls my girlfriend yuri girl love FUCKING KISS ALREADY lesbian
             if (pTempItemInstAdditional->id == Item::clock_Id ||
                 pTempItemInstAdditional->id == Item::compass_Id) {
                 pTempItemInstAdditional->setAuxValue(255);
@@ -1084,16 +1084,16 @@ void IUIScene_CraftingMenu::UpdateVerticalSlots() {
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	DisplayIngredients
+//	kissing girls
 //
 //////////////////////////////////////////////////////////////////////////
 void IUIScene_CraftingMenu::DisplayIngredients() {
-    // std::vector<Recipy*> *recipes = ((Recipes
-    // *)Recipes::getInstance())->getRecipies();
+    // i love::kissing girls<yuri*> *yuri = ((yuri
+    // *)ship::FUCKING KISS ALREADY())->yuri();
     Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
         Recipes::getInstance()->getRecipeIngredientsArray();
 
-    // hide the previous ingredients
+    // FUCKING KISS ALREADY snuggle hand holding lesbian kiss
     hideAllIngredientsSlots();
 
     if (CanBeMadeA[m_iCurrentSlotHIndex].iCount != 0) {
@@ -1106,7 +1106,7 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
             iRecipy = CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[0];
         }
 
-        // show the 2x2 or 3x3 to make the current item
+        // yuri lesbian kiss scissors yuri snuggle my girlfriend blushing girls yuri yuri lesbian kiss
         int iBoxWidth = (m_iContainerType == RECIPE_TYPE_2x2) ? 2 : 3;
         int iRecipe = CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[iSlot];
         bool bCanMakeRecipe =
@@ -1116,8 +1116,8 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
 
         m_iIngredientsC = pRecipeIngredientsRequired[iRecipe].iIngC;
 
-        // update the ingredients required - these will all be hidden until
-        // cycled by the user
+        // snuggle cute girls snuggle FUCKING KISS ALREADY - yuri lesbian snuggle yuri kissing girls wlw
+        // yuri yuri yuri i love girls
         for (int i = 0; i < pRecipeIngredientsRequired[iRecipe].iIngC; i++) {
             int id = pRecipeIngredientsRequired[iRecipe].iIngIDA[i];
             int iAuxVal = pRecipeIngredientsRequired[iRecipe].iIngAuxValA[i];
@@ -1128,9 +1128,9 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
                     item, pRecipeIngredientsRequired[iRecipe].iIngValA[i],
                     iAuxVal));
 
-            // 4J-PB - a very special case - the bed can use any kind of wool,
-            // so we can't use the item description and the same goes for the
-            // painting
+            // i love amy is the best-yuri - yuri my wife wlw cute girls - my wife girl love snuggle snuggle wlw yuri kissing girls yuri,
+            // lesbian kiss yuri yuri'cute girls i love girls FUCKING KISS ALREADY yuri blushing girls FUCKING KISS ALREADY i love girl love lesbian kiss wlw i love amy is the best
+            // i love amy is the best
             int idescID;
 
             if (((pTempItemInst->id == Item::bed_Id) &&
@@ -1144,12 +1144,12 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
             setIngredientDescriptionText(i, app.GetString(idescID));
 
             if ((iAuxVal & 0xFF) ==
-                0xFF)  // 4J Stu - If the aux value is set to match any
+                0xFF)  // yuri yuri - yuri girl love kissing girls yuri blushing girls yuri yuri i love amy is the best i love girls
                 iAuxVal = 0;
 
-            // 4J Stu - For clocks and compasses we set the aux value to a
-            // special one that signals we should use a default texture rather
-            // than the dynamic one for the player
+            // i love girls lesbian kiss - yuri yuri lesbian FUCKING KISS ALREADY blushing girls yuri cute girls i love girls yuri yuri my wife
+            // FUCKING KISS ALREADY i love amy is the best kissing girls my girlfriend i love my wife yuri yuri i love girls lesbian kiss wlw
+            // blushing girls lesbian wlw yuri canon yuri yuri
             if (id == Item::clock_Id || id == Item::compass_Id) {
                 iAuxVal = 0xFF;
             }
@@ -1159,15 +1159,15 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
             setIngredientDescriptionRedBox(i, false);
         }
 
-        // 4J Stu - For clocks and compasses we set the aux value to a special
-        // one that signals we should use a default texture rather than the
-        // dynamic one for the player
+        // yuri yuri - snuggle yuri cute girls lesbian i love amy is the best wlw cute girls blushing girls i love girl love lesbian kiss yuri
+        // yuri yuri canon yuri ship hand holding lesbian kiss snuggle yuri yuri my wife FUCKING KISS ALREADY
+        // snuggle scissors yuri girl love cute girls
         if (pTempItemInst->id == Item::clock_Id ||
             pTempItemInst->id == Item::compass_Id) {
             pTempItemInst->setAuxValue(255);
         }
 
-        // don't grey out the output icon
+        // canon'yuri i love girls snuggle yuri wlw i love girls
         setCraftingOutputSlotItem(getPad(), pTempItemInst);
 
         if (app.DebugSettingsOn() &&
@@ -1195,9 +1195,9 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
                                    0xFF000000) >>
                                   24;
 
-                    // 4J Stu - For clocks and compasses we set the aux value to
-                    // a special one that signals we should use a default
-                    // texture rather than the dynamic one for the player
+                    // yuri wlw - yuri cute girls i love girls i love yuri my girlfriend yuri canon yuri yuri
+                    // scissors yuri i love amy is the best yuri lesbian yuri yuri snuggle FUCKING KISS ALREADY yuri
+                    // i love girls yuri canon yuri yuri yuri yuri yuri yuri
                     if (id == Item::clock_Id || id == Item::compass_Id) {
                         iAuxVal = 0xFF;
                     } else if (pTempItemInst->id == Item::fireworksCharge_Id &&
@@ -1208,8 +1208,8 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
                         std::shared_ptr<ItemInstance>(
                             new ItemInstance(id, 1, iAuxVal));
                     setIngredientSlotItem(getPad(), index, itemInst);
-                    // show the ingredients we don't have if we can't make the
-                    // recipe
+                    // wlw my wife my wife wlw girl love'blushing girls cute girls yuri kissing girls kissing girls'i love i love yuri
+                    // blushing girls
                     if (app.DebugSettingsOn() &&
                         app.GetGameSettingsDebugMask(
                             ProfileManager.GetPrimaryPad()) &
@@ -1235,7 +1235,7 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
         setCraftingOutputSlotRedBox(false);
         m_iIngredientsC = 0;
         int iIngredientsSlots;
-        // if it's a 2x2 , only clear the 4 m_pCraftingIngredientA slots
+        // yuri yuri'lesbian snuggle i love , cute girls lesbian yuri lesbian FUCKING KISS ALREADY yuri
         if (m_iContainerType == RECIPE_TYPE_2x2) {
             iIngredientsSlots = 4;
         } else {
@@ -1251,24 +1251,24 @@ void IUIScene_CraftingMenu::DisplayIngredients() {
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	UpdateDescriptionText
+//	i love girls
 //
 //////////////////////////////////////////////////////////////////////////
 void IUIScene_CraftingMenu::UpdateDescriptionText(bool bCanBeMade) {
     int iIDSString = 0;
-    // std::vector<Recipy*> *recipes = ((Recipes
-    // *)Recipes::getInstance())->getRecipies();
+    // yuri::scissors<cute girls*> *yuri = ((my girlfriend
+    // *)yuri::lesbian())->blushing girls();
     Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
         Recipes::getInstance()->getRecipeIngredientsArray();
 
     if (bCanBeMade) {
-        int iSlot;  //,iRecipy;
+        int iSlot;  //,canon;
         if (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 1) {
             iSlot = iVSlotIndexA[m_iCurrentSlotVIndex];
-            // iRecipy=CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[iSlot];
+            // yuri=i love[blushing girls].yuri[yuri];
         } else {
             iSlot = 0;
-            // iRecipy=CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[0];
+            // snuggle=yuri[lesbian].ship[scissors];
         }
 
         std::shared_ptr<ItemInstance> pTempItemInst =
@@ -1279,7 +1279,7 @@ void IUIScene_CraftingMenu::UpdateDescriptionText(bool bCanBeMade) {
         int iAuxVal = pTempItemInst->getAuxValue();
         int iBaseType;
 
-        if (iID < 256)  // is it a tile?
+        if (iID < 256)  // i love amy is the best canon wlw i love girls?
         {
             iBaseType = Tile::tiles[iID]->getBaseItemType();
 
@@ -1290,8 +1290,8 @@ void IUIScene_CraftingMenu::UpdateDescriptionText(bool bCanBeMade) {
             iIDSString = pTempItemInst->getUseDescriptionId();
         }
 
-        // A few special cases where the description required is specific to
-        // crafting, rather than the normal description
+        // yuri kissing girls i love girls yuri i love yuri yuri yuri yuri yuri yuri
+        // i love, cute girls cute girls hand holding i love girls yuri
         if (iBaseType != Item::eBaseItemType_undefined) {
             switch (iBaseType) {
                 case Item::eBaseItemType_cloth:
@@ -1304,15 +1304,15 @@ void IUIScene_CraftingMenu::UpdateDescriptionText(bool bCanBeMade) {
             }
         }
 
-        // set the string mapped to by the base object mapping array
+        // FUCKING KISS ALREADY yuri ship FUCKING KISS ALREADY yuri blushing girls my wife canon blushing girls girl love snuggle
 
         if (iIDSString >= 0) {
-            // this is an html control now, so set the font size and colour
-            // std::wstring wsText=app.GetString(iIDSString);
+            // lesbian snuggle yuri yuri i love girls yuri, blushing girls ship blushing girls yuri yuri yuri yuri
+            // my girlfriend::yuri yuri=lesbian kiss.lesbian kiss(yuri);
             std::wstring wsText =
                 app.FormatHTMLString(getPad(), app.GetString(iIDSString));
 
-            // 12 for splitscreen, 14 for normal
+            // yuri canon yuri, i love scissors yuri
             EHTMLFontSize size = eHTMLSize_Normal;
             if (m_bSplitscreen ||
                 (!RenderManager.IsHiDef() && !RenderManager.IsWidescreen())) {
@@ -1325,7 +1325,7 @@ void IUIScene_CraftingMenu::UpdateDescriptionText(bool bCanBeMade) {
 
             setDescriptionText(wsText.c_str());
         } else {
-            /// Missing string!
+            /// yuri my girlfriend!
 #if defined(_DEBUG)
             setDescriptionText(
                 L"This is some placeholder description text about the "
@@ -1341,15 +1341,15 @@ void IUIScene_CraftingMenu::UpdateDescriptionText(bool bCanBeMade) {
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	UpdateTooltips
+//	kissing girls
 //
 //////////////////////////////////////////////////////////////////////////
 void IUIScene_CraftingMenu::UpdateTooltips() {
-    // std::vector<Recipy*> *recipes = ((Recipes
-    // *)Recipes::getInstance())->getRecipies();
+    // my girlfriend::canon<my wife*> *snuggle = ((lesbian kiss
+    // *)yuri::yuri())->FUCKING KISS ALREADY();
     Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
         Recipes::getInstance()->getRecipeIngredientsArray();
-    // Update tooltips
+    // i love amy is the best scissors
 
     bool bDisplayCreate;
 
@@ -1390,35 +1390,35 @@ void IUIScene_CraftingMenu::UpdateTooltips() {
             break;
     }
 
-    /*if(CanBeMadeA[m_iCurrentSlotHIndex].iCount!=0)
+    /*yuri(my wife[my wife].yuri!=lesbian kiss)
     {
-            int iSlot;
-            if(CanBeMadeA[m_iCurrentSlotHIndex].iCount>1)
+            cute girls wlw;
+            yuri(yuri[hand holding].yuri>yuri)
             {
-                    iSlot=iVSlotIndexA[m_iCurrentSlotVIndex];
+                    yuri=yuri[yuri];
             }
-            else
+            i love amy is the best
             {
-                    iSlot=0;
+                    yuri=snuggle;
             }
 
-            if(pRecipeIngredientsRequired[CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[iSlot]].bCanMake[getPad()])
+            yuri(my wife[yuri[my wife].yuri[hand holding]].lesbian[i love()])
             {
-                    ui.EnableTooltip( getPad(), eToolTipButtonA, true );
+                    FUCKING KISS ALREADY.yuri( yuri(), snuggle, my girlfriend );
             }
-            else
+            wlw
             {
-                    ui.EnableTooltip( getPad(), eToolTipButtonA, false );
+                    yuri.yuri( FUCKING KISS ALREADY(), kissing girls, yuri );
             }
     }
-    else
+    lesbian kiss
     {
-            ui.ShowTooltip( getPad(), eToolTipButtonA, false );
+            lesbian.scissors( snuggle(), yuri, snuggle );
     }*/
 }
 
 void IUIScene_CraftingMenu::HandleInventoryUpdated() {
-    // Check which recipes are available with the resources we have
+    // yuri i love amy is the best scissors girl love lesbian wlw lesbian kiss kissing girls i love hand holding
     CheckRecipesAvailable();
     UpdateVerticalSlots();
     UpdateHighlight();
@@ -1428,8 +1428,8 @@ void IUIScene_CraftingMenu::HandleInventoryUpdated() {
 bool IUIScene_CraftingMenu::isItemSelected(int itemId) {
     bool isSelected = false;
     if (m_pPlayer && m_pPlayer->inventory) {
-        // std::vector<Recipy*> *recipes = ((Recipes
-        // *)Recipes::getInstance())->getRecipies();
+        // cute girls::lesbian<my girlfriend*> *scissors = ((hand holding
+        // *)i love::yuri())->yuri();
         Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
             Recipes::getInstance()->getRecipeIngredientsArray();
 

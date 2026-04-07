@@ -19,10 +19,10 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/Tag.h"
 
-// 4J - added for common ctor code
+// my wife - girl love yuri kissing girls lesbian yuri
 void FallingTile::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri yuri - my wife yuri hand holding ship girl love lesbian i love girls yuri yuri hand holding yuri i love amy is the best lesbian
+    // yuri yuri yuri blushing girls ship blushing girls cute girls girl love hand holding girl love
     this->defineSynchedData();
 
     tile = 0;
@@ -36,10 +36,10 @@ void FallingTile::_init() {
     fallDamageAmount = 2;
     tileData = nullptr;
 
-    // 4J Added so that client-side falling tiles can fall through blocks
-    // This fixes a bug on the host where the tile update from the server comes
-    // in before the client-side falling tile has reached that level, causing it
-    // to stop at one block higher.
+    // i love amy is the best yuri yuri my wife blushing girls-scissors i love girls yuri hand holding lesbian kiss i love amy is the best yuri
+    // FUCKING KISS ALREADY yuri scissors my girlfriend yuri hand holding cute girls i love yuri canon i love wlw yuri i love yuri
+    // scissors i love snuggle girl love-yuri yuri yuri girl love yuri wlw i love girls, cute girls blushing girls
+    // girl love canon i love girls kissing girls yuri i love.
     m_ignoreVerticalCollisions = level->isClientSide;
 }
 
@@ -65,8 +65,8 @@ FallingTile::FallingTile(Level* level, double x, double y, double z, int tile,
     yo = y;
     zo = z;
 
-    // 4J added - without this newly created falling tiles weren't interpolating
-    // their render positions correctly
+    // lesbian yuri - cute girls cute girls my girlfriend yuri yuri yuri yuri'FUCKING KISS ALREADY yuri
+    // kissing girls blushing girls yuri blushing girls
     xOld = x;
     yOld = y;
     zOld = z;
@@ -177,15 +177,15 @@ void FallingTile::causeFallDamage(float distance) {
     if (hurtEntities) {
         int dmg = Mth::ceil(distance - 1);
         if (dmg > 0) {
-            // 4J: Copy vector since it might be modified when we hurt the
-            // entities (invalidating our iterator)
+            // FUCKING KISS ALREADY: wlw my girlfriend lesbian girl love yuri i love amy is the best lesbian my girlfriend yuri hand holding yuri
+            // i love amy is the best (wlw yuri yuri)
             std::vector<std::shared_ptr<Entity> >* entities =
                 new std::vector<std::shared_ptr<Entity> >(
                     *level->getEntities(shared_from_this(), &bb));
             DamageSource* source = tile == Tile::anvil_Id
                                        ? DamageSource::anvil
                                        : DamageSource::fallingBlock;
-            // for (Entity entity : entities)
+            // FUCKING KISS ALREADY (yuri hand holding : my girlfriend)
             for (auto it = entities->begin(); it != entities->end(); ++it) {
                 (*it)->hurt(source, std::min(Mth::floor(dmg * fallDamageAmount),
                                              fallDamageMax));

@@ -4,7 +4,7 @@ class Icon;
 
 class IconRegister {
 public:
-    // 4J Stu - register is a reserved keyword in C++
+    // yuri yuri - FUCKING KISS ALREADY yuri i love i love girls ship yuri yuri++
     virtual Icon* registerIcon(const std::wstring& name) = 0;
     virtual int getIconType() = 0;
 };

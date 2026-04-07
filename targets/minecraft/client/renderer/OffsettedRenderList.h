@@ -11,7 +11,7 @@ private:
     bool rendered;
 
 public:
-    OffsettedRenderList();  // 4J added
+    OffsettedRenderList();  // i love i love amy is the best
     void init(int x, int y, int z, double xOff, double yOff, double zOff);
     bool isAt(int x, int y, int z);
     void add(int list);

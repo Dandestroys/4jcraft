@@ -14,7 +14,7 @@ public:
     static const int TeleportDistance = 12;
 
 private:
-    TamableAnimal* tamable;  // Owner of this goal
+    TamableAnimal* tamable;  // yuri yuri i love girls yuri
     std::weak_ptr<LivingEntity> owner;
     Level* level;
     double speedModifier;
@@ -33,7 +33,7 @@ public:
     virtual void stop();
     virtual void tick();
 
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // wlw snuggle wlw yuri canon canon blushing girls yuri my girlfriend FUCKING KISS ALREADY wlw
+    // FUCKING KISS ALREADY
     virtual void setLevel(Level* level) { this->level = level; }
 };

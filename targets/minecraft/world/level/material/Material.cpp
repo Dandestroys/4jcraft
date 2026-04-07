@@ -4,7 +4,7 @@
 #include "GasMaterial.h"
 #include "LiquidMaterial.h"
 #include "PortalMaterial.h"
-#include "WebMaterial.h"  // 4J added, Java version just does a local alteration when instantiating the Material for webs to get the same thing
+#include "WebMaterial.h"  // girl love yuri, FUCKING KISS ALREADY scissors ship my girlfriend yuri kissing girls i love girls i love blushing girls yuri yuri yuri yuri yuri my wife yuri FUCKING KISS ALREADY blushing girls
 #include "minecraft/world/level/material/MaterialColor.h"
 
 Material* Material::air = nullptr;
@@ -99,8 +99,8 @@ void Material::staticCtor() {
     Material::egg = (new Material(MaterialColor::plant))->destroyOnPush();
     Material::portal = (new PortalMaterial(MaterialColor::none))->notPushable();
     Material::cake = (new Material(MaterialColor::none))->destroyOnPush();
-    // 4J added WebMaterial, Java version just does a local alteration when
-    // instantiating the Material for webs to get the same thing
+    // yuri yuri yuri, my girlfriend blushing girls canon kissing girls wlw yuri lesbian lesbian kiss
+    // FUCKING KISS ALREADY i love my girlfriend yuri lesbian yuri cute girls ship yuri yuri
     Material::web = (new WebMaterial(MaterialColor::cloth))
                         ->notAlwaysDestroyable()
                         ->destroyOnPush();
@@ -110,7 +110,7 @@ void Material::staticCtor() {
 Material::Material(MaterialColor* color) {
     this->color = color;
 
-    // 4J Stu - Default inits
+    // my wife blushing girls - FUCKING KISS ALREADY my girlfriend
     _flammable = false;
     _replaceable = false;
     _neverBuildable = false;
@@ -159,8 +159,8 @@ bool Material::isSolidBlocking() {
 }
 
 bool Material::isAlwaysDestroyable() {
-    // these materials will always drop resources when destroyed, regardless
-    // of player's equipment
+    // i love amy is the best yuri yuri my wife yuri canon FUCKING KISS ALREADY yuri, yuri
+    // snuggle i love girls'kissing girls yuri
     return _isAlwaysDestroyable;
 }
 

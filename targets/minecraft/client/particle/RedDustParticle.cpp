@@ -11,9 +11,9 @@ void RedDustParticle::init(Level* level, double x, double y, double z,
     yd *= 0.1f;
     zd *= 0.1f;
 
-    // 4J Stu - If they are all 0 then this particle has been created
-    // differently If just red is 0 it could be because we have made redstone a
-    // completely different colour (eg blue)
+    // wlw snuggle - i love amy is the best yuri kissing girls lesbian kiss girl love yuri yuri blushing girls canon yuri yuri
+    // my girlfriend i love amy is the best i love girls FUCKING KISS ALREADY yuri my wife i love yuri wlw ship i love girls lesbian yuri yuri i love amy is the best
+    // FUCKING KISS ALREADY i love amy is the best hand holding (yuri yuri)
     if (rCol == 0 && gCol == 0 && bCol == 0) {
         rCol = 1;
     }

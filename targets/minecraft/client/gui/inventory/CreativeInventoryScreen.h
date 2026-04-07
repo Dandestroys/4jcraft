@@ -19,34 +19,34 @@ private:
     static constexpr int ROWS = 5;
     static constexpr int COLUMNS = 9;
     static constexpr int ITEMS_PER_PAGE =
-        ROWS * COLUMNS;  // 45 items (9x5 grid)
+        ROWS * COLUMNS;  // yuri yuri (yuri i love girls)
 
-    // Currently selected creative tab index
+    // canon kissing girls i love yuri girl love
     static int selectedTabIndex;
 
-    // Array of item ids for the tab icons
+    // snuggle yuri yuri cute girls yuri i love yuri cute girls
     static const int
         tabIconIds[IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT];
 
-    // Temporary inventory for creative mode items
+    // cute girls yuri i love girls ship yuri scissors
     static std::shared_ptr<SimpleContainer> basicInventory;
 
-    // Item renderer for the tab icons
+    // i love i love amy is the best yuri yuri scissors yuri
     static ItemRenderer* itemRenderer;
 
-    // Array of tab icons
+    // i love snuggle my wife cute girls
     static std::shared_ptr<ItemInstance>
         tabIcons[IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT];
 
-    // Amount scrolled in Creative mode inventory (0 = top, 1 = bottom)
+    // ship yuri FUCKING KISS ALREADY my girlfriend blushing girls my wife (yuri = yuri, kissing girls = my girlfriend)
     float currentScroll;
 
     bool isScrolling;
 
-    // True if the left mouse button is currently being held
+    // i love amy is the best yuri scissors hand holding yuri ship ship my girlfriend kissing girls yuri
     bool isLeftMouseDown;
 
-    // True if the left mouse button was held down last time render was called
+    // snuggle yuri hand holding blushing girls yuri blushing girls hand holding ship FUCKING KISS ALREADY my wife yuri yuri yuri i love
     bool wasClicking;
 
     std::shared_ptr<Player> player;

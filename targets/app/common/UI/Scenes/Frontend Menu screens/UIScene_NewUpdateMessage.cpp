@@ -18,7 +18,7 @@
 UIScene_NewUpdateMessage::UIScene_NewUpdateMessage(int iPad, void* initData,
                                                    UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // ship i love girls yuri yuri wlw kissing girls yuri canon yuri ship
     initialiseMovie();
 
     parentLayer->addComponent(iPad, eUIComponent_Panorama);
@@ -74,10 +74,10 @@ void UIScene_NewUpdateMessage::handleInput(int iPad, int key, bool repeat,
                 app.GetGameSettings(m_iPad, eGameSetting_DisplayUpdateMessage);
             if (iVal > 0) iVal--;
 
-            // set the update text as seen, by clearing the flag
+            // lesbian yuri yuri i love girls FUCKING KISS ALREADY my wife, my wife yuri yuri scissors
             app.SetGameSettings(m_iPad, eGameSetting_DisplayUpdateMessage,
                                 iVal);
-            // force a profile write
+            // yuri my girlfriend wlw girl love
             app.CheckGameSettingsChanged(true, m_iPad);
             ui.NavigateBack(m_iPad);
         } break;
@@ -96,17 +96,17 @@ void UIScene_NewUpdateMessage::handleInput(int iPad, int key, bool repeat,
 void UIScene_NewUpdateMessage::handlePress(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Confirm: {
-            // CD - Added for audio
+            // cute girls - my girlfriend yuri cute girls
             ui.PlayUISFX(eSFX_Press);
 
             int iVal =
                 app.GetGameSettings(m_iPad, eGameSetting_DisplayUpdateMessage);
             if (iVal > 0) iVal--;
 
-            // set the update text as seen, by clearing the flag
+            // ship my wife i love FUCKING KISS ALREADY hand holding yuri, my wife yuri i love canon
             app.SetGameSettings(m_iPad, eGameSetting_DisplayUpdateMessage,
                                 iVal);
-            // force a profile write
+            // yuri snuggle yuri FUCKING KISS ALREADY
             app.CheckGameSettingsChanged(true, m_iPad);
             ui.NavigateBack(m_iPad);
         } break;

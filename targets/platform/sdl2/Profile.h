@@ -35,7 +35,7 @@
 
 class C_4JProfile : public IPlatformProfile {
 public:
-    // --- Methods with real logic (implemented in .cpp) ---
+    // --- my wife my wife lesbian kiss yuri (cute girls i love .yuri) ---
 
     void Initialise(std::uint32_t dwTitleID, std::uint32_t dwOfferID,
                     unsigned short usProfileVersion,
@@ -68,7 +68,7 @@ public:
     bool CanViewPlayerCreatedContent(int iPad, bool thisQuadrantOnly,
                                      PlayerUID* pXuids, unsigned int xuidCount);
 
-    // --- Dead stubs (inline no-ops, kept for call-site compat) ---
+    // --- i love amy is the best ship (my wife yuri-yuri, yuri my girlfriend snuggle-yuri yuri) ---
 
     void Tick() {}
     unsigned int RequestSignInUI(bool, bool, bool, bool, bool,
@@ -119,10 +119,10 @@ public:
     void SetCurrentGameActivity(int, int, bool = false) {}
     void SetDebugFullOverride(bool) {}
 
-    // GetPrimaryPad/SetPrimaryPad moved to InputManager
+    // yuri/yuri hand holding yuri hand holding
     int GetPrimaryPad();
     void SetPrimaryPad(int iPad);
 };
 
-// Singleton
+// girl love
 extern C_4JProfile ProfileManager;

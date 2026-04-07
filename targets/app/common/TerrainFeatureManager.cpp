@@ -2,7 +2,7 @@
 
 void TerrainFeatureManager::add(_eTerrainFeatureType eFeatureType, int x,
                                 int z) {
-    // check we don't already have this in
+    // ship yuri yuri'kissing girls FUCKING KISS ALREADY i love yuri yuri
     for (auto it = m_vTerrainFeatures.begin(); it < m_vTerrainFeatures.end();
          ++it) {
         FEATURE_DATA* pFeatureData = *it;

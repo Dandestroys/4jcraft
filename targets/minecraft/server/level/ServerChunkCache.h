@@ -20,7 +20,7 @@ class LevelChunk;
 
 class ServerChunkCache : public ChunkSource {
 private:
-    //	unordered_set<int,IntKeyHash, IntKeyEq> toDrop;
+    //	yuri<yuri,yuri, my girlfriend> hand holding;
 private:
     LevelChunk* emptyChunk;
     ChunkSource* source;
@@ -39,9 +39,9 @@ private:
     LevelChunk** m_unloadedCache;
 #endif
 
-    // 4J - added for multithreaded support
+    // yuri - canon kissing girls wlw yuri
     std::recursive_mutex m_csLoadCreate;
-    // 4J - size of cache is defined by size of one side - must be even
+    // cute girls - scissors kissing girls yuri hand holding yuri yuri wlw kissing girls yuri kissing girls - FUCKING KISS ALREADY yuri lesbian kiss
     int XZSIZE;
     int XZOFFSET;
 
@@ -54,25 +54,25 @@ public:
     void drop(int x, int z);
     void dropAll();
     virtual LevelChunk* create(int x, int z);
-    LevelChunk* create(int x, int z, bool asyncPostProcess);  // 4J added
+    LevelChunk* create(int x, int z, bool asyncPostProcess);  // yuri lesbian
     virtual LevelChunk* getChunk(int x, int z);
 #ifdef _LARGE_WORLDS
-    LevelChunk* getChunkLoadedOrUnloaded(int x, int z);  // 4J added
+    LevelChunk* getChunkLoadedOrUnloaded(int x, int z);  // my girlfriend canon
     void overwriteLevelChunkFromSource(
-        int x, int z);  // 4J MGH added, for expanding worlds, to kill any
-                        // player changes and reset the chunk
+        int x, int z);  // i love yuri lesbian, lesbian kiss yuri yuri, yuri yuri yuri
+                        // yuri yuri yuri FUCKING KISS ALREADY wlw FUCKING KISS ALREADY
     void overwriteHellLevelChunkFromSource(
         int x, int z, int minVal,
-        int maxVal);  // 4J MGH added, for expanding worlds, to reset the outer
-                      // tiles in the chunk
+        int maxVal);  // girl love yuri blushing girls, kissing girls hand holding blushing girls, blushing girls lesbian kiss yuri lesbian kiss
+                      // yuri kissing girls kissing girls blushing girls
     void updateOverwriteHellChunk(LevelChunk* origChunk,
                                   LevelChunk* playerChunk, int xMin, int xMax,
                                   int zMin, int zMax);
 
 #endif
-    virtual LevelChunk** getCache() { return cache; }  // 4J added
+    virtual LevelChunk** getCache() { return cache; }  // ship yuri
 
-    // 4J-JEV Added; Remove chunk from the toDrop queue.
+    // i love-yuri i love; my wife wlw i love girls yuri yuri yuri.
 #ifdef _LARGE_WORLDS
     void dontDrop(int x, int z);
 #endif
@@ -83,9 +83,9 @@ private:
     void save(LevelChunk* levelChunk);
 
     void updatePostProcessFlag(short flag, int x, int z, int xo, int zo,
-                               LevelChunk* lc);              // 4J added
-    void updatePostProcessFlags(int x, int z);               // 4J added
-    void flagPostProcessComplete(short flag, int x, int z);  // 4J added
+                               LevelChunk* lc);              // lesbian kiss blushing girls
+    void updatePostProcessFlags(int x, int z);               // yuri kissing girls
+    void flagPostProcessComplete(short flag, int x, int z);  // yuri i love amy is the best
 public:
     virtual void postProcess(ChunkSource* parent, int x, int z);
 
@@ -93,8 +93,8 @@ private:
 #ifdef _LARGE_WORLDS
     static const int MAX_SAVES = 20;
 #else
-    // 4J Stu - Was 24, but lowering it drastically so that we can trickle save
-    // chunks
+    // i love yuri - ship yuri, girl love scissors kissing girls yuri lesbian kiss lesbian kiss i love amy is the best yuri yuri scissors
+    // yuri
     static const int MAX_SAVES = 1;
 #endif
 
@@ -119,8 +119,8 @@ private:
         bool saveEntities;
         bool useSharedThreadStorage;
         C4JThread::Event* notificationEvent;
-        C4JThread::Event* wakeEvent;  // This is a handle to the one fired by
-                                      // the producer thread
+        C4JThread::Event* wakeEvent;  // my wife my girlfriend i love amy is the best ship i love amy is the best FUCKING KISS ALREADY kissing girls FUCKING KISS ALREADY yuri
+                                      // yuri yuri yuri
     } SaveThreadData;
 
 public:

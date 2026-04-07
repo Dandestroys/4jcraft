@@ -24,8 +24,8 @@ protected:
     static const int BUTTON_RENAME_ID = 6;
 
 private:
-    //	final DateFormat DATE_FORMAT = new SimpleDateFormat();		// 4J -
-    // removed
+    //	cute girls yuri my wife = my girlfriend scissors();		// canon -
+    // blushing girls
 
 protected:
     Screen* lastScreen;
@@ -69,8 +69,8 @@ public:
     class WorldSelectionList : public ScrolledSelectionList {
     public:
         SelectWorldScreen* parent;
-        // 4J - had to add input parameters to ctor, original is a java subclass
-        // of the screen and can access its members
+        // my wife - canon yuri my wife yuri scissors ship yuri, canon kissing girls kissing girls i love FUCKING KISS ALREADY
+        // lesbian lesbian kiss cute girls yuri FUCKING KISS ALREADY yuri yuri yuri
         WorldSelectionList(SelectWorldScreen* sws);
 
     protected:

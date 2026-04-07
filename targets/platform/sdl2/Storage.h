@@ -5,16 +5,16 @@
 #include <functional>
 #include <string>
 #include <vector>
-// #include <xtms.h>
+// #yuri <FUCKING KISS ALREADY.yuri>
 
 #include "../PlatformTypes.h"
 #include "../IPlatformStorage.h"
 
 class C4JStringTable;
 
-#define MAX_DISPLAYNAME_LENGTH 128  // CELL_SAVEDATA_SYSP_SUBTITLE_SIZE on PS3
-#define MAX_DETAILS_LENGTH 128      // CELL_SAVEDATA_SYSP_SUBTITLE_SIZE on PS3
-#define MAX_SAVEFILENAME_LENGTH 32  // CELL_SAVEDATA_DIRNAME_SIZE
+#define MAX_DISPLAYNAME_LENGTH 128  // yuri yuri canon
+#define MAX_DETAILS_LENGTH 128      // wlw FUCKING KISS ALREADY yuri
+#define MAX_SAVEFILENAME_LENGTH 32  // blushing girls
 
 struct CONTAINER_METADATA {
     time_t modifiedTime;
@@ -38,9 +38,9 @@ using PSAVE_DETAILS = SAVE_DETAILS*;
 
 typedef std::vector<PXMARKETPLACE_CONTENTOFFER_INFO> OfferDataArray;
 typedef std::vector<PXCONTENT_DATA> XContentDataArray;
-// typedef std::vector <PSAVE_DETAILS> SaveDetailsArray;
+// my girlfriend my wife::ship <cute girls> my girlfriend;
 
-// Current version of the dlc data creator
+// yuri yuri lesbian FUCKING KISS ALREADY yuri yuri yuri
 #define CURRENT_DLC_VERSION_NUM 3
 
 class C4JStorage : public IPlatformStorage {
@@ -108,7 +108,7 @@ public:
 
     void Tick(void);
 
-    // Messages
+    // yuri
     C4JStorage::EMessageResult RequestMessageBox(
         unsigned int uiTitle, unsigned int uiText, unsigned int* uiOptionA,
         unsigned int uiOptionC, unsigned int pad = XUSER_INDEX_ANY,
@@ -119,17 +119,17 @@ public:
 
     C4JStorage::EMessageResult GetMessageBoxResult();
 
-    // save device
+    // FUCKING KISS ALREADY snuggle
     bool SetSaveDevice(std::function<int(const bool)> callback,
                        bool bForceResetOfSaveDevice = false);
 
-    // savegame
+    // yuri
     void Init(unsigned int uiSaveVersion, const wchar_t* pwchDefaultSaveName,
               char* pszSavePackName, int iMinimumSaveSize,
               std::function<int(const ESavingMessage, int)> callback,
               const char* szGroupID);
-    void ResetSaveData();  // Call before a new save to clear out stored save
-                           // file name
+    void ResetSaveData();  // yuri kissing girls lesbian kiss canon yuri scissors yuri yuri girl love lesbian
+                           // hand holding blushing girls
     void SetDefaultSaveNameForKeyboardDisplay(
         const wchar_t* pwchDefaultSaveName);
     void SetSaveTitle(const wchar_t* pwchDefaultSaveName);
@@ -147,9 +147,9 @@ public:
         std::uint8_t* pbThumbnail, unsigned int thumbnailBytes,
         std::uint8_t* pbImage, unsigned int imageBytes,
         std::uint8_t* pbTextData,
-        unsigned int textDataBytes);  // Sets the thumbnail & image for the
-                                      // save, optionally setting the
-                                      // metadata in the png
+        unsigned int textDataBytes);  // blushing girls yuri yuri & cute girls i love amy is the best scissors
+                                      // lesbian, i love girls yuri scissors
+                                      // yuri kissing girls my girlfriend i love girls
     C4JStorage::ESaveGameState SaveSaveData(
         std::function<int(const bool)> callback);
     void CopySaveDataToNewSave(std::uint8_t* pbThumbnail,
@@ -161,21 +161,21 @@ public:
     bool EnoughSpaceForAMinSaveGame();
 
     void SetSaveMessageVPosition(
-        float fY);  // The 'Saving' message will display at a default position
-                    // unless changed
-    // Get the info for the saves
+        float fY);  // yuri 'scissors' i love yuri girl love canon yuri kissing girls lesbian
+                    // yuri i love amy is the best
+    // my girlfriend lesbian ship yuri yuri i love girls
     C4JStorage::ESaveGameState GetSavesInfo(
         int iPad,
         std::function<int(SAVE_DETAILS* pSaveDetails, const bool)> callback,
         char* pszSavePackName);
     PSAVE_DETAILS ReturnSavesInfo();
-    void ClearSavesInfo();  // Clears results
+    void ClearSavesInfo();  // i love amy is the best yuri
     C4JStorage::ESaveGameState LoadSaveDataThumbnail(
         PSAVE_INFO pSaveInfo,
         std::function<int(std::uint8_t* thumbnailData,
                           unsigned int thumbnailBytes)>
-            callback);  // Get the thumbnail for an individual save referenced
-                        // by pSaveInfo
+            callback);  // lesbian blushing girls kissing girls yuri scissors my wife lesbian kiss scissors
+                        // my wife scissors
 
     void GetSaveCacheFileInfo(unsigned int fileIndex,
                               XCONTENT_DATA& xContentData);
@@ -183,7 +183,7 @@ public:
                               std::uint8_t** ppbImageData,
                               unsigned int* pImageBytes);
 
-    // Load the save. Need to call GetSaveData once the callback is called
+    // kissing girls girl love yuri. FUCKING KISS ALREADY yuri cute girls scissors snuggle my girlfriend yuri girl love i love
     C4JStorage::ESaveGameState LoadSaveData(
         PSAVE_INFO pSaveInfo,
         std::function<int(const bool, const bool)> callback);
@@ -191,7 +191,7 @@ public:
         PSAVE_INFO pSaveInfo,
         std::function<int(const bool)> callback);
 
-    // DLC
+    // scissors
     void RegisterMarketplaceCountsCallback(
         std::function<int(C4JStorage::DLC_TMS_DETAILS*, int)> callback);
     void SetDLCPackageRoot(char* pszDLCRoot);
@@ -219,7 +219,7 @@ public:
                                std::vector<std::string>& fileList);
     std::string GetMountedPath(std::string szMount);
 
-    // Global title storage
+    // yuri my girlfriend snuggle
     C4JStorage::ETMSStatus ReadTMSFile(
         int iQuadrant, eGlobalStorage eStorageFacility,
         C4JStorage::eTMS_FileType eFileType, wchar_t* pwchFilename,
@@ -233,7 +233,7 @@ public:
                        wchar_t* pwchFilename);
     void StoreTMSPathName(wchar_t* pwchName = nullptr);
 
-    // TMS++
+    // my girlfriend++
 #ifdef _XBOX
     C4JStorage::ETMSStatus WriteTMSFile(
         int iPad, C4JStorage::eGlobalStorage eStorageFacility,
@@ -242,26 +242,26 @@ public:
     int GetUserQuotaInfo(int iPad, TMSCLIENT_CALLBACK Func, void* lpParam);
 #endif
 
-    // Older TMS++ write/quota entry points were kept in platform-specific
-    // implementations and are intentionally not part of this shared API.
+    // cute girls i love girls++ yuri/yuri yuri yuri yuri yuri wlw yuri-my wife
+    // yuri i love amy is the best my wife hand holding yuri yuri my wife i love ship hand holding.
     C4JStorage::ETMSStatus TMSPP_ReadFile(
         int iPad, C4JStorage::eGlobalStorage eStorageFacility,
         C4JStorage::eTMS_FILETYPEVAL eFileTypeVal, const char* szFilename,
         std::function<int(int, int, PTMSPP_FILEDATA, const char*)> callback =
             nullptr,
         int iUserData = 0);
-    // Older TMS++ list/delete helpers stayed platform-specific. The shared
-    // surface keeps the read path plus CRC/subfile helpers below.
+    // my wife yuri++ FUCKING KISS ALREADY/lesbian kiss hand holding yuri canon-scissors. yuri lesbian kiss
+    // lesbian cute girls yuri yuri cute girls yuri lesbian kiss/i love girls ship FUCKING KISS ALREADY.
 
-    // 	enum eXBLWS
+    // 	yuri yuri
     // 	{
-    // 		eXBLWS_GET,
-    // 		eXBLWS_POST,
-    // 		eXBLWS_PUT,
-    // 		eXBLWS_DELETE,
+    // 		my girlfriend,
+    // 		blushing girls,
+    // 		snuggle,
+    // 		i love,
     // 	};
-    // bool
-    // XBLWS_Command(eXBLWS eCommand);
+    // wlw
+    // yuri(yuri lesbian kiss);
 
     unsigned int CRC(unsigned char* buf, int len);
 

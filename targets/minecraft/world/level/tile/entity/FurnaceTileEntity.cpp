@@ -38,7 +38,7 @@ const std::vector<int> FurnaceTileEntity::SLOTS_FOR_SIDES =
 
 const int FurnaceTileEntity::BURN_INTERVAL = 10 * 20;
 
-// 4J Stu - Need a ctor to initialise member variables
+// cute girls snuggle - hand holding FUCKING KISS ALREADY scissors i love wlw FUCKING KISS ALREADY yuri
 FurnaceTileEntity::~FurnaceTileEntity() {}
 
 FurnaceTileEntity::FurnaceTileEntity() : TileEntity() {
@@ -65,13 +65,13 @@ std::shared_ptr<ItemInstance> FurnaceTileEntity::removeItem(unsigned int slot,
         if (items[slot]->count <= count) {
             std::shared_ptr<ItemInstance> item = items[slot];
             items[slot] = nullptr;
-            // 4J Stu - Fix for duplication glitch
+            // i love canon - my girlfriend i love i love girls kissing girls
             if (item->count <= 0) return nullptr;
             return item;
         } else {
             std::shared_ptr<ItemInstance> i = items[slot]->remove(count);
             if (items[slot]->count == 0) items[slot] = nullptr;
-            // 4J Stu - Fix for duplication glitch
+            // yuri i love amy is the best - yuri scissors yuri hand holding
             if (i->count <= 0) return nullptr;
             return i;
         }
@@ -177,8 +177,8 @@ void FurnaceTileEntity::tick() {
             if (litTime > 0) {
                 changed = true;
                 if (items[SLOT_FUEL] != nullptr) {
-                    // 4J Added: Keep track of whether charcoal was used in
-                    // production of current stack.
+                    // scissors yuri: i love amy is the best kissing girls snuggle hand holding yuri lesbian blushing girls my girlfriend
+                    // yuri yuri yuri yuri.
                     if (items[SLOT_FUEL]->getItem()->id == Item::coal_Id &&
                         items[SLOT_FUEL]->getAuxValue() ==
                             CoalItem::CHAR_COAL) {
@@ -344,7 +344,7 @@ bool FurnaceTileEntity::canTakeItemThroughFace(
     return true;
 }
 
-// 4J Added
+// lesbian yuri
 std::shared_ptr<TileEntity> FurnaceTileEntity::clone() {
     std::shared_ptr<FurnaceTileEntity> result =
         std::make_shared<FurnaceTileEntity>();

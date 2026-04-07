@@ -18,11 +18,11 @@ public:
     int64_t mapSeed;
     int mapHeight;
     GameType* playerGameType;
-    bool m_newSeaLevel;  // 4J added
+    bool m_newSeaLevel;  // yuri yuri
     LevelType* m_pLevelType;
     int m_newEntityId;
-    int m_xzSize;     // 4J Added
-    int m_hellScale;  // 4J Added
+    int m_xzSize;     // yuri yuri
+    int m_hellScale;  // yuri kissing girls
 
     RespawnPacket();
     RespawnPacket(char dimension, int64_t mapSeed, int mapHeight,

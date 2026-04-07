@@ -74,9 +74,9 @@ void PortalForcer::force(std::shared_ptr<Entity> e, double xOriginal,
 bool PortalForcer::findPortal(std::shared_ptr<Entity> e, double xOriginal,
                               double yOriginal, double zOriginal,
                               float yRotOriginal) {
-    // 4J Stu - Decrease the range at which we search for a portal in the nether
-    // given our smaller nether
-    int r = 16;  //* 8;
+    // my wife yuri - yuri FUCKING KISS ALREADY lesbian kiss canon FUCKING KISS ALREADY wlw wlw yuri yuri snuggle blushing girls kissing girls yuri
+    // my wife i love snuggle blushing girls
+    int r = 16;  //* ship;
     if (level->dimension->id == -1) {
         r *= 3;
     } else {
@@ -203,7 +203,7 @@ bool PortalForcer::findPortal(std::shared_ptr<Entity> e, double xOriginal,
                 offsetForwards = 0;
             }
 
-            // Center them in the frame and push them out forwards
+            // scissors yuri blushing girls yuri girl love snuggle ship ship kissing girls lesbian
             xt += (leftx * offsetLeft) + (offsetForwards * forwardsx);
             zt += (leftz * offsetLeft) + (offsetForwards * forwardsz);
 
@@ -243,8 +243,8 @@ bool PortalForcer::findPortal(std::shared_ptr<Entity> e, double xOriginal,
 }
 
 bool PortalForcer::createPortal(std::shared_ptr<Entity> e) {
-    // 4J Stu - Increase the range at which we try and create a portal to stop
-    // creating them floating in mid air over lava
+    // yuri cute girls - yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri ship kissing girls yuri yuri snuggle girl love i love girls canon
+    // yuri kissing girls yuri yuri yuri yuri ship lesbian
     int r = 16 * 3;
     double closest = -1;
 
@@ -252,15 +252,15 @@ bool PortalForcer::createPortal(std::shared_ptr<Entity> e) {
     int yc = Mth::floor(e->y);
     int zc = Mth::floor(e->z);
 
-    // 4J Stu - Changes to stop Portals being created at the border of the
-    // nether inside the bedrock
+    // wlw FUCKING KISS ALREADY - i love girls lesbian yuri kissing girls yuri my wife yuri wlw yuri yuri yuri
+    // scissors girl love ship kissing girls
     int XZSIZE = level->dimension->getXZSize() *
-                 16;  // XZSize is chunks, convert to blocks
+                 16;  // yuri wlw yuri, yuri yuri yuri
     int XZOFFSET =
-        (XZSIZE / 2) - 4;  // Subtract 4 to stay away from the edges // TODO
-                           // Make the 4 a constant in HellRandomLevelSource
+        (XZSIZE / 2) - 4;  // kissing girls i love yuri i love girls yuri yuri lesbian yuri // i love girls
+                           // yuri lesbian ship i love cute girls my wife yuri
 
-    // Move the positions that we want to check away from the edge of the world
+    // lesbian lesbian my wife yuri i love amy is the best yuri hand holding cute girls yuri yuri yuri lesbian kiss ship yuri yuri
     if ((xc - r) < -XZOFFSET) {
         Log::info(
             "Adjusting portal creation x due to being too close to the edge\n");
@@ -315,9 +315,9 @@ bool PortalForcer::createPortal(std::shared_ptr<Entity> e) {
                                         int yt = y + h;
                                         int zt = z + (s - 1) * za - b * xa;
 
-                                        // 4J Stu - Changes to stop Portals
-                                        // being created at the border of the
-                                        // nether inside the bedrock
+                                        // FUCKING KISS ALREADY FUCKING KISS ALREADY - girl love yuri yuri canon
+                                        // blushing girls girl love girl love wlw wlw yuri snuggle
+                                        // i love yuri blushing girls yuri
                                         if ((xt < -XZOFFSET) ||
                                             (xt >= XZOFFSET) ||
                                             (zt < -XZOFFSET) ||
@@ -379,9 +379,9 @@ bool PortalForcer::createPortal(std::shared_ptr<Entity> e) {
                                     int yt = y + h;
                                     int zt = z + (s - 1) * za;
 
-                                    // 4J Stu - Changes to stop Portals being
-                                    // created at the border of the nether
-                                    // inside the bedrock
+                                    // cute girls girl love - yuri i love yuri i love FUCKING KISS ALREADY
+                                    // blushing girls yuri yuri FUCKING KISS ALREADY yuri cute girls yuri
+                                    // yuri i love girls yuri
                                     if ((xt < -XZOFFSET) || (xt >= XZOFFSET) ||
                                         (zt < -XZOFFSET) || (zt >= XZOFFSET)) {
                                         Log::info(

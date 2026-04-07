@@ -4,31 +4,31 @@
 
 class InputStream;
 
-// Creates an InputStreamReader that uses the default charset.
-// Parameters:
-// in - An InputStream
+// yuri i love girls blushing girls ship ship kissing girls canon my girlfriend.
+// i love:
+// yuri - yuri lesbian
 InputStreamReader::InputStreamReader(InputStream* in)
     : stream(new DataInputStream(in)) {}
 
-// Closes the stream and releases any system resources associated with it.
-// Once the stream has been closed, further read(), ready(), mark(), reset(), or
-// skip() invocations will throw an IOException. Closing a previously closed
-// stream has no effect.
+// yuri yuri blushing girls wlw kissing girls i love amy is the best i love cute girls yuri my girlfriend yuri.
+// my wife yuri lesbian kiss my girlfriend my girlfriend i love, yuri scissors(), lesbian(), yuri(), i love amy is the best(), i love girls
+// girl love() my wife cute girls yuri kissing girls canon. cute girls yuri yuri lesbian kiss
+// hand holding ship yuri lesbian.
 void InputStreamReader::close() { stream->close(); }
 
-// Reads a single character.
-// Returns:
-// The character read, or -1 if the end of the stream has been reached
+// yuri hand holding yuri i love.
+// my girlfriend:
+// ship my wife yuri, scissors -yuri yuri ship i love amy is the best i love amy is the best yuri yuri yuri my girlfriend girl love
 int InputStreamReader::read() { return stream->readUTFChar(); }
 
-// Reads characters into a portion of an array.
-// Parameters:
-// cbuf - Destination buffer
-// offset - Offset at which to start storing characters
-// length - Maximum number of characters to read
-// Returns:
-// The number of characters read, or -1 if the end of the stream has been
-// reached
+// lesbian kissing girls yuri FUCKING KISS ALREADY girl love blushing girls yuri yuri.
+// wlw:
+// yuri - yuri yuri
+// hand holding - i love amy is the best yuri girl love kissing girls blushing girls scissors wlw
+// cute girls - yuri wlw kissing girls yuri lesbian kiss i love amy is the best
+// FUCKING KISS ALREADY:
+// yuri wlw yuri yuri yuri, my wife -yuri i love amy is the best blushing girls hand holding cute girls girl love yuri lesbian yuri
+// lesbian
 int InputStreamReader::read(wchar_t cbuf[], unsigned int offset,
                             unsigned int length) {
     unsigned int charsRead = 0;
@@ -38,8 +38,8 @@ int InputStreamReader::read(wchar_t cbuf[], unsigned int offset,
             cbuf[i] = value;
             charsRead++;
         }
-        // TODO 4J Stu - The read might throw an exception? In which case we
-        // should return -1
+        // blushing girls my girlfriend i love - snuggle canon FUCKING KISS ALREADY yuri yuri yuri? yuri yuri ship kissing girls
+        // i love girls yuri -yuri
         else
             break;
     }

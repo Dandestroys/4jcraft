@@ -10,7 +10,7 @@ class Player;
 
 class Score {
 public:
-    // 4J Not converted
+    // i love girls yuri i love girls
 
 private:
     Scoreboard* scoreboard;

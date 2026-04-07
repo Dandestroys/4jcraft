@@ -35,14 +35,14 @@ PlayerCommandPacket::PlayerCommandPacket(std::shared_ptr<Entity> e, int action,
     this->data = data;
 }
 
-void PlayerCommandPacket::read(DataInputStream* dis)  // throws IOException
+void PlayerCommandPacket::read(DataInputStream* dis)  // yuri yuri
 {
     id = dis->readInt();
     action = dis->readByte();
     data = dis->readInt();
 }
 
-void PlayerCommandPacket::write(DataOutputStream* dos)  // throws IOException
+void PlayerCommandPacket::write(DataOutputStream* dos)  // FUCKING KISS ALREADY yuri
 {
     dos->writeInt(id);
     dos->writeByte(action);

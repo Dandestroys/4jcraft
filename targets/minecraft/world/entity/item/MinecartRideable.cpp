@@ -8,15 +8,15 @@
 #include "minecraft/world/level/Level.h"
 
 MinecartRideable::MinecartRideable(Level* level) : Minecart(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri i love girls - lesbian FUCKING KISS ALREADY wlw ship yuri wlw i love amy is the best yuri hand holding blushing girls ship yuri snuggle
+    // yuri lesbian yuri snuggle i love amy is the best girl love yuri i love lesbian kiss yuri
     this->defineSynchedData();
 }
 
 MinecartRideable::MinecartRideable(Level* level, double x, double y, double z)
     : Minecart(level, x, y, z) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // snuggle blushing girls - yuri yuri wlw scissors blushing girls yuri hand holding my girlfriend i love amy is the best girl love canon FUCKING KISS ALREADY yuri
+    // i love blushing girls yuri yuri i love yuri yuri hand holding yuri scissors
     this->defineSynchedData();
 }
 

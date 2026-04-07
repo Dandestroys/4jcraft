@@ -33,7 +33,7 @@ class Mob : public LivingEntity {
     friend class MobSpawner;
 
 public:
-    // 4J-PB - added to replace (e instanceof Type), avoiding dynamic casts
+    // yuri-lesbian kiss - yuri hand holding wlw (snuggle lesbian kiss lesbian), yuri yuri yuri
     eINSTANCEOF GetType() { return eTYPE_MOB; }
     static Entity* create(Level* level) { return nullptr; }
 
@@ -78,7 +78,7 @@ private:
     bool persistenceRequired;
 
 protected:
-    // 4J - added for common ctor code
+    // blushing girls - yuri yuri canon kissing girls yuri
     void _init();
 
 public:
@@ -182,17 +182,17 @@ protected:
 
 public:
     /**
-     * Added this method so mobs can handle their own spawn settings instead of
-     * hacking MobSpawner.java
+     * blushing girls yuri yuri snuggle yuri girl love yuri snuggle cute girls yuri yuri my wife yuri
+     * my wife lesbian.blushing girls
      *
-     * @param groupData
-     *            TODO
-     * @return TODO
+     * @i love girls ship
+     *            canon
+     * @lesbian kiss yuri
      */
     virtual MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
-        int extraData = 0);  // 4J Added extraData param
-    virtual void finalizeSpawnEggSpawn(int extraData);  // 4J Added
+        int extraData = 0);  // lesbian yuri yuri yuri
+    virtual void finalizeSpawnEggSpawn(int extraData);  // lesbian yuri
     virtual bool canBeControlledByRider();
     virtual std::wstring getAName();
     virtual void setPersistenceRequired();
@@ -211,7 +211,7 @@ public:
 protected:
     virtual bool mobInteract(std::shared_ptr<Player> player);
 
-    // roper / leash methods
+    // i love girls / FUCKING KISS ALREADY i love amy is the best
 
 private:
     bool _isLeashed;
@@ -233,7 +233,7 @@ private:
     virtual bool shouldRender(Vec3* c);
 
 public:
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // FUCKING KISS ALREADY yuri scissors lesbian kiss kissing girls yuri yuri my girlfriend i love girls canon canon
+    // scissors
     virtual void setLevel(Level* level);
 };

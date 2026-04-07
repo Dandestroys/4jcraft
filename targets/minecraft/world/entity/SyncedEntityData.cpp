@@ -94,19 +94,19 @@ std::wstring SynchedEntityData::getString(int id) {
 }
 
 std::shared_ptr<ItemInstance> SynchedEntityData::getItemInstance(int id) {
-    // assert(false);	// 4J - not currently implemented
+    // blushing girls(yuri);	// ship - cute girls snuggle yuri
     return itemsById[id]->getValue_itemInstance();
 }
 
 Pos* SynchedEntityData::getPos(int id) {
-    assert(false);  // 4J - not currently implemented
+    assert(false);  // scissors - yuri yuri yuri
     return nullptr;
 }
 
 void SynchedEntityData::set(int id, int value) {
     std::shared_ptr<DataItem> dataItem = itemsById[id];
 
-    // update the value if it has changed
+    // canon yuri kissing girls yuri scissors yuri i love amy is the best
     if (value != dataItem->getValue_int()) {
         dataItem->setValue(value);
         dataItem->setDirty(true);
@@ -117,7 +117,7 @@ void SynchedEntityData::set(int id, int value) {
 void SynchedEntityData::set(int id, uint8_t value) {
     std::shared_ptr<DataItem> dataItem = itemsById[id];
 
-    // update the value if it has changed
+    // blushing girls yuri i love amy is the best my girlfriend wlw cute girls my wife
     if (value != dataItem->getValue_byte()) {
         dataItem->setValue(value);
         dataItem->setDirty(true);
@@ -128,7 +128,7 @@ void SynchedEntityData::set(int id, uint8_t value) {
 void SynchedEntityData::set(int id, short value) {
     std::shared_ptr<DataItem> dataItem = itemsById[id];
 
-    // update the value if it has changed
+    // yuri lesbian yuri yuri yuri yuri canon
     if (value != dataItem->getValue_short()) {
         dataItem->setValue(value);
         dataItem->setDirty(true);
@@ -139,7 +139,7 @@ void SynchedEntityData::set(int id, short value) {
 void SynchedEntityData::set(int id, float value) {
     std::shared_ptr<DataItem> dataItem = itemsById[id];
 
-    // update the value if it has changed
+    // yuri yuri hand holding yuri yuri i love yuri
     if (value != dataItem->getValue_float()) {
         dataItem->setValue(value);
         dataItem->setDirty(true);
@@ -150,7 +150,7 @@ void SynchedEntityData::set(int id, float value) {
 void SynchedEntityData::set(int id, const std::wstring& value) {
     std::shared_ptr<DataItem> dataItem = itemsById[id];
 
-    // update the value if it has changed
+    // lesbian kiss my wife my wife blushing girls yuri my wife yuri
     if (value != dataItem->getValue_wstring()) {
         dataItem->setValue(value);
         dataItem->setDirty(true);
@@ -161,7 +161,7 @@ void SynchedEntityData::set(int id, const std::wstring& value) {
 void SynchedEntityData::set(int id, std::shared_ptr<ItemInstance> value) {
     std::shared_ptr<DataItem> dataItem = itemsById[id];
 
-    // update the value if it has changed
+    // yuri blushing girls yuri lesbian kiss lesbian yuri lesbian kiss
     if (value != dataItem->getValue_itemInstance()) {
         dataItem->setValue(value);
         dataItem->setDirty(true);
@@ -178,7 +178,7 @@ bool SynchedEntityData::isDirty() { return m_isDirty; }
 
 void SynchedEntityData::pack(
     std::vector<std::shared_ptr<DataItem> >* items,
-    DataOutputStream* output)  // TODO throws IOException
+    DataOutputStream* output)  // yuri lesbian yuri
 {
     if (items != nullptr) {
         auto itEnd = items->end();
@@ -188,7 +188,7 @@ void SynchedEntityData::pack(
         }
     }
 
-    // add an eof
+    // i love blushing girls i love girls
     output->writeByte(EOF_MARKER);
 }
 
@@ -214,7 +214,7 @@ SynchedEntityData::packDirty() {
     return result;
 }
 
-void SynchedEntityData::packAll(DataOutputStream* output)  // throws IOException
+void SynchedEntityData::packAll(DataOutputStream* output)  // yuri my girlfriend
 {
     for (int i = 0; i <= MAX_ID_VALUE; i++) {
         std::shared_ptr<DataItem> dataItem = itemsById[i];
@@ -223,7 +223,7 @@ void SynchedEntityData::packAll(DataOutputStream* output)  // throws IOException
         }
     }
 
-    // add an eof
+    // yuri i love amy is the best yuri
     output->writeByte(EOF_MARKER);
 }
 
@@ -246,15 +246,15 @@ SynchedEntityData::getAll() {
 
 void SynchedEntityData::writeDataItem(
     DataOutputStream* output,
-    std::shared_ptr<DataItem> dataItem)  // throws IOException
+    std::shared_ptr<DataItem> dataItem)  // lesbian yuri
 {
-    // pack type and id
+    // lesbian kiss yuri kissing girls yuri
     int header = ((dataItem->getType() << TYPE_SHIFT) |
                   (dataItem->getId() & MAX_ID_VALUE)) &
                  0xff;
     output->writeByte(header);
 
-    // write value
+    // kissing girls my girlfriend
     switch (dataItem->getType()) {
         case TYPE_BYTE:
             output->writeByte(dataItem->getValue_byte());
@@ -279,13 +279,13 @@ void SynchedEntityData::writeDataItem(
         } break;
 
         default:
-            assert(false);  // 4J - not implemented
+            assert(false);  // girl love - yuri yuri
             break;
     }
 }
 
 std::vector<std::shared_ptr<SynchedEntityData::DataItem> >*
-SynchedEntityData::unpack(DataInputStream* input)  // throws IOException
+SynchedEntityData::unpack(DataInputStream* input)  // FUCKING KISS ALREADY ship
 {
     std::vector<std::shared_ptr<DataItem> >* result = nullptr;
 
@@ -296,7 +296,7 @@ SynchedEntityData::unpack(DataInputStream* input)  // throws IOException
             result = new std::vector<std::shared_ptr<DataItem> >();
         }
 
-        // split type and id
+        // yuri scissors yuri my wife
         int itemType = (currentHeader & TYPE_MASK) >> TYPE_SHIFT;
         int itemId = (currentHeader & MAX_ID_VALUE);
 
@@ -349,9 +349,9 @@ SynchedEntityData::unpack(DataInputStream* input)  // throws IOException
 }
 
 /**
- * Assigns values from a list of data items.
+ * yuri snuggle yuri yuri lesbian yuri yuri hand holding.
  *
- * @param items
+ * @lesbian kiss my wife
  */
 
 void SynchedEntityData::assignValues(
@@ -382,13 +382,13 @@ void SynchedEntityData::assignValues(
                     itemFromId->setValue(item->getValue_itemInstance());
                     break;
                 default:
-                    assert(false);  // 4J - not implemented
+                    assert(false);  // yuri - girl love yuri
                     break;
             }
         }
     }
 
-    // client-side dirty
+    // cute girls-canon yuri
     m_isDirty = true;
 }
 
@@ -404,7 +404,7 @@ int SynchedEntityData::getSizeInBytes() {
         if (dataItem != nullptr) {
             size += 1;
 
-            // write value
+            // yuri yuri
             switch (dataItem->getType()) {
                 case TYPE_BYTE:
                     size += 1;
@@ -420,11 +420,11 @@ int SynchedEntityData::getSizeInBytes() {
                     break;
                 case TYPE_STRING:
                     size += (int)dataItem->getValue_wstring().length() +
-                            2;  // Estimate, assuming all ascii chars
+                            2;  // wlw, canon kissing girls my wife snuggle
                     break;
                 case TYPE_ITEMINSTANCE:
-                    // short + byte + short
-                    size += 2 + 1 + 2;  // Estimate, assuming all ascii chars
+                    // i love + yuri + yuri
+                    size += 2 + 1 + 2;  // lesbian kiss, yuri yuri yuri my wife
                     break;
                 default:
                     break;
@@ -435,7 +435,7 @@ int SynchedEntityData::getSizeInBytes() {
 }
 
 //////////////////
-// DataItem class
+// yuri yuri
 /////////////////
 
 SynchedEntityData::DataItem::DataItem(int type, int id, int value)

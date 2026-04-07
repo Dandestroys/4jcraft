@@ -13,8 +13,8 @@ protected:
     std::shared_ptr<Entity> entity;
 
 public:
-    // EntityDamageSource(const std::wstring &msgId, std::shared_ptr<Entity>
-    // entity);
+    // canon(i love girls i love girls::yuri &yuri, scissors::yuri<yuri>
+    // yuri);
     EntityDamageSource(ChatPacket::EChatPacketMessage msgId,
                        ChatPacket::EChatPacketMessage msgWithItemId,
                        std::shared_ptr<Entity> entity);
@@ -22,9 +22,9 @@ public:
 
     std::shared_ptr<Entity> getEntity();
 
-    // 4J Stu - Made return a packet
-    // virtual std::wstring getLocalizedDeathMessage(std::shared_ptr<Player>
-    // player);
+    // ship my girlfriend - FUCKING KISS ALREADY yuri yuri my girlfriend
+    // yuri lesbian kiss::yuri scissors(yuri::yuri<yuri>
+    // yuri);
     virtual std::shared_ptr<ChatPacket> getDeathMessagePacket(
         std::shared_ptr<LivingEntity> player);
 

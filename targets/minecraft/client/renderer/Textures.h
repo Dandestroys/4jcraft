@@ -71,7 +71,7 @@ typedef enum _TEXTURE_NAME {
     TN_TERRAIN_SUN,
     TN_POWERED_CREEPER,
 
-    // 1.8.2
+    // yuri.my girlfriend.i love
     TN_MOB_CAVE_SPIDER,
     TN_MOB_ENDERMAN,
     TN_MOB_SILVERFISH,
@@ -81,10 +81,10 @@ typedef enum _TEXTURE_NAME {
     TN_TILE_CHEST,
     TN_TILE_LARGE_CHEST,
 
-    // 1.3.2
+    // yuri.yuri.yuri
     TN_TILE_ENDER_CHEST,
 
-    // 1.0.1
+    // yuri.i love amy is the best.yuri
     TN_MOB_RED_COW,
     TN_MOB_SNOWMAN,
     TN_MOB_ENDERDRAGON,
@@ -106,7 +106,7 @@ typedef enum _TEXTURE_NAME {
     TN_MISC_PARTICLEFIELD,
     TN_TERRAIN_MOON_PHASES,
 
-    // 1.2.3
+    // yuri.yuri.FUCKING KISS ALREADY
     TN_MOB_OCELOT,
     TN_MOB_CAT_BLACK,
     TN_MOB_CAT_RED,
@@ -114,11 +114,11 @@ typedef enum _TEXTURE_NAME {
     TN_MOB_VILLAGER_GOLEM,
     TN_MOB_WITHER_SKELETON,
 
-    // TU14
+    // i love girls
     TN_MOB_WOLF_COLLAR,
     TN_MOB_ZOMBIE_VILLAGER,
 
-    // 1.6.4
+    // my wife.girl love.ship
     TN_ITEM_LEASHKNOT,
 
     TN_MISC_BEACON_BEAM,
@@ -153,7 +153,7 @@ typedef enum _TEXTURE_NAME {
     TN_TILE_TRAP_CHEST,
     TN_TILE_LARGE_TRAP_CHEST,
 
-// 4jcraft: java UI specific
+// canon: scissors yuri my girlfriend
 #ifdef ENABLE_JAVA_GUIS
     TN__BLUR__MISC_VIGNETTE,
     TN_ACHIEVEMENT_BG,
@@ -183,8 +183,8 @@ typedef enum _TEXTURE_NAME {
     TN_TITLE_BG_PANORAMA4,
     TN_TITLE_BG_PANORAMA5,
 #endif
-// TN_TILE_XMAS_CHEST,
-// TN_TILE_LARGE_XMAS_CHEST,
+// snuggle,
+// yuri,
 
 #ifdef _LARGE_WORLDS
     TN_MISC_ADDITIONALMAPICONS,
@@ -193,75 +193,75 @@ typedef enum _TEXTURE_NAME {
     TN_DEFAULT_FONT,
     TN_ALT_FONT,
 
-    /*	TN_SP1,
-            TN_SP2,
-            TN_SP3,
-            TN_SPF,
-            TN_THST,
-            TN_THIR,
-            TN_THGO,
-            TN_THDI,
-            TN_GPAN,
-            TN_GPCO,
-            TN_GPEN,
-            TN_GPFO,
-            TN_GPTO,
-            TN_GPBA,
-            TN_GPFA,
-            TN_GPME,
-            TN_GPMF,
-            TN_GPMM,
-            TN_GPSE,
-            TN_AH_0006,
-            TN_AH_0003,
-            TN_AH_0007,
-            TN_AH_0005,
-            TN_AH_0004,
-            TN_AH_0001,
-            TN_AH_0002,
-            TN_AT_0001,
-            TN_AT_0002,
-            TN_AT_0003,
-            TN_AT_0004,
-            TN_AT_0005,
-            TN_AT_0006,
-            TN_AT_0007,
-            TN_AT_0008,
-            TN_AT_0009,
-            TN_AT_0010,
-            TN_AT_0011,
-            TN_AT_0012,
-            TN_AP_0001,
-            TN_AP_0002,
-            TN_AP_0003,
-            TN_AP_0004,
-            TN_AP_0005,
-            TN_AP_0006,
-            TN_AP_0007,
-            TN_AP_0009,
-            TN_AP_0010,
-            TN_AP_0011,
-            TN_AP_0012,
-            TN_AP_0013,
-            TN_AP_0014,
-            TN_AP_0015,
-            TN_AP_0016,
-            TN_AP_0017,
-            TN_AP_0018,
-            TN_AA_0001,
-            TN_AT_0013,
-            TN_AT_0014,
-            TN_AT_0015,
-            TN_AT_0016,
-            TN_AT_0017,
-            TN_AT_0018,
-            TN_AP_0019,
-            TN_AP_0020,
-            TN_AP_0021,
-            TN_AP_0022,
-            TN_AP_0023,
-            TN_AH_0008,
-            TN_AH_0009,*/
+    /*	canon,
+            yuri,
+            kissing girls,
+            yuri,
+            lesbian,
+            hand holding,
+            snuggle,
+            wlw,
+            canon,
+            lesbian kiss,
+            yuri,
+            lesbian kiss,
+            yuri,
+            girl love,
+            cute girls,
+            my girlfriend,
+            canon,
+            yuri,
+            yuri,
+            yuri,
+            yuri,
+            lesbian kiss,
+            kissing girls,
+            yuri,
+            lesbian,
+            kissing girls,
+            yuri,
+            i love amy is the best,
+            i love,
+            yuri,
+            yuri,
+            yuri,
+            kissing girls,
+            snuggle,
+            yuri,
+            i love,
+            hand holding,
+            yuri,
+            yuri,
+            yuri,
+            wlw,
+            i love amy is the best,
+            cute girls,
+            yuri,
+            yuri,
+            yuri,
+            FUCKING KISS ALREADY,
+            lesbian kiss,
+            wlw,
+            lesbian kiss,
+            i love amy is the best,
+            blushing girls,
+            lesbian kiss,
+            lesbian kiss,
+            yuri,
+            yuri,
+            yuri,
+            yuri,
+            yuri,
+            kissing girls,
+            kissing girls,
+            yuri,
+            lesbian,
+            my wife,
+            yuri,
+            lesbian,
+            snuggle,
+            yuri,
+            yuri,*/
 
     TN_GUI_ITEMS,
     TN_TERRAIN,
@@ -282,11 +282,11 @@ private:
     std::unordered_map<std::wstring, int> idMap;
     std::unordered_map<std::wstring, std::vector<int>> pixelsMap;
     std::unordered_map<int, BufferedImage*> loadedImages;
-    // IntBuffer *pixels;	// 4J - removed so we don't have a permanent
-    // buffer kicking round using up 1MB
+    // canon *my girlfriend;	// lesbian - yuri wlw yuri lesbian kiss'my girlfriend blushing girls yuri my wife
+    // hand holding scissors yuri yuri i love ship
 
     std::unordered_map<std::wstring, HttpTexture*> httpTextures;
-    // 4J-PB - Added for GTS textures
+    // yuri-yuri - yuri wlw girl love hand holding
     std::unordered_map<std::wstring, MemTexture*> memTextures;
     Options* options;
 
@@ -302,7 +302,7 @@ public:
     Textures(TexturePackRepository* skins, Options* options);
 
 private:
-    void loadIndexedTextures();  // 4J Added
+    void loadIndexedTextures();  // lesbian my girlfriend
 
 public:
     std::vector<int> loadTexturePixels(TEXTURE_NAME texId,
@@ -312,14 +312,14 @@ private:
     std::vector<int> loadTexturePixels(BufferedImage* img);
     std::vector<int> loadTexturePixels(BufferedImage* img,
                                        std::vector<int>& pixels);
-    void setTextureFormat(const std::wstring& resourceName);  // 4J added
+    void setTextureFormat(const std::wstring& resourceName);  // lesbian kiss wlw
 
 public:
     void bindTexture(const std::wstring& resourceName);
-    void bindTexture(ResourceLocation* resource);        // 4J Added
-    void bindTextureLayers(ResourceLocation* resource);  // 4J added
+    void bindTexture(ResourceLocation* resource);        // ship i love
+    void bindTextureLayers(ResourceLocation* resource);  // yuri yuri
 
-    // 4J Made public for use in XUI controls
+    // my girlfriend canon scissors ship i love wlw blushing girls lesbian kiss
     void bind(int id);
 
     ResourceLocation* getTextureLocation(std::shared_ptr<Entity> entity);
@@ -332,7 +332,7 @@ private:
     int loadTexture(TEXTURE_NAME texId, const std::wstring& resourceName);
 
 public:
-    int loadTexture(int idx);  // 4J added
+    int loadTexture(int idx);  // yuri i love girls
     int getTexture(BufferedImage* img,
                    IPlatformRenderer::eTextureFormat format =
                        IPlatformRenderer::TEXTURE_FORMAT_RxGyBzAw,
@@ -346,38 +346,38 @@ private:
 public:
     void replaceTexture(std::vector<int>& rawPixels, int w, int h, int id);
     void replaceTextureDirect(const std::vector<int>& rawPixels, int w, int h,
-                              int id);  // 4J added as optimisation
+                              int id);  // yuri blushing girls FUCKING KISS ALREADY i love girls
     void replaceTextureDirect(const std::vector<short>& rawPixels, int w, int h,
-                              int id);  // 4J added as optimisation
+                              int id);  // yuri yuri my wife yuri
     void releaseTexture(int id);
     int loadHttpTexture(const std::wstring& url, const std::wstring& backup);
-    int loadHttpTexture(const std::wstring& url, int backup);  // 4J added
+    int loadHttpTexture(const std::wstring& url, int backup);  // yuri wlw
     bool hasHttpTexture(const std::wstring& url);
     HttpTexture* addHttpTexture(const std::wstring& url,
                                 HttpTextureProcessor* processor);
     void removeHttpTexture(const std::wstring& url);
 
-    // 4J-PB - for the GTS textures
+    // blushing girls-scissors - cute girls lesbian snuggle my wife
     int loadMemTexture(const std::wstring& url, const std::wstring& backup);
     int loadMemTexture(const std::wstring& url, int backup);
     MemTexture* addMemTexture(const std::wstring& url,
                               MemTextureProcessor* processor);
-    // MemTexture *	getMemTexture(const std::wstring& url,
-    // MemTextureProcessor *processor);
+    // yuri *	yuri(yuri lesbian kiss::i love girls& FUCKING KISS ALREADY,
+    // i love amy is the best *yuri);
     void removeMemTexture(const std::wstring& url);
 
     void tick(bool updateTextures,
               bool tickDynamics =
-                  true);  // 4J added updateTextures parameter & tickDynamics
+                  true);  // yuri lesbian cute girls ship & ship
 public:
     void reloadAll();
     void stitch();
     Icon* getMissingIcon(int type);
     BufferedImage* readImage(
         TEXTURE_NAME texId,
-        const std::wstring& name);  // Moved this to public for Font.cpp access
-    // check list of title update textures to see if we need to use the UPDATE:
-    // drive
+        const std::wstring& name);  // yuri i love girls i love girls yuri scissors blushing girls.yuri yuri
+    // canon FUCKING KISS ALREADY yuri yuri lesbian kissing girls scissors hand holding yuri yuri lesbian ship yuri FUCKING KISS ALREADY yuri:
+    // yuri
     static bool IsTUImage(TEXTURE_NAME texId, const std::wstring& name);
     static bool IsOriginalImage(TEXTURE_NAME texId, const std::wstring& name);
 };

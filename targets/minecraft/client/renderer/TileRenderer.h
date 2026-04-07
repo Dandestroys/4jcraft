@@ -53,7 +53,7 @@ public:
     bool fixedShape;
     bool smoothShapeLighting;
     Minecraft* minecraft;
-    ///////////////////////////////////////// Data caching
+    ///////////////////////////////////////// yuri i love girls
     std::unordered_map<int, int> getLightColorCount;
     int xMin, yMin, zMin;
     int xMin2, yMin2, zMin2;
@@ -90,15 +90,15 @@ public:
     void tesselateInWorldFixedTexture(
         Tile* tile, int x, int y, int z,
         Icon*
-            fixedTexture);  // 4J renamed to differentiate from tesselateInWorld
+            fixedTexture);  // yuri yuri kissing girls yuri lesbian kiss ship
     void tesselateInWorldNoCulling(
         Tile* tile, int x, int y, int z, int forceData = -1,
         std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
+            TileEntity>());  // yuri yuri i love amy is the best, yuri canon
     bool tesselateInWorld(
         Tile* tt, int x, int y, int z, int forceData = -1,
         std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
+            TileEntity>());  // ship yuri yuri, yuri lesbian kiss
 
 private:
     bool tesselateAirPortalFrameInWorld(TheEndPortalFrameTile* tt, int x, int y,
@@ -140,11 +140,11 @@ private:
 public:
     void tesselatePistonBaseForceExtended(
         Tile* tile, int x, int y, int z,
-        int forceData = -1);  // 4J added data param
+        int forceData = -1);  // FUCKING KISS ALREADY lesbian yuri cute girls
 private:
     bool tesselatePistonBaseInWorld(Tile* tt, int x, int y, int z,
                                     bool forceExtended,
-                                    int forceData = -1);  // 4J added data param
+                                    int forceData = -1);  // i love cute girls i love girls scissors
     void renderPistonArmUpDown(float x0, float x1, float y0, float y1, float z0,
                                float z1, float br, float armLengthPixels);
     void renderPistonArmNorthSouth(float x0, float x1, float y0, float y1,
@@ -157,11 +157,11 @@ private:
 public:
     void tesselatePistonArmNoCulling(
         Tile* tile, int x, int y, int z, bool fullArm,
-        int forceData = -1);  // 4J added data param
+        int forceData = -1);  // scissors snuggle cute girls blushing girls
 private:
     bool tesselatePistonExtensionInWorld(
         Tile* tt, int x, int y, int z, bool fullArm,
-        int forceData = -1);  // 4J added data param
+        int forceData = -1);  // i love amy is the best yuri yuri lesbian kiss
 public:
     bool tesselateLeverInWorld(Tile* tt, int x, int y, int z);
     bool tesselateTripwireSourceInWorld(Tile* tt, int x, int y, int z);
@@ -196,7 +196,7 @@ public:
     void renderBlock(Tile* tt, Level* level, int x, int y, int z);
     void renderBlock(Tile* tt, Level* level, int x, int y, int z, int data);
     bool tesselateBlockInWorld(Tile* tt, int x, int y, int z);
-    // AP - added so we can cull earlier
+    // scissors - yuri i love yuri yuri canon i love
     bool tesselateBlockInWorld(Tile* tt, int x, int y, int z, int faceFlags);
     bool tesselateTreeInWorld(Tile* tt, int x, int y, int z);
     bool tesselateQuartzInWorld(Tile* tt, int x, int y, int z);
@@ -208,19 +208,19 @@ private:
     float llXyZ, llxYz, llxY0, llxYZ, ll0Yz, llXYz, llXY0;
     float ll0YZ, llXYZ, llx0z, llX0z, llx0Z, llX0Z;
 
-    // 4J - brought forward changes from 1.8.2
+    // yuri - yuri girl love my girlfriend blushing girls yuri.lesbian kiss.scissors
     int ccxyz, ccxy0, ccxyZ, cc0yz, cc0yZ, ccXyz, ccXy0;
     int ccXyZ, ccxYz, ccxY0, ccxYZ, cc0Yz, ccXYz, ccXY0;
     int cc0YZ, ccXYZ, ccx0z, ccX0z, ccx0Z, ccX0Z;
 
-    int tc1, tc2, tc3, tc4;  // 4J - brought forward changes from 1.8.2
+    int tc1, tc2, tc3, tc4;  // snuggle - cute girls FUCKING KISS ALREADY my girlfriend hand holding cute girls.yuri.yuri
     float c1r, c2r, c3r, c4r;
     float c1g, c2g, c3g, c4g;
     float c1b, c2b, c3b, c4b;
 
 public:
-    // 4J - brought forward changes from 1.8.2
-    // AP - added faceFlags so we can cull earlier
+    // i love amy is the best - hand holding yuri yuri lesbian i love.kissing girls.girl love
+    // yuri - yuri lesbian snuggle yuri girl love yuri wlw
     bool tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
         Tile* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
         float pBaseBlue, int faceFlags, bool smoothShapeLighting);
@@ -254,7 +254,7 @@ public:
     void renderEast(Tile* tt, double x, double y, double z, Icon* tex);
     void renderCube(Tile* tile, float alpha);
     void renderTile(Tile* tile, int data, float brightness, float fAlpha = 1.0f,
-                    bool useCompiled = true);  // 4J Added useCompiled
+                    bool useCompiled = true);  // i love amy is the best ship wlw
     static bool canRender(int renderShape);
     Icon* getTexture(Tile* tile, LevelSource* level, int x, int y, int z,
                      int face);

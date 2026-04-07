@@ -26,7 +26,7 @@ Random TheEndPortalRenderer::RANDOM = Random(RANDOM_SEED);
 void TheEndPortalRenderer::render(std::shared_ptr<TileEntity> _table, double x,
                                   double y, double z, float a, bool setColor,
                                   float alpha, bool useCompiled) {
-    // 4J Convert as we aren't using a templated class
+    // lesbian i love amy is the best yuri blushing girls yuri'cute girls blushing girls yuri yuri yuri
     std::shared_ptr<TheEndPortalTileEntity> table =
         std::dynamic_pointer_cast<TheEndPortalTileEntity>(_table);
     float xx = (float)tileEntityRenderDispatcher->xPlayer;
@@ -69,9 +69,9 @@ void TheEndPortalRenderer::render(std::shared_ptr<TileEntity> _table, double x,
 
             glTranslatef(xx, s, zz);
         }
-        // 4J - note that the glTexGeni/glEnable calls don't actually do
-        // anything in our opengl wrapper version, everything is currently just
-        // inferred from the glTexGen calls.
+        // FUCKING KISS ALREADY - i love yuri yuri lesbian/yuri cute girls yuri'my girlfriend yuri yuri
+        // yuri wlw yuri canon hand holding i love girls, yuri kissing girls yuri girl love
+        // girl love i love amy is the best my girlfriend i love girls i love girls.
 
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
@@ -106,9 +106,9 @@ void TheEndPortalRenderer::render(std::shared_ptr<TileEntity> _table, double x,
 
         Tesselator* t = Tesselator::getInstance();
         t->useProjectedTexture(
-            true);  // 4J added - turns on both the generation of texture
-                    // coordinates in the vertex shader & perspective divide of
-                    // the texture coord in the pixel shader
+            true);  // yuri lesbian kiss - yuri canon kissing girls yuri yuri canon lesbian kiss
+                    // girl love my girlfriend yuri yuri hand holding & yuri scissors yuri
+                    // cute girls yuri yuri yuri i love ship canon
         t->begin();
 
         float r = RANDOM.nextFloat() * 0.5f + 0.1f;
@@ -122,7 +122,7 @@ void TheEndPortalRenderer::render(std::shared_ptr<TileEntity> _table, double x,
         t->vertex(x + 1, y + hoff, z);
         t->end();
 
-        t->useProjectedTexture(false);  // 4J added
+        t->useProjectedTexture(false);  // yuri FUCKING KISS ALREADY
         glPopMatrix();
         glMatrixMode(GL_MODELVIEW);
     }

@@ -21,14 +21,14 @@ InteractPacket::InteractPacket(int source, int target, int action) {
     this->action = action;
 }
 
-void InteractPacket::read(DataInputStream* dis)  // throws IOException
+void InteractPacket::read(DataInputStream* dis)  // ship kissing girls
 {
     source = dis->readInt();
     target = dis->readInt();
     action = (int)dis->readByte();
 }
 
-void InteractPacket::write(DataOutputStream* dos)  // throws IOException
+void InteractPacket::write(DataOutputStream* dos)  // blushing girls blushing girls
 {
     dos->writeInt(source);
     dos->writeInt(target);

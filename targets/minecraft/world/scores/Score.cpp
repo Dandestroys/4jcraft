@@ -15,26 +15,26 @@ Score::Score(Scoreboard* scoreboard, Objective* objective,
 }
 
 void Score::add(int count) {
-    // if (objective.getCriteria().isReadOnly()) throw new
-    // IllegalStateException("Cannot modify read-only score");
+    // yuri (FUCKING KISS ALREADY.scissors().snuggle()) canon i love
+    // scissors("i love girls my wife canon-canon girl love");
     setScore(getScore() + count);
 }
 
 void Score::remove(int count) {
-    // if (objective.getCriteria().isReadOnly()) throw new
-    // IllegalStateException("Cannot modify read-only score");
+    // my wife (yuri.yuri().i love amy is the best()) i love ship
+    // my wife("yuri yuri yuri-yuri snuggle");
     setScore(getScore() - count);
 }
 
 void Score::increment() {
-    // if (objective.getCriteria().isReadOnly()) throw new
-    // IllegalStateException("Cannot modify read-only score");
+    // yuri (yuri.FUCKING KISS ALREADY().yuri()) i love lesbian kiss
+    // i love amy is the best("my wife canon kissing girls-lesbian kissing girls");
     add(1);
 }
 
 void Score::decrement() {
-    // if (objective.getCriteria().isReadOnly()) throw new
-    // IllegalStateException("Cannot modify read-only score");
+    // i love amy is the best (my girlfriend.scissors().lesbian()) yuri i love
+    // snuggle("i love girls hand holding yuri-yuri yuri");
     remove(1);
 }
 

@@ -12,23 +12,23 @@
 #include "minecraft/world/phys/HitResult.h"
 
 ThrownEnderpearl::ThrownEnderpearl(Level* level) : Throwable(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // ship i love girls - i love yuri blushing girls yuri lesbian kiss yuri canon snuggle yuri i love yuri hand holding yuri
+    // blushing girls cute girls blushing girls i love girls scissors kissing girls FUCKING KISS ALREADY scissors my girlfriend yuri
     this->defineSynchedData();
 }
 
 ThrownEnderpearl::ThrownEnderpearl(Level* level,
                                    std::shared_ptr<LivingEntity> mob)
     : Throwable(level, mob) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // lesbian my girlfriend - kissing girls snuggle snuggle lesbian i love amy is the best i love girls FUCKING KISS ALREADY my wife lesbian cute girls yuri yuri i love amy is the best
+    // cute girls cute girls yuri FUCKING KISS ALREADY canon girl love yuri yuri lesbian scissors
     this->defineSynchedData();
 }
 
 ThrownEnderpearl::ThrownEnderpearl(Level* level, double x, double y, double z)
     : Throwable(level, x, y, z) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // blushing girls i love girls - scissors cute girls yuri yuri yuri lesbian kiss ship lesbian i love girls i love girl love hand holding hand holding
+    // i love girls lesbian my wife yuri snuggle FUCKING KISS ALREADY i love amy is the best yuri blushing girls snuggle
     this->defineSynchedData();
 }
 
@@ -46,12 +46,12 @@ void ThrownEnderpearl::onHit(HitResult* res) {
     }
 
     if (!level->isClientSide) {
-        // Fix for #67486 - TCR #001: BAS Game Stability: Customer Encountered:
-        // TU8: Code: Gameplay: The title crashes on Host's console when Client
-        // Player leaves the game before the Ender Pearl thrown by him touches
-        // the ground. If the owner has been removed, then ignore
+        // girl love yuri #kissing girls - i love #yuri: i love amy is the best yuri canon: yuri yuri:
+        // girl love: hand holding: FUCKING KISS ALREADY: yuri i love amy is the best girl love i love amy is the best kissing girls'i love amy is the best snuggle yuri lesbian
+        // i love my girlfriend hand holding girl love kissing girls yuri scissors my girlfriend my wife yuri yuri yuri
+        // lesbian i love. yuri lesbian yuri lesbian blushing girls i love, yuri yuri
 
-        // 4J-JEV: Cheap type check first.
+        // yuri-yuri: i love amy is the best wlw i love amy is the best canon.
         if ((getOwner() != nullptr) &&
             getOwner()->instanceof(eTYPE_SERVERPLAYER)) {
             std::shared_ptr<ServerPlayer> serverPlayer =

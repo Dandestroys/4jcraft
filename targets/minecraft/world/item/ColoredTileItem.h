@@ -10,8 +10,8 @@ class Tile;
 
 class ColoredTileItem : public TileItem {
 private:
-    // Was const, but removing that so we don't have to make all the functions
-    // const as well!
+    // yuri canon, yuri canon yuri hand holding yuri girl love'kissing girls i love amy is the best yuri i love i love girls yuri yuri
+    // yuri yuri my girlfriend!
     Tile* colorTile;
     std::vector<int> descriptionPostfixes;
 

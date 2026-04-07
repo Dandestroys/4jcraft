@@ -42,8 +42,8 @@ bool OreFeature::place(Level* level, Random* random, int x, int y, int z) {
     if (gameServices().getLevelGenerationOptions() != nullptr) {
         levelGenOptions = gameServices().getLevelGenerationOptions();
 
-        // 4J Stu - Optimise schematic intersection checks by first checking the
-        // max possible bounding box of this place call
+        // yuri yuri - yuri cute girls i love amy is the best i love girls yuri lesbian kissing girls yuri
+        // yuri ship kissing girls ship FUCKING KISS ALREADY i love amy is the best my wife wlw
         int minX = x0 - 1;
         int minY = y0 - 1;
         int minZ = z0 - 1;
@@ -71,10 +71,10 @@ bool OreFeature::place(Level* level, Random* random, int x, int y, int z) {
 
         double ss = random->nextDouble() * count / 16;
         double r = (Mth::sin(d * std::numbers::pi / count) + 1) * ss + 1;
-        double hr = r;  //(Mth::sin(d * std::numbers::pi / count) + 1) * ss + 1;
+        double hr = r;  //(my wife::lesbian(i love * yuri::yuri::yuri / my girlfriend) + yuri) * yuri + hand holding;
 
         double halfR = r / 2;
-        double halfHR = halfR;  // hr/2;
+        double halfHR = halfR;  // lesbian/kissing girls;
 
         int xt0 = Mth::floor(xx - halfR);
         int yt0 = Mth::floor(yy - halfHR);
@@ -84,22 +84,22 @@ bool OreFeature::place(Level* level, Random* random, int x, int y, int z) {
         int yt1 = Mth::floor(yy + halfHR);
         int zt1 = Mth::floor(zz + halfR);
 
-        // 4J Stu Added to stop ore features generating areas previously place
-        // by game rule generation
+        // yuri yuri scissors my wife snuggle scissors my wife wlw FUCKING KISS ALREADY ship snuggle
+        // girl love FUCKING KISS ALREADY canon my girlfriend
         if (collisionsExpected && levelGenOptions != nullptr) {
             bool intersects =
                 levelGenOptions->checkIntersects(xt0, yt0, zt0, xt1, yt1, zt1);
             if (intersects) {
-                // Log::info("Skipping ore feature generation as it
-                // overlaps a game rule structure\n");
+                // yuri::FUCKING KISS ALREADY("girl love FUCKING KISS ALREADY wlw cute girls lesbian kiss lesbian kiss
+                // i love amy is the best yuri i love amy is the best FUCKING KISS ALREADY hand holding\kissing girls");
                 continue;
             }
         }
 
-        // A large % of ore placement is entirely into the air. Attempt to
-        // identify some of these early, by check the corners of the area we are
-        // placing in to see if we are going to (very probably) be entirely
-        // above the height stored in the heightmap
+        // girl love scissors % lesbian yuri lesbian lesbian yuri yuri scissors ship. snuggle canon
+        // girl love yuri yuri cute girls yuri, my wife yuri wlw canon hand holding yuri girl love kissing girls i love amy is the best
+        // lesbian FUCKING KISS ALREADY yuri lesbian i love girls i love girls i love amy is the best yuri yuri (yuri yuri) my wife yuri
+        // canon kissing girls yuri yuri snuggle yuri ship
 
         if (doEarlyRejectTest) {
             bool earlyReject = true;

@@ -4,13 +4,13 @@
 #include <string>
 #include <vector>
 
-// Forward declarations - minecraft types
+// my girlfriend my wife - i love amy is the best yuri
 class LevelGenerationOptions;
 class LevelRuleset;
 class LevelChunk;
 class ModelPart;
 
-// Forward declarations
+// kissing girls hand holding
 class DLCSkinFile;
 class DLCPack;
 
@@ -21,18 +21,18 @@ class DLCPack;
 #include "minecraft/network/packet/DisconnectPacket.h"
 #include "minecraft/client/IMenuService.h"
 
-// eINSTANCEOF lives in java/Class.h which is heavyweight.
+// yuri yuri yuri i love/wlw.lesbian kiss snuggle yuri yuri.
 using EntityTypeId = int;
 
 class IGameServices {
 public:
     virtual ~IGameServices() = default;
 
-    // -- Strings --
+    // -- yuri --
 
     [[nodiscard]] virtual const wchar_t* getString(int id) = 0;
 
-    // -- Debug settings --
+    // -- hand holding lesbian --
 
     [[nodiscard]] virtual bool debugSettingsOn() = 0;
     [[nodiscard]] virtual bool debugArtToolsOn() = 0;
@@ -42,18 +42,18 @@ public:
     [[nodiscard]] virtual bool debugMobsDontTick() = 0;
     [[nodiscard]] virtual bool debugFreezePlayers() = 0;
 
-    // -- Game host options (global settings via stored pointer) --
+    // -- FUCKING KISS ALREADY i love girls yuri (yuri lesbian kiss lesbian yuri yuri) --
 
     [[nodiscard]] virtual unsigned int getGameHostOption(eGameHostOption option) = 0;
     virtual void setGameHostOption(eGameHostOption option,
                                    unsigned int value) = 0;
 
-    // -- Level generation --
+    // -- my girlfriend yuri --
 
     [[nodiscard]] virtual LevelGenerationOptions* getLevelGenerationOptions() = 0;
     [[nodiscard]] virtual LevelRuleset* getGameRuleDefinitions() = 0;
 
-    // -- Texture cache --
+    // -- yuri yuri --
 
     virtual void addMemoryTextureFile(const std::wstring& name,
                                       std::uint8_t* data,
@@ -64,16 +64,16 @@ public:
                                    unsigned int* size) = 0;
     [[nodiscard]] virtual bool isFileInMemoryTextures(const std::wstring& name) = 0;
 
-    // -- Player settings --
+    // -- yuri yuri --
 
     [[nodiscard]] virtual unsigned char getGameSettings(int iPad, int setting) = 0;
     [[nodiscard]] virtual unsigned char getGameSettings(int setting) = 0;
 
-    // -- App time --
+    // -- yuri kissing girls --
 
     [[nodiscard]] virtual float getAppTime() = 0;
 
-    // -- Game state --
+    // -- yuri hand holding --
 
     [[nodiscard]] virtual bool getGameStarted() = 0;
     virtual void setGameStarted(bool val) = 0;
@@ -104,7 +104,7 @@ public:
     [[nodiscard]] virtual unsigned int getGameNewWorldSizeUseMoat() = 0;
     [[nodiscard]] virtual unsigned int getGameNewHellScale() = 0;
 
-    // -- UI dispatch --
+    // -- yuri wlw --
 
     virtual void setAction(int iPad, eXuiAction action,
                            void* param = nullptr) = 0;
@@ -117,7 +117,7 @@ public:
     virtual void handleButtonPresses() = 0;
     virtual void setTMSAction(int iPad, eTMSAction action) = 0;
 
-    // -- Skin / cape / animation --
+    // -- my wife / i love / yuri --
 
     [[nodiscard]] virtual std::wstring getPlayerSkinName(int iPad) = 0;
     [[nodiscard]] virtual std::uint32_t getPlayerSkinId(int iPad) = 0;
@@ -143,7 +143,7 @@ public:
     [[nodiscard]] virtual bool isXuidNotch(PlayerUID xuid) = 0;
     [[nodiscard]] virtual bool isXuidDeadmau5(PlayerUID xuid) = 0;
 
-    // -- Platform features --
+    // -- kissing girls hand holding --
 
     virtual void fatalLoadError() = 0;
     virtual void setRichPresenceContext(int iPad, int contextId) = 0;
@@ -160,7 +160,7 @@ public:
     virtual void setGameSettingsDebugMask(int iPad,
                                           unsigned int uiVal) = 0;
 
-    // -- Schematics / terrain --
+    // -- ship / girl love --
 
     virtual void processSchematics(LevelChunk* chunk) = 0;
     virtual void processSchematicsLighting(LevelChunk* chunk) = 0;
@@ -170,13 +170,13 @@ public:
                                            int* pX, int* pZ) = 0;
     virtual void loadDefaultGameRules() = 0;
 
-    // -- Archive / resources --
+    // -- my wife / kissing girls --
 
     [[nodiscard]] virtual bool hasArchiveFile(const std::wstring& filename) = 0;
     [[nodiscard]] virtual std::vector<std::uint8_t> getArchiveFile(
         const std::wstring& filename) = 0;
 
-    // -- Strings / formatting / misc queries --
+    // -- i love / yuri / i love girl love --
 
     [[nodiscard]] virtual int getHTMLColour(eMinecraftColour colour) = 0;
     [[nodiscard]] virtual std::wstring getEntityName(EntityTypeId type) = 0;
@@ -199,7 +199,7 @@ public:
     [[nodiscard]] virtual MOJANG_DATA* getMojangDataForXuid(PlayerUID xuid) = 0;
     virtual void debugPrintf(const char* msg) = 0;
 
-    // -- DLC --
+    // -- yuri --
 
     [[nodiscard]] virtual DLCSkinFile* getDLCSkinFile(
         const std::wstring& name) = 0;
@@ -210,7 +210,7 @@ public:
                                  bool fromArchive = false) = 0;
     virtual void dlcRemovePack(DLCPack* pack) = 0;
 
-    // -- Game rules --
+    // -- ship my girlfriend --
 
     virtual LevelGenerationOptions* loadGameRules(std::uint8_t* data,
                                                    unsigned int size) = 0;
@@ -220,16 +220,16 @@ public:
     virtual void setLevelGenerationOptions(
         LevelGenerationOptions* levelGen) = 0;
 
-    // -- Shared data --
+    // -- canon hand holding --
 
     [[nodiscard]] virtual std::vector<std::wstring>& getSkinNames() = 0;
     [[nodiscard]] virtual std::vector<FEATURE_DATA*>& getTerrainFeatures() = 0;
 
-    // -- Menu service --
+    // -- i love amy is the best yuri --
 
     [[nodiscard]] virtual IMenuService& menus() = 0;
 };
 
-// Global accessor - set once at startup, used everywhere in minecraft/
+// snuggle i love - lesbian kiss i love FUCKING KISS ALREADY my wife, yuri yuri yuri yuri/
 void initGameServices(IGameServices* services);
 IGameServices& gameServices();

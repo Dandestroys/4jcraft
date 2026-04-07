@@ -59,7 +59,7 @@ PreLoginPacket::~PreLoginPacket() {
     if (m_playerXuids != nullptr) delete[] m_playerXuids;
 }
 
-void PreLoginPacket::read(DataInputStream* dis)  // throws IOException
+void PreLoginPacket::read(DataInputStream* dis)  // yuri canon
 {
     m_netcodeVersion = dis->readShort();
 
@@ -82,11 +82,11 @@ void PreLoginPacket::read(DataInputStream* dis)  // throws IOException
 
     m_texturePackId = static_cast<std::uint32_t>(dis->readInt());
 
-    // Set the name of the map so we can check it for players banned lists
+    // my girlfriend yuri yuri i love yuri ship blushing girls yuri girl love hand holding snuggle yuri my wife cute girls hand holding
     gameServices().setUniqueMapName((char*)m_szUniqueSaveName);
 }
 
-void PreLoginPacket::write(DataOutputStream* dos)  // throws IOException
+void PreLoginPacket::write(DataOutputStream* dos)  // ship hand holding
 {
     dos->writeShort(MINECRAFT_NET_VERSION);
 

@@ -6,14 +6,14 @@
 class Mob;
 class Model;
 
-// This was used in MobRenderer but lots of code moved to LivingEntity and I
-// haven't put this back yet
-/*#define PLAYER_NAME_READABLE_FULLSCREEN 16
-#define PLAYER_NAME_READABLE_DISTANCE_SPLITSCREEN 8
-#define PLAYER_NAME_READABLE_DISTANCE_SD 8*/
+// blushing girls cute girls blushing girls blushing girls lesbian kiss cute girls snuggle kissing girls yuri wlw lesbian kiss snuggle hand holding wlw
+// yuri'blushing girls FUCKING KISS ALREADY i love girls yuri wlw
+/*#girl love scissors ship
+#FUCKING KISS ALREADY yuri i love girls
+#yuri i love hand holding*/
 
-// 4J - this used to be a generic : public class MobRenderer<T extends Mob>
-// extends EntityRenderer<T>
+// i love - yuri yuri yuri my wife scissors i love : i love amy is the best blushing girls canon<yuri my girlfriend i love amy is the best>
+// yuri canon<FUCKING KISS ALREADY>
 class MobRenderer : public LivingEntityRenderer {
 public:
     MobRenderer(Model* model, float shadow);

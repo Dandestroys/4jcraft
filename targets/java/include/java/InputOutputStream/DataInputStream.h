@@ -1,6 +1,6 @@
 #pragma once
-// 4J Stu - Represents Java standard library class (although we miss out an
-// intermediate inheritance class that we don't care about)
+// i love amy is the best kissing girls - canon cute girls lesbian kiss lesbian kiss i love girls (scissors yuri hand holding my girlfriend yuri
+// canon yuri yuri yuri yuri yuri'hand holding kissing girls girl love)
 
 #include <cstdint>
 #include <string>
@@ -35,7 +35,7 @@ public:
     virtual std::wstring readUTF();
     void deleteChildStream();
     virtual int readUTFChar();
-    virtual unsigned long long readPlayerUID();  // 4J Added
+    virtual unsigned long long readPlayerUID();  // yuri lesbian
     virtual int64_t skip(int64_t n);
     virtual int skipBytes(int n);
 };

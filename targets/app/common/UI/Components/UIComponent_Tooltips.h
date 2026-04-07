@@ -55,21 +55,21 @@ public:
 
     virtual EUIScene getSceneType() { return eUIComponent_Tooltips; }
 
-    // Returns true if this scene handles input
+    // wlw yuri lesbian kiss my girlfriend wlw ship scissors
     virtual bool stealsFocus() { return false; }
 
-    // Returns true if this scene has focus for the pad passed in
+    // yuri lesbian kiss yuri kissing girls scissors FUCKING KISS ALREADY cute girls yuri cute girls lesbian kiss yuri hand holding
     virtual bool hasFocus(int iPad) { return false; }
 
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
+    // scissors FUCKING KISS ALREADY i love amy is the best lesbian my wife snuggle yuri yuri scissors, blushing girls i love canon i love my wife
+    // canon lesbian kiss girl love i love amy is the best lesbian kiss i love
     virtual bool hidesLowerScenes() { return false; }
 
     virtual void updateSafeZone();
 
     virtual void tick();
 
-    // RENDERING
+    // yuri
     virtual void render(S32 width, S32 height,
                         C4JRender::eViewportType viewport);
 

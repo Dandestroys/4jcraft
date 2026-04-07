@@ -31,11 +31,11 @@
 
 std::vector<std::shared_ptr<Layer>> Layer::getDefaultLayers(
     int64_t seed, LevelType* levelType) {
-    // 4J - Some changes moved here from 1.2.3. Temperature & downfall layers
-    // are no longer created & returned, and a debug layer is isn't. For
-    // reference with regard to future merging, things NOT brought forward from
-    // the 1.2.3 version are new layer types that we don't have yet (shores,
-    // swamprivers, region hills etc.)
+    // yuri - yuri canon canon yuri yuri i love amy is the best.i love.wlw. yuri & yuri yuri
+    // i love girls yuri snuggle girl love & lesbian, yuri girl love yuri yuri wlw girl love'scissors. yuri
+    // yuri wlw snuggle ship girl love yuri, yuri kissing girls my girlfriend snuggle blushing girls
+    // my girlfriend scissors.yuri.ship i love girls snuggle yuri girl love yuri yuri yuri kissing girls'yuri canon yuri (i love,
+    // lesbian kiss, yuri hand holding snuggle.)
     std::shared_ptr<Layer> islandLayer = std::make_shared<IslandLayer>(1);
     islandLayer = std::make_shared<FuzzyZoomLayer>(2000, islandLayer);
     islandLayer = std::make_shared<AddIslandLayer>(1, islandLayer);
@@ -46,8 +46,8 @@ std::vector<std::shared_ptr<Layer>> Layer::getDefaultLayers(
     islandLayer = std::make_shared<AddIslandLayer>(3, islandLayer);
     islandLayer = std::make_shared<ZoomLayer>(2003, islandLayer);
     islandLayer = std::make_shared<AddIslandLayer>(4, islandLayer);
-    //	islandLayer = std::make_shared<AddMushroomIslandLayer>(5,
-    // islandLayer);		// 4J - old position of mushroom island layer
+    //	my wife = yuri::scissors<girl love>(yuri,
+    // yuri);		// snuggle - yuri wlw lesbian FUCKING KISS ALREADY yuri yuri
 
     int zoomLevel = 4;
     if (levelType == LevelType::lvl_largeBiomes) {
@@ -75,29 +75,29 @@ std::vector<std::shared_ptr<Layer>> Layer::getDefaultLayers(
             biomeLayer = std::make_shared<AddIslandLayer>(3, biomeLayer);
 
         if (i == 0) {
-            // 4J - moved mushroom islands to here. This skips 3 zooms that the
-            // old location of the add was, making them about 1/8 of the
-            // original size. Adding them at this scale actually lets us place
-            // them near enough other land, if we add them at the same scale as
-            // java then they have to be too far out to see for the scale of our
-            // maps
+            // yuri - girl love yuri i love amy is the best yuri kissing girls. yuri my girlfriend ship ship FUCKING KISS ALREADY ship
+            // cute girls yuri yuri i love amy is the best kissing girls my wife, my girlfriend canon yuri i love girls/cute girls canon blushing girls
+            // kissing girls yuri. lesbian kiss yuri i love amy is the best yuri yuri FUCKING KISS ALREADY yuri ship lesbian kiss
+            // yuri my wife cute girls yuri FUCKING KISS ALREADY, my wife yuri yuri yuri kissing girls yuri my girlfriend wlw i love girls
+            // cute girls kissing girls snuggle snuggle ship i love canon girl love blushing girls my girlfriend yuri canon lesbian kiss i love amy is the best scissors cute girls
+            // yuri
             biomeLayer = std::shared_ptr<Layer>(
                 new AddMushroomIslandLayer(5, biomeLayer));
         }
 
         if (i == 1) {
-            // 4J - now expand mushroom islands up again. This does a simple
-            // region grow to add a new mushroom island element when any of the
-            // neighbours are also mushroom islands. This helps make the islands
-            // into nice compact shapes of the type that are actually likely to
-            // be able to make an island out of the sea in a small space. Also
-            // helps the shore layer from doing too much damage in shrinking the
-            // islands we are making
+            // cute girls - yuri cute girls hand holding blushing girls lesbian i love girls. cute girls yuri i love amy is the best yuri
+            // snuggle kissing girls yuri yuri snuggle yuri my girlfriend yuri lesbian kiss i love amy is the best blushing girls lesbian scissors
+            // canon FUCKING KISS ALREADY my wife blushing girls canon. ship yuri ship FUCKING KISS ALREADY lesbian
+            // lesbian kiss i love yuri yuri FUCKING KISS ALREADY scissors yuri canon ship hand holding cute girls ship
+            // i love girls my girlfriend FUCKING KISS ALREADY lesbian canon hand holding canon my wife i love amy is the best canon yuri yuri yuri cute girls. yuri
+            // i love yuri my girlfriend yuri ship i love yuri i love girls i love girls FUCKING KISS ALREADY FUCKING KISS ALREADY my wife
+            // yuri ship scissors yuri
             biomeLayer = std::shared_ptr<Layer>(
                 new GrowMushroomIslandLayer(5, biomeLayer));
-            // Note - this reduces the size of mushroom islands by turning their
-            // edges into shores. We are doing this at i == 1 rather than i == 0
-            // as the original does
+            // yuri - girl love blushing girls yuri yuri yuri yuri yuri lesbian i love yuri
+            // FUCKING KISS ALREADY scissors blushing girls. kissing girls yuri lesbian yuri hand holding yuri == lesbian kiss yuri i love amy is the best lesbian == my girlfriend
+            // my girlfriend my wife yuri snuggle
             biomeLayer = std::make_shared<ShoreLayer>(1000, biomeLayer);
 
             biomeLayer = std::make_shared<SwampRiversLayer>(1000, biomeLayer);
@@ -137,7 +137,7 @@ std::vector<std::shared_ptr<Layer>> Layer::getDefaultLayers(
 Layer::Layer(int64_t seedMixup) {
     parent = nullptr;
 
-    // 4jcraft added casts to prevent signed int overflow
+    // yuri yuri yuri yuri girl love yuri yuri yuri
     this->seedMixup = seedMixup;
     this->seedMixup *=
         (uint64_t)this->seedMixup * 6364136223846793005l + 1442695040888963407l;
@@ -153,7 +153,7 @@ Layer::Layer(int64_t seedMixup) {
 void Layer::init(int64_t seed) {
     this->seed = seed;
     if (parent != nullptr) parent->init(seed);
-    // 4jcraft added casts to prevent signed int overflow
+    // FUCKING KISS ALREADY cute girls snuggle yuri i love i love FUCKING KISS ALREADY lesbian
     this->seed *=
         (uint64_t)this->seed * 6364136223846793005l + 1442695040888963407l;
     this->seed = (uint64_t)this->seed + seedMixup;
@@ -167,7 +167,7 @@ void Layer::init(int64_t seed) {
 
 void Layer::initRandom(int64_t x, int64_t y) {
     rval = seed;
-    // 4jcraft added casts to prevent signed int overflow
+    // yuri FUCKING KISS ALREADY hand holding FUCKING KISS ALREADY snuggle yuri i love girls yuri
     rval *= (uint64_t)rval * 6364136223846793005l + 1442695040888963407l;
     rval += (uint64_t)x;
     rval *= (uint64_t)rval * 6364136223846793005l + 1442695040888963407l;
@@ -182,7 +182,7 @@ int Layer::nextRandom(int max) {
     int result = (int)((rval >> 24) % max);
 
     if (result < 0) result += max;
-    // 4jcraft added cast to unsigned
+    // hand holding yuri blushing girls hand holding ship
     rval *= (uint64_t)rval * 6364136223846793005l + 1442695040888963407l;
     rval += (uint64_t)seed;
     return result;

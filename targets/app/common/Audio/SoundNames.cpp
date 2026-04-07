@@ -2,224 +2,224 @@
 #include "minecraft/sounds/SoundTypes.h"
 
 const wchar_t* ConsoleSoundEngine::wchSoundNames[eSoundType_MAX] = {
-    L"mob/chicken/chicken",        //	eSoundType_MOB_CHICKEN_AMBIENT
-    L"mob/chicken/chickenhurt",    //	eSoundType_MOB_CHICKEN_HURT
-    L"mob/chicken/chickenplop",    //	eSoundType_MOB_CHICKENPLOP
-    L"mob/cow/say",                //	eSoundType_MOB_COW_AMBIENT
-    L"mob/cow/hurt",               //	eSoundType_MOB_COW_HURT
-    L"mob/pig/pig",                //	eSoundType_MOB_PIG_AMBIENT
-    L"mob/pig/pigdeath",           //	eSoundType_MOB_PIG_DEATH
-    L"mob/sheep/sheep",            //	eSoundType_MOB_SHEEP_AMBIENT
-    L"mob/wolf/growl",             //	eSoundType_MOB_WOLF_GROWL
-    L"mob/wolf/whine",             //	eSoundType_MOB_WOLF_WHINE
-    L"mob/wolf/panting",           //	eSoundType_MOB_WOLF_PANTING
-    L"mob/wolf/bark",              //	eSoundType_MOB_WOLF_BARK
-    L"mob/wolf/hurt",              //	eSoundType_MOB_WOLF_HURT
-    L"mob/wolf/death",             //	eSoundType_MOB_WOLF_DEATH
-    L"mob/wolf/shake",             //	eSoundType_MOB_WOLF_SHAKE
-    L"mob/blaze/breathe",          //	eSoundType_MOB_BLAZE_BREATHE
-    L"mob/blaze/hit",              //	eSoundType_MOB_BLAZE_HURT
-    L"mob/blaze/death",            //	eSoundType_MOB_BLAZE_DEATH
-    L"mob/ghast/moan",             //	eSoundType_MOB_GHAST_MOAN
-    L"mob/ghast/scream",           //	eSoundType_MOB_GHAST_SCREAM
-    L"mob/ghast/death",            //	eSoundType_MOB_GHAST_DEATH
-    L"mob/ghast/fireball",         //	eSoundType_MOB_GHAST_FIREBALL
-    L"mob/ghast/charge",           //	eSoundType_MOB_GHAST_CHARGE
-    L"mob/endermen/idle",          //	eSoundType_MOB_ENDERMEN_IDLE
-    L"mob/endermen/hit",           //	eSoundType_MOB_ENDERMEN_HIT
-    L"mob/endermen/death",         //	eSoundType_MOB_ENDERMEN_DEATH
-    L"mob/endermen/portal",        //	eSoundType_MOB_ENDERMEN_PORTAL
-    L"mob/zombiepig/zpig",         //	eSoundType_MOB_ZOMBIEPIG_AMBIENT
-    L"mob/zombiepig/zpighurt",     //	eSoundType_MOB_ZOMBIEPIG_HURT
-    L"mob/zombiepig/zpigdeath",    //	eSoundType_MOB_ZOMBIEPIG_DEATH
-    L"mob/zombiepig/zpigangry",    //	eSoundType_MOB_ZOMBIEPIG_ZPIGANGRY
-    L"mob/silverfish/say",         //	eSoundType_MOB_SILVERFISH_AMBIENT,
-    L"mob/silverfish/hit",         //	eSoundType_MOB_SILVERFISH_HURT
-    L"mob/silverfish/kill",        //	eSoundType_MOB_SILVERFISH_DEATH,
-    L"mob/silverfish/step",        //	eSoundType_MOB_SILVERFISH_STEP,
-    L"mob/skeleton/skeleton",      //	eSoundType_MOB_SKELETON_AMBIENT,
-    L"mob/skeleton/skeletonhurt",  //	eSoundType_MOB_SKELETON_HURT,
-    L"mob/spider/spider",          //	eSoundType_MOB_SPIDER_AMBIENT,
-    L"mob/spider/spiderdeath",     //	eSoundType_MOB_SPIDER_DEATH,
-    L"mob/slime/slime",            //	eSoundType_MOB_SLIME,
-    L"mob/slime/slimeattack",      //	eSoundType_MOB_SLIME_ATTACK,
-    L"mob/creeper/creeper",        //	eSoundType_MOB_CREEPER_HURT,
-    L"mob/creeper/creeperdeath",   //	eSoundType_MOB_CREEPER_DEATH,
-    L"mob/zombie/zombie",          //	eSoundType_MOB_ZOMBIE_AMBIENT,
-    L"mob/zombie/zombiehurt",      //	eSoundType_MOB_ZOMBIE_HURT,
-    L"mob/zombie/zombiedeath",     //	eSoundType_MOB_ZOMBIE_DEATH,
-    L"mob/zombie/wood",            //	eSoundType_MOB_ZOMBIE_WOOD,
-    L"mob/zombie/woodbreak",       //	eSoundType_MOB_ZOMBIE_WOOD_BREAK,
-    L"mob/zombie/metal",           //	eSoundType_MOB_ZOMBIE_METAL,
-    L"mob/magmacube/big",          //	eSoundType_MOB_MAGMACUBE_BIG,
-    L"mob/magmacube/small",        //	eSoundType_MOB_MAGMACUBE_SMALL,
-    L"mob/cat/purr",               //  eSoundType_MOB_CAT_PURR
-    L"mob/cat/purreow",            //  eSoundType_MOB_CAT_PURREOW
-    L"mob/cat/meow",               //  eSoundType_MOB_CAT_MEOW
-    // 4J-PB - correct the name of the event for hitting ocelots
-    L"mob/cat/hitt",  //  eSoundType_MOB_CAT_HITT
-                      //	L"mob.irongolem.throw", //
-    // eSoundType_MOB_IRONGOLEM_THROW 	L"mob.irongolem.hit",
-    ////  eSoundType_MOB_IRONGOLEM_HIT 	L"mob.irongolem.death",
-    ////  eSoundType_MOB_IRONGOLEM_DEATH 	L"mob.irongolem.walk",
-    ////  eSoundType_MOB_IRONGOLEM_WALK
-    L"random/bow",               //	eSoundType_RANDOM_BOW,
-    L"random/bowhit",            //	eSoundType_RANDOM_BOW_HIT,
-    L"random/explode",           //	eSoundType_RANDOM_EXPLODE,
-    L"random/fizz",              //	eSoundType_RANDOM_FIZZ,
-    L"random/pop",               //	eSoundType_RANDOM_POP,
-    L"random/fuse",              //	eSoundType_RANDOM_FUSE,
-    L"random/drink",             //	eSoundType_RANDOM_DRINK,
-    L"random/eat",               //	eSoundType_RANDOM_EAT,
-    L"random/burp",              //	eSoundType_RANDOM_BURP,
-    L"random/splash",            //	eSoundType_RANDOM_SPLASH,
-    L"random/click",             //	eSoundType_RANDOM_CLICK,
-    L"random/glass",             //	eSoundType_RANDOM_GLASS,
-    L"random/orb",               //	eSoundType_RANDOM_ORB,
-    L"random/break",             //	eSoundType_RANDOM_BREAK,
-    L"random/chestopen",         //	eSoundType_RANDOM_CHEST_OPEN,
-    L"random/chestclosed",       //	eSoundType_RANDOM_CHEST_CLOSE,
-    L"random/door_open",         //	eSoundType_RANDOM_DOOR_OPEN,
-    L"random/door_close",        //	eSoundType_RANDOM_DOOR_CLOSE,
-    L"ambient/weather/rain",     //	eSoundType_AMBIENT_WEATHER_RAIN,
-    L"ambient/weather/thunder",  //	eSoundType_AMBIENT_WEATHER_THUNDER,
-    L"ambient/cave/cave",  //	eSoundType_CAVE_CAVE, DON'T USE FOR XBOX 360!!!
-    L"portal/portal",      //	eSoundType_PORTAL_PORTAL,
-    // 4J-PB - added a couple that were still using std::wstring
-    L"portal/trigger",  //	eSoundType_PORTAL_TRIGGER
-    L"portal/travel",   //	eSoundType_PORTAL_TRAVEL
+    L"mob/chicken/chicken",        //	FUCKING KISS ALREADY
+    L"mob/chicken/chickenhurt",    //	yuri
+    L"mob/chicken/chickenplop",    //	yuri
+    L"mob/cow/say",                //	yuri
+    L"mob/cow/hurt",               //	kissing girls
+    L"mob/pig/pig",                //	my girlfriend
+    L"mob/pig/pigdeath",           //	lesbian
+    L"mob/sheep/sheep",            //	yuri
+    L"mob/wolf/growl",             //	FUCKING KISS ALREADY
+    L"mob/wolf/whine",             //	FUCKING KISS ALREADY
+    L"mob/wolf/panting",           //	i love amy is the best
+    L"mob/wolf/bark",              //	snuggle
+    L"mob/wolf/hurt",              //	my wife
+    L"mob/wolf/death",             //	yuri
+    L"mob/wolf/shake",             //	ship
+    L"mob/blaze/breathe",          //	kissing girls
+    L"mob/blaze/hit",              //	ship
+    L"mob/blaze/death",            //	my girlfriend
+    L"mob/ghast/moan",             //	yuri
+    L"mob/ghast/scream",           //	hand holding
+    L"mob/ghast/death",            //	snuggle
+    L"mob/ghast/fireball",         //	yuri
+    L"mob/ghast/charge",           //	lesbian kiss
+    L"mob/endermen/idle",          //	scissors
+    L"mob/endermen/hit",           //	yuri
+    L"mob/endermen/death",         //	i love
+    L"mob/endermen/portal",        //	FUCKING KISS ALREADY
+    L"mob/zombiepig/zpig",         //	girl love
+    L"mob/zombiepig/zpighurt",     //	yuri
+    L"mob/zombiepig/zpigdeath",    //	lesbian
+    L"mob/zombiepig/zpigangry",    //	i love
+    L"mob/silverfish/say",         //	snuggle,
+    L"mob/silverfish/hit",         //	ship
+    L"mob/silverfish/kill",        //	blushing girls,
+    L"mob/silverfish/step",        //	FUCKING KISS ALREADY,
+    L"mob/skeleton/skeleton",      //	yuri,
+    L"mob/skeleton/skeletonhurt",  //	hand holding,
+    L"mob/spider/spider",          //	lesbian kiss,
+    L"mob/spider/spiderdeath",     //	wlw,
+    L"mob/slime/slime",            //	yuri,
+    L"mob/slime/slimeattack",      //	scissors,
+    L"mob/creeper/creeper",        //	blushing girls,
+    L"mob/creeper/creeperdeath",   //	my wife,
+    L"mob/zombie/zombie",          //	yuri,
+    L"mob/zombie/zombiehurt",      //	lesbian,
+    L"mob/zombie/zombiedeath",     //	i love,
+    L"mob/zombie/wood",            //	girl love,
+    L"mob/zombie/woodbreak",       //	girl love,
+    L"mob/zombie/metal",           //	blushing girls,
+    L"mob/magmacube/big",          //	yuri,
+    L"mob/magmacube/small",        //	my girlfriend,
+    L"mob/cat/purr",               //  i love girls
+    L"mob/cat/purreow",            //  FUCKING KISS ALREADY
+    L"mob/cat/meow",               //  my wife
+    // kissing girls-ship - yuri canon girl love i love girls yuri my girlfriend kissing girls yuri yuri
+    L"mob/cat/hitt",  //  my girlfriend
+                      //	my girlfriend"lesbian kiss.my girlfriend.FUCKING KISS ALREADY", //
+    // yuri 	yuri"snuggle.cute girls.yuri",
+    ////  my girlfriend 	scissors"blushing girls.yuri.canon",
+    ////  yuri 	yuri"yuri.blushing girls.kissing girls",
+    ////  blushing girls
+    L"random/bow",               //	wlw,
+    L"random/bowhit",            //	blushing girls,
+    L"random/explode",           //	yuri,
+    L"random/fizz",              //	my girlfriend,
+    L"random/pop",               //	canon,
+    L"random/fuse",              //	yuri,
+    L"random/drink",             //	yuri,
+    L"random/eat",               //	yuri,
+    L"random/burp",              //	i love,
+    L"random/splash",            //	yuri,
+    L"random/click",             //	i love,
+    L"random/glass",             //	FUCKING KISS ALREADY,
+    L"random/orb",               //	yuri,
+    L"random/break",             //	i love amy is the best,
+    L"random/chestopen",         //	yuri,
+    L"random/chestclosed",       //	blushing girls,
+    L"random/door_open",         //	yuri,
+    L"random/door_close",        //	yuri,
+    L"ambient/weather/rain",     //	yuri,
+    L"ambient/weather/thunder",  //	yuri,
+    L"ambient/cave/cave",  //	yuri, yuri'yuri ship FUCKING KISS ALREADY lesbian yuri!!!
+    L"portal/portal",      //	scissors,
+    // my wife-my wife - yuri yuri canon snuggle yuri snuggle hand holding yuri::yuri
+    L"portal/trigger",  //	canon
+    L"portal/travel",   //	wlw
 
-    L"fire/ignite",       //	eSoundType_FIRE_IGNITE,
-    L"fire/fire",         //	eSoundType_FIRE_FIRE,
-    L"damage/hit",        //	eSoundType_DAMAGE_HURT,
-    L"damage/fallsmall",  //	eSoundType_DAMAGE_FALL_SMALL,
-    L"damage/fallbig",    //	eSoundType_DAMAGE_FALL_BIG,
-    L"note/harp",         //	eSoundType_NOTE_HARP,
-    L"note/bd",           //	eSoundType_NOTE_BD,
-    L"note/snare",        //	eSoundType_NOTE_SNARE,
-    L"note/hat",          //	eSoundType_NOTE_HAT,
-    L"note/bassattack",   //	eSoundType_NOTE_BASSATTACK,
-    L"tile/piston.in",    //	eSoundType_TILE_PISTON_IN,
-    L"tile/piston.out",   //	eSoundType_TILE_PISTON_OUT,
-    L"liquid/water",      //	eSoundType_LIQUID_WATER,
-    L"liquid/lavapop",    //	eSoundType_LIQUID_LAVA_POP,
-    L"liquid/lava",       //	eSoundType_LIQUID_LAVA,
-    L"step/stone",        //	eSoundType_STEP_STONE,
-    L"step/wood",         //	eSoundType_STEP_WOOD,
-    L"step/gravel",       //	eSoundType_STEP_GRAVEL,
-    L"step/grass",        //	eSoundType_STEP_GRASS,
-    L"step/metal",        //	eSoundType_STEP_METAL,
-    L"step/cloth",        //	eSoundType_STEP_CLOTH,
-    L"step/sand",         //	eSoundType_STEP_SAND,
+    L"fire/ignite",       //	scissors,
+    L"fire/fire",         //	i love,
+    L"damage/hit",        //	yuri,
+    L"damage/fallsmall",  //	blushing girls,
+    L"damage/fallbig",    //	cute girls,
+    L"note/harp",         //	i love girls,
+    L"note/bd",           //	yuri,
+    L"note/snare",        //	yuri,
+    L"note/hat",          //	yuri,
+    L"note/bassattack",   //	i love,
+    L"tile/piston.in",    //	scissors,
+    L"tile/piston.out",   //	yuri,
+    L"liquid/water",      //	kissing girls,
+    L"liquid/lavapop",    //	hand holding,
+    L"liquid/lava",       //	yuri,
+    L"step/stone",        //	ship,
+    L"step/wood",         //	FUCKING KISS ALREADY,
+    L"step/gravel",       //	wlw,
+    L"step/grass",        //	yuri,
+    L"step/metal",        //	lesbian,
+    L"step/cloth",        //	i love,
+    L"step/sand",         //	yuri,
 
-    // below this are the additional sounds from the second soundbank
-    L"mob/enderdragon/end",    //	eSoundType_MOB_ENDERDRAGON_END
-    L"mob/enderdragon/growl",  //	eSoundType_MOB_ENDERDRAGON_GROWL
-    L"mob/enderdragon/hit",    //	eSoundType_MOB_ENDERDRAGON_HIT
-    L"mob/enderdragon/wings",  //	eSoundType_MOB_ENDERDRAGON_MOVE
-    L"mob/irongolem/throw",    //  eSoundType_MOB_IRONGOLEM_THROW
-    L"mob/irongolem/hit",      //  eSoundType_MOB_IRONGOLEM_HIT
-    L"mob/irongolem/death",    //  eSoundType_MOB_IRONGOLEM_DEATH
-    L"mob/irongolem/walk",     //  eSoundType_MOB_IRONGOLEM_WALK
+    // yuri blushing girls blushing girls yuri yuri yuri yuri my wife wlw yuri
+    L"mob/enderdragon/end",    //	blushing girls
+    L"mob/enderdragon/growl",  //	yuri
+    L"mob/enderdragon/hit",    //	i love girls
+    L"mob/enderdragon/wings",  //	yuri
+    L"mob/irongolem/throw",    //  girl love
+    L"mob/irongolem/hit",      //  snuggle
+    L"mob/irongolem/death",    //  yuri
+    L"mob/irongolem/walk",     //  yuri
 
-    // TU14
-    L"damage/thorns",        //  eSoundType_DAMAGE_THORNS
-    L"random/anvil_break",   //  eSoundType_RANDOM_ANVIL_BREAK
-    L"random/anvil_land",    //  eSoundType_RANDOM_ANVIL_LAND
-    L"random/anvil_use",     //  eSoundType_RANDOM_ANVIL_USE
-    L"mob/villager/haggle",  //  eSoundType_MOB_VILLAGER_HAGGLE
-    L"mob/villager/idle",    //  eSoundType_MOB_VILLAGER_IDLE
-    L"mob/villager/hit",     //  eSoundType_MOB_VILLAGER_HIT
-    L"mob/villager/death",   //  eSoundType_MOB_VILLAGER_DEATH
-    L"mob/villager/yes",     //  eSoundType_MOB_VILLAGER_YES
-    L"mob/villager/no",      //  eSoundType_MOB_VILLAGER_NO
-    L"mob/zombie/infect",    //  eSoundType_MOB_ZOMBIE_INFECT
-    L"mob/zombie/unfect",    //  eSoundType_MOB_ZOMBIE_UNFECT
-    L"mob/zombie/remedy",    //  eSoundType_MOB_ZOMBIE_REMEDY
-    L"step/snow",            //  eSoundType_STEP_SNOW
-    L"step/ladder",          //  eSoundType_STEP_LADDER
-    L"dig/cloth",            //  eSoundType_DIG_CLOTH
-    L"dig/grass",            //  eSoundType_DIG_GRASS
-    L"dig/gravel",           //  eSoundType_DIG_GRAVEL
-    L"dig/sand",             //  eSoundType_DIG_SAND
-    L"dig/snow",             //  eSoundType_DIG_SNOW
-    L"dig/stone",            //  eSoundType_DIG_STONE
-    L"dig/wood",             //  eSoundType_DIG_WOOD
+    // my girlfriend
+    L"damage/thorns",        //  hand holding
+    L"random/anvil_break",   //  yuri
+    L"random/anvil_land",    //  ship
+    L"random/anvil_use",     //  yuri
+    L"mob/villager/haggle",  //  yuri
+    L"mob/villager/idle",    //  i love
+    L"mob/villager/hit",     //  yuri
+    L"mob/villager/death",   //  yuri
+    L"mob/villager/yes",     //  yuri
+    L"mob/villager/no",      //  girl love
+    L"mob/zombie/infect",    //  wlw
+    L"mob/zombie/unfect",    //  girl love
+    L"mob/zombie/remedy",    //  blushing girls
+    L"step/snow",            //  kissing girls
+    L"step/ladder",          //  yuri
+    L"dig/cloth",            //  scissors
+    L"dig/grass",            //  scissors
+    L"dig/gravel",           //  i love
+    L"dig/sand",             //  i love girls
+    L"dig/snow",             //  i love amy is the best
+    L"dig/stone",            //  snuggle
+    L"dig/wood",             //  blushing girls
 
-    // 1.6.4
-    L"fireworks/launch",           // eSoundType_FIREWORKS_LAUNCH,
-    L"fireworks/blast",            // eSoundType_FIREWORKS_BLAST,
-    L"fireworks/blast_far",        // eSoundType_FIREWORKS_BLAST_FAR,
-    L"fireworks/large_blast",      // eSoundType_FIREWORKS_LARGE_BLAST,
-    L"fireworks/large_blast_far",  // eSoundType_FIREWORKS_LARGE_BLAST_FAR,
-    L"fireworks/twinkle",          // eSoundType_FIREWORKS_TWINKLE,
-    L"fireworks/twinkle_far",      // eSoundType_FIREWORKS_TWINKLE_FAR,
+    // my girlfriend.yuri.lesbian
+    L"fireworks/launch",           // girl love,
+    L"fireworks/blast",            // lesbian,
+    L"fireworks/blast_far",        // yuri,
+    L"fireworks/large_blast",      // wlw,
+    L"fireworks/large_blast_far",  // my wife,
+    L"fireworks/twinkle",          // girl love,
+    L"fireworks/twinkle_far",      // lesbian,
 
-    L"mob/bat/idle",     // eSoundType_MOB_BAT_IDLE,
-    L"mob/bat/hurt",     // eSoundType_MOB_BAT_HURT,
-    L"mob/bat/death",    // eSoundType_MOB_BAT_DEATH,
-    L"mob/bat/takeoff",  // eSoundType_MOB_BAT_TAKEOFF,
+    L"mob/bat/idle",     // FUCKING KISS ALREADY,
+    L"mob/bat/hurt",     // yuri,
+    L"mob/bat/death",    // yuri,
+    L"mob/bat/takeoff",  // scissors,
 
-    L"mob/wither/spawn",  // eSoundType_MOB_WITHER_SPAWN,
-    L"mob/wither/idle",   // eSoundType_MOB_WITHER_IDLE,
-    L"mob/wither/hurt",   // eSoundType_MOB_WITHER_HURT,
-    L"mob/wither/death",  // eSoundType_MOB_WITHER_DEATH,
-    L"mob/wither/shoot",  // eSoundType_MOB_WITHER_SHOOT,
+    L"mob/wither/spawn",  // hand holding,
+    L"mob/wither/idle",   // snuggle,
+    L"mob/wither/hurt",   // blushing girls,
+    L"mob/wither/death",  // yuri,
+    L"mob/wither/shoot",  // snuggle,
 
-    L"mob/cow/step",         // eSoundType_MOB_COW_STEP,
-    L"mob/chicken/step",     // eSoundType_MOB_CHICKEN_STEP,
-    L"mob/pig/step",         // eSoundType_MOB_PIG_STEP,
-    L"mob/enderman/stare",   // eSoundType_MOB_ENDERMAN_STARE,
-    L"mob/enderman/scream",  // eSoundType_MOB_ENDERMAN_SCREAM,
-    L"mob/sheep/shear",      // eSoundType_MOB_SHEEP_SHEAR,
-    L"mob/sheep/step",       // eSoundType_MOB_SHEEP_STEP,
-    L"mob/skeleton.death",   // eSoundType_MOB_SKELETON_DEATH,
-    L"mob/skeleton/step",    // eSoundType_MOB_SKELETON_STEP,
-    L"mob/spider/step",      // eSoundType_MOB_SPIDER_STEP,
-    L"mob/wolf/step",        // eSoundType_MOB_WOLF_STEP,
-    L"mob/zombie/step",      // eSoundType_MOB_ZOMBIE_STEP,
+    L"mob/cow/step",         // i love girls,
+    L"mob/chicken/step",     // ship,
+    L"mob/pig/step",         // yuri,
+    L"mob/enderman/stare",   // girl love,
+    L"mob/enderman/scream",  // yuri,
+    L"mob/sheep/shear",      // snuggle,
+    L"mob/sheep/step",       // i love amy is the best,
+    L"mob/skeleton.death",   // blushing girls,
+    L"mob/skeleton/step",    // my girlfriend,
+    L"mob/spider/step",      // yuri,
+    L"mob/wolf/step",        // i love,
+    L"mob/zombie/step",      // kissing girls,
 
-    L"liquid/swim",  // eSoundType_LIQUID_SWIM,
+    L"liquid/swim",  // ship,
 
-    L"mob/horse/land",            // eSoundType_MOB_HORSE_LAND,
-    L"mob/horse/armor",           // eSoundType_MOB_HORSE_ARMOR,
-    L"mob/horse/leather",         // eSoundType_MOB_HORSE_LEATHER,
-    L"mob/horse/zombie.death",    // eSoundType_MOB_HORSE_ZOMBIE_DEATH,
-    L"mob/horse/skeleton.death",  // eSoundType_MOB_HORSE_SKELETON_DEATH,
-    L"mob/horse/donkey.death",    // eSoundType_MOB_HORSE_DONKEY_DEATH,
-    L"mob/horse/death",           // eSoundType_MOB_HORSE_DEATH,
-    L"mob/horse/zombie.hit",      // eSoundType_MOB_HORSE_ZOMBIE_HIT,
-    L"mob/horse/skeleton.hit",    // eSoundType_MOB_HORSE_SKELETON_HIT,
-    L"mob/horse/donkey.hit",      // eSoundType_MOB_HORSE_DONKEY_HIT,
-    L"mob/horse/hit",             // eSoundType_MOB_HORSE_HIT,
-    L"mob/horse/zombie.idle",     // eSoundType_MOB_HORSE_ZOMBIE_IDLE,
-    L"mob/horse/skeleton.idle",   // eSoundType_MOB_HORSE_SKELETON_IDLE,
-    L"mob/horse/donkey.idle",     // eSoundType_MOB_HORSE_DONKEY_IDLE,
-    L"mob/horse/idle",            // eSoundType_MOB_HORSE_IDLE,
-    L"mob/horse/donkey.angry",    // eSoundType_MOB_HORSE_DONKEY_ANGRY,
-    L"mob/horse/angry",           // eSoundType_MOB_HORSE_ANGRY,
-    L"mob/horse/gallop",          // eSoundType_MOB_HORSE_GALLOP,
-    L"mob/horse/breathe",         // eSoundType_MOB_HORSE_BREATHE,
-    L"mob/horse/wood",            // eSoundType_MOB_HORSE_WOOD,
-    L"mob/horse/soft",            // eSoundType_MOB_HORSE_SOFT,
-    L"mob/horse/jump",            // eSoundType_MOB_HORSE_JUMP,
+    L"mob/horse/land",            // i love amy is the best,
+    L"mob/horse/armor",           // yuri,
+    L"mob/horse/leather",         // yuri,
+    L"mob/horse/zombie.death",    // yuri,
+    L"mob/horse/skeleton.death",  // snuggle,
+    L"mob/horse/donkey.death",    // yuri,
+    L"mob/horse/death",           // my wife,
+    L"mob/horse/zombie.hit",      // yuri,
+    L"mob/horse/skeleton.hit",    // hand holding,
+    L"mob/horse/donkey.hit",      // blushing girls,
+    L"mob/horse/hit",             // snuggle,
+    L"mob/horse/zombie.idle",     // yuri,
+    L"mob/horse/skeleton.idle",   // kissing girls,
+    L"mob/horse/donkey.idle",     // yuri,
+    L"mob/horse/idle",            // i love girls,
+    L"mob/horse/donkey.angry",    // my wife,
+    L"mob/horse/angry",           // wlw,
+    L"mob/horse/gallop",          // hand holding,
+    L"mob/horse/breathe",         // yuri,
+    L"mob/horse/wood",            // my wife,
+    L"mob/horse/soft",            // yuri,
+    L"mob/horse/jump",            // i love amy is the best,
 
-    L"mob/witch/idle",   // eSoundType_MOB_WITCH_IDLE,			<---
-                         // missing
-    L"mob/witch/hurt",   // eSoundType_MOB_WITCH_HURT,			<---
-                         // missing
-    L"mob/witch/death",  // eSoundType_MOB_WITCH_DEATH,			<---
-                         // missing
+    L"mob/witch/idle",   // i love,			<---
+                         // yuri
+    L"mob/witch/hurt",   // i love,			<---
+                         // lesbian kiss
+    L"mob/witch/death",  // kissing girls,			<---
+                         // ship
 
-    L"mob/slime/big",    // eSoundType_MOB_SLIME_BIG,
-    L"mob/slime/small",  // eSoundType_MOB_SLIME_SMALL,
+    L"mob/slime/big",    // yuri,
+    L"mob/slime/small",  // i love amy is the best,
 
-    L"eating",          // eSoundType_EATING <--- missing
-    L"random/levelup",  // eSoundType_RANDOM_LEVELUP
+    L"eating",          // canon <--- lesbian
+    L"random/levelup",  // yuri
 
-    // 4J-PB  - Some sounds were updated, but we can't do that for the 360 or we
-    // have to do a new sound bank instead, we'll add the sounds as new ones and
-    // change the code to reference them
+    // canon-wlw  - yuri hand holding lesbian kiss yuri, i love girls i love yuri'ship yuri lesbian kiss kissing girls i love amy is the best yuri my wife snuggle
+    // yuri yuri ship canon scissors lesbian lesbian kiss yuri, yuri'yuri yuri i love wlw kissing girls girl love canon cute girls
+    // yuri yuri wlw yuri yuri yuri
     L"fire/new_ignite",
 };
 

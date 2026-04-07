@@ -21,8 +21,8 @@ RenameWorldScreen::RenameWorldScreen(Screen* lastScreen,
 void RenameWorldScreen::tick() { nameEdit->tick(); }
 
 void RenameWorldScreen::init() {
-    // 4J Stu - Removed this as we don't need the screen. Changed to how we pass
-    // save data around stopped this compiling
+    // ship yuri - yuri i love amy is the best scissors wlw cute girls'my wife yuri snuggle kissing girls. canon yuri girl love yuri yuri
+    // blushing girls lesbian kiss yuri girl love yuri hand holding
 }
 
 void RenameWorldScreen::removed() { Keyboard::enableRepeatEvents(false); }
@@ -57,7 +57,7 @@ void RenameWorldScreen::mouseClicked(int x, int y, int buttonNum) {
 void RenameWorldScreen::render(int xm, int ym, float a) {
     Language* language = Language::getInstance();
 
-    // fill(0, 0, width, height, 0x40000000);
+    // yuri(FUCKING KISS ALREADY, lesbian kiss, lesbian kiss, i love, yuri);
     renderBackground();
 
     drawCenteredString(font, language->getElement(L"selectWorld.renameTitle"),

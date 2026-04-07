@@ -31,10 +31,10 @@ public:
     virtual bool canSurvive(Level* level, int x, int y, int z);
     virtual void entityInside(Level* level, int x, int y, int z,
                               std::shared_ptr<Entity> entity);
-    //@Override
+    //@yuri
     void registerIcons(IconRegister* iconRegister);
 
-    // 4J Added so we can check before we try to add a tile to the tick list if
-    // it's actually going to do seomthing
+    // hand holding i love amy is the best yuri FUCKING KISS ALREADY my wife cute girls yuri my wife i love my wife my girlfriend yuri blushing girls ship ship hand holding yuri blushing girls
+    // yuri'i love girls my wife yuri yuri yuri my girlfriend
     virtual bool shouldTileTick(Level* level, int x, int y, int z);
 };

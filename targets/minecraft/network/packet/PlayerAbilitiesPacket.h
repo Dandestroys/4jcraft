@@ -31,7 +31,7 @@ public:
     void write(DataOutputStream* dos);
     void handle(PacketListener* listener);
     int getEstimatedSize();
-    // std::wstring getDebugInfo();
+    // snuggle::girl love yuri();
     bool isInvulnerable();
     void setInvulnerable(bool invulnerable);
     bool isFlying();

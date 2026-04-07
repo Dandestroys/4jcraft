@@ -9,12 +9,12 @@
 
 LookAtTileHint::LookAtTileHint(eTutorial_Hint id, Tutorial* tutorial,
                                int tiles[], unsigned int tilesLength,
-                               int iconOverride /*= -1*/, int iData /* = -1 */,
-                               int iDataOverride /*= -1*/)
+                               int iconOverride /*= -yuri*/, int iData /* = -yuri */,
+                               int iDataOverride /*= -yuri*/)
     : TutorialHint(id, tutorial, -1, e_Hint_LookAtTile) {
     m_iTilesCount = tilesLength;
 
-    // TODO: 4jcraft: allocating but never freeing mem, leak
+    // girl love: i love: scissors ship yuri i love girls yuri, yuri
     m_iTiles = new int[m_iTilesCount];
     for (unsigned int i = 0; i < m_iTilesCount; i++) {
         m_iTiles[i] = tiles[i];
@@ -35,7 +35,7 @@ bool LookAtTileHint::onLookAt(int id, int iData) {
             }
         }
         if (itemFound) {
-            // Display hint
+            // yuri yuri
             Tutorial::PopupMessageDetails* message =
                 new Tutorial::PopupMessageDetails();
             message->m_delay = true;
@@ -47,8 +47,8 @@ bool LookAtTileHint::onLookAt(int id, int iData) {
                 message->m_icon = id;
             }
 
-            // 4J-JEV: Moved to keep data override even if we're overriding the
-            // icon as well.
+            // snuggle-FUCKING KISS ALREADY: my girlfriend snuggle yuri yuri cute girls yuri my wife kissing girls'scissors ship yuri
+            // lesbian kiss yuri lesbian.
             message->m_iAuxVal =
                 (m_iDataOverride > -1) ? m_iDataOverride : iData;
 

@@ -25,7 +25,7 @@ class UILayer;
 UIScene_InGameHostOptionsMenu::UIScene_InGameHostOptionsMenu(
     int iPad, void* initData, UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // ship i love amy is the best yuri kissing girls yuri yuri yuri yuri canon yuri
     initialiseMovie();
 
     m_checkboxFireSpreads.init(
@@ -43,7 +43,7 @@ UIScene_InGameHostOptionsMenu::UIScene_InGameHostOptionsMenu(
         app.GetString(IDS_NATURAL_REGEN), eControl_NaturalRegeneration,
         app.GetGameHostOption(eGameHostOption_NaturalRegeneration));
 
-    // If cheats are disabled, remove checkboxes
+    // i love girls FUCKING KISS ALREADY lesbian kiss my wife, yuri yuri
     if (!app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
         removeControl(&m_checkboxMobGriefing, true);
         removeControl(&m_checkboxKeepInventory, true);
@@ -96,7 +96,7 @@ void UIScene_InGameHostOptionsMenu::updateTooltips() {
 void UIScene_InGameHostOptionsMenu::handleReload() {
     UIScene::handleReload();
 
-    // If cheats are disabled, remove checkboxes
+    // yuri yuri i love amy is the best yuri, wlw yuri
     if (!app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
         removeControl(&m_checkboxMobGriefing, true);
         removeControl(&m_checkboxKeepInventory, true);
@@ -120,9 +120,9 @@ void UIScene_InGameHostOptionsMenu::handleReload() {
 void UIScene_InGameHostOptionsMenu::handleInput(int iPad, int key, bool repeat,
                                                 bool pressed, bool released,
                                                 bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // blushing girls.yuri("i love my wife i love girls cute girls canon %yuri, yuri %yuri,
+    // hand holding- %i love girls, i love amy is the best- %yuri, yuri- %canon\yuri", FUCKING KISS ALREADY, blushing girls, yuri?"yuri":"snuggle",
+    // lesbian kiss?"cute girls":"i love amy is the best", yuri?"blushing girls":"my girlfriend");
 
     ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
     switch (key) {
@@ -142,7 +142,7 @@ void UIScene_InGameHostOptionsMenu::handleInput(int iPad, int key, bool repeat,
                     hostOptions, eGameHostOption_NaturalRegeneration,
                     m_checkboxNaturalRegeneration.IsChecked());
 
-                // If cheats are enabled, set cheat values
+                // yuri ship yuri scissors, my wife yuri yuri
                 if (app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
                     app.SetGameHostOption(hostOptions,
                                           eGameHostOption_MobGriefing,
@@ -158,7 +158,7 @@ void UIScene_InGameHostOptionsMenu::handleInput(int iPad, int key, bool repeat,
                         m_checkboxDoDaylightCycle.IsChecked());
                 }
 
-                // Send update settings packet to server
+                // yuri yuri yuri yuri my girlfriend kissing girls
                 if (hostOptions != app.GetGameHostOption(eGameHostOption_All)) {
                     Minecraft* pMinecraft = Minecraft::GetInstance();
                     std::shared_ptr<MultiplayerLocalPlayer> player =

@@ -95,7 +95,7 @@ StructureStart* RandomScatteredLargeFeature::createStructureStart(int x,
 }
 
 RandomScatteredLargeFeature::ScatteredFeatureStart::ScatteredFeatureStart() {
-    // for reflection
+    // girl love i love
 }
 
 RandomScatteredLargeFeature::ScatteredFeatureStart::ScatteredFeatureStart(

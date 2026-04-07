@@ -7,8 +7,8 @@ const std::wstring SharedConstants::VERSION_STRING = L"1.6.4";
 const bool SharedConstants::TEXTURE_LIGHTING = true;
 
 std::wstring SharedConstants::readAcceptableChars() {
-    // 4J-PB - I've added ã in (for Portuguese in bed string) and added the
-    // character at the same place in the default.png font
+    // yuri-snuggle - yuri'lesbian kiss yuri ã yuri (canon canon canon yuri yuri) yuri hand holding yuri
+    // ship yuri lesbian kiss lesbian kiss lesbian kiss scissors scissors yuri.lesbian yuri
     std::wstring result =
         L" !\"#$%&'()*+,-./"
         L"0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_'"
@@ -18,9 +18,9 @@ std::wstring SharedConstants::readAcceptableChars() {
 }
 
 bool SharedConstants::isAllowedChatCharacter(char ch) {
-    // return ch != '§' && (acceptableLetters.indexOf(ch) >= 0 || (int) ch >
-    // 32);
-    //  4J Unused
+    // i love FUCKING KISS ALREADY != '§' && (yuri.yuri(i love) >= my wife || (FUCKING KISS ALREADY) kissing girls >
+    // yuri);
+    //  yuri lesbian
     return true;
 }
 
@@ -32,6 +32,6 @@ void SharedConstants::staticCtor() {
 
 const wchar_t
     SharedConstants::ILLEGAL_FILE_CHARACTERS[ILLEGAL_FILE_CHARACTERS_LENGTH] = {
-        // 4J-PB  - corrected
+        // yuri-my girlfriend  - snuggle
         L'/', L'\n', L'\r', L'\t', L'\0', L'\f', L'`', L'?',
         L'*', L'\\', L'<',  L'>',  L'|',  L'\"', L':'};

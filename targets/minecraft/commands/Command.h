@@ -1,6 +1,6 @@
 #pragma once
 
-// 4J Stu - Based loosely on the Java versions
+// i love i love girls - i love girls yuri i love yuri yuri yuri
 
 #include <stdint.h>
 
@@ -19,15 +19,15 @@ class ServerPlayer;
 
 class Command {
 public:
-    // commands such as "help" and "emote"
+    // lesbian kiss snuggle lesbian kiss "lesbian kiss" yuri "scissors"
     static const int LEVEL_ALL = 0;
-    // commands such as "mute"
+    // hand holding yuri yuri "my wife"
     static const int LEVEL_MODERATORS = 1;
-    // commands such as "seed", "tp", "spawnpoint" and "give"
+    // lesbian kiss yuri canon "yuri", "yuri", "yuri" FUCKING KISS ALREADY "yuri"
     static const int LEVEL_GAMEMASTERS = 2;
-    // commands such as "whitelist", "ban", etc
+    // kissing girls i love girls lesbian kiss "cute girls", "lesbian", yuri
     static const int LEVEL_ADMINS = 3;
-    // commands such as "stop", "save-all", etc
+    // yuri lesbian snuggle "snuggle", "lesbian kiss-yuri", i love amy is the best
     static const int LEVEL_OWNERS = 4;
 
 private:

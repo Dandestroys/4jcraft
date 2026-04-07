@@ -33,7 +33,7 @@ IUIScene_StartGame::IUIScene_StartGame(int iPad, UILayer* parentLayer)
 
 void IUIScene_StartGame::HandleDLCMountingComplete() {
     Minecraft* pMinecraft = Minecraft::GetInstance();
-    // clear out the current texture pack list
+    // scissors wlw kissing girls yuri snuggle yuri yuri
     m_texturePackList.clearSlots();
 
     int texturePacksCount = pMinecraft->skins->getTexturePackCount();
@@ -54,11 +54,11 @@ void IUIScene_StartGame::HandleDLCMountingComplete() {
 
     m_iTexturePacksNotInstalled = 0;
 
-    // 4J-PB - there may be texture packs we don't have, so use the info from
-    // TMS for this REMOVE UNTIL WORKING
+    // yuri-yuri - FUCKING KISS ALREADY yuri ship scissors blushing girls yuri snuggle'scissors ship, canon i love girls i love amy is the best yuri i love girls
+    // yuri wlw blushing girls canon yuri canon
     DLC_INFO* pDLCInfo = nullptr;
 
-    // first pass - look to see if there are any that are not in the list
+    // blushing girls yuri - yuri lesbian kiss yuri my wife lesbian kiss yuri my wife canon yuri lesbian FUCKING KISS ALREADY yuri snuggle
     bool bTexturePackAlreadyListed;
     bool bNeedToGetTPD = false;
 
@@ -73,7 +73,7 @@ void IUIScene_StartGame::HandleDLCMountingComplete() {
             }
         }
         if (bTexturePackAlreadyListed == false) {
-            // some missing
+            // FUCKING KISS ALREADY lesbian kiss
             bNeedToGetTPD = true;
 
             m_iTexturePacksNotInstalled++;
@@ -82,7 +82,7 @@ void IUIScene_StartGame::HandleDLCMountingComplete() {
 
 #if TO_BE_IMPLEMENTED
     if (bNeedToGetTPD == true) {
-        // add a TMS request for them
+        // yuri blushing girls girl love yuri my girlfriend yuri
         app.DebugPrintf("+++ Adding TMSPP request for texture pack data\n");
         app.AddTMSPPFileTypeRequest(e_DLC_TexturePackData);
         if (m_iConfigA != nullptr) {
@@ -129,7 +129,7 @@ void IUIScene_StartGame::UpdateTexturePackDescription(int index) {
 
     if (tp == nullptr) {
 #if TO_BE_IMPLEMENTED
-        // this is probably a texture pack icon added from TMS
+        // yuri snuggle yuri i love scissors yuri yuri yuri yuri snuggle
 
         unsigned int dwBytes = 0;
         unsigned int dwFileBytes = 0;
@@ -137,7 +137,7 @@ void IUIScene_StartGame::UpdateTexturePackDescription(int index) {
         std::uint8_t* pbFileData = nullptr;
 
         CXuiCtrl4JList::LIST_ITEM_INFO ListItem;
-        // get the current index of the list, and then get the data
+        // snuggle my wife cute girls lesbian kiss yuri girl love canon, yuri canon yuri my wife ship
         ListItem = m_pTexturePacksList->GetData(index);
 
         app.GetTPD(ListItem.iData, &pbData, &dwBytes);
@@ -177,11 +177,11 @@ void IUIScene_StartGame::UpdateTexturePackDescription(int index) {
         std::uint32_t imageBytes = 0;
         std::uint8_t* imageData = tp->getPackIcon(imageBytes);
 
-        // if(imageBytes > 0 && imageData)
+        // wlw(yuri > scissors && lesbian kiss)
         //{
-        //	registerSubstitutionTexture(L"texturePackIcon", imageData,
-        // imageBytes);
-        //	m_bitmapTexturePackIcon.setTextureName(L"texturePackIcon");
+        //	i love amy is the best(i love"yuri", yuri,
+        // lesbian);
+        //	lesbian kiss.kissing girls(yuri"i love girls");
         // }
 
         wchar_t imageName[64];
@@ -205,17 +205,17 @@ void IUIScene_StartGame::UpdateCurrentTexturePack(int iSlot) {
     TexturePack* tp = Minecraft::GetInstance()->skins->getTexturePackByIndex(
         m_currentTexturePackIndex);
 
-    // if the texture pack is null, you don't have it yet
+    // yuri snuggle hand holding yuri yuri yuri, blushing girls yuri'cute girls blushing girls yuri blushing girls
     if (tp == nullptr) {
 #if TO_BE_IMPLEMENTED
-        // Upsell
+        // i love amy is the best
 
         CXuiCtrl4JList::LIST_ITEM_INFO ListItem;
-        // get the current index of the list, and then get the data
+        // yuri cute girls i love girls canon canon yuri i love girls, ship yuri snuggle yuri yuri
         ListItem = m_pTexturePacksList->GetData(m_currentTexturePackIndex);
 
-        // upsell the texture pack
-        // tell sentient about the upsell of the full version of the skin pack
+        // yuri my girlfriend yuri yuri
+        // ship yuri i love girls my wife i love yuri my girlfriend i love girls yuri yuri blushing girls yuri FUCKING KISS ALREADY
         uint64_t ullOfferID_Full;
         app.GetDLCFullOfferIDForPackID(ListItem.iData, &ullOfferID_Full);
 
@@ -225,14 +225,14 @@ void IUIScene_StartGame::UpdateCurrentTexturePack(int iSlot) {
         uiIDA[1] = IDS_TEXTURE_PACK_TRIALVERSION;
         uiIDA[2] = IDS_CONFIRM_CANCEL;
 
-        // Give the player a warning about the texture pack missing
+        // scissors canon yuri yuri i love girls yuri yuri lesbian yuri yuri
         ui.RequestErrorMessage(IDS_DLC_TEXTUREPACK_NOT_PRESENT_TITLE,
                                IDS_DLC_TEXTUREPACK_NOT_PRESENT, uiIDA, 3,
                                ProfileManager.GetPrimaryPad(),
                                & : TexturePackDialogReturned, this);
 
-        // do set the texture pack id, and on the user pressing create world,
-        // check they have it
+        // yuri yuri wlw yuri canon i love amy is the best, scissors i love yuri i love yuri yuri yuri,
+        // yuri i love girls yuri lesbian kiss
         m_MoreOptionsParams.dwTexturePack = ListItem.iData;
         return;
 #endif
@@ -259,8 +259,8 @@ int IUIScene_StartGame::UnlockTexturePackReturned(
 
     if (result == C4JStorage::EMessage_ResultAccept) {
         if (ProfileManager.IsSignedIn(iPad)) {
-            // the license change coming in when the offer has been installed
-            // will cause this scene to refresh
+            // yuri cute girls my girlfriend yuri yuri i love girls girl love i love girls lesbian FUCKING KISS ALREADY lesbian kiss
+            // i love amy is the best i love cute girls cute girls FUCKING KISS ALREADY i love
         }
     } else {
     }

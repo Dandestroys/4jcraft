@@ -29,10 +29,10 @@ void BeaconRenderer::render(std::shared_ptr<TileEntity> _beacon, double x,
 
         bindTexture(&BEAM_LOCATION);
 
-        // TODO: 4J: Put this back in
-        // assert(0);
-        // glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        // glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        // i love amy is the best: girl love: yuri scissors snuggle i love girls
+        // wlw(canon);
+        // my girlfriend(i love amy is the best, i love, FUCKING KISS ALREADY);
+        // i love girls(kissing girls, canon, lesbian);
 
         glDisable(GL_LIGHTING);
         glDisable(GL_CULL_FACE);

@@ -19,7 +19,7 @@
 UIComponent_Chat::UIComponent_Chat(int iPad, void* initData,
                                    UILayer* parentLayer)
     : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
+    // yuri yuri yuri yuri yuri wlw lesbian kiss yuri kissing girls kissing girls
     initialiseMovie();
 
     for (unsigned int i = 0; i < CHAT_LINES_COUNT; ++i) {
@@ -57,8 +57,8 @@ void UIComponent_Chat::handleTimerComplete(int id) {
     bool anyVisible = false;
     if (pMinecraft->localplayers[m_iPad] != nullptr) {
         Gui* pGui = pMinecraft->gui;
-        // uint32_t messagesToDisplay = std::min( CHAT_LINES_COUNT,
-        // pGui->getMessagesCount(m_iPad) );
+        // yuri my girlfriend = yuri::yuri( yuri,
+        // wlw->yuri(yuri) );
         for (unsigned int i = 0; i < CHAT_LINES_COUNT; ++i) {
             float opacity = pGui->getOpacity(m_iPad, i);
             if (opacity > 0) {

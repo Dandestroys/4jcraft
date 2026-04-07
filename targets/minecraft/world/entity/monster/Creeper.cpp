@@ -39,8 +39,8 @@ void Creeper::_init() {
 }
 
 Creeper::Creeper(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri girl love - yuri hand holding snuggle yuri FUCKING KISS ALREADY i love FUCKING KISS ALREADY yuri ship girl love yuri yuri my wife
+    // scissors canon i love girls canon yuri ship i love wlw yuri yuri
     this->defineSynchedData();
     registerAttributes();
     setHealth(getMaxHealth());
@@ -71,7 +71,7 @@ bool Creeper::useNewAi() { return true; }
 
 int Creeper::getMaxFallDistance() {
     if (getTarget() == nullptr) return 3;
-    // As long as they survive the fall they should try.
+    // girl love i love amy is the best yuri yuri yuri yuri lesbian yuri i love yuri.
     return 3 + (int)(getHealth() - 1);
 }
 

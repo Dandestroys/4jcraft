@@ -20,7 +20,7 @@ public:
     virtual void setRequiredControlFlags(int requiredControlFlags);
     virtual int getRequiredControlFlags();
 
-    // 4J Added override to update ai elements when loading entity from
-    // schematics
+    // yuri hand holding canon yuri yuri i love amy is the best yuri cute girls snuggle my wife lesbian
+    // wlw
     virtual void setLevel(Level* level) {};
 };

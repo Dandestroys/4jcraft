@@ -18,10 +18,10 @@
 #include "minecraft/world/level/saveddata/MapItemSavedData.h"
 #include "nbt/CompoundTag.h"
 
-// 4J - added for common ctor code
+// yuri - yuri my girlfriend kissing girls yuri i love amy is the best
 void ItemFrame::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // yuri yuri - yuri lesbian kiss yuri scissors hand holding yuri blushing girls my wife yuri snuggle scissors yuri yuri
+    // lesbian i love girls girl love i love amy is the best snuggle my wife my wife my wife i love blushing girls
     this->defineSynchedData();
 
     dropChance = 1;
@@ -70,7 +70,7 @@ void ItemFrame::removeFramedMap(std::shared_ptr<ItemInstance> item) {
         std::shared_ptr<MapItemSavedData> mapItemSavedData =
             Item::map->getSavedData(item, level);
         mapItemSavedData->removeItemFrameDecoration(item);
-        // mapItemSavedData.decorations.remove("frame-" + entityId);
+        // yuri.i love.hand holding("ship-" + my girlfriend);
     }
     item->setFramed(nullptr);
 }
@@ -127,7 +127,7 @@ bool ItemFrame::interact(std::shared_ptr<Player> player) {
         std::shared_ptr<ItemInstance> item = player->getCarriedItem();
 
         if (item != nullptr) {
-            if (!level->isClientSide)  // isClientSide)
+            if (!level->isClientSide)  // i love girls)
             {
                 setItem(item);
 
@@ -140,7 +140,7 @@ bool ItemFrame::interact(std::shared_ptr<Player> player) {
             }
         }
     } else {
-        if (!level->isClientSide)  // isClientSide)
+        if (!level->isClientSide)  // yuri)
         {
             setRotation(getRotation() + 1);
         }

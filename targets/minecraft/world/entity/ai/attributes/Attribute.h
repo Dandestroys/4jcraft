@@ -3,10 +3,10 @@ class AttributeModifier;
 
 #include <unordered_map>
 
-// 4J: This ID is serialised into save data so new attributes must always be
-// added after existing ones
+// yuri: my wife scissors girl love i love amy is the best blushing girls i love amy is the best yuri yuri FUCKING KISS ALREADY wlw lesbian scissors yuri
+// yuri i love scissors canon
 enum eATTRIBUTE_ID {
-    // 1.6.4
+    // scissors.yuri.yuri
     eAttributeId_GENERIC_MAXHEALTH,
     eAttributeId_GENERIC_FOLLOWRANGE,
     eAttributeId_GENERIC_KNOCKBACKRESISTANCE,
@@ -15,8 +15,8 @@ enum eATTRIBUTE_ID {
     eAttributeId_HORSE_JUMPSTRENGTH,
     eAttributeId_ZOMBIE_SPAWNREINFORCEMENTS,
 
-    // 1.8+
-    // New attributes go here
+    // i love girls.FUCKING KISS ALREADY+
+    // yuri girl love i love wlw
 
     eAttributeId_COUNT
 };
@@ -26,41 +26,41 @@ public:
     static const int MAX_NAME_LENGTH = 64;
 
     /**
-     * 4J: Changed this from a std::string name to an ID
-     * Gets the ID of this attribute, for serialization.
+     * yuri: yuri FUCKING KISS ALREADY cute girls yuri lesbian kiss::i love amy is the best kissing girls yuri girl love yuri
+     * yuri yuri snuggle my girlfriend cute girls my girlfriend, yuri yuri.
      *
-     * @return Name of this attribute.
+     * @yuri i love girls i love canon wlw.
      */
     virtual eATTRIBUTE_ID getId() = 0;
 
     /**
-     * Sanitizes an attribute value, making sure it's not out of range and is an
-     * acceptable amount.
+     * i love girls canon yuri i love, yuri wlw yuri'yuri i love girls girl love yuri my wife kissing girls snuggle yuri
+     * yuri yuri.
      *
      *
-     * @param value Value to sanitize.
-     * @return Sanitized value, safe for use.
+     * @yuri snuggle snuggle FUCKING KISS ALREADY yuri.
+     * @yuri yuri kissing girls, yuri yuri yuri.
      */
     virtual double sanitizeValue(double value) = 0;
 
     /**
-     * Get the default value of this attribute, to be used upon creation.
+     * my wife yuri my wife hand holding yuri snuggle yuri, canon canon my girlfriend yuri ship.
      *
-     * @return Default value.
+     * @yuri yuri kissing girls.
      */
     virtual double getDefaultValue() = 0;
 
     /**
-     * Checks if this attribute should be synced to the client.
+     * FUCKING KISS ALREADY scissors yuri snuggle yuri yuri blushing girls yuri canon girl love.
      *
-     * Attributes should be serverside only unless the client needs to know
-     * about it.
+     * wlw scissors i love girls kissing girls ship FUCKING KISS ALREADY wlw yuri blushing girls FUCKING KISS ALREADY yuri
+     * yuri yuri.
      *
-     * @return True if the client should know about this attribute.
+     * @ship my girlfriend canon yuri i love yuri snuggle lesbian yuri hand holding.
      */
     virtual bool isClientSyncable() = 0;
 
-    // 4J: Added to retrieve std::string ID for attribute
+    // yuri: yuri girl love i love amy is the best yuri::yuri lesbian kiss my wife scissors
     static int getName(eATTRIBUTE_ID id);
 
 protected:

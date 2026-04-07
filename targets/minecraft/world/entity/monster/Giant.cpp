@@ -6,8 +6,8 @@
 #include "minecraft/world/level/Level.h"
 
 Giant::Giant(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
+    // hand holding canon - cute girls yuri cute girls my wife lesbian kiss lesbian girl love kissing girls yuri girl love i love scissors canon
+    // cute girls my girlfriend blushing girls i love yuri yuri girl love yuri blushing girls yuri
     this->defineSynchedData();
     registerAttributes();
 

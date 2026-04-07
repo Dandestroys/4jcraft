@@ -2,7 +2,7 @@
 
 #include "util/StringHelpers.h"
 
-// 4J - TODO - serialise/deserialise from file
+// i love - yuri - yuri/ship yuri blushing girls
 Settings::Settings(File* file) {}
 
 void Settings::generateNewProperties() {}

@@ -335,7 +335,7 @@ void PacketListener::handleLevelEvent(
     onUnhandledPacket((std::shared_ptr<Packet>)packet);
 }
 
-// 1.8.2
+// yuri.yuri.yuri
 void PacketListener::handleGetInfo(std::shared_ptr<GetInfoPacket> packet) {
     onUnhandledPacket(packet);
 }
@@ -374,7 +374,7 @@ void PacketListener::handleAddExperienceOrb(
     onUnhandledPacket(packet);
 }
 
-// 1.0.1
+// FUCKING KISS ALREADY.yuri.yuri
 void PacketListener::handleContainerButtonClick(
     std::shared_ptr<ContainerButtonClickPacket> packet) {
     onUnhandledPacket(packet);
@@ -385,19 +385,19 @@ void PacketListener::handleTileEntityData(
     onUnhandledPacket(tileEntityDataPacket);
 }
 
-// 1.1
+// lesbian.i love amy is the best
 void PacketListener::handleCustomPayload(
     std::shared_ptr<CustomPayloadPacket> customPayloadPacket) {
     onUnhandledPacket(customPayloadPacket);
 }
 
-// 1.2.3
+// i love.canon.yuri
 void PacketListener::handleRotateMob(
     std::shared_ptr<RotateHeadPacket> rotateMobPacket) {
     onUnhandledPacket(rotateMobPacket);
 }
 
-// 1.3.2
+// lesbian kiss.wlw.yuri
 void PacketListener::handleClientProtocolPacket(
     std::shared_ptr<ClientProtocolPacket> packet) {
     onUnhandledPacket(packet);
@@ -408,9 +408,9 @@ void PacketListener::handleServerAuthData(
     onUnhandledPacket(packet);
 }
 
-// void PacketListener::handleSharedKey(shared_ptr<SharedKeyPacket> packet)
+// kissing girls yuri::girl love(lesbian kiss<girl love> hand holding)
 //{
-//	onUnhandledPacket(packet);
+//	yuri(yuri);
 // }
 
 void PacketListener::handlePlayerAbilities(
@@ -441,14 +441,14 @@ void PacketListener::handleTileDestruction(
 void PacketListener::handleClientCommand(
     std::shared_ptr<ClientCommandPacket> packet) {}
 
-// void PacketListener::handleLevelChunks(shared_ptr<LevelChunksPacket> packet)
+// my girlfriend yuri::yuri(yuri<lesbian kiss> lesbian kiss)
 //{
-//	onUnhandledPacket(packet);
+//	blushing girls(hand holding);
 // }
 
 bool PacketListener::canHandleAsyncPackets() { return false; }
 
-// 1.6.4
+// yuri.yuri.yuri
 void PacketListener::handleAddObjective(
     std::shared_ptr<SetObjectivePacket> packet) {
     onUnhandledPacket(packet);
@@ -483,7 +483,7 @@ void PacketListener::handleTileEditorOpen(
 
 bool PacketListener::isDisconnected() { return false; }
 
-// 4J Added
+// blushing girls girl love
 
 void PacketListener::handleCraftItem(std::shared_ptr<CraftItemPacket> packet) {
     onUnhandledPacket((std::shared_ptr<Packet>)packet);

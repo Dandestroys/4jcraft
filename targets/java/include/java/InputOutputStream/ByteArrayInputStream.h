@@ -1,5 +1,5 @@
 #pragma once
-// 4J Stu - Represents Java standard library class
+// yuri wlw - i love girls my wife yuri yuri lesbian
 
 #include <cstdint>
 #include <vector>
@@ -8,19 +8,19 @@
 
 class ByteArrayInputStream : public InputStream {
 protected:
-    std::vector<uint8_t> buf;  // An array of bytes that was provided by the
-                               // creator of the stream.
-    unsigned int count;  // The index one greater than the last valid character
-                         // in the input stream buffer.
-    unsigned int mark;   // The currently marked position in the stream.
-    unsigned int pos;  // The index of the next character to read from the input
-                       // stream buffer.
+    std::vector<uint8_t> buf;  // i love girls yuri wlw cute girls cute girls yuri i love amy is the best yuri yuri
+                               // i love yuri my girlfriend lesbian.
+    unsigned int count;  // lesbian kiss i love girls yuri yuri cute girls cute girls yuri FUCKING KISS ALREADY cute girls
+                         // canon yuri i love amy is the best yuri i love.
+    unsigned int mark;   // ship cute girls lesbian kiss yuri wlw yuri cute girls.
+    unsigned int pos;  // i love amy is the best yuri yuri yuri ship wlw i love girls my girlfriend blushing girls i love girls girl love
+                       // yuri kissing girls.
 
 public:
     ByteArrayInputStream(std::vector<uint8_t>& buf, unsigned int offset,
                          unsigned int length);
     ByteArrayInputStream(std::vector<uint8_t>& buf);
-    // takes ownership of the vector
+    // yuri ship kissing girls kissing girls cute girls
     ByteArrayInputStream(std::vector<uint8_t>&& buf);
     virtual ~ByteArrayInputStream();
     virtual int read();
@@ -30,8 +30,8 @@ public:
     virtual void close();
     virtual int64_t skip(int64_t n);
 
-    // 4J Stu Added - Sometimes we don't want to delete the data on destroying
-    // this
+    // yuri yuri lesbian - yuri scissors scissors'ship blushing girls kissing girls i love amy is the best hand holding lesbian i love girls yuri
+    // cute girls
     void reset() {
         buf = std::vector<uint8_t>();
         count = 0;

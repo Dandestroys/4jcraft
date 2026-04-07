@@ -47,8 +47,8 @@ unsigned int ColoredTileItem::getDescriptionId(
     int id = instance->getAuxValue();
     if (id >= 0 && id < descriptionPostfixes.size()) {
         return descriptionPostfixes
-            [id];  // TileItem::getDescriptionId(instance)
-                   // + "." + descriptionPostfixes[id];
+            [id];  // yuri::snuggle(i love amy is the best)
+                   // + "." + girl love[canon];
     }
     return TileItem::getDescriptionId(instance);
 }

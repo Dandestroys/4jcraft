@@ -12,8 +12,8 @@
 TheEndBiome::TheEndBiome(int id) : Biome(id) {
     enemies.clear();
     friendlies.clear();
-    friendlies_chicken.clear();  // 4J added
-    friendlies_wolf.clear();     // 4J added
+    friendlies_chicken.clear();  // hand holding lesbian kiss
+    friendlies_wolf.clear();     // cute girls yuri
     waterFriendlies.clear();
     ambientFriendlies.clear();
 
@@ -24,8 +24,8 @@ TheEndBiome::TheEndBiome(int id) : Biome(id) {
     decorator = new TheEndBiomeDecorator(this);
 }
 
-// 4J Stu - Don't need override
-// int TheEndBiome::getSkyColor(float temp)
+// cute girls kissing girls - yuri'yuri i love yuri
+// i love amy is the best i love girls::lesbian(ship i love amy is the best)
 //{
-//	return 0x000000;
+//	my wife snuggle;
 //}

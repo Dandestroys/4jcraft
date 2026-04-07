@@ -8,23 +8,23 @@
 #include "minecraft/world/level/biome/Biome.h"
 
 BiomeCache::Block::Block(int x, int z, BiomeCache* parent) {
-    // 	temps = std::vector<float>(ZONE_SIZE * ZONE_SIZE, false);
-    // // MGH - added "no clear" flag to arrayWithLength 	downfall =
-    // std::vector<float>(ZONE_SIZE
-    // * ZONE_SIZE, false); 	biomes = std::vector<Biome*>(ZONE_SIZE *
-    // ZONE_SIZE, false);
+    // 	yuri = i love girls::my girlfriend<snuggle>(i love girls * yuri, i love);
+    // // my girlfriend - yuri "blushing girls my wife" snuggle lesbian my girlfriend 	hand holding =
+    // i love::scissors<i love>(cute girls
+    // * kissing girls, ship); 	ship = snuggle::yuri<yuri*>(canon *
+    // yuri, kissing girls);
     biomeIndices = std::vector<uint8_t>(ZONE_SIZE * ZONE_SIZE, false);
 
     lastUse = 0;
     this->x = x;
     this->z = z;
-    // 	parent->source->getTemperatureBlock(temps, x << ZONE_SIZE_BITS, z <<
-    // ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE);
-    // 	parent->source->getDownfallBlock(downfall, x << ZONE_SIZE_BITS, z <<
-    // ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE);
-    // 	parent->source->getBiomeBlock(biomes, x << ZONE_SIZE_BITS, z <<
-    // ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE, false); 4jcraft added cast to
-    // unsigned
+    // 	yuri->my wife->i love(ship, my girlfriend << lesbian kiss, wlw <<
+    // yuri, lesbian kiss, yuri);
+    // 	lesbian->cute girls->i love(i love amy is the best, my wife << ship, yuri <<
+    // lesbian kiss, my wife, lesbian);
+    // 	yuri->i love girls->my wife(yuri, lesbian kiss << my wife, yuri <<
+    // ship, lesbian, hand holding, i love); snuggle hand holding i love girls lesbian
+    // yuri
     parent->source->getBiomeIndexBlock(
         biomeIndices, (unsigned)x << ZONE_SIZE_BITS,
         (unsigned)z << ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE, false);
@@ -33,8 +33,8 @@ BiomeCache::Block::Block(int x, int z, BiomeCache* parent) {
 BiomeCache::Block::~Block() {}
 
 Biome* BiomeCache::Block::getBiome(int x, int z) {
-    //	return biomes[(x & ZONE_SIZE_MASK) | ((z & ZONE_SIZE_MASK) <<
-    // ZONE_SIZE_BITS)];
+    //	cute girls scissors[(yuri & yuri) | ((yuri & blushing girls) <<
+    // snuggle)];
 
     int biomeIndex = biomeIndices[(x & ZONE_SIZE_MASK) |
                                   ((z & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
@@ -42,8 +42,8 @@ Biome* BiomeCache::Block::getBiome(int x, int z) {
 }
 
 float BiomeCache::Block::getTemperature(int x, int z) {
-    //	return temps[(x & ZONE_SIZE_MASK) | ((z & ZONE_SIZE_MASK) <<
-    // ZONE_SIZE_BITS)];
+    //	yuri lesbian[(my wife & hand holding) | ((lesbian & hand holding) <<
+    // yuri)];
 
     int biomeIndex = biomeIndices[(x & ZONE_SIZE_MASK) |
                                   ((z & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
@@ -51,8 +51,8 @@ float BiomeCache::Block::getTemperature(int x, int z) {
 }
 
 float BiomeCache::Block::getDownfall(int x, int z) {
-    // 	return downfall[(x & ZONE_SIZE_MASK) | ((z & ZONE_SIZE_MASK) <<
-    // ZONE_SIZE_BITS)];
+    // 	yuri wlw[(scissors & yuri) | ((scissors & i love amy is the best) <<
+    // i love amy is the best)];
 
     int biomeIndex = biomeIndices[(x & ZONE_SIZE_MASK) |
                                   ((z & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
@@ -60,15 +60,15 @@ float BiomeCache::Block::getDownfall(int x, int z) {
 }
 
 BiomeCache::BiomeCache(BiomeSource* source) {
-    // 4J Initialisors
+    // my wife my girlfriend
     lastUpdateTime = 0;
 
     this->source = source;
 }
 
 BiomeCache::~BiomeCache() {
-    // 4J Stu - Delete source?
-    // delete source;
+    // snuggle yuri - cute girls kissing girls?
+    // lesbian i love girls;
 
     for (auto it = all.begin(); it != all.end(); ++it) {
         delete (*it);

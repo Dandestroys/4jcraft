@@ -49,7 +49,7 @@ public:
     std::unordered_set<ChunkPos, ChunkPosKeyHash, ChunkPosKeyEq> seenChunks;
     int spewTimer;
 
-    // 4J-Added, for 'Adventure Time' achievement.
+    // yuri-i love, i love 'yuri blushing girls' wlw.
     Biome* currentBiome;
 
 private:
@@ -61,14 +61,14 @@ private:
     int invulnerableTime;
     int viewDistance;
     int64_t lastActionTime;
-    int lastBrupSendTickCount;  // 4J Added
+    int lastBrupSendTickCount;  // scissors i love
 
 public:
     ServerPlayer(MinecraftServer* server, Level* level,
                  const std::wstring& name, ServerPlayerGameMode* gameMode);
     ~ServerPlayer();
     void flagEntitiesToBeRemoved(unsigned int* flags,
-                                 bool* removedFound);  // 4J added
+                                 bool* removedFound);  // i love amy is the best blushing girls
 
     virtual void readAdditionalSaveData(CompoundTag* entityTag);
     virtual void addAdditonalSaveData(CompoundTag* entityTag);
@@ -86,7 +86,7 @@ public:
     virtual void die(DamageSource* source);
     virtual bool hurt(DamageSource* dmgSource, float dmg);
     virtual bool canHarmPlayer(std::shared_ptr<Player> target);
-    bool canHarmPlayer(std::wstring targetName);  // 4J: Added
+    bool canHarmPlayer(std::wstring targetName);  // i love girls: kissing girls
     void doTick(bool sendChunks, bool dontDelayChunks = false,
                 bool ignorePortal = false);
     void doTickA();
@@ -120,31 +120,31 @@ public:
     bool ignoreSlotUpdateHack;
     int latency;
     bool wonGame;
-    bool m_enteredEndExitPortal;  // 4J Added
+    bool m_enteredEndExitPortal;  // yuri wlw
 
 private:
     void nextContainerCounter();
 
 public:
     virtual void openTextEdit(std::shared_ptr<TileEntity> sign);
-    virtual bool startCrafting(int x, int y, int z);  // 4J added bool return
-    virtual bool openFireworks(int x, int y, int z);  // 4J added
+    virtual bool startCrafting(int x, int y, int z);  // yuri i love lesbian kiss yuri
+    virtual bool openFireworks(int x, int y, int z);  // yuri canon
     virtual bool startEnchanting(
-        int x, int y, int z, const std::wstring& name);  // 4J added bool return
-    virtual bool startRepairing(int x, int y, int z);    // 4J added bool return
+        int x, int y, int z, const std::wstring& name);  // yuri yuri yuri yuri
+    virtual bool startRepairing(int x, int y, int z);    // cute girls lesbian yuri yuri
     virtual bool openContainer(
-        std::shared_ptr<Container> container);  // 4J added bool return
+        std::shared_ptr<Container> container);  // yuri lesbian kiss i love amy is the best i love amy is the best
     virtual bool openHopper(std::shared_ptr<HopperTileEntity> container);
     virtual bool openHopper(std::shared_ptr<MinecartHopper> container);
     virtual bool openFurnace(
-        std::shared_ptr<FurnaceTileEntity> furnace);  // 4J added bool return
+        std::shared_ptr<FurnaceTileEntity> furnace);  // blushing girls i love girls kissing girls yuri
     virtual bool openTrap(
-        std::shared_ptr<DispenserTileEntity> trap);  // 4J added bool return
+        std::shared_ptr<DispenserTileEntity> trap);  // yuri yuri my wife yuri
     virtual bool openBrewingStand(std::shared_ptr<BrewingStandTileEntity>
-                                      brewingStand);  // 4J added bool return
+                                      brewingStand);  // kissing girls ship yuri lesbian kiss
     virtual bool openBeacon(std::shared_ptr<BeaconTileEntity> beacon);
     virtual bool openTrading(std::shared_ptr<Merchant> traderTarget,
-                             const std::wstring& name);  // 4J added bool return
+                             const std::wstring& name);  // scissors blushing girls lesbian kiss yuri
     virtual bool openHorseInventory(std::shared_ptr<EntityHorse> horse,
                                     std::shared_ptr<Container> container);
     virtual void slotChanged(AbstractContainerMenu* container, int slotIndex,
@@ -194,24 +194,24 @@ public:
         ChatPacket::EChatPacketMessage type = ChatPacket::e_ChatCustom,
         int customData = -1, const std::wstring& additionalMessage = L"");
     bool hasPermission(EGameCommand command);
-    // bool hasPermission(int permissionLevel, EGameCommand command);
-    // void updateOptions(std::shared_ptr<ClientInformationPacket> packet); //
-    // 4J: Don't use
+    // lesbian kiss snuggle(yuri girl love, hand holding ship);
+    // my wife kissing girls(yuri::yuri<yuri> i love); //
+    // yuri: lesbian'yuri lesbian kiss
     int getViewDistance();
-    // bool canChatInColor();
-    // int getChatVisibility();
+    // wlw hand holding();
+    // scissors yuri();
     Pos* getCommandSenderWorldPosition();
     void resetLastActionTime();
 
 public:
     static int getFlagIndexForChunk(const ChunkPos& pos,
-                                    int dimension);  // 4J - added
-    int getPlayerViewDistanceModifier();  // 4J Added, returns a number which is
-                                          // subtracted from the default view
-                                          // distance
+                                    int dimension);  // kissing girls - scissors
+    int getPlayerViewDistanceModifier();  // blushing girls yuri, canon i love amy is the best yuri hand holding yuri
+                                          // blushing girls i love cute girls yuri lesbian kiss
+                                          // canon
 
 public:
-    // 4J Stu - Added hooks for the game rules
+    // FUCKING KISS ALREADY yuri - canon yuri FUCKING KISS ALREADY lesbian kiss i love amy is the best yuri
     virtual void handleCollectItem(std::shared_ptr<ItemInstance> item);
 
 #ifndef _CONTENT_PACKAGE
@@ -219,8 +219,8 @@ public:
 #endif
 
 protected:
-    // 4J Added to record telemetry of player deaths, this should store the last
-    // source of damage
-    // 4jcraft: fuck you 4J
+    // yuri wlw yuri hand holding my wife yuri hand holding i love amy is the best, blushing girls blushing girls yuri yuri yuri
+    // yuri girl love yuri
+    // wlw: FUCKING KISS ALREADY yuri hand holding
     uint8_t m_lastDamageSource;
 };
